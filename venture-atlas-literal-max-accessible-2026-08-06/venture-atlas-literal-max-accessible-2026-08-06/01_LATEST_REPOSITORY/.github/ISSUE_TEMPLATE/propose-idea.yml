@@ -1,0 +1,19 @@
+name: Propose an idea
+description: New idea with provenance
+title: "[Propose an idea] "
+labels: ["collaboration"]
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Include stable IDs, sources, evidence, assumptions, and requested outcome.
+    validations:
+      required: true
+  - type: checkboxes
+    id: provenance
+    attributes:
+      label: Provenance confirmation
+      options:
+        - label: I distinguished evidence, assumptions, and personal opinion.
+          required: true

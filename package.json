@@ -1,0 +1,13 @@
+{
+  "name": "venture-atlas-os",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Static evidence-aware venture idea research repository and GitHub Pages site",
+  "scripts": {
+    "test": "node tests/smoke.test.js",
+    "validate": "node scripts/validate-data.js && python scripts/validate-schema.py",
+    "check-links": "node scripts/check-links.js",
+    "build-search": "node scripts/build-search-index.js",
+    "check-js": "node --check assets/js/site.js"
+  }
+}

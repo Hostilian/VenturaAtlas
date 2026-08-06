@@ -1,0 +1,19 @@
+{
+  "constitutionId": "CONST-0001",
+  "version": "0.1-partial",
+  "sourceId": "SRC-0013",
+  "sourceFile": "Pasted markdown.md",
+  "sourceTimestamp": null,
+  "sourceReference": "Section 3, IMMUTABLE RESEARCH CONSTITUTION",
+  "originalAuthor": "User",
+  "extractionDate": "2026-08-06",
+  "extractionMethod": "Exact UTF-8 section extraction",
+  "recoveryStatus": "partially_recovered_exact",
+  "sha256": "f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d",
+  "knownMissingPortions": [
+    "The earliest complete Deep Research execution contract and its historical approval wording were not present as a directly inspectable standalone source."
+  ],
+  "relatedApprovalCommand": "APPROVE — begin the 12-round investigation.",
+  "supersedingAmendments": [],
+  "currentStatus": "Operational partial constitution; full original remains a provenance gap."
+}

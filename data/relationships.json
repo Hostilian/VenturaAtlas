@@ -1,0 +1,980 @@
+[
+  {
+    "source": "idea-001",
+    "target": "idea-019",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-010",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-031",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-020",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-040",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-029",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-028",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-002",
+    "target": "idea-015",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-013",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-045",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-030",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-018",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-003",
+    "target": "idea-017",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-034",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-028",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-004",
+    "target": "idea-026",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-031",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-019",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-005",
+    "target": "idea-017",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-006",
+    "target": "idea-010",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-024",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-037",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-035",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-021",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-007",
+    "target": "idea-012",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-020",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-014",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-012",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-009",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-008",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-009",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-009",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-009",
+    "target": "idea-037",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-009",
+    "target": "idea-030",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-009",
+    "target": "idea-020",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-010",
+    "target": "idea-017",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-010",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-010",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-010",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-011",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-012",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-012",
+    "target": "idea-024",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-012",
+    "target": "idea-020",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-012",
+    "target": "idea-015",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-012",
+    "target": "idea-014",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-013",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-013",
+    "target": "idea-030",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-013",
+    "target": "idea-018",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-013",
+    "target": "idea-017",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-013",
+    "target": "idea-015",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-014",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-014",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-014",
+    "target": "idea-034",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-014",
+    "target": "idea-015",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-034",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-028",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-015",
+    "target": "idea-027",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-016",
+    "target": "idea-035",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-016",
+    "target": "idea-027",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-016",
+    "target": "idea-021",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-017",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-017",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-017",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-017",
+    "target": "idea-031",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-017",
+    "target": "idea-030",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-018",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-018",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-018",
+    "target": "idea-043",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-018",
+    "target": "idea-030",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-019",
+    "target": "idea-031",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-019",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-019",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-019",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-019",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-020",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-021",
+    "target": "idea-038",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-021",
+    "target": "idea-027",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-021",
+    "target": "idea-024",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-022",
+    "target": "idea-023",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-023",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-023",
+    "target": "idea-038",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-023",
+    "target": "idea-036",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-024",
+    "target": "idea-048",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-026",
+    "target": "idea-029",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-026",
+    "target": "idea-028",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-027",
+    "target": "idea-041",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-027",
+    "target": "idea-040",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-027",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-027",
+    "target": "idea-043",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-040",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-029",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-028",
+    "target": "idea-041",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-029",
+    "target": "idea-040",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-030",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-030",
+    "target": "idea-031",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-031",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-031",
+    "target": "idea-049",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-032",
+    "target": "idea-045",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-033",
+    "target": "idea-041",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-033",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-033",
+    "target": "idea-040",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-034",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-034",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-035",
+    "target": "idea-047",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-036",
+    "target": "idea-039",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-036",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-037",
+    "target": "idea-046",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-038",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-038",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-039",
+    "target": "idea-042",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-040",
+    "target": "idea-041",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-040",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-041",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-043",
+    "target": "idea-044",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-049",
+    "target": "idea-054",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-060",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-059",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-053",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-052",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-052",
+    "target": "idea-060",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-052",
+    "target": "idea-059",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-052",
+    "target": "idea-056",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-052",
+    "target": "idea-053",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-053",
+    "target": "idea-059",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-053",
+    "target": "idea-060",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-055",
+    "target": "idea-058",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-059",
+    "target": "idea-060",
+    "type": "similar_or_complementary",
+    "basis": "shared category or tags; analyst-generated relationship"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-059",
+    "type": "feature_or_bundle",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-051",
+    "target": "idea-060",
+    "type": "feature_or_bundle",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-001",
+    "target": "idea-053",
+    "type": "shared_infrastructure",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-055",
+    "target": "idea-058",
+    "type": "cross_sell",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-038",
+    "target": "idea-056",
+    "type": "service_to_software",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-044",
+    "target": "idea-041",
+    "type": "shared_infrastructure",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-040",
+    "target": "idea-028",
+    "type": "shared_data",
+    "basis": "explicitly related in supplied project context"
+  },
+  {
+    "source": "idea-061",
+    "target": "idea-068",
+    "type": "complementary_b2b_api",
+    "basis": "FactBounty evidence graph acts as the data source for Product Evidence API (068)"
+  },
+  {
+    "source": "idea-061",
+    "target": "idea-062",
+    "type": "similar_evidence_niche",
+    "basis": "MeasureGraph focuses specifically on dimensional measurements within FactBounty format"
+  },
+  {
+    "source": "idea-061",
+    "target": "idea-063",
+    "type": "similar_evidence_niche",
+    "basis": "Compatibility bounties use FactBounty escrow for hardware/part verification"
+  },
+  {
+    "source": "idea-061",
+    "target": "idea-070",
+    "type": "seller_side_complement",
+    "basis": "Seller ProofLink enables merchants to pre-fund proof badges before buyer bounties"
+  },
+  {
+    "source": "idea-061",
+    "target": "idea-019",
+    "type": "shared_trust_category",
+    "basis": "Marketplace Trust Layer and FactBounty both verify product/seller claims"
+  },
+  {
+    "source": "idea-062",
+    "target": "idea-066",
+    "type": "data_layer_sharing",
+    "basis": "Revision & Variant Proof Registry stores dimensional changes over product revisions"
+  },
+  {
+    "source": "idea-065",
+    "target": "idea-029",
+    "type": "local_commerce_synergy",
+    "basis": "Local Shelf Proof and Verified Local Value Rankings both use crowd sourcing for local facts"
+  },
+  {
+    "source": "idea-068",
+    "target": "idea-058",
+    "type": "ai_agent_infrastructure",
+    "basis": "Both provide structured API capabilities to shopping and autonomous agents"
+  },
+  {
+    "source": "idea-069",
+    "target": "idea-012",
+    "type": "data_exchange_synergy",
+    "basis": "Receipt-Verified Data Exchange complements Commerce Knowledge Graph"
+  },
+  {
+    "source": "idea-070",
+    "target": "idea-020",
+    "type": "seller_onboarding_synergy",
+    "basis": "Seller ProofLink and Verified Seller Onboarding API both streamline vendor trust"
+  }
+]

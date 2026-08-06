@@ -1,0 +1,269 @@
+[
+  {
+    "id": "ai-application",
+    "name": "AI application",
+    "count": 2,
+    "ideaIds": [
+      "idea-016",
+      "idea-035"
+    ]
+  },
+  {
+    "id": "ai-evaluation",
+    "name": "AI evaluation",
+    "count": 5,
+    "ideaIds": [
+      "idea-051",
+      "idea-052",
+      "idea-053",
+      "idea-059",
+      "idea-060"
+    ]
+  },
+  {
+    "id": "ai-infrastructure",
+    "name": "AI infrastructure",
+    "count": 3,
+    "ideaIds": [
+      "idea-003",
+      "idea-013",
+      "idea-015"
+    ]
+  },
+  {
+    "id": "automation-platform",
+    "name": "Automation platform",
+    "count": 2,
+    "ideaIds": [
+      "idea-030",
+      "idea-047"
+    ]
+  },
+  {
+    "id": "b2b-saas",
+    "name": "B2B SaaS",
+    "count": 3,
+    "ideaIds": [
+      "idea-026",
+      "idea-028",
+      "idea-029"
+    ]
+  },
+  {
+    "id": "climate-compliance",
+    "name": "Climate + compliance",
+    "count": 1,
+    "ideaIds": [
+      "idea-032"
+    ]
+  },
+  {
+    "id": "compliance",
+    "name": "Compliance",
+    "count": 1,
+    "ideaIds": [
+      "idea-025"
+    ]
+  },
+  {
+    "id": "consumer-discovery",
+    "name": "Consumer discovery",
+    "count": 2,
+    "ideaIds": [
+      "idea-036",
+      "idea-039"
+    ]
+  },
+  {
+    "id": "consumer-utility",
+    "name": "Consumer utility",
+    "count": 1,
+    "ideaIds": [
+      "idea-045"
+    ]
+  },
+  {
+    "id": "creator-infrastructure",
+    "name": "Creator infrastructure",
+    "count": 1,
+    "ideaIds": [
+      "idea-037"
+    ]
+  },
+  {
+    "id": "creator-tools",
+    "name": "Creator tools",
+    "count": 3,
+    "ideaIds": [
+      "idea-007",
+      "idea-012",
+      "idea-024"
+    ]
+  },
+  {
+    "id": "cybersecurity",
+    "name": "Cybersecurity",
+    "count": 1,
+    "ideaIds": [
+      "idea-006"
+    ]
+  },
+  {
+    "id": "data-infrastructure",
+    "name": "Data infrastructure",
+    "count": 2,
+    "ideaIds": [
+      "idea-027",
+      "idea-040"
+    ]
+  },
+  {
+    "id": "developer-tools",
+    "name": "Developer tools",
+    "count": 8,
+    "ideaIds": [
+      "idea-001",
+      "idea-005",
+      "idea-010",
+      "idea-017",
+      "idea-019",
+      "idea-031",
+      "idea-049",
+      "idea-054"
+    ]
+  },
+  {
+    "id": "education",
+    "name": "Education",
+    "count": 1,
+    "ideaIds": [
+      "idea-056"
+    ]
+  },
+  {
+    "id": "education-technology",
+    "name": "Education technology",
+    "count": 2,
+    "ideaIds": [
+      "idea-021",
+      "idea-038"
+    ]
+  },
+  {
+    "id": "food-knowledge",
+    "name": "Food knowledge",
+    "count": 1,
+    "ideaIds": [
+      "idea-041"
+    ]
+  },
+  {
+    "id": "game-operations",
+    "name": "Game operations",
+    "count": 1,
+    "ideaIds": [
+      "idea-057"
+    ]
+  },
+  {
+    "id": "games",
+    "name": "Games",
+    "count": 1,
+    "ideaIds": [
+      "idea-050"
+    ]
+  },
+  {
+    "id": "information-infrastructure",
+    "name": "Information infrastructure",
+    "count": 1,
+    "ideaIds": [
+      "idea-011"
+    ]
+  },
+  {
+    "id": "information-service",
+    "name": "Information service",
+    "count": 2,
+    "ideaIds": [
+      "idea-022",
+      "idea-023"
+    ]
+  },
+  {
+    "id": "knowledge-management",
+    "name": "Knowledge management",
+    "count": 2,
+    "ideaIds": [
+      "idea-014",
+      "idea-034"
+    ]
+  },
+  {
+    "id": "local-commerce",
+    "name": "Local commerce",
+    "count": 2,
+    "ideaIds": [
+      "idea-055",
+      "idea-058"
+    ]
+  },
+  {
+    "id": "marketplaces",
+    "name": "Marketplaces",
+    "count": 3,
+    "ideaIds": [
+      "idea-018",
+      "idea-043",
+      "idea-044"
+    ]
+  },
+  {
+    "id": "media-data",
+    "name": "Media + data",
+    "count": 3,
+    "ideaIds": [
+      "idea-002",
+      "idea-004",
+      "idea-042"
+    ]
+  },
+  {
+    "id": "research-tools",
+    "name": "Research tools",
+    "count": 4,
+    "ideaIds": [
+      "idea-008",
+      "idea-009",
+      "idea-020",
+      "idea-046"
+    ]
+  },
+  {
+    "id": "travel-food",
+    "name": "Travel + food",
+    "count": 1,
+    "ideaIds": [
+      "idea-033"
+    ]
+  },
+  {
+    "id": "utilities",
+    "name": "Utilities",
+    "count": 1,
+    "ideaIds": [
+      "idea-048"
+    ]
+  },
+  {
+    "name": "Product verification & evidence",
+    "count": 10,
+    "subcategories": [
+      "consumer bounty exchange",
+      "data network",
+      "B2B API",
+      "seller tool"
+    ],
+    "description": "Buyer-funded bounty exchanges, evidence networks, and B2B APIs for verified product facts. Source: Deep Research Eighth Full Reset (2026-08-02)."
+  }
+]

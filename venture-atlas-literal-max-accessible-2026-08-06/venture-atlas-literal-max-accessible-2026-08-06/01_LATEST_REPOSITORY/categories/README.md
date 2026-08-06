@@ -1,0 +1,30 @@
+# Categories
+
+- [AI application](ai-application.md) — 2 ideas
+- [AI evaluation](ai-evaluation.md) — 5 ideas
+- [AI infrastructure](ai-infrastructure.md) — 3 ideas
+- [Automation platform](automation-platform.md) — 2 ideas
+- [B2B SaaS](b2b-saas.md) — 3 ideas
+- [Climate + compliance](climate-compliance.md) — 1 ideas
+- [Compliance](compliance.md) — 1 ideas
+- [Consumer discovery](consumer-discovery.md) — 2 ideas
+- [Consumer utility](consumer-utility.md) — 1 ideas
+- [Creator infrastructure](creator-infrastructure.md) — 1 ideas
+- [Creator tools](creator-tools.md) — 3 ideas
+- [Cybersecurity](cybersecurity.md) — 1 ideas
+- [Data infrastructure](data-infrastructure.md) — 2 ideas
+- [Developer tools](developer-tools.md) — 8 ideas
+- [Education](education.md) — 1 ideas
+- [Education technology](education-technology.md) — 2 ideas
+- [Food knowledge](food-knowledge.md) — 1 ideas
+- [Game operations](game-operations.md) — 1 ideas
+- [Games](games.md) — 1 ideas
+- [Information infrastructure](information-infrastructure.md) — 1 ideas
+- [Information service](information-service.md) — 2 ideas
+- [Knowledge management](knowledge-management.md) — 2 ideas
+- [Local commerce](local-commerce.md) — 2 ideas
+- [Marketplaces](marketplaces.md) — 3 ideas
+- [Media + data](media-data.md) — 3 ideas
+- [Research tools](research-tools.md) — 4 ideas
+- [Travel + food](travel-food.md) — 1 ideas
+- [Utilities](utilities.md) — 1 ideas

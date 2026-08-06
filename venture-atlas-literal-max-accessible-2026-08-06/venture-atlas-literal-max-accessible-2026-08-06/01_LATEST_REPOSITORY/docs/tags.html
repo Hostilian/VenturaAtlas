@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tag Browser — Venture Atlas OS</title>
+  <meta name="description" content="Browse all 70 business ideas by tag. Find ideas grouped by technology, market, business model, and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <style>
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+    .tag-pill { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.3rem 0.8rem; border-radius: 9999px; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.15s; user-select: none; }
+    .tag-pill:hover { border-color: var(--accent); background: var(--accent-subtle); }
+    .tag-pill.active { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .tag-pill .count { font-size: 0.72rem; opacity: 0.75; }
+    .tag-section h2 { position: sticky; top: 0; background: var(--bg); padding: 0.5rem 0; border-bottom: 1px solid var(--border); z-index: 2; }
+    .tag-ideas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; margin: 1rem 0 2rem; }
+    .tag-idea-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem; background: var(--surface); transition: border-color 0.15s; }
+    .tag-idea-card:hover { border-color: var(--accent); }
+    .controls-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.5rem; }
+    #tagSearch { flex: 1; min-width: 200px; }
+    .selected-tag-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: var(--accent-subtle); border: 1.5px solid var(--accent); border-radius: var(--radius); margin: 1.5rem 0; }
+  </style>
+</head>
+<body data-page="tags" data-root="..">
+  <main id="main">
+    <section class="section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Ideas</a>
+        <span class="sep">›</span>
+        <span>Tag Browser</span>
+      </nav>
+
+      <h1>Tag Browser</h1>
+      <p class="lede">Every idea is tagged across multiple dimensions. Click any tag to see all ideas in that cluster.</p>
+
+      <div class="controls-bar">
+        <input type="search" id="tagSearch" placeholder="Filter tags…" aria-label="Filter tags">
+        <button class="button ghost" id="clearTag">Clear selection</button>
+        <span id="tagCount" class="muted"></span>
+      </div>
+
+      <!-- Tag cloud -->
+      <div class="tag-cloud" id="tagCloud" role="list" aria-label="All tags"></div>
+
+      <!-- Selected tag results -->
+      <div id="tagResults" hidden>
+        <div class="selected-tag-header">
+          <div>
+            <strong id="selectedTagName"></strong>
+            <span class="muted" id="selectedTagCount"></span>
+          </div>
+          <button class="button ghost" id="clearTag2" style="padding:0.3rem 0.75rem;font-size:0.85rem">✕ Clear</button>
+        </div>
+        <div class="tag-ideas-grid" id="tagIdeasGrid"></div>
+      </div>
+
+      <!-- All tags grouped view (shown when no tag selected) -->
+      <div id="allTagsView">
+        <p class="muted" style="text-align:center;margin-top:2rem" id="tagCloudHint">Click any tag above to explore ideas with that tag.</p>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Build after VA data loads — site.js DOMContentLoaded fires first, so poll
+      function initTags() {
+        if (!window.VA || !VA.ideas.length) { setTimeout(initTags, 100); return; }
+
+        // Build tag map
+        const tagMap = {};
+        VA.ideas.forEach(idea => {
+          (idea.tags || []).forEach(tag => {
+            if (!tagMap[tag]) tagMap[tag] = [];
+            tagMap[tag].push(idea);
+          });
+        });
+
+        const allTags = Object.entries(tagMap).sort((a,b) => b[1].length - a[1].length);
+        const tagCount = document.getElementById('tagCount');
+        tagCount.textContent = `${allTags.length} unique tags across ${VA.ideas.length} ideas`;
+
+        let activeTag = null;
+
+        function renderCloud(filter = '') {
+          const cloud = document.getElementById('tagCloud');
+          const filtered = filter ? allTags.filter(([t]) => t.toLowerCase().includes(filter.toLowerCase())) : allTags;
+          cloud.innerHTML = filtered.map(([tag, ideas]) => {
+            const size = Math.min(1.15, 0.78 + ideas.length * 0.04);
+            return `<div class="tag-pill${activeTag === tag ? ' active' : ''}" data-tag="${tag}" role="listitem" tabindex="0" style="font-size:${size}rem">
+              ${tag} <span class="count">${ideas.length}</span>
+            </div>`;
+          }).join('');
+          cloud.querySelectorAll('.tag-pill').forEach(pill => {
+            const activate = () => selectTag(pill.dataset.tag);
+            pill.addEventListener('click', activate);
+            pill.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+          });
+        }
+
+        function selectTag(tag) {
+          activeTag = tag;
+          const ideas = tagMap[tag] || [];
+          document.getElementById('tagResults').hidden = false;
+          document.getElementById('allTagsView').hidden = true;
+          document.getElementById('selectedTagName').textContent = `#${tag}`;
+          document.getElementById('selectedTagCount').textContent = ` — ${ideas.length} idea${ideas.length !== 1 ? 's' : ''}`;
+          document.getElementById('tagIdeasGrid').innerHTML = ideas
+            .sort((a,b) => b.atAGlance.overallScore - a.atAGlance.overallScore)
+            .map(x => `<div class="tag-idea-card">
+              <div class="eyebrow" style="font-size:0.72rem">${x.category} · ${x.atAGlance.overallScore}/10</div>
+              <h3 style="margin:0.3rem 0 0.4rem;font-size:1rem"><a href="idea.html?id=${encodeURIComponent(x.id)}">${x.name}</a></h3>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0 0 0.5rem">${x.oneSentenceConcept}</p>
+              <div class="chips">${(x.tags||[]).slice(0,4).map(t=>`<span class="chip${t===tag?' ':''}${t===tag?'" style="background:var(--accent);color:#fff':''}">${t}</span>`).join('')}</div>
+            </div>`).join('');
+          renderCloud(document.getElementById('tagSearch').value);
+          // Scroll to results
+          document.getElementById('tagResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function clearTag() {
+          activeTag = null;
+          document.getElementById('tagResults').hidden = true;
+          document.getElementById('allTagsView').hidden = false;
+          renderCloud(document.getElementById('tagSearch').value);
+        }
+
+        document.getElementById('tagSearch').addEventListener('input', e => renderCloud(e.target.value));
+        document.getElementById('clearTag').addEventListener('click', clearTag);
+        document.getElementById('clearTag2').addEventListener('click', clearTag);
+
+        // Check URL for tag param
+        const urlTag = new URLSearchParams(location.search).get('tag');
+        renderCloud();
+        if (urlTag && tagMap[urlTag]) selectTag(urlTag);
+      }
+
+      initTags();
+    });
+  </script>
+</body>
+</html>

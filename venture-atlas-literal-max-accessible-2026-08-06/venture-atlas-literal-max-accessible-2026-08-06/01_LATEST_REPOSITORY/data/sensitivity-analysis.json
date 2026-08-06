@@ -1,0 +1,1570 @@
+[
+  {
+    "profile": "overallOpportunity",
+    "weights": {
+      "problemSeverity": 7,
+      "willingnessToPay": 7,
+      "marketDemand": 6,
+      "revenuePotential": 7,
+      "grossMarginPotential": 5,
+      "defensibility": 6,
+      "scalability": 5,
+      "easeOfDistribution": 5,
+      "evidenceQuality": 6,
+      "overallConfidence": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 88.5
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 88.1
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 88.0
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 87.7
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 87.3
+      },
+      {
+        "ideaId": "idea-016",
+        "name": "Multi-Provider AI Workspace",
+        "score": 87.0
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 86.9
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 86.8
+      },
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 86.8
+      },
+      {
+        "ideaId": "idea-011",
+        "name": "Official Source Change Monitor",
+        "score": 86.2
+      }
+    ]
+  },
+  {
+    "profile": "bootstrapPotential",
+    "weights": {
+      "speedToFirstRevenue": 8,
+      "lowStartupCost": 8,
+      "easeOfMvp": 7,
+      "grossMarginPotential": 7,
+      "founderAccessibility": 6,
+      "operationalSimplicity": 6,
+      "willingnessToPay": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 86.7
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 85.2
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 85.0
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 84.9
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 84.7
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 84.6
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 84.5
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 84.3
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 84.2
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 83.8
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 83.4
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 83.0
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 83.0
+      }
+    ]
+  },
+  {
+    "profile": "soloFounderPotential",
+    "weights": {
+      "lowStartupCost": 8,
+      "easeOfMvp": 8,
+      "aiAutomationPotential": 8,
+      "operationalSimplicity": 8,
+      "founderAccessibility": 8,
+      "easeOfDistribution": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 92.2
+      },
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 90.4
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 89.2
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 87.4
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 87.0
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 86.8
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 86.6
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 86.6
+      },
+      {
+        "ideaId": "idea-024",
+        "name": "Movie-to-100-Shorts Engine",
+        "score": 85.9
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 85.1
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 84.9
+      }
+    ]
+  },
+  {
+    "profile": "aiAgentPotential",
+    "weights": {
+      "aiAutomationPotential": 12,
+      "easeOfMvp": 5,
+      "scalability": 5,
+      "dataAdvantagePotential": 5,
+      "defensibility": 4
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 91.6
+      },
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 91.5
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 90.9
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 90.9
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 90.9
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.1
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 89.7
+      },
+      {
+        "ideaId": "idea-009",
+        "name": "Autonomous Experiment Factory",
+        "score": 89.6
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 89.4
+      },
+      {
+        "ideaId": "idea-008",
+        "name": "Research-to-Startup Engine",
+        "score": 89.1
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 89.1
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 88.9
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 88.5
+      }
+    ]
+  },
+  {
+    "profile": "fastestRevenue",
+    "weights": {
+      "speedToFirstRevenue": 16,
+      "easeOfDistribution": 8,
+      "lowStartupCost": 8,
+      "easeOfMvp": 7,
+      "willingnessToPay": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 91.1
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 89.2
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 88.7
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 88.0
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 87.3
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 86.5
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 85.8
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 85.7
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 85.2
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 84.9
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 84.9
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 84.3
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 82.6
+      },
+      {
+        "ideaId": "idea-024",
+        "name": "Movie-to-100-Shorts Engine",
+        "score": 82.5
+      }
+    ]
+  },
+  {
+    "profile": "highestProfitPotential",
+    "weights": {
+      "revenuePotential": 12,
+      "grossMarginPotential": 10,
+      "scalability": 9,
+      "recurringRevenuePotential": 8,
+      "defensibility": 7
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 93.8
+      },
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 92.8
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 91.8
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 91.0
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.3
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 89.7
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 89.7
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 89.4
+      },
+      {
+        "ideaId": "idea-044",
+        "name": "EUshop — Pan-European Specialty Food Marketplace",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 87.3
+      },
+      {
+        "ideaId": "idea-026",
+        "name": "Marketplace Trust Layer",
+        "score": 87.3
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-019",
+        "name": "Release Evidence Ledger",
+        "score": 86.9
+      }
+    ]
+  },
+  {
+    "profile": "lowestCostLaunch",
+    "weights": {
+      "lowStartupCost": 20,
+      "easeOfMvp": 8,
+      "founderAccessibility": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 92.6
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 91.3
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 89.2
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 88.9
+      },
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 86.4
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 85.7
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 84.5
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 83.3
+      },
+      {
+        "ideaId": "idea-022",
+        "name": "Subscription Change Tracker",
+        "score": 82.5
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 81.6
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 81.2
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 81.2
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 80.9
+      }
+    ]
+  },
+  {
+    "profile": "recurringRevenue",
+    "weights": {
+      "recurringRevenuePotential": 18,
+      "retentionPotential": 10,
+      "frequencyOfNeed": 8,
+      "willingnessToPay": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 95.7
+      },
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 93.1
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 92.3
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 90.5
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 90.1
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.0
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 89.9
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-037",
+        "name": "Multi-Platform Publishing OS",
+        "score": 89.6
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-016",
+        "name": "Multi-Provider AI Workspace",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-011",
+        "name": "Official Source Change Monitor",
+        "score": 88.7
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 88.7
+      },
+      {
+        "ideaId": "idea-029",
+        "name": "Verified Seller Onboarding API",
+        "score": 88.5
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 88.1
+      }
+    ]
+  },
+  {
+    "profile": "enterpriseOpportunity",
+    "weights": {
+      "willingnessToPay": 10,
+      "revenuePotential": 12,
+      "defensibility": 8,
+      "dataAdvantagePotential": 6,
+      "retentionPotential": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 92.7
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 92.0
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 91.6
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 91.0
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.3
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 90.0
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-019",
+        "name": "Release Evidence Ledger",
+        "score": 88.5
+      },
+      {
+        "ideaId": "idea-026",
+        "name": "Marketplace Trust Layer",
+        "score": 88.4
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-029",
+        "name": "Verified Seller Onboarding API",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-044",
+        "name": "EUshop — Pan-European Specialty Food Marketplace",
+        "score": 87.0
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 86.7
+      }
+    ]
+  },
+  {
+    "profile": "consumerOpportunity",
+    "weights": {
+      "marketDemand": 10,
+      "easeOfDistribution": 9,
+      "globalPotential": 8,
+      "lowStartupCost": 5,
+      "frequencyOfNeed": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-016",
+        "name": "Multi-Provider AI Workspace",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 86.7
+      },
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 85.8
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 84.7
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 84.3
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 83.6
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 83.2
+      },
+      {
+        "ideaId": "idea-035",
+        "name": "Local-First Personal AI / Jarvis",
+        "score": 82.9
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 82.8
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 82.2
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 81.9
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 81.9
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 81.8
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 81.6
+      }
+    ]
+  },
+  {
+    "profile": "localBusinessOpportunity",
+    "weights": {
+      "speedToFirstRevenue": 10,
+      "easeOfDistribution": 8,
+      "willingnessToPay": 8,
+      "operationalSimplicity": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 90.1
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 87.5
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 87.2
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 85.7
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 85.5
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 85.3
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 83.5
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 83.5
+      },
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 83.3
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 83.2
+      },
+      {
+        "ideaId": "idea-024",
+        "name": "Movie-to-100-Shorts Engine",
+        "score": 82.4
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 82.4
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 82.2
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 82.1
+      }
+    ]
+  },
+  {
+    "profile": "marketplaceOpportunity",
+    "weights": {
+      "scalability": 10,
+      "dataAdvantagePotential": 10,
+      "defensibility": 8,
+      "marketDemand": 7,
+      "globalPotential": 7
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 92.0
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 90.8
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.4
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 90.0
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-044",
+        "name": "EUshop — Pan-European Specialty Food Marketplace",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 88.5
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 87.7
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 87.5
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 87.4
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 87.4
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 87.3
+      },
+      {
+        "ideaId": "idea-035",
+        "name": "Local-First Personal AI / Jarvis",
+        "score": 87.2
+      }
+    ]
+  },
+  {
+    "profile": "longTermDefensibility",
+    "weights": {
+      "defensibility": 18,
+      "dataAdvantagePotential": 12,
+      "competitiveAdvantage": 9,
+      "retentionPotential": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 93.3
+      },
+      {
+        "ideaId": "idea-040",
+        "name": "European Food Knowledge Graph",
+        "score": 92.4
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 92.1
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 91.9
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 91.0
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 90.6
+      },
+      {
+        "ideaId": "idea-019",
+        "name": "Release Evidence Ledger",
+        "score": 89.7
+      },
+      {
+        "ideaId": "idea-026",
+        "name": "Marketplace Trust Layer",
+        "score": 89.3
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-041",
+        "name": "Living European Food Atlas",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-028",
+        "name": "FoodSpec Evidence Registry",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-008",
+        "name": "Research-to-Startup Engine",
+        "score": 87.2
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-009",
+        "name": "Autonomous Experiment Factory",
+        "score": 86.9
+      }
+    ]
+  },
+  {
+    "profile": "nontechnicalFounder",
+    "weights": {
+      "easeOfMvp": 10,
+      "founderAccessibility": 12,
+      "operationalSimplicity": 10,
+      "lowStartupCost": 8,
+      "regulatorySimplicity": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 94.2
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 91.7
+      },
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 90.2
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 88.0
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 85.9
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 85.4
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 85.0
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 84.1
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 84.0
+      },
+      {
+        "ideaId": "idea-024",
+        "name": "Movie-to-100-Shorts Engine",
+        "score": 84.0
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 83.7
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 83.2
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 82.8
+      }
+    ]
+  },
+  {
+    "profile": "technicalFounder",
+    "weights": {
+      "aiAutomationPotential": 9,
+      "easeOfMvp": 6,
+      "defensibility": 8,
+      "dataAdvantagePotential": 8,
+      "scalability": 7
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 91.0
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 90.4
+      },
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 89.6
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 89.2
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 89.0
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-020",
+        "name": "Longitudinal Research Memory",
+        "score": 88.6
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 88.0
+      },
+      {
+        "ideaId": "idea-017",
+        "name": "Semantic Multi-Agent Merge Coordinator",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-040",
+        "name": "European Food Knowledge Graph",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-009",
+        "name": "Autonomous Experiment Factory",
+        "score": 87.7
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 87.7
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 87.6
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 87.2
+      },
+      {
+        "ideaId": "idea-008",
+        "name": "Research-to-Startup Engine",
+        "score": 87.2
+      }
+    ]
+  },
+  {
+    "profile": "smallTeam",
+    "weights": {
+      "easeOfMvp": 7,
+      "operationalSimplicity": 7,
+      "scalability": 7,
+      "easeOfDistribution": 6,
+      "retentionPotential": 5
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 85.9
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 85.8
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 85.0
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 84.8
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 83.3
+      },
+      {
+        "ideaId": "idea-021",
+        "name": "Clip-to-Quiz Language Learning",
+        "score": 82.8
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 82.4
+      },
+      {
+        "ideaId": "idea-006",
+        "name": "CodeQL Remediation Factory",
+        "score": 82.0
+      },
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 81.9
+      },
+      {
+        "ideaId": "idea-024",
+        "name": "Movie-to-100-Shorts Engine",
+        "score": 81.1
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 80.8
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 80.8
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 80.8
+      },
+      {
+        "ideaId": "idea-016",
+        "name": "Multi-Provider AI Workspace",
+        "score": 80.6
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 80.5
+      }
+    ]
+  },
+  {
+    "profile": "littleCapital",
+    "weights": {
+      "lowStartupCost": 18,
+      "speedToFirstRevenue": 8,
+      "easeOfMvp": 7,
+      "grossMarginPotential": 6
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-014",
+        "name": "Venture Atlas OS",
+        "score": 89.8
+      },
+      {
+        "ideaId": "idea-004",
+        "name": "Verified Rankings Network",
+        "score": 89.7
+      },
+      {
+        "ideaId": "idea-048",
+        "name": "SSD Storage Culprit Analyzer",
+        "score": 87.9
+      },
+      {
+        "ideaId": "idea-034",
+        "name": "Founder Decision Journal",
+        "score": 87.8
+      },
+      {
+        "ideaId": "idea-049",
+        "name": "GitHub Pages Version Lab",
+        "score": 86.9
+      },
+      {
+        "ideaId": "idea-023",
+        "name": "Applications Closing Soon",
+        "score": 86.7
+      },
+      {
+        "ideaId": "idea-046",
+        "name": "API Opportunity Ranker",
+        "score": 86.7
+      },
+      {
+        "ideaId": "idea-036",
+        "name": "Free Before Midnight",
+        "score": 85.6
+      },
+      {
+        "ideaId": "idea-042",
+        "name": "Verified Local Value Rankings",
+        "score": 85.2
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 82.5
+      },
+      {
+        "ideaId": "idea-022",
+        "name": "Subscription Change Tracker",
+        "score": 82.2
+      },
+      {
+        "ideaId": "idea-039",
+        "name": "Local Event & Early-Bird Radar",
+        "score": 81.5
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 81.3
+      },
+      {
+        "ideaId": "idea-012",
+        "name": "Content Opportunity Ranker",
+        "score": 81.3
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 81.2
+      }
+    ]
+  },
+  {
+    "profile": "highCapitalAvailable",
+    "weights": {
+      "marketDemand": 7,
+      "revenuePotential": 12,
+      "scalability": 12,
+      "defensibility": 9,
+      "globalPotential": 8
+    },
+    "topIdeas": [
+      {
+        "ideaId": "idea-013",
+        "name": "Autonomous Agent Operating System",
+        "score": 92.3
+      },
+      {
+        "ideaId": "idea-027",
+        "name": "Commerce Knowledge Graph Platform",
+        "score": 91.6
+      },
+      {
+        "ideaId": "idea-032",
+        "name": "Digital Product Passport & Repair Graph",
+        "score": 90.8
+      },
+      {
+        "ideaId": "idea-018",
+        "name": "Verified Agent Skill Marketplace",
+        "score": 90.1
+      },
+      {
+        "ideaId": "idea-001",
+        "name": "ProofRail — AI Work Acceptance Gate",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-010",
+        "name": "Repository Autopilot",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-044",
+        "name": "EUshop — Pan-European Specialty Food Marketplace",
+        "score": 89.5
+      },
+      {
+        "ideaId": "idea-002",
+        "name": "AI Model Ranking Observatory",
+        "score": 89.1
+      },
+      {
+        "ideaId": "idea-025",
+        "name": "EU Marketplace Compliance OS",
+        "score": 88.9
+      },
+      {
+        "ideaId": "idea-005",
+        "name": "Prompt Registry & Evaluation Lab",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-016",
+        "name": "Multi-Provider AI Workspace",
+        "score": 88.8
+      },
+      {
+        "ideaId": "idea-003",
+        "name": "AI Agent Budget & Credit Controller",
+        "score": 88.7
+      },
+      {
+        "ideaId": "idea-035",
+        "name": "Local-First Personal AI / Jarvis",
+        "score": 87.4
+      },
+      {
+        "ideaId": "idea-007",
+        "name": "Creator Video Automation Pipeline",
+        "score": 87.1
+      },
+      {
+        "ideaId": "idea-015",
+        "name": "Evidence-Backed Recommendation Engine",
+        "score": 87.0
+      }
+    ]
+  }
+]
