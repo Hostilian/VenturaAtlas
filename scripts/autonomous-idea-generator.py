@@ -159,7 +159,6 @@ SCORE_DIMS = [
 
 import uuid
 from va_runtime.atomic_io import atomic_write_json, read_json_safe
-from va_runtime.id_allocator import allocate_next_canonical_id
 
 def load_existing_ideas() -> list:
     if not os.path.exists(IDEAS_JSON_PATH):
@@ -174,9 +173,6 @@ def load_staging_queue() -> list:
 
 def save_staging_queue(queue: list):
     atomic_write_json(QUEUE_JSON_PATH, queue)
-
-def save_canonical(ideas: list):
-    atomic_write_json(IDEAS_JSON_PATH, {"schemaVersion": "2.0.0", "ideas": ideas})
 
 def generate_candidate_id() -> str:
     """Generate a candidate ID for parallel discovery workers (never a permanent idea-XXX)."""
@@ -216,147 +212,147 @@ def run_checklist(llm_idea: dict) -> dict:
     results = {}
 
     # 1. Startup cost ≤ $100
-    c1 = llm_idea.get('startupCostMax', 100) <= 100
-    results[CHECKLIST_CRITERIA[0]] = c1
+    sc = llm_idea.get('startupCostMax')
+    results[CHECKLIST_CRITERIA[0]] = "pass" if sc is not None and sc <= 100 else ("fail" if sc is not None else "unknown")
 
-    # 2. Payment before expense (look for keywords)
+    # 2. Payment before expense
     text = json.dumps(llm_idea).lower()
     c2 = any(kw in text for kw in ["preorder", "prepaid", "paid pilot", "bounty", "upfront payment", "payment before"])
     if not c2:
-        # Check revenue model description
         how = llm_idea.get('howItMakesMoney', '').lower()
         c2 = any(kw in how for kw in ["prepaid", "fixed-scope", "fixed scope", "upfront", "preorder"])
-    results[CHECKLIST_CRITERIA[1]] = c2
+    results[CHECKLIST_CRITERIA[1]] = "pass" if c2 else "unknown"
 
-    # 3. No inventory (default True for software/digital)
+    # 3. No inventory
     c3 = 'inventory' not in text or 'no inventory' in text
-    results[CHECKLIST_CRITERIA[2]] = c3
+    results[CHECKLIST_CRITERIA[2]] = "pass" if c3 else "unknown"
 
     # 4. Solo-founder buildable (mvp ≤ 14 days)
-    mvp = llm_idea.get('timeToMvp', '3-7 days')
-    try:
-        days = int(re.search(r'(\d+)', mvp).group(1))
-        c4 = days <= 14
-    except Exception:
-        c4 = True
+    mvp = llm_idea.get('timeToMvp')
+    if mvp:
+        try:
+            days = int(re.search(r'(\d+)', str(mvp)).group(1))
+            c4 = "pass" if days <= 14 else "fail"
+        except Exception:
+            c4 = "unknown"
+    else:
+        c4 = "unknown"
     results[CHECKLIST_CRITERIA[3]] = c4
 
     # 5. Gross margin > 65%
-    c5 = llm_idea.get('grossMarginEstimate', 70) >= 65
-    results[CHECKLIST_CRITERIA[4]] = c5
+    gm = llm_idea.get('grossMarginEstimate')
+    results[CHECKLIST_CRITERIA[4]] = "pass" if gm is not None and gm >= 65 else ("fail" if gm is not None else "unknown")
 
     # 6. Problem severity ≥ 6.5 AND willingness to pay ≥ 6.5
-    sev = scores.get('problemSeverity', 7.0)
-    wtp = scores.get('willingnessToPay', 7.0)
-    c6 = float(sev) >= 6.5 and float(wtp) >= 6.5
+    sev = scores.get('problemSeverity')
+    wtp = scores.get('willingnessToPay')
+    if sev is not None and wtp is not None:
+        c6 = "pass" if float(sev) >= 6.5 and float(wtp) >= 6.5 else "fail"
+    else:
+        c6 = "unknown"
     results[CHECKLIST_CRITERIA[5]] = c6
 
-    # 7. Not consulting (default True for tool/SaaS ideas)
+    # 7. Not consulting
     c7 = 'consulting' not in text.replace('no consulting', '') or 'no consulting' in text
-    results[CHECKLIST_CRITERIA[6]] = c7
+    results[CHECKLIST_CRITERIA[6]] = "pass" if c7 else "unknown"
 
     # 8. Compounding asset
-    compound_score = scores.get('compoundingAsset', 7.0)
-    c8 = float(compound_score) >= 6.0
-    results[CHECKLIST_CRITERIA[7]] = c8
+    compound_score = scores.get('compoundingAsset')
+    results[CHECKLIST_CRITERIA[7]] = "pass" if compound_score is not None and float(compound_score) >= 6.0 else ("fail" if compound_score is not None else "unknown")
 
-    passed = sum(1 for v in results.values() if v)
+    passed_count = sum(1 for v in results.values() if v == "pass")
+    failed_count = sum(1 for v in results.values() if v == "fail")
+    unknown_count = sum(1 for v in results.values() if v == "unknown")
+
     return {
-        "passed": passed >= 6,
-        "passedCount": passed,
+        "gateStatus": "needs_validation",
+        "passed": False,  # Discovery stage candidates require validation
+        "passedCount": passed_count,
+        "failedCount": failed_count,
+        "unknownCount": unknown_count,
         "totalCriteria": len(CHECKLIST_CRITERIA),
-        "scorePercentage": round((passed / len(CHECKLIST_CRITERIA)) * 100, 1),
+        "scorePercentage": round((passed_count / len(CHECKLIST_CRITERIA)) * 100, 1),
         "details": results,
     }
 
 # ── 25-Dimension Composite Score ──────────────────────────────────────────────
 def compute_composite_score(llm_idea: dict, checklist: dict) -> dict:
     scores = llm_idea.get('scores', {})
-    def s(k, default=7.0): return float(scores.get(k, default))
+    def get_num(k) -> float:
+        val = scores.get(k)
+        if val is None:
+            return None
+        if isinstance(val, dict):
+            val = val.get("value")
+        return float(val) if val is not None else None
 
-    # Core 10 from LLM/Own-Orch
-    problem_sev  = s('problemSeverity')
-    freq_need    = s('frequencyOfNeed')
-    wtp          = s('willingnessToPay')
-    mkt_demand   = s('marketDemand')
-    speed_rev    = s('speedToFirstRevenue')
-    low_cost     = s('lowStartupCost')
-    ease_mvp     = s('easeOfMvp')
-    ai_auto      = s('aiAutomationPotential')
-    reg_tail     = s('regulatoryTailwind')
-    compound     = s('compoundingAsset')
+    # Core 10
+    problem_sev  = get_num('problemSeverity')
+    freq_need    = get_num('frequencyOfNeed')
+    wtp          = get_num('willingnessToPay')
+    mkt_demand   = get_num('marketDemand')
+    speed_rev    = get_num('speedToFirstRevenue')
+    low_cost     = get_num('lowStartupCost')
+    ease_mvp     = get_num('easeOfMvp')
+    ai_auto      = get_num('aiAutomationPotential')
+    reg_tail     = get_num('regulatoryTailwind')
+    compound     = get_num('compoundingAsset')
 
-    # Derived 15
-    overall_opp      = round((problem_sev*0.2 + wtp*0.15 + mkt_demand*0.15 + speed_rev*0.1 +
-                               low_cost*0.1 + ease_mvp*0.1 + compound*0.1 + ai_auto*0.1) * 10, 1)
-    bootstrap        = round(min(100, (low_cost + ease_mvp + speed_rev) / 3 * 10 + 5), 1)
-    solo_founder     = round(min(100, (ease_mvp + speed_rev + low_cost) / 3 * 10 + 3), 1)
-    fastest_rev      = round(min(100, speed_rev * 10 + 2), 1)
-    lowest_cost      = round(min(100, low_cost * 10 + 2), 1)
-    differentiation  = round(min(100, ai_auto * 7 + reg_tail * 3), 1)
-    tech_feasibility = round(min(100, ease_mvp * 9 + 5), 1)
-    market_size      = round(min(100, mkt_demand * 9 + 5), 1)
-    profit_potential = round(min(100, (wtp + compound) / 2 * 9 + 5), 1)
-    confidence       = round(min(100, (checklist['scorePercentage'] * 0.6 + 40)), 1)
-    distribution     = round(min(100, (mkt_demand + speed_rev) / 2 * 9 + 4), 1)
-    competitive_moat = round(min(100, (compound + reg_tail) / 2 * 8 + 5), 1)
-    ltvcac           = round(min(100, (wtp + compound - freq_need * 0.2) * 9), 1)
-    cac_score        = round(min(100, speed_rev * 8 + 10), 1)
-    evidence_quality = round(min(100, checklist['scorePercentage'] * 0.7 + 30), 1)
+    def safe_calc(expr_fn, required_keys):
+        if any(k is None for k in required_keys):
+            return None
+        return round(float(expr_fn()), 1)
+
+    overall_opp = safe_calc(
+        lambda: (problem_sev*0.2 + wtp*0.15 + mkt_demand*0.15 + speed_rev*0.1 + low_cost*0.1 + ease_mvp*0.1 + compound*0.1 + ai_auto*0.1) * 10,
+        [problem_sev, wtp, mkt_demand, speed_rev, low_cost, ease_mvp, compound, ai_auto]
+    )
+    bootstrap = safe_calc(lambda: min(100, (low_cost + ease_mvp + speed_rev) / 3 * 10 + 5), [low_cost, ease_mvp, speed_rev])
+    solo_founder = safe_calc(lambda: min(100, (ease_mvp + speed_rev + low_cost) / 3 * 10 + 3), [ease_mvp, speed_rev, low_cost])
+    fastest_rev = safe_calc(lambda: min(100, speed_rev * 10 + 2), [speed_rev])
+    lowest_cost = safe_calc(lambda: min(100, low_cost * 10 + 2), [low_cost])
+    differentiation = safe_calc(lambda: min(100, ai_auto * 7 + (reg_tail or 5) * 3), [ai_auto])
+    tech_feasibility = safe_calc(lambda: min(100, ease_mvp * 9 + 5), [ease_mvp])
+    market_size = safe_calc(lambda: min(100, mkt_demand * 9 + 5), [mkt_demand])
+    profit_potential = safe_calc(lambda: min(100, (wtp + compound) / 2 * 9 + 5), [wtp, compound])
+    confidence = None if checklist.get("unknownCount", 0) > 4 else round((checklist['scorePercentage'] * 0.6 + 40), 1)
+
+    all_dim_vals = [v for v in [overall_opp, bootstrap, solo_founder, fastest_rev, lowest_cost, differentiation, tech_feasibility, market_size, profit_potential, confidence] if v is not None]
+    composite_headline = round(sum(all_dim_vals) / len(all_dim_vals), 1) if all_dim_vals else None
 
     return {
-        "problemSeverity":       round(problem_sev * 10, 1),
-        "frequencyOfNeed":       round(freq_need * 10, 1),
-        "willingnessToPay":      round(wtp * 10, 1),
-        "marketDemand":          round(mkt_demand * 10, 1),
-        "speedToFirstRevenue":   round(speed_rev * 10, 1),
-        "lowStartupCost":        round(low_cost * 10, 1),
-        "easeOfMvp":             round(ease_mvp * 10, 1),
-        "aiAutomationPotential": round(ai_auto * 10, 1),
-        "regulatoryTailwind":    round(reg_tail * 10, 1),
-        "compoundingAsset":      round(compound * 10, 1),
-        "overallOpportunity":    overall_opp,
+        "compositeHeadline": composite_headline,
+        "scoreStatus": "complete" if len(all_dim_vals) == 10 else ("partial" if len(all_dim_vals) > 0 else "insufficient_evidence"),
+        "overallOpportunity": overall_opp,
         "bootstrappedPotential": bootstrap,
-        "soloFounderPotential":  solo_founder,
-        "fastestPathToRevenue":  fastest_rev,
-        "lowestCostLaunch":      lowest_cost,
-        "differentiation":       differentiation,
-        "technicalFeasibility":  tech_feasibility,
-        "marketSize":            market_size,
-        "profitPotential":       profit_potential,
-        "confidence":            confidence,
-        "distributionScore":     distribution,
-        "competitiveMoat":       competitive_moat,
-        "ltvcacScore":           ltvcac,
-        "cacScore":              cac_score,
-        "evidenceQuality":       evidence_quality,
-        # Weighted headline score (used for ranking/auto-promote)
-        "compositeHeadline":     round(
-            overall_opp * 0.30 +
-            bootstrap   * 0.15 +
-            solo_founder * 0.15 +
-            fastest_rev  * 0.10 +
-            confidence   * 0.10 +
-            differentiation * 0.10 +
-            profit_potential * 0.10,
-            1
-        ),
+        "soloFounderPotential": solo_founder,
+        "fastestPathToRevenue": fastest_rev,
+        "lowestCostLaunch": lowest_cost,
+        "differentiation": differentiation,
+        "technicalFeasibility": tech_feasibility,
+        "marketSize": market_size,
+        "profitPotential": profit_potential,
+        "confidence": confidence,
+        "distributionScore": None,
+        "competitiveMoat": None,
+        "ltvcacScore": None,
+        "cacScore": None,
+        "evidenceQuality": None,
     }
 
 # ── Kill Criteria Analysis ────────────────────────────────────────────────────
 def run_kill_criteria(llm_idea: dict, scores: dict) -> dict:
-    """8 kill conditions from Venture Atlas IDEA_LIFECYCLE_PROMPTS Stage 2.5."""
     conditions = {}
-    def sv(k, default=7.0): return float(scores.get(k, default))
+    def sv(k): return scores.get(k)
 
-    conditions["Problem severity < 6.5"] = sv("problemSeverity") < 6.5
-    conditions["Market size score < 50"] = sv("marketSize") < 50
-    conditions["Willingness to pay < 6.5"] = sv("willingnessToPay") < 6.5
-    conditions["Switching cost too high (competitive moat < 50)"] = sv("competitiveMoat") < 50
-    conditions["MVP impossible in 14 days"] = False  # Already validated in checklist
-    conditions["No reachable distribution channel"] = sv("distributionScore") < 40
-    conditions["Dominant incumbent with deep moat"] = sv("differentiation") < 30
-    conditions["Founder fit missing (solo impossible)"] = sv("soloFounderPotential") < 50
+    conditions["Problem severity < 6.5"] = sv("problemSeverity") is not None and sv("problemSeverity") < 6.5
+    conditions["Market size score < 50"] = sv("marketSize") is not None and sv("marketSize") < 50
+    conditions["Willingness to pay < 6.5"] = sv("willingnessToPay") is not None and sv("willingnessToPay") < 6.5
+    conditions["Switching cost too high (competitive moat < 50)"] = sv("competitiveMoat") is not None and sv("competitiveMoat") < 50
+    conditions["MVP impossible in 14 days"] = False
+    conditions["No reachable distribution channel"] = sv("distributionScore") is not None and sv("distributionScore") < 40
+    conditions["Dominant incumbent with deep moat"] = sv("differentiation") is not None and sv("differentiation") < 30
+    conditions["Founder fit missing (solo impossible)"] = sv("soloFounderPotential") is not None and sv("soloFounderPotential") < 50
 
     kill_flags = [k for k, v in conditions.items() if v]
     return {
@@ -366,34 +362,37 @@ def run_kill_criteria(llm_idea: dict, scores: dict) -> dict:
         "killFlags": kill_flags,
     }
 
-# ── Full Idea Assembly ─────────────────────────────────────────────────────────
-def assemble_idea(llm_idea: dict, next_id: str, domain: dict, provider: str) -> dict:
+# ── Full Candidate Assembly ───────────────────────────────────────────────────
+def assemble_candidate(llm_idea: dict, candidate_id: str, domain: dict, provider: str) -> dict:
     checklist = run_checklist(llm_idea)
     scores_25  = compute_composite_score(llm_idea, checklist)
     kill       = run_kill_criteria(llm_idea, scores_25)
-    headline   = scores_25["compositeHeadline"]
+    headline   = scores_25.get("compositeHeadline")
 
-    slug_base = re.sub(r'[^a-z0-9]+', '-', llm_idea.get('name', next_id).lower()).strip('-')
-    slug = f"{slug_base}-{next_id}"
+    slug_base = re.sub(r'[^a-z0-9]+', '-', llm_idea.get('name', 'candidate').lower()).strip('-')
+
+    is_own_orch = (provider == "own-orch")
 
     return {
         "schemaVersion": "2.0.0",
-        "id": next_id,
-        "legacyId": slug_base,
-        "slug": slug,
-        "name": llm_idea.get("name", f"Idea {next_id}"),
+        "id": candidate_id,
+        "candidateId": candidate_id,
+        "candidateSlug": slug_base,
+        "name": llm_idea.get("name", "Discovered Candidate"),
         "oneSentenceConcept": llm_idea.get("oneSentenceConcept", ""),
         "elevatorPitch": llm_idea.get("elevatorPitch", ""),
         "detailedDescription": (
             f"Discovered via Autonomous Idea Engine v2 using provider '{provider}'. "
-            f"Domain: {domain['category']} / {domain['subcategory']}. "
-            f"Trigger: {domain['trigger']}."
+            f"Domain: {domain['category']} / {domain['subcategory']}."
         ),
         "category": llm_idea.get("category", domain["category"]),
         "subcategory": llm_idea.get("subcategory", domain["subcategory"]),
-        "tags": list(set(llm_idea.get("tags", []) + domain.get("tags", []) +
-                         ["autonomous-discovered", "v2", provider])),
+        "tags": list(set(llm_idea.get("tags", []) + domain.get("tags", []) + ["autonomous-discovered", "v2", provider])),
         "status": "staged",
+        "generationMode": "deterministic-fallback" if is_own_orch else "llm-generated",
+        "evidenceStatus": "unverified",
+        "promotionEligible": False,
+        "requiresExternalEvidence": True,
         "provenance": {
             "sourceType": "Autonomous Idea Discovery Engine v2",
             "provider": provider,
@@ -406,19 +405,11 @@ def assemble_idea(llm_idea: dict, next_id: str, domain: dict, provider: str) -> 
             "whatToBuild": llm_idea.get("whatToBuild", domain["example"]),
             "howItMakesMoney": llm_idea.get("howItMakesMoney", "Prepaid deliverable or subscription"),
             "whyCustomersPay": llm_idea.get("whyCustomersPay", "Saves time and prevents loss"),
-            "estimatedEarningPotential": {
-                "currency": "EUR", "minimum": 3000, "midpoint": 40000, "maximum": 400000,
-                "basis": "Analyst scenario range"
-            },
-            "startupCost": {
+            "estimatedEarningPotential": None,
+            "startupCost": None if is_own_orch else {
                 "currency": "EUR", "minimum": 0,
-                "midpoint": round(llm_idea.get("startupCostMax", 50) / 2),
                 "maximum": llm_idea.get("startupCostMax", 100),
             },
-            "timeToMvp": llm_idea.get("timeToMvp", "3-7 days"),
-            "overallScore": round(headline, 1),
-            "confidenceScore": round(scores_25["confidence"] / 10, 1),
-            "mainAdvantage": "Zero pre-funded inventory, fast launch, compounding data asset",
             "mainRisk": "Channel acquisition conversion must be validated early",
             "bestNextValidationStep": "Offer a €19 prepaid pilot to 15 targeted buyers before building.",
         },
@@ -482,10 +473,10 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
         log_warn(f"Duplicate idea '{idea_name}' — skipping", name=idea_name)
         return ("rejected", None)
 
-    idea = assemble_idea(llm_idea, candidate_id, domain, provider)
+    idea = assemble_candidate(llm_idea, candidate_id, domain, provider)
     checklist = idea["validationChecklist"]
     kill = idea["killCriteria"]
-    headline = idea["compositeScores"]["compositeHeadline"]
+    headline = idea["compositeScores"].get("compositeHeadline")
 
     log_info(
         f"Generated {idea['id']}: '{idea['name']}' "
@@ -498,14 +489,6 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
         log_warn(
             f"KILL-FLAGGED: {idea['id']} has {kill['killCount']} kill conditions: "
             f"{', '.join(kill['killFlags'])}",
-            id=idea['id']
-        )
-        return ("rejected", None)
-
-    if not checklist["passed"]:
-        log_warn(
-            f"CHECKLIST FAILED: {idea['id']} scored {checklist['scorePercentage']}% "
-            f"({checklist['passedCount']}/{checklist['totalCriteria']} passed)",
             id=idea['id']
         )
         return ("rejected", None)
@@ -543,6 +526,12 @@ def main():
             if status == "rejected":
                 rejected += 1
             elif status == "valid" and idea:
+                # Secondary within-run dedup check in main thread
+                if is_duplicate(idea['name'], existing_names):
+                    log_warn(f"Within-run duplicate detected for '{idea['name']}' — skipping", name=idea['name'])
+                    rejected += 1
+                    continue
+
                 generated += 1
                 if mark_candidate_ready_for_validation(idea):
                     prioritized += 1
@@ -550,7 +539,7 @@ def main():
                 save_staging_queue(queue)
                 existing_names.append(idea['name'].lower())
                 staged += 1
-                headline = idea["compositeScores"]["compositeHeadline"]
+                headline = idea["compositeScores"].get("compositeHeadline")
                 log_success(
                     f"STAGED CANDIDATE: {idea['id']} '{idea['name']}' (score={headline}) "
                     f"Queue size: {len(queue)}",
