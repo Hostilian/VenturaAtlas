@@ -87,7 +87,7 @@ os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
 def _log_json(level: str, msg: str, extra: dict = None):
     """Write a JSON-line log entry (EUshop unattended-runner.log standard)."""
     entry = {
-        "ts": datetime.datetime.utcnow().isoformat() + "Z",
+        "ts": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "level": level,
         "component": "va-orchestrator",
         "msg": msg,
@@ -151,6 +151,8 @@ def _is_circuit_open(p_state: dict) -> bool:
         return False
     try:
         until = datetime.datetime.fromisoformat(cu)
+        if until.tzinfo is None:
+            until = until.replace(tzinfo=datetime.timezone.utc)
         return datetime.datetime.now(datetime.timezone.utc) < until
     except Exception:
         return False
@@ -172,7 +174,7 @@ def _record_success(state: dict, provider: str):
     ps["circuitUntil"] = ""
     ps["totalCalls"] = ps.get("totalCalls", 0) + 1
     ps["successCalls"] = ps.get("successCalls", 0) + 1
-    ps["lastUsed"] = datetime.datetime.utcnow().isoformat() + "Z"
+    ps["lastUsed"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     _save_state(state)
 
 
