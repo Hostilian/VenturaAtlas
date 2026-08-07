@@ -3995,5 +3995,366 @@
       "tabletop-organizers"
     ],
     "normalizedText": "board-game insert generator parametric trays and box organizers generated from component counts and inner box dimensions makers repairers print services fit-first repair fabrication fit-first repair fabrication tabletop-organizers"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-229",
+    "slug": "verified-matching-discovery-suite-idea-229",
+    "name": "Verified Matching & Discovery Suite",
+    "category": "B2B niche marketplaces",
+    "subcategory": "matching & discovery",
+    "concept": "A self-serve, zero-capital tool that automates fragmented supplier discovery and poor matching in niche industries for b2b niche marketplaces workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Fragmented supplier discovery and poor matching in niche industries",
+    "overallScore": 85.1,
+    "tags": [
+      "matching",
+      "v2",
+      "marketplace",
+      "b2b",
+      "own-orch",
+      "autonomous-discovered"
+    ],
+    "normalizedText": "verified matching discovery suite a self-serve zero-capital tool that automates fragmented supplier discovery and poor matching in niche industries for b2b niche marketplaces workflows fragmented supplier discovery and poor matching in niche industries technical founders operators or compliance teams b2b niche marketplaces matching v2 marketplace b2b own-orch autonomous-discovered"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-230",
+    "slug": "fit-first-parametric-repair-studio-idea-230",
+    "name": "Fit-First Parametric Repair Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "parametric-repair",
+    "concept": "Guided measurement, safety classification, tiny test-fit coupon, printer calibration, and final editable STL/STEP for low-risk broken plastic parts.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "fit-first repair & fabrication",
+      "parametric-repair"
+    ],
+    "normalizedText": "fit-first parametric repair studio guided measurement safety classification tiny test-fit coupon printer calibration and final editable stl step for low-risk broken plastic parts makers repairers print services fit-first repair fabrication fit-first repair fabrication parametric-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-231",
+    "slug": "printer-specific-fit-profile-idea-231",
+    "name": "Printer-Specific Fit Profile",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "printer-calibration",
+    "concept": "Calibration coupon and stored compensation profile for 3D printers, materials, nozzles, and fit types.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 80,
+    "tags": [
+      "fit-first repair & fabrication",
+      "printer-calibration"
+    ],
+    "normalizedText": "printer-specific fit profile calibration coupon and stored compensation profile for 3d printers materials nozzles and fit types makers repairers print services fit-first repair fabrication fit-first repair fabrication printer-calibration"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-232",
+    "slug": "repair-caf-parametric-intake-system-idea-232",
+    "name": "Repair Café Parametric Intake System",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "community-repair",
+    "concept": "Structured repair intake system with part archetype selection, measurement cards, safety exclusions, and fit-coupon generation.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 79,
+    "tags": [
+      "fit-first repair & fabrication",
+      "community-repair"
+    ],
+    "normalizedText": "repair cafe parametric intake system structured repair intake system with part archetype selection measurement cards safety exclusions and fit-coupon generation makers repairers print services fit-first repair fabrication fit-first repair fabrication community-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-233",
+    "slug": "appliance-control-knob-generator-idea-233",
+    "name": "Appliance Control-Knob Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "appliance-repair",
+    "concept": "Parametric round, splined, D-shaft, and set-screw control knobs with fit coupons and orientation marks.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 77,
+    "tags": [
+      "fit-first repair & fabrication",
+      "appliance-repair"
+    ],
+    "normalizedText": "appliance control-knob generator parametric round splined d-shaft and set-screw control knobs with fit coupons and orientation marks makers repairers print services fit-first repair fabrication fit-first repair fabrication appliance-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-234",
+    "slug": "furniture-foot-and-end-cap-generator-idea-234",
+    "name": "Furniture Foot and End-Cap Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "furniture-repair",
+    "concept": "Custom feet, tube caps, glides, and non-structural protective end caps based on measured profiles.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 76,
+    "tags": [
+      "fit-first repair & fabrication",
+      "furniture-repair"
+    ],
+    "normalizedText": "furniture foot and end-cap generator custom feet tube caps glides and non-structural protective end caps based on measured profiles makers repairers print services fit-first repair fabrication fit-first repair fabrication furniture-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-235",
+    "slug": "print-shop-measurement-intake-portal-idea-235",
+    "name": "Print-Shop Measurement Intake Portal",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "3d-print-services",
+    "concept": "Guided customer intake portal collecting photo references, scale measurements, mating-point dimensions, and environment notes.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 75,
+    "tags": [
+      "fit-first repair & fabrication",
+      "3d-print-services"
+    ],
+    "normalizedText": "print-shop measurement intake portal guided customer intake portal collecting photo references scale measurements mating-point dimensions and environment notes makers repairers print services fit-first repair fabrication fit-first repair fabrication 3d-print-services"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-236",
+    "slug": "custom-drill-alignment-guide-idea-236",
+    "name": "Custom Drill-Alignment Guide",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "workshop-tooling",
+    "concept": "Hole-spacing and perpendicular-alignment drill jigs generated for specific fasteners and materials.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 73,
+    "tags": [
+      "fit-first repair & fabrication",
+      "workshop-tooling"
+    ],
+    "normalizedText": "custom drill-alignment guide hole-spacing and perpendicular-alignment drill jigs generated for specific fasteners and materials makers repairers print services fit-first repair fabrication fit-first repair fabrication workshop-tooling"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-237",
+    "slug": "damage-shaped-mending-pattern-studio-idea-237",
+    "name": "Damage-Shaped Mending Pattern Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "garment-repair",
+    "concept": "Printable and projector-ready garment mending patch patterns generated from damage photo outlines.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 71,
+    "tags": [
+      "fit-first repair & fabrication",
+      "garment-repair"
+    ],
+    "normalizedText": "damage-shaped mending pattern studio printable and projector-ready garment mending patch patterns generated from damage photo outlines makers repairers print services fit-first repair fabrication fit-first repair fabrication garment-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-238",
+    "slug": "heatwave-window-insert-pattern-studio-idea-238",
+    "name": "Heatwave Window-Insert Pattern Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "climate-adaptation",
+    "concept": "Measured cut patterns for removable reflective, insulating, or blackout window inserts.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 69,
+    "tags": [
+      "fit-first repair & fabrication",
+      "climate-adaptation"
+    ],
+    "normalizedText": "heatwave window-insert pattern studio measured cut patterns for removable reflective insulating or blackout window inserts makers repairers print services fit-first repair fabrication fit-first repair fabrication climate-adaptation"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-239",
+    "slug": "board-game-insert-generator-idea-239",
+    "name": "Board-Game Insert Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "tabletop-organizers",
+    "concept": "Parametric trays and box organizers generated from component counts and inner box dimensions.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 68,
+    "tags": [
+      "fit-first repair & fabrication",
+      "tabletop-organizers"
+    ],
+    "normalizedText": "board-game insert generator parametric trays and box organizers generated from component counts and inner box dimensions makers repairers print services fit-first repair fabrication fit-first repair fabrication tabletop-organizers"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-240",
+    "slug": "result-lineage-release-gate-idea-240",
+    "name": "Result Lineage Release Gate",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "result-provenance",
+    "concept": "Maps every figure, table, in-text numerical result, and major empirical claim to source data, scripts, environment, repository object, and release version.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 85,
+    "tags": [
+      "scholarly research & lineage",
+      "result-provenance"
+    ],
+    "normalizedText": "result lineage release gate maps every figure table in-text numerical result and major empirical claim to source data scripts environment repository object and release version researchers lab managers research libraries scholarly research lineage scholarly research lineage result-provenance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-241",
+    "slug": "data-availability-statement-reality-checker-idea-241",
+    "name": "Data Availability Statement Reality Checker",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "data-sharing",
+    "concept": "Compares manuscript data availability statements with actual repository records, access conditions, identifiers, files, and licences.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 82,
+    "tags": [
+      "scholarly research & lineage",
+      "data-sharing"
+    ],
+    "normalizedText": "data availability statement reality checker compares manuscript data availability statements with actual repository records access conditions identifiers files and licences researchers lab managers research libraries scholarly research lineage scholarly research lineage data-sharing"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-242",
+    "slug": "anonymous-artifact-leak-scanner-idea-242",
+    "name": "Anonymous Artifact Leak Scanner",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "artifact-security",
+    "concept": "Finds identity leakage in PDFs, metadata, acknowledgements, repository links, filenames, supplements, and browsing paths for double-blind submissions.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 80,
+    "tags": [
+      "scholarly research & lineage",
+      "artifact-security"
+    ],
+    "normalizedText": "anonymous artifact leak scanner finds identity leakage in pdfs metadata acknowledgements repository links filenames supplements and browsing paths for double-blind submissions researchers lab managers research libraries scholarly research lineage scholarly research lineage artifact-security"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-243",
+    "slug": "research-software-citation-pack-idea-243",
+    "name": "Research Software Citation Pack",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "software-citation",
+    "concept": "Generates aligned CITATION.cff, CodeMeta, README citation text, release metadata, DOI instructions, and software-version references.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 79,
+    "tags": [
+      "scholarly research & lineage",
+      "software-citation"
+    ],
+    "normalizedText": "research software citation pack generates aligned citation cff codemeta readme citation text release metadata doi instructions and software-version references researchers lab managers research libraries scholarly research lineage scholarly research lineage software-citation"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-244",
+    "slug": "scientific-figure-accessibility-preflight-idea-244",
+    "name": "Scientific Figure Accessibility Preflight",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "scientific-figures",
+    "concept": "Checks labels, units, text size, colour dependence, contrast, panel order, captions, short alt text, and long descriptions for manuscript figures.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 78,
+    "tags": [
+      "scholarly research & lineage",
+      "scientific-figures"
+    ],
+    "normalizedText": "scientific figure accessibility preflight checks labels units text size colour dependence contrast panel order captions short alt text and long descriptions for manuscript figures researchers lab managers research libraries scholarly research lineage scholarly research lineage scientific-figures"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-245",
+    "slug": "dms-plan-to-actual-workflow-idea-245",
+    "name": "DMS Plan-to-Actual Workflow",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "grant-compliance",
+    "concept": "Converts grant data management and sharing plans into dated tasks, repositories, identifiers, privacy decisions, costs, and progress evidence.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 76,
+    "tags": [
+      "scholarly research & lineage",
+      "grant-compliance"
+    ],
+    "normalizedText": "dms plan-to-actual workflow converts grant data management and sharing plans into dated tasks repositories identifiers privacy decisions costs and progress evidence researchers lab managers research libraries scholarly research lineage scholarly research lineage grant-compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-246",
+    "slug": "preprintpublication-change-ledger-idea-246",
+    "name": "Preprint–Publication Change Ledger",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "scholarly-versions",
+    "concept": "Produces a structured account of claims, figures, methods, and conclusions that changed between preprint, accepted, and published version.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 75,
+    "tags": [
+      "scholarly research & lineage",
+      "scholarly-versions"
+    ],
+    "normalizedText": "preprint publication change ledger produces a structured account of claims figures methods and conclusions that changed between preprint accepted and published version researchers lab managers research libraries scholarly research lineage scholarly research lineage scholarly-versions"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-247",
+    "slug": "research-data-anonymization-red-team-idea-247",
+    "name": "Research Data Anonymization Red Team",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "research-privacy",
+    "concept": "Simulates re-identification attempts against proposed data releases and records residual risks and mitigation decisions.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 74,
+    "tags": [
+      "scholarly research & lineage",
+      "research-privacy"
+    ],
+    "normalizedText": "research data anonymization red team simulates re-identification attempts against proposed data releases and records residual risks and mitigation decisions researchers lab managers research libraries scholarly research lineage scholarly research lineage research-privacy"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-248",
+    "slug": "review-concern-ledger-idea-248",
+    "name": "Review Concern Ledger",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "peer-review",
+    "concept": "Decomposes reviews into atomic concerns and links each response to manuscript evidence, planned changes, owner, and completion status.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 73,
+    "tags": [
+      "scholarly research & lineage",
+      "peer-review"
+    ],
+    "normalizedText": "review concern ledger decomposes reviews into atomic concerns and links each response to manuscript evidence planned changes owner and completion status researchers lab managers research libraries scholarly research lineage scholarly research lineage peer-review"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-249",
+    "slug": "retraction-aware-review-update-idea-249",
+    "name": "Retraction-Aware Review Update",
+    "category": "Scholarly Research & Lineage",
+    "subcategory": "evidence-synthesis",
+    "concept": "Checks included studies in reviews and meta-analyses for retractions and major corrections and generates a human-reviewed impact queue.",
+    "customer": "Researchers, lab managers & research libraries",
+    "problem": "",
+    "overallScore": 72,
+    "tags": [
+      "scholarly research & lineage",
+      "evidence-synthesis"
+    ],
+    "normalizedText": "retraction-aware review update checks included studies in reviews and meta-analyses for retractions and major corrections and generates a human-reviewed impact queue researchers lab managers research libraries scholarly research lineage scholarly research lineage evidence-synthesis"
   }
 ]

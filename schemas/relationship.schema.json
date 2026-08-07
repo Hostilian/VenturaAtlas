@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VentureAtlasRelationship",
+  "type": "object",
+  "oneOf": [
+    { "required": ["sourceIdeaId", "targetIdeaId", "type"] },
+    { "required": ["source", "target", "type"] }
+  ],
+  "properties": {
+    "sourceIdeaId": { "type": "string" },
+    "targetIdeaId": { "type": "string" },
+    "type": { "type": "string" },
+    "weight": { "type": "number" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

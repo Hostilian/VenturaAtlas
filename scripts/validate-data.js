@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const Ajv = require('ajv');
 
 const ROOT = path.resolve(__dirname, '..');
+const ajv = new Ajv({ allErrors: true, strict: false });
 
 function readJsonFile(relativePath) {
   const fullPath = path.join(ROOT, relativePath);
@@ -10,6 +12,26 @@ function readJsonFile(relativePath) {
     return JSON.parse(fs.readFileSync(fullPath, 'utf8'));
   } catch (err) {
     return { _parseError: err.message };
+  }
+}
+
+function validateSchemaIfAvailable(schemaName, data, errors) {
+  const schemaPath = path.join(ROOT, 'schemas', schemaName);
+  if (!fs.existsSync(schemaPath)) return;
+  try {
+    const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+    const validate = ajv.compile(schema);
+    const items = Array.isArray(data) ? data : [data];
+    for (const item of items) {
+      const valid = validate(item);
+      if (!valid) {
+        for (const err of validate.errors || []) {
+          errors.push(`Schema ${schemaName} violation on ${item.id || 'item'}: ${err.instancePath} ${err.message}`);
+        }
+      }
+    }
+  } catch (err) {
+    errors.push(`Failed to compile/execute schema ${schemaName}: ${err.message}`);
   }
 }
 
@@ -34,6 +56,12 @@ function main() {
 
   const rawRels = readJsonFile('data/relationships.json');
   const rels = Array.isArray(rawRels) ? rawRels : (rawRels?.relationships || []);
+
+  validateSchemaIfAvailable('idea.schema.json', ideas, errors);
+  validateSchemaIfAvailable('category.schema.json', readJsonFile('data/categories.json') || [], errors);
+  validateSchemaIfAvailable('source.schema.json', sources, errors);
+  validateSchemaIfAvailable('ranking.schema.json', ranks, errors);
+  validateSchemaIfAvailable('relationship.schema.json', rels, errors);
 
   const ideaIds = new Set();
   const slugs = new Set();
@@ -100,7 +128,7 @@ function main() {
     errorsCount: errors.length,
     warningsCount: warnings.length,
     errors,
-    warnings: warnings.slice(0, 10) // display top 10 warnings
+    warnings: warnings.slice(0, 10)
   };
 
   console.log(JSON.stringify(result, null, 2));
@@ -116,3 +144,4 @@ function main() {
 }
 
 main();
+

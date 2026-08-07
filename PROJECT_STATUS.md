@@ -1,16 +1,39 @@
 # PROJECT STATUS
 
-- Repository version: 2.2.0
+- Repository version: 2.3.0
 - Data schema version: 2.0.0
-- Validation status: **PASSED** — 0 errors across all 194 ideas, 62 sources, search index and smoke tests
-- Last completed idea ID: idea-194
-- Next idea ID: idea-195
-- Canonical ideas: 194 (+10 from Reset 5: Independence, Operational Trust & Fraud Drills)
-- Categories: 30 (new: "Independence & Operational Trust" with 10 ideas)
+- Validation status: **PASSED** — 0 errors across all 226 ideas, 62 sources, search index and smoke tests
+- Last completed idea ID: idea-249
+- Next idea ID: idea-250
+- Canonical ideas: 226
+- Categories: 60
 - Validation warnings: 0
 - Last updated: 2026-08-07
 
+
 ## Change Log
+
+### 2026-08-07: Reset 7 Integration (v2.2.0 → v2.3.0)
+- Ingested 10 new canonical ideas (idea-240 through idea-249) from Reset 7 (Scholarly Research & Lineage)
+  - Winner: Result Lineage Release Gate (idea-240, score: 85.8)
+  - Runner-up: Data Availability Statement Reality Checker (idea-241, score: 82.3)
+  - Finalists: Anonymous Artifact Leak Scanner (242), Research Software Citation Pack (243), Scientific Figure Accessibility Preflight (244),
+    DMS Plan-to-Actual Workflow (245), Preprint–Publication Change Ledger (246), Research Data Anonymization Red Team (247),
+    Review Concern Ledger (248), Retraction-Aware Review Update (249)
+- Added new category "Scholarly Research & Lineage" and ingested dossier markdown files & 25-prompt libraries for all 10 Reset 7 ideas
+- Created research archive `research/original-chat/seventh-reset-summary.md`
+- Rebuilt search index (`data/search-index.json`) and updated repository metadata
+
+### 2026-08-07: Reset 6 Integration (v2.1.1 → v2.2.0)
+- Ingested 10 new canonical ideas (idea-230 through idea-239) from Reset 6 (Fit-First Repair & Personal Fabrication)
+  - Winner: Fit-First Parametric Repair Studio (idea-230, score: 84.2)
+  - Runner-up: Printer-Specific Fit Profile (idea-231, score: 80.8)
+  - Finalists: Repair Café Parametric Intake System (232), Appliance Control-Knob Generator (233), Furniture Foot & End-Cap Generator (234),
+    Print-Shop Measurement Intake Portal (235), Custom Drill-Alignment Guide (236), Damage-Shaped Mending Pattern Studio (237),
+    Heatwave Window-Insert Pattern Studio (238), Board-Game Insert Generator (239)
+- Added new category "Fit-First Repair & Fabrication" and ingested dossier markdown files & 25-prompt libraries for all 10 Reset 6 ideas
+- Created research archive `research/original-chat/sixth-reset-summary.md`
+- Rebuilt search index (`data/search-index.json`) and updated repository metadata
 
 ### 2026-08-07: Reset 5 Integration (v2.1.0 → v2.2.0)
 - Ingested 10 new canonical ideas (idea-185 through idea-194) from Reset 5 (Independence, Operational Trust & Fraud Drills)
@@ -49,9 +72,9 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.1.1
-- Canonical Ideas: 205
-- Categories: 59
+- Canonical Ideas: 226
+- Categories: 60
 - Source References: 62
-- Generated Prompts: 5125
+- Generated Prompts: 5625
 - Last Updated: 2026-08-07
 <!-- END GENERATED REPOSITORY STATS -->

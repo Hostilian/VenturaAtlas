@@ -256,6 +256,7 @@
     ]
   },
   {
+    "id": "product-verification-evidence",
     "name": "Product verification & evidence",
     "count": 10,
     "subcategories": [
@@ -265,5 +266,65 @@
       "seller tool"
     ],
     "description": "Buyer-funded bounty exchanges, evidence networks, and B2B APIs for verified product facts. Source: Deep Research Eighth Full Reset (2026-08-02)."
+  },
+  {
+    "id": "fit-first-repair-fabrication",
+    "name": "Fit-First Repair & Fabrication",
+    "count": 10,
+    "ideaIds": [
+      "idea-230",
+      "idea-231",
+      "idea-232",
+      "idea-233",
+      "idea-234",
+      "idea-235",
+      "idea-236",
+      "idea-237",
+      "idea-238",
+      "idea-239"
+    ],
+    "subcategories": [
+      "parametric-repair",
+      "printer-calibration",
+      "community-repair",
+      "appliance-repair",
+      "furniture-repair",
+      "3d-print-services",
+      "workshop-tooling",
+      "garment-repair",
+      "climate-adaptation",
+      "tabletop-organizers"
+    ],
+    "description": "Guided measurements, fit-coupon validation, parametric template suites, and printer calibration profiles for low-risk personal fabrication and repair. Source: Deep Research Sixth Full Reset (2026-08-07)."
+  },
+  {
+    "id": "scholarly-research-lineage",
+    "name": "Scholarly Research & Lineage",
+    "count": 10,
+    "ideaIds": [
+      "idea-240",
+      "idea-241",
+      "idea-242",
+      "idea-243",
+      "idea-244",
+      "idea-245",
+      "idea-246",
+      "idea-247",
+      "idea-248",
+      "idea-249"
+    ],
+    "subcategories": [
+      "result-provenance",
+      "data-sharing",
+      "artifact-security",
+      "software-citation",
+      "scientific-figures",
+      "grant-compliance",
+      "scholarly-versions",
+      "research-privacy",
+      "peer-review",
+      "evidence-synthesis"
+    ],
+    "description": "Cross-object result lineage graphs, reproducibility preflights, research artifact release manifests, and citation integrity tooling. Source: Deep Research Seventh Full Reset (2026-08-07)."
   }
 ]

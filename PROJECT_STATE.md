@@ -19,9 +19,9 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.1.1
-- Canonical Ideas: 205
-- Categories: 59
+- Canonical Ideas: 226
+- Categories: 60
 - Source References: 62
-- Generated Prompts: 5125
+- Generated Prompts: 5625
 - Last Updated: 2026-08-07
 <!-- END GENERATED REPOSITORY STATS -->

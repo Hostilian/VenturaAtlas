@@ -59,14 +59,31 @@ function main() {
   const pkg = JSON.parse(fs.readFileSync(PACKAGE_PATH, 'utf8'));
   const version = pkg.version || '2.1.1';
   const counts = getCounts();
-
   const isCheckMode = process.argv.includes('--check');
+
+  let existingTimestamp = '2026-08-07T05:10:19.286Z';
+  if (fs.existsSync(META_PATH)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+      if (
+        prev.version === version &&
+        prev.counts?.ideas === counts.ideas &&
+        prev.counts?.categories === counts.categories &&
+        prev.counts?.sources === counts.sources &&
+        prev.counts?.rankings === counts.rankings
+      ) {
+        existingTimestamp = prev.generatedAt || existingTimestamp;
+      } else {
+        existingTimestamp = new Date().toISOString();
+      }
+    } catch (_) {}
+  }
 
   const metaData = {
     project: 'VenturaAtlas',
     version,
     schemaVersion: '2.0.0',
-    generatedAt: new Date().toISOString(),
+    generatedAt: existingTimestamp,
     counts
   };
 

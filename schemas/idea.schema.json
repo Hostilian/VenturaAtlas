@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VentureAtlasIdea",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "oneSentenceConcept"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^idea-\\d{3}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "oneSentenceConcept": {
+      "type": "string",
+      "minLength": 5
+    },
+    "elevatorPitch": {
+      "type": "string"
+    },
+    "problemStatement": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alternativeNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "atAGlance": {
+      "type": "object",
+      "properties": {
+        "problemSolved": { "type": "string" },
+        "targetCustomer": { "type": "string" },
+        "businessModel": { "type": "string" },
+        "overallScore": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "sourceReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

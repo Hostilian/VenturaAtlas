@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VentureAtlasRanking",
+  "type": "object",
+  "required": ["id", "title", "items"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rank", "ideaId"],
+        "properties": {
+          "rank": { "type": "integer", "minimum": 1 },
+          "ideaId": { "type": "string" },
+          "score": { "type": "number" },
+          "rationale": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

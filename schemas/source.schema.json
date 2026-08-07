@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VentureAtlasSource",
+  "type": "object",
+  "required": ["id", "title"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "url": { "type": "string" },
+    "author": { "type": "string" },
+    "publishedDate": { "type": "string" }
+  },
+  "additionalProperties": true
+}
