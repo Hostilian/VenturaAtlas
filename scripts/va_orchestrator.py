@@ -49,14 +49,37 @@ if os.path.exists(_env_path):
 OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
-OPENROUTER_KEY     = os.environ.get('OPENROUTER_API_KEY', '')
+
+# Round-robin key pool parser for OpenRouter and Anthropic
+_raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-or-...')]
+_raw_anthropic_keys = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ant-...')]
+
+_openrouter_key_idx = 0
+_anthropic_key_idx  = 0
+
+def _get_next_openrouter_key() -> str:
+    global _openrouter_key_idx
+    if not _raw_openrouter_keys:
+        return ''
+    key = _raw_openrouter_keys[_openrouter_key_idx % len(_raw_openrouter_keys)]
+    _openrouter_key_idx += 1
+    return key
+
+def _get_next_anthropic_key() -> str:
+    global _anthropic_key_idx
+    if not _raw_anthropic_keys:
+        return ''
+    key = _raw_anthropic_keys[_anthropic_key_idx % len(_raw_anthropic_keys)]
+    _anthropic_key_idx += 1
+    return key
+
 OMNIROUTE_URL      = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
 OMNIROUTE_MODEL    = os.environ.get('OMNIROUTE_MODEL', 'meta-llama/llama-3.1-8b-instruct:free')
-ANTHROPIC_KEY      = os.environ.get('ANTHROPIC_API_KEY', '')
 FCC_MODEL          = os.environ.get('FCC_CLAUDE_MODEL', 'claude-haiku-4-5')
 ANTHROPIC_FULL_MDL = os.environ.get('ANTHROPIC_FULL_MODEL', 'claude-sonnet-4-5')
 CIRCUIT_THRESHOLD  = 3       # failures before circuit opens
-CIRCUIT_COOLDOWN   = 300     # seconds before retry after circuit open
+CIRCUIT_COOLDOWN   = 180     # reduced cooldown (seconds) before retry after circuit open
+
 
 # ── Structured Logging ─────────────────────────────────────────────────────────
 os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
@@ -173,12 +196,13 @@ def _call_hermes(prompt: str, model: str = None) -> str:
 
 # ── Tier 2: OmniRoute → OpenRouter ────────────────────────────────────────────
 def _call_omniRoute(prompt: str) -> str:
-    if not OPENROUTER_KEY or OPENROUTER_KEY.startswith('sk-or-...'):
-        raise ValueError("No OpenRouter API key configured")
+    key = _get_next_openrouter_key()
+    if not key:
+        raise ValueError("No valid OpenRouter API key available in key pool")
     url = f"{OMNIROUTE_URL}/chat/completions"
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENROUTER_KEY}",
+        "Authorization": f"Bearer {key}",
         "HTTP-Referer": "https://venture-atlas-os.github.io",
         "X-Title": "Venture Atlas OS",
     }
@@ -197,12 +221,13 @@ def _call_omniRoute(prompt: str) -> str:
 
 # ── Tier 3: FCC Claude (Anthropic Haiku) ──────────────────────────────────────
 def _call_fcc_claude(prompt: str) -> str:
-    if not ANTHROPIC_KEY or ANTHROPIC_KEY.startswith('sk-ant-...'):
-        raise ValueError("No Anthropic API key configured")
+    key = _get_next_anthropic_key()
+    if not key:
+        raise ValueError("No valid Anthropic API key available in key pool")
     url = "https://api.anthropic.com/v1/messages"
     headers = {
         "Content-Type": "application/json",
-        "x-api-key": ANTHROPIC_KEY,
+        "x-api-key": key,
         "anthropic-version": "2023-06-01",
     }
     body = {
@@ -353,12 +378,13 @@ def _call_own_orchestrator(prompt: str, domain_hint: dict = None) -> str:
 
 # ── Tier 5: Anthropic Full ────────────────────────────────────────────────────
 def _call_anthropic_full(prompt: str) -> str:
-    if not ANTHROPIC_KEY or ANTHROPIC_KEY.startswith('sk-ant-...'):
-        raise ValueError("No Anthropic API key configured")
+    key = _get_next_anthropic_key()
+    if not key:
+        raise ValueError("No valid Anthropic API key available in key pool")
     url = "https://api.anthropic.com/v1/messages"
     headers = {
         "Content-Type": "application/json",
-        "x-api-key": ANTHROPIC_KEY,
+        "x-api-key": key,
         "anthropic-version": "2023-06-01",
     }
     body = {
@@ -391,14 +417,14 @@ def health_check() -> dict:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
     # OmniRoute
-    results["omniRoute"] = bool(OPENROUTER_KEY and not OPENROUTER_KEY.startswith('sk-or-...'))
+    results["omniRoute"] = len(_raw_openrouter_keys) > 0
     # FCC Claude
-    results["fcc-claude"] = bool(ANTHROPIC_KEY and not ANTHROPIC_KEY.startswith('sk-ant-...'))
+    results["fcc-claude"] = len(_raw_anthropic_keys) > 0
     # Own Orch always available
     results["own-orch"] = True
     # Anthropic Full
-    results["anthropic-full"] = bool(ANTHROPIC_KEY and not ANTHROPIC_KEY.startswith('sk-ant-...'))
-    log_info("Provider health check complete", results=results)
+    results["anthropic-full"] = len(_raw_anthropic_keys) > 0
+    log_info("Provider health check complete", results=results, openrouter_keys=len(_raw_openrouter_keys), anthropic_keys=len(_raw_anthropic_keys))
     return results
 
 
