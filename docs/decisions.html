@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision History · Venture Atlas OS</title>
+  <meta name="description" content="Formal collaborative decision log for Venture Atlas OS. Pairwise votes, ranking decisions, and documented research-run history.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="decisions" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./rankings.html">Rankings</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./matcher.html">Matcher</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./tags.html">Tags</a>
+        <a href="./dossiers.html">Dossiers</a>
+        <a href="./prompts.html">Prompts</a>
+        <a href="./sources.html">Sources</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./decisions.html" aria-current="page">Decisions</a>
+        <a href="./collaboration.html">Collaboration</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" style="max-width:900px;margin:0 auto;padding:2rem 1.5rem">
+
+    <div class="eyebrow" style="margin-bottom:0.5rem">Governance</div>
+    <h1 style="font-size:2rem;margin-bottom:0.5rem">Decision History</h1>
+    <p style="color:var(--text2);margin-bottom:2rem;font-size:1.05rem">
+      Formal collaborative decisions, pairwise voting results, and research-run ranking snapshots.
+      Historical research winners are immutable snapshots and are not equivalent to a current group decision.
+    </p>
+
+    <!-- Status Banner -->
+    <div class="notice" role="note" style="margin-bottom:2rem">
+      <strong>Current status:</strong> No formal collaborative decision has been recorded yet.
+      Individual rankings from research runs are preserved as read-only snapshots under
+      <a href="../data/research-runs.json">research-runs.json</a>.
+      To initiate a group decision, see the
+      <a href="../collaboration/DECISION_PROCESS.md">Decision Process guide</a>.
+    </div>
+
+    <!-- Decision Process -->
+    <section style="margin-bottom:2.5rem" aria-labelledby="processTitle">
+      <h2 id="processTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">How Decisions Are Made</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+        <div class="panel" style="padding:1.25rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem">📋</div>
+          <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.4rem">1. Proposal</h3>
+          <p style="font-size:0.8rem;color:var(--text2)">Open a GitHub Issue with the proposed decision and evidence</p>
+        </div>
+        <div class="panel" style="padding:1.25rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem">🔍</div>
+          <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.4rem">2. Evidence Review</h3>
+          <p style="font-size:0.8rem;color:var(--text2)">7-day window for evidence submissions and documented objections</p>
+        </div>
+        <div class="panel" style="padding:1.25rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem">🗳️</div>
+          <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.4rem">3. Pairwise Vote</h3>
+          <p style="font-size:0.8rem;color:var(--text2)">Participants submit vote packets as signed JSON files</p>
+        </div>
+        <div class="panel" style="padding:1.25rem;text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem">✅</div>
+          <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.4rem">4. Consensus</h3>
+          <p style="font-size:0.8rem;color:var(--text2)">Decision recorded in <code>data/decisions.json</code> and committed</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Run Snapshots -->
+    <section style="margin-bottom:2.5rem" aria-labelledby="snapshotsTitle">
+      <h2 id="snapshotsTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Research Run Snapshots</h2>
+      <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+        These are immutable historical outputs from individual research sessions. They represent what one AI research run found, not a group decision.
+      </p>
+      <div id="decisionsContainer" style="display:grid;gap:0.75rem">
+        <!-- Populated by JS if research-runs.json data available -->
+        <div class="panel" style="padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div style="font-weight:600;margin-bottom:0.25rem">Research Run Archive</div>
+            <div style="font-size:0.825rem;color:var(--text2)">All research sessions, dates, idea counts, and ranking results stored in structured JSON.</div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <a href="../data/research-runs.json" class="button ghost sm">research-runs.json</a>
+            <a href="../data/original-rankings.json" class="button ghost sm">original-rankings.json</a>
+            <a href="./rankings.html" class="button primary sm">View All Rankings</a>
+          </div>
+        </div>
+        <div class="panel" style="padding:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div style="font-weight:600;margin-bottom:0.25rem">Pairwise Vote Data</div>
+            <div style="font-size:0.825rem;color:var(--text2)">Current pairwise vote packets, ready for consensus calculation. No votes committed yet.</div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <a href="../data/pairwise-votes.json" class="button ghost sm">pairwise-votes.json</a>
+            <a href="../collaboration/VOTE_PACKET_TEMPLATE.json" class="button ghost sm">Vote Packet Template</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objections & Evaluations -->
+    <section style="margin-bottom:2.5rem" aria-labelledby="objectionsTitle">
+      <h2 id="objectionsTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">
+        Objections &amp; Evaluations
+      </h2>
+      <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+        Structured objections and peer evaluations are stored in <code>data/objections/</code> and <code>data/evaluations/</code>.
+        Any submitted objection must include a factual basis and a proposed resolution.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
+        <a href="../collaboration/DECISION_PROCESS.md" class="button ghost sm">Decision Process</a>
+        <a href="../collaboration/EVALUATION_TEMPLATE.json" class="button ghost sm">Evaluation Template</a>
+        <a href="../collaboration/VOTING_RULES.md" class="button ghost sm">Voting Rules</a>
+        <a href="./collaboration.html" class="button primary sm">Collaboration Room</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>Venture Atlas OS &mdash; open research repository.</p>
+    <p style="margin-top:0.4rem">
+      <a href="./about.html">About</a> ·
+      <a href="./collaboration.html">Collaboration</a> ·
+      <a href="./rankings.html">Rankings</a>
+    </p>
+  </footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

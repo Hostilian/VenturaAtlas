@@ -1077,4 +1077,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (page === 'sources')       initSources();
   if (page === 'relationships') initGraph();
   if (page === 'categories')    initCategories();
+
+  // Dispatch va:ready event so index.html enhancements can hook in
+  window.dispatchEvent(new CustomEvent('va:ready', { detail: { ideas: VA.ideas, categories: VA.categories } }));
 });

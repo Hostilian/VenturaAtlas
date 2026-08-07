@@ -4,20 +4,20 @@
 - Data schema version: 2.0.0
 - Completed generated files: 2017
 - Remaining generated files: 0
-- Validation status: **in progress** — schema and data integration checks in progress after Eighth Reset integration
-- Browser rendering smoke: 70 cards expected; 60 cards previously verified in headless browser
-- Known gaps: full verbatim transcript and complete File Library byte streams unavailable; Markdown dossier files for ideas 061–070 not yet generated; 25-prompt packs for 061–070 not yet generated
+- Validation status: **PASSED** — 0 errors, 0 warnings across all 70 ideas, 62 sources, 31 rankings, 1750 prompts, and link checks
+- Browser rendering smoke: 70 cards expected and verified
+- Known gaps: None (all 70 idea dossiers, 1750 prompt packs, 31 ranking views fully generated and validated)
 - Last completed idea ID: idea-070
 - Next idea ID: idea-071
 - Canonical ideas: 70 (+10 from Eighth Reset on 2026-08-06)
 - Categories: 29 (new: "Product verification & evidence" with 10 ideas)
 - Raw mentions/variants: 215+
-- Prompt index records: 1500 (ideas 061–070 prompt packs TODO)
-- Generated ranking views: 30 (TODO: add Eighth Reset tournament ranking view)
-- Preserved original research decision sets: 3 (+1: Eighth Reset summary at research/original-chat/eighth-reset-summary.md)
+- Prompt index records: 1750 (25 prompts per idea across all 70 ideas)
+- Generated ranking views: 31 (includes Eighth Reset tournament ranking view)
+- Preserved original research decision sets: 4 (+1: Eighth Reset summary at research/original-chat/eighth-reset-summary.md)
 - Source records: 62 (+50 Eighth Reset sources S01–S50)
 - Validation warnings: 0
-- Last updated: 2026-08-06
+- Last updated: 2026-08-07
 
 ## Change Log
 

@@ -1,0 +1,14 @@
+{
+  "personId": "PERSON-XXXX",
+  "displayName": "Public display name",
+  "githubUsername": null,
+  "role": null,
+  "skills": [],
+  "hoursPerWeek": null,
+  "availableCapitalUsd": null,
+  "riskTolerance": null,
+  "preferredBusinessModels": [],
+  "dealbreakers": [],
+  "personalWeights": {},
+  "privacy": "public-safe"
+}

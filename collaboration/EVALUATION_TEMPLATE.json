@@ -1,0 +1,17 @@
+{
+  "evaluationId": "EVAL-XXXX",
+  "personId": "PERSON-XXXX",
+  "ideaId": "IDEA-XXXX",
+  "score": null,
+  "confidence": null,
+  "reasonToBuild": "",
+  "reasonNotToBuild": "",
+  "dealbreaker": "",
+  "trustedEvidence": [],
+  "disputedEvidence": [],
+  "contribution": "",
+  "nextExperiment": "",
+  "weeklyCommitmentHours": null,
+  "vetoRequested": false,
+  "changeConditions": ""
+}
