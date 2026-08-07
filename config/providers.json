@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "providers": {
+    "hermes-ollama": {
+      "name": "Hermes 3 via Ollama",
+      "tier": 1,
+      "localOnly": true,
+      "productionEligible": false,
+      "defaultModel": "hermes3:latest",
+      "fallbackModel": "llama3.1:latest",
+      "requiresApiKey": false
+    },
+    "omniRoute": {
+      "name": "OmniRoute / OpenRouter",
+      "tier": 2,
+      "localOnly": false,
+      "productionEligible": true,
+      "defaultModel": "meta-llama/llama-3.1-8b-instruct:free",
+      "requiresApiKey": true
+    },
+    "fcc-claude": {
+      "name": "FCC Claude (Haiku)",
+      "tier": 3,
+      "localOnly": false,
+      "productionEligible": true,
+      "defaultModel": "claude-haiku-4-5",
+      "requiresApiKey": true
+    },
+    "deepseek-api": {
+      "name": "DeepSeek API",
+      "tier": 4,
+      "localOnly": false,
+      "productionEligible": true,
+      "defaultModel": "deepseek-chat",
+      "requiresApiKey": true
+    },
+    "own-orch": {
+      "name": "Own Deterministic Orchestrator",
+      "tier": 0,
+      "localOnly": false,
+      "productionEligible": true,
+      "defaultModel": "rule-based-v2",
+      "requiresApiKey": false
+    },
+    "anthropic-full": {
+      "name": "Full Anthropic (Sonnet)",
+      "tier": 5,
+      "localOnly": false,
+      "productionEligible": true,
+      "defaultModel": "claude-sonnet-4-5",
+      "requiresApiKey": true
+    }
+  }
+}

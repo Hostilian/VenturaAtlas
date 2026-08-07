@@ -8,8 +8,7 @@ const FILES = [
   path.join(ROOT, 'README.md'),
   path.join(ROOT, 'PROJECT_STATUS.md'),
   path.join(ROOT, 'PROJECT_STATE.md'),
-  path.join(ROOT, 'index.html'),
-  path.join(ROOT, 'sw.js')
+  path.join(ROOT, 'index.html')
 ];
 
 function main() {
@@ -72,8 +71,6 @@ function main() {
     } else if (filePath.endsWith('index.html')) {
       content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ evidence-backed business ideas`);
       content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ evidence-backed business ideas with scores`);
-    } else if (filePath.endsWith('sw.js')) {
-      content = content.replace(/const CACHE_VERSION = '[^']+';/g, `const CACHE_VERSION = '${meta.version}';`);
     }
 
     fs.writeFileSync(filePath, content, 'utf8');

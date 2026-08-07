@@ -156,7 +156,13 @@ def _load_state() -> dict:
                     data.setdefault("providers", {})[k] = dict(v)
             return data
         except Exception as e:
-            log_warn(f"Failed to load provider state: {e}")
+            ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
+            bak_path = f"{STATE_PATH}.corrupt.{ts}"
+            try:
+                os.replace(STATE_PATH, bak_path)
+                log_warn(f"Corrupt provider state detected; backed up to '{bak_path}': {e}")
+            except Exception as bak_err:
+                log_error(f"Failed to back up corrupt provider state: {bak_err}")
     return {
         "providers": {k: dict(v) for k, v in PROVIDER_DEFAULTS.items()},
         "lastRun": "",
@@ -398,18 +404,8 @@ def _call_own_orchestrator(prompt: str, domain_hint: dict = None) -> str:
         "startupCostMax": 50,
         "timeToMvp": "3-7 days",
         "grossMarginEstimate": 80,
-        "scores": {
-            "problemSeverity": 5.0,
-            "frequencyOfNeed": 5.0,
-            "willingnessToPay": 5.0,
-            "marketDemand": 5.0,
-            "speedToFirstRevenue": 5.0,
-            "lowStartupCost": 5.0,
-            "easeOfMvp": 5.0,
-            "aiAutomationPotential": 5.0,
-            "regulatoryTailwind": 5.0,
-            "compoundingAsset": 5.0,
-        },
+        "hypothesesNote": "deterministic-fallback hypothesis unverified",
+        "scores": {},
         "generationMode": "deterministic-fallback",
         "evidenceStatus": "unverified",
         "promotionEligible": False,

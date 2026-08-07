@@ -91,10 +91,17 @@ for (const idea of ideas) {
   }
 }
 
-// 3. Metadata count alignment
+// 3. Metadata count alignment (P59)
+const rawQueue = readJson('data/idea-staging-queue.json');
+const stagingQueueLen = Array.isArray(rawQueue) ? rawQueue.length : (rawQueue?.queue?.length || 0);
+
 if (meta && meta.counts) {
-  if (meta.counts.totalIdeas !== undefined && meta.counts.totalIdeas !== ideas.length) {
-    errors.push(`Stale repository-meta.json: totalIdeas count (${meta.counts.totalIdeas}) does not match ideas.json length (${ideas.length})`);
+  if (meta.counts.canonicalIdeas !== undefined && meta.counts.canonicalIdeas !== ideas.length) {
+    errors.push(`Stale repository-meta.json: canonicalIdeas count (${meta.counts.canonicalIdeas}) does not match ideas.json length (${ideas.length})`);
+  }
+  const expectedTotal = ideas.length + stagingQueueLen;
+  if (meta.counts.totalIdeas !== undefined && meta.counts.totalIdeas !== expectedTotal) {
+    errors.push(`Stale repository-meta.json: totalIdeas count (${meta.counts.totalIdeas}) does not match canonical (${ideas.length}) + staging (${stagingQueueLen}) = ${expectedTotal}`);
   }
   if (meta.counts.categories !== undefined && meta.counts.categories !== categoriesInIdeas.size) {
     errors.push(`Stale repository-meta.json: categories count (${meta.counts.categories}) does not match unique categories in ideas.json (${categoriesInIdeas.size})`);

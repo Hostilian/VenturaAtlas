@@ -72,7 +72,7 @@ function getCounts() {
         } else if (fs.existsSync(path.join(pDir, 'README.md'))) {
           const readmeText = fs.readFileSync(path.join(pDir, 'README.md'), 'utf8');
           const matches = readmeText.match(/^###?\s+Prompt\s+\d+/gm);
-          promptsCount += matches ? matches.length : 25;
+          promptsCount += matches ? matches.length : 0;
         }
       }
     });

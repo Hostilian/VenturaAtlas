@@ -1,0 +1,54 @@
+name: Quality Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - 'automation/**'
+      - 'fix/**'
+      - 'feat/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Source Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Python dependencies
+        run: pip install requests python-dotenv 2>/dev/null || true
+
+      - name: Run quality:source
+        run: npm run quality:source
+
+      - name: Run runtime contract tests
+        run: npm run test:runtime
+
+      - name: Run race tests
+        run: npm run test:race
+
+      - name: Run provider mock tests (no real API calls)
+        run: npm run test:providers
+
+      - name: Run PWA structural tests
+        run: npm run test:pwa

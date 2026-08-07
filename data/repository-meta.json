@@ -3,18 +3,18 @@
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
   "dataRevision": "a981a088833df6f6",
-  "buildRevision": "2.3.0-c87298e",
-  "gitCommit": "c87298e",
-  "generatedAt": "2026-08-07T12:37:04.910Z",
+  "buildRevision": "2.3.0-37f0916",
+  "gitCommit": "37f0916",
+  "generatedAt": "2026-08-07T16:34:11.008Z",
   "counts": {
     "ideas": 185,
     "canonicalIdeas": 185,
-    "stagedIdeas": 128,
-    "totalIdeas": 313,
+    "stagedIdeas": 158,
+    "totalIdeas": 343,
     "categories": 82,
     "sources": 62,
     "rankingViews": 1,
     "rankingEntries": 185,
-    "prompts": 6825
+    "prompts": 1750
   }
 }
