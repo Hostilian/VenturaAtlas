@@ -112,6 +112,39 @@ function initKeyboard() {
 }
 
 /* ================================================================
+   MOBILE NAVIGATION
+   ================================================================ */
+function initMobileNav() {
+  const toggle = document.getElementById('navToggle') || $('.nav-toggle');
+  const links = document.getElementById('navlinks') || $('.navlinks');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.innerHTML = open ? '✕' : '☰';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle) {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '☰';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && links.classList.contains('open')) {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = '☰';
+      toggle.focus();
+    }
+  });
+}
+
+/* ================================================================
    HELPERS
    ================================================================ */
 function money(r) {
@@ -1067,6 +1100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Fill metrics with count-up animation
   fillMetrics();
+  initMobileNav();
 
   // Page-specific initialization
   if (page === 'home')          initHome();

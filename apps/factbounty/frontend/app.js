@@ -118,6 +118,17 @@ async function acceptRequest(bountyId) {
   }
 }
 
+async function startCamera() {
+  try {
+    const videoElem = document.getElementById('camera-preview');
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    videoElem.srcObject = stream;
+    videoElem.style.display = 'block';
+  } catch (err) {
+    alert(`Camera access notice: ${err.message || 'Camera permission denied or unavailable in simulator environment.'}`);
+  }
+}
+
 async function handleSubmitEvidence() {
   if (!activeBountyId || !activeChallengeCode) {
     alert('Please accept a request first to generate a challenge code');

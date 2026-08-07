@@ -100,6 +100,12 @@
         <h2>Guided Video & Challenge Capture</h2>
         <p>Record a short video answering the question. Display the challenge code below in frame during capture.</p>
         <div class="challenge-display" id="active-challenge-code">--- ---</div>
+        
+        <video id="camera-preview" autoplay playsinline muted style="width: 100%; max-height: 240px; background: #000; border-radius: 8px; margin: 12px 0; display: none;"></video>
+        <div style="margin-bottom: 12px;">
+          <button type="button" class="btn" style="background: var(--border); color: #fff; margin-right: 8px;" onclick="startCamera()">📷 Start Camera Preview</button>
+        </div>
+
         <div class="form-group">
           <label>Video Capture Status / Media URL</label>
           <input type="text" id="mediaUrl" value="https://storage.factbounty.local/evidence_rec_061.webm">

@@ -14,6 +14,7 @@
     "agents:health": "node scripts/agents-health.js",
     "agents:graph": "node scripts/agents-graph.js",
     "factbounty:start": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/api/server.ts",
-    "factbounty:test": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/factbounty.test.ts"
+    "factbounty:test": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/factbounty.test.ts",
+    "test:e2e": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/e2e-playwright.test.ts"
   }
 }

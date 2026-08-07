@@ -1128,19 +1128,49 @@ tr:last-child td { border-bottom: none; }
 @media (max-width: 760px) {
   .toolbar { grid-template-columns: 1fr 1fr; }
   .toolbar input { grid-column: 1 / -1; }
-  .navlinks { display: none; } /* TODO: add mobile hamburger */
-  .navlinks.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: var(--panel); border-bottom: 1px solid var(--line); padding: 0.75rem 1.25rem; z-index: 99; }
+  .nav-toggle { display: block; min-width: 44px; min-height: 44px; text-align: center; }
+  .navlinks { display: none; }
+  .navlinks.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px; left: 0; right: 0;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 1.25rem;
+    z-index: 999;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(12px);
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .navlinks a {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
   .cards { grid-template-columns: 1fr; }
   .cards.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kv { grid-template-columns: 1fr; }
   .kv > div:nth-child(odd) { padding-bottom: 0; border-bottom: none; }
   .glance-grid { grid-template-columns: 1fr; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chip-row { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .chip-row::-webkit-scrollbar { display: none; }
 }
 
 @media (max-width: 480px) {
-  main { padding: 1rem 0.9rem 4rem; }
+  main { padding: 1rem 0.8rem 4rem; }
   .toolbar { grid-template-columns: 1fr; }
-  h1 { font-size: 2rem; }
+  h1 { font-size: 1.8rem; letter-spacing: -0.03em; }
+  .cards.compact { grid-template-columns: 1fr; }
+  .button, button, input, select { min-height: 44px; touch-action: manipulation; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .button { width: 100%; text-align: center; }
 }
 
 /* ================================================================
