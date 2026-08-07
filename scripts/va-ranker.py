@@ -55,37 +55,38 @@ def load_queue() -> list:
     except Exception:
         return []
 
-def get_val(idea: dict, dim: str, default=70.0) -> float:
-    """Extract a score dimension value from either schema version."""
+def get_val(idea: dict, dim: str, default=None) -> float:
+    """Extract a score dimension value from either schema version. Returns None if missing."""
     cs = idea.get('compositeScores', {})
-    if dim in cs:
+    if dim in cs and cs[dim] is not None:
         v = cs[dim]
         return float(v) if isinstance(v, (int, float)) else default
     sc = idea.get('scores', {})
-    if dim in sc:
+    if dim in sc and sc[dim] is not None:
         v = sc[dim]
         if isinstance(v, dict):
-            return float(v.get('value', default))
+            val = v.get('value')
+            return float(val) if val is not None else default
         return float(v)
     # Try atAGlance for backward compat
     if dim == 'overallOpportunity':
-        return float(idea.get('atAGlance', {}).get('overallScore', default))
+        val = idea.get('atAGlance', {}).get('overallScore')
+        return float(val) if val is not None else default
     return default
 
 def compute_headline(idea: dict) -> float:
     """Compute weighted composite headline score."""
-    # Use existing compositeHeadline if fresh (from v2 engine)
     ch = idea.get('compositeScores', {}).get('compositeHeadline')
-    if ch and float(ch) > 0:
+    if ch is not None and float(ch) > 0:
         return float(ch)
-    # Recompute from available score dimensions
     total = 0.0
     weight_sum = 0.0
     for dim, w in SCORE_WEIGHTS.items():
         v = get_val(idea, dim)
-        total += v * w
-        weight_sum += w
-    return round(total / weight_sum if weight_sum else total, 1)
+        if v is not None:
+            total += v * w
+            weight_sum += w
+    return round(total / weight_sum if weight_sum else 50.0, 1)
 
 def rank_ideas(ideas: list) -> list:
     ranked = []

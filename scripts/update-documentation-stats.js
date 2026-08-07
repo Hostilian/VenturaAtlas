@@ -22,7 +22,9 @@ function main() {
   const statsBlock = [
     '<!-- BEGIN GENERATED REPOSITORY STATS -->',
     `- Repository Version: ${meta.version}`,
-    `- Canonical Ideas: ${meta.counts.ideas}`,
+    `- Canonical Ideas: ${meta.counts.canonicalIdeas}`,
+    `- Staged Ideas: ${meta.counts.stagedIdeas}`,
+    `- Total Ideas: ${meta.counts.totalIdeas}`,
     `- Categories: ${meta.counts.categories}`,
     `- Source References: ${meta.counts.sources}`,
     `- Generated Prompts: ${meta.counts.prompts}`,
@@ -46,18 +48,22 @@ function main() {
 
     // Synchronize prose numbers across files
     if (filePath.endsWith('README.md')) {
-      content = content.replace(/-\s+\*\*\d+\s+canonical ideas\*\*/gi, `- **${meta.counts.ideas} total ideas** (${meta.counts.canonicalIdeas || meta.counts.ideas} canonical + ${meta.counts.stagedIdeas || 0} staged)`);
+      content = content.replace(/-\s+\*\*\d+\s+canonical ideas\*\*/gi, `- **${meta.counts.canonicalIdeas} canonical ideas** (${meta.counts.stagedIdeas} staged, ${meta.counts.totalIdeas} total)`);
       content = content.replace(/-\s+\*\*\d+\s+categories\*\*/gi, `- **${meta.counts.categories} categories**`);
       content = content.replace(/-\s+\*\*[\d,]+\s+idea-specific prompts\*\*/gi, `- **${meta.counts.prompts.toLocaleString()} idea-specific prompts**`);
     } else if (filePath.endsWith('PROJECT_STATUS.md')) {
-      content = content.replace(/^-\s+Canonical ideas:\s+\d+/gm, `- Canonical ideas: ${meta.counts.ideas}`);
+      content = content.replace(/^-\s+Canonical ideas:\s+\d+/gm, `- Canonical ideas: ${meta.counts.canonicalIdeas}`);
+      content = content.replace(/^-\s+Staged ideas:\s+\d+/gm, `- Staged ideas: ${meta.counts.stagedIdeas}`);
+      content = content.replace(/^-\s+Total ideas:\s+\d+/gm, `- Total ideas: ${meta.counts.totalIdeas}`);
       content = content.replace(/^-\s+Categories:\s+\d+/gm, `- Categories: ${meta.counts.categories}`);
     } else if (filePath.endsWith('PROJECT_STATE.md')) {
-      content = content.replace(/^-\s+Canonical ideas:\s+\d+/gm, `- Canonical ideas: ${meta.counts.ideas}`);
+      content = content.replace(/^-\s+Canonical ideas:\s+\d+/gm, `- Canonical ideas: ${meta.counts.canonicalIdeas}`);
+      content = content.replace(/^-\s+Staged ideas:\s+\d+/gm, `- Staged ideas: ${meta.counts.stagedIdeas}`);
+      content = content.replace(/^-\s+Total ideas:\s+\d+/gm, `- Total ideas: ${meta.counts.totalIdeas}`);
       content = content.replace(/^-\s+Prompt records:\s+\d+/gm, `- Prompt records: ${meta.counts.prompts}`);
     } else if (filePath.endsWith('index.html')) {
-      content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.ideas}+ evidence-backed business ideas`);
-      content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.ideas}+ evidence-backed business ideas with scores`);
+      content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ evidence-backed business ideas`);
+      content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ evidence-backed business ideas with scores`);
     } else if (filePath.endsWith('sw.js')) {
       content = content.replace(/const CACHE_VERSION = '[^']+';/g, `const CACHE_VERSION = '${meta.version}';`);
     }

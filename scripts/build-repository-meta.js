@@ -9,23 +9,36 @@ const PROMPTS_DIR = path.join(ROOT, 'prompts', 'idea-specific');
 const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
 
+const crypto = require('crypto');
+const QUEUE_PATH = path.join(ROOT, 'data', 'idea-staging-queue.json');
+const CATEGORIES_PATH = path.join(ROOT, 'data', 'categories.json');
+
 function getCounts() {
   let canonicalIdeasCount = 0;
   let stagedIdeasCount = 0;
-  let totalIdeasCount = 0;
   const categoriesSet = new Set();
 
   if (fs.existsSync(IDEAS_PATH)) {
     const raw = JSON.parse(fs.readFileSync(IDEAS_PATH, 'utf8'));
     const list = Array.isArray(raw) ? raw : (raw.ideas || []);
-    totalIdeasCount = list.length;
+    canonicalIdeasCount = list.length;
     list.forEach(i => {
-      if (i.status === 'staged') {
-        stagedIdeasCount++;
-      } else {
-        canonicalIdeasCount++;
-      }
       if (i.category) categoriesSet.add(i.category);
+    });
+  }
+
+  if (fs.existsSync(QUEUE_PATH)) {
+    const raw = JSON.parse(fs.readFileSync(QUEUE_PATH, 'utf8'));
+    const list = Array.isArray(raw) ? raw : (raw.ideas || raw.queue || []);
+    stagedIdeasCount = list.length;
+  }
+
+  if (fs.existsSync(CATEGORIES_PATH)) {
+    const raw = JSON.parse(fs.readFileSync(CATEGORIES_PATH, 'utf8'));
+    const list = Array.isArray(raw) ? raw : (raw.categories || []);
+    list.forEach(c => {
+      if (typeof c === 'string') categoriesSet.add(c);
+      else if (c.name) categoriesSet.add(c.name);
     });
   }
 
@@ -51,15 +64,18 @@ function getCounts() {
   if (fs.existsSync(PROMPTS_DIR)) {
     const dirs = fs.readdirSync(PROMPTS_DIR);
     dirs.forEach(d => {
-      const pPath = path.join(PROMPTS_DIR, d, 'README.md');
-      if (fs.existsSync(pPath)) {
-        promptsCount += 25; // 25 prompts per pack standard
+      const pDir = path.join(PROMPTS_DIR, d);
+      if (fs.statSync(pDir).isDirectory()) {
+        const files = fs.readdirSync(pDir).filter(f => f.endsWith('.md') && f !== 'README.md');
+        promptsCount += files.length > 0 ? files.length : (fs.existsSync(path.join(pDir, 'README.md')) ? 25 : 0);
       }
     });
   }
 
+  const totalIdeasCount = canonicalIdeasCount + stagedIdeasCount;
+
   return {
-    ideas: totalIdeasCount,
+    ideas: canonicalIdeasCount,
     canonicalIdeas: canonicalIdeasCount,
     stagedIdeas: stagedIdeasCount,
     totalIdeas: totalIdeasCount,
@@ -77,13 +93,22 @@ function main() {
   const counts = getCounts();
   const isCheckMode = process.argv.includes('--check');
 
+  // Calculate SHA-256 over canonical input files
+  const hasher = crypto.createHash('sha256');
+  [IDEAS_PATH, CATEGORIES_PATH, SOURCES_PATH, RANKINGS_PATH].forEach(fp => {
+    if (fs.existsSync(fp)) {
+      hasher.update(fs.readFileSync(fp));
+    }
+  });
+  const dataRevision = hasher.digest('hex').substring(0, 16);
+
   let existingTimestamp = new Date().toISOString();
   if (fs.existsSync(META_PATH)) {
     try {
       const prev = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
       if (
         prev.version === version &&
-        prev.counts?.ideas === counts.ideas &&
+        prev.dataRevision === dataRevision &&
         prev.counts?.canonicalIdeas === counts.canonicalIdeas &&
         prev.counts?.stagedIdeas === counts.stagedIdeas &&
         prev.counts?.categories === counts.categories &&
@@ -99,6 +124,7 @@ function main() {
     project: 'VenturaAtlas',
     version,
     schemaVersion: '2.0.0',
+    dataRevision,
     generatedAt: existingTimestamp,
     counts
   };

@@ -3,7 +3,7 @@
 - Repository: Venture Atlas Collaborative
 - Current phase: collaborative-system foundation complete; source-corpus recovery remains incomplete
 - Last completed action: added constitution integrity, source inventory, collaboration schemas, research-run history, and Git-native workflows
-- Canonical ideas: 273
+- Canonical ideas: 185
 - Raw extraction records: 206
 - Prompt records: 6825
 - Historical research runs reconstructed: 2
@@ -19,8 +19,10 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.2.0
-- Canonical Ideas: 273
-- Categories: 100
+- Canonical Ideas: 185
+- Staged Ideas: 118
+- Total Ideas: 303
+- Categories: 82
 - Source References: 62
 - Generated Prompts: 6825
 - Last Updated: 2026-08-07
