@@ -1,4 +1,4 @@
-﻿# Venture Atlas OS — Autonomous Multi-Agent Idea Discovery Daemon (v2)
+# Venture Atlas OS — Autonomous Multi-Agent Idea Discovery Daemon (v2)
 # 
 # Bridges EUshop Multi-Provider Orchestrator pattern:
 #   Tier 1: Hermes via Ollama (local, free)
@@ -114,17 +114,17 @@ try {
 }
 
 # 4. API key checks
-$AnthropicKey = $env:ANTHROPIC_API_KEY
-$OpenRouterKey = $env:OPENROUTER_API_KEY
+$AnthropicKey = if ($env:ANTHROPIC_API_KEYS) { $env:ANTHROPIC_API_KEYS } else { $env:ANTHROPIC_API_KEY }
+$OpenRouterKey = if ($env:OPENROUTER_API_KEYS) { $env:OPENROUTER_API_KEYS } else { $env:OPENROUTER_API_KEY }
 if ($AnthropicKey -and $AnthropicKey -ne "sk-ant-...") {
-    Write-JsonLog "SUCCESS" "Anthropic API key configured (FCC Claude + Full available)"
+    Write-JsonLog "SUCCESS" "Anthropic API key pool configured (FCC Claude + Full available)"
 } else {
-    Write-JsonLog "WARN" "No Anthropic key — FCC Claude (Tier 3) disabled. Set ANTHROPIC_API_KEY."
+    Write-JsonLog "WARN" "No Anthropic key — FCC Claude (Tier 3) disabled. Set ANTHROPIC_API_KEY or ANTHROPIC_API_KEYS."
 }
 if ($OpenRouterKey -and $OpenRouterKey -ne "sk-or-...") {
-    Write-JsonLog "SUCCESS" "OpenRouter key configured (OmniRoute/Tier 2 available)"
+    Write-JsonLog "SUCCESS" "OpenRouter key pool configured (OmniRoute/Tier 2 available)"
 } else {
-    Write-JsonLog "WARN" "No OpenRouter key — OmniRoute (Tier 2) disabled. Set OPENROUTER_API_KEY."
+    Write-JsonLog "WARN" "No OpenRouter key — OmniRoute (Tier 2) disabled. Set OPENROUTER_API_KEY or OPENROUTER_API_KEYS."
 }
 
 # 5. Run provider health check via orchestrator
