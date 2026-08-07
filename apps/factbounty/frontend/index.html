@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FactBounty — Buyer-Funded Product Proof Exchange</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    
+    header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    h1 { font-size: 1.5rem; color: var(--accent); }
+    .nav-tabs { display: flex; gap: 10px; }
+    .tab-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 500; }
+    .tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+    
+    .panel { display: none; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 20px; }
+    .panel.active { display: block; }
+    
+    h2 { font-size: 1.25rem; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 6px; }
+    input, select, textarea { width: 100%; background: #090d16; border: 1px solid var(--border); color: var(--text); padding: 10px; border-radius: 6px; font-size: 0.95rem; }
+    input:focus, textarea:focus { border-color: var(--accent); outline: none; }
+    
+    .btn { background: var(--accent); color: #000; font-weight: 600; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; display: inline-block; }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-success { background: var(--success); color: #000; }
+    .btn-warning { background: var(--warning); color: #000; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    
+    .bounty-card, .evidence-card { background: #090d16; border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-right: 6px; }
+    .badge-funded { background: #1e3a8a; color: #60a5fa; }
+    .badge-review { background: #78350f; color: #fde047; }
+    .badge-approved { background: #14532d; color: #4ade80; }
+    
+    .challenge-display { background: #0284c7; color: #fff; font-size: 2rem; font-family: monospace; font-weight: bold; text-align: center; padding: 16px; border-radius: 8px; letter-spacing: 4px; margin: 16px 0; }
+    .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; font-style: italic; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FactBounty OS MVP</h1>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showTab('buyer')">Buyer Portal</button>
+        <button class="tab-btn" onclick="showTab('responder')">Responder Portal</button>
+        <button class="tab-btn" onclick="showTab('moderator')">Moderator Portal</button>
+      </div>
+    </header>
+
+    <!-- BUYER PANEL -->
+    <div id="buyer-panel" class="panel active">
+      <h2>Post a Product Proof Bounty</h2>
+      <form id="bounty-form" onsubmit="handlePostBounty(event)">
+        <div class="form-group">
+          <label>Product Listing URL</label>
+          <input type="url" id="productUrl" required placeholder="https://example.com/product/keyboard-x1">
+        </div>
+        <div class="form-group">
+          <label>Product Title</label>
+          <input type="text" id="productTitle" placeholder="Ergonomic Mechanical Keyboard X1">
+        </div>
+        <div class="form-group">
+          <label>Specific Objective Question</label>
+          <input type="text" id="question" required placeholder="What is the exact width of the wrist rest attachment in mm?">
+        </div>
+        <div class="form-group">
+          <label>Bounty Offer (€3.00 - €50.00)</label>
+          <input type="number" id="bountyAmount" value="5" min="3" max="50" step="1">
+        </div>
+        <button type="submit" class="btn">Fund Bounty & Post (€5.00)</button>
+      </form>
+
+      <h2 style="margin-top: 30px;">My Active Bounties & Evidence Cards</h2>
+      <div id="buyer-bounties-list">Loading...</div>
+    </div>
+
+    <!-- RESPONDER PANEL -->
+    <div id="responder-panel" class="panel">
+      <h2>Available Evidence Requests</h2>
+      <div id="responder-requests-list">Loading...</div>
+
+      <div id="capture-zone" style="display: none; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px;">
+        <h2>Guided Video & Challenge Capture</h2>
+        <p>Record a short video answering the question. Display the challenge code below in frame during capture.</p>
+        <div class="challenge-display" id="active-challenge-code">--- ---</div>
+        <div class="form-group">
+          <label>Video Capture Status / Media URL</label>
+          <input type="text" id="mediaUrl" value="https://storage.factbounty.local/evidence_rec_061.webm">
+        </div>
+        <button class="btn btn-success" onclick="handleSubmitEvidence()">Submit Evidence for Review</button>
+      </div>
+    </div>
+
+    <!-- MODERATOR PANEL -->
+    <div id="moderator-panel" class="panel">
+      <h2>Moderation & Verification Queue</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+        Review submissions for challenge code presence, checklist fulfillment, and product relevance. No automated AI decision releases payouts.
+      </p>
+      <div id="moderator-queue-list">Loading...</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

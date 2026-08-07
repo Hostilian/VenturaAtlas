@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-08-07T03:51:00Z",
+  "providers": {
+    "antigravity-internal": { "status": "available", "lastCheck": "2026-08-07T03:51:00Z", "latencyMs": 10, "circuit": "CLOSED" },
+    "own-orch": { "status": "available", "lastCheck": "2026-08-07T03:51:00Z", "latencyMs": 5, "circuit": "CLOSED" },
+    "node-runtime": { "status": "available", "lastCheck": "2026-08-07T03:51:00Z", "version": "22.11.0", "circuit": "CLOSED" },
+    "python-runtime": { "status": "available", "lastCheck": "2026-08-07T03:51:00Z", "version": "3.12.5", "circuit": "CLOSED" },
+    "hermes-ollama": { "status": "unavailable", "lastCheck": "2026-08-07T03:51:00Z", "reason": "Connection refused on localhost:11434", "circuit": "OPEN" },
+    "omniRoute": { "status": "unconfigured", "lastCheck": "2026-08-07T03:51:00Z", "reason": "No OPENROUTER_API_KEY configured", "circuit": "OPEN" },
+    "fcc-claude": { "status": "unconfigured", "lastCheck": "2026-08-07T03:51:00Z", "reason": "No ANTHROPIC_API_KEY configured", "circuit": "OPEN" },
+    "anthropic-full": { "status": "unconfigured", "lastCheck": "2026-08-07T03:51:00Z", "reason": "No ANTHROPIC_API_KEY configured", "circuit": "OPEN" }
+  }
+}

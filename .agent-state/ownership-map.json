@@ -1,0 +1,16 @@
+{
+  "apps/factbounty/shared/contracts/": "product-architect",
+  "apps/factbounty/shared/types/": "product-architect",
+  "apps/factbounty/shared/schemas/": "product-architect",
+  "apps/factbounty/frontend/": "frontend-engineer",
+  "apps/factbounty/components/": "frontend-engineer",
+  "apps/factbounty/backend/": "backend-engineer",
+  "apps/factbounty/db/": "backend-engineer",
+  "apps/factbounty/api/": "backend-engineer",
+  "apps/factbounty/capture/": "evidence-capture-engineer",
+  "apps/factbounty/media/": "evidence-capture-engineer",
+  "apps/factbounty/payments/": "payments-engineer",
+  "apps/factbounty/simulators/": "payments-engineer",
+  "apps/factbounty/tests/": "test-engineer",
+  "tests/e2e/": "test-engineer"
+}

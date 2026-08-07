@@ -8,6 +8,12 @@
     "validate": "node scripts/validate-data.js && python scripts/validate-schema.py",
     "check-links": "node scripts/check-links.js",
     "build-search": "node scripts/build-search-index.js",
-    "check-js": "node --check assets/js/site.js"
+    "check-js": "node --check assets/js/site.js",
+    "agents:status": "node scripts/agents-status.js",
+    "agents:watch": "node scripts/agents-watch.js",
+    "agents:health": "node scripts/agents-health.js",
+    "agents:graph": "node scripts/agents-graph.js",
+    "factbounty:start": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/api/server.ts",
+    "factbounty:test": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/factbounty.test.ts"
   }
 }

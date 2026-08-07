@@ -1,0 +1,58 @@
+{
+  "bounties": [
+    {
+      "id": "idea-061_req_nky6c7eo",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T03:54:05.414Z",
+      "updatedAt": "2026-08-07T03:54:05.421Z",
+      "expiresAt": "2026-08-14T03:54:05.414Z",
+      "paymentId": "sim_pay_br45gi90",
+      "responderId": "resp_1"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_qbryzn4y",
+      "bountyId": "idea-061_req_nky6c7eo",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "H2K-2SJ",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T03:54:05.420Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T03:54:05.420Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T03:54:05.420Z"
+    }
+  ],
+  "transactions": []
+}

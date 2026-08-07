@@ -1,0 +1,40 @@
+{
+  "runId": "run-001",
+  "status": "completed",
+  "weightedOverallCompletion": 100,
+  "activeAgents": [],
+  "queuedTasks": [],
+  "completedTasks": ["task-0", "task-1", "task-2", "task-3", "task-4", "task-5", "task-6", "task-7"],
+  "blockedTasks": [],
+  "failedTasks": [],
+  "providerUtilization": {
+    "antigravity-internal": "active",
+    "own-orch": "ready",
+    "node-runtime": "active"
+  },
+  "testStatus": "passed",
+  "lastHeartbeat": "2026-08-07T03:54:10Z",
+  "recentMilestones": [
+    "Repository inspection completed",
+    "Capability inventory recorded",
+    "Parallel agent control plane initialized",
+    "Domain contracts & state machines created",
+    "Backend engine & persistent storage built",
+    "Browser evidence capture & challenge engine built",
+    "Payment provider abstraction & local simulator built",
+    "Buyer, Responder, and Moderator web portals created",
+    "All unit & integration tests passed (5/5)"
+  ],
+  "artifacts": [
+    ".agents/AGENTS.md",
+    "apps/factbounty/shared/contracts/state-machines.ts",
+    "apps/factbounty/shared/contracts/payment-provider.ts",
+    "apps/factbounty/backend/factbounty-engine.ts",
+    "apps/factbounty/simulators/payment-simulator.ts",
+    "apps/factbounty/payments/stripe-adapter.ts",
+    "apps/factbounty/capture/challenge-engine.ts",
+    "apps/factbounty/api/server.ts",
+    "apps/factbounty/frontend/index.html",
+    "apps/factbounty/tests/factbounty.test.ts"
+  ]
+}
