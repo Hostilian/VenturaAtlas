@@ -4757,5 +4757,216 @@
       "regulatory-transaction"
     ],
     "normalizedText": "battery afterlife exchange second-life battery valuation and auction platform leveraging mandatory digital battery passport data to match used ev packs with stationary storage integrators importers logistics carriers trade employers sme operations battery energy storage infrastructure battery energy storage infrastructure second-life-battery-marketplace ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-272",
+    "slug": "lightweight-offline-capable-tools-suite-idea-272",
+    "name": "Lightweight Offline-Capable Tools Suite",
+    "category": "Local-first software",
+    "subcategory": "offline-capable tools",
+    "concept": "A self-serve, zero-capital tool that automates privacy, latency, and cost concerns driving local-run saas replacements for local-first software workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Privacy, latency, and cost concerns driving local-run SaaS replacements",
+    "overallScore": 87.1,
+    "tags": [
+      "offline",
+      "autonomous-discovered",
+      "privacy",
+      "v2",
+      "local-first",
+      "own-orch"
+    ],
+    "normalizedText": "lightweight offline-capable tools suite a self-serve zero-capital tool that automates privacy latency and cost concerns driving local-run saas replacements for local-first software workflows privacy latency and cost concerns driving local-run saas replacements technical founders operators or compliance teams local-first software offline autonomous-discovered privacy v2 local-first own-orch"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-273",
+    "slug": "powerplot-electrical-grid-capacity-intelligence-site-exchange-idea-273",
+    "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+    "category": "Energy & Electrical Grid Infrastructure",
+    "subcategory": "grid-capacity-intelligence",
+    "concept": "Marketplace and intelligence layer for land with usable electrical grid connection capacity, matching data centers, battery developers, and factories with grid-ready sites.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 94,
+    "tags": [
+      "energy & electrical grid infrastructure",
+      "grid-capacity-intelligence",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "powerplot electrical grid capacity intelligence site exchange marketplace and intelligence layer for land with usable electrical grid connection capacity matching data centers battery developers and factories with grid-ready sites grid developers cold storage operators factory leads scientific labs energy electrical grid infrastructure energy electrical grid infrastructure grid-capacity-intelligence tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-274",
+    "slug": "coldbattery-virtual-thermal-refrigeration-battery-network-idea-274",
+    "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+    "category": "Energy Storage & Demand Response",
+    "subcategory": "virtual-power-plant",
+    "concept": "Turns supermarket, warehouse, and food processing refrigeration systems into a distributed virtual thermal battery for grid demand response and flexibility markets.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 93,
+    "tags": [
+      "energy storage & demand response",
+      "virtual-power-plant",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "coldbattery virtual thermal refrigeration battery network turns supermarket warehouse and food processing refrigeration systems into a distributed virtual thermal battery for grid demand response and flexibility markets grid developers cold storage operators factory leads scientific labs energy storage demand response energy storage demand response virtual-power-plant tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-275",
+    "slug": "deadpart-obsolete-industrial-component-reproduction-network-idea-275",
+    "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+    "category": "Industrial Machinery & Equipment Repair",
+    "subcategory": "obsolete-part-manufacturing",
+    "concept": "On-demand reproduction and sourcing network for certified replacement components of discontinued industrial machinery.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 92,
+    "tags": [
+      "industrial machinery & equipment repair",
+      "obsolete-part-manufacturing",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "deadpart obsolete industrial component reproduction network on-demand reproduction and sourcing network for certified replacement components of discontinued industrial machinery grid developers cold storage operators factory leads scientific labs industrial machinery equipment repair industrial machinery equipment repair obsolete-part-manufacturing tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-276",
+    "slug": "machinekey-unified-industrial-machine-telemetry-api-idea-276",
+    "name": "MachineKey — Unified Industrial Machine Telemetry API",
+    "category": "Industrial Automation & Maintenance",
+    "subcategory": "machine-telemetry-api",
+    "concept": "Unified telemetry API and cross-brand machine ontology aggregating data across multi-vendor industrial equipment under the EU Data Act.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 90,
+    "tags": [
+      "industrial automation & maintenance",
+      "machine-telemetry-api",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "machinekey unified industrial machine telemetry api unified telemetry api and cross-brand machine ontology aggregating data across multi-vendor industrial equipment under the eu data act grid developers cold storage operators factory leads scientific labs industrial automation maintenance industrial automation maintenance machine-telemetry-api tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-277",
+    "slug": "labgrid-remote-scientific-equipment-sample-routing-api-idea-277",
+    "name": "LabGrid — Remote Scientific Equipment & Sample Routing API",
+    "category": "Scientific Research Infrastructure",
+    "subcategory": "scientific-equipment-routing",
+    "concept": "AWS-style sample routing network dispatching scientific samples into idle NMR, TEM, XPS, and LC-MS equipment across European universities and labs.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 89,
+    "tags": [
+      "scientific research infrastructure",
+      "scientific-equipment-routing",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "labgrid remote scientific equipment sample routing api aws-style sample routing network dispatching scientific samples into idle nmr tem xps and lc-ms equipment across european universities and labs grid developers cold storage operators factory leads scientific labs scientific research infrastructure scientific research infrastructure scientific-equipment-routing tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-278",
+    "slug": "exitready-sme-acquisition-readiness-succession-engine-idea-278",
+    "name": "ExitReady — SME Acquisition Readiness & Succession Engine",
+    "category": "SME M&A & Business Succession",
+    "subcategory": "succession-readiness",
+    "concept": "Continuous SME transferability auditor providing retiring owners with a multi-year program to systematicize operations, reduce concentration, and maximize exit valuation.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 88,
+    "tags": [
+      "sme m&a & business succession",
+      "succession-readiness",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "exitready sme acquisition readiness succession engine continuous sme transferability auditor providing retiring owners with a multi-year program to systematicize operations reduce concentration and maximize exit valuation grid developers cold storage operators factory leads scientific labs sme m a business succession sme m a business succession succession-readiness tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-279",
+    "slug": "robotops-teleoperated-human-in-the-loop-robot-operations-idea-279",
+    "name": "RobotOps — Teleoperated Human-in-the-Loop Robot Operations",
+    "category": "Robotics & Automation Operations",
+    "subcategory": "teleoperated-robotics",
+    "concept": "Remote human operator workforce intervening in robotic edge cases while generating demonstration training data for autonomous models.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 87,
+    "tags": [
+      "robotics & automation operations",
+      "teleoperated-robotics",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "robotops teleoperated human-in-the-loop robot operations remote human operator workforce intervening in robotic edge cases while generating demonstration training data for autonomous models grid developers cold storage operators factory leads scientific labs robotics automation operations robotics automation operations teleoperated-robotics tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-280",
+    "slug": "fireproof-climate-resilience-property-risk-passports-idea-280",
+    "name": "Fireproof — Climate Resilience & Property Risk Passports",
+    "category": "Climate Resilience & Insurance Tech",
+    "subcategory": "property-resilience-passport",
+    "concept": "Verifiable property resilience passports documenting owner risk mitigation measures to unlock insurance discounts and lower climate risk exposure.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 86,
+    "tags": [
+      "climate resilience & insurance tech",
+      "property-resilience-passport",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "fireproof climate resilience property risk passports verifiable property resilience passports documenting owner risk mitigation measures to unlock insurance discounts and lower climate risk exposure grid developers cold storage operators factory leads scientific labs climate resilience insurance tech climate resilience insurance tech property-resilience-passport tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-281",
+    "slug": "calibrarisk-risk-based-industrial-equipment-calibration-optimizer-idea-281",
+    "name": "CalibraRisk — Risk-Based Industrial Equipment Calibration Optimizer",
+    "category": "Industrial Metrology & Compliance",
+    "subcategory": "predictive-calibration",
+    "concept": "Replaces fixed 12-month equipment calibration cycles with statistical risk-based interval optimization to reduce factory downtime and calibration expenditure.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "industrial metrology & compliance",
+      "predictive-calibration",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "calibrarisk risk-based industrial equipment calibration optimizer replaces fixed 12-month equipment calibration cycles with statistical risk-based interval optimization to reduce factory downtime and calibration expenditure grid developers cold storage operators factory leads scientific labs industrial metrology compliance industrial metrology compliance predictive-calibration tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-282",
+    "slug": "heatexpert-cloud-remote-expert-supervision-for-heat-pump-technicians-idea-282",
+    "name": "HeatExpert Cloud — Remote Expert Supervision for Heat Pump Technicians",
+    "category": "Clean Energy & HVAC Operations",
+    "subcategory": "remote-expert-supervision",
+    "concept": "Remote expert supervision platform allowing senior HVAC engineers to guide junior heat-pump technicians through diagnostic video streams and AI-assisted troubleshooting.",
+    "customer": "Grid developers, cold storage operators, factory leads, & scientific labs",
+    "problem": "",
+    "overallScore": 83,
+    "tags": [
+      "clean energy & hvac operations",
+      "remote-expert-supervision",
+      "tenth reset",
+      "capacity-unlock"
+    ],
+    "normalizedText": "heatexpert cloud remote expert supervision for heat pump technicians remote expert supervision platform allowing senior hvac engineers to guide junior heat-pump technicians through diagnostic video streams and ai-assisted troubleshooting grid developers cold storage operators factory leads scientific labs clean energy hvac operations clean energy hvac operations remote-expert-supervision tenth reset capacity-unlock"
   }
 ]
