@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "ai",
+    "name": "AI",
+    "count": 4,
+    "ideaIds": [
+      "idea-015",
+      "idea-016",
+      "idea-021",
+      "idea-027"
+    ]
+  },
+  {
+    "id": "ai-agents",
+    "name": "AI agents",
+    "count": 1,
+    "ideaIds": [
+      "idea-001"
+    ]
+  },
+  {
+    "id": "ai-infrastructure",
+    "name": "AI infrastructure",
+    "count": 1,
+    "ideaIds": [
+      "idea-053"
+    ]
+  },
+  {
+    "id": "ai-models",
+    "name": "AI models",
+    "count": 1,
+    "ideaIds": [
+      "idea-002"
+    ]
+  },
+  {
+    "id": "api",
+    "name": "API",
+    "count": 4,
+    "ideaIds": [
+      "idea-002",
+      "idea-028",
+      "idea-029",
+      "idea-040"
+    ]
+  },
+  {
+    "id": "apis",
+    "name": "APIs",
+    "count": 2,
+    "ideaIds": [
+      "idea-037",
+      "idea-046"
+    ]
+  },
+  {
+    "id": "apk",
+    "name": "APK",
+    "count": 1,
+    "ideaIds": [
+      "idea-031"
+    ]
+  },
+  {
+    "id": "ci",
+    "name": "CI",
+    "count": 2,
+    "ideaIds": [
+      "idea-001",
+      "idea-010"
+    ]
+  },
+  {
+    "id": "ci-cd",
+    "name": "CI/CD",
+    "count": 2,
+    "ideaIds": [
+      "idea-030",
+      "idea-031"
+    ]
+  },
+  {
+    "id": "codeql",
+    "name": "CodeQL",
+    "count": 1,
+    "ideaIds": [
+      "idea-006"
+    ]
+  },
+  {
+    "id": "dac7",
+    "name": "DAC7",
+    "count": 1,
+    "ideaIds": [
+      "idea-025"
+    ]
+  },
+  {
+    "id": "dpp",
+    "name": "DPP",
+    "count": 1,
+    "ideaIds": [
+      "idea-032"
+    ]
+  },
+  {
+    "id": "dsa",
+    "name": "DSA",
+    "count": 1,
+    "ideaIds": [
+      "idea-025"
+    ]
+  },
+  {
+    "id": "eu",
+    "name": "EU",
+    "count": 1,
+    "ideaIds": [
+      "idea-025"
+    ]
+  },
+  {
+    "id": "erasmus",
+    "name": "Erasmus",
+    "count": 2,
+    "ideaIds": [
+      "idea-038",
+      "idea-056"
+    ]
+  },
+  {
+    "id": "europe",
+    "name": "Europe",
+    "count": 1,
+    "ideaIds": [
+      "idea-044"
+    ]
+  },
+  {
+    "id": "ffmpeg",
+    "name": "FFmpeg",
+    "count": 1,
+    "ideaIds": [
+      "idea-024"
+    ]
+  },
+  {
+    "id": "fps",
+    "name": "FPS",
+    "count": 1,
+    "ideaIds": [
+      "idea-050"
+    ]
+  },
+  {
+    "id": "gdpr",
+    "name": "GDPR",
+    "count": 1,
+    "ideaIds": [
+      "idea-025"
+    ]
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "count": 2,
+    "ideaIds": [
+      "idea-006",
+      "idea-010"
+    ]
+  },
+  {
+    "id": "github-pages",
+    "name": "GitHub Pages",
+    "count": 2,
+    "ideaIds": [
+      "idea-014",
+      "idea-049"
+    ]
+  },
+  {
+    "id": "kybc",
+    "name": "KYBC",
+    "count": 2,
+    "ideaIds": [
+      "idea-026",
+      "idea-029"
+    ]
+  },
+  {
+    "id": "llm",
+    "name": "LLM",
+    "count": 1,
+    "ideaIds": [
+      "idea-005"
+    ]
+  },
+  {
+    "id": "llm-evals",
+    "name": "LLM evals",
+    "count": 1,
+    "ideaIds": [
+      "idea-053"
+    ]
+  },
+  {
+    "id": "mcp",
+    "name": "MCP",
+    "count": 1,
+    "ideaIds": [
+      "idea-054"
+    ]
+  },
+  {
+    "id": "prague",
+    "name": "Prague",
+    "count": 2,
+    "ideaIds": [
+      "idea-055",
+      "idea-058"
+    ]
+  },
+  {
+    "id": "qa",
+    "name": "QA",
+    "count": 2,
+    "ideaIds": [
+      "idea-051",
+      "idea-060"
+    ]
+  },
+  {
+    "id": "rag",
+    "name": "RAG",
+    "count": 1,
+    "ideaIds": [
+      "idea-052"
+    ]
+  },
+  {
+    "id": "sast",
+    "name": "SAST",
+    "count": 1,
+    "ideaIds": [
+      "idea-006"
+    ]
+  },
+  {
+    "id": "saas",
+    "name": "SaaS",
+    "count": 1,
+    "ideaIds": [
+      "idea-022"
+    ]
+  },
+  {
+    "id": "steam",
+    "name": "Steam",
+    "count": 1,
+    "ideaIds": [
+      "idea-057"
+    ]
+  },
+  {
+    "id": "unreal",
+    "name": "Unreal",
+    "count": 1,
+    "ideaIds": [
+      "idea-047"
+    ]
+  },
+  {
+    "id": "unreal-engine-5",
+    "name": "Unreal Engine 5",
+    "count": 1,
+    "ideaIds": [
+      "idea-050"
+    ]
+  },
+  {
+    "id": "windows",
+    "name": "Windows",
+    "count": 1,
+    "ideaIds": [
+      "idea-048"
+    ]
+  },
+  {
+    "id": "affiliate",
+    "name": "affiliate",
+    "count": 1,
+    "ideaIds": [
+      "idea-004"
+    ]
+  },
+  {
+    "id": "agents",
+    "name": "agents",
+    "count": 9,
+    "ideaIds": [
+      "idea-003",
+      "idea-008",
+      "idea-009",
+      "idea-010",
+      "idea-013",
+      "idea-017",
+      "idea-018",
+      "idea-030",
+      "idea-047"
+    ]
+  },
+  {
+    "id": "alerts",
+    "name": "alerts",
+    "count": 2,
+    "ideaIds": [
+      "idea-022",
+      "idea-023"
+    ]
+  },
+  {
+    "id": "analytics",
+    "name": "analytics",
+    "count": 2,
+    "ideaIds": [
+      "idea-009",
+      "idea-037"
+    ]
+  },
+  {
+    "id": "app-factory",
+    "name": "app factory",
+    "count": 1,
+    "ideaIds": [
+      "idea-030"
+    ]
+  },
+  {
+    "id": "archive",
+    "name": "archive",
+    "count": 1,
+    "ideaIds": [
+      "idea-049"
+    ]
+  },
+  {
+    "id": "assistant",
+    "name": "assistant",
+    "count": 1,
+    "ideaIds": [
+      "idea-035"
+    ]
+  },
+  {
+    "id": "audio-qa",
+    "name": "audio QA",
+    "count": 1,
+    "ideaIds": [
+      "idea-059"
+    ]
+  },
+  {
+    "id": "audit",
+    "name": "audit",
+    "count": 1,
+    "ideaIds": [
+      "idea-019"
+    ]
+  },
+  {
+    "id": "automation",
+    "name": "automation",
+    "count": 3,
+    "ideaIds": [
+      "idea-007",
+      "idea-035",
+      "idea-047"
+    ]
+  },
+  {
+    "id": "battery",
+    "name": "battery",
+    "count": 1,
+    "ideaIds": [
+      "idea-032"
+    ]
+  },
+  {
+    "id": "benchmarks",
+    "name": "benchmarks",
+    "count": 1,
+    "ideaIds": [
+      "idea-002"
+    ]
+  },
+  {
+    "id": "budget",
+    "name": "budget",
+    "count": 1,
+    "ideaIds": [
+      "idea-003"
+    ]
+  },
+  {
+    "id": "catalog",
+    "name": "catalog",
+    "count": 2,
+    "ideaIds": [
+      "idea-027",
+      "idea-041"
+    ]
+  },
+  {
+    "id": "change-detection",
+    "name": "change detection",
+    "count": 1,
+    "ideaIds": [
+      "idea-011"
+    ]
+  },
+  {
+    "id": "citations",
+    "name": "citations",
+    "count": 2,
+    "ideaIds": [
+      "idea-011",
+      "idea-052"
+    ]
+  },
+  {
+    "id": "cleanup",
+    "name": "cleanup",
+    "count": 1,
+    "ideaIds": [
+      "idea-048"
+    ]
+  },
+  {
+    "id": "commerce",
+    "name": "commerce",
+    "count": 3,
+    "ideaIds": [
+      "idea-027",
+      "idea-043",
+      "idea-044"
+    ]
+  },
+  {
+    "id": "compliance",
+    "name": "compliance",
+    "count": 2,
+    "ideaIds": [
+      "idea-028",
+      "idea-032"
+    ]
+  },
+  {
+    "id": "conflicts",
+    "name": "conflicts",
+    "count": 1,
+    "ideaIds": [
+      "idea-017"
+    ]
+  },
+  {
+    "id": "conformance",
+    "name": "conformance",
+    "count": 1,
+    "ideaIds": [
+      "idea-054"
+    ]
+  },
+  {
+    "id": "content",
+    "name": "content",
+    "count": 1,
+    "ideaIds": [
+      "idea-012"
+    ]
+  },
+  {
+    "id": "cost",
+    "name": "cost",
+    "count": 2,
+    "ideaIds": [
+      "idea-003",
+      "idea-045"
+    ]
+  },
+  {
+    "id": "course-matching",
+    "name": "course matching",
+    "count": 1,
+    "ideaIds": [
+      "idea-056"
+    ]
+  },
+  {
+    "id": "courses",
+    "name": "courses",
+    "count": 1,
+    "ideaIds": [
+      "idea-038"
+    ]
+  },
+  {
+    "id": "creator",
+    "name": "creator",
+    "count": 1,
+    "ideaIds": [
+      "idea-007"
+    ]
+  },
+  {
+    "id": "deadlines",
+    "name": "deadlines",
+    "count": 2,
+    "ideaIds": [
+      "idea-023",
+      "idea-036"
+    ]
+  },
+  {
+    "id": "deals",
+    "name": "deals",
+    "count": 1,
+    "ideaIds": [
+      "idea-036"
+    ]
+  },
+  {
+    "id": "decision",
+    "name": "decision",
+    "count": 1,
+    "ideaIds": [
+      "idea-045"
+    ]
+  },
+  {
+    "id": "decisions",
+    "name": "decisions",
+    "count": 1,
+    "ideaIds": [
+      "idea-034"
+    ]
+  },
+  {
+    "id": "design-experiments",
+    "name": "design experiments",
+    "count": 1,
+    "ideaIds": [
+      "idea-049"
+    ]
+  },
+  {
+    "id": "developer-tools",
+    "name": "developer tools",
+    "count": 1,
+    "ideaIds": [
+      "idea-054"
+    ]
+  },
+  {
+    "id": "early-bird",
+    "name": "early bird",
+    "count": 1,
+    "ideaIds": [
+      "idea-039"
+    ]
+  },
+  {
+    "id": "equivalence",
+    "name": "equivalence",
+    "count": 1,
+    "ideaIds": [
+      "idea-038"
+    ]
+  },
+  {
+    "id": "evaluation",
+    "name": "evaluation",
+    "count": 2,
+    "ideaIds": [
+      "idea-005",
+      "idea-052"
+    ]
+  },
+  {
+    "id": "events",
+    "name": "events",
+    "count": 1,
+    "ideaIds": [
+      "idea-039"
+    ]
+  },
+  {
+    "id": "evidence",
+    "name": "evidence",
+    "count": 7,
+    "ideaIds": [
+      "idea-004",
+      "idea-015",
+      "idea-019",
+      "idea-028",
+      "idea-034",
+      "idea-052",
+      "idea-056"
+    ]
+  },
+  {
+    "id": "experiments",
+    "name": "experiments",
+    "count": 1,
+    "ideaIds": [
+      "idea-009"
+    ]
+  },
+  {
+    "id": "food",
+    "name": "food",
+    "count": 5,
+    "ideaIds": [
+      "idea-028",
+      "idea-033",
+      "idea-040",
+      "idea-041",
+      "idea-044"
+    ]
+  },
+  {
+    "id": "founders",
+    "name": "founders",
+    "count": 1,
+    "ideaIds": [
+      "idea-034"
+    ]
+  },
+  {
+    "id": "free",
+    "name": "free",
+    "count": 1,
+    "ideaIds": [
+      "idea-036"
+    ]
+  },
+  {
+    "id": "freshness",
+    "name": "freshness",
+    "count": 1,
+    "ideaIds": [
+      "idea-020"
+    ]
+  },
+  {
+    "id": "game-agents",
+    "name": "game agents",
+    "count": 1,
+    "ideaIds": [
+      "idea-050"
+    ]
+  },
+  {
+    "id": "games",
+    "name": "games",
+    "count": 1,
+    "ideaIds": [
+      "idea-047"
+    ]
+  },
+  {
+    "id": "git",
+    "name": "git",
+    "count": 1,
+    "ideaIds": [
+      "idea-017"
+    ]
+  },
+  {
+    "id": "governance",
+    "name": "governance",
+    "count": 1,
+    "ideaIds": [
+      "idea-013"
+    ]
+  },
+  {
+    "id": "ideas",
+    "name": "ideas",
+    "count": 3,
+    "ideaIds": [
+      "idea-008",
+      "idea-014",
+      "idea-046"
+    ]
+  },
+  {
+    "id": "indie-games",
+    "name": "indie games",
+    "count": 1,
+    "ideaIds": [
+      "idea-057"
+    ]
+  },
+  {
+    "id": "knowledge-graph",
+    "name": "knowledge graph",
+    "count": 3,
+    "ideaIds": [
+      "idea-027",
+      "idea-040",
+      "idea-041"
+    ]
+  },
+  {
+    "id": "language-learning",
+    "name": "language learning",
+    "count": 1,
+    "ideaIds": [
+      "idea-021"
+    ]
+  },
+  {
+    "id": "launch-qa",
+    "name": "launch QA",
+    "count": 1,
+    "ideaIds": [
+      "idea-057"
+    ]
+  },
+  {
+    "id": "launchpad",
+    "name": "launchpad",
+    "count": 1,
+    "ideaIds": [
+      "idea-043"
+    ]
+  },
+  {
+    "id": "learning",
+    "name": "learning",
+    "count": 1,
+    "ideaIds": [
+      "idea-034"
+    ]
+  },
+  {
+    "id": "local",
+    "name": "local",
+    "count": 3,
+    "ideaIds": [
+      "idea-036",
+      "idea-039",
+      "idea-042"
+    ]
+  },
+  {
+    "id": "local-ai",
+    "name": "local AI",
+    "count": 1,
+    "ideaIds": [
+      "idea-035"
+    ]
+  },
+  {
+    "id": "local-distribution",
+    "name": "local distribution",
+    "count": 1,
+    "ideaIds": [
+      "idea-055"
+    ]
+  },
+  {
+    "id": "local-first",
+    "name": "local-first",
+    "count": 2,
+    "ideaIds": [
+      "idea-024",
+      "idea-048"
+    ]
+  },
+  {
+    "id": "localization",
+    "name": "localization",
+    "count": 1,
+    "ideaIds": [
+      "idea-057"
+    ]
+  },
+  {
+    "id": "maps",
+    "name": "maps",
+    "count": 2,
+    "ideaIds": [
+      "idea-033",
+      "idea-041"
+    ]
+  },
+  {
+    "id": "market-research",
+    "name": "market research",
+    "count": 1,
+    "ideaIds": [
+      "idea-046"
+    ]
+  },
+  {
+    "id": "marketplace",
+    "name": "marketplace",
+    "count": 2,
+    "ideaIds": [
+      "idea-018",
+      "idea-044"
+    ]
+  },
+  {
+    "id": "marketplaces",
+    "name": "marketplaces",
+    "count": 1,
+    "ideaIds": [
+      "idea-026"
+    ]
+  },
+  {
+    "id": "memory",
+    "name": "memory",
+    "count": 1,
+    "ideaIds": [
+      "idea-020"
+    ]
+  },
+  {
+    "id": "merge",
+    "name": "merge",
+    "count": 1,
+    "ideaIds": [
+      "idea-017"
+    ]
+  },
+  {
+    "id": "mobile",
+    "name": "mobile",
+    "count": 2,
+    "ideaIds": [
+      "idea-030",
+      "idea-031"
+    ]
+  },
+  {
+    "id": "monetization",
+    "name": "monetization",
+    "count": 1,
+    "ideaIds": [
+      "idea-012"
+    ]
+  },
+  {
+    "id": "monitoring",
+    "name": "monitoring",
+    "count": 1,
+    "ideaIds": [
+      "idea-011"
+    ]
+  },
+  {
+    "id": "movement",
+    "name": "movement",
+    "count": 1,
+    "ideaIds": [
+      "idea-050"
+    ]
+  },
+  {
+    "id": "multi-provider",
+    "name": "multi-provider",
+    "count": 1,
+    "ideaIds": [
+      "idea-016"
+    ]
+  },
+  {
+    "id": "multilingual-ai",
+    "name": "multilingual AI",
+    "count": 1,
+    "ideaIds": [
+      "idea-051"
+    ]
+  },
+  {
+    "id": "onboarding",
+    "name": "onboarding",
+    "count": 1,
+    "ideaIds": [
+      "idea-029"
+    ]
+  },
+  {
+    "id": "ontology",
+    "name": "ontology",
+    "count": 1,
+    "ideaIds": [
+      "idea-040"
+    ]
+  },
+  {
+    "id": "opportunities",
+    "name": "opportunities",
+    "count": 1,
+    "ideaIds": [
+      "idea-023"
+    ]
+  },
+  {
+    "id": "orchestration",
+    "name": "orchestration",
+    "count": 1,
+    "ideaIds": [
+      "idea-013"
+    ]
+  },
+  {
+    "id": "parallel-work",
+    "name": "parallel work",
+    "count": 1,
+    "ideaIds": [
+      "idea-013"
+    ]
+  },
+  {
+    "id": "perishable-inventory",
+    "name": "perishable inventory",
+    "count": 1,
+    "ideaIds": [
+      "idea-058"
+    ]
+  },
+  {
+    "id": "policy",
+    "name": "policy",
+    "count": 1,
+    "ideaIds": [
+      "idea-060"
+    ]
+  },
+  {
+    "id": "price-tracking",
+    "name": "price tracking",
+    "count": 1,
+    "ideaIds": [
+      "idea-022"
+    ]
+  },
+  {
+    "id": "privacy",
+    "name": "privacy",
+    "count": 1,
+    "ideaIds": [
+      "idea-035"
+    ]
+  },
+  {
+    "id": "prompts",
+    "name": "prompts",
+    "count": 2,
+    "ideaIds": [
+      "idea-005",
+      "idea-014"
+    ]
+  },
+  {
+    "id": "protocol-testing",
+    "name": "protocol testing",
+    "count": 1,
+    "ideaIds": [
+      "idea-054"
+    ]
+  },
+  {
+    "id": "provenance",
+    "name": "provenance",
+    "count": 3,
+    "ideaIds": [
+      "idea-001",
+      "idea-019",
+      "idea-020"
+    ]
+  },
+  {
+    "id": "publishing",
+    "name": "publishing",
+    "count": 2,
+    "ideaIds": [
+      "idea-007",
+      "idea-037"
+    ]
+  },
+  {
+    "id": "quizzes",
+    "name": "quizzes",
+    "count": 1,
+    "ideaIds": [
+      "idea-021"
+    ]
+  },
+  {
+    "id": "ranking",
+    "name": "ranking",
+    "count": 6,
+    "ideaIds": [
+      "idea-002",
+      "idea-008",
+      "idea-012",
+      "idea-014",
+      "idea-015",
+      "idea-046"
+    ]
+  },
+  {
+    "id": "rankings",
+    "name": "rankings",
+    "count": 2,
+    "ideaIds": [
+      "idea-004",
+      "idea-042"
+    ]
+  },
+  {
+    "id": "recommendations",
+    "name": "recommendations",
+    "count": 1,
+    "ideaIds": [
+      "idea-015"
+    ]
+  },
+  {
+    "id": "referrals",
+    "name": "referrals",
+    "count": 1,
+    "ideaIds": [
+      "idea-058"
+    ]
+  },
+  {
+    "id": "regional",
+    "name": "regional",
+    "count": 1,
+    "ideaIds": [
+      "idea-043"
+    ]
+  },
+  {
+    "id": "registry",
+    "name": "registry",
+    "count": 1,
+    "ideaIds": [
+      "idea-005"
+    ]
+  },
+  {
+    "id": "regression",
+    "name": "regression",
+    "count": 2,
+    "ideaIds": [
+      "idea-053",
+      "idea-059"
+    ]
+  },
+  {
+    "id": "regression-testing",
+    "name": "regression testing",
+    "count": 1,
+    "ideaIds": [
+      "idea-051"
+    ]
+  },
+  {
+    "id": "release",
+    "name": "release",
+    "count": 2,
+    "ideaIds": [
+      "idea-019",
+      "idea-031"
+    ]
+  },
+  {
+    "id": "release-gate",
+    "name": "release gate",
+    "count": 1,
+    "ideaIds": [
+      "idea-053"
+    ]
+  },
+  {
+    "id": "repair",
+    "name": "repair",
+    "count": 2,
+    "ideaIds": [
+      "idea-032",
+      "idea-045"
+    ]
+  },
+  {
+    "id": "research",
+    "name": "research",
+    "count": 3,
+    "ideaIds": [
+      "idea-008",
+      "idea-012",
+      "idea-020"
+    ]
+  },
+  {
+    "id": "restaurants",
+    "name": "restaurants",
+    "count": 1,
+    "ideaIds": [
+      "idea-042"
+    ]
+  },
+  {
+    "id": "reviews",
+    "name": "reviews",
+    "count": 2,
+    "ideaIds": [
+      "idea-004",
+      "idea-026"
+    ]
+  },
+  {
+    "id": "routes",
+    "name": "routes",
+    "count": 1,
+    "ideaIds": [
+      "idea-033"
+    ]
+  },
+  {
+    "id": "routing",
+    "name": "routing",
+    "count": 2,
+    "ideaIds": [
+      "idea-003",
+      "idea-016"
+    ]
+  },
+  {
+    "id": "security",
+    "name": "security",
+    "count": 2,
+    "ideaIds": [
+      "idea-006",
+      "idea-010"
+    ]
+  },
+  {
+    "id": "seller",
+    "name": "seller",
+    "count": 1,
+    "ideaIds": [
+      "idea-029"
+    ]
+  },
+  {
+    "id": "shorts",
+    "name": "shorts",
+    "count": 1,
+    "ideaIds": [
+      "idea-024"
+    ]
+  },
+  {
+    "id": "skills",
+    "name": "skills",
+    "count": 1,
+    "ideaIds": [
+      "idea-018"
+    ]
+  },
+  {
+    "id": "social-media",
+    "name": "social media",
+    "count": 1,
+    "ideaIds": [
+      "idea-037"
+    ]
+  },
+  {
+    "id": "sources",
+    "name": "sources",
+    "count": 1,
+    "ideaIds": [
+      "idea-011"
+    ]
+  },
+  {
+    "id": "sponsorship",
+    "name": "sponsorship",
+    "count": 1,
+    "ideaIds": [
+      "idea-055"
+    ]
+  },
+  {
+    "id": "storage",
+    "name": "storage",
+    "count": 1,
+    "ideaIds": [
+      "idea-048"
+    ]
+  },
+  {
+    "id": "student-workflow",
+    "name": "student workflow",
+    "count": 1,
+    "ideaIds": [
+      "idea-056"
+    ]
+  },
+  {
+    "id": "students",
+    "name": "students",
+    "count": 3,
+    "ideaIds": [
+      "idea-023",
+      "idea-038",
+      "idea-042"
+    ]
+  },
+  {
+    "id": "subscriptions",
+    "name": "subscriptions",
+    "count": 1,
+    "ideaIds": [
+      "idea-022"
+    ]
+  },
+  {
+    "id": "support-agents",
+    "name": "support agents",
+    "count": 1,
+    "ideaIds": [
+      "idea-060"
+    ]
+  },
+  {
+    "id": "sustainability",
+    "name": "sustainability",
+    "count": 1,
+    "ideaIds": [
+      "idea-045"
+    ]
+  },
+  {
+    "id": "telephony",
+    "name": "telephony",
+    "count": 1,
+    "ideaIds": [
+      "idea-059"
+    ]
+  },
+  {
+    "id": "templates",
+    "name": "templates",
+    "count": 1,
+    "ideaIds": [
+      "idea-043"
+    ]
+  },
+  {
+    "id": "testing",
+    "name": "testing",
+    "count": 1,
+    "ideaIds": [
+      "idea-001"
+    ]
+  },
+  {
+    "id": "tickets",
+    "name": "tickets",
+    "count": 1,
+    "ideaIds": [
+      "idea-039"
+    ]
+  },
+  {
+    "id": "tool-use",
+    "name": "tool use",
+    "count": 1,
+    "ideaIds": [
+      "idea-060"
+    ]
+  },
+  {
+    "id": "tourism",
+    "name": "tourism",
+    "count": 2,
+    "ideaIds": [
+      "idea-055",
+      "idea-058"
+    ]
+  },
+  {
+    "id": "travel",
+    "name": "travel",
+    "count": 1,
+    "ideaIds": [
+      "idea-033"
+    ]
+  },
+  {
+    "id": "trust",
+    "name": "trust",
+    "count": 1,
+    "ideaIds": [
+      "idea-026"
+    ]
+  },
+  {
+    "id": "validation",
+    "name": "validation",
+    "count": 1,
+    "ideaIds": [
+      "idea-009"
+    ]
+  },
+  {
+    "id": "verification",
+    "name": "verification",
+    "count": 1,
+    "ideaIds": [
+      "idea-018"
+    ]
+  },
+  {
+    "id": "versions",
+    "name": "versions",
+    "count": 1,
+    "ideaIds": [
+      "idea-049"
+    ]
+  },
+  {
+    "id": "video",
+    "name": "video",
+    "count": 3,
+    "ideaIds": [
+      "idea-007",
+      "idea-021",
+      "idea-024"
+    ]
+  },
+  {
+    "id": "voice-ai",
+    "name": "voice AI",
+    "count": 1,
+    "ideaIds": [
+      "idea-059"
+    ]
+  },
+  {
+    "id": "voice-agents",
+    "name": "voice agents",
+    "count": 1,
+    "ideaIds": [
+      "idea-051"
+    ]
+  },
+  {
+    "id": "workspace",
+    "name": "workspace",
+    "count": 1,
+    "ideaIds": [
+      "idea-016"
+    ]
+  }
+]

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Archive · Venture Atlas OS</title>
+  <meta name="description" content="Browse the Venture Atlas research archive — constitution, source inventory, extraction ledger, historical runs, assumptions, completeness audit, and scoring methodology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="research" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./rankings.html">Rankings</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./matcher.html">Matcher</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./tags.html">Tags</a>
+        <a href="./dossiers.html">Dossiers</a>
+        <a href="./prompts.html">Prompts</a>
+        <a href="./sources.html">Sources</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./collaboration.html">Collaboration</a>
+        <a href="./research.html" aria-current="page">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" style="max-width:900px;margin:0 auto;padding:2rem 1.5rem">
+
+    <div class="eyebrow" style="margin-bottom:0.5rem">Source Intelligence</div>
+    <h1 style="font-size:2rem;margin-bottom:0.5rem">Research Archive</h1>
+    <p style="color:var(--text2);margin-bottom:2rem;font-size:1.05rem">
+      The complete research trail — constitution, source inventory, extraction ledger, historical runs, scoring assumptions, and completeness audit.
+      Everything is open, verifiable, and citable.
+    </p>
+
+    <!-- Archive Index -->
+    <section style="margin-bottom:2.5rem" aria-labelledby="archiveTitle">
+      <h2 id="archiveTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Archive Index</h2>
+
+      <div style="display:grid;gap:1rem">
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">📜</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Original Research Constitution</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                The foundational contract from the original Deep Research sessions. Partially recovered with SHA-256 checksum.
+                Defines provenance-first methodology, immutable-history rules, and evidence-weighting framework.
+              </p>
+              <a href="./constitution.html" class="button primary sm">View Constitution</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">🗂️</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Source Inventory</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                All source records cited across the repository. Includes provenance type (primary, secondary, derived), access date, and reliability rating.
+              </p>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+                <a href="./sources.html" class="button primary sm">Browse Sources</a>
+                <a href="../data/sources.json" class="button ghost sm">sources.json</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">📊</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Extraction Ledger</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                A structured log of every data extraction operation — which source was read, what data was extracted, and what assumptions were made during extraction.
+              </p>
+              <a href="../data/extraction-ledger.json" class="button ghost sm">extraction-ledger.json</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">🏆</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Research Runs &amp; Tournament History</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                Eight Deep Research sessions produced tournament-style rankings. Each run is an immutable snapshot with its own winner list, date, and methodology note.
+              </p>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+                <a href="./rankings.html" class="button primary sm">Browse Rankings</a>
+                <a href="../data/research-runs.json" class="button ghost sm">research-runs.json</a>
+                <a href="../data/ranking-runs.json" class="button ghost sm">ranking-runs.json</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">🔬</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Scoring Methodology</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                How ideas are scored across 8 dimensions: market size, founder fit, technical feasibility, evidence quality, strategic clarity, revenue speed, capital efficiency, and differentiation.
+              </p>
+              <a href="./methodology.html" class="button primary sm">Scoring Methodology</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">📋</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Completeness Audit</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                An honest accounting of what is verified, what is estimated, what is inaccessible, and what is missing from the dataset. The repository does not claim perfection.
+              </p>
+              <a href="./completeness.html" class="button primary sm">View Audit</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.25rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+            <div style="font-size:1.5rem">💾</div>
+            <div style="flex:1;min-width:200px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem">Sensitivity Analysis</h3>
+              <p style="font-size:0.825rem;color:var(--text2);margin-bottom:0.75rem">
+                How much do scores change when input assumptions change? Sensitivity analysis shows which ideas are robust across assumptions and which depend on specific conditions being true.
+              </p>
+              <a href="../data/sensitivity-analysis.json" class="button ghost sm">sensitivity-analysis.json</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Research Sessions Timeline -->
+    <section style="margin-bottom:2rem" aria-labelledby="timelineTitle">
+      <h2 id="timelineTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Research Session Timeline</h2>
+      <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+        A chronological view of every research session, data event, and corpus milestone.
+      </p>
+      <a href="./timeline.html" class="button primary">View Full Timeline</a>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>Venture Atlas OS &mdash; open research repository.</p>
+    <p style="margin-top:0.4rem">
+      <a href="./about.html">About</a> ·
+      <a href="./completeness.html">Completeness audit</a> ·
+      <a href="./methodology.html">Scoring methodology</a>
+    </p>
+  </footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

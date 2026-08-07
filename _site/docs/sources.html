@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Library — Venture Atlas OS</title>
+  <meta name="description" content="Full source library for the Venture Atlas OS research repository. 62+ sources including government studies, academic preprints, industry research, protocol documentation, and company announcements.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="sources" data-root="..">
+  <main id="main">
+    <section class="section" style="margin-bottom:1rem">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Ideas</a>
+        <span class="sep">›</span>
+        <span>Sources</span>
+      </nav>
+      <h1 style="font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:0.5rem">Source Library</h1>
+      <p class="lede" style="margin-bottom:1rem">
+        All cited sources for the Venture Atlas OS research corpus — government studies, academic preprints,
+        industry research, protocol documentation, and company announcements. Access status is recorded
+        so rendered excerpts are not mistaken for full original files.
+      </p>
+      <div class="notice" role="note">
+        <strong>Confidence labels</strong> reflect how well a source supports its cited claims —
+        <span class="confidence-badge high" style="display:inline">high</span> = primary data with clear methodology,
+        <span class="confidence-badge medium" style="display:inline">medium</span> = secondary or vendor research,
+        <span class="confidence-badge low" style="display:inline">low</span> = anecdotal or speculative.
+      </div>
+    </section>
+
+    <div class="toolbar" style="grid-template-columns:1fr;margin-bottom:1rem">
+      <input
+        id="sourceSearch"
+        type="search"
+        placeholder="Search sources by title, publisher, type, or supported ideas…"
+        aria-label="Search sources"
+        autocomplete="off"
+      >
+    </div>
+
+    <div style="font-size:0.875rem;color:var(--muted);margin-bottom:1rem">
+      <span id="sourceCount">Loading sources…</span>
+    </div>
+
+    <div id="sourceList">
+      <!-- Populated by site.js initSources() -->
+    </div>
+  </main>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

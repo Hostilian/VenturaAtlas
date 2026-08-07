@@ -1,0 +1,236 @@
+VENTURE ATLAS OS — MASTER SEARCH PROMPT
+For use with ChatGPT, Claude, Gemini, or any AI assistant.
+Markdown version: prompts/MASTER_SEARCH_PROMPT.md
+Plain-text lifecycle prompts: prompts/IDEA_LIFECYCLE_PROMPTS.txt
+========================================================================
+
+HOW TO USE
+----------
+Copy everything below the "PROMPT START" line and paste it directly into
+your AI assistant of choice. Fill in the bracketed fields before sending.
+Works best with: Claude 3.5+, GPT-4o, Gemini 1.5 Pro.
+
+BEST RESULTS:
+- Use with the full ideas.json or ideas.csv from the repository
+  (download from the main page, then paste relevant sections)
+- Run in a fresh conversation for maximum context window
+- Iterate — ask follow-up questions to drill into promising ideas
+
+========================================================================
+PROMPT START — COPY FROM HERE
+========================================================================
+
+You are a venture research analyst working on behalf of a founder using
+the Venture Atlas OS system. Your job is to find, evaluate, and prioritize
+business opportunities using a rigorous, evidence-based methodology.
+
+The Venture Atlas scoring system rates ideas on 8 dimensions (0-100 each):
+1. Overall Opportunity Score (composite)
+2. Market Size Score (total addressable market)
+3. Profit Potential Score (margins, LTV:CAC, scalability)
+4. Confidence Score (quality of evidence supporting claims)
+5. Speed to Revenue Score (weeks/months to first revenue)
+6. Founder Accessibility Score (how accessible to a solo/small team)
+7. Differentiation Score (uniqueness vs. existing alternatives)
+8. Technical Feasibility Score (buildability with current tech stack)
+
+Score legend:
+  90-100 = Exceptional. Rare combination of strong signals.
+  80-89  = Strong. Worth serious investigation.
+  70-79  = Good. Needs more validation but promising.
+  60-69  = Moderate. Specific conditions required to succeed.
+  50-59  = Weak. Significant risks or gaps.
+  <50    = Not recommended. Major structural problems.
+
+Status labels:
+  PRIORITY   = Top-ranked, most complete research, highest confidence
+  RESEARCHED = Fully documented, validated, ready to build
+  EXPLORE    = Early-stage, promising but needs more validation
+  ARCHIVED   = Deprioritized, not recommended without new evidence
+
+Evidence labels:
+  [VERIFIED]    = Confirmed by primary source (direct data or first-hand account)
+  [CITED]       = Supported by secondary source (report, study, publication)
+  [ESTIMATED]   = Calculated from available data with stated assumptions
+  [CLAIMED]     = Stated without external verification
+  [ASSUMED]     = Logical inference, not tested
+
+TASK: [CHOOSE ONE OR MORE BELOW AND REPLACE THIS LINE]
+
+--- OPTION A: Find new ideas in a specific domain ---
+I need you to identify 5 high-potential business ideas in the following domain:
+Domain: [INSERT DOMAIN — e.g., "EU regulatory compliance tools", "AI developer tools", "food tech"]
+My constraints:
+  - Budget: $[X]
+  - Timeline to first revenue: [X weeks/months]
+  - Technical skill: [none / basic / intermediate / advanced]
+  - Target market: [geography or customer type]
+
+For each idea:
+- Name and one-sentence description
+- Problem statement (who suffers, how badly, how often)
+- Target customer (specific, not generic)
+- Proposed solution overview
+- Revenue model
+- Startup cost estimate
+- Speed to first revenue estimate
+- Overall score estimate (0-100) with rationale
+- Top 3 risks
+- Confidence level in this idea (High/Medium/Low) and why
+
+--- OPTION B: Evaluate a specific idea ---
+Please evaluate this idea using the Venture Atlas methodology:
+
+Idea: [INSERT IDEA NAME OR DESCRIPTION]
+Context: [INSERT WHAT YOU KNOW ABOUT IT]
+
+Provide:
+- Full 8-dimension score (0-100 each) with rationale
+- Evidence quality assessment for each major claim
+- Top 5 assumptions that need to be tested
+- 3 kill conditions (specific, measurable facts that would kill this idea)
+- 3 go-conditions (specific, measurable facts that would confirm this is worth pursuing)
+- Recommended first action within 24 hours
+- Similar ideas from the Venture Atlas database (if known)
+
+--- OPTION C: Compare two or more ideas ---
+Please compare these ideas and recommend which to pursue:
+
+Idea 1: [INSERT]
+Idea 2: [INSERT]
+[Idea 3: INSERT if applicable]
+
+My situation:
+  - Budget: $[X]
+  - Available hours per week: [X]
+  - Timeline pressure: [low/medium/high — I need revenue in X months]
+  - Risk tolerance: [conservative / moderate / aggressive]
+  - Founder strengths: [list your skills]
+
+Comparison format:
+- Side-by-side score table (all 8 dimensions)
+- Honest pros and cons for each
+- Which one fits my specific situation better and why
+- What would change your recommendation
+- The single most important thing to do next if I choose each option
+
+--- OPTION D: Find adjacent ideas to an existing one ---
+I'm already exploring this idea: [INSERT IDEA]
+
+Please find 8 adjacent opportunities that I might be missing:
+- 2 ideas that serve the same customer differently
+- 2 ideas that solve the same problem for a different customer
+- 2 ideas that use the same technology in a different industry
+- 2 ideas that are upstream or downstream in the same value chain
+
+For each adjacent idea, score:
+- Differentiation from original: [1-10]
+- Market size potential: [1-10]
+- Effort to validate: [1-10]
+- My fit given [INSERT YOUR SKILLS AND BACKGROUND]: [1-10]
+
+--- OPTION E: Research a specific market for opportunities ---
+Please conduct a structured market opportunity analysis for:
+Market: [INSERT MARKET]
+Geography: [INSERT GEOGRAPHY]
+
+Analysis framework:
+1. REGULATORY SCAN: What regulations have changed or are changing in this market
+   in 2024-2026 that create compliance tool opportunities?
+
+2. TECHNOLOGY SCAN: What new AI/software capabilities are now available that
+   weren't 18 months ago, and which workflows do they make automatable?
+
+3. BEHAVIORAL SCAN: What customer behavior shifts have created new demand gaps?
+
+4. COMPETITIVE SCAN: What are the biggest incumbent weaknesses in this market
+   that a faster, cheaper, or more specialized solution could exploit?
+
+5. ECONOMIC SCAN: Where are there high-margin opportunities with low capital
+   requirements and a clear path to $10k MRR within 6 months?
+
+Output: Ranked list of 5-8 specific opportunities with scores and rationale.
+
+--- OPTION F: Validate a business model ---
+I'm considering this business model for [IDEA]:
+Revenue model: [subscription / transaction / usage-based / license / hybrid]
+Pricing: $[X] per [month/unit/project]
+Target customers: [X] customers in [MARKET]
+Startup cost: $[X]
+
+Please:
+1. Pressure-test this model — what are the 5 most likely failure modes?
+2. Calculate unit economics:
+   - Gross margin estimate
+   - LTV at [X]% annual churn
+   - Break-even customer count (at $[X] fixed monthly costs)
+   - LTV:CAC ratio needed for sustainability
+3. Compare to 3 alternative pricing/revenue models for this idea
+4. Recommend: is this the right model for this stage, or should I
+   consider alternatives? Why?
+
+--- OPTION G: Build a validation experiment ---
+I need to validate this idea in 7 days with zero budget:
+Idea: [INSERT]
+Target customer: [INSERT]
+Core hypothesis: "We believe [CUSTOMER] will pay for [SOLUTION] because [REASON]"
+
+Please design a 7-day validation sprint:
+
+Day 1: What research can I do today (free, desk-based)?
+Day 2: Where can I find and talk to 5 target customers?
+Day 3: What do I say in outreach to get 5 calls booked?
+Day 4-5: What questions do I ask in customer discovery calls?
+Day 6: What "smoke test" can I launch (landing page, waitlist, mock invoice)?
+Day 7: Based on results, how do I decide: proceed / pivot / kill?
+
+Success criteria: By Day 7 I will know [SPECIFIC ANSWER] with [HIGH/MEDIUM] confidence.
+
+========================================================================
+END OF PROMPT
+========================================================================
+
+FOLLOW-UP QUESTIONS TO USE AFTER THE INITIAL RESPONSE
+------------------------------------------------------
+These work in the same conversation after the initial prompt response:
+
+"For the [IDEA NAME] you identified, write me a customer discovery script."
+
+"What's the single most important experiment I should run in the next 48 hours to test [IDEA]?"
+
+"If I could only build ONE thing in the first 30 days for [IDEA], what would it be?"
+
+"Play devil's advocate — what are the 5 strongest arguments that [IDEA] will fail?"
+
+"What would the ideal founding team look like for [IDEA]? What skills and backgrounds?"
+
+"What does success look like at 30 / 90 / 365 days for [IDEA]?"
+
+"Give me a 3-minute elevator pitch for [IDEA] for each of these audiences:
+ a) A potential early customer  b) An angel investor  c) A potential co-founder"
+
+"If you had to bet on [IDEA 1] vs [IDEA 2] with $10,000 of your own money, which and why?"
+
+========================================================================
+TIPS FOR BEST RESULTS
+---------------------
+1. Be specific about your constraints (budget, time, skills, geography)
+2. Share relevant context you already know about the market
+3. Ask for sources or evidence quality ratings on any factual claims
+4. Request "steel man the opposite view" for any strong recommendation
+5. Iterate — the best ideas come from 3-5 rounds of refinement, not one shot
+
+========================================================================
+RELATED RESOURCES IN THIS REPOSITORY
+--------------------------------------
+  prompts/IDEA_LIFECYCLE_PROMPTS.md  — Prompts for each stage of the lifecycle
+  prompts/research-prompts.md        — Deep research and market analysis prompts
+  prompts/validation-prompts.md      — Customer discovery and assumption testing
+  prompts/financial-modeling-prompts.md  — Revenue and cost modeling prompts
+  prompts/marketing-prompts.md       — Go-to-market and growth prompts
+  docs/methodology.html              — Full scoring methodology explanation
+  docs/matcher.html                  — Interactive idea matcher tool
+  data/ideas.json                    — Full dataset (feed into AI for analysis)
+  data/ideas.csv                     — CSV format for spreadsheet analysis
+  SEARCH_AND_DISCOVERY_GUIDE.md      — How to browse and use the repository
+========================================================================

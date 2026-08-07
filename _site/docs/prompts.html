@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompt Library — Venture Atlas OS</title>
+  <meta name="description" content="Browse 1,750 context-bound AI prompts across 25 categories for research, validation, architecture, coding, pricing, and launch.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="prompts" data-root="..">
+  <main id="main">
+    <section class="section" style="margin-bottom:1.5rem">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Ideas</a>
+        <span class="sep">›</span>
+        <span>Prompts</span>
+      </nav>
+      <h1 style="font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:0.5rem">Prompt Library</h1>
+      <p class="lede" style="margin-bottom:1rem">
+        Every idea in the repository includes a 25-prompt build pack. Search 1,750 context-bound prompts covering deep market research, customer discovery, technical architecture, MVP coding, pricing, and launch execution.
+      </p>
+    </section>
+
+    <div class="toolbar" style="grid-template-columns:1fr;margin-bottom:1rem">
+      <input
+        id="promptSearch"
+        type="search"
+        placeholder="Search prompts by title, prompt type (e.g. mvp-coding, pricing-research), or idea ID…"
+        aria-label="Search prompts"
+        autocomplete="off"
+      >
+    </div>
+
+    <div style="font-size:0.875rem;color:var(--muted);margin-bottom:1rem">
+      <span id="promptCount">Loading prompts…</span>
+    </div>
+
+    <div id="promptList" class="cards" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      <!-- Populated by site.js initPrompts() -->
+    </div>
+  </main>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
