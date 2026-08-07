@@ -3804,5 +3804,196 @@
       "compliance-readiness"
     ],
     "normalizedText": "e-invoice readiness map country-specific diagnostic mapping small business invoice workflows against eu e-invoicing mandates specialized teams operations independence operational trust independence operational trust compliance-readiness"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-218",
+    "slug": "smart-agentic-commerce-data-toolkit-idea-218",
+    "name": "Smart Agentic Commerce Data Toolkit",
+    "category": "Product verification & evidence",
+    "subcategory": "agentic commerce data",
+    "concept": "A self-serve, zero-capital tool that automates incomplete e-commerce specs and fake reviews causing high return rates for product verification & evidence workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Incomplete e-commerce specs and fake reviews causing high return rates",
+    "overallScore": 87.7,
+    "tags": [
+      "proof",
+      "ecommerce",
+      "autonomous-discovered",
+      "verification",
+      "own-orch",
+      "v2"
+    ],
+    "normalizedText": "smart agentic commerce data toolkit a self-serve zero-capital tool that automates incomplete e-commerce specs and fake reviews causing high return rates for product verification evidence workflows incomplete e-commerce specs and fake reviews causing high return rates technical founders operators or compliance teams product verification evidence proof ecommerce autonomous-discovered verification own-orch v2"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-219",
+    "slug": "fit-first-parametric-repair-studio-idea-219",
+    "name": "Fit-First Parametric Repair Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "parametric-repair",
+    "concept": "Guided measurement, safety classification, tiny test-fit coupon, printer calibration, and final editable STL/STEP for low-risk broken plastic parts.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "fit-first repair & fabrication",
+      "parametric-repair"
+    ],
+    "normalizedText": "fit-first parametric repair studio guided measurement safety classification tiny test-fit coupon printer calibration and final editable stl step for low-risk broken plastic parts makers repairers print services fit-first repair fabrication fit-first repair fabrication parametric-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-220",
+    "slug": "printer-specific-fit-profile-idea-220",
+    "name": "Printer-Specific Fit Profile",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "printer-calibration",
+    "concept": "Calibration coupon and stored compensation profile for 3D printers, materials, nozzles, and fit types.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 80,
+    "tags": [
+      "fit-first repair & fabrication",
+      "printer-calibration"
+    ],
+    "normalizedText": "printer-specific fit profile calibration coupon and stored compensation profile for 3d printers materials nozzles and fit types makers repairers print services fit-first repair fabrication fit-first repair fabrication printer-calibration"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-221",
+    "slug": "repair-caf-parametric-intake-system-idea-221",
+    "name": "Repair Café Parametric Intake System",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "community-repair",
+    "concept": "Structured repair intake system with part archetype selection, measurement cards, safety exclusions, and fit-coupon generation.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 79,
+    "tags": [
+      "fit-first repair & fabrication",
+      "community-repair"
+    ],
+    "normalizedText": "repair cafe parametric intake system structured repair intake system with part archetype selection measurement cards safety exclusions and fit-coupon generation makers repairers print services fit-first repair fabrication fit-first repair fabrication community-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-222",
+    "slug": "appliance-control-knob-generator-idea-222",
+    "name": "Appliance Control-Knob Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "appliance-repair",
+    "concept": "Parametric round, splined, D-shaft, and set-screw control knobs with fit coupons and orientation marks.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 77,
+    "tags": [
+      "fit-first repair & fabrication",
+      "appliance-repair"
+    ],
+    "normalizedText": "appliance control-knob generator parametric round splined d-shaft and set-screw control knobs with fit coupons and orientation marks makers repairers print services fit-first repair fabrication fit-first repair fabrication appliance-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-223",
+    "slug": "furniture-foot-and-end-cap-generator-idea-223",
+    "name": "Furniture Foot and End-Cap Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "furniture-repair",
+    "concept": "Custom feet, tube caps, glides, and non-structural protective end caps based on measured profiles.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 76,
+    "tags": [
+      "fit-first repair & fabrication",
+      "furniture-repair"
+    ],
+    "normalizedText": "furniture foot and end-cap generator custom feet tube caps glides and non-structural protective end caps based on measured profiles makers repairers print services fit-first repair fabrication fit-first repair fabrication furniture-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-224",
+    "slug": "print-shop-measurement-intake-portal-idea-224",
+    "name": "Print-Shop Measurement Intake Portal",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "3d-print-services",
+    "concept": "Guided customer intake portal collecting photo references, scale measurements, mating-point dimensions, and environment notes.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 75,
+    "tags": [
+      "fit-first repair & fabrication",
+      "3d-print-services"
+    ],
+    "normalizedText": "print-shop measurement intake portal guided customer intake portal collecting photo references scale measurements mating-point dimensions and environment notes makers repairers print services fit-first repair fabrication fit-first repair fabrication 3d-print-services"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-225",
+    "slug": "custom-drill-alignment-guide-idea-225",
+    "name": "Custom Drill-Alignment Guide",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "workshop-tooling",
+    "concept": "Hole-spacing and perpendicular-alignment drill jigs generated for specific fasteners and materials.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 73,
+    "tags": [
+      "fit-first repair & fabrication",
+      "workshop-tooling"
+    ],
+    "normalizedText": "custom drill-alignment guide hole-spacing and perpendicular-alignment drill jigs generated for specific fasteners and materials makers repairers print services fit-first repair fabrication fit-first repair fabrication workshop-tooling"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-226",
+    "slug": "damage-shaped-mending-pattern-studio-idea-226",
+    "name": "Damage-Shaped Mending Pattern Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "garment-repair",
+    "concept": "Printable and projector-ready garment mending patch patterns generated from damage photo outlines.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 71,
+    "tags": [
+      "fit-first repair & fabrication",
+      "garment-repair"
+    ],
+    "normalizedText": "damage-shaped mending pattern studio printable and projector-ready garment mending patch patterns generated from damage photo outlines makers repairers print services fit-first repair fabrication fit-first repair fabrication garment-repair"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-227",
+    "slug": "heatwave-window-insert-pattern-studio-idea-227",
+    "name": "Heatwave Window-Insert Pattern Studio",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "climate-adaptation",
+    "concept": "Measured cut patterns for removable reflective, insulating, or blackout window inserts.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 69,
+    "tags": [
+      "fit-first repair & fabrication",
+      "climate-adaptation"
+    ],
+    "normalizedText": "heatwave window-insert pattern studio measured cut patterns for removable reflective insulating or blackout window inserts makers repairers print services fit-first repair fabrication fit-first repair fabrication climate-adaptation"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-228",
+    "slug": "board-game-insert-generator-idea-228",
+    "name": "Board-Game Insert Generator",
+    "category": "Fit-First Repair & Fabrication",
+    "subcategory": "tabletop-organizers",
+    "concept": "Parametric trays and box organizers generated from component counts and inner box dimensions.",
+    "customer": "Makers, repairers & print services",
+    "problem": "",
+    "overallScore": 68,
+    "tags": [
+      "fit-first repair & fabrication",
+      "tabletop-organizers"
+    ],
+    "normalizedText": "board-game insert generator parametric trays and box organizers generated from component counts and inner box dimensions makers repairers print services fit-first repair fabrication fit-first repair fabrication tabletop-organizers"
   }
 ]
