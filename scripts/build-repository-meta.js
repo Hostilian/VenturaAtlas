@@ -10,13 +10,21 @@ const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
 
 function getCounts() {
-  let ideasCount = 0;
+  let canonicalIdeasCount = 0;
+  let stagedIdeasCount = 0;
+  let totalIdeasCount = 0;
   const categoriesSet = new Set();
+
   if (fs.existsSync(IDEAS_PATH)) {
     const raw = JSON.parse(fs.readFileSync(IDEAS_PATH, 'utf8'));
     const list = Array.isArray(raw) ? raw : (raw.ideas || []);
-    ideasCount = list.length;
+    totalIdeasCount = list.length;
     list.forEach(i => {
+      if (i.status === 'staged') {
+        stagedIdeasCount++;
+      } else {
+        canonicalIdeasCount++;
+      }
       if (i.category) categoriesSet.add(i.category);
     });
   }
@@ -29,10 +37,14 @@ function getCounts() {
   }
 
   let rankingsCount = 0;
+  let rankingEntriesCount = 0;
   if (fs.existsSync(RANKINGS_PATH)) {
     const raw = JSON.parse(fs.readFileSync(RANKINGS_PATH, 'utf8'));
     const list = Array.isArray(raw) ? raw : (raw.rankings || []);
     rankingsCount = list.length;
+    if (list.length > 0 && Array.isArray(list[0].items)) {
+      rankingEntriesCount = list[0].items.length;
+    }
   }
 
   let promptsCount = 0;
@@ -47,10 +59,14 @@ function getCounts() {
   }
 
   return {
-    ideas: ideasCount,
+    ideas: totalIdeasCount,
+    canonicalIdeas: canonicalIdeasCount,
+    stagedIdeas: stagedIdeasCount,
+    totalIdeas: totalIdeasCount,
     categories: categoriesSet.size,
     sources: sourcesCount,
-    rankings: rankingsCount,
+    rankingViews: rankingsCount,
+    rankingEntries: rankingEntriesCount,
     prompts: promptsCount
   };
 }
@@ -68,9 +84,11 @@ function main() {
       if (
         prev.version === version &&
         prev.counts?.ideas === counts.ideas &&
+        prev.counts?.canonicalIdeas === counts.canonicalIdeas &&
+        prev.counts?.stagedIdeas === counts.stagedIdeas &&
         prev.counts?.categories === counts.categories &&
         prev.counts?.sources === counts.sources &&
-        prev.counts?.rankings === counts.rankings
+        prev.counts?.rankingViews === counts.rankingViews
       ) {
         existingTimestamp = prev.generatedAt || existingTimestamp;
       }
@@ -94,9 +112,11 @@ function main() {
     if (
       current.version !== metaData.version ||
       current.counts.ideas !== counts.ideas ||
+      current.counts.canonicalIdeas !== counts.canonicalIdeas ||
+      current.counts.stagedIdeas !== counts.stagedIdeas ||
       current.counts.categories !== counts.categories ||
       current.counts.sources !== counts.sources ||
-      current.counts.rankings !== counts.rankings
+      current.counts.rankingViews !== counts.rankingViews
     ) {
       console.error('[ERROR] repository-meta.json is stale');
       console.error('Expected:', metaData.counts);
@@ -108,7 +128,7 @@ function main() {
   }
 
   fs.writeFileSync(META_PATH, JSON.stringify(metaData, null, 2) + '\n', 'utf8');
-  console.log(`[OK] Generated repository-meta.json (v${version}, ${counts.ideas} ideas, ${counts.categories} categories)`);
+  console.log(`[OK] Generated repository-meta.json (v${version}, ${counts.canonicalIdeas} canonical + ${counts.stagedIdeas} staged = ${counts.totalIdeas} total ideas, ${counts.categories} categories)`);
 }
 
 main();

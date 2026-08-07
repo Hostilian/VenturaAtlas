@@ -31,8 +31,13 @@
     </p>
     <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
       <a href="./index.html" class="button button-primary">Go to Home</a>
-      <button onclick="window.location.reload()" class="button">Try Reconnecting</button>
+      <button id="reload-btn" class="button">Try Reconnecting</button>
     </div>
   </main>
+  <script>
+    document.getElementById('reload-btn')?.addEventListener('click', function() {
+      window.location.reload();
+    });
+  </script>
 </body>
 </html>

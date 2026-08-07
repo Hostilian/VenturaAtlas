@@ -67,6 +67,7 @@ const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas?.ideas || []);
 
 const ideaIds = new Set();
 const ideaSlugs = new Set();
+const categoriesInIdeas = new Set();
 
 for (const idea of ideas) {
   if (idea.id) {
@@ -84,9 +85,75 @@ for (const idea of ideas) {
     }
     ideaSlugs.add(idea.slug);
   }
+
+  if (idea.category) {
+    categoriesInIdeas.add(idea.category);
+  }
 }
 
-// 3. Manifest Icon Check
+// 3. Metadata count alignment
+if (meta && meta.counts) {
+  if (meta.counts.totalIdeas !== undefined && meta.counts.totalIdeas !== ideas.length) {
+    errors.push(`Stale repository-meta.json: totalIdeas count (${meta.counts.totalIdeas}) does not match ideas.json length (${ideas.length})`);
+  }
+  if (meta.counts.categories !== undefined && meta.counts.categories !== categoriesInIdeas.size) {
+    errors.push(`Stale repository-meta.json: categories count (${meta.counts.categories}) does not match unique categories in ideas.json (${categoriesInIdeas.size})`);
+  }
+}
+
+// 4. Search index freshness
+const searchIndex = readJson('data/search-index.json');
+if (searchIndex) {
+  const searchRecords = Array.isArray(searchIndex) ? searchIndex : (searchIndex.records || []);
+  if (searchRecords.length !== ideas.length) {
+    errors.push(`Search index count mismatch: data/search-index.json has ${searchRecords.length} records, but data/ideas.json has ${ideas.length} ideas`);
+  }
+}
+
+// 5. Sources validation
+const rawSources = readJson('data/sources.json');
+const sources = Array.isArray(rawSources) ? rawSources : (rawSources?.sources || []);
+const sourceIds = new Set(sources.map(s => s.id).filter(Boolean));
+
+for (const idea of ideas) {
+  if (Array.isArray(idea.sourceReferences)) {
+    for (const ref of idea.sourceReferences) {
+      if (typeof ref === 'string' && ref.startsWith('src-') && !sourceIds.has(ref)) {
+        warnings.push(`Idea ${idea.id} references non-existent source ID: ${ref}`);
+      }
+    }
+  }
+}
+
+// 6. Rankings validation
+const rawRankings = readJson('data/rankings.json');
+const rankingsList = Array.isArray(rawRankings) ? rawRankings : (rawRankings?.rankings || []);
+if (rankingsList.length > 0 && Array.isArray(rankingsList[0].items)) {
+  const items = rankingsList[0].items;
+  for (const item of items) {
+    const id = item.id || item.ideaId;
+    if (id && !ideaIds.has(id)) {
+      errors.push(`Rankings references non-existent idea ID: ${id}`);
+    }
+  }
+}
+
+// 7. Categories validation
+const rawCategories = readJson('data/categories.json');
+const categoriesList = Array.isArray(rawCategories) ? rawCategories : (rawCategories?.categories || []);
+if (categoriesList.length > 0) {
+  for (const cat of categoriesList) {
+    if (Array.isArray(cat.ideaIds)) {
+      for (const id of cat.ideaIds) {
+        if (!ideaIds.has(id)) {
+          errors.push(`Category '${cat.name || cat.id}' references non-existent idea ID: ${id}`);
+        }
+      }
+    }
+  }
+}
+
+// 8. Manifest Icon Check
 const manifest = readJson('manifest.webmanifest');
 if (manifest && Array.isArray(manifest.icons)) {
   if (manifest.icons.length === 0) {
@@ -103,7 +170,7 @@ if (manifest && Array.isArray(manifest.icons)) {
   }
 }
 
-// 4. Sitemap Placeholder Check
+// 9. Sitemap Placeholder Check
 const sitemapPath = checkFile('sitemap.xml');
 if (sitemapPath) {
   const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');

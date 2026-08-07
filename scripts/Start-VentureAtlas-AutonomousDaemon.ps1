@@ -1,4 +1,4 @@
-# Venture Atlas OS — Autonomous Multi-Agent Idea Discovery Daemon (v2)
+﻿# Venture Atlas OS — Autonomous Multi-Agent Idea Discovery Daemon (v2)
 # 
 # Bridges EUshop Multi-Provider Orchestrator pattern:
 #   Tier 1: Hermes via Ollama (local, free)
