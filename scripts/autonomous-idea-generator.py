@@ -461,8 +461,69 @@ def auto_promote(idea: dict, existing: list) -> bool:
     return False
 
 # ── Main ──────────────────────────────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────
+def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot: list, existing_names_snapshot: list):
+    domain = random.choice(SEARCH_DOMAINS)
+    next_id = get_next_idea_id(existing_snapshot, queue_snapshot)
+    log_info(f"[{run_idx+1}/{IDEAS_PER_RUN}] Parallel Domain worker active: '{domain['category']}' → next ID: {next_id}")
+
+    prompt = build_idea_prompt(domain, existing_names_snapshot)
+    try:
+        raw_resp, provider = call_llm(prompt, domain)
+    except Exception as e:
+        log_error(f"Orchestrator error: {e}")
+        return None
+
+    llm_idea = extract_json(raw_resp)
+    if not llm_idea:
+        log_warn("Could not parse JSON from LLM response, retrying with own-orch")
+        from va_orchestrator import _call_own_orchestrator
+        raw_resp = _call_own_orchestrator(prompt, domain)
+        llm_idea = extract_json(raw_resp)
+        provider = "own-orch"
+        if not llm_idea:
+            log_error("Own-orch also failed JSON parse, skipping this iteration")
+            return None
+
+    idea_name = llm_idea.get('name', '')
+
+    if is_duplicate(idea_name, existing_names_snapshot):
+        log_warn(f"Duplicate idea '{idea_name}' — skipping", name=idea_name)
+        return ("rejected", None)
+
+    idea = assemble_idea(llm_idea, next_id, domain, provider)
+    checklist = idea["validationChecklist"]
+    kill = idea["killCriteria"]
+    headline = idea["compositeScores"]["compositeHeadline"]
+
+    log_info(
+        f"Generated {idea['id']}: '{idea['name']}' "
+        f"score={headline} checklist={checklist['scorePercentage']}% "
+        f"provider={provider}",
+        id=idea['id'], score=headline, provider=provider
+    )
+
+    if kill["killFlagged"]:
+        log_warn(
+            f"KILL-FLAGGED: {idea['id']} has {kill['killCount']} kill conditions: "
+            f"{', '.join(kill['killFlags'])}",
+            id=idea['id']
+        )
+        return ("rejected", None)
+
+    if not checklist["passed"]:
+        log_warn(
+            f"CHECKLIST FAILED: {idea['id']} scored {checklist['scorePercentage']}% "
+            f"({checklist['passedCount']}/{checklist['totalCriteria']} passed)",
+            id=idea['id']
+        )
+        return ("rejected", None)
+
+    return ("valid", idea)
+
+
 def main():
-    log_info("=== Venture Atlas Autonomous Idea Engine v2 Started ===")
+    log_info("=== Venture Atlas Autonomous Parallel Idea Engine v2.5 Started ===")
     existing = load_existing_ideas()
     queue    = load_staging_queue()
     existing_names = get_all_existing_names(existing, queue)
@@ -474,86 +535,38 @@ def main():
     promoted  = 0
     rejected  = 0
 
-    for run_idx in range(IDEAS_PER_RUN):
-        domain = random.choice(SEARCH_DOMAINS)
-        next_id = get_next_idea_id(existing, queue)
-        log_info(f"[{run_idx+1}/{IDEAS_PER_RUN}] Domain: '{domain['category']}' → next ID: {next_id}")
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    max_workers = min(IDEAS_PER_RUN, 5)
 
-        # Build prompt and call orchestrator
-        prompt = build_idea_prompt(domain, existing_names)
-        try:
-            raw_resp, provider = call_llm(prompt, domain)
-        except Exception as e:
-            log_error(f"Orchestrator error: {e}")
-            continue
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [
+            executor.submit(process_single_domain, idx, existing, queue, existing_names)
+            for idx in range(IDEAS_PER_RUN)
+        ]
 
-        # Parse LLM JSON response
-        llm_idea = extract_json(raw_resp)
-        if not llm_idea:
-            log_warn("Could not parse JSON from LLM response, retrying with own-orch")
-            from va_orchestrator import _call_own_orchestrator
-            raw_resp = _call_own_orchestrator(prompt, domain)
-            llm_idea = extract_json(raw_resp)
-            provider = "own-orch"
-            if not llm_idea:
-                log_error("Own-orch also failed JSON parse, skipping this iteration")
+        for future in as_completed(futures):
+            res = future.result()
+            if not res:
                 continue
-
-        idea_name = llm_idea.get('name', '')
-
-        # Deduplication
-        if is_duplicate(idea_name, existing_names):
-            log_warn(f"Duplicate idea '{idea_name}' — skipping", name=idea_name)
-            rejected += 1
-            continue
-
-        # Assemble full idea
-        idea = assemble_idea(llm_idea, next_id, domain, provider)
-        checklist = idea["validationChecklist"]
-        kill = idea["killCriteria"]
-        headline = idea["compositeScores"]["compositeHeadline"]
-        generated += 1
-
-        log_info(
-            f"Generated {idea['id']}: '{idea['name']}' "
-            f"score={headline} checklist={checklist['scorePercentage']}% "
-            f"provider={provider}",
-            id=idea['id'], score=headline, provider=provider
-        )
-
-        if kill["killFlagged"]:
-            log_warn(
-                f"KILL-FLAGGED: {idea['id']} has {kill['killCount']} kill conditions: "
-                f"{', '.join(kill['killFlags'])}",
-                id=idea['id']
-            )
-            rejected += 1
-            continue
-
-        if not checklist["passed"]:
-            log_warn(
-                f"CHECKLIST FAILED: {idea['id']} scored {checklist['scorePercentage']}% "
-                f"({checklist['passedCount']}/{checklist['totalCriteria']} passed)",
-                id=idea['id']
-            )
-            rejected += 1
-            continue
-
-        # Try auto-promote
-        if auto_promote(idea, existing):
-            # Refresh existing_names
-            existing_names.append(idea['name'].lower())
-            promoted += 1
-        else:
-            queue.append(idea)
-            save_staging_queue(queue)
-            existing_names.append(idea['name'].lower())
-            staged += 1
-            log_success(
-                f"STAGED: {idea['id']} '{idea['name']}' (score={headline}) "
-                f"Queue size: {len(queue)}",
-                id=idea['id'], score=headline
-            )
+            status, idea = res
+            if status == "rejected":
+                rejected += 1
+            elif status == "valid" and idea:
+                generated += 1
+                if auto_promote(idea, existing):
+                    existing_names.append(idea['name'].lower())
+                    promoted += 1
+                else:
+                    queue.append(idea)
+                    save_staging_queue(queue)
+                    existing_names.append(idea['name'].lower())
+                    staged += 1
+                    headline = idea["compositeScores"]["compositeHeadline"]
+                    log_success(
+                        f"STAGED: {idea['id']} '{idea['name']}' (score={headline}) "
+                        f"Queue size: {len(queue)}",
+                        id=idea['id'], score=headline
+                    )
 
     # Update state totals
     state = _load_state()
