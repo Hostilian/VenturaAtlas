@@ -1,42 +1,42 @@
 {
   "schemaVersion": "1.0.0",
-  "lastRun": "2026-08-07T04:09:28.997893+00:00",
-  "totalIdeasGenerated": 82,
-  "totalIdeasPromoted": 64,
+  "lastRun": "2026-08-07T04:19:49.478225+00:00",
+  "totalIdeasGenerated": 83,
+  "totalIdeasPromoted": 65,
   "providers": {
     "hermes-ollama": {
-      "failures": 18,
-      "circuitUntil": "2026-08-07T04:10:26.973780+00:00",
+      "failures": 20,
+      "circuitUntil": "2026-08-07T04:22:48.358306+00:00",
       "lastUsed": "",
-      "totalCalls": 18,
+      "totalCalls": 20,
       "successCalls": 0
     },
     "omniRoute": {
-      "failures": 18,
-      "circuitUntil": "2026-08-07T04:10:26.977782+00:00",
+      "failures": 20,
+      "circuitUntil": "2026-08-07T04:22:48.362306+00:00",
       "lastUsed": "",
-      "totalCalls": 18,
+      "totalCalls": 20,
       "successCalls": 0
     },
     "fcc-claude": {
-      "failures": 18,
-      "circuitUntil": "2026-08-07T04:10:26.983784+00:00",
+      "failures": 20,
+      "circuitUntil": "2026-08-07T04:22:48.366303+00:00",
       "lastUsed": "",
-      "totalCalls": 18,
+      "totalCalls": 20,
       "successCalls": 0
     },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-07T04:09:28.968894Z",
-      "totalCalls": 201,
-      "successCalls": 201
+      "lastUsed": "2026-08-07T04:19:49.454221Z",
+      "totalCalls": 209,
+      "successCalls": 209
     },
     "anthropic-full": {
-      "failures": 18,
-      "circuitUntil": "2026-08-07T04:10:26.987781+00:00",
+      "failures": 20,
+      "circuitUntil": "2026-08-07T04:22:48.371304+00:00",
       "lastUsed": "",
-      "totalCalls": 18,
+      "totalCalls": 20,
       "successCalls": 0
     }
   }
