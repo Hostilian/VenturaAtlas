@@ -57,37 +57,28 @@ def list_queue():
 
 def promote_idea(target_id):
     queue = load_json(QUEUE_JSON_PATH)
-    canonical = load_json(IDEAS_JSON_PATH)
     
     match = None
     remaining_queue = []
     for item in queue:
-        if item.get('id') == target_id:
+        if item.get('id') == target_id or item.get('candidateId') == target_id or item.get('legacyCandidateId') == target_id:
             match = item
         else:
             remaining_queue.append(item)
             
     if not match:
-        print(f"❌ Error: Idea ID '{target_id}' not found in staging queue.")
+        print(f"❌ Error: Idea/Candidate ID '{target_id}' not found in staging queue.")
+        return
+
+    from va_runtime.publisher import publish_candidate
+    ok, msg, canonical_id = publish_candidate(match)
+    if not ok:
+        print(f"❌ Publication failed: {msg}")
         return
         
-    canonical.append(match)
-    save_ideas(canonical)
     save_queue(remaining_queue)
-    
-    print(f"✅ Promoted '{match['name']}' ({target_id}) to canonical data/ideas.json!")
-    
-    # Re-run generator script to create dossier
-    gen_script = os.path.join(BASE_DIR, 'scripts', 'generate-eighth-reset-dossiers.py')
-    if os.path.exists(gen_script):
-        subprocess.run([sys.executable, gen_script], cwd=BASE_DIR)
-        print("🎉 Dossier Markdown file regenerated.")
-        
-    # Re-run build-search
-    search_script = os.path.join(BASE_DIR, 'scripts', 'build-search-index.js')
-    if os.path.exists(search_script):
-        subprocess.run(['node', search_script], cwd=BASE_DIR)
-        print("🔍 Search index updated.")
+    print(f"✅ Promoted '{match.get('name')}' as canonical idea '{canonical_id}' via Serialized Publisher!")
+    print("🔍 Triggered search index and metadata build.")
 
 def clear_queue():
     save_queue([])
