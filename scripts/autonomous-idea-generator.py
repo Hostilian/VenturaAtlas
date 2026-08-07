@@ -452,6 +452,14 @@ def auto_promote(idea: dict, existing: list) -> bool:
     if score >= AUTO_PROMOTE_THR and not idea.get("killCriteria", {}).get("killFlagged"):
         existing.append(idea)
         save_canonical(existing)
+
+        # Generate dossier & prompt pack immediately
+        try:
+            import subprocess
+            subprocess.run([sys.executable, os.path.join(BASE_DIR, 'scripts', 'generate-all-missing-dossiers.py')], check=False)
+        except Exception as _e:
+            log_warn(f"Failed to generate dossier for auto-promoted idea: {_e}")
+
         log_success(
             f"AUTO-PROMOTED {idea['id']} '{idea['name']}' "
             f"(score={score}) directly to ideas.json",
