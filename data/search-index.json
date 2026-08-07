@@ -5252,5 +5252,26 @@
       "energy"
     ],
     "normalizedText": "grid equipment cancellation exchange secondary transformer switchgear allocation secondary trading and allocation exchange for canceled or delayed high-voltage transformer orders and factory slot rights multi-year transformer procurement lead times delaying high-value energy projects epc contractors data centre developers and utility project directors power equipment energy supply chain transformers grid-equipment electrical-hardware secondary-market energy"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-297",
+    "slug": "zero-setup-agentic-commerce-data-engine-idea-297",
+    "name": "Zero-Setup Agentic Commerce Data Engine",
+    "category": "Product verification & evidence",
+    "subcategory": "agentic commerce data",
+    "concept": "A self-serve, zero-capital tool that automates incomplete e-commerce specs and fake reviews causing high return rates for product verification & evidence workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Incomplete e-commerce specs and fake reviews causing high return rates",
+    "overallScore": 85.7,
+    "tags": [
+      "v2",
+      "own-orch",
+      "proof",
+      "ecommerce",
+      "verification",
+      "autonomous-discovered"
+    ],
+    "normalizedText": "zero-setup agentic commerce data engine a self-serve zero-capital tool that automates incomplete e-commerce specs and fake reviews causing high return rates for product verification evidence workflows incomplete e-commerce specs and fake reviews causing high return rates technical founders operators or compliance teams product verification evidence v2 own-orch proof ecommerce verification autonomous-discovered"
   }
 ]

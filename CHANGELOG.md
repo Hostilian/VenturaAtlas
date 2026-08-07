@@ -1,12 +1,12 @@
-# Changelog
+# Venture Atlas OS — Changelog
 
-## 2.0.0 — 2026-08-05
+## [2.3.0] - 2026-08-07
 
-- Rebuilt the repository from the recoverable seven-file v1 package.
-- Expanded to 60 canonical idea dossiers and 25 prompts per idea.
-- Added extraction ledger, source inventory, schema, CSV, 30 rankings, sensitivity analysis, relationship data, financial/validation/technical/launch packs, static website, scripts, tests, and GitHub Pages workflows.
-- Added explicit access gaps and completeness limits.
+### Added
+- **GCP Cloud Control Plane:** Added `cloud-control-plane/Dockerfile`, `cloud-control-plane/job_runner.py`, and `cloud-control-plane/terraform/main.tf` for 24/7 unattended cloud execution on Cloud Run Jobs, Cloud Scheduler, and Secret Manager.
+- **Failure Injection Test Suite:** Added `tests/failure-injection.test.js` validating provider circuit breakers, artifact security, and metadata build consistency.
+- **Single Source of Truth Synchronization:** Enhanced `scripts/update-documentation-stats.js` and `scripts/check-repository-drift.js` to automatically synchronize and validate `index.html` meta tags and `sw.js` `CACHE_VERSION` with `data/repository-meta.json`.
 
-## 1.0.0
-
-- Initial seven-file artifact with 50 lightly structured ideas.
+### Fixed
+- Fixed live GitHub Pages stale count bug by integrating automated `index.html` meta tag and `sw.js` version synchronization into the build pipeline.
+- Enforced intra-provider key pool retry loops in `scripts/va_orchestrator.py` with ToS compliance and circuit breaker backoffs.

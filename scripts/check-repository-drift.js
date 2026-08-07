@@ -68,6 +68,32 @@ function main() {
         errors.push(`Missing generated stats block in ${basename}`);
       }
     });
+
+    // Check index.html meta description drift
+    const indexHtmlPath = path.join(ROOT, 'index.html');
+    if (fs.existsSync(indexHtmlPath)) {
+      const htmlContent = fs.readFileSync(indexHtmlPath, 'utf8');
+      const htmlMatch = htmlContent.match(/content="Browse (\d+)\+/i);
+      if (htmlMatch) {
+        const htmlFound = parseInt(htmlMatch[1], 10);
+        if (htmlFound !== meta.counts.ideas) {
+          errors.push(`index.html meta tag drift: found ${htmlFound}, expected ${meta.counts.ideas}`);
+        }
+      }
+    }
+
+    // Check sw.js version drift
+    const swPath = path.join(ROOT, 'sw.js');
+    if (fs.existsSync(swPath)) {
+      const swContent = fs.readFileSync(swPath, 'utf8');
+      const swMatch = swContent.match(/const CACHE_VERSION = '([^']+)';/);
+      if (swMatch) {
+        const swVer = swMatch[1];
+        if (swVer !== meta.version) {
+          errors.push(`sw.js CACHE_VERSION drift: found ${swVer}, expected ${meta.version}`);
+        }
+      }
+    }
   }
 
   if (errors.length > 0) {
