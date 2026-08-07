@@ -13,6 +13,8 @@ const FORBIDDEN_PATTERNS = [
   /^apps/i,
   /^tests/i,
   /^scripts/i,
+  /idea-staging-queue\.json$/i,
+  /provider-state\.json$/i,
   /package(-lock)?\.json$/i,
   /tsconfig.*\.json$/i,
   /\.ts$/i,

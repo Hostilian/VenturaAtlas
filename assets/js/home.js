@@ -117,22 +117,25 @@
     }
 
     if (scores) {
+      const getScore = window.VentureAtlas?.getIdeaScore || ((i, d) => i.atAGlance?.[d] || null);
       const dims = [
-        { key: 'overallScore', label: 'Overall' },
-        { key: 'marketScore', label: 'Market' },
-        { key: 'confidenceScore', label: 'Confidence' },
-        { key: 'profitScore', label: 'Profit' }
+        { key: 'overall', label: 'Overall' },
+        { key: 'market', label: 'Market' },
+        { key: 'confidence', label: 'Confidence' },
+        { key: 'profit', label: 'Profit' }
       ];
       scores.innerHTML = '';
       dims.forEach(d => {
-        const val = idea.atAGlance?.[d.key] || idea.scores?.[d.key] || 0;
-        const pct = Math.min(100, Math.max(0, val));
-        const color = pct >= 80 ? 'var(--score-hi)' : pct >= 60 ? 'var(--score-md)' : 'var(--score-lo)';
+        const val = getScore(idea, d.key);
+        const hasVal = val !== null && val !== undefined;
+        const pct = hasVal ? Math.min(100, Math.max(0, val)) : 0;
+        const displayScore = hasVal ? Math.round(pct) : 'N/A';
+        const color = !hasVal ? 'var(--muted)' : pct >= 80 ? 'var(--score-hi)' : pct >= 60 ? 'var(--score-md)' : 'var(--score-lo)';
 
         const div = document.createElement('div');
         const header = document.createElement('div');
         header.style.cssText = 'display:flex;justify-content:space-between;font-size:0.72rem;margin-bottom:2px';
-        header.innerHTML = `<span style="color:var(--muted)">${d.label}</span><span style="color:${color};font-weight:700">${pct}</span>`;
+        header.innerHTML = `<span style="color:var(--muted)">${d.label}</span><span style="color:${color};font-weight:700">${displayScore}</span>`;
 
         const bar = document.createElement('div');
         bar.className = 'score-bar-mini';
@@ -151,9 +154,10 @@
 
   function pickSpotlight() {
     const rawIdeas = window.VA && window.VA.ideas;
-    const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas && rawIdeas.ideas ? rawIdeas.ideas : []);
-    if (!ideas.length) return;
-    const pick = ideas[Math.floor(Math.random() * ideas.length)];
+    const allIdeas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas && rawIdeas.ideas ? rawIdeas.ideas : []);
+    const canonicalIdeas = allIdeas.filter(i => i.status !== 'staged' && !(i.id && i.id.startsWith('candidate-')));
+    if (!canonicalIdeas.length) return;
+    const pick = canonicalIdeas[Math.floor(Math.random() * canonicalIdeas.length)];
     renderSpotlight(pick);
   }
 

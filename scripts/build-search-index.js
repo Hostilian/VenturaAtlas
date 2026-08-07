@@ -55,8 +55,25 @@ function main() {
   }
 
   const raw = JSON.parse(fs.readFileSync(IDEAS_PATH, 'utf8'));
-  const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
-  const newIndex = buildIndex(ideas);
+  const allIdeas = Array.isArray(raw) ? raw : (raw.ideas || []);
+  
+  // Strict invariant check: Exclude staged candidates
+  const canonicalIdeas = allIdeas.filter(i => {
+    if (i.status === 'staged' || (i.id && i.id.startsWith('candidate-'))) {
+      console.warn(`[WARN] Excluding staged/candidate record ${i.id} from public search index`);
+      return false;
+    }
+    return true;
+  });
+
+  // Verify zero candidate- records exist in canonical array
+  const invalidCandidates = canonicalIdeas.filter(i => i.id && i.id.startsWith('candidate-'));
+  if (invalidCandidates.length > 0) {
+    console.error(`[FATAL ERROR] Candidate records starting with 'candidate-' detected in canonical search index payload: ${invalidCandidates.map(c => c.id).join(', ')}`);
+    process.exit(1);
+  }
+
+  const newIndex = buildIndex(canonicalIdeas);
 
   if (isCheckMode) {
     if (!fs.existsSync(INDEX_PATH)) {

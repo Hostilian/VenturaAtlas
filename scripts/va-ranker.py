@@ -169,28 +169,50 @@ def update_rankings_json(ranked: list):
         try:
             with open(RANKINGS_PATH, 'r', encoding='utf-8') as f:
                 loaded = json.load(f)
-            # Handle old format where file was a list
-            existing = loaded if isinstance(loaded, dict) else {"legacyData": loaded}
+            existing = loaded if isinstance(loaded, dict) else {}
         except Exception:
             pass
-    # Preserve existing metadata, update rankings list
+
+    ranking_items = []
+    for r in ranked:
+        ranking_items.append({
+            "rank": r["rank"],
+            "ideaId": r["id"],
+            "id": r["id"],
+            "name": r["name"],
+            "category": r["category"],
+            "score": r["score"],
+            "checklist": r["checklist"],
+            "killFlagged": r["killFlagged"],
+            "provider": r["provider"],
+            "status": r["status"],
+            "topDimensions": r["topDimensions"]
+        })
+
+    view_obj = {
+        "id": "overall-top-opportunities",
+        "title": "Overall Top Opportunities",
+        "description": "Rankings sorted by weighted composite headline score",
+        "items": ranking_items
+    }
+
     out = {
         "schemaVersion": "2.0.0",
         "generatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "totalIdeas": len(ranked),
         "algorithm": "weighted-composite-v2",
         "weights": SCORE_WEIGHTS,
-        "rankings": ranked,
+        "rankings": [view_obj],
         "history": existing.get("history", []),
     }
-    # Append to history (last 10 snapshots)
+    
     snapshot = {
         "snapshotAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "top5": [{"id": r["id"], "name": r["name"], "score": r["score"]} for r in ranked[:5]],
     }
     history = existing.get("history", [])
     history.append(snapshot)
-    out["history"] = history[-10:]  # keep last 10
+    out["history"] = history[-10:]
 
     with open(RANKINGS_PATH, 'w', encoding='utf-8') as f:
         json.dump(out, f, indent=2, ensure_ascii=False)

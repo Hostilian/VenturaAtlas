@@ -26,7 +26,7 @@ test('Failure Injection — Idempotent Metadata Build & No Duplicate Keys', () =
   
   const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
   assert.ok(meta.counts.ideas > 0, 'Canonical idea count must be greater than 0');
-  assert.equal(meta.counts.ideas, meta.counts.canonicalIdeas + meta.counts.stagedIdeas, 'Total ideas must equal canonical + staged');
+  assert.equal(meta.counts.totalIdeas, meta.counts.canonicalIdeas + meta.counts.stagedIdeas, 'Total ideas must equal canonical + staged');
 });
 
 test('Failure Injection — Public Artifact Security Check', () => {

@@ -89,21 +89,22 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Data / JSON Requests -> Stale-while-revalidate
+  // Data / JSON Requests -> Network-first with cache fallback
   if (url.pathname.endsWith('.json')) {
     event.respondWith(
       (async () => {
         const cache = await caches.open(DATA_CACHE);
-        const cachedResponse = await cache.match(request);
-
-        const fetchPromise = fetch(request).then(networkResponse => {
+        try {
+          const networkResponse = await fetch(request);
           if (networkResponse.ok) {
             cache.put(request, networkResponse.clone());
+            return networkResponse;
           }
-          return networkResponse;
-        }).catch(() => null);
-
-        return cachedResponse || (await fetchPromise) || new Response('Data unavailable', { status: 503 });
+        } catch (_) {
+          // Network failed
+        }
+        const cachedResponse = await cache.match(request);
+        return cachedResponse || new Response('Data unavailable', { status: 503 });
       })()
     );
     return;

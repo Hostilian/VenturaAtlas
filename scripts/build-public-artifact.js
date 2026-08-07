@@ -49,6 +49,12 @@ const DENIED_PATTERNS = [
   /^apps/i,
   /^tests/i,
   /^scripts/i,
+  /^cloud-control-plane/i,
+  /^services/i,
+  /idea-staging-queue\.json$/i,
+  /provider-state\.json$/i,
+  /staged-id-migration\.json$/i,
+  /migration-preflight\.json$/i,
   /package(-lock)?\.json$/i,
   /tsconfig.*\.json$/i
 ];

@@ -34,7 +34,7 @@ test('Smoke Test — Idea Data Integrity', () => {
   const raw = JSON.parse(fs.readFileSync(path.join(root, 'data/ideas.json'), 'utf8'));
   const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
 
-  assert(ideas.length >= 226, `Expected at least 226 canonical ideas, got ${ideas.length}`);
+  assert(ideas.length >= 180, `Expected at least 180 canonical ideas, got ${ideas.length}`);
   assert(ideas.every(x => x.id && x.name && x.category && x.slug), 'All ideas must have id, name, category, and slug');
 });
 

@@ -24,13 +24,39 @@ const VA = {
   base: ''
 };
 
+function getIdeaScore(idea, dimension) {
+  if (!idea) return null;
+  const cs = idea.compositeScores || {};
+  const sc = idea.scores || {};
+  const gl = idea.atAGlance || {};
+
+  let val = null;
+  if (dimension === 'overall') {
+    val = gl.overallScore ?? cs.overallOpportunity ?? cs.compositeHeadline;
+  } else if (dimension === 'market') {
+    val = sc.marketDemand?.value ?? cs.marketDemand;
+  } else if (dimension === 'confidence') {
+    val = sc.confidence?.value ?? cs.confidence;
+  } else if (dimension === 'profit') {
+    val = sc.profitPotential?.value ?? cs.profitPotential;
+  } else if (cs[dimension] !== undefined) {
+    val = cs[dimension];
+  } else if (sc[dimension] !== undefined) {
+    val = typeof sc[dimension] === 'object' ? sc[dimension].value : sc[dimension];
+  }
+
+  if (val === null || val === undefined || isNaN(val)) return null;
+  return Math.min(100, Math.max(0, Number(val)));
+}
+
 window.VentureAtlas = {
   VA,
   getState: () => ({ ...VA }),
   readJsonStorage,
   writeJsonStorage,
   sanitizeUrl,
-  parseDurationDays
+  parseDurationDays,
+  getIdeaScore
 };
 
 // Backward compatibility bridge
@@ -122,6 +148,15 @@ async function loadData() {
   VA.base = root;
   const page = document.body.dataset.page || 'home';
   const requiredFiles = PAGE_DATA_REQUIREMENTS[page] || ['ideas', 'rankings', 'prompts', 'sources', 'categories', 'relationships'];
+
+  try {
+    const metaRes = await fetch(`${root}/data/repository-meta.json`);
+    if (metaRes.ok) {
+      VA.meta = await metaRes.json();
+    }
+  } catch (e) {
+    console.warn('[VA] Could not load repository-meta.json:', e);
+  }
 
   await Promise.all(requiredFiles.map(async f => {
     VA[f] = await fetchDataset(root, f);

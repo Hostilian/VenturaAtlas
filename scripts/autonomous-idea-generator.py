@@ -434,11 +434,16 @@ def assemble_idea(llm_idea: dict, next_id: str, domain: dict, provider: str) -> 
     }
 
 # ── Auto-Promote ──────────────────────────────────────────────────────────────
+HIGH_PRIORITY_SCORE_THRESHOLD = float(os.environ.get('HIGH_PRIORITY_SCORE_THRESHOLD', os.environ.get('AUTO_PROMOTE_THRESHOLD', '85')))
+AUTO_PROMOTE_THR = HIGH_PRIORITY_SCORE_THRESHOLD  # Deprecated backward-compat alias
+
 def mark_candidate_ready_for_validation(idea: dict) -> bool:
     """Mark high-scoring candidate as prioritized for validation (does NOT mutate canonical data)."""
     score = idea.get("compositeScores", {}).get("compositeHeadline", 0)
-    if score >= AUTO_PROMOTE_THR and not idea.get("killCriteria", {}).get("killFlagged"):
+    if score >= HIGH_PRIORITY_SCORE_THRESHOLD and not idea.get("killCriteria", {}).get("killFlagged"):
         idea["prioritizedForValidation"] = True
+        idea["reviewPriority"] = "high"
+        idea["priority"] = 100
         log_info(
             f"HIGH-PRIORITY CANDIDATE {idea['id']} '{idea['name']}' "
             f"(score={score}) queued for validation & serialized publication",
@@ -563,10 +568,10 @@ def main():
         f"prioritized={prioritized} rejected={rejected} ==="
     )
     print(f"\n{'='*60}")
-    print(f"  Generated : {generated}")
-    print(f"  Staged    : {staged}")
-    print(f"  Promoted  : {promoted}")
-    print(f"  Rejected  : {rejected}")
+    print(f"  Generated   : {generated}")
+    print(f"  Staged      : {staged}")
+    print(f"  Prioritized : {prioritized}")
+    print(f"  Rejected    : {rejected}")
     print(f"{'='*60}")
     print(f"  Review staged: python scripts/review-staged-ideas.py")
     print(f"  Run ranker:    python scripts/va-ranker.py")
