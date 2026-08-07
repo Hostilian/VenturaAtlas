@@ -22,6 +22,122 @@
       "expiresAt": "2026-08-14T03:54:05.414Z",
       "paymentId": "sim_pay_br45gi90",
       "responderId": "resp_1"
+    },
+    {
+      "id": "idea-061_req_re25kqxc",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T03:55:58.262Z",
+      "updatedAt": "2026-08-07T03:55:58.275Z",
+      "expiresAt": "2026-08-14T03:55:58.262Z",
+      "paymentId": "sim_pay_k6pgazul",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "idea-061_req_q44odk83",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T03:58:17.790Z",
+      "updatedAt": "2026-08-07T03:58:17.798Z",
+      "expiresAt": "2026-08-14T03:58:17.790Z",
+      "paymentId": "sim_pay_3lf9hbmw",
+      "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "idea-061_req_6707xnab",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T03:58:38.803Z",
+      "updatedAt": "2026-08-07T03:58:38.812Z",
+      "expiresAt": "2026-08-14T03:58:38.803Z",
+      "paymentId": "sim_pay_o5v6j2nj",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "idea-061_req_h48pluwb",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T03:58:45.177Z",
+      "updatedAt": "2026-08-07T03:58:45.182Z",
+      "expiresAt": "2026-08-14T03:58:45.177Z",
+      "paymentId": "sim_pay_4msz1cfi",
+      "responderId": "usr_mobile_resp"
     }
   ],
   "evidence": [
@@ -52,6 +168,142 @@
       "reusableConsent": true,
       "reviewerId": "mod_1",
       "reviewedAt": "2026-08-07T03:54:05.420Z"
+    },
+    {
+      "id": "ev_idgcmajm",
+      "bountyId": "idea-061_req_re25kqxc",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "SL7-F4C",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T03:55:58.273Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T03:55:58.273Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T03:55:58.274Z"
+    },
+    {
+      "id": "ev_d9jfq0zl",
+      "bountyId": "idea-061_req_q44odk83",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.eu-central-1.amazonaws.com/evidence/idea-061_req_q44odk83/usr_mobile_resp_1786075097795_capture.webm",
+      "challengeCode": "P83-QSX",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T03:58:17.796Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T03:58:17.796Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T03:58:17.797Z"
+    },
+    {
+      "id": "ev_mm31bawt",
+      "bountyId": "idea-061_req_6707xnab",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "JVF-3QP",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T03:58:38.810Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T03:58:38.810Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T03:58:38.811Z"
+    },
+    {
+      "id": "ev_wo4feobl",
+      "bountyId": "idea-061_req_h48pluwb",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.eu-central-1.amazonaws.com/evidence/idea-061_req_h48pluwb/usr_mobile_resp_1786075125180_capture.webm",
+      "challengeCode": "L28-FBK",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T03:58:45.181Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T03:58:45.181Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T03:58:45.182Z"
     }
   ],
   "transactions": []
