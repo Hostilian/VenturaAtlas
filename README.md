@@ -4,12 +4,10 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 
 ## Current inventory
 
-- **60 canonical ideas**
-- **205 raw idea/name/variant mentions**
-- **28 categories**
-- **1500 idea-specific prompts** plus master prompts
-- **30 ranking views**
-- **12 source inventory records**
+- **226 canonical ideas**
+- **60 categories**
+- **62 source inventory records**
+- **5,625 idea-specific prompts** plus master prompts
 - One full Markdown dossier, financial model, validation plan, technical blueprint, launch plan, and 25-prompt pack per canonical idea
 
 ## What the site supports
@@ -83,7 +81,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.1.1
+- Repository Version: 2.2.0
 - Canonical Ideas: 226
 - Categories: 60
 - Source References: 62

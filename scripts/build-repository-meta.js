@@ -57,11 +57,11 @@ function getCounts() {
 
 function main() {
   const pkg = JSON.parse(fs.readFileSync(PACKAGE_PATH, 'utf8'));
-  const version = pkg.version || '2.1.1';
+  const version = pkg.version || '2.2.0';
   const counts = getCounts();
   const isCheckMode = process.argv.includes('--check');
 
-  let existingTimestamp = '2026-08-07T05:10:19.286Z';
+  let existingTimestamp = new Date().toISOString();
   if (fs.existsSync(META_PATH)) {
     try {
       const prev = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
@@ -73,8 +73,6 @@ function main() {
         prev.counts?.rankings === counts.rankings
       ) {
         existingTimestamp = prev.generatedAt || existingTimestamp;
-      } else {
-        existingTimestamp = new Date().toISOString();
       }
     } catch (_) {}
   }

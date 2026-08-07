@@ -18,7 +18,7 @@
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.1.1
+- Repository Version: 2.2.0
 - Canonical Ideas: 226
 - Categories: 60
 - Source References: 62

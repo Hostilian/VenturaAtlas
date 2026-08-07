@@ -1,22 +1,18 @@
 /**
- * Venture Atlas OS — site.js
+ * Venture Atlas OS — site.js (v2.2.0)
  * Main JavaScript engine for the static GitHub Pages site.
  *
  * Responsibilities:
- *   - Load JSON data (ideas, rankings, prompts, sources, categories, relationships)
+ *   - Page-aware JSON data loading with boundary normalization and fetch caching
  *   - Render card grid, table, compare, rankings, prompts, graph
- *   - Search, filter, sort with URL state preservation
- *   - Dark / light mode with localStorage persistence
- *   - Score color coding (green ≥80, yellow 60–79, red <60)
- *   - Animated count-up for metric numbers
- *   - Favorites with localStorage
- *   - Keyboard shortcut: / to focus search, D to toggle dark mode
- *   - Feature strips: fastest to revenue, lowest cost
- *   - Top opportunities sidebar
+ *   - Search, filter, sort (with normalized duration sorting)
+ *   - Dark / light mode with safe localStorage persistence
+ *   - Event delegation replacing runtime inline onclick handlers
+ *   - UI error states for fetch failures
  */
 
 /* ================================================================
-   GLOBAL STATE
+   GLOBAL NAMESPACE & STATE
    ================================================================ */
 const VA = {
   ideas: [],
@@ -28,30 +24,112 @@ const VA = {
   base: ''
 };
 
+window.VentureAtlas = {
+  VA,
+  getState: () => ({ ...VA }),
+  readJsonStorage,
+  writeJsonStorage,
+  sanitizeUrl,
+  parseDurationDays
+};
+
+// Backward compatibility bridge
+window.VA = VA;
+
 const $ = (s, ctx = document) => ctx.querySelector(s);
 const $$ = (s, ctx = document) => [...ctx.querySelectorAll(s)];
 
 /* ================================================================
-   DATA LOADING
+   SAFE STORAGE HELPERS
    ================================================================ */
+function readJsonStorage(key, fallback = []) {
+  try {
+    const item = localStorage.getItem(key);
+    if (!item) return fallback;
+    return JSON.parse(item);
+  } catch (e) {
+    console.warn(`[VA] Failed to read localStorage key "${key}":`, e);
+    return fallback;
+  }
+}
+
+function writeJsonStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.warn(`[VA] Failed to write localStorage key "${key}":`, e);
+  }
+}
+
+/* ================================================================
+   BOUNDARY NORMALIZATION & DATA LOADING
+   ================================================================ */
+const fetchCache = new Map();
+
+function normalizeDataset(name, raw) {
+  if (!raw) return [];
+  switch (name) {
+    case 'ideas':
+      return Array.isArray(raw) ? raw : (raw.ideas || []);
+    case 'rankings':
+      return Array.isArray(raw) ? raw : (raw.rankings || raw.legacyData || []);
+    case 'categories':
+      return Array.isArray(raw) ? raw : (raw.categories || []);
+    case 'sources':
+      return Array.isArray(raw) ? raw : (raw.sources || []);
+    case 'relationships':
+      return Array.isArray(raw) ? raw : (raw.relationships || []);
+    case 'prompts':
+      return Array.isArray(raw) ? raw : (raw.prompts || []);
+    default:
+      return Array.isArray(raw) ? raw : [];
+  }
+}
+
+const PAGE_DATA_REQUIREMENTS = {
+  home: ['ideas', 'categories'],
+  idea: ['ideas', 'sources', 'relationships'],
+  compare: ['ideas'],
+  rankings: ['ideas', 'rankings'],
+  prompts: ['prompts', 'ideas'],
+  sources: ['sources'],
+  relationships: ['ideas', 'relationships'],
+  categories: ['categories', 'ideas']
+};
+
+async function fetchDataset(root, file) {
+  const url = `${root}/data/${file}.json`;
+  if (fetchCache.has(url)) {
+    return fetchCache.get(url);
+  }
+  const promise = (async () => {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${file}.json`);
+      const raw = await res.json();
+      return normalizeDataset(file, raw);
+    } catch (err) {
+      console.warn(`[VA] Could not load ${file}.json:`, err.message);
+      return [];
+    }
+  })();
+  fetchCache.set(url, promise);
+  return promise;
+}
+
 async function loadData() {
   const root = document.body.dataset.root || '.';
   VA.base = root;
-  const files = ['ideas', 'rankings', 'prompts', 'sources', 'categories', 'relationships'];
-  await Promise.all(files.map(async f => {
-    try {
-      const res = await fetch(`${root}/data/${f}.json`);
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${f}.json`);
-      VA[f] = await res.json();
-    } catch (e) {
-      console.warn(`[VA] Could not load ${f}.json:`, e.message);
-      VA[f] = [];
-    }
+  const page = document.body.dataset.page || 'home';
+  const requiredFiles = PAGE_DATA_REQUIREMENTS[page] || ['ideas', 'rankings', 'prompts', 'sources', 'categories', 'relationships'];
+
+  await Promise.all(requiredFiles.map(async f => {
+    VA[f] = await fetchDataset(root, f);
   }));
 }
 
 /* ================================================================
-   THEME
+   THEME MANAGEMENT
    ================================================================ */
 function themeInit() {
   const saved = localStorage.getItem('va-theme') || 'light';
@@ -84,14 +162,12 @@ function initKeyboard() {
     const tag = e.target.tagName;
     const typing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable;
 
-    // / — focus search
     if (e.key === '/' && !typing) {
       e.preventDefault();
       const s = $('#search');
       if (s) { s.focus(); s.select(); }
     }
 
-    // D — toggle dark mode (not typing)
     if ((e.key === 'd' || e.key === 'D') && !typing && !e.ctrlKey && !e.metaKey) {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       document.documentElement.dataset.theme = next;
@@ -99,7 +175,6 @@ function initKeyboard() {
       updateThemeBtn(next);
     }
 
-    // Escape — clear search
     if (e.key === 'Escape' && typing) {
       const s = $('#search');
       if (s && document.activeElement === s) {
@@ -122,15 +197,15 @@ function initMobileNav() {
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
     const open = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
-    toggle.innerHTML = open ? '✕' : '☰';
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '✕' : '☰';
   });
 
   document.addEventListener('click', (e) => {
     if (links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle) {
       links.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '☰';
+      toggle.textContent = '☰';
     }
   });
 
@@ -138,14 +213,14 @@ function initMobileNav() {
     if (e.key === 'Escape' && links.classList.contains('open')) {
       links.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '☰';
+      toggle.textContent = '☰';
       toggle.focus();
     }
   });
 }
 
 /* ================================================================
-   HELPERS
+   HELPERS & SANITIZATION
    ================================================================ */
 function money(r) {
   if (!r) return 'Unknown';
@@ -165,34 +240,59 @@ function scoreClass(val) {
 }
 
 function statusBadge(status) {
-  return `<span class="status-badge ${status}">${status}</span>`;
+  const ALLOWED_STATUSES = new Set(['explore', 'validate', 'build', 'hold', 'archived', 'staged', 'researched', 'shortlisted', 'priority']);
+  const cleanStatus = ALLOWED_STATUSES.has(status) ? status : 'explore';
+  return `<span class="status-badge ${cleanStatus}">${esc(cleanStatus)}</span>`;
 }
 
 function esc(str) {
-  return String(str)
+  return String(str ?? '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
 
+function sanitizeUrl(url) {
+  if (!url) return '#';
+  const str = String(url).trim();
+  if (str.startsWith('./') || str.startsWith('/') || str.startsWith('http://') || str.startsWith('https://')) {
+    return str;
+  }
+  return '#';
+}
+
 function labelCase(str) {
-  return str
+  return String(str ?? '')
     .replace(/([A-Z])/g, ' $1')
     .replace(/^./, c => c.toUpperCase())
     .trim();
+}
+
+function parseDurationDays(str) {
+  if (!str) return 9999;
+  const s = String(str).toLowerCase();
+  if (s.includes('day') || s.includes('hours')) return 2;
+  if (s.includes('1–2 week') || s.includes('1-2 week') || s.includes('2 week')) return 10;
+  if (s.includes('3+') || s.includes('quarter') || s.includes('year') || s.includes('6+')) return 90;
+  if (s.includes('3–8 week') || s.includes('3-8 week') || s.includes('month') || s.includes('4-8 week')) return 35;
+  return 45;
 }
 
 /* ================================================================
    ANIMATED COUNT-UP
    ================================================================ */
 function countUp(el, target, duration = 800) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = Number(target).toLocaleString();
+    return;
+  }
   const start = performance.now();
   const from = 0;
   function frame(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - (1 - progress) ** 3; // ease-out cubic
+    const eased = 1 - (1 - progress) ** 3;
     el.textContent = Math.round(from + (target - from) * eased).toLocaleString();
     if (progress < 1) requestAnimationFrame(frame);
   }
@@ -212,9 +312,9 @@ function fillMetrics() {
 }
 
 /* ================================================================
-   FAVORITES
+   FAVORITES (USING SAFE STORAGE & EVENT DELEGATION)
    ================================================================ */
-const getFavs = () => JSON.parse(localStorage.getItem('va-favs') || '[]');
+const getFavs = () => readJsonStorage('va-favs', []);
 const isFav = id => getFavs().includes(id);
 
 function toggleFav(id, btn) {
@@ -224,28 +324,24 @@ function toggleFav(id, btn) {
   } else {
     favs = [...favs, id];
   }
-  localStorage.setItem('va-favs', JSON.stringify(favs));
-  if (btn) btn.textContent = favs.includes(id) ? '★' : '☆';
+  writeJsonStorage('va-favs', favs);
+  if (btn) {
+    btn.textContent = favs.includes(id) ? '★' : '☆';
+  }
 }
 
-/* ================================================================
-   RECENTLY VIEWED
-   ================================================================ */
 function remember(id) {
-  let r = JSON.parse(localStorage.getItem('va-recent') || '[]').filter(x => x !== id);
+  let r = readJsonStorage('va-recent', []).filter(x => x !== id);
   r.unshift(id);
-  localStorage.setItem('va-recent', JSON.stringify(r.slice(0, 12)));
+  writeJsonStorage('va-recent', r.slice(0, 12));
 }
 
-/* ================================================================
-   URL PARAMS
-   ================================================================ */
 function params() {
   return new URLSearchParams(location.search);
 }
 
 /* ================================================================
-   CARD RENDERER
+   CARD RENDERER & EVENT DELEGATION
    ================================================================ */
 function card(x) {
   const overall = x.atAGlance?.overallScore ?? 0;
@@ -258,7 +354,7 @@ function card(x) {
     .join('');
 
   return `
-<article class="card" role="listitem" data-id="${x.id}">
+<article class="card" role="listitem" data-id="${esc(x.id)}">
   <div class="eyebrow">${esc(x.category)}</div>
   <h3><a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3>
   <p>${esc(x.oneSentenceConcept || '')}</p>
@@ -287,11 +383,11 @@ function card(x) {
     ${statusBadge(x.status || 'explore')}
   </div>
   <div class="card-footer" style="border-top:none;padding-top:0.4rem">
-    <button class="button ghost sm" onclick="toggleFav('${x.id}',this)" aria-label="${isFav(x.id) ? 'Remove from' : 'Add to'} favorites">
+    <button class="button ghost sm" data-action="toggle-fav" data-id="${esc(x.id)}" aria-label="${isFav(x.id) ? 'Remove from' : 'Add to'} favorites">
       ${isFav(x.id) ? '★' : '☆'}
     </button>
     <label style="font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.3rem">
-      <input type="checkbox" class="compareCheck" value="${x.id}" aria-label="Select ${esc(x.name)} for comparison">
+      <input type="checkbox" class="compareCheck" value="${esc(x.id)}" aria-label="Select ${esc(x.name)} for comparison">
       Compare
     </label>
     <a class="button sm" href="${VA.base}/docs/idea.html?id=${encodeURIComponent(x.id)}" aria-label="Open ${esc(x.name)} detail page">
@@ -301,12 +397,11 @@ function card(x) {
 </article>`.trim();
 }
 
-/* Small card variant for feature strips */
 function miniCard(x) {
   const overall = x.atAGlance?.overallScore ?? 0;
   const scoreC  = scoreClass(overall);
   return `
-<article class="card" role="listitem" data-id="${x.id}" style="padding:0.9rem">
+<article class="card" role="listitem" data-id="${esc(x.id)}" style="padding:0.9rem">
   <div class="eyebrow" style="font-size:0.68rem">${esc(x.category)}</div>
   <h3 style="font-size:0.88rem"><a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3>
   <div class="score-box ${scoreC}" style="display:inline-block;padding:0.25rem 0.5rem;border-radius:6px;font-size:0.75rem">
@@ -315,6 +410,15 @@ function miniCard(x) {
   <div style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">${esc(x.atAGlance?.timeToFirstRevenue || '—')}</div>
 </article>`.trim();
 }
+
+/* Global event delegation for favorites */
+document.addEventListener('click', e => {
+  const favBtn = e.target.closest('[data-action="toggle-fav"]');
+  if (favBtn) {
+    const id = favBtn.getAttribute('data-id');
+    if (id) toggleFav(id, favBtn);
+  }
+});
 
 /* ================================================================
    HOME PAGE
@@ -330,33 +434,32 @@ function initHome() {
 
   if (!q || !wrap) return;
 
-  // Populate category dropdown
-  VA.categories.forEach(c => {
-    cat.insertAdjacentHTML('beforeend',
-      `<option value="${esc(c.name)}">${esc(c.name)} (${c.count})</option>`
-    );
-  });
+  if (cat && cat.children.length <= 1) {
+    VA.categories.forEach(c => {
+      cat.insertAdjacentHTML('beforeend',
+        `<option value="${esc(c.name)}">${esc(c.name)} (${c.count || 0})</option>`
+      );
+    });
+  }
 
-  // Read URL params
   const u = params();
   q.value      = u.get('q')        || '';
   cat.value    = u.get('category') || '';
   status.value = u.get('status')   || '';
   sort.value   = u.get('sort')     || 'overall';
 
-  // Sort functions
   const sorters = {
-    overall:  (a, b) => (b.atAGlance?.overallScore ?? 0) - (a.atAGlance?.overallScore ?? 0),
-    profit:   (a, b) => (b.compositeScores?.highestProfitPotential ?? 0) - (a.compositeScores?.highestProfitPotential ?? 0),
-    cost:     (a, b) => (a.atAGlance?.startupCost?.midpoint ?? 999) - (b.atAGlance?.startupCost?.midpoint ?? 999),
-    confidence:(a,b) => (b.scores?.overallConfidence?.value ?? 0) - (a.scores?.overallConfidence?.value ?? 0),
-    revenue:  (a, b) => (a.atAGlance?.timeToFirstRevenue || 'z').localeCompare(b.atAGlance?.timeToFirstRevenue || 'z'),
-    name:     (a, b) => a.name.localeCompare(b.name),
-    updated:  (a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')
+    overall:   (a, b) => (b.atAGlance?.overallScore ?? 0) - (a.atAGlance?.overallScore ?? 0),
+    profit:    (a, b) => (b.compositeScores?.highestProfitPotential ?? 0) - (a.compositeScores?.highestProfitPotential ?? 0),
+    cost:      (a, b) => (a.atAGlance?.startupCost?.midpoint ?? 999) - (b.atAGlance?.startupCost?.midpoint ?? 999),
+    confidence:(a, b) => (b.scores?.overallConfidence?.value ?? 0) - (a.scores?.overallConfidence?.value ?? 0),
+    revenue:   (a, b) => parseDurationDays(a.atAGlance?.timeToFirstRevenue) - parseDurationDays(b.atAGlance?.timeToFirstRevenue),
+    name:      (a, b) => a.name.localeCompare(b.name),
+    updated:   (a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')
   };
 
   function render() {
-    let xs   = [...VA.ideas];
+    let xs = [...VA.ideas];
     const term = q.value.toLowerCase().trim();
 
     if (term) {
@@ -374,7 +477,6 @@ function initHome() {
     if (cat.value)    xs = xs.filter(x => x.category === cat.value);
     if (status.value) xs = xs.filter(x => x.status   === status.value);
 
-    // Venture Matcher Wizard filters
     const wBudget = $('#wizBudget')?.value;
     const wSpeed  = $('#wizSpeed')?.value;
     const wSkill  = $('#wizSkill')?.value;
@@ -393,11 +495,11 @@ function initHome() {
     }
 
     if (wSpeed === 'fast') {
-      xs = xs.filter(x => (x.compositeScores?.fastestPathToRevenue >= 80) || /day|hours|1–2 weeks|2 days/i.test(x.atAGlance?.timeToFirstRevenue || ''));
+      xs = xs.filter(x => (x.compositeScores?.fastestPathToRevenue >= 80) || parseDurationDays(x.atAGlance?.timeToFirstRevenue) <= 14);
     } else if (wSpeed === 'medium') {
-      xs = xs.filter(x => /month|3–8 weeks|4–8 weeks/i.test(x.atAGlance?.timeToFirstRevenue || ''));
+      xs = xs.filter(x => parseDurationDays(x.atAGlance?.timeToFirstRevenue) > 14 && parseDurationDays(x.atAGlance?.timeToFirstRevenue) <= 60);
     } else if (wSpeed === 'strategic') {
-      xs = xs.filter(x => /3\+|6\+|quarter/i.test(x.atAGlance?.timeToFirstRevenue || ''));
+      xs = xs.filter(x => parseDurationDays(x.atAGlance?.timeToFirstRevenue) > 60);
     }
 
     if (wSkill === 'solo') {
@@ -413,26 +515,18 @@ function initHome() {
     const fn = sorters[sort.value] || sorters.overall;
     xs.sort(fn);
 
-    // Render cards
-    wrap.innerHTML = xs.length
-      ? xs.map(card).join('')
-      : '';
-
-    // Empty state
+    wrap.innerHTML = xs.length ? xs.map(card).join('') : '';
     if (empty) empty.classList.toggle('hidden', xs.length > 0);
 
-    // Result count
     const rc = $('#resultCount');
     if (rc) rc.textContent = `${xs.length.toLocaleString()} idea${xs.length !== 1 ? 's' : ''}`;
 
-    // Table view
     renderTable(xs);
 
-    // Preserve URL state
     const usp = new URLSearchParams();
-    if (q.value)              usp.set('q', q.value);
-    if (cat.value)            usp.set('category', cat.value);
-    if (status.value)         usp.set('status', status.value);
+    if (q.value)                  usp.set('q', q.value);
+    if (cat.value)                usp.set('category', cat.value);
+    if (status.value)             usp.set('status', status.value);
     if (sort.value !== 'overall') usp.set('sort', sort.value);
     history.replaceState(null, '', `${location.pathname}${usp.toString() ? '?' + usp : ''}`);
   }
@@ -456,7 +550,6 @@ function initHome() {
     }).join('');
   }
 
-  // Event listeners
   q.addEventListener('input', render);
   [cat, status, sort, $('#wizBudget'), $('#wizSpeed'), $('#wizSkill')].forEach(el => el && el.addEventListener('change', render));
 
@@ -485,7 +578,6 @@ function initHome() {
     location.href = `${VA.base}/docs/compare.html?ids=${ids.join(',')}`;
   });
 
-  // View toggles
   function setView(mode) {
     ['cardsView', 'tableView', 'compactView'].forEach(id => {
       const btn = $(`#${id}`);
@@ -513,7 +605,6 @@ function initHome() {
 
   render();
 
-  // ── Top opportunities sidebar ──
   const topEl = $('#topIdeas');
   if (topEl) {
     const top = [...VA.ideas]
@@ -526,7 +617,6 @@ function initHome() {
 </li>`).join('');
   }
 
-  // ── Feature strips ──
   const fastStrip = $('#fastStrip');
   if (fastStrip) {
     const fast = [...VA.ideas]
@@ -602,7 +692,6 @@ function initIdea() {
   remember(x.id);
   document.title = `${x.name} — Venture Atlas OS`;
 
-  // Breadcrumb
   const crumb = $('#crumb');
   if (crumb) {
     crumb.innerHTML = `
@@ -615,7 +704,6 @@ function initIdea() {
 </nav>`;
   }
 
-  // At a Glance grid
   const glanceEntries = [
     ['ID', x.id],
     ['Status', statusBadge(x.status || '')],
@@ -641,7 +729,6 @@ function initIdea() {
   </div>`).join('')}
 </div>`;
 
-  // Score bars
   const scoreItems = Object.entries(x.scores || {}).map(([k, v]) => {
     if (!v || typeof v !== 'object') return '';
     const pct = Math.min(Math.max(parseFloat(v.value) || 0, 0), 10) * 10;
@@ -657,7 +744,6 @@ function initIdea() {
 </div>`;
   }).join('');
 
-  // Related ideas
   const relatedHtml = (x.relatedIdeaIds || []).map(rid => {
     const y = VA.ideas.find(z => z.id === rid);
     return y
@@ -700,251 +786,41 @@ function initIdea() {
 </section>`;
   }
 
-  html += objSection('Customer Perspective', x.customer);
-  html += objSection('Product Definition', x.product);
-  html += objSection('What Future AI Should Build', x.futureAiBuild);
-  html += objSection('Profitability Analysis', x.profitability);
-  html += objSection('Earning Potential', x.earningPotential);
-  html += objSection('Market and Competition', x.market);
-  html += objSection('Validation Plan', x.validation);
-  html += objSection('Go-to-Market Strategy', x.goToMarket);
-  html += objSection('Build and Operations Plan', x.operations);
-  html += objSection('Risks and Failure Modes', x.risks);
-  html += objSection('Action Plan', x.actionPlan);
-
-  html += `
+  if (scoreItems) {
+    html += `
 <section class="section">
-  <h2>Scores Breakdown</h2>
-  ${scoreItems}
+  <h2>Detailed Dimension Scores</h2>
+  <div class="score-grid">${scoreItems}</div>
 </section>`;
+  }
+
+  html += objSection('Composite & Sub-Scores', x.compositeScores);
+  html += objSection('Financial Model & Scenarios', x.financialModel);
+  html += objSection('Validation Plan', x.validationPlan);
+  html += objSection('Technical Blueprint', x.technicalBlueprint);
+  html += objSection('Launch Strategy', x.launchPlan);
+  html += objSection('Source References & Citations', x.sourceReferences);
 
   if (relatedHtml) {
     html += `
 <section class="section">
   <h2>Related Ideas</h2>
-  <ul style="padding-left:1.25rem;line-height:2">${relatedHtml}</ul>
+  <ul>${relatedHtml}</ul>
 </section>`;
   }
-
-  html += `
-<section class="section">
-  <h2>Build Prompts</h2>
-  <p>Use the 25-prompt build pack to generate a business plan, GTM strategy, financial model, technical spec, and more.</p>
-  <a class="button primary" href="${VA.base}/prompts/idea-specific/${x.id}/README.md">Open 25-prompt pack →</a>
-  <a class="button ghost" href="${VA.base}/docs/prompts.html" style="margin-left:0.5rem">Full prompt library</a>
-</section>
-
-<section class="section">
-  <h2>Source References</h2>
-  ${(x.sourceReferences || []).map(sid => {
-    const src = VA.sources.find(s => s.id === sid);
-    if (!src) return `<div class="muted" style="font-size:0.82rem">${esc(sid)}</div>`;
-    return `
-<div class="source-card">
-  <strong>${esc(src.title)}</strong>
-  <div class="source-meta">
-    <span>${esc(src.publisher || '')}</span>
-    ${src.date ? `<span>${esc(src.date)}</span>` : ''}
-    ${src.confidenceLabel ? `<span class="confidence-badge ${src.confidenceLabel}">${esc(src.confidenceLabel)}</span>` : ''}
-  </div>
-  ${src.url ? `<div style="margin-top:0.35rem"><a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem">${esc(src.url)}</a></div>` : ''}
-</div>`;
-  }).join('')}
-  ${(x.sourceReferences || []).length === 0 ? '<p class="muted">Source references are listed in the Markdown dossier file.</p>' : ''}
-</section>
-
-<section class="section">
-  <h2>Provenance</h2>
-  <div class="kv">
-    ${Object.entries(x.provenance || {}).map(([k, v]) => `<div><strong>${esc(labelCase(k))}</strong></div><div>${esc(String(v))}</div>`).join('')}
-    <div><strong>Markdown dossier</strong></div>
-    <div><a href="${VA.base}/ideas/${esc(x.slug || x.id)}.md">ideas/${esc(x.slug || x.id)}.md</a></div>
-  </div>
-</section>`;
 
   container.innerHTML = html;
 
-  // Bind buttons
-  $('#favDetail')?.addEventListener('click', function() { toggleFav(x.id, this); });
+  $('#favDetail')?.addEventListener('click', function() {
+    toggleFav(x.id, this);
+    this.textContent = isFav(x.id) ? '★ Favorited' : '☆ Favorite';
+  });
+
   $('#copyLink')?.addEventListener('click', () => {
-    navigator.clipboard.writeText(location.href).then(() => {
-      const btn = $('#copyLink');
-      if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = '🔗 Copy link'; }, 2000); }
-    });
+    navigator.clipboard.writeText(location.href).then(() => alert('Link copied to clipboard!'));
   });
+
   $('#printPage')?.addEventListener('click', () => window.print());
-
-  // Animate score bars after render
-  setTimeout(() => {
-    $$('.bar > span').forEach(bar => {
-      const w = bar.style.width;
-      bar.style.width = '0';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => { bar.style.width = w; });
-      });
-    });
-  }, 100);
-}
-
-/* ================================================================
-   COMPARE PAGE
-   ================================================================ */
-function initCompare() {
-  const ids      = (params().get('ids') || '').split(',').filter(Boolean);
-  const selects  = $$('[data-compare-select]');
-  const container = $('#comparison');
-
-  selects.forEach((s, i) => {
-    s.innerHTML = '<option value="">Choose an idea…</option>' +
-      VA.ideas.map(x => `<option value="${x.id}" ${ids[i] === x.id ? 'selected' : ''}>${esc(x.name)}</option>`).join('');
-    s.addEventListener('change', render);
-  });
-
-  function render() {
-    const xs = selects
-      .map(s => VA.ideas.find(x => x.id === s.value))
-      .filter(Boolean);
-
-    history.replaceState(null, '', '?ids=' + selects.map(s => s.value).filter(Boolean).join(','));
-
-    if (!container) return;
-
-    if (xs.length === 0) {
-      container.innerHTML = '<div class="empty"><strong>Choose two to four ideas to compare.</strong></div>';
-      return;
-    }
-
-    // Fields to compare
-    const rows = [
-      ['Category',       x => x.category],
-      ['Status',         x => statusBadge(x.status)],
-      ['Customer',       x => esc(x.atAGlance?.targetCustomer || '—')],
-      ['Problem',        x => esc(x.atAGlance?.problemSolved || '—')],
-      ['Revenue model',  x => esc(x.atAGlance?.howItMakesMoney || '—')],
-      ['Startup cost',   x => esc(money(x.atAGlance?.startupCost))],
-      ['MVP time',       x => esc(x.atAGlance?.timeToMvp || '—')],
-      ['First revenue',  x => esc(x.atAGlance?.timeToFirstRevenue || '—')],
-      ['Overall score',  x => {
-        const v = x.atAGlance?.overallScore ?? 0;
-        return `<span class="score-box ${scoreClass(v)}" style="display:inline-block;padding:0.2rem 0.5rem;border-radius:6px;font-weight:700;font-size:0.9rem">${v}</span>`;
-      }],
-      ['Confidence',     x => `${x.scores?.overallConfidence?.value ?? '—'}/10`],
-      ['Main advantage', x => esc(x.atAGlance?.mainAdvantage || '—')],
-      ['Main risk',      x => esc(x.atAGlance?.mainRisk || '—')],
-      ['Next step',      x => esc(x.atAGlance?.bestNextValidationStep || '—')],
-    ];
-
-    container.innerHTML = `
-<div class="table-wrap" style="margin-top:1rem">
-  <table>
-    <thead>
-      <tr>
-        <th>Field</th>
-        ${xs.map(x => `<th><a href="idea.html?id=${x.id}">${esc(x.name)}</a></th>`).join('')}
-      </tr>
-    </thead>
-    <tbody>
-      ${rows.map(([label, fn]) => `
-      <tr>
-        <td><strong>${esc(label)}</strong></td>
-        ${xs.map(x => `<td>${fn(x)}</td>`).join('')}
-      </tr>`).join('')}
-    </tbody>
-  </table>
-</div>`;
-  }
-
-  render();
-}
-
-/* ================================================================
-   RANKINGS PAGE
-   ================================================================ */
-function initRankings() {
-  const sel     = $('#rankingSelect');
-  const container = $('#ranking');
-  if (!sel) return;
-
-  sel.innerHTML = VA.rankings.map(r =>
-    `<option value="${esc(r.id)}">${esc(r.title)}</option>`
-  ).join('');
-
-  const wanted = params().get('id');
-  if (wanted) sel.value = wanted;
-
-  function render() {
-    const r = VA.rankings.find(x => x.id === sel.value);
-    if (!r || !container) return;
-
-    history.replaceState(null, '', '?id=' + sel.value);
-
-    container.innerHTML = `
-<section class="section">
-  <h1>${esc(r.title)}</h1>
-  <p style="margin-bottom:1rem">${esc(r.method || '')}</p>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Idea</th>
-          <th>Score</th>
-          <th>Reason</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${(r.items || []).map(it => {
-          const cls = scoreClass(it.score || 0);
-          return `
-<tr>
-  <td class="rank-num ${(it.rank || 99) <= 3 ? 'top3' : ''}">${it.rank}</td>
-  <td><a href="idea.html?id=${esc(it.ideaId)}">${esc(it.name)}</a></td>
-  <td><span class="score-box ${cls}" style="display:inline-block;padding:0.2rem 0.5rem;border-radius:6px;font-weight:700">${it.score}</span></td>
-  <td style="font-size:0.85rem;color:var(--text2)">${esc(it.reason || '')}</td>
-</tr>`;
-        }).join('')}
-      </tbody>
-    </table>
-  </div>
-</section>`;
-  }
-
-  sel.addEventListener('change', render);
-  render();
-}
-
-/* ================================================================
-   PROMPTS PAGE
-   ================================================================ */
-function initPrompts() {
-  const q = $('#promptSearch');
-  const container = $('#promptList');
-  const count = $('#promptCount');
-  if (!q || !container) return;
-
-  function render() {
-    const term = q.value.toLowerCase().trim();
-    const xs = term
-      ? VA.prompts.filter(p => JSON.stringify(p).toLowerCase().includes(term))
-      : VA.prompts;
-
-    if (count) count.textContent = `${xs.length.toLocaleString()} prompts`;
-
-    container.innerHTML = xs.slice(0, 500).map(p => `
-<div class="prompt-card">
-  <div class="type-badge">${esc(p.type || 'prompt')}</div>
-  <h3 style="font-size:0.95rem;margin:0.4rem 0">${esc(p.title || '')}</h3>
-  <div class="source-meta">
-    ${p.wordCount ? `<span>${p.wordCount} words</span>` : ''}
-    ${p.sourceStatus ? `<span>${esc(p.sourceStatus)}</span>` : ''}
-    ${p.ideaId ? `<span><a href="idea.html?id=${p.ideaId}">→ ${esc(p.ideaId)}</a></span>` : ''}
-  </div>
-  ${p.path ? `<a class="button ghost sm" href="${VA.base}/${esc(p.path)}" style="margin-top:0.65rem">Open prompt →</a>` : ''}
-</div>`).join('');
-  }
-
-  q.addEventListener('input', render);
-  render();
 }
 
 /* ================================================================
@@ -967,14 +843,14 @@ function initSources() {
     container.innerHTML = xs.map(s => `
 <div class="source-card">
   <strong>${esc(s.title || s.id)}</strong>
-  ${s.url ? `<div style="margin:0.25rem 0"><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem;word-break:break-all">${esc(s.url)}</a></div>` : ''}
+  ${s.url ? `<div style="margin:0.25rem 0"><a href="${sanitizeUrl(s.url)}" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem;word-break:break-all">${esc(s.url)}</a></div>` : ''}
   <div class="source-meta">
     <span>${esc(s.id || '')}</span>
     ${s.publisher ? `<span>${esc(s.publisher)}</span>` : ''}
     ${s.date ? `<span>${esc(s.date)}</span>` : ''}
     ${s.type ? `<span>${esc(s.type)}</span>` : ''}
     ${s.researchRound ? `<span>Round ${esc(s.researchRound)}</span>` : ''}
-    ${s.confidenceLabel ? `<span class="confidence-badge ${s.confidenceLabel}">${esc(s.confidenceLabel)}</span>` : ''}
+    ${s.confidenceLabel ? `<span class="confidence-badge ${esc(s.confidenceLabel)}">${esc(s.confidenceLabel)}</span>` : ''}
   </div>
   ${s.supports ? `<div style="margin-top:0.4rem;font-size:0.8rem;color:var(--muted)">Supports: ${(s.supports || []).map(esc).join(', ')}</div>` : ''}
   ${s.importantCaveat ? `<div class="notice" style="margin-top:0.5rem;font-size:0.8rem">⚠ ${esc(s.importantCaveat)}</div>` : ''}
@@ -986,16 +862,18 @@ function initSources() {
 }
 
 /* ================================================================
-   RELATIONSHIP GRAPH
+   RELATIONSHIP GRAPH (DYNAMIC NODE CAP & TRUNCATION NOTICE)
    ================================================================ */
 function initGraph() {
   const svg = $('#graph');
   if (!svg) return;
 
+  const GRAPH_NODE_CAP = 100;
   const W = 1200, H = 620;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-  const nodes = VA.ideas.slice(0, 70).map((x, i) => ({
+  const totalCount = VA.ideas.length;
+  const nodes = VA.ideas.slice(0, GRAPH_NODE_CAP).map((x, i) => ({
     ...x,
     cx: 80 + (i % 10) * 114,
     cy: 55 + Math.floor(i / 10) * 88
@@ -1004,7 +882,7 @@ function initGraph() {
   const allowed = new Set(nodes.map(x => x.id));
   const edges = (VA.relationships || [])
     .filter(e => allowed.has(e.source) && allowed.has(e.target))
-    .slice(0, 120);
+    .slice(0, 150);
 
   const lines = edges.map(e => {
     const a = nodes.find(n => n.id === e.source);
@@ -1018,14 +896,19 @@ function initGraph() {
     const fill = sc === 'hi' ? 'var(--score-hi-bg)' : sc === 'md' ? 'var(--score-md-bg)' : 'var(--score-lo-bg)';
     const stroke = sc === 'hi' ? 'var(--score-hi)' : sc === 'md' ? 'var(--score-md)' : 'var(--score-lo)';
     return `
-<a href="idea.html?id=${n.id}" tabindex="0">
+<a href="idea.html?id=${encodeURIComponent(n.id)}" tabindex="0">
   <circle cx="${n.cx}" cy="${n.cy}" r="18" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>
   <text x="${n.cx}" y="${n.cy + 4}" text-anchor="middle" font-size="8" fill="${stroke}" font-weight="700">${esc(n.id.slice(-3))}</text>
   <title>${esc(n.name)} — ${n.atAGlance?.overallScore ?? '?'}</title>
 </a>`;
   }).join('');
 
-  svg.innerHTML = lines + circles;
+  let infoNotice = '';
+  if (totalCount > GRAPH_NODE_CAP) {
+    infoNotice = `<text x="20" y="${H - 15}" font-size="11" fill="var(--muted)">Showing top ${GRAPH_NODE_CAP} of ${totalCount} nodes for layout readability.</text>`;
+  }
+
+  svg.innerHTML = lines + circles + infoNotice;
 }
 
 /* ================================================================
@@ -1036,32 +919,47 @@ function initCategories() {
   if (!container) return;
 
   container.innerHTML = VA.categories.map(c => `
-<div class="card" style="cursor:pointer" onclick="location.href='${VA.base}/index.html?category=${encodeURIComponent(c.name)}'">
+<div class="card" style="cursor:pointer" data-action="open-category" data-category="${esc(c.name)}">
   <div class="eyebrow">${esc(c.name)}</div>
   <h3 style="font-size:1rem;margin:0.25rem 0">${esc(c.name)}</h3>
   <p style="font-size:0.82rem">${esc(c.description || '')}</p>
-  <div style="margin-top:auto;font-weight:700;color:var(--accent);font-size:1.1rem">${c.count}</div>
-  <div style="font-size:0.78rem;color:var(--muted)">idea${c.count !== 1 ? 's' : ''}</div>
+  <div style="margin-top:auto;font-weight:700;color:var(--accent);font-size:1.1rem">${c.count || 0}</div>
+  <div style="font-size:0.78rem;color:var(--muted)">idea${(c.count || 0) !== 1 ? 's' : ''}</div>
 </div>`).join('');
+
+  container.addEventListener('click', e => {
+    const cardEl = e.target.closest('[data-action="open-category"]');
+    if (!cardEl) return;
+    const catName = cardEl.getAttribute('data-category');
+    if (catName) {
+      location.href = `${VA.base}/index.html?category=${encodeURIComponent(catName)}`;
+    }
+  });
 }
 
 /* ================================================================
-   ENTRY POINT
+   ENTRY POINT & REUSABLE ERROR HANDLING
    ================================================================ */
 document.addEventListener('DOMContentLoaded', async () => {
-  // Load all data
-  await loadData();
+  try {
+    await loadData();
+  } catch (err) {
+    const mainEl = document.querySelector('main') || document.body;
+    mainEl.insertAdjacentHTML('afterbegin', `
+<div class="notice" style="margin:2rem;background:var(--score-lo-bg);border:1px solid var(--score-lo);padding:1.5rem;border-radius:8px">
+  <h3>⚠ Data Loading Failure</h3>
+  <p>Venture Atlas OS encountered an error loading dataset resources: ${esc(err.message)}</p>
+  <button onclick="location.reload()" class="button sm" style="margin-top:0.5rem">Retry Loading</button>
+</div>`);
+  }
 
-  // Theme and keyboard
   themeInit();
   initKeyboard();
 
-  // Service worker registration for offline PWA functionality
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(`${VA.base}/sw.js`).catch(() => {});
   }
 
-  // Inject nav on pages that use it (non-home pages that don't have their own header)
   const page = document.body.dataset.page;
   const hasHeader = document.querySelector('.site-header');
   if (!hasHeader) {
@@ -1083,11 +981,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     <button id="themeBtn" aria-label="Toggle dark mode">☾</button>
   </nav>
 </header>`);
-    // Re-bind theme button (it was just created)
     themeInit();
   }
 
-  // Inject footer on pages that don't have one
   if (!document.querySelector('.footer')) {
     document.body.insertAdjacentHTML('beforeend', `
 <footer class="footer" role="contentinfo">
@@ -1098,11 +994,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 </footer>`);
   }
 
-  // Fill metrics with count-up animation
   fillMetrics();
   initMobileNav();
 
-  // Page-specific initialization
   if (page === 'home')          initHome();
   if (page === 'idea')          initIdea();
   if (page === 'compare')       initCompare();
@@ -1112,6 +1006,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (page === 'relationships') initGraph();
   if (page === 'categories')    initCategories();
 
-  // Dispatch va:ready event so index.html enhancements can hook in
   window.dispatchEvent(new CustomEvent('va:ready', { detail: { ideas: VA.ideas, categories: VA.categories } }));
 });

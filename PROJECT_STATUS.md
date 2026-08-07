@@ -1,6 +1,6 @@
 # PROJECT STATUS
 
-- Repository version: 2.3.0
+- Repository version: 2.2.0
 - Data schema version: 2.0.0
 - Validation status: **PASSED** — 0 errors across all 226 ideas, 62 sources, search index and smoke tests
 - Last completed idea ID: idea-249
@@ -71,7 +71,7 @@
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.1.1
+- Repository Version: 2.2.0
 - Canonical Ideas: 226
 - Categories: 60
 - Source References: 62
