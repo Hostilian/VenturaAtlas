@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-07T02:42:55.547121+00:00",
-  "totalIdeas": 97,
+  "generatedAt": "2026-08-07T03:40:41.774711+00:00",
+  "totalIdeas": 143,
   "algorithm": "weighted-composite-v2",
   "weights": {
     "overallOpportunity": 0.25,
@@ -16,6 +16,60 @@
   "rankings": [
     {
       "rank": 1,
+      "id": "idea-157",
+      "name": "Lightweight Export & Migration Tools Hub",
+      "category": "SaaS shutdown & data portability",
+      "score": 90.7,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 86.3,
+        "bootstrappedPotential": 97.7,
+        "soloFounderPotential": 95.7,
+        "differentiation": 81.6,
+        "profitPotential": 80.6
+      }
+    },
+    {
+      "rank": 2,
+      "id": "idea-121",
+      "name": "Lightweight Cognitive Load Reduction Hub",
+      "category": "Solo founder productivity",
+      "score": 90.2,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 86.2,
+        "bootstrappedPotential": 97.0,
+        "soloFounderPotential": 95.0,
+        "differentiation": 79.4,
+        "profitPotential": 81.0
+      }
+    },
+    {
+      "rank": 3,
+      "id": "idea-144",
+      "name": "Bounded Iot & Asset Tracking Layer",
+      "category": "Physical-digital bridge",
+      "score": 89.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.2,
+        "bootstrappedPotential": 96.7,
+        "soloFounderPotential": 94.7,
+        "differentiation": 83.2,
+        "profitPotential": 78.8
+      }
+    },
+    {
+      "rank": 4,
       "id": "idea-075",
       "name": "Zero-Setup Repository Automation Toolkit",
       "category": "Developer tools & infrastructure",
@@ -33,7 +87,25 @@
       }
     },
     {
-      "rank": 2,
+      "rank": 5,
+      "id": "idea-153",
+      "name": "Smart Productized Audit Service Kit",
+      "category": "Audit & Financial Forensics",
+      "score": 88.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 87.2,
+        "bootstrappedPotential": 92.3,
+        "soloFounderPotential": 90.3,
+        "differentiation": 84.3,
+        "profitPotential": 81.0
+      }
+    },
+    {
+      "rank": 6,
       "id": "idea-076",
       "name": "Automated Agent Testing Suite",
       "category": "AI evaluation & launch gates",
@@ -51,7 +123,7 @@
       }
     },
     {
-      "rank": 3,
+      "rank": 7,
       "id": "idea-078",
       "name": "Verified Export & Migration Tools Engine",
       "category": "SaaS shutdown & data portability",
@@ -69,7 +141,25 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 8,
+      "id": "idea-128",
+      "name": "Lightweight Workflow Builders Layer",
+      "category": "No-code / low-code automation",
+      "score": 88.7,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 85.2,
+        "bootstrappedPotential": 93.3,
+        "soloFounderPotential": 91.3,
+        "differentiation": 86.1,
+        "profitPotential": 72.5
+      }
+    },
+    {
+      "rank": 9,
       "id": "idea-074",
       "name": "Rapid Agentic Commerce Data Gate",
       "category": "Product verification & evidence",
@@ -87,7 +177,97 @@
       }
     },
     {
-      "rank": 5,
+      "rank": 10,
+      "id": "idea-126",
+      "name": "Verified Shopping Agent Data Hub",
+      "category": "Agentic commerce infrastructure",
+      "score": 88.4,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 83.6,
+        "bootstrappedPotential": 96.7,
+        "soloFounderPotential": 94.7,
+        "differentiation": 77.6,
+        "profitPotential": 74.8
+      }
+    },
+    {
+      "rank": 11,
+      "id": "idea-116",
+      "name": "Rapid Export & Migration Tools Toolkit",
+      "category": "SaaS shutdown & data portability",
+      "score": 88.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.8,
+        "bootstrappedPotential": 95.7,
+        "soloFounderPotential": 93.7,
+        "differentiation": 83.1,
+        "profitPotential": 74.3
+      }
+    },
+    {
+      "rank": 12,
+      "id": "idea-122",
+      "name": "Automated Matching & Discovery Kit",
+      "category": "B2B niche marketplaces",
+      "score": 88.2,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.3,
+        "bootstrappedPotential": 96.7,
+        "soloFounderPotential": 94.7,
+        "differentiation": 68.2,
+        "profitPotential": 78.8
+      }
+    },
+    {
+      "rank": 13,
+      "id": "idea-132",
+      "name": "Bounded Matching & Discovery Hub",
+      "category": "B2B niche marketplaces",
+      "score": 88.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 83.7,
+        "bootstrappedPotential": 96.3,
+        "soloFounderPotential": 94.3,
+        "differentiation": 74.3,
+        "profitPotential": 77.0
+      }
+    },
+    {
+      "rank": 14,
+      "id": "idea-134",
+      "name": "Lightweight Iot & Asset Tracking Hub",
+      "category": "Physical-digital bridge",
+      "score": 88.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.4,
+        "bootstrappedPotential": 95.7,
+        "soloFounderPotential": 93.7,
+        "differentiation": 74.6,
+        "profitPotential": 78.8
+      }
+    },
+    {
+      "rank": 15,
       "id": "idea-082",
       "name": "Vendor Slot Rescue",
       "category": "Event Operations & Marketplaces",
@@ -105,7 +285,25 @@
       }
     },
     {
-      "rank": 6,
+      "rank": 16,
+      "id": "idea-118",
+      "name": "Automated Monetisation & Analytics Kit",
+      "category": "Creator economy tooling",
+      "score": 87.6,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.6,
+        "bootstrappedPotential": 95.3,
+        "soloFounderPotential": 93.3,
+        "differentiation": 82.0,
+        "profitPotential": 72.0
+      }
+    },
+    {
+      "rank": 17,
       "id": "idea-083",
       "name": "Wedding Lead Spend Forensics",
       "category": "Audit & Financial Forensics",
@@ -123,7 +321,25 @@
       }
     },
     {
-      "rank": 7,
+      "rank": 18,
+      "id": "idea-140",
+      "name": "Verified Data Connector Toolkit",
+      "category": "API wrapper & integration",
+      "score": 87.4,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.8,
+        "bootstrappedPotential": 97.0,
+        "soloFounderPotential": 95.0,
+        "differentiation": 76.7,
+        "profitPotential": 68.0
+      }
+    },
+    {
+      "rank": 19,
       "id": "idea-096",
       "name": "Bounded Evidence Management Hub",
       "category": "Research & knowledge tools",
@@ -141,7 +357,61 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 20,
+      "id": "idea-109",
+      "name": "Rapid Monetisation & Analytics Engine",
+      "category": "Creator economy tooling",
+      "score": 87.2,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 83.6,
+        "bootstrappedPotential": 95.0,
+        "soloFounderPotential": 93.0,
+        "differentiation": 71.4,
+        "profitPotential": 75.2
+      }
+    },
+    {
+      "rank": 21,
+      "id": "idea-149",
+      "name": "Lightweight Evidence Management Gate",
+      "category": "Research & knowledge tools",
+      "score": 87.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.2,
+        "bootstrappedPotential": 92.3,
+        "soloFounderPotential": 90.3,
+        "differentiation": 71.2,
+        "profitPotential": 80.2
+      }
+    },
+    {
+      "rank": 22,
+      "id": "idea-156",
+      "name": "Lightweight Matching & Discovery Hub",
+      "category": "B2B niche marketplaces",
+      "score": 87.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.5,
+        "bootstrappedPotential": 96.0,
+        "soloFounderPotential": 94.0,
+        "differentiation": 74.6,
+        "profitPotential": 73.0
+      }
+    },
+    {
+      "rank": 23,
       "id": "idea-084",
       "name": "Cancellation Revenue Recovery",
       "category": "Appointment & Scheduling Services",
@@ -159,7 +429,7 @@
       }
     },
     {
-      "rank": 9,
+      "rank": 24,
       "id": "idea-100",
       "name": "Lightweight Quote Normalization Concierge Suite",
       "category": "Consumer Advocacy & Transparency",
@@ -177,7 +447,7 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 25,
       "id": "idea-081",
       "name": "Verified Offline-Capable Tools Gate",
       "category": "Local-first software",
@@ -195,7 +465,61 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 26,
+      "id": "idea-130",
+      "name": "Smart Agent Testing Toolkit",
+      "category": "AI evaluation & launch gates",
+      "score": 86.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.8,
+        "bootstrappedPotential": 92.7,
+        "soloFounderPotential": 90.7,
+        "differentiation": 85.8,
+        "profitPotential": 67.5
+      }
+    },
+    {
+      "rank": 27,
+      "id": "idea-136",
+      "name": "Rapid Repository Automation Suite",
+      "category": "Developer tools & infrastructure",
+      "score": 86.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.4,
+        "bootstrappedPotential": 95.7,
+        "soloFounderPotential": 93.7,
+        "differentiation": 75.9,
+        "profitPotential": 75.2
+      }
+    },
+    {
+      "rank": 28,
+      "id": "idea-142",
+      "name": "Bounded Local Replacement Network Layer",
+      "category": "Event Operations & Marketplaces",
+      "score": 86.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.6,
+        "bootstrappedPotential": 95.0,
+        "soloFounderPotential": 93.0,
+        "differentiation": 79.0,
+        "profitPotential": 70.7
+      }
+    },
+    {
+      "rank": 29,
       "id": "idea-101",
       "name": "Zero-Setup Performance Revenue Recovery Engine",
       "category": "Appointment & Scheduling Services",
@@ -213,7 +537,151 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 30,
+      "id": "idea-115",
+      "name": "Lightweight Regulatory Automation Engine",
+      "category": "EU Marketplace & Compliance",
+      "score": 86.6,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.0,
+        "bootstrappedPotential": 93.3,
+        "soloFounderPotential": 91.3,
+        "differentiation": 79.2,
+        "profitPotential": 69.4
+      }
+    },
+    {
+      "rank": 31,
+      "id": "idea-129",
+      "name": "Verified Quote Normalization Concierge Gate",
+      "category": "Consumer Advocacy & Transparency",
+      "score": 86.6,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.1,
+        "bootstrappedPotential": 94.0,
+        "soloFounderPotential": 92.0,
+        "differentiation": 80.9,
+        "profitPotential": 75.2
+      }
+    },
+    {
+      "rank": 32,
+      "id": "idea-110",
+      "name": "Smart Matching & Discovery Gate",
+      "category": "B2B niche marketplaces",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.5,
+        "bootstrappedPotential": 93.3,
+        "soloFounderPotential": 91.3,
+        "differentiation": 77.2,
+        "profitPotential": 72.0
+      }
+    },
+    {
+      "rank": 33,
+      "id": "idea-113",
+      "name": "Verified Workflow Builders Engine",
+      "category": "No-code / low-code automation",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 82.0,
+        "bootstrappedPotential": 91.7,
+        "soloFounderPotential": 89.7,
+        "differentiation": 81.7,
+        "profitPotential": 79.7
+      }
+    },
+    {
+      "rank": 34,
+      "id": "idea-117",
+      "name": "Zero-Setup Evidence Management Suite",
+      "category": "Research & knowledge tools",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.2,
+        "bootstrappedPotential": 94.0,
+        "soloFounderPotential": 92.0,
+        "differentiation": 81.0,
+        "profitPotential": 71.6
+      }
+    },
+    {
+      "rank": 35,
+      "id": "idea-119",
+      "name": "Zero-Setup Cognitive Load Reduction Gate",
+      "category": "Solo founder productivity",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 82.6,
+        "bootstrappedPotential": 93.7,
+        "soloFounderPotential": 91.7,
+        "differentiation": 77.4,
+        "profitPotential": 72.5
+      }
+    },
+    {
+      "rank": 36,
+      "id": "idea-120",
+      "name": "Zero-Setup Productized Audit Service Layer",
+      "category": "Audit & Financial Forensics",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 82.7,
+        "bootstrappedPotential": 93.7,
+        "soloFounderPotential": 91.7,
+        "differentiation": 80.5,
+        "profitPotential": 71.1
+      }
+    },
+    {
+      "rank": 37,
+      "id": "idea-154",
+      "name": "Bounded Quote Normalization Concierge Toolkit",
+      "category": "Consumer Advocacy & Transparency",
+      "score": 86.5,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.3,
+        "bootstrappedPotential": 97.0,
+        "soloFounderPotential": 95.0,
+        "differentiation": 76.1,
+        "profitPotential": 66.2
+      }
+    },
+    {
+      "rank": 38,
       "id": "idea-092",
       "name": "Smart Offline-Capable Tools Layer",
       "category": "Local-first software",
@@ -231,7 +699,133 @@
       }
     },
     {
-      "rank": 13,
+      "rank": 39,
+      "id": "idea-114",
+      "name": "Smart Regulatory Automation Layer",
+      "category": "EU Marketplace & Compliance",
+      "score": 86.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.0,
+        "bootstrappedPotential": 92.0,
+        "soloFounderPotential": 90.0,
+        "differentiation": 73.0,
+        "profitPotential": 78.4
+      }
+    },
+    {
+      "rank": 40,
+      "id": "idea-145",
+      "name": "Bounded Offline-Capable Tools Engine",
+      "category": "Local-first software",
+      "score": 86.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.5,
+        "bootstrappedPotential": 93.3,
+        "soloFounderPotential": 91.3,
+        "differentiation": 73.8,
+        "profitPotential": 74.8
+      }
+    },
+    {
+      "rank": 41,
+      "id": "idea-152",
+      "name": "Smart Quote Normalization Concierge Engine",
+      "category": "Consumer Advocacy & Transparency",
+      "score": 86.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 82.6,
+        "bootstrappedPotential": 95.0,
+        "soloFounderPotential": 93.0,
+        "differentiation": 71.2,
+        "profitPotential": 73.4
+      }
+    },
+    {
+      "rank": 42,
+      "id": "idea-155",
+      "name": "Zero-Setup Offline-Capable Tools Kit",
+      "category": "Local-first software",
+      "score": 86.2,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 84.0,
+        "bootstrappedPotential": 92.0,
+        "soloFounderPotential": 90.0,
+        "differentiation": 73.4,
+        "profitPotential": 79.2
+      }
+    },
+    {
+      "rank": 43,
+      "id": "idea-125",
+      "name": "Lightweight Repository Automation Kit",
+      "category": "Developer tools & infrastructure",
+      "score": 86.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.9,
+        "bootstrappedPotential": 94.0,
+        "soloFounderPotential": 92.0,
+        "differentiation": 80.5,
+        "profitPotential": 73.4
+      }
+    },
+    {
+      "rank": 44,
+      "id": "idea-127",
+      "name": "Zero-Setup Export & Migration Tools Suite",
+      "category": "SaaS shutdown & data portability",
+      "score": 86.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.8,
+        "bootstrappedPotential": 94.0,
+        "soloFounderPotential": 92.0,
+        "differentiation": 79.1,
+        "profitPotential": 70.7
+      }
+    },
+    {
+      "rank": 45,
+      "id": "idea-151",
+      "name": "Automated Cognitive Load Reduction Engine",
+      "category": "Solo founder productivity",
+      "score": 86.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.3,
+        "bootstrappedPotential": 93.0,
+        "soloFounderPotential": 91.0,
+        "differentiation": 70.9,
+        "profitPotential": 79.2
+      }
+    },
+    {
+      "rank": 46,
       "id": "idea-073",
       "name": "Smart Repository Automation Engine",
       "category": "Developer tools & infrastructure",
@@ -249,7 +843,7 @@
       }
     },
     {
-      "rank": 14,
+      "rank": 47,
       "id": "idea-095",
       "name": "Automated Offline-Capable Tools Toolkit",
       "category": "Local-first software",
@@ -267,7 +861,79 @@
       }
     },
     {
-      "rank": 15,
+      "rank": 48,
+      "id": "idea-141",
+      "name": "Bounded Regulatory Automation Hub",
+      "category": "EU Marketplace & Compliance",
+      "score": 86.0,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 82.6,
+        "bootstrappedPotential": 93.0,
+        "soloFounderPotential": 91.0,
+        "differentiation": 69.5,
+        "profitPotential": 77.0
+      }
+    },
+    {
+      "rank": 49,
+      "id": "idea-143",
+      "name": "Zero-Setup Shopping Agent Data Gate",
+      "category": "Agentic commerce infrastructure",
+      "score": 86.0,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.8,
+        "bootstrappedPotential": 95.7,
+        "soloFounderPotential": 93.7,
+        "differentiation": 68.2,
+        "profitPotential": 69.4
+      }
+    },
+    {
+      "rank": 50,
+      "id": "idea-124",
+      "name": "Verified Agent Testing Layer",
+      "category": "AI evaluation & launch gates",
+      "score": 85.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.5,
+        "bootstrappedPotential": 92.3,
+        "soloFounderPotential": 90.3,
+        "differentiation": 79.3,
+        "profitPotential": 65.8
+      }
+    },
+    {
+      "rank": 51,
+      "id": "idea-133",
+      "name": "Verified Agentic Commerce Data Kit",
+      "category": "Product verification & evidence",
+      "score": 85.8,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.2,
+        "bootstrappedPotential": 95.0,
+        "soloFounderPotential": 93.0,
+        "differentiation": 69.2,
+        "profitPotential": 70.2
+      }
+    },
+    {
+      "rank": 52,
       "id": "idea-079",
       "name": "Verified Vertical-Specific Automation Hub",
       "category": "Micro-SaaS niche tooling",
@@ -285,7 +951,7 @@
       }
     },
     {
-      "rank": 16,
+      "rank": 53,
       "id": "idea-099",
       "name": "Rapid Performance Revenue Recovery Toolkit",
       "category": "Appointment & Scheduling Services",
@@ -303,7 +969,43 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 54,
+      "id": "idea-106",
+      "name": "Lightweight Data Connector Layer",
+      "category": "API wrapper & integration",
+      "score": 85.6,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.2,
+        "bootstrappedPotential": 92.0,
+        "soloFounderPotential": 90.0,
+        "differentiation": 77.9,
+        "profitPotential": 73.9
+      }
+    },
+    {
+      "rank": 55,
+      "id": "idea-131",
+      "name": "Lightweight Shopping Agent Data Engine",
+      "category": "Agentic commerce infrastructure",
+      "score": 85.6,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 83.2,
+        "bootstrappedPotential": 89.7,
+        "soloFounderPotential": 87.7,
+        "differentiation": 80.2,
+        "profitPotential": 77.5
+      }
+    },
+    {
+      "rank": 56,
       "id": "idea-085",
       "name": "Event Sponsor Proof Pack",
       "category": "Event Operations & Sponsorship",
@@ -321,7 +1023,7 @@
       }
     },
     {
-      "rank": 18,
+      "rank": 57,
       "id": "idea-093",
       "name": "Rapid Cognitive Load Reduction Kit",
       "category": "Solo founder productivity",
@@ -339,7 +1041,25 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 58,
+      "id": "idea-138",
+      "name": "Verified Evidence Management Gate",
+      "category": "Research & knowledge tools",
+      "score": 85.4,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.4,
+        "bootstrappedPotential": 90.3,
+        "soloFounderPotential": 88.3,
+        "differentiation": 82.5,
+        "profitPotential": 73.0
+      }
+    },
+    {
+      "rank": 59,
       "id": "idea-080",
       "name": "Automated Repository Automation Hub",
       "category": "Developer tools & infrastructure",
@@ -357,7 +1077,115 @@
       }
     },
     {
-      "rank": 20,
+      "rank": 60,
+      "id": "idea-107",
+      "name": "Smart Performance Revenue Recovery Layer",
+      "category": "Appointment & Scheduling Services",
+      "score": 85.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 83.6,
+        "bootstrappedPotential": 89.7,
+        "soloFounderPotential": 87.7,
+        "differentiation": 74.6,
+        "profitPotential": 77.0
+      }
+    },
+    {
+      "rank": 61,
+      "id": "idea-135",
+      "name": "Smart Cognitive Load Reduction Layer",
+      "category": "Solo founder productivity",
+      "score": 85.3,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.0,
+        "bootstrappedPotential": 94.3,
+        "soloFounderPotential": 92.3,
+        "differentiation": 70.1,
+        "profitPotential": 72.5
+      }
+    },
+    {
+      "rank": 62,
+      "id": "idea-104",
+      "name": "Zero-Setup Matching & Discovery Layer",
+      "category": "B2B niche marketplaces",
+      "score": 85.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 79.2,
+        "bootstrappedPotential": 92.7,
+        "soloFounderPotential": 90.7,
+        "differentiation": 68.8,
+        "profitPotential": 76.1
+      }
+    },
+    {
+      "rank": 63,
+      "id": "idea-108",
+      "name": "Rapid Iot & Asset Tracking Gate",
+      "category": "Physical-digital bridge",
+      "score": 85.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 80.0,
+        "bootstrappedPotential": 91.3,
+        "soloFounderPotential": 89.3,
+        "differentiation": 73.7,
+        "profitPotential": 76.1
+      }
+    },
+    {
+      "rank": 64,
+      "id": "idea-139",
+      "name": "Verified Local Replacement Network Suite",
+      "category": "Event Operations & Marketplaces",
+      "score": 85.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.1,
+        "bootstrappedPotential": 90.3,
+        "soloFounderPotential": 88.3,
+        "differentiation": 76.6,
+        "profitPotential": 77.0
+      }
+    },
+    {
+      "rank": 65,
+      "id": "idea-146",
+      "name": "Bounded Workflow Builders Suite",
+      "category": "No-code / low-code automation",
+      "score": 85.1,
+      "checklist": 100.0,
+      "killFlagged": false,
+      "provider": "own-orch",
+      "status": "staged",
+      "topDimensions": {
+        "overallOpportunity": 81.7,
+        "bootstrappedPotential": 91.0,
+        "soloFounderPotential": 89.0,
+        "differentiation": 75.5,
+        "profitPotential": 72.5
+      }
+    },
+    {
+      "rank": 66,
       "id": "idea-086",
       "name": "Booked-Out Referral Exchange",
       "category": "Marketplaces & Referral Networks",
@@ -375,7 +1203,7 @@
       }
     },
     {
-      "rank": 21,
+      "rank": 67,
       "id": "idea-061",
       "name": "FactBounty — Buyer-Funded Product Proof Exchange",
       "category": "Product verification & evidence",
@@ -393,7 +1221,7 @@
       }
     },
     {
-      "rank": 22,
+      "rank": 68,
       "id": "idea-062",
       "name": "MeasureGraph — Exact Dimensions Evidence Network",
       "category": "Product verification & evidence",
@@ -411,7 +1239,7 @@
       }
     },
     {
-      "rank": 23,
+      "rank": 69,
       "id": "idea-071",
       "name": "Repository-Automation Gate — Developer tools & infrastructure",
       "category": "Developer tools & infrastructure",
@@ -429,7 +1257,7 @@
       }
     },
     {
-      "rank": 24,
+      "rank": 70,
       "id": "idea-087",
       "name": "Referee Rescue",
       "category": "Sports Operations & Networks",
@@ -447,7 +1275,7 @@
       }
     },
     {
-      "rank": 25,
+      "rank": 71,
       "id": "idea-088",
       "name": "Funeral Quote Normalizer",
       "category": "Consumer Advocacy & Transparency",
@@ -465,7 +1293,7 @@
       }
     },
     {
-      "rank": 26,
+      "rank": 72,
       "id": "idea-089",
       "name": "Market Vendor ROI Ledger",
       "category": "Market Intelligence & Data",
@@ -483,7 +1311,7 @@
       }
     },
     {
-      "rank": 27,
+      "rank": 73,
       "id": "idea-072",
       "name": "Regulatory-Automation Gate — EU Marketplace & Compliance",
       "category": "EU Marketplace & Compliance",
@@ -501,7 +1329,7 @@
       }
     },
     {
-      "rank": 28,
+      "rank": 74,
       "id": "idea-063",
       "name": "Compatibility Bounties — Device-Accessory Proof Exchange",
       "category": "Product verification & evidence",
@@ -519,7 +1347,7 @@
       }
     },
     {
-      "rank": 29,
+      "rank": 75,
       "id": "idea-002",
       "name": "AI Model Ranking Observatory",
       "category": "Media + data",
@@ -537,7 +1365,7 @@
       }
     },
     {
-      "rank": 30,
+      "rank": 76,
       "id": "idea-004",
       "name": "Verified Rankings Network",
       "category": "Media + data",
@@ -555,7 +1383,7 @@
       }
     },
     {
-      "rank": 31,
+      "rank": 77,
       "id": "idea-005",
       "name": "Prompt Registry & Evaluation Lab",
       "category": "Developer tools",
@@ -573,7 +1401,7 @@
       }
     },
     {
-      "rank": 32,
+      "rank": 78,
       "id": "idea-003",
       "name": "AI Agent Budget & Credit Controller",
       "category": "AI infrastructure",
@@ -591,7 +1419,7 @@
       }
     },
     {
-      "rank": 33,
+      "rank": 79,
       "id": "idea-001",
       "name": "ProofRail — AI Work Acceptance Gate",
       "category": "Developer tools",
@@ -609,7 +1437,7 @@
       }
     },
     {
-      "rank": 34,
+      "rank": 80,
       "id": "idea-007",
       "name": "Creator Video Automation Pipeline",
       "category": "Creator tools",
@@ -627,7 +1455,7 @@
       }
     },
     {
-      "rank": 35,
+      "rank": 81,
       "id": "idea-090",
       "name": "Pet Care Backup Circle",
       "category": "Consumer Networks & Pet Care",
@@ -645,7 +1473,7 @@
       }
     },
     {
-      "rank": 36,
+      "rank": 82,
       "id": "idea-010",
       "name": "Repository Autopilot",
       "category": "Developer tools",
@@ -663,7 +1491,7 @@
       }
     },
     {
-      "rank": 37,
+      "rank": 83,
       "id": "idea-006",
       "name": "CodeQL Remediation Factory",
       "category": "Cybersecurity",
@@ -681,7 +1509,7 @@
       }
     },
     {
-      "rank": 38,
+      "rank": 84,
       "id": "idea-016",
       "name": "Multi-Provider AI Workspace",
       "category": "AI application",
@@ -699,7 +1527,7 @@
       }
     },
     {
-      "rank": 39,
+      "rank": 85,
       "id": "idea-012",
       "name": "Content Opportunity Ranker",
       "category": "Creator tools",
@@ -717,7 +1545,7 @@
       }
     },
     {
-      "rank": 40,
+      "rank": 86,
       "id": "idea-064",
       "name": "Verified Owner Answers — Cross-Retailer Q&A Network",
       "category": "Product verification & evidence",
@@ -735,7 +1563,7 @@
       }
     },
     {
-      "rank": 41,
+      "rank": 87,
       "id": "idea-011",
       "name": "Official Source Change Monitor",
       "category": "Information infrastructure",
@@ -753,7 +1581,7 @@
       }
     },
     {
-      "rank": 42,
+      "rank": 88,
       "id": "idea-015",
       "name": "Evidence-Backed Recommendation Engine",
       "category": "AI infrastructure",
@@ -771,7 +1599,7 @@
       }
     },
     {
-      "rank": 43,
+      "rank": 89,
       "id": "idea-013",
       "name": "Autonomous Agent Operating System",
       "category": "AI infrastructure",
@@ -789,7 +1617,7 @@
       }
     },
     {
-      "rank": 44,
+      "rank": 90,
       "id": "idea-020",
       "name": "Longitudinal Research Memory",
       "category": "Research tools",
@@ -807,7 +1635,7 @@
       }
     },
     {
-      "rank": 45,
+      "rank": 91,
       "id": "idea-009",
       "name": "Autonomous Experiment Factory",
       "category": "Research tools",
@@ -825,7 +1653,7 @@
       }
     },
     {
-      "rank": 46,
+      "rank": 92,
       "id": "idea-014",
       "name": "Venture Atlas OS",
       "category": "Knowledge management",
@@ -843,7 +1671,7 @@
       }
     },
     {
-      "rank": 47,
+      "rank": 93,
       "id": "idea-021",
       "name": "Clip-to-Quiz Language Learning",
       "category": "Education technology",
@@ -861,7 +1689,7 @@
       }
     },
     {
-      "rank": 48,
+      "rank": 94,
       "id": "idea-008",
       "name": "Research-to-Startup Engine",
       "category": "Research tools",
@@ -879,7 +1707,7 @@
       }
     },
     {
-      "rank": 49,
+      "rank": 95,
       "id": "idea-019",
       "name": "Release Evidence Ledger",
       "category": "Developer tools",
@@ -897,7 +1725,7 @@
       }
     },
     {
-      "rank": 50,
+      "rank": 96,
       "id": "idea-017",
       "name": "Semantic Multi-Agent Merge Coordinator",
       "category": "Developer tools",
@@ -915,7 +1743,7 @@
       }
     },
     {
-      "rank": 51,
+      "rank": 97,
       "id": "idea-023",
       "name": "Applications Closing Soon",
       "category": "Information service",
@@ -933,7 +1761,7 @@
       }
     },
     {
-      "rank": 52,
+      "rank": 98,
       "id": "idea-024",
       "name": "Movie-to-100-Shorts Engine",
       "category": "Creator tools",
@@ -951,7 +1779,7 @@
       }
     },
     {
-      "rank": 53,
+      "rank": 99,
       "id": "idea-091",
       "name": "EU Return Evidence Pack",
       "category": "EU Marketplace & Compliance",
@@ -969,7 +1797,7 @@
       }
     },
     {
-      "rank": 54,
+      "rank": 100,
       "id": "idea-022",
       "name": "Subscription Change Tracker",
       "category": "Information service",
@@ -987,7 +1815,7 @@
       }
     },
     {
-      "rank": 55,
+      "rank": 101,
       "id": "idea-029",
       "name": "Verified Seller Onboarding API",
       "category": "B2B SaaS",
@@ -1005,7 +1833,7 @@
       }
     },
     {
-      "rank": 56,
+      "rank": 102,
       "id": "idea-032",
       "name": "Digital Product Passport & Repair Graph",
       "category": "Climate + compliance",
@@ -1023,7 +1851,7 @@
       }
     },
     {
-      "rank": 57,
+      "rank": 103,
       "id": "idea-018",
       "name": "Verified Agent Skill Marketplace",
       "category": "Marketplaces",
@@ -1041,7 +1869,7 @@
       }
     },
     {
-      "rank": 58,
+      "rank": 104,
       "id": "idea-025",
       "name": "EU Marketplace Compliance OS",
       "category": "Compliance",
@@ -1059,7 +1887,7 @@
       }
     },
     {
-      "rank": 59,
+      "rank": 105,
       "id": "idea-026",
       "name": "Marketplace Trust Layer",
       "category": "B2B SaaS",
@@ -1077,7 +1905,7 @@
       }
     },
     {
-      "rank": 60,
+      "rank": 106,
       "id": "idea-037",
       "name": "Multi-Platform Publishing OS",
       "category": "Creator infrastructure",
@@ -1095,7 +1923,7 @@
       }
     },
     {
-      "rank": 61,
+      "rank": 107,
       "id": "idea-027",
       "name": "Commerce Knowledge Graph Platform",
       "category": "Data infrastructure",
@@ -1113,7 +1941,7 @@
       }
     },
     {
-      "rank": 62,
+      "rank": 108,
       "id": "idea-031",
       "name": "Mobile Release Factory",
       "category": "Developer tools",
@@ -1131,7 +1959,7 @@
       }
     },
     {
-      "rank": 63,
+      "rank": 109,
       "id": "idea-039",
       "name": "Local Event & Early-Bird Radar",
       "category": "Consumer discovery",
@@ -1149,7 +1977,7 @@
       }
     },
     {
-      "rank": 64,
+      "rank": 110,
       "id": "idea-034",
       "name": "Founder Decision Journal",
       "category": "Knowledge management",
@@ -1167,7 +1995,7 @@
       }
     },
     {
-      "rank": 65,
+      "rank": 111,
       "id": "idea-035",
       "name": "Local-First Personal AI / Jarvis",
       "category": "AI application",
@@ -1185,7 +2013,7 @@
       }
     },
     {
-      "rank": 66,
+      "rank": 112,
       "id": "idea-042",
       "name": "Verified Local Value Rankings",
       "category": "Media + data",
@@ -1203,7 +2031,7 @@
       }
     },
     {
-      "rank": 67,
+      "rank": 113,
       "id": "idea-033",
       "name": "Evidence-Backed Food Route Builder",
       "category": "Travel + food",
@@ -1221,7 +2049,7 @@
       }
     },
     {
-      "rank": 68,
+      "rank": 114,
       "id": "idea-028",
       "name": "FoodSpec Evidence Registry",
       "category": "B2B SaaS",
@@ -1239,7 +2067,7 @@
       }
     },
     {
-      "rank": 69,
+      "rank": 115,
       "id": "idea-036",
       "name": "Free Before Midnight",
       "category": "Consumer discovery",
@@ -1257,7 +2085,7 @@
       }
     },
     {
-      "rank": 70,
+      "rank": 116,
       "id": "idea-066",
       "name": "Revision & Variant Proof Registry",
       "category": "Product verification & evidence",
@@ -1275,7 +2103,7 @@
       }
     },
     {
-      "rank": 71,
+      "rank": 117,
       "id": "idea-030",
       "name": "Autonomous Mobile App Factory",
       "category": "Automation platform",
@@ -1293,7 +2121,7 @@
       }
     },
     {
-      "rank": 72,
+      "rank": 118,
       "id": "idea-043",
       "name": "Regional Commerce Launchpad",
       "category": "Marketplaces",
@@ -1311,7 +2139,7 @@
       }
     },
     {
-      "rank": 73,
+      "rank": 119,
       "id": "idea-068",
       "name": "Product Evidence API for Shopping Agents",
       "category": "Product verification & evidence",
@@ -1329,7 +2157,7 @@
       }
     },
     {
-      "rank": 74,
+      "rank": 120,
       "id": "idea-065",
       "name": "Local Shelf Proof — Real-Time Retail Stock Evidence",
       "category": "Product verification & evidence",
@@ -1347,7 +2175,7 @@
       }
     },
     {
-      "rank": 75,
+      "rank": 121,
       "id": "idea-048",
       "name": "SSD Storage Culprit Analyzer",
       "category": "Utilities",
@@ -1365,7 +2193,7 @@
       }
     },
     {
-      "rank": 76,
+      "rank": 122,
       "id": "idea-038",
       "name": "CourseMatch Erasmus Equivalence",
       "category": "Education technology",
@@ -1383,7 +2211,7 @@
       }
     },
     {
-      "rank": 77,
+      "rank": 123,
       "id": "idea-044",
       "name": "EUshop — Pan-European Specialty Food Marketplace",
       "category": "Marketplaces",
@@ -1401,7 +2229,7 @@
       }
     },
     {
-      "rank": 78,
+      "rank": 124,
       "id": "idea-045",
       "name": "Repair Decision Assistant",
       "category": "Consumer utility",
@@ -1419,7 +2247,7 @@
       }
     },
     {
-      "rank": 79,
+      "rank": 125,
       "id": "idea-040",
       "name": "European Food Knowledge Graph",
       "category": "Data infrastructure",
@@ -1437,7 +2265,7 @@
       }
     },
     {
-      "rank": 80,
+      "rank": 126,
       "id": "idea-046",
       "name": "API Opportunity Ranker",
       "category": "Research tools",
@@ -1455,7 +2283,7 @@
       }
     },
     {
-      "rank": 81,
+      "rank": 127,
       "id": "idea-041",
       "name": "Living European Food Atlas",
       "category": "Food knowledge",
@@ -1473,7 +2301,7 @@
       }
     },
     {
-      "rank": 82,
+      "rank": 128,
       "id": "idea-070",
       "name": "Seller ProofLink — Guided Listing Verification",
       "category": "Product verification & evidence",
@@ -1491,7 +2319,7 @@
       }
     },
     {
-      "rank": 83,
+      "rank": 129,
       "id": "idea-047",
       "name": "Autonomous Game Factory",
       "category": "Automation platform",
@@ -1509,7 +2337,7 @@
       }
     },
     {
-      "rank": 84,
+      "rank": 130,
       "id": "idea-049",
       "name": "GitHub Pages Version Lab",
       "category": "Developer tools",
@@ -1527,7 +2355,7 @@
       }
     },
     {
-      "rank": 85,
+      "rank": 131,
       "id": "idea-067",
       "name": "Real-World Noise & Clearance Facts",
       "category": "Product verification & evidence",
@@ -1545,7 +2373,7 @@
       }
     },
     {
-      "rank": 86,
+      "rank": 132,
       "id": "idea-050",
       "name": "Momentum / Kinetic FPS",
       "category": "Games",
@@ -1563,7 +2391,7 @@
       }
     },
     {
-      "rank": 87,
+      "rank": 133,
       "id": "idea-060",
       "name": "Policy-Journey Adherence Pack",
       "category": "AI evaluation",
@@ -1581,7 +2409,7 @@
       }
     },
     {
-      "rank": 88,
+      "rank": 134,
       "id": "idea-054",
       "name": "MCP Cross-Client Release Gate",
       "category": "Developer tools",
@@ -1599,7 +2427,7 @@
       }
     },
     {
-      "rank": 89,
+      "rank": 135,
       "id": "idea-055",
       "name": "Prague Guest Intent Network",
       "category": "Local commerce",
@@ -1617,7 +2445,7 @@
       }
     },
     {
-      "rank": 90,
+      "rank": 136,
       "id": "idea-052",
       "name": "RAG Citation Fidelity Gate",
       "category": "AI evaluation",
@@ -1635,7 +2463,7 @@
       }
     },
     {
-      "rank": 91,
+      "rank": 137,
       "id": "idea-053",
       "name": "Model & Prompt Regression Gate",
       "category": "AI evaluation",
@@ -1653,7 +2481,7 @@
       }
     },
     {
-      "rank": 92,
+      "rank": 138,
       "id": "idea-058",
       "name": "Small-Tour Empty-Seat Rescue Circle",
       "category": "Local commerce",
@@ -1671,7 +2499,7 @@
       }
     },
     {
-      "rank": 93,
+      "rank": 139,
       "id": "idea-059",
       "name": "PSTN Accent & Noise Regression Suite",
       "category": "AI evaluation",
@@ -1689,7 +2517,7 @@
       }
     },
     {
-      "rank": 94,
+      "rank": 140,
       "id": "idea-051",
       "name": "AgentLingo — Multilingual AI Agent Launch Gate",
       "category": "AI evaluation",
@@ -1707,7 +2535,7 @@
       }
     },
     {
-      "rank": 95,
+      "rank": 141,
       "id": "idea-056",
       "name": "Erasmus Course Rescue Pack",
       "category": "Education",
@@ -1725,7 +2553,7 @@
       }
     },
     {
-      "rank": 96,
+      "rank": 142,
       "id": "idea-057",
       "name": "Indie Game Launch-Language Preflight",
       "category": "Game operations",
@@ -1743,7 +2571,7 @@
       }
     },
     {
-      "rank": 97,
+      "rank": 143,
       "id": "idea-069",
       "name": "Receipt-Verified Purchase Data Exchange",
       "category": "Product verification & evidence",
@@ -1763,38 +2591,18 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-07T02:33:20.799527Z",
+      "snapshotAt": "2026-08-07T03:32:17.248002+00:00",
       "top5": [
         {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
         },
         {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
         },
-        {
-          "id": "idea-073",
-          "name": "Smart Repository Automation Engine",
-          "score": 86.0
-        },
-        {
-          "id": "idea-061",
-          "name": "FactBounty — Buyer-Funded Product Proof Exchange",
-          "score": 82.7
-        },
-        {
-          "id": "idea-062",
-          "name": "MeasureGraph — Exact Dimensions Evidence Network",
-          "score": 81.6
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T02:33:43.486651Z",
-      "top5": [
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
@@ -1809,22 +2617,22 @@
           "id": "idea-078",
           "name": "Verified Export & Migration Tools Engine",
           "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-073",
-          "name": "Smart Repository Automation Engine",
-          "score": 86.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:33:49.515341Z",
+      "snapshotAt": "2026-08-07T03:32:21.088174+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
@@ -1839,196 +2647,246 @@
           "id": "idea-078",
           "name": "Verified Export & Migration Tools Engine",
           "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-081",
-          "name": "Verified Offline-Capable Tools Gate",
-          "score": 86.8
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:36:55.233461Z",
+      "snapshotAt": "2026-08-07T03:34:26.646070+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
-        },
-        {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
-          "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:38:33.554817Z",
+      "snapshotAt": "2026-08-07T03:34:30.203583+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
-        },
-        {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
-          "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:39:05.331403Z",
+      "snapshotAt": "2026-08-07T03:36:27.902724+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
-        },
-        {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
-          "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:40:54.451039+00:00",
+      "snapshotAt": "2026-08-07T03:36:31.047407+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
-        },
-        {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
-          "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:41:06.552859+00:00",
+      "snapshotAt": "2026-08-07T03:38:28.815068+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
-        },
-        {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
-          "score": 88.7
-        },
-        {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
-        },
-        {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
         }
       ]
     },
     {
-      "snapshotAt": "2026-08-07T02:42:55.547121+00:00",
+      "snapshotAt": "2026-08-07T03:38:32.308000+00:00",
       "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
         {
           "id": "idea-075",
           "name": "Zero-Setup Repository Automation Toolkit",
           "score": 88.9
         },
         {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
           "id": "idea-076",
           "name": "Automated Agent Testing Suite",
           "score": 88.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:40:38.031479+00:00",
+      "top5": [
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
         },
         {
-          "id": "idea-078",
-          "name": "Verified Export & Migration Tools Engine",
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        },
+        {
+          "id": "idea-076",
+          "name": "Automated Agent Testing Suite",
           "score": 88.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:40:41.774711+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
         },
         {
-          "id": "idea-074",
-          "name": "Rapid Agentic Commerce Data Gate",
-          "score": 88.4
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
         },
         {
-          "id": "idea-082",
-          "name": "Vendor Slot Rescue",
-          "score": 88.0
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
         }
       ]
     }
