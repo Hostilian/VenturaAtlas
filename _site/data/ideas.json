@@ -107315,6 +107315,1136 @@
       "sourceReferences": [
         "src-001"
       ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-250",
+      "legacyId": "exactroom-access-confirmation",
+      "slug": "exactroom-access-confirmation-idea-250",
+      "name": "ExactRoom Access Confirmation",
+      "oneSentenceConcept": "A property-issued, booking-linked receipt confirming the exact room or unit, measured access features, what is guaranteed versus merely requested, who confirmed it, and when it must be reconfirmed.",
+      "elevatorPitch": "For buyers, operators, and individuals, ExactRoom Access Confirmation provides a property-issued, booking-linked receipt confirming the exact room or unit, measured access features, what is guaranteed versus merely requested, who confirmed it, and when it must be reconfirmed. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "A booking-linked confirmation system connecting measured room specifications to guest reservations. Enables hotels and vacation rentals to issue objective, room-specific access confirmations with automated change notifications and pre-arrival reconfirmation deadlines.",
+      "category": "Accessible lodging & lodging quality",
+      "subcategory": "room-confirmation",
+      "tags": [
+        "accessible lodging & lodging quality",
+        "room-confirmation",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 84,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A property-issued, booking-linked receipt confirming the exact room or unit, measured access features, what is guaranteed versus merely requested, who confirmed it, and when it must be reconfirmed."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A property-issued, booking-linked receipt confirming the exact room or unit, measured access features, what is guaranteed versus merely requested, who confirmed it, and when it must be reconfirmed.",
+          "A booking-linked confirmation system connecting measured room specifications to guest reservations. Enables hotels and vacation rentals to issue objective, room-specific access confirmations with automated change notifications and pre-arrival reconfirmation deadlines."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 84,
+        "painAndUrgency": 84,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 84.7,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-251",
+      "legacyId": "measured-accessible-room-specification",
+      "slug": "measured-accessible-room-specification-idea-251",
+      "name": "Measured Accessible Room Specification",
+      "oneSentenceConcept": "A room-specific, date-stamped specification containing measured doors, clearances, bed transfer space, bathroom geometry, lift dimensions, alarms, routes, and evidence photos.",
+      "elevatorPitch": "For buyers, operators, and individuals, Measured Accessible Room Specification provides a room-specific, date-stamped specification containing measured doors, clearances, bed transfer space, bathroom geometry, lift dimensions, alarms, routes, and evidence photos. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Objective room-level access specification and guided capture protocol, recording exact physical measurements, route chains, and date-stamped photo evidence for individual hotel rooms and rental units.",
+      "category": "Accessible lodging",
+      "subcategory": "room-specification",
+      "tags": [
+        "accessible lodging",
+        "room-specification",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 82,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A room-specific, date-stamped specification containing measured doors, clearances, bed transfer space, bathroom geometry, lift dimensions, alarms, routes, and evidence photos."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A room-specific, date-stamped specification containing measured doors, clearances, bed transfer space, bathroom geometry, lift dimensions, alarms, routes, and evidence photos.",
+          "Objective room-level access specification and guided capture protocol, recording exact physical measurements, route chains, and date-stamped photo evidence for individual hotel rooms and rental units."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 82,
+        "painAndUrgency": 82,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 82.0,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-252",
+      "legacyId": "temporary-event-access-reality-pack",
+      "slug": "temporary-event-access-reality-pack-idea-252",
+      "name": "Temporary Event Access Reality Pack",
+      "oneSentenceConcept": "A temporary, date-specific map of entrances, surfaces, toilets, seating, queues, quiet spaces, lighting, sound, parking, and assistance procedures.",
+      "elevatorPitch": "For buyers, operators, and individuals, Temporary Event Access Reality Pack provides a temporary, date-specific map of entrances, surfaces, toilets, seating, queues, quiet spaces, lighting, sound, parking, and assistance procedures. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Time-bound event access profile documenting temporary physical routes, sensory conditions, seating arrangements, and live accessibility change logs for short-duration events and festivals.",
+      "category": "Temporary events",
+      "subcategory": "event-accessibility",
+      "tags": [
+        "temporary events",
+        "event-accessibility",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 79,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A temporary, date-specific map of entrances, surfaces, toilets, seating, queues, quiet spaces, lighting, sound, parking, and assistance procedures."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A temporary, date-specific map of entrances, surfaces, toilets, seating, queues, quiet spaces, lighting, sound, parking, and assistance procedures.",
+          "Time-bound event access profile documenting temporary physical routes, sensory conditions, seating arrangements, and live accessibility change logs for short-duration events and festivals."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 79,
+        "painAndUrgency": 79,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 79.6,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-253",
+      "legacyId": "time-based-sensory-visit-profile",
+      "slug": "time-based-sensory-visit-profile-idea-253",
+      "name": "Time-Based Sensory Visit Profile",
+      "oneSentenceConcept": "Measured and observed sound, light, crowd, queue, and quiet-space conditions by time block, with no universal sensory-safe claim.",
+      "elevatorPitch": "For buyers, operators, and individuals, Time-Based Sensory Visit Profile provides measured and observed sound, light, crowd, queue, and quiet-space conditions by time block, with no universal sensory-safe claim. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Time-segmented sensory and crowd environment profile for venues, providing objective decibel, illuminance, queue length, and rest-area observations across specific operating hours.",
+      "category": "Museums and attractions",
+      "subcategory": "sensory-profiles",
+      "tags": [
+        "museums and attractions",
+        "sensory-profiles",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 78,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "Measured and observed sound, light, crowd, queue, and quiet-space conditions by time block, with no universal sensory-safe claim."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "Measured and observed sound, light, crowd, queue, and quiet-space conditions by time block, with no universal sensory-safe claim.",
+          "Time-segmented sensory and crowd environment profile for venues, providing objective decibel, illuminance, queue length, and rest-area observations across specific operating hours."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 78,
+        "painAndUrgency": 78,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 78.2,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-254",
+      "legacyId": "elevator-outage-journey-assurance",
+      "slug": "elevator-outage-journey-assurance-idea-254",
+      "name": "Elevator Outage Journey Assurance",
+      "oneSentenceConcept": "Consolidates official lift status, station topology, transfer dependence, and fallback routes for a specific planned journey.",
+      "elevatorPitch": "For buyers, operators, and individuals, Elevator Outage Journey Assurance provides consolidates official lift status, station topology, transfer dependence, and fallback routes for a specific planned journey. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Real-time transit accessibility monitoring and contingency planning tool that maps elevator status feeds against station transfer paths to guarantee step-free itinerary viability.",
+      "category": "Public transport and lifts",
+      "subcategory": "transit-accessibility",
+      "tags": [
+        "public transport and lifts",
+        "transit-accessibility",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 77,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "Consolidates official lift status, station topology, transfer dependence, and fallback routes for a specific planned journey."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "Consolidates official lift status, station topology, transfer dependence, and fallback routes for a specific planned journey.",
+          "Real-time transit accessibility monitoring and contingency planning tool that maps elevator status feeds against station transfer paths to guarantee step-free itinerary viability."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 77,
+        "painAndUrgency": 77,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 77.5,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-255",
+      "legacyId": "trusted-product-label-change-watch",
+      "slug": "trusted-product-label-change-watch-idea-255",
+      "name": "Trusted Product Label Change Watch",
+      "oneSentenceConcept": "A family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source.",
+      "elevatorPitch": "For buyers, operators, and individuals, Trusted Product Label Change Watch provides a family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Household ingredient and allergen change-detection engine comparing timestamped label photographs across packaging versions to highlight unexpected reformulations.",
+      "category": "Packaged food",
+      "subcategory": "food-labelling",
+      "tags": [
+        "packaged food",
+        "food-labelling",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 76,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source.",
+          "Household ingredient and allergen change-detection engine comparing timestamped label photographs across packaging versions to highlight unexpected reformulations."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 76,
+        "painAndUrgency": 76,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 76.3,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-256",
+      "legacyId": "room-side-sleepability-specification",
+      "slug": "room-side-sleepability-specification-idea-256",
+      "name": "Room-Side Sleepability Specification",
+      "oneSentenceConcept": "Room-specific facts on road side, lift proximity, connecting doors, HVAC, blackout, event spaces, construction, and typical disturbance sources.",
+      "elevatorPitch": "For buyers, operators, and individuals, Room-Side Sleepability Specification provides room-specific facts on road side, lift proximity, connecting doors, hvac, blackout, event spaces, construction, and typical disturbance sources. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Objective acoustic and disturbance profile for individual guest rooms, documenting noise orientation, structural adjacency, HVAC decibels, and blackout quality.",
+      "category": "Lodging quality",
+      "subcategory": "quiet-lodging",
+      "tags": [
+        "lodging quality",
+        "quiet-lodging",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 75,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "Room-specific facts on road side, lift proximity, connecting doors, HVAC, blackout, event spaces, construction, and typical disturbance sources."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "Room-specific facts on road side, lift proximity, connecting doors, HVAC, blackout, event spaces, construction, and typical disturbance sources.",
+          "Objective acoustic and disturbance profile for individual guest rooms, documenting noise orientation, structural adjacency, HVAC decibels, and blackout quality."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 75,
+        "painAndUrgency": 75,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 75.5,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-257",
+      "legacyId": "assistance-confirmation-receipt",
+      "slug": "assistance-confirmation-receipt-idea-257",
+      "name": "Assistance Confirmation Receipt",
+      "oneSentenceConcept": "A cross-party receipt showing requested assistance, airport and airline acknowledgement, handoff points, equipment details, and reconfirmation status.",
+      "elevatorPitch": "For buyers, operators, and individuals, Assistance Confirmation Receipt provides a cross-party receipt showing requested assistance, airport and airline acknowledgement, handoff points, equipment details, and reconfirmation status. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Multi-party passenger assistance tracking receipt linking traveler equipment requirements, airline PNRs, airport ground handlers, and gate handoff confirmations.",
+      "category": "Air travel",
+      "subcategory": "passenger-assistance",
+      "tags": [
+        "air travel",
+        "passenger-assistance",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 74,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A cross-party receipt showing requested assistance, airport and airline acknowledgement, handoff points, equipment details, and reconfirmation status."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A cross-party receipt showing requested assistance, airport and airline acknowledgement, handoff points, equipment details, and reconfirmation status.",
+          "Multi-party passenger assistance tracking receipt linking traveler equipment requirements, airline PNRs, airport ground handlers, and gate handoff confirmations."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 74,
+        "painAndUrgency": 74,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 74.80000000000001,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-258",
+      "legacyId": "senior-comfort-route-card",
+      "slug": "senior-comfort-route-card-idea-258",
+      "name": "Senior Comfort Route Card",
+      "oneSentenceConcept": "A route optimized for crossings, gradients, pavement quality, seating, toilets, traffic exposure, shade, and seasonal conditions.",
+      "elevatorPitch": "For buyers, operators, and individuals, Senior Comfort Route Card provides a route optimized for crossings, gradients, pavement quality, seating, toilets, traffic exposure, shade, and seasonal conditions. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Pedestrian navigation profile prioritizing rest seating intervals, sidewalk slope, shade coverage, public restrooms, and pavement smoothness over minimal distance.",
+      "category": "Pedestrian mobility",
+      "subcategory": "accessible-routing",
+      "tags": [
+        "pedestrian mobility",
+        "accessible-routing",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 73,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "A route optimized for crossings, gradients, pavement quality, seating, toilets, traffic exposure, shade, and seasonal conditions."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "A route optimized for crossings, gradients, pavement quality, seating, toilets, traffic exposure, shade, and seasonal conditions.",
+          "Pedestrian navigation profile prioritizing rest seating intervals, sidewalk slope, shade coverage, public restrooms, and pavement smoothness over minimal distance."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 73,
+        "painAndUrgency": 73,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 73.89999999999999,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
+    },
+    {
+      "schemaVersion": "2.0.0",
+      "id": "idea-259",
+      "legacyId": "official-letter-action-extractor",
+      "slug": "official-letter-action-extractor-idea-259",
+      "name": "Official Letter Action Extractor",
+      "oneSentenceConcept": "Extracts sender, decision, deadline, required response, evidence, official channels, and unresolved ambiguity from a government or utility letter.",
+      "elevatorPitch": "For buyers, operators, and individuals, Official Letter Action Extractor provides extracts sender, decision, deadline, required response, evidence, official channels, and unresolved ambiguity from a government or utility letter. The product establishes verifiable physical and service access certainty.",
+      "detailedDescription": "Structured document processing tool extracting mandatory deadlines, required evidence items, decision summaries, and recourse steps from official administrative letters.",
+      "category": "Cross-border consumer rights",
+      "subcategory": "document-extraction",
+      "tags": [
+        "cross-border consumer rights",
+        "document-extraction",
+        "eighth reset",
+        "accessibility"
+      ],
+      "atAGlance": {
+        "overallScore": 72,
+        "speedToValue": "Fast (1-2 weeks)",
+        "targetCustomer": "Travellers, venue operators, municipal & travel logistics managers",
+        "pricingModel": "Per confirmation, per property subscription, or per report"
+      },
+      "customer": {
+        "idealCustomerProfile": "Travelers with specific access needs & independent hospitality/event operators",
+        "painPoints": [
+          "Extracts sender, decision, deadline, required response, evidence, official channels, and unresolved ambiguity from a government or utility letter."
+        ],
+        "willingnessToPay": "High for verified, room/route-specific access guarantees"
+      },
+      "product": {
+        "coreFeatures": [
+          "Extracts sender, decision, deadline, required response, evidence, official channels, and unresolved ambiguity from a government or utility letter.",
+          "Structured document processing tool extracting mandatory deadlines, required evidence items, decision summaries, and recourse steps from official administrative letters."
+        ],
+        "mvpScope": "Standardized access confirmation receipt or date-stamped specification page"
+      },
+      "futureAiBuild": {
+        "agentCapabilities": "Automated route/room specification verification and change notifications"
+      },
+      "profitability": {
+        "unitEconomics": "85%+ gross margin on digital confirmation receipts and specifications",
+        "revenueScenarios": {
+          "conservative": 2500,
+          "base": 12000,
+          "aggressive": 45000
+        }
+      },
+      "market": {
+        "marketSize": "Accessible Travel, Event Logistics & Mobility Infrastructure Niche",
+        "competitors": [
+          "Generic travel directories, unverified hotel listings"
+        ]
+      },
+      "validation": {
+        "experimentPlan": "7-day \u20ac49 founding pilot offer for 1 measured specification + booking confirmation workflow"
+      },
+      "goToMarket": {
+        "channels": [
+          "Independent hotel outreach",
+          "Accessible travel agencies",
+          "Disability advocacy networks"
+        ]
+      },
+      "operations": {
+        "stack": "Node.js, Express, Python, GitHub Pages, WebManifest"
+      },
+      "risks": {
+        "primaryRisks": [
+          "Property reluctance to distinguish guaranteed vs requested features",
+          "Data staleness"
+        ]
+      },
+      "actionPlan": {
+        "immediateNextSteps": [
+          "Launch 7-day \u20ac49 room confirmation pilot"
+        ]
+      },
+      "scores": {
+        "existingSpendingEvidence": 72,
+        "painAndUrgency": 72,
+        "speedToPaidTest": 90,
+        "launchBelow100": 95,
+        "freeDistribution": 85,
+        "grossMargin": 90,
+        "repeatRevenue": 80,
+        "soloFounderFeasibility": 85,
+        "defensibility": 75,
+        "pessimisticResilience": 80
+      },
+      "compositeScores": {
+        "overallOpportunity": 72.2,
+        "bootstrappedPotential": 88.0,
+        "soloFounderPotential": 89.0,
+        "aiAgentPotential": 83.0,
+        "fastestPathToRevenue": 91.0,
+        "highestProfitPotential": 85.0,
+        "lowestCostLaunch": 95.0,
+        "bestRecurringRevenue": 82.0,
+        "bestEnterpriseOpportunity": 80.0,
+        "bestConsumerOpportunity": 75.0,
+        "bestLocalOpportunity": 65.0,
+        "bestMarketplaceOpportunity": 70.0,
+        "bestLongTermDefensibility": 81.0,
+        "bestForNontechnicalFounder": 70.0,
+        "bestForTechnicalFounder": 90.0,
+        "bestForSmallTeam": 91.0,
+        "bestRequiringLittleCapital": 95.0
+      },
+      "sourceReferences": [
+        "src-008"
+      ]
     }
   ]
 }

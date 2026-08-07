@@ -4356,5 +4356,195 @@
       "evidence-synthesis"
     ],
     "normalizedText": "retraction-aware review update checks included studies in reviews and meta-analyses for retractions and major corrections and generates a human-reviewed impact queue researchers lab managers research libraries scholarly research lineage scholarly research lineage evidence-synthesis"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-250",
+    "slug": "exactroom-access-confirmation-idea-250",
+    "name": "ExactRoom Access Confirmation",
+    "category": "Accessible lodging & lodging quality",
+    "subcategory": "room-confirmation",
+    "concept": "A property-issued, booking-linked receipt confirming the exact room or unit, measured access features, what is guaranteed versus merely requested, who confirmed it, and when it must be reconfirmed.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "accessible lodging & lodging quality",
+      "room-confirmation",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "exactroom access confirmation a property-issued booking-linked receipt confirming the exact room or unit measured access features what is guaranteed versus merely requested who confirmed it and when it must be reconfirmed travellers venue operators municipal travel logistics managers accessible lodging lodging quality accessible lodging lodging quality room-confirmation eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-251",
+    "slug": "measured-accessible-room-specification-idea-251",
+    "name": "Measured Accessible Room Specification",
+    "category": "Accessible lodging",
+    "subcategory": "room-specification",
+    "concept": "A room-specific, date-stamped specification containing measured doors, clearances, bed transfer space, bathroom geometry, lift dimensions, alarms, routes, and evidence photos.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 82,
+    "tags": [
+      "accessible lodging",
+      "room-specification",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "measured accessible room specification a room-specific date-stamped specification containing measured doors clearances bed transfer space bathroom geometry lift dimensions alarms routes and evidence photos travellers venue operators municipal travel logistics managers accessible lodging accessible lodging room-specification eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-252",
+    "slug": "temporary-event-access-reality-pack-idea-252",
+    "name": "Temporary Event Access Reality Pack",
+    "category": "Temporary events",
+    "subcategory": "event-accessibility",
+    "concept": "A temporary, date-specific map of entrances, surfaces, toilets, seating, queues, quiet spaces, lighting, sound, parking, and assistance procedures.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 79,
+    "tags": [
+      "temporary events",
+      "event-accessibility",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "temporary event access reality pack a temporary date-specific map of entrances surfaces toilets seating queues quiet spaces lighting sound parking and assistance procedures travellers venue operators municipal travel logistics managers temporary events temporary events event-accessibility eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-253",
+    "slug": "time-based-sensory-visit-profile-idea-253",
+    "name": "Time-Based Sensory Visit Profile",
+    "category": "Museums and attractions",
+    "subcategory": "sensory-profiles",
+    "concept": "Measured and observed sound, light, crowd, queue, and quiet-space conditions by time block, with no universal sensory-safe claim.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 78,
+    "tags": [
+      "museums and attractions",
+      "sensory-profiles",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "time-based sensory visit profile measured and observed sound light crowd queue and quiet-space conditions by time block with no universal sensory-safe claim travellers venue operators municipal travel logistics managers museums and attractions museums and attractions sensory-profiles eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-254",
+    "slug": "elevator-outage-journey-assurance-idea-254",
+    "name": "Elevator Outage Journey Assurance",
+    "category": "Public transport and lifts",
+    "subcategory": "transit-accessibility",
+    "concept": "Consolidates official lift status, station topology, transfer dependence, and fallback routes for a specific planned journey.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 77,
+    "tags": [
+      "public transport and lifts",
+      "transit-accessibility",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "elevator outage journey assurance consolidates official lift status station topology transfer dependence and fallback routes for a specific planned journey travellers venue operators municipal travel logistics managers public transport and lifts public transport and lifts transit-accessibility eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-255",
+    "slug": "trusted-product-label-change-watch-idea-255",
+    "name": "Trusted Product Label Change Watch",
+    "category": "Packaged food",
+    "subcategory": "food-labelling",
+    "concept": "A family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 76,
+    "tags": [
+      "packaged food",
+      "food-labelling",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "trusted product label change watch a family watchlist that compares user-photographed ingredient and allergen labels over time and alerts to visible changes while treating packaging as the final source travellers venue operators municipal travel logistics managers packaged food packaged food food-labelling eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-256",
+    "slug": "room-side-sleepability-specification-idea-256",
+    "name": "Room-Side Sleepability Specification",
+    "category": "Lodging quality",
+    "subcategory": "quiet-lodging",
+    "concept": "Room-specific facts on road side, lift proximity, connecting doors, HVAC, blackout, event spaces, construction, and typical disturbance sources.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 75,
+    "tags": [
+      "lodging quality",
+      "quiet-lodging",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "room-side sleepability specification room-specific facts on road side lift proximity connecting doors hvac blackout event spaces construction and typical disturbance sources travellers venue operators municipal travel logistics managers lodging quality lodging quality quiet-lodging eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-257",
+    "slug": "assistance-confirmation-receipt-idea-257",
+    "name": "Assistance Confirmation Receipt",
+    "category": "Air travel",
+    "subcategory": "passenger-assistance",
+    "concept": "A cross-party receipt showing requested assistance, airport and airline acknowledgement, handoff points, equipment details, and reconfirmation status.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 74,
+    "tags": [
+      "air travel",
+      "passenger-assistance",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "assistance confirmation receipt a cross-party receipt showing requested assistance airport and airline acknowledgement handoff points equipment details and reconfirmation status travellers venue operators municipal travel logistics managers air travel air travel passenger-assistance eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-258",
+    "slug": "senior-comfort-route-card-idea-258",
+    "name": "Senior Comfort Route Card",
+    "category": "Pedestrian mobility",
+    "subcategory": "accessible-routing",
+    "concept": "A route optimized for crossings, gradients, pavement quality, seating, toilets, traffic exposure, shade, and seasonal conditions.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 73,
+    "tags": [
+      "pedestrian mobility",
+      "accessible-routing",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "senior comfort route card a route optimized for crossings gradients pavement quality seating toilets traffic exposure shade and seasonal conditions travellers venue operators municipal travel logistics managers pedestrian mobility pedestrian mobility accessible-routing eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-259",
+    "slug": "official-letter-action-extractor-idea-259",
+    "name": "Official Letter Action Extractor",
+    "category": "Cross-border consumer rights",
+    "subcategory": "document-extraction",
+    "concept": "Extracts sender, decision, deadline, required response, evidence, official channels, and unresolved ambiguity from a government or utility letter.",
+    "customer": "Travellers, venue operators, municipal & travel logistics managers",
+    "problem": "",
+    "overallScore": 72,
+    "tags": [
+      "cross-border consumer rights",
+      "document-extraction",
+      "eighth reset",
+      "accessibility"
+    ],
+    "normalizedText": "official letter action extractor extracts sender decision deadline required response evidence official channels and unresolved ambiguity from a government or utility letter travellers venue operators municipal travel logistics managers cross-border consumer rights cross-border consumer rights document-extraction eighth reset accessibility"
   }
 ]

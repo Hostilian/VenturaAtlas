@@ -82,9 +82,9 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.2.0
-- Canonical Ideas: 226
-- Categories: 60
+- Canonical Ideas: 236
+- Categories: 70
 - Source References: 62
-- Generated Prompts: 5625
+- Generated Prompts: 5875
 - Last Updated: 2026-08-07
 <!-- END GENERATED REPOSITORY STATS -->

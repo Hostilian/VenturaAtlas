@@ -1,9 +1,9 @@
 /**
- * Service Worker — Venture Atlas OS PWA (v2.1.1)
+ * Service Worker — Venture Atlas OS PWA (v2.2.0)
  * Multi-cache architecture with resilient offline support.
  */
 
-const CACHE_VERSION = '2.1.1';
+const CACHE_VERSION = '2.2.0';
 const STATIC_CACHE = `ventura-static-${CACHE_VERSION}`;
 const DATA_CACHE = `ventura-data-${CACHE_VERSION}`;
 const PAGE_CACHE = `ventura-pages-${CACHE_VERSION}`;
