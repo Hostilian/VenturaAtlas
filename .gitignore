@@ -3,3 +3,6 @@ node_modules/
 Thumbs.db
 *.log
 _site/
+.env
+.env.local
+.agent-state/
