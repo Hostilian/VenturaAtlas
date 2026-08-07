@@ -5010,5 +5010,247 @@
       "v2"
     ],
     "normalizedText": "smart monetisation analytics hub a self-serve zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows creators lacking structured revenue data across fragmented platforms technical founders operators or compliance teams creator economy tooling creator analytics autonomous-discovered own-orch monetisation v2"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-285",
+    "slug": "rapid-offline-capable-tools-hub-idea-285",
+    "name": "Rapid Offline-Capable Tools Hub",
+    "category": "Local-first software",
+    "subcategory": "offline-capable tools",
+    "concept": "A self-serve, zero-capital tool that automates privacy, latency, and cost concerns driving local-run saas replacements for local-first software workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Privacy, latency, and cost concerns driving local-run SaaS replacements",
+    "overallScore": 86.3,
+    "tags": [
+      "local-first",
+      "v2",
+      "privacy",
+      "own-orch",
+      "offline",
+      "autonomous-discovered"
+    ],
+    "normalizedText": "rapid offline-capable tools hub a self-serve zero-capital tool that automates privacy latency and cost concerns driving local-run saas replacements for local-first software workflows privacy latency and cost concerns driving local-run saas replacements technical founders operators or compliance teams local-first software local-first v2 privacy own-orch offline autonomous-discovered"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-286",
+    "slug": "smart-evidence-management-layer-idea-286",
+    "name": "Smart Evidence Management Layer",
+    "category": "Research & knowledge tools",
+    "subcategory": "evidence management",
+    "concept": "A self-serve, zero-capital tool that automates manual citation management and fact-checking overhead in research workflows for research & knowledge tools workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Manual citation management and fact-checking overhead in research workflows",
+    "overallScore": 85.8,
+    "tags": [
+      "evidence",
+      "research",
+      "knowledge",
+      "v2",
+      "autonomous-discovered",
+      "own-orch"
+    ],
+    "normalizedText": "smart evidence management layer a self-serve zero-capital tool that automates manual citation management and fact-checking overhead in research workflows for research knowledge tools workflows manual citation management and fact-checking overhead in research workflows technical founders operators or compliance teams research knowledge tools evidence research knowledge v2 autonomous-discovered own-orch"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-287",
+    "slug": "ductexchange-eu-civil-infrastructure-access-network",
+    "name": "DuctExchange — EU Civil Infrastructure Access Network",
+    "category": "EU Telecom & Civil Infrastructure",
+    "subcategory": "infrastructure-rights-exchange",
+    "concept": "Transaction network for rights to access Europe's existing ducts, poles, chambers, and civil infrastructure under the EU Gigabit Infrastructure Act.",
+    "customer": "EU fibre builders and utility/municipal infrastructure owners",
+    "problem": "High cost and complexity of trenching new fibre routes when usable duct infrastructure already exists nearby.",
+    "overallScore": 88,
+    "tags": [
+      "telecom",
+      "gigabit-infrastructure-act",
+      "civil-works",
+      "duct-sharing",
+      "utilities"
+    ],
+    "normalizedText": "ductexchange eu civil infrastructure access network transaction network for rights to access europe s existing ducts poles chambers and civil infrastructure under the eu gigabit infrastructure act high cost and complexity of trenching new fibre routes when usable duct infrastructure already exists nearby eu fibre builders and utility municipal infrastructure owners eu telecom civil infrastructure telecom gigabit-infrastructure-act civil-works duct-sharing utilities"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-288",
+    "slug": "agent-loss-exchange-autonomous-agent-claims-data-utility",
+    "name": "Agent Loss Exchange — Autonomous Agent Claims & Loss Data Utility",
+    "category": "AI Insurance & Risk Underwriting",
+    "subcategory": "agent-risk-exchange",
+    "concept": "Privacy-preserving loss, incident, and exposure data utility for insurers underwriting autonomous AI agents.",
+    "customer": "Cyber underwriters, technology E&O insurers, and reinsurers",
+    "problem": "Inability to price and underwrite autonomous AI agent risks without historical loss data.",
+    "overallScore": 86,
+    "tags": [
+      "ai-insurance",
+      "autonomous-agents",
+      "actuarial-data",
+      "risk-utility",
+      "reinsurance"
+    ],
+    "normalizedText": "agent loss exchange autonomous agent claims loss data utility privacy-preserving loss incident and exposure data utility for insurers underwriting autonomous ai agents inability to price and underwrite autonomous ai agent risks without historical loss data cyber underwriters technology e o insurers and reinsurers ai insurance risk underwriting ai-insurance autonomous-agents actuarial-data risk-utility reinsurance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-289",
+    "slug": "queuesure-data-centre-grid-commitment-surety-underwriting",
+    "name": "QueueSure — Data Centre Grid Commitment Surety Underwriting",
+    "category": "Energy Grid & Infrastructure Finance",
+    "subcategory": "grid-surety-underwriting",
+    "concept": "Specialized surety and project-readiness underwriting platform for UK data-centre grid-connection commitment fees under Ofgem rules.",
+    "customer": "Independent UK data centre developers (20-150 MW)",
+    "problem": "Enormous cash collateral requirements for grid connection queue reservations.",
+    "overallScore": 83,
+    "tags": [
+      "data-centres",
+      "grid-connections",
+      "ofgem",
+      "surety-bonds",
+      "infrastructure-finance"
+    ],
+    "normalizedText": "queuesure data centre grid commitment surety underwriting specialized surety and project-readiness underwriting platform for uk data-centre grid-connection commitment fees under ofgem rules enormous cash collateral requirements for grid connection queue reservations independent uk data centre developers 20-150 mw energy grid infrastructure finance data-centres grid-connections ofgem surety-bonds infrastructure-finance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-290",
+    "slug": "resilienceproof-climate-resilience-property-adaptation-verification",
+    "name": "ResilienceProof — Climate Resilience & Property Adaptation Verification Rail",
+    "category": "Climate Resilience & Property Insurance",
+    "subcategory": "resilience-verification-rail",
+    "concept": "Verification rail proving flood, wildfire, and climate resilience property retrofits to unlock lower insurance premiums and mortgage rates.",
+    "customer": "Property insurers, mortgage lenders, and retrofitted property owners",
+    "problem": "Lack of verified, trustworthy physical adaptation evidence needed for insurance discounts.",
+    "overallScore": 82,
+    "tags": [
+      "climate-adaptation",
+      "property-insurance",
+      "flood-resilience",
+      "insurtech",
+      "verification"
+    ],
+    "normalizedText": "resilienceproof climate resilience property adaptation verification rail verification rail proving flood wildfire and climate resilience property retrofits to unlock lower insurance premiums and mortgage rates lack of verified trustworthy physical adaptation evidence needed for insurance discounts property insurers mortgage lenders and retrofitted property owners climate resilience property insurance climate-adaptation property-insurance flood-resilience insurtech verification"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-291",
+    "slug": "low-water-capacity-options-rhine-industrial-freight-network",
+    "name": "Low-Water Capacity Options — Rhine Industrial Freight Contingency Network",
+    "category": "Logistics & Contingency Freight",
+    "subcategory": "low-water-freight-options",
+    "concept": "Option marketplace selling manufacturers pre-committed alternative rail, truck, and low-draft barge freight capacity triggered by Rhine water levels.",
+    "customer": "Logistics directors at mid-sized Rhine-dependent industrial chemical and manufacturing plants",
+    "problem": "Sudden disappearance of alternative freight capacity when river low-water bottlenecks strike.",
+    "overallScore": 81,
+    "tags": [
+      "logistics",
+      "rhine-freight",
+      "inland-waterways",
+      "contingency-planning",
+      "supply-chain"
+    ],
+    "normalizedText": "low-water capacity options rhine industrial freight contingency network option marketplace selling manufacturers pre-committed alternative rail truck and low-draft barge freight capacity triggered by rhine water levels sudden disappearance of alternative freight capacity when river low-water bottlenecks strike logistics directors at mid-sized rhine-dependent industrial chemical and manufacturing plants logistics contingency freight logistics rhine-freight inland-waterways contingency-planning supply-chain"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-292",
+    "slug": "uptime-mutual-obsolete-controls-spare-pooling-sla-network",
+    "name": "Uptime Mutual — Obsolete Controls Spare Pooling & SLA Guarantee Network",
+    "category": "Industrial Maintenance & Spare Parts",
+    "subcategory": "obsolete-controls-mutual",
+    "concept": "Guaranteed restoration-time mutual pooling customer-owned spares, remanufactured inventory, and cross-compatible components for aging factory lines.",
+    "customer": "Maintenance directors at Czech and German industrial manufacturing plants",
+    "problem": "Production line stranding due to multi-day searches for obsolete industrial control components.",
+    "overallScore": 80,
+    "tags": [
+      "industrial-maintenance",
+      "mro",
+      "plc-spares",
+      "uptime-sla",
+      "manufacturing"
+    ],
+    "normalizedText": "uptime mutual obsolete controls spare pooling sla guarantee network guaranteed restoration-time mutual pooling customer-owned spares remanufactured inventory and cross-compatible components for aging factory lines production line stranding due to multi-day searches for obsolete industrial control components maintenance directors at czech and german industrial manufacturing plants industrial maintenance spare parts industrial-maintenance mro plc-spares uptime-sla manufacturing"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-293",
+    "slug": "wastewater-epr-settlement-rail-pharma-cosmetics-clearinghouse",
+    "name": "Wastewater EPR Settlement Rail — Pharma & Cosmetics Micropollutant Clearing Network",
+    "category": "Environmental Compliance & Clearing",
+    "subcategory": "wastewater-epr-settlement",
+    "concept": "Neutral settlement rail calculating, verifying, and reconciling multi-party Extended Producer Responsibility payments from pharma/cosmetics producers to wastewater utilities under EU rules.",
+    "customer": "National Producer Responsibility Organisations (PROs), pharma/cosmetic producers, and wastewater utilities",
+    "problem": "Complex multi-party cost allocation and reconciliation for mandatory micropollutant treatment funding.",
+    "overallScore": 78,
+    "tags": [
+      "wastewater",
+      "uwwtd",
+      "epr",
+      "pharma-compliance",
+      "environmental-clearing"
+    ],
+    "normalizedText": "wastewater epr settlement rail pharma cosmetics micropollutant clearing network neutral settlement rail calculating verifying and reconciling multi-party extended producer responsibility payments from pharma cosmetics producers to wastewater utilities under eu rules complex multi-party cost allocation and reconciliation for mandatory micropollutant treatment funding national producer responsibility organisations pros pharma cosmetic producers and wastewater utilities environmental compliance clearing wastewater uwwtd epr pharma-compliance environmental-clearing"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-294",
+    "slug": "assured-test-slots-regulatory-testing-capacity-market",
+    "name": "Assured Test Slots — Regulatory Testing SLA Capacity Market",
+    "category": "Regulatory Compliance & Lab Testing",
+    "subcategory": "accredited-testing-capacity",
+    "concept": "Reservable SLA-backed accredited laboratory testing capacity market for packaging manufacturers facing EU PPWR PFAS deadlines.",
+    "customer": "Packaging compliance directors at CPG brands, food manufacturers, and importers",
+    "problem": "Accredited lab capacity bottlenecks delaying product launches ahead of EU PPWR PFAS deadlines.",
+    "overallScore": 75,
+    "tags": [
+      "ppwr",
+      "pfas-testing",
+      "accredited-labs",
+      "packaging-compliance",
+      "capacity-market"
+    ],
+    "normalizedText": "assured test slots regulatory testing sla capacity market reservable sla-backed accredited laboratory testing capacity market for packaging manufacturers facing eu ppwr pfas deadlines accredited lab capacity bottlenecks delaying product launches ahead of eu ppwr pfas deadlines packaging compliance directors at cpg brands food manufacturers and importers regulatory compliance lab testing ppwr pfas-testing accredited-labs packaging-compliance capacity-market"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-295",
+    "slug": "oem-repair-fulfilment-rail-right-to-repair-logistics",
+    "name": "OEM Repair Fulfilment Rail — Right to Repair After-Sales Logistics Engine",
+    "category": "Circular Economy & After-Sales Logistics",
+    "subcategory": "oem-repair-fulfilment",
+    "concept": "End-to-end repair fulfillment and spare parts dispatch rail for smaller appliance and electronics OEMs under EU Right-to-Repair mandates.",
+    "customer": "Operations directors at small and mid-sized European electronics and appliance OEMs",
+    "problem": "Mandatory EU repair compliance burden without dense local service network infrastructure.",
+    "overallScore": 72,
+    "tags": [
+      "right-to-repair",
+      "after-sales",
+      "hardware-oems",
+      "circular-economy",
+      "logistics"
+    ],
+    "normalizedText": "oem repair fulfilment rail right to repair after-sales logistics engine end-to-end repair fulfillment and spare parts dispatch rail for smaller appliance and electronics oems under eu right-to-repair mandates mandatory eu repair compliance burden without dense local service network infrastructure operations directors at small and mid-sized european electronics and appliance oems circular economy after-sales logistics right-to-repair after-sales hardware-oems circular-economy logistics"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-296",
+    "slug": "grid-equipment-cancellation-exchange-secondary-transformer-trading",
+    "name": "Grid Equipment Cancellation Exchange — Secondary Transformer & Switchgear Allocation",
+    "category": "Power Equipment & Energy Supply Chain",
+    "subcategory": "secondary-grid-equipment",
+    "concept": "Secondary trading and allocation exchange for canceled or delayed high-voltage transformer orders and factory slot rights.",
+    "customer": "EPC contractors, data centre developers, and utility project directors",
+    "problem": "Multi-year transformer procurement lead times delaying high-value energy projects.",
+    "overallScore": 70,
+    "tags": [
+      "transformers",
+      "grid-equipment",
+      "electrical-hardware",
+      "secondary-market",
+      "energy"
+    ],
+    "normalizedText": "grid equipment cancellation exchange secondary transformer switchgear allocation secondary trading and allocation exchange for canceled or delayed high-voltage transformer orders and factory slot rights multi-year transformer procurement lead times delaying high-value energy projects epc contractors data centre developers and utility project directors power equipment energy supply chain transformers grid-equipment electrical-hardware secondary-market energy"
   }
 ]

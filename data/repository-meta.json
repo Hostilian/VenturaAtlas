@@ -2,16 +2,16 @@
   "project": "VenturaAtlas",
   "version": "2.2.0",
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-07T10:06:55.800Z",
+  "generatedAt": "2026-08-07T11:48:21.319Z",
   "counts": {
-    "ideas": 260,
-    "canonicalIdeas": 175,
-    "stagedIdeas": 85,
-    "totalIdeas": 260,
-    "categories": 90,
+    "ideas": 272,
+    "canonicalIdeas": 185,
+    "stagedIdeas": 87,
+    "totalIdeas": 272,
+    "categories": 100,
     "sources": 62,
     "rankingViews": 1,
     "rankingEntries": 216,
-    "prompts": 6500
+    "prompts": 6800
   }
 }

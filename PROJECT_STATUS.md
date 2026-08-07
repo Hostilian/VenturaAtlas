@@ -5,8 +5,8 @@
 - Validation status: **PASSED** — 0 errors across all 226 ideas, 62 sources, search index and smoke tests
 - Last completed idea ID: idea-249
 - Next idea ID: idea-250
-- Canonical ideas: 260
-- Categories: 90
+- Canonical ideas: 272
+- Categories: 100
 - Validation warnings: 0
 - Last updated: 2026-08-07
 
@@ -72,9 +72,9 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.2.0
-- Canonical Ideas: 260
-- Categories: 90
+- Canonical Ideas: 272
+- Categories: 100
 - Source References: 62
-- Generated Prompts: 6500
+- Generated Prompts: 6800
 - Last Updated: 2026-08-07
 <!-- END GENERATED REPOSITORY STATS -->
