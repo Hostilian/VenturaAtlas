@@ -1,1 +1,0 @@
-const fs=require('fs'),path=require('path'); const root=path.resolve(__dirname,'..'); const r=JSON.parse(fs.readFileSync(path.join(root,'data/rankings.json'))); console.log(`Rankings already generated: ${r.length}. Regenerate the repository with generate_repository.py after changing score profiles.`);

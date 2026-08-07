@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-07T03:48:54.731841+00:00",
+  "generatedAt": "2026-08-07T03:55:05.694898+00:00",
   "totalIdeas": 144,
   "algorithm": "weighted-composite-v2",
   "weights": {
@@ -2609,186 +2609,6 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-07T03:40:38.031479+00:00",
-      "top5": [
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        },
-        {
-          "id": "idea-076",
-          "name": "Automated Agent Testing Suite",
-          "score": 88.7
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T03:40:41.774711+00:00",
-      "top5": [
-        {
-          "id": "idea-157",
-          "name": "Lightweight Export & Migration Tools Hub",
-          "score": 90.7
-        },
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T03:42:38.907252+00:00",
-      "top5": [
-        {
-          "id": "idea-157",
-          "name": "Lightweight Export & Migration Tools Hub",
-          "score": 90.7
-        },
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T03:42:42.737423+00:00",
-      "top5": [
-        {
-          "id": "idea-157",
-          "name": "Lightweight Export & Migration Tools Hub",
-          "score": 90.7
-        },
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T03:44:39.761648+00:00",
-      "top5": [
-        {
-          "id": "idea-157",
-          "name": "Lightweight Export & Migration Tools Hub",
-          "score": 90.7
-        },
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T03:44:43.617521+00:00",
-      "top5": [
-        {
-          "id": "idea-157",
-          "name": "Lightweight Export & Migration Tools Hub",
-          "score": 90.7
-        },
-        {
-          "id": "idea-121",
-          "name": "Lightweight Cognitive Load Reduction Hub",
-          "score": 90.2
-        },
-        {
-          "id": "idea-144",
-          "name": "Bounded Iot & Asset Tracking Layer",
-          "score": 89.8
-        },
-        {
-          "id": "idea-075",
-          "name": "Zero-Setup Repository Automation Toolkit",
-          "score": 88.9
-        },
-        {
-          "id": "idea-153",
-          "name": "Smart Productized Audit Service Kit",
-          "score": 88.8
-        }
-      ]
-    },
-    {
       "snapshotAt": "2026-08-07T03:46:49.670630+00:00",
       "top5": [
         {
@@ -2880,6 +2700,186 @@
     },
     {
       "snapshotAt": "2026-08-07T03:48:54.731841+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:50:51.498375+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:50:55.531371+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:53:01.016444+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:53:04.851146+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:55:01.955954+00:00",
+      "top5": [
+        {
+          "id": "idea-157",
+          "name": "Lightweight Export & Migration Tools Hub",
+          "score": 90.7
+        },
+        {
+          "id": "idea-121",
+          "name": "Lightweight Cognitive Load Reduction Hub",
+          "score": 90.2
+        },
+        {
+          "id": "idea-144",
+          "name": "Bounded Iot & Asset Tracking Layer",
+          "score": 89.8
+        },
+        {
+          "id": "idea-075",
+          "name": "Zero-Setup Repository Automation Toolkit",
+          "score": 88.9
+        },
+        {
+          "id": "idea-153",
+          "name": "Smart Productized Audit Service Kit",
+          "score": 88.8
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-07T03:55:05.694898+00:00",
       "top5": [
         {
           "id": "idea-157",

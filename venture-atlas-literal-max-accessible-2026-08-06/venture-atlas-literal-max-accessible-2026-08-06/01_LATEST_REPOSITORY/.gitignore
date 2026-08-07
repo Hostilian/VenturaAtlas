@@ -1,5 +1,0 @@
-
-archive/private-not-committed/**
-!archive/private-not-committed/.gitkeep
-.env
-.env.*
