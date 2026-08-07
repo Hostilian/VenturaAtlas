@@ -1,9 +1,11 @@
 {
   "project": "VenturaAtlas",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "schemaVersion": "2.0.0",
   "dataRevision": "a981a088833df6f6",
-  "generatedAt": "2026-08-07T12:19:57.729Z",
+  "buildRevision": "2.3.0-85d1fa4",
+  "gitCommit": "85d1fa4",
+  "generatedAt": "2026-08-07T12:25:55.661Z",
   "counts": {
     "ideas": 185,
     "canonicalIdeas": 185,

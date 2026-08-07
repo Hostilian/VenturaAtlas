@@ -32,25 +32,33 @@ function main() {
     '<!-- END GENERATED REPOSITORY STATS -->'
   ].join('\n');
 
+  const inventoryBlock = [
+    '<!-- BEGIN GENERATED CURRENT INVENTORY -->',
+    `- **${meta.counts.canonicalIdeas} canonical ideas** (${meta.counts.stagedIdeas} staged, ${meta.counts.totalIdeas} total)`,
+    `- **${meta.counts.categories} categories**`,
+    `- **${meta.counts.sources} source inventory records**`,
+    `- **${meta.counts.prompts.toLocaleString()} idea-specific prompts** plus master prompts`,
+    '- One full Markdown dossier, financial model, validation plan, technical blueprint, launch plan, and 25-prompt pack per canonical idea',
+    '<!-- END GENERATED CURRENT INVENTORY -->'
+  ].join('\n');
+
   FILES.forEach(filePath => {
     if (!fs.existsSync(filePath)) return;
     let content = fs.readFileSync(filePath, 'utf8');
 
     // Update block for markdown files
     if (filePath.endsWith('.md')) {
-      const regex = /<!-- BEGIN GENERATED REPOSITORY STATS -->[\s\S]*?<!-- END GENERATED REPOSITORY STATS -->/g;
-      if (regex.test(content)) {
-        content = content.replace(regex, statsBlock);
-      } else {
-        content = content + '\n\n' + statsBlock + '\n';
+      const statsRegex = /<!-- BEGIN GENERATED REPOSITORY STATS -->[\s\S]*?<!-- END GENERATED REPOSITORY STATS -->/g;
+      if (statsRegex.test(content)) {
+        content = content.replace(statsRegex, statsBlock);
       }
     }
 
-    // Synchronize prose numbers across files
     if (filePath.endsWith('README.md')) {
-      content = content.replace(/-\s+\*\*\d+\s+canonical ideas\*\*/gi, `- **${meta.counts.canonicalIdeas} canonical ideas** (${meta.counts.stagedIdeas} staged, ${meta.counts.totalIdeas} total)`);
-      content = content.replace(/-\s+\*\*\d+\s+categories\*\*/gi, `- **${meta.counts.categories} categories**`);
-      content = content.replace(/-\s+\*\*[\d,]+\s+idea-specific prompts\*\*/gi, `- **${meta.counts.prompts.toLocaleString()} idea-specific prompts**`);
+      const invRegex = /<!-- BEGIN GENERATED CURRENT INVENTORY -->[\s\S]*?<!-- END GENERATED CURRENT INVENTORY -->/g;
+      if (invRegex.test(content)) {
+        content = content.replace(invRegex, inventoryBlock);
+      }
     } else if (filePath.endsWith('PROJECT_STATUS.md')) {
       content = content.replace(/^-\s+Canonical ideas:\s+\d+/gm, `- Canonical ideas: ${meta.counts.canonicalIdeas}`);
       content = content.replace(/^-\s+Staged ideas:\s+\d+/gm, `- Staged ideas: ${meta.counts.stagedIdeas}`);

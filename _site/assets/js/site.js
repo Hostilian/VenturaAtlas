@@ -334,12 +334,44 @@ function countUp(el, target, duration = 800) {
   requestAnimationFrame(frame);
 }
 
+function getIdeaScore(idea, dimension) {
+  if (!idea) return null;
+  const d = String(dimension || 'overall').toLowerCase();
+
+  if (d === 'overall') {
+    const v = idea.atAGlance?.overallScore ?? idea.compositeScores?.compositeHeadline ?? idea.scores?.overallOpportunity?.value;
+    return typeof v === 'number' && !isNaN(v) ? v : null;
+  }
+  if (d === 'profit') {
+    const v = idea.scores?.profitPotential?.value ?? idea.compositeScores?.profitPotential ?? idea.scores?.highestProfitPotential?.value;
+    return typeof v === 'number' && !isNaN(v) ? v : null;
+  }
+  if (d === 'confidence') {
+    let v = idea.scores?.confidence?.value ?? idea.compositeScores?.confidence ?? idea.scores?.overallConfidence?.value;
+    if (typeof v === 'number' && !isNaN(v)) {
+      if (v <= 10) v = v * 10;
+      return v;
+    }
+    return null;
+  }
+  if (d === 'market') {
+    const v = idea.scores?.marketDemand?.value ?? idea.compositeScores?.marketDemand ?? idea.scores?.marketSize?.value;
+    return typeof v === 'number' && !isNaN(v) ? v : null;
+  }
+
+  const generic = idea.scores?.[dimension]?.value ?? idea.compositeScores?.[dimension];
+  return typeof generic === 'number' && !isNaN(generic) ? generic : null;
+}
+
+window.VentureAtlas.getIdeaScore = getIdeaScore;
+
 function fillMetrics() {
+  const counts = VA.meta?.counts || {};
   const map = {
-    '[data-total-ideas]':      VA.ideas.length,
-    '[data-total-prompts]':    VA.prompts.length,
-    '[data-total-sources]':    VA.sources.length,
-    '[data-total-categories]': VA.categories.length
+    '[data-total-ideas]':      counts.canonicalIdeas || VA.ideas.length,
+    '[data-total-prompts]':    counts.prompts || 6825,
+    '[data-total-sources]':    counts.sources || VA.sources.length,
+    '[data-total-categories]': counts.categories || VA.categories.length
   };
   Object.entries(map).forEach(([sel, val]) => {
     $$(sel).forEach(el => countUp(el, val));
@@ -379,10 +411,17 @@ function params() {
    CARD RENDERER & EVENT DELEGATION
    ================================================================ */
 function card(x) {
-  const overall = x.atAGlance?.overallScore ?? 0;
-  const profit  = x.compositeScores?.highestProfitPotential ?? 0;
-  const conf    = x.scores?.overallConfidence?.value ?? 0;
-  const scoreC  = scoreClass(overall);
+  const overallVal = getIdeaScore(x, 'overall');
+  const profitVal  = getIdeaScore(x, 'profit');
+  const confVal    = getIdeaScore(x, 'confidence');
+
+  const overallDisp = overallVal !== null ? overallVal : 'N/A';
+  const profitDisp  = profitVal !== null ? profitVal : 'N/A';
+  const confDisp    = confVal !== null ? `${Math.round(confVal)}/100` : 'N/A';
+
+  const scoreC  = overallVal !== null ? scoreClass(overallVal) : 'lo';
+  const profitC = profitVal !== null ? scoreClass(profitVal) : 'lo';
+  const confC   = confVal !== null ? scoreClass(confVal) : 'lo';
 
   const tags = (x.tags || []).slice(0, 4)
     .map(t => `<span class="chip">${esc(t)}</span>`)
@@ -398,15 +437,15 @@ function card(x) {
   </div>
   <div class="scoreline">
     <div class="score-box ${scoreC}">
-      <span class="val">${overall}</span>
+      <span class="val">${overallDisp}</span>
       Overall
     </div>
-    <div class="score-box ${scoreClass(profit)}">
-      <span class="val">${profit}</span>
+    <div class="score-box ${profitC}">
+      <span class="val">${profitDisp}</span>
       Profit
     </div>
-    <div class="score-box ${scoreClass(conf * 10)}">
-      <span class="val">${conf}/10</span>
+    <div class="score-box ${confC}">
+      <span class="val">${confDisp}</span>
       Confidence
     </div>
   </div>

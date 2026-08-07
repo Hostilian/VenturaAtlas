@@ -14,7 +14,6 @@ terraform {
 variable "gcp_project_id" {
   type        = string
   description = "GCP Project ID for Venture Atlas OS"
-  default     = "venture-atlas-os"
 }
 
 variable "gcp_region" {
@@ -28,62 +27,100 @@ provider "google" {
   region  = var.gcp_region
 }
 
-# ── 1. GCP Secret Manager Secrets ─────────────────────────────────────────────
-resource "google_secret_manager_secret" "openrouter_keys" {
-  secret_id = "OPENROUTER_API_KEYS"
+# ── 0. Enable Required GCP APIs ───────────────────────────────────────────────
+resource "google_project_service" "apis" {
+  for_each = toset([
+    "cloudrun.googleapis.com",
+    "cloudtasks.googleapis.com",
+    "firestore.googleapis.com",
+    "secretmanager.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "cloudscheduler.googleapis.com"
+  ])
+  service            = each.key
+  disable_on_destroy = false
+}
+
+# ── 1. Artifact Registry ──────────────────────────────────────────────────────
+resource "google_artifact_registry_repository" "repo" {
+  location      = var.gcp_region
+  repository_id = "venture-atlas-repo"
+  format        = "DOCKER"
+  depends_on    = [google_project_service.apis]
+}
+
+# ── 2. Firestore Database ─────────────────────────────────────────────────────
+resource "google_firestore_database" "database" {
+  name        = "(default)"
+  location_id = var.gcp_region
+  type        = "FIRESTORE_NATIVE"
+  depends_on  = [google_project_service.apis]
+}
+
+# ── 3. Cloud Tasks Queue ──────────────────────────────────────────────────────
+resource "google_cloud_tasks_queue" "pipeline_queue" {
+  name       = "venture-atlas-tasks"
+  location   = var.gcp_region
+  depends_on = [google_project_service.apis]
+
+  rate_limits {
+    max_dispatches_per_second = 10
+    max_concurrent_dispatches = 5
+  }
+
+  retry_config {
+    max_attempts = 5
+    min_backoff  = "10s"
+    max_backoff  = "300s"
+  }
+}
+
+# ── 4. Secret Manager Secrets for Provider Aliases ───────────────────────────
+resource "google_secret_manager_secret" "provider_secrets" {
+  for_each = toset([
+    "va-openrouter-01",
+    "va-anthropic-01",
+    "va-active-01",
+    "va-deepseek-01",
+    "va-gemini-01",
+    "va-github-token"
+  ])
+  secret_id  = each.key
+  depends_on = [google_project_service.apis]
   replication {
     auto {}
   }
 }
 
-resource "google_secret_manager_secret" "anthropic_keys" {
-  secret_id = "ANTHROPIC_API_KEYS"
-  replication {
-    auto {}
-  }
-}
-
-resource "google_secret_manager_secret" "github_token" {
-  secret_id = "GITHUB_TOKEN"
-  replication {
-    auto {}
-  }
-}
-
-# ── 2. Service Account for Cloud Run Jobs ─────────────────────────────────────
+# ── 5. Dedicated Service Accounts ─────────────────────────────────────────────
 resource "google_service_account" "worker_sa" {
   account_id   = "va-cloud-worker-sa"
   display_name = "Venture Atlas Worker Service Account"
 }
 
-resource "google_secret_manager_secret_iam_member" "openrouter_access" {
-  secret_id = google_secret_manager_secret.openrouter_keys.id
+resource "google_service_account" "publisher_sa" {
+  account_id   = "va-cloud-publisher-sa"
+  display_name = "Venture Atlas Publisher Service Account"
+}
+
+resource "google_secret_manager_secret_iam_member" "secret_access" {
+  for_each  = google_secret_manager_secret.provider_secrets
+  secret_id = each.value.id
   role      = "roles/secretmanager.secretAccessor"
   member    = "serviceAccount:${google_service_account.worker_sa.email}"
 }
 
-resource "google_secret_manager_secret_iam_member" "anthropic_access" {
-  secret_id = google_secret_manager_secret.anthropic_keys.id
-  role      = "roles/secretmanager.secretAccessor"
-  member    = "serviceAccount:${google_service_account.worker_sa.email}"
-}
-
-resource "google_secret_manager_secret_iam_member" "github_access" {
-  secret_id = google_secret_manager_secret.github_token.id
-  role      = "roles/secretmanager.secretAccessor"
-  member    = "serviceAccount:${google_service_account.worker_sa.email}"
-}
-
-# ── 3. Cloud Run Job Definition ───────────────────────────────────────────────
+# ── 6. Cloud Run Job Definition ───────────────────────────────────────────────
 resource "google_cloud_run_v2_job" "venture_atlas_worker" {
-  name     = "venture-atlas-discovery-worker"
-  location = var.gcp_region
+  name       = "venture-atlas-discovery-worker"
+  location   = var.gcp_region
+  depends_on = [google_artifact_registry_repository.repo]
 
   template {
     template {
       service_account = google_service_account.worker_sa.email
       containers {
-        image = "gcr.io/${var.gcp_project_id}/venture-atlas-worker:latest"
+        image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/venture-atlas-worker:2.3.0"
         resources {
           limits = {
             cpu    = "2000m"
@@ -99,7 +136,7 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
   }
 }
 
-# ── 4. Cloud Scheduler Cron Job (Runs every 2 hours) ─────────────────────────
+# ── 7. Cloud Scheduler Trigger ────────────────────────────────────────────────
 resource "google_cloud_scheduler_job" "discovery_trigger" {
   name        = "venture-atlas-2hr-trigger"
   description = "Triggers Venture Atlas Autonomous Discovery Worker every 2 hours"

@@ -18,7 +18,7 @@
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.2.0
+- Repository Version: 2.3.0
 - Canonical Ideas: 185
 - Staged Ideas: 118
 - Total Ideas: 303

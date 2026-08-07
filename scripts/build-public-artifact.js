@@ -59,8 +59,29 @@ const DENIED_PATTERNS = [
   /tsconfig.*\.json$/i
 ];
 
+const PUBLIC_DATA_ALLOWLIST = new Set([
+  'ideas.json',
+  'ideas.csv',
+  'ideas.schema.json',
+  'categories.json',
+  'sources.json',
+  'rankings.json',
+  'search-index.json',
+  'repository-meta.json',
+  'relationships.json',
+  'prompts.json',
+  'build-manifest.json',
+  'validation-summary.json'
+]);
+
 function isDenied(relativePath) {
   const normalized = relativePath.replace(/\\/g, '/');
+  if (normalized.startsWith('data/')) {
+    const filename = path.basename(normalized);
+    if (!PUBLIC_DATA_ALLOWLIST.has(filename)) {
+      return true;
+    }
+  }
   return DENIED_PATTERNS.some(pattern => pattern.test(normalized));
 }
 

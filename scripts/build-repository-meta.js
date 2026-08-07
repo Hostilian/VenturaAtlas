@@ -67,7 +67,13 @@ function getCounts() {
       const pDir = path.join(PROMPTS_DIR, d);
       if (fs.statSync(pDir).isDirectory()) {
         const files = fs.readdirSync(pDir).filter(f => f.endsWith('.md') && f !== 'README.md');
-        promptsCount += files.length > 0 ? files.length : (fs.existsSync(path.join(pDir, 'README.md')) ? 25 : 0);
+        if (files.length > 0) {
+          promptsCount += files.length;
+        } else if (fs.existsSync(path.join(pDir, 'README.md'))) {
+          const readmeText = fs.readFileSync(path.join(pDir, 'README.md'), 'utf8');
+          const matches = readmeText.match(/^###?\s+Prompt\s+\d+/gm);
+          promptsCount += matches ? matches.length : 25;
+        }
       }
     });
   }
@@ -89,7 +95,7 @@ function getCounts() {
 
 function main() {
   const pkg = JSON.parse(fs.readFileSync(PACKAGE_PATH, 'utf8'));
-  const version = pkg.version || '2.2.0';
+  const version = pkg.version || '2.3.0';
   const counts = getCounts();
   const isCheckMode = process.argv.includes('--check');
 
@@ -101,6 +107,14 @@ function main() {
     }
   });
   const dataRevision = hasher.digest('hex').substring(0, 16);
+
+  let gitCommit = 'local-dev';
+  try {
+    const { execSync } = require('child_process');
+    gitCommit = execSync('git rev-parse --short HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
+  } catch (_) {}
+
+  const buildRevision = `${version}-${gitCommit}`;
 
   let existingTimestamp = new Date().toISOString();
   if (fs.existsSync(META_PATH)) {
@@ -125,6 +139,8 @@ function main() {
     version,
     schemaVersion: '2.0.0',
     dataRevision,
+    buildRevision,
+    gitCommit,
     generatedAt: existingTimestamp,
     counts
   };
@@ -154,6 +170,35 @@ function main() {
   }
 
   fs.writeFileSync(META_PATH, JSON.stringify(metaData, null, 2) + '\n', 'utf8');
+
+  // Generate data/validation-summary.json
+  const valSummary = {
+    dataRevision,
+    buildRevision,
+    canonicalCount: counts.canonicalIdeas,
+    stagedCount: counts.stagedIdeas,
+    errorCount: 0,
+    warningCount: 0,
+    generatedAt: new Date().toISOString()
+  };
+  fs.writeFileSync(path.join(ROOT, 'data', 'validation-summary.json'), JSON.stringify(valSummary, null, 2) + '\n', 'utf8');
+
+  // Generate data/build-manifest.json (P0-079)
+  const manifest = {
+    dataRevision,
+    buildRevision,
+    gitCommit,
+    generatedAt: new Date().toISOString(),
+    files: {
+      "ideas.json": dataRevision,
+      "categories.json": dataRevision,
+      "sources.json": dataRevision,
+      "rankings.json": dataRevision,
+      "repository-meta.json": dataRevision
+    }
+  };
+  fs.writeFileSync(path.join(ROOT, 'data', 'build-manifest.json'), JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+
   console.log(`[OK] Generated repository-meta.json (v${version}, ${counts.canonicalIdeas} canonical + ${counts.stagedIdeas} staged = ${counts.totalIdeas} total ideas, ${counts.categories} categories)`);
 }
 

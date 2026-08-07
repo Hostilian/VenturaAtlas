@@ -156,7 +156,11 @@
     const rawIdeas = window.VA && window.VA.ideas;
     const allIdeas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas && rawIdeas.ideas ? rawIdeas.ideas : []);
     const canonicalIdeas = allIdeas.filter(i => i.status !== 'staged' && !(i.id && i.id.startsWith('candidate-')));
-    if (!canonicalIdeas.length) return;
+    if (!canonicalIdeas.length) {
+      const loading = document.getElementById('spotlightLoading');
+      if (loading) loading.textContent = 'No canonical ideas available.';
+      return;
+    }
     const pick = canonicalIdeas[Math.floor(Math.random() * canonicalIdeas.length)];
     renderSpotlight(pick);
   }
@@ -180,7 +184,11 @@
     if (!container || !cats.length) return;
 
     const catCount = {};
-    ideas.forEach(i => { if (i.category) catCount[i.category] = (catCount[i.category] || 0) + 1; });
+    ideas.forEach(i => {
+      if (i.category && i.status !== 'staged' && !(i.id && i.id.startsWith('candidate-'))) {
+        catCount[i.category] = (catCount[i.category] || 0) + 1;
+      }
+    });
 
     const emojis = {
       'ai': '🤖', 'data': '📊', 'marketplace': '🏪', 'saas': '☁️', 'food': '🍽️',

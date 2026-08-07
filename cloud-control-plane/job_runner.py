@@ -69,44 +69,57 @@ def execute_discovery():
     if res.returncode == 0:
         log_event("INFO", "Autonomous Discovery Job Completed Successfully", {"output_tail": res.stdout[-300:]})
     else:
-        log_event("ERROR", "Autonomous Discovery Job Encountered Warnings/Errors", {"stderr": res.stderr[-500:]})
+        log_event("ERROR", "Autonomous Discovery Job Failed", {"stderr": res.stderr[-500:]})
+        raise RuntimeError(f"Autonomous discovery failed with returncode {res.returncode}")
 
 def rebuild_metadata_and_site():
     """Rebuild search index, metadata, and _site staging directory."""
     log_event("INFO", "Rebuilding Derived Metadata & Site Artifacts")
     cmd = ["npm", "run", "build"]
-    res = subprocess.run(cmd, capture_output=True, text=True, cwd=BASE_DIR, shell=True)
+    res = subprocess.run(cmd, capture_output=True, text=True, cwd=BASE_DIR)
     if res.returncode == 0:
         log_event("INFO", "Build Pipeline Completed Successfully")
     else:
         log_event("ERROR", "Build Pipeline Failed", {"stderr": res.stderr[-500:]})
+        raise RuntimeError(f"Build pipeline failed with returncode {res.returncode}")
 
 def push_updates_to_github():
-    """Push new commits to GitHub main branch if GITHUB_TOKEN is available."""
+    """Push validated candidate publication branch to GitHub if GITHUB_TOKEN is available."""
     github_token = fetch_gcp_secret("GITHUB_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
     if not github_token:
         log_event("NOTICE", "GITHUB_TOKEN not available — skipping git push")
         return
     
-    log_event("INFO", "Committing and pushing autonomous updates to GitHub Pages repository")
-    repo_url = f"https://x-access-token:{github_token}@github.com/Hostilian/VenturaAtlas.git"
+    log_event("INFO", "Committing and pushing autonomous updates via publication branch")
     
     try:
         subprocess.run(["git", "config", "user.name", "VentureAtlas-Cloud-Bot"], cwd=BASE_DIR, check=True)
         subprocess.run(["git", "config", "user.email", "cloud-bot@ventureatlas.os"], cwd=BASE_DIR, check=True)
-        subprocess.run(["git", "add", "."], cwd=BASE_DIR, check=True)
         
         status_res = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, cwd=BASE_DIR)
         if not status_res.stdout.strip():
             log_event("INFO", "No changes to commit — repository up to date")
             return
 
+        # Stage allowlisted data files only
+        allowlist = ["data/idea-staging-queue.json", "data/repository-meta.json", "data/search-index.json", "data/rankings.json"]
+        for f in allowlist:
+            if os.path.exists(os.path.join(BASE_DIR, f)):
+                subprocess.run(["git", "add", f], cwd=BASE_DIR, check=True)
+
+        branch_name = f"automation/publish-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')}"
+        subprocess.run(["git", "checkout", "-b", branch_name], cwd=BASE_DIR, check=True)
+
         commit_msg = f"feat(autonomy): cloud-run discovery & metadata update [{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}]"
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
-        subprocess.run(["git", "push", repo_url, "main"], cwd=BASE_DIR, check=True)
-        log_event("INFO", "Successfully pushed autonomous updates to GitHub main branch!")
+        
+        # Configure remote URL without exposing token in command line args
+        subprocess.run(["git", "remote", "set-url", "origin", f"https://x-access-token:{github_token}@github.com/Hostilian/VenturaAtlas.git"], cwd=BASE_DIR, check=True)
+        subprocess.run(["git", "push", "origin", branch_name], cwd=BASE_DIR, check=True)
+        log_event("INFO", f"Successfully pushed autonomous publication branch '{branch_name}'!")
     except Exception as e:
         log_event("ERROR", "Failed to push updates to GitHub", {"error": str(e)})
+        raise RuntimeError(f"GitHub publication push failed: {e}") from e
 
 def main():
     log_event("INFO", "=== Venture Atlas OS Cloud Control Plane Started ===")
