@@ -14,13 +14,20 @@
 
 [CmdletBinding()]
 param(
-    [int]$IntervalSeconds  = $env:DAEMON_INTERVAL_SECONDS ?? 120,
-    [int]$MaxIterations    = $env:DAEMON_MAX_ITERATIONS   ?? 10,
+    [int]$IntervalSeconds  = 120,
+    [int]$MaxIterations    = 10,
     [switch]$Rank,
     [switch]$Validate,
     [switch]$TestMode,
     [string]$EUshopPath    = "D:\CODING\eushop"
 )
+
+if ($env:DAEMON_INTERVAL_SECONDS -and -not $PSBoundParameters.ContainsKey('IntervalSeconds')) {
+    $IntervalSeconds = [int]$env:DAEMON_INTERVAL_SECONDS
+}
+if ($env:DAEMON_MAX_ITERATIONS -and -not $PSBoundParameters.ContainsKey('MaxIterations')) {
+    $MaxIterations = [int]$env:DAEMON_MAX_ITERATIONS
+}
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Continue"
