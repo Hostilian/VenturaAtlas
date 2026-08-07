@@ -157,42 +157,30 @@ SCORE_DIMS = [
     "evidenceQuality",
 ]
 
-# ── Loading ───────────────────────────────────────────────────────────────────
+import uuid
+from va_runtime.atomic_io import atomic_write_json, read_json_safe
+from va_runtime.id_allocator import allocate_next_canonical_id
+
 def load_existing_ideas() -> list:
     if not os.path.exists(IDEAS_JSON_PATH):
         return []
-    with open(IDEAS_JSON_PATH, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    data = read_json_safe(IDEAS_JSON_PATH, default_if_missing=[])
     return data.get('ideas', []) if isinstance(data, dict) else data
 
 def load_staging_queue() -> list:
     if not os.path.exists(QUEUE_JSON_PATH):
         return []
-    try:
-        with open(QUEUE_JSON_PATH, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception:
-        return []
+    return read_json_safe(QUEUE_JSON_PATH, default_if_missing=[])
 
 def save_staging_queue(queue: list):
-    with open(QUEUE_JSON_PATH, 'w', encoding='utf-8') as f:
-        json.dump(queue, f, indent=2, ensure_ascii=False)
+    atomic_write_json(QUEUE_JSON_PATH, queue)
 
 def save_canonical(ideas: list):
-    with open(IDEAS_JSON_PATH, 'w', encoding='utf-8') as f:
-        json.dump({"schemaVersion": "2.0.0", "ideas": ideas}, f, indent=2, ensure_ascii=False)
+    atomic_write_json(IDEAS_JSON_PATH, {"schemaVersion": "2.0.0", "ideas": ideas})
 
-def get_next_idea_id(existing: list, queue: list) -> str:
-    max_id = 0
-    for i in list(existing) + list(queue):
-        iid = i.get('id', '')
-        if iid.startswith('idea-'):
-            try:
-                num = int(iid.replace('idea-', ''))
-                max_id = max(max_id, num)
-            except ValueError:
-                pass
-    return f"idea-{max_id + 1:03d}"
+def generate_candidate_id() -> str:
+    """Generate a candidate ID for parallel discovery workers (never a permanent idea-XXX)."""
+    return f"candidate-{uuid.uuid4()}"
 
 def get_all_existing_names(existing: list, queue: list) -> list[str]:
     names = []
@@ -446,34 +434,24 @@ def assemble_idea(llm_idea: dict, next_id: str, domain: dict, provider: str) -> 
     }
 
 # ── Auto-Promote ──────────────────────────────────────────────────────────────
-def auto_promote(idea: dict, existing: list) -> bool:
-    """Promote idea directly to canonical if compositeHeadline ≥ threshold."""
+def mark_candidate_ready_for_validation(idea: dict) -> bool:
+    """Mark high-scoring candidate as prioritized for validation (does NOT mutate canonical data)."""
     score = idea.get("compositeScores", {}).get("compositeHeadline", 0)
     if score >= AUTO_PROMOTE_THR and not idea.get("killCriteria", {}).get("killFlagged"):
-        existing.append(idea)
-        save_canonical(existing)
-
-        # Generate dossier & prompt pack immediately
-        try:
-            import subprocess
-            subprocess.run([sys.executable, os.path.join(BASE_DIR, 'scripts', 'generate-all-missing-dossiers.py')], check=False)
-        except Exception as _e:
-            log_warn(f"Failed to generate dossier for auto-promoted idea: {_e}")
-
-        log_success(
-            f"AUTO-PROMOTED {idea['id']} '{idea['name']}' "
-            f"(score={score}) directly to ideas.json",
+        idea["prioritizedForValidation"] = True
+        log_info(
+            f"HIGH-PRIORITY CANDIDATE {idea['id']} '{idea['name']}' "
+            f"(score={score}) queued for validation & serialized publication",
             id=idea['id'], score=score
         )
         return True
     return False
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-# ── Main ──────────────────────────────────────────────────────────────────────
 def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot: list, existing_names_snapshot: list):
     domain = random.choice(SEARCH_DOMAINS)
-    next_id = get_next_idea_id(existing_snapshot, queue_snapshot)
-    log_info(f"[{run_idx+1}/{IDEAS_PER_RUN}] Parallel Domain worker active: '{domain['category']}' → next ID: {next_id}")
+    candidate_id = generate_candidate_id()
+    log_info(f"[{run_idx+1}/{IDEAS_PER_RUN}] Parallel Domain worker active: '{domain['category']}' → candidate ID: {candidate_id}")
 
     prompt = build_idea_prompt(domain, existing_names_snapshot)
     try:
@@ -499,7 +477,7 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
         log_warn(f"Duplicate idea '{idea_name}' — skipping", name=idea_name)
         return ("rejected", None)
 
-    idea = assemble_idea(llm_idea, next_id, domain, provider)
+    idea = assemble_idea(llm_idea, candidate_id, domain, provider)
     checklist = idea["validationChecklist"]
     kill = idea["killCriteria"]
     headline = idea["compositeScores"]["compositeHeadline"]
@@ -540,7 +518,7 @@ def main():
 
     generated = 0
     staged    = 0
-    promoted  = 0
+    prioritized = 0
     rejected  = 0
 
     from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -561,30 +539,28 @@ def main():
                 rejected += 1
             elif status == "valid" and idea:
                 generated += 1
-                if auto_promote(idea, existing):
-                    existing_names.append(idea['name'].lower())
-                    promoted += 1
-                else:
-                    queue.append(idea)
-                    save_staging_queue(queue)
-                    existing_names.append(idea['name'].lower())
-                    staged += 1
-                    headline = idea["compositeScores"]["compositeHeadline"]
-                    log_success(
-                        f"STAGED: {idea['id']} '{idea['name']}' (score={headline}) "
-                        f"Queue size: {len(queue)}",
-                        id=idea['id'], score=headline
-                    )
+                if mark_candidate_ready_for_validation(idea):
+                    prioritized += 1
+                queue.append(idea)
+                save_staging_queue(queue)
+                existing_names.append(idea['name'].lower())
+                staged += 1
+                headline = idea["compositeScores"]["compositeHeadline"]
+                log_success(
+                    f"STAGED CANDIDATE: {idea['id']} '{idea['name']}' (score={headline}) "
+                    f"Queue size: {len(queue)}",
+                    id=idea['id'], score=headline
+                )
 
     # Update state totals
     state = _load_state()
     state["totalIdeasGenerated"] = state.get("totalIdeasGenerated", 0) + generated
-    state["totalIdeasPromoted"]  = state.get("totalIdeasPromoted", 0) + promoted
+    state["totalCandidatesStaged"] = state.get("totalCandidatesStaged", 0) + staged
     _save_state(state)
 
     log_info(
         f"=== Run complete: generated={generated} staged={staged} "
-        f"promoted={promoted} rejected={rejected} ==="
+        f"prioritized={prioritized} rejected={rejected} ==="
     )
     print(f"\n{'='*60}")
     print(f"  Generated : {generated}")

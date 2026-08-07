@@ -144,19 +144,19 @@ PROVIDER_DEFAULTS = {
     "anthropic-full": {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
 }
 
+from va_runtime.atomic_io import atomic_write_json, read_json_safe
+
 def _load_state() -> dict:
     os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
     if os.path.exists(STATE_PATH):
         try:
-            with open(STATE_PATH, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            # Merge defaults for any missing providers
+            data = read_json_safe(STATE_PATH, default_if_missing={})
             for k, v in PROVIDER_DEFAULTS.items():
                 if k not in data.get("providers", {}):
                     data.setdefault("providers", {})[k] = dict(v)
             return data
-        except Exception:
-            pass
+        except Exception as e:
+            log_warn(f"Failed to load provider state: {e}")
     return {
         "providers": {k: dict(v) for k, v in PROVIDER_DEFAULTS.items()},
         "lastRun": "",
@@ -166,10 +166,8 @@ def _load_state() -> dict:
     }
 
 def _save_state(state: dict):
-    os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
     state["lastRun"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    with open(STATE_PATH, 'w', encoding='utf-8') as f:
-        json.dump(state, f, indent=2, ensure_ascii=False)
+    atomic_write_json(STATE_PATH, state)
 
 def _is_circuit_open(p_state: dict) -> bool:
     cu = p_state.get("circuitUntil", "")
@@ -401,17 +399,21 @@ def _call_own_orchestrator(prompt: str, domain_hint: dict = None) -> str:
         "timeToMvp": "3-7 days",
         "grossMarginEstimate": 80,
         "scores": {
-            "problemSeverity": round(random.uniform(7.0, 9.0), 1),
-            "frequencyOfNeed": round(random.uniform(6.5, 8.5), 1),
-            "willingnessToPay": round(random.uniform(6.8, 8.8), 1),
-            "marketDemand": round(random.uniform(7.0, 9.0), 1),
-            "speedToFirstRevenue": round(random.uniform(8.0, 9.5), 1),
-            "lowStartupCost": 9.5,
-            "easeOfMvp": round(random.uniform(7.5, 9.0), 1),
-            "aiAutomationPotential": round(random.uniform(7.0, 9.0), 1),
-            "regulatoryTailwind": round(random.uniform(5.0, 8.5), 1),
-            "compoundingAsset": round(random.uniform(6.5, 8.5), 1),
+            "problemSeverity": 5.0,
+            "frequencyOfNeed": 5.0,
+            "willingnessToPay": 5.0,
+            "marketDemand": 5.0,
+            "speedToFirstRevenue": 5.0,
+            "lowStartupCost": 5.0,
+            "easeOfMvp": 5.0,
+            "aiAutomationPotential": 5.0,
+            "regulatoryTailwind": 5.0,
+            "compoundingAsset": 5.0,
         },
+        "generationMode": "deterministic-fallback",
+        "evidenceStatus": "unverified",
+        "promotionEligible": False,
+        "requiresExternalEvidence": True,
         "tags": domain_hint.get("tags", []) + ["own-orch", "autonomous-discovered"],
         "provider": "own-orch",
     }
