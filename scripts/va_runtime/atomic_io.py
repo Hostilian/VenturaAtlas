@@ -36,6 +36,16 @@ def atomic_write_json(filepath: str, data: Any, indent: int = 2) -> None:
             
         # 4. Atomic replacement
         os.replace(temp_path, filepath)
+
+        # 5. Directory fsync where supported
+        try:
+            dir_fd = os.open(directory, os.O_RDONLY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
+        except Exception:
+            pass
     except Exception as e:
         if os.path.exists(temp_path):
             try:
