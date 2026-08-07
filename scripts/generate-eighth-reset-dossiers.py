@@ -998,14 +998,19 @@ def main():
     ideas = data['ideas'] if isinstance(data, dict) else data
     all_ideas_map = {i['id']: i for i in ideas}
 
-    # Target: ideas 062-070 (idea-061 already has a full dossier at 39KB)
-    target_ids = [f'idea-0{n}' for n in range(62, 71)]
-
     generated = []
     for idea in ideas:
         idea_id = idea.get('id', '')
-        if idea_id not in target_ids:
+        slug = idea.get('slug', '')
+        if not slug:
+            print(f'SKIP {idea_id}: no slug', file=sys.stderr)
             continue
+
+        output_path = os.path.join(output_dir, f'{slug}.md')
+        # Only skip if file exists and idea_id is not in target 62-70 range
+        if os.path.exists(output_path) and idea_id not in [f'idea-0{n}' for n in range(62, 71)]:
+            continue
+
 
         slug = idea.get('slug', '')
         if not slug:
