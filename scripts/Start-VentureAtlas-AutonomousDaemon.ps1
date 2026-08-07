@@ -37,7 +37,7 @@ if ($TestMode) {
     $MaxIterations    = 2
     $IntervalSeconds  = 5
     $Rank             = $true
-    Write-Host "🧪 TEST MODE: 2 iterations, 5s interval" -ForegroundColor Cyan
+    Write-Host "TEST MODE: 2 iterations, 5s interval" -ForegroundColor Cyan
 }
 
 $LogDir = Join-Path $PSScriptRoot "..\.agent-state\logs"
@@ -173,7 +173,7 @@ for ($i = 1; $i -le $MaxIterations; $i++) {
         for ($s = $IntervalSeconds; $s -gt 0; $s -= 10) {
             Start-Sleep -Seconds ([Math]::Min(10, $s))
             if ($s -gt 10 -and $s % 30 -eq 0) {
-                Write-Host "  ⏳ Next run in ${s}s..." -ForegroundColor Gray
+                Write-Host "  Next run in ${s}s..." -ForegroundColor Gray
             }
         }
     }
