@@ -50,12 +50,16 @@ OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
 
-# Round-robin key pool parser for OpenRouter and Anthropic
+# Round-robin key pool parser for OpenRouter, Anthropic, Active API, and DeepSeek
 _raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-or-...')]
-_raw_anthropic_keys = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ant-...')]
+_raw_anthropic_keys  = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ant-...')]
+_raw_active_keys     = [k.strip() for k in os.environ.get('ACTIVE_API_KEYS', os.environ.get('ACTIVE_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-act-...')]
+_raw_deepseek_keys   = [k.strip() for k in os.environ.get('DEEPSEEK_API_KEYS', os.environ.get('DEEPSEEK_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ds-...')]
 
 _openrouter_key_idx = 0
 _anthropic_key_idx  = 0
+_active_key_idx     = 0
+_deepseek_key_idx   = 0
 
 def _get_next_openrouter_key() -> str:
     global _openrouter_key_idx
@@ -73,12 +77,32 @@ def _get_next_anthropic_key() -> str:
     _anthropic_key_idx += 1
     return key
 
-OMNIROUTE_URL      = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
-OMNIROUTE_MODEL    = os.environ.get('OMNIROUTE_MODEL', 'meta-llama/llama-3.1-8b-instruct:free')
-FCC_MODEL          = os.environ.get('FCC_CLAUDE_MODEL', 'claude-haiku-4-5')
-ANTHROPIC_FULL_MDL = os.environ.get('ANTHROPIC_FULL_MODEL', 'claude-sonnet-4-5')
-CIRCUIT_THRESHOLD  = 3       # failures before circuit opens
-CIRCUIT_COOLDOWN   = 180     # reduced cooldown (seconds) before retry after circuit open
+def _get_next_active_key() -> str:
+    global _active_key_idx
+    if not _raw_active_keys:
+        return ''
+    key = _raw_active_keys[_active_key_idx % len(_raw_active_keys)]
+    _active_key_idx += 1
+    return key
+
+def _get_next_deepseek_key() -> str:
+    global _deepseek_key_idx
+    if not _raw_deepseek_keys:
+        return ''
+    key = _raw_deepseek_keys[_deepseek_key_idx % len(_raw_deepseek_keys)]
+    _deepseek_key_idx += 1
+    return key
+
+OMNIROUTE_URL        = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
+OMNIROUTE_MODEL      = os.environ.get('OMNIROUTE_MODEL', 'meta-llama/llama-3.1-8b-instruct:free')
+FCC_MODEL            = os.environ.get('FCC_CLAUDE_MODEL', 'claude-haiku-4-5')
+ANTHROPIC_FULL_MDL   = os.environ.get('ANTHROPIC_FULL_MODEL', 'claude-sonnet-4-5')
+ACTIVE_API_BASE_URL  = os.environ.get('ACTIVE_API_BASE_URL', 'https://aiapiv2.pekpik.com/v1')
+ACTIVE_API_MDL       = os.environ.get('ACTIVE_API_MODEL', 'gemini-2.5-flash')
+DEEPSEEK_BASE_URL    = os.environ.get('DEEPSEEK_BASE_URL', 'https://api.deepseek.com/v1')
+DEEPSEEK_MDL         = os.environ.get('DEEPSEEK_MODEL', 'deepseek-chat')
+CIRCUIT_THRESHOLD    = 3       # failures before circuit opens
+CIRCUIT_COOLDOWN     = 180     # reduced cooldown (seconds) before retry after circuit open
 
 
 # ── Structured Logging ─────────────────────────────────────────────────────────
@@ -114,6 +138,8 @@ PROVIDER_DEFAULTS = {
     "hermes-ollama":  {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "omniRoute":      {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "fcc-claude":     {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
+    "active-api":     {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
+    "deepseek-api":   {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "own-orch":       {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "anthropic-full": {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
 }
@@ -399,6 +425,52 @@ def _call_anthropic_full(prompt: str) -> str:
     return result["content"][0]["text"].strip()
 
 
+# ── Tier 6: Active API (PekPik / Gemini proxy) ────────────────────────────────
+def _call_active_api(prompt: str) -> str:
+    key = _get_next_active_key()
+    if not key:
+        raise ValueError("No valid Active API key available in key pool")
+    url = f"{ACTIVE_API_BASE_URL.rstrip('/')}/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {key}",
+    }
+    body = {
+        "model": ACTIVE_API_MDL,
+        "messages": [
+            {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+            {"role": "user", "content": prompt},
+        ],
+        "max_tokens": 1200,
+        "temperature": 0.7,
+    }
+    result = _http_post(url, headers, body, timeout=60)
+    return result["choices"][0]["message"]["content"].strip()
+
+
+# ── Tier 7: DeepSeek API ──────────────────────────────────────────────────────
+def _call_deepseek_api(prompt: str) -> str:
+    key = _get_next_deepseek_key()
+    if not key:
+        raise ValueError("No valid DeepSeek API key available in key pool")
+    url = f"{DEEPSEEK_BASE_URL.rstrip('/')}/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {key}",
+    }
+    body = {
+        "model": DEEPSEEK_MDL,
+        "messages": [
+            {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+            {"role": "user", "content": prompt},
+        ],
+        "max_tokens": 1200,
+        "temperature": 0.7,
+    }
+    result = _http_post(url, headers, body, timeout=60)
+    return result["choices"][0]["message"]["content"].strip()
+
+
 # ── Provider Health Check ──────────────────────────────────────────────────────
 def health_check() -> dict:
     """Check which providers are available. Returns dict of provider → bool."""
@@ -422,16 +494,24 @@ def health_check() -> dict:
     results["omniRoute"] = len(_raw_openrouter_keys) > 0
     # FCC Claude
     results["fcc-claude"] = len(_raw_anthropic_keys) > 0
+    # Active API
+    results["active-api"] = len(_raw_active_keys) > 0
+    # DeepSeek API
+    results["deepseek-api"] = len(_raw_deepseek_keys) > 0
     # Own Orch always available
     results["own-orch"] = True
     # Anthropic Full
     results["anthropic-full"] = len(_raw_anthropic_keys) > 0
-    log_info("Provider health check complete", results=results, openrouter_keys=len(_raw_openrouter_keys), anthropic_keys=len(_raw_anthropic_keys))
+    log_info("Provider health check complete", results=results,
+             openrouter_keys=len(_raw_openrouter_keys),
+             anthropic_keys=len(_raw_anthropic_keys),
+             active_keys=len(_raw_active_keys),
+             deepseek_keys=len(_raw_deepseek_keys))
     return results
 
 
 # ── Core Orchestration Call ────────────────────────────────────────────────────
-PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "anthropic-full", "own-orch"]
+PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
 
 def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True) -> tuple[str, str]:
     """
@@ -450,7 +530,6 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True)
         try:
             log_info(f"Trying provider: {provider}")
             if provider == "hermes-ollama":
-                # Try hermes3 first, then fallback
                 try:
                     resp = _call_hermes(prompt, HERMES_MODEL)
                 except Exception:
@@ -459,6 +538,10 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True)
                 resp = _call_omniRoute(prompt)
             elif provider == "fcc-claude":
                 resp = _call_fcc_claude(prompt)
+            elif provider == "active-api":
+                resp = _call_active_api(prompt)
+            elif provider == "deepseek-api":
+                resp = _call_deepseek_api(prompt)
             elif provider == "anthropic-full":
                 resp = _call_anthropic_full(prompt)
             elif provider == "own-orch":
