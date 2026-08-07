@@ -24,9 +24,9 @@
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-07T11:51:27.843142+00:00",
-      "totalCalls": 18,
-      "successCalls": 18
+      "lastUsed": "2026-08-07T11:53:58.407102+00:00",
+      "totalCalls": 22,
+      "successCalls": 22
     },
     "anthropic-full": {
       "failures": 9,
@@ -36,21 +36,21 @@
       "successCalls": 0
     },
     "active-api": {
-      "failures": 1,
-      "circuitUntil": "",
+      "failures": 3,
+      "circuitUntil": "2026-08-07T11:54:55.237792+00:00",
       "lastUsed": "",
-      "totalCalls": 1,
+      "totalCalls": 3,
       "successCalls": 0
     },
     "deepseek-api": {
-      "failures": 1,
-      "circuitUntil": "",
+      "failures": 3,
+      "circuitUntil": "2026-08-07T11:54:55.623530+00:00",
       "lastUsed": "",
-      "totalCalls": 1,
+      "totalCalls": 3,
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-07T11:51:27.862579+00:00",
+  "lastRun": "2026-08-07T11:53:58.429115+00:00",
   "totalIdeasGenerated": 1,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0"

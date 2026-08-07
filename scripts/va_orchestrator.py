@@ -224,48 +224,62 @@ def _call_hermes(prompt: str, model: str = None) -> str:
 
 # ── Tier 2: OmniRoute → OpenRouter ────────────────────────────────────────────
 def _call_omniRoute(prompt: str) -> str:
-    key = _get_next_openrouter_key()
-    if not key:
-        raise ValueError("No valid OpenRouter API key available in key pool")
-    url = f"{OMNIROUTE_URL}/chat/completions"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {key}",
-        "HTTP-Referer": "https://venture-atlas-os.github.io",
-        "X-Title": "Venture Atlas OS",
-    }
-    body = {
-        "model": OMNIROUTE_MODEL,
-        "messages": [
-            {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
-            {"role": "user", "content": prompt},
-        ],
-        "max_tokens": 1200,
-        "temperature": 0.7,
-    }
-    result = _http_post(url, headers, body, timeout=60)
-    return result["choices"][0]["message"]["content"].strip()
+    if not _raw_openrouter_keys:
+        raise ValueError("No valid OpenRouter API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_openrouter_keys)):
+        key = _get_next_openrouter_key()
+        try:
+            url = f"{OMNIROUTE_URL}/chat/completions"
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {key}",
+                "HTTP-Referer": "https://venture-atlas-os.github.io",
+                "X-Title": "Venture Atlas OS",
+            }
+            body = {
+                "model": OMNIROUTE_MODEL,
+                "messages": [
+                    {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": 1200,
+                "temperature": 0.7,
+            }
+            result = _http_post(url, headers, body, timeout=60)
+            return result["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"OpenRouter key call failed, trying next key: {e}")
+    raise last_err or ValueError("All OpenRouter API keys in pool failed")
 
 
 # ── Tier 3: FCC Claude (Anthropic Haiku) ──────────────────────────────────────
 def _call_fcc_claude(prompt: str) -> str:
-    key = _get_next_anthropic_key()
-    if not key:
-        raise ValueError("No valid Anthropic API key available in key pool")
-    url = "https://api.anthropic.com/v1/messages"
-    headers = {
-        "Content-Type": "application/json",
-        "x-api-key": key,
-        "anthropic-version": "2023-06-01",
-    }
-    body = {
-        "model": FCC_MODEL,
-        "max_tokens": 1200,
-        "messages": [{"role": "user", "content": prompt}],
-        "system": "You are a rigorous startup analyst specialising in zero-capital, solo-founder business ideas.",
-    }
-    result = _http_post(url, headers, body, timeout=60)
-    return result["content"][0]["text"].strip()
+    if not _raw_anthropic_keys:
+        raise ValueError("No valid Anthropic API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_anthropic_keys)):
+        key = _get_next_anthropic_key()
+        try:
+            url = "https://api.anthropic.com/v1/messages"
+            headers = {
+                "Content-Type": "application/json",
+                "x-api-key": key,
+                "anthropic-version": "2023-06-01",
+            }
+            body = {
+                "model": FCC_MODEL,
+                "max_tokens": 1200,
+                "messages": [{"role": "user", "content": prompt}],
+                "system": "You are a rigorous startup analyst specialising in zero-capital, solo-founder business ideas.",
+            }
+            result = _http_post(url, headers, body, timeout=60)
+            return result["content"][0]["text"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"Anthropic Haiku key call failed, trying next key: {e}")
+    raise last_err or ValueError("All Anthropic API keys in pool failed")
 
 
 # ── Tier 4: Own Orchestrator (rule-based, always available) ───────────────────
@@ -406,69 +420,90 @@ def _call_own_orchestrator(prompt: str, domain_hint: dict = None) -> str:
 
 # ── Tier 5: Anthropic Full ────────────────────────────────────────────────────
 def _call_anthropic_full(prompt: str) -> str:
-    key = _get_next_anthropic_key()
-    if not key:
-        raise ValueError("No valid Anthropic API key available in key pool")
-    url = "https://api.anthropic.com/v1/messages"
-    headers = {
-        "Content-Type": "application/json",
-        "x-api-key": key,
-        "anthropic-version": "2023-06-01",
-    }
-    body = {
-        "model": ANTHROPIC_FULL_MDL,
-        "max_tokens": 1600,
-        "messages": [{"role": "user", "content": prompt}],
-        "system": "You are a rigorous startup analyst specialising in zero-capital, solo-founder business ideas.",
-    }
-    result = _http_post(url, headers, body, timeout=90)
-    return result["content"][0]["text"].strip()
+    if not _raw_anthropic_keys:
+        raise ValueError("No valid Anthropic API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_anthropic_keys)):
+        key = _get_next_anthropic_key()
+        try:
+            url = "https://api.anthropic.com/v1/messages"
+            headers = {
+                "Content-Type": "application/json",
+                "x-api-key": key,
+                "anthropic-version": "2023-06-01",
+            }
+            body = {
+                "model": ANTHROPIC_FULL_MDL,
+                "max_tokens": 1600,
+                "messages": [{"role": "user", "content": prompt}],
+                "system": "You are a rigorous startup analyst specialising in zero-capital, solo-founder business ideas.",
+            }
+            result = _http_post(url, headers, body, timeout=90)
+            return result["content"][0]["text"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"Anthropic Full key call failed, trying next key: {e}")
+    raise last_err or ValueError("All Anthropic API keys in pool failed")
 
 
 # ── Tier 6: Active API (PekPik / Gemini proxy) ────────────────────────────────
 def _call_active_api(prompt: str) -> str:
-    key = _get_next_active_key()
-    if not key:
-        raise ValueError("No valid Active API key available in key pool")
-    url = f"{ACTIVE_API_BASE_URL.rstrip('/')}/chat/completions"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {key}",
-    }
-    body = {
-        "model": ACTIVE_API_MDL,
-        "messages": [
-            {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
-            {"role": "user", "content": prompt},
-        ],
-        "max_tokens": 1200,
-        "temperature": 0.7,
-    }
-    result = _http_post(url, headers, body, timeout=60)
-    return result["choices"][0]["message"]["content"].strip()
+    if not _raw_active_keys:
+        raise ValueError("No valid Active API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_active_keys)):
+        key = _get_next_active_key()
+        try:
+            url = f"{ACTIVE_API_BASE_URL.rstrip('/')}/chat/completions"
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {key}",
+            }
+            body = {
+                "model": ACTIVE_API_MDL,
+                "messages": [
+                    {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": 1200,
+                "temperature": 0.7,
+            }
+            result = _http_post(url, headers, body, timeout=60)
+            return result["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"Active API key call failed, trying next key: {e}")
+    raise last_err or ValueError("All Active API keys in pool failed")
 
 
 # ── Tier 7: DeepSeek API ──────────────────────────────────────────────────────
 def _call_deepseek_api(prompt: str) -> str:
-    key = _get_next_deepseek_key()
-    if not key:
-        raise ValueError("No valid DeepSeek API key available in key pool")
-    url = f"{DEEPSEEK_BASE_URL.rstrip('/')}/chat/completions"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {key}",
-    }
-    body = {
-        "model": DEEPSEEK_MDL,
-        "messages": [
-            {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
-            {"role": "user", "content": prompt},
-        ],
-        "max_tokens": 1200,
-        "temperature": 0.7,
-    }
-    result = _http_post(url, headers, body, timeout=60)
-    return result["choices"][0]["message"]["content"].strip()
+    if not _raw_deepseek_keys:
+        raise ValueError("No valid DeepSeek API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_deepseek_keys)):
+        key = _get_next_deepseek_key()
+        try:
+            url = f"{DEEPSEEK_BASE_URL.rstrip('/')}/chat/completions"
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {key}",
+            }
+            body = {
+                "model": DEEPSEEK_MDL,
+                "messages": [
+                    {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": 1200,
+                "temperature": 0.7,
+            }
+            result = _http_post(url, headers, body, timeout=60)
+            return result["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"DeepSeek API key call failed, trying next key: {e}")
+    raise last_err or ValueError("All DeepSeek API keys in pool failed")
 
 
 # ── Provider Health Check ──────────────────────────────────────────────────────

@@ -135,38 +135,39 @@ Write-JsonLog "HEADER" "Daemon active — running up to $MaxIterations iteration
 
 # ── Main Loop ─────────────────────────────────────────────────────────────────
 for ($i = 1; $i -le $MaxIterations; $i++) {
-    Write-Host "`n$('='*60)" -ForegroundColor Cyan
-    Write-Host "  VENTURE ATLAS DAEMON  —  Run $i/$MaxIterations" -ForegroundColor Cyan
-    Write-Host "  $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Cyan
-    Write-Host "$('='*60)" -ForegroundColor Cyan
+    try {
+        Write-Host "`n$('='*60)" -ForegroundColor Cyan
+        Write-Host "  VENTURE ATLAS DAEMON  —  Run $i/$MaxIterations" -ForegroundColor Cyan
+        Write-Host "  $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Cyan
+        Write-Host "$('='*60)" -ForegroundColor Cyan
 
-    Write-JsonLog "INFO" "Starting discovery run $i of $MaxIterations" @{iteration=$i}
+        Write-JsonLog "INFO" "Starting discovery run $i of $MaxIterations" @{iteration=$i}
 
-    # Step 1: Idea discovery
-    Write-JsonLog "INFO" "Running idea generator..."
-    $rc = Invoke-PythonScript "autonomous-idea-generator.py"
-    if ($rc -eq 0) {
-        Write-JsonLog "SUCCESS" "Idea generator complete"
-    } else {
-        Write-JsonLog "WARN" "Idea generator exited with code $rc"
+        # Step 1: Idea discovery
+        Write-JsonLog "INFO" "Running idea generator..."
+        $rc = Invoke-PythonScript "autonomous-idea-generator.py"
+        if ($rc -eq 0) {
+            Write-JsonLog "SUCCESS" "Idea generator complete"
+        } else {
+            Write-JsonLog "WARN" "Idea generator exited with code $rc (will continue next cycle)"
+        }
+
+        # Step 2: Validate staged (optional)
+        if ($Validate) {
+            Write-JsonLog "INFO" "Running validator on staged ideas..."
+            Invoke-PythonScript "va-validator.py" @("--staged")
+        }
+
+        # Step 3: Re-rank (optional)
+        if ($Rank) {
+            Write-JsonLog "INFO" "Updating rankings..."
+            Invoke-PythonScript "va-ranker.py" @("--update", "--top", "10")
+        }
+
+        Write-JsonLog "SUCCESS" "Run $i complete"
+    } catch {
+        Write-JsonLog "ERROR" "Daemon run $i encountered exception: $_ — continuing next cycle"
     }
-
-    # Step 2: Validate staged (optional)
-    if ($Validate) {
-        Write-JsonLog "INFO" "Running validator on staged ideas..."
-        Invoke-PythonScript "va-validator.py" @("--staged")
-    }
-
-    # Step 3: Re-rank (optional)
-    if ($Rank) {
-        Write-JsonLog "INFO" "Updating rankings..."
-        Invoke-PythonScript "va-ranker.py" @("--update", "--top", "10")
-    }
-
-    Write-JsonLog "SUCCESS" "Run $i complete"
-    Write-Host ""
-    Write-Host "  Review staged: python scripts/review-staged-ideas.py" -ForegroundColor Yellow
-    Write-Host "  Full ranking:  python scripts/va-ranker.py --top 20" -ForegroundColor Yellow
 
     if ($i -lt $MaxIterations) {
         Write-JsonLog "INFO" "Sleeping $IntervalSeconds seconds..."
