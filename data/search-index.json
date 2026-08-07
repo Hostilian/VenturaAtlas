@@ -4546,5 +4546,26 @@
       "accessibility"
     ],
     "normalizedText": "official letter action extractor extracts sender decision deadline required response evidence official channels and unresolved ambiguity from a government or utility letter travellers venue operators municipal travel logistics managers cross-border consumer rights cross-border consumer rights document-extraction eighth reset accessibility"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-260",
+    "slug": "verified-monetisation-analytics-layer-idea-260",
+    "name": "Verified Monetisation & Analytics Layer",
+    "category": "Creator economy tooling",
+    "subcategory": "monetisation & analytics",
+    "concept": "A self-serve, zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Creators lacking structured revenue data across fragmented platforms",
+    "overallScore": 87.1,
+    "tags": [
+      "own-orch",
+      "v2",
+      "autonomous-discovered",
+      "analytics",
+      "monetisation",
+      "creator"
+    ],
+    "normalizedText": "verified monetisation analytics layer a self-serve zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows creators lacking structured revenue data across fragmented platforms technical founders operators or compliance teams creator economy tooling own-orch v2 autonomous-discovered analytics monetisation creator"
   }
 ]

@@ -31,14 +31,8 @@ jobs:
         with:
           python-version-file: '.python-version'
 
-      - name: Run unit & smoke test suite
-        run: npm test
-
-      - name: Validate dataset & JSON schema
-        run: npm run validate
-
-      - name: Check JavaScript syntax
-        run: npm run check-js
+      - name: Run Authoritative Quality Gate
+        run: npm run quality
 
       - name: Verify internal link integrity
         run: npm run check-links
