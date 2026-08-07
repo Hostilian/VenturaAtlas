@@ -4968,5 +4968,26 @@
       "capacity-unlock"
     ],
     "normalizedText": "heatexpert cloud remote expert supervision for heat pump technicians remote expert supervision platform allowing senior hvac engineers to guide junior heat-pump technicians through diagnostic video streams and ai-assisted troubleshooting grid developers cold storage operators factory leads scientific labs clean energy hvac operations clean energy hvac operations remote-expert-supervision tenth reset capacity-unlock"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-283",
+    "slug": "zero-setup-monetisation-analytics-gate-idea-283",
+    "name": "Zero-Setup Monetisation & Analytics Gate",
+    "category": "Creator economy tooling",
+    "subcategory": "monetisation & analytics",
+    "concept": "A self-serve, zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows.",
+    "customer": "Technical founders, operators, or compliance teams",
+    "problem": "Creators lacking structured revenue data across fragmented platforms",
+    "overallScore": 85.1,
+    "tags": [
+      "creator",
+      "v2",
+      "analytics",
+      "monetisation",
+      "autonomous-discovered",
+      "own-orch"
+    ],
+    "normalizedText": "zero-setup monetisation analytics gate a self-serve zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows creators lacking structured revenue data across fragmented platforms technical founders operators or compliance teams creator economy tooling creator v2 analytics monetisation autonomous-discovered own-orch"
   }
 ]

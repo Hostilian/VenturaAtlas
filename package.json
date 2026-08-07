@@ -36,7 +36,7 @@
     "check-consistency": "node scripts/check-repository-consistency.js",
     "check:drift": "node scripts/check-repository-drift.js",
     "check:artifact": "node scripts/check-public-artifact.js",
-    "quality": "npm run check-js && npm run test:unit && npm run validate:data && node scripts/build-repository-meta.js --check && npm run check-consistency && python scripts/verify_constitution.py && python scripts/check_privacy.py",
+    "quality": "npm run check-js && npm run test:unit && npm run validate:data && node scripts/build-repository-meta.js --check && npm run check-consistency && npm run check:drift && python scripts/verify_constitution.py && python scripts/check_privacy.py",
     "agents:status": "node scripts/agents-status.js",
     "agents:watch": "node scripts/agents-watch.js",
     "agents:health": "node scripts/agents-health.js",

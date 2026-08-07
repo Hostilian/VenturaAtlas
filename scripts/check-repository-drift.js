@@ -8,6 +8,12 @@ const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
 const IDEAS_PATH = path.join(ROOT, 'data', 'ideas.json');
 const INDEX_PATH = path.join(ROOT, 'data', 'search-index.json');
 
+const STATS_FILES = [
+  path.join(ROOT, 'README.md'),
+  path.join(ROOT, 'PROJECT_STATUS.md'),
+  path.join(ROOT, 'PROJECT_STATE.md')
+];
+
 function main() {
   const errors = [];
 
@@ -24,10 +30,11 @@ function main() {
     }
   }
 
+  let meta = null;
   if (!fs.existsSync(META_PATH)) {
     errors.push('Missing data/repository-meta.json');
   } else {
-    const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+    meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
     const pkg = JSON.parse(fs.readFileSync(PKG_PATH, 'utf8'));
     if (meta.version !== pkg.version) {
       errors.push(`Version mismatch: repository-meta.json (${meta.version}) vs package.json (${pkg.version})`);
@@ -42,6 +49,25 @@ function main() {
     if (ideasList.length !== indexRaw.length) {
       errors.push(`Search index drift: ideas.json (${ideasList.length}) vs search-index.json (${indexRaw.length})`);
     }
+  }
+
+  if (meta && meta.counts) {
+    STATS_FILES.forEach(filePath => {
+      if (!fs.existsSync(filePath)) return;
+      const content = fs.readFileSync(filePath, 'utf8');
+      const basename = path.basename(filePath);
+
+      // Check generated stats block
+      const match = content.match(/- Canonical Ideas:\s+(\d+)/);
+      if (match) {
+        const found = parseInt(match[1], 10);
+        if (found !== meta.counts.ideas) {
+          errors.push(`Documentation stat block drift in ${basename}: found ${found}, expected ${meta.counts.ideas}`);
+        }
+      } else {
+        errors.push(`Missing generated stats block in ${basename}`);
+      }
+    });
   }
 
   if (errors.length > 0) {

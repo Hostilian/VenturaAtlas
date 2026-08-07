@@ -2,6 +2,7 @@
  * Stripe Test-Mode Payment Adapter
  * Implements PaymentProvider behind clean abstraction layer.
  */
+import crypto from 'crypto';
 import {
   PaymentProvider,
   CheckoutParams,
@@ -26,7 +27,7 @@ export class StripePaymentAdapter implements PaymentProvider {
       throw new Error('Stripe API key unconfigured. Fallback to LocalPaymentSimulator.');
     }
 
-    const mockPaymentId = `cs_test_${Math.random().toString(36).substring(2, 12)}`;
+    const mockPaymentId = `cs_test_${crypto.randomBytes(8).toString('hex')}`;
     return {
       sessionUrl: `https://checkout.stripe.com/c/pay/${mockPaymentId}`,
       paymentId: mockPaymentId,
@@ -37,7 +38,7 @@ export class StripePaymentAdapter implements PaymentProvider {
   async verifyWebhook(payload: any, signature?: string): Promise<PaymentEvent> {
     if (typeof payload === 'string') payload = JSON.parse(payload);
     return {
-      id: payload.id || `evt_stripe_${Date.now()}`,
+      id: payload.id || `evt_stripe_${crypto.randomBytes(6).toString('hex')}`,
       type: payload.type || 'payment_intent.succeeded',
       bountyId: payload.data?.object?.metadata?.bountyId || '',
       paymentId: payload.data?.object?.id || '',
@@ -49,7 +50,7 @@ export class StripePaymentAdapter implements PaymentProvider {
 
   async refund(bountyId: string, paymentId: string, amountCents: number): Promise<RefundResult> {
     return {
-      refundId: `re_test_${Math.random().toString(36).substring(2, 10)}`,
+      refundId: `re_test_${crypto.randomBytes(8).toString('hex')}`,
       bountyId,
       amountCents,
       status: 'succeeded'
@@ -58,7 +59,7 @@ export class StripePaymentAdapter implements PaymentProvider {
 
   async releasePayout(bountyId: string, responderId: string, amountCents: number): Promise<PayoutResult> {
     return {
-      payoutId: `tr_test_${Math.random().toString(36).substring(2, 10)}`,
+      payoutId: `tr_test_${crypto.randomBytes(8).toString('hex')}`,
       responderId,
       amountCents,
       status: 'succeeded'
