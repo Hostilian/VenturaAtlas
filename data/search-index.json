@@ -4567,5 +4567,195 @@
       "creator"
     ],
     "normalizedText": "verified monetisation analytics layer a self-serve zero-capital tool that automates creators lacking structured revenue data across fragmented platforms for creator economy tooling workflows creators lacking structured revenue data across fragmented platforms technical founders operators or compliance teams creator economy tooling own-orch v2 autonomous-discovered analytics monetisation creator"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-261",
+    "slug": "bordergraph-eu-product-compliance-control-plane-idea-261",
+    "name": "BorderGraph — EU Product Compliance Control Plane",
+    "category": "EU Product Compliance & Customs",
+    "subcategory": "product-compliance-engine",
+    "concept": "Upstream compliance control plane for products entering the EU market, building SKU-level compliance twins across HS codes, safety rules, DPP, and customs.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 92,
+    "tags": [
+      "eu product compliance & customs",
+      "product-compliance-engine",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "bordergraph eu product compliance control plane upstream compliance control plane for products entering the eu market building sku-level compliance twins across hs codes safety rules dpp and customs importers logistics carriers trade employers sme operations eu product compliance customs eu product compliance customs product-compliance-engine ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-262",
+    "slug": "freightrecover-automatic-logistics-money-recovery-idea-262",
+    "name": "FreightRecover — Automatic Logistics Money Recovery",
+    "category": "Logistics & Supply Chain",
+    "subcategory": "claims-recovery",
+    "concept": "Automated logistics revenue recovery platform that ingests GPS, POD, emails, and TMS data to discover and collect detention, layover, and demurrage underpayments on contingency.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 90,
+    "tags": [
+      "logistics & supply chain",
+      "claims-recovery",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "freightrecover automatic logistics money recovery automated logistics revenue recovery platform that ingests gps pod emails and tms data to discover and collect detention layover and demurrage underpayments on contingency importers logistics carriers trade employers sme operations logistics supply chain logistics supply chain claims-recovery ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-263",
+    "slug": "tradepassport-cross-border-skilled-worker-infrastructure-idea-263",
+    "name": "TradePassport — Cross-Border Skilled Worker Infrastructure",
+    "category": "Cross-Border Labour & Qualifications",
+    "subcategory": "worker-qualification-passport",
+    "concept": "Cross-border qualification, recognition, and compliance engine mapping skilled trade credentials to country-specific legal deployability requirements.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 89,
+    "tags": [
+      "cross-border labour & qualifications",
+      "worker-qualification-passport",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "tradepassport cross-border skilled worker infrastructure cross-border qualification recognition and compliance engine mapping skilled trade credentials to country-specific legal deployability requirements importers logistics carriers trade employers sme operations cross-border labour qualifications cross-border labour qualifications worker-qualification-passport ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-264",
+    "slug": "repairrail-infrastructure-for-europes-right-to-repair-economy-idea-264",
+    "name": "RepairRail — Infrastructure for Europe's Right-to-Repair Economy",
+    "category": "Right to Repair & Circular Economy",
+    "subcategory": "repair-transaction-network",
+    "concept": "B2B clearing network and API connecting retailers, OEMs, repairers, and parts distributors under EU Right-to-Repair regulations.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 88,
+    "tags": [
+      "right to repair & circular economy",
+      "repair-transaction-network",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "repairrail infrastructure for europe s right-to-repair economy b2b clearing network and api connecting retailers oems repairers and parts distributors under eu right-to-repair regulations importers logistics carriers trade employers sme operations right to repair circular economy right to repair circular economy repair-transaction-network ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-265",
+    "slug": "tenderfactory-autonomous-government-sales-department-for-smes-idea-265",
+    "name": "TenderFactory — Autonomous Government-Sales Department for SMEs",
+    "category": "Public Procurement & Government Sales",
+    "subcategory": "autonomous-bidding",
+    "concept": "Autonomous procurement operations platform maintaining structured SME evidence vaults to evaluate win probability, prepare bids, and submit public tenders.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 86,
+    "tags": [
+      "public procurement & government sales",
+      "autonomous-bidding",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "tenderfactory autonomous government-sales department for smes autonomous procurement operations platform maintaining structured sme evidence vaults to evaluate win probability prepare bids and submit public tenders importers logistics carriers trade employers sme operations public procurement government sales public procurement government sales autonomous-bidding ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-266",
+    "slug": "proofofai-ai-content-provenance-gateway-idea-266",
+    "name": "ProofOfAI — AI Content Provenance Gateway",
+    "category": "AI Governance & Compliance",
+    "subcategory": "content-provenance",
+    "concept": "API gateway marking, tracking, and preserving machine-readable AI content provenance and Article 50 disclosures across CMS and distribution platforms.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 85,
+    "tags": [
+      "ai governance & compliance",
+      "content-provenance",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "proofofai ai content provenance gateway api gateway marking tracking and preserving machine-readable ai content provenance and article 50 disclosures across cms and distribution platforms importers logistics carriers trade employers sme operations ai governance compliance ai governance compliance content-provenance ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-267",
+    "slug": "pdf-debt-exchange-accessibility-remediation-factory-idea-267",
+    "name": "PDF Debt Exchange — Accessibility Remediation Factory",
+    "category": "Accessibility & Document Remediation",
+    "subcategory": "document-remediation-factory",
+    "concept": "Hybrid AI and specialist document remediation factory converting legacy PDF backlogs into WCAG/PDF-UA compliant accessible documents at scale.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "accessibility & document remediation",
+      "document-remediation-factory",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "pdf debt exchange accessibility remediation factory hybrid ai and specialist document remediation factory converting legacy pdf backlogs into wcag pdf-ua compliant accessible documents at scale importers logistics carriers trade employers sme operations accessibility document remediation accessibility document remediation document-remediation-factory ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-268",
+    "slug": "payme-autonomous-b2b-receivables-recovery-network-idea-268",
+    "name": "PayMe — Autonomous B2B Receivables Recovery Network",
+    "category": "B2B Receivables & Cash Flow",
+    "subcategory": "receivables-recovery",
+    "concept": "Automated accounts-receivable workflow and recovery agent managing overdue B2B payments through progressive reminders, payment plans, and legal bundles.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 83,
+    "tags": [
+      "b2b receivables & cash flow",
+      "receivables-recovery",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "payme autonomous b2b receivables recovery network automated accounts-receivable workflow and recovery agent managing overdue b2b payments through progressive reminders payment plans and legal bundles importers logistics carriers trade employers sme operations b2b receivables cash flow b2b receivables cash flow receivables-recovery ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-269",
+    "slug": "sitemesh-construction-material-exchange-between-worksites-idea-269",
+    "name": "SiteMesh — Construction Material Exchange Between Worksites",
+    "category": "Construction & Trade Operations",
+    "subcategory": "material-exchange-network",
+    "concept": "Cross-site material and equipment coordination network turning stranded construction inventory into liquid internal and inter-company supply.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 81,
+    "tags": [
+      "construction & trade operations",
+      "material-exchange-network",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "sitemesh construction material exchange between worksites cross-site material and equipment coordination network turning stranded construction inventory into liquid internal and inter-company supply importers logistics carriers trade employers sme operations construction trade operations construction trade operations material-exchange-network ninth reset regulatory-transaction"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-270",
+    "slug": "battery-afterlife-exchange-idea-270",
+    "name": "Battery Afterlife Exchange",
+    "category": "Battery & Energy Storage Infrastructure",
+    "subcategory": "second-life-battery-marketplace",
+    "concept": "Second-life battery valuation and auction platform leveraging mandatory Digital Battery Passport data to match used EV packs with stationary storage integrators.",
+    "customer": "Importers, logistics carriers, trade employers, & SME operations",
+    "problem": "",
+    "overallScore": 80,
+    "tags": [
+      "battery & energy storage infrastructure",
+      "second-life-battery-marketplace",
+      "ninth reset",
+      "regulatory-transaction"
+    ],
+    "normalizedText": "battery afterlife exchange second-life battery valuation and auction platform leveraging mandatory digital battery passport data to match used ev packs with stationary storage integrators importers logistics carriers trade employers sme operations battery energy storage infrastructure battery energy storage infrastructure second-life-battery-marketplace ninth reset regulatory-transaction"
   }
 ]
