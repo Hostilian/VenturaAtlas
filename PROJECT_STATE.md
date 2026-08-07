@@ -15,3 +15,13 @@
 - Open privacy issues: future raw chat exports require redaction before public release
 - Next recommended action: ingest the exact earliest Deep Research contract and all remaining chat exports
 - Last successful validation: 2026-08-06 — smoke, schema, links, JavaScript, constitution, and privacy checks passed
+
+
+<!-- BEGIN GENERATED REPOSITORY STATS -->
+- Repository Version: 2.1.1
+- Canonical Ideas: 194
+- Categories: 58
+- Source References: 62
+- Generated Prompts: 4850
+- Last Updated: 2026-08-07
+<!-- END GENERATED REPOSITORY STATS -->

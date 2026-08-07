@@ -1,21 +1,52 @@
 {
   "name": "venture-atlas-os",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "private": true,
   "description": "Static evidence-aware venture idea research repository and GitHub Pages site",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "test": "node tests/smoke.test.js",
-    "validate": "node scripts/validate-data.js && python scripts/validate-schema.py",
-    "check-links": "node scripts/check-links.js",
-    "build-search": "node scripts/build-search-index.js",
+    "build": "npm run build:search && npm run build:stats && npm run build-site",
+    "build:search": "node scripts/build-search-index.js",
+    "build:stats": "node scripts/build-repository-meta.js",
+    "build-site": "node scripts/build-public-artifact.js",
+    "test": "npm run test:unit && npm run test:factbounty",
+    "test:unit": "node --test tests/*.test.js",
+    "test:factbounty": "tsx --test apps/factbounty/tests/*.test.ts",
+    "test:e2e": "playwright test",
+    "typecheck": "tsc -p apps/factbounty/tsconfig.json",
+    "validate": "node scripts/validate-data.js --strict && python scripts/validate-schema.py",
     "check-js": "node --check assets/js/site.js",
+    "check-links": "node scripts/check-links.js",
+    "check:drift": "node scripts/check-repository-drift.js",
+    "check:artifact": "node scripts/check-public-artifact.js",
     "agents:status": "node scripts/agents-status.js",
     "agents:watch": "node scripts/agents-watch.js",
     "agents:health": "node scripts/agents-health.js",
     "agents:graph": "node scripts/agents-graph.js",
-    "factbounty:start": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/api/server.ts",
-    "factbounty:test": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/factbounty.test.ts",
-    "test:e2e": "npx ts-node -P apps/factbounty/tsconfig.json apps/factbounty/tests/e2e-playwright.test.ts",
-    "build-site": "node scripts/build-public-artifact.js"
+    "factbounty:start": "tsx apps/factbounty/api/server.ts",
+    "factbounty:test": "tsx --test apps/factbounty/tests/*.test.ts",
+    "check": "npm run typecheck && npm run validate && npm run check-links && npm run check:drift && npm test && npm run build && npm run check:artifact"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.758.0",
+    "@aws-sdk/s3-request-presigner": "3.758.0",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "express": "4.21.2",
+    "express-rate-limit": "7.5.0",
+    "helmet": "8.0.0",
+    "jose": "5.10.0",
+    "stripe": "17.7.0",
+    "supertest": "7.0.0",
+    "tsx": "4.19.3",
+    "typescript": "5.7.3",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.0",
+    "@types/node": "22.13.4",
+    "@types/supertest": "6.0.2"
   }
 }

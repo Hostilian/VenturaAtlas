@@ -1,0 +1,158 @@
+/* ── Index-specific enhancements ── */
+
+/* Animated gradient hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, hsl(162 72% 28% / 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 20%, hsl(215 70% 45% / 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 90%, hsl(270 50% 50% / 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  animation: heroBreathe 8s ease-in-out infinite;
+}
+@keyframes heroBreathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Hero title gradient */
+.hero-gradient-title {
+  background: var(--accent-g);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Quick filter chips */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--panel);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  color: var(--text2);
+  line-height: 1;
+}
+.chip:hover, .chip.active {
+  border-color: var(--accent);
+  background: var(--accent-l);
+  color: var(--accent-h);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px hsl(162 72% 28% / 0.15);
+}
+.chip .chip-icon { font-size: 0.85em; }
+
+/* Spotlight card */
+.spotlight-card {
+  background: linear-gradient(135deg, var(--panel), var(--bg2));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent-g);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.spotlight-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.spotlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent-l);
+  color: var(--accent-h);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+/* Journey steps */
+.journey-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0;
+  position: relative;
+}
+.journey-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(50% / var(--step-count, 5));
+  right: calc(50% / var(--step-count, 5));
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, hsl(215 70% 45%) 100%);
+  z-index: 0;
+}
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  cursor: default;
+}
+.journey-step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  color: var(--accent-h);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.journey-step:hover .journey-step-num {
+  border-color: var(--accent);
+  background: var(--accent-l);
+  transform: scale(1.08);
+}
+.journey-step-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.journey-step-desc {
+  font-size: 0.75rem;
+  color: var(--text2);
+  line-height: 1.3;
+}

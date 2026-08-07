@@ -1,17 +1,13 @@
-/**
- * Staging & Allowlisting Build Script for GitHub Pages Deployment
- * Creates a clean, minimal _site directory containing only public static assets.
- */
 const fs = require('fs');
 const path = require('path');
 
-const root = path.resolve(__dirname, '..');
-const dist = path.join(root, '_site');
+const ROOT = path.resolve(__dirname, '..');
+const DIST = path.join(ROOT, '_site');
 
-// Allowlisted root files
 const ALLOW_FILES = [
   'index.html',
   '404.html',
+  'offline.html',
   'manifest.webmanifest',
   'robots.txt',
   'sitemap.xml',
@@ -24,7 +20,6 @@ const ALLOW_FILES = [
   'SECURITY.md'
 ];
 
-// Allowlisted directories
 const ALLOW_DIRS = [
   'assets',
   'categories',
@@ -45,44 +40,74 @@ const ALLOW_DIRS = [
   'validation-plans'
 ];
 
+const DENIED_PATTERNS = [
+  /\.env(\..*)?$/i,
+  /node_modules/i,
+  /^\.git/i,
+  /^\.agent-state/i,
+  /^\.agents/i,
+  /^apps/i,
+  /^tests/i,
+  /^scripts/i,
+  /package(-lock)?\.json$/i,
+  /tsconfig.*\.json$/i
+];
+
+function isDenied(relativePath) {
+  const normalized = relativePath.replace(/\\/g, '/');
+  return DENIED_PATTERNS.some(pattern => pattern.test(normalized));
+}
+
 function copyRecursive(src, dest) {
   const stat = fs.statSync(src);
+  let count = 0;
+
   if (stat.isDirectory()) {
     if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
     for (const entry of fs.readdirSync(src)) {
-      copyRecursive(path.join(src, entry), path.join(dest, entry));
+      const srcItem = path.join(src, entry);
+      const destItem = path.join(dest, entry);
+      const relPath = path.relative(ROOT, srcItem);
+      if (!isDenied(relPath)) {
+        count += copyRecursive(srcItem, destItem);
+      }
     }
   } else if (stat.isFile()) {
-    fs.copyFileSync(src, dest);
+    const relPath = path.relative(ROOT, src);
+    if (!isDenied(relPath)) {
+      fs.copyFileSync(src, dest);
+      count++;
+    }
   }
+  return count;
 }
 
 function build() {
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
 
-  if (fs.existsSync(dist)) {
-    fs.rmSync(dist, { recursive: true, force: true });
+  if (fs.existsSync(DIST)) {
+    fs.rmSync(DIST, { recursive: true, force: true });
   }
-  fs.mkdirSync(dist, { recursive: true });
+  fs.mkdirSync(DIST, { recursive: true });
 
-  let fileCount = 0;
+  let totalFiles = 0;
 
   for (const f of ALLOW_FILES) {
-    const srcPath = path.join(root, f);
-    if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, path.join(dist, f));
-      fileCount++;
+    const srcPath = path.join(ROOT, f);
+    if (fs.existsSync(srcPath) && !isDenied(f)) {
+      fs.copyFileSync(srcPath, path.join(DIST, f));
+      totalFiles++;
     }
   }
 
   for (const d of ALLOW_DIRS) {
-    const srcDir = path.join(root, d);
-    if (fs.existsSync(srcDir)) {
-      copyRecursive(srcDir, path.join(dist, d));
+    const srcDir = path.join(ROOT, d);
+    if (fs.existsSync(srcDir) && !isDenied(d)) {
+      totalFiles += copyRecursive(srcDir, path.join(DIST, d));
     }
   }
 
-  console.log(`✅ Staging complete! Artifact written to: ${dist}`);
+  console.log(`[OK] Staging complete! ${totalFiles} files written to: ${DIST}`);
 }
 
 if (require.main === module) {

@@ -138,6 +138,296 @@
       "expiresAt": "2026-08-14T03:58:45.177Z",
       "paymentId": "sim_pay_4msz1cfi",
       "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "bounty_b55361c5-792f-4584-8095-a4b6648d4a8a",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:18.823Z",
+      "updatedAt": "2026-08-07T04:46:18.831Z",
+      "expiresAt": "2026-08-14T04:46:18.823Z",
+      "paymentId": "sim_pay_4pmkgdmu",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "bounty_22a6189a-cf15-4f09-ba53-7ff74fe98384",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:19.599Z",
+      "updatedAt": "2026-08-07T04:46:19.609Z",
+      "expiresAt": "2026-08-14T04:46:19.599Z",
+      "paymentId": "sim_pay_vj848vrx",
+      "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "bounty_dc9f43bf-2cd2-4394-9bbd-45364f88e507",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:27.896Z",
+      "updatedAt": "2026-08-07T04:46:27.905Z",
+      "expiresAt": "2026-08-14T04:46:27.896Z",
+      "paymentId": "sim_pay_0dxe4xfq",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "bounty_109e9cb0-3ce7-47e4-aaf2-38509e12442e",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:28.145Z",
+      "updatedAt": "2026-08-07T04:46:28.152Z",
+      "expiresAt": "2026-08-14T04:46:28.145Z",
+      "paymentId": "sim_pay_2qczvunp",
+      "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "bounty_a2aac3d2-33fb-446b-9116-a63396cd0db1",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:36.996Z",
+      "updatedAt": "2026-08-07T04:46:37.007Z",
+      "expiresAt": "2026-08-14T04:46:36.996Z",
+      "paymentId": "sim_pay_0cck0tyy",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "bounty_3bfaec23-ec21-47ec-b5ef-b4e6921a0327",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:46:37.294Z",
+      "updatedAt": "2026-08-07T04:46:37.303Z",
+      "expiresAt": "2026-08-14T04:46:37.294Z",
+      "paymentId": "sim_pay_f3tapq8b",
+      "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "bounty_fb8bde72-8412-42bf-9c81-9a11969144fa",
+      "buyerId": "buyer_user_1",
+      "productUrl": "https://example.com/keyboard",
+      "productTitle": "Mechanical Keyboard",
+      "question": "Does this have mechanical switches?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Label view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Switch color",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "payout_pending",
+      "createdAt": "2026-08-07T04:46:37.645Z",
+      "updatedAt": "2026-08-07T04:46:37.658Z",
+      "expiresAt": "2026-08-14T04:46:37.645Z",
+      "paymentId": "sim_pay_m4j4wic1",
+      "responderId": "responder_user_1"
+    },
+    {
+      "id": "bounty_9143e3da-81cf-4920-b4d4-f2ea657dc71f",
+      "buyerId": "buyer_1",
+      "productUrl": "https://example.com/item",
+      "productTitle": "Physical Product",
+      "question": "Exact width?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 500,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:47:02.138Z",
+      "updatedAt": "2026-08-07T04:47:02.147Z",
+      "expiresAt": "2026-08-14T04:47:02.138Z",
+      "paymentId": "sim_pay_9u7zj35e",
+      "responderId": "resp_1"
+    },
+    {
+      "id": "bounty_16df8cde-2a6c-48bd-8604-9c603e27ab7e",
+      "buyerId": "usr_mobile_buyer",
+      "productUrl": "https://example.com/item-keyboard-x1",
+      "productTitle": "Wireless Ergonomic Mouse X",
+      "question": "What is the exact width of the USB-C dongle in mm?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "paid",
+      "createdAt": "2026-08-07T04:47:02.384Z",
+      "updatedAt": "2026-08-07T04:47:02.393Z",
+      "expiresAt": "2026-08-14T04:47:02.384Z",
+      "paymentId": "sim_pay_lho95rbk",
+      "responderId": "usr_mobile_resp"
+    },
+    {
+      "id": "bounty_01389bc6-65ad-4af9-8407-8d85e769f0c6",
+      "buyerId": "buyer_user_1",
+      "productUrl": "https://example.com/keyboard",
+      "productTitle": "Mechanical Keyboard",
+      "question": "Does this have mechanical switches?",
+      "checklist": [
+        {
+          "id": "chk_1",
+          "label": "Label view",
+          "required": true,
+          "fulfilled": false
+        },
+        {
+          "id": "chk_2",
+          "label": "Switch color",
+          "required": true,
+          "fulfilled": false
+        }
+      ],
+      "bountyAmount": 1000,
+      "currency": "EUR",
+      "state": "payout_pending",
+      "createdAt": "2026-08-07T04:47:02.663Z",
+      "updatedAt": "2026-08-07T04:47:02.679Z",
+      "expiresAt": "2026-08-14T04:47:02.663Z",
+      "paymentId": "sim_pay_oeaso3a5",
+      "responderId": "responder_user_1"
     }
   ],
   "evidence": [
@@ -304,7 +594,452 @@
       "reusableConsent": true,
       "reviewerId": "usr_mobile_mod",
       "reviewedAt": "2026-08-07T03:58:45.182Z"
+    },
+    {
+      "id": "ev_e2af5562-0d57-421e-815a-95ce7a95aaba",
+      "bountyId": "bounty_b55361c5-792f-4584-8095-a4b6648d4a8a",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "W24-E6B",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:18.828Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:18.828Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T04:46:18.829Z"
+    },
+    {
+      "id": "ev_0326127f-8033-4df1-ad61-c37c456faef6",
+      "bountyId": "bounty_22a6189a-cf15-4f09-ba53-7ff74fe98384",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.amazonaws.com/evidence/bounty_22a6189a-cf15-4f09-ba53-7ff74fe98384/usr_mobile_resp_1786077979606_capture.webm",
+      "challengeCode": "NPQ-48L",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:19.607Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:19.607Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T04:46:19.608Z"
+    },
+    {
+      "id": "ev_b748c9cc-bb64-4d2b-b915-9f8234d1b5c0",
+      "bountyId": "bounty_dc9f43bf-2cd2-4394-9bbd-45364f88e507",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "GD4-YZJ",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:27.903Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:27.903Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T04:46:27.904Z"
+    },
+    {
+      "id": "ev_e943b362-5092-40cb-b24b-10e3555438d5",
+      "bountyId": "bounty_109e9cb0-3ce7-47e4-aaf2-38509e12442e",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.amazonaws.com/evidence/bounty_109e9cb0-3ce7-47e4-aaf2-38509e12442e/usr_mobile_resp_1786077988149_capture.webm",
+      "challengeCode": "XXB-J26",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:28.150Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:28.150Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T04:46:28.151Z"
+    },
+    {
+      "id": "ev_49d8850c-51f2-4197-8efd-65b6b99000a6",
+      "bountyId": "bounty_a2aac3d2-33fb-446b-9116-a63396cd0db1",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "GRH-VS4",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:37.005Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:37.005Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T04:46:37.006Z"
+    },
+    {
+      "id": "ev_66329b39-b261-44e6-a128-092d50db4f7f",
+      "bountyId": "bounty_3bfaec23-ec21-47ec-b5ef-b4e6921a0327",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.amazonaws.com/evidence/bounty_3bfaec23-ec21-47ec-b5ef-b4e6921a0327/usr_mobile_resp_1786077997299_capture.webm",
+      "challengeCode": "QEN-Q9X",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:37.300Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:37.300Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T04:46:37.302Z"
+    },
+    {
+      "id": "ev_4392c8ff-65fc-4fb1-85b3-2f8d86f48a19",
+      "bountyId": "bounty_fb8bde72-8412-42bf-9c81-9a11969144fa",
+      "responderId": "responder_user_1",
+      "state": "accepted",
+      "mediaUrl": "https://example.com/evidence.webm",
+      "challengeCode": "8FF-SAN",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Label view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Switch color",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:46:37.664Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:46:37.664Z",
+      "reusableConsent": true,
+      "reviewerId": "moderator_user_1",
+      "reviewedAt": "2026-08-07T04:46:37.671Z",
+      "moderatorNotes": "Proof verified."
+    },
+    {
+      "id": "ev_876462be-ed71-4250-b3b5-f5a5a95a7d48",
+      "bountyId": "bounty_9143e3da-81cf-4920-b4d4-f2ea657dc71f",
+      "responderId": "resp_1",
+      "state": "accepted",
+      "mediaUrl": "https://storage.local/proof.webm",
+      "challengeCode": "NA2-TRM",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Ruler view",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:47:02.144Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:47:02.144Z",
+      "reusableConsent": true,
+      "reviewerId": "mod_1",
+      "reviewedAt": "2026-08-07T04:47:02.146Z"
+    },
+    {
+      "id": "ev_52ea6fb2-1562-4625-adbf-1a8224a247a3",
+      "bountyId": "bounty_16df8cde-2a6c-48bd-8604-9c603e27ab7e",
+      "responderId": "usr_mobile_resp",
+      "state": "accepted",
+      "mediaUrl": "https://factbounty-evidence.s3.amazonaws.com/evidence/bounty_16df8cde-2a6c-48bd-8604-9c603e27ab7e/usr_mobile_resp_1786078022390_capture.webm",
+      "challengeCode": "5G4-4XM",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "USB-C connector view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Ruler alongside dongle",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_3",
+          "label": "Challenge code in frame",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:47:02.390Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:47:02.390Z",
+      "reusableConsent": true,
+      "reviewerId": "usr_mobile_mod",
+      "reviewedAt": "2026-08-07T04:47:02.392Z"
+    },
+    {
+      "id": "ev_6bbe4e85-b8a4-4b2a-a26d-ff1f67073029",
+      "bountyId": "bounty_01389bc6-65ad-4af9-8407-8d85e769f0c6",
+      "responderId": "responder_user_1",
+      "state": "accepted",
+      "mediaUrl": "https://example.com/evidence.webm",
+      "challengeCode": "5FH-5FN",
+      "checklistResults": [
+        {
+          "id": "chk_1",
+          "label": "Label view",
+          "required": true,
+          "fulfilled": true
+        },
+        {
+          "id": "chk_2",
+          "label": "Switch color",
+          "required": true,
+          "fulfilled": true
+        }
+      ],
+      "metadata": {
+        "durationSeconds": 45,
+        "mimeType": "video/webm",
+        "fileSizeBytes": 8500000,
+        "challengeVerified": true,
+        "recordedAt": "2026-08-07T04:47:02.687Z",
+        "locationScrubbed": true
+      },
+      "submittedAt": "2026-08-07T04:47:02.687Z",
+      "reusableConsent": true,
+      "reviewerId": "moderator_user_1",
+      "reviewedAt": "2026-08-07T04:47:02.696Z",
+      "moderatorNotes": "Proof verified."
     }
   ],
-  "transactions": []
+  "transactions": [],
+  "challenges": [
+    {
+      "id": "challenge_d43bcc61-b97c-4bc1-bc26-d57ad32d531e",
+      "bountyId": "bounty_b55361c5-792f-4584-8095-a4b6648d4a8a",
+      "responderId": "resp_1",
+      "codeHash": "67a906489cb213b53e5f6d073217f72426960c04ca3b766293b5815179a2f136",
+      "generatedAt": "2026-08-07T04:46:18.827Z",
+      "expiresAt": "2026-08-07T04:56:18.827Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:18.828Z"
+    },
+    {
+      "id": "challenge_6a6e0b09-c42d-4a4e-8927-79e8424bdb79",
+      "bountyId": "bounty_22a6189a-cf15-4f09-ba53-7ff74fe98384",
+      "responderId": "usr_mobile_resp",
+      "codeHash": "3def356a8147f6ea5e47e21e14d597a6831024e742571334bf6a0132eceb5802",
+      "generatedAt": "2026-08-07T04:46:19.604Z",
+      "expiresAt": "2026-08-07T04:56:19.604Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:19.606Z"
+    },
+    {
+      "id": "challenge_9d8ed5bc-7761-43f7-a684-0137bbc59813",
+      "bountyId": "bounty_dc9f43bf-2cd2-4394-9bbd-45364f88e507",
+      "responderId": "resp_1",
+      "codeHash": "d2035acbceda96e52bf74f02607501f37551fa4c8d88c518b36bb00d8200fd3e",
+      "generatedAt": "2026-08-07T04:46:27.901Z",
+      "expiresAt": "2026-08-07T04:56:27.901Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:27.902Z"
+    },
+    {
+      "id": "challenge_89b07e8d-cb77-4561-b27c-3beabb3f45a4",
+      "bountyId": "bounty_109e9cb0-3ce7-47e4-aaf2-38509e12442e",
+      "responderId": "usr_mobile_resp",
+      "codeHash": "fd65bbaefd3097803485bab978e6e8a87a405a3dc16f62ad3ee716f6fe561165",
+      "generatedAt": "2026-08-07T04:46:28.148Z",
+      "expiresAt": "2026-08-07T04:56:28.148Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:28.150Z"
+    },
+    {
+      "id": "challenge_7a254be1-8720-4422-9a29-518fd9836b8a",
+      "bountyId": "bounty_a2aac3d2-33fb-446b-9116-a63396cd0db1",
+      "responderId": "resp_1",
+      "codeHash": "3ea8f51f86bf27b462a67164add4f6e3f5a9282bc589d78e74bbf26d4276275f",
+      "generatedAt": "2026-08-07T04:46:37.003Z",
+      "expiresAt": "2026-08-07T04:56:37.003Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:37.004Z"
+    },
+    {
+      "id": "challenge_0d28bbe1-bb86-42d9-ac63-eb51d88dfc0c",
+      "bountyId": "bounty_3bfaec23-ec21-47ec-b5ef-b4e6921a0327",
+      "responderId": "usr_mobile_resp",
+      "codeHash": "40c5d8656c4466b688c09e9f13a8ba552c1ca2b3c39b60ac672a95c749512020",
+      "generatedAt": "2026-08-07T04:46:37.298Z",
+      "expiresAt": "2026-08-07T04:56:37.298Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:37.300Z"
+    },
+    {
+      "id": "challenge_e17120bb-3c89-490e-935f-ecc6b6394cc6",
+      "bountyId": "bounty_fb8bde72-8412-42bf-9c81-9a11969144fa",
+      "responderId": "responder_user_1",
+      "codeHash": "a0dd0e41b4fcbdc36788962a242d80829e4c4fea32f0e8355c9e9bcb7283f73d",
+      "generatedAt": "2026-08-07T04:46:37.658Z",
+      "expiresAt": "2026-08-07T04:56:37.658Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:46:37.664Z"
+    },
+    {
+      "id": "challenge_a136d829-0964-43ef-9eac-34e87d9dfba0",
+      "bountyId": "bounty_9143e3da-81cf-4920-b4d4-f2ea657dc71f",
+      "responderId": "resp_1",
+      "codeHash": "0b4e970e692cac8a65af474db54aec1f6df64d04c86a94a5336ee6bea732c229",
+      "generatedAt": "2026-08-07T04:47:02.143Z",
+      "expiresAt": "2026-08-07T04:57:02.143Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:47:02.144Z"
+    },
+    {
+      "id": "challenge_75ce6c70-643e-4576-866c-a854ab413548",
+      "bountyId": "bounty_16df8cde-2a6c-48bd-8604-9c603e27ab7e",
+      "responderId": "usr_mobile_resp",
+      "codeHash": "7c555929837ebdbe281a7f103ee2f141708a38a72fb25ef1a14b2dfb358a636f",
+      "generatedAt": "2026-08-07T04:47:02.388Z",
+      "expiresAt": "2026-08-07T04:57:02.388Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:47:02.390Z"
+    },
+    {
+      "id": "challenge_a1a2bbbf-46d1-4b1e-95b1-0429bdb08a9c",
+      "bountyId": "bounty_01389bc6-65ad-4af9-8407-8d85e769f0c6",
+      "responderId": "responder_user_1",
+      "codeHash": "6c4fd60f16a25ad15cf590100f41fb29ced68f7dea7388e9688685ca27ccaf34",
+      "generatedAt": "2026-08-07T04:47:02.679Z",
+      "expiresAt": "2026-08-07T04:57:02.679Z",
+      "attemptCount": 1,
+      "usedAt": "2026-08-07T04:47:02.687Z"
+    }
+  ],
+  "mediaObjects": []
 }

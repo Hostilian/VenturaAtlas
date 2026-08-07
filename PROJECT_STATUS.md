@@ -45,3 +45,13 @@
 - Created research/original-chat/eighth-reset-summary.md (research archive)
 - Created scripts/append-eighth-reset-ideas.js (one-time migration script, idempotent)
 
+
+
+<!-- BEGIN GENERATED REPOSITORY STATS -->
+- Repository Version: 2.1.1
+- Canonical Ideas: 194
+- Categories: 58
+- Source References: 62
+- Generated Prompts: 4850
+- Last Updated: 2026-08-07
+<!-- END GENERATED REPOSITORY STATS -->

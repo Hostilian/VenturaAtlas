@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offline — Venture Atlas OS</title>
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <style>
+    .offline-container {
+      max-width: 600px;
+      margin: 4rem auto;
+      text-align: center;
+      padding: 2rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .offline-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="offline-container">
+    <div class="offline-icon">📡</div>
+    <h1>You are currently offline</h1>
+    <p style="margin: 1rem 0; color: var(--text2);">
+      Venture Atlas OS could not reach the network to load this page. Cached sections and previously loaded data remain accessible.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+      <a href="./index.html" class="button button-primary">Go to Home</a>
+      <button onclick="window.location.reload()" class="button">Try Reconnecting</button>
+    </div>
+  </main>
+</body>
+</html>

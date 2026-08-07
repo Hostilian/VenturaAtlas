@@ -80,3 +80,13 @@ tests/                  smoke tests
 ## Contributing and licence
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and the MIT [`LICENSE`](LICENSE). Report factual errors or missing variants through an issue with source/provenance details.
+
+
+<!-- BEGIN GENERATED REPOSITORY STATS -->
+- Repository Version: 2.1.1
+- Canonical Ideas: 194
+- Categories: 58
+- Source References: 62
+- Generated Prompts: 4850
+- Last Updated: 2026-08-07
+<!-- END GENERATED REPOSITORY STATS -->

@@ -1,42 +1,85 @@
-/**
- * Cryptographic Challenge-Code Generator & Verifier
- */
-import { ChallengeCode } from '../shared/types';
+import crypto from 'crypto';
+
+export interface ChallengeRecord {
+  id: string;
+  bountyId: string;
+  responderId: string;
+  codeHash: string;
+  generatedAt: string;
+  expiresAt: string;
+  usedAt?: string;
+  attemptCount: number;
+}
 
 export class ChallengeCodeEngine {
-  private static CODE_CHARS = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'; // Unambiguous alphanumeric
+  private static CODE_CHARS = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+  private static MAX_ATTEMPTS = 5;
 
-  static generateChallenge(bountyId: string, responderId: string, ttlSeconds: number = 600): ChallengeCode {
-    let code = '';
-    for (let i = 0; i < 6; i++) {
-      code += this.CODE_CHARS.charAt(Math.floor(Math.random() * this.CODE_CHARS.length));
-    }
-    const now = new Date();
-    const expires = new Date(now.getTime() + ttlSeconds * 1000);
-
-    return {
-      code: `${code.slice(0, 3)}-${code.slice(3)}`,
-      bountyId,
-      responderId,
-      generatedAt: now.toISOString(),
-      expiresAt: expires.toISOString()
-    };
+  private static hashCode(code: string, bountyId: string): string {
+    const norm = code.replace(/-/g, '').toUpperCase();
+    return crypto.createHmac('sha256', bountyId).update(norm).digest('hex');
   }
 
-  static verifyChallenge(challenge: ChallengeCode, submittedCode: string): { valid: boolean; reason?: string } {
-    const normChallenge = challenge.code.replace('-', '').toUpperCase();
-    const normSubmitted = submittedCode.replace('-', '').toUpperCase();
+  static generateChallenge(bountyId: string, responderId: string, ttlSeconds: number = 600): { record: ChallengeRecord; plaintextCode: string } {
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      const idx = crypto.randomInt(0, this.CODE_CHARS.length);
+      code += this.CODE_CHARS.charAt(idx);
+    }
+    const plaintextCode = `${code.slice(0, 3)}-${code.slice(3)}`;
+    const now = new Date();
+    const expiresAt = new Date(now.getTime() + ttlSeconds * 1000).toISOString();
 
-    if (normChallenge !== normSubmitted) {
-      return { valid: false, reason: 'Challenge code mismatch' };
+    const record: ChallengeRecord = {
+      id: `challenge_${crypto.randomUUID()}`,
+      bountyId,
+      responderId,
+      codeHash: this.hashCode(plaintextCode, bountyId),
+      generatedAt: now.toISOString(),
+      expiresAt,
+      attemptCount: 0
+    };
+
+    return { record, plaintextCode };
+  }
+
+  static verifyChallenge(
+    record: ChallengeRecord,
+    submittedCode: string,
+    bountyId: string,
+    responderId: string
+  ): { valid: boolean; reason?: string } {
+    if (record.bountyId !== bountyId) {
+      return { valid: false, reason: 'Challenge belongs to another bounty' };
+    }
+    if (record.responderId !== responderId) {
+      return { valid: false, reason: 'Challenge belongs to another responder' };
+    }
+    if (record.usedAt) {
+      return { valid: false, reason: 'Challenge code has already been used' };
+    }
+    if (record.attemptCount >= this.MAX_ATTEMPTS) {
+      return { valid: false, reason: 'Maximum challenge verification attempts exceeded' };
     }
 
+    record.attemptCount += 1;
+
     const now = new Date();
-    const expires = new Date(challenge.expiresAt);
-    if (now > expires) {
+    if (now > new Date(record.expiresAt)) {
       return { valid: false, reason: 'Challenge code expired' };
     }
 
+    const submittedHash = this.hashCode(submittedCode, bountyId);
+    const expectedHash = record.codeHash;
+
+    const bufSubmitted = Buffer.from(submittedHash, 'utf8');
+    const bufExpected = Buffer.from(expectedHash, 'utf8');
+
+    if (bufSubmitted.length !== bufExpected.length || !crypto.timingSafeEqual(bufSubmitted, bufExpected)) {
+      return { valid: false, reason: 'Challenge code mismatch' };
+    }
+
+    record.usedAt = now.toISOString();
     return { valid: true };
   }
 }

@@ -1,0 +1,13 @@
+{
+  "project": "VenturaAtlas",
+  "version": "2.1.1",
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-08-07T04:47:04.197Z",
+  "counts": {
+    "ideas": 194,
+    "categories": 58,
+    "sources": 62,
+    "rankings": 194,
+    "prompts": 4850
+  }
+}

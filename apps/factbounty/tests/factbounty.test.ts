@@ -1,11 +1,7 @@
-/**
- * FactBounty Unit & Integration Test Suite
- */
 import assert from 'assert';
 import { FactBountyEngine } from '../backend/factbounty-engine';
 import { ChallengeCodeEngine } from '../capture/challenge-engine';
 import { LocalPaymentSimulator } from '../simulators/payment-simulator';
-import { InvalidStateTransitionError } from '../shared/contracts/state-machines';
 
 async function runTests() {
   console.log('=== Running FactBounty Unit & Integration Test Suite ===\n');
@@ -16,10 +12,10 @@ async function runTests() {
   
   assert.throws(() => {
     engine.createBounty('buyer_1', 'invalid-url', 'Question?', [], 500);
-  }, /HTTP\/HTTPS product URL required/);
+  }, /Valid HTTP\/HTTPS product URL required/);
 
   assert.throws(() => {
-    engine.createBounty('buyer_1', 'https://example.com/item', 'Question?', [], 100); // €1 < min €3
+    engine.createBounty('buyer_1', 'https://example.com/item', 'Question?', [], 100);
   }, /between €3.00 and €50.00/);
 
   const b1 = engine.createBounty('buyer_1', 'https://example.com/item', 'Exact width?', ['Ruler view'], 500);
@@ -56,11 +52,11 @@ async function runTests() {
 
   // Test 4: Challenge Code Generation & Verification
   console.log('Test 4: Challenge Code Engine verification & expiration');
-  const challenge = ChallengeCodeEngine.generateChallenge(b1.id, 'resp_1', 2);
-  const verifyResult = ChallengeCodeEngine.verifyChallenge(challenge, challenge.code);
+  const { record, plaintextCode } = ChallengeCodeEngine.generateChallenge(b1.id, 'resp_1', 2);
+  const verifyResult = ChallengeCodeEngine.verifyChallenge(record, plaintextCode, b1.id, 'resp_1');
   assert.strictEqual(verifyResult.valid, true);
 
-  const failResult = ChallengeCodeEngine.verifyChallenge(challenge, 'WRONG-123');
+  const failResult = ChallengeCodeEngine.verifyChallenge(record, 'WRONG-123', b1.id, 'resp_1');
   assert.strictEqual(failResult.valid, false);
   console.log('  ✅ Cryptographic challenge code engine passed');
 

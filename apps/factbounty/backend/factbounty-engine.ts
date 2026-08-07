@@ -1,20 +1,15 @@
-/**
- * FactBounty Core Domain Engine
- * Enforces State Machine Rules, Authorization & Lifecycle Operations
- */
+import crypto from 'crypto';
 import { FactBountyStore } from '../db/store';
 import {
   BountyRequest,
   EvidenceSubmission,
-  PaymentTransaction,
-  EvidenceCard,
-  UserRole
+  EvidenceCard
 } from '../shared/types';
 import {
   transitionBountyState,
   transitionEvidenceState
 } from '../shared/contracts/state-machines';
-import { ChallengeCodeEngine } from '../capture/challenge-engine';
+import { ChallengeCodeEngine, ChallengeRecord } from '../capture/challenge-engine';
 
 export class FactBountyEngine {
   public store: FactBountyStore;
@@ -29,7 +24,7 @@ export class FactBountyEngine {
     productUrl: string,
     question: string,
     checklistLabels: string[],
-    bountyAmount: number, // in EUR cents (e.g., 500 = €5.00)
+    bountyAmount: number,
     productTitle?: string
   ): BountyRequest {
     if (bountyAmount < 300 || bountyAmount > 5000) {
@@ -39,7 +34,7 @@ export class FactBountyEngine {
       throw new Error('Valid HTTP/HTTPS product URL required');
     }
 
-    const id = `idea-061_req_${Math.random().toString(36).substring(2, 10)}`;
+    const id = `bounty_${crypto.randomUUID()}`;
     const now = new Date();
     const expiresAt = new Date(now.getTime() + 7 * 24 * 3600 * 1000).toISOString();
 
@@ -65,7 +60,7 @@ export class FactBountyEngine {
 
     bounty.state = transitionBountyState(bounty.state, 'awaiting_payment');
     this.store.bounties.set(id, bounty);
-    this.store.save();
+    this.store.saveSync();
     return bounty;
   }
 
@@ -79,12 +74,12 @@ export class FactBountyEngine {
     bounty.updatedAt = new Date().toISOString();
 
     this.store.bounties.set(bountyId, bounty);
-    this.store.save();
+    this.store.saveSync();
     return bounty;
   }
 
   // ── Responder Actions ──────────────────────────────────────────────────────
-  assignResponder(bountyId: string, responderId: string): { bounty: BountyRequest; challengeCode: string } {
+  assignResponder(bountyId: string, responderId: string): { bounty: BountyRequest; challengeCode: string; challengeRecord: ChallengeRecord } {
     const bounty = this.store.bounties.get(bountyId);
     if (!bounty) throw new Error(`Bounty ${bountyId} not found`);
 
@@ -92,24 +87,46 @@ export class FactBountyEngine {
     bounty.responderId = responderId;
     bounty.updatedAt = new Date().toISOString();
 
-    const challenge = ChallengeCodeEngine.generateChallenge(bountyId, responderId);
+    const { record, plaintextCode } = ChallengeCodeEngine.generateChallenge(bountyId, responderId);
+    this.store.challenges.set(record.id, record);
 
     this.store.bounties.set(bountyId, bounty);
-    this.store.save();
-    return { bounty, challengeCode: challenge.code };
+    this.store.saveSync();
+    return { bounty, challengeCode: plaintextCode, challengeRecord: record };
   }
 
   submitEvidence(
     bountyId: string,
     responderId: string,
     mediaUrl: string,
-    challengeCode: string,
+    submittedChallengeCode: string,
     checklistFulfilledIds: string[],
     reusableConsent: boolean = true
   ): EvidenceSubmission {
     const bounty = this.store.bounties.get(bountyId);
     if (!bounty) throw new Error(`Bounty ${bountyId} not found`);
     if (bounty.responderId !== responderId) throw new Error('Unauthorized responder');
+
+    // Find challenge record for bounty & responder
+    const challengeRecords = Array.from(this.store.challenges.values()).filter(
+      c => c.bountyId === bountyId && c.responderId === responderId
+    );
+    const challengeRecord = challengeRecords[challengeRecords.length - 1];
+
+    if (!challengeRecord) {
+      throw new Error('No active challenge code found for this bounty assignment');
+    }
+
+    const verifyResult = ChallengeCodeEngine.verifyChallenge(
+      challengeRecord,
+      submittedChallengeCode,
+      bountyId,
+      responderId
+    );
+
+    if (!verifyResult.valid) {
+      throw new Error(`Challenge verification failed: ${verifyResult.reason}`);
+    }
 
     bounty.state = transitionBountyState(bounty.state, 'capture_in_progress');
     bounty.state = transitionBountyState(bounty.state, 'submitted');
@@ -119,14 +136,14 @@ export class FactBountyEngine {
       fulfilled: checklistFulfilledIds.includes(item.id)
     }));
 
-    const evidenceId = `ev_${Math.random().toString(36).substring(2, 10)}`;
+    const evidenceId = `ev_${crypto.randomUUID()}`;
     const submission: EvidenceSubmission = {
       id: evidenceId,
       bountyId,
       responderId,
       state: 'ready_for_review',
       mediaUrl,
-      challengeCode,
+      challengeCode: submittedChallengeCode,
       checklistResults: updatedChecklist,
       metadata: {
         durationSeconds: 45,
@@ -143,7 +160,7 @@ export class FactBountyEngine {
     bounty.state = transitionBountyState(bounty.state, 'under_review');
     this.store.evidence.set(evidenceId, submission);
     this.store.bounties.set(bountyId, bounty);
-    this.store.save();
+    this.store.saveSync();
     return submission;
   }
 
@@ -162,7 +179,9 @@ export class FactBountyEngine {
 
     evidence.reviewerId = moderatorId;
     evidence.reviewedAt = new Date().toISOString();
-    evidence.moderatorNotes = notes;
+    if (notes !== undefined) {
+      evidence.moderatorNotes = notes;
+    }
 
     if (decision === 'approve') {
       evidence.state = transitionEvidenceState(evidence.state, 'accepted');
@@ -184,7 +203,7 @@ export class FactBountyEngine {
 
       this.store.evidence.set(evidenceId, evidence);
       this.store.bounties.set(bounty.id, bounty);
-      this.store.save();
+      this.store.saveSync();
       return { bounty, evidence, card };
 
     } else if (decision === 'request_correction') {
@@ -193,7 +212,7 @@ export class FactBountyEngine {
       evidence.correctionReason = notes || 'Checklist items incomplete';
       this.store.evidence.set(evidenceId, evidence);
       this.store.bounties.set(bounty.id, bounty);
-      this.store.save();
+      this.store.saveSync();
       return { bounty, evidence };
 
     } else {
@@ -202,7 +221,7 @@ export class FactBountyEngine {
       bounty.state = transitionBountyState(bounty.state, 'refund_requested');
       this.store.evidence.set(evidenceId, evidence);
       this.store.bounties.set(bounty.id, bounty);
-      this.store.save();
+      this.store.saveSync();
       return { bounty, evidence };
     }
   }
@@ -214,7 +233,7 @@ export class FactBountyEngine {
     bounty.state = transitionBountyState(bounty.state, 'paid');
     bounty.updatedAt = new Date().toISOString();
     this.store.bounties.set(bountyId, bounty);
-    this.store.save();
+    this.store.saveSync();
     return bounty;
   }
 }
