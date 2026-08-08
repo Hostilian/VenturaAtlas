@@ -91,25 +91,32 @@
       <div class="calc-card">
         <h2 style="font-size:1.1rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Model Parameters</h2>
 
+        <div style="margin-bottom:1.2rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+          <span style="font-size:0.8rem;font-weight:600;color:var(--muted);align-self:center">SCENARIOS:</span>
+          <button id="scenConservative" class="button ghost sm">Conservative</button>
+          <button id="scenBase" class="button primary sm">Base Case</button>
+          <button id="scenAggressive" class="button ghost sm">Aggressive</button>
+        </div>
+
         <div class="calc-field">
-          <label>Select Idea Baseline <span id="selectedIdeaName" style="color:var(--accent)">FactBounty (idea-061)</span></label>
+          <label>Select Opportunity Baseline <span id="selectedIdeaName" style="color:var(--accent)">FactBounty (idea-061)</span></label>
           <select id="ideaSelector" style="width:100%;padding:0.6rem;background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--text)">
             <!-- Populated by JS -->
           </select>
         </div>
 
         <div class="calc-field">
-          <label>Monthly Transactions / Bounties <span id="volVal" class="mono">500</span></label>
+          <label>Monthly Transactions / Customers <span id="volVal" class="mono">500</span></label>
           <input type="range" id="vol" min="10" max="10000" step="10" value="500">
         </div>
 
         <div class="calc-field">
-          <label>Average Transaction / Bounty Value ($) <span id="priceVal" class="mono">$8.00</span></label>
+          <label>Average Transaction / Order Value ($) <span id="priceVal" class="mono">$8.00</span></label>
           <input type="range" id="price" min="1" max="100" step="0.5" value="8">
         </div>
 
         <div class="calc-field">
-          <label>Platform Take Rate / Commission (%) <span id="takeVal" class="mono">20%</span></label>
+          <label>Platform Take Rate / Gross Margin (%) <span id="takeVal" class="mono">20%</span></label>
           <input type="range" id="take" min="5" max="50" step="1" value="20">
         </div>
 
@@ -231,8 +238,22 @@
         recalculate();
       });
 
+      document.getElementById('scenConservative')?.addEventListener('click', () => {
+        vol.value = 100; price.value = 5; take.value = 15; fixedCost.value = 30;
+        recalculate();
+      });
+      document.getElementById('scenBase')?.addEventListener('click', () => {
+        vol.value = 500; price.value = 8; take.value = 20; fixedCost.value = 15;
+        recalculate();
+      });
+      document.getElementById('scenAggressive')?.addEventListener('click', () => {
+        vol.value = 2500; price.value = 15; take.value = 25; fixedCost.value = 50;
+        recalculate();
+      });
+
       recalculate();
     });
   </script>
+  <script src="../assets/js/features/command-palette.js"></script>
 </body>
 </html>
