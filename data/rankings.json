@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-08T02:37:16.116171+00:00",
-  "totalIdeas": 195,
+  "generatedAt": "2026-08-08T02:41:35.270849+00:00",
+  "totalIdeas": 206,
   "algorithm": "weighted-composite-v2",
   "weights": {
     "overallOpportunity": 0.25,
@@ -3574,6 +3574,63 @@
         },
         {
           "rank": 188,
+          "ideaId": "idea-309",
+          "id": "idea-309",
+          "name": "AgeGate Chaos Lab — Adversarial Age Assurance Fail-Safe & Integration Red Team",
+          "category": "Online Safety & Identity",
+          "score": 8.7,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.46,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.8,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 189,
+          "ideaId": "idea-308",
+          "id": "idea-308",
+          "name": "PA RealityGrid — Synthetic-Patient Failure Laboratory for Prior Authorization",
+          "category": "Healthcare Interoperability & Payer Ops",
+          "score": 8.6,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.74,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.6,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 190,
+          "ideaId": "idea-310",
+          "id": "idea-310",
+          "name": "RxTrace Chaos Lab — DSCSA Exception Drill & Physical/Data Reconciliation Engine",
+          "category": "Pharmaceutical Supply Chain",
+          "score": 8.4,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.31,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.4,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 191,
           "ideaId": "idea-299",
           "id": "idea-299",
           "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
@@ -3592,7 +3649,26 @@
           }
         },
         {
-          "rank": 189,
+          "rank": 192,
+          "ideaId": "idea-313",
+          "id": "idea-313",
+          "name": "PA Denial Semantics Observatory — Payer Authorization Metrics & Transparency Index",
+          "category": "Health Analytics & Payer Ops",
+          "score": 8.2,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.84,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.7,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 193,
           "ideaId": "idea-301",
           "id": "idea-301",
           "name": "FCC Robot Market-Access Graph — Foreign Mobile Robotics Authorization",
@@ -3611,7 +3687,7 @@
           }
         },
         {
-          "rank": 190,
+          "rank": 194,
           "ideaId": "idea-302",
           "id": "idea-302",
           "name": "ControlRight — Contract-to-Land-Registry Preflight & Event Clock",
@@ -3630,7 +3706,26 @@
           }
         },
         {
-          "rank": 191,
+          "rank": 195,
+          "ideaId": "idea-311",
+          "id": "idea-311",
+          "name": "Finance Control Red Team — Synthetic Transaction Fraud & ERP Separation Tester",
+          "category": "Corporate Financial Governance",
+          "score": 8.0,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "researched",
+          "topDimensions": {
+            "overallOpportunity": 8.18,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.9,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 196,
           "ideaId": "idea-303",
           "id": "idea-303",
           "name": "Publisher Rights Probe — AI Search Publisher Conduct & Attribution Monitor",
@@ -3649,7 +3744,7 @@
           }
         },
         {
-          "rank": 192,
+          "rank": 197,
           "ideaId": "idea-305",
           "id": "idea-305",
           "name": "CLP Render-to-Shelf Drift Gate — Chemical Label & SDS Output Alignment",
@@ -3668,7 +3763,7 @@
           }
         },
         {
-          "rank": 193,
+          "rank": 198,
           "ideaId": "idea-306",
           "id": "idea-306",
           "name": "Subscription Rights Chaos Lab — Recurring Payment State-Machine QA",
@@ -3687,7 +3782,26 @@
           }
         },
         {
-          "rank": 194,
+          "rank": 199,
+          "ideaId": "idea-314",
+          "id": "idea-314",
+          "name": "APP Reimbursement Replay — Synthetic Scam Claim & Multi-Bank Clock Simulator",
+          "category": "Fintech & Fraud Operations",
+          "score": 7.6,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.63,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.8,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 200,
           "ideaId": "idea-304",
           "id": "idea-304",
           "name": "Instant-Payment Reality Grid — VoP & Non-Euro EU Instant Payment Simulator",
@@ -3706,7 +3820,26 @@
           }
         },
         {
-          "rank": 195,
+          "rank": 201,
+          "ideaId": "idea-312",
+          "id": "idea-312",
+          "name": "Telco Identity Recovery Grid — SIM-Swap & Account Migration Recovery Tester",
+          "category": "Telecom & Security Ops",
+          "score": 7.5,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "researched",
+          "topDimensions": {
+            "overallOpportunity": 7.91,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.2,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 202,
           "ideaId": "idea-307",
           "id": "idea-307",
           "name": "Connected-Vehicle Origin Graph — MY2027 Vehicle Software Origin Compliance",
@@ -3723,41 +3856,87 @@
             "differentiation": null,
             "profitPotential": null
           }
+        },
+        {
+          "rank": 203,
+          "ideaId": "idea-315",
+          "id": "idea-315",
+          "name": "EmergencyComms Regression Cloud — NG112 & eCall Interoperability Test Suite",
+          "category": "Public Safety & Telecom",
+          "score": 7.0,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.3,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 6.9,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 204,
+          "ideaId": "idea-316",
+          "id": "idea-316",
+          "name": "CMMC Enclave Escape Test — Controlled CUI Boundary & Drift Testing Engine",
+          "category": "Defense & Cybersecurity",
+          "score": 6.9,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 6.92,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.5,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 205,
+          "ideaId": "idea-317",
+          "id": "idea-317",
+          "name": "EES Carrier Journey Monitor — EU Entry/Exit System Synthetic API & Fallback Tester",
+          "category": "Travel Tech & Border Control",
+          "score": 6.6,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 6.71,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.0,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 206,
+          "ideaId": "idea-318",
+          "id": "idea-318",
+          "name": "ETIAS Carrier Preflight — Travel Authorization Pre-Boarding Exception Checker",
+          "category": "Travel Tech & Border Control",
+          "score": 6.3,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 6.24,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.1,
+            "differentiation": null,
+            "profitPotential": null
+          }
         }
       ]
     }
   ],
   "history": [
-    {
-      "snapshotAt": "2026-08-07T17:01:31.300930+00:00",
-      "top5": [
-        {
-          "id": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 92.5
-        },
-        {
-          "id": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 92.1
-        },
-        {
-          "id": "idea-275",
-          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
-          "score": 91.7
-        },
-        {
-          "id": "idea-261",
-          "name": "BorderGraph — EU Product Compliance Control Plane",
-          "score": 91.3
-        },
-        {
-          "id": "idea-276",
-          "name": "MachineKey — Unified Industrial Machine Telemetry API",
-          "score": 90.9
-        }
-      ]
-    },
     {
       "snapshotAt": "2026-08-07T17:02:01.996101+00:00",
       "top5": [
@@ -4000,6 +4179,36 @@
     },
     {
       "snapshotAt": "2026-08-08T02:37:16.116171+00:00",
+      "top5": [
+        {
+          "id": "idea-273",
+          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+          "score": 92.5
+        },
+        {
+          "id": "idea-274",
+          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+          "score": 92.1
+        },
+        {
+          "id": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 91.7
+        },
+        {
+          "id": "idea-261",
+          "name": "BorderGraph — EU Product Compliance Control Plane",
+          "score": 91.3
+        },
+        {
+          "id": "idea-276",
+          "name": "MachineKey — Unified Industrial Machine Telemetry API",
+          "score": 90.9
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-08T02:41:35.270849+00:00",
       "top5": [
         {
           "id": "idea-273",

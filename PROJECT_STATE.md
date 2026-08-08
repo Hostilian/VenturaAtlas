@@ -3,9 +3,9 @@
 - Repository: Venture Atlas Collaborative
 - Current phase: collaborative-system foundation complete; source-corpus recovery remains incomplete
 - Last completed action: added constitution integrity, source inventory, collaboration schemas, research-run history, and Git-native workflows
-- Canonical ideas: 195
+- Canonical ideas: 206
 - Raw extraction records: 206
-- Prompt records: 2250
+- Prompt records: 2525
 - Historical research runs reconstructed: 2
 - Constitution version: 0.1-partial
 - Constitution checksum: `f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d`
@@ -19,11 +19,11 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
-- Canonical Ideas: 195
+- Canonical Ideas: 206
 - Staged Ideas: 173
-- Total Ideas: 368
-- Categories: 92
+- Total Ideas: 379
+- Categories: 102
 - Source References: 62
-- Generated Prompts: 2250
+- Generated Prompts: 2525
 - Last Updated: 2026-08-08
 <!-- END GENERATED REPOSITORY STATS -->

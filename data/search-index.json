@@ -3635,5 +3635,232 @@
       "software-origin"
     ],
     "normalizedText": "connected-vehicle origin graph my2027 vehicle software origin compliance supply-chain software origin and ecu dependency graph for automotive oems preparing for u s model year 2027 connected-vehicle restrictions inability to verify foreign software component origin across complex ecu software boms tier-1 automotive suppliers ev manufacturers and automotive compliance counsel automotive supply chain automotive bis connected-vehicles supply-chain software-origin"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-308",
+    "slug": "pa-realitygrid-synthetic-patient-prior-authorization",
+    "name": "PA RealityGrid — Synthetic-Patient Failure Laboratory for Prior Authorization",
+    "category": "Healthcare Interoperability & Payer Ops",
+    "subcategory": "prior authorization testing",
+    "concept": "Synthetic-patient state and workflow regression test suite for healthcare prior authorization APIs, EHR integrations, and payer decision engines.",
+    "customer": "Healthtech integration vendors, EHR providers, clearinghouses, and health system interoperability teams",
+    "problem": "Silent administrative failures and state mismatches in prior-authorization API workflows delaying patient care",
+    "overallScore": 87,
+    "tags": [
+      "prior-authorization",
+      "FHIR",
+      "CMS-2027",
+      "synthetic-patients",
+      "healthtech",
+      "interoperability"
+    ],
+    "normalizedText": "pa realitygrid synthetic-patient failure laboratory for prior authorization synthetic-patient state and workflow regression test suite for healthcare prior authorization apis ehr integrations and payer decision engines silent administrative failures and state mismatches in prior-authorization api workflows delaying patient care healthtech integration vendors ehr providers clearinghouses and health system interoperability teams healthcare interoperability payer ops prior-authorization fhir cms-2027 synthetic-patients healthtech interoperability"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-309",
+    "slug": "agegate-chaos-lab-age-assurance-red-team",
+    "name": "AgeGate Chaos Lab — Adversarial Age Assurance Fail-Safe & Integration Red Team",
+    "category": "Online Safety & Identity",
+    "subcategory": "age assurance testing",
+    "concept": "Controlled adversarial testing harness that exercises age-verification integrations against vendor timeouts, state mutations, and session leaks.",
+    "customer": "Regulated online platforms, social services, gaming networks, and age-restricted content providers",
+    "problem": "Undetected integration bypasses and fail-open vulnerabilities in third-party age-verification workflows",
+    "overallScore": 85,
+    "tags": [
+      "age-assurance",
+      "Ofcom",
+      "online-safety",
+      "red-teaming",
+      "privacy",
+      "identity"
+    ],
+    "normalizedText": "agegate chaos lab adversarial age assurance fail-safe integration red team controlled adversarial testing harness that exercises age-verification integrations against vendor timeouts state mutations and session leaks undetected integration bypasses and fail-open vulnerabilities in third-party age-verification workflows regulated online platforms social services gaming networks and age-restricted content providers online safety identity age-assurance ofcom online-safety red-teaming privacy identity"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-310",
+    "slug": "rxtrace-chaos-lab-dscsa-exception-drill",
+    "name": "RxTrace Chaos Lab — DSCSA Exception Drill & Physical/Data Reconciliation Engine",
+    "category": "Pharmaceutical Supply Chain",
+    "subcategory": "DSCSA compliance testing",
+    "concept": "Synthetic package and barcode exception testing harness for independent pharmacies preparing for the FDA DSCSA November 2026 small-dispenser deadline.",
+    "customer": "Pharmacy management software vendors, PSAOs, wholesaler networks, and independent pharmacies",
+    "problem": "Physical inventory arriving without matching electronic EPCIS data causing pharmacy quarantine bottlenecks",
+    "overallScore": 83,
+    "tags": [
+      "DSCSA",
+      "FDA",
+      "pharmacy",
+      "supply-chain",
+      "EPCIS",
+      "serialization"
+    ],
+    "normalizedText": "rxtrace chaos lab dscsa exception drill physical data reconciliation engine synthetic package and barcode exception testing harness for independent pharmacies preparing for the fda dscsa november 2026 small-dispenser deadline physical inventory arriving without matching electronic epcis data causing pharmacy quarantine bottlenecks pharmacy management software vendors psaos wholesaler networks and independent pharmacies pharmaceutical supply chain dscsa fda pharmacy supply-chain epcis serialization"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-311",
+    "slug": "finance-control-red-team-erp-fraud-testing",
+    "name": "Finance Control Red Team — Synthetic Transaction Fraud & ERP Separation Tester",
+    "category": "Corporate Financial Governance",
+    "subcategory": "ERP control testing",
+    "concept": "Synthetic business event injection platform that tests corporate ERP financial controls against supplier bank changes, split invoices, and override bypasses.",
+    "customer": "Chief Financial Officers, corporate controllers, internal audit leads, and enterprise ERP teams",
+    "problem": "Unverified financial controls allowing fraudulent vendor bank updates and split-invoice policy bypasses",
+    "overallScore": 82,
+    "tags": [
+      "fintech",
+      "ERP",
+      "fraud-prevention",
+      "chaos-engineering",
+      "SAP",
+      "NetSuite"
+    ],
+    "normalizedText": "finance control red team synthetic transaction fraud erp separation tester synthetic business event injection platform that tests corporate erp financial controls against supplier bank changes split invoices and override bypasses unverified financial controls allowing fraudulent vendor bank updates and split-invoice policy bypasses chief financial officers corporate controllers internal audit leads and enterprise erp teams corporate financial governance fintech erp fraud-prevention chaos-engineering sap netsuite"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-312",
+    "slug": "telco-identity-recovery-grid-sim-swap-recovery",
+    "name": "Telco Identity Recovery Grid — SIM-Swap & Account Migration Recovery Tester",
+    "category": "Telecom & Security Ops",
+    "subcategory": "telecom identity testing",
+    "concept": "Adversarial customer-care workflow test grid for telecommunication carriers to verify SIM replacement, eSIM migration, and account recovery security.",
+    "customer": "Telecom carrier security teams, MVNO operations leads, and identity verification partners",
+    "problem": "Account recovery process failures allowing attackers to retain access after SIM-swap discovery",
+    "overallScore": 79,
+    "tags": [
+      "telecom",
+      "SIM-swap",
+      "eSIM",
+      "identity-recovery",
+      "security-ops"
+    ],
+    "normalizedText": "telco identity recovery grid sim-swap account migration recovery tester adversarial customer-care workflow test grid for telecommunication carriers to verify sim replacement esim migration and account recovery security account recovery process failures allowing attackers to retain access after sim-swap discovery telecom carrier security teams mvno operations leads and identity verification partners telecom security ops telecom sim-swap esim identity-recovery security-ops"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-313",
+    "slug": "pa-denial-semantics-observatory-payer-metrics",
+    "name": "PA Denial Semantics Observatory — Payer Authorization Metrics & Transparency Index",
+    "category": "Health Analytics & Payer Ops",
+    "subcategory": "health data analytics",
+    "concept": "Aggregated analytics observatory that tracks public CMS prior-authorization metrics, approval rates, overturn percentages, and denial reason semantics.",
+    "customer": "Health system revenue cycle directors, medical specialty societies, and health policy researchers",
+    "problem": "Fragmented, opaque payer prior-authorization metrics preventing data-driven payer negotiations",
+    "overallScore": 78,
+    "tags": [
+      "health-analytics",
+      "prior-authorization",
+      "CMS-disclosures",
+      "payer-transparency",
+      "healthtech"
+    ],
+    "normalizedText": "pa denial semantics observatory payer authorization metrics transparency index aggregated analytics observatory that tracks public cms prior-authorization metrics approval rates overturn percentages and denial reason semantics fragmented opaque payer prior-authorization metrics preventing data-driven payer negotiations health system revenue cycle directors medical specialty societies and health policy researchers health analytics payer ops health-analytics prior-authorization cms-disclosures payer-transparency healthtech"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-314",
+    "slug": "app-reimbursement-replay-scam-claim-simulator",
+    "name": "APP Reimbursement Replay — Synthetic Scam Claim & Multi-Bank Clock Simulator",
+    "category": "Fintech & Fraud Operations",
+    "subcategory": "scam reimbursement testing",
+    "concept": "Multi-bank synthetic claim simulator that tests Authorised Push Payment (APP) scam reimbursement workflows against 5-day resolution clocks and allocation rules.",
+    "customer": "UK payment service providers, challenger banks, electronic money institutions (EMIs), and fraud ops teams",
+    "problem": "Administrative errors and missed 5-day clocks in complex multi-bank APP scam reimbursement claims",
+    "overallScore": 76,
+    "tags": [
+      "APP-scam",
+      "PSR",
+      "fintech",
+      "payments",
+      "fraud-ops",
+      "reimbursement"
+    ],
+    "normalizedText": "app reimbursement replay synthetic scam claim multi-bank clock simulator multi-bank synthetic claim simulator that tests authorised push payment app scam reimbursement workflows against 5-day resolution clocks and allocation rules administrative errors and missed 5-day clocks in complex multi-bank app scam reimbursement claims uk payment service providers challenger banks electronic money institutions emis and fraud ops teams fintech fraud operations app-scam psr fintech payments fraud-ops reimbursement"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-315",
+    "slug": "emergencycomms-regression-cloud-ng112-ecall",
+    "name": "EmergencyComms Regression Cloud — NG112 & eCall Interoperability Test Suite",
+    "category": "Public Safety & Telecom",
+    "subcategory": "emergency communications testing",
+    "concept": "Cloud-based synthetic test environment that executes automated NG112, real-time text, and eCall vehicle-to-PSAP emergency communication regression tests.",
+    "customer": "Public Safety Answering Point (PSAP) software vendors, automotive eCall suppliers, and emergency telecom providers",
+    "problem": "Silent data loss and location-routing failures during IP emergency call transitions",
+    "overallScore": 73,
+    "tags": [
+      "NG112",
+      "eCall",
+      "PSAP",
+      "public-safety",
+      "telecom",
+      "interoperability"
+    ],
+    "normalizedText": "emergencycomms regression cloud ng112 ecall interoperability test suite cloud-based synthetic test environment that executes automated ng112 real-time text and ecall vehicle-to-psap emergency communication regression tests silent data loss and location-routing failures during ip emergency call transitions public safety answering point psap software vendors automotive ecall suppliers and emergency telecom providers public safety telecom ng112 ecall psap public-safety telecom interoperability"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-316",
+    "slug": "cmmc-enclave-escape-test-cui-boundary-testing",
+    "name": "CMMC Enclave Escape Test — Controlled CUI Boundary & Drift Testing Engine",
+    "category": "Defense & Cybersecurity",
+    "subcategory": "CMMC compliance testing",
+    "concept": "Automated boundary testing tool that injects controlled synthetic data to detect unauthorized CUI data flow and scope drift outside secure enclave perimeters.",
+    "customer": "U.S. defense industrial base contractors, CMMC third-party assessment organizations (C3PAOs), and MSPs",
+    "problem": "Unintended CUI data drift expanding CMMC assessment boundaries and inflating audit costs",
+    "overallScore": 69,
+    "tags": [
+      "CMMC",
+      "defense",
+      "CUI",
+      "cybersecurity",
+      "enclave-testing",
+      "compliance"
+    ],
+    "normalizedText": "cmmc enclave escape test controlled cui boundary drift testing engine automated boundary testing tool that injects controlled synthetic data to detect unauthorized cui data flow and scope drift outside secure enclave perimeters unintended cui data drift expanding cmmc assessment boundaries and inflating audit costs u s defense industrial base contractors cmmc third-party assessment organizations c3paos and msps defense cybersecurity cmmc defense cui cybersecurity enclave-testing compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-317",
+    "slug": "ees-carrier-journey-monitor-border-control-testing",
+    "name": "EES Carrier Journey Monitor — EU Entry/Exit System Synthetic API & Fallback Tester",
+    "category": "Travel Tech & Border Control",
+    "subcategory": "carrier border compliance",
+    "concept": "Synthetic passenger journey generator that evaluates carrier web, mobile, and S2S interfaces against EU Entry/Exit System (EES) verification APIs.",
+    "customer": "International airlines, cross-channel ferry operators, international rail/coach carriers, and travel IT providers",
+    "problem": "Pre-boarding verification API failures causing port congestion and passenger boarding halts",
+    "overallScore": 67,
+    "tags": [
+      "EES",
+      "eu-LISA",
+      "border-control",
+      "traveltech",
+      "carrier-compliance"
+    ],
+    "normalizedText": "ees carrier journey monitor eu entry exit system synthetic api fallback tester synthetic passenger journey generator that evaluates carrier web mobile and s2s interfaces against eu entry exit system ees verification apis pre-boarding verification api failures causing port congestion and passenger boarding halts international airlines cross-channel ferry operators international rail coach carriers and travel it providers travel tech border control ees eu-lisa border-control traveltech carrier-compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-318",
+    "slug": "etias-carrier-preflight-travel-authorization",
+    "name": "ETIAS Carrier Preflight — Travel Authorization Pre-Boarding Exception Checker",
+    "category": "Travel Tech & Border Control",
+    "subcategory": "travel authorization",
+    "concept": "Automated preflight checker for commercial passenger carriers to verify ETIAS travel authorization status, visa-exempt rules, and exception handling.",
+    "customer": "Regional airlines, charter flight operators, cruise lines, and maritime passenger carriers",
+    "problem": "Uncertainty and manual processing delays surrounding passenger ETIAS verification at gate/check-in",
+    "overallScore": 62,
+    "tags": [
+      "ETIAS",
+      "EU",
+      "traveltech",
+      "preflight",
+      "border-control"
+    ],
+    "normalizedText": "etias carrier preflight travel authorization pre-boarding exception checker automated preflight checker for commercial passenger carriers to verify etias travel authorization status visa-exempt rules and exception handling uncertainty and manual processing delays surrounding passenger etias verification at gate check-in regional airlines charter flight operators cruise lines and maritime passenger carriers travel tech border control etias eu traveltech preflight border-control"
   }
 ]
