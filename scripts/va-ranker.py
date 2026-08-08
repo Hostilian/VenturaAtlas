@@ -90,8 +90,10 @@ def compute_headline(idea: dict) -> tuple[float, float]:
             weight_sum += w
 
     coverage = round(weight_sum / total_possible_weights, 2) if total_possible_weights > 0 else 0.0
-    score = round(total / weight_sum, 1) if weight_sum > 0 else 0.0
-    return score, coverage
+    score = total / weight_sum if weight_sum > 0 else 0.0
+    if 0 < score <= 10.0:
+        score = score * 10.0
+    return round(score, 1), coverage
 
 def compute_attractiveness(idea: dict) -> float:
     """Compute Opportunity Attractiveness score (0-100). Returns 0.0 if no dimensions present."""
@@ -169,9 +171,11 @@ def rank_ideas(ideas: list) -> list:
             "name": idea.get("name", "?"),
             "category": idea.get("category", "?"),
             "score": score,
+            "coverage": coverage,
             "opportunityAttractiveness": attractiveness,
             "founderFit": founder_fit,
             "evidenceConfidence": evidence_conf,
+            "confidenceLabel": confidence_label,
             "checklist": idea.get("validationChecklist", {}).get("scorePercentage", 0),
             "killFlagged": idea.get("killCriteria", {}).get("killFlagged", False),
             "provider": idea.get("provenance", {}).get("provider", "legacy"),

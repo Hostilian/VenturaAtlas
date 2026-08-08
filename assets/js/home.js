@@ -5,24 +5,10 @@
 (function() {
   'use strict';
 
-  // Mobile nav toggle
+  // Mobile nav toggle (handled centrally in site.js)
   function initMobileNav() {
-    const navToggle = document.getElementById('navToggle');
-    const navLinks  = document.getElementById('navlinks');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.textContent = open ? '✕' : '☰';
-      });
-      // Close on outside click
-      document.addEventListener('click', e => {
-        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-          navLinks.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.textContent = '☰';
-        }
-      });
+    if (typeof window.initMobileNav === 'function') {
+      window.initMobileNav();
     }
   }
 

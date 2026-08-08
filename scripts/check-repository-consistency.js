@@ -126,8 +126,8 @@ for (const idea of ideas) {
   if (Array.isArray(idea.sourceReferences)) {
     for (const ref of idea.sourceReferences) {
       if (typeof ref === 'string') {
-        if (!sourceIds.has(ref) && !ref.startsWith('legacy-') && !ref.startsWith('ext-')) {
-          errors.push(`Idea ${idea.id} references non-existent source ID: ${ref}`);
+        if (!sourceIds.has(ref)) {
+          errors.push(`Idea ${idea.id} references non-existent source ID: '${ref}'`);
         }
       }
     }

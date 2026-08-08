@@ -90,6 +90,17 @@ function getRepositoryTruth() {
     dossierCount = fs.readdirSync(DOSSIERS_DIR).filter(f => f.endsWith('.md') && f !== 'README.md').length;
   }
 
+  const countMdFiles = (dirRel) => {
+    const p = path.join(ROOT, dirRel);
+    if (!fs.existsSync(p)) return 0;
+    return fs.readdirSync(p).filter(f => f.endsWith('.md') && f !== 'README.md').length;
+  };
+
+  const financialModelCount = countMdFiles('financial-models');
+  const validationPlanCount = countMdFiles('validation-plans');
+  const technicalBlueprintCount = countMdFiles('technical-blueprints');
+  const launchPlanCount = countMdFiles('launch-plans');
+
   const totalPortfolioRecords = canonicalIdeasCount + stagedCandidateCount;
 
   // Component Revisions
@@ -149,7 +160,11 @@ function getRepositoryTruth() {
       rankingViews: rankingViewCount,
       rankingEntries: rankingEntryCount,
       prompts: promptFileCount,
-      dossiers: dossierCount
+      dossiers: dossierCount,
+      financialModels: financialModelCount,
+      validationPlans: validationPlanCount,
+      technicalBlueprints: technicalBlueprintCount,
+      launchPlans: launchPlanCount
     },
     files: fileManifests
   };

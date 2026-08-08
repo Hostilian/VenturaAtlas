@@ -566,7 +566,7 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
     if not candidate_providers:
         if not allow_own_orch:
             raise NoEligibleProviderError(f"No provider matched capabilities {required_capabilities} and allow_own_orch is False")
-        candidate_providers = DEFAULT_PROVIDER_ORDER
+        candidate_providers = ["own-orch"]
 
     for provider in candidate_providers:
         if provider == "own-orch" and not allow_own_orch:

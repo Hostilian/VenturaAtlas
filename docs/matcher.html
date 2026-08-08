@@ -11,7 +11,7 @@
   <style>
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
-    .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+    .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
     .option-card { border: 2px solid var(--line); border-radius: var(--radius); padding: 1rem; cursor: pointer; transition: all 0.18s ease; text-align: center; background: var(--panel); }
     .option-card:hover { border-color: var(--accent); background: var(--accent-l); }
     .option-card.selected { border-color: var(--accent); background: var(--accent-l); box-shadow: 0 0 0 3px var(--accent-l); }
@@ -22,7 +22,7 @@
     .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: background 0.2s; }
     .progress-dot.done { background: var(--accent); }
     .progress-dot.active { background: var(--accent-h); transform: scale(1.3); }
-    .match-result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .match-result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
     .match-badge { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; background: var(--accent); color: #fff; }
     .match-score-bar { height: 6px; background: var(--line); border-radius: 9999px; margin: 0.5rem 0; overflow: hidden; }
     .match-score-fill { height: 100%; background: var(--accent-g); border-radius: 9999px; transition: width 0.6s ease; }

@@ -73,12 +73,15 @@ def evaluate_promotion_gates(candidate: Dict[str, Any], existing_ideas: List[Dic
         notes.append("Candidate has empty name")
         failed = True
 
-    # 2. Duplicate Gate
+    # 2. Duplicate Gate & Identity Gate
     norm_name = cand_name.lower()
+    cand_slug = candidate.get("slug", "").strip().lower()
     for existing in existing_ideas:
-        if existing.get("name", "").strip().lower() == norm_name:
+        ex_name = existing.get("name", "").strip().lower()
+        ex_slug = existing.get("slug", "").strip().lower()
+        if ex_name == norm_name or (cand_slug and ex_slug == cand_slug):
             gates["duplicate"] = "failed"
-            notes.append(f"Duplicate idea name '{cand_name}' already exists in canonical corpus")
+            notes.append(f"Duplicate idea name/slug '{cand_name}' already exists in canonical corpus")
             failed = True
             break
 
@@ -87,6 +90,17 @@ def evaluate_promotion_gates(candidate: Dict[str, Any], existing_ideas: List[Dic
     if not isinstance(sources, list):
         gates["evidence"] = "failed"
         notes.append("sourceReferences must be a list")
+        failed = True
+
+    # 4. Validation & Promotion Eligibility Gate
+    if candidate.get("promotionEligible") is False:
+        gates["validation"] = "failed"
+        notes.append("Candidate marked promotionEligible: false (requires external research first)")
+        failed = True
+
+    if candidate.get("killCriteria", {}).get("killFlagged") is True:
+        gates["validation"] = "failed"
+        notes.append("Candidate has killCriteria.killFlagged = true")
         failed = True
 
     review = {

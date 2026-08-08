@@ -2,30 +2,34 @@
   "project": "VenturaAtlas",
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
-  "dataRevision": "4df182a21659a15e",
-  "buildRevision": "2.3.0-58da929",
-  "gitCommit": "58da929",
-  "generatedAt": "2026-08-08T03:46:38.808Z",
+  "dataRevision": "4d113193932fdf24",
+  "buildRevision": "2.3.0-1d39f8a",
+  "gitCommit": "1d39f8a",
+  "generatedAt": "2026-08-08T13:40:24.042Z",
   "counts": {
-    "ideas": 228,
-    "canonicalIdeas": 228,
+    "ideas": 248,
+    "canonicalIdeas": 248,
     "stagedIdeas": 174,
-    "totalIdeas": 402,
-    "categories": 108,
-    "canonicalCategoryLabels": 108,
+    "totalIdeas": 422,
+    "categories": 110,
+    "canonicalCategoryLabels": 110,
     "taxonomyCategories": 31,
     "sources": 62,
     "rankingViews": 7,
     "rankingEntries": 228,
-    "prompts": 3075,
-    "dossiers": 316
+    "prompts": 3575,
+    "dossiers": 336,
+    "financialModels": 60,
+    "validationPlans": 60,
+    "technicalBlueprints": 60,
+    "launchPlans": 60
   },
   "revisions": {
-    "canonicalRevision": "3ccf182fd13d2928",
+    "canonicalRevision": "58602cb040c3c81b",
     "stagingRevision": "58c324bb4df8edae",
     "taxonomyRevision": "6945e3a804df238b",
     "sourcesRevision": "b2a2dfcf12d03677",
-    "rankingsRevision": "39ab20098ba3c7b8",
-    "canonicalDataRevision": "4df182a21659a15e"
+    "rankingsRevision": "36b4b4c05bc96d3e",
+    "canonicalDataRevision": "4d113193932fdf24"
   }
 }
