@@ -34,8 +34,17 @@ def atomic_write_json(filepath: str, data: Any, indent: int = 2) -> None:
         with open(temp_path, 'r', encoding='utf-8') as check_f:
             json.load(check_f)
             
-        # 4. Atomic replacement
-        os.replace(temp_path, filepath)
+        # 4. Atomic replacement with retry for Windows lock contention
+        max_retries = 10
+        for attempt in range(max_retries):
+            try:
+                os.replace(temp_path, filepath)
+                break
+            except PermissionError:
+                if attempt == max_retries - 1:
+                    raise
+                import time
+                time.sleep(0.05)
 
         # 5. Directory fsync where supported
         try:
