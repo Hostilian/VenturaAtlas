@@ -5,10 +5,10 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 ## Current inventory
 
 <!-- BEGIN GENERATED CURRENT INVENTORY -->
-- **185 canonical ideas** (173 staged, 358 total)
-- **82 categories**
+- **195 canonical ideas** (173 staged, 368 total)
+- **92 categories**
 - **62 source inventory records**
-- **1,750 idea-specific prompts** plus master prompts
+- **2,250 idea-specific prompts** plus master prompts
 - One full Markdown dossier, financial model, validation plan, technical blueprint, launch plan, and 25-prompt pack per canonical idea
 <!-- END GENERATED CURRENT INVENTORY -->
 
@@ -84,11 +84,11 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
-- Canonical Ideas: 185
+- Canonical Ideas: 195
 - Staged Ideas: 173
-- Total Ideas: 358
-- Categories: 82
+- Total Ideas: 368
+- Categories: 92
 - Source References: 62
-- Generated Prompts: 1750
+- Generated Prompts: 2250
 - Last Updated: 2026-08-08
 <!-- END GENERATED REPOSITORY STATS -->

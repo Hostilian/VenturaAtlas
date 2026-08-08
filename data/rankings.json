@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-08T02:27:51.731698+00:00",
-  "totalIdeas": 185,
+  "generatedAt": "2026-08-08T02:37:16.116171+00:00",
+  "totalIdeas": 195,
   "algorithm": "weighted-composite-v2",
   "weights": {
     "overallOpportunity": 0.25,
@@ -3533,71 +3533,201 @@
             "differentiation": null,
             "profitPotential": null
           }
+        },
+        {
+          "rank": 186,
+          "ideaId": "idea-298",
+          "id": "idea-298",
+          "name": "SKU Resurrection Lab — Marketplace Product Safety & Anti-Reappearance QA",
+          "category": "Marketplace & E-Commerce Compliance",
+          "score": 8.8,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.58,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.8,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 187,
+          "ideaId": "idea-300",
+          "id": "idea-300",
+          "name": "Live Claim Provenance Gate — Commercial Environmental Claim Lineage & Expiry",
+          "category": "Commercial Governance & ESG",
+          "score": 8.7,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.22,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 9.0,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 188,
+          "ideaId": "idea-299",
+          "id": "idea-299",
+          "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
+          "category": "Industrial IoT & Safety Engineering",
+          "score": 8.3,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "priority",
+          "topDimensions": {
+            "overallOpportunity": 8.44,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.2,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 189,
+          "ideaId": "idea-301",
+          "id": "idea-301",
+          "name": "FCC Robot Market-Access Graph — Foreign Mobile Robotics Authorization",
+          "category": "Robotics & Hardware Access",
+          "score": 8.0,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "researched",
+          "topDimensions": {
+            "overallOpportunity": 8.06,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.8,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 190,
+          "ideaId": "idea-302",
+          "id": "idea-302",
+          "name": "ControlRight — Contract-to-Land-Registry Preflight & Event Clock",
+          "category": "Real Estate & Legal Tech",
+          "score": 8.0,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "researched",
+          "topDimensions": {
+            "overallOpportunity": 7.92,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.1,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 191,
+          "ideaId": "idea-303",
+          "id": "idea-303",
+          "name": "Publisher Rights Probe — AI Search Publisher Conduct & Attribution Monitor",
+          "category": "Media Tech & Publisher Rights",
+          "score": 7.9,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.75,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.0,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 192,
+          "ideaId": "idea-305",
+          "id": "idea-305",
+          "name": "CLP Render-to-Shelf Drift Gate — Chemical Label & SDS Output Alignment",
+          "category": "Chemical & Material Compliance",
+          "score": 7.8,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.64,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.9,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 193,
+          "ideaId": "idea-306",
+          "id": "idea-306",
+          "name": "Subscription Rights Chaos Lab — Recurring Payment State-Machine QA",
+          "category": "Consumer Protection & Billing Tech",
+          "score": 7.7,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.51,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 8.1,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 194,
+          "ideaId": "idea-304",
+          "id": "idea-304",
+          "name": "Instant-Payment Reality Grid — VoP & Non-Euro EU Instant Payment Simulator",
+          "category": "Fintech & Payment Infrastructure",
+          "score": 7.5,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.71,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 7.4,
+            "differentiation": null,
+            "profitPotential": null
+          }
+        },
+        {
+          "rank": 195,
+          "ideaId": "idea-307",
+          "id": "idea-307",
+          "name": "Connected-Vehicle Origin Graph — MY2027 Vehicle Software Origin Compliance",
+          "category": "Automotive & Supply Chain",
+          "score": 7.0,
+          "checklist": 0,
+          "killFlagged": false,
+          "provider": "legacy",
+          "status": "explore",
+          "topDimensions": {
+            "overallOpportunity": 7.37,
+            "bootstrappedPotential": null,
+            "soloFounderPotential": 6.8,
+            "differentiation": null,
+            "profitPotential": null
+          }
         }
       ]
     }
   ],
   "history": [
-    {
-      "snapshotAt": "2026-08-07T17:00:16.854351+00:00",
-      "top5": [
-        {
-          "id": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 92.5
-        },
-        {
-          "id": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 92.1
-        },
-        {
-          "id": "idea-275",
-          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
-          "score": 91.7
-        },
-        {
-          "id": "idea-261",
-          "name": "BorderGraph — EU Product Compliance Control Plane",
-          "score": 91.3
-        },
-        {
-          "id": "idea-276",
-          "name": "MachineKey — Unified Industrial Machine Telemetry API",
-          "score": 90.9
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-07T17:00:47.253562+00:00",
-      "top5": [
-        {
-          "id": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 92.5
-        },
-        {
-          "id": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 92.1
-        },
-        {
-          "id": "idea-275",
-          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
-          "score": 91.7
-        },
-        {
-          "id": "idea-261",
-          "name": "BorderGraph — EU Product Compliance Control Plane",
-          "score": 91.3
-        },
-        {
-          "id": "idea-276",
-          "name": "MachineKey — Unified Industrial Machine Telemetry API",
-          "score": 90.9
-        }
-      ]
-    },
     {
       "snapshotAt": "2026-08-07T17:01:31.300930+00:00",
       "top5": [
@@ -3810,6 +3940,66 @@
     },
     {
       "snapshotAt": "2026-08-08T02:27:51.731698+00:00",
+      "top5": [
+        {
+          "id": "idea-273",
+          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+          "score": 92.5
+        },
+        {
+          "id": "idea-274",
+          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+          "score": 92.1
+        },
+        {
+          "id": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 91.7
+        },
+        {
+          "id": "idea-261",
+          "name": "BorderGraph — EU Product Compliance Control Plane",
+          "score": 91.3
+        },
+        {
+          "id": "idea-276",
+          "name": "MachineKey — Unified Industrial Machine Telemetry API",
+          "score": 90.9
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-08T02:36:26.783970+00:00",
+      "top5": [
+        {
+          "id": "idea-273",
+          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+          "score": 92.5
+        },
+        {
+          "id": "idea-274",
+          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+          "score": 92.1
+        },
+        {
+          "id": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 91.7
+        },
+        {
+          "id": "idea-261",
+          "name": "BorderGraph — EU Product Compliance Control Plane",
+          "score": 91.3
+        },
+        {
+          "id": "idea-276",
+          "name": "MachineKey — Unified Industrial Machine Telemetry API",
+          "score": 90.9
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-08T02:37:16.116171+00:00",
       "top5": [
         {
           "id": "idea-273",

@@ -3434,5 +3434,206 @@
       "energy"
     ],
     "normalizedText": "grid equipment cancellation exchange secondary transformer switchgear allocation secondary trading and allocation exchange for canceled or delayed high-voltage transformer orders and factory slot rights multi-year transformer procurement lead times delaying high-value energy projects epc contractors data centre developers and utility project directors power equipment energy supply chain transformers grid-equipment electrical-hardware secondary-market energy"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-298",
+    "slug": "sku-resurrection-lab-marketplace-product-safety-qa",
+    "name": "SKU Resurrection Lab — Marketplace Product Safety & Anti-Reappearance QA",
+    "category": "Marketplace & E-Commerce Compliance",
+    "subcategory": "product safety",
+    "concept": "Automated adversarial attack suite for e-commerce marketplaces to prevent banned, recalled, or unsafe products from reappearing via title, image, or GTIN mutations.",
+    "customer": "E-commerce marketplaces, multi-vendor platforms, and refurbished device sites",
+    "problem": "Recalled or banned unsafe products sneaking back onto marketplace platforms through listing mutations",
+    "overallScore": 86,
+    "tags": [
+      "marketplace",
+      "GPSR",
+      "DSA",
+      "product-safety",
+      "red-teaming",
+      "adversarial-qa"
+    ],
+    "normalizedText": "sku resurrection lab marketplace product safety anti-reappearance qa automated adversarial attack suite for e-commerce marketplaces to prevent banned recalled or unsafe products from reappearing via title image or gtin mutations recalled or banned unsafe products sneaking back onto marketplace platforms through listing mutations e-commerce marketplaces multi-vendor platforms and refurbished device sites marketplace e-commerce compliance marketplace gpsr dsa product-safety red-teaming adversarial-qa"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-299",
+    "slug": "machine-safety-state-drift-gate-machinery-regulation",
+    "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
+    "category": "Industrial IoT & Safety Engineering",
+    "subcategory": "machinery regulation",
+    "concept": "Cross-vendor industrial software and firmware fingerprinting engine that detects silent safety-state drift across PLC, drive, and robot configurations.",
+    "customer": "Machinery OEMs, industrial system integrators, and automated factory operators",
+    "problem": "Software and firmware updates silently altering validated safety parameters on industrial machinery",
+    "overallScore": 84,
+    "tags": [
+      "machinery-regulation",
+      "PLC",
+      "industrial-safety",
+      "firmware",
+      "drift-detection"
+    ],
+    "normalizedText": "machine safety state drift gate machinery regulation 2027 revalidation engine cross-vendor industrial software and firmware fingerprinting engine that detects silent safety-state drift across plc drive and robot configurations software and firmware updates silently altering validated safety parameters on industrial machinery machinery oems industrial system integrators and automated factory operators industrial iot safety engineering machinery-regulation plc industrial-safety firmware drift-detection"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-300",
+    "slug": "live-claim-provenance-gate-greenwashing-compliance",
+    "name": "Live Claim Provenance Gate — Commercial Environmental Claim Lineage & Expiry",
+    "category": "Commercial Governance & ESG",
+    "subcategory": "greenwashing compliance",
+    "concept": "Commercial claim lineage graph that maps environmental, durability, and origin claims to underlying evidence and flags expired or scope-drifted statements across channels.",
+    "customer": "Consumer brand marketing teams, e-commerce stores, and compliance counsel",
+    "problem": "Commercial environmental claims remaining live online after supplier materials or certificates expire",
+    "overallScore": 82,
+    "tags": [
+      "greenwashing",
+      "Directive-2024-825",
+      "claim-lineage",
+      "ESG",
+      "provenance"
+    ],
+    "normalizedText": "live claim provenance gate commercial environmental claim lineage expiry commercial claim lineage graph that maps environmental durability and origin claims to underlying evidence and flags expired or scope-drifted statements across channels commercial environmental claims remaining live online after supplier materials or certificates expire consumer brand marketing teams e-commerce stores and compliance counsel commercial governance esg greenwashing directive-2024-825 claim-lineage esg provenance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-301",
+    "slug": "fcc-robot-market-access-graph-robotics-authorization",
+    "name": "FCC Robot Market-Access Graph — Foreign Mobile Robotics Authorization",
+    "category": "Robotics & Hardware Access",
+    "subcategory": "FCC market access",
+    "concept": "Regulatory origin and equipment authorization tracker for mobile robotics manufacturers navigating July 2026 FCC Covered List restrictions.",
+    "customer": "Mobile robot OEMs, importers, distributors, and telecommunications certification bodies",
+    "problem": "Uncertainty surrounding FCC Covered List restrictions on foreign-produced mobile robots",
+    "overallScore": 80,
+    "tags": [
+      "robotics",
+      "FCC",
+      "market-access",
+      "supply-chain",
+      "hardware-compliance"
+    ],
+    "normalizedText": "fcc robot market-access graph foreign mobile robotics authorization regulatory origin and equipment authorization tracker for mobile robotics manufacturers navigating july 2026 fcc covered list restrictions uncertainty surrounding fcc covered list restrictions on foreign-produced mobile robots mobile robot oems importers distributors and telecommunications certification bodies robotics hardware access robotics fcc market-access supply-chain hardware-compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-302",
+    "slug": "controlright-land-registry-preflight-uk-property",
+    "name": "ControlRight — Contract-to-Land-Registry Preflight & Event Clock",
+    "category": "Real Estate & Legal Tech",
+    "subcategory": "land registry compliance",
+    "concept": "Automated data extraction and 60-day event tracking engine for UK contractual land-control arrangements under HM Land Registry digital rules.",
+    "customer": "UK conveyancing law firms, property developers, and land agents",
+    "problem": "Manual data extraction errors and missed 60-day filing deadlines for HMLR land-control filings",
+    "overallScore": 79,
+    "tags": [
+      "proptech",
+      "HMLR",
+      "land-registry",
+      "legal-tech",
+      "UK-property"
+    ],
+    "normalizedText": "controlright contract-to-land-registry preflight event clock automated data extraction and 60-day event tracking engine for uk contractual land-control arrangements under hm land registry digital rules manual data extraction errors and missed 60-day filing deadlines for hmlr land-control filings uk conveyancing law firms property developers and land agents real estate legal tech proptech hmlr land-registry legal-tech uk-property"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-303",
+    "slug": "publisher-rights-probe-ai-search-attribution",
+    "name": "Publisher Rights Probe — AI Search Publisher Conduct & Attribution Monitor",
+    "category": "Media Tech & Publisher Rights",
+    "subcategory": "AI search monitoring",
+    "concept": "Independent measurement network that deploys canary content to monitor AI search engines for content usage, attribution accuracy, and opt-out compliance.",
+    "customer": "Digital news publishers, media trade groups, and digital content owners",
+    "problem": "Inability for publishers to verify whether AI search engines respect opt-out rules and attribution requirements",
+    "overallScore": 77,
+    "tags": [
+      "CMA",
+      "publisher-rights",
+      "AI-search",
+      "attribution",
+      "canary-testing"
+    ],
+    "normalizedText": "publisher rights probe ai search publisher conduct attribution monitor independent measurement network that deploys canary content to monitor ai search engines for content usage attribution accuracy and opt-out compliance inability for publishers to verify whether ai search engines respect opt-out rules and attribution requirements digital news publishers media trade groups and digital content owners media tech publisher rights cma publisher-rights ai-search attribution canary-testing"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-304",
+    "slug": "instant-payment-reality-grid-vop-simulation",
+    "name": "Instant-Payment Reality Grid — VoP & Non-Euro EU Instant Payment Simulator",
+    "category": "Fintech & Payment Infrastructure",
+    "subcategory": "instant payments",
+    "concept": "Multi-bank synthetic test network evaluating Verification of Payee (VoP) accuracy, character diacritics, and latency across non-euro EU payment providers.",
+    "customer": "Non-euro European PSPs, challenger banks, and payment gateways in Czechia, Poland, Hungary, Romania",
+    "problem": "Verification of Payee (VoP) failures caused by accented names, corporate aliases, and bank mismatch rules",
+    "overallScore": 77,
+    "tags": [
+      "instant-payments",
+      "VoP",
+      "ECB",
+      "fintech",
+      "payment-testing"
+    ],
+    "normalizedText": "instant-payment reality grid vop non-euro eu instant payment simulator multi-bank synthetic test network evaluating verification of payee vop accuracy character diacritics and latency across non-euro eu payment providers verification of payee vop failures caused by accented names corporate aliases and bank mismatch rules non-euro european psps challenger banks and payment gateways in czechia poland hungary romania fintech payment infrastructure instant-payments vop ecb fintech payment-testing"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-305",
+    "slug": "clp-render-to-shelf-drift-gate-chemical-labels",
+    "name": "CLP Render-to-Shelf Drift Gate — Chemical Label & SDS Output Alignment",
+    "category": "Chemical & Material Compliance",
+    "subcategory": "CLP chemical labelling",
+    "concept": "Automated regression testing engine that compares updated chemical Safety Data Sheets (SDS) against actual print artwork files and e-commerce listings.",
+    "customer": "SME chemical formulators, lubricant blenders, detergent manufacturers, and distributors",
+    "problem": "Printed container labels and e-commerce listings displaying outdated hazard symbols after SDS updates",
+    "overallScore": 76,
+    "tags": [
+      "CLP",
+      "ECHA",
+      "chemical-safety",
+      "SDS",
+      "label-alignment"
+    ],
+    "normalizedText": "clp render-to-shelf drift gate chemical label sds output alignment automated regression testing engine that compares updated chemical safety data sheets sds against actual print artwork files and e-commerce listings printed container labels and e-commerce listings displaying outdated hazard symbols after sds updates sme chemical formulators lubricant blenders detergent manufacturers and distributors chemical material compliance clp echa chemical-safety sds label-alignment"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-306",
+    "slug": "subscription-rights-chaos-lab-recurring-payment-qa",
+    "name": "Subscription Rights Chaos Lab — Recurring Payment State-Machine QA",
+    "category": "Consumer Protection & Billing Tech",
+    "subcategory": "subscription compliance",
+    "concept": "Automated lifecycle test suite for subscription platforms to verify renewal notices, 14-day cooling-off refunds, and one-click cancellation flows.",
+    "customer": "SaaS platforms, media subscription businesses, and e-commerce box services",
+    "problem": "Silent failures in subscription renewal reminder emails and online cancellation state transitions",
+    "overallScore": 75,
+    "tags": [
+      "subscription",
+      "billing",
+      "consumer-rights",
+      "state-machine",
+      "cancellation-QA"
+    ],
+    "normalizedText": "subscription rights chaos lab recurring payment state-machine qa automated lifecycle test suite for subscription platforms to verify renewal notices 14-day cooling-off refunds and one-click cancellation flows silent failures in subscription renewal reminder emails and online cancellation state transitions saas platforms media subscription businesses and e-commerce box services consumer protection billing tech subscription billing consumer-rights state-machine cancellation-qa"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-307",
+    "slug": "connected-vehicle-origin-graph-automotive-compliance",
+    "name": "Connected-Vehicle Origin Graph — MY2027 Vehicle Software Origin Compliance",
+    "category": "Automotive & Supply Chain",
+    "subcategory": "connected vehicle compliance",
+    "concept": "Supply-chain software origin and ECU dependency graph for automotive OEMs preparing for U.S. Model Year 2027 connected-vehicle restrictions.",
+    "customer": "Tier-1 automotive suppliers, EV manufacturers, and automotive compliance counsel",
+    "problem": "Inability to verify foreign software component origin across complex ECU software BOMs",
+    "overallScore": 73,
+    "tags": [
+      "automotive",
+      "BIS",
+      "connected-vehicles",
+      "supply-chain",
+      "software-origin"
+    ],
+    "normalizedText": "connected-vehicle origin graph my2027 vehicle software origin compliance supply-chain software origin and ecu dependency graph for automotive oems preparing for u s model year 2027 connected-vehicle restrictions inability to verify foreign software component origin across complex ecu software boms tier-1 automotive suppliers ev manufacturers and automotive compliance counsel automotive supply chain automotive bis connected-vehicles supply-chain software-origin"
   }
 ]
