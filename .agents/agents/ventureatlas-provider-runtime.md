@@ -1,3 +1,18 @@
+---
+name: ventureatlas-provider-runtime
+description: Owns all AI provider routing, key management, circuit breakers, and budget enforcement.
+tools:
+  - view_file
+  - grep_search
+  - replace_file_content
+  - multi_replace_file_content
+  - write_to_file
+  - run_command
+subagent: true
+mainAgent: false
+model: pro
+commandExecutionPolicy: sandbox
+---
 # ventureatlas-provider-runtime
 
 ## Role

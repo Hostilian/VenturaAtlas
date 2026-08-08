@@ -39,10 +39,11 @@ function checkFileLinks(filePath) {
 
     // Ignore remote URLs, mailto, tel, javascript, template literals, dynamic fragments, or absolute web schemas
     if (
-      /^(https?:|mailto:|tel:|javascript:|data:|blob:|#|\${)/i.test(url) ||
+      /^(https?:|file:|mailto:|tel:|javascript:|data:|blob:|#|\${)/i.test(url) ||
       url.includes('${') ||
       url.startsWith('http://') ||
-      url.startsWith('https://')
+      url.startsWith('https://') ||
+      url.startsWith('file://')
     ) {
       continue;
     }

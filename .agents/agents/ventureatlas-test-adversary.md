@@ -1,3 +1,18 @@
+---
+name: ventureatlas-test-adversary
+description: Creates new tests to catch real bugs. Does NOT fix implementations — reports to owning agents.
+tools:
+  - view_file
+  - grep_search
+  - replace_file_content
+  - multi_replace_file_content
+  - write_to_file
+  - run_command
+subagent: true
+mainAgent: false
+model: pro
+commandExecutionPolicy: sandbox
+---
 # ventureatlas-test-adversary
 
 ## Role

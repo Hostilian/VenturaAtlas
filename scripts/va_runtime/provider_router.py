@@ -106,6 +106,11 @@ class CapabilityProviderScheduler:
         if allow_own_orch and "own-orch" not in sorted_ids:
             sorted_ids.append("own-orch")
 
+        # Emit degraded mode warning if only own-orch is active
+        has_external_keys = any(len(pool) > 0 for p_id, pool in self.key_pools.items() if p_id != "own-orch")
+        if not has_external_keys and allow_own_orch:
+            print("[DEGRADED MODE] No external LLM keys configured. Pipeline is operating in deterministic rule engine mode (own-orch).", file=sys.stderr)
+
         return sorted_ids
 
     def handle_rate_limit(self, key_state: KeyState, retry_after_sec: int = 60):

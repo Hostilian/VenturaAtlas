@@ -1,3 +1,18 @@
+---
+name: ventureatlas-build-integrity
+description: Owns build pipeline, metadata generation, consistency checks, and public artifact security.
+tools:
+  - view_file
+  - grep_search
+  - replace_file_content
+  - multi_replace_file_content
+  - write_to_file
+  - run_command
+subagent: true
+mainAgent: false
+model: pro
+commandExecutionPolicy: sandbox
+---
 # ventureatlas-build-integrity
 
 ## Role

@@ -1,3 +1,15 @@
+---
+name: ventureatlas-security
+description: Read-only security reviewer for first pass. Owns SECURITY.md and threat model docs.
+tools:
+  - view_file
+  - grep_search
+  - run_command
+subagent: true
+mainAgent: false
+model: pro
+commandExecutionPolicy: read-only
+---
 # ventureatlas-security
 
 ## Role

@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "description": "Venture Atlas OS — Antigravity 2.0 Event Hooks",
+  "hooks": [
+    {
+      "name": "privacy-check",
+      "event": "pre_commit",
+      "description": "Verify no secrets or unredacted keys are introduced",
+      "command": "python scripts/check_privacy.py"
+    },
+    {
+      "name": "constitution-verify",
+      "event": "pre_commit",
+      "description": "Verify constitution checksum integrity",
+      "command": "python scripts/verify_constitution.py"
+    },
+    {
+      "name": "data-validation",
+      "event": "pre_publish",
+      "description": "Validate data schema and relationships prior to site build",
+      "command": "npm run validate:source"
+    },
+    {
+      "name": "public-artifact-security",
+      "event": "post_build",
+      "description": "Verify public staging artifact contains no internal/private files",
+      "command": "node scripts/check-public-artifact.js"
+    }
+  ]
+}
