@@ -519,7 +519,16 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
 
 
 def main():
-    log_info("=== Venture Atlas Autonomous Parallel Idea Engine v2.5 Started ===")
+    import argparse
+    parser = argparse.ArgumentParser(description='Venture Atlas Autonomous Generator')
+    parser.add_argument('--once', action='store_true', help='Execute single bounded pass (default)')
+    parser.add_argument('--max-concurrency', type=int, default=5, help='Maximum parallel workers')
+    parser.add_argument('--max-cost', type=int, default=3, help='Maximum cost class (0=free, 3=high)')
+    parser.add_argument('--worktrees', action='store_true', help='Enable Git worktree isolation for workers')
+    parser.add_argument('--no-promote', action='store_true', help='Disable automatic candidate promotion')
+    args, _ = parser.parse_known_args()
+
+    log_info(f"=== Venture Atlas Autonomous Parallel Idea Engine v2.5 Started (bounded={not args.worktrees}) ===")
     existing = load_existing_ideas()
     queue    = load_staging_queue()
     existing_names = get_all_existing_names(existing, queue)
@@ -532,7 +541,7 @@ def main():
     rejected  = 0
 
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    max_workers = min(IDEAS_PER_RUN, 5)
+    max_workers = min(IDEAS_PER_RUN, args.max_concurrency)
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [
