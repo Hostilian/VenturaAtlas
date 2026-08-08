@@ -77,3 +77,33 @@ To prevent conflicting edits between concurrent agents, each agent owns specific
 - Capability scheduling routes complex reasoning, research, and adversarial reviews to appropriate tiers (`fcc-claude`, `active-api`, `deepseek-api`, `anthropic-full`).
 - Circuit breaker opens after 3 consecutive failures for 180 seconds.
 - Logged event stream maintained in `.agent-state/logs/unattended-runner.log`.
+
+---
+
+## 6 Core AI Agent Operational Categories & Workspace Skills
+
+Every specialist subagent operates within one of 6 core operational categories and leverages corresponding workspace skills from `.agents/skills/`:
+
+### 1. Multi-Agent Orchestration & Lock-Free Coordination
+- Skills: `va-multiagent-coordination`, `va-multiagent-failover`
+- Agents: `autonomous-orchestration-agent`, `provider-router-agent`, `ventureatlas-provider-runtime`
+
+### 2. Security, Auth & Zero-Critical QA
+- Skills: `va-security-codeql-zero-critical`, `va-stripe-payment-idempotency`
+- Agents: `security-privacy-agent`, `ventureatlas-security`, `payments-engineer`
+
+### 3. Data Systems, Outbox & Migrations
+- Skills: `va-transactional-outbox-event-engine`, `va-flyway-schema-versioning`
+- Agents: `data-integrity-agent`, `ventureatlas-data-safety`, `backend-engineer`
+
+### 4. Regulatory, Compliance & Diligence
+- Skills: `va-regulatory-compliance-validator`, `va-yc-investor-diligence-package`
+- Agents: `research-intelligence-agent`, `evidence-provenance-agent`, `opportunity-economics-agent`
+
+### 5. Frontend, UX, i18n & Accessibility
+- Skills: `va-wcag-accessibility-design-tokens`, `va-i18n-multilingual-localization`
+- Agents: `product-ux-architect`, `frontend-platform-agent`, `ventureatlas-public-site`, `frontend-engineer`
+
+### 6. E2E Testing, Telemetry & Codebase Graph Analysis
+- Skills: `va-playwright-e2e-critical-journeys`, `va-opentelemetry-observability-tracing`, `graphify-codebase-analysis`
+- Agents: `test-quality-agent`, `red-team-critic-agent`, `integration-release-agent`, `ventureatlas-test-adversary`
