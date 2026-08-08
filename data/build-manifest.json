@@ -1,12 +1,12 @@
 {
-  "dataRevision": "7a70bb0dd03b1086",
-  "buildRevision": "2.3.0-9d197f4",
-  "gitCommit": "9d197f4",
-  "generatedAt": "2026-08-08T02:57:43.660Z",
+  "dataRevision": "b6c0e54e23943d09",
+  "buildRevision": "2.3.0-b85b44c",
+  "gitCommit": "b85b44c",
+  "generatedAt": "2026-08-08T03:15:19.868Z",
   "files": {
     "ideas.json": {
-      "sha256": "a65e7ee1498b2cf4ba055d896c3139bf47963d5d3463800414d292a322bfd2de",
-      "bytes": 4377703
+      "sha256": "e9511351a528c3f4d9d7e316748a2dc077e6d9237c8b3ccb68c27e70605a5549",
+      "bytes": 4392508
     },
     "idea-staging-queue.json": {
       "sha256": "58c324bb4df8edae4e9b81834e8187df715d8a3ed69613a0120215875ca36054",
@@ -21,11 +21,11 @@
       "bytes": 30816
     },
     "rankings.json": {
-      "sha256": "8f9d4528d82b9d6c8f297bd8a12e0b6aa60ef12900221a4377423f37f1695633",
-      "bytes": 145468
+      "sha256": "362443b3e30eacf10769f9cc0acbcec24208aba08dcced0f92c54cab66b1be9e",
+      "bytes": 151643
     },
     "repository-meta.json": {
-      "sha256": "57b9f7d502f0ffb59cc7370e0b434c5dbd9a45a45c0f749e6b0cfd39c551a610",
+      "sha256": "877ff1067c0fe2af4ccc05786fd2395d7ff648db32c7d2240e481e92cbe3f498",
       "bytes": 826
     }
   }

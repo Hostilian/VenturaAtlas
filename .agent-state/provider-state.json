@@ -1,58 +1,58 @@
 {
   "providers": {
     "hermes-ollama": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:26.709739+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "omniRoute": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:30.829685+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "fcc-claude": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:31.303259+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "active-api": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:31.348248+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "deepseek-api": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:31.382471+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-08T02:57:53.357518+00:00",
-      "totalCalls": 146,
-      "successCalls": 146
+      "lastUsed": "2026-08-08T03:15:17.283814+00:00",
+      "totalCalls": 65,
+      "successCalls": 65
     },
     "anthropic-full": {
-      "failures": 12,
-      "circuitUntil": "2026-08-08T02:27:31.577854+00:00",
+      "failures": 0,
+      "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 0,
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-08T02:57:53.399172+00:00",
-  "totalIdeasGenerated": 2,
+  "lastRun": "2026-08-08T03:15:17.426437+00:00",
+  "totalIdeasGenerated": 0,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
-  "totalCandidatesStaged": 2
+  "totalCandidatesStaged": 0
 }

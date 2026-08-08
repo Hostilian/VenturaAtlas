@@ -72,8 +72,10 @@ def main():
     log("=== Venture Atlas Bounded Orchestrator Initialized ===")
     log(f"Config: max_iterations={max_iterations}, max_runtime_minutes={args.max_runtime_minutes}, dry_run={args.dry_run}")
 
-    os.environ["IDEAS_PER_ITERATION"] = "5"
-    os.environ["VA_DISCOVERY_MAX_CONCURRENCY"] = "5"
+    ideas_per_iter = os.environ.get("IDEAS_PER_ITERATION", "15")
+    max_concurrency = os.environ.get("VA_DISCOVERY_MAX_CONCURRENCY", "15")
+    os.environ["IDEAS_PER_ITERATION"] = ideas_per_iter
+    os.environ["VA_DISCOVERY_MAX_CONCURRENCY"] = max_concurrency
 
     with process_file_lock(LOCK_PATH):
         iteration = 0
@@ -87,8 +89,8 @@ def main():
             log(f"--- Starting Bounded Work Iteration #{iteration}/{max_iterations} ---")
 
             # 1. Parallel Idea Generation
-            log("Step 1/5: Running discovery workers...")
-            r1 = run_step("discovery", [sys.executable, "scripts/autonomous-idea-generator.py"], dry_run=args.dry_run)
+            log(f"Step 1/5: Running discovery workers (ideas={ideas_per_iter}, concurrency={max_concurrency})...")
+            r1 = run_step("discovery", [sys.executable, "scripts/autonomous-idea-generator.py", "--max-concurrency", max_concurrency], dry_run=args.dry_run)
             if r1.status == "failed":
                 log(f"[WARN] Discovery worker encountered errors: {r1.stderr_tail}")
 
