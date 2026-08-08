@@ -71,6 +71,10 @@ function main() {
     } else if (filePath.endsWith('index.html')) {
       content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ evidence-backed business ideas`);
       content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ evidence-backed business ideas with scores`);
+      content = content.replace(/<span data-total-ideas>\d+<\/span>/g, `<span data-total-ideas>${meta.counts.canonicalIdeas}</span>`);
+      content = content.replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`);
+      content = content.replace(/<span data-total-sources>\d+<\/span>/g, `<span data-total-sources>${meta.counts.sources}</span>`);
+      content = content.replace(/<span data-total-prompts>\d+<\/span>/g, `<span data-total-prompts>${meta.counts.prompts}</span>`);
     }
 
     fs.writeFileSync(filePath, content, 'utf8');

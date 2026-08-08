@@ -1217,3 +1217,7 @@ tr:last-child td { border-bottom: none; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Command Palette Import */
+@import "./components/command-palette.css";
+

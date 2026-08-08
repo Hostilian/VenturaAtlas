@@ -1,13 +1,13 @@
 {
-  "dataRevision": "47b31ecddf061a2d",
-  "buildRevision": "2.3.0-d045761",
-  "gitCommit": "d045761",
-  "generatedAt": "2026-08-08T02:26:21.082Z",
+  "dataRevision": "ff70608f7383e81f",
+  "buildRevision": "2.3.0-06b75a5",
+  "gitCommit": "06b75a5",
+  "generatedAt": "2026-08-08T02:29:26.456Z",
   "files": {
-    "ideas.json": "47b31ecddf061a2d",
-    "categories.json": "47b31ecddf061a2d",
-    "sources.json": "47b31ecddf061a2d",
-    "rankings.json": "47b31ecddf061a2d",
-    "repository-meta.json": "47b31ecddf061a2d"
+    "ideas.json": "ff70608f7383e81f",
+    "categories.json": "ff70608f7383e81f",
+    "sources.json": "ff70608f7383e81f",
+    "rankings.json": "ff70608f7383e81f",
+    "repository-meta.json": "ff70608f7383e81f"
   }
 }

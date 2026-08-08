@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-07T17:04:58.488679+00:00",
+  "generatedAt": "2026-08-08T02:27:51.731698+00:00",
   "totalIdeas": 185,
   "algorithm": "weighted-composite-v2",
   "weights": {
@@ -3539,36 +3539,6 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-07T16:59:46.128282+00:00",
-      "top5": [
-        {
-          "id": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 92.5
-        },
-        {
-          "id": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 92.1
-        },
-        {
-          "id": "idea-275",
-          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
-          "score": 91.7
-        },
-        {
-          "id": "idea-261",
-          "name": "BorderGraph — EU Product Compliance Control Plane",
-          "score": 91.3
-        },
-        {
-          "id": "idea-276",
-          "name": "MachineKey — Unified Industrial Machine Telemetry API",
-          "score": 90.9
-        }
-      ]
-    },
-    {
       "snapshotAt": "2026-08-07T17:00:16.854351+00:00",
       "top5": [
         {
@@ -3810,6 +3780,36 @@
     },
     {
       "snapshotAt": "2026-08-07T17:04:58.488679+00:00",
+      "top5": [
+        {
+          "id": "idea-273",
+          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+          "score": 92.5
+        },
+        {
+          "id": "idea-274",
+          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+          "score": 92.1
+        },
+        {
+          "id": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 91.7
+        },
+        {
+          "id": "idea-261",
+          "name": "BorderGraph — EU Product Compliance Control Plane",
+          "score": 91.3
+        },
+        {
+          "id": "idea-276",
+          "name": "MachineKey — Unified Industrial Machine Telemetry API",
+          "score": 90.9
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-08T02:27:51.731698+00:00",
       "top5": [
         {
           "id": "idea-273",

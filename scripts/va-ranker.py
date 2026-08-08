@@ -88,18 +88,64 @@ def compute_headline(idea: dict) -> float:
             weight_sum += w
     return round(total / weight_sum if weight_sum else 50.0, 1)
 
+def compute_attractiveness(idea: dict) -> float:
+    """Compute Opportunity Attractiveness score (0-100)."""
+    weights = {"problemSeverity": 0.2, "willingnessToPay": 0.2, "marketDemand": 0.15, "revenuePotential": 0.15, "grossMarginPotential": 0.1, "defensibility": 0.1, "scalability": 0.1}
+    total, weight_sum = 0.0, 0.0
+    for dim, w in weights.items():
+        v = get_val(idea, dim)
+        if v is not None:
+            total += v * w
+            weight_sum += w
+    raw_avg = (total / weight_sum) if weight_sum else 7.0
+    return round(raw_avg * 10.0 if raw_avg <= 10 else raw_avg, 1)
+
+def compute_founder_fit(idea: dict) -> float:
+    """Compute baseline Founder Fit score (0-100)."""
+    weights = {"speedToFirstRevenue": 0.25, "lowStartupCost": 0.25, "easeOfMvp": 0.2, "operationalSimplicity": 0.15, "founderAccessibility": 0.15}
+    total, weight_sum = 0.0, 0.0
+    for dim, w in weights.items():
+        v = get_val(idea, dim)
+        if v is not None:
+            total += v * w
+            weight_sum += w
+    raw_avg = (total / weight_sum) if weight_sum else 7.0
+    return round(raw_avg * 10.0 if raw_avg <= 10 else raw_avg, 1)
+
+def compute_evidence_confidence(idea: dict) -> float:
+    """Compute Evidence Confidence score (0-100)."""
+    sources = idea.get("sourceReferences", [])
+    has_disconfirming = idea.get("validationChecklist", {}).get("adversarialPassCompleted", False)
+    base = 50.0
+    if len(sources) >= 5:
+        base += 30.0
+    elif len(sources) >= 2:
+        base += 15.0
+    elif len(sources) == 1:
+        base += 5.0
+    if has_disconfirming:
+        base += 20.0
+    return min(100.0, round(base, 1))
+
 def rank_ideas(ideas: list) -> list:
     ranked = []
     for rank_pos, idea in enumerate(
         sorted(ideas, key=lambda x: compute_headline(x), reverse=True), start=1
     ):
         score = compute_headline(idea)
+        attractiveness = compute_attractiveness(idea)
+        founder_fit = compute_founder_fit(idea)
+        evidence_conf = compute_evidence_confidence(idea)
+        
         ranked.append({
             "rank": rank_pos,
             "id": idea.get("id", "?"),
             "name": idea.get("name", "?"),
             "category": idea.get("category", "?"),
             "score": score,
+            "opportunityAttractiveness": attractiveness,
+            "founderFit": founder_fit,
+            "evidenceConfidence": evidence_conf,
             "checklist": idea.get("validationChecklist", {}).get("scorePercentage", 0),
             "killFlagged": idea.get("killCriteria", {}).get("killFlagged", False),
             "provider": idea.get("provenance", {}).get("provider", "legacy"),

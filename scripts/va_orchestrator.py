@@ -544,16 +544,27 @@ def health_check() -> dict:
 
 
 # ── Core Orchestration Call ────────────────────────────────────────────────────
-PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
+from va_runtime.provider_router import get_provider_scheduler
 
-def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True) -> tuple[str, str]:
+DEFAULT_PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
+
+def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True, required_capabilities: list[str] = None, max_cost_class: int = 3) -> tuple[str, str]:
     """
-    Try each provider in tier order, respecting circuit breakers.
+    Try providers matched by capabilities and cost budget, respecting circuit breakers.
     Returns (response_text, provider_name_used).
     Own orchestrator is last resort and always succeeds.
     """
     state = _load_state()
-    for provider in PROVIDER_ORDER:
+    scheduler = get_provider_scheduler()
+    candidate_providers = scheduler.select_providers_for_task(
+        required_capabilities=required_capabilities,
+        max_cost_class=max_cost_class,
+        allow_own_orch=allow_own_orch
+    )
+    if not candidate_providers:
+        candidate_providers = DEFAULT_PROVIDER_ORDER
+
+    for provider in candidate_providers:
         if provider == "own-orch" and not allow_own_orch:
             continue
         ps = state["providers"].get(provider, {})
@@ -592,6 +603,7 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True)
     resp = _call_own_orchestrator(prompt, domain_hint)
     _record_success(state, "own-orch")
     return resp, "own-orch"
+
 
 
 # ── Idea Discovery Prompt Builder ──────────────────────────────────────────────

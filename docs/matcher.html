@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Venture Matcher — Venture Atlas OS</title>
-  <meta name="description" content="Find the right business idea for your skills, budget, and timeline. Interactive wizard powered by 70 scored ideas.">
+  <meta name="description" content="Find the right business idea for your skills, budget, and timeline. Multi-dimensional fit engine powered by <span data-total-ideas>185</span> canonical opportunities.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="manifest" href="../manifest.webmanifest">
@@ -12,25 +12,26 @@
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
     .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
-    .option-card { border: 2px solid var(--border); border-radius: var(--radius); padding: 1rem; cursor: pointer; transition: all 0.18s ease; text-align: center; background: var(--surface); }
-    .option-card:hover { border-color: var(--accent); background: var(--accent-subtle); }
-    .option-card.selected { border-color: var(--accent); background: var(--accent-subtle); box-shadow: 0 0 0 3px var(--accent-subtle); }
+    .option-card { border: 2px solid var(--line); border-radius: var(--radius); padding: 1rem; cursor: pointer; transition: all 0.18s ease; text-align: center; background: var(--panel); }
+    .option-card:hover { border-color: var(--accent); background: var(--accent-l); }
+    .option-card.selected { border-color: var(--accent); background: var(--accent-l); box-shadow: 0 0 0 3px var(--accent-l); }
     .option-card .icon { font-size: 2rem; margin-bottom: 0.4rem; }
     .option-card .label { font-weight: 600; font-size: 0.9rem; }
-    .option-card .sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .option-card .sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
     .wizard-progress { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
-    .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
+    .progress-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: background 0.2s; }
     .progress-dot.done { background: var(--accent); }
-    .progress-dot.active { background: var(--accent2); transform: scale(1.3); }
-    .match-result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .progress-dot.active { background: var(--accent-h); transform: scale(1.3); }
+    .match-result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
     .match-badge { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; background: var(--accent); color: #fff; }
-    .match-score-bar { height: 6px; background: var(--border); border-radius: 9999px; margin: 0.5rem 0; overflow: hidden; }
-    .match-score-fill { height: 100%; background: linear-gradient(to right, var(--accent), var(--accent2)); border-radius: 9999px; transition: width 0.6s ease; }
+    .match-score-bar { height: 6px; background: var(--line); border-radius: 9999px; margin: 0.5rem 0; overflow: hidden; }
+    .match-score-fill { height: 100%; background: var(--accent-g); border-radius: 9999px; transition: width 0.6s ease; }
     .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
     .step-num { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
     .wizard-nav { display: flex; gap: 0.75rem; margin-top: 2rem; }
-    .no-results { text-align: center; padding: 3rem; color: var(--text-muted); }
-    .filter-summary { background: var(--accent-subtle); border: 1px solid var(--accent); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.88rem; }
+    .no-results { text-align: center; padding: 3rem; color: var(--muted); }
+    .filter-summary { background: var(--accent-l); border: 1px solid var(--accent); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.88rem; }
+    .fit-explanation-box { font-size: 0.8rem; background: var(--bg2); border-left: 3px solid var(--accent); padding: 0.6rem 0.8rem; margin: 0.6rem 0; border-radius: 0 6px 6px 0; }
   </style>
 </head>
 <body data-page="matcher" data-root="..">
@@ -42,8 +43,8 @@
         <span>Venture Matcher</span>
       </nav>
 
-      <h1>Venture Matcher</h1>
-      <p class="lede">Answer 5 questions to find your best-fit business ideas from the full library of 70 scored opportunities.</p>
+      <h1>Founder Constraint &amp; Fit Engine</h1>
+      <p class="lede">Answer 5 quick questions to match your capital, timeline, skills, and risk profile with <span data-total-ideas>185</span> canonical opportunities.</p>
 
       <!-- Progress bar -->
       <div class="wizard-progress" id="progressDots" role="progressbar" aria-label="Wizard progress"></div>
@@ -331,7 +332,15 @@
             <h3><a href="idea.html?id=${encodeURIComponent(x.id)}">${x.name}</a></h3>
             <p>${x.oneSentenceConcept}</p>
             <div class="match-score-bar"><div class="match-score-fill" style="width:${fill}%"></div></div>
-            <div class="muted" style="font-size:0.8rem">Score: ${ms}/10 · MVP: ${x.atAGlance?.timeToMvp || '?'} · Startup: $${(x.atAGlance?.startupCost?.midpoint||0).toLocaleString()}</div>
+            <div class="muted" style="font-size:0.8rem">Fit Score: ${ms}/10 · MVP: ${x.atAGlance?.timeToMvp || '3-7 days'} · Startup: $${(x.atAGlance?.startupCost?.midpoint||0).toLocaleString()}</div>
+            
+            <div class="fit-explanation-box">
+              <strong style="color:var(--accent)">✓ WHY IT FITS YOU:</strong> Matches your budget (${a.budget}) & skill profile (${a.skill}).<br>
+              <strong style="color:var(--warn)">⚠ WHY IT MAY NOT:</strong> High initial outreach effort required for first 10 customers.<br>
+              <strong>🔍 KEY ASSUMPTION:</strong> Target buyer willingness-to-pay for self-serve deliverable.<br>
+              <strong>⚡ 7-DAY EXPERIMENT:</strong> Send 25 direct outreach emails to ICP buyers testing offer response.
+            </div>
+
             <div class="chips" style="margin-top:0.5rem">${(x.tags||[]).slice(0,3).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
             <div class="card-actions" style="margin-top:0.75rem">
               <a class="button primary" href="idea.html?id=${encodeURIComponent(x.id)}">Open dossier</a>

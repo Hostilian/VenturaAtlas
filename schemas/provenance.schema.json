@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VentureAtlasClaimProvenance",
+  "type": "object",
+  "required": ["claimId", "ideaId", "text", "claimType", "sourceTier", "confidence"],
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "pattern": "^claim-[a-f0-9]{8}$"
+    },
+    "ideaId": {
+      "type": "string",
+      "pattern": "^idea-[0-9]{3}$"
+    },
+    "text": {
+      "type": "string"
+    },
+    "claimType": {
+      "type": "string",
+      "enum": ["FACT", "ASSUMPTION", "INTERPRETATION", "PROJECTION", "USER_CLAIM", "UNKNOWN"]
+    },
+    "sourceTier": {
+      "type": "string",
+      "enum": ["TIER_A", "TIER_B", "TIER_C", "TIER_D", "UNVERIFIED"]
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unverified"]
+    },
+    "retrievedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastVerifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contradictionStatus": {
+      "type": "string",
+      "enum": ["none", "potential_contradiction", "resolved", "unreconciled"]
+    },
+    "disconfirmingPassCompleted": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,15 +1,18 @@
 """
-Venture Atlas OS — Unified Provider Router (P36-P39)
-=====================================================
-Multi-key rotation, safe alias logging, 429 Retry-After handling,
-and fine-grained key disabling for invalid auth.
+Venture Atlas OS — Capability-Aware Provider Scheduler & Health Manager
+=======================================================================
+Reads non-secret config/providers.json. Selects providers based on:
+1. Required task capabilities (e.g., classification, reasoning, research, adversarial_review)
+2. Provider health & circuit breaker state
+3. Cost class & latency preference
+4. Key pool availability (round-robin with key masking & error tracking)
+5. Graceful fallback to own-orch (tier 0 rule-based engine)
 """
 
 import os
 import sys
 import json
 import time
-import random
 import datetime
 import urllib.request
 import urllib.error
@@ -31,38 +34,79 @@ def mask_key(key: str) -> str:
         return "***"
     return f"{key[:4]}...{key[-4:]}"
 
-class ProviderRouter:
-    def __init__(self):
+class CapabilityProviderScheduler:
+    def __init__(self, config_path: str = CONFIG_PATH):
+        self.config_path = config_path
+        self.registry: Dict[str, Any] = {}
         self.key_pools: Dict[str, List[KeyState]] = {}
         self.rr_indices: Dict[str, int] = {}
+        self._load_config()
         self._init_keys()
 
+    def _load_config(self):
+        if os.path.exists(self.config_path):
+            try:
+                self.registry = read_json_safe(self.config_path, default_if_missing={})
+            except Exception:
+                self.registry = {}
+        if "providers" not in self.registry:
+            self.registry["providers"] = {}
+
     def _init_keys(self):
-        # OpenRouter keys
-        or_raw = os.environ.get("OPENROUTER_API_KEY", "")
-        or_keys = [k.strip() for k in or_raw.split(",") if k.strip() and not k.strip().startswith("sk-or-...")]
-        self.key_pools["openrouter"] = [KeyState(k, "openrouter", i) for i, k in enumerate(or_keys)]
-        self.rr_indices["openrouter"] = 0
+        providers = self.registry.get("providers", {})
+        for p_id, p_cfg in providers.items():
+            if not p_cfg.get("requiresApiKey", False):
+                continue
+            key_pool_env = p_cfg.get("keyPoolEnv", "")
+            legacy_key_env = p_cfg.get("legacyKeyEnv", "")
+            raw_keys = ""
+            if key_pool_env and os.environ.get(key_pool_env):
+                raw_keys = os.environ.get(key_pool_env, "")
+            elif legacy_key_env and os.environ.get(legacy_key_env):
+                raw_keys = os.environ.get(legacy_key_env, "")
+            
+            keys = [k.strip() for k in raw_keys.split(",") if k.strip() and not k.strip().startswith("sk-")]
+            self.key_pools[p_id] = [KeyState(k, p_id, i) for i, k in enumerate(keys)]
+            self.rr_indices[p_id] = 0
 
-        # Anthropic keys
-        ant_raw = os.environ.get("ANTHROPIC_API_KEY", "")
-        ant_keys = [k.strip() for k in ant_raw.split(",") if k.strip() and not k.strip().startswith("sk-ant-...")]
-        self.key_pools["anthropic"] = [KeyState(k, "anthropic", i) for i, k in enumerate(ant_keys)]
-        self.rr_indices["anthropic"] = 0
-
-        # DeepSeek keys
-        ds_raw = os.environ.get("DEEPSEEK_API_KEY", os.environ.get("ACTIVE_API_KEY", ""))
-        ds_keys = [k.strip() for k in ds_raw.split(",") if k.strip() and not k.strip().startswith("sk-ds-...")]
-        self.key_pools["deepseek"] = [KeyState(k, "deepseek", i) for i, k in enumerate(ds_keys)]
-        self.rr_indices["deepseek"] = 0
-
-    def get_next_key(self, provider: str) -> Optional[KeyState]:
-        pool = [ks for ks in self.key_pools.get(provider, []) if not ks.disabled and time.time() >= ks.cooldown_until]
+    def get_next_key(self, provider_id: str) -> Optional[KeyState]:
+        pool = [ks for ks in self.key_pools.get(provider_id, []) if not ks.disabled and time.time() >= ks.cooldown_until]
         if not pool:
             return None
-        idx = self.rr_indices.get(provider, 0) % len(pool)
-        self.rr_indices[provider] = idx + 1
+        idx = self.rr_indices.get(provider_id, 0) % len(pool)
+        self.rr_indices[provider_id] = idx + 1
         return pool[idx]
+
+    def select_providers_for_task(self, required_capabilities: List[str] = None, max_cost_class: int = 3, allow_own_orch: bool = True) -> List[str]:
+        """
+        Select ordered list of provider IDs matching task capabilities, sorted by cost class and health.
+        """
+        self._load_config()
+        providers = self.registry.get("providers", {})
+        candidates = []
+        req_caps = set(required_capabilities or [])
+
+        for p_id, p_cfg in providers.items():
+            if p_id == "own-orch" and not allow_own_orch:
+                continue
+            p_cost = p_cfg.get("costClass", 0)
+            if p_cost > max_cost_class:
+                continue
+
+            p_caps = set(p_cfg.get("capabilities", []))
+            if req_caps and not req_caps.intersection(p_caps) and "fallback" not in p_caps:
+                continue
+
+            candidates.append((p_cost, p_cfg.get("tier", 99), p_id))
+
+        # Sort by cost class ascending, then tier ascending
+        candidates.sort(key=lambda x: (x[0], x[1]))
+        sorted_ids = [c[2] for c in candidates]
+
+        if allow_own_orch and "own-orch" not in sorted_ids:
+            sorted_ids.append("own-orch")
+
+        return sorted_ids
 
     def handle_rate_limit(self, key_state: KeyState, retry_after_sec: int = 60):
         key_state.cooldown_until = time.time() + max(10, retry_after_sec)
@@ -72,7 +116,10 @@ class ProviderRouter:
         key_state.disabled = True
         print(f"[ERROR] Auth invalid for {key_state.alias} — key disabled", file=sys.stderr)
 
-_ROUTER = ProviderRouter()
+_SCHEDULER = CapabilityProviderScheduler()
 
-def get_provider_router() -> ProviderRouter:
-    return _ROUTER
+def get_provider_scheduler() -> CapabilityProviderScheduler:
+    return _SCHEDULER
+
+def get_provider_router():
+    return _SCHEDULER
