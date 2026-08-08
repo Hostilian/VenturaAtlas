@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isMember(roomId) {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/rooms/$(roomId)/members/$(request.auth.uid));
+    }
+    
+    function isOwner(roomId) {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/rooms/$(roomId)).data.ownerUid == request.auth.uid;
+    }
+    
+    function validString(field, maxLen) {
+      return field is string && field.size() <= maxLen;
+    }
+
+    // Rooms collection
+    match /rooms/{roomId} {
+      allow create: if isAuthenticated() && 
+        validString(request.resource.data.name, 100) &&
+        request.resource.data.ownerUid == request.auth.uid;
+        
+      allow read: if isAuthenticated() && (isMember(roomId) || resource.data.ownerUid == request.auth.uid);
+      allow update: if isOwner(roomId);
+      allow delete: if isOwner(roomId);
+
+      // Members subcollection
+      match /members/{uid} {
+        allow read: if isMember(roomId);
+        allow write: if isAuthenticated() && request.auth.uid == uid && validString(request.resource.data.displayName, 50);
+      }
+
+      // Votes subcollection
+      match /votes/{voteId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && request.resource.data.uid == request.auth.uid;
+      }
+
+      // Comments subcollection
+      match /comments/{commentId} {
+        allow read: if isMember(roomId);
+        allow create: if isMember(roomId) && 
+          request.resource.data.uid == request.auth.uid &&
+          validString(request.resource.data.body, 1000);
+        allow delete: if isMember(roomId) && resource.data.uid == request.auth.uid;
+      }
+
+      // Shortlist subcollection
+      match /shortlist/{ideaId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId);
+      }
+    }
+
+    // Public Aggregates (server-side managed, client read-only)
+    match /publicAggregates/{ideaId} {
+      allow read: if true;
+      allow write: if false; // Only Cloud Functions or Admin SDK can mutate public aggregates
+    }
+  }
+}

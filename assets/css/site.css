@@ -247,6 +247,58 @@ p  { color: var(--text2); }
 }
 #themeBtn:hover { background: var(--panel2); border-color: var(--line2); }
 
+.mobile-nav-toggle {
+  display: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media (max-width: 1024px) {
+  .desktop-navlinks { display: none !important; }
+  .mobile-nav-toggle { display: inline-flex !important; }
+}
+.mobile-nav-drawer {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-lg);
+}
+.mobile-nav-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.mobile-nav-content a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--panel2);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+}
+.mobile-nav-content a:hover {
+  background: var(--accent-l);
+  color: var(--accent-h);
+  border-color: var(--accent);
+}
+.desktop-ranking-table { display: block; }
+.mobile-ranking-cards { display: none; }
+@media (max-width: 768px) {
+  .desktop-ranking-table { display: none !important; }
+  .mobile-ranking-cards { display: flex !important; }
+}
+
 /* ================================================================
    MAIN LAYOUT
    ================================================================ */

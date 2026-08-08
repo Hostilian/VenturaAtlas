@@ -73,15 +73,15 @@ def execute_discovery():
         raise RuntimeError(f"Autonomous discovery failed with returncode {res.returncode}")
 
 def rebuild_metadata_and_site():
-    """Rebuild search index, metadata, and _site staging directory."""
-    log_event("INFO", "Rebuilding Derived Metadata & Site Artifacts")
-    cmd = ["npm", "run", "build"]
+    """Rebuild search index, metadata, run strict quality checks and _site staging directory."""
+    log_event("INFO", "Executing Fail-Closed Quality & Build Pipeline (npm run quality)")
+    cmd = ["npm", "run", "quality"]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=BASE_DIR)
     if res.returncode == 0:
-        log_event("INFO", "Build Pipeline Completed Successfully")
+        log_event("INFO", "Fail-Closed Quality & Build Pipeline Passed Cleanly")
     else:
-        log_event("ERROR", "Build Pipeline Failed", {"stderr": res.stderr[-500:]})
-        raise RuntimeError(f"Build pipeline failed with returncode {res.returncode}")
+        log_event("ERROR", "Quality/Build Pipeline Failed — PUBLICATION BLOCKED", {"stderr": res.stderr[-500:]})
+        raise RuntimeError(f"Quality pipeline failed with returncode {res.returncode}. Publication blocked.")
 
 def push_updates_to_github():
     """Push validated candidate publication branch to GitHub if GITHUB_TOKEN is available."""

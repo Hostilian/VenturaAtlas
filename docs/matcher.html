@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Venture Matcher — Venture Atlas OS</title>
-  <meta name="description" content="Find the right business idea for your skills, budget, and timeline. Multi-dimensional fit engine powered by <span data-total-ideas>185</span> canonical opportunities.">
+  <meta name="description" content="Find the right business idea for your skills, budget, and timeline. Multi-dimensional fit engine powered by canonical opportunities.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="manifest" href="../manifest.webmanifest">
@@ -44,7 +44,7 @@
       </nav>
 
       <h1>Founder Constraint &amp; Fit Engine</h1>
-      <p class="lede">Answer 5 quick questions to match your capital, timeline, skills, and risk profile with <span data-total-ideas>185</span> canonical opportunities.</p>
+      <p class="lede">Answer 5 quick questions to match your capital, timeline, skills, and risk profile with <span data-metric="ideas">228</span> canonical opportunities.</p>
 
       <!-- Progress bar -->
       <div class="wizard-progress" id="progressDots" role="progressbar" aria-label="Wizard progress"></div>
@@ -228,9 +228,11 @@
         <h2 id="resultsHeading">Your top matches</h2>
         <div class="filter-summary" id="filterSummary"></div>
         <div id="matchResults" class="match-result-grid"></div>
-        <div style="margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+        <div style="margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center">
           <button class="button ghost" id="restartWizard">Start over</button>
-          <a class="button primary" href="../index.html#directory">Browse all 70 ideas</a>
+          <button class="button secondary" id="shareResultsBtn">🔗 Share Match Results</button>
+          <button class="button secondary" id="addAllToRoomBtn">👥 Add All Matches to Room</button>
+          <a class="button primary" href="../index.html">Browse all <span data-metric="ideas">228</span> ideas</a>
         </div>
       </div>
 

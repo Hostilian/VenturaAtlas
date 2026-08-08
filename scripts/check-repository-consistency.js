@@ -137,12 +137,19 @@ for (const idea of ideas) {
 // 6. Rankings validation
 const rawRankings = readJson('data/rankings.json');
 const rankingsList = Array.isArray(rawRankings) ? rawRankings : (rawRankings?.rankings || []);
-if (rankingsList.length > 0 && Array.isArray(rankingsList[0].items)) {
-  const items = rankingsList[0].items;
-  for (const item of items) {
-    const id = item.id || item.ideaId;
-    if (id && !ideaIds.has(id)) {
-      errors.push(`Rankings references non-existent idea ID: ${id}`);
+if (rankingsList.length === 0) {
+  errors.push('data/rankings.json has no ranking views');
+}
+for (const view of rankingsList) {
+  if (!view.id || !view.title) {
+    errors.push('Ranking view missing id or title');
+  }
+  if (Array.isArray(view.items)) {
+    for (const item of view.items) {
+      const id = item.id || item.ideaId;
+      if (id && !ideaIds.has(id)) {
+        errors.push(`Rankings view '${view.id}' references non-existent idea ID: ${id}`);
+      }
     }
   }
 }

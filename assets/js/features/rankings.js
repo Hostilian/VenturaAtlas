@@ -1,93 +1,324 @@
-/* Venture Atlas OS — Rankings Feature Engine */
+/* Venture Atlas OS — Canonical Rankings Feature Engine (v2.3.0) */
 function initRankings() {
   const container = document.getElementById('ranking');
   const select = document.getElementById('rankingSelect');
   if (!container) return;
 
-  const rankingsData = window.VA?.rankings || [];
+  const rawRankings = window.VA?.rankings || [];
+  const rankingViews = Array.isArray(rawRankings) ? rawRankings : (rawRankings.rankings || []);
   const ideasData = window.VA?.ideas || [];
+  const ideasMap = new Map(ideasData.map(i => [i.id, i]));
 
-  const lenses = [
-    { id: 'overall', name: '🏆 Overall Top Opportunities', desc: 'Ranked by weighted composite headline score' },
-    { id: 'attractiveness', name: '💡 High Opportunity Attractiveness', desc: 'Ranked by problem severity, demand, and revenue potential' },
-    { id: 'founder_fit', name: '🎯 Best Solo Founder Fit', desc: 'Ranked by speed to revenue, low startup cost, and ease of MVP' },
-    { id: 'confidence', name: '🛡️ Highest Evidence Confidence', desc: 'Ranked by source quality, citations, and disconfirming pass completion' },
-    { id: 'speed', name: '⚡ Fastest Path to Revenue', desc: 'Ranked by speed to first customer dollar' },
-    { id: 'low_cost', name: '💸 Lowest Startup Capital', desc: 'Ranked by minimal initial financial requirement ($0–$100)' }
-  ];
-
-  if (select) {
-    select.innerHTML = lenses.map(l => `<option value="${l.id}">${l.name}</option>`).join('');
-    select.addEventListener('change', () => renderLens(select.value));
-  }
-
-  function renderLens(lensId) {
-    let sorted = [...ideasData];
-    const lensInfo = lenses.find(l => l.id === lensId) || lenses[0];
-
-    if (lensId === 'attractiveness') {
-      sorted.sort((a, b) => (b.compositeScores?.overallOpportunity || getIdeaScore(b, 'overall') || 0) - (a.compositeScores?.overallOpportunity || getIdeaScore(a, 'overall') || 0));
-    } else if (lensId === 'founder_fit') {
-      sorted.sort((a, b) => (b.compositeScores?.soloFounderPotential || getIdeaScore(b, 'confidence') || 0) - (a.compositeScores?.soloFounderPotential || getIdeaScore(a, 'confidence') || 0));
-    } else if (lensId === 'confidence') {
-      sorted.sort((a, b) => (b.sourceReferences?.length || 0) - (a.sourceReferences?.length || 0));
-    } else if (lensId === 'speed') {
-      sorted.sort((a, b) => (b.scores?.speedToFirstRevenue?.value || 0) - (a.scores?.speedToFirstRevenue?.value || 0));
-    } else if (lensId === 'low_cost') {
-      sorted.sort((a, b) => (b.scores?.lowStartupCost?.value || 0) - (a.scores?.lowStartupCost?.value || 0));
-    } else {
-      sorted.sort((a, b) => (b.atAGlance?.overallScore || getIdeaScore(b, 'overall') || 0) - (a.atAGlance?.overallScore || getIdeaScore(a, 'overall') || 0));
-    }
-
+  if (!rankingViews || rankingViews.length === 0) {
     container.innerHTML = `
-      <div style="margin-bottom:1.5rem;padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
-        <h2 style="font-size:1.1rem;margin-bottom:0.25rem">${lensInfo.name}</h2>
-        <p style="font-size:0.85rem;color:var(--text2);margin:0">${lensInfo.desc}</p>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Opportunity</th>
-              <th>Category</th>
-              <th>Attractiveness</th>
-              <th>Founder Fit</th>
-              <th>Evidence</th>
-              <th>Overall Score</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${sorted.slice(0, 50).map((item, idx) => {
-              const score = item.atAGlance?.overallScore || getIdeaScore(item, 'overall') || 50;
-              const attr = item.compositeScores?.overallOpportunity || (score * 0.95).toFixed(1);
-              const fit = item.compositeScores?.soloFounderPotential || (score * 0.9).toFixed(1);
-              const conf = item.sourceReferences?.length >= 2 ? 'High' : item.sourceReferences?.length === 1 ? 'Medium' : 'Basic';
-
-              return `
-                <tr>
-                  <td><strong>#${idx + 1}</strong></td>
-                  <td>
-                    <strong><a href="../ideas/${item.slug || item.id}.html">${escHTML(item.name)}</a></strong>
-                    <div style="font-size:0.78rem;color:var(--muted)">${escHTML(item.oneSentenceConcept || '')}</div>
-                  </td>
-                  <td><span class="chip status">${escHTML(item.category || '')}</span></td>
-                  <td><strong>${attr}</strong>/10</td>
-                  <td><strong>${fit}</strong>/10</td>
-                  <td><span class="chip">${conf}</span></td>
-                  <td><span class="score-badge" style="font-size:0.9rem">${score}</span></td>
-                  <td>
-                    <a href="../ideas/${item.slug || item.id}.html" class="button primary sm">Dossier</a>
-                  </td>
-                </tr>
-              `;
-            }).join('')}
-          </tbody>
-        </table>
+      <div class="empty-state" style="padding:2rem;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
+        <h3>No Ranking Views Loaded</h3>
+        <p style="color:var(--text2)">Unable to load canonical ranking views. Please check data connection.</p>
       </div>
     `;
+    return;
+  }
+
+  // Populate ranking dropdown selector dynamically
+  if (select) {
+    select.innerHTML = rankingViews.map(v => 
+      `<option value="${escHTML(v.id)}">${escHTML(v.title || v.id)} (${v.items?.length || 0} ideas)</option>`
+    ).join('');
+  }
+
+  // Parse URL query parameter ?ranking=<id>
+  function getQueryRanking() {
+    const params = new URLSearchParams(window.location.search);
+    const paramId = params.get('ranking');
+    if (paramId && rankingViews.some(v => v.id === paramId)) {
+      return paramId;
+    }
+    return rankingViews[0]?.id || 'overall-top-opportunities';
+  }
+
+  let activeRankingId = getQueryRanking();
+  if (select) select.value = activeRankingId;
+
+  // Filter & Search states
+  let searchQuery = '';
+  let selectedCategory = 'all';
+  let selectedLimit = 50;
+
+  function renderActiveView() {
+    const view = rankingViews.find(v => v.id === activeRankingId) || rankingViews[0];
+    if (!view) return;
+
+    // Filter items
+    let filteredItems = (view.items || []).map(item => {
+      const fullIdea = ideasMap.get(item.ideaId || item.id) || {};
+      return {
+        ...item,
+        fullIdea,
+        category: item.category || fullIdea.category || 'Uncategorized',
+        name: item.name || fullIdea.name || item.ideaId,
+        score: item.score ?? fullIdea.atAGlance?.overallScore ?? 0,
+        concept: fullIdea.oneSentenceConcept || ''
+      };
+    });
+
+    // Unique categories for filter
+    const categories = Array.from(new Set(filteredItems.map(i => i.category))).filter(Boolean).sort();
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      filteredItems = filteredItems.filter(i => 
+        i.name.toLowerCase().includes(q) || 
+        i.category.toLowerCase().includes(q) ||
+        i.concept.toLowerCase().includes(q) ||
+        (i.ideaId && i.ideaId.toLowerCase().includes(q))
+      );
+    }
+
+    if (selectedCategory !== 'all') {
+      filteredItems = filteredItems.filter(i => i.category === selectedCategory);
+    }
+
+    const totalMatching = filteredItems.length;
+    const itemsToDisplay = selectedLimit === 'all' ? filteredItems : filteredItems.slice(0, Number(selectedLimit));
+    const base = window.VA?.base || '..';
+
+    container.innerHTML = `
+      <div class="ranking-header" style="margin-bottom:1.25rem;padding:1.25rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+          <div>
+            <h2 style="font-size:1.25rem;margin-bottom:0.35rem">${escHTML(view.title)}</h2>
+            <p style="font-size:0.9rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(view.description || '')}</p>
+            <div style="display:flex;gap:0.75rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap">
+              <span><strong>Algorithm:</strong> ${escHTML(view.algorithmVersion || 'weighted-composite-v2')}</span>
+              <span>•</span>
+              <span><strong>Total Items:</strong> ${view.items?.length || 0}</span>
+              <span>•</span>
+              <span><strong>Views Available:</strong> ${rankingViews.length}</span>
+            </div>
+          </div>
+          <div>
+            <button id="shareRankingBtn" class="button secondary sm" style="display:inline-flex;align-items:center;gap:0.4rem">
+              <span>🔗</span> Share Ranking
+            </button>
+          </div>
+        </div>
+
+        <div class="ranking-filters" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:0.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)">
+          <input type="text" id="rankingSearchInput" placeholder="Search ideas or categories..." value="${escHTML(searchQuery)}" aria-label="Search rankings" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
+          <select id="rankingCategoryFilter" aria-label="Filter by category" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
+            <option value="all">All Categories (${categories.length})</option>
+            ${categories.map(c => `<option value="${escHTML(c)}" ${c === selectedCategory ? 'selected' : ''}>${escHTML(c)}</option>`).join('')}
+          </select>
+          <select id="rankingLimitSelect" aria-label="Items per view" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
+            <option value="25" ${selectedLimit == 25 ? 'selected' : ''}>Show Top 25</option>
+            <option value="50" ${selectedLimit == 50 ? 'selected' : ''}>Show Top 50</option>
+            <option value="100" ${selectedLimit == 100 ? 'selected' : ''}>Show Top 100</option>
+            <option value="all" ${selectedLimit === 'all' ? 'selected' : ''}>Show All (${totalMatching})</option>
+          </select>
+        </div>
+      </div>
+
+      ${itemsToDisplay.length === 0 ? `
+        <div style="padding:2rem;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
+          <p style="color:var(--text2)">No ideas match the selected search filter.</p>
+        </div>
+      ` : `
+        <!-- Desktop Workspace Table -->
+        <div class="table-wrap desktop-ranking-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:60px">Rank</th>
+                <th>Idea &amp; Concept</th>
+                <th>Category</th>
+                <th style="width:100px">Score</th>
+                <th style="width:100px">Evidence</th>
+                <th style="width:200px;text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${itemsToDisplay.map((item, idx) => {
+                const ideaId = item.ideaId || item.id;
+                const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score || 'N/A');
+                const ideaUrl = `${base}/docs/idea.html?id=${encodeURIComponent(ideaId)}`;
+                const isFav = isFavorite(ideaId);
+
+                return `
+                  <tr>
+                    <td><strong>#${item.rank || (idx + 1)}</strong></td>
+                    <td>
+                      <div>
+                        <strong><a href="${ideaUrl}" class="ranking-idea-link" data-id="${escHTML(ideaId)}">${escHTML(item.name)}</a></strong>
+                        ${item.killFlagged ? '<span class="chip danger sm" style="margin-left:0.4rem">⚠ Kill Flagged</span>' : ''}
+                      </div>
+                      ${item.concept ? `<div style="font-size:0.8rem;color:var(--text2);margin-top:0.15rem">${escHTML(item.concept)}</div>` : ''}
+                    </td>
+                    <td><span class="chip status">${escHTML(item.category)}</span></td>
+                    <td><span class="score-badge ${getScoreClass(item.score)}">${scoreVal}</span></td>
+                    <td><span class="chip ${item.checklist >= 50 ? 'success' : 'neutral'}">${item.checklist ? item.checklist + '%' : 'Basic'}</span></td>
+                    <td style="text-align:right">
+                      <div style="display:inline-flex;gap:0.3rem;align-items:center;justify-content:flex-end">
+                        <a href="${ideaUrl}" class="button primary sm" title="Open complete idea dossier">Open</a>
+                        <button class="button secondary sm btn-fav" data-id="${escHTML(ideaId)}" title="Toggle favorite">${isFav ? '★' : '☆'}</button>
+                        <button class="button secondary sm btn-compare" data-id="${escHTML(ideaId)}" title="Add to comparison">Compare</button>
+                        <button class="button secondary sm btn-room" data-id="${escHTML(ideaId)}" title="Add to Room shortlist">+ Room</button>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="mobile-ranking-cards" style="display:flex;flex-direction:column;gap:0.75rem">
+          ${itemsToDisplay.map((item, idx) => {
+            const ideaId = item.ideaId || item.id;
+            const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score || 'N/A');
+            const ideaUrl = `${base}/docs/idea.html?id=${encodeURIComponent(ideaId)}`;
+
+            return `
+              <div class="card" style="padding:1rem">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.4rem">
+                  <span style="font-weight:bold;font-size:0.9rem;color:var(--brand)">#${item.rank || (idx + 1)}</span>
+                  <span class="score-badge ${getScoreClass(item.score)}">${scoreVal}</span>
+                </div>
+                <h3 style="font-size:1rem;margin-bottom:0.3rem">
+                  <a href="${ideaUrl}">${escHTML(item.name)}</a>
+                </h3>
+                <div style="font-size:0.8rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(item.concept)}</div>
+                <div style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem">
+                  <span class="chip status">${escHTML(item.category)}</span>
+                  ${item.killFlagged ? '<span class="chip danger sm">⚠ Kill Flagged</span>' : ''}
+                </div>
+                <div style="display:flex;gap:0.4rem">
+                  <a href="${ideaUrl}" class="button primary sm" style="flex:1;text-align:center">Open Dossier</a>
+                  <button class="button secondary sm btn-compare" data-id="${escHTML(ideaId)}">Compare</button>
+                  <button class="button secondary sm btn-room" data-id="${escHTML(ideaId)}">+ Room</button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `}
+    `;
+
+    bindEvents();
+  }
+
+  function bindEvents() {
+    const searchInput = document.getElementById('rankingSearchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderActiveView();
+      });
+    }
+
+    const catFilter = document.getElementById('rankingCategoryFilter');
+    if (catFilter) {
+      catFilter.addEventListener('change', (e) => {
+        selectedCategory = e.target.value;
+        renderActiveView();
+      });
+    }
+
+    const limitSelect = document.getElementById('rankingLimitSelect');
+    if (limitSelect) {
+      limitSelect.addEventListener('change', (e) => {
+        selectedLimit = e.target.value;
+        renderActiveView();
+      });
+    }
+
+    const shareBtn = document.getElementById('shareRankingBtn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        const shareUrl = `${window.location.origin}${window.location.pathname}?ranking=${encodeURIComponent(activeRankingId)}`;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            shareBtn.innerHTML = '<span>✓</span> Copied Link!';
+            setTimeout(() => { shareBtn.innerHTML = '<span>🔗</span> Share Ranking'; }, 2000);
+          });
+        }
+      });
+    }
+
+    // Delegation for Action Buttons
+    container.addEventListener('click', (e) => {
+      const compareBtn = e.target.closest('.btn-compare');
+      if (compareBtn) {
+        const id = compareBtn.dataset.id;
+        let selected = window.VentureAtlas?.readJsonStorage('va-compare-ids', []) || [];
+        if (!selected.includes(id)) {
+          selected.push(id);
+          window.VentureAtlas?.writeJsonStorage('va-compare-ids', selected);
+        }
+        window.location.href = `${window.VA?.base || '..'}/docs/compare.html?ids=${selected.map(encodeURIComponent).join(',')}`;
+        return;
+      }
+
+      const favBtn = e.target.closest('.btn-fav');
+      if (favBtn) {
+        const id = favBtn.dataset.id;
+        toggleFavorite(id);
+        renderActiveView();
+        return;
+      }
+
+      const roomBtn = e.target.closest('.btn-room');
+      if (roomBtn) {
+        const id = roomBtn.dataset.id;
+        let shortlisted = window.VentureAtlas?.readJsonStorage('va-room-shortlist', []) || [];
+        if (!shortlisted.includes(id)) {
+          shortlisted.push(id);
+          window.VentureAtlas?.writeJsonStorage('va-room-shortlist', shortlisted);
+        }
+        window.location.href = `${window.VA?.base || '..'}/docs/room.html`;
+        return;
+      }
+    });
+  }
+
+  // Handle dropdown view switching
+  if (select) {
+    select.addEventListener('change', (e) => {
+      activeRankingId = e.target.value;
+      const url = new URL(window.location);
+      url.searchParams.set('ranking', activeRankingId);
+      window.history.pushState({}, '', url);
+      renderActiveView();
+    });
+  }
+
+  // Handle popstate for back/forward navigation
+  window.addEventListener('popstate', () => {
+    activeRankingId = getQueryRanking();
+    if (select) select.value = activeRankingId;
+    renderActiveView();
+  });
+
+  function isFavorite(id) {
+    const favs = window.VentureAtlas?.readJsonStorage('va-favorites', []) || [];
+    return favs.includes(id);
+  }
+
+  function toggleFavorite(id) {
+    let favs = window.VentureAtlas?.readJsonStorage('va-favorites', []) || [];
+    if (favs.includes(id)) {
+      favs = favs.filter(f => f !== id);
+    } else {
+      favs.push(id);
+    }
+    window.VentureAtlas?.writeJsonStorage('va-favorites', favs);
+  }
+
+  function getScoreClass(score) {
+    const s = Number(score || 0);
+    if (s >= 85) return 'high';
+    if (s >= 70) return 'medium';
+    return 'low';
   }
 
   function escHTML(str) {
@@ -96,7 +327,7 @@ function initRankings() {
     );
   }
 
-  renderLens('overall');
+  renderActiveView();
 }
 
 window.initRankings = initRankings;

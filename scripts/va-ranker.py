@@ -235,7 +235,7 @@ def compare_ideas(ranked: list, ids: list):
             print(f"   {dim:<25} {val:>5.1f}  {bar}")
     print(f"{'='*72}\n")
 
-def update_rankings_json(ranked: list):
+def update_rankings_json(ranked: list, ideas: list = None):
     existing = {}
     if os.path.exists(RANKINGS_PATH):
         try:
@@ -245,10 +245,12 @@ def update_rankings_json(ranked: list):
         except Exception:
             pass
 
-    ranking_items = []
-    for r in ranked:
-        ranking_items.append({
-            "rank": r["rank"],
+    ideas_list = ideas if ideas is not None else load_ideas()
+    ideas_map = {i.get("id"): i for i in ideas_list}
+
+    def format_item(r, rank_num):
+        return {
+            "rank": rank_num,
             "ideaId": r["id"],
             "id": r["id"],
             "name": r["name"],
@@ -259,22 +261,96 @@ def update_rankings_json(ranked: list):
             "provider": r["provider"],
             "status": r["status"],
             "topDimensions": r["topDimensions"]
-        })
+        }
 
-    view_obj = {
-        "id": "overall-top-opportunities",
-        "title": "Overall Top Opportunities",
-        "description": "Rankings sorted by weighted composite headline score",
-        "items": ranking_items
-    }
+    # 1. Overall Top Opportunities
+    overall_items = [format_item(r, i + 1) for i, r in enumerate(ranked)]
+    
+    # 2. High Opportunity Attractiveness
+    attractiveness_sorted = sorted(ranked, key=lambda x: (x.get("opportunityAttractiveness", 0), x["score"]), reverse=True)
+    attractiveness_items = [format_item(r, i + 1) for i, r in enumerate(attractiveness_sorted)]
+
+    # 3. Best Solo Founder Fit
+    founder_fit_sorted = sorted(ranked, key=lambda x: (x.get("founderFit", 0), x["score"]), reverse=True)
+    founder_fit_items = [format_item(r, i + 1) for i, r in enumerate(founder_fit_sorted)]
+
+    # 4. Highest Evidence Confidence
+    confidence_sorted = sorted(ranked, key=lambda x: (x.get("evidenceConfidence", 0), x["score"]), reverse=True)
+    confidence_items = [format_item(r, i + 1) for i, r in enumerate(confidence_sorted)]
+
+    # 5. Fastest Path to Revenue
+    fastest_sorted = sorted(ranked, key=lambda x: (get_val(ideas_map.get(x["id"], {}), "speedToFirstRevenue", 0) or 0, x["score"]), reverse=True)
+    fastest_items = [format_item(r, i + 1) for i, r in enumerate(fastest_sorted)]
+
+    # 6. Lowest Startup Capital
+    lowest_cost_sorted = sorted(ranked, key=lambda x: (get_val(ideas_map.get(x["id"], {}), "lowStartupCost", 0) or 0, x["score"]), reverse=True)
+    lowest_cost_items = [format_item(r, i + 1) for i, r in enumerate(lowest_cost_sorted)]
+
+    # 7. Tournament Finalists & Reset Winners
+    finalists_raw = [r for r in ranked if r["status"] == "priority" or r["id"] in ["idea-061", "idea-062", "idea-185", "idea-186", "idea-230", "idea-231", "idea-240", "idea-241"]]
+    finalists_sorted = sorted(finalists_raw if finalists_raw else ranked[:25], key=lambda x: x["score"], reverse=True)
+    finalists_items = [format_item(r, i + 1) for i, r in enumerate(finalists_sorted)]
+
+    views = [
+        {
+            "id": "overall-top-opportunities",
+            "title": "🏆 Overall Top Opportunities",
+            "description": "Rankings sorted by weighted composite headline score across all evidence dimensions",
+            "algorithmVersion": "weighted-composite-v2",
+            "items": overall_items
+        },
+        {
+            "id": "attractiveness",
+            "title": "💡 High Opportunity Attractiveness",
+            "description": "Ranked by problem severity, demand, and overall market revenue potential",
+            "algorithmVersion": "attractiveness-v1",
+            "items": attractiveness_items
+        },
+        {
+            "id": "founder-fit",
+            "title": "🎯 Best Solo Founder Fit",
+            "description": "Ranked by speed to revenue, low startup cost, and ease of building MVP",
+            "algorithmVersion": "founder-fit-v1",
+            "items": founder_fit_items
+        },
+        {
+            "id": "highest-confidence",
+            "title": "🛡️ Highest Evidence Confidence",
+            "description": "Ranked by source quality, citations, and completed disconfirming red-team passes",
+            "algorithmVersion": "evidence-confidence-v1",
+            "items": confidence_items
+        },
+        {
+            "id": "fastest-first-revenue",
+            "title": "⚡ Fastest Path to Revenue",
+            "description": "Ranked by minimal time-to-first-dollar and low distribution friction",
+            "algorithmVersion": "speed-revenue-v1",
+            "items": fastest_items
+        },
+        {
+            "id": "lowest-startup-cost",
+            "title": "💸 Lowest Startup Capital",
+            "description": "Ranked by minimal initial financial requirement ($0–$100)",
+            "algorithmVersion": "low-cost-v1",
+            "items": lowest_cost_items
+        },
+        {
+            "id": "reset-finalists",
+            "title": "🏁 Reset Tournament Finalists",
+            "description": "Highest-scoring winners and finalists across research reset tournaments",
+            "algorithmVersion": "tournament-finalists-v1",
+            "items": finalists_items
+        }
+    ]
 
     out = {
         "schemaVersion": "2.0.0",
         "generatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "totalIdeas": len(ranked),
+        "rankingViewsCount": len(views),
         "algorithm": "weighted-composite-v2",
         "weights": SCORE_WEIGHTS,
-        "rankings": [view_obj],
+        "rankings": views,
         "history": existing.get("history", []),
     }
     
@@ -288,7 +364,7 @@ def update_rankings_json(ranked: list):
 
     with open(RANKINGS_PATH, 'w', encoding='utf-8') as f:
         json.dump(out, f, indent=2, ensure_ascii=False)
-    print(f"✅ Rankings saved to: {RANKINGS_PATH}")
+    print(f"✅ Saved {len(views)} canonical ranking views ({len(ranked)} ideas) to: {RANKINGS_PATH}")
 
 def main():
     parser = argparse.ArgumentParser(description='Venture Atlas Ranking Engine')

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friend Collaboration Rooms — Venture Atlas OS</title>
+  <meta name="description" content="Evaluate, vote, and shortlist business ideas with friends and co-founders in realtime without requiring GitHub accounts.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="room" data-root="..">
+  <main id="main">
+    <section class="section">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Ideas</a>
+        <span class="sep">›</span>
+        <span>Rooms &amp; Collaboration</span>
+      </nav>
+      
+      <div id="roomApp">
+        <div class="skeleton" style="height:2rem;width:40%;margin-bottom:1rem"></div>
+        <div class="skeleton" style="height:300px"></div>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/features/collaboration.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initCollaborationRoom === 'function') {
+        initCollaborationRoom();
+      }
+    });
+  </script>
+</body>
+</html>
