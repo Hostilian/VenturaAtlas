@@ -8,6 +8,8 @@ const FILES = [
   path.join(ROOT, 'README.md'),
   path.join(ROOT, 'PROJECT_STATUS.md'),
   path.join(ROOT, 'PROJECT_STATE.md'),
+  path.join(ROOT, 'ARCHITECTURE.md'),
+  path.join(ROOT, 'SEARCH_AND_DISCOVERY_GUIDE.md'),
   path.join(ROOT, 'index.html')
 ];
 
@@ -68,9 +70,15 @@ function main() {
       content = content.replace(/^-\s+Staged ideas:\s+\d+/gm, `- Staged ideas: ${meta.counts.stagedIdeas}`);
       content = content.replace(/^-\s+Total ideas:\s+\d+/gm, `- Total ideas: ${meta.counts.totalIdeas}`);
       content = content.replace(/^-\s+Prompt records:\s+\d+/gm, `- Prompt records: ${meta.counts.prompts}`);
+    } else if (filePath.endsWith('ARCHITECTURE.md')) {
+      content = content.replace(/serving \d+\+ canonical & staged startup dossiers/g, `serving ${meta.counts.totalIdeas}+ canonical & staged startup dossiers`);
+      content = content.replace(/\d+\+ generated prompt packs/g, `${meta.counts.prompts.toLocaleString()}+ generated prompt packs`);
+    } else if (filePath.endsWith('SEARCH_AND_DISCOVERY_GUIDE.md')) {
+      content = content.replace(/all \d+\+ ideas/g, `all ${meta.counts.canonicalIdeas}+ ideas`);
     } else if (filePath.endsWith('index.html')) {
       content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ evidence-backed business ideas`);
       content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ evidence-backed business ideas with scores`);
+      content = content.replace(/Browse &amp; search \d+\+ ideas/g, `Browse &amp; search ${meta.counts.canonicalIdeas}+ ideas`);
       content = content.replace(/<span data-total-ideas>\d+<\/span>/g, `<span data-total-ideas>${meta.counts.canonicalIdeas}</span>`);
       content = content.replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`);
       content = content.replace(/<span data-total-sources>\d+<\/span>/g, `<span data-total-sources>${meta.counts.sources}</span>`);

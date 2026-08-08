@@ -133,6 +133,27 @@ function main() {
 
   console.log(JSON.stringify(result, null, 2));
 
+  // Write data/validation-summary.json directly from validation findings
+  const metaPath = path.join(ROOT, 'data', 'repository-meta.json');
+  let dataRevision = 'unknown';
+  if (fs.existsSync(metaPath)) {
+    try {
+      dataRevision = JSON.parse(fs.readFileSync(metaPath, 'utf8')).dataRevision || 'unknown';
+    } catch (_) {}
+  }
+
+  const valSummary = {
+    checkedAt: new Date().toISOString(),
+    dataRevision,
+    status: errors.length > 0 ? 'failed' : (warnings.length > 0 ? 'degraded' : 'passed'),
+    canonicalCount: ideas.length,
+    errorCount: errors.length,
+    warningCount: warnings.length,
+    errors: errors.slice(0, 10),
+    warnings: warnings.slice(0, 10)
+  };
+  fs.writeFileSync(path.join(ROOT, 'data', 'validation-summary.json'), JSON.stringify(valSummary, null, 2) + '\n', 'utf8');
+
   if (errors.length > 0 || (isStrict && warnings.length > 0)) {
     if (isStrict && warnings.length > 0) {
       console.error(`[STRICT MODE] Failing due to ${warnings.length} warnings.`);

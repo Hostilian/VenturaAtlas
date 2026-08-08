@@ -93,20 +93,17 @@ function getCounts() {
   };
 }
 
-function main() {
-  const pkg = JSON.parse(fs.readFileSync(PACKAGE_PATH, 'utf8'));
-  const version = pkg.version || '2.3.0';
-  const counts = getCounts();
-  const isCheckMode = process.argv.includes('--check');
+const fs = require('fs');
+const path = require('path');
+const { getRepositoryTruth } = require('./lib/repository-truth');
 
-  // Calculate SHA-256 over canonical input files
-  const hasher = crypto.createHash('sha256');
-  [IDEAS_PATH, CATEGORIES_PATH, SOURCES_PATH, RANKINGS_PATH].forEach(fp => {
-    if (fs.existsSync(fp)) {
-      hasher.update(fs.readFileSync(fp));
-    }
-  });
-  const dataRevision = hasher.digest('hex').substring(0, 16);
+const ROOT = path.join(__dirname, '..');
+const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
+const MANIFEST_PATH = path.join(ROOT, 'data', 'build-manifest.json');
+
+function main() {
+  const isCheckMode = process.argv.includes('--check');
+  const truth = getRepositoryTruth();
 
   let gitCommit = 'local-dev';
   try {
@@ -114,20 +111,20 @@ function main() {
     gitCommit = execSync('git rev-parse --short HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
   } catch (_) {}
 
-  const buildRevision = `${version}-${gitCommit}`;
+  const buildRevision = `${truth.version}-${gitCommit}`;
 
   let existingTimestamp = new Date().toISOString();
   if (fs.existsSync(META_PATH)) {
     try {
       const prev = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
       if (
-        prev.version === version &&
-        prev.dataRevision === dataRevision &&
-        prev.counts?.canonicalIdeas === counts.canonicalIdeas &&
-        prev.counts?.stagedIdeas === counts.stagedIdeas &&
-        prev.counts?.categories === counts.categories &&
-        prev.counts?.sources === counts.sources &&
-        prev.counts?.rankingViews === counts.rankingViews
+        prev.version === truth.version &&
+        prev.dataRevision === truth.canonicalDataRevision &&
+        prev.counts?.canonicalIdeas === truth.counts.canonicalIdeas &&
+        prev.counts?.stagedIdeas === truth.counts.stagedIdeas &&
+        prev.counts?.categories === truth.counts.categories &&
+        prev.counts?.sources === truth.counts.sources &&
+        prev.counts?.rankingViews === truth.counts.rankingViews
       ) {
         existingTimestamp = prev.generatedAt || existingTimestamp;
       }
@@ -136,13 +133,14 @@ function main() {
 
   const metaData = {
     project: 'VenturaAtlas',
-    version,
-    schemaVersion: '2.0.0',
-    dataRevision,
+    version: truth.version,
+    schemaVersion: truth.schemaVersion,
+    dataRevision: truth.canonicalDataRevision,
     buildRevision,
     gitCommit,
     generatedAt: existingTimestamp,
-    counts
+    counts: truth.counts,
+    revisions: truth.revisions
   };
 
   if (isCheckMode) {
@@ -153,12 +151,12 @@ function main() {
     const current = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
     if (
       current.version !== metaData.version ||
-      current.counts.ideas !== counts.ideas ||
-      current.counts.canonicalIdeas !== counts.canonicalIdeas ||
-      current.counts.stagedIdeas !== counts.stagedIdeas ||
-      current.counts.categories !== counts.categories ||
-      current.counts.sources !== counts.sources ||
-      current.counts.rankingViews !== counts.rankingViews
+      current.counts.ideas !== truth.counts.ideas ||
+      current.counts.canonicalIdeas !== truth.counts.canonicalIdeas ||
+      current.counts.stagedIdeas !== truth.counts.stagedIdeas ||
+      current.counts.categories !== truth.counts.categories ||
+      current.counts.sources !== truth.counts.sources ||
+      current.counts.rankingViews !== truth.counts.rankingViews
     ) {
       console.error('[ERROR] repository-meta.json is stale');
       console.error('Expected:', metaData.counts);
@@ -171,35 +169,18 @@ function main() {
 
   fs.writeFileSync(META_PATH, JSON.stringify(metaData, null, 2) + '\n', 'utf8');
 
-  // Generate data/validation-summary.json
-  const valSummary = {
-    dataRevision,
-    buildRevision,
-    canonicalCount: counts.canonicalIdeas,
-    stagedCount: counts.stagedIdeas,
-    errorCount: 0,
-    warningCount: 0,
-    generatedAt: new Date().toISOString()
-  };
-  fs.writeFileSync(path.join(ROOT, 'data', 'validation-summary.json'), JSON.stringify(valSummary, null, 2) + '\n', 'utf8');
-
-  // Generate data/build-manifest.json (P0-079)
+  // Generate data/build-manifest.json with per-file SHA256 hashes and byte sizes
   const manifest = {
-    dataRevision,
+    dataRevision: truth.canonicalDataRevision,
     buildRevision,
     gitCommit,
     generatedAt: new Date().toISOString(),
-    files: {
-      "ideas.json": dataRevision,
-      "categories.json": dataRevision,
-      "sources.json": dataRevision,
-      "rankings.json": dataRevision,
-      "repository-meta.json": dataRevision
-    }
+    files: truth.files
   };
-  fs.writeFileSync(path.join(ROOT, 'data', 'build-manifest.json'), JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
 
-  console.log(`[OK] Generated repository-meta.json (v${version}, ${counts.canonicalIdeas} canonical + ${counts.stagedIdeas} staged = ${counts.totalIdeas} total ideas, ${counts.categories} categories)`);
+  console.log(`[OK] Generated repository-meta.json (v${truth.version}, ${truth.counts.canonicalIdeas} canonical + ${truth.counts.stagedIdeas} staged = ${truth.counts.totalIdeas} total ideas, ${truth.counts.categories} categories)`);
 }
 
 main();
+
