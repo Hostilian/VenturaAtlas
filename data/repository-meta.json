@@ -3,8 +3,8 @@
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
   "dataRevision": "fa88fd1ba0281f23",
-  "buildRevision": "2.3.0-1dcd881",
-  "gitCommit": "1dcd881",
+  "buildRevision": "2.3.0-e0e4b5a",
+  "gitCommit": "e0e4b5a",
   "generatedAt": "2026-08-08T02:41:36.979Z",
   "counts": {
     "ideas": 206,
@@ -12,9 +12,20 @@
     "stagedIdeas": 173,
     "totalIdeas": 379,
     "categories": 102,
+    "canonicalCategoryLabels": 102,
+    "taxonomyCategories": 31,
     "sources": 62,
     "rankingViews": 1,
     "rankingEntries": 206,
-    "prompts": 2525
+    "prompts": 2525,
+    "dossiers": 294
+  },
+  "revisions": {
+    "canonicalRevision": "c325e5bf14c52133",
+    "stagingRevision": "ff1ff700bb7ce532",
+    "taxonomyRevision": "6945e3a804df238b",
+    "sourcesRevision": "b2a2dfcf12d03677",
+    "rankingsRevision": "d0636ddd8bd4d091",
+    "canonicalDataRevision": "fa88fd1ba0281f23"
   }
 }

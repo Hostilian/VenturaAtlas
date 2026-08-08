@@ -34,6 +34,10 @@ def mask_key(key: str) -> str:
         return "***"
     return f"{key[:4]}...{key[-4:]}"
 
+class NoEligibleProviderError(RuntimeError):
+    """Raised when no provider satisfies task capability or availability constraints."""
+    pass
+
 class CapabilityProviderScheduler:
     def __init__(self, config_path: str = CONFIG_PATH):
         self.config_path = config_path

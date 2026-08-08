@@ -548,11 +548,13 @@ from va_runtime.provider_router import get_provider_scheduler
 
 DEFAULT_PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
 
+from va_runtime.provider_router import get_provider_scheduler, NoEligibleProviderError
+
 def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True, required_capabilities: list[str] = None, max_cost_class: int = 3) -> tuple[str, str]:
     """
     Try providers matched by capabilities and cost budget, respecting circuit breakers.
     Returns (response_text, provider_name_used).
-    Own orchestrator is last resort and always succeeds.
+    Own orchestrator is last resort and always succeeds when allow_own_orch is True.
     """
     state = _load_state()
     scheduler = get_provider_scheduler()
@@ -562,6 +564,8 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
         allow_own_orch=allow_own_orch
     )
     if not candidate_providers:
+        if not allow_own_orch:
+            raise NoEligibleProviderError(f"No provider matched capabilities {required_capabilities} and allow_own_orch is False")
         candidate_providers = DEFAULT_PROVIDER_ORDER
 
     for provider in candidate_providers:
@@ -598,7 +602,10 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
         except Exception as e:
             log_warn(f"Provider {provider} failed: {e}", provider=provider)
             _record_failure(state, provider)
-    # If own-orch was disabled and everything failed, enable it as absolute fallback
+
+    if not allow_own_orch:
+        raise NoEligibleProviderError(f"All external providers failed for task capabilities {required_capabilities} and allow_own_orch is False")
+
     log_warn("All providers failed, using own-orch as absolute fallback")
     resp = _call_own_orchestrator(prompt, domain_hint)
     _record_success(state, "own-orch")
