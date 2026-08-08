@@ -1,56 +1,56 @@
 {
   "providers": {
     "hermes-ollama": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:10.239372+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:04.783898+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "omniRoute": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:14.332920+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:08.842610+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "fcc-claude": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:14.536594+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:09.371213+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "active-api": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:14.589596+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:09.460453+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "deepseek-api": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:14.640598+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:09.493982+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-08T02:20:09.648467+00:00",
-      "totalCalls": 57,
-      "successCalls": 57
+      "lastUsed": "2026-08-08T02:21:59.431614+00:00",
+      "totalCalls": 61,
+      "successCalls": 61
     },
     "anthropic-full": {
-      "failures": 10,
-      "circuitUntil": "2026-08-08T02:20:14.950846+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-08T02:24:09.700117+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-08T02:20:09.715471+00:00",
+  "lastRun": "2026-08-08T02:21:59.506851+00:00",
   "totalIdeasGenerated": 1,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
