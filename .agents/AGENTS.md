@@ -107,3 +107,30 @@ Every specialist subagent operates within one of 6 core operational categories a
 ### 6. E2E Testing, Telemetry & Codebase Graph Analysis
 - Skills: `va-playwright-e2e-critical-journeys`, `va-opentelemetry-observability-tracing`, `graphify-codebase-analysis`
 - Agents: `test-quality-agent`, `red-team-critic-agent`, `integration-release-agent`, `ventureatlas-test-adversary`
+
+
+## Installed Workspace Skill Catalog (.agents/skills/)
+
+- `eushop-auth0-session-jwt-security`
+- `eushop-autonomous-multiagent-coordination`
+- `eushop-autonomous-multiagent-failover`
+- `eushop-dac7-tax-reporting-engine`
+- `eushop-dsa-notice-and-action-moderation`
+- `eushop-flyway-schema-versioning`
+- `eushop-flyway-zero-downtime-migrations`
+- `eushop-i18n-multilingual-localization`
+- `eushop-nextjs-static-export-pages`
+- `eushop-opensearch-fulltext-search-benchmarking`
+- `eushop-opentelemetry-observability-tracing`
+- `eushop-playwright-e2e-critical-journeys`
+- `eushop-playwright-visual-regression-testing`
+- `eushop-postgis-geospatial-matching`
+- `eushop-postgis-spatial-corridor-matching`
+- `eushop-regulatory-compliance-validator`
+- `eushop-security-codeql-taint-remediation`
+- `eushop-security-codeql-zero-critical`
+- `eushop-stripe-payment-idempotency`
+- `eushop-transactional-outbox-event-engine`
+- `eushop-wcag-accessibility-design-tokens`
+- `eushop-yc-investor-diligence-package`
+- `graphify-codebase-analysis`
