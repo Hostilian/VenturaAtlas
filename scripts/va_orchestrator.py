@@ -709,6 +709,15 @@ if __name__ == "__main__":
         print("\n── Usage Stats ──")
         for p, ps in state["providers"].items():
             print(f"  {p:<20} total={ps.get('totalCalls',0)} success={ps.get('successCalls',0)}")
+        
+        # Test NoEligibleProviderError when allow_own_orch is False and no external keys exist
+        try:
+            call_llm("test prompt", allow_own_orch=False, required_capabilities=["non_existent_capability_12345"])
+            print("[FAIL] Expected NoEligibleProviderError when allow_own_orch=False and no matching provider exists")
+            sys.exit(1)
+        except NoEligibleProviderError:
+            print("\n── Unit Tests ──")
+            print("  NoEligibleProviderError Gate ✅ PASSED")
     else:
         log_info("Testing orchestration with a sample prompt...")
         test_domain = {

@@ -74,68 +74,94 @@ def get_val(idea: dict, dim: str, default=None) -> float:
         return float(val) if val is not None else default
     return default
 
-def compute_headline(idea: dict) -> float:
-    """Compute weighted composite headline score."""
+def compute_headline(idea: dict) -> tuple[float, float]:
+    """Compute weighted composite headline score and coverage (0-100, 0.0-1.0)."""
     ch = idea.get('compositeScores', {}).get('compositeHeadline')
     if ch is not None and float(ch) > 0:
-        return float(ch)
+        return float(ch), 1.0
     total = 0.0
     weight_sum = 0.0
+    total_possible_weights = sum(SCORE_WEIGHTS.values())
+
     for dim, w in SCORE_WEIGHTS.items():
-        v = get_val(idea, dim)
+        v = get_val(idea, dim, default=None)
         if v is not None:
             total += v * w
             weight_sum += w
-    return round(total / weight_sum if weight_sum else 50.0, 1)
+
+    coverage = round(weight_sum / total_possible_weights, 2) if total_possible_weights > 0 else 0.0
+    score = round(total / weight_sum, 1) if weight_sum > 0 else 0.0
+    return score, coverage
 
 def compute_attractiveness(idea: dict) -> float:
-    """Compute Opportunity Attractiveness score (0-100)."""
+    """Compute Opportunity Attractiveness score (0-100). Returns 0.0 if no dimensions present."""
     weights = {"problemSeverity": 0.2, "willingnessToPay": 0.2, "marketDemand": 0.15, "revenuePotential": 0.15, "grossMarginPotential": 0.1, "defensibility": 0.1, "scalability": 0.1}
     total, weight_sum = 0.0, 0.0
     for dim, w in weights.items():
-        v = get_val(idea, dim)
+        v = get_val(idea, dim, default=None)
         if v is not None:
             total += v * w
             weight_sum += w
-    raw_avg = (total / weight_sum) if weight_sum else 7.0
+    if weight_sum == 0.0:
+        return 0.0
+    raw_avg = total / weight_sum
     return round(raw_avg * 10.0 if raw_avg <= 10 else raw_avg, 1)
 
 def compute_founder_fit(idea: dict) -> float:
-    """Compute baseline Founder Fit score (0-100)."""
+    """Compute baseline Founder Fit score (0-100). Returns 0.0 if no dimensions present."""
     weights = {"speedToFirstRevenue": 0.25, "lowStartupCost": 0.25, "easeOfMvp": 0.2, "operationalSimplicity": 0.15, "founderAccessibility": 0.15}
     total, weight_sum = 0.0, 0.0
     for dim, w in weights.items():
-        v = get_val(idea, dim)
+        v = get_val(idea, dim, default=None)
         if v is not None:
             total += v * w
             weight_sum += w
-    raw_avg = (total / weight_sum) if weight_sum else 7.0
+    if weight_sum == 0.0:
+        return 0.0
+    raw_avg = total / weight_sum
     return round(raw_avg * 10.0 if raw_avg <= 10 else raw_avg, 1)
 
 def compute_evidence_confidence(idea: dict) -> float:
-    """Compute Evidence Confidence score (0-100)."""
+    """
+    Compute Evidence Confidence score (0-100).
+    Zero sources produces 0.0 (or 10.0 if initial desk research exists).
+    Does NOT start at 50.0 without evidence.
+    """
     sources = idea.get("sourceReferences", [])
     has_disconfirming = idea.get("validationChecklist", {}).get("adversarialPassCompleted", False)
-    base = 50.0
-    if len(sources) >= 5:
-        base += 30.0
+    
+    if not sources or len(sources) == 0:
+        base = 10.0 if idea.get("dossierPath") or idea.get("oneSentenceConcept") else 0.0
+    elif len(sources) >= 5:
+        base = 75.0
+    elif len(sources) >= 3:
+        base = 55.0
     elif len(sources) >= 2:
-        base += 15.0
-    elif len(sources) == 1:
-        base += 5.0
+        base = 40.0
+    else:
+        base = 25.0
+
     if has_disconfirming:
         base += 20.0
+
     return min(100.0, round(base, 1))
 
 def rank_ideas(ideas: list) -> list:
     ranked = []
-    for rank_pos, idea in enumerate(
-        sorted(ideas, key=lambda x: compute_headline(x), reverse=True), start=1
-    ):
-        score = compute_headline(idea)
+    # Sort by headline score, breaking ties by evidence confidence
+    sorted_list = sorted(
+        ideas,
+        key=lambda x: (compute_headline(x)[0], compute_evidence_confidence(x)),
+        reverse=True
+    )
+
+    for rank_pos, idea in enumerate(sorted_list, start=1):
+        score, coverage = compute_headline(idea)
         attractiveness = compute_attractiveness(idea)
         founder_fit = compute_founder_fit(idea)
         evidence_conf = compute_evidence_confidence(idea)
+
+        confidence_label = "high" if evidence_conf >= 70 else ("medium" if evidence_conf >= 40 else ("low" if evidence_conf > 0 else "unverified"))
         
         ranked.append({
             "rank": rank_pos,

@@ -125,8 +125,10 @@ const sourceIds = new Set(sources.map(s => s.id).filter(Boolean));
 for (const idea of ideas) {
   if (Array.isArray(idea.sourceReferences)) {
     for (const ref of idea.sourceReferences) {
-      if (typeof ref === 'string' && ref.startsWith('src-') && !sourceIds.has(ref)) {
-        warnings.push(`Idea ${idea.id} references non-existent source ID: ${ref}`);
+      if (typeof ref === 'string') {
+        if (!sourceIds.has(ref) && !ref.startsWith('legacy-') && !ref.startsWith('ext-')) {
+          errors.push(`Idea ${idea.id} references non-existent source ID: ${ref}`);
+        }
       }
     }
   }
