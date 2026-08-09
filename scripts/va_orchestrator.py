@@ -50,11 +50,13 @@ OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
 
+from va_runtime.provider_router import is_placeholder_key
+
 # Round-robin key pool parser for OpenRouter, Anthropic, Active API, and DeepSeek
-_raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-or-...')]
-_raw_anthropic_keys  = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ant-...')]
-_raw_active_keys     = [k.strip() for k in os.environ.get('ACTIVE_API_KEYS', os.environ.get('ACTIVE_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-act-...')]
-_raw_deepseek_keys   = [k.strip() for k in os.environ.get('DEEPSEEK_API_KEYS', os.environ.get('DEEPSEEK_API_KEY', '')).split(',') if k.strip() and not k.strip().startswith('sk-ds-...')]
+_raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+_raw_anthropic_keys  = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+_raw_active_keys     = [k.strip() for k in os.environ.get('ACTIVE_API_KEYS', os.environ.get('ACTIVE_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+_raw_deepseek_keys   = [k.strip() for k in os.environ.get('DEEPSEEK_API_KEYS', os.environ.get('DEEPSEEK_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
 
 _openrouter_key_idx = 0
 _anthropic_key_idx  = 0

@@ -93,9 +93,20 @@
       prob.textContent = desc.length > 220 ? desc.slice(0, 220) + '…' : desc;
     }
     if (cust) {
-      const custText = idea.customer || idea.target_customer || idea.atAGlance?.targetCustomer || 'See dossier';
+      let custStr = 'See dossier';
+      if (typeof idea.atAGlance?.targetCustomer === 'string' && idea.atAGlance.targetCustomer) {
+        custStr = idea.atAGlance.targetCustomer;
+      } else if (typeof idea.targetCustomer === 'string' && idea.targetCustomer) {
+        custStr = idea.targetCustomer;
+      } else if (typeof idea.target_customer === 'string' && idea.target_customer) {
+        custStr = idea.target_customer;
+      } else if (typeof idea.customer === 'string' && idea.customer) {
+        custStr = idea.customer;
+      } else if (idea.customer && typeof idea.customer === 'object') {
+        custStr = idea.customer.idealCustomerProfile || idea.customer.description || idea.customer.who || idea.customer.primary || Object.values(idea.customer).find(v => typeof v === 'string') || 'See dossier';
+      }
       cust.innerHTML = `<strong>Target customer:</strong> `;
-      cust.appendChild(document.createTextNode(custText));
+      cust.appendChild(document.createTextNode(custStr));
     }
     if (link) {
       const slug = idea.slug || idea.id || (idea.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-');

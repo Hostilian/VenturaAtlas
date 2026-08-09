@@ -29,6 +29,21 @@ class KeyState:
         self.disabled = False
         self.cooldown_until = 0.0
 
+KNOWN_PLACEHOLDERS = {
+    "changeme", "your-key-here", "example", "test-key", "placeholder",
+    "sk-or-...", "sk-ant-...", "sk-act-...", "sk-ds-...", "sk-...", "***"
+}
+
+def is_placeholder_key(key: str) -> bool:
+    if not key or len(key) < 8:
+        return True
+    k_lower = key.strip().lower()
+    if k_lower in KNOWN_PLACEHOLDERS:
+        return True
+    if k_lower.endswith("...") or "your_key" in k_lower:
+        return True
+    return False
+
 def mask_key(key: str) -> str:
     if not key or len(key) < 8:
         return "***"
@@ -69,7 +84,7 @@ class CapabilityProviderScheduler:
             elif legacy_key_env and os.environ.get(legacy_key_env):
                 raw_keys = os.environ.get(legacy_key_env, "")
             
-            keys = [k.strip() for k in raw_keys.split(",") if k.strip() and not k.strip().startswith("sk-")]
+            keys = [k.strip() for k in raw_keys.split(",") if k.strip() and not is_placeholder_key(k.strip())]
             self.key_pools[p_id] = [KeyState(k, p_id, i) for i, k in enumerate(keys)]
             self.rr_indices[p_id] = 0
 
@@ -81,9 +96,10 @@ class CapabilityProviderScheduler:
         self.rr_indices[provider_id] = idx + 1
         return pool[idx]
 
-    def select_providers_for_task(self, required_capabilities: List[str] = None, max_cost_class: int = 3, allow_own_orch: bool = True) -> List[str]:
+    def select_providers_for_task(self, required_capabilities: List[str] = None, max_cost_class: int = 3, allow_own_orch: bool = True, match_mode: str = "any", requires_external_evidence: bool = False) -> List[str]:
         """
         Select ordered list of provider IDs matching task capabilities, sorted by cost class and health.
+        match_mode: 'any' (anyOf) or 'all' (allOf)
         """
         self._load_config()
         providers = self.registry.get("providers", {})
@@ -91,15 +107,22 @@ class CapabilityProviderScheduler:
         req_caps = set(required_capabilities or [])
 
         for p_id, p_cfg in providers.items():
-            if p_id == "own-orch" and not allow_own_orch:
+            if p_id == "own-orch" and (not allow_own_orch or requires_external_evidence):
+                continue
+            if p_cfg.get("requiresApiKey", False) and len(self.key_pools.get(p_id, [])) == 0:
                 continue
             p_cost = p_cfg.get("costClass", 0)
             if p_cost > max_cost_class:
                 continue
 
             p_caps = set(p_cfg.get("capabilities", []))
-            if req_caps and not req_caps.intersection(p_caps) and "fallback" not in p_caps:
-                continue
+            if req_caps:
+                if match_mode == "all":
+                    if not req_caps.issubset(p_caps) and "fallback" not in p_caps:
+                        continue
+                else:
+                    if not req_caps.intersection(p_caps) and "fallback" not in p_caps:
+                        continue
 
             candidates.append((p_cost, p_cfg.get("tier", 99), p_id))
 
@@ -107,12 +130,15 @@ class CapabilityProviderScheduler:
         candidates.sort(key=lambda x: (x[0], x[1]))
         sorted_ids = [c[2] for c in candidates]
 
-        if allow_own_orch and "own-orch" not in sorted_ids:
+        if allow_own_orch and not requires_external_evidence and "own-orch" not in sorted_ids:
             sorted_ids.append("own-orch")
+
+        if requires_external_evidence and not sorted_ids:
+            raise NoEligibleProviderError("BLOCKED_NO_ELIGIBLE_RESEARCH_PROVIDER: Task requires external evidence but no eligible external LLM provider key is active.")
 
         # Emit degraded mode warning if only own-orch is active
         has_external_keys = any(len(pool) > 0 for p_id, pool in self.key_pools.items() if p_id != "own-orch")
-        if not has_external_keys and allow_own_orch:
+        if not has_external_keys and allow_own_orch and not requires_external_evidence:
             print("[DEGRADED MODE] No external LLM keys configured. Pipeline is operating in deterministic rule engine mode (own-orch).", file=sys.stderr)
 
         return sorted_ids
