@@ -1,0 +1,15 @@
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "Preserve user work; use a scoped, reviewed recovery path.",
+    match = ["git reset --hard", "git reset --hard HEAD~1"],
+    not_match = ["git reset --soft HEAD~1", "git status"],
+)
+
+prefix_rule(
+    pattern = ["git", "clean"],
+    decision = "forbidden",
+    justification = "Preserve unknown untracked files; inspect exact paths and remove only explicitly authorized targets.",
+    match = ["git clean -fd", "git clean -ffdx"],
+    not_match = ["git status", "git ls-files --others"],
+)

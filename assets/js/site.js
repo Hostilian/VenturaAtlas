@@ -21,6 +21,7 @@ const VA = {
   sources: [],
   categories: [],
   relationships: [],
+  dataErrors: {},
   base: ''
 };
 
@@ -165,6 +166,7 @@ async function fetchDataset(root, file) {
       return normalizeDataset(file, raw);
     } catch (err) {
       console.warn(`[VA] Could not load ${file}.json:`, err.message);
+      VA.dataErrors[file] = err.message;
       return [];
     }
   })();
@@ -191,18 +193,20 @@ async function loadData() {
     VA[f] = await fetchDataset(root, f);
   }));
 
-  // Optionally load staging queue for full universe views
-  try {
-    const stagingUrl = `${root}/data/idea-staging-queue.json`;
-    if (!fetchCache.has(stagingUrl)) {
-      const p = fetch(stagingUrl).then(r => r.ok ? r.json() : []).catch(() => []);
-      fetchCache.set(stagingUrl, p);
-    }
-    VA.stagedIdeas = await fetchCache.get(stagingUrl);
-  } catch (e) {
-    VA.stagedIdeas = [];
-  }
+  // Staging is intentionally private and is never fetched by the public client.
+  VA.stagedIdeas = [];
+  VA.stagingAvailability = 'not_public';
   VA.allIdeas = [...(VA.ideas || []), ...(VA.stagedIdeas || [])];
+
+  const failedDatasets = Object.keys(VA.dataErrors);
+  if (failedDatasets.length) {
+    const alert = document.createElement('div');
+    alert.className = 'panel error';
+    alert.setAttribute('role', 'alert');
+    alert.textContent = `Data unavailable: ${failedDatasets.join(', ')}. Results may be incomplete; retry when the connection is restored.`;
+    const main = document.querySelector('main');
+    if (main) main.prepend(alert);
+  }
 }
 
 /* ================================================================
@@ -874,14 +878,23 @@ function initIdea() {
   const overallScoreDisplay = rawOverall != null ? `${rawOverall} / 100` : 'Not scored';
   const overallScoreNumDisplay = rawOverall != null ? rawOverall : '—';
   
-  const sourcesCount = x.sourceReferences?.length || 0;
-  const confidenceVal = x.scores?.overallConfidence?.value ?? (sourcesCount >= 2 ? 8 : (sourcesCount === 1 ? 5 : 2));
+  const confidenceVal = x.scores?.overallConfidence?.value;
+  const confidenceDisplay = Number.isFinite(Number(confidenceVal))
+    ? `${Number(confidenceVal)} (legacy score; scale unspecified)`
+    : 'Not assessed';
   
   const killStatusText = x.killCriteria ? (x.killCriteria.killFlagged ? '⚠ Flagged' : 'Pass') : 'Not assessed';
   const killStatusColor = x.killCriteria ? (x.killCriteria.killFlagged ? 'var(--score-lo)' : 'var(--score-hi)') : 'var(--muted)';
   
-  const valStatus = x.validationStatus || (x.atAGlance?.validationStatus) || 'unverified';
-  const lastValidated = x.lastValidatedAt || 'Never validated';
+  const valStatus = x.validationStatus || x.atAGlance?.validationStatus || null;
+  const validationProvenance = x.validationProvenance || x.researchRunId || x.validationRunId;
+  const validationProven = Boolean(validationProvenance);
+  const validationDisplay = valStatus
+    ? `${String(valStatus).toUpperCase()}${validationProven ? '' : ' · PROVENANCE UNAVAILABLE'}`
+    : 'NOT RESEARCHED';
+  const lastValidated = x.lastValidatedAt
+    ? `${x.lastValidatedAt}${validationProven ? '' : ' (legacy date; unverified)'}`
+    : 'No verified research date';
 
   const glanceEntries = [
     ['Target customer', x.atAGlance?.targetCustomer],
@@ -891,7 +904,7 @@ function initIdea() {
     ['Time to MVP', x.atAGlance?.timeToMvp],
     ['Time to first revenue', x.atAGlance?.timeToFirstRevenue],
     ['Overall score', `<strong style="color:var(--score-hi);font-size:1.1rem">${overallScoreDisplay}</strong>`],
-    ['Evidence confidence', formatConfidenceScore(confidenceVal * 10)],
+    ['Evidence confidence', confidenceDisplay],
     ['Main advantage', x.atAGlance?.mainAdvantage],
     ['Main risk', x.atAGlance?.mainRisk],
     ['Best next step', x.atAGlance?.bestNextValidationStep],
@@ -926,7 +939,7 @@ function initIdea() {
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
     <div>
-      <div class="eyebrow">${esc(x.category)} &nbsp;·&nbsp; ${esc(x.id)} &nbsp;·&nbsp; <span class="chip ${valStatus === 'validated' ? 'success' : 'warn'}">${esc(valStatus.toUpperCase())}</span></div>
+      <div class="eyebrow">${esc(x.category)} &nbsp;·&nbsp; ${esc(x.id)} &nbsp;·&nbsp; <span class="chip ${validationProven && valStatus === 'validated' ? 'success' : 'warn'}">${esc(validationDisplay)}</span></div>
       <h1 style="font-size:clamp(1.5rem,4vw,2.5rem);margin:0.4rem 0 0.6rem">${esc(x.name)}</h1>
       <p class="lede" style="margin-bottom:1rem;color:var(--text2);font-size:1.05rem">${esc(x.oneSentenceConcept || '')}</p>
       <div class="chips" style="margin-bottom:1rem">
@@ -936,7 +949,7 @@ function initIdea() {
     <div style="text-align:right;background:var(--panel2);padding:1rem 1.25rem;border-radius:var(--radius-sm);border:1px solid var(--line);min-width:160px">
       <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;font-weight:700">Opportunity Score</div>
       <div style="font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1.1">${overallScoreNumDisplay}</div>
-      <div style="font-size:0.78rem;color:var(--text2);margin-top:0.2rem">${formatConfidenceScore(confidenceVal * 10)}</div>
+      <div style="font-size:0.78rem;color:var(--text2);margin-top:0.2rem">${esc(confidenceDisplay)}</div>
     </div>
   </div>
 
@@ -968,7 +981,7 @@ function initIdea() {
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Evidence Confidence</div>
-      <div style="font-size:1.25rem;font-weight:700;color:var(--accent)">${formatConfidenceScore(confidenceVal * 10)}</div>
+      <div style="font-size:1.25rem;font-weight:700;color:var(--accent)">${esc(confidenceDisplay)}</div>
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Evidence Citations</div>
@@ -1327,14 +1340,15 @@ function fillMetrics() {
   if (!VA.meta || !VA.meta.counts) return;
   const c = VA.meta.counts;
   const els = {
-    '[data-metric="ideas"]': c.canonicalIdeas || c.ideas || 228,
-    '[data-metric="staged"]': c.stagedIdeas || 174,
-    '[data-metric="total"]': c.totalIdeas || 402,
-    '[data-metric="categories"]': c.categories || 108,
-    '[data-metric="sources"]': c.sources || 62,
-    '[data-metric="prompts"]': c.prompts || 3075
+    '[data-metric="ideas"]': c.canonicalIdeas ?? c.ideas ?? null,
+    '[data-metric="staged"]': c.stagedIdeas ?? null,
+    '[data-metric="total"]': c.totalIdeas ?? null,
+    '[data-metric="categories"]': c.categories ?? null,
+    '[data-metric="sources"]': c.sources ?? null,
+    '[data-metric="prompts"]': c.prompts ?? null
   };
   for (const [selector, val] of Object.entries(els)) {
+    if (val === null || val === undefined) continue;
     document.querySelectorAll(selector).forEach(el => {
       el.textContent = typeof val === 'number' ? val.toLocaleString() : val;
     });

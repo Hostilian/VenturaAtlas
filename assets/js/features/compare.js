@@ -21,10 +21,9 @@ function initCompare() {
 
   // Helper to extract score safely
   function getIdeaScore(idea, type) {
-    if (!idea) return 0;
+    if (!idea) return null;
     if (idea.atAGlance?.overallScore != null) return Number(idea.atAGlance.overallScore);
-    if (idea.compositeScores?.overallOpportunity != null) return Number(idea.compositeScores.overallOpportunity) * 10;
-    return 0;
+    return null;
   }
 
   // Populate selects
@@ -70,8 +69,10 @@ function initCompare() {
     }
 
     // Determine highest score & lowest cost for metric delta highlighting
-    const highestScore = Math.max(...chosenIdeas.map(i => Number(i.atAGlance?.overallScore || getIdeaScore(i, 'overall') || 0)));
-    const lowestCost = Math.min(...chosenIdeas.map(i => Number(i.atAGlance?.startupCost?.midpoint ?? 500)));
+    const knownScores = chosenIdeas.map(i => getIdeaScore(i, 'overall')).filter(Number.isFinite);
+    const knownCosts = chosenIdeas.map(i => Number(i.atAGlance?.startupCost?.midpoint)).filter(Number.isFinite);
+    const highestScore = knownScores.length ? Math.max(...knownScores) : null;
+    const lowestCost = knownCosts.length ? Math.min(...knownCosts) : null;
 
     const rows = [
       { 
@@ -87,17 +88,19 @@ function initCompare() {
       { 
         label: 'Attractiveness', 
         getVal: i => {
-          const s = i.compositeScores?.overallOpportunity ?? (getIdeaScore(i, 'overall') ? (getIdeaScore(i, 'overall') * 0.95).toFixed(1) : null);
-          return s != null ? `${s} / 10` : 'Not scored';
+          const s = i.compositeScores?.overallOpportunity;
+          return s != null ? `${s} (legacy score; scale unspecified)` : 'Not scored';
         }
       },
       { 
         label: 'Solo Founder Fit', 
-        getVal: i => `${i.compositeScores?.soloFounderPotential || (getIdeaScore(i, 'overall') * 0.9).toFixed(1)} / 10` 
+        getVal: i => i.compositeScores?.soloFounderPotential != null
+          ? `${i.compositeScores.soloFounderPotential} (legacy score; scale unspecified)`
+          : 'Not scored'
       },
       { 
         label: 'Evidence Confidence', 
-        getVal: i => (i.sourceReferences?.length >= 2 ? '<span class="chip success">High (Verified)</span>' : '<span class="chip neutral">Basic</span>')
+        getVal: i => `<span class="chip neutral">${Array.isArray(i.sourceReferences) ? i.sourceReferences.length : 0} public source reference(s); confidence not assessed</span>`
       },
       { label: 'Category', getVal: i => `<span class="chip status">${escHTML(i.category || 'N/A')}</span>` },
       { label: 'Target Customer', getVal: i => escHTML(i.atAGlance?.targetCustomer || i.targetCustomer || 'N/A') },
@@ -106,16 +109,18 @@ function initCompare() {
       { 
         label: 'Startup Capital', 
         getVal: i => {
-          const c = Number(i.atAGlance?.startupCost?.midpoint ?? 50);
-          const isBestCost = c === lowestCost && chosenIdeas.length > 1;
+          const rawCost = i.atAGlance?.startupCost?.midpoint;
+          if (!Number.isFinite(Number(rawCost))) return 'Unspecified';
+          const c = Number(rawCost);
+          const isBestCost = lowestCost !== null && c === lowestCost && chosenIdeas.length > 1;
           return `<strong>$${c.toLocaleString()}</strong> ${isBestCost ? '<span class="chip success sm">Lowest</span>' : ''}`;
         }
       },
-      { label: 'Time to MVP', getVal: i => escHTML(i.atAGlance?.timeToMvp || '3-7 days') },
-      { label: 'Time to Revenue', getVal: i => escHTML(i.atAGlance?.timeToFirstRevenue || '1-4 weeks') },
-      { label: 'Main Advantage', getVal: i => escHTML(i.atAGlance?.mainAdvantage || 'Low capital requirement') },
-      { label: 'Main Risk', getVal: i => escHTML(i.atAGlance?.mainRisk || 'Outreach & distribution') },
-      { label: 'Validation Experiment', getVal: i => escHTML(i.atAGlance?.bestNextValidationStep || 'Outreach to 25 prospective buyers') }
+      { label: 'Time to MVP', getVal: i => escHTML(i.atAGlance?.timeToMvp || 'Unspecified') },
+      { label: 'Time to Revenue', getVal: i => escHTML(i.atAGlance?.timeToFirstRevenue || 'Unspecified') },
+      { label: 'Main Advantage', getVal: i => escHTML(i.atAGlance?.mainAdvantage || 'Not recorded') },
+      { label: 'Main Risk', getVal: i => escHTML(i.atAGlance?.mainRisk || 'Not recorded') },
+      { label: 'Validation Experiment', getVal: i => escHTML(i.atAGlance?.bestNextValidationStep || 'Not recorded') }
     ];
 
     container.innerHTML = `

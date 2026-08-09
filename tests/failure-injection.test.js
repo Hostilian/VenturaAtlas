@@ -31,10 +31,34 @@ test('Failure Injection — Idempotent Metadata Build & No Duplicate Keys', () =
 
 test('Failure Injection — Public Artifact Security Check', () => {
   const distPath = path.join(ROOT, '_site');
-  if (!fs.existsSync(distPath)) {
-    execSync(`node "${path.join(ROOT, 'scripts', 'build-public-artifact.js')}"`, { cwd: ROOT, encoding: 'utf-8' });
-  }
+  execSync(`node "${path.join(ROOT, 'scripts', 'build-public-artifact.js')}"`, { cwd: ROOT, encoding: 'utf-8' });
   const checkPath = path.join(ROOT, 'scripts', 'check-public-artifact.js');
   const result = execSync(`node "${checkPath}"`, { cwd: ROOT, encoding: 'utf-8' });
   assert.ok(result.includes('passed cleanly'), 'Public artifact security check must pass');
+  assert.ok(!fs.existsSync(path.join(distPath, 'data', 'sources.json')), 'raw source registry must not be public');
+  assert.ok(fs.existsSync(path.join(distPath, 'data', 'public-sources.json')), 'sanitized public source projection must exist');
+  assert.ok(!fs.existsSync(path.join(distPath, 'data', 'build-manifest.json')), 'internal build manifest must not expose staging digests');
+  assert.ok(!fs.existsSync(path.join(distPath, 'research', 'audits')), 'private audit runs must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'research', 'original-chat')), 'private original-chat research must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'meeting-packets')), 'meeting packets require explicit publication and must not be public by default');
+
+  const publicSources = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'public-sources.json'), 'utf8'));
+  const publicIds = new Set(publicSources.map(source => source.id));
+  assert.ok(publicSources.every(source => source.visibility === 'PUBLIC'), 'every projected source must be explicitly public');
+  const publicIdeasRaw = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'ideas.json'), 'utf8'));
+  const publicIdeas = Array.isArray(publicIdeasRaw) ? publicIdeasRaw : publicIdeasRaw.ideas;
+  for (const idea of publicIdeas) {
+    for (const reference of idea.sourceReferences || []) {
+      const sourceId = typeof reference === 'string' ? reference : reference.id;
+      assert.ok(publicIds.has(sourceId), `public idea ${idea.id} references non-public source ${sourceId}`);
+    }
+    for (const evidence of idea.evidence || []) {
+      assert.ok(publicIds.has(evidence.sourceId), `public idea ${idea.id} exposes non-public evidence ${evidence.sourceId}`);
+    }
+  }
+  const publicMeta = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'repository-meta.json'), 'utf8'));
+  assert.equal(publicMeta.counts.stagedIdeas, undefined, 'public metadata must not expose staged counts');
+  assert.equal(publicMeta.counts.totalIdeas, undefined, 'public metadata must not combine staged and canonical counts');
+  assert.equal(publicMeta.revisions.stagingRevision, undefined, 'public metadata must not expose staging revision');
+  assert.equal(publicMeta.counts.sources, publicSources.length, 'public source count must describe the public projection');
 });

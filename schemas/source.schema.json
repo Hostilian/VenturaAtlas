@@ -2,13 +2,45 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "VentureAtlasSource",
   "type": "object",
-  "required": ["id", "title"],
+  "required": [
+    "id",
+    "title",
+    "visibility",
+    "sourceClass",
+    "evidenceEligible",
+    "provenanceEligible"
+  ],
   "properties": {
     "id": { "type": "string" },
     "title": { "type": "string" },
     "url": { "type": "string" },
     "author": { "type": "string" },
-    "publishedDate": { "type": "string" }
+    "publishedDate": { "type": "string" },
+    "visibility": {
+      "type": "string",
+      "enum": ["PUBLIC", "INTERNAL", "PRIVATE"]
+    },
+    "sourceClass": {
+      "type": "string",
+      "enum": [
+        "PRIMARY_OR_OFFICIAL",
+        "RESEARCH_PUBLICATION",
+        "COMPANY_OR_INDUSTRY",
+        "COMMUNITY",
+        "INTERNAL_PROVENANCE_ARTIFACT"
+      ]
+    },
+    "evidenceEligible": { "type": "boolean" },
+    "provenanceEligible": { "type": "boolean" }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "visibility": { "const": "PUBLIC" } },
+        "required": ["visibility"]
+      },
+      "then": { "required": ["url"] }
+    }
+  ],
   "additionalProperties": true
 }

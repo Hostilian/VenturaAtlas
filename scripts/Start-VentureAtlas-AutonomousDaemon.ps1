@@ -1,16 +1,11 @@
-# Venture Atlas OS — Autonomous Multi-Agent Idea Discovery Daemon (v2)
+# Venture Atlas OS -- Autonomous Multi-Agent Idea Discovery Daemon (v2)
 # 
 # Bridges EUshop Multi-Provider Orchestrator pattern:
 #   Tier 1: Hermes via Ollama (local, free)
-#   Tier 2: OmniRoute → OpenRouter (free tier)
+#   Tier 2: OmniRoute -> OpenRouter (free tier)
 #   Tier 3: FCC Claude (Anthropic Haiku, cheapest paid)
 #   Tier 4: Own Orchestrator (rule-based, always available)
 #   Tier 5: Anthropic Full (Claude Sonnet/Opus)
-#
-# Usage:
-#   .\Start-VentureAtlas-AutonomousDaemon.ps1
-#   .\Start-VentureAtlas-AutonomousDaemon.ps1 -Iterations 5 -IntervalSeconds 60 -Rank
-#   .\Start-VentureAtlas-AutonomousDaemon.ps1 -TestMode
 
 [CmdletBinding()]
 param(
@@ -19,6 +14,7 @@ param(
     [switch]$Rank,
     [switch]$Validate,
     [switch]$TestMode,
+    [switch]$Parallel      = $true,
     [string]$EUshopPath    = "D:\CODING\eushop"
 )
 
@@ -29,6 +25,10 @@ if ($env:DAEMON_MAX_ITERATIONS -and -not $PSBoundParameters.ContainsKey('MaxIter
     $MaxIterations = [int]$env:DAEMON_MAX_ITERATIONS
 }
 
+# Enable parallel AI execution across all providers simultaneously
+$env:PARALLEL_AI_ORCHESTRATION = "1"
+$env:IDEAS_PER_ITERATION       = "6"
+
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Continue"
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
@@ -37,7 +37,7 @@ if ($TestMode) {
     $MaxIterations    = 2
     $IntervalSeconds  = 5
     $Rank             = $true
-    Write-Host "TEST MODE: 2 iterations, 5s interval" -ForegroundColor Cyan
+    Write-Host "TEST MODE: 2 iterations, 5s interval (PARALLEL AI ACTIVE)" -ForegroundColor Cyan
 }
 
 $LogDir = Join-Path $PSScriptRoot "..\.agent-state\logs"
@@ -56,7 +56,7 @@ function Write-JsonLog {
     }
     foreach ($k in $Extra.Keys) { $Entry[$k] = $Extra[$k] }
     $Line = $Entry | ConvertTo-Json -Compress
-    Add-Content -LiteralPath $LogFile -Value $Line
+    try { Add-Content -LiteralPath $LogFile -Value $Line -ErrorAction SilentlyContinue } catch {}
     $colour = switch ($Level) {
         "WARN"    { "Yellow" }
         "ERROR"   { "Red" }
@@ -69,31 +69,28 @@ function Write-JsonLog {
 }
 
 function Invoke-PythonScript {
-    param([string]$ScriptName, [string[]]$Args = @())
+    param([string]$ScriptName, [string[]]$ScriptArgs = @())
     $ScriptPath = Join-Path $PSScriptRoot $ScriptName
     if (-not (Test-Path $ScriptPath)) {
         Write-JsonLog "ERROR" "Script not found: $ScriptPath"
         return 1
     }
-    $Output = & python $ScriptPath @Args 2>&1
+    $Output = & python $ScriptPath @ScriptArgs 2>&1
     foreach ($line in $Output) {
         if ($line) { Write-JsonLog "INFO" "  [Engine] $line" }
     }
     return $LASTEXITCODE
 }
 
-# ── Banner ────────────────────────────────────────────────────────────────────
-Write-JsonLog "HEADER" "=== Venture Atlas Autonomous Daemon v2 Starting ===" @{
-    maxIterations = $MaxIterations
-    intervalSeconds = $IntervalSeconds
-}
+# -- Banner --------------------------------------------------------------------
+Write-JsonLog "HEADER" "=== Venture Atlas Autonomous Daemon v2 (Parallel AI) Starting ===" -Extra @{ maxIterations = $MaxIterations; intervalSeconds = $IntervalSeconds }
 
-# ── Preflight checks ──────────────────────────────────────────────────────────
+# -- Preflight checks ----------------------------------------------------------
 # 1. EUshop orchestrator (optional, for cross-project state sync)
 if (Test-Path "$EUshopPath\scripts\EUshop-Agent-Orchestrator.ps1") {
     Write-JsonLog "SUCCESS" "Connected to EUshop Multi-Provider Orchestrator at $EUshopPath"
 } else {
-    Write-JsonLog "WARN" "EUshop Orchestrator not found — running in standalone mode"
+    Write-JsonLog "WARN" "EUshop Orchestrator not found - running in standalone mode"
 }
 
 # 2. Python check
@@ -114,37 +111,42 @@ try {
 }
 
 # 4. API key checks
-$AnthropicKey = if ($env:ANTHROPIC_API_KEYS) { $env:ANTHROPIC_API_KEYS } else { $env:ANTHROPIC_API_KEY }
-$OpenRouterKey = if ($env:OPENROUTER_API_KEYS) { $env:OPENROUTER_API_KEYS } else { $env:OPENROUTER_API_KEY }
+$AnthropicKey = $env:ANTHROPIC_API_KEYS
+if (-not $AnthropicKey) { $AnthropicKey = $env:ANTHROPIC_API_KEY }
+
+$OpenRouterKey = $env:OPENROUTER_API_KEYS
+if (-not $OpenRouterKey) { $OpenRouterKey = $env:OPENROUTER_API_KEY }
+
 if ($AnthropicKey -and $AnthropicKey -ne "sk-ant-...") {
     Write-JsonLog "SUCCESS" "Anthropic API key pool configured (FCC Claude + Full available)"
 } else {
-    Write-JsonLog "WARN" "No Anthropic key — FCC Claude (Tier 3) disabled. Set ANTHROPIC_API_KEY or ANTHROPIC_API_KEYS."
+    Write-JsonLog "WARN" "No Anthropic key - FCC Claude (Tier 3) disabled. Set ANTHROPIC_API_KEY or ANTHROPIC_API_KEYS."
 }
+
 if ($OpenRouterKey -and $OpenRouterKey -ne "sk-or-...") {
     Write-JsonLog "SUCCESS" "OpenRouter key pool configured (OmniRoute/Tier 2 available)"
 } else {
-    Write-JsonLog "WARN" "No OpenRouter key — OmniRoute (Tier 2) disabled. Set OPENROUTER_API_KEY or OPENROUTER_API_KEYS."
+    Write-JsonLog "WARN" "No OpenRouter key - OmniRoute (Tier 2) disabled. Set OPENROUTER_API_KEY or OPENROUTER_API_KEYS."
 }
 
 # 5. Run provider health check via orchestrator
 Write-JsonLog "INFO" "Running provider health check..."
-Invoke-PythonScript "va_orchestrator.py" @("--test")
+Invoke-PythonScript "va_orchestrator.py" -ScriptArgs "--test"
 
-Write-JsonLog "HEADER" "Daemon active — running up to $MaxIterations iterations every $($IntervalSeconds)s"
+Write-JsonLog "HEADER" "Daemon active - running up to $MaxIterations iterations every $($IntervalSeconds)s"
 
-# ── Main Loop ─────────────────────────────────────────────────────────────────
+# -- Main Loop -----------------------------------------------------------------
 for ($i = 1; $i -le $MaxIterations; $i++) {
     try {
-        Write-Host "`n$('='*60)" -ForegroundColor Cyan
-        Write-Host "  VENTURE ATLAS DAEMON  —  Run $i/$MaxIterations" -ForegroundColor Cyan
+        Write-Host "`n============================================================" -ForegroundColor Cyan
+        Write-Host "  VENTURE ATLAS DAEMON (PARALLEL AI)  -  Run $i/$MaxIterations" -ForegroundColor Cyan
         Write-Host "  $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Cyan
-        Write-Host "$('='*60)" -ForegroundColor Cyan
+        Write-Host "============================================================" -ForegroundColor Cyan
 
-        Write-JsonLog "INFO" "Starting discovery run $i of $MaxIterations" @{iteration=$i}
+        Write-JsonLog "INFO" "Starting parallel discovery run $i of $MaxIterations" -Extra @{ iteration = $i }
 
         # Step 1: Idea discovery
-        Write-JsonLog "INFO" "Running idea generator..."
+        Write-JsonLog "INFO" "Running parallel idea generator..."
         $rc = Invoke-PythonScript "autonomous-idea-generator.py"
         if ($rc -eq 0) {
             Write-JsonLog "SUCCESS" "Idea generator complete"
@@ -155,18 +157,19 @@ for ($i = 1; $i -le $MaxIterations; $i++) {
         # Step 2: Validate staged (optional)
         if ($Validate) {
             Write-JsonLog "INFO" "Running validator on staged ideas..."
-            Invoke-PythonScript "va-validator.py" @("--staged")
+            Invoke-PythonScript "va-validator.py" -ScriptArgs "--staged"
         }
 
         # Step 3: Re-rank (optional)
         if ($Rank) {
             Write-JsonLog "INFO" "Updating rankings..."
-            Invoke-PythonScript "va-ranker.py" @("--update", "--top", "10")
+            Invoke-PythonScript "va-ranker.py" -ScriptArgs "--update", "--top", "10"
         }
 
         Write-JsonLog "SUCCESS" "Run $i complete"
     } catch {
-        Write-JsonLog "ERROR" "Daemon run $i encountered exception: $_ — continuing next cycle"
+        $errStr = $_.Exception.Message
+        Write-JsonLog "ERROR" "Daemon run $i encountered exception: $errStr - continuing next cycle"
     }
 
     if ($i -lt $MaxIterations) {

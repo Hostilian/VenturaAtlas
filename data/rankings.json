@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-09T16:23:03.343833+00:00",
+  "generatedAt": "2026-08-09T17:00:23.606809+00:00",
   "totalIdeas": 294,
   "rankingViewsCount": 7,
   "algorithm": "weighted-composite-v2",
@@ -34369,247 +34369,7 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-09T14:51:42.242948+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T14:53:43.106058+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T14:55:43.950410+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T14:57:44.909214+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T14:59:45.768248+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T15:01:46.601589+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T15:03:47.525442+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T15:05:48.371380+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        },
-        {
-          "id": "idea-361",
-          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
-          "score": 95.5
-        },
-        {
-          "id": "idea-386",
-          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
-          "score": 94.3
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-09T16:22:28.951883+00:00",
+      "snapshotAt": "2026-08-09T16:51:59.522582+00:00",
       "top5": [
         {
           "id": "idea-385",
@@ -34639,7 +34399,247 @@
       ]
     },
     {
-      "snapshotAt": "2026-08-09T16:23:03.343833+00:00",
+      "snapshotAt": "2026-08-09T16:52:12.598157+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:54:02.079792+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:54:15.362611+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:56:04.716262+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:56:18.046005+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:58:07.355244+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T16:58:20.745815+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T17:00:10.040504+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T17:00:23.606809+00:00",
       "top5": [
         {
           "id": "idea-385",

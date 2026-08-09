@@ -126,7 +126,7 @@ function initRankings() {
 
       <div id="weightInfoBox" style="display:none;margin-bottom:1.25rem;padding:1rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);font-size:0.85rem">
         <h4 style="margin-bottom:0.4rem">💡 Transparent Scoring Methodology</h4>
-        <p style="color:var(--text2);margin-bottom:0.5rem">Rankings in VenturaAtlas are calculated deterministically across 12 weighted dimensions including Pain Severity (20%), Willingness to Pay (20%), Market Size (15%), Distribution Accessibility (15%), AI Leverage (15%), and Evidence Quality (15%).</p>
+        <p style="color:var(--text2);margin-bottom:0.5rem">The current ranking engine combines eight legacy dimensions: overall opportunity (25%), bootstrapped potential (15%), solo-founder potential (15%), fastest path to revenue (10%), confidence (10%), differentiation (10%), profit potential (10%), and distribution (5%). Coverage and evidence limitations can make records incomparable.</p>
       </div>
 
       ${itemsToDisplay.length === 0 ? `
@@ -166,7 +166,7 @@ function initRankings() {
                     </td>
                     <td><span class="chip status">${escHTML(item.category)}</span></td>
                     <td><span class="score-badge ${getScoreClass(item.score)}" title="Click to view score breakdown">${scoreVal}</span></td>
-                    <td><span class="chip ${item.checklist >= 50 ? 'success' : 'neutral'}">${item.checklist ? item.checklist + '%' : 'Verified'}</span></td>
+                    <td><span class="chip neutral">${Number.isFinite(Number(item.checklist)) ? Number(item.checklist) + '% checklist' : 'Not assessed'}</span></td>
                     <td style="text-align:right">
                       <div style="display:inline-flex;gap:0.3rem;align-items:center;justify-content:flex-end">
                         <a href="${ideaUrl}" class="button primary sm" title="Open complete idea dossier">Open</a>

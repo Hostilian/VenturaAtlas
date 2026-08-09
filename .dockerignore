@@ -1,0 +1,36 @@
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Repository, agent, and local execution state
+.git
+.github
+.agent-state
+.agent-system
+.agents
+.codex
+.snapshots
+
+# Private research and operator artifacts
+research/audits
+research/original-chat
+meeting-packets
+archive
+
+# Dependencies and generated outputs
+node_modules
+_site
+dist
+coverage
+playwright-report
+test-results
+__pycache__
+*.pyc
+*.log
+
+# Local application state
+apps/factbounty/data/*.db
+apps/factbounty/data/*.db-*

@@ -11,8 +11,8 @@ test-results/
 __pycache__/
 *.pyc
 .agent-state/
+.codex/runtime/
 apps/factbounty/data/*.db
 apps/factbounty/data/*.db-*
 .DS_Store
 Thumbs.db
-

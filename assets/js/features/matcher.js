@@ -6,7 +6,8 @@ function initMatcher() {
   const ideasData = window.VA?.ideas || [];
 
   function budgetMatches(idea, budget) {
-    const cost = idea.atAGlance?.startupCost?.midpoint ?? 500;
+    const cost = idea.atAGlance?.startupCost?.midpoint;
+    if (!Number.isFinite(Number(cost))) return false;
     if (budget === 'zero') return cost <= 50;
     if (budget === 'low') return cost <= 500;
     if (budget === 'mid') return cost <= 5000;
@@ -14,9 +15,12 @@ function initMatcher() {
   }
 
   function computeMatchScore(idea, answers) {
-    let score = idea.atAGlance?.overallScore ?? getIdeaScore(idea, 'overall') ?? 50;
-    if (answers.goal === 'profit') score = idea.compositeScores?.highestProfitPotential || score;
-    if (answers.goal === 'confidence') score = idea.scores?.overallConfidence?.value || score;
+    const overall = idea.atAGlance?.overallScore ?? getIdeaScore(idea, 'overall');
+    let score = Number.isFinite(Number(overall)) ? Number(overall) : null;
+    const profit = idea.compositeScores?.highestProfitPotential;
+    const confidence = idea.scores?.overallConfidence?.value;
+    if (answers.goal === 'profit') score = Number.isFinite(Number(profit)) ? Number(profit) : null;
+    if (answers.goal === 'confidence') score = Number.isFinite(Number(confidence)) ? Number(confidence) : null;
     return score;
   }
 

@@ -32,13 +32,20 @@ const ALLOW_DIRS = [
   'financial-models',
   'ideas',
   'launch-plans',
-  'meeting-packets',
   'prompts',
   'rankings',
-  'research',
   'technical-blueprints',
   'templates',
   'validation-plans'
+];
+
+const ALLOW_PATHS = [
+  'research/assumptions.md',
+  'research/completeness-audit.md',
+  'research/final-summary.md',
+  'research/methodology.md',
+  'research/research-plan.md',
+  'research/scoring-methodology.md'
 ];
 
 const DENIED_PATTERNS = [
@@ -47,17 +54,23 @@ const DENIED_PATTERNS = [
   /^\.git/i,
   /^\.agent-state/i,
   /^\.agents/i,
+  /^\.codex/i,
   /^apps/i,
   /^tests/i,
   /^scripts/i,
   /^cloud-control-plane/i,
   /^services/i,
   /idea-staging-queue\.json$/i,
+  /^data\/sources\.json$/i,
   /provider-state\.json$/i,
   /staged-id-migration\.json$/i,
   /migration-preflight\.json$/i,
   /package(-lock)?\.json$/i,
-  /tsconfig.*\.json$/i
+  /tsconfig.*\.json$/i,
+  /^research\/(audits|original-chat|constitution)(\/|$)/i,
+  /^meeting-packets(\/|$)/i,
+  /^prompts\/original(?:\/|-|$)/i,
+  /^prompts\/reconstructed-repository-build-prompt\.md$/i
 ];
 
 const PUBLIC_DATA_ALLOWLIST = new Set([
@@ -65,16 +78,51 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
   'ideas.csv',
   'ideas.schema.json',
   'categories.json',
-  'sources.json',
   'public-sources.json',
   'rankings.json',
   'search-index.json',
   'repository-meta.json',
   'relationships.json',
   'prompts.json',
-  'build-manifest.json',
   'validation-summary.json'
 ]);
+
+let publicSourceIds = new Set();
+
+function writeJson(dest, value) {
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+function projectIdeasForPublic(src, dest) {
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
+  const projected = ideas.map(idea => {
+    const result = { ...idea };
+    if (Array.isArray(result.sourceReferences)) {
+      result.sourceReferences = result.sourceReferences.filter(reference => {
+        const sourceId = typeof reference === 'string' ? reference : reference?.id;
+        return publicSourceIds.has(sourceId);
+      });
+    }
+    if (Array.isArray(result.evidence)) {
+      result.evidence = result.evidence.filter(item => publicSourceIds.has(item?.sourceId));
+    }
+    return result;
+  });
+  writeJson(dest, Array.isArray(raw) ? projected : { ...raw, ideas: projected });
+}
+
+function projectRepositoryMetaForPublic(src, dest) {
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const counts = { ...(raw.counts || {}) };
+  delete counts.stagedIdeas;
+  delete counts.totalIdeas;
+  counts.sources = publicSourceIds.size;
+  const revisions = { ...(raw.revisions || {}) };
+  delete revisions.stagingRevision;
+  writeJson(dest, { ...raw, counts, revisions });
+}
 
 function isDenied(relativePath) {
   const normalized = relativePath.replace(/\\/g, '/');
@@ -104,7 +152,14 @@ function copyRecursive(src, dest) {
   } else if (stat.isFile()) {
     const relPath = path.relative(ROOT, src);
     if (!isDenied(relPath)) {
-      fs.copyFileSync(src, dest);
+      const normalized = relPath.replace(/\\/g, '/');
+      if (normalized === 'data/ideas.json') {
+        projectIdeasForPublic(src, dest);
+      } else if (normalized === 'data/repository-meta.json') {
+        projectRepositoryMetaForPublic(src, dest);
+      } else {
+        fs.copyFileSync(src, dest);
+      }
       count++;
     }
   }
@@ -114,13 +169,13 @@ function copyRecursive(src, dest) {
 function build() {
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
 
-  // Ensure public-sources.json is freshly generated before staging
-  try {
-    console.log('[BUILD] Generating public sources projection (data/public-sources.json)...');
-    execSync('python scripts/build_public_sources.py', { cwd: ROOT, stdio: 'inherit' });
-  } catch (err) {
-    console.warn('[WARN] Failed to run build_public_sources.py:', err.message);
-  }
+  // Fail closed: a stale/missing public evidence projection must abort the build.
+  console.log('[BUILD] Generating public sources projection (data/public-sources.json)...');
+  execSync('python scripts/build_public_sources.py', { cwd: ROOT, stdio: 'inherit' });
+  const projectedSources = JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'data', 'public-sources.json'), 'utf8')
+  );
+  publicSourceIds = new Set(projectedSources.map(source => source.id));
 
   if (fs.existsSync(DIST)) {
     fs.rmSync(DIST, { recursive: true, force: true });
@@ -141,6 +196,16 @@ function build() {
     const srcDir = path.join(ROOT, d);
     if (fs.existsSync(srcDir) && !isDenied(d)) {
       totalFiles += copyRecursive(srcDir, path.join(DIST, d));
+    }
+  }
+
+  for (const relativePath of ALLOW_PATHS) {
+    const srcPath = path.join(ROOT, relativePath);
+    if (fs.existsSync(srcPath) && !isDenied(relativePath)) {
+      const destPath = path.join(DIST, relativePath);
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.copyFileSync(srcPath, destPath);
+      totalFiles++;
     }
   }
 

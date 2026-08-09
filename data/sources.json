@@ -18,7 +18,11 @@
     "ideaIds": [
       "idea-068",
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s02",
@@ -39,7 +43,11 @@
     "ideaIds": [
       "idea-061",
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s03",
@@ -60,7 +68,11 @@
     "ideaIds": [
       "idea-061",
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s04",
@@ -80,7 +92,11 @@
     "ideaIds": [
       "idea-061",
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s05",
@@ -100,7 +116,11 @@
     "ideaIds": [
       "idea-061",
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s06",
@@ -119,7 +139,11 @@
     "researchRound": "1",
     "ideaIds": [
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s07",
@@ -138,7 +162,11 @@
     "ideaIds": [
       "idea-061",
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s08",
@@ -159,7 +187,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s09",
@@ -180,7 +212,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s10",
@@ -199,7 +235,11 @@
     "ideaIds": [
       "idea-061",
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s11",
@@ -219,7 +259,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s12",
@@ -239,7 +283,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s13",
@@ -259,7 +307,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s14",
@@ -278,7 +330,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s15",
@@ -298,7 +354,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s16",
@@ -318,7 +378,11 @@
     "ideaIds": [
       "idea-061",
       "idea-070"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s17",
@@ -338,7 +402,11 @@
     "ideaIds": [
       "idea-061",
       "idea-070"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s18",
@@ -358,7 +426,11 @@
     "ideaIds": [
       "idea-061",
       "idea-070"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s19",
@@ -376,7 +448,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s20",
@@ -395,7 +471,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s21",
@@ -415,7 +495,11 @@
     "ideaIds": [
       "idea-061",
       "idea-070"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s22",
@@ -435,7 +519,11 @@
     "ideaIds": [
       "idea-063",
       "idea-066"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s23",
@@ -455,7 +543,11 @@
     "ideaIds": [
       "idea-061",
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s24",
@@ -475,7 +567,11 @@
     "ideaIds": [
       "idea-061",
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s25",
@@ -495,7 +591,11 @@
     "ideaIds": [
       "idea-061",
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s26",
@@ -514,7 +614,11 @@
     "researchRound": "5",
     "ideaIds": [
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s27",
@@ -532,7 +636,11 @@
     "researchRound": "5",
     "ideaIds": [
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s28",
@@ -550,7 +658,11 @@
     "researchRound": "5",
     "ideaIds": [
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s29",
@@ -568,7 +680,11 @@
     "researchRound": "8",
     "ideaIds": [
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s30",
@@ -587,7 +703,11 @@
     "researchRound": "11",
     "ideaIds": [
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s31",
@@ -606,7 +726,11 @@
     "ideaIds": [
       "idea-068",
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s32",
@@ -625,7 +749,11 @@
     "researchRound": "2",
     "ideaIds": [
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s33",
@@ -643,7 +771,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-068"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s34",
@@ -662,7 +794,11 @@
     "researchRound": "5",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s35",
@@ -681,7 +817,11 @@
     "researchRound": "8",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMMUNITY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s36",
@@ -699,7 +839,11 @@
     "researchRound": "5",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s37",
@@ -717,7 +861,11 @@
     "researchRound": "2",
     "ideaIds": [
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s38",
@@ -737,7 +885,11 @@
     "ideaIds": [
       "idea-066",
       "idea-069"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s39",
@@ -758,7 +910,11 @@
       "idea-061",
       "idea-062",
       "idea-063"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s40",
@@ -779,7 +935,11 @@
       "idea-061",
       "idea-062",
       "idea-065"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s41",
@@ -797,7 +957,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s42",
@@ -815,7 +979,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s43",
@@ -836,7 +1004,11 @@
       "idea-061",
       "idea-068"
     ],
-    "importantCaveat": "This paper independently proposes a similar market but is conceptual, not empirical evidence that FactBounty will succeed."
+    "importantCaveat": "This paper independently proposes a similar market but is conceptual, not empirical evidence that FactBounty will succeed.",
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s44",
@@ -855,7 +1027,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s45",
@@ -874,7 +1050,11 @@
     "researchRound": "6",
     "ideaIds": [
       "idea-061"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s46",
@@ -893,7 +1073,11 @@
     "ideaIds": [
       "idea-061",
       "idea-070"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s47",
@@ -915,7 +1099,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s48",
@@ -933,7 +1121,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s49",
@@ -951,7 +1143,11 @@
     "researchRound": "7",
     "ideaIds": [
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s50",
@@ -971,7 +1167,11 @@
     "ideaIds": [
       "idea-061",
       "idea-064"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "src-001",
@@ -985,7 +1185,11 @@
       "completeness rules",
       "data model",
       "website requirements"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-002",
@@ -999,7 +1203,11 @@
       "scores",
       "tags",
       "monetization"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-003",
@@ -1012,7 +1220,11 @@
       "research phases",
       "evidence rules",
       "scoring baseline"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-004",
@@ -1026,7 +1238,11 @@
       "RAG gate",
       "MCP gate",
       "60-idea research ledger"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-005",
@@ -1040,7 +1256,11 @@
       "Erasmus Course Rescue",
       "Indie Preflight",
       "60-idea research ledger"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-006",
@@ -1053,7 +1273,11 @@
       "founder constraints",
       "hard exclusions",
       "research tournament"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-007",
@@ -1066,7 +1290,11 @@
       "12-round research process",
       "cost rules",
       "saturation rules"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-008",
@@ -1079,7 +1307,11 @@
       "EUshop ideas",
       "agent operations",
       "evidence-first engineering"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-009",
@@ -1092,7 +1324,11 @@
       "security",
       "compliance",
       "marketplace operations"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-010",
@@ -1105,7 +1341,11 @@
       "Momentum FPS",
       "autonomous game factory",
       "multi-provider agent system"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-011",
@@ -1118,7 +1358,11 @@
       "repo autopilot",
       "budget controller",
       "recovery loops"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "src-012",
@@ -1132,7 +1376,11 @@
       "video ideas",
       "agent ideas",
       "user preferences"
-    ]
+    ],
+    "visibility": "INTERNAL",
+    "sourceClass": "INTERNAL_PROVENANCE_ARTIFACT",
+    "evidenceEligible": false,
+    "provenanceEligible": true
   },
   {
     "id": "s63",
@@ -1153,7 +1401,11 @@
     "ideaIds": [
       "idea-385",
       "idea-391"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s64",
@@ -1174,7 +1426,11 @@
     "ideaIds": [
       "idea-385",
       "idea-391"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s65",
@@ -1195,7 +1451,11 @@
     "ideaIds": [
       "idea-385",
       "idea-391"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s66",
@@ -1216,7 +1476,11 @@
     "ideaIds": [
       "idea-385",
       "idea-391"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s67",
@@ -1236,7 +1500,11 @@
     "researchRound": "10",
     "ideaIds": [
       "idea-386"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s68",
@@ -1256,7 +1524,11 @@
     "researchRound": "10",
     "ideaIds": [
       "idea-387"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s69",
@@ -1276,7 +1548,11 @@
     "researchRound": "10",
     "ideaIds": [
       "idea-388"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s70",
@@ -1296,7 +1572,11 @@
     "researchRound": "10",
     "ideaIds": [
       "idea-390"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s71",
@@ -1316,7 +1596,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-395"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s72",
@@ -1337,7 +1621,11 @@
     "ideaIds": [
       "idea-395",
       "idea-396"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s73",
@@ -1356,7 +1644,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-395"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s74",
@@ -1376,7 +1668,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-396"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s75",
@@ -1396,7 +1692,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-396"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s76",
@@ -1416,7 +1716,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-397"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s77",
@@ -1436,7 +1740,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-397"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s78",
@@ -1455,7 +1763,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-397"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "RESEARCH_PUBLICATION",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s79",
@@ -1475,7 +1787,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-398"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s80",
@@ -1495,7 +1811,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-399"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s81",
@@ -1515,7 +1835,11 @@
     "ideaIds": [
       "idea-399",
       "idea-406"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s82",
@@ -1535,7 +1859,11 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-400"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   },
   {
     "id": "s83",
@@ -1555,6 +1883,10 @@
     "researchRound": "12",
     "ideaIds": [
       "idea-401"
-    ]
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

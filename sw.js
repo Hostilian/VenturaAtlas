@@ -22,7 +22,7 @@ const OPTIONAL_DATA = [
   './data/search-index.json',
   './data/ideas.json',
   './data/categories.json',
-  './data/sources.json',
+  './data/public-sources.json',
   './data/rankings.json'
 ];
 

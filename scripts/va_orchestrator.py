@@ -552,12 +552,88 @@ DEFAULT_PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-ap
 
 from va_runtime.provider_router import get_provider_scheduler, NoEligibleProviderError
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) -> tuple[str, str] | None:
+    """Execute a single provider call with exception tracking."""
+    state = _load_state()
+    ps = state["providers"].get(provider, {})
+    if _is_circuit_open(ps):
+        return None
+    try:
+        if provider == "hermes-ollama":
+            try:
+                resp = _call_hermes(prompt, HERMES_MODEL)
+            except Exception:
+                resp = _call_hermes(prompt, OLLAMA_FALLBACK)
+        elif provider == "omniRoute":
+            resp = _call_omniRoute(prompt)
+        elif provider == "fcc-claude":
+            resp = _call_fcc_claude(prompt)
+        elif provider == "active-api":
+            resp = _call_active_api(prompt)
+        elif provider == "deepseek-api":
+            resp = _call_deepseek_api(prompt)
+        elif provider == "anthropic-full":
+            resp = _call_anthropic_full(prompt)
+        elif provider == "own-orch":
+            resp = _call_own_orchestrator(prompt, domain_hint)
+        else:
+            return None
+        _record_success(state, provider)
+        log_success(f"[PARALLEL AI] Provider '{provider}' responded OK ({len(resp)} chars)")
+        return resp, provider
+    except Exception as e:
+        log_debug(f"[PARALLEL AI] Provider '{provider}' attempt failed: {e}")
+        _record_failure(state, provider)
+        return None
+
+def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True) -> tuple[str, str]:
+    """
+    Parallel AI Orchestration: Queries ALL available AI providers simultaneously.
+    Returns the fastest valid response, ensuring max computing power and smartness.
+    """
+    state = _load_state()
+    providers_to_try = [p for p in DEFAULT_PROVIDER_ORDER if p != "own-orch" and not _is_circuit_open(state["providers"].get(p, {}))]
+    if allow_own_orch:
+        providers_to_try.append("own-orch")
+
+    if not providers_to_try:
+        if not allow_own_orch:
+            raise NoEligibleProviderError("No external providers available and allow_own_orch is False")
+        providers_to_try = ["own-orch"]
+
+    log_info(f"[PARALLEL AI ENGINE] Launching {len(providers_to_try)} AI providers in parallel: {', '.join(providers_to_try)}")
+
+    results = []
+    with ThreadPoolExecutor(max_workers=len(providers_to_try)) as executor:
+        futures = {executor.submit(_call_single_provider, p, prompt, domain_hint): p for p in providers_to_try}
+        for future in as_completed(futures):
+            res = future.result()
+            if res:
+                results.append(res)
+                # First valid response returns immediately for speed, but all were executed concurrently
+                break
+
+    if results:
+        return results[0]
+
+    if not allow_own_orch:
+        raise NoEligibleProviderError("All external parallel AI calls failed and allow_own_orch is False")
+
+    log_warn("[PARALLEL AI ENGINE] All parallel calls failed, invoking own-orch fallback")
+    resp = _call_own_orchestrator(prompt, domain_hint)
+    _record_success(state, "own-orch")
+    return resp, "own-orch"
+
 def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True, required_capabilities: list[str] = None, max_cost_class: int = 3) -> tuple[str, str]:
     """
     Try providers matched by capabilities and cost budget, respecting circuit breakers.
-    Returns (response_text, provider_name_used).
-    Own orchestrator is last resort and always succeeds when allow_own_orch is True.
+    If PARALLEL_AI_ORCHESTRATION=1 is set, queries all providers simultaneously.
     """
+    if os.environ.get('PARALLEL_AI_ORCHESTRATION', '0') in ('1', 'true', 'True'):
+        return call_llm_parallel(prompt, domain_hint, allow_own_orch)
+
     state = _load_state()
     scheduler = get_provider_scheduler()
     candidate_providers = scheduler.select_providers_for_task(

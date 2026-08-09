@@ -10,10 +10,17 @@ const FORBIDDEN_FILE_PATTERNS = [
   /^\.git/i,
   /^\.agent-state/i,
   /^\.agents/i,
+  /^\.codex/i,
   /^apps/i,
   /^tests/i,
   /^scripts/i,
   /idea-staging-queue\.json$/i,
+  /^data\/sources\.json$/i,
+  /^data\/build-manifest\.json$/i,
+  /^research\/(audits|original-chat|constitution)(\/|$)/i,
+  /^meeting-packets(\/|$)/i,
+  /^prompts\/original(?:\/|-|$)/i,
+  /^prompts\/reconstructed-repository-build-prompt\.md$/i,
   /provider-state\.json$/i,
   /package(-lock)?\.json$/i,
   /tsconfig.*\.json$/i,
@@ -22,7 +29,9 @@ const FORBIDDEN_FILE_PATTERNS = [
 ];
 
 const SECRET_CONTENT_PATTERNS = [
-  { name: 'OpenAI/Anthropic Secret API Key', regex: /sk-[a-zA-Z0-9]{20,}/ },
+  { name: 'Generic OpenAI-style Secret API Key', regex: /sk-[a-zA-Z0-9]{20,}/ },
+  { name: 'OpenRouter Secret API Key', regex: /sk-or-v1-[a-zA-Z0-9_-]{20,}/ },
+  { name: 'Anthropic Secret API Key', regex: /sk-ant-[a-zA-Z0-9_-]{20,}/ },
   { name: 'Google AI API Key', regex: /AIzaSy[a-zA-Z0-9_-]{33}/ },
   { name: 'GitHub Personal Token', regex: /gh[pousr]_[a-zA-Z0-9]{36,}/ },
   { name: 'RSA/EC Private Key Header', regex: /-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----/ },

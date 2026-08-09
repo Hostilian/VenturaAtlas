@@ -1,0 +1,12 @@
+{
+  "classifierVersion": "source-visibility-v1",
+  "appliedAt": "2026-08-09T16:53:03.954648+00:00",
+  "inputSha256": "c590497b1feac8effe5e41eb24af8be5458b2e1ee5bfed75b0c6a4e828f60833",
+  "outputSha256": "9aa9cd6a6194fe5567a72fb84fc87b1689600eeed5b83539b77305ca930b73a3",
+  "recordCount": 83,
+  "counts": {
+    "PUBLIC": 71,
+    "INTERNAL": 12,
+    "PRIVATE": 0
+  }
+}
