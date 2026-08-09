@@ -573,8 +573,17 @@ function initHome() {
     updated:   (a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')
   };
 
+  let currentScope = 'canonical';
+  let visibleCount = 24;
+
+  function getBaseList() {
+    if (currentScope === 'staged') return VA.stagedIdeas || [];
+    if (currentScope === 'all') return VA.allIdeas || [...(VA.ideas || []), ...(VA.stagedIdeas || [])];
+    return VA.ideas || [];
+  }
+
   function render() {
-    let xs = Array.isArray(VA.ideas) ? [...VA.ideas] : (Array.isArray(VA.ideas?.ideas) ? [...VA.ideas.ideas] : []);
+    let xs = [...getBaseList()];
     const term = q.value.toLowerCase().trim();
 
     if (term) {
@@ -630,13 +639,40 @@ function initHome() {
     const fn = sorters[sort.value] || sorters.overall;
     xs.sort(fn);
 
-    wrap.innerHTML = xs.length ? xs.map(card).join('') : '';
-    if (empty) empty.classList.toggle('hidden', xs.length > 0);
+    const totalFiltered = xs.length;
+    const sliced = xs.slice(0, visibleCount);
+
+    wrap.innerHTML = sliced.length ? sliced.map(card).join('') : '';
+    if (empty) empty.classList.toggle('hidden', totalFiltered > 0);
+
+    let loadMoreBtn = $('#loadMoreBtn');
+    if (!loadMoreBtn && wrap.parentNode) {
+      const containerDiv = document.createElement('div');
+      containerDiv.id = 'loadMoreWrap';
+      containerDiv.style.cssText = 'text-align:center;margin:1.5rem 0 2rem';
+      containerDiv.innerHTML = `<button id="loadMoreBtn" class="button secondary" style="min-width:220px"></button>`;
+      wrap.parentNode.insertBefore(containerDiv, wrap.nextSibling);
+      loadMoreBtn = $('#loadMoreBtn');
+      loadMoreBtn.addEventListener('click', () => {
+        visibleCount += 24;
+        render();
+      });
+    }
+
+    if (loadMoreBtn && loadMoreBtn.parentNode) {
+      if (sliced.length < totalFiltered) {
+        loadMoreBtn.parentNode.style.display = 'block';
+        const remaining = totalFiltered - sliced.length;
+        loadMoreBtn.textContent = `Show More Ideas (${remaining} remaining)`;
+      } else {
+        loadMoreBtn.parentNode.style.display = 'none';
+      }
+    }
 
     const rc = $('#resultCount');
-    if (rc) rc.textContent = `${xs.length.toLocaleString()} idea${xs.length !== 1 ? 's' : ''}`;
+    if (rc) rc.textContent = `${totalFiltered.toLocaleString()} idea${totalFiltered !== 1 ? 's' : ''}`;
 
-    renderTable(xs);
+    renderTable(sliced);
 
     const usp = new URLSearchParams();
     if (q.value)                  usp.set('q', q.value);
@@ -667,6 +703,20 @@ function initHome() {
 
   q.addEventListener('input', render);
   [cat, status, sort, $('#wizBudget'), $('#wizSpeed'), $('#wizSkill')].forEach(el => el && el.addEventListener('change', render));
+
+  $$('.scope-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.scope-tab').forEach(t => {
+        t.classList.remove('primary', 'active');
+        t.classList.add('secondary');
+      });
+      tab.classList.remove('secondary');
+      tab.classList.add('primary', 'active');
+      currentScope = tab.getAttribute('data-scope') || 'canonical';
+      visibleCount = 24;
+      render();
+    });
+  });
 
   const resetFn = () => {
     q.value = ''; cat.value = ''; status.value = ''; sort.value = 'overall';

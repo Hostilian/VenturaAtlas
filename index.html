@@ -528,8 +528,13 @@
          IDEA DIRECTORY
     ══════════════════════════════════════════════════════════ -->
     <section id="directory" aria-labelledby="dirTitle">
-      <div class="directory-header">
+      <div class="directory-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
         <h2 id="dirTitle">Idea directory</h2>
+        <div class="scope-tabs" role="tablist" style="display:flex;gap:0.4rem;flex-wrap:wrap">
+          <button class="button primary sm scope-tab active" data-scope="canonical">💡 Canonical Portfolio (<span data-metric="ideas">272</span>)</button>
+          <button class="button secondary sm scope-tab" data-scope="staged">🧪 Staging Queue (<span data-metric="staged">174</span>)</button>
+          <button class="button secondary sm scope-tab" data-scope="all">🌐 All Opportunities (<span data-metric="total">446</span>)</button>
+        </div>
       </div>
 
       <!-- Quick Filter Chips -->
@@ -569,6 +574,7 @@
           <option value="">All statuses</option>
           <option value="priority">Priority</option>
           <option value="researched">Researched</option>
+          <option value="staged">Staged</option>
           <option value="explore">Explore</option>
           <option value="archived">Archived</option>
         </select>
