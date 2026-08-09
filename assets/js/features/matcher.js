@@ -6,7 +6,7 @@ function initMatcher() {
   const ideasData = window.VA?.ideas || [];
 
   function budgetMatches(idea, budget) {
-    const cost = idea.atAGlance?.startupCost?.midpoint || 50;
+    const cost = idea.atAGlance?.startupCost?.midpoint ?? 500;
     if (budget === 'zero') return cost <= 50;
     if (budget === 'low') return cost <= 500;
     if (budget === 'mid') return cost <= 5000;
@@ -14,7 +14,7 @@ function initMatcher() {
   }
 
   function computeMatchScore(idea, answers) {
-    let score = idea.atAGlance?.overallScore || getIdeaScore(idea, 'overall') || 50;
+    let score = idea.atAGlance?.overallScore ?? getIdeaScore(idea, 'overall') ?? 50;
     if (answers.goal === 'profit') score = idea.compositeScores?.highestProfitPotential || score;
     if (answers.goal === 'confidence') score = idea.scores?.overallConfidence?.value || score;
     return score;

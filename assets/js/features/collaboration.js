@@ -146,7 +146,7 @@ function initCollaborationRoom() {
                         <span class="chip status">${escHTML(idea.category)}</span>
                         <h3 style="font-size:1.15rem;margin:0.3rem 0"><a href="${base}/docs/idea.html?id=${encodeURIComponent(idea.id)}">${escHTML(idea.name)}</a></h3>
                       </div>
-                      <span class="score-badge ${idea.atAGlance?.overallScore >= 85 ? 'high' : 'medium'}">${idea.atAGlance?.overallScore || 50}</span>
+                      <span class="score-badge ${idea.atAGlance?.overallScore >= 85 ? 'high' : 'medium'}">${idea.atAGlance?.overallScore ?? '—'}</span>
                     </div>
 
                     <p style="font-size:0.88rem;color:var(--text2);margin-bottom:0.75rem">${escHTML(idea.oneSentenceConcept || '')}</p>
@@ -164,12 +164,12 @@ function initCollaborationRoom() {
                     <!-- Group Signal Result -->
                     ${canSeeResults ? `
                       <div style="font-size:0.8rem;color:var(--text2);display:flex;gap:1rem;align-items:center">
-                        <span><strong>Group Preference:</strong> ${userVote ? 'Voted (' + userVote + ')' : 'No vote yet'}</span>
+                        <span><strong>Your Preference:</strong> ${userVote ? 'Voted (' + userVote + ')' : 'No vote yet'}</span>
                         <span>•</span>
-                        <span><strong>Atlas Evidence Score:</strong> ${idea.atAGlance?.overallScore || 50}/100</span>
+                        <span><strong>Atlas Evidence Score:</strong> ${idea.atAGlance?.overallScore != null ? idea.atAGlance.overallScore + '/100' : 'Not scored'}</span>
                       </div>
                     ` : `
-                      <div style="font-size:0.8rem;color:var(--muted);font-style:italic">Group results hidden until you vote (Groupthink protection).</div>
+                      <div style="font-size:0.8rem;color:var(--muted);font-style:italic">Results hidden until you vote (Groupthink protection).</div>
                     `}
                   </div>
                 `;

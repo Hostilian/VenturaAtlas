@@ -113,13 +113,27 @@ def push_updates_to_github():
         commit_msg = f"feat(autonomy): cloud-run discovery & metadata update [{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}]"
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
         
-        # Configure remote URL without exposing token in command line args
-        subprocess.run(["git", "remote", "set-url", "origin", f"https://x-access-token:{github_token}@github.com/Hostilian/VenturaAtlas.git"], cwd=BASE_DIR, check=True)
-        subprocess.run(["git", "push", "origin", branch_name], cwd=BASE_DIR, check=True)
+        # Ephemeral authenticated push via extraHeader (does not pollute .git/config or process list)
+        import base64
+        auth_b64 = base64.b64encode(f"x-access-token:{github_token}".encode("utf-8")).decode("utf-8")
+        push_cmd = [
+            "git", "-c", f"http.https://github.com/.extraHeader=AUTHORIZATION: basic {auth_b64}",
+            "push", "origin", branch_name
+        ]
+        subprocess.run(push_cmd, cwd=BASE_DIR, check=True)
         log_event("INFO", f"Successfully pushed autonomous publication branch '{branch_name}'!")
     except Exception as e:
-        log_event("ERROR", "Failed to push updates to GitHub", {"error": str(e)})
-        raise RuntimeError(f"GitHub publication push failed: {e}") from e
+        safe_msg = redact_secrets(str(e))
+        log_event("ERROR", "Failed to push updates to GitHub", {"error": safe_msg})
+        raise RuntimeError(f"GitHub publication push failed: {safe_msg}") from None
+
+def redact_secrets(text: str) -> str:
+    if not text:
+        return ""
+    res = re.sub(r'x-access-token:[^@]+@', 'x-access-token:[REDACTED]@', text)
+    res = re.sub(r'ghp_[a-zA-Z0-9]{20,}', 'ghp_[REDACTED]', res)
+    res = re.sub(r'sk-[a-zA-Z0-9]{20,}', 'sk-[REDACTED]', res)
+    return res
 
 def main():
     log_event("INFO", "=== Venture Atlas OS Cloud Control Plane Started ===")

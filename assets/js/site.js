@@ -806,12 +806,18 @@ function initIdea() {
 </nav>`;
   }
 
-  const overallScore = x.atAGlance?.overallScore || getIdeaScore(x, 'overall') || 50;
+  const rawOverall = x.atAGlance?.overallScore ?? getIdeaScore(x, 'overall');
+  const overallScoreDisplay = rawOverall != null ? `${rawOverall} / 100` : 'Not scored';
+  const overallScoreNumDisplay = rawOverall != null ? rawOverall : '—';
+  
   const sourcesCount = x.sourceReferences?.length || 0;
-  const confidenceVal = x.scores?.overallConfidence?.value ?? (sourcesCount >= 2 ? 8 : 4);
-  const isKillFlagged = x.killCriteria?.killFlagged || false;
-  const valStatus = x.validationStatus || (sourcesCount >= 2 ? 'validated' : 'unverified');
-  const lastValidated = x.lastValidatedAt || '2026-08-08';
+  const confidenceVal = x.scores?.overallConfidence?.value ?? (sourcesCount >= 2 ? 8 : (sourcesCount === 1 ? 5 : 2));
+  
+  const killStatusText = x.killCriteria ? (x.killCriteria.killFlagged ? '⚠ Flagged' : 'Pass') : 'Not assessed';
+  const killStatusColor = x.killCriteria ? (x.killCriteria.killFlagged ? 'var(--score-lo)' : 'var(--score-hi)') : 'var(--muted)';
+  
+  const valStatus = x.validationStatus || (x.atAGlance?.validationStatus) || 'unverified';
+  const lastValidated = x.lastValidatedAt || 'Never validated';
 
   const glanceEntries = [
     ['Target customer', x.atAGlance?.targetCustomer],
@@ -820,7 +826,7 @@ function initIdea() {
     ['Startup cost', money(x.atAGlance?.startupCost)],
     ['Time to MVP', x.atAGlance?.timeToMvp],
     ['Time to first revenue', x.atAGlance?.timeToFirstRevenue],
-    ['Overall score', `<strong style="color:var(--score-hi);font-size:1.1rem">${overallScore}/100</strong>`],
+    ['Overall score', `<strong style="color:var(--score-hi);font-size:1.1rem">${overallScoreDisplay}</strong>`],
     ['Evidence confidence', formatConfidenceScore(confidenceVal * 10)],
     ['Main advantage', x.atAGlance?.mainAdvantage],
     ['Main risk', x.atAGlance?.mainRisk],
@@ -847,7 +853,8 @@ function initIdea() {
   const relatedIds = Array.from(new Set([...(x.relatedIdeaIds || []), ...rels.map(r => r.source === x.id ? r.target : r.source)])).slice(0, 6);
   const relatedHtml = relatedIds.map(rid => {
     const y = VA.ideas.find(z => z.id === rid);
-    return y ? `<li><a href="idea.html?id=${rid}"><strong>${esc(y.name)}</strong></a> <span class="chip status">${esc(y.category)}</span> — <span class="score-badge sm">${y.atAGlance?.overallScore || 50}</span></li>` : '';
+    const yScore = y?.atAGlance?.overallScore ?? getIdeaScore(y, 'overall');
+    return y ? `<li><a href="idea.html?id=${rid}"><strong>${esc(y.name)}</strong></a> <span class="chip status">${esc(y.category)}</span> — <span class="score-badge sm">${yScore != null ? yScore : '—'}</span></li>` : '';
   }).join('');
 
   let html = `
@@ -864,7 +871,7 @@ function initIdea() {
     </div>
     <div style="text-align:right;background:var(--panel2);padding:1rem 1.25rem;border-radius:var(--radius-sm);border:1px solid var(--line);min-width:160px">
       <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;font-weight:700">Opportunity Score</div>
-      <div style="font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1.1">${overallScore}</div>
+      <div style="font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1.1">${overallScoreNumDisplay}</div>
       <div style="font-size:0.78rem;color:var(--text2);margin-top:0.2rem">${formatConfidenceScore(confidenceVal * 10)}</div>
     </div>
   </div>
@@ -893,31 +900,32 @@ function initIdea() {
   <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:0.75rem;margin-bottom:1rem">
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Algorithmic Composite</div>
-      <div style="font-size:1.25rem;font-weight:700;color:var(--text)">${overallScore} / 100</div>
+      <div style="font-size:1.25rem;font-weight:700;color:var(--text)">${overallScoreDisplay}</div>
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Evidence Confidence</div>
       <div style="font-size:1.25rem;font-weight:700;color:var(--accent)">${formatConfidenceScore(confidenceVal * 10)}</div>
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
-      <div style="font-size:0.75rem;color:var(--muted)">Primary Sources Checked</div>
+      <div style="font-size:0.75rem;color:var(--muted)">Evidence Citations</div>
       <div style="font-size:1.25rem;font-weight:700;color:var(--text)">${sourcesCount} Citations</div>
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Kill Criteria Status</div>
-      <div style="font-size:1.25rem;font-weight:700;color:${isKillFlagged ? 'var(--score-lo)' : 'var(--score-hi)'}">${isKillFlagged ? '⚠ Flagged' : 'Pass'}</div>
+      <div style="font-size:1.25rem;font-weight:700;color:${killStatusColor}">${killStatusText}</div>
     </div>
   </div>
 
   <div class="fit-explanation-box" style="margin-bottom:1rem">
-    <strong style="color:var(--accent)">🔍 Next Recommended Experiment:</strong> ${esc(x.atAGlance?.bestNextValidationStep || 'Conduct 25 target ICP interviews.')}<br>
-    <strong style="color:var(--warn)">⚠ Unverified Assumption:</strong> ${esc(x.atAGlance?.mainRisk || 'Customer willingness-to-pay friction.')}
+    <strong style="color:var(--accent)">🔍 Next Recommended Experiment:</strong> ${esc(x.atAGlance?.bestNextValidationStep || 'No idea-specific experiment designed yet.')}<br>
+    <strong style="color:var(--warn)">⚠ Unverified Assumption:</strong> ${esc(x.atAGlance?.mainRisk || 'Not yet assessed.')}
   </div>
 
   <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
     <button class="button secondary sm" id="challengeClaimBtn">🚩 Challenge Claim</button>
     <button class="button primary sm" id="requestValidationBtn">⚡ Request Deeper Validation</button>
   </div>
+  <div id="userFeedbackOutput" style="margin-top:0.75rem"></div>
 </section>
 
 <!-- At a Glance Matrix -->
@@ -992,14 +1000,38 @@ function initIdea() {
   });
 
   $('#challengeClaimBtn')?.addEventListener('click', () => {
-    const claim = prompt('Which claim would you like to challenge or report contradictory evidence for?');
-    if (claim) {
-      alert('Thank you! Your challenge has been queued for the next continuous AI validation pass.');
-    }
+    const out = $('#userFeedbackOutput');
+    if (!out) return;
+    out.innerHTML = `
+      <div style="background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1rem">
+        <h4 style="margin:0 0 0.5rem">🚩 Challenge a Claim on ${esc(x.name)}</h4>
+        <textarea id="challengeText" placeholder="Describe contradictory evidence or invalid assumptions..." style="width:100%;height:80px;padding:0.5rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);margin-bottom:0.5rem"></textarea>
+        <div style="display:flex;gap:0.5rem">
+          <button class="button primary sm" id="saveChallengeBtn">Save Local Challenge</button>
+          <button class="button ghost sm" id="cancelFeedbackBtn">Cancel</button>
+        </div>
+      </div>
+    `;
+    $('#cancelFeedbackBtn')?.addEventListener('click', () => { out.innerHTML = ''; });
+    $('#saveChallengeBtn')?.addEventListener('click', () => {
+      const txt = $('#challengeText')?.value.trim();
+      if (!txt) return;
+      const challenges = window.VentureAtlas?.readJsonStorage('va-user-challenges', []) || [];
+      challenges.push({ ideaId: x.id, ideaName: x.name, challenge: txt, timestamp: new Date().toISOString() });
+      window.VentureAtlas?.writeJsonStorage('va-user-challenges', challenges);
+      out.innerHTML = `<div style="color:var(--score-hi);font-size:0.9rem;padding:0.5rem 0">✓ Challenge saved locally (${challenges.length} total saved). You can export decision packets from the Collaboration Room.</div>`;
+    });
   });
 
   $('#requestValidationBtn')?.addEventListener('click', () => {
-    alert(`Validation request submitted for ${x.name}! The autonomous research worker will prioritize deeper evidence verification.`);
+    const out = $('#userFeedbackOutput');
+    if (!out) return;
+    const reqs = window.VentureAtlas?.readJsonStorage('va-validation-requests', []) || [];
+    if (!reqs.some(r => r.ideaId === x.id)) {
+      reqs.push({ ideaId: x.id, ideaName: x.name, requestedAt: new Date().toISOString(), status: 'queued_local' });
+      window.VentureAtlas?.writeJsonStorage('va-validation-requests', reqs);
+    }
+    out.innerHTML = `<div style="color:var(--accent);font-size:0.9rem;padding:0.5rem 0">⚡ Validation request logged locally for <strong>${esc(x.name)}</strong> (${reqs.length} queued in local session).</div>`;
   });
 }
 

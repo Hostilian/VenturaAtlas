@@ -69,14 +69,19 @@ function initCompare() {
       { 
         label: 'Overall Score', 
         getVal: i => {
-          const s = Number(i.atAGlance?.overallScore || getIdeaScore(i, 'overall') || 50);
-          const isBest = s === highestScore && chosenIdeas.length > 1;
-          return `<span class="score-badge ${s >= 85 ? 'high' : s >= 70 ? 'medium' : 'low'}">${s.toFixed(1)}</span> ${isBest ? '<span class="chip success sm">★ Best</span>' : ''}`;
+          const s = i.atAGlance?.overallScore ?? getIdeaScore(i, 'overall');
+          if (s == null) return `<span class="score-badge low">Not scored</span>`;
+          const numS = Number(s);
+          const isBest = numS === highestScore && chosenIdeas.length > 1;
+          return `<span class="score-badge ${numS >= 85 ? 'high' : numS >= 70 ? 'medium' : 'low'}">${numS.toFixed(1)}</span> ${isBest ? '<span class="chip success sm">★ Best</span>' : ''}`;
         }
       },
       { 
         label: 'Attractiveness', 
-        getVal: i => `${i.compositeScores?.overallOpportunity || (getIdeaScore(i, 'overall') * 0.95).toFixed(1)} / 10` 
+        getVal: i => {
+          const s = i.compositeScores?.overallOpportunity ?? (getIdeaScore(i, 'overall') ? (getIdeaScore(i, 'overall') * 0.95).toFixed(1) : null);
+          return s != null ? `${s} / 10` : 'Not scored';
+        }
       },
       { 
         label: 'Solo Founder Fit', 
@@ -160,10 +165,10 @@ function initCompare() {
             </div>
             <p style="font-size:0.85rem;margin-bottom:0.75rem">${escHTML(i.oneSentenceConcept || '')}</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.8rem;background:var(--panel2);padding:0.75rem;border-radius:var(--radius-sm);margin-bottom:0.75rem">
-              <div><strong>Score:</strong> ${i.atAGlance?.overallScore || 50}/100</div>
-              <div><strong>Capital:</strong> $${(i.atAGlance?.startupCost?.midpoint || 50).toLocaleString()}</div>
-              <div><strong>Time to MVP:</strong> ${escHTML(i.atAGlance?.timeToMvp || '3-7 days')}</div>
-              <div><strong>Revenue Speed:</strong> ${escHTML(i.atAGlance?.timeToFirstRevenue || '1-4 weeks')}</div>
+              <div><strong>Score:</strong> ${i.atAGlance?.overallScore != null ? i.atAGlance.overallScore + '/100' : 'Not scored'}</div>
+              <div><strong>Capital:</strong> ${i.atAGlance?.startupCost?.midpoint != null ? '$' + i.atAGlance.startupCost.midpoint.toLocaleString() : 'Unspecified'}</div>
+              <div><strong>Time to MVP:</strong> ${escHTML(i.atAGlance?.timeToMvp || 'Unspecified')}</div>
+              <div><strong>Revenue Speed:</strong> ${escHTML(i.atAGlance?.timeToFirstRevenue || 'Unspecified')}</div>
             </div>
             <a href="${base}/docs/idea.html?id=${encodeURIComponent(i.id)}" class="button primary sm" style="width:100%;text-align:center">Open Full Dossier</a>
           </div>
