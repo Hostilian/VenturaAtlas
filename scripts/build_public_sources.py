@@ -17,13 +17,21 @@ if isinstance(sources, dict):
 else:
     sources_list = sources
 
-# Filter to external market evidence sources (s01..s70), excluding internal provenance artifacts (src-*)
-# Also check explicit metadata flags visibility != 'INTERNAL' and visibility != 'PRIVATE'
+# Filter to external market evidence sources (s01..s83), excluding internal provenance artifacts (src-*)
+# Checks explicit metadata flags: visibility, sourceClass, evidenceEligible, provenanceEligible
 public_sources = []
 for s in sources_list:
     sid = str(s.get('id', ''))
     visibility = str(s.get('visibility', 'PUBLIC')).upper()
-    if sid.startswith('src-') or visibility in ('INTERNAL', 'PRIVATE'):
+    source_class = str(s.get('sourceClass', 'EXTERNAL_EVIDENCE')).upper()
+    evidence_eligible = s.get('evidenceEligible', True)
+    
+    if (
+        sid.startswith('src-') or 
+        visibility in ('INTERNAL', 'PRIVATE') or 
+        source_class in ('INTERNAL_PROVENANCE_ARTIFACT', 'PROVENANCE') or
+        evidence_eligible is False
+    ):
         continue
     public_sources.append(s)
 

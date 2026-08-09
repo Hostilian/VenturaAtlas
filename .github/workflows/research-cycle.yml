@@ -1,4 +1,4 @@
-Dname: Cloud Research & Staging Verification Cycle
+name: Cloud Research & Staging Verification Cycle
 
 on:
   schedule:

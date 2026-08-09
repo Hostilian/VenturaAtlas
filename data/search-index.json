@@ -4990,5 +4990,245 @@
       "construction-audit"
     ],
     "normalizedText": "as-built carbon drift building passport embodied carbon audit engine as-built vs as-designed embodied carbon divergence audit engine evaluating material substitutions during construction for eu epbd digital building passports unnoticed embodied carbon increases caused by contractor material substitutions breaching epbd building passport targets general contractors real estate developers sustainability consultants and building certifiers audit financial forensics embodied-carbon epbd building-passports as-built-drift construction-audit as-built carbon drift building passport auditor"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-395",
+    "slug": "demandproof-loadledger",
+    "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+    "category": "Energy Grid & Electrical Infrastructure",
+    "subcategory": "load-identity-network",
+    "concept": "Neutral identity and readiness network for large electricity-load projects to eliminate phantom demand and duplicate queue reservations.",
+    "customer": "Electric utilities, RTO/ISO transmission planners, and data center developers",
+    "problem": "Phantom and duplicate grid capacity requests distorting transmission planning and delaying real projects.",
+    "overallScore": 97.2,
+    "tags": [
+      "grid-demand",
+      "load-forecasting",
+      "data-centers",
+      "privacy-preserving-matching",
+      "utilities",
+      "rto"
+    ],
+    "normalizedText": "demandproof loadledger electricity load project identity readiness network neutral identity and readiness network for large electricity-load projects to eliminate phantom demand and duplicate queue reservations phantom and duplicate grid capacity requests distorting transmission planning and delaying real projects electric utilities rto iso transmission planners and data center developers energy grid electrical infrastructure grid-demand load-forecasting data-centers privacy-preserving-matching utilities rto"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-396",
+    "slug": "loadenvelope-ci-gridenvelope",
+    "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+    "category": "Energy Grid & Electrical Infrastructure",
+    "subcategory": "grid-behavioral-assurance",
+    "concept": "Continuous behavioral verification platform testing built AI data center load dynamics against utility interconnection promises.",
+    "customer": "Hyperscale data center operators, grid reliability coordinators, and utility engineers",
+    "problem": "Discrepancy between static interconnection models and dynamic AI compute electrical behavior.",
+    "overallScore": 95.9,
+    "tags": [
+      "data-center-load",
+      "grid-conformance",
+      "load-envelope",
+      "hil-testing",
+      "nerc-compliance"
+    ],
+    "normalizedText": "loadenvelope ci gridenvelope continuous electrical behavior grid contract assurance continuous behavioral verification platform testing built ai data center load dynamics against utility interconnection promises discrepancy between static interconnection models and dynamic ai compute electrical behavior hyperscale data center operators grid reliability coordinators and utility engineers energy grid electrical infrastructure data-center-load grid-conformance load-envelope hil-testing nerc-compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-397",
+    "slug": "bioscreen-ci",
+    "name": "BioScreen CI — Continuous Independent Assurance for Nucleic-Acid Synthesis Screening",
+    "category": "Biosecurity & Synthetic Biology Safeguards",
+    "subcategory": "synthesis-screening-assurance",
+    "concept": "Continuous operational security testing and assurance suite for DNA synthesis provider biosecurity screening systems.",
+    "customer": "Gene synthesis providers, biosecurity regulators, research funders, and biopharma buyers",
+    "problem": "Operational degradation, workflow bypasses, and stale threat databases in biosecurity sequence screening.",
+    "overallScore": 94.4,
+    "tags": [
+      "biosecurity",
+      "dna-synthesis",
+      "screening-assurance",
+      "penetration-testing",
+      "compliance"
+    ],
+    "normalizedText": "bioscreen ci continuous independent assurance for nucleic-acid synthesis screening continuous operational security testing and assurance suite for dna synthesis provider biosecurity screening systems operational degradation workflow bypasses and stale threat databases in biosecurity sequence screening gene synthesis providers biosecurity regulators research funders and biopharma buyers biosecurity synthetic biology safeguards biosecurity dna-synthesis screening-assurance penetration-testing compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-398",
+    "slug": "filterlife-slo-mediatruth",
+    "name": "FilterLife SLO / MediaTruth — PFAS Filter Life & Vendor-Neutral Performance Intelligence",
+    "category": "Water Treatment & Environmental Intelligence",
+    "subcategory": "pfas-media-intelligence",
+    "concept": "Vendor-neutral performance intelligence network predicting actual remaining useful life of activated carbon and ion-exchange PFAS drinking water filters.",
+    "customer": "Water utilities, environmental engineering firms, and municipal water authorities",
+    "problem": "Unpredictable PFAS filter breakthrough and premature media replacement costs.",
+    "overallScore": 89.6,
+    "tags": [
+      "pfas",
+      "water-treatment",
+      "filter-life",
+      "gac-media",
+      "utility-intelligence"
+    ],
+    "normalizedText": "filterlife slo mediatruth pfas filter life vendor-neutral performance intelligence vendor-neutral performance intelligence network predicting actual remaining useful life of activated carbon and ion-exchange pfas drinking water filters unpredictable pfas filter breakthrough and premature media replacement costs water utilities environmental engineering firms and municipal water authorities water treatment environmental intelligence pfas water-treatment filter-life gac-media utility-intelligence"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-399",
+    "slug": "methanetrueup-contractoracle",
+    "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
+    "category": "Climate & Energy Commodity Contracts",
+    "subcategory": "methane-contract-reconciliation",
+    "concept": "Discrepancy reconciliation engine mapping independent satellite/sensor methane observations directly to LNG contract liability and certificate exposures.",
+    "customer": "LNG importers, gas traders, and corporate energy buyers",
+    "problem": "Unidentified contractual and regulatory liability when satellite observations contradict declared methane intensity.",
+    "overallScore": 88.2,
+    "tags": [
+      "methane-emissions",
+      "lng-contracts",
+      "satellite-mrv",
+      "eu-methane-regulation",
+      "contract-oracle"
+    ],
+    "normalizedText": "methanetrueup contractoracle environmental observation methane contract reconciliation engine discrepancy reconciliation engine mapping independent satellite sensor methane observations directly to lng contract liability and certificate exposures unidentified contractual and regulatory liability when satellite observations contradict declared methane intensity lng importers gas traders and corporate energy buyers climate energy commodity contracts methane-emissions lng-contracts satellite-mrv eu-methane-regulation contract-oracle"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-400",
+    "slug": "reclaimproof",
+    "name": "ReclaimProof — Physical & Mass-Balance Provenance Assurance for Reclaimed Refrigerants",
+    "category": "Circular Economy & F-Gas Compliance",
+    "subcategory": "refrigerant-provenance-assurance",
+    "concept": "Mass-balance and physical purity verification platform detecting fraudulent virgin F-gas relabeled as reclaimed refrigerant.",
+    "customer": "Refrigerant distributors, HVAC equipment manufacturers, and EU compliance auditors",
+    "problem": "Illegitimate virgin HFC gas fraudulently sold as reclaimed refrigerant to bypass EU quotas.",
+    "overallScore": 85.4,
+    "tags": [
+      "f-gas",
+      "refrigerants",
+      "circular-economy",
+      "mass-balance",
+      "fraud-prevention"
+    ],
+    "normalizedText": "reclaimproof physical mass-balance provenance assurance for reclaimed refrigerants mass-balance and physical purity verification platform detecting fraudulent virgin f-gas relabeled as reclaimed refrigerant illegitimate virgin hfc gas fraudulently sold as reclaimed refrigerant to bypass eu quotas refrigerant distributors hvac equipment manufacturers and eu compliance auditors circular economy f-gas compliance f-gas refrigerants circular-economy mass-balance fraud-prevention"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-401",
+    "slug": "cra-reachledger",
+    "name": "CRA ReachLedger — Firmware Vulnerability Exposure & Patch Deployment Reachability Graph",
+    "category": "Cybersecurity & Cyber Resilience Act Compliance",
+    "subcategory": "device-vulnerability-reachability",
+    "concept": "Last-mile device reachability and vulnerability exposure graph for hardware manufacturers under the Cyber Resilience Act.",
+    "customer": "IoT hardware manufacturers, industrial device OEMs, and cybersecurity compliance officers",
+    "problem": "Inability to determine exact deployed serial number exposure and patch reachability under CRA deadlines.",
+    "overallScore": 81,
+    "tags": [
+      "cra-compliance",
+      "cybersecurity",
+      "firmware-sbom",
+      "vulnerability-tracing",
+      "iot-security"
+    ],
+    "normalizedText": "cra reachledger firmware vulnerability exposure patch deployment reachability graph last-mile device reachability and vulnerability exposure graph for hardware manufacturers under the cyber resilience act inability to determine exact deployed serial number exposure and patch reachability under cra deadlines iot hardware manufacturers industrial device oems and cybersecurity compliance officers cybersecurity cyber resilience act compliance cra-compliance cybersecurity firmware-sbom vulnerability-tracing iot-security"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-402",
+    "slug": "medicare-mfp-reconcile",
+    "name": "Medicare MFP Reconcile — Negotiated-Price Claim & Refund Reconciliation Engine",
+    "category": "Healthcare Financial Operations",
+    "subcategory": "medicare-mfp-reconciliation",
+    "concept": "Automated claims and refund reconciliation platform for pharmaceutical manufacturers and pharmacies under Medicare Maximum Fair Price (MFP) rules.",
+    "customer": "Pharma manufacturers, Medicare Part D plan sponsors, and specialty pharmacy networks",
+    "problem": "Complex multi-party claims reconciliation and duplicate discount risks under Medicare MFP.",
+    "overallScore": 77.2,
+    "tags": [
+      "medicare-mfp",
+      "pharma-reconciliation",
+      "claims-adjudication",
+      "340b",
+      "healthcare-finance"
+    ],
+    "normalizedText": "medicare mfp reconcile negotiated-price claim refund reconciliation engine automated claims and refund reconciliation platform for pharmaceutical manufacturers and pharmacies under medicare maximum fair price mfp rules complex multi-party claims reconciliation and duplicate discount risks under medicare mfp pharma manufacturers medicare part d plan sponsors and specialty pharmacy networks healthcare financial operations medicare-mfp pharma-reconciliation claims-adjudication 340b healthcare-finance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-403",
+    "slug": "watercontact-compiler",
+    "name": "WaterContact Compiler — Drinking Water Contact Material Formulation Compliance Engine",
+    "category": "Environmental & Product Compliance",
+    "subcategory": "drinking-water-material-compliance",
+    "concept": "Formulation compliance compiler auditing materials contacting drinking water against the EU Positive List framework.",
+    "customer": "Plumbing component manufacturers, valve makers, and water material suppliers",
+    "problem": "High cost and delay of testing material formulations against complex EU positive lists.",
+    "overallScore": 70.5,
+    "tags": [
+      "drinking-water-directive",
+      "material-compliance",
+      "positive-lists",
+      "plumbing-certification"
+    ],
+    "normalizedText": "watercontact compiler drinking water contact material formulation compliance engine formulation compliance compiler auditing materials contacting drinking water against the eu positive list framework high cost and delay of testing material formulations against complex eu positive lists plumbing component manufacturers valve makers and water material suppliers environmental product compliance drinking-water-directive material-compliance positive-lists plumbing-certification"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-404",
+    "slug": "transformer-procurement-marketplace",
+    "name": "Transformer Procurement Marketplace — AI Transformer Sourcing & Lead-Time Marketplace [KILLED]",
+    "category": "Power Equipment & Grid Logistics",
+    "subcategory": "transformer-sourcing-killed",
+    "concept": "AI marketplace streamlining specification, sourcing, and purchasing of high-voltage transformers [KILLED - Entrant Fluxco scaling].",
+    "customer": "Utilities and EPC contractors [KILLED]",
+    "problem": "Transformer procurement lead-time friction [SOLVED BY EXISTING ENTRANT].",
+    "overallScore": 67,
+    "tags": [
+      "transformers",
+      "procurement",
+      "killed-candidate",
+      "disconfirmed-thesis",
+      "fluxco"
+    ],
+    "normalizedText": "transformer procurement marketplace ai transformer sourcing lead-time marketplace killed ai marketplace streamlining specification sourcing and purchasing of high-voltage transformers killed - entrant fluxco scaling transformer procurement lead-time friction solved by existing entrant utilities and epc contractors killed power equipment grid logistics transformers procurement killed-candidate disconfirmed-thesis fluxco"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-405",
+    "slug": "fueleu-pooling-marketplace",
+    "name": "FuelEU Pooling Marketplace — Maritime FuelEU Compliance Pool Exchange [KILLED]",
+    "category": "Maritime & EU Compliance",
+    "subcategory": "fueleu-pooling-killed",
+    "concept": "Marketplace matching shipowners for compliance pooling under the FuelEU Maritime regulation [KILLED - Entrants OceanScore & BetterSea scaling].",
+    "customer": "Commercial vessel operators [KILLED]",
+    "problem": "FuelEU Maritime pooling matching [SOLVED BY EXISTING ENTRANTS].",
+    "overallScore": 64.5,
+    "tags": [
+      "fueleu-maritime",
+      "shipping-compliance",
+      "killed-candidate",
+      "disconfirmed-thesis",
+      "oceanscore"
+    ],
+    "normalizedText": "fueleu pooling marketplace maritime fueleu compliance pool exchange killed marketplace matching shipowners for compliance pooling under the fueleu maritime regulation killed - entrants oceanscore bettersea scaling fueleu maritime pooling matching solved by existing entrants commercial vessel operators killed maritime eu compliance fueleu-maritime shipping-compliance killed-candidate disconfirmed-thesis oceanscore"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-406",
+    "slug": "generic-methane-certification-mrv",
+    "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+    "category": "Environmental Certification",
+    "subcategory": "methane-mrv-killed",
+    "concept": "Upstream gas methane emissions monitoring, reporting, and certificate registry [KILLED - MiQ & Xpansiv dominant].",
+    "customer": "Upstream gas producers [KILLED]",
+    "problem": "Methane certification and MRV [DOMINATED BY INCUMBENTS].",
+    "overallScore": 62.5,
+    "tags": [
+      "methane-mrv",
+      "emissions-registry",
+      "killed-candidate",
+      "disconfirmed-thesis",
+      "miq"
+    ],
+    "normalizedText": "generic methane certification mrv commodity gas methane mrv registry platform killed upstream gas methane emissions monitoring reporting and certificate registry killed - miq xpansiv dominant methane certification and mrv dominated by incumbents upstream gas producers killed environmental certification methane-mrv emissions-registry killed-candidate disconfirmed-thesis miq"
   }
 ]

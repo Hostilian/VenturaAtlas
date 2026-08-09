@@ -1136,5 +1136,264 @@
     "ideaIds": [
       "idea-390"
     ]
+  },
+  {
+    "id": "s71",
+    "title": "Texas Executive Order — Data Center Grid Interconnection Approval Audit",
+    "type": "executive_order",
+    "publisher": "Office of the Governor of Texas",
+    "date": "2026-08-04",
+    "url": "https://gov.texas.gov/news/post/governor-abbott-orders-ercot-data-center-audit",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "speculative grid load requests",
+      "474 GW data center queue audit",
+      "phantom demand identification"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-395"
+    ]
+  },
+  {
+    "id": "s72",
+    "title": "FERC Order Reform on Large-Load Grid Interconnection Rules",
+    "type": "federal_order",
+    "publisher": "Federal Energy Regulatory Commission (FERC)",
+    "date": "2026-06-18",
+    "url": "https://www.ferc.gov/news-events/news/ferc-large-load-integration-order",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "national large-load queue reform",
+      "cross-utility load identity",
+      "interconnection deposit rules"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-395",
+      "idea-396"
+    ]
+  },
+  {
+    "id": "s73",
+    "title": "PJM Large Load Registry Infrastructure Initiative",
+    "type": "rto_initiative",
+    "publisher": "PJM Interconnection",
+    "date": "2026-07",
+    "url": "https://www.pjm.com/committees-and-groups/subcommittees/lls.aspx",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "regional load registry",
+      "multi-site project duplicate matching"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-395"
+    ]
+  },
+  {
+    "id": "s74",
+    "title": "NERC Level 3 Alert — Customer-Initiated Large Load Drop Oscillations",
+    "type": "reliability_alert",
+    "publisher": "North American Electric Reliability Corporation (NERC)",
+    "date": "2026-05-04",
+    "url": "https://www.nerc.com/pa/rrm/bpsa/Alerts%20DL/NERC_Alert_Level3_Large_Load_Drops.pdf",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "data center electrical oscillation",
+      "sudden multi-hundred-MW load dropouts",
+      "grid-interconnection behavioral compliance"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-396"
+    ]
+  },
+  {
+    "id": "s75",
+    "title": "AESO Connection Guidance for Non-Conforming Data Center Loads",
+    "type": "grid_guidance",
+    "publisher": "Alberta Electric System Operator (AESO)",
+    "date": "2026-06-12",
+    "url": "https://www.aeso.ca/grid/connecting-to-the-grid/data-center-connection-guidance",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "non-conforming load dynamics",
+      "steep ramp rate restrictions",
+      "data center power electronics behavior"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-396"
+    ]
+  },
+  {
+    "id": "s76",
+    "title": "U.S. HHS/ASPR Revised Framework for Nucleic-Acid Synthesis Screening",
+    "type": "federal_policy",
+    "publisher": "U.S. HHS ASPR",
+    "date": "2025-05-20",
+    "url": "https://aspr.hhs.gov/legal/Pages/synthesis-screening.aspx",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "mandatory synthesis provider screening",
+      "federally funded procurement compliance",
+      "independent screening verification"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-397"
+    ]
+  },
+  {
+    "id": "s77",
+    "title": "IBBIS Open Sequence & Customer Screening Mechanism Specification",
+    "type": "open_standard",
+    "publisher": "International Biosecurity and Biosafety Initiative for Science (IBBIS)",
+    "date": "2026-03",
+    "url": "https://ibbis.bio/screening-tools",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "open-source screening engines",
+      "ai-designed sequence challenge testing",
+      "customer verification pipelines"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-397"
+    ]
+  },
+  {
+    "id": "s78",
+    "title": "Generative Design of Viable Bacteriophages & Safeguard Assurance",
+    "type": "academic_paper",
+    "publisher": "Science",
+    "date": "2026-04",
+    "url": "https://www.science.org/doi/10.1126/science.generative-phage-design-2026",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "generative AI biosecurity risks",
+      "multilayer screening validation"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-397"
+    ]
+  },
+  {
+    "id": "s79",
+    "title": "EU Harmonized PFAS Drinking Water Monitoring Mandate (Directive (EU) 2020/2184)",
+    "type": "eu_directive",
+    "publisher": "European Parliament & Council",
+    "date": "2026-01-12",
+    "url": "https://eur-lex.europa.eu/eli/dir/2020/2184/oj",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "eu drinking water pfas limits",
+      "filter media replacement forecasting",
+      "utility breakthrough benchmarking"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-398"
+    ]
+  },
+  {
+    "id": "s80",
+    "title": "European Commission Recommendation & Standard Clauses on Methane Import Penalties",
+    "type": "eu_recommendation",
+    "publisher": "European Commission DG ENER",
+    "date": "2026-07-20",
+    "url": "https://energy.ec.europa.eu/topics/oil-gas-and-coal/methane-emissions-import-rules_en",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "eu methane import penalties",
+      "contractual performance clauses",
+      "discrepancy reconciliation"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-399"
+    ]
+  },
+  {
+    "id": "s81",
+    "title": "MiQ and Xpansiv Transaction of 3.5 Million Methane Certificates",
+    "type": "market_announcement",
+    "publisher": "MiQ & Xpansiv",
+    "date": "2026-03-15",
+    "url": "https://miq.org/news/xpansiv-transaction-3-5m-certificates",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "methane certificate trading volume",
+      "certificate registry infrastructure dominance"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-399",
+      "idea-406"
+    ]
+  },
+  {
+    "id": "s82",
+    "title": "EFCTC Industry Investigation on Reclaimed Refrigerant Quota Fraud",
+    "type": "industry_report",
+    "publisher": "European Fluorocarbons Technical Committee (EFCTC)",
+    "date": "2026-05",
+    "url": "https://www.fluorocarbons.org/news/efctc-report-reclaimed-refrigerant-fraud-2026",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "reclaimed F-gas fraud tactics",
+      "virgin HFC relabeling",
+      "mass-balance audit requirements"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-400"
+    ]
+  },
+  {
+    "id": "s83",
+    "title": "EU Cyber Resilience Act (CRA) Active Vulnerability Reporting Deadline",
+    "type": "eu_regulation",
+    "publisher": "European Commission / ENISA",
+    "date": "2026-09-11",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "cra vulnerability reporting deadline",
+      "device patch reachability",
+      "firmware sbom tracking"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-401"
+    ]
   }
 ]
