@@ -1049,6 +1049,67 @@ function initIdea() {
 }
 
 /* ================================================================
+   PROMPTS PAGE
+   ================================================================ */
+function initPrompts() {
+  const q = $('#promptSearch');
+  const container = $('#promptList');
+  const count = $('#promptCount');
+  if (!container) return;
+
+  function render() {
+    const term = q ? q.value.toLowerCase().trim() : '';
+    const uId = params().get('id');
+
+    let xs = Array.isArray(VA.prompts) ? [...VA.prompts] : [];
+    if (uId) {
+      xs = xs.filter(p => p.ideaId === uId || p.id === uId);
+    }
+    if (term) {
+      xs = xs.filter(p =>
+        (p.title || '').toLowerCase().includes(term) ||
+        (p.type || '').toLowerCase().includes(term) ||
+        (p.ideaId || '').toLowerCase().includes(term) ||
+        (p.prompt || p.text || '').toLowerCase().includes(term)
+      );
+    }
+
+    if (count) count.textContent = `${xs.length.toLocaleString()} prompt templates`;
+
+    if (!xs.length) {
+      container.innerHTML = `<div class="empty">No prompt templates match your search.</div>`;
+      return;
+    }
+
+    container.innerHTML = xs.slice(0, 100).map(p => `
+<div class="card" style="padding:1rem">
+  <div class="eyebrow">${esc(p.ideaId || 'General')} · ${esc(p.type || 'Research')}</div>
+  <h3 style="font-size:1rem;margin:0.3rem 0">${esc(p.title || 'Prompt Template')}</h3>
+  <div style="font-size:0.8rem;background:var(--panel2);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--line);font-family:monospace;white-space:pre-wrap;max-height:160px;overflow:auto;margin:0.5rem 0">${esc((p.prompt || p.text || '').slice(0, 400))}${(p.prompt || p.text || '').length > 400 ? '…' : ''}</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
+    <a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(p.ideaId || '')}" style="font-size:0.8rem">View Idea →</a>
+    <button class="button secondary sm" data-action="copy-prompt" data-text="${esc(p.prompt || p.text || '')}">📋 Copy Prompt</button>
+  </div>
+</div>`).join('');
+  }
+
+  q?.addEventListener('input', render);
+  render();
+
+  container.addEventListener('click', e => {
+    const btn = e.target.closest('[data-action="copy-prompt"]');
+    if (!btn) return;
+    const txt = btn.getAttribute('data-text');
+    if (txt) {
+      navigator.clipboard.writeText(txt).then(() => {
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy Prompt'; }, 1500);
+      });
+    }
+  });
+}
+
+/* ================================================================
    SOURCES PAGE
    ================================================================ */
 function initSources() {
