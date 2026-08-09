@@ -57,17 +57,19 @@ function runDeepAudit() {
     hardcodedPatterns.forEach(pat => {
       const m = html.match(pat);
       if (m) {
-        issues.push({ type: 'HARDCODED_COUNT', file: rel, msg: `Found outdated hardcoded count "${m[0]}" (Current canonical count is ${canonicalCount})` });
+        issues.push({ type: 'HARDCODED_COUNT', file: rel, msg: `Found outdated hardcoded count "${m[0]}" at match` });
       }
     });
 
-    // 3. Check for broken inline JavaScript templates like href="../ideas/${x.slug}.md" in HTML text
-    if (html.includes('${x.')) {
+    // 3. Check for broken inline JavaScript templates outside <script> tags
+    const htmlWithoutScripts = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+    if (htmlWithoutScripts.includes('${x.')) {
       issues.push({ type: 'INLINE_TEMPLATE_BUG', file: rel, msg: 'Contains unparsed JS template string literal in static HTML text' });
     }
 
-    // 4. Check navigation header inclusion
-    if (!html.includes('class="site-header"') && !html.includes('nav-toggle') && !rel.includes('index.html')) {
+    // 4. Check navigation header inclusion (static header or site.js dynamic injection)
+    const hasSiteJs = html.includes('site.js');
+    if (!html.includes('class="site-header"') && !html.includes('nav-toggle') && !hasSiteJs && !rel.includes('index.html')) {
       issues.push({ type: 'MISSING_NAV', file: rel, msg: 'Missing standard site header / navigation' });
     }
   });

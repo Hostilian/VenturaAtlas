@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tag Browser — Venture Atlas OS</title>
-  <meta name="description" content="Browse all 70 business ideas by tag. Find ideas grouped by technology, market, business model, and more.">
+  <meta name="description" content="Browse 272 canonical business ideas by tag. Find ideas grouped by technology, market, business model, and more.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="manifest" href="../manifest.webmanifest">
@@ -108,12 +108,12 @@
           document.getElementById('selectedTagName').textContent = `#${tag}`;
           document.getElementById('selectedTagCount').textContent = ` — ${ideas.length} idea${ideas.length !== 1 ? 's' : ''}`;
           document.getElementById('tagIdeasGrid').innerHTML = ideas
-            .sort((a,b) => b.atAGlance.overallScore - a.atAGlance.overallScore)
+            .sort((a,b) => (b.atAGlance?.overallScore||0) - (a.atAGlance?.overallScore||0))
             .map(x => `<div class="tag-idea-card">
-              <div class="eyebrow" style="font-size:0.72rem">${x.category} · ${x.atAGlance.overallScore}/10</div>
-              <h3 style="margin:0.3rem 0 0.4rem;font-size:1rem"><a href="idea.html?id=${encodeURIComponent(x.id)}">${x.name}</a></h3>
-              <p style="font-size:0.83rem;color:var(--text-muted);margin:0 0 0.5rem">${x.oneSentenceConcept}</p>
-              <div class="chips">${(x.tags||[]).slice(0,4).map(t=>`<span class="chip${t===tag?' ':''}${t===tag?'" style="background:var(--accent);color:#fff':''}">${t}</span>`).join('')}</div>
+              <div class="eyebrow" style="font-size:0.72rem">${esc(x.category)} · ${x.atAGlance?.overallScore ?? '—'}/100</div>
+              <h3 style="margin:0.3rem 0 0.4rem;font-size:1rem"><a href="idea.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3>
+              <p style="font-size:0.83rem;color:var(--text-muted);margin:0 0 0.5rem">${esc(x.oneSentenceConcept||'')}</p>
+              <div class="chips">${(x.tags||[]).slice(0,4).map(t=>`<span class="chip${t===tag?' active':''}">${esc(t)}</span>`).join('')}</div>
             </div>`).join('');
           renderCloud(document.getElementById('tagSearch').value);
           // Scroll to results

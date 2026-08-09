@@ -46,10 +46,10 @@
       <p class="lede">Download the full dataset, filtered subsets, or individual idea packs in multiple formats. All data is open and freely reusable under the MIT license.</p>
 
       <div class="stat-row">
-        <div class="stat-item"><strong data-total-ideas>70</strong><span>ideas</span></div>
-        <div class="stat-item"><strong data-total-sources>62</strong><span>sources</span></div>
-        <div class="stat-item"><strong data-total-prompts>1,750</strong><span>prompts</span></div>
-        <div class="stat-item"><strong id="statRankings">31</strong><span>ranking views</span></div>
+        <div class="stat-item"><strong data-metric="ideas">272</strong><span>canonical ideas</span></div>
+        <div class="stat-item"><strong data-metric="sources">62</strong><span>sources</span></div>
+        <div class="stat-item"><strong data-metric="prompts">6,800</strong><span>prompts</span></div>
+        <div class="stat-item"><strong id="statRankings">7</strong><span>ranking views</span></div>
       </div>
 
       <!-- Full dataset downloads -->
@@ -58,7 +58,7 @@
         <div class="export-card">
           <div class="export-icon">📦</div>
           <div class="export-title">Complete Ideas Dataset (JSON)</div>
-          <div class="export-desc">All 70 ideas with full schema: scores, customer profiles, financial models, validation plans, evidence labels, and metadata.</div>
+          <div class="export-desc">All <span data-metric="ideas">272</span> canonical ideas with full schema: scores, customer profiles, financial models, validation plans, evidence labels, and metadata.</div>
           <div class="export-meta">≈3.5 MB · JSON · schema v2.1</div>
           <div class="export-actions">
             <a class="button primary" href="../data/ideas.json" download="venture-atlas-ideas.json">Download JSON</a>
@@ -202,40 +202,39 @@
         const scoreLabel = document.getElementById('exportScoreLabel');
         scoreSlider.addEventListener('input', () => { scoreLabel.textContent = `≥ ${scoreSlider.value}`; updateCount(); });
 
-        let fmt = 'json';
-        document.querySelectorAll('.format-tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-            document.querySelectorAll('.format-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            fmt = tab.dataset.fmt;
-          });
-        });
-
         function getFiltered() {
+          const scope = document.getElementById('expScope')?.value || 'canonical';
+          let baseList = VA.ideas;
+          if (scope === 'staged') baseList = VA.stagedIdeas || [];
+          if (scope === 'all') baseList = VA.allIdeas || [...(VA.ideas||[]), ...(VA.stagedIdeas||[])];
+
           const cat = catSel.value;
-          const minScore = parseFloat(scoreSlider.value);
-          const maxCost = document.getElementById('exportMaxCost').value ? parseInt(document.getElementById('exportMaxCost').value) : Infinity;
-          return VA.ideas.filter(x => {
+          const minScore = parseFloat(document.getElementById('expMinScore').value) || 0;
+          const maxCost = parseFloat(document.getElementById('expMaxCost').value) || 10000;
+
+          return baseList.filter(x => {
             if (cat && x.category !== cat) return false;
-            if (x.atAGlance.overallScore < minScore) return false;
-            if (x.atAGlance.startupCost?.midpoint > maxCost) return false;
+            const sc = x.atAGlance?.overallScore ?? 0;
+            if (sc < minScore) return false;
+            const cost = x.atAGlance?.startupCost?.midpoint ?? 0;
+            if (maxCost < 10000 && cost > maxCost) return false;
             return true;
           });
         }
 
         function updateCount() {
           const n = getFiltered().length;
-          document.getElementById('exportCountLabel').textContent = `${n} idea${n !== 1 ? 's' : ''} matched`;
+          document.getElementById('exportCountLabel').textContent = `${n.toLocaleString()} idea${n !== 1 ? 's' : ''} matched`;
         }
 
         function toCSV(ideas) {
           const headers = ['id','name','category','overallScore','profitPotential','startupCostMidpoint','timeToMvp','confidence','tags'];
           const rows = ideas.map(x => [
-            x.id, `"${x.name}"`, `"${x.category}"`, x.atAGlance.overallScore,
-            x.compositeScores.highestProfitPotential,
-            x.atAGlance.startupCost?.midpoint||'',
-            `"${x.atAGlance.timeToMvp||''}"`,
-            x.scores.overallConfidence.value,
+            x.id, `"${(x.name||'').replace(/"/g, '""')}"`, `"${(x.category||'').replace(/"/g, '""')}"`, x.atAGlance?.overallScore ?? '',
+            x.compositeScores?.highestProfitPotential ?? '',
+            x.atAGlance?.startupCost?.midpoint ?? '',
+            `"${x.atAGlance?.timeToMvp || ''}"`,
+            x.scores?.overallConfidence?.value ?? '',
             `"${(x.tags||[]).join(';')}"`
           ].join(','));
           return [headers.join(','), ...rows].join('\n');
@@ -243,7 +242,7 @@
 
         function toMD(ideas) {
           return ideas.map(x =>
-            `# ${x.name} (${x.id})\n\n**Category:** ${x.category}  \n**Score:** ${x.atAGlance.overallScore}/10  \n**Profit:** ${x.compositeScores.highestProfitPotential}/10  \n**MVP Time:** ${x.atAGlance.timeToMvp||'?'}  \n**Startup Cost:** $${(x.atAGlance.startupCost?.midpoint||0).toLocaleString()}\n\n${x.oneSentenceConcept}\n\n---\n`
+            `# ${x.name} (${x.id})\n\n**Category:** ${x.category}  \n**Overall Score:** ${x.atAGlance?.overallScore ?? 'N/A'}/100  \n**Profit Potential:** ${x.compositeScores?.highestProfitPotential ?? 'N/A'}/10  \n**MVP Time:** ${x.atAGlance?.timeToMvp || 'Unspecified'}  \n**Startup Cost:** ${x.atAGlance?.startupCost?.midpoint != null ? '$' + x.atAGlance.startupCost.midpoint.toLocaleString() : 'Unspecified'}\n\n${x.oneSentenceConcept || ''}\n\n---\n`
           ).join('\n');
         }
 
