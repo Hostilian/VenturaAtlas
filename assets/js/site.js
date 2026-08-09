@@ -189,6 +189,19 @@ async function loadData() {
   await Promise.all(requiredFiles.map(async f => {
     VA[f] = await fetchDataset(root, f);
   }));
+
+  // Optionally load staging queue for full universe views
+  try {
+    const stagingUrl = `${root}/data/idea-staging-queue.json`;
+    if (!fetchCache.has(stagingUrl)) {
+      const p = fetch(stagingUrl).then(r => r.ok ? r.json() : []).catch(() => []);
+      fetchCache.set(stagingUrl, p);
+    }
+    VA.stagedIdeas = await fetchCache.get(stagingUrl);
+  } catch (e) {
+    VA.stagedIdeas = [];
+  }
+  VA.allIdeas = [...(VA.ideas || []), ...(VA.stagedIdeas || [])];
 }
 
 /* ================================================================
