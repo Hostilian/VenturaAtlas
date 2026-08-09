@@ -50,8 +50,8 @@ function runDeepAudit() {
 
     // 2. Check outdated hardcoded idea counts (e.g., "70 ideas", "228 ideas", "260 ideas")
     const hardcodedPatterns = [
-      /\b(70|228|250|260)\s+(canonical\s+)?ideas\b/i,
-      /\b70\s+dossiers\b/i,
+      /(?<!\d)\b(70|228|250|260)\s+(canonical\s+)?ideas\b/i,
+      /(?<!\d)\b70\s+dossiers\b/i,
       /\ball\s+70\b/i
     ];
     hardcodedPatterns.forEach(pat => {
