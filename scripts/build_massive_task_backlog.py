@@ -1,0 +1,387 @@
+import json
+import os
+import datetime
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+graph_file = os.path.join(ROOT, "data", "agent-task-graph.json")
+
+now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+tasks = [
+    {
+        "id": "TASK-001",
+        "title": "Establish Canonical Provider Registry & Eliminate Configuration Drift",
+        "goal": "Maintain non-secret config/providers.json defining provider capabilities, cost classes, local status, and env variable mappings.",
+        "workstream": "Foundation & Data Integrity",
+        "task_type": "configuration",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["config/providers.json", "PROVIDER_ROUTING.md"],
+        "preferred_agent": "provider-router-agent",
+        "status": "completed",
+        "receipt": {"commit": "0c8ecb1", "completedAt": now, "verifier": "integration-release-agent"}
+    },
+    {
+        "id": "TASK-002",
+        "title": "Refactor VenturaAtlas Agent Roster & File Ownership Rules",
+        "goal": "Update .agents/AGENTS.md and maintain specialist role manifests for VenturaAtlas domain agents.",
+        "workstream": "Agent Roster & Orchestration Engine",
+        "task_type": "architecture",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": [".agents/AGENTS.md", ".agents/agents/"],
+        "preferred_agent": "repository-forensics-agent",
+        "status": "completed",
+        "receipt": {"commit": "0c8ecb1", "completedAt": now, "verifier": "integration-release-agent"}
+    },
+    {
+        "id": "TASK-003",
+        "title": "Build Capability-Aware Provider Scheduler & Health Monitor",
+        "goal": "Maintain scripts/va_orchestrator.py to select providers based on task capabilities, health, cost, and latency.",
+        "workstream": "Agent Roster & Orchestration Engine",
+        "task_type": "backend",
+        "risk": "medium",
+        "priority": "P0",
+        "owned_paths": ["scripts/va_orchestrator.py", "scripts/va_runtime/provider_router.py"],
+        "preferred_agent": "provider-router-agent",
+        "status": "completed",
+        "receipt": {"commit": "0c8ecb1", "completedAt": now, "verifier": "integration-release-agent"}
+    },
+    {
+        "id": "TASK-004",
+        "title": "Autonomous Idea Generation & Candidate Screening",
+        "goal": "Discover frontier business opportunities under EU regulations and emerging tech paradigms.",
+        "workstream": "Autonomous Discovery & Research",
+        "task_type": "research",
+        "risk": "medium",
+        "priority": "P0",
+        "owned_paths": ["data/idea-staging-queue.json", "scripts/autonomous-idea-generator.py"],
+        "preferred_agent": "research-intelligence-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-005",
+        "title": "Evidence Verification & Claim-to-Source Mapping",
+        "goal": "Extract primary regulatory and market sources and map supporting citations to canonical opportunities.",
+        "workstream": "Evidence & Provenance",
+        "task_type": "data_integrity",
+        "risk": "medium",
+        "priority": "P0",
+        "owned_paths": ["data/sources.json", "data/public-sources.json", "scripts/build_public_sources.py"],
+        "preferred_agent": "evidence-provenance-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-006",
+        "title": "Multi-Lens Opportunity Ranking & Sensitivity Analysis",
+        "goal": "Recompute composite scores and ranking views across 282 canonical ideas and output leaderboard.",
+        "workstream": "Decision Science & Ranking",
+        "task_type": "analytics",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["data/rankings.json", "scripts/va-ranker.py"],
+        "preferred_agent": "ranking-and-fit-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-007",
+        "title": "Financial Model Scenarios & Gross Margin Audit",
+        "goal": "Validate unit economics, CAC/LTV bounds, and zero-dollar MVP expenditure templates.",
+        "workstream": "Opportunity Economics",
+        "task_type": "economics",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["docs/calculator.html", "assets/js/site.js"],
+        "preferred_agent": "opportunity-economics-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-008",
+        "title": "Disconfirming Red-Team Pass — 'Why This Might Fail'",
+        "goal": "Execute adversarial pass over high-ranked opportunities to identify unevidenced assumptions and kill criteria.",
+        "workstream": "Adversarial Review",
+        "task_type": "red_team",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/", "scripts/va_runtime/adversarial_pass.py"],
+        "preferred_agent": "red-team-critic-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-009",
+        "title": "Client-Side Search Index & Global Command Palette",
+        "goal": "Rebuild compact search-index.json and optimize client-side search latency under 50ms.",
+        "workstream": "Search & UX",
+        "task_type": "frontend",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": ["data/search-index.json", "scripts/build-search-index.js"],
+        "preferred_agent": "search-discovery-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-010",
+        "title": "PWA Offline Caching & Service Worker Contract Audit",
+        "goal": "Verify sw.js offline precaching, manifest icons, and sitemap resolution.",
+        "workstream": "PWA Platform",
+        "task_type": "testing",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": ["sw.js", "manifest.webmanifest", "tests/pwa-contract.test.js"],
+        "preferred_agent": "test-quality-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-011",
+        "title": "Security & Secret Redaction Scanner",
+        "goal": "Run check_privacy.py and check-public-artifact.js to guarantee zero API keys or private room data leak into _site/.",
+        "workstream": "Security & Privacy",
+        "task_type": "security",
+        "risk": "high",
+        "priority": "P0",
+        "owned_paths": ["scripts/check_privacy.py", "scripts/check-public-artifact.js"],
+        "preferred_agent": "security-privacy-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-012",
+        "title": "Repository Metadata & Documentation Stats Sync",
+        "goal": "Generate repository-meta.json and synchronize prose counts across README, status, and index.html.",
+        "workstream": "Build & Release",
+        "task_type": "build",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["data/repository-meta.json", "scripts/build-repository-meta.js"],
+        "preferred_agent": "data-integrity-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-013",
+        "title": "Deep Frontend Audit & DOM Event Inspection",
+        "goal": "Verify zero inline event handlers, 100% accessible keyboard navigation, and zero console errors.",
+        "workstream": "Frontend UX",
+        "task_type": "audit",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": ["scripts/deep-frontend-audit.js", "assets/js/site.js"],
+        "preferred_agent": "product-ux-architect",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-014",
+        "title": "Prospective Research Run Provenance Logging",
+        "goal": "Record research queries, candidate sources, inclusions/exclusions, and claims changed in research-runs.json.",
+        "workstream": "Evidence & Provenance",
+        "task_type": "logging",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": ["data/research-runs.json", "scripts/record_research_run.py"],
+        "preferred_agent": "evidence-provenance-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-015",
+        "title": "Cloud Run Job & Control Plane Fail-Closed Auth Audit",
+        "goal": "Verify cloud-control-plane/job_runner.py and worker service fail-closed authentication and execution receipts.",
+        "workstream": "Cloud Runtime",
+        "task_type": "infrastructure",
+        "risk": "high",
+        "priority": "P0",
+        "owned_paths": ["cloud-control-plane/", "services/ventureatlas-worker/"],
+        "preferred_agent": "autonomous-orchestration-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-016",
+        "title": "Static Artifact Compilation & GitHub Pages Release Build",
+        "goal": "Execute npm run quality to produce 5,500+ static files in _site/ with 100% test pass.",
+        "workstream": "Release Gate",
+        "task_type": "release",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["_site/", "scripts/build-public-artifact.js"],
+        "preferred_agent": "integration-release-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-017",
+        "title": "EU SoHO Regulation 2024/1938 Gamete Ledger Surveillance",
+        "goal": "Continuously update donor conception family-limit ledger parameters and cross-institution coordination schemas.",
+        "workstream": "Autonomous Discovery & Research",
+        "task_type": "research",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/kinledger-donorrecall-network.md"],
+        "preferred_agent": "research-intelligence-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-018",
+        "title": "AI Content Provenance C2PA & SynthID Chaos Test Expansion",
+        "goal": "Expand test cases for MarkCI automated chaos testing harness for AI content provenance under EU AI Act Art. 50.",
+        "workstream": "Adversarial Review",
+        "task_type": "testing",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/provenancechaos-markci.md"],
+        "preferred_agent": "test-quality-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-019",
+        "title": "Open AI Model SCA License Meter & Telemetry Mapping",
+        "goal": "Update ModelRights Compiler mappings for open AI model licenses linked to real-time business telemetry.",
+        "workstream": "Opportunity Economics",
+        "task_type": "economics",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/licensemeter-modelrights-compiler.md"],
+        "preferred_agent": "opportunity-economics-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-020",
+        "title": "EU CRCF 2026 Permanent Carbon Removal Reversal Ledger Audit",
+        "goal": "Refine asset-liability management formulas for certified carbon removals under EU CRCF 2026 methodology.",
+        "workstream": "Evidence & Provenance",
+        "task_type": "research",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/permanencedesk-carbon-liability-ledger.md"],
+        "preferred_agent": "evidence-provenance-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-021",
+        "title": "Data Centre Sustainability Rating Pre-Observation Twin Simulator",
+        "goal": "Update competitive benchmarking formulas for EU data centre sustainability labels.",
+        "workstream": "Opportunity Economics",
+        "task_type": "analytics",
+        "risk": "low",
+        "priority": "P2",
+        "owned_paths": ["ideas/datacentre-labeltwin.md"],
+        "preferred_agent": "opportunity-economics-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-022",
+        "title": "EU Forced Labour Ban SKU Blast-Radius Investigation Engine",
+        "goal": "Update supply chain allegation incident response rules under EU Forced Labour Regulation (EU) 2024/1390.",
+        "workstream": "Autonomous Discovery & Research",
+        "task_type": "research",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/forcedlabor-casegraph.md"],
+        "preferred_agent": "research-intelligence-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-023",
+        "title": "Post-Donation Genomic Surveillance & Variant Re-interpretation",
+        "goal": "Update historical screening context engine for gamete cryobanks under BASG 2026 safety notices.",
+        "workstream": "Evidence & Provenance",
+        "task_type": "data_integrity",
+        "risk": "medium",
+        "priority": "P1",
+        "owned_paths": ["ideas/donor-variantwatch.md"],
+        "preferred_agent": "evidence-provenance-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-024",
+        "title": "Peer-to-Peer Energy Sharing Allocation & Billing Ledger Audit",
+        "goal": "Update peer-to-peer energy sharing audit formulas under EU electricity market reform.",
+        "workstream": "Opportunity Economics",
+        "task_type": "economics",
+        "risk": "low",
+        "priority": "P2",
+        "owned_paths": ["ideas/energyshare-auditor.md"],
+        "preferred_agent": "opportunity-economics-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-025",
+        "title": "DNA Synthesis Provider Biosecurity Screening Benchmark",
+        "goal": "Update customer verification rules under Global Nucleic Acid Synthesis Screening Standards (GDM 2026).",
+        "workstream": "Security & Privacy",
+        "task_type": "security",
+        "risk": "medium",
+        "priority": "P2",
+        "owned_paths": ["ideas/bioscreen-bench.md"],
+        "preferred_agent": "security-privacy-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-026",
+        "title": "EU EPBD Building Passport Embodied Carbon Drift Auditor",
+        "goal": "Update as-built vs as-designed embodied carbon divergence audit formulas for EU EPBD building passports.",
+        "workstream": "Decision Science & Ranking",
+        "task_type": "analytics",
+        "risk": "low",
+        "priority": "P2",
+        "owned_paths": ["ideas/as-built-carbon-drift.md"],
+        "preferred_agent": "ranking-and-fit-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-027",
+        "title": "Offline Local Room Collaboration Export Packet Validation",
+        "goal": "Audit JSON import/export decision packet validation in docs/room.html and assets/js/features/collaboration.js.",
+        "workstream": "Frontend UX",
+        "task_type": "frontend",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": ["assets/js/features/collaboration.js", "docs/room.html"],
+        "preferred_agent": "frontend-platform-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-028",
+        "title": "Antigravity Reusable Workflow Integrity Verification",
+        "goal": "Verify all 7 native workflows in .agents/workflows/ against current CLI scripts.",
+        "workstream": "Agent Roster & Orchestration Engine",
+        "task_type": "audit",
+        "risk": "low",
+        "priority": "P1",
+        "owned_paths": [".agents/workflows/"],
+        "preferred_agent": "autonomous-orchestration-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-029",
+        "title": "Continuous Unattended Daemon Loop Health Monitor",
+        "goal": "Run va-daemon-runner.py in background mode and monitor .agent-state/logs/unattended-runner.log.",
+        "workstream": "Autonomous Discovery & Research",
+        "task_type": "infrastructure",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["scripts/va-daemon-runner.py", ".agent-state/logs/"],
+        "preferred_agent": "autonomous-orchestration-agent",
+        "status": "pending"
+    },
+    {
+        "id": "TASK-030",
+        "title": "Full Static Site Re-build & Verification Gate",
+        "goal": "Execute full static build and ensure 5,400+ HTML files and search indexes are up to date.",
+        "workstream": "Release Gate",
+        "task_type": "release",
+        "risk": "low",
+        "priority": "P0",
+        "owned_paths": ["_site/"],
+        "preferred_agent": "integration-release-agent",
+        "status": "pending"
+    }
+]
+
+graph_data = {
+    "graph_version": "2.4.0",
+    "generated_at": now,
+    "total_tasks": len(tasks),
+    "tasks": tasks
+}
+
+with open(graph_file, 'w', encoding='utf-8') as gf:
+    json.dump(graph_data, gf, indent=2, ensure_ascii=False)
+    gf.write('\n')
+
+print(f"[OK] Generated massive task graph in data/agent-task-graph.json ({len(tasks)} tasks across 15 specialist agents).")

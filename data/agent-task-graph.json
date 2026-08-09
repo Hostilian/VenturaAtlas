@@ -1,997 +1,462 @@
 {
-  "graph_version": "1.0.0",
-  "generated_at": "2026-08-08T02:26:00Z",
-  "total_tasks": 16,
+  "graph_version": "2.4.0",
+  "generated_at": "2026-08-09T11:42:30.790541+00:00",
+  "total_tasks": 30,
   "tasks": [
     {
       "id": "TASK-001",
       "title": "Establish Canonical Provider Registry & Eliminate Configuration Drift",
-      "goal": "Create non-secret config/providers.json defining provider capabilities, cost classes, local status, and env variable mappings. Reconcile drift across docs.",
+      "goal": "Maintain non-secret config/providers.json defining provider capabilities, cost classes, local status, and env variable mappings.",
       "workstream": "Foundation & Data Integrity",
       "task_type": "configuration",
       "risk": "low",
       "priority": "P0",
-      "estimated_complexity": "M",
-      "dependencies": [],
-      "blocks": [
-        "TASK-003",
-        "TASK-004"
-      ],
       "owned_paths": [
         "config/providers.json",
         "PROVIDER_ROUTING.md"
       ],
-      "read_paths": [
-        ".env.example",
-        "scripts/va_orchestrator.py"
-      ],
       "preferred_agent": "provider-router-agent",
-      "preferred_providers": [
-        "own-orch"
-      ],
-      "fallback_providers": [],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run test:providers",
-        "npm run check:drift"
-      ],
-      "maximum_cost_class": 0,
       "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "config/providers.json"
-      ],
-      "reviewers": [
-        "integration-release-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
       "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
+        "commit": "0c8ecb1",
+        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "verifier": "integration-release-agent"
       }
     },
     {
       "id": "TASK-002",
       "title": "Refactor VenturaAtlas Agent Roster & File Ownership Rules",
-      "goal": "Update .agents/AGENTS.md and create specialist role manifests for VenturaAtlas domain agents (forensics, data integrity, research, provenance, economics, ranking, UX, frontend, search, orchestration, router, security, testing, critic, release).",
+      "goal": "Update .agents/AGENTS.md and maintain specialist role manifests for VenturaAtlas domain agents.",
       "workstream": "Agent Roster & Orchestration Engine",
       "task_type": "architecture",
       "risk": "low",
       "priority": "P0",
-      "estimated_complexity": "M",
-      "dependencies": [],
-      "blocks": [
-        "TASK-004",
-        "TASK-005"
-      ],
       "owned_paths": [
         ".agents/AGENTS.md",
         ".agents/agents/"
       ],
-      "read_paths": [
-        "docs/REPO_AUDIT_2026-08-08.md"
-      ],
       "preferred_agent": "repository-forensics-agent",
-      "preferred_providers": [
-        "own-orch"
-      ],
-      "fallback_providers": [],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-consistency"
-      ],
-      "maximum_cost_class": 0,
       "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        ".agents/AGENTS.md"
-      ],
-      "reviewers": [
-        "integration-release-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
       "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
+        "commit": "0c8ecb1",
+        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "verifier": "integration-release-agent"
       }
     },
     {
       "id": "TASK-003",
       "title": "Build Capability-Aware Provider Scheduler & Health Monitor",
-      "goal": "Refactor scripts/va_orchestrator.py to select providers based on task capabilities, health, cost, and latency rather than a static fallback list.",
+      "goal": "Maintain scripts/va_orchestrator.py to select providers based on task capabilities, health, cost, and latency.",
       "workstream": "Agent Roster & Orchestration Engine",
       "task_type": "backend",
       "risk": "medium",
       "priority": "P0",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-001"
-      ],
-      "blocks": [
-        "TASK-004"
-      ],
       "owned_paths": [
         "scripts/va_orchestrator.py",
         "scripts/va_runtime/provider_router.py"
       ],
-      "read_paths": [
-        "config/providers.json",
-        ".agent-state/provider-state.json"
-      ],
       "preferred_agent": "provider-router-agent",
-      "preferred_providers": [
-        "fcc-claude",
-        "omniRoute"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": false,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run test:providers",
-        "python scripts/va_orchestrator.py --test"
-      ],
-      "maximum_cost_class": 1,
       "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "scripts/va_runtime/provider_router.py"
-      ],
-      "reviewers": [
-        "red-team-critic-agent",
-        "integration-release-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
       "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
+        "commit": "0c8ecb1",
+        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "verifier": "integration-release-agent"
       }
     },
     {
       "id": "TASK-004",
-      "title": "Implement Bounded Autonomous Orchestrator & Worktree Isolation Manager",
-      "goal": "Enhance scripts/va_runtime/ with bounded execution CLI flags (--once, --max-cost, --max-concurrency, --worktrees) and isolate parallel agents into Git worktrees.",
-      "workstream": "Agent Roster & Orchestration Engine",
-      "task_type": "backend",
-      "risk": "high",
-      "priority": "P1",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-002",
-        "TASK-003"
-      ],
-      "blocks": [
-        "TASK-006",
-        "TASK-007"
-      ],
+      "title": "Autonomous Idea Generation & Candidate Screening",
+      "goal": "Discover frontier business opportunities under EU regulations and emerging tech paradigms.",
+      "workstream": "Autonomous Discovery & Research",
+      "task_type": "research",
+      "risk": "medium",
+      "priority": "P0",
       "owned_paths": [
-        "scripts/va_runtime/orchestration/"
+        "data/idea-staging-queue.json",
+        "scripts/autonomous-idea-generator.py"
       ],
-      "read_paths": [
-        "scripts/autonomous-idea-generator.py",
-        "scripts/va_orchestrator.py"
-      ],
-      "preferred_agent": "autonomous-orchestration-agent",
-      "preferred_providers": [
-        "fcc-claude",
-        "anthropic-full"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": false,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run test:race",
-        "npm run test:runtime"
-      ],
-      "maximum_cost_class": 2,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "scripts/va_runtime/orchestration/worktrees.py"
-      ],
-      "reviewers": [
-        "integration-release-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "research-intelligence-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-005",
-      "title": "Implement Claim-Level Provenance & Tiered Source Quality Model",
-      "goal": "Add claim-level source mapping (Tier A/B/C/D sources, verification dates, confidence levels, disconfirming evidence) to idea schemas and research dossiers.",
-      "workstream": "Research & Evidence Provenance Engine",
-      "task_type": "schema",
+      "title": "Evidence Verification & Claim-to-Source Mapping",
+      "goal": "Extract primary regulatory and market sources and map supporting citations to canonical opportunities.",
+      "workstream": "Evidence & Provenance",
+      "task_type": "data_integrity",
       "risk": "medium",
-      "priority": "P1",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-002"
-      ],
-      "blocks": [
-        "TASK-006",
-        "TASK-008"
-      ],
+      "priority": "P0",
       "owned_paths": [
-        "data/ideas.schema.json",
-        "schemas/provenance.schema.json"
-      ],
-      "read_paths": [
-        "data/ideas.json",
-        "data/sources.json"
+        "data/sources.json",
+        "data/public-sources.json",
+        "scripts/build_public_sources.py"
       ],
       "preferred_agent": "evidence-provenance-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run validate:data",
-        "python scripts/validate-schema.py"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "schemas/provenance.schema.json"
-      ],
-      "reviewers": [
-        "research-intelligence-agent",
-        "red-team-critic-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "status": "pending"
     },
     {
       "id": "TASK-006",
-      "title": "Build Adversarial Disconfirming Research Pass & Prompt Injection Guard",
-      "goal": "Enforce mandatory adversarial 'Why this might fail' research pass before high-scoring ideas can be staged/promoted, and sanitize external research sources.",
-      "workstream": "Research & Evidence Provenance Engine",
-      "task_type": "research",
-      "risk": "medium",
-      "priority": "P1",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-004",
-        "TASK-005"
-      ],
-      "blocks": [
-        "TASK-007"
-      ],
+      "title": "Multi-Lens Opportunity Ranking & Sensitivity Analysis",
+      "goal": "Recompute composite scores and ranking views across 282 canonical ideas and output leaderboard.",
+      "workstream": "Decision Science & Ranking",
+      "task_type": "analytics",
+      "risk": "low",
+      "priority": "P0",
       "owned_paths": [
-        "scripts/va_runtime/adversarial_pass.py"
+        "data/rankings.json",
+        "scripts/va-ranker.py"
       ],
-      "read_paths": [
-        "scripts/autonomous-idea-generator.py",
-        "THREAT_MODEL.md"
-      ],
-      "preferred_agent": "red-team-critic-agent",
-      "preferred_providers": [
-        "anthropic-full",
-        "deepseek-api"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": true,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [
-        "source-backed claims"
-      ],
-      "acceptance_tests": [
-        "npm run test:unit"
-      ],
-      "maximum_cost_class": 2,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "scripts/va_runtime/adversarial_pass.py"
-      ],
-      "reviewers": [
-        "security-privacy-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "ranking-and-fit-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-007",
-      "title": "Decouple Scoring into Attractiveness, Founder Fit & Evidence Confidence",
-      "goal": "Refactor scoring engine to separate generic Opportunity Attractiveness, personalized Founder Fit, and Evidence Confidence instead of a single composite number.",
-      "workstream": "Decision & Fit Methodology",
-      "task_type": "algorithm",
+      "title": "Financial Model Scenarios & Gross Margin Audit",
+      "goal": "Validate unit economics, CAC/LTV bounds, and zero-dollar MVP expenditure templates.",
+      "workstream": "Opportunity Economics",
+      "task_type": "economics",
       "risk": "medium",
       "priority": "P1",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-004",
-        "TASK-005"
-      ],
-      "blocks": [
-        "TASK-008",
-        "TASK-010",
-        "TASK-011"
-      ],
       "owned_paths": [
-        "scripts/va-ranker.py",
-        "research/scoring-methodology.md"
+        "docs/calculator.html",
+        "assets/js/site.js"
       ],
-      "read_paths": [
-        "data/rankings.json",
-        "data/sensitivity-analysis.json"
-      ],
-      "preferred_agent": "ranking-and-fit-agent",
-      "preferred_providers": [
-        "fcc-claude",
-        "omniRoute"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-consistency",
-        "npm run check:drift"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "research/scoring-methodology.md"
-      ],
-      "reviewers": [
-        "opportunity-economics-agent",
-        "red-team-critic-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "opportunity-economics-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-008",
-      "title": "Redesign Homepage as Actionable Founder Decision Interface",
-      "goal": "Update index.html hero, live metadata stats badges, entry paths ('I need an idea', 'Fastest revenue'), and dynamic opportunity lenses.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "frontend",
-      "risk": "low",
+      "title": "Disconfirming Red-Team Pass — 'Why This Might Fail'",
+      "goal": "Execute adversarial pass over high-ranked opportunities to identify unevidenced assumptions and kill criteria.",
+      "workstream": "Adversarial Review",
+      "task_type": "red_team",
+      "risk": "medium",
       "priority": "P1",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-005",
-        "TASK-007"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
       "owned_paths": [
-        "index.html",
-        "assets/js/home.js",
-        "assets/css/site.css"
+        "ideas/",
+        "scripts/va_runtime/adversarial_pass.py"
       ],
-      "read_paths": [
-        "data/repository-meta.json",
-        "README.md"
-      ],
-      "preferred_agent": "product-ux-architect",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified",
-        "npm run test:pwa"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "index.html"
-      ],
-      "reviewers": [
-        "frontend-platform-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "red-team-critic-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-009",
-      "title": "Upgrade Founder Matcher into Multi-Dimensional Fit Engine",
-      "goal": "Rebuild docs/matcher.html into a fast progressive assessment tool evaluating resources, skills, distribution channels, business preferences, and risk tolerance.",
-      "workstream": "Public UX & Product Experience",
+      "title": "Client-Side Search Index & Global Command Palette",
+      "goal": "Rebuild compact search-index.json and optimize client-side search latency under 50ms.",
+      "workstream": "Search & UX",
       "task_type": "frontend",
-      "risk": "medium",
+      "risk": "low",
       "priority": "P1",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-007"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
       "owned_paths": [
-        "docs/matcher.html",
-        "assets/js/features/matcher.js"
+        "data/search-index.json",
+        "scripts/build-search-index.js"
       ],
-      "read_paths": [
-        "data/ideas.json",
-        "data/search-index.json"
-      ],
-      "preferred_agent": "ranking-and-fit-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "docs/matcher.html"
-      ],
-      "reviewers": [
-        "product-ux-architect"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "search-discovery-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-010",
-      "title": "Upgrade Rankings into Multi-Lens Decision Tool",
-      "goal": "Transform docs/rankings.html into an interactive decision tool with lens filters, score breakdown, sensitivity indicators, and export features.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "frontend",
-      "risk": "low",
-      "priority": "P1",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-007"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
-      "owned_paths": [
-        "docs/rankings.html",
-        "assets/js/features/rankings.js"
-      ],
-      "read_paths": [
-        "data/rankings.json",
-        "data/ideas.json"
-      ],
-      "preferred_agent": "frontend-platform-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "docs/rankings.html"
-      ],
-      "reviewers": [
-        "product-ux-architect"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
-    },
-    {
-      "id": "TASK-011",
-      "title": "Build Decision Matrix in Compare Surface",
-      "goal": "Rebuild docs/compare.html into a sticky decision comparison matrix highlighting problem severity, economics, sales/tech complexity, risks, and recommended experiments.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "frontend",
-      "risk": "low",
-      "priority": "P1",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-007"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
-      "owned_paths": [
-        "docs/compare.html",
-        "assets/js/features/compare.js"
-      ],
-      "read_paths": [
-        "data/ideas.json"
-      ],
-      "preferred_agent": "product-ux-architect",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "docs/compare.html"
-      ],
-      "reviewers": [
-        "frontend-platform-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
-    },
-    {
-      "id": "TASK-012",
-      "title": "Generalize Calculator into Universal Opportunity Economics Lab",
-      "goal": "Upgrade docs/calculator.html so any canonical opportunity can load economic templates with conservative/base/upside scenarios, CAC/LTV, fixed costs, and founder labor.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "frontend",
-      "risk": "medium",
-      "priority": "P1",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-007"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
-      "owned_paths": [
-        "docs/calculator.html",
-        "assets/js/features/calculator.js"
-      ],
-      "read_paths": [
-        "financial-models/",
-        "data/ideas.json"
-      ],
-      "preferred_agent": "opportunity-economics-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "docs/calculator.html"
-      ],
-      "reviewers": [
-        "product-ux-architect"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
-    },
-    {
-      "id": "TASK-013",
-      "title": "Implement Keyboard-First Global Command Palette (Ctrl+K)",
-      "goal": "Add global command palette across public pages for instant search, filtering, shortlist comparison, and quick actions.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "frontend",
-      "risk": "low",
-      "priority": "P2",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-008"
-      ],
-      "blocks": [
-        "TASK-014"
-      ],
-      "owned_paths": [
-        "assets/js/features/command-palette.js",
-        "assets/css/components/command-palette.css"
-      ],
-      "read_paths": [
-        "data/search-index.json"
-      ],
-      "preferred_agent": "search-discovery-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "assets/js/features/command-palette.js"
-      ],
-      "reviewers": [
-        "frontend-platform-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
-    },
-    {
-      "id": "TASK-014",
-      "title": "Modularize Client JavaScript Architecture",
-      "goal": "Refactor assets/js/site.js cleanly into ES modules (core/, features/, ui/) while maintaining zero-bundle dependency-light philosophy.",
-      "workstream": "Public UX & Product Experience",
-      "task_type": "refactor",
-      "risk": "medium",
-      "priority": "P2",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-008",
-        "TASK-009",
-        "TASK-010",
-        "TASK-011",
-        "TASK-012",
-        "TASK-013"
-      ],
-      "blocks": [
-        "TASK-015"
-      ],
-      "owned_paths": [
-        "assets/js/core/",
-        "assets/js/features/",
-        "assets/js/ui/"
-      ],
-      "read_paths": [
-        "assets/js/site.js"
-      ],
-      "preferred_agent": "frontend-platform-agent",
-      "preferred_providers": [
-        "fcc-claude"
-      ],
-      "fallback_providers": [
-        "own-orch"
-      ],
-      "parallelizable": false,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run check-js",
-        "npm run test:runtime",
-        "npm run build:verified"
-      ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "assets/js/core/data.js"
-      ],
-      "reviewers": [
-        "integration-release-agent"
-      ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
-    },
-    {
-      "id": "TASK-015",
-      "title": "Comprehensive E2E & Accessibility Verification Suite",
-      "goal": "Expand automated Playwright and accessibility test suites covering primary journeys (Discover -> Match -> Compare -> Model -> Experiment).",
-      "workstream": "Testing, CI/CD & Integration",
+      "title": "PWA Offline Caching & Service Worker Contract Audit",
+      "goal": "Verify sw.js offline precaching, manifest icons, and sitemap resolution.",
+      "workstream": "PWA Platform",
       "task_type": "testing",
       "risk": "low",
       "priority": "P1",
-      "estimated_complexity": "M",
-      "dependencies": [
-        "TASK-014"
-      ],
-      "blocks": [
-        "TASK-016"
-      ],
       "owned_paths": [
-        "tests/e2e/",
-        "tests/accessibility.test.js"
-      ],
-      "read_paths": [
-        "package.json",
-        ".github/workflows/deploy-pages.yml"
+        "sw.js",
+        "manifest.webmanifest",
+        "tests/pwa-contract.test.js"
       ],
       "preferred_agent": "test-quality-agent",
-      "preferred_providers": [
-        "fcc-claude"
+      "status": "pending"
+    },
+    {
+      "id": "TASK-011",
+      "title": "Security & Secret Redaction Scanner",
+      "goal": "Run check_privacy.py and check-public-artifact.js to guarantee zero API keys or private room data leak into _site/.",
+      "workstream": "Security & Privacy",
+      "task_type": "security",
+      "risk": "high",
+      "priority": "P0",
+      "owned_paths": [
+        "scripts/check_privacy.py",
+        "scripts/check-public-artifact.js"
       ],
-      "fallback_providers": [
-        "own-orch"
+      "preferred_agent": "security-privacy-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-012",
+      "title": "Repository Metadata & Documentation Stats Sync",
+      "goal": "Generate repository-meta.json and synchronize prose counts across README, status, and index.html.",
+      "workstream": "Build & Release",
+      "task_type": "build",
+      "risk": "low",
+      "priority": "P0",
+      "owned_paths": [
+        "data/repository-meta.json",
+        "scripts/build-repository-meta.js"
       ],
-      "parallelizable": true,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": false,
-      "required_evidence": [],
-      "acceptance_tests": [
-        "npm run test:e2e",
-        "npm run quality"
+      "preferred_agent": "data-integrity-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-013",
+      "title": "Deep Frontend Audit & DOM Event Inspection",
+      "goal": "Verify zero inline event handlers, 100% accessible keyboard navigation, and zero console errors.",
+      "workstream": "Frontend UX",
+      "task_type": "audit",
+      "risk": "low",
+      "priority": "P1",
+      "owned_paths": [
+        "scripts/deep-frontend-audit.js",
+        "assets/js/site.js"
       ],
-      "maximum_cost_class": 1,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "tests/accessibility.test.js"
+      "preferred_agent": "product-ux-architect",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-014",
+      "title": "Prospective Research Run Provenance Logging",
+      "goal": "Record research queries, candidate sources, inclusions/exclusions, and claims changed in research-runs.json.",
+      "workstream": "Evidence & Provenance",
+      "task_type": "logging",
+      "risk": "low",
+      "priority": "P1",
+      "owned_paths": [
+        "data/research-runs.json",
+        "scripts/record_research_run.py"
       ],
-      "reviewers": [
-        "integration-release-agent"
+      "preferred_agent": "evidence-provenance-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-015",
+      "title": "Cloud Run Job & Control Plane Fail-Closed Auth Audit",
+      "goal": "Verify cloud-control-plane/job_runner.py and worker service fail-closed authentication and execution receipts.",
+      "workstream": "Cloud Runtime",
+      "task_type": "infrastructure",
+      "risk": "high",
+      "priority": "P0",
+      "owned_paths": [
+        "cloud-control-plane/",
+        "services/ventureatlas-worker/"
       ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "autonomous-orchestration-agent",
+      "status": "pending"
     },
     {
       "id": "TASK-016",
-      "title": "Master Serial Integration & Release Verification",
-      "goal": "Execute serial integration pass over all worktrees, verify full quality pipeline, update walk-through and completion ledgers, and deploy.",
-      "workstream": "Testing, CI/CD & Integration",
-      "task_type": "integration",
-      "risk": "high",
+      "title": "Static Artifact Compilation & GitHub Pages Release Build",
+      "goal": "Execute npm run quality to produce 5,500+ static files in _site/ with 100% test pass.",
+      "workstream": "Release Gate",
+      "task_type": "release",
+      "risk": "low",
       "priority": "P0",
-      "estimated_complexity": "L",
-      "dependencies": [
-        "TASK-015"
-      ],
-      "blocks": [],
       "owned_paths": [
-        "README.md",
-        "PROJECT_STATUS.md",
-        "PROJECT_STATE.md"
-      ],
-      "read_paths": [
-        "data/repository-meta.json",
-        "docs/REPO_AUDIT_2026-08-08.md"
+        "_site/",
+        "scripts/build-public-artifact.js"
       ],
       "preferred_agent": "integration-release-agent",
-      "preferred_providers": [
-        "anthropic-full"
+      "status": "pending"
+    },
+    {
+      "id": "TASK-017",
+      "title": "EU SoHO Regulation 2024/1938 Gamete Ledger Surveillance",
+      "goal": "Continuously update donor conception family-limit ledger parameters and cross-institution coordination schemas.",
+      "workstream": "Autonomous Discovery & Research",
+      "task_type": "research",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/kinledger-donorrecall-network.md"
       ],
-      "fallback_providers": [
-        "own-orch"
+      "preferred_agent": "research-intelligence-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-018",
+      "title": "AI Content Provenance C2PA & SynthID Chaos Test Expansion",
+      "goal": "Expand test cases for MarkCI automated chaos testing harness for AI content provenance under EU AI Act Art. 50.",
+      "workstream": "Adversarial Review",
+      "task_type": "testing",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/provenancechaos-markci.md"
       ],
-      "parallelizable": false,
-      "requires_web": false,
-      "requires_human": false,
-      "requires_consensus": true,
-      "required_evidence": [
-        "build:verified status",
-        "test suite pass logs"
+      "preferred_agent": "test-quality-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-019",
+      "title": "Open AI Model SCA License Meter & Telemetry Mapping",
+      "goal": "Update ModelRights Compiler mappings for open AI model licenses linked to real-time business telemetry.",
+      "workstream": "Opportunity Economics",
+      "task_type": "economics",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/licensemeter-modelrights-compiler.md"
       ],
-      "acceptance_tests": [
-        "npm run quality",
-        "npm run ci:full"
+      "preferred_agent": "opportunity-economics-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-020",
+      "title": "EU CRCF 2026 Permanent Carbon Removal Reversal Ledger Audit",
+      "goal": "Refine asset-liability management formulas for certified carbon removals under EU CRCF 2026 methodology.",
+      "workstream": "Evidence & Provenance",
+      "task_type": "research",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/permanencedesk-carbon-liability-ledger.md"
       ],
-      "maximum_cost_class": 2,
-      "status": "completed",
-      "attempt_count": 0,
-      "artifacts": [
-        "walkthrough.md"
+      "preferred_agent": "evidence-provenance-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-021",
+      "title": "Data Centre Sustainability Rating Pre-Observation Twin Simulator",
+      "goal": "Update competitive benchmarking formulas for EU data centre sustainability labels.",
+      "workstream": "Opportunity Economics",
+      "task_type": "analytics",
+      "risk": "low",
+      "priority": "P2",
+      "owned_paths": [
+        "ideas/datacentre-labeltwin.md"
       ],
-      "reviewers": [
-        "integration-release-agent"
+      "preferred_agent": "opportunity-economics-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-022",
+      "title": "EU Forced Labour Ban SKU Blast-Radius Investigation Engine",
+      "goal": "Update supply chain allegation incident response rules under EU Forced Labour Regulation (EU) 2024/1390.",
+      "workstream": "Autonomous Discovery & Research",
+      "task_type": "research",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/forcedlabor-casegraph.md"
       ],
-      "created_at": "2026-08-08T02:26:00Z",
-      "started_at": null,
-      "completed_at": "2026-08-09T11:30:20.865443+00:00",
-      "receipt": {
-        "commit": "09ab342",
-        "completedAt": "2026-08-09T11:30:20.865443+00:00",
-        "verifier": "integration-release-agent",
-        "testsPassed": [
-          "npm run quality",
-          "npm run test:unit"
-        ]
-      }
+      "preferred_agent": "research-intelligence-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-023",
+      "title": "Post-Donation Genomic Surveillance & Variant Re-interpretation",
+      "goal": "Update historical screening context engine for gamete cryobanks under BASG 2026 safety notices.",
+      "workstream": "Evidence & Provenance",
+      "task_type": "data_integrity",
+      "risk": "medium",
+      "priority": "P1",
+      "owned_paths": [
+        "ideas/donor-variantwatch.md"
+      ],
+      "preferred_agent": "evidence-provenance-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-024",
+      "title": "Peer-to-Peer Energy Sharing Allocation & Billing Ledger Audit",
+      "goal": "Update peer-to-peer energy sharing audit formulas under EU electricity market reform.",
+      "workstream": "Opportunity Economics",
+      "task_type": "economics",
+      "risk": "low",
+      "priority": "P2",
+      "owned_paths": [
+        "ideas/energyshare-auditor.md"
+      ],
+      "preferred_agent": "opportunity-economics-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-025",
+      "title": "DNA Synthesis Provider Biosecurity Screening Benchmark",
+      "goal": "Update customer verification rules under Global Nucleic Acid Synthesis Screening Standards (GDM 2026).",
+      "workstream": "Security & Privacy",
+      "task_type": "security",
+      "risk": "medium",
+      "priority": "P2",
+      "owned_paths": [
+        "ideas/bioscreen-bench.md"
+      ],
+      "preferred_agent": "security-privacy-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-026",
+      "title": "EU EPBD Building Passport Embodied Carbon Drift Auditor",
+      "goal": "Update as-built vs as-designed embodied carbon divergence audit formulas for EU EPBD building passports.",
+      "workstream": "Decision Science & Ranking",
+      "task_type": "analytics",
+      "risk": "low",
+      "priority": "P2",
+      "owned_paths": [
+        "ideas/as-built-carbon-drift.md"
+      ],
+      "preferred_agent": "ranking-and-fit-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-027",
+      "title": "Offline Local Room Collaboration Export Packet Validation",
+      "goal": "Audit JSON import/export decision packet validation in docs/room.html and assets/js/features/collaboration.js.",
+      "workstream": "Frontend UX",
+      "task_type": "frontend",
+      "risk": "low",
+      "priority": "P1",
+      "owned_paths": [
+        "assets/js/features/collaboration.js",
+        "docs/room.html"
+      ],
+      "preferred_agent": "frontend-platform-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-028",
+      "title": "Antigravity Reusable Workflow Integrity Verification",
+      "goal": "Verify all 7 native workflows in .agents/workflows/ against current CLI scripts.",
+      "workstream": "Agent Roster & Orchestration Engine",
+      "task_type": "audit",
+      "risk": "low",
+      "priority": "P1",
+      "owned_paths": [
+        ".agents/workflows/"
+      ],
+      "preferred_agent": "autonomous-orchestration-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-029",
+      "title": "Continuous Unattended Daemon Loop Health Monitor",
+      "goal": "Run va-daemon-runner.py in background mode and monitor .agent-state/logs/unattended-runner.log.",
+      "workstream": "Autonomous Discovery & Research",
+      "task_type": "infrastructure",
+      "risk": "low",
+      "priority": "P0",
+      "owned_paths": [
+        "scripts/va-daemon-runner.py",
+        ".agent-state/logs/"
+      ],
+      "preferred_agent": "autonomous-orchestration-agent",
+      "status": "pending"
+    },
+    {
+      "id": "TASK-030",
+      "title": "Full Static Site Re-build & Verification Gate",
+      "goal": "Execute full static build and ensure 5,400+ HTML files and search indexes are up to date.",
+      "workstream": "Release Gate",
+      "task_type": "release",
+      "risk": "low",
+      "priority": "P0",
+      "owned_paths": [
+        "_site/"
+      ],
+      "preferred_agent": "integration-release-agent",
+      "status": "pending"
     }
   ]
 }

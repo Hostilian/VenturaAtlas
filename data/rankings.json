@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-09T11:28:58.491156+00:00",
+  "generatedAt": "2026-08-09T11:43:00.882118+00:00",
   "totalIdeas": 282,
   "rankingViewsCount": 7,
   "algorithm": "weighted-composite-v2",
@@ -32944,36 +32944,6 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-08T02:27:51.731698+00:00",
-      "top5": [
-        {
-          "id": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 92.5
-        },
-        {
-          "id": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 92.1
-        },
-        {
-          "id": "idea-275",
-          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
-          "score": 91.7
-        },
-        {
-          "id": "idea-261",
-          "name": "BorderGraph — EU Product Compliance Control Plane",
-          "score": 91.3
-        },
-        {
-          "id": "idea-276",
-          "name": "MachineKey — Unified Industrial Machine Telemetry API",
-          "score": 90.9
-        }
-      ]
-    },
-    {
       "snapshotAt": "2026-08-08T02:36:26.783970+00:00",
       "top5": [
         {
@@ -33215,6 +33185,36 @@
     },
     {
       "snapshotAt": "2026-08-09T11:28:58.491156+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        },
+        {
+          "id": "idea-361",
+          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
+          "score": 95.5
+        },
+        {
+          "id": "idea-386",
+          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
+          "score": 94.3
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-09T11:43:00.882118+00:00",
       "top5": [
         {
           "id": "idea-385",
