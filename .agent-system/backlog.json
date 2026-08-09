@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "2.0.0",
+  "lastUpdated": "2026-08-09T13:59:00Z",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "Atomic State Persistence & Corruption Prevention",
+      "domain": "DevOps / Safety",
+      "priorityScore": 98.5,
+      "urgency": "P0",
+      "status": "IN_PROGRESS",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": [],
+      "verificationMethod": "python scripts/test_providers_mock.py",
+      "filesAffected": ["scripts/va_runtime/provider_router.py"]
+    },
+    {
+      "id": "TASK-002",
+      "title": "Windows Auto-Resume & Daemon Automation",
+      "domain": "Automation",
+      "priorityScore": 95.0,
+      "urgency": "P1",
+      "status": "IN_PROGRESS",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": ["TASK-001"],
+      "verificationMethod": "powershell scripts/automation/health-check.ps1",
+      "filesAffected": ["scripts/automation/startup.ps1", "scripts/automation/install-startup-task.ps1"]
+    },
+    {
+      "id": "TASK-003",
+      "title": "Cloud Continuity Workflows (GitHub Actions)",
+      "domain": "DevOps",
+      "priorityScore": 92.5,
+      "urgency": "P1",
+      "status": "IN_PROGRESS",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": [],
+      "verificationMethod": "npm run ci",
+      "filesAffected": [".github/workflows/continuous-audit.yml", ".github/workflows/research-cycle.yml"]
+    },
+    {
+      "id": "TASK-004",
+      "title": "Rankings UI Scoring Breakdown & Transparency",
+      "domain": "Frontend",
+      "priorityScore": 91.0,
+      "urgency": "P2",
+      "status": "IN_PROGRESS",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": [],
+      "verificationMethod": "npm run test:pwa",
+      "filesAffected": ["assets/js/features/rankings.js", "docs/rankings.html"]
+    },
+    {
+      "id": "TASK-005",
+      "title": "Side-by-Side Idea Comparison Metric Deltas",
+      "domain": "Frontend",
+      "priorityScore": 88.5,
+      "urgency": "P2",
+      "status": "IN_PROGRESS",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": [],
+      "verificationMethod": "npm run test:runtime",
+      "filesAffected": ["assets/js/features/compare.js", "docs/compare.html"]
+    },
+    {
+      "id": "TASK-006",
+      "title": "Evidence Graph & Source Freshness Audit",
+      "domain": "Data Integrity",
+      "priorityScore": 86.0,
+      "urgency": "P2",
+      "status": "QUEUED",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": ["TASK-001"],
+      "verificationMethod": "npm run validate:source",
+      "filesAffected": ["data/sources.json", "scripts/validate-data.js"]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-/* Venture Atlas OS — Compare Feature Matrix Engine (v2.3.0) */
+/* Venture Atlas OS — Compare Feature Matrix Engine (v2.4.0) */
 function initCompare() {
   const container = document.getElementById('comparison');
   const selects = document.querySelectorAll('[data-compare-select]');
@@ -17,6 +17,14 @@ function initCompare() {
     initialIds = idsQuery.split(',').map(s => s.trim()).filter(Boolean);
   } else {
     initialIds = window.VentureAtlas?.readJsonStorage('va-compare-ids', []) || [];
+  }
+
+  // Helper to extract score safely
+  function getIdeaScore(idea, type) {
+    if (!idea) return 0;
+    if (idea.atAGlance?.overallScore != null) return Number(idea.atAGlance.overallScore);
+    if (idea.compositeScores?.overallOpportunity != null) return Number(idea.compositeScores.overallOpportunity) * 10;
+    return 0;
   }
 
   // Populate selects
@@ -61,7 +69,7 @@ function initCompare() {
       return;
     }
 
-    // Determine highest score for highlighting
+    // Determine highest score & lowest cost for metric delta highlighting
     const highestScore = Math.max(...chosenIdeas.map(i => Number(i.atAGlance?.overallScore || getIdeaScore(i, 'overall') || 0)));
     const lowestCost = Math.min(...chosenIdeas.map(i => Number(i.atAGlance?.startupCost?.midpoint ?? 500)));
 
@@ -111,9 +119,9 @@ function initCompare() {
     ];
 
     container.innerHTML = `
-      <div style="margin-bottom:1.25rem;padding:1rem 1.25rem;background:var(--accent-l);border:1px solid var(--accent);border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem">
+      <div style="margin-bottom:1.25rem;padding:1rem 1.25rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem">
         <div>
-          <strong style="color:var(--accent-h)">💡 Side-by-Side Comparison:</strong> Comparing ${chosenIdeas.length} venture opportunities.
+          <strong style="color:var(--brand)">💡 Side-by-Side Comparison:</strong> Comparing ${chosenIdeas.length} venture opportunities.
         </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
           <button id="shareCompareBtn" class="button secondary sm">🔗 Share Comparison</button>

@@ -1,0 +1,10 @@
+{
+  "agents": [
+    { "role": "ventureatlas-integration", "scope": [".github/workflows/", "scripts/automation/", "package.json"] },
+    { "role": "ventureatlas-provider-runtime", "scope": ["config/providers.json", "scripts/va_runtime/"] },
+    { "role": "ventureatlas-public-site", "scope": ["index.html", "docs/", "assets/"] },
+    { "role": "ventureatlas-data-safety", "scope": ["schemas/", "data/", "scripts/validate-data.js"] },
+    { "role": "ventureatlas-security", "scope": ["scripts/check_privacy.py", "firestore.rules"] },
+    { "role": "ventureatlas-test-adversary", "scope": ["tests/"] }
+  ]
+}

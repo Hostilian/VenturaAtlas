@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
@@ -65,6 +66,7 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
   'ideas.schema.json',
   'categories.json',
   'sources.json',
+  'public-sources.json',
   'rankings.json',
   'search-index.json',
   'repository-meta.json',
@@ -111,6 +113,14 @@ function copyRecursive(src, dest) {
 
 function build() {
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
+
+  // Ensure public-sources.json is freshly generated before staging
+  try {
+    console.log('[BUILD] Generating public sources projection (data/public-sources.json)...');
+    execSync('python scripts/build_public_sources.py', { cwd: ROOT, stdio: 'inherit' });
+  } catch (err) {
+    console.warn('[WARN] Failed to run build_public_sources.py:', err.message);
+  }
 
   if (fs.existsSync(DIST)) {
     fs.rmSync(DIST, { recursive: true, force: true });

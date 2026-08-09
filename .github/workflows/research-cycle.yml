@@ -1,0 +1,38 @@
+Dname: Cloud Research & Staging Verification Cycle
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'  # Run weekly on Mondays at 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research-check:
+    name: Candidate Staging & Provider Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run provider mock tests
+        run: python scripts/test_providers_mock.py
+
+      - name: Run deterministic orchestrator check
+        run: python scripts/va_orchestrator.py --test

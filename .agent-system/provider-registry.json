@@ -1,0 +1,12 @@
+{
+  "lastHealthCheck": "2026-08-09T13:59:00Z",
+  "providers": {
+    "own-orch": { "tier": 0, "healthy": true, "cost": "free", "latency": "instant", "reasoning": "rule-based" },
+    "hermes-ollama": { "tier": 1, "healthy": true, "cost": "free", "latency": "fast", "reasoning": "local-llm" },
+    "omniRoute": { "tier": 2, "healthy": true, "cost": "low", "latency": "medium", "reasoning": "openrouter-free" },
+    "fcc-claude": { "tier": 3, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "claude-haiku" },
+    "active-api": { "tier": 4, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "gemini-flash" },
+    "deepseek-api": { "tier": 5, "healthy": true, "cost": "medium", "latency": "medium", "reasoning": "deepseek-chat" },
+    "anthropic-full": { "tier": 6, "healthy": true, "cost": "high", "latency": "medium", "reasoning": "claude-sonnet" }
+  }
+}

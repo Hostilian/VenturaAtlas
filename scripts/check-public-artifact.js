@@ -4,7 +4,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
 
-const FORBIDDEN_PATTERNS = [
+const FORBIDDEN_FILE_PATTERNS = [
   /\.env(\..*)?$/i,
   /node_modules/i,
   /^\.git/i,
@@ -21,6 +21,15 @@ const FORBIDDEN_PATTERNS = [
   /\.py$/i
 ];
 
+const SECRET_CONTENT_PATTERNS = [
+  { name: 'OpenAI/Anthropic Secret API Key', regex: /sk-[a-zA-Z0-9]{20,}/ },
+  { name: 'Google AI API Key', regex: /AIzaSy[a-zA-Z0-9_-]{33}/ },
+  { name: 'GitHub Personal Token', regex: /gh[pousr]_[a-zA-Z0-9]{36,}/ },
+  { name: 'RSA/EC Private Key Header', regex: /-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----/ },
+  { name: 'Hardcoded Authorization Header', regex: /Authorization:\s*Bearer\s+[a-zA-Z0-9._-]{20,}/i },
+  { name: 'Local Windows Path Exposure', regex: /[a-zA-Z]:\\Users\\[a-zA-Z0-9_.-]+\\AppData/i }
+];
+
 function checkDirectory(dirPath) {
   const errors = [];
   if (!fs.existsSync(dirPath)) {
@@ -33,7 +42,8 @@ function checkDirectory(dirPath) {
       const fullPath = path.join(current, entry.name);
       const relPath = path.relative(DIST, fullPath).replace(/\\/g, '/');
 
-      for (const pattern of FORBIDDEN_PATTERNS) {
+      // 1. Path/Filename Security Gate
+      for (const pattern of FORBIDDEN_FILE_PATTERNS) {
         if (pattern.test(relPath) || pattern.test(entry.name)) {
           errors.push(`Forbidden file/dir found in _site: ${relPath}`);
         }
@@ -41,6 +51,21 @@ function checkDirectory(dirPath) {
 
       if (entry.isDirectory()) {
         walk(fullPath);
+      } else if (entry.isFile()) {
+        // 2. Content Secret Scanner Gate for text files
+        const ext = path.extname(entry.name).toLowerCase();
+        if (['.html', '.js', '.json', '.css', '.md', '.txt', '.xml'].includes(ext)) {
+          try {
+            const content = fs.readFileSync(fullPath, 'utf-8');
+            for (const item of SECRET_CONTENT_PATTERNS) {
+              if (item.regex.test(content)) {
+                errors.push(`Secret content pattern '${item.name}' detected in _site/${relPath}`);
+              }
+            }
+          } catch (e) {
+            // Ignore binary read errors
+          }
+        }
       }
     }
   }
@@ -50,7 +75,7 @@ function checkDirectory(dirPath) {
 }
 
 function main() {
-  console.log('=== Checking Public Artifact Security (_site) ===\n');
+  console.log('=== Checking Public Artifact Security & Secret Scanning (_site) ===\n');
   const errors = checkDirectory(DIST);
 
   if (errors.length > 0) {
@@ -59,11 +84,11 @@ function main() {
     process.exit(1);
   }
 
-  console.log('[OK] Public artifact security check passed cleanly.');
+  console.log('[OK] Public artifact security and secret content scan passed cleanly.');
 }
 
 if (require.main === module) {
   main();
 }
 
-module.exports = { checkDirectory };
+module.exports = { checkDirectory, SECRET_CONTENT_PATTERNS };

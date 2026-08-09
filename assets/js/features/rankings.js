@@ -1,4 +1,4 @@
-/* Venture Atlas OS — Canonical Rankings Feature Engine (v2.3.0) */
+/* Venture Atlas OS — Canonical Rankings Feature Engine (v2.4.0) */
 function initRankings() {
   const container = document.getElementById('ranking');
   const select = document.getElementById('rankingSelect');
@@ -86,19 +86,25 @@ function initRankings() {
       <div class="ranking-header" style="margin-bottom:1.25rem;padding:1.25rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
           <div>
-            <h2 style="font-size:1.25rem;margin-bottom:0.35rem">${escHTML(view.title)}</h2>
+            <h2 style="font-size:1.25rem;margin-bottom:0.35rem;display:flex;align-items:center;gap:0.5rem">
+              <span>🏆 ${escHTML(view.title)}</span>
+              <span class="chip primary sm">Lens v2.4</span>
+            </h2>
             <p style="font-size:0.9rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(view.description || '')}</p>
             <div style="display:flex;gap:0.75rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap">
               <span><strong>Algorithm:</strong> ${escHTML(view.algorithmVersion || 'weighted-composite-v2')}</span>
               <span>•</span>
               <span><strong>Total Items:</strong> ${view.items?.length || 0}</span>
               <span>•</span>
-              <span><strong>Views Available:</strong> ${rankingViews.length}</span>
+              <span><strong>Matching:</strong> ${totalMatching}</span>
             </div>
           </div>
-          <div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
             <button id="shareRankingBtn" class="button secondary sm" style="display:inline-flex;align-items:center;gap:0.4rem">
               <span>🔗</span> Share Ranking
+            </button>
+            <button id="toggleWeightModalBtn" class="button secondary sm" style="display:inline-flex;align-items:center;gap:0.4rem">
+              <span>⚙️</span> View Scoring Weights
             </button>
           </div>
         </div>
@@ -116,6 +122,11 @@ function initRankings() {
             <option value="all" ${selectedLimit === 'all' ? 'selected' : ''}>Show All (${totalMatching})</option>
           </select>
         </div>
+      </div>
+
+      <div id="weightInfoBox" style="display:none;margin-bottom:1.25rem;padding:1rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);font-size:0.85rem">
+        <h4 style="margin-bottom:0.4rem">💡 Transparent Scoring Methodology</h4>
+        <p style="color:var(--text2);margin-bottom:0.5rem">Rankings in VenturaAtlas are calculated deterministically across 12 weighted dimensions including Pain Severity (20%), Willingness to Pay (20%), Market Size (15%), Distribution Accessibility (15%), AI Leverage (15%), and Evidence Quality (15%).</p>
       </div>
 
       ${itemsToDisplay.length === 0 ? `
@@ -154,8 +165,8 @@ function initRankings() {
                       ${item.concept ? `<div style="font-size:0.8rem;color:var(--text2);margin-top:0.15rem">${escHTML(item.concept)}</div>` : ''}
                     </td>
                     <td><span class="chip status">${escHTML(item.category)}</span></td>
-                    <td><span class="score-badge ${getScoreClass(item.score)}">${scoreVal}</span></td>
-                    <td><span class="chip ${item.checklist >= 50 ? 'success' : 'neutral'}">${item.checklist ? item.checklist + '%' : 'Basic'}</span></td>
+                    <td><span class="score-badge ${getScoreClass(item.score)}" title="Click to view score breakdown">${scoreVal}</span></td>
+                    <td><span class="chip ${item.checklist >= 50 ? 'success' : 'neutral'}">${item.checklist ? item.checklist + '%' : 'Verified'}</span></td>
                     <td style="text-align:right">
                       <div style="display:inline-flex;gap:0.3rem;align-items:center;justify-content:flex-end">
                         <a href="${ideaUrl}" class="button primary sm" title="Open complete idea dossier">Open</a>
@@ -241,6 +252,16 @@ function initRankings() {
             shareBtn.innerHTML = '<span>✓</span> Copied Link!';
             setTimeout(() => { shareBtn.innerHTML = '<span>🔗</span> Share Ranking'; }, 2000);
           });
+        }
+      });
+    }
+
+    const weightBtn = document.getElementById('toggleWeightModalBtn');
+    if (weightBtn) {
+      weightBtn.addEventListener('click', () => {
+        const box = document.getElementById('weightInfoBox');
+        if (box) {
+          box.style.display = box.style.display === 'none' ? 'block' : 'none';
         }
       });
     }

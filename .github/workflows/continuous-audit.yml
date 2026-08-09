@@ -1,0 +1,44 @@
+name: Continuous Audit & Integrity Cycle
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Run daily at 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Repository & Evidence Graph Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run data & schema validation
+        run: npm run validate:data
+
+      - name: Run link integrity audit
+        run: npm run validate:links
+
+      - name: Run unit test suite
+        run: npm run test:unit
+
+      - name: Run repository drift check
+        run: npm run check:drift
