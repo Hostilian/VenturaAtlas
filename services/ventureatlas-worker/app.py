@@ -34,27 +34,54 @@ class TaskWorkerHandler(BaseHTTPRequestHandler):
             self._send_json(404, {"error": "Not Found"})
 
     def do_POST(self):
-        # Authenticate token header if configured
+        # Strict fail-closed authentication check
         auth_hdr = self.headers.get("X-Worker-Auth", "")
-        if WORKER_AUTH_TOKEN and WORKER_AUTH_TOKEN != "secret-internal-token" and auth_hdr != WORKER_AUTH_TOKEN:
-            self._send_json(401, {"error": "Unauthorized"})
+        expected_token = os.environ.get("WORKER_AUTH_TOKEN", WORKER_AUTH_TOKEN)
+        is_dev = os.environ.get("ENVIRONMENT", "production").lower() == "development"
+        
+        if not is_dev and (not expected_token or expected_token == "secret-internal-token" or auth_hdr != expected_token):
+            self._send_json(401, {"error": "Unauthorized — Fail-closed authentication required"})
             return
 
         path = self.path.rstrip("/")
-        if path == "/tasks/discover":
-            self._send_json(200, {"task": "discover", "status": "executed", "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()})
-        elif path == "/tasks/evidence":
-            self._send_json(200, {"task": "evidence", "status": "executed"})
-        elif path == "/tasks/score":
-            self._send_json(200, {"task": "score", "status": "executed"})
-        elif path == "/tasks/redteam":
-            self._send_json(200, {"task": "redteam", "status": "executed"})
-        elif path == "/tasks/artifacts":
-            self._send_json(200, {"task": "artifacts", "status": "executed"})
-        elif path == "/tasks/publish":
-            self._send_json(200, {"task": "publish", "status": "executed"})
-        elif path == "/tasks/maintenance":
-            self._send_json(200, {"task": "maintenance", "status": "executed"})
+        start_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        run_id = f"worker-{path.split('/')[-1]}-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')}"
+        
+        task_cmd_map = {
+            "/tasks/discover": [sys.executable, os.path.join(ROOT, "scripts", "autonomous-idea-generator.py")],
+            "/tasks/evidence": [sys.executable, os.path.join(ROOT, "scripts", "build_public_sources.py")],
+            "/tasks/score": [sys.executable, os.path.join(ROOT, "scripts", "va-ranker.py"), "--update"],
+            "/tasks/redteam": [sys.executable, os.path.join(ROOT, "scripts", "check_privacy.py")],
+            "/tasks/artifacts": ["node", os.path.join(ROOT, "scripts", "build-public-artifact.js")],
+            "/tasks/publish": ["node", os.path.join(ROOT, "scripts", "build-repository-meta.js")],
+            "/tasks/maintenance": ["node", os.path.join(ROOT, "scripts", "check-repository-consistency.js")]
+        }
+
+        if path in task_cmd_map:
+            import subprocess
+            try:
+                res = subprocess.run(task_cmd_map[path], capture_output=True, text=True, cwd=ROOT)
+                end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                status = "succeeded" if res.returncode == 0 else "failed"
+                self._send_json(200 if res.returncode == 0 else 500, {
+                    "runId": run_id,
+                    "task": path.split('/')[-1],
+                    "status": status,
+                    "exitCode": res.returncode,
+                    "startedAt": start_time,
+                    "endedAt": end_time,
+                    "outputTail": (res.stdout[-300:] if res.stdout else res.stderr[-300:])
+                })
+            except Exception as e:
+                end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                self._send_json(500, {
+                    "runId": run_id,
+                    "task": path.split('/')[-1],
+                    "status": "failed",
+                    "error": str(e),
+                    "startedAt": start_time,
+                    "endedAt": end_time
+                })
         else:
             self._send_json(404, {"error": "Task endpoint not found"})
 

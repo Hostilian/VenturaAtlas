@@ -1,0 +1,1140 @@
+[
+  {
+    "id": "s01",
+    "title": "x402 — Open HTTP Payment Standard",
+    "type": "protocol_documentation",
+    "publisher": "x402.org",
+    "date": "2026",
+    "url": "https://docs.x402.org/introduction",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "machine-to-machine micropayments",
+      "pay-per-fact API infrastructure",
+      "programmable commerce"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-068",
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s02",
+    "title": "Under the Hood: Universal Commerce Protocol (UCP)",
+    "type": "developer_blog",
+    "publisher": "Google Developers Blog",
+    "date": "2026",
+    "url": "https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "product discovery standardization",
+      "agent commerce",
+      "structured checkout"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s03",
+    "title": "AP2 — Agent Payments Protocol Specification",
+    "type": "protocol_documentation",
+    "publisher": "AP2 Protocol",
+    "date": "2026",
+    "url": "https://ap2-protocol.org/ap2/specification/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "agent payment mandates",
+      "receipt concepts",
+      "programmable spend"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s04",
+    "title": "AP2 donated to FIDO Alliance",
+    "type": "company_announcement",
+    "publisher": "Google Blog",
+    "date": "2026",
+    "url": "https://blog.google/products-and-platforms/platforms/google-pay/agent-payments-protocol-fido-alliance/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "trust infrastructure for agent payments",
+      "standardization momentum"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s05",
+    "title": "Powering Product Discovery in ChatGPT — Agentic Commerce",
+    "type": "company_announcement",
+    "publisher": "OpenAI",
+    "date": "2026",
+    "url": "https://openai.com/index/powering-product-discovery-in-chatgpt/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "AI shopping agent market growth",
+      "product discovery pipeline"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s06",
+    "title": "Google Shopping Cart — Universal Cart and Agentic Shopping",
+    "type": "product_announcement",
+    "publisher": "Google",
+    "date": "2026",
+    "url": "https://blog.google/products-and-platforms/products/shopping/google-shopping-cart/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "real-time product workflows",
+      "agentic commerce expansion"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s07",
+    "title": "Agentic Payments: From the Ground Up",
+    "type": "thought_leadership",
+    "publisher": "Visa",
+    "date": "2026",
+    "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "agentic payment infrastructure moving to deployment"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s08",
+    "title": "Gartner: Consumers Want AI Shopping Help But Not AI Purchase Decisions",
+    "type": "press_release",
+    "publisher": "Gartner",
+    "date": "2026-05-27",
+    "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "only 11% would delegate purchase decisions to AI",
+      "research assistance more accepted",
+      "double-check behavior"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — large-sample survey",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s09",
+    "title": "Own the Agentic Commerce Experience — NRF/IBM Consumer Study",
+    "type": "research_report",
+    "publisher": "NRF / IBM",
+    "date": "2026",
+    "url": "https://nrf.com/research/own-the-agentic-commerce-experience",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "41% use AI for research",
+      "33% use AI for reviews",
+      "18,000-consumer study"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — large-sample study",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s10",
+    "title": "Earning Trust Report — Agentic Commerce Consumer Survey",
+    "type": "research_report",
+    "publisher": "Visa",
+    "date": "2026",
+    "url": "https://corporate.visa.com/en/products/intelligent-commerce/earning-trust-report.html",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "accuracy, reliability, privacy, control as agent-shopping barriers"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "1",
+    "ideaIds": [
+      "idea-061",
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s11",
+    "title": "Key Consumer Data — Online Shopping Problems",
+    "type": "government_research",
+    "publisher": "European Commission",
+    "date": "2026",
+    "url": "https://commission.europa.eu/strategy-and-policy/policies/consumers/consumer-protection-policy/key-consumer-data_en",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "widespread fake reviews and scams",
+      "online shopping consumer problems"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official government data",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s12",
+    "title": "Humans and LLMs Near Chance Detecting Fake Reviews",
+    "type": "preprint",
+    "publisher": "arXiv",
+    "date": "2025",
+    "url": "https://arxiv.org/abs/2506.13313",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "fake review detection failure",
+      "trust layer need"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "preprint — not peer-reviewed",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s13",
+    "title": "Fake Online Reviews Research — Executive Summary",
+    "type": "government_research",
+    "publisher": "UK Government",
+    "date": "2026",
+    "url": "https://www.gov.uk/government/publications/investigating-the-prevalence-and-impact-of-fake-reviews/fake-online-reviews-research-executive-summary",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "estimated 11-15% fake reviews in studied categories",
+      "substantial consumer harm from fake reviews"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — government-commissioned study",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s14",
+    "title": "How Q&A Boosts Shoppers' Confidence — Verified Buyer Answer Sources",
+    "type": "industry_research",
+    "publisher": "PowerReviews",
+    "date": "2026",
+    "url": "https://www.powerreviews.com/research/how-qa-boosts-shoppers-confidence-and-conversion-rates/consumers-assumptions-and-perceptions-about-different-qa-answer-sources/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "verified buyers most valued Q&A answer source"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "vendor research — potential bias",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s15",
+    "title": "Seller Messages Show Existing Product Data Often Doesn't Answer Purchase-Critical Questions",
+    "type": "academic_paper",
+    "publisher": "arXiv",
+    "date": "2024",
+    "url": "https://arxiv.org/abs/2401.09785",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "product Q&A gap in existing data",
+      "information asymmetry in marketplaces"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic preprint",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s16",
+    "title": "StockX — Item Verification Pricing ($12.50)",
+    "type": "product_page",
+    "publisher": "StockX",
+    "date": "2026",
+    "url": "https://stockx.com/help/articles/can-i-get-my-listings-purchase-verified-by-stockx",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "buyers pay $12.50 for item verification",
+      "real spending on product verification"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — direct product pricing",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-061",
+      "idea-070"
+    ]
+  },
+  {
+    "id": "s17",
+    "title": "Vinted Czechia — Electronics Verification Service",
+    "type": "product_page",
+    "publisher": "Vinted",
+    "date": "2026",
+    "url": "https://www.vinted.cz/help/3/1361-vendre-avec-le-service-de-verification-du-materiel-electronique",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "buyer-paid electronics verification in Czech market",
+      "real market precedent"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — direct product",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-061",
+      "idea-070"
+    ]
+  },
+  {
+    "id": "s18",
+    "title": "VidVerity — Video Listings and Live Item Inspection",
+    "type": "startup_website",
+    "publisher": "VidVerity",
+    "date": "2026",
+    "url": "https://vidverity.com/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "existing competitors in video-based product verification",
+      "market for missing product proof"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor — no independent traction data",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-061",
+      "idea-070"
+    ]
+  },
+  {
+    "id": "s19",
+    "title": "SnapProof — Capture-Time Hashing and Timestamps",
+    "type": "product_website",
+    "publisher": "SnapProof",
+    "date": "2026",
+    "url": "https://getsnapproof.com/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "timestamps prove file integrity but not product truth — important limitation distinction"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s20",
+    "title": "Groundtruth — On-Demand Geolocated Evidence Bounties",
+    "type": "product_website",
+    "publisher": "Groundtruth",
+    "date": "2026",
+    "url": "https://groundtruth.observer/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "broader proof market beyond products",
+      "geolocated evidence has buyers"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor — adjacent market",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s21",
+    "title": "CheckMEND — Consumer Pays €2.50 for Device History Reports",
+    "type": "product_page",
+    "publisher": "CheckMEND",
+    "date": "2026",
+    "url": "https://www.checkmend.com/eu/consumer/checking",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "consumers pay for device verification in EU",
+      "price sensitivity benchmark"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — direct pricing",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-061",
+      "idea-070"
+    ]
+  },
+  {
+    "id": "s22",
+    "title": "kompatibel.org — Manually Reviewed Compatibility Database",
+    "type": "product_website",
+    "publisher": "kompatibel.org",
+    "date": "2026",
+    "url": "https://kompatibel.org/en",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "demand for sourced compatibility pairings",
+      "manual competitor"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor — adjacent",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-063",
+      "idea-066"
+    ]
+  },
+  {
+    "id": "s23",
+    "title": "RentAHuman — YC-Backed AI-to-Human Task Marketplace",
+    "type": "vc_portfolio_page",
+    "publisher": "Y Combinator",
+    "date": "2026",
+    "url": "https://www.ycombinator.com/companies/rentahuman",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "general human-task marketplace category has traction",
+      "market validation for human-in-loop tasks"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor — adjacent category",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-061",
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s24",
+    "title": "RentAHuman — Store Audits and Product Testing Tasks",
+    "type": "product_website",
+    "publisher": "RentAHuman",
+    "date": "2026",
+    "url": "https://www.rentahuman.ai/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "tasks include store audits and product testing",
+      "adjacent supply network"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-061",
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s25",
+    "title": "Human-Task Marketplaces: Fraud, Identity, and Abuse Classes",
+    "type": "security_research",
+    "publisher": "arXiv",
+    "date": "2026",
+    "url": "https://arxiv.org/abs/2602.19514",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "fraud and identity abuse risks in human-task platforms",
+      "abuse classification"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic preprint",
+    "researchRound": "8",
+    "ideaIds": [
+      "idea-061",
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s26",
+    "title": "Gigwalk — Brands Pay for Geotagged Shelf and Retail Evidence",
+    "type": "product_page",
+    "publisher": "Gigwalk",
+    "date": "2026",
+    "url": "https://www.gigwalk.com/gigwalker-faq/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "enterprise gig market for retail evidence exists and pays",
+      "benchmark for retail task pricing"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — existing product",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s27",
+    "title": "Digital Receipt Protocol — Encrypted Portable Receipts",
+    "type": "protocol_documentation",
+    "publisher": "Digital Receipt Protocol",
+    "date": "2026",
+    "url": "https://www.digitalreceiptprotocol.org/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "standardized portable purchase evidence infrastructure"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "emerging standard — adoption unknown",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s28",
+    "title": "Digital Receipt Protocol Documentation",
+    "type": "technical_documentation",
+    "publisher": "Digital Receipt Protocol",
+    "date": "2026",
+    "url": "https://docs.digitalreceiptprotocol.org/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "receipt ownership and portability standardization details"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "technical spec",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s29",
+    "title": "Purchase-History Privacy Research — Health and Lifestyle Inference",
+    "type": "academic_paper",
+    "publisher": "arXiv",
+    "date": "2025",
+    "url": "https://arxiv.org/abs/2502.18774",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "purchases reveal health, lifestyle, demographic attributes — privacy risk"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic preprint",
+    "researchRound": "8",
+    "ideaIds": [
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s30",
+    "title": "Small Payments Increased Data Sharing Willingness — Values Under $2",
+    "type": "academic_paper",
+    "publisher": "arXiv",
+    "date": "2025",
+    "url": "https://arxiv.org/abs/2506.16618",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "data marketplace consumer price sensitivity",
+      "low willingness-to-pay for data sharing"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic preprint",
+    "researchRound": "11",
+    "ideaIds": [
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s31",
+    "title": "Commercial Curated Data Products Can Command Meaningful Prices",
+    "type": "academic_paper",
+    "publisher": "arXiv",
+    "date": "2021",
+    "url": "https://arxiv.org/abs/2111.04427",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "data products pricing with curation can be meaningful"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic paper",
+    "researchRound": "11",
+    "ideaIds": [
+      "idea-068",
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s32",
+    "title": "eBay Developer Program — Marketplace APIs",
+    "type": "developer_documentation",
+    "publisher": "eBay Developers",
+    "date": "2026",
+    "url": "https://developer.ebay.com/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "marketplace API integration opportunity",
+      "pricing and commerce APIs"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "2",
+    "ideaIds": [
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s33",
+    "title": "ShopSavvy — Retail and Resale Price APIs (Crowded Market)",
+    "type": "product_website",
+    "publisher": "ShopSavvy",
+    "date": "2026",
+    "url": "https://shopsavvy.com/data/for-resale",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "retail price APIs already crowded — not a defensible moat"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-068"
+    ]
+  },
+  {
+    "id": "s34",
+    "title": "Votiq — Crowdfunded Feature Requests",
+    "type": "product_website",
+    "publisher": "Votiq",
+    "date": "2026",
+    "url": "https://votiq.io/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "paid questions/requests validated in adjacent vertical",
+      "buyer-funded demand model works"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "adjacent market comparison",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s35",
+    "title": "Reddit: Buyer-First Marketplaces Fail When Buyers Can Go Elsewhere",
+    "type": "forum_discussion",
+    "publisher": "Reddit r/SaaS",
+    "date": "2026",
+    "url": "https://www.reddit.com/r/SaaS/comments/1udr3ki/what_if_a_marketplace_started_with_demand_instead/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "marketplace cold-start critique",
+      "buyer-first marketplaces face trust and defection risk"
+    ],
+    "confidenceLabel": "low",
+    "sourceType": "community discussion — anecdotal",
+    "researchRound": "8",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s36",
+    "title": "BackingX — Refundable Demand Commitments for Products",
+    "type": "product_website",
+    "publisher": "BackingX",
+    "date": "2026",
+    "url": "https://www.backingx.com/how-it-works",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "refundable demand commitments model works in product pre-purchase context"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "adjacent product",
+    "researchRound": "5",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s37",
+    "title": "FTC: Digital Purchases Often Convey Licences Rather Than Ownership",
+    "type": "government_alert",
+    "publisher": "US Federal Trade Commission",
+    "date": "2024-04",
+    "url": "https://consumer.ftc.gov/consumer-alerts/2024/04/do-you-really-own-digital-items-you-paid",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "digital ownership distinction — relevant to receipt/ownership proof concepts"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official government guidance",
+    "researchRound": "2",
+    "ideaIds": [
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s38",
+    "title": "OwnPass — Product Passports and Repair Histories",
+    "type": "product_website",
+    "publisher": "OwnPass",
+    "date": "2026",
+    "url": "https://myownpass.com/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "product passport category already exists as product",
+      "ownership transfer and repair history"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "competitor — adjacent",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-066",
+      "idea-069"
+    ]
+  },
+  {
+    "id": "s39",
+    "title": "Stripe Connect — Czech Standard European Card Pricing (1.5% + CZK 6.50)",
+    "type": "pricing_page",
+    "publisher": "Stripe",
+    "date": "2026",
+    "url": "https://stripe.com/en-cz/connect/pricing",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "payment processing cost benchmark for Czech-based founders",
+      "unit economics baseline"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — direct pricing",
+    "researchRound": "6",
+    "ideaIds": [
+      "idea-061",
+      "idea-062",
+      "idea-063"
+    ]
+  },
+  {
+    "id": "s40",
+    "title": "Czech CTU — DSA Applies to Online Platforms, Small Firms Exempt from Many Duties",
+    "type": "regulatory_guidance",
+    "publisher": "Czech Telecommunication Office (CTU)",
+    "date": "2026",
+    "url": "https://ctu.gov.cz/en/european-digital-services-act-dsa",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "DSA scope for Czech online intermediaries",
+      "small/micro firm exemptions"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official regulatory guidance",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-061",
+      "idea-062",
+      "idea-065"
+    ]
+  },
+  {
+    "id": "s41",
+    "title": "Czech CTU — DSA Illegal-Content Notice and Liability Rules",
+    "type": "regulatory_guidance",
+    "publisher": "Czech Telecommunication Office (CTU)",
+    "date": "2026",
+    "url": "https://ctu.gov.cz/en/what-dsa",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "notice-and-action obligations for small intermediaries under DSA"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official regulatory guidance",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s42",
+    "title": "European Commission — DSA FAQs: Online Intermediaries and Platforms",
+    "type": "regulatory_guidance",
+    "publisher": "European Commission",
+    "date": "2026",
+    "url": "https://digital-strategy.ec.europa.eu/en/faqs/digital-services-act-questions-and-answers",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "DSA scope and applicability throughout EU"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official EU guidance",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s43",
+    "title": "Paying to Know: Microtransaction Markets for Verified Product Facts in Agentic Commerce",
+    "type": "preprint",
+    "publisher": "arXiv",
+    "date": "2026-06",
+    "url": "https://arxiv.org/abs/2606.24783",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "independent academic proposal for same market concept (buyer-funded product facts)",
+      "conceptual validation — NOT proof of commercial success"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "preprint — conceptual, not empirical",
+    "researchRound": "12",
+    "ideaIds": [
+      "idea-061",
+      "idea-068"
+    ],
+    "importantCaveat": "This paper independently proposes a similar market but is conceptual, not empirical evidence that FactBounty will succeed."
+  },
+  {
+    "id": "s44",
+    "title": "Worthyt — Paid Q&A Platform (20% platform fee)",
+    "type": "product_website",
+    "publisher": "Worthyt",
+    "date": "2026",
+    "url": "https://worthyt.io/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "direct paid answers business model exists and takes 20%",
+      "validates buyer-funded Q&A but not product specialization"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "adjacent competitor",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s45",
+    "title": "Czech Public Administration Portal — Electronic Trade Registration (CZK 800)",
+    "type": "government_service",
+    "publisher": "Czech Public Administration Portal",
+    "date": "2026",
+    "url": "https://portal.gov.cz/en/sluzby-vs/establishing-a-trade-licence-S757",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "Czech business registration cost benchmark",
+      "founding cost estimate"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — official government",
+    "researchRound": "6",
+    "ideaIds": [
+      "idea-061"
+    ]
+  },
+  {
+    "id": "s46",
+    "title": "Swappa — Random-Code Verification Photos and Device Checks",
+    "type": "product_page",
+    "publisher": "Swappa",
+    "date": "2026",
+    "url": "https://swappa.com/about/verification",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "random challenge verification technique is established anti-fraud practice"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary — existing product",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-061",
+      "idea-070"
+    ]
+  },
+  {
+    "id": "s47",
+    "title": "How Consumers Ask and Answer Product Questions — PowerReviews Survey",
+    "type": "industry_research",
+    "publisher": "PowerReviews",
+    "date": "2026",
+    "url": "https://www.powerreviews.com/research/how-qa-boosts-shoppers-confidence-and-conversion-rates/how-consumers-ask-and-answer-questions-qa/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "67% surveyed had asked a product question",
+      "70% see user video as necessary",
+      "66% have answered a question",
+      "57% expect answer within 24h"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "vendor research — potential bias toward positive Q&A narrative",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s48",
+    "title": "Social Ask — Retailers Invite Past Buyers to Answer Questions",
+    "type": "product_page",
+    "publisher": "Social Ask / ResellerRatings",
+    "date": "2026",
+    "url": "https://learn.resellerratings.com/en/knowledge/social-q-a-social-ask",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "retailers already email past buyers for free answers — a competitive free alternative"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "competitor feature",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s49",
+    "title": "Amazon Answers History — Past Product Owners Answer Questions",
+    "type": "trade_press",
+    "publisher": "eCommerceBytes",
+    "date": "2014",
+    "url": "https://www.ecommercebytes.com/2014/04/15/amazon-launches-new-twist-product-reviews/",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "retailers routing questions to past product owners is established practice"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "trade press — historical",
+    "researchRound": "7",
+    "ideaIds": [
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s50",
+    "title": "Reliability and Subjectivity in Product Q&A — Survey",
+    "type": "academic_paper",
+    "publisher": "arXiv",
+    "date": "2023",
+    "url": "https://arxiv.org/abs/2302.08092",
+    "accessDate": "2026-08-02",
+    "supports": [
+      "reliability and subjectivity are central unsolved product Q&A problems",
+      "validates evidence-over-opinion approach"
+    ],
+    "confidenceLabel": "medium",
+    "sourceType": "academic preprint",
+    "researchRound": "3",
+    "ideaIds": [
+      "idea-061",
+      "idea-064"
+    ]
+  },
+  {
+    "id": "s63",
+    "title": "ESHRE Position Paper: Limits on the number of offspring per gamete donor",
+    "type": "position_paper",
+    "publisher": "European Society of Human Reproduction and Embryology (ESHRE)",
+    "date": "2026-06",
+    "url": "https://www.eshre.eu/-/media/sitecore-files/Advocacy/ESHRE_PositionPaper_Limits-2506.pdf",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "cross-border donor limits",
+      "EU-wide donor registry",
+      "50 family limit reduction"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-385",
+      "idea-391"
+    ]
+  },
+  {
+    "id": "s64",
+    "title": "Council of Europe Recommendation on Protection of Third-Party Gamete Donors",
+    "type": "regulatory_recommendation",
+    "publisher": "EDQM / Council of Europe",
+    "date": "2026-06",
+    "url": "https://www.edqm.eu/en/-/new-recommendation-provides-guidance-on-protection-of-third-party-gamete-donors",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "donor registries",
+      "cross-border traceability",
+      "adverse reaction reporting"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-385",
+      "idea-391"
+    ]
+  },
+  {
+    "id": "s65",
+    "title": "EU Substances of Human Origin (SoHO) Regulation (EU) 2024/1938",
+    "type": "eu_regulation",
+    "publisher": "European Parliament and Council",
+    "date": "2024-05",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1938",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "SoHO entity registration",
+      "serious adverse reaction reporting",
+      "traceability mandates"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-385",
+      "idea-391"
+    ]
+  },
+  {
+    "id": "s66",
+    "title": "Austrian BASG Post-Donation Safety Notice on Offspring Genetic Signals",
+    "type": "safety_alert",
+    "publisher": "Bundesamt für Sicherheit im Gesundheitswesen (BASG)",
+    "date": "2026-06-30",
+    "url": "https://www.basg.gv.at/en/consumers/safety-information/safety-information-medical-devices",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "post-donation safety signals",
+      "genetic adverse reactions",
+      "cryobank recalls"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-385",
+      "idea-391"
+    ]
+  },
+  {
+    "id": "s67",
+    "title": "EU AI Act Article 50 Implementation Guidelines & Code of Practice",
+    "type": "guideline",
+    "publisher": "European AI Office / European Commission",
+    "date": "2026-08-02",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "machine-readable marking",
+      "C2PA compliance",
+      "transparency obligations"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-386"
+    ]
+  },
+  {
+    "id": "s68",
+    "title": "G7 Principles for AI Software Bill of Materials (AI-BOM)",
+    "type": "g7_guideline",
+    "publisher": "G7 Digital & Tech Ministers / Agenzia delle Entrate",
+    "date": "2026-05",
+    "url": "https://www.g7italy.it/en/news/g7-tech-ministers-statement/",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "AI-BOM standards",
+      "model provenance",
+      "dependency tracking"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-387"
+    ]
+  },
+  {
+    "id": "s69",
+    "title": "EU Carbon Removal Certification Framework (CRCF) Methodology Standard",
+    "type": "eu_regulation",
+    "publisher": "European Commission DG Climate Action",
+    "date": "2026-02",
+    "url": "https://climate.ec.europa.eu/eu-action/carbon-removals_en",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "permanent removals certification",
+      "reversal liability",
+      "buffer accounts"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-388"
+    ]
+  },
+  {
+    "id": "s70",
+    "title": "EU Forced Labour Regulation (EU) 2024/1390 Implementation Portal",
+    "type": "eu_portal",
+    "publisher": "European Commission DG GROW",
+    "date": "2026-06-26",
+    "url": "https://single-market-economy.ec.europa.eu/single-market/goods/forced-labour-product-ban_en",
+    "accessDate": "2026-08-09",
+    "supports": [
+      "forced labour prohibitions",
+      "investigation portals",
+      "supply chain evidence"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "10",
+    "ideaIds": [
+      "idea-390"
+    ]
+  }
+]

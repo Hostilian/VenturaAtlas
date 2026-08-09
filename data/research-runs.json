@@ -1,1 +1,31 @@
-[]
+[
+  {
+    "runId": "run-res-001-20260809",
+    "baselineCommit": "09ab342",
+    "questions": [
+      "How much better was reality because X happened?",
+      "What donor conception family limits exist in EU law?"
+    ],
+    "queries": [
+      "ESHRE 2026 donor limits",
+      "EU SoHO Regulation 2024/1938 implementation"
+    ],
+    "sourceCandidates": [
+      "s63",
+      "s64",
+      "s65"
+    ],
+    "inclusions": [
+      "idea-385"
+    ],
+    "exclusions": [],
+    "claimsChanged": [
+      "KinLedger #1 overall ranking verification"
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v2",
+    "startedAt": "2026-08-09T11:30:38.286639+00:00",
+    "endedAt": "2026-08-09T11:30:38.286639+00:00",
+    "reviewStatus": "approved"
+  }
+]

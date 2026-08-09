@@ -152,7 +152,8 @@ const PAGE_DATA_REQUIREMENTS = {
 };
 
 async function fetchDataset(root, file) {
-  const url = `${root}/data/${file}.json`;
+  const targetFile = file === 'sources' ? 'public-sources' : file;
+  const url = `${root}/data/${targetFile}.json`;
   if (fetchCache.has(url)) {
     return fetchCache.get(url);
   }

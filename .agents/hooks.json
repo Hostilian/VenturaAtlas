@@ -21,6 +21,12 @@
       "command": "npm run validate:source"
     },
     {
+      "name": "public-sources-build",
+      "event": "pre_publish",
+      "description": "Generate public-sources.json containing external evidence sources prior to site build",
+      "command": "python scripts/build_public_sources.py"
+    },
+    {
       "name": "public-artifact-security",
       "event": "post_build",
       "description": "Verify public staging artifact contains no internal/private files",
