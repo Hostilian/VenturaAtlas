@@ -4786,5 +4786,209 @@
     "overallScore": 79.1,
     "tags": [],
     "normalizedText": "micropollutant evidence exchange chemical persistence degradability ledger shared peer-audited evidence exchange for chemical substance persistence bio-degradability and aquatic toxicity data used in environmental fee audits chemical producers regulatory affairs labs media data"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-385",
+    "slug": "kinledger-donorrecall-network",
+    "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+    "category": "Healthcare & SoHO Compliance",
+    "subcategory": "Reproductive Technology & Biosecurity",
+    "concept": "Privacy-preserving cross-institution coordination network and family-limit ledger preventing donor over-donation and accelerating genetic safety signal recalls under EU SoHO rules.",
+    "customer": "International sperm banks, multi-country IVF clinic networks, and SoHO competent authorities",
+    "problem": "Donors exceeding domestic/international family caps across multiple banks under different aliases, and delayed, incomplete tracing during serious genetic safety recalls.",
+    "overallScore": 97.6,
+    "tags": [
+      "reproductive-health",
+      "privacy",
+      "soho",
+      "donor-conception",
+      "vigilance",
+      "network-protocol"
+    ],
+    "normalizedText": "kinledger donorrecall privacy-preserving gamete donor coordination ledger privacy-preserving cross-institution coordination network and family-limit ledger preventing donor over-donation and accelerating genetic safety signal recalls under eu soho rules donors exceeding domestic international family caps across multiple banks under different aliases and delayed incomplete tracing during serious genetic safety recalls international sperm banks multi-country ivf clinic networks and soho competent authorities healthcare soho compliance reproductive-health privacy soho donor-conception vigilance network-protocol kinledger donorrecall network gameteslot ledger"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-386",
+    "slug": "provenancechaos-markci",
+    "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
+    "category": "Developer tools & infrastructure",
+    "subcategory": "AI Governance & QA Automation",
+    "concept": "Whole-pipeline automated chaos testing and QA harness verifying whether C2PA Content Credentials and invisible AI watermarks survive complex media transformation pipelines.",
+    "customer": "Media publishers, AI image/video SaaS platforms, broadcasters, and digital asset management (DAM) vendors",
+    "problem": "Provenance metadata silently stripped during image optimization, WebP/AVIF conversions, and mobile export steps, causing EU AI Act Article 50 non-compliance.",
+    "overallScore": 94.3,
+    "tags": [
+      "c2pa",
+      "ai-act",
+      "provenance",
+      "chaos-engineering",
+      "ci-cd",
+      "watermarking"
+    ],
+    "normalizedText": "provenancechaos markci ai-content provenance whole-pipeline chaos harness whole-pipeline automated chaos testing and qa harness verifying whether c2pa content credentials and invisible ai watermarks survive complex media transformation pipelines provenance metadata silently stripped during image optimization webp avif conversions and mobile export steps causing eu ai act article 50 non-compliance media publishers ai image video saas platforms broadcasters and digital asset management dam vendors developer tools infrastructure c2pa ai-act provenance chaos-engineering ci-cd watermarking provenancechaos markci c2pa chaos test suite"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-387",
+    "slug": "licensemeter-modelrights-compiler",
+    "name": "LicenseMeter / ModelRights Compiler — Dynamic AI Model License Telemetry Compiler",
+    "category": "Developer tools & infrastructure",
+    "subcategory": "AI License Compliance & Telemetry",
+    "concept": "Dynamic SCA compiler mapping open AI model licenses to real-time business telemetry (revenue, MAU, external SaaS deployment) to enforce active commercial thresholds.",
+    "customer": "AI product leads, enterprise CTOs, and legal/IP counsel at fast-growing AI startups",
+    "problem": "Unexpected license non-compliance and retro-active billing when open model usage crosses un-tracked commercial revenue or MAU thresholds.",
+    "overallScore": 92.1,
+    "tags": [
+      "ai-license",
+      "open-models",
+      "telemetry",
+      "ai-bom",
+      "compliance-compiler",
+      "sca"
+    ],
+    "normalizedText": "licensemeter modelrights compiler dynamic ai model license telemetry compiler dynamic sca compiler mapping open ai model licenses to real-time business telemetry revenue mau external saas deployment to enforce active commercial thresholds unexpected license non-compliance and retro-active billing when open model usage crosses un-tracked commercial revenue or mau thresholds ai product leads enterprise ctos and legal ip counsel at fast-growing ai startups developer tools infrastructure ai-license open-models telemetry ai-bom compliance-compiler sca licensemeter modelrights compiler ai license gatekeeper"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-388",
+    "slug": "permanencedesk-carbon-liability-ledger",
+    "name": "PermanenceDesk — Certified Carbon Removal Asset-Liability Management Ledger",
+    "category": "Climate Resilience & Insurance Tech",
+    "subcategory": "Carbon Removals & Asset-Liability Management",
+    "concept": "Asset-liability management and reversal risk tracking ledger for certified permanent carbon removals under the EU Carbon Removal Certification Framework (CRCF).",
+    "customer": "Carbon removal project developers, corporate carbon buyers, carbon insurers, and climate funds",
+    "problem": "Unquantified reversal liabilities and uncoordinated buffer pool contributions over 10-to-100 year carbon storage horizons.",
+    "overallScore": 89.6,
+    "tags": [
+      "carbon-removals",
+      "crcf",
+      "permanence",
+      "liability-ledger",
+      "reversal-risk",
+      "mrv"
+    ],
+    "normalizedText": "permanencedesk certified carbon removal asset-liability management ledger asset-liability management and reversal risk tracking ledger for certified permanent carbon removals under the eu carbon removal certification framework crcf unquantified reversal liabilities and uncoordinated buffer pool contributions over 10-to-100 year carbon storage horizons carbon removal project developers corporate carbon buyers carbon insurers and climate funds climate resilience insurance tech carbon-removals crcf permanence liability-ledger reversal-risk mrv permanencedesk carbon reversal ledger"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-389",
+    "slug": "datacentre-labeltwin",
+    "name": "DataCentre LabelTwin — EU Sustainability Rating Simulator & Optimization Engine",
+    "category": "Cloud & B2B SaaS",
+    "subcategory": "Data Centre Sustainability & Benchmarking",
+    "concept": "Pre-observation rating simulator predicting EU data centre sustainability grades (A-G) and evaluating ROI on efficiency retrofits before official reporting windows close.",
+    "customer": "Colocation data centre operators, hyperscalers, and infrastructure real estate funds",
+    "problem": "Uncertainty over future EU sustainability rating grades and sub-optimal capex allocation on data centre retrofits.",
+    "overallScore": 87.3,
+    "tags": [
+      "data-centre",
+      "sustainability-label",
+      "energy-efficiency",
+      "benchmarking",
+      "simulation"
+    ],
+    "normalizedText": "datacentre labeltwin eu sustainability rating simulator optimization engine pre-observation rating simulator predicting eu data centre sustainability grades a-g and evaluating roi on efficiency retrofits before official reporting windows close uncertainty over future eu sustainability rating grades and sub-optimal capex allocation on data centre retrofits colocation data centre operators hyperscalers and infrastructure real estate funds cloud b2b saas data-centre sustainability-label energy-efficiency benchmarking simulation datacentre labeltwin dc rating simulator"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-390",
+    "slug": "forcedlabor-casegraph",
+    "name": "ForcedLabor CaseGraph — Supply Chain Allegation Blast-Radius & Response Engine",
+    "category": "Audit & Financial Forensics",
+    "subcategory": "Supply Chain Incident Response",
+    "concept": "Allegation incident response platform reconstructing multi-tier supply chain blast-radius and freezing historical evidence when forced labor claims emerge.",
+    "customer": "Enterprise supply chain leads, importers, trade counsel, and compliance directors",
+    "problem": "Slow, manual supply chain mapping during urgent regulatory forced labor investigations, risking import bans and inventory seizures.",
+    "overallScore": 85.8,
+    "tags": [
+      "forced-labour",
+      "supply-chain",
+      "incident-response",
+      "sku-blast-radius",
+      "evidence-freezing"
+    ],
+    "normalizedText": "forcedlabor casegraph supply chain allegation blast-radius response engine allegation incident response platform reconstructing multi-tier supply chain blast-radius and freezing historical evidence when forced labor claims emerge slow manual supply chain mapping during urgent regulatory forced labor investigations risking import bans and inventory seizures enterprise supply chain leads importers trade counsel and compliance directors audit financial forensics forced-labour supply-chain incident-response sku-blast-radius evidence-freezing forcedlabor casegraph supply chain blastradius"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-391",
+    "slug": "donor-variantwatch",
+    "name": "Donor VariantWatch — Post-Donation Genomic Surveillance Engine",
+    "category": "Healthcare & SoHO Compliance",
+    "subcategory": "Genomic Surveillance & Vigilance",
+    "concept": "Post-donation genomic surveillance engine tracking shifting variant interpretations and alerting cryobanks to re-evaluate historical donor screening panels.",
+    "customer": "Cryobank medical directors, clinical geneticists, and reproductive health labs",
+    "problem": "Undetected genetic risk when donor screening interpretations change years after gamete distribution.",
+    "overallScore": 85.1,
+    "tags": [
+      "genomic-surveillance",
+      "variant-interpretation",
+      "donor-screening",
+      "cryobank",
+      "vigilance"
+    ],
+    "normalizedText": "donor variantwatch post-donation genomic surveillance engine post-donation genomic surveillance engine tracking shifting variant interpretations and alerting cryobanks to re-evaluate historical donor screening panels undetected genetic risk when donor screening interpretations change years after gamete distribution cryobank medical directors clinical geneticists and reproductive health labs healthcare soho compliance genomic-surveillance variant-interpretation donor-screening cryobank vigilance donor variantwatch cryogenomic watch"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-392",
+    "slug": "energyshare-auditor",
+    "name": "EnergyShare Auditor — Peer-to-Peer Energy Allocation & Billing Audit Engine",
+    "category": "Audit & Financial Forensics",
+    "subcategory": "Peer-to-Peer Energy & Billing",
+    "concept": "Independent allocation and billing auditor verifying peer-to-peer renewable energy sharing calculations under EU electricity market reform rules.",
+    "customer": "Energy community managers, municipal utilities, housing associations, and regulatory auditors",
+    "problem": "Billing errors, disputed grid fees, and unverified energy allocation ratios in consumer energy sharing schemes.",
+    "overallScore": 79.6,
+    "tags": [
+      "energy-sharing",
+      "billing-audit",
+      "p2p-energy",
+      "electricity-market",
+      "grid-allocation"
+    ],
+    "normalizedText": "energyshare auditor peer-to-peer energy allocation billing audit engine independent allocation and billing auditor verifying peer-to-peer renewable energy sharing calculations under eu electricity market reform rules billing errors disputed grid fees and unverified energy allocation ratios in consumer energy sharing schemes energy community managers municipal utilities housing associations and regulatory auditors audit financial forensics energy-sharing billing-audit p2p-energy electricity-market grid-allocation energyshare auditor p2p energy ledger"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-393",
+    "slug": "bioscreen-bench",
+    "name": "BioScreen Bench — DNA Synthesis Provider Biosecurity Benchmark",
+    "category": "Developer tools & infrastructure",
+    "subcategory": "Biosecurity & DNA Synthesis",
+    "concept": "Biosecurity screening benchmark and customer verification engine evaluating gene synthesis providers against Global Guidance for Synthetic Nucleic Acid Providers (GDM 2026).",
+    "customer": "DNA synthesis companies, biosecurity compliance officers, and synthetic biology labs",
+    "problem": "Screening false positives/negatives and regulatory audit risk in custom gene synthesis orders.",
+    "overallScore": 78.2,
+    "tags": [
+      "biosecurity",
+      "dna-synthesis",
+      "customer-screening",
+      "benchmarking",
+      "gene-synthesis"
+    ],
+    "normalizedText": "bioscreen bench dna synthesis provider biosecurity benchmark biosecurity screening benchmark and customer verification engine evaluating gene synthesis providers against global guidance for synthetic nucleic acid providers gdm 2026 screening false positives negatives and regulatory audit risk in custom gene synthesis orders dna synthesis companies biosecurity compliance officers and synthetic biology labs developer tools infrastructure biosecurity dna-synthesis customer-screening benchmarking gene-synthesis bioscreen bench genesynthesis biosecurity audit"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-394",
+    "slug": "as-built-carbon-drift",
+    "name": "As-Built Carbon Drift — Building Passport Embodied Carbon Audit Engine",
+    "category": "Audit & Financial Forensics",
+    "subcategory": "Building Passports & Construction",
+    "concept": "As-built vs as-designed embodied carbon divergence audit engine evaluating material substitutions during construction for EU EPBD Digital Building Passports.",
+    "customer": "General contractors, real estate developers, sustainability consultants, and building certifiers",
+    "problem": "Unnoticed embodied carbon increases caused by contractor material substitutions breaching EPBD building passport targets.",
+    "overallScore": 76.6,
+    "tags": [
+      "embodied-carbon",
+      "epbd",
+      "building-passports",
+      "as-built-drift",
+      "construction-audit"
+    ],
+    "normalizedText": "as-built carbon drift building passport embodied carbon audit engine as-built vs as-designed embodied carbon divergence audit engine evaluating material substitutions during construction for eu epbd digital building passports unnoticed embodied carbon increases caused by contractor material substitutions breaching epbd building passport targets general contractors real estate developers sustainability consultants and building certifiers audit financial forensics embodied-carbon epbd building-passports as-built-drift construction-audit as-built carbon drift building passport auditor"
   }
 ]
