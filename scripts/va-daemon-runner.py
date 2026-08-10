@@ -252,6 +252,8 @@ def main():
         rc, out = _run_command(['node', 'scripts/build-repository-meta.js'])
         if rc == 0:
             rc, out = _run_command(['node', 'scripts/update-documentation-stats.js'])
+        if rc == 0:
+            rc, out = _run_command(['node', 'scripts/validate-data.js'])
         if rc != 0:
             _heartbeat("failed", iteration, f"derived-metadata rc={rc}")
             _log("ERROR", f"Derived metadata refresh failed with code {rc}")

@@ -54,7 +54,9 @@ jobs:
         run: python scripts/autonomous-idea-generator.py
 
       - name: Refresh derived repository truth
-        run: npm run generate
+        run: |
+          npm run generate
+          node scripts/validate-data.js
 
       - name: Run data validation & quality suite
         run: npm run quality:source
