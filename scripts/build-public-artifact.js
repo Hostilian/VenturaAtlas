@@ -172,10 +172,13 @@ function projectRepositoryMetaForPublic(src, dest) {
   delete counts.stagedIdeas;
   delete counts.totalIdeas;
   counts.sources = publicSourceIds.size;
-  const revisions = { ...(raw.revisions || {}) };
-  delete revisions.stagingRevision;
-  delete revisions.rankingRevision;
-  writeJson(dest, { ...raw, counts, revisions });
+  const projected = { ...raw, contract: 'public-projection', counts };
+  delete projected.dataRevision;
+  delete projected.buildRevision;
+  delete projected.gitCommit;
+  delete projected.generatedAt;
+  delete projected.revisions;
+  writeJson(dest, projected);
 }
 
 function projectRankingsForPublic(src, dest) {

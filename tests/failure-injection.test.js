@@ -67,8 +67,10 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   const publicMeta = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'repository-meta.json'), 'utf8'));
   assert.equal(publicMeta.counts.stagedIdeas, undefined, 'public metadata must not expose staged counts');
   assert.equal(publicMeta.counts.totalIdeas, undefined, 'public metadata must not combine staged and canonical counts');
-  assert.equal(publicMeta.revisions.stagingRevision, undefined, 'public metadata must not expose staging revision');
-  assert.equal(publicMeta.revisions.rankingRevision, undefined, 'public metadata must not expose private ranking-writer revision');
+  assert.equal(publicMeta.contract, 'public-projection');
+  assert.equal(publicMeta.revisions, undefined, 'public metadata must not expose revisions derived from private inputs');
+  assert.equal(publicMeta.dataRevision, undefined, 'public metadata must not mislabel private input hashes as public revisions');
+  assert.equal(publicMeta.generatedAt, undefined, 'public metadata must not expose a volatile private build timestamp');
   assert.equal(publicMeta.counts.sources, publicSources.length, 'public source count must describe the public projection');
   const publicRankings = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'rankings.json'), 'utf8'));
   assert.equal(publicRankings.generatedAt, undefined, 'public rankings must not expose volatile daemon timestamps');
