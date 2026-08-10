@@ -1,60 +1,60 @@
 {
   "providers": {
     "nvidia-nim": {
-      "failures": 2,
+      "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T11:39:01.957479+00:00",
-      "totalCalls": 5,
-      "successCalls": 3
+      "lastUsed": "2026-08-10T15:17:11.292357+00:00",
+      "totalCalls": 19,
+      "successCalls": 17
     },
     "cohere-api": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T13:08:36.131065+00:00",
-      "totalCalls": 14,
-      "successCalls": 14
+      "lastUsed": "2026-08-10T15:13:12.657812+00:00",
+      "totalCalls": 26,
+      "successCalls": 26
     },
     "hermes-ollama": {
-      "failures": 6,
-      "circuitUntil": "2026-08-10T13:15:36.022648+00:00",
-      "lastUsed": "",
-      "totalCalls": 6,
-      "successCalls": 0
+      "failures": 2,
+      "circuitUntil": "",
+      "lastUsed": "2026-08-10T15:07:09.311037+00:00",
+      "totalCalls": 16,
+      "successCalls": 1
     },
     "omniRoute": {
-      "failures": 6,
-      "circuitUntil": "2026-08-10T13:11:33.785148+00:00",
+      "failures": 17,
+      "circuitUntil": "2026-08-10T15:20:12.970960+00:00",
       "lastUsed": "",
-      "totalCalls": 6,
+      "totalCalls": 17,
       "successCalls": 0
     },
     "fcc-claude": {
-      "failures": 2,
-      "circuitUntil": "",
+      "failures": 7,
+      "circuitUntil": "2026-08-10T15:20:08.996271+00:00",
       "lastUsed": "",
-      "totalCalls": 2,
+      "totalCalls": 7,
       "successCalls": 0
     },
     "active-api": {
-      "failures": 4,
-      "circuitUntil": "2026-08-10T13:15:27.694118+00:00",
+      "failures": 8,
+      "circuitUntil": "2026-08-10T15:15:59.267883+00:00",
       "lastUsed": "",
-      "totalCalls": 4,
+      "totalCalls": 8,
       "successCalls": 0
     },
     "deepseek-api": {
-      "failures": 4,
-      "circuitUntil": "2026-08-10T13:15:27.824859+00:00",
+      "failures": 10,
+      "circuitUntil": "2026-08-10T15:20:08.815334+00:00",
       "lastUsed": "",
-      "totalCalls": 4,
+      "totalCalls": 10,
       "successCalls": 0
     },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T13:12:36.052647+00:00",
-      "totalCalls": 59,
-      "successCalls": 59
+      "lastUsed": "2026-08-10T15:17:13.014162+00:00",
+      "totalCalls": 68,
+      "successCalls": 68
     },
     "anthropic-full": {
       "failures": 0,
@@ -64,9 +64,9 @@
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-10T13:49:21.416920+00:00",
-  "totalIdeasGenerated": 2,
+  "lastRun": "2026-08-10T15:17:13.014162+00:00",
+  "totalIdeasGenerated": 21,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
-  "totalCandidatesStaged": 2
+  "totalCandidatesStaged": 21
 }

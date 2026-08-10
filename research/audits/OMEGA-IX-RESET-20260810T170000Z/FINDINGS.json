@@ -1,0 +1,18 @@
+{
+  "runId": "OMEGA-IX-RESET-20260810T170000Z",
+  "status": "received-and-dispositioned",
+  "sourcePassClaims": {"rounds": 12, "searches": "60+", "usefulSources": "50+", "rawOpportunities": 60},
+  "verification": "bounded-receipt; attachment claims are not independently reproducible from a query/source ledger",
+  "canonicalAdds": 0,
+  "stagingAdds": 0,
+  "approved": 0,
+  "winnerForPaidTest": "InvoiceRouteTruth",
+  "longTermResearchFavorite": "WalletMatrix",
+  "findings": [
+    {"id":"RESET-F-001","severity":"P1","status":"open","finding":"InvoiceRouteTruth is a credible new thesis, but the pass does not include paid-pilot evidence or reproducible transaction traces.","nextTest":"Generate 10 synthetic journeys with 3 injected failures and offer a €149 route audit to 20 French e-invoice/ERP implementation partners."},
+    {"id":"RESET-F-002","severity":"P1","status":"open","finding":"WalletMatrix is promising but must be tested against real relying-party and wallet implementations before staging.","nextTest":"Run a three-wallet/reference compatibility matrix and seek a paid €249 review."},
+    {"id":"RESET-F-003","severity":"P1","status":"open","finding":"ShortageGraph, DataCenterTruth, FlexLoad Ledger, TapTruth, PFAS Archaeology Ledger, and NAMFit Ledger remain research candidates, not approvals."},
+    {"id":"RESET-F-004","severity":"P1","status":"open","finding":"The proposed State-Path Observability family is a methodology hypothesis; POF and Exception Economics are not ranking-contract fields yet.","control":"Require labeled outcome samples and perturbation tests before implementation."},
+    {"id":"RESET-F-005","severity":"P1","status":"open","finding":"Commercial-use and free-tier claims require current source-backed verification before selecting infrastructure or distribution."}
+  ]
+}

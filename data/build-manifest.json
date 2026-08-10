@@ -1,15 +1,15 @@
 {
-  "dataRevision": "ddd1ef8dddb81b78",
-  "buildRevision": "2.3.0-ddd1ef8dddb81b78",
-  "generatedAt": "2026-08-10T13:28:41.386Z",
+  "dataRevision": "5e06d1835024a6f3",
+  "buildRevision": "2.3.0-5e06d1835024a6f3",
+  "generatedAt": "2026-08-10T15:14:34.716Z",
   "files": {
     "ideas.json": {
       "sha256": "f0aff5a18838de39261b3cfd7369f3bceb3ba17b9dc85e60236a75f5fc97a679",
       "bytes": 4608340
     },
     "idea-staging-queue.json": {
-      "sha256": "230af014a2b59152678acf380c510f7ed83e2a1b195e864dad068c2a9b6daaea",
-      "bytes": 1253967
+      "sha256": "462299cd694ffc352777715cd7f260c162d43a99e23d3debd700266362e7f199",
+      "bytes": 1414972
     },
     "categories.json": {
       "sha256": "6945e3a804df238b33023c27710640a168a3e0ef294139393f439f5d9676398d",
@@ -20,8 +20,8 @@
       "bytes": 68061
     },
     "rankings.json": {
-      "sha256": "dc5fb6b29c3178e39859e1a40c3efc9771d2245964b09686693052e931889b97",
-      "bytes": 1152638
+      "sha256": "470ab26b6777352e731baee802bfc0badedd1da06a04130dad4fa8c26d2d9539",
+      "bytes": 1385196
     }
   }
 }
