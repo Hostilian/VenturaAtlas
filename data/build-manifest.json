@@ -1,23 +1,23 @@
 {
-  "dataRevision": "04f661f2a9530426",
-  "buildRevision": "2.3.0-04f661f2a9530426",
-  "generatedAt": "2026-08-10T12:33:15.507Z",
+  "dataRevision": "6d1e649be8262996",
+  "buildRevision": "2.3.0-6d1e649be8262996",
+  "generatedAt": "2026-08-10T12:47:21.197Z",
   "files": {
     "ideas.json": {
       "sha256": "b1f5b764ca5f247a4e7a786324964d496eea260e809ce26756f76ffa292a164c",
       "bytes": 4507077
     },
     "idea-staging-queue.json": {
-      "sha256": "c43630bc95eb0bbee6cb91e79619c2437e2bdeab4cc955b2b8856f9c19367bd8",
-      "bytes": 1155365
+      "sha256": "660c71cdacbf8301659c28649f316c4ed15c5010943879fdf88dc58b30eccc69",
+      "bytes": 1186981
     },
     "categories.json": {
       "sha256": "6945e3a804df238b33023c27710640a168a3e0ef294139393f439f5d9676398d",
       "bytes": 6125
     },
     "sources.json": {
-      "sha256": "9aa9cd6a6194fe5567a72fb84fc87b1689600eeed5b83539b77305ca930b73a3",
-      "bytes": 56222
+      "sha256": "1844fdc3741c4fcf9642787ab44efefdc6c4e62eefda1d508ce3cbcd6cdcd77c",
+      "bytes": 65897
     },
     "rankings.json": {
       "sha256": "7aa2b9c04cb82ea61254555ea39882f5274cc165223a176f8b0594db4e5c69d8",

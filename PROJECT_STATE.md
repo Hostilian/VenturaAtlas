@@ -20,10 +20,10 @@
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
 - Canonical Ideas: 294
-- Staged Ideas: 174
-- Total Ideas: 468
+- Staged Ideas: 181
+- Total Ideas: 475
 - Categories: 122
-- Source References: 83
+- Source References: 96
 - Generated Prompts: 4425
 - Last Updated: 2026-08-10
 <!-- END GENERATED REPOSITORY STATS -->
