@@ -69,6 +69,11 @@ jobs:
           path: |
             .agent-state/live-provider-proof.json
             .agent-state/autonomy-heartbeat.json
+            data/idea-staging-queue.json
+            data/rankings.json
+            data/repository-meta.json
+            data/build-manifest.json
+            data/validation-summary.json
           if-no-files-found: warn
           retention-days: 30
 
