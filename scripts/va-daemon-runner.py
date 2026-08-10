@@ -22,6 +22,8 @@ import signal
 import json
 import subprocess
 import argparse
+from va_runtime.atomic_io import atomic_write_json
+from va_runtime.process_lock import process_file_lock
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -31,6 +33,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 BASE_DIR     = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_PATH     = os.path.join(BASE_DIR, '.agent-state', 'logs', 'unattended-runner.log')
 STATE_PATH   = os.path.join(BASE_DIR, '.agent-state', 'provider-state.json')
+LOCK_PATH    = os.path.join(BASE_DIR, '.agent-state', 'locks', 'autonomy-supervisor.lock')
+HEARTBEAT_PATH = os.path.join(BASE_DIR, '.agent-state', 'autonomy-heartbeat.json')
 SCRIPTS_DIR  = os.path.dirname(os.path.abspath(__file__))
 
 os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
@@ -54,6 +58,17 @@ def _sigint_handler(signum, frame):
     print("\n\n[DAEMON] Ctrl+C received — shutting down gracefully after current run...")
 
 signal.signal(signal.SIGINT, _sigint_handler)
+if hasattr(signal, "SIGTERM"):
+    signal.signal(signal.SIGTERM, _sigint_handler)
+
+def _heartbeat(status: str, iteration: int = 0, detail: str = ""):
+    atomic_write_json(HEARTBEAT_PATH, {
+        "pid": os.getpid(),
+        "status": status,
+        "iteration": iteration,
+        "detail": detail,
+        "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    })
 
 def _log(level: str, msg: str, extra: dict = None):
     entry = {
@@ -135,6 +150,10 @@ def main():
                         help='Max iterations (0 = infinite)')
     parser.add_argument('--rank',       action='store_true', help='Run ranker after each idea generation')
     parser.add_argument('--validate',   action='store_true', help='Run validator on staged ideas after each run')
+    parser.add_argument('--max-concurrency', type=int, default=int(os.environ.get('VA_MAX_CONCURRENCY', '3')),
+                        help='Maximum concurrent idea workers')
+    parser.add_argument('--max-cost', type=int, default=int(os.environ.get('VA_MAX_COST_CLASS', '1')),
+                        help='Maximum provider cost class (0=local only, 1=low, 3=high)')
     parser.add_argument('--test',       action='store_true', help='Test mode: 2 iterations, 5s interval')
     args = parser.parse_args()
 
@@ -169,7 +188,11 @@ def main():
 
         # 2. Run idea generator
         _log("INFO", "Running autonomous-idea-generator.py...")
-        rc, out = _run_script('autonomous-idea-generator.py')
+        _heartbeat("running", iteration, "idea-generation")
+        rc, out = _run_script('autonomous-idea-generator.py', [
+            '--max-concurrency', str(max(1, args.max_concurrency)),
+            '--max-cost', str(max(0, min(3, args.max_cost))),
+        ])
         for line in out.strip().splitlines():
             if line.strip():
                 print(f"  {line}")
@@ -197,6 +220,7 @@ def main():
         # 5. Provider status
         _print_provider_status()
 
+        _heartbeat("sleeping", iteration, f"next cycle in {interval}s")
         _log("SUCCESS", f"Run #{iteration} complete")
         print(f"\n📥 Review staged: python scripts/review-staged-ideas.py")
         print(f"📊 Full ranking:  python scripts/va-ranker.py --top 20")
@@ -215,8 +239,14 @@ def main():
             if remaining % 30 == 0 and remaining > 10:
                 print(f"  ⏳ Next run in {remaining}s...")
 
+    _heartbeat("stopped", iteration, "clean shutdown")
     _log("SUCCESS", "=== Venture Atlas Daemon stopped cleanly ===")
     print("\n\033[92m[DAEMON] Stopped cleanly. Run `python scripts/review-staged-ideas.py` to review ideas.\033[0m")
 
 if __name__ == '__main__':
-    main()
+    try:
+        with process_file_lock(LOCK_PATH, timeout_seconds=0, stale_after_seconds=86400 * 7):
+            main()
+    except TimeoutError:
+        print("[DAEMON] Another Venture Atlas autonomy supervisor is already running; exiting.", file=sys.stderr)
+        raise SystemExit(23)

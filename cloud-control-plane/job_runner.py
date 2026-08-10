@@ -24,6 +24,8 @@ SECRET_IDS = {
     "ANTHROPIC_API_KEYS": "va-anthropic-01",
     "ACTIVE_API_KEYS": "va-active-01",
     "DEEPSEEK_API_KEYS": "va-deepseek-01",
+    "NVIDIA_NIM_API_KEYS": "va-nvidia-nim-01",
+    "COHERE_API_KEYS": "va-cohere-01",
     "GITHUB_TOKEN": "va-github-token",
 }
 
@@ -61,6 +63,8 @@ def configure_environment():
     anthropic_keys = fetch_gcp_secret("ANTHROPIC_API_KEYS", os.environ.get("ANTHROPIC_API_KEY", ""))
     active_keys = fetch_gcp_secret("ACTIVE_API_KEYS", os.environ.get("ACTIVE_API_KEY", ""))
     deepseek_keys = fetch_gcp_secret("DEEPSEEK_API_KEYS", os.environ.get("DEEPSEEK_API_KEY", ""))
+    nvidia_keys = fetch_gcp_secret("NVIDIA_NIM_API_KEYS", os.environ.get("NVIDIA_NIM_API_KEY", ""))
+    cohere_keys = fetch_gcp_secret("COHERE_API_KEYS", os.environ.get("COHERE_API_KEY", ""))
     
     if openrouter_keys:
         os.environ["OPENROUTER_API_KEYS"] = openrouter_keys
@@ -70,11 +74,20 @@ def configure_environment():
         os.environ["ACTIVE_API_KEYS"] = active_keys
     if deepseek_keys:
         os.environ["DEEPSEEK_API_KEYS"] = deepseek_keys
+    if nvidia_keys:
+        os.environ["NVIDIA_NIM_API_KEYS"] = nvidia_keys
+    if cohere_keys:
+        os.environ["COHERE_API_KEYS"] = cohere_keys
 
 def execute_discovery():
     """Run autonomous idea generator."""
     log_event("INFO", "Starting Autonomous Discovery Job Execution")
-    cmd = [sys.executable, os.path.join(BASE_DIR, "scripts", "autonomous-idea-generator.py")]
+    cmd = [
+        sys.executable,
+        os.path.join(BASE_DIR, "scripts", "autonomous-idea-generator.py"),
+        "--max-concurrency", os.environ.get("VA_MAX_CONCURRENCY", "3"),
+        "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1"),
+    ]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=BASE_DIR)
     if res.returncode == 0:
         log_event("INFO", "Autonomous Discovery Job Completed Successfully", {"output_tail": res.stdout[-300:]})

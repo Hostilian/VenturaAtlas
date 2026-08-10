@@ -4,6 +4,7 @@ Unit tests for Venture Atlas OS Provider Router & Capability Scheduler
 import unittest
 import os
 import sys
+import tempfile
 
 # Ensure scripts directory is on sys.path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,6 +17,7 @@ from va_runtime.provider_router import (
     CapabilityProviderScheduler,
     NoEligibleProviderError,
 )
+from va_runtime.process_lock import process_file_lock
 
 class TestProviderRouter(unittest.TestCase):
     def test_is_placeholder_key(self):
@@ -50,6 +52,20 @@ class TestProviderRouter(unittest.TestCase):
                 requires_external_evidence=True,
                 allow_own_orch=True
             )
+
+    def test_process_lock_rejects_concurrent_owner(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            lock_path = os.path.join(temp_dir, "supervisor.lock")
+            with process_file_lock(lock_path, timeout_seconds=0):
+                with self.assertRaises(TimeoutError):
+                    with process_file_lock(lock_path, timeout_seconds=0):
+                        pass
+
+    def test_registry_contains_every_orchestrator_provider(self):
+        scheduler = CapabilityProviderScheduler()
+        expected = {"nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude",
+                    "active-api", "deepseek-api", "anthropic-full", "own-orch"}
+        self.assertTrue(expected.issubset(scheduler.registry["providers"]))
 
 if __name__ == "__main__":
     unittest.main()

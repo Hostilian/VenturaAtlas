@@ -92,6 +92,8 @@ locals {
     ANTHROPIC_API_KEYS  = "va-anthropic-01"
     ACTIVE_API_KEYS     = "va-active-01"
     DEEPSEEK_API_KEYS   = "va-deepseek-01"
+    NVIDIA_NIM_API_KEYS = "va-nvidia-nim-01"
+    COHERE_API_KEYS     = "va-cohere-01"
     GITHUB_TOKEN        = "va-github-token"
   }
 }
@@ -135,8 +137,12 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
   depends_on = [google_artifact_registry_repository.repo]
 
   template {
+    task_count  = 1
+    parallelism = 1
     template {
       service_account = google_service_account.worker_sa.email
+      timeout         = "3600s"
+      max_retries     = 1
       containers {
         image = var.worker_image
         resources {
@@ -148,6 +154,18 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
         env {
           name  = "GCP_PROJECT_ID"
           value = var.gcp_project_id
+        }
+        env {
+          name  = "PARALLEL_AI_ORCHESTRATION"
+          value = "1"
+        }
+        env {
+          name  = "VA_PROVIDER_FANOUT"
+          value = "2"
+        }
+        env {
+          name  = "VA_MAX_COST_CLASS"
+          value = "1"
         }
       }
     }

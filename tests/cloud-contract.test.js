@@ -26,6 +26,8 @@ test('Terraform and job runner share exact Secret Manager IDs', () => {
     ANTHROPIC_API_KEYS: 'va-anthropic-01',
     ACTIVE_API_KEYS: 'va-active-01',
     DEEPSEEK_API_KEYS: 'va-deepseek-01',
+    NVIDIA_NIM_API_KEYS: 'va-nvidia-nim-01',
+    COHERE_API_KEYS: 'va-cohere-01',
     GITHUB_TOKEN: 'va-github-token'
   };
   for (const [environmentName, secretId] of Object.entries(expected)) {
@@ -34,6 +36,21 @@ test('Terraform and job runner share exact Secret Manager IDs', () => {
     assert.ok(runner.includes(`"${environmentName}": "${secretId}"`));
   }
   assert.match(runner, /SECRET_IDS\.get\(secret_name, secret_name\)/);
+});
+
+test('Cloud job prevents overlapping repository writers and bounds provider cost', () => {
+  const terraform = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'terraform', 'main.tf'), 'utf8');
+  assert.match(terraform, /task_count\s*=\s*1/);
+  assert.match(terraform, /parallelism\s*=\s*1/);
+  assert.match(terraform, /max_retries\s*=\s*1/);
+  assert.match(terraform, /name\s*=\s*"VA_PROVIDER_FANOUT"[\s\S]*?value\s*=\s*"2"/);
+  assert.match(terraform, /name\s*=\s*"VA_MAX_COST_CLASS"[\s\S]*?value\s*=\s*"1"/);
+});
+
+test('Orchestrator never disables TLS certificate verification', () => {
+  const orchestrator = fs.readFileSync(path.join(ROOT, 'scripts', 'va_orchestrator.py'), 'utf8');
+  assert.doesNotMatch(orchestrator, /_create_unverified_context|CERTIFICATE_VERIFY_FAILED/);
+  assert.match(orchestrator, /ssl\.create_default_context\(\)/);
 });
 
 test('GitHub publication keeps credentials out of process arguments and Git config', () => {

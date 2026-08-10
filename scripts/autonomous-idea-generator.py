@@ -466,14 +466,20 @@ def mark_candidate_ready_for_validation(idea: dict) -> bool:
     return False
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot: list, existing_names_snapshot: list):
+def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot: list,
+                          existing_names_snapshot: list, max_cost_class: int):
     domain = random.choice(SEARCH_DOMAINS)
     candidate_id = generate_candidate_id()
     log_info(f"[{run_idx+1}/{IDEAS_PER_RUN}] Parallel Domain worker active: '{domain['category']}' → candidate ID: {candidate_id}")
 
     prompt = build_idea_prompt(domain, existing_names_snapshot)
     try:
-        raw_resp, provider = call_llm(prompt, domain)
+        raw_resp, provider = call_llm(
+            prompt,
+            domain,
+            required_capabilities=["research_synthesis", "reasoning", "research"],
+            max_cost_class=max_cost_class,
+        )
     except Exception as e:
         log_error(f"Orchestrator error: {e}")
         return None
@@ -545,7 +551,7 @@ def main():
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [
-            executor.submit(process_single_domain, idx, existing, queue, existing_names)
+            executor.submit(process_single_domain, idx, existing, queue, existing_names, args.max_cost)
             for idx in range(IDEAS_PER_RUN)
         ]
 

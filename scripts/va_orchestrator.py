@@ -33,6 +33,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 # ── Path Config ────────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE_PATH = os.path.join(BASE_DIR, '.agent-state', 'provider-state.json')
+STATE_LOCK_PATH = os.path.join(BASE_DIR, '.agent-state', 'locks', 'provider-state.lock')
 LOG_PATH = os.path.join(BASE_DIR, '.agent-state', 'logs', 'unattended-runner.log')
 
 # ── Load .env if present ───────────────────────────────────────────────────────
@@ -117,7 +118,7 @@ def _get_next_cohere_key() -> str:
     return key
 
 OMNIROUTE_URL        = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
-OMNIROUTE_MODEL      = os.environ.get('OMNIROUTE_MODEL', 'meta-llama/llama-3.1-8b-instruct:free')
+OMNIROUTE_MODEL      = os.environ.get('OMNIROUTE_MODEL', 'openrouter/free')
 FCC_MODEL            = os.environ.get('FCC_CLAUDE_MODEL', 'claude-haiku-4-5')
 ANTHROPIC_FULL_MDL   = os.environ.get('ANTHROPIC_FULL_MODEL', 'claude-sonnet-4-5')
 ACTIVE_API_BASE_URL  = os.environ.get('ACTIVE_API_BASE_URL', 'https://aiapiv2.pekpik.com/v1')
@@ -173,12 +174,11 @@ PROVIDER_DEFAULTS = {
 }
 
 def _get_ssl_context():
-    try:
-        return ssl.create_default_context()
-    except Exception:
-        return ssl._create_unverified_context()
+    """Return a certificate-verifying TLS context. Never silently disable TLS."""
+    return ssl.create_default_context()
 
 from va_runtime.atomic_io import atomic_write_json, read_json_safe
+from va_runtime.process_lock import process_file_lock
 
 import threading
 _state_lock = threading.Lock()
@@ -227,24 +227,28 @@ def _is_circuit_open(p_state: dict) -> bool:
         return False
 
 def _record_failure(state: dict, provider: str):
-    ps = state["providers"][provider]
-    ps["failures"] = ps.get("failures", 0) + 1
-    ps["totalCalls"] = ps.get("totalCalls", 0) + 1
-    if ps["failures"] >= CIRCUIT_THRESHOLD:
-        until = (datetime.datetime.now(datetime.timezone.utc) +
-                 datetime.timedelta(seconds=CIRCUIT_COOLDOWN)).isoformat()
-        ps["circuitUntil"] = until
-        log_warn(f"Circuit OPEN for {provider} until {until}", provider=provider)
-    _save_state(state)
+    with process_file_lock(STATE_LOCK_PATH):
+        current = _load_state()
+        ps = current["providers"][provider]
+        ps["failures"] = ps.get("failures", 0) + 1
+        ps["totalCalls"] = ps.get("totalCalls", 0) + 1
+        if ps["failures"] >= CIRCUIT_THRESHOLD:
+            until = (datetime.datetime.now(datetime.timezone.utc) +
+                     datetime.timedelta(seconds=CIRCUIT_COOLDOWN)).isoformat()
+            ps["circuitUntil"] = until
+            log_warn(f"Circuit OPEN for {provider} until {until}", provider=provider)
+        _save_state(current)
 
 def _record_success(state: dict, provider: str):
-    ps = state["providers"][provider]
-    ps["failures"] = 0
-    ps["circuitUntil"] = ""
-    ps["totalCalls"] = ps.get("totalCalls", 0) + 1
-    ps["successCalls"] = ps.get("successCalls", 0) + 1
-    ps["lastUsed"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    _save_state(state)
+    with process_file_lock(STATE_LOCK_PATH):
+        current = _load_state()
+        ps = current["providers"][provider]
+        ps["failures"] = 0
+        ps["circuitUntil"] = ""
+        ps["totalCalls"] = ps.get("totalCalls", 0) + 1
+        ps["successCalls"] = ps.get("successCalls", 0) + 1
+        ps["lastUsed"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        _save_state(current)
 
 
 # ── HTTP Helper ────────────────────────────────────────────────────────────────
@@ -252,15 +256,8 @@ def _http_post(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
     data = json.dumps(body).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers=headers, method='POST')
     ctx = _get_ssl_context()
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
-            return json.loads(resp.read().decode('utf-8'))
-    except Exception as e:
-        if 'CERTIFICATE_VERIFY_FAILED' in str(e) or 'certificate verify failed' in str(e):
-            ctx_unverified = ssl._create_unverified_context()
-            with urllib.request.urlopen(req, timeout=timeout, context=ctx_unverified) as resp:
-                return json.loads(resp.read().decode('utf-8'))
-        raise e
+    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+        return json.loads(resp.read().decode('utf-8'))
 
 
 # ── Tier 0: NVIDIA NIM ─────────────────────────────────────────────────────────
@@ -609,7 +606,7 @@ def health_check() -> dict:
     results["cohere-api"] = len(_raw_cohere_keys) > 0
     # Hermes/Ollama
     try:
-        url = f"{OLLAMA_BASE_URL}/api/generate"
+        url = f"{OLLAMA_BASE_URL}/api/tags"
         req = urllib.request.Request(url, method='GET')
         with urllib.request.urlopen(req, timeout=3) as r:
             pass
@@ -686,14 +683,30 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
         _record_failure(state, provider)
         return None
 
-def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True) -> tuple[str, str]:
+def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
+                      required_capabilities: list[str] = None, max_cost_class: int = 1) -> tuple[str, str]:
     """
-    Parallel AI Orchestration: Queries ALL available AI providers simultaneously.
-    Returns the fastest valid response, ensuring max computing power and smartness.
+    Query a bounded, capability/key/cost-qualified provider fanout. Candidate order is
+    rotated between tasks so configured providers share useful work without redundant,
+    unbounded paid calls.
     """
     state = _load_state()
-    providers_to_try = [p for p in DEFAULT_PROVIDER_ORDER if p != "own-orch" and not _is_circuit_open(state["providers"].get(p, {}))]
-    if allow_own_orch:
+    scheduler = get_provider_scheduler()
+    providers_to_try = scheduler.select_providers_for_task(
+        required_capabilities=required_capabilities,
+        max_cost_class=max_cost_class,
+        allow_own_orch=allow_own_orch,
+    )
+    providers_to_try = [p for p in providers_to_try if not _is_circuit_open(state["providers"].get(p, {}))]
+    external = [p for p in providers_to_try if p != "own-orch"]
+    if external:
+        # Stable prompt sharding survives the generator's bounded child processes and
+        # spreads distinct tasks through the full eligible provider pool.
+        offset = int(hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:8], 16) % len(external)
+        external = external[offset:] + external[:offset]
+    fanout = max(1, int(os.environ.get("VA_PROVIDER_FANOUT", "2")))
+    providers_to_try = external[:fanout]
+    if allow_own_orch and not providers_to_try:
         providers_to_try.append("own-orch")
 
     if not providers_to_try:
@@ -701,7 +714,7 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
             raise NoEligibleProviderError("No external providers available and allow_own_orch is False")
         providers_to_try = ["own-orch"]
 
-    log_info(f"[PARALLEL AI ENGINE] Launching {len(providers_to_try)} AI providers in parallel: {', '.join(providers_to_try)}")
+    log_info(f"[BOUNDED PARALLEL AI] Launching {len(providers_to_try)} eligible providers: {', '.join(providers_to_try)}")
 
     results = []
     with ThreadPoolExecutor(max_workers=len(providers_to_try)) as executor:
@@ -730,7 +743,7 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
     If PARALLEL_AI_ORCHESTRATION=1 is set, queries all providers simultaneously.
     """
     if os.environ.get('PARALLEL_AI_ORCHESTRATION', '0') in ('1', 'true', 'True'):
-        return call_llm_parallel(prompt, domain_hint, allow_own_orch)
+        return call_llm_parallel(prompt, domain_hint, allow_own_orch, required_capabilities, max_cost_class)
 
     state = _load_state()
     scheduler = get_provider_scheduler()
@@ -753,7 +766,11 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
             continue
         try:
             log_info(f"Trying provider: {provider}")
-            if provider == "hermes-ollama":
+            if provider == "nvidia-nim":
+                resp = _call_nvidia_nim(prompt)
+            elif provider == "cohere-api":
+                resp = _call_cohere_api(prompt)
+            elif provider == "hermes-ollama":
                 try:
                     resp = _call_hermes(prompt, HERMES_MODEL)
                 except Exception:
