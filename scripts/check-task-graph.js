@@ -36,6 +36,10 @@ function validateTaskGraph() {
   const agentMatches = [...agentsContent.matchAll(/`([a-z0-9-]+(?:-agent|architect|engineer))`|^\d+\.\s+\*\*`([a-z0-9-]+)`\*\*/gm)].map(m => m[1] || m[2]);
   const validAgents = new Set(agentMatches);
 
+  if (graphData.total_tasks !== tasks.length) {
+    errors.push(`Declared total_tasks ${graphData.total_tasks} does not match tasks length ${tasks.length}`);
+  }
+
   tasks.forEach(task => {
     if (taskIds.has(task.id)) {
       errors.push(`Duplicate task ID: ${task.id}`);
@@ -45,6 +49,18 @@ function validateTaskGraph() {
     // Validate preferred_agent
     if (task.preferred_agent && validAgents.size > 0 && !validAgents.has(task.preferred_agent)) {
       warnings.push(`Task ${task.id} specifies unknown agent: '${task.preferred_agent}'`);
+    }
+
+    if (!Array.isArray(task.owned_paths) || task.owned_paths.length === 0) {
+      errors.push(`Task ${task.id} does not declare any owned_paths`);
+    }
+    for (const ownedPath of task.owned_paths || []) {
+      const resolved = path.resolve(ROOT, ownedPath);
+      if (resolved !== ROOT && !resolved.startsWith(`${ROOT}${path.sep}`)) {
+        errors.push(`Task ${task.id} owned_path escapes repository root: ${ownedPath}`);
+      } else if (!fs.existsSync(resolved)) {
+        errors.push(`Task ${task.id} owned_path does not exist: ${ownedPath}`);
+      }
     }
   });
 
@@ -62,6 +78,28 @@ function validateTaskGraph() {
     });
   });
 
+  const dependencyEdges = tasks.reduce((sum, task) => sum + (task.dependencies || []).length, 0);
+  const blockEdges = tasks.reduce((sum, task) => sum + (task.blocks || []).length, 0);
+  if (tasks.length > 1 && dependencyEdges === 0 && blockEdges === 0) {
+    warnings.push('Task graph has no dependency or block edges; ordering/reachability is not represented');
+  }
+
+  const taskById = new Map(tasks.map(task => [task.id, task]));
+  const visiting = new Set();
+  const visited = new Set();
+  function visit(taskId, trail = []) {
+    if (visiting.has(taskId)) {
+      errors.push(`Dependency cycle detected: ${[...trail, taskId].join(' -> ')}`);
+      return;
+    }
+    if (visited.has(taskId) || !taskById.has(taskId)) return;
+    visiting.add(taskId);
+    for (const dependency of taskById.get(taskId).dependencies || []) visit(dependency, [...trail, taskId]);
+    visiting.delete(taskId);
+    visited.add(taskId);
+  }
+  for (const taskId of taskIds) visit(taskId);
+
   console.log(`Errors: ${errors.length}, Warnings: ${warnings.length}`);
   if (errors.length > 0) {
     errors.forEach(e => console.error(`[ERROR] ${e}`));
@@ -71,7 +109,9 @@ function validateTaskGraph() {
     warnings.forEach(w => console.warn(`[WARN] ${w}`));
   }
 
-  console.log('[OK] Agent Task Graph validation passed cleanly!');
+  console.log(warnings.length > 0
+    ? '[OK] Agent Task Graph structural validation passed with disclosed warnings.'
+    : '[OK] Agent Task Graph structural validation passed cleanly.');
 }
 
 validateTaskGraph();
