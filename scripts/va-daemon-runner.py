@@ -246,7 +246,18 @@ def main():
                 _log("ERROR", f"Ranker exited with code {rc}")
                 raise RuntimeError(f"critical stage ranking failed with rc={rc}")
 
-        # 5. Periodic integrity work. This is read-only and degrades gracefully:
+        # 5. Refresh derived metadata and documentation after any staged/ranking
+        # changes so the next integrity check observes one coherent repository state.
+        _log("INFO", "Refreshing derived repository metadata...")
+        rc, out = _run_command(['node', 'scripts/build-repository-meta.js'])
+        if rc == 0:
+            rc, out = _run_command(['node', 'scripts/update-documentation-stats.js'])
+        if rc != 0:
+            _heartbeat("failed", iteration, f"derived-metadata rc={rc}")
+            _log("ERROR", f"Derived metadata refresh failed with code {rc}")
+            raise RuntimeError(f"critical stage derived-metadata failed with rc={rc}")
+
+        # 6. Periodic integrity work. This is read-only and degrades gracefully:
         # discovery may continue even when documentation/revision drift needs repair.
         if args.integrity_every > 0 and iteration % args.integrity_every == 0:
             _log("INFO", "Running periodic repository drift check...")
@@ -257,7 +268,7 @@ def main():
             else:
                 _log("SUCCESS", "Repository drift check passed")
 
-        # 6. Periodic live proof. Missing keys/providers must be visible, but must not
+        # 7. Periodic live proof. Missing keys/providers must be visible, but must not
         # take down the deterministic own-orch fallback or the rest of the loop.
         if args.live_proof_every > 0 and iteration % args.live_proof_every == 0:
             _log("INFO", "Attempting live external provider overlap proof...")
@@ -272,7 +283,7 @@ def main():
             else:
                 _log("SUCCESS", "Live provider overlap proof passed")
 
-        # 7. Provider status
+        # 8. Provider status
         _print_provider_status()
 
         if degraded_reasons:

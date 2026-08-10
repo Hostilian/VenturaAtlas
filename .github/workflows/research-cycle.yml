@@ -53,6 +53,9 @@ jobs:
       - name: Run autonomous discovery generator
         run: python scripts/autonomous-idea-generator.py
 
+      - name: Refresh derived repository truth
+        run: npm run generate
+
       - name: Run data validation & quality suite
         run: npm run quality:source
 
