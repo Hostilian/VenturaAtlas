@@ -23,6 +23,8 @@ test('Ranking and collaboration UI do not claim missing evidence or realtime syn
   assert.ok(!site.includes('if (v <= 10) v = v * 10'));
   assert.ok(!site.includes('const overall = x.atAGlance?.overallScore ?? 0'));
   assert.match(site, /const sourcesCount = citedSourceIds\.size;/, 'idea details must count distinct cited source IDs');
+  assert.match(site, /const sourceMap = new Map/, 'idea details must resolve public citation metadata');
+  assert.match(site, /target="_blank" rel="noopener noreferrer"/, 'external citation links must be safely linked');
   assert.ok(!collaboration.includes('Realtime Friend Collaboration Rooms'));
   assert.match(collaboration, /does not synchronize state/i);
   assert.match(collaborationJs, /does not synchronize/i);

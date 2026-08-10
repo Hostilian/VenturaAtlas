@@ -10,6 +10,8 @@
   - `1289625ed86667835df9f4b6c35e0817d8280cc2` at 2026-08-09 19:00:42 +02:00, message `l`.
   - `71e1ee600af240db8db9a9eb6d89397e54b48c6a` at 2026-08-10 13:26:32 +02:00, message `l`; this captured 28 paths including OMEGA fixes and receipts.
   - `954b4352e1d700923d8ced94a695fcee83b76e1b` at 2026-08-10 13:27:09 +02:00, message `Create test_new_providers.py`; `origin/main` also moved to this SHA outside the primary agent's actions.
+- External automation continued with `526373f`, `c8805b3`, `5cd735e`, `87cc76a`, `0218c1b`, and `a0d1d5c` between 13:38 and 13:41 +02:00. It captured mixed runtime/OMEGA files and moved `origin/main` to `a0d1d5c`.
+- A further external commit `7ea5cf47a174124dba16123f1fa32db7f0c50f4e` appeared at 14:11:34 +02:00 and captured projection/receipt changes. By the final 2026-08-10T12:24:02Z reconciliation, both local HEAD and `origin/main` were `7ea5cf4` outside the primary agent's Git actions.
 - Current mutable user paths at the 2026-08-10T11:28:37Z reconciliation: `.agent-state/provider-state.json`, `data/rankings.json`, `scripts/test_new_providers.py`, and `scripts/va_orchestrator.py`.
 
 ## Completed implementation
@@ -28,11 +30,11 @@
 
 ## Exact artifact proof
 
-- Artifact: `_site`, 5,509 files, 16,752,396 bytes.
-- Final tree SHA-256: `09aae9f99654ad57f95fdee93550290010abc99ad547ae80e3e6d0228bdfc974`.
+- Artifact: `_site`, 5,508 files, 16,784,661 bytes.
+- Final tree SHA-256: `3c78d1006af8a29888d41d58173a64bd8cc8ee79738639fa90bc126a6d8198d8`.
 - Two consecutive builds produced that identical digest after volatile daemon history was removed from the public projection.
 - The full sorted file receipt is `public-artifact-receipt.json`; `public-artifact-receipt-pass1.json` independently records the matching first pass.
-- The same digest was reproduced after the complete unit suite rebuilt `_site`.
+- The complete 27-test suite passed before the final internal-title closure; the final boundary regression test then rebuilt the closed artifact successfully, followed by two matching final builds.
 - Public secret/path scan passed. Browser tested this exact tree on a fresh origin; no build occurred between the final digest and the byte-identical post-browser rebuild proof.
 
 ## Browser journeys
@@ -41,6 +43,8 @@
 - Rankings: legacy heuristic disclosure present; eligibility-unproven flags visible; zero standalone `Verified` claims.
 - Collaboration: browser-local/no-sync disclosure present; no realtime/live-sync claim.
 - Idea detail (`idea-385`): content renders, four distinct citations shown, validation provenance unavailable disclosed, no standalone validated claim.
+- Final citation usability fix resolves those IDs to public source titles and safe clickable external URLs. A fresh browser verifier confirmed all four titles/HTTPS links, `target="_blank"`, `rel="noopener noreferrer"`, truth labels, and a clean console against the unchanged final digest.
+- Browser verifier rehashed the tree before and after: 5,508 files, 16,784,661 bytes, SHA-256 `3c78d1006af8a29888d41d58173a64bd8cc8ee79738639fa90bc126a6d8198d8` both times. It stopped only temporary server PID 34004 and finalized its tabs.
 - `data/sources.json`: unavailable/offline fallback, with no raw data exposed. `data/public-sources.json`: available, explicitly PUBLIC, no INTERNAL record.
 - Fresh-origin browser console: zero errors or warnings.
 
@@ -48,9 +52,9 @@
 
 - `npm run check-js`: pass.
 - `npm run typecheck`: pass.
-- `npm run test:unit`: 24/24 pass.
+- `npm run test:unit`: 27/27 pass.
 - `npm run validate:source`: 294 ideas, 83 sources, 7 ranking views, 163 relationships, zero errors/warnings; links pass.
-- `npm run check-consistency`, `npm run check-task-graph`, `npm run check:drift`: pass.
+- `npm run check-consistency` and `npm run check:drift`: pass. Task-graph structural checks pass with one disclosed warning: all 30 tasks have zero dependency/block edges, so ordering/reachability is not represented.
 - `node scripts/check-public-artifact.js`: pass.
 - `python scripts/verify_constitution.py`: pass, SHA-256 `f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d`.
 - `python scripts/check_privacy.py`: zero heuristic hits.
@@ -59,7 +63,7 @@
 
 ## Live-writer blocker
 
-- At least three user-owned autonomous ranking loops are active concurrently: PID 21780 (120 seconds, startup parent), PID 36884 (120 seconds), and newly observed PID 38536 (60 seconds). The startup wrapper PID 10420 remains active.
+- Three user-owned autonomous ranking loops were observed concurrently during the run (PIDs 21780, 36884, and 38536). At final reconciliation, startup wrapper PID 10420 and daemon PID 21780 remained active. Repository metadata ranking revision `69d53706446c4e1e` was stale versus actual `7450497f6d60ea65`.
 - They rewrite `data/rankings.json`, `.agent-state/provider-state.json`, and overlapping orchestrator state. Rankings changed during a two-build reproducibility test; repository metadata subsequently became stale.
 - The primary agent did not stop, disable, or alter those processes because that authority was not granted. Provider/orchestrator edits overlapping those live writers remain unsafe to reconcile.
 
@@ -73,6 +77,6 @@
 
 - Stop or serialize all daemon loops, disable the duplicate startup path, reconcile runtime state, then regenerate metadata and rerun the fixed point from a quiescent worktree.
 - Repair provider eligibility/capability/cost/key gating and shared-state serialization in the dirty orchestrator only after the live writers are stopped.
-- Correct and deploy-test the Cloud Run/Scheduler Terraform contract (API name, invoker IAM, secret-name mapping, immutable image reference, and actual service/job topology).
+- Deploy-test the corrected Cloud Run Job/Scheduler source contract in GCP. Static code now uses `run.googleapis.com`, v2 job execution URI, dedicated invoker IAM, matching secret IDs, immutable image digest input, and askpass auth without credential argv; IAM/runtime reachability remains unproven.
 - Replace legacy ranking visibility with a proven eligibility/coverage/scale contract or explicitly keep it as a provenance-only view.
 - Run clean-clone and deployed-environment verification after external automation stops moving HEAD/origin.

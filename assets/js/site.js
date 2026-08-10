@@ -939,6 +939,16 @@ function initIdea() {
     return y ? `<li><a href="idea.html?id=${rid}"><strong>${esc(y.name)}</strong></a> <span class="chip status">${esc(y.category)}</span> — <span class="score-badge sm">${yScore != null ? yScore : '—'}</span></li>` : '';
   }).join('');
 
+  const sourceMap = new Map((VA.sources || []).map(source => [source.id, source]));
+  const sourceReferencesHtml = Array.from(citedSourceIds).map(sourceId => {
+    const source = sourceMap.get(sourceId);
+    if (!source) return `<li><code>${esc(sourceId)}</code> — Public source metadata unavailable</li>`;
+    const title = esc(source.title || sourceId);
+    const publisher = source.publisher ? ` <span class="muted">(${esc(source.publisher)})</span>` : '';
+    const url = typeof source.url === 'string' && /^https?:\/\//i.test(source.url) ? source.url : null;
+    return `<li><code>${esc(sourceId)}</code> — ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${title}</a>` : title}${publisher}</li>`;
+  }).join('');
+
   let html = `
 <!-- Quick Read Header -->
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
@@ -1045,7 +1055,13 @@ function initIdea() {
   html += objSection('Validation Plan', x.validationPlan);
   html += objSection('Technical Blueprint', x.technicalBlueprint);
   html += objSection('Launch Strategy', x.launchPlan);
-  html += objSection('Source References & Citations', x.sourceReferences);
+  if (sourceReferencesHtml) {
+    html += `
+<section class="section">
+  <h2>Source References &amp; Citations</h2>
+  <ul class="source-reference-list">${sourceReferencesHtml}</ul>
+</section>`;
+  }
 
   if (relatedHtml) {
     html += `

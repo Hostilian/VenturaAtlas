@@ -3,8 +3,8 @@
   "algorithm": "sha256(sorted \"<file-sha256>  <posix-relative-path>\\n\")",
   "artifact": "_site",
   "fileCount": 5508,
-  "totalBytes": 16783792,
-  "treeSha256": "f82265aea830c075e6f1833a0a6b24f607ac0ac563996cf04a18b9260176a7aa",
+  "totalBytes": 16784661,
+  "treeSha256": "3c78d1006af8a29888d41d58173a64bd8cc8ee79738639fa90bc126a6d8198d8",
   "files": [
     {
       "path": ".nojekyll",
@@ -103,8 +103,8 @@
     },
     {
       "path": "assets/js/site.js",
-      "bytes": 59304,
-      "sha256": "ad3243731af84ab23d40fd35087fcaa4f4bd02e11db4ab27d9ebb1f2f6f14253"
+      "bytes": 60173,
+      "sha256": "bd8335a8a97671c9384fa4c3f2f8ad8a3fe0edde95d9f6cd3c8e3b1c0c2134f3"
     },
     {
       "path": "categories/ai-application.md",

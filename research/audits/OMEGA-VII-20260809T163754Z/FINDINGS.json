@@ -1,12 +1,13 @@
 {
   "run_id": "OMEGA-VII-20260809T163754Z",
   "baseline_commit": "8fc5573cc58a6617206cf6b5deec79bc4b4b982d",
-  "reconciled_head": "954b4352e1d700923d8ced94a695fcee83b76e1b",
+  "reconciled_head": "7ea5cf47a174124dba16123f1fa32db7f0c50f4e",
+  "reconciled_origin_main": "7ea5cf47a174124dba16123f1fa32db7f0c50f4e",
   "artifact": {
     "path": "_site",
-    "file_count": 5509,
-    "total_bytes": 16752396,
-    "tree_sha256": "09aae9f99654ad57f95fdee93550290010abc99ad547ae80e3e6d0228bdfc974",
+    "file_count": 5508,
+    "total_bytes": 16784661,
+    "tree_sha256": "3c78d1006af8a29888d41d58173a64bd8cc8ee79738639fa90bc126a6d8198d8",
     "fixed_point": true,
     "browser_verified": true
   },
@@ -19,9 +20,11 @@
     {"id":"F-006","severity":"P1","area":"schema","summary":"Documented and runtime idea schemas disagreed.","status":"fixed-and-verified"},
     {"id":"F-007","severity":"P1","area":"metadata","summary":"Weak checks accepted stale revisions and timestamp churn.","status":"fixed-and-verified-live-writer-now-detected"},
     {"id":"F-008","severity":"P1","area":"provider-runtime","summary":"Parallel provider path bypasses eligibility/capability/cost/key gates and races shared state; health modules are not authoritative runtime gates.","status":"blocked-live-dirty-orchestrator"},
-    {"id":"F-009","severity":"P1","area":"cloud","summary":"Terraform/API/IAM/secret/image/service topology does not prove a deployable authenticated control plane.","status":"unproven-no-deployment"},
+    {"id":"F-009","severity":"P1","area":"cloud","summary":"Source contract corrected for v2 job URI, invoker IAM, secret mapping, digest image, and credential-free argv; deployment remains unproven.","status":"static-fixed-deployment-unproven"},
     {"id":"F-010","severity":"P1","area":"collaboration","summary":"Realtime claims described browser-local storage and URL state did not synchronize.","status":"fixed-and-verified"},
     {"id":"F-011","severity":"P1","area":"browser-runtime","summary":"Undefined citation variable blanked idea detail pages.","status":"fixed-and-verified"},
-    {"id":"F-012","severity":"P1","area":"git-runtime","summary":"External automation moved HEAD and origin three times and committed mixed user/OMEGA work during the run.","status":"documented-blocker"}
+    {"id":"F-012","severity":"P1","area":"git-runtime","summary":"External automation repeatedly moved HEAD/origin and committed mixed user/OMEGA work during the run.","status":"documented-blocker"},
+    {"id":"F-013","severity":"P1","area":"task-graph","summary":"All 30 tasks declare no dependency or block edges; structural checker now discloses that ordering/reachability is absent.","status":"warning-pending-graph-design"},
+    {"id":"F-014","severity":"P0","area":"runtime-tls","summary":"Dirty committed orchestrator falls back to an unverified TLS context after certificate failure.","status":"blocked-live-dirty-orchestrator"}
   ]
 }
