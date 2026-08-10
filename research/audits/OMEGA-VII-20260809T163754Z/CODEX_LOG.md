@@ -12,6 +12,7 @@
   - `954b4352e1d700923d8ced94a695fcee83b76e1b` at 2026-08-10 13:27:09 +02:00, message `Create test_new_providers.py`; `origin/main` also moved to this SHA outside the primary agent's actions.
 - External automation continued with `526373f`, `c8805b3`, `5cd735e`, `87cc76a`, `0218c1b`, and `a0d1d5c` between 13:38 and 13:41 +02:00. It captured mixed runtime/OMEGA files and moved `origin/main` to `a0d1d5c`.
 - A further external commit `7ea5cf47a174124dba16123f1fa32db7f0c50f4e` appeared at 14:11:34 +02:00 and captured projection/receipt changes. By the final 2026-08-10T12:24:02Z reconciliation, both local HEAD and `origin/main` were `7ea5cf4` outside the primary agent's Git actions.
+- The primary agent then made five scoped commits: `c5f5628` (citation metadata), `a84a293` (lockfile synchronization), `8af4f5b` (idempotent documentation stats), `0d58136` (content-derived metadata revision), and candidate proof commit `0a4c529db9970ccb39fd2c2148c51d1bcc91be55` (deterministic generated metadata). At the pre-audit-record reconciliation, `origin/main` was `0d58136ab9075c3c1ecf364756fad16743356885`; the primary agent did not push.
 - Current mutable user paths at the 2026-08-10T11:28:37Z reconciliation: `.agent-state/provider-state.json`, `data/rankings.json`, `scripts/test_new_providers.py`, and `scripts/va_orchestrator.py`.
 
 ## Completed implementation
@@ -22,7 +23,7 @@
 - Rebuilt the public boundary as an allowlist projection. Raw sources, build manifests, audits, original chats/prompts, meeting packets, private constitution material, agent instructions/state, applications, scripts, tests, cloud control files, and private ranking execution history are excluded.
 - Added `.dockerignore`; container contexts exclude `.env*`, Git, agent state, audits, original chats, dependencies, and generated artifacts.
 - Consolidated canonical idea validation on `data/ideas.schema.json`; removed the competing permissive schema; both Node and Python validate the same `{schemaVersion, ideas}` document.
-- Made validation/search/metadata generators content-aware and atomic; strengthened `--check` to compare complete expected content. Repository metadata intentionally fails when live ranking writers make it stale.
+- Made validation/search/metadata generators content-aware and atomic; strengthened `--check` to compare complete expected content. Removed tracked HEAD SHA self-reference, repaired comma-amplifying documentation replacement, and added an idempotence regression test. Repository metadata intentionally fails when live ranking writers make it stale.
 - Removed synthetic UI defaults and false maturity language: missing scores/costs remain missing, validation without provenance is disclosed, ranking eligibility is unproven, checklist absence is not “Verified,” and collaboration is browser-local rather than realtime.
 - Removed private staging counts/tabs from the public home page and projected volatile ranking timestamps/history out of the public artifact.
 - Fixed the browser-discovered blank idea-detail regression by deriving a distinct citation count before rendering.
@@ -52,14 +53,15 @@
 
 - `npm run check-js`: pass.
 - `npm run typecheck`: pass.
-- `npm run test:unit`: 27/27 pass.
+- `npm run test:unit`: 28/28 pass.
 - `npm run validate:source`: 294 ideas, 83 sources, 7 ranking views, 163 relationships, zero errors/warnings; links pass.
 - `npm run check-consistency` and `npm run check:drift`: pass. Task-graph structural checks pass with one disclosed warning: all 30 tasks have zero dependency/block edges, so ordering/reachability is not represented.
 - `node scripts/check-public-artifact.js`: pass.
 - `python scripts/verify_constitution.py`: pass, SHA-256 `f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d`.
 - `python scripts/check_privacy.py`: zero heuristic hits.
 - `git diff --check` excluding known user-owned runtime files: pass.
-- `node scripts/build-repository-meta.js --check`: expected fail (`exit 1`) after a live daemon rewrote rankings; the strengthened check detects this rather than passing stale metadata.
+- Fresh clone of `0a4c529db9970ccb39fd2c2148c51d1bcc91be55`: `npm ci` installed 338 packages; two consecutive `npm run generate` plus strict validation runs each left zero tracked changes; `npm run quality:source` passed and left the clone clean.
+- In the live worktree, `node scripts/build-repository-meta.js --check` is expected to fail after the daemon rewrites rankings; the strengthened check detects this rather than passing stale metadata.
 
 ## Live-writer blocker
 
@@ -79,4 +81,4 @@
 - Repair provider eligibility/capability/cost/key gating and shared-state serialization in the dirty orchestrator only after the live writers are stopped.
 - Deploy-test the corrected Cloud Run Job/Scheduler source contract in GCP. Static code now uses `run.googleapis.com`, v2 job execution URI, dedicated invoker IAM, matching secret IDs, immutable image digest input, and askpass auth without credential argv; IAM/runtime reachability remains unproven.
 - Replace legacy ranking visibility with a proven eligibility/coverage/scale contract or explicitly keep it as a provenance-only view.
-- Run clean-clone and deployed-environment verification after external automation stops moving HEAD/origin.
+- Run deployed-environment verification after external automation stops moving HEAD/origin; clean-clone source verification is complete for candidate `0a4c529`.

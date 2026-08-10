@@ -1,8 +1,9 @@
 {
   "run_id": "OMEGA-VII-20260809T163754Z",
   "baseline_commit": "8fc5573cc58a6617206cf6b5deec79bc4b4b982d",
-  "reconciled_head": "7ea5cf47a174124dba16123f1fa32db7f0c50f4e",
-  "reconciled_origin_main": "7ea5cf47a174124dba16123f1fa32db7f0c50f4e",
+  "candidate_proof_commit": "0a4c529db9970ccb39fd2c2148c51d1bcc91be55",
+  "reconciled_head_before_audit_record": "0a4c529db9970ccb39fd2c2148c51d1bcc91be55",
+  "reconciled_origin_main_before_audit_record": "0d58136ab9075c3c1ecf364756fad16743356885",
   "artifact": {
     "path": "_site",
     "file_count": 5508,
@@ -25,6 +26,7 @@
     {"id":"F-011","severity":"P1","area":"browser-runtime","summary":"Undefined citation variable blanked idea detail pages.","status":"fixed-and-verified"},
     {"id":"F-012","severity":"P1","area":"git-runtime","summary":"External automation repeatedly moved HEAD/origin and committed mixed user/OMEGA work during the run.","status":"documented-blocker"},
     {"id":"F-013","severity":"P1","area":"task-graph","summary":"All 30 tasks declare no dependency or block edges; structural checker now discloses that ordering/reachability is absent.","status":"warning-pending-graph-design"},
-    {"id":"F-014","severity":"P0","area":"runtime-tls","summary":"Dirty committed orchestrator falls back to an unverified TLS context after certificate failure.","status":"blocked-live-dirty-orchestrator"}
+    {"id":"F-014","severity":"P0","area":"runtime-tls","summary":"Dirty committed orchestrator falls back to an unverified TLS context after certificate failure.","status":"blocked-live-dirty-orchestrator"},
+    {"id":"F-015","severity":"P1","area":"reproducibility","summary":"Tracked metadata embedded HEAD and documentation count replacement amplified comma prefixes on every run.","status":"fixed-clean-clone-verified"}
   ]
 }
