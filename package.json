@@ -32,6 +32,8 @@
     "test:race": "node --test tests/id-allocator-race.test.js",
     "test:providers": "python scripts/test_providers_mock.py",
     "smoke:providers": "python scripts/va_orchestrator.py --test",
+    "proof:providers:live": "python scripts/live-provider-proof.py --minimum-external 2 --fanout 2 --max-cost 1",
+    "preflight:cloud": "python cloud-control-plane/preflight.py",
     "test:runtime": "node --test tests/runtime-contract.test.js",
     "test:pwa": "node --test tests/pwa-contract.test.js",
     "test:integration": "tsx --test apps/factbounty/tests/*.test.ts",

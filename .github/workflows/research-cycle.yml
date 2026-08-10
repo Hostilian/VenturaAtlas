@@ -16,6 +16,14 @@ jobs:
     env:
       PARALLEL_AI_ORCHESTRATION: '1'
       IDEAS_PER_ITERATION: '6'
+      VA_PROVIDER_FANOUT: '2'
+      VA_MAX_COST_CLASS: '1'
+      NVIDIA_NIM_API_KEYS: ${{ secrets.NVIDIA_NIM_API_KEYS }}
+      COHERE_API_KEYS: ${{ secrets.COHERE_API_KEYS }}
+      OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }}
+      ANTHROPIC_API_KEYS: ${{ secrets.ANTHROPIC_API_KEYS }}
+      ACTIVE_API_KEYS: ${{ secrets.ACTIVE_API_KEYS }}
+      DEEPSEEK_API_KEYS: ${{ secrets.DEEPSEEK_API_KEYS }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,9 +45,30 @@ jobs:
       - name: Run provider health check
         run: python scripts/va_orchestrator.py --test
 
+      - name: Prove live external provider overlap
+        id: live-proof
+        continue-on-error: true
+        run: python scripts/live-provider-proof.py --minimum-external 2 --fanout 2 --max-cost 1
+
       - name: Run autonomous discovery generator
         run: python scripts/autonomous-idea-generator.py
 
       - name: Run data validation & quality suite
         run: npm run quality:source
 
+      - name: Upload unattended execution receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: venture-atlas-unattended-receipts-${{ github.run_id }}
+          path: |
+            .agent-state/live-provider-proof.json
+            .agent-state/autonomy-heartbeat.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Enforce live-provider proof after graceful work completion
+        if: steps.live-proof.outcome != 'success'
+        run: |
+          echo "Live two-provider overlap was not proven; workflow completed fallback work but is DEGRADED."
+          exit 1

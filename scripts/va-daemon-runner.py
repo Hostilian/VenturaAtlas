@@ -97,6 +97,15 @@ def _run_script(script_name: str, args: list = None) -> tuple[int, str]:
     except Exception as e:
         return 1, str(e)
 
+def _run_command(cmd: list[str]) -> tuple[int, str]:
+    """Run a bounded maintenance command without invoking a shell."""
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8',
+                                errors='replace', cwd=BASE_DIR, timeout=600)
+        return result.returncode, result.stdout + result.stderr
+    except Exception as e:
+        return 1, str(e)
+
 def _print_banner(iteration: int, max_iter: int, interval: int):
     max_str = str(max_iter) if max_iter else "∞"
     print(f"\n\033[96m{'='*60}")
@@ -154,6 +163,10 @@ def main():
                         help='Maximum concurrent idea workers')
     parser.add_argument('--max-cost', type=int, default=int(os.environ.get('VA_MAX_COST_CLASS', '1')),
                         help='Maximum provider cost class (0=local only, 1=low, 3=high)')
+    parser.add_argument('--integrity-every', type=int, default=int(os.environ.get('VA_INTEGRITY_EVERY', '30')),
+                        help='Run repository drift check every N cycles (0 disables)')
+    parser.add_argument('--live-proof-every', type=int, default=int(os.environ.get('VA_LIVE_PROOF_EVERY', '180')),
+                        help='Attempt live two-provider overlap proof every N cycles (0 disables)')
     parser.add_argument('--test',       action='store_true', help='Test mode: 2 iterations, 5s interval')
     args = parser.parse_args()
 
@@ -189,6 +202,8 @@ def main():
 
         _print_banner(iteration, max_iter, interval)
         _log("INFO", f"Starting idea discovery run #{iteration}", extra={"iteration": iteration})
+
+        degraded_reasons = []
 
         # 2. Run idea generator
         _log("INFO", "Running autonomous-idea-generator.py...")
@@ -231,11 +246,41 @@ def main():
                 _log("ERROR", f"Ranker exited with code {rc}")
                 raise RuntimeError(f"critical stage ranking failed with rc={rc}")
 
-        # 5. Provider status
+        # 5. Periodic integrity work. This is read-only and degrades gracefully:
+        # discovery may continue even when documentation/revision drift needs repair.
+        if args.integrity_every > 0 and iteration % args.integrity_every == 0:
+            _log("INFO", "Running periodic repository drift check...")
+            rc, out = _run_command(['node', 'scripts/check-repository-drift.js'])
+            if rc != 0:
+                degraded_reasons.append(f"repository-drift rc={rc}")
+                _log("WARN", f"Repository drift check failed with code {rc}; continuing in degraded mode")
+            else:
+                _log("SUCCESS", "Repository drift check passed")
+
+        # 6. Periodic live proof. Missing keys/providers must be visible, but must not
+        # take down the deterministic own-orch fallback or the rest of the loop.
+        if args.live_proof_every > 0 and iteration % args.live_proof_every == 0:
+            _log("INFO", "Attempting live external provider overlap proof...")
+            rc, out = _run_script('live-provider-proof.py', [
+                '--minimum-external', '2',
+                '--fanout', os.environ.get('VA_PROVIDER_FANOUT', '2'),
+                '--max-cost', str(max(0, min(3, args.max_cost))),
+            ])
+            if rc != 0:
+                degraded_reasons.append(f"live-provider-proof rc={rc}")
+                _log("WARN", "Live provider overlap is not proven; own-orch/local work remains available")
+            else:
+                _log("SUCCESS", "Live provider overlap proof passed")
+
+        # 7. Provider status
         _print_provider_status()
 
-        _heartbeat("sleeping", iteration, f"next cycle in {interval}s")
-        _log("SUCCESS", f"Run #{iteration} complete")
+        if degraded_reasons:
+            _heartbeat("degraded", iteration, "; ".join(degraded_reasons))
+            _log("WARN", f"Run #{iteration} complete in degraded mode: {'; '.join(degraded_reasons)}")
+        else:
+            _heartbeat("sleeping", iteration, f"next cycle in {interval}s")
+            _log("SUCCESS", f"Run #{iteration} complete")
         print(f"\n📥 Review staged: python scripts/review-staged-ideas.py")
         print(f"📊 Full ranking:  python scripts/va-ranker.py --top 20")
 

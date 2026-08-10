@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "singleWriterRequired": true,
+  "tasks": [
+    {
+      "id": "provider-health",
+      "cadence": "at-supervisor-start",
+      "critical": true,
+      "failureMode": "fail-closed-before-writes"
+    },
+    {
+      "id": "idea-discovery",
+      "cadence": "every-cycle",
+      "critical": true,
+      "failureMode": "skip-dependent-stages-and-restart"
+    },
+    {
+      "id": "staged-validation",
+      "cadence": "every-cycle-when-enabled",
+      "critical": true,
+      "failureMode": "skip-ranking-and-restart"
+    },
+    {
+      "id": "ranking-refresh",
+      "cadence": "every-cycle-when-enabled",
+      "critical": true,
+      "failureMode": "failed-heartbeat-and-restart"
+    },
+    {
+      "id": "repository-integrity",
+      "cadence": "every-30-cycles",
+      "critical": false,
+      "failureMode": "degraded-heartbeat"
+    },
+    {
+      "id": "live-provider-overlap-proof",
+      "cadence": "every-180-cycles",
+      "critical": false,
+      "failureMode": "degraded-heartbeat-with-own-orch-continuation"
+    }
+  ]
+}
