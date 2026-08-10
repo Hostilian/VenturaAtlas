@@ -1,0 +1,13 @@
+{
+  "runId":"OMEGA-IX-CONT-20260810T160000Z",
+  "entries":[
+    {"thesis":"ChargeTruth","alternatives":["Monta","GreenFlux","AMPECO","Eco-Movement","CPO/CPMS native AFIR export"],"absorbedSurface":"AFIR export, DATEX conversion, basic dashboard","remainingWedge":"cross-layer stale-state diagnosis and replay"},
+    {"thesis":"VINState","alternatives":["VIN-history vendors","insurer salvage systems","registration/customs systems","recycler systems"],"absorbedSurface":"after-the-fact history report","remainingWedge":"transaction-time impossible-state gate"},
+    {"thesis":"MicroFee","alternatives":["EPR schemes","ERP/ESG suites","consultancy allocation models"],"absorbedSurface":"submission/reporting","remainingWedge":"defensible product-level cost allocation and dispute file"},
+    {"thesis":"BidProof","alternatives":["bid consultants","procurement suites","ESG evidence tools"],"absorbedSurface":"checklist/document collection","remainingWedge":"evidence-to-auction-score-to-economic-impact"},
+    {"thesis":"ReclaimRight","alternatives":["refrigerant logbooks","cylinder/inventory systems","technician software"],"absorbedSurface":"tracking","remainingWedge":"legal-use decision for a specific gas/equipment/service/date"},
+    {"thesis":"PartGate","alternatives":["TecDoc-style catalogues","workshop management","type-approval databases"],"absorbedSurface":"physical fitment","remainingWedge":"legal fitment by VIN, approval, jurisdiction and date"},
+    {"thesis":"ESAP Relay","alternatives":["financial reporting suites","OAMs","ESMA/ESAP interfaces"],"absorbedSurface":"file generation and upload","remainingWedge":"intermediary receipt-chain reconciliation"},
+    {"thesis":"AgeProof Lab","alternatives":["age-assurance vendors","platform trust/safety teams","official EU wallet tooling"],"absorbedSurface":"verification service","remainingWedge":"independent adversarial test corpus and evidence"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "runId":"OMEGA-IX-CONT-20260810T160000Z",
+  "status":"bounded-continuation-complete",
+  "canonicalAdds":0,
+  "stagingAdds":0,
+  "approved":0,
+  "findings":[
+    {"id":"CONT-F-001","severity":"P0","status":"fixed-by-disposition","finding":"The attachment recommends four canonical promotions, but existing corpus and missing behavioral evidence do not justify automatic insertion.","control":"All 20 records remain in a continuation ledger only; MicroFee and adjacent candidates are explicitly MERGE/RESEARCH_MORE."},
+    {"id":"CONT-F-002","severity":"P1","status":"open","finding":"ChargeTruth and VINState are strong new theses but require transaction traces and paid design partners before staging.","nextTest":"ChargeTruth: 100,000 station-state observations across 3 CPOs; VINState: 100 real VIN transitions across 3 lifecycle operators."},
+    {"id":"CONT-F-003","severity":"P1","status":"open","finding":"MicroFee is already represented by idea-378 and idea-293; BidProof is adjacent to idea-373; ReclaimRight is adjacent to idea-400; PartGate is adjacent to idea-371 and staged Euro 7 consistency.","control":"Do not create duplicate canonical IDs; merge after owner-reviewed identity mapping."},
+    {"id":"CONT-F-004","severity":"P1","status":"open","finding":"This continuation verifies forcing functions for 11 signals, but does not establish WTP, recurring pain, procurement access, or achieved ROI.","control":"Scores remain research-only and no approval is issued."},
+    {"id":"CONT-F-005","severity":"P1","status":"open","finding":"The proposed Reality Multiplicity Score and Failure-Proximity Score lack calibration data and should not enter the ranking contract yet.","control":"Record as methodology hypotheses; require perturbation tests and labeled outcome samples before implementation."}
+  ]
+}

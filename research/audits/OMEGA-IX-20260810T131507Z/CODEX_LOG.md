@@ -34,9 +34,23 @@
 ## 2026-08-10 â€” implementation and verification
 
 - Implemented the controls recorded in `CODEX_IMPLEMENT.md`; preserved `.agent-state/provider-state.json` as user/runtime state.
-- Targeted Python epistemic/provider tests: 13/13 passed. Node unit suite: 32/32 passed. Provider mocks: 7/7 passed. Constitution and privacy checks passed.
+- Final targeted Python epistemic/provider/critical-stage tests: 15/15 passed. Node unit suite: 33/33 passed. Provider mocks: 7/7 passed. Constitution and privacy checks passed.
 - Strengthened drift gate initially failed against stale metadata, then passed after one locked regeneration at 294 + 185 = 479; repository consistency passed.
-- Public build/check passed with legacy `rankings/` absent. Exact receipt: 5,475 files, 16,547,571 bytes, tree SHA-256 `0af9ad140122929bdfd90fea7346f9e3f8c5a70cd98c7377eb5629b1bd21db24`.
-- In-app browser acceptance against that digest passed: truthful home copy and legacy-score warning; 50 eligibility flags on desktop/mobile rankings with no mobile overflow or `Verified`; idea-385 `NOT PROVEN`, legacy label, no verified date, four titled safe public links; local-only collaboration; raw sources denied; 84 eligible public sources; structurally scoped validation summary; no console warn/error entries.
-- The first isolated-replay shell invocation omitted the intended directory change and therefore merely rechecked the root artifact. The corrected invocation changed into the isolated copy and independently reproduced the exact 5,475 / 16,547,571 / `0af9ad...` artifact.
+- Intermediate public build/browser checks found truthful UI warnings, but red-team invalidated that digest because public JSON retained synthetic record-level epistemic labels. A second intermediate digest was also rejected after source began denying legacy dossiers and CSV.
+- Final source projection neutralizes migrated epistemic labels, denies legacy ranking/dossier Markdown and unqualified CSV, and stamps public JSON scores as legacy/unverified and ranking-ineligible.
+- Current build/check receipt: 5,091 files, 13,284,502 bytes, tree SHA-256 `77180c57393863113f1380ff2302a0b3e7247f74aa59cbd0a5d5b04f173df80f`.
+- Corrected isolated replay independently reproduced exact 5,091 / 13,284,502 / `77180c...` output. Temporary replay directories remain under the user temp directory because recursive cleanup was blocked by execution policy.
+- Fresh browser certification of `77180c...` is blocked: the fresh browser agent found no in-app browser backend. No browser claim is carried forward from rejected digests.
 - Baseline and origin remained `e1008bcfac5ddd00cc42d7cd71dcdd98f651de52`. No Venture Atlas process was running. Scheduled task `VentureAtlasAutonomy` was `Ready`, not disabled: its enabled logon trigger, `StartWhenAvailable`, restart policy, and `WakeToRun` can start writers again.
+
+## 2026-08-10 â€” final moving-HEAD reconciliation
+
+- After implementation and final source tests, an external integration layer committed/pushed the source and initial audit state as `caf14f4a4c462860811601deeb2c9b253ec2c812` (message `l`). `HEAD`, `origin/main`, and `origin/HEAD` matched.
+- The commit includes the source controls, tests, and OMEGA IX directory. Subsequent working-tree changes are limited to `.agent-state/provider-state.json` plus final audit/receipt corrections; those paths are denied from the public artifact.
+- No Venture Atlas process was observed. The enabled scheduled task remained `Ready`, so future writer resumption remains possible at its next trigger.
+- Final independent read-only reconciliation at `caf14f4`: artifact receipt/hash/checker matched 5,091 / 13,284,502 / `77180c...`; all forbidden paths were absent; all 294 public ideas carried legacy-score/ineligibility flags; no T1/T2/HIGH labels remained; critical-stage failure controls/tests were committed. No remaining P0 was observed.
+
+## Completion status
+
+- This is a bounded OMEGA IX implementation/research pass, not completion of the supplied quantitative contract. Receipts cover 96 purposeful queries, 47 considered sources, 22 retained sources, 12 signals and 10 competitor maps; query-level/excluded-source receipts and several finalist fields remain incomplete.
+- Zero candidates are approved. Cloud/off-laptop execution and current-digest browser behavior remain unverified external/evidence blockers.

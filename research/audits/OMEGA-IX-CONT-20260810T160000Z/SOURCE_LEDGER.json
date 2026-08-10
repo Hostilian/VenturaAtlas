@@ -1,0 +1,18 @@
+{
+  "runId":"OMEGA-IX-CONT-20260810T160000Z",
+  "providedResearchInput":"C:\\Users\\Hostilian\\.codex\\attachments\\827c8eb9-3bd1-4757-bcc6-ee238ad0569c\\pasted-text.txt",
+  "verifiedPrimarySources":[
+    {"id":"cont-src-01","title":"AFIR/DATEX II implementing material","url":"https://eur-lex.europa.eu/resource.html?format=PDF&uri=cellar:ad83ff96-178a-11f0-b1a3-01aa75ed71a1.0001.02/DOC_1","supports":["cont-01"]},
+    {"id":"cont-src-02","title":"Regulation (EU) 2026/1738 end-of-life vehicles","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601738","supports":["cont-02"]},
+    {"id":"cont-src-03","title":"Urban wastewater treatment and micropollutant EPR summary","url":"https://eur-lex.europa.eu/EN/legal-content/summary/urban-wastewater-treatment-from-2027.html","supports":["cont-03"]},
+    {"id":"cont-src-04","title":"Directive (EU) 2024/3019","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024L3019","supports":["cont-03"]},
+    {"id":"cont-src-05","title":"Commission NZIA non-price auction guidance","url":"https://energy.ec.europa.eu/news/commission-publishes-guidance-application-non-price-criteria-under-net-zero-industry-act-2026-07-22_en","supports":["cont-04"]},
+    {"id":"cont-src-06","title":"EU F-gas Regulation 2024/573","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R0573","supports":["cont-05"]},
+    {"id":"cont-src-07","title":"ESMA European Single Access Point","url":"https://www.esma.europa.eu/esmas-activities/data/european-single-access-point-esap","supports":["cont-07"]},
+    {"id":"cont-src-08","title":"ESMA technical tasks and validation","url":"https://www.esma.europa.eu/press-news/esma-news/esas-consult-draft-implementing-technical-standards-specifying-certain-tasks","supports":["cont-07"]},
+    {"id":"cont-src-09","title":"EU age verification approach","url":"https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification","supports":["cont-08"]},
+    {"id":"cont-src-10","title":"EASA ReFuelEU reporting tool","url":"https://www.easa.europa.eu/en/domains/environment/refueleu-aviation-digital-reporting-tool","supports":["cont-10"]},
+    {"id":"cont-src-11","title":"EU Once-Only Technical System","url":"https://ec.europa.eu/digital-building-blocks/sites/spaces/OOTS/pages/565379323/OOTSHUB%2BHome","supports":["cont-13"]}
+  ],
+  "unverifiedFromAttachment": ["AFIR vendor competition details","market-size/WTP claims","age-verification empirical study implications","ChargeTax implementation scope","agentic-commerce protocol competition details"]
+}
