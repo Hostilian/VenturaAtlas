@@ -52,18 +52,13 @@ function getIdeaScore(idea, dimension) {
 
 function formatCompositeScore(val) {
   if (val === null || val === undefined || isNaN(val)) return 'N/A';
-  let num = Number(val);
-  if (num <= 10 && num > 0) num = num * 10;
-  return Math.min(100, Math.max(0, num)).toFixed(1);
+  return `${Number(val).toFixed(1)} (scale unspecified)`;
 }
 
-function formatDimensionScore(val, maxScale = 10) {
+function formatDimensionScore(val, maxScale = null) {
   if (val === null || val === undefined || isNaN(val)) return 'N/A';
   const num = Number(val);
-  if (maxScale === 10 && num > 10) {
-    return (num / 10).toFixed(1) + ' / 10';
-  }
-  return num.toFixed(1) + ' / ' + maxScale;
+  return maxScale == null ? `${num.toFixed(1)} (scale unspecified)` : `${num.toFixed(1)} / ${maxScale}`;
 }
 
 function formatConfidenceScore(val) {
@@ -393,12 +388,8 @@ function getIdeaScore(idea, dimension) {
     return typeof v === 'number' && !isNaN(v) ? v : null;
   }
   if (d === 'confidence') {
-    let v = idea.scores?.confidence?.value ?? idea.compositeScores?.confidence ?? idea.scores?.overallConfidence?.value;
-    if (typeof v === 'number' && !isNaN(v)) {
-      if (v <= 10) v = v * 10;
-      return v;
-    }
-    return null;
+    const v = idea.scores?.confidence?.value ?? idea.compositeScores?.confidence ?? idea.scores?.overallConfidence?.value;
+    return typeof v === 'number' && !isNaN(v) ? v : null;
   }
   if (d === 'market') {
     const v = idea.scores?.marketDemand?.value ?? idea.compositeScores?.marketDemand ?? idea.scores?.marketSize?.value;
@@ -414,12 +405,13 @@ window.VentureAtlas.getIdeaScore = getIdeaScore;
 function fillMetrics() {
   const counts = VA.meta?.counts || {};
   const map = {
-    '[data-total-ideas]':      counts.canonicalIdeas || VA.ideas.length,
-    '[data-total-prompts]':    counts.prompts || 6825,
-    '[data-total-sources]':    counts.sources || VA.sources.length,
-    '[data-total-categories]': counts.categories || VA.categories.length
+    '[data-total-ideas]':      counts.canonicalIdeas ?? (VA.dataErrors.ideas ? null : VA.ideas.length),
+    '[data-total-prompts]':    counts.prompts ?? null,
+    '[data-total-sources]':    counts.sources ?? (VA.dataErrors.sources ? null : VA.sources.length),
+    '[data-total-categories]': counts.categories ?? (VA.dataErrors.categories ? null : VA.categories.length)
   };
   Object.entries(map).forEach(([sel, val]) => {
+    if (val === null || val === undefined) return;
     $$(sel).forEach(el => countUp(el, val));
   });
 }
@@ -463,11 +455,11 @@ function card(x) {
 
   const overallDisp = overallVal !== null ? overallVal : 'N/A';
   const profitDisp  = profitVal !== null ? profitVal : 'N/A';
-  const confDisp    = confVal !== null ? `${Math.round(confVal)}/100` : 'N/A';
+  const confDisp    = confVal !== null ? `${confVal} (legacy)` : 'N/A';
 
   const scoreC  = overallVal !== null ? scoreClass(overallVal) : 'lo';
   const profitC = profitVal !== null ? scoreClass(profitVal) : 'lo';
-  const confC   = confVal !== null ? scoreClass(confVal) : 'lo';
+  const confC   = 'neutral';
 
   const tags = (x.tags || []).slice(0, 4)
     .map(t => `<span class="chip">${esc(t)}</span>`)
@@ -518,14 +510,14 @@ function card(x) {
 }
 
 function miniCard(x) {
-  const overall = x.atAGlance?.overallScore ?? 0;
-  const scoreC  = scoreClass(overall);
+  const overall = x.atAGlance?.overallScore ?? null;
+  const scoreC  = overall === null ? 'neutral' : scoreClass(overall);
   return `
 <article class="card" role="listitem" data-id="${esc(x.id)}" style="padding:0.9rem">
   <div class="eyebrow" style="font-size:0.68rem">${esc(x.category)}</div>
   <h3 style="font-size:0.88rem"><a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3>
   <div class="score-box ${scoreC}" style="display:inline-block;padding:0.25rem 0.5rem;border-radius:6px;font-size:0.75rem">
-    <span class="val" style="font-size:0.95rem">${overall}</span> score
+    <span class="val" style="font-size:0.95rem">${overall ?? 'N/A'}</span> score
   </div>
   <div style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">${esc(x.atAGlance?.timeToFirstRevenue || '—')}</div>
 </article>`.trim();
@@ -885,6 +877,16 @@ function initIdea() {
   
   const killStatusText = x.killCriteria ? (x.killCriteria.killFlagged ? '⚠ Flagged' : 'Pass') : 'Not assessed';
   const killStatusColor = x.killCriteria ? (x.killCriteria.killFlagged ? 'var(--score-lo)' : 'var(--score-hi)') : 'var(--muted)';
+
+  const citedSourceIds = new Set();
+  for (const reference of x.sourceReferences || []) {
+    const sourceId = typeof reference === 'string' ? reference : reference?.id;
+    if (sourceId) citedSourceIds.add(sourceId);
+  }
+  for (const evidence of x.evidence || []) {
+    if (evidence?.sourceId) citedSourceIds.add(evidence.sourceId);
+  }
+  const sourcesCount = citedSourceIds.size;
   
   const valStatus = x.validationStatus || x.atAGlance?.validationStatus || null;
   const validationProvenance = x.validationProvenance || x.researchRunId || x.validationRunId;
@@ -985,7 +987,7 @@ function initIdea() {
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Evidence Citations</div>
-      <div style="font-size:1.25rem;font-weight:700;color:var(--text)">${sourcesCount} Citations</div>
+      <div style="font-size:1.25rem;font-weight:700;color:var(--text)">${sourcesCount} ${sourcesCount === 1 ? 'Citation' : 'Citations'}</div>
     </div>
     <div style="padding:0.75rem;background:var(--panel2);border-radius:var(--radius-sm);border:1px solid var(--line)">
       <div style="font-size:0.75rem;color:var(--muted)">Kill Criteria Status</div>

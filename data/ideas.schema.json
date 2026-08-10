@@ -1,53 +1,48 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/venture-atlas/ideas.schema.json",
-  "title": "Venture Atlas Idea Collection",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "required": [
-      "schemaVersion",
-      "id",
-      "slug",
-      "name",
-      "atAGlance",
-      "customer",
-      "product",
-      "futureAiBuild",
-      "profitability",
-      "validation",
-      "goToMarket",
-      "operations",
-      "risks",
-      "actionPlan",
-      "scores",
-      "compositeScores",
-      "sourceReferences"
-    ],
-    "properties": {
-      "id": {
-        "type": "string",
-        "pattern": "^idea-[0-9]{3}$"
-      },
-      "slug": {
-        "type": "string",
-        "pattern": "^[a-z0-9-]+$"
-      },
-      "name": {
-        "type": "string"
-      },
-      "sourceReferences": {
-        "type": "array",
-        "items": {
-          "type": "string"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/ideas.schema.json",
+  "title": "Venture Atlas Canonical Idea Collection",
+  "description": "Authoritative minimum structural contract for the heterogeneous canonical corpus. Epistemic and ranking eligibility are separate versioned contracts.",
+  "type": "object",
+  "required": ["schemaVersion", "ideas"],
+  "properties": {
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "ideas": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/idea" }
+    }
+  },
+  "$defs": {
+    "idea": {
+      "type": "object",
+      "required": ["id", "slug", "name", "category", "oneSentenceConcept"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^idea-\\d{3}$" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "category": { "type": "string", "minLength": 1 },
+        "subcategory": { "type": "string" },
+        "oneSentenceConcept": { "type": "string", "minLength": 5 },
+        "elevatorPitch": { "type": "string" },
+        "problemStatement": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "alternativeNames": { "type": "array", "items": { "type": "string" } },
+        "atAGlance": {
+          "type": "object",
+          "properties": {
+            "problemSolved": { "type": "string" },
+            "targetCustomer": { "type": "string" },
+            "businessModel": { "type": "string" },
+            "overallScore": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        },
+        "sourceReferences": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       },
-      "scores": {
-        "type": "object"
-      },
-      "compositeScores": {
-        "type": "object"
-      }
+      "additionalProperties": true
     }
-  }
+  },
+  "additionalProperties": true
 }

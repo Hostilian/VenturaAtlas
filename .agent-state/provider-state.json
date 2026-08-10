@@ -1,56 +1,58 @@
 {
   "providers": {
     "hermes-ollama": {
-      "failures": 3,
-      "circuitUntil": "2026-08-09T16:37:22.471798+00:00",
+      "failures": 7,
+      "circuitUntil": "2026-08-10T11:28:09.672948+00:00",
       "lastUsed": "",
-      "totalCalls": 3,
+      "totalCalls": 7,
       "successCalls": 0
     },
     "omniRoute": {
+      "failures": 6,
+      "circuitUntil": "2026-08-10T11:26:58.920942+00:00",
+      "lastUsed": "",
+      "totalCalls": 6,
+      "successCalls": 0
+    },
+    "fcc-claude": {
+      "failures": 5,
+      "circuitUntil": "2026-08-10T11:26:59.193017+00:00",
+      "lastUsed": "",
+      "totalCalls": 5,
+      "successCalls": 0
+    },
+    "active-api": {
       "failures": 3,
-      "circuitUntil": "2026-08-09T16:37:39.541479+00:00",
+      "circuitUntil": "2026-08-10T11:25:49.302356+00:00",
       "lastUsed": "",
       "totalCalls": 3,
       "successCalls": 0
     },
-    "fcc-claude": {
+    "deepseek-api": {
       "failures": 1,
       "circuitUntil": "",
       "lastUsed": "",
       "totalCalls": 1,
       "successCalls": 0
     },
-    "active-api": {
-      "failures": 0,
-      "circuitUntil": "",
-      "lastUsed": "",
-      "totalCalls": 0,
-      "successCalls": 0
-    },
-    "deepseek-api": {
-      "failures": 0,
-      "circuitUntil": "",
-      "lastUsed": "",
-      "totalCalls": 0,
-      "successCalls": 0
-    },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-09T17:00:21.790013+00:00",
-      "totalCalls": 1599,
-      "successCalls": 1599
+      "lastUsed": "2026-08-10T11:25:50.031422+00:00",
+      "totalCalls": 17,
+      "successCalls": 17
     },
     "anthropic-full": {
-      "failures": 2,
-      "circuitUntil": "",
+      "failures": 5,
+      "circuitUntil": "2026-08-10T11:28:09.898133+00:00",
       "lastUsed": "",
-      "totalCalls": 2,
+      "totalCalls": 5,
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-09T17:00:21.852133+00:00",
+  "lastRun": "2026-08-10T11:26:12.592836+00:00",
   "totalIdeasGenerated": 0,
+  "totalIdeasPromoted": 0,
+  "schemaVersion": "1.0.0",
   "totalCandidatesStaged": 0
 }

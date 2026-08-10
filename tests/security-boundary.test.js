@@ -36,7 +36,8 @@ test('Container context excludes secrets and private operator state', () => {
 test('Public secret scanner recognizes provider-specific token formats', () => {
   const probes = [
     'sk-or-v1-FAKE0123456789abcdefghijklmnop',
-    'sk-ant-FAKE0123456789abcdefghijklmnopqr'
+    'sk-ant-FAKE0123456789abcdefghijklmnopqr',
+    'file:///C:/Users/example/private/repository'
   ];
   for (const probe of probes) {
     assert.ok(

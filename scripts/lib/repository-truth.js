@@ -125,8 +125,7 @@ function getRepositoryTruth() {
     'data/idea-staging-queue.json',
     'data/categories.json',
     'data/sources.json',
-    'data/rankings.json',
-    'data/repository-meta.json'
+    'data/rankings.json'
   ].forEach(relFile => {
     const full = path.join(ROOT, relFile);
     const hashObj = computeFileHash(full);

@@ -1,8 +1,6 @@
 /**
- * Failure Injection & Resilient Recovery Unit Test Suite
- * ========================================================
- * Verifies circuit breaker behavior, HTTP 429 backoff handling,
- * key pool failover, atomic lease expiry, and schema quarantine.
+ * Runtime and public-boundary contract tests.
+ * These tests do not claim to inject provider HTTP failures.
  */
 
 const test = require('node:test');
@@ -14,13 +12,13 @@ const { execSync } = require('child_process');
 const ROOT = path.resolve(__dirname, '..');
 const ORCH_PATH = path.join(ROOT, 'scripts', 'va_orchestrator.py');
 
-test('Failure Injection — Provider Circuit Breaker under HTTP 500 Storm', () => {
+test('Provider Health Contract — status and no-eligible-provider gate execute', () => {
   const result = execSync(`python "${ORCH_PATH}" --test`, { cwd: ROOT, encoding: 'utf-8' });
   assert.ok(result.includes('Provider Health Check'), 'Health check output must execute cleanly');
   assert.ok(result.includes('Circuit Breaker Status'), 'Circuit breaker status must be present');
 });
 
-test('Failure Injection — Idempotent Metadata Build & No Duplicate Keys', () => {
+test('Metadata Contract — portfolio arithmetic is internally consistent', () => {
   const metaPath = path.join(ROOT, 'data', 'repository-meta.json');
   assert.ok(fs.existsSync(metaPath), 'repository-meta.json must exist');
   
@@ -29,7 +27,7 @@ test('Failure Injection — Idempotent Metadata Build & No Duplicate Keys', () =
   assert.equal(meta.counts.totalIdeas, meta.counts.canonicalIdeas + meta.counts.stagedIdeas, 'Total ideas must equal canonical + staged');
 });
 
-test('Failure Injection — Public Artifact Security Check', () => {
+test('Public Artifact Contract — rebuild and enforce private-path projection', () => {
   const distPath = path.join(ROOT, '_site');
   execSync(`node "${path.join(ROOT, 'scripts', 'build-public-artifact.js')}"`, { cwd: ROOT, encoding: 'utf-8' });
   const checkPath = path.join(ROOT, 'scripts', 'check-public-artifact.js');
@@ -41,6 +39,11 @@ test('Failure Injection — Public Artifact Security Check', () => {
   assert.ok(!fs.existsSync(path.join(distPath, 'research', 'audits')), 'private audit runs must not be public');
   assert.ok(!fs.existsSync(path.join(distPath, 'research', 'original-chat')), 'private original-chat research must not be public');
   assert.ok(!fs.existsSync(path.join(distPath, 'meeting-packets')), 'meeting packets require explicit publication and must not be public by default');
+  assert.ok(!fs.existsSync(path.join(distPath, 'assets', 'AGENTS.override.md')), 'nested agent instructions must not be public');
+  const publicHome = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8');
+  assert.ok(!publicHome.includes('data-scope="staged"'), 'public home must not expose private staging scope');
+  assert.ok(!publicHome.includes('data-scope="all"'), 'public home must not combine private staging with published ideas');
+  assert.ok(!/Staging Queue \(\s*\d+/.test(publicHome), 'public home must not expose a staged idea count');
 
   const publicSources = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'public-sources.json'), 'utf8'));
   const publicIds = new Set(publicSources.map(source => source.id));
@@ -60,5 +63,9 @@ test('Failure Injection — Public Artifact Security Check', () => {
   assert.equal(publicMeta.counts.stagedIdeas, undefined, 'public metadata must not expose staged counts');
   assert.equal(publicMeta.counts.totalIdeas, undefined, 'public metadata must not combine staged and canonical counts');
   assert.equal(publicMeta.revisions.stagingRevision, undefined, 'public metadata must not expose staging revision');
+  assert.equal(publicMeta.revisions.rankingRevision, undefined, 'public metadata must not expose private ranking-writer revision');
   assert.equal(publicMeta.counts.sources, publicSources.length, 'public source count must describe the public projection');
+  const publicRankings = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'rankings.json'), 'utf8'));
+  assert.equal(publicRankings.generatedAt, undefined, 'public rankings must not expose volatile daemon timestamps');
+  assert.equal(publicRankings.history, undefined, 'public rankings must not expose private daemon execution history');
 });

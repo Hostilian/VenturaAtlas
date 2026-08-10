@@ -21,6 +21,7 @@ const FORBIDDEN_FILE_PATTERNS = [
   /^meeting-packets(\/|$)/i,
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,
+  /(^|\/)AGENTS(?:\.override)?\.md$/i,
   /provider-state\.json$/i,
   /package(-lock)?\.json$/i,
   /tsconfig.*\.json$/i,
@@ -36,7 +37,7 @@ const SECRET_CONTENT_PATTERNS = [
   { name: 'GitHub Personal Token', regex: /gh[pousr]_[a-zA-Z0-9]{36,}/ },
   { name: 'RSA/EC Private Key Header', regex: /-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----/ },
   { name: 'Hardcoded Authorization Header', regex: /Authorization:\s*Bearer\s+[a-zA-Z0-9._-]{20,}/i },
-  { name: 'Local Windows Path Exposure', regex: /[a-zA-Z]:\\Users\\[a-zA-Z0-9_.-]+\\AppData/i }
+  { name: 'Local Windows User Path Exposure', regex: /(?:[a-zA-Z]:\\Users\\[a-zA-Z0-9_.-]+|file:\/{3}[a-zA-Z]:\/Users\/[a-zA-Z0-9_.-]+)/i }
 ];
 
 function checkDirectory(dirPath) {

@@ -51,13 +51,19 @@ function initRankings() {
     // Filter items
     let filteredItems = (view.items || []).map(item => {
       const fullIdea = ideasMap.get(item.ideaId || item.id) || {};
+      const eligibilityIssues = [];
+      if (['candidate', 'staged'].includes(String(fullIdea.status || item.status || '').toLowerCase())) eligibilityIssues.push('candidate/staged');
+      if (item.killFlagged || fullIdea.killCriteria?.killFlagged) eligibilityIssues.push('kill flagged');
+      if (!Array.isArray(fullIdea.sourceReferences) || fullIdea.sourceReferences.length === 0) eligibilityIssues.push('no public evidence source');
+      if (fullIdea.rankingEligibility?.eligible !== true) eligibilityIssues.push('eligibility not established');
       return {
         ...item,
         fullIdea,
         category: item.category || fullIdea.category || 'Uncategorized',
         name: item.name || fullIdea.name || item.ideaId,
-        score: item.score ?? fullIdea.atAGlance?.overallScore ?? 0,
-        concept: fullIdea.oneSentenceConcept || ''
+        score: item.score ?? fullIdea.atAGlance?.overallScore ?? null,
+        concept: fullIdea.oneSentenceConcept || '',
+        eligibilityIssues
       };
     });
 
@@ -91,6 +97,7 @@ function initRankings() {
               <span class="chip primary sm">Lens v2.4</span>
             </h2>
             <p style="font-size:0.9rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(view.description || '')}</p>
+            <p role="note" style="font-size:0.82rem;color:var(--score-lo);margin-bottom:0.5rem"><strong>Legacy heuristic:</strong> this stored view does not enforce the current evidence, kill-criteria, coverage, or scale eligibility contract. Items remain visible for provenance and are flagged until eligibility is established.</p>
             <div style="display:flex;gap:0.75rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap">
               <span><strong>Algorithm:</strong> ${escHTML(view.algorithmVersion || 'weighted-composite-v2')}</span>
               <span>•</span>
@@ -150,7 +157,7 @@ function initRankings() {
             <tbody>
               ${itemsToDisplay.map((item, idx) => {
                 const ideaId = item.ideaId || item.id;
-                const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score || 'N/A');
+                const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score ?? 'N/A');
                 const ideaUrl = `${base}/docs/idea.html?id=${encodeURIComponent(ideaId)}`;
                 const isFav = isFavorite(ideaId);
 
@@ -161,6 +168,7 @@ function initRankings() {
                       <div>
                         <strong><a href="${ideaUrl}" class="ranking-idea-link" data-id="${escHTML(ideaId)}">${escHTML(item.name)}</a></strong>
                         ${item.killFlagged ? '<span class="chip danger sm" style="margin-left:0.4rem">⚠ Kill Flagged</span>' : ''}
+                        ${item.eligibilityIssues.length ? `<span class="chip warn sm" style="margin-left:0.4rem" title="${escHTML(item.eligibilityIssues.join(', '))}">Eligibility unproven</span>` : '<span class="chip success sm">Eligible</span>'}
                       </div>
                       ${item.concept ? `<div style="font-size:0.8rem;color:var(--text2);margin-top:0.15rem">${escHTML(item.concept)}</div>` : ''}
                     </td>
@@ -186,7 +194,7 @@ function initRankings() {
         <div class="mobile-ranking-cards" style="display:flex;flex-direction:column;gap:0.75rem">
           ${itemsToDisplay.map((item, idx) => {
             const ideaId = item.ideaId || item.id;
-            const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score || 'N/A');
+            const scoreVal = typeof item.score === 'number' ? item.score.toFixed(1) : (item.score ?? 'N/A');
             const ideaUrl = `${base}/docs/idea.html?id=${encodeURIComponent(ideaId)}`;
 
             return `

@@ -39,7 +39,9 @@ function buildIndex(ideas) {
       concept: idea.oneSentenceConcept || '',
       customer: customer,
       problem: problem,
-      overallScore: Number(idea.atAGlance?.overallScore || idea.scores?.existingSpendingEvidence || 0),
+      overallScore: Number.isFinite(Number(idea.atAGlance?.overallScore))
+        ? Number(idea.atAGlance.overallScore)
+        : null,
       tags: Array.isArray(idea.tags) ? idea.tags : [],
       normalizedText
     };
@@ -81,8 +83,8 @@ function main() {
       process.exit(1);
     }
     const current = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8'));
-    if (current.length !== newIndex.length) {
-      console.error(`[ERROR] search-index.json size mismatch (${current.length} vs ${newIndex.length})`);
+    if (JSON.stringify(current) !== JSON.stringify(newIndex)) {
+      console.error('[ERROR] search-index.json content differs from the deterministic projection');
       process.exit(1);
     }
     console.log('[OK] search-index.json is current');

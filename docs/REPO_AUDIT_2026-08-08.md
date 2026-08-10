@@ -6,7 +6,7 @@
 
 > [!NOTE]
 > **Historical Audit Snapshot**: Reflects repository state at baseline audit on 2026-08-08.
-> For live portfolio counts and system status, consult [`data/repository-meta.json`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/data/repository-meta.json) and [`PROJECT_STATE.md`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/PROJECT_STATE.md).
+> For live portfolio counts and system status, consult [`data/repository-meta.json`](../data/repository-meta.json) and [`PROJECT_STATE.md`](../PROJECT_STATE.md).
 
 
 ---

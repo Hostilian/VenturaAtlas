@@ -70,7 +70,8 @@ const DENIED_PATTERNS = [
   /^research\/(audits|original-chat|constitution)(\/|$)/i,
   /^meeting-packets(\/|$)/i,
   /^prompts\/original(?:\/|-|$)/i,
-  /^prompts\/reconstructed-repository-build-prompt\.md$/i
+  /^prompts\/reconstructed-repository-build-prompt\.md$/i,
+  /(^|\/)AGENTS(?:\.override)?\.md$/i
 ];
 
 const PUBLIC_DATA_ALLOWLIST = new Set([
@@ -121,7 +122,16 @@ function projectRepositoryMetaForPublic(src, dest) {
   counts.sources = publicSourceIds.size;
   const revisions = { ...(raw.revisions || {}) };
   delete revisions.stagingRevision;
+  delete revisions.rankingRevision;
   writeJson(dest, { ...raw, counts, revisions });
+}
+
+function projectRankingsForPublic(src, dest) {
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const projected = { ...raw };
+  delete projected.generatedAt;
+  delete projected.history;
+  writeJson(dest, projected);
 }
 
 function isDenied(relativePath) {
@@ -157,6 +167,8 @@ function copyRecursive(src, dest) {
         projectIdeasForPublic(src, dest);
       } else if (normalized === 'data/repository-meta.json') {
         projectRepositoryMetaForPublic(src, dest);
+      } else if (normalized === 'data/rankings.json') {
+        projectRankingsForPublic(src, dest);
       } else {
         fs.copyFileSync(src, dest);
       }

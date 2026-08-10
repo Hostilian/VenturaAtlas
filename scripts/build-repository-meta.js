@@ -6,6 +6,16 @@ const ROOT = path.join(__dirname, '..');
 const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
 const MANIFEST_PATH = path.join(ROOT, 'data', 'build-manifest.json');
 
+function sameJson(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function atomicJsonWrite(targetPath, value) {
+  const temporaryPath = `${targetPath}.${process.pid}.tmp`;
+  fs.writeFileSync(temporaryPath, JSON.stringify(value, null, 2) + '\n', 'utf8');
+  fs.renameSync(temporaryPath, targetPath);
+}
+
 function main() {
   const isCheckMode = process.argv.includes('--check');
   const truth = getRepositoryTruth();
@@ -54,35 +64,62 @@ function main() {
       process.exit(1);
     }
     const current = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
-    if (
-      current.version !== metaData.version ||
-      current.counts.ideas !== truth.counts.ideas ||
-      current.counts.canonicalIdeas !== truth.counts.canonicalIdeas ||
-      current.counts.stagedIdeas !== truth.counts.stagedIdeas ||
-      current.counts.categories !== truth.counts.categories ||
-      current.counts.sources !== truth.counts.sources ||
-      current.counts.rankingViews !== truth.counts.rankingViews
-    ) {
+    const metaMatches =
+      current.project === metaData.project &&
+      current.version === metaData.version &&
+      current.schemaVersion === metaData.schemaVersion &&
+      current.dataRevision === metaData.dataRevision &&
+      current.buildRevision === metaData.buildRevision &&
+      current.gitCommit === metaData.gitCommit &&
+      sameJson(current.counts, metaData.counts) &&
+      sameJson(current.revisions, metaData.revisions);
+    if (!metaMatches) {
       console.error('[ERROR] repository-meta.json is stale');
-      console.error('Expected:', metaData.counts);
-      console.error('Actual:', current.counts);
+      process.exit(1);
+    }
+    if (!fs.existsSync(MANIFEST_PATH)) {
+      console.error('[ERROR] data/build-manifest.json does not exist');
+      process.exit(1);
+    }
+    const currentManifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+    const manifestMatches =
+      currentManifest.dataRevision === truth.canonicalDataRevision &&
+      currentManifest.buildRevision === buildRevision &&
+      currentManifest.gitCommit === gitCommit &&
+      sameJson(currentManifest.files, truth.files);
+    if (!manifestMatches) {
+      console.error('[ERROR] data/build-manifest.json is stale');
       process.exit(1);
     }
     console.log('[OK] repository-meta.json is up to date');
     process.exit(0);
   }
 
-  fs.writeFileSync(META_PATH, JSON.stringify(metaData, null, 2) + '\n', 'utf8');
+  atomicJsonWrite(META_PATH, metaData);
 
   // Generate data/build-manifest.json with per-file SHA256 hashes and byte sizes
+  let manifestTimestamp = new Date().toISOString();
+  if (fs.existsSync(MANIFEST_PATH)) {
+    try {
+      const previousManifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+      if (
+        previousManifest.dataRevision === truth.canonicalDataRevision &&
+        previousManifest.buildRevision === buildRevision &&
+        previousManifest.gitCommit === gitCommit &&
+        sameJson(previousManifest.files, truth.files)
+      ) {
+        manifestTimestamp = previousManifest.generatedAt || manifestTimestamp;
+      }
+    } catch (_) {}
+  }
   const manifest = {
     dataRevision: truth.canonicalDataRevision,
     buildRevision,
     gitCommit,
-    generatedAt: new Date().toISOString(),
+    generatedAt: manifestTimestamp,
     files: truth.files
   };
-  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+  atomicJsonWrite(MANIFEST_PATH, manifest);
 
   console.log(`[OK] Generated repository-meta.json (v${truth.version}, ${truth.counts.canonicalIdeas} canonical + ${truth.counts.stagedIdeas} staged = ${truth.counts.totalIdeas} total ideas, ${truth.counts.categories} categories)`);
 }

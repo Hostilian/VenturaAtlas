@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
+const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
 const ajv = new Ajv({ allErrors: true, strict: false });
@@ -35,6 +36,25 @@ function validateSchemaIfAvailable(schemaName, data, errors) {
   }
 }
 
+function validateCanonicalCollection(data, errors) {
+  const schemaPath = path.join(ROOT, 'data', 'ideas.schema.json');
+  if (!fs.existsSync(schemaPath)) {
+    errors.push('Authoritative schema data/ideas.schema.json is missing');
+    return;
+  }
+  try {
+    const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+    const validate = ajv.compile(schema);
+    if (!validate(data)) {
+      for (const err of validate.errors || []) {
+        errors.push(`Schema data/ideas.schema.json violation: ${err.instancePath} ${err.message}`);
+      }
+    }
+  } catch (err) {
+    errors.push(`Failed to compile/execute data/ideas.schema.json: ${err.message}`);
+  }
+}
+
 function main() {
   const isStrict = process.argv.includes('--strict');
   const errors = [];
@@ -57,7 +77,7 @@ function main() {
   const rawRels = readJsonFile('data/relationships.json');
   const rels = Array.isArray(rawRels) ? rawRels : (rawRels?.relationships || []);
 
-  validateSchemaIfAvailable('idea.schema.json', ideas, errors);
+  validateCanonicalCollection(rawIdeas, errors);
   validateSchemaIfAvailable('category.schema.json', readJsonFile('data/categories.json') || [], errors);
   validateSchemaIfAvailable('source.schema.json', sources, errors);
   validateSchemaIfAvailable('ranking.schema.json', ranks, errors);
@@ -133,18 +153,45 @@ function main() {
 
   console.log(JSON.stringify(result, null, 2));
 
-  // Write data/validation-summary.json directly from validation findings
-  const metaPath = path.join(ROOT, 'data', 'repository-meta.json');
-  let dataRevision = 'unknown';
-  if (fs.existsSync(metaPath)) {
+  // Validation receipts keep their timestamp when the validated inputs and result are unchanged.
+  const revisionInputs = [
+    'data/ideas.json',
+    'data/categories.json',
+    'data/sources.json',
+    'data/rankings.json',
+    'data/relationships.json',
+    'data/ideas.schema.json',
+    'schemas/category.schema.json',
+    'schemas/source.schema.json',
+    'schemas/ranking.schema.json',
+    'schemas/relationship.schema.json'
+  ];
+  const revisionHasher = crypto.createHash('sha256');
+  for (const relativePath of revisionInputs) {
+    const fullPath = path.join(ROOT, relativePath);
+    revisionHasher.update(relativePath);
+    if (fs.existsSync(fullPath)) revisionHasher.update(fs.readFileSync(fullPath));
+  }
+  const validationRevision = revisionHasher.digest('hex');
+  const summaryPath = path.join(ROOT, 'data', 'validation-summary.json');
+  let checkedAt = new Date().toISOString();
+  if (fs.existsSync(summaryPath)) {
     try {
-      dataRevision = JSON.parse(fs.readFileSync(metaPath, 'utf8')).dataRevision || 'unknown';
+      const previous = JSON.parse(fs.readFileSync(summaryPath, 'utf8'));
+      if (
+        previous.validationRevision === validationRevision &&
+        previous.status === (errors.length > 0 ? 'failed' : (warnings.length > 0 ? 'degraded' : 'passed')) &&
+        previous.errorCount === errors.length &&
+        previous.warningCount === warnings.length
+      ) {
+        checkedAt = previous.checkedAt || checkedAt;
+      }
     } catch (_) {}
   }
 
   const valSummary = {
-    checkedAt: new Date().toISOString(),
-    dataRevision,
+    checkedAt,
+    validationRevision,
     status: errors.length > 0 ? 'failed' : (warnings.length > 0 ? 'degraded' : 'passed'),
     canonicalCount: ideas.length,
     errorCount: errors.length,
@@ -152,7 +199,12 @@ function main() {
     errors: errors.slice(0, 10),
     warnings: warnings.slice(0, 10)
   };
-  fs.writeFileSync(path.join(ROOT, 'data', 'validation-summary.json'), JSON.stringify(valSummary, null, 2) + '\n', 'utf8');
+  const serializedSummary = JSON.stringify(valSummary, null, 2) + '\n';
+  if (!fs.existsSync(summaryPath) || fs.readFileSync(summaryPath, 'utf8') !== serializedSummary) {
+    const temporaryPath = `${summaryPath}.${process.pid}.tmp`;
+    fs.writeFileSync(temporaryPath, serializedSummary, 'utf8');
+    fs.renameSync(temporaryPath, summaryPath);
+  }
 
   if (errors.length > 0 || (isStrict && warnings.length > 0)) {
     if (isStrict && warnings.length > 0) {
@@ -165,4 +217,3 @@ function main() {
 }
 
 main();
-
