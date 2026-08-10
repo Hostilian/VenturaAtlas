@@ -47,10 +47,10 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
 
   const publicSources = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'public-sources.json'), 'utf8'));
   const publicIds = new Set(publicSources.map(source => source.id));
-  const internalIds = new Set(
+  const internalTerms = new Set(
     JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'))
       .filter(source => source.visibility !== 'PUBLIC')
-      .map(source => source.id)
+      .flatMap(source => [source.id, source.title].filter(Boolean))
   );
   assert.ok(publicSources.every(source => source.visibility === 'PUBLIC'), 'every projected source must be explicitly public');
   const publicIdeasRaw = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'ideas.json'), 'utf8'));
@@ -102,8 +102,8 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
       if (entry.isDirectory()) pending.push(absolute);
       if (entry.isFile() && textExtensions.has(path.extname(entry.name).toLowerCase())) {
         const content = fs.readFileSync(absolute, 'utf8');
-        for (const sourceId of internalIds) {
-          assert.ok(!content.includes(sourceId), `public text ${path.relative(distPath, absolute)} exposes internal source ${sourceId}`);
+        for (const term of internalTerms) {
+          assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes internal source metadata ${term}`);
         }
       }
     }

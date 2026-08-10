@@ -91,13 +91,14 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
 
 let publicSourceIds = new Set();
 let internalSourceIds = new Set();
+let internalSourceTerms = new Set();
 
 const PROJECTED_TEXT_EXTENSIONS = new Set(['.html', '.json', '.md', '.txt', '.xml', '.csv']);
 
 function redactInternalSourceIds(text) {
   let projected = text;
-  for (const sourceId of internalSourceIds) {
-    projected = projected.replaceAll(sourceId, 'INTERNAL_PROVENANCE_WITHHELD');
+  for (const term of internalSourceTerms) {
+    projected = projected.replaceAll(term, 'INTERNAL_PROVENANCE_WITHHELD');
   }
   return projected;
 }
@@ -148,7 +149,8 @@ function projectIdeasForPublic(src, dest) {
     }
     return result;
   });
-  writeJson(dest, Array.isArray(raw) ? projected : { ...raw, ideas: projected });
+  const publicIdeasDocument = Array.isArray(raw) ? projected : { ...raw, ideas: projected };
+  writeJson(dest, JSON.parse(redactInternalSourceIds(JSON.stringify(publicIdeasDocument))));
 }
 
 function projectValidationSummaryForPublic(src, dest) {
@@ -259,6 +261,11 @@ function build() {
   const allSources = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'));
   internalSourceIds = new Set(
     allSources.filter(source => source.visibility !== 'PUBLIC').map(source => source.id)
+  );
+  internalSourceTerms = new Set(
+    allSources
+      .filter(source => source.visibility !== 'PUBLIC')
+      .flatMap(source => [source.id, source.title].filter(Boolean))
   );
 
   if (fs.existsSync(DIST)) {

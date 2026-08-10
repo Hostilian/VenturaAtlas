@@ -3,8 +3,8 @@
   "algorithm": "sha256(sorted \"<file-sha256>  <posix-relative-path>\\n\")",
   "artifact": "_site",
   "fileCount": 5508,
-  "totalBytes": 16783841,
-  "treeSha256": "778db83a2e560d40796ae8db1a1b5192bfff80d775f26cfc480e94dade8b783e",
+  "totalBytes": 16783792,
+  "treeSha256": "f82265aea830c075e6f1833a0a6b24f607ac0ac563996cf04a18b9260176a7aa",
   "files": [
     {
       "path": ".nojekyll",
@@ -328,8 +328,8 @@
     },
     {
       "path": "data/ideas.json",
-      "bytes": 4509196,
-      "sha256": "97d943abd709cf1d5e268f00aff5aee29bccc11acaebf542232335c1ef75f5c9"
+      "bytes": 4509154,
+      "sha256": "798b3c3588310ea34584acbda0bee90186056a172411f7ebe5555eed4ac291ec"
     },
     {
       "path": "data/ideas.schema.json",
@@ -369,7 +369,7 @@
     {
       "path": "data/validation-summary.json",
       "bytes": 372,
-      "sha256": "9ddc9c6f8c6dd5dbd717b23c4d2784ac79c59eb07a44d3617ab9d9e73b63675e"
+      "sha256": "7d3114150ff5519bb4b9e3522dc83a50469bd979681f3089f759d190585bf3a7"
     },
     {
       "path": "decisions/README.md",
@@ -26858,8 +26858,8 @@
     },
     {
       "path": "rankings/original-research-decisions.md",
-      "bytes": 2210,
-      "sha256": "3e2daf442ab38a99baa7b75b2d161ec2b53bdb9e1ea2d6cae2edc6fdca78b2d5"
+      "bytes": 2203,
+      "sha256": "d690b67383d1e3fa3f0dafc840b80a480e427d289a9714ceb38ddca2664785e4"
     },
     {
       "path": "rankings/README.md",

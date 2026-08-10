@@ -52,9 +52,9 @@
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T11:39:59.912921+00:00",
-      "totalCalls": 11,
-      "successCalls": 11
+      "lastUsed": "2026-08-10T12:09:57.498276+00:00",
+      "totalCalls": 13,
+      "successCalls": 13
     },
     "anthropic-full": {
       "failures": 0,
@@ -64,7 +64,7 @@
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-10T11:39:59.980904+00:00",
+  "lastRun": "2026-08-10T12:09:57.559273+00:00",
   "totalIdeasGenerated": 0,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",

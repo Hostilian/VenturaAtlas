@@ -3,10 +3,10 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
-const INTERNAL_SOURCE_IDS = new Set(
+const INTERNAL_SOURCE_TERMS = new Set(
   JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'))
     .filter(source => source.visibility !== 'PUBLIC')
-    .map(source => source.id)
+    .flatMap(source => [source.id, source.title].filter(Boolean))
 );
 
 const FORBIDDEN_FILE_PATTERNS = [
@@ -78,9 +78,9 @@ function checkDirectory(dirPath) {
                 errors.push(`Secret content pattern '${item.name}' detected in _site/${relPath}`);
               }
             }
-            for (const sourceId of INTERNAL_SOURCE_IDS) {
-              if (content.includes(sourceId)) {
-                errors.push(`Internal source identifier '${sourceId}' detected in _site/${relPath}`);
+            for (const term of INTERNAL_SOURCE_TERMS) {
+              if (content.includes(term)) {
+                errors.push(`Internal source metadata '${term}' detected in _site/${relPath}`);
               }
             }
           } catch (e) {
