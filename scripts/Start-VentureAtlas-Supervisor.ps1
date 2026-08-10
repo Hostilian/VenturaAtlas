@@ -15,6 +15,7 @@ $env:PARALLEL_AI_ORCHESTRATION = "1"
 $env:VA_PROVIDER_FANOUT = [string]$ProviderFanout
 $env:VA_MAX_CONCURRENCY = [string]$MaxConcurrency
 $env:VA_MAX_COST_CLASS = [string]$MaxCostClass
+$env:VA_CREDIT_SAFE_MODE = "1"
 Set-Location -LiteralPath $repoRoot
 
 # Best-effort local Hermes bootstrap. The daemon remains available through own-orch

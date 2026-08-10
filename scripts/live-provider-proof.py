@@ -37,6 +37,25 @@ def main():
     parser.add_argument("--receipt", default=DEFAULT_RECEIPT)
     args = parser.parse_args()
 
+    if os.environ.get("VA_CREDIT_SAFE_MODE", "0").lower() in ("1", "true", "yes"):
+        receipt = {
+            "schemaVersion": "1.0.0",
+            "host": socket.gethostname(),
+            "startedAt": utc_now(),
+            "status": "SKIPPED_CREDIT_SAFE_MODE",
+            "reason": "External provider calls disabled to protect monthly credit budget",
+            "selectedProviders": [],
+            "providers": [],
+            "successfulExternalProviders": 0,
+            "overlapProven": False,
+            "responseContentRecorded": False,
+            "secretsRecorded": False,
+            "completedAt": utc_now(),
+        }
+        atomic_write_json(args.receipt, receipt)
+        print(receipt["reason"])
+        return 0
+
     health = health_check()
     scheduler = get_provider_scheduler()
     eligible = scheduler.select_providers_for_task(

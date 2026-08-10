@@ -697,6 +697,9 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
     rotated between tasks so configured providers share useful work without redundant,
     unbounded paid calls.
     """
+    credit_safe = os.environ.get("VA_CREDIT_SAFE_MODE", "0").lower() in ("1", "true", "yes")
+    if credit_safe:
+        max_cost_class = 0
     state = _load_state()
     scheduler = get_provider_scheduler()
     providers_to_try = scheduler.select_providers_for_task(
@@ -713,7 +716,7 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
         # spreads distinct tasks through the full eligible provider pool.
         offset = int(hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:8], 16) % len(external)
         external = external[offset:] + external[:offset]
-    fanout = max(1, int(os.environ.get("VA_PROVIDER_FANOUT", "2")))
+    fanout = 1 if credit_safe else max(1, int(os.environ.get("VA_PROVIDER_FANOUT", "2")))
     providers_to_try = external[:fanout]
     if allow_own_orch and not providers_to_try and not required_capabilities and not requires_external_evidence:
         providers_to_try.append("own-orch")
@@ -751,6 +754,8 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
     Try providers matched by capabilities and cost budget, respecting circuit breakers.
     If PARALLEL_AI_ORCHESTRATION=1 is set, queries all providers simultaneously.
     """
+    if os.environ.get('VA_CREDIT_SAFE_MODE', '0').lower() in ('1', 'true', 'yes'):
+        max_cost_class = 0
     if os.environ.get('PARALLEL_AI_ORCHESTRATION', '0') in ('1', 'true', 'True'):
         return call_llm_parallel(prompt, domain_hint, allow_own_orch, required_capabilities,
                                  max_cost_class, match_mode, requires_external_evidence)
