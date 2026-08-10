@@ -318,7 +318,20 @@ def main():
 if __name__ == '__main__':
     try:
         with process_file_lock(LOCK_PATH, timeout_seconds=0, stale_after_seconds=86400 * 7):
-            main()
+            restart_count = 0
+            while _running:
+                try:
+                    main()
+                    break
+                except RuntimeError as exc:
+                    restart_count += 1
+                    backoff = min(300, 30 * restart_count)
+                    _heartbeat("degraded", 0, f"supervisor restart in {backoff}s: {exc}")
+                    _log("WARN", f"Pipeline failed closed; restarting inside supervisor in {backoff}s")
+                    for remaining in range(backoff, 0, -5):
+                        if not _running:
+                            break
+                        time.sleep(min(5, remaining))
     except TimeoutError:
         print("[DAEMON] Another Venture Atlas autonomy supervisor is already running; exiting.", file=sys.stderr)
         raise SystemExit(23)

@@ -227,28 +227,34 @@ def _is_circuit_open(p_state: dict) -> bool:
         return False
 
 def _record_failure(state: dict, provider: str):
-    with process_file_lock(STATE_LOCK_PATH):
-        current = _load_state()
-        ps = current["providers"][provider]
-        ps["failures"] = ps.get("failures", 0) + 1
-        ps["totalCalls"] = ps.get("totalCalls", 0) + 1
-        if ps["failures"] >= CIRCUIT_THRESHOLD:
-            until = (datetime.datetime.now(datetime.timezone.utc) +
-                     datetime.timedelta(seconds=CIRCUIT_COOLDOWN)).isoformat()
-            ps["circuitUntil"] = until
-            log_warn(f"Circuit OPEN for {provider} until {until}", provider=provider)
-        _save_state(current)
+    try:
+        with process_file_lock(STATE_LOCK_PATH, timeout_seconds=5):
+            current = _load_state()
+            ps = current["providers"][provider]
+            ps["failures"] = ps.get("failures", 0) + 1
+            ps["totalCalls"] = ps.get("totalCalls", 0) + 1
+            if ps["failures"] >= CIRCUIT_THRESHOLD:
+                until = (datetime.datetime.now(datetime.timezone.utc) +
+                         datetime.timedelta(seconds=CIRCUIT_COOLDOWN)).isoformat()
+                ps["circuitUntil"] = until
+                log_warn(f"Circuit OPEN for {provider} until {until}", provider=provider)
+            _save_state(current)
+    except TimeoutError:
+        log_warn(f"Provider-state telemetry lock busy after failure for {provider}; call outcome preserved")
 
 def _record_success(state: dict, provider: str):
-    with process_file_lock(STATE_LOCK_PATH):
-        current = _load_state()
-        ps = current["providers"][provider]
-        ps["failures"] = 0
-        ps["circuitUntil"] = ""
-        ps["totalCalls"] = ps.get("totalCalls", 0) + 1
-        ps["successCalls"] = ps.get("successCalls", 0) + 1
-        ps["lastUsed"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        _save_state(current)
+    try:
+        with process_file_lock(STATE_LOCK_PATH, timeout_seconds=5):
+            current = _load_state()
+            ps = current["providers"][provider]
+            ps["failures"] = 0
+            ps["circuitUntil"] = ""
+            ps["totalCalls"] = ps.get("totalCalls", 0) + 1
+            ps["successCalls"] = ps.get("successCalls", 0) + 1
+            ps["lastUsed"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            _save_state(current)
+    except TimeoutError:
+        log_warn(f"Provider-state telemetry lock busy after success for {provider}; response preserved")
 
 
 # ── HTTP Helper ────────────────────────────────────────────────────────────────
