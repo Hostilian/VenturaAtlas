@@ -1888,5 +1888,278 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s84",
+    "title": "EU Packaging and Packaging Waste Regulation implementation",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG Environment",
+    "date": "2026",
+    "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/packaging-waste_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "PPWR generally applies from 12 August 2026",
+      "PFAS restrictions cover food-contact packaging"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s85",
+    "title": "Guidelines on Article 50 AI Act transparency obligations",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG CONNECT",
+    "date": "2026",
+    "url": "https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "Article 50 transparency obligations apply from 2 August 2026",
+      "machine-readable marking and disclosure requirements"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s86",
+    "title": "Digital Waste Shipment System (DIWASS)",
+    "type": "official_guidance",
+    "publisher": "European Commission — Green Forum",
+    "date": "2026",
+    "url": "https://green-forum.ec.europa.eu/green-business/digital-waste-shipment-system-diwass_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "DIWASS mandatory use from 21 May 2026",
+      "corporate software API interconnection and operational exceptions"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s87",
+    "title": "The future of work — platform work and algorithmic management",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG Employment",
+    "date": "2026",
+    "url": "https://employment-social-affairs.ec.europa.eu/policies-and-activities/rights-work/future-work_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "Platform Work Directive transposition by December 2026",
+      "algorithmic management oversight"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s88",
+    "title": "EUDAMED implementation overview",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG SANTE",
+    "date": "2026",
+    "url": "https://health.ec.europa.eu/medical-devices-eudamed/overview_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "four EUDAMED modules mandatory from 28 May 2026",
+      "external device-registration state"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s89",
+    "title": "EU methane emissions regulation implementation",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG Energy",
+    "date": "2026",
+    "url": "https://energy.ec.europa.eu/topics/carbon-management-and-fossil-fuels/methane-emissions_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "import MRV requirements from 1 January 2027",
+      "contract-date and reasonable-efforts distinctions"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s90",
+    "title": "European grids — connection queue evidence",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG Energy",
+    "date": "2026",
+    "url": "https://energy.ec.europa.eu/topics/infrastructure/european-grids_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "connection queues in at least 16 EU countries",
+      "approximately 120 GW of mature renewable projects at timely-access risk"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s91",
+    "title": "Machinery Regulation transition guidance for lifts",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG GROW",
+    "date": "2026",
+    "url": "https://single-market-economy.ec.europa.eu/document/download/3458d17c-0a0d-445b-b4b3-8067c776c727_en?filename=Technical+Guideline-Note_MR-LD_v5_clean.pdf",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "Machinery Regulation applies from 20 January 2027",
+      "engineering changes can alter conformity evidence"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s92",
+    "title": "Directive (EU) 2024/2853 on liability for defective products",
+    "type": "official_guidance",
+    "publisher": "EUR-Lex",
+    "date": "2026",
+    "url": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj/eng",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "software is a product for liability purposes",
+      "new regime applies to products placed on the market after 9 December 2026"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s93",
+    "title": "Verification of CBAM emissions",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG TAXUD",
+    "date": "2026",
+    "url": "https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/cbam-verification_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "actual embedded emissions require accredited independent verification",
+      "verifier reviews calculations and supporting evidence"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s94",
+    "title": "The eFTI Regulation",
+    "type": "official_guidance",
+    "publisher": "European Commission — DG MOVE",
+    "date": "2026",
+    "url": "https://transport.ec.europa.eu/transport-themes/logistics-and-multimodal-transport/efti-regulation_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "full application on 9 July 2027",
+      "authorities must accept data from certified eFTI platforms"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s95",
+    "title": "Sustainable consumption and green-transition consumer rights",
+    "type": "official_guidance",
+    "publisher": "European Commission",
+    "date": "2026",
+    "url": "https://commission.europa.eu/topics/consumers/consumer-rights-and-complaints/sustainable-consumption_en",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "greenwashing protections apply from 27 September 2026",
+      "environmental-claim evidence requirements"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s96",
+    "title": "Cyber Resilience Act Single Reporting Platform",
+    "type": "official_guidance",
+    "publisher": "ENISA",
+    "date": "2026",
+    "url": "https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp",
+    "accessDate": "2026-08-10",
+    "supports": [
+      "CRA reporting obligations apply from 11 September 2026",
+      "single reporting platform incident workflow"
+    ],
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "august-2026-operational-chokepoints",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

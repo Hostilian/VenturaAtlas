@@ -34229,5 +34229,614 @@
     "prioritizedForValidation": true,
     "reviewPriority": "high",
     "priority": 100
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c",
+    "candidateId": "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c",
+    "candidateSlug": "packgate-ppwr-market-access-stock-router",
+    "slug": "packgate-ppwr-market-access-stock-router-candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c",
+    "name": "PackGate — PPWR Market-Access & Stock Router",
+    "oneSentenceConcept": "Lot-level preflight that tells operators whether packaging inventory can ship, must be held, repackaged, retested, or escalated under PPWR cutovers.",
+    "elevatorPitch": "ERP SKU and packaging-lot records do not preserve enough evidence to decide whether specific inventory may be placed on the market after a regulatory cutover. Ingest SKU masters, packaging BOMs, lots, supplier declarations, tests, warehouse inventory, and market dates; emit SHIP/HOLD/REPACKAGE/RETEST/LEGAL REVIEW with reasons.",
+    "detailedDescription": "Lot-level preflight that tells operators whether packaging inventory can ship, must be held, repackaged, retested, or escalated under PPWR cutovers.",
+    "category": "Packaging & Product Compliance",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s84"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "EU consumer-goods manufacturers, food-service chains, private-label retailers, packaging converters, and importers",
+      "problemSolved": "ERP SKU and packaging-lot records do not preserve enough evidence to decide whether specific inventory may be placed on the market after a regulatory cutover.",
+      "whatToBuild": "Ingest SKU masters, packaging BOMs, lots, supplier declarations, tests, warehouse inventory, and market dates; emit SHIP/HOLD/REPACKAGE/RETEST/LEGAL REVIEW with reasons.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Packaging-component, supplier-evidence, and cutover-outcome graph.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 92,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "promote_after_customer_gate",
+      "operationalChokePoint": "Shipment release",
+      "machineCheckability": "Lot date, packaging component, evidence presence, and jurisdiction can be evaluated deterministically.",
+      "evidenceCompounding": "Packaging-component, supplier-evidence, and cutover-outcome graph."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": true,
+    "reviewPriority": "high",
+    "priority": 92
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-153e8656-5387-5bd7-a153-3ea9a4cbd468",
+    "candidateId": "candidate-153e8656-5387-5bd7-a153-3ea9a4cbd468",
+    "candidateSlug": "wasteflow-exceptionops-diwass-reconciliation",
+    "slug": "wasteflow-exceptionops-diwass-reconciliation-candidate-153e8656-5387-5bd7-a153-3ea9a4cbd468",
+    "name": "WasteFlow ExceptionOps — DIWASS Reconciliation Layer",
+    "oneSentenceConcept": "Pre-dispatch reconciliation and observability for mismatches between enterprise shipment systems and DIWASS.",
+    "elevatorPitch": "Actor registration, consent, waste-code, quantity, and movement-document mismatches can block or invalidate physical waste shipments. Reconcile ERP/TMS shipment state with DIWASS documents and API responses; run dispatch preflight and explain every blocker.",
+    "detailedDescription": "Pre-dispatch reconciliation and observability for mismatches between enterprise shipment systems and DIWASS.",
+    "category": "Waste Logistics & Regulatory Infrastructure",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s86"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "Waste brokers, recyclers, hazardous-waste operators, industrial manufacturers, and logistics companies",
+      "problemSolved": "Actor registration, consent, waste-code, quantity, and movement-document mismatches can block or invalidate physical waste shipments.",
+      "whatToBuild": "Reconcile ERP/TMS shipment state with DIWASS documents and API responses; run dispatch preflight and explain every blocker.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "DIWASS rejection, exception, and resolution corpus.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 88,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "promote_after_customer_gate",
+      "operationalChokePoint": "Truck dispatch",
+      "machineCheckability": "Actor, consent, waste code, quantity, carrier, document status, and API response mismatches are machine-checkable.",
+      "evidenceCompounding": "DIWASS rejection, exception, and resolution corpus."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": true,
+    "reviewPriority": "high",
+    "priority": 88
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-f45e91a0-ff87-5839-a9fa-1ec1f1487060",
+    "candidateId": "candidate-f45e91a0-ff87-5839-a9fa-1ec1f1487060",
+    "candidateSlug": "eudamirror-eudamed-reality-reconciler",
+    "slug": "eudamirror-eudamed-reality-reconciler-candidate-f45e91a0-ff87-5839-a9fa-1ec1f1487060",
+    "name": "EudaMirror — EUDAMED Reality Reconciler",
+    "oneSentenceConcept": "Continuous diff between internal medical-device master data and the externally visible EUDAMED state.",
+    "elevatorPitch": "UDI, actor, certificate, and device records can drift between PLM/QMS/SAP and mandatory EUDAMED modules. Snapshot permitted EUDAMED state, map it to internal canonical records, and alert on orphan devices, UDI conflicts, certificate drift, and relationship mismatches.",
+    "detailedDescription": "Continuous diff between internal medical-device master data and the externally visible EUDAMED state.",
+    "category": "Medical Device Regulatory Operations",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s88"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "Medical-device manufacturers, authorised representatives, and regulatory operations teams",
+      "problemSolved": "UDI, actor, certificate, and device records can drift between PLM/QMS/SAP and mandatory EUDAMED modules.",
+      "whatToBuild": "Snapshot permitted EUDAMED state, map it to internal canonical records, and alert on orphan devices, UDI conflicts, certificate drift, and relationship mismatches.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Longitudinal external regulatory-state history and drift patterns.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 87,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "promote_after_customer_gate",
+      "operationalChokePoint": "Regulatory record release and continued market access",
+      "machineCheckability": "Identifiers, certificate dates, actor relationships, and versioned record values can be diffed.",
+      "evidenceCompounding": "Longitudinal external regulatory-state history and drift patterns."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": true,
+    "reviewPriority": "high",
+    "priority": 87
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904",
+    "candidateId": "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904",
+    "candidateSlug": "queueready-grid-connection-readiness-os",
+    "slug": "queueready-grid-connection-readiness-os-candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904",
+    "name": "QueueReady — Grid Connection Readiness OS",
+    "oneSentenceConcept": "Readiness dossier and RFI-response control plane that prevents renewable and storage projects losing time because applicant-side evidence is incomplete.",
+    "elevatorPitch": "Connection applications and operator RFIs stall when permits, studies, diagrams, equipment data, or ownership evidence are missing or stale. Maintain a project readiness graph, map operator RFIs to documents and owners, and track gaps, deadlines, and expiry dates.",
+    "detailedDescription": "Readiness dossier and RFI-response control plane that prevents renewable and storage projects losing time because applicant-side evidence is incomplete.",
+    "category": "Energy Infrastructure Operations",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s90"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "Renewable developers, battery-storage developers, grid consultants, and infrastructure investors",
+      "problemSolved": "Connection applications and operator RFIs stall when permits, studies, diagrams, equipment data, or ownership evidence are missing or stale.",
+      "whatToBuild": "Maintain a project readiness graph, map operator RFIs to documents and owners, and track gaps, deadlines, and expiry dates.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Operator-request, application-pattern, and cycle-time dataset by jurisdiction.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 85,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "deep_validate",
+      "operationalChokePoint": "Connection application submission or RFI response",
+      "machineCheckability": "Required artifact presence, expiry, completeness, ownership, and response deadline can be evaluated.",
+      "evidenceCompounding": "Operator-request, application-pattern, and cycle-time dataset by jurisdiction."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": true,
+    "reviewPriority": "high",
+    "priority": 85
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4",
+    "candidateId": "candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4",
+    "candidateSlug": "liabilityreplay-product-liability-evidence-simulator",
+    "slug": "liabilityreplay-product-liability-evidence-simulator-candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4",
+    "name": "LiabilityReplay — Product Liability Evidence Simulator",
+    "oneSentenceConcept": "Adversarial reconstruction test that asks whether a manufacturer could produce the evidence file for a dated software or product claim today.",
+    "elevatorPitch": "Release, warning, dependency, model, patch, and approval evidence is fragmented when a dated product-liability claim arrives. Run a simulated claim against release and operational systems, reconstruct the dated product state, and identify missing evidentiary links.",
+    "detailedDescription": "Adversarial reconstruction test that asks whether a manufacturer could produce the evidence file for a dated software or product claim today.",
+    "category": "Product Liability & Release Evidence",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s92"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "Connected-product manufacturers, software vendors, insurers, and product-liability counsel",
+      "problemSolved": "Release, warning, dependency, model, patch, and approval evidence is fragmented when a dated product-liability claim arrives.",
+      "whatToBuild": "Run a simulated claim against release and operational systems, reconstruct the dated product state, and identify missing evidentiary links.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Cross-system evidence-gap and reconstruction-pattern corpus.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 83,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "staged_hypothesis",
+      "operationalChokePoint": "Claim response and disclosure readiness",
+      "machineCheckability": "Version, deployment, test, warning, approval, vulnerability, and update records can be checked for dated closure.",
+      "evidenceCompounding": "Cross-system evidence-gap and reconstruction-pattern corpus."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": false,
+    "reviewPriority": "medium",
+    "priority": 83
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-d4967815-830f-5375-8630-84b117af1340",
+    "candidateId": "candidate-d4967815-830f-5375-8630-84b117af1340",
+    "candidateSlug": "carbonverifier-handoff-cbam-evidence-layer",
+    "slug": "carbonverifier-handoff-cbam-evidence-layer-candidate-d4967815-830f-5375-8630-84b117af1340",
+    "name": "CarbonVerifier Handoff — CBAM Evidence-to-Verification Layer",
+    "oneSentenceConcept": "Transforms supplier emissions evidence into verifier-ready CBAM packets and quantifies the financial exposure of missing primary data.",
+    "elevatorPitch": "Calculations and supplier files do not arrive in a consistent, reviewable structure for independent verification. Normalize installation, methodology, period, embedded-emissions, and supporting evidence into a verifier packet with gap-cost scenarios.",
+    "detailedDescription": "Transforms supplier emissions evidence into verifier-ready CBAM packets and quantifies the financial exposure of missing primary data.",
+    "category": "Carbon Border & Trade Compliance",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s93"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "Large EU importers, CBAM declarants, procurement teams, and accredited verifiers",
+      "problemSolved": "Calculations and supplier files do not arrive in a consistent, reviewable structure for independent verification.",
+      "whatToBuild": "Normalize installation, methodology, period, embedded-emissions, and supporting evidence into a verifier packet with gap-cost scenarios.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Evidence-quality, verifier-question, and supplier-response dataset.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 82,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "validate_large_importers",
+      "operationalChokePoint": "Verifier acceptance and annual CBAM declaration",
+      "machineCheckability": "Required installation, period, method, evidence, and verifier fields can be checked for closure.",
+      "evidenceCompounding": "Evidence-quality, verifier-question, and supplier-response dataset."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": false,
+    "reviewPriority": "medium",
+    "priority": 82
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "candidate-249a46c3-f3a3-5bb6-81db-7d8a1afa639c",
+    "candidateId": "candidate-249a46c3-f3a3-5bb6-81db-7d8a1afa639c",
+    "candidateSlug": "freightcontract-testbench-efti-conformance-lab",
+    "slug": "freightcontract-testbench-efti-conformance-lab-candidate-249a46c3-f3a3-5bb6-81db-7d8a1afa639c",
+    "name": "FreightContract Testbench — eFTI Data Conformance Lab",
+    "oneSentenceConcept": "Synthetic contract-testing and certification rehearsal for TMS and freight platforms implementing eFTI data exchanges.",
+    "elevatorPitch": "Freight systems need to prove schema and workflow conformance across modes, jurisdictions, and evolving eFTI specifications before full application. Generate multimodal freight fixtures, execute payload and access-flow tests, and return regulatory field-level expected/actual diffs.",
+    "detailedDescription": "Synthetic contract-testing and certification rehearsal for TMS and freight platforms implementing eFTI data exchanges.",
+    "category": "Freight Software & Government API Testing",
+    "subcategory": "operational chokepoint",
+    "tags": [
+      "august-2026",
+      "operational-chokepoint",
+      "machine-checkable",
+      "evidence-compounding"
+    ],
+    "status": "staged",
+    "evidenceStatus": "official_forcing_function_verified_customer_demand_unproven",
+    "promotionEligible": false,
+    "requiresExternalEvidence": true,
+    "sourceReferences": [
+      "s94"
+    ],
+    "provenance": {
+      "sourceType": "Deep Research — Large August 2026 Pass",
+      "researchRunId": "run-res-002-20260810-august-operational-chokepoints",
+      "originalWordingAvailable": "full-private-attachment",
+      "notes": "Primary-source forcing function verified; score and commercial claims remain analyst hypotheses."
+    },
+    "atAGlance": {
+      "targetCustomer": "TMS vendors, freight platforms, logistics enterprises, and eFTI service providers",
+      "problemSolved": "Freight systems need to prove schema and workflow conformance across modes, jurisdictions, and evolving eFTI specifications before full application.",
+      "whatToBuild": "Generate multimodal freight fixtures, execute payload and access-flow tests, and return regulatory field-level expected/actual diffs.",
+      "howItMakesMoney": null,
+      "whyCustomersPay": null,
+      "estimatedEarningPotential": null,
+      "startupCost": null,
+      "overallScore": null,
+      "confidenceScore": null,
+      "mainAdvantage": "Cross-platform conformance fixture and failure corpus.",
+      "mainRisk": "Commercial urgency, access to operational data, integration burden, and willingness to pay are not yet validated.",
+      "bestNextValidationStep": "Run 15 problem interviews and seek 3 paid design-partner commitments using a manual preflight or reconciliation deliverable."
+    },
+    "researchAssessment": {
+      "analystProvisionalOpportunityScore": 81,
+      "scoreScale": "0-100",
+      "scoreStatus": "provisional_not_ranking_eligible",
+      "initialVerdict": "early_watch",
+      "operationalChokePoint": "Platform certification and authority data handoff",
+      "machineCheckability": "Schema, identifier, access-link, mode, party, and jurisdiction cases can be deterministically tested.",
+      "evidenceCompounding": "Cross-platform conformance fixture and failure corpus."
+    },
+    "validationChecklist": {
+      "gateStatus": "needs_customer_validation",
+      "passed": false,
+      "passedCount": 1,
+      "failedCount": 0,
+      "unknownCount": 4,
+      "totalCriteria": 5,
+      "scorePercentage": 20,
+      "details": {
+        "Official forcing function verified": "pass",
+        "Duplicate risk cleared": "unknown",
+        "Buyer workflow confirmed in interviews": "unknown",
+        "Paid willingness-to-pay evidence": "unknown",
+        "Operational data access demonstrated": "unknown"
+      }
+    },
+    "killCriteria": {
+      "killFlagged": false,
+      "killCount": 0,
+      "killConditions": {
+        "No repeated operational failure in 15 interviews": false,
+        "No buyer willing to provide representative data": false,
+        "Incumbent system already resolves the full workflow": false,
+        "No paid design partner after 30 qualified outreaches": false
+      },
+      "killFlags": []
+    },
+    "createdAt": "2026-08-10T00:00:00+00:00",
+    "updatedAt": "2026-08-10T00:00:00+00:00",
+    "prioritizedForValidation": false,
+    "reviewPriority": "medium",
+    "priority": 81
   }
 ]

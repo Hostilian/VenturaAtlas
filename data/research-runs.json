@@ -27,5 +27,100 @@
     "startedAt": "2026-08-09T11:30:38.286639+00:00",
     "endedAt": "2026-08-09T11:30:38.286639+00:00",
     "reviewStatus": "approved"
+  },
+  {
+    "runId": "run-res-002-20260810-august-operational-chokepoints",
+    "baselineCommit": "9c4d0d4",
+    "questions": [
+      "Where does source truth diverge from the real operational transaction?",
+      "Which mandatory digital systems and cutovers create machine-checkable workflow blockers?",
+      "Which proposed ideas are semantic duplicates of the current canonical corpus?"
+    ],
+    "queries": [
+      "mandatory government system API 2026 operator failure",
+      "regulatory cutover inventory placed on market 2026",
+      "machine-readable marking survival transformation pipeline"
+    ],
+    "sourceCandidates": [
+      "s84",
+      "s85",
+      "s86",
+      "s87",
+      "s88",
+      "s89",
+      "s90",
+      "s91",
+      "s92",
+      "s93",
+      "s94",
+      "s95",
+      "s96"
+    ],
+    "inclusions": [
+      "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c",
+      "candidate-153e8656-5387-5bd7-a153-3ea9a4cbd468",
+      "candidate-f45e91a0-ff87-5839-a9fa-1ec1f1487060",
+      "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904",
+      "candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4",
+      "candidate-d4967815-830f-5375-8630-84b117af1340",
+      "candidate-249a46c3-f3a3-5bb6-81db-7d8a1afa639c"
+    ],
+    "exclusions": [
+      "MarkSurvive — AI Provenance Survival Gate",
+      "HumanReview Ledger",
+      "MethaneContract",
+      "MachineChange",
+      "ClaimDiff",
+      "CRA Clock",
+      "TransitionLot",
+      "SupplierProof SLA"
+    ],
+    "claimsChanged": [
+      "Seven distinct concepts staged; no provisional score promoted into canonical rankings.",
+      "Eight semantic duplicates/features mapped to existing ideas or parent concepts.",
+      "Operational choke-point, machine-checkability, and evidence compounding added as experimental research dimensions."
+    ],
+    "deduplicationDecisions": {
+      "MarkSurvive — AI Provenance Survival Gate": [
+        "idea-386",
+        "s85"
+      ],
+      "HumanReview Ledger": [
+        "idea-363",
+        "s87"
+      ],
+      "MethaneContract": [
+        "idea-399",
+        "s89"
+      ],
+      "MachineChange": [
+        "idea-299",
+        "idea-361",
+        "s91"
+      ],
+      "ClaimDiff": [
+        "idea-300",
+        "s95"
+      ],
+      "CRA Clock": [
+        "idea-401",
+        "s96"
+      ],
+      "TransitionLot": [
+        "feature-of:packgate-ppwr-market-access-stock-router",
+        "s84"
+      ],
+      "SupplierProof SLA": [
+        "cross-cutting-feature",
+        "s84",
+        "s89",
+        "s93"
+      ]
+    },
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v3-operational-chokepoint",
+    "startedAt": "2026-08-10T00:00:00+00:00",
+    "endedAt": "2026-08-10T00:00:00+00:00",
+    "reviewStatus": "approved_for_staging_not_canonical_promotion"
   }
 ]

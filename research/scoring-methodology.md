@@ -140,3 +140,13 @@ Each idea receives 25 scores from 0–10. Higher always means more attractive: *
 ## Sensitivity
 
 See [`data/sensitivity-analysis.json`](../data/sensitivity-analysis.json). Rankings change when priorities change and must not be treated as objective truth.
+
+## Experimental research dimensions — operational chokepoints
+
+The August 2026 research pass adds three pre-ranking dimensions. They are not yet backfilled across the corpus and therefore must not be silently inserted into existing composite scores.
+
+- **Operational Choke-Point**: Is there a specific moment—ship, dispatch, publish, approve, register, pay, release, sign, suspend, or import—where the workflow cannot safely continue until the failure is resolved?
+- **Machine-Checkability**: Can the blocking condition be evaluated from deterministic state such as identifiers, dates, versions, schema fields, expiry, evidence presence, or cross-system diffs?
+- **Evidence Compounding**: Does repeated use create a defensible dataset of failures, transformations, supplier reliability, external-state history, or process timing?
+
+Candidates may record these dimensions as qualitative research observations. Weighting them requires a versioned scoring-method change, a corpus-wide backfill with explicit unknowns, sensitivity analysis, and regenerated rankings. Until then, any 0–100 score supplied by a research pass is an analyst-provisional score and is not ranking-eligible.
