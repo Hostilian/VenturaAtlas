@@ -210,6 +210,8 @@ function initRankings() {
                 <div style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem">
                   <span class="chip status">${escHTML(item.category)}</span>
                   ${item.killFlagged ? '<span class="chip danger sm">⚠ Kill Flagged</span>' : ''}
+                  ${item.eligibilityIssues.length ? `<span class="chip warn sm" title="${escHTML(item.eligibilityIssues.join(', '))}">Eligibility unproven</span>` : '<span class="chip success sm">Eligible</span>'}
+                  <span class="chip neutral">${Number.isFinite(Number(item.checklist)) ? Number(item.checklist) + '% checklist' : 'Not assessed'}</span>
                 </div>
                 <div style="display:flex;gap:0.4rem">
                   <a href="${ideaUrl}" class="button primary sm" style="flex:1;text-align:center">Open Dossier</a>

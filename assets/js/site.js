@@ -891,9 +891,12 @@ function initIdea() {
   const valStatus = x.validationStatus || x.atAGlance?.validationStatus || null;
   const validationProvenance = x.validationProvenance || x.researchRunId || x.validationRunId;
   const validationProven = Boolean(validationProvenance);
-  const validationDisplay = valStatus
-    ? `${String(valStatus).toUpperCase()}${validationProven ? '' : ' · PROVENANCE UNAVAILABLE'}`
-    : 'NOT RESEARCHED';
+  const legacyValidationLabel = x.legacyValidation?.label || null;
+  const validationDisplay = legacyValidationLabel && !validationProven
+    ? `NOT PROVEN · LEGACY LABEL: ${String(legacyValidationLabel).toUpperCase()}`
+    : valStatus
+      ? `${String(valStatus).toUpperCase()}${validationProven ? '' : ' · PROVENANCE UNAVAILABLE'}`
+      : 'NOT RESEARCHED';
   const lastValidated = x.lastValidatedAt
     ? `${x.lastValidatedAt}${validationProven ? '' : ' (legacy date; unverified)'}`
     : 'No verified research date';

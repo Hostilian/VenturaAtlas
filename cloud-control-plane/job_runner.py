@@ -14,9 +14,18 @@ import json
 import time
 import datetime
 import subprocess
+import re
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
+
+SECRET_IDS = {
+    "OPENROUTER_API_KEYS": "va-openrouter-01",
+    "ANTHROPIC_API_KEYS": "va-anthropic-01",
+    "ACTIVE_API_KEYS": "va-active-01",
+    "DEEPSEEK_API_KEYS": "va-deepseek-01",
+    "GITHUB_TOKEN": "va-github-token",
+}
 
 def log_event(level: str, message: str, extra: dict = None):
     payload = {
@@ -38,7 +47,8 @@ def fetch_gcp_secret(secret_name: str, default: str = "") -> str:
         from google.cloud import secretmanager
         client = secretmanager.SecretManagerServiceClient()
         project_id = os.environ.get("GCP_PROJECT_ID", "venture-atlas-os")
-        name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+        secret_id = SECRET_IDS.get(secret_name, secret_name)
+        name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
         response = client.access_secret_version(request={"name": name})
         return response.payload.data.decode("UTF-8").strip()
     except Exception:
@@ -113,14 +123,12 @@ def push_updates_to_github():
         commit_msg = f"feat(autonomy): cloud-run discovery & metadata update [{datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}]"
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
         
-        # Ephemeral authenticated push via extraHeader (does not pollute .git/config or process list)
-        import base64
-        auth_b64 = base64.b64encode(f"x-access-token:{github_token}".encode("utf-8")).decode("utf-8")
-        push_cmd = [
-            "git", "-c", f"http.https://github.com/.extraHeader=AUTHORIZATION: basic {auth_b64}",
-            "push", "origin", branch_name
-        ]
-        subprocess.run(push_cmd, cwd=BASE_DIR, check=True)
+        # Askpass receives the token through the child environment; no credential is placed in argv or Git config.
+        push_env = os.environ.copy()
+        push_env["VA_GITHUB_TOKEN"] = github_token
+        push_env["GIT_ASKPASS"] = os.path.join(BASE_DIR, "cloud-control-plane", "git_askpass.py")
+        push_env["GIT_TERMINAL_PROMPT"] = "0"
+        subprocess.run(["git", "push", "origin", branch_name], cwd=BASE_DIR, env=push_env, check=True)
         log_event("INFO", f"Successfully pushed autonomous publication branch '{branch_name}'!")
     except Exception as e:
         safe_msg = redact_secrets(str(e))
@@ -132,6 +140,9 @@ def redact_secrets(text: str) -> str:
         return ""
     res = re.sub(r'x-access-token:[^@]+@', 'x-access-token:[REDACTED]@', text)
     res = re.sub(r'ghp_[a-zA-Z0-9]{20,}', 'ghp_[REDACTED]', res)
+    res = re.sub(r'github_pat_[a-zA-Z0-9_]{20,}', 'github_pat_[REDACTED]', res)
+    res = re.sub(r'gh[oasu]_[a-zA-Z0-9]{20,}', 'gh*_[REDACTED]', res)
+    res = re.sub(r'Authorization:\s*(Basic|Bearer)\s+[^\s]+', r'Authorization: \1 [REDACTED]', res, flags=re.IGNORECASE)
     res = re.sub(r'sk-[a-zA-Z0-9]{20,}', 'sk-[REDACTED]', res)
     return res
 

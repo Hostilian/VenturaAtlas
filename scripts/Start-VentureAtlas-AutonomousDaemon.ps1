@@ -133,20 +133,25 @@ if ($OpenRouterKey -and $OpenRouterKey -ne "sk-or-...") {
 Write-JsonLog "INFO" "Running provider health check..."
 Invoke-PythonScript "va_orchestrator.py" -ScriptArgs "--test"
 
-Write-JsonLog "HEADER" "Daemon active - running up to $MaxIterations iterations every $($IntervalSeconds)s"
+Write-JsonLog "HEADER" "Daemon active - running continuous parallel loops every $($IntervalSeconds)s"
 
 # -- Main Loop -----------------------------------------------------------------
-for ($i = 1; $i -le $MaxIterations; $i++) {
+$i = 0
+while ($true) {
+    $i++
+    if ($MaxIterations -gt 0 -and $MaxIterations -lt 999999 -and $i -gt $MaxIterations) {
+        break
+    }
     try {
         Write-Host "`n============================================================" -ForegroundColor Cyan
-        Write-Host "  VENTURE ATLAS DAEMON (PARALLEL AI)  -  Run $i/$MaxIterations" -ForegroundColor Cyan
+        Write-Host "  VENTURE ATLAS DAEMON (PARALLEL 24/7 AI) - Run #$i" -ForegroundColor Cyan
         Write-Host "  $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Cyan
         Write-Host "============================================================" -ForegroundColor Cyan
 
-        Write-JsonLog "INFO" "Starting parallel discovery run $i of $MaxIterations" -Extra @{ iteration = $i }
+        Write-JsonLog "INFO" "Starting parallel discovery run #$i" -Extra @{ iteration = $i }
 
         # Step 1: Idea discovery
-        Write-JsonLog "INFO" "Running parallel idea generator..."
+        Write-JsonLog "INFO" "Running parallel idea generator across all active AI models..."
         $rc = Invoke-PythonScript "autonomous-idea-generator.py"
         if ($rc -eq 0) {
             Write-JsonLog "SUCCESS" "Idea generator complete"
@@ -166,19 +171,17 @@ for ($i = 1; $i -le $MaxIterations; $i++) {
             Invoke-PythonScript "va-ranker.py" -ScriptArgs "--update", "--top", "10"
         }
 
-        Write-JsonLog "SUCCESS" "Run $i complete"
+        Write-JsonLog "SUCCESS" "Run #$i complete"
     } catch {
         $errStr = $_.Exception.Message
-        Write-JsonLog "ERROR" "Daemon run $i encountered exception: $errStr - continuing next cycle"
+        Write-JsonLog "ERROR" "Daemon run #$i encountered exception: $errStr - continuing next cycle"
     }
 
-    if ($i -lt $MaxIterations) {
-        Write-JsonLog "INFO" "Sleeping $IntervalSeconds seconds..."
-        for ($s = $IntervalSeconds; $s -gt 0; $s -= 10) {
-            Start-Sleep -Seconds ([Math]::Min(10, $s))
-            if ($s -gt 10 -and $s % 30 -eq 0) {
-                Write-Host "  Next run in ${s}s..." -ForegroundColor Gray
-            }
+    Write-JsonLog "INFO" "Sleeping $IntervalSeconds seconds before next parallel cycle..."
+    for ($s = $IntervalSeconds; $s -gt 0; $s -= 10) {
+        Start-Sleep -Seconds ([Math]::Min(10, $s))
+        if ($s -gt 10 -and $s % 30 -eq 0) {
+            Write-Host "  Next parallel AI cycle in ${s}s..." -ForegroundColor Gray
         }
     }
 }

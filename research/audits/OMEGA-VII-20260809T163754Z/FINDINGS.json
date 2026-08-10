@@ -1,5 +1,27 @@
 {
   "run_id": "OMEGA-VII-20260809T163754Z",
   "baseline_commit": "8fc5573cc58a6617206cf6b5deec79bc4b4b982d",
-  "findings": []
+  "reconciled_head": "954b4352e1d700923d8ced94a695fcee83b76e1b",
+  "artifact": {
+    "path": "_site",
+    "file_count": 5509,
+    "total_bytes": 16752396,
+    "tree_sha256": "09aae9f99654ad57f95fdee93550290010abc99ad547ae80e3e6d0228bdfc974",
+    "fixed_point": true,
+    "browser_verified": true
+  },
+  "findings": [
+    {"id":"F-001","severity":"P0","area":"public-boundary","summary":"Raw/internal source provenance and private research were recursively publishable while the checker passed.","status":"fixed-and-verified"},
+    {"id":"F-002","severity":"P0","area":"container","summary":"Docker build contexts included local secrets and operator/private state.","status":"fixed-statically"},
+    {"id":"F-003","severity":"P0","area":"concurrency","summary":"At least three daemon loops concurrently rewrite rankings/provider state and make metadata stale.","status":"blocked-user-authority","evidence":{"pids":[21780,36884,38536],"startup_pid":10420}},
+    {"id":"F-004","severity":"P0","area":"validation","summary":"A migration manufactured validated/today/freshness states from citation counts; 112 records labeled validated, 60 internal-only, 90 without checklist.","status":"ui-contained-corpus-migration-pending"},
+    {"id":"F-005","severity":"P1","area":"ranking","summary":"Legacy rankings lack eligibility, coverage denominator, scale normalization, and kill/candidate exclusion.","status":"truth-labeled-migration-pending"},
+    {"id":"F-006","severity":"P1","area":"schema","summary":"Documented and runtime idea schemas disagreed.","status":"fixed-and-verified"},
+    {"id":"F-007","severity":"P1","area":"metadata","summary":"Weak checks accepted stale revisions and timestamp churn.","status":"fixed-and-verified-live-writer-now-detected"},
+    {"id":"F-008","severity":"P1","area":"provider-runtime","summary":"Parallel provider path bypasses eligibility/capability/cost/key gates and races shared state; health modules are not authoritative runtime gates.","status":"blocked-live-dirty-orchestrator"},
+    {"id":"F-009","severity":"P1","area":"cloud","summary":"Terraform/API/IAM/secret/image/service topology does not prove a deployable authenticated control plane.","status":"unproven-no-deployment"},
+    {"id":"F-010","severity":"P1","area":"collaboration","summary":"Realtime claims described browser-local storage and URL state did not synchronize.","status":"fixed-and-verified"},
+    {"id":"F-011","severity":"P1","area":"browser-runtime","summary":"Undefined citation variable blanked idea detail pages.","status":"fixed-and-verified"},
+    {"id":"F-012","severity":"P1","area":"git-runtime","summary":"External automation moved HEAD and origin three times and committed mixed user/OMEGA work during the run.","status":"documented-blocker"}
+  ]
 }

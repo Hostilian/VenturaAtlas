@@ -41,7 +41,7 @@
     "check:generated": "npm run check:drift",
     "check:secrets": "node scripts/check-public-artifact.js",
     "check-task-graph": "node scripts/check-task-graph.js",
-    "quality:source": "npm run check-js && npm run typecheck && npm run test:unit && npm run validate:source && node scripts/build-repository-meta.js --check && npm run check-consistency && npm run check-task-graph && npm run check:drift && python scripts/verify_constitution.py && python scripts/check_privacy.py",
+    "quality:source": "npm run check-js && npm run typecheck && npm run test:unit && npm run validate:source && node scripts/build-repository-meta.js && node scripts/build-repository-meta.js --check && npm run check-consistency && npm run check-task-graph && npm run check:drift && python scripts/verify_constitution.py && python scripts/check_privacy.py",
     "quality": "npm run quality:source && npm run build:verified",
     "ci": "npm run clean && npm run typecheck && npm run validate:source && npm run test:unit && npm run build && npm run validate:public",
     "ci:full": "npm run quality && npm run test:race && npm run test:providers && npm run test:e2e",

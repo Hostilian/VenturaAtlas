@@ -71,6 +71,7 @@ const DENIED_PATTERNS = [
   /^meeting-packets(\/|$)/i,
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,
+  /^docs\/REPO_AUDIT/i,
   /(^|\/)AGENTS(?:\.override)?\.md$/i
 ];
 
@@ -89,6 +90,26 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
 ]);
 
 let publicSourceIds = new Set();
+let internalSourceIds = new Set();
+
+const PROJECTED_TEXT_EXTENSIONS = new Set(['.html', '.json', '.md', '.txt', '.xml', '.csv']);
+
+function redactInternalSourceIds(text) {
+  let projected = text;
+  for (const sourceId of internalSourceIds) {
+    projected = projected.replaceAll(sourceId, 'INTERNAL_PROVENANCE_WITHHELD');
+  }
+  return projected;
+}
+
+function copyPublicFile(src, dest) {
+  if (PROJECTED_TEXT_EXTENSIONS.has(path.extname(src).toLowerCase())) {
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, redactInternalSourceIds(fs.readFileSync(src, 'utf8')), 'utf8');
+  } else {
+    fs.copyFileSync(src, dest);
+  }
+}
 
 function writeJson(dest, value) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -100,6 +121,22 @@ function projectIdeasForPublic(src, dest) {
   const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
   const projected = ideas.map(idea => {
     const result = { ...idea };
+    const validationProvenance = result.validationProvenance || result.researchRunId || result.validationRunId;
+    const legacyValidationLabel = result.validationStatus || result.atAGlance?.validationStatus;
+    if (legacyValidationLabel && !validationProvenance) {
+      result.legacyValidation = {
+        label: legacyValidationLabel,
+        recordedAt: result.lastValidatedAt || result.sourceCheckedAt || null,
+        assessment: 'unproven legacy migration output; not evidence of validation'
+      };
+      result.validationStatus = 'unproven';
+      if (result.atAGlance && typeof result.atAGlance === 'object') {
+        result.atAGlance = { ...result.atAGlance, validationStatus: 'unproven' };
+      }
+      delete result.lastValidatedAt;
+      delete result.sourceCheckedAt;
+      delete result.evidenceFreshness;
+    }
     if (Array.isArray(result.sourceReferences)) {
       result.sourceReferences = result.sourceReferences.filter(reference => {
         const sourceId = typeof reference === 'string' ? reference : reference?.id;
@@ -112,6 +149,21 @@ function projectIdeasForPublic(src, dest) {
     return result;
   });
   writeJson(dest, Array.isArray(raw) ? projected : { ...raw, ideas: projected });
+}
+
+function projectValidationSummaryForPublic(src, dest) {
+  const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  writeJson(dest, {
+    schemaVersion: '1.0.0',
+    checkedAt: raw.checkedAt,
+    contract: 'structural-and-referential',
+    contractStatus: raw.status,
+    canonicalCount: raw.canonicalCount,
+    errorCount: raw.errorCount,
+    warningCount: raw.warningCount,
+    epistemicValidation: 'not_assessed',
+    note: 'A passing contract does not validate market claims, evidence quality, freshness, or ranking eligibility.'
+  });
 }
 
 function projectRepositoryMetaForPublic(src, dest) {
@@ -131,7 +183,7 @@ function projectRankingsForPublic(src, dest) {
   const projected = { ...raw };
   delete projected.generatedAt;
   delete projected.history;
-  writeJson(dest, projected);
+  writeJson(dest, JSON.parse(redactInternalSourceIds(JSON.stringify(projected))));
 }
 
 function isDenied(relativePath) {
@@ -169,8 +221,10 @@ function copyRecursive(src, dest) {
         projectRepositoryMetaForPublic(src, dest);
       } else if (normalized === 'data/rankings.json') {
         projectRankingsForPublic(src, dest);
+      } else if (normalized === 'data/validation-summary.json') {
+        projectValidationSummaryForPublic(src, dest);
       } else {
-        fs.copyFileSync(src, dest);
+        copyPublicFile(src, dest);
       }
       count++;
     }
@@ -188,6 +242,10 @@ function build() {
     fs.readFileSync(path.join(ROOT, 'data', 'public-sources.json'), 'utf8')
   );
   publicSourceIds = new Set(projectedSources.map(source => source.id));
+  const allSources = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'));
+  internalSourceIds = new Set(
+    allSources.filter(source => source.visibility !== 'PUBLIC').map(source => source.id)
+  );
 
   if (fs.existsSync(DIST)) {
     fs.rmSync(DIST, { recursive: true, force: true });
@@ -199,7 +257,7 @@ function build() {
   for (const f of ALLOW_FILES) {
     const srcPath = path.join(ROOT, f);
     if (fs.existsSync(srcPath) && !isDenied(f)) {
-      fs.copyFileSync(srcPath, path.join(DIST, f));
+      copyPublicFile(srcPath, path.join(DIST, f));
       totalFiles++;
     }
   }
@@ -216,7 +274,7 @@ function build() {
     if (fs.existsSync(srcPath) && !isDenied(relativePath)) {
       const destPath = path.join(DIST, relativePath);
       fs.mkdirSync(path.dirname(destPath), { recursive: true });
-      fs.copyFileSync(srcPath, destPath);
+      copyPublicFile(srcPath, destPath);
       totalFiles++;
     }
   }

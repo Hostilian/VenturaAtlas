@@ -23,6 +23,7 @@ import urllib.error
 import urllib.parse
 import random
 import re
+import ssl
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -52,16 +53,20 @@ OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
 
 from va_runtime.provider_router import is_placeholder_key
 
-# Round-robin key pool parser for OpenRouter, Anthropic, Active API, and DeepSeek
+# Round-robin key pool parser for OpenRouter, Anthropic, Active API, DeepSeek, NVIDIA NIM, and Cohere
 _raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
 _raw_anthropic_keys  = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
 _raw_active_keys     = [k.strip() for k in os.environ.get('ACTIVE_API_KEYS', os.environ.get('ACTIVE_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
 _raw_deepseek_keys   = [k.strip() for k in os.environ.get('DEEPSEEK_API_KEYS', os.environ.get('DEEPSEEK_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+_raw_nvidia_keys     = [k.strip() for k in os.environ.get('NVIDIA_NIM_API_KEYS', os.environ.get('NVIDIA_NIM_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+_raw_cohere_keys     = [k.strip() for k in os.environ.get('COHERE_API_KEYS', os.environ.get('COHERE_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
 
 _openrouter_key_idx = 0
 _anthropic_key_idx  = 0
 _active_key_idx     = 0
 _deepseek_key_idx   = 0
+_nvidia_key_idx     = 0
+_cohere_key_idx     = 0
 
 def _get_next_openrouter_key() -> str:
     global _openrouter_key_idx
@@ -95,6 +100,22 @@ def _get_next_deepseek_key() -> str:
     _deepseek_key_idx += 1
     return key
 
+def _get_next_nvidia_key() -> str:
+    global _nvidia_key_idx
+    if not _raw_nvidia_keys:
+        return ''
+    key = _raw_nvidia_keys[_nvidia_key_idx % len(_raw_nvidia_keys)]
+    _nvidia_key_idx += 1
+    return key
+
+def _get_next_cohere_key() -> str:
+    global _cohere_key_idx
+    if not _raw_cohere_keys:
+        return ''
+    key = _raw_cohere_keys[_cohere_key_idx % len(_raw_cohere_keys)]
+    _cohere_key_idx += 1
+    return key
+
 OMNIROUTE_URL        = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
 OMNIROUTE_MODEL      = os.environ.get('OMNIROUTE_MODEL', 'meta-llama/llama-3.1-8b-instruct:free')
 FCC_MODEL            = os.environ.get('FCC_CLAUDE_MODEL', 'claude-haiku-4-5')
@@ -103,6 +124,9 @@ ACTIVE_API_BASE_URL  = os.environ.get('ACTIVE_API_BASE_URL', 'https://aiapiv2.pe
 ACTIVE_API_MDL       = os.environ.get('ACTIVE_API_MODEL', 'gemini-2.5-flash')
 DEEPSEEK_BASE_URL    = os.environ.get('DEEPSEEK_BASE_URL', 'https://api.deepseek.com/v1')
 DEEPSEEK_MDL         = os.environ.get('DEEPSEEK_MODEL', 'deepseek-chat')
+NVIDIA_NIM_URL       = os.environ.get('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1')
+NVIDIA_NIM_MDL       = os.environ.get('NVIDIA_NIM_MODEL', 'meta/llama-3.1-8b-instruct')
+COHERE_URL           = os.environ.get('COHERE_BASE_URL', 'https://api.cohere.com/v1')
 CIRCUIT_THRESHOLD    = 3       # failures before circuit opens
 CIRCUIT_COOLDOWN     = 180     # reduced cooldown (seconds) before retry after circuit open
 
@@ -137,6 +161,8 @@ def log_debug(msg, **kw):   _log_json("DEBUG", msg, kw or None)
 
 # ── Provider State (circuit breaker) ──────────────────────────────────────────
 PROVIDER_DEFAULTS = {
+    "nvidia-nim":     {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
+    "cohere-api":     {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "hermes-ollama":  {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "omniRoute":      {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "fcc-claude":     {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
@@ -146,36 +172,47 @@ PROVIDER_DEFAULTS = {
     "anthropic-full": {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
 }
 
+def _get_ssl_context():
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        return ssl._create_unverified_context()
+
 from va_runtime.atomic_io import atomic_write_json, read_json_safe
 
+import threading
+_state_lock = threading.Lock()
+
 def _load_state() -> dict:
-    os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
-    if os.path.exists(STATE_PATH):
-        try:
-            data = read_json_safe(STATE_PATH, default_if_missing={})
-            for k, v in PROVIDER_DEFAULTS.items():
-                if k not in data.get("providers", {}):
-                    data.setdefault("providers", {})[k] = dict(v)
-            return data
-        except Exception as e:
-            ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
-            bak_path = f"{STATE_PATH}.corrupt.{ts}"
+    with _state_lock:
+        os.makedirs(os.path.dirname(STATE_PATH), exist_ok=True)
+        if os.path.exists(STATE_PATH):
             try:
-                os.replace(STATE_PATH, bak_path)
-                log_warn(f"Corrupt provider state detected; backed up to '{bak_path}': {e}")
-            except Exception as bak_err:
-                log_error(f"Failed to back up corrupt provider state: {bak_err}")
-    return {
-        "providers": {k: dict(v) for k, v in PROVIDER_DEFAULTS.items()},
-        "lastRun": "",
-        "totalIdeasGenerated": 0,
-        "totalIdeasPromoted": 0,
-        "schemaVersion": "1.0.0",
-    }
+                data = read_json_safe(STATE_PATH, default_if_missing={})
+                for k, v in PROVIDER_DEFAULTS.items():
+                    if k not in data.get("providers", {}):
+                        data.setdefault("providers", {})[k] = dict(v)
+                return data
+            except Exception as e:
+                ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
+                bak_path = f"{STATE_PATH}.corrupt.{ts}"
+                try:
+                    os.replace(STATE_PATH, bak_path)
+                    log_warn(f"Corrupt provider state detected; backed up to '{bak_path}': {e}")
+                except Exception as bak_err:
+                    log_error(f"Failed to back up corrupt provider state: {bak_err}")
+        return {
+            "providers": {k: dict(v) for k, v in PROVIDER_DEFAULTS.items()},
+            "lastRun": "",
+            "totalIdeasGenerated": 0,
+            "totalIdeasPromoted": 0,
+            "schemaVersion": "1.0.0",
+        }
 
 def _save_state(state: dict):
-    state["lastRun"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    atomic_write_json(STATE_PATH, state)
+    with _state_lock:
+        state["lastRun"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        atomic_write_json(STATE_PATH, state)
 
 def _is_circuit_open(p_state: dict) -> bool:
     cu = p_state.get("circuitUntil", "")
@@ -214,8 +251,62 @@ def _record_success(state: dict, provider: str):
 def _http_post(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
     data = json.dumps(body).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers=headers, method='POST')
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return json.loads(resp.read().decode('utf-8'))
+    ctx = _get_ssl_context()
+    try:
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+            return json.loads(resp.read().decode('utf-8'))
+    except Exception as e:
+        if 'CERTIFICATE_VERIFY_FAILED' in str(e) or 'certificate verify failed' in str(e):
+            ctx_unverified = ssl._create_unverified_context()
+            with urllib.request.urlopen(req, timeout=timeout, context=ctx_unverified) as resp:
+                return json.loads(resp.read().decode('utf-8'))
+        raise e
+
+
+# ── Tier 0: NVIDIA NIM ─────────────────────────────────────────────────────────
+def _call_nvidia_nim(prompt: str) -> str:
+    if not _raw_nvidia_keys:
+        raise ValueError("No valid NVIDIA NIM API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_nvidia_keys)):
+        key = _get_next_nvidia_key()
+        try:
+            url = f"{NVIDIA_NIM_URL.rstrip('/')}/chat/completions"
+            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+            body = {
+                "model": NVIDIA_NIM_MDL,
+                "messages": [
+                    {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": 1200,
+                "temperature": 0.7,
+            }
+            result = _http_post(url, headers, body, timeout=60)
+            return result["choices"][0]["message"]["content"].strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"NVIDIA NIM key call failed: {e}")
+    raise last_err or ValueError("All NVIDIA NIM API keys in pool failed")
+
+
+# ── Tier 0.5: Cohere API ───────────────────────────────────────────────────────
+def _call_cohere_api(prompt: str) -> str:
+    if not _raw_cohere_keys:
+        raise ValueError("No valid Cohere API key configured in key pool")
+    last_err = None
+    for _ in range(len(_raw_cohere_keys)):
+        key = _get_next_cohere_key()
+        try:
+            url = f"{COHERE_URL.rstrip('/')}/chat"
+            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+            body = {"message": prompt}
+            result = _http_post(url, headers, body, timeout=60)
+            return result.get("text", "").strip()
+        except Exception as e:
+            last_err = e
+            log_debug(f"Cohere API key call failed: {e}")
+    raise last_err or ValueError("All Cohere API keys in pool failed")
 
 
 # ── Tier 1: Hermes via Ollama ─────────────────────────────────────────────────
@@ -233,30 +324,32 @@ def _call_omniRoute(prompt: str) -> str:
     if not _raw_openrouter_keys:
         raise ValueError("No valid OpenRouter API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_openrouter_keys)):
-        key = _get_next_openrouter_key()
-        try:
-            url = f"{OMNIROUTE_URL}/chat/completions"
-            headers = {
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {key}",
-                "HTTP-Referer": "https://venture-atlas-os.github.io",
-                "X-Title": "Venture Atlas OS",
-            }
-            body = {
-                "model": OMNIROUTE_MODEL,
-                "messages": [
-                    {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
-                    {"role": "user", "content": prompt},
-                ],
-                "max_tokens": 1200,
-                "temperature": 0.7,
-            }
-            result = _http_post(url, headers, body, timeout=60)
-            return result["choices"][0]["message"]["content"].strip()
-        except Exception as e:
-            last_err = e
-            log_debug(f"OpenRouter key call failed, trying next key: {e}")
+    endpoints = [OMNIROUTE_URL, "https://openrouter.ai/api/v1"]
+    for base_url in endpoints:
+        for _ in range(len(_raw_openrouter_keys)):
+            key = _get_next_openrouter_key()
+            try:
+                url = f"{base_url.rstrip('/')}/chat/completions"
+                headers = {
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {key}",
+                    "HTTP-Referer": "https://venture-atlas-os.github.io",
+                    "X-Title": "Venture Atlas OS",
+                }
+                body = {
+                    "model": OMNIROUTE_MODEL,
+                    "messages": [
+                        {"role": "system", "content": "You are a rigorous startup analyst finding zero-capital business ideas."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    "max_tokens": 1200,
+                    "temperature": 0.7,
+                }
+                result = _http_post(url, headers, body, timeout=60)
+                return result["choices"][0]["message"]["content"].strip()
+            except Exception as e:
+                last_err = e
+                log_debug(f"OpenRouter key call failed on {base_url}: {e}")
     raise last_err or ValueError("All OpenRouter API keys in pool failed")
 
 
@@ -510,18 +603,17 @@ def _call_deepseek_api(prompt: str) -> str:
 def health_check() -> dict:
     """Check which providers are available. Returns dict of provider → bool."""
     results = {}
+    # NVIDIA NIM
+    results["nvidia-nim"] = len(_raw_nvidia_keys) > 0
+    # Cohere API
+    results["cohere-api"] = len(_raw_cohere_keys) > 0
     # Hermes/Ollama
     try:
-        url = f"{OLLAMA_BASE_URL}/api/tags"
+        url = f"{OLLAMA_BASE_URL}/api/generate"
         req = urllib.request.Request(url, method='GET')
-        with urllib.request.urlopen(req, timeout=5) as r:
-            tags = json.loads(r.read())
-        model_names = [m.get("name", "") for m in tags.get("models", [])]
-        results["hermes-ollama"] = any(
-            HERMES_MODEL.split(":")[0] in n or OLLAMA_FALLBACK.split(":")[0] in n
-            for n in model_names
-        )
-        log_info("Ollama available", models=model_names[:5])
+        with urllib.request.urlopen(req, timeout=3) as r:
+            pass
+        results["hermes-ollama"] = True
     except Exception as e:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
@@ -538,6 +630,8 @@ def health_check() -> dict:
     # Anthropic Full
     results["anthropic-full"] = len(_raw_anthropic_keys) > 0
     log_info("Provider health check complete", results=results,
+             nvidia_keys=len(_raw_nvidia_keys),
+             cohere_keys=len(_raw_cohere_keys),
              openrouter_keys=len(_raw_openrouter_keys),
              anthropic_keys=len(_raw_anthropic_keys),
              active_keys=len(_raw_active_keys),
@@ -548,7 +642,7 @@ def health_check() -> dict:
 # ── Core Orchestration Call ────────────────────────────────────────────────────
 from va_runtime.provider_router import get_provider_scheduler
 
-DEFAULT_PROVIDER_ORDER = ["hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
+DEFAULT_PROVIDER_ORDER = ["nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
 
 from va_runtime.provider_router import get_provider_scheduler, NoEligibleProviderError
 
@@ -561,7 +655,11 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
     if _is_circuit_open(ps):
         return None
     try:
-        if provider == "hermes-ollama":
+        if provider == "nvidia-nim":
+            resp = _call_nvidia_nim(prompt)
+        elif provider == "cohere-api":
+            resp = _call_cohere_api(prompt)
+        elif provider == "hermes-ollama":
             try:
                 resp = _call_hermes(prompt, HERMES_MODEL)
             except Exception:

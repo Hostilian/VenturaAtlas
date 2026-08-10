@@ -3,6 +3,11 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
+const INTERNAL_SOURCE_IDS = new Set(
+  JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'))
+    .filter(source => source.visibility !== 'PUBLIC')
+    .map(source => source.id)
+);
 
 const FORBIDDEN_FILE_PATTERNS = [
   /\.env(\..*)?$/i,
@@ -21,6 +26,7 @@ const FORBIDDEN_FILE_PATTERNS = [
   /^meeting-packets(\/|$)/i,
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,
+  /^docs\/REPO_AUDIT/i,
   /(^|\/)AGENTS(?:\.override)?\.md$/i,
   /provider-state\.json$/i,
   /package(-lock)?\.json$/i,
@@ -70,6 +76,11 @@ function checkDirectory(dirPath) {
             for (const item of SECRET_CONTENT_PATTERNS) {
               if (item.regex.test(content)) {
                 errors.push(`Secret content pattern '${item.name}' detected in _site/${relPath}`);
+              }
+            }
+            for (const sourceId of INTERNAL_SOURCE_IDS) {
+              if (content.includes(sourceId)) {
+                errors.push(`Internal source identifier '${sourceId}' detected in _site/${relPath}`);
               }
             }
           } catch (e) {

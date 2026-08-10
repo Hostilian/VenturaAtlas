@@ -1,8 +1,8 @@
 {
-  "dataRevision": "229e39dd814eda62",
-  "buildRevision": "2.3.0-1289625",
-  "gitCommit": "1289625",
-  "generatedAt": "2026-08-10T11:18:41.943Z",
+  "dataRevision": "eaf1b38df1943840",
+  "buildRevision": "2.3.0-954b435",
+  "gitCommit": "954b435",
+  "generatedAt": "2026-08-10T11:36:32.070Z",
   "files": {
     "ideas.json": {
       "sha256": "f0aff5a18838de39261b3cfd7369f3bceb3ba17b9dc85e60236a75f5fc97a679",
@@ -21,7 +21,7 @@
       "bytes": 56222
     },
     "rankings.json": {
-      "sha256": "94f4bddf167e13c61afbb51c0b557c5aaecbd2b97f01e3ffeab58f0731611700",
+      "sha256": "3d7ed04292e816373aa9fe99a9ad921301727d683ab1a60a4518eeffc92c8716",
       "bytes": 1152638
     }
   }

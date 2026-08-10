@@ -2,9 +2,9 @@
   "schemaVersion": "1.0.0",
   "algorithm": "sha256(sorted \"<file-sha256>  <posix-relative-path>\\n\")",
   "artifact": "_site",
-  "fileCount": 5509,
-  "totalBytes": 16752396,
-  "treeSha256": "09aae9f99654ad57f95fdee93550290010abc99ad547ae80e3e6d0228bdfc974",
+  "fileCount": 5508,
+  "totalBytes": 16783379,
+  "treeSha256": "3139a36b78368d3bfb336eeaed238b0d8886894f50c1911343781ef181651adf",
   "files": [
     {
       "path": ".nojekyll",
@@ -73,8 +73,8 @@
     },
     {
       "path": "assets/js/features/collaboration.js",
-      "bytes": 14947,
-      "sha256": "790ed3726d5ac8712932f1b85153beca2772c01bab01908adfd668b941f015d5"
+      "bytes": 14035,
+      "sha256": "d53337d408c16fe4ca6c1a97089642a807f43c1e6f1f9587031968e45e716d08"
     },
     {
       "path": "assets/js/features/command-palette.js",
@@ -93,8 +93,8 @@
     },
     {
       "path": "assets/js/features/rankings.js",
-      "bytes": 17521,
-      "sha256": "c4edfaa8af5a92dc0aebefb1d65d8b9dd155cb140f7febfa8f0d25f264c0b183"
+      "bytes": 17888,
+      "sha256": "18cce6fe03d28d34adcb0b55a54898de39c4e8cff1e1d4a7b2ddd581bd3cab12"
     },
     {
       "path": "assets/js/home.js",
@@ -103,8 +103,8 @@
     },
     {
       "path": "assets/js/site.js",
-      "bytes": 59101,
-      "sha256": "c8613a3d07aba315fbe49900173de11f62dec948b34ff784cea3f7b7c10323fb"
+      "bytes": 59304,
+      "sha256": "ad3243731af84ab23d40fd35087fcaa4f4bd02e11db4ab27d9ebb1f2f6f14253"
     },
     {
       "path": "categories/ai-application.md",
@@ -328,8 +328,8 @@
     },
     {
       "path": "data/ideas.json",
-      "bytes": 4474484,
-      "sha256": "cec48ad6cd5092e708cad2f14cf841a59db55fd598880e1ff2c16ed721171476"
+      "bytes": 4509196,
+      "sha256": "97d943abd709cf1d5e268f00aff5aee29bccc11acaebf542232335c1ef75f5c9"
     },
     {
       "path": "data/ideas.schema.json",
@@ -359,7 +359,7 @@
     {
       "path": "data/repository-meta.json",
       "bytes": 844,
-      "sha256": "6c335dd85049de612e7d3aff3e24214937ef156d3de42cfdd3f56728b490eb31"
+      "sha256": "b647cb452944a0f6cab3b35284cdfbcba448a09fc69e3dfbf914588188767dab"
     },
     {
       "path": "data/search-index.json",
@@ -368,8 +368,8 @@
     },
     {
       "path": "data/validation-summary.json",
-      "bytes": 259,
-      "sha256": "713516b40252d4a307d9f3c029bbef89c29b783bc503ba83ee321a47857c589b"
+      "bytes": 372,
+      "sha256": "9ddc9c6f8c6dd5dbd717b23c4d2784ac79c59eb07a44d3617ab9d9e73b63675e"
     },
     {
       "path": "decisions/README.md",
@@ -483,8 +483,8 @@
     },
     {
       "path": "docs/matcher.html",
-      "bytes": 20675,
-      "sha256": "9fd7afca977a4e79215a113ecfe7aa5d7de9528a80503b4779d095e6857796b1"
+      "bytes": 20685,
+      "sha256": "b361eb4b12021d1e025feeb2d1a8f30216e65d05e35e14f6e1e56fe100fc5f6c"
     },
     {
       "path": "docs/methodology.html",
@@ -515,11 +515,6 @@
       "path": "docs/relationships.html",
       "bytes": 1418,
       "sha256": "febff36db2efd7683fba11e657782a6dc8c8de6e7973ffc8838a79b5860895fa"
-    },
-    {
-      "path": "docs/REPO_AUDIT_2026-08-08.md",
-      "bytes": 8567,
-      "sha256": "d2376ad88286ffd496335c62b7c799bae50ea92779ad1434b00084d6373957e1"
     },
     {
       "path": "docs/research-activity.html",
@@ -888,8 +883,8 @@
     },
     {
       "path": "ideas/agentlingo-multilingual-ai-agent-launch-gate.md",
-      "bytes": 37114,
-      "sha256": "5365b755e68bd852ff4d99b140f899893a0a83496275ffa1b38172a3eaae3b13"
+      "bytes": 37198,
+      "sha256": "ab840ebc10bb935bf138dfcb80af3111cd18922fc3a0ac8c1e2335dfea5e1251"
     },
     {
       "path": "ideas/agentratings-reliability-roi-ratings.md",
@@ -903,8 +898,8 @@
     },
     {
       "path": "ideas/ai-agent-budget-and-credit-controller.md",
-      "bytes": 36479,
-      "sha256": "24314c45d5bfce03bfc4a291ccf1ec986308a7f8fec96b323366ed3913d1349e"
+      "bytes": 36563,
+      "sha256": "ebf1db88f230f812406dbb0c93730696f26afb03e52afbdf2af5ccb45969e612"
     },
     {
       "path": "ideas/ai-agent-purchase-guardrail-idea-213.md",
@@ -913,8 +908,8 @@
     },
     {
       "path": "ideas/ai-model-ranking-observatory.md",
-      "bytes": 36478,
-      "sha256": "b5560f90c10668be6488f022fa5cee864b7e1abccbd36ff469a3ad74cf055950"
+      "bytes": 36562,
+      "sha256": "592e2b03c15223fc2e254e91418927c555bb9a2368759cdffbab2eab1856e004"
     },
     {
       "path": "ideas/ai-rights-royalty-subledger.md",
@@ -933,8 +928,8 @@
     },
     {
       "path": "ideas/api-opportunity-ranker.md",
-      "bytes": 36386,
-      "sha256": "bbe8a9abab944c7a487ce2197d59ddb54ffd11544c577b0d592f54ce7f711c94"
+      "bytes": 36470,
+      "sha256": "b4217ef53005e7a8c8b11aa2f9a7ab77961d857069d9b1e77451269dcb905eee"
     },
     {
       "path": "ideas/app-reimbursement-replay-scam-claim-simulator.md",
@@ -953,8 +948,8 @@
     },
     {
       "path": "ideas/applications-closing-soon.md",
-      "bytes": 36302,
-      "sha256": "3277691a4128b22c6e77d00d26efe2cc7d72924a0d4c9a65c3036b6f96039efc"
+      "bytes": 36386,
+      "sha256": "9ef85b5ee25c7a15a7ca2d7c29df296ff7bbcd1366938bb823de1b057b62dbc9"
     },
     {
       "path": "ideas/as-built-carbon-drift.md",
@@ -1013,23 +1008,23 @@
     },
     {
       "path": "ideas/autonomous-agent-operating-system.md",
-      "bytes": 36565,
-      "sha256": "dffc4b124644efdd4f1048eaebc56a610c03be020bf4eb4e19350aaf6295a49a"
+      "bytes": 36649,
+      "sha256": "4185c5056fe592dfddd279d551227a5748fb8b5b383c46bde8b6e64bed5a0ae7"
     },
     {
       "path": "ideas/autonomous-experiment-factory.md",
-      "bytes": 36474,
-      "sha256": "447f586f3147e24970bf5f17d7fafb1c905363d7b7759f7546e80e7575b03e19"
+      "bytes": 36558,
+      "sha256": "17d4afd9e6a354573ce412d3435aafd7c41c967d8984fa09e91e085f180eada6"
     },
     {
       "path": "ideas/autonomous-game-factory.md",
-      "bytes": 36431,
-      "sha256": "c4dcbf4988366e5baade4887a8af8234f98a1334bbabb340deda1245a4e03e30"
+      "bytes": 36515,
+      "sha256": "84218dc44f621c74727d17fc5ffdd1d6a63486b523148e9eb4e907dd47d4b5f1"
     },
     {
       "path": "ideas/autonomous-mobile-app-factory.md",
-      "bytes": 36533,
-      "sha256": "6dbd9340ebfb55c38588893e5ae4ff088f8459e111eecb07fcaf1013eafd9404"
+      "bytes": 36617,
+      "sha256": "05ab45cfa878452b8e0a2a3a1594d8f010a06e26b0b24e51b86c0a0b332ec053"
     },
     {
       "path": "ideas/b2b-agent-gateway-legacy-supplier-adapter.md",
@@ -1168,8 +1163,8 @@
     },
     {
       "path": "ideas/clip-to-quiz-language-learning.md",
-      "bytes": 36629,
-      "sha256": "b7d5ee592bf562f07605995f8201e8e4b2a97d801c2d8db8e2b51d671cdbc8b2"
+      "bytes": 36713,
+      "sha256": "fd213b43257a7af662fb7786c49fad41d3a2e2510fa8fee8f3a4f9b5d454bfb2"
     },
     {
       "path": "ideas/cloud-marketplace-revenue-share-grid.md",
@@ -1198,8 +1193,8 @@
     },
     {
       "path": "ideas/codeql-remediation-factory.md",
-      "bytes": 36054,
-      "sha256": "c44ae773c8d6096d8f99bea19dbf46f5b1a9668a9d0396261a1b8e20ee804ab9"
+      "bytes": 36138,
+      "sha256": "85b90a5cff3f0c41253a8f3d713db448231e0a32b3ed9d3c5942b31dcadc8873"
     },
     {
       "path": "ideas/cohortpreflight-ehds-secondary-data-validator.md",
@@ -1218,8 +1213,8 @@
     },
     {
       "path": "ideas/commerce-knowledge-graph-platform.md",
-      "bytes": 36698,
-      "sha256": "eef526fb8156055caeb93edcb141f91472b59cf7755453ed050a87b353e82101"
+      "bytes": 36782,
+      "sha256": "41254bd29a8f7b0a4cf766e3d1920a16434acf3745e6ceefe2454566a9606999"
     },
     {
       "path": "ideas/committee-handover-capsule-idea-191.md",
@@ -1243,8 +1238,8 @@
     },
     {
       "path": "ideas/content-opportunity-ranker.md",
-      "bytes": 36470,
-      "sha256": "1dcd41ef9cfe78732e284aac57da8cdb78e798db04c130507abdda7116d91f9e"
+      "bytes": 36554,
+      "sha256": "f2d285fa5b5b7b26c6e03fe72736d4b8e5a115d3397cd09b2540187240c2ff98"
     },
     {
       "path": "ideas/controlright-land-registry-preflight-uk-property.md",
@@ -1258,8 +1253,8 @@
     },
     {
       "path": "ideas/coursematch-erasmus-equivalence.md",
-      "bytes": 36408,
-      "sha256": "a8f6cc19883e3f5606c5f87b0e9b635978197b0c0f0f0f2837bc469d8c832de4"
+      "bytes": 36492,
+      "sha256": "9a9b1a6fa0020e307c43d8284d681342338190f9297ab2d4af95016f7601e637"
     },
     {
       "path": "ideas/cra-reachledger.md",
@@ -1268,8 +1263,8 @@
     },
     {
       "path": "ideas/creator-video-automation-pipeline.md",
-      "bytes": 36582,
-      "sha256": "97c2c58d475f1e61e78589f22fbbf3af76e5ea260b0ef334d62cad1dd0a030f6"
+      "bytes": 36666,
+      "sha256": "69234cf67704835d58afcf6cd41abf2fe23e54879914964b10650a9ca1de307e"
     },
     {
       "path": "ideas/credential-request-firewall-idea-207.md",
@@ -1353,8 +1348,8 @@
     },
     {
       "path": "ideas/digital-product-passport-and-repair-graph.md",
-      "bytes": 36383,
-      "sha256": "eaa15e6f366e8e83c24f4e223fd0f47eec9c68dcd24765613da0872b87a797f6"
+      "bytes": 36467,
+      "sha256": "a6e46354ba6acf1837224bfcce23b9c17d92518efbc5bb1ffc582f87c549c6e1"
     },
     {
       "path": "ideas/disclosurefirewall-minimum-disclosure-eudi.md",
@@ -1433,8 +1428,8 @@
     },
     {
       "path": "ideas/erasmus-course-rescue-pack.md",
-      "bytes": 36608,
-      "sha256": "e830186f0a1a92faa99fcaab53200eb3e3624ad8473801ca1ecda14508007130"
+      "bytes": 36692,
+      "sha256": "e053eecdc4d0d859239dfcfe2362eb8d8e79e548530694aeb2faaf57e7f1106a"
     },
     {
       "path": "ideas/etias-carrier-preflight-travel-authorization.md",
@@ -1443,8 +1438,8 @@
     },
     {
       "path": "ideas/eu-marketplace-compliance-os.md",
-      "bytes": 36342,
-      "sha256": "1784f153f29bb0a0edf0604e391b64b365f0dd34c6bc9204be03b77b72b293c6"
+      "bytes": 36426,
+      "sha256": "da6b05ab6fe8eb8257da423e3d729ad1026e8c2412c2d2d016047e5333900f60"
     },
     {
       "path": "ideas/eu-return-evidence-pack-idea-091.md",
@@ -1458,13 +1453,13 @@
     },
     {
       "path": "ideas/european-food-knowledge-graph.md",
-      "bytes": 36592,
-      "sha256": "fdd1840b7ef6204afb0ec16465085df31174de7fca43fd88a5b0828616e014e7"
+      "bytes": 36676,
+      "sha256": "5dd2f449b20ebe03b3536218db07b291f7a81689e31118eacebc28936188b491"
     },
     {
       "path": "ideas/eushop-pan-european-specialty-food-marketplace.md",
-      "bytes": 36783,
-      "sha256": "688e0a9c750f9beccba09a33e9a819ff2ec49b1d477ad83a0d11c749c2580866"
+      "bytes": 36867,
+      "sha256": "44672d63ca1e23a3cd5cd64ff19f7c8ff0340c8004d5063784334ed97dbee303"
     },
     {
       "path": "ideas/event-sponsor-proof-pack-idea-085.md",
@@ -1473,13 +1468,13 @@
     },
     {
       "path": "ideas/evidence-backed-food-route-builder.md",
-      "bytes": 36426,
-      "sha256": "de63269bfab895b544b7d3960e0df80f38860eab09010c42c4fd196d06b38201"
+      "bytes": 36510,
+      "sha256": "0c938c25b47a9c4fb141b7393f7731807ab62979bf23341377b8c293a729c941"
     },
     {
       "path": "ideas/evidence-backed-recommendation-engine.md",
-      "bytes": 36530,
-      "sha256": "304d767cc54626b54933a42c226e2e64cc8b0162f090aaab6873146582de1124"
+      "bytes": 36614,
+      "sha256": "b65b8a12fa94941a4974c012229efc5d48c99404966bd384ae6708222045a670"
     },
     {
       "path": "ideas/exactroom-access-confirmation-idea-250.md",
@@ -1538,8 +1533,8 @@
     },
     {
       "path": "ideas/foodspec-evidence-registry.md",
-      "bytes": 36411,
-      "sha256": "8539a593f7be41bc18c00b696c352f4784eb83273b2627eaa8ea0fd67a514c62"
+      "bytes": 36495,
+      "sha256": "ccd418998d3223e6959734d7e83da80f36bb0250ecad8419f91c0dcf3cbc0765"
     },
     {
       "path": "ideas/forcedlabor-casegraph.md",
@@ -1558,8 +1553,8 @@
     },
     {
       "path": "ideas/founder-decision-journal.md",
-      "bytes": 36359,
-      "sha256": "6233dbfa844dba5f20f1f717888450585f017d38a38ba9f54ea5d6a44e794fc0"
+      "bytes": 36443,
+      "sha256": "336726aaf97fc0a876252b88a0f576ce09671b1afc05c321731533b55e9ab9d6"
     },
     {
       "path": "ideas/framer-template-preflight-checker-idea-181.md",
@@ -1568,8 +1563,8 @@
     },
     {
       "path": "ideas/free-before-midnight.md",
-      "bytes": 36197,
-      "sha256": "4042140e5483cb7637c21ed2fc6b1c29d3da355c0390c237d63535b7851310b9"
+      "bytes": 36281,
+      "sha256": "3c73a5073fec8b2bfc96e7df9b1ece1ec1ebb75fdc1b71387ef5444121577331"
     },
     {
       "path": "ideas/freedomtomodify-sovereignty-ci.md",
@@ -1608,8 +1603,8 @@
     },
     {
       "path": "ideas/github-pages-version-lab.md",
-      "bytes": 36538,
-      "sha256": "4fa12e9823801f55ecafab436090218f3963cdd3f3bba85e82441dc5c67c7e1f"
+      "bytes": 36622,
+      "sha256": "fc3451cbfb34fb091c9fb3d0b3830b810ee8b4960524950be41c8e374b178838"
     },
     {
       "path": "ideas/grid-equipment-cancellation-exchange-secondary-transformer-trading.md",
@@ -1633,8 +1628,8 @@
     },
     {
       "path": "ideas/indie-game-launch-language-preflight.md",
-      "bytes": 36406,
-      "sha256": "b4a12ec0fbbc589411d7d75b01270e18074238a0158fe02e4e4477dfe2c51c4f"
+      "bytes": 36490,
+      "sha256": "209c901d3f5ffdf7b3245f17af86d92bcfea893e8f36a330024b5917a2e177f2"
     },
     {
       "path": "ideas/industrial-automation-obsolescence-graph-idea-166.md",
@@ -1753,8 +1748,8 @@
     },
     {
       "path": "ideas/living-european-food-atlas.md",
-      "bytes": 36374,
-      "sha256": "ffb5c647e4feba5fe0b8ceeb96552d26922f14354e1eb89bda75c17d7b955e67"
+      "bytes": 36458,
+      "sha256": "e8ff77523432e8d20735d426f4b58c857dc98e86c54701a8be90b02b29bbcb5a"
     },
     {
       "path": "ideas/loadenvelope-ci-gridenvelope.md",
@@ -1763,13 +1758,13 @@
     },
     {
       "path": "ideas/local-event-and-early-bird-radar.md",
-      "bytes": 36195,
-      "sha256": "9e93cb74e08877d7c871ee5ea9d9ea9745c8c75a5af94bfc805b60ff24ee42b8"
+      "bytes": 36279,
+      "sha256": "01b151889f204bade6462fae5c89c8c3831b32a04b64913740a92637147d6bfc"
     },
     {
       "path": "ideas/local-first-personal-ai-jarvis.md",
-      "bytes": 36327,
-      "sha256": "b1884c5f92d5e5db9a40ddc1fef9ccc1a9bc1b423b1bc1ef91f69415464613de"
+      "bytes": 36411,
+      "sha256": "144f5f5f1ca9662a107509127c77d49f189f5b18c602c4859ea5087fad12c06a"
     },
     {
       "path": "ideas/local-shelf-proof-retail-stock-evidence.md",
@@ -1778,8 +1773,8 @@
     },
     {
       "path": "ideas/longitudinal-research-memory.md",
-      "bytes": 36439,
-      "sha256": "236bc97ff338b7d4cc8bd3ca5afc4a820831c76a93492b3418311b1ccad8fe3d"
+      "bytes": 36523,
+      "sha256": "5593669848004959474e6ec8fa9144f78f276bff33c68530347c9e7fe575b971"
     },
     {
       "path": "ideas/low-water-capacity-options-rhine-industrial-freight-network.md",
@@ -1818,13 +1813,13 @@
     },
     {
       "path": "ideas/marketplace-trust-layer.md",
-      "bytes": 36251,
-      "sha256": "987b53fd63508450865d1868e9cd364dc0f0a89b5ed06972dcd2b0d2a5f6f3c3"
+      "bytes": 36335,
+      "sha256": "96d7cc758862f4b4c5602c14a21a3d77305d3e9b0af107d816914403633b7074"
     },
     {
       "path": "ideas/mcp-cross-client-release-gate.md",
-      "bytes": 36605,
-      "sha256": "ba6da2bd47ece60e74477b53fbb36da835fca6afd5d9cd5a36c1395db9ce7ede"
+      "bytes": 36689,
+      "sha256": "e39396f41bf5f225368e1a36c765008d2b5b4795183be52cbafb61968d8f2f85"
     },
     {
       "path": "ideas/measured-accessible-room-specification-idea-251.md",
@@ -1878,23 +1873,23 @@
     },
     {
       "path": "ideas/mobile-release-factory.md",
-      "bytes": 36579,
-      "sha256": "69d6b26c1b0d38b6772ea05496f0992d52aae0f2d513e1859d087f8326ac7cca"
+      "bytes": 36663,
+      "sha256": "a20382c1a089e14d767aceff954274fb85065685c6ad5e98c5f77703da782c21"
     },
     {
       "path": "ideas/model-and-prompt-regression-gate.md",
-      "bytes": 36423,
-      "sha256": "880fa54adc41f4b06e83b6df0fe7b6160f85ca0b92bf6a1fef53ef1644011f68"
+      "bytes": 36507,
+      "sha256": "078448ba8a566a3f8bc81bea2550f1371686b713c5e371d5779ba5dcae24d7e3"
     },
     {
       "path": "ideas/momentum-kinetic-fps.md",
-      "bytes": 36288,
-      "sha256": "ef5aa76563d8448a44869eca041a32c8966115f4f65764e8ee4219d7faf95fed"
+      "bytes": 36372,
+      "sha256": "d2e6696194215783f02653479efe224453e3bdefa89d181b775da2883f0134d9"
     },
     {
       "path": "ideas/movie-to-100-shorts-engine.md",
-      "bytes": 36313,
-      "sha256": "280290632c2d3c467bce14afeb61463a69ee22884b0545e70814a05a051c2920"
+      "bytes": 36397,
+      "sha256": "ab5a9b19efe6edc26cb3f51e40cb303e430d5fac4c00fff0a13ed5f232b07eaf"
     },
     {
       "path": "ideas/moving-box-evidence-passport-idea-196.md",
@@ -1908,13 +1903,13 @@
     },
     {
       "path": "ideas/multi-platform-publishing-os.md",
-      "bytes": 36324,
-      "sha256": "2f629c5e89f88cc81e8a7994b06e4e24a4fd41d9f4b74b603637eff01c3fa8a0"
+      "bytes": 36408,
+      "sha256": "6057666ff860c64b236325051c5e7d17a40d69002be84e92d29af6b1e02b5699"
     },
     {
       "path": "ideas/multi-provider-ai-workspace.md",
-      "bytes": 36450,
-      "sha256": "4b5348299f5ce4e2bd8fd55f18b0ade288d2490c93351b64e2885fbd70cb1990"
+      "bytes": 36534,
+      "sha256": "b5a15bd17c0e749e41e415f611f916b1e1e57ef56ee4668521b93e0b104e3fd4"
     },
     {
       "path": "ideas/oem-repair-fulfilment-rail-right-to-repair-logistics.md",
@@ -1928,8 +1923,8 @@
     },
     {
       "path": "ideas/official-source-change-monitor.md",
-      "bytes": 36279,
-      "sha256": "db6f4140965e882b365d4d83efa09573f4defe0931787a501a860f96b0001b89"
+      "bytes": 36363,
+      "sha256": "d4887d6d8890e8faafb5449a3e981214f52d1712a5717d8ed34bbd305083cc1b"
     },
     {
       "path": "ideas/older-adult-tech-support-interpreter-idea-214.md",
@@ -2003,8 +1998,8 @@
     },
     {
       "path": "ideas/policy-journey-adherence-pack.md",
-      "bytes": 36487,
-      "sha256": "cb0e3a0adaaeb9edea52e6c1b0349e1c5b0c2e7a1ea23b7799bc0aaa586f3a3d"
+      "bytes": 36571,
+      "sha256": "48dbcc0663ce9ee0063f95e324ad623aafdd5415130721af37cd8ed2c0d9baf4"
     },
     {
       "path": "ideas/powerplot-electrical-grid-capacity-intelligence-site-exchange-idea-273.md",
@@ -2013,8 +2008,8 @@
     },
     {
       "path": "ideas/prague-guest-intent-network.md",
-      "bytes": 36499,
-      "sha256": "4ae683d92454d9c7a3f2226428f37e541e71f43cf00019d91b33219a72b59cd0"
+      "bytes": 36583,
+      "sha256": "758fee792651e709442eda5335baf3fb1451992163e0ef0601bbffa27bebab25"
     },
     {
       "path": "ideas/preprintpublication-change-ledger-idea-246.md",
@@ -2053,8 +2048,8 @@
     },
     {
       "path": "ideas/prompt-registry-and-evaluation-lab.md",
-      "bytes": 36610,
-      "sha256": "337d21dcbf81bff359f56e39375c72e3b5d13b120a363a89f0e9c01e97e71070"
+      "bytes": 36694,
+      "sha256": "ea801adf877e33427bad5d10fc9b66ffcaec1929bd1934d138bc2d6601ade792"
     },
     {
       "path": "ideas/proofofai-ai-content-provenance-gateway-idea-266.md",
@@ -2063,8 +2058,8 @@
     },
     {
       "path": "ideas/proofrail-ai-work-acceptance-gate.md",
-      "bytes": 36755,
-      "sha256": "53569c3ff2508eeb33a33da0708df4ec84807371d6e91f85909d847a10380544"
+      "bytes": 36839,
+      "sha256": "3342fcac8fbdd489f49d281d044a9b57681476020b4f1b5905f81804ef099527"
     },
     {
       "path": "ideas/provenancechaos-markci.md",
@@ -2073,8 +2068,8 @@
     },
     {
       "path": "ideas/pstn-accent-and-noise-regression-suite.md",
-      "bytes": 36232,
-      "sha256": "edffdec27d0a15f397370ff96deef8bec51aceb081803422e8abbde8344cf1e7"
+      "bytes": 36316,
+      "sha256": "b255fb02abdb00902adfe9609f123d6d69a8a131f93b00f9bb3db428252d844e"
     },
     {
       "path": "ideas/public-data-contract-watch-idea-169.md",
@@ -2103,8 +2098,8 @@
     },
     {
       "path": "ideas/rag-citation-fidelity-gate.md",
-      "bytes": 36457,
-      "sha256": "e3cf6a2b69bd39a6ea0cb84a7655f7921e881525734814e7e302496453b0098e"
+      "bytes": 36541,
+      "sha256": "88d0bd4cd1dabb9a21970527cd2d2078c259782872ddab79470d658d5ccc0275"
     },
     {
       "path": "ideas/rapid-agentic-commerce-data-gate-idea-074.md",
@@ -2178,8 +2173,8 @@
     },
     {
       "path": "ideas/regional-commerce-launchpad.md",
-      "bytes": 36426,
-      "sha256": "1ed2cf63a678463d10ec33a69a5d5aae002152477dd2d01ee8699a5b65586354"
+      "bytes": 36510,
+      "sha256": "6c6c8a018f5e341b5e3317b72f281dab339df1cefb414093bc095b2d4ac19fee"
     },
     {
       "path": "ideas/regulated-agent-benchmark-exchange.md",
@@ -2193,8 +2188,8 @@
     },
     {
       "path": "ideas/release-evidence-ledger.md",
-      "bytes": 36598,
-      "sha256": "eb6b6b47e848d2efde07daba7a8cb46d0f71e025f41444c7e9b0fd8b9793feb2"
+      "bytes": 36682,
+      "sha256": "efd98704a1bbd655dd9244e3dc1adfc12b84ea95dfa2d2a034ca3c9682730e95"
     },
     {
       "path": "ideas/renter-deposit-evidence-capsule-idea-187.md",
@@ -2218,8 +2213,8 @@
     },
     {
       "path": "ideas/repair-decision-assistant.md",
-      "bytes": 36211,
-      "sha256": "3480dca6581cfad7d1829d0ae2a4b626385163ab7d407831caa51ee5cf7f6750"
+      "bytes": 36295,
+      "sha256": "e6678d8c290c2b9dabfcc73e0e34f3dd5391097b0517871e9d95295e8c6c070a"
     },
     {
       "path": "ideas/repairaccess-monitor-oem-aftermarket-evidence.md",
@@ -2238,8 +2233,8 @@
     },
     {
       "path": "ideas/repository-autopilot.md",
-      "bytes": 36637,
-      "sha256": "55b917863d7a88405f5cb1acda5bfb42f997237604c888415726e47ca4a77580"
+      "bytes": 36721,
+      "sha256": "f2d2b86f06dd71a49b37d8ef2c13808e17043551d7c89b4eef890f0d4f49e605"
     },
     {
       "path": "ideas/research-data-anonymization-red-team-idea-247.md",
@@ -2253,8 +2248,8 @@
     },
     {
       "path": "ideas/research-to-startup-engine.md",
-      "bytes": 36460,
-      "sha256": "63f86651704af3938e8b21c4c6cddd49d4f998925f7a656db4c3930a15222cd0"
+      "bytes": 36544,
+      "sha256": "bd8757b36e446769e85cfc2ada152cc0369d807a4be522ae8c53f4a235a0a952"
     },
     {
       "path": "ideas/researchproof-evidence-infrastructure-ai-rd.md",
@@ -2373,8 +2368,8 @@
     },
     {
       "path": "ideas/semantic-multi-agent-merge-coordinator.md",
-      "bytes": 36702,
-      "sha256": "75843aed7c9502ed3a14bca4cfc149f1fe30d0fab565ff85be38900abdeffefa"
+      "bytes": 36786,
+      "sha256": "26d64008552057d48f52c95c9d39bae59c8445b7cb2f5fa50d95d6504d2a9500"
     },
     {
       "path": "ideas/senior-comfort-route-card-idea-258.md",
@@ -2398,8 +2393,8 @@
     },
     {
       "path": "ideas/small-tour-empty-seat-rescue-circle.md",
-      "bytes": 36160,
-      "sha256": "43c1e0c5d91970669688483920106f11258359ad1c2333c26beed5070339f810"
+      "bytes": 36244,
+      "sha256": "d4c178f70f87fcf75a50d2ad02705ca298e06dd57541d8f35ac228f5dff0b927"
     },
     {
       "path": "ideas/smart-agent-testing-toolkit-idea-130.md",
@@ -2473,13 +2468,13 @@
     },
     {
       "path": "ideas/ssd-storage-culprit-analyzer.md",
-      "bytes": 36047,
-      "sha256": "3642335b96e5f5b0811abec086dd33744f646d1af3f2e431346100021ac5ae40"
+      "bytes": 36131,
+      "sha256": "1d8348bed1c4f788bbf08e8b9824bca758dad01f7ee6b1e03c47d29c8657aaf3"
     },
     {
       "path": "ideas/subscription-change-tracker.md",
-      "bytes": 36140,
-      "sha256": "ea93887a0cb6fc28905b99d46283221defc98372023aafbc913e6f5590b0ad43"
+      "bytes": 36224,
+      "sha256": "accad93c2dd0a9ff8644fa7097d7521ec37e90f8071feb58387e390cc0ea8d7b"
     },
     {
       "path": "ideas/subscription-rights-chaos-lab-recurring-payment-qa.md",
@@ -2573,13 +2568,13 @@
     },
     {
       "path": "ideas/venture-atlas-os.md",
-      "bytes": 36206,
-      "sha256": "29d2bfad7d0e3da64949b63a109545e5af4aa07eabefe152a2723c6264f6b149"
+      "bytes": 36290,
+      "sha256": "fbf0b2a7b633e72721e3f34e1e2393dc66f7f4dc35310a81a9fbeecf52ec2f84"
     },
     {
       "path": "ideas/verified-agent-skill-marketplace.md",
-      "bytes": 36666,
-      "sha256": "c9f4fb7baff87cbe6ba02b77a1dca21b0e98aed250d2d1ea383783904fcd0263"
+      "bytes": 36750,
+      "sha256": "e32fc2fe0daaf284c085bf3edbeb3a74b31817984216ad59f240b7d0167a0ace"
     },
     {
       "path": "ideas/verified-agent-testing-layer-idea-124.md",
@@ -2613,8 +2608,8 @@
     },
     {
       "path": "ideas/verified-local-value-rankings.md",
-      "bytes": 36349,
-      "sha256": "bd60c58b43cadeb88893b30f8f64d7be4ebca39f5a27217250af722817bd964b"
+      "bytes": 36433,
+      "sha256": "3e405ea62fc2c3767234e0e1fe026c63f707bb2409ade7461185cee990c6df96"
     },
     {
       "path": "ideas/verified-matching-discovery-suite-idea-229.md",
@@ -2643,13 +2638,13 @@
     },
     {
       "path": "ideas/verified-rankings-network.md",
-      "bytes": 36336,
-      "sha256": "c4c8a34c40236bdfddf503b6ccb80a4ce1170382f4fbf16eeaca89613270821c"
+      "bytes": 36420,
+      "sha256": "fca5749eeecd58bce309bb3959336c73d6d1f8af481ebddc6c52bce0123cda61"
     },
     {
       "path": "ideas/verified-seller-onboarding-api.md",
-      "bytes": 36303,
-      "sha256": "e177f077eca5c8143049fab184acae5874f95397e6e0a2e28aab225b21695692"
+      "bytes": 36387,
+      "sha256": "c2efe8f8390a928ff37a62cbe5bc0473c94e4b2f33d40e33382aebfe62f1c723"
     },
     {
       "path": "ideas/verified-shopping-agent-data-hub-idea-126.md",
@@ -2773,8 +2768,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 35448,
-      "sha256": "51afd778c6c2a22eb50c4cbbfda402bfaec1565642fcf0f7544aad3a6800e61a"
+      "bytes": 35465,
+      "sha256": "ebf4fbb678bb2cc8b68992fe92e80b5ba12b67662ba4cc3227fa212d6943b9ef"
     },
     {
       "path": "launch-plans/idea-001.md",

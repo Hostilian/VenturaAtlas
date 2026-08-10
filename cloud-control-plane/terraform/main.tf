@@ -22,6 +22,16 @@ variable "gcp_region" {
   default     = "europe-west1"
 }
 
+variable "worker_image" {
+  type        = string
+  description = "Immutable Artifact Registry image reference for the worker, including @sha256:<64 hex digest>"
+
+  validation {
+    condition     = can(regex("@sha256:[0-9a-f]{64}$", var.worker_image))
+    error_message = "worker_image must be immutable and end with @sha256:<64 lowercase hex characters>."
+  }
+}
+
 provider "google" {
   project = var.gcp_project_id
   region  = var.gcp_region
@@ -30,7 +40,7 @@ provider "google" {
 # ── 0. Enable Required GCP APIs ───────────────────────────────────────────────
 resource "google_project_service" "apis" {
   for_each = toset([
-    "cloudrun.googleapis.com",
+    "run.googleapis.com",
     "cloudtasks.googleapis.com",
     "firestore.googleapis.com",
     "secretmanager.googleapis.com",
@@ -75,17 +85,20 @@ resource "google_cloud_tasks_queue" "pipeline_queue" {
   }
 }
 
-# ── 4. Secret Manager Secrets for Provider Aliases ───────────────────────────
+# ── 4. Secret Manager Secrets for Provider Pools ─────────────────────────────
+locals {
+  provider_secret_ids = {
+    OPENROUTER_API_KEYS = "va-openrouter-01"
+    ANTHROPIC_API_KEYS  = "va-anthropic-01"
+    ACTIVE_API_KEYS     = "va-active-01"
+    DEEPSEEK_API_KEYS   = "va-deepseek-01"
+    GITHUB_TOKEN        = "va-github-token"
+  }
+}
+
 resource "google_secret_manager_secret" "provider_secrets" {
-  for_each = toset([
-    "va-openrouter-01",
-    "va-anthropic-01",
-    "va-active-01",
-    "va-deepseek-01",
-    "va-gemini-01",
-    "va-github-token"
-  ])
-  secret_id  = each.key
+  for_each   = local.provider_secret_ids
+  secret_id  = each.value
   depends_on = [google_project_service.apis]
   replication {
     auto {}
@@ -101,6 +114,11 @@ resource "google_service_account" "worker_sa" {
 resource "google_service_account" "publisher_sa" {
   account_id   = "va-cloud-publisher-sa"
   display_name = "Venture Atlas Publisher Service Account"
+}
+
+resource "google_service_account" "scheduler_sa" {
+  account_id   = "va-cloud-scheduler-sa"
+  display_name = "Venture Atlas Scheduler Invoker"
 }
 
 resource "google_secret_manager_secret_iam_member" "secret_access" {
@@ -120,7 +138,7 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
     template {
       service_account = google_service_account.worker_sa.email
       containers {
-        image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/venture-atlas-worker:2.3.0"
+        image = var.worker_image
         resources {
           limits = {
             cpu    = "2000m"
@@ -136,6 +154,14 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
   }
 }
 
+resource "google_cloud_run_v2_job_iam_member" "scheduler_invoker" {
+  project  = var.gcp_project_id
+  location = google_cloud_run_v2_job.venture_atlas_worker.location
+  name     = google_cloud_run_v2_job.venture_atlas_worker.name
+  role     = "roles/run.invoker"
+  member   = "serviceAccount:${google_service_account.scheduler_sa.email}"
+}
+
 # ── 7. Cloud Scheduler Trigger ────────────────────────────────────────────────
 resource "google_cloud_scheduler_job" "discovery_trigger" {
   name        = "venture-atlas-2hr-trigger"
@@ -145,9 +171,15 @@ resource "google_cloud_scheduler_job" "discovery_trigger" {
 
   http_target {
     http_method = "POST"
-    uri         = "https://${var.gcp_region}-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${var.gcp_project_id}/jobs/${google_cloud_run_v2_job.venture_atlas_worker.name}:run"
+    uri         = "https://run.googleapis.com/v2/projects/${var.gcp_project_id}/locations/${var.gcp_region}/jobs/${google_cloud_run_v2_job.venture_atlas_worker.name}:run"
+    body        = base64encode("{}")
+    headers = {
+      "Content-Type" = "application/json"
+    }
     oauth_token {
-      service_account_email = google_service_account.worker_sa.email
+      service_account_email = google_service_account.scheduler_sa.email
     }
   }
+
+  depends_on = [google_cloud_run_v2_job_iam_member.scheduler_invoker]
 }

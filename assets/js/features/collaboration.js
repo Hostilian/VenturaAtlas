@@ -1,4 +1,4 @@
-/* Venture Atlas OS — Real Friend Collaboration Engine (v2.3.0) */
+/* Venture Atlas OS — Browser-Local Decision Workspace (v2.3.0) */
 function initCollaborationRoom() {
   const container = document.getElementById('roomApp');
   if (!container) return;
@@ -15,21 +15,8 @@ function initCollaborationRoom() {
   // Read local room session fallback
   let roomState = window.VentureAtlas?.readJsonStorage('va-room-session', null);
 
-  if (roomId && (!roomState || roomState.id !== roomId)) {
-    // Joining existing room by ID
-    roomState = {
-      id: roomId,
-      name: `Room ${roomId.slice(0, 8)}`,
-      nickname: 'Guest ' + Math.floor(Math.random() * 1000),
-      votingMode: initialMode,
-      resultsVisibility: 'after_vote',
-      members: [],
-      shortlist: window.VentureAtlas?.readJsonStorage('va-room-shortlist', []) || ['idea-061', 'idea-273'],
-      votes: {},
-      comments: []
-    };
-    window.VentureAtlas?.writeJsonStorage('va-room-session', roomState);
-  }
+  const unavailableRoomId = roomId && (!roomState || roomState.id !== roomId) ? roomId : null;
+  if (unavailableRoomId) roomState = null;
 
   function saveState() {
     window.VentureAtlas?.writeJsonStorage('va-room-session', roomState);
@@ -41,8 +28,9 @@ function initCollaborationRoom() {
       // Render Create Room Form
       container.innerHTML = `
         <div class="card" style="max-width:560px;margin:2rem auto;padding:2rem">
-          <h2 style="margin-bottom:0.5rem">👥 Create a Friend Collaboration Room</h2>
-          <p style="color:var(--text2);margin-bottom:1.5rem">Invite co-founders or team members to evaluate venture ideas together without requiring GitHub logins.</p>
+          <h2 style="margin-bottom:0.5rem">👥 Create a Local Decision Workspace</h2>
+          <p style="color:var(--text2);margin-bottom:1.5rem">Evaluate ideas on this device, then export a decision packet for asynchronous sharing. This workspace does not synchronize.</p>
+          ${unavailableRoomId ? `<p role="note" style="color:var(--warn)">Workspace ${escHTML(unavailableRoomId)} is not stored in this browser. A URL cannot transfer local room state; ask for an exported decision packet instead.</p>` : ''}
 
           <form id="createRoomForm" style="display:flex;flex-direction:column;gap:1rem">
             <div>
@@ -65,11 +53,10 @@ function initCollaborationRoom() {
               <label style="display:block;font-weight:600;font-size:0.85rem;margin-bottom:0.3rem">Results Visibility (Mitigate Groupthink)</label>
               <select id="roomVisibilitySelect" style="width:100%;padding:0.6rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
                 <option value="after_vote" selected>Hidden until I vote (Recommended)</option>
-                <option value="live">Live results for all members</option>
-                <option value="after_close">Hidden until poll completes</option>
+                <option value="always">Always show my local results</option>
               </select>
             </div>
-            <button type="submit" class="button primary" style="margin-top:0.5rem">🚀 Launch Room &amp; Get Share Link</button>
+            <button type="submit" class="button primary" style="margin-top:0.5rem">🚀 Create Local Workspace</button>
           </form>
         </div>
       `;
@@ -89,7 +76,7 @@ function initCollaborationRoom() {
           shortlist: storedShortlist,
           votes: {},
           comments: [
-            { user: 'System', text: 'Room created! Share the link to invite friends.', time: 'Just now' }
+            { user: 'System', text: 'Local workspace created. Export a decision packet to share asynchronously.', time: 'Just now' }
           ]
         };
 
@@ -102,7 +89,6 @@ function initCollaborationRoom() {
     }
 
     // Render Active Room Dashboard
-    const shareUrl = `${window.location.origin}${window.location.pathname}?r=${roomState.id}`;
     const shortlistedIdeas = (roomState.shortlist || []).map(id => ideasMap.get(id)).filter(Boolean);
 
     container.innerHTML = `
@@ -114,7 +100,6 @@ function initCollaborationRoom() {
             <p style="font-size:0.85rem;color:var(--text2);margin:0">Active User: <strong>${escHTML(roomState.nickname)}</strong> · Mode: <strong>${escHTML(roomState.votingMode)}</strong></p>
           </div>
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <button id="copyRoomLinkBtn" class="button secondary sm">🔗 Copy Invite Link</button>
             <button id="leaveRoomBtn" class="button ghost sm">Leave Room</button>
           </div>
         </div>
@@ -137,7 +122,7 @@ function initCollaborationRoom() {
             <div style="display:flex;flex-direction:column;gap:1rem">
               ${shortlistedIdeas.map(idea => {
                 const userVote = roomState.votes[idea.id] || null;
-                const canSeeResults = roomState.resultsVisibility === 'live' || !!userVote;
+                const canSeeResults = roomState.resultsVisibility === 'always' || !!userVote;
 
                 return `
                   <div class="card" style="padding:1.25rem">
@@ -181,7 +166,7 @@ function initCollaborationRoom() {
         <!-- Room Sidebar: Chat & Export -->
         <div>
           <div style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.5rem">
-            <h3 style="font-size:1rem;margin-bottom:0.75rem">💬 Room Discussion</h3>
+            <h3 style="font-size:1rem;margin-bottom:0.75rem">💬 Local Notes</h3>
             <div id="commentList" style="display:flex;flex-direction:column;gap:0.5rem;max-height:240px;overflow-y:auto;margin-bottom:0.75rem;padding-right:0.3rem">
               ${(roomState.comments || []).map(c => `
                 <div style="font-size:0.8rem;background:var(--panel2);padding:0.4rem 0.6rem;border-radius:var(--radius-sm)">
@@ -191,7 +176,7 @@ function initCollaborationRoom() {
             </div>
             <form id="commentForm" style="display:flex;gap:0.4rem">
               <input type="text" id="commentInput" placeholder="Add note or question..." required style="flex:1;padding:0.4rem 0.6rem;font-size:0.82rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
-              <button type="submit" class="button primary sm">Send</button>
+              <button type="submit" class="button primary sm">Save note</button>
             </form>
           </div>
 
@@ -208,19 +193,6 @@ function initCollaborationRoom() {
   }
 
   function bindRoomEvents() {
-    const copyBtn = document.getElementById('copyRoomLinkBtn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        const shareUrl = `${window.location.origin}${window.location.pathname}?r=${roomState.id}`;
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(shareUrl).then(() => {
-            copyBtn.innerHTML = '✓ Link Copied!';
-            setTimeout(() => { copyBtn.innerHTML = '🔗 Copy Invite Link'; }, 2000);
-          });
-        }
-      });
-    }
-
     const leaveBtn = document.getElementById('leaveRoomBtn');
     if (leaveBtn) {
       leaveBtn.addEventListener('click', () => {

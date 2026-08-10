@@ -47,6 +47,11 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
 
   const publicSources = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'public-sources.json'), 'utf8'));
   const publicIds = new Set(publicSources.map(source => source.id));
+  const internalIds = new Set(
+    JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'))
+      .filter(source => source.visibility !== 'PUBLIC')
+      .map(source => source.id)
+  );
   assert.ok(publicSources.every(source => source.visibility === 'PUBLIC'), 'every projected source must be explicitly public');
   const publicIdeasRaw = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'ideas.json'), 'utf8'));
   const publicIdeas = Array.isArray(publicIdeasRaw) ? publicIdeasRaw : publicIdeasRaw.ideas;
@@ -68,4 +73,31 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   const publicRankings = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'rankings.json'), 'utf8'));
   assert.equal(publicRankings.generatedAt, undefined, 'public rankings must not expose volatile daemon timestamps');
   assert.equal(publicRankings.history, undefined, 'public rankings must not expose private daemon execution history');
+  const publicValidationSummary = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'validation-summary.json'), 'utf8'));
+  assert.equal(publicValidationSummary.contract, 'structural-and-referential');
+  assert.equal(publicValidationSummary.epistemicValidation, 'not_assessed');
+  assert.equal(publicValidationSummary.status, undefined, 'ambiguous unscoped validation status must not be public');
+  for (const idea of publicIdeas) {
+    if (idea.legacyValidation) {
+      assert.equal(idea.validationStatus, 'unproven', `public idea ${idea.id} must neutralize its legacy validation label`);
+      assert.notEqual(idea.legacyValidation.label, undefined);
+      assert.equal(idea.lastValidatedAt, undefined);
+      assert.equal(idea.sourceCheckedAt, undefined);
+    }
+  }
+  const textExtensions = new Set(['.html', '.js', '.json', '.css', '.md', '.txt', '.xml', '.csv']);
+  const pending = [distPath];
+  while (pending.length) {
+    const current = pending.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const absolute = path.join(current, entry.name);
+      if (entry.isDirectory()) pending.push(absolute);
+      if (entry.isFile() && textExtensions.has(path.extname(entry.name).toLowerCase())) {
+        const content = fs.readFileSync(absolute, 'utf8');
+        for (const sourceId of internalIds) {
+          assert.ok(!content.includes(sourceId), `public text ${path.relative(distPath, absolute)} exposes internal source ${sourceId}`);
+        }
+      }
+    }
+  }
 });

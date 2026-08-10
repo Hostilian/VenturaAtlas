@@ -23,6 +23,7 @@ RUN pip install --no-cache-dir requests urllib3 google-cloud-firestore google-cl
 
 # Copy full application codebase
 COPY . .
+RUN chmod 0500 cloud-control-plane/git_askpass.py
 
 # Environment variables
 ENV PYTHONUNBUFFERED=1 \
