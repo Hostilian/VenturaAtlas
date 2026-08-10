@@ -3,8 +3,8 @@
   "algorithm": "sha256(sorted \"<file-sha256>  <posix-relative-path>\\n\")",
   "artifact": "_site",
   "fileCount": 5508,
-  "totalBytes": 16783379,
-  "treeSha256": "3139a36b78368d3bfb336eeaed238b0d8886894f50c1911343781ef181651adf",
+  "totalBytes": 16783841,
+  "treeSha256": "778db83a2e560d40796ae8db1a1b5192bfff80d775f26cfc480e94dade8b783e",
   "files": [
     {
       "path": ".nojekyll",
@@ -348,8 +348,8 @@
     },
     {
       "path": "data/rankings.json",
-      "bytes": 1104404,
-      "sha256": "f4640356995bbaa8fd8e331fee766728aaa2567b0de9d85d2d34ce996d2d903b"
+      "bytes": 1105222,
+      "sha256": "6d6ccb9043797b1fa9f544a7c1c45862b3d79c45c9d6f8a77d88a9d6c8e92e9b"
     },
     {
       "path": "data/relationships.json",
@@ -358,8 +358,8 @@
     },
     {
       "path": "data/repository-meta.json",
-      "bytes": 844,
-      "sha256": "b647cb452944a0f6cab3b35284cdfbcba448a09fc69e3dfbf914588188767dab"
+      "bytes": 488,
+      "sha256": "ad8cfc7a0259b2b0695a27d6898d5b892564c207704c56b348a112e85fd70e85"
     },
     {
       "path": "data/search-index.json",

@@ -75,6 +75,12 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   const publicRankings = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'rankings.json'), 'utf8'));
   assert.equal(publicRankings.generatedAt, undefined, 'public rankings must not expose volatile daemon timestamps');
   assert.equal(publicRankings.history, undefined, 'public rankings must not expose private daemon execution history');
+  assert.equal(publicRankings.maturity, 'legacy_unverified');
+  assert.equal(publicRankings.eligibilityEnforced, false);
+  assert.equal(publicRankings.coverageAssessed, false);
+  assert.equal(publicRankings.scaleComparabilityEstablished, false);
+  assert.ok(publicRankings.rankings.every(view => view.maturity === 'legacy_unverified'));
+  assert.ok(publicRankings.rankings.every(view => !/all evidence dimensions/i.test(view.description)));
   const publicValidationSummary = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'validation-summary.json'), 'utf8'));
   assert.equal(publicValidationSummary.contract, 'structural-and-referential');
   assert.equal(publicValidationSummary.epistemicValidation, 'not_assessed');
