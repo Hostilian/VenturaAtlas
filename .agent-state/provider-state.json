@@ -22,10 +22,10 @@
       "successCalls": 0
     },
     "omniRoute": {
-      "failures": 0,
+      "failures": 1,
       "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 0,
+      "totalCalls": 1,
       "successCalls": 0
     },
     "fcc-claude": {
@@ -64,7 +64,7 @@
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-10T11:38:03.269065+00:00",
+  "lastRun": "2026-08-10T11:38:48.088598+00:00",
   "totalIdeasGenerated": 0,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",

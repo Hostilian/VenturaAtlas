@@ -183,7 +183,18 @@ function projectRepositoryMetaForPublic(src, dest) {
 
 function projectRankingsForPublic(src, dest) {
   const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
-  const projected = { ...raw };
+  const projected = {
+    ...raw,
+    maturity: 'legacy_unverified',
+    eligibilityEnforced: false,
+    coverageAssessed: false,
+    scaleComparabilityEstablished: false,
+    rankings: (raw.rankings || []).map(view => ({
+      ...view,
+      maturity: 'legacy_unverified',
+      description: 'Legacy heuristic order retained for provenance; eligibility, evidence coverage, and score-scale comparability are not established.'
+    }))
+  };
   delete projected.generatedAt;
   delete projected.history;
   writeJson(dest, JSON.parse(redactInternalSourceIds(JSON.stringify(projected))));
