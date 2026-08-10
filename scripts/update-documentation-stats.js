@@ -13,6 +13,18 @@ const FILES = [
   path.join(ROOT, 'index.html')
 ];
 
+function synchronizeArchitecture(content, meta) {
+  return content
+    .replace(
+      /serving [\d,]+\+ canonical & staged startup dossiers/g,
+      `serving ${meta.counts.totalIdeas}+ canonical & staged startup dossiers`
+    )
+    .replace(
+      /[\d,]+\+ generated prompt packs/g,
+      `${meta.counts.prompts.toLocaleString()}+ generated prompt packs`
+    );
+}
+
 function main() {
   if (!fs.existsSync(META_PATH)) {
     console.error('repository-meta.json not found');
@@ -71,8 +83,7 @@ function main() {
       content = content.replace(/^-\s+Total ideas:\s+\d+/gm, `- Total ideas: ${meta.counts.totalIdeas}`);
       content = content.replace(/^-\s+Prompt records:\s+\d+/gm, `- Prompt records: ${meta.counts.prompts}`);
     } else if (filePath.endsWith('ARCHITECTURE.md')) {
-      content = content.replace(/serving \d+\+ canonical & staged startup dossiers/g, `serving ${meta.counts.totalIdeas}+ canonical & staged startup dossiers`);
-      content = content.replace(/\d+\+ generated prompt packs/g, `${meta.counts.prompts.toLocaleString()}+ generated prompt packs`);
+      content = synchronizeArchitecture(content, meta);
     } else if (filePath.endsWith('SEARCH_AND_DISCOVERY_GUIDE.md')) {
       content = content.replace(/all \d+\+ ideas/g, `all ${meta.counts.canonicalIdeas}+ ideas`);
     } else if (filePath.endsWith('index.html')) {
@@ -90,4 +101,8 @@ function main() {
   });
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { synchronizeArchitecture };
