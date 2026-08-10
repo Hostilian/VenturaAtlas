@@ -20,13 +20,10 @@ function main() {
   const isCheckMode = process.argv.includes('--check');
   const truth = getRepositoryTruth();
 
-  let gitCommit = 'local-dev';
-  try {
-    const { execSync } = require('child_process');
-    gitCommit = execSync('git rev-parse --short HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
-  } catch (_) {}
-
-  const buildRevision = `${truth.version}-${gitCommit}`;
+  // A tracked generated file cannot embed HEAD: committing that file changes HEAD
+  // and makes the freshly committed output stale. Use the canonical content
+  // revision so identical inputs produce identical metadata in every checkout.
+  const buildRevision = `${truth.version}-${truth.canonicalDataRevision}`;
 
   let existingTimestamp = new Date().toISOString();
   if (fs.existsSync(META_PATH)) {
@@ -52,7 +49,6 @@ function main() {
     schemaVersion: truth.schemaVersion,
     dataRevision: truth.canonicalDataRevision,
     buildRevision,
-    gitCommit,
     generatedAt: existingTimestamp,
     counts: truth.counts,
     revisions: truth.revisions
@@ -70,7 +66,7 @@ function main() {
       current.schemaVersion === metaData.schemaVersion &&
       current.dataRevision === metaData.dataRevision &&
       current.buildRevision === metaData.buildRevision &&
-      current.gitCommit === metaData.gitCommit &&
+      !Object.hasOwn(current, 'gitCommit') &&
       sameJson(current.counts, metaData.counts) &&
       sameJson(current.revisions, metaData.revisions);
     if (!metaMatches) {
@@ -85,7 +81,7 @@ function main() {
     const manifestMatches =
       currentManifest.dataRevision === truth.canonicalDataRevision &&
       currentManifest.buildRevision === buildRevision &&
-      currentManifest.gitCommit === gitCommit &&
+      !Object.hasOwn(currentManifest, 'gitCommit') &&
       sameJson(currentManifest.files, truth.files);
     if (!manifestMatches) {
       console.error('[ERROR] data/build-manifest.json is stale');
@@ -105,7 +101,7 @@ function main() {
       if (
         previousManifest.dataRevision === truth.canonicalDataRevision &&
         previousManifest.buildRevision === buildRevision &&
-        previousManifest.gitCommit === gitCommit &&
+        !Object.hasOwn(previousManifest, 'gitCommit') &&
         sameJson(previousManifest.files, truth.files)
       ) {
         manifestTimestamp = previousManifest.generatedAt || manifestTimestamp;
@@ -115,7 +111,6 @@ function main() {
   const manifest = {
     dataRevision: truth.canonicalDataRevision,
     buildRevision,
-    gitCommit,
     generatedAt: manifestTimestamp,
     files: truth.files
   };
