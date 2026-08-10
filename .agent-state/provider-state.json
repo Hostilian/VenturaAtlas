@@ -10,9 +10,9 @@
     "cohere-api": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T11:37:38.525750+00:00",
-      "totalCalls": 7,
-      "successCalls": 7
+      "lastUsed": "2026-08-10T11:38:50.350531+00:00",
+      "totalCalls": 8,
+      "successCalls": 8
     },
     "hermes-ollama": {
       "failures": 4,
@@ -22,10 +22,10 @@
       "successCalls": 0
     },
     "omniRoute": {
-      "failures": 1,
+      "failures": 0,
       "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 1,
+      "totalCalls": 0,
       "successCalls": 0
     },
     "fcc-claude": {
@@ -64,7 +64,7 @@
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-10T11:38:48.088598+00:00",
+  "lastRun": "2026-08-10T11:38:50.350531+00:00",
   "totalIdeasGenerated": 0,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
