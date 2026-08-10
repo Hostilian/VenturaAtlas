@@ -71,7 +71,7 @@
       "capabilities": ["comparative_synthesis", "formatting", "research", "coding"],
       "costClass": 1,
       "latencyClass": "medium",
-      "webAccess": true,
+      "webAccess": false,
       "circuitThreshold": 3,
       "cooldownSeconds": 180
     },

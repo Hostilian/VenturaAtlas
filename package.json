@@ -14,7 +14,7 @@
     "typecheck": "tsc -p apps/factbounty/tsconfig.json",
     "validate": "npm run validate:source",
     "validate:source": "npm run validate:data && npm run validate:links",
-    "validate:data": "node scripts/validate-data.js --strict && python scripts/validate-schema.py",
+    "validate:data": "node scripts/validate-data.js --strict --check && python scripts/validate-schema.py",
     "validate:links": "node scripts/check-links.js",
     "validate:public": "node scripts/check-public-artifact.js",
     "validate:deploy": "node scripts/check-public-artifact.js",

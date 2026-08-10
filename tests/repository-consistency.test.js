@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 const { test } = require('node:test');
+const { getRepositoryTruth } = require('../scripts/lib/repository-truth');
 
 const root = path.resolve(__dirname, '..');
 
@@ -24,4 +25,11 @@ test('Repository Consistency — Metadata Count Alignment', () => {
   const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas.ideas || []);
 
   assert.strictEqual(meta.counts.ideas, ideas.length, `repository-meta.json counts.ideas (${meta.counts.ideas}) matches ideas.json length (${ideas.length})`);
+  const truth = getRepositoryTruth();
+  assert.strictEqual(meta.counts.canonicalIdeas, truth.counts.canonicalIdeas);
+  assert.strictEqual(meta.counts.stagedIdeas, truth.counts.stagedIdeas);
+  assert.strictEqual(meta.counts.totalIdeas, truth.counts.totalIdeas);
+  assert.strictEqual(meta.counts.rankingViews, truth.counts.rankingViews);
+  assert.strictEqual(meta.counts.rankingEntries, truth.counts.rankingEntries);
+  assert.strictEqual(meta.revisions.stagingRevision, truth.revisions.stagingRevision);
 });

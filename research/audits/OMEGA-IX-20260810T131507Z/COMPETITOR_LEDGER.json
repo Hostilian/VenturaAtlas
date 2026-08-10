@@ -1,0 +1,15 @@
+{
+  "runId":"OMEGA-IX-20260810T131507Z",
+  "entries":[
+    {"thesis":"agent outcome verification","alternatives":["LangSmith Engine/evaluators","AWS AgentCore Evaluations","Microsoft Copilot Studio evaluation","RPA session logs"],"absorptionRisk":"HIGH","remainingWedge":"vertical authoritative business-outcome assertions and exception evidence"},
+    {"thesis":"SLA credit recovery","alternatives":["FinOps teams","MSPs","manual cloud support claims"],"absorptionRisk":"MEDIUM_HIGH","remainingWedge":"cross-provider contract/log/deadline reconciliation priced on recovered value"},
+    {"thesis":"B2B catalog entitlement gate","alternatives":["Shopify Catalog","Adobe shared catalogs","SAP commerce","Akeneo"],"absorptionRisk":"HIGH","remainingWedge":"protocol-neutral identity/price leakage regression evidence"},
+    {"thesis":"CRA release rehearsal","alternatives":["vulnerability-management suites","PSIRT consultants","ENISA reporting platform"],"absorptionRisk":"MEDIUM_HIGH","remainingWedge":"product-version-to-report payload rehearsal and receipt chain"},
+    {"thesis":"PPWR release preflight","alternatives":["SAP Responsible Design and Production","PLM/PIM suites","consultants"],"absorptionRisk":"HIGH","remainingWedge":"small, source-system release gate with supplier-evidence exceptions"},
+    {"thesis":"EUDAMED reconciliation","alternatives":["official UI/XML/M2M","medical-device regulatory platforms","consultants"],"absorptionRisk":"HIGH","remainingWedge":"submitted/rejected/published state diff and evidence packet"},
+    {"thesis":"workbook release gate","alternatives":["Excel Copilot and formula audit","Workiva","manual controller review"],"absorptionRisk":"HIGH","remainingWedge":"deterministic business invariants tied to release approval"},
+    {"thesis":"CBAM reconciliation","alternatives":["enterprise trade-compliance suites","CBAM consultants","registry workflows"],"absorptionRisk":"HIGH","remainingWedge":"shipment/emissions/certificate/finance exception closure"},
+    {"thesis":"generic agent IAM","alternatives":["Microsoft Entra Agent ID","Google Agent Identity/Gateway","AWS Agent Registry","Okta for AI Agents"],"absorptionRisk":"DECISIVE","remainingWedge":null},
+    {"thesis":"generic MCP tester","alternatives":["official MCP conformance suite","MCP Inspector","SDK CI"],"absorptionRisk":"DECISIVE","remainingWedge":null}
+  ]
+}

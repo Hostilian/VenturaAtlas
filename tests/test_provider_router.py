@@ -53,6 +53,28 @@ class TestProviderRouter(unittest.TestCase):
                 allow_own_orch=True
             )
 
+    def test_capability_contract_does_not_use_fallback_as_wildcard(self):
+        scheduler = CapabilityProviderScheduler()
+        selected = scheduler.select_providers_for_task(
+            required_capabilities=["capability-that-does-not-exist"],
+            allow_own_orch=True,
+            match_mode="all",
+        )
+        self.assertEqual(selected, [])
+
+    def test_external_model_is_not_external_evidence_without_retrieval(self):
+        os.environ["OPENROUTER_API_KEYS"] = "sk-or-v1-9999888877776666555544443333"
+        try:
+            scheduler = CapabilityProviderScheduler()
+            with self.assertRaises(NoEligibleProviderError):
+                scheduler.select_providers_for_task(
+                    required_capabilities=["research"],
+                    requires_external_evidence=True,
+                    allow_own_orch=False,
+                )
+        finally:
+            del os.environ["OPENROUTER_API_KEYS"]
+
     def test_process_lock_rejects_concurrent_owner(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             lock_path = os.path.join(temp_dir, "supervisor.lock")

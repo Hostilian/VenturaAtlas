@@ -14,14 +14,14 @@
 - Open conflicts: earliest complete Deep Research contract unavailable
 - Open privacy issues: future raw chat exports require redaction before public release
 - Next recommended action: ingest the exact earliest Deep Research contract and all remaining chat exports
-- Last successful validation: 2026-08-06 — smoke, schema, links, JavaScript, constitution, and privacy checks passed
+- Last successful validation: 2026-08-10 — structural/referential data, schema, links, JavaScript, type, consistency, drift, constitution, privacy, and unit checks passed; market/evidence truth was not validated
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
 - Canonical Ideas: 294
-- Staged Ideas: 181
-- Total Ideas: 475
+- Staged Ideas: 185
+- Total Ideas: 479
 - Categories: 122
 - Source References: 96
 - Generated Prompts: 4425

@@ -1,14 +1,14 @@
 # PROJECT STATUS
 
-- Repository version: 2.2.0
+- Repository version: 2.3.0
 - Data schema version: 2.0.0
-- Validation status: **PASSED** — 0 errors across all 226 ideas, 62 sources, search index and smoke tests
-- Last completed idea ID: idea-249
-- Next idea ID: idea-250
+- Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 294 ideas and 96 source records; epistemic validation is not assessed
+- Highest assigned canonical idea ID: idea-406
+- Next ID: allocated by the canonical ID allocator; do not infer from this document
 - Canonical ideas: 294
 - Categories: 122
 - Validation warnings: 0
-- Last updated: 2026-08-07
+- Last updated: 2026-08-10
 
 
 ## Change Log
@@ -73,8 +73,8 @@
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
 - Canonical Ideas: 294
-- Staged Ideas: 181
-- Total Ideas: 475
+- Staged Ideas: 185
+- Total Ideas: 479
 - Categories: 122
 - Source References: 96
 - Generated Prompts: 4425

@@ -208,6 +208,21 @@ def is_duplicate(name: str, existing_names: list[str], threshold: float = 0.6) -
 
 # ── 8-Point Checklist Evaluator ───────────────────────────────────────────────
 def run_checklist(llm_idea: dict) -> dict:
+    # Discovery text is a set of model-authored hypotheses, not behavioral
+    # evidence. It cannot pass its own validation gate.
+    return {
+        "gateStatus": "needs_external_validation",
+        "passed": False,
+        "passedCount": 0,
+        "failedCount": 0,
+        "unknownCount": len(CHECKLIST_CRITERIA),
+        "totalCriteria": len(CHECKLIST_CRITERIA),
+        "scorePercentage": None,
+        "assessmentBasis": "unverified_model_hypotheses",
+        "details": {criterion: "unknown" for criterion in CHECKLIST_CRITERIA},
+    }
+
+    # Legacy heuristic retained below only for migration archaeology; unreachable.
     scores = llm_idea.get('scores', {})
     results = {}
 
@@ -277,6 +292,19 @@ def run_checklist(llm_idea: dict) -> dict:
 
 # ── 25-Dimension Composite Score ──────────────────────────────────────────────
 def compute_composite_score(llm_idea: dict, checklist: dict) -> dict:
+    # Never convert an LLM's self-estimates into decision scores. Scores remain
+    # unknown until external receipts are attached and an evidence-aware assessor
+    # evaluates them.
+    dimensions = {dimension: None for dimension in SCORE_DIMS}
+    dimensions.update({
+        "compositeHeadline": None,
+        "scoreStatus": "insufficient_evidence",
+        "scoreBasis": "model_hypotheses_quarantined_until_external_validation",
+        "confidence": None,
+    })
+    return dimensions
+
+    # Legacy heuristic retained below only for migration archaeology; unreachable.
     scores = llm_idea.get('scores', {})
     def get_num(k) -> float:
         val = scores.get(k)
@@ -452,6 +480,11 @@ AUTO_PROMOTE_THR = HIGH_PRIORITY_SCORE_THRESHOLD  # Deprecated backward-compat a
 
 def mark_candidate_ready_for_validation(idea: dict) -> bool:
     """Mark high-scoring candidate as prioritized for validation (does NOT mutate canonical data)."""
+    idea["prioritizedForValidation"] = False
+    idea["reviewPriority"] = "unassessed"
+    return False
+
+    # Legacy score-priority heuristic retained below only for migration archaeology.
     score = idea.get("compositeScores", {}).get("compositeHeadline", 0)
     if score >= HIGH_PRIORITY_SCORE_THRESHOLD and not idea.get("killCriteria", {}).get("killFlagged"):
         idea["prioritizedForValidation"] = True
@@ -477,12 +510,14 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
         raw_resp, provider = call_llm(
             prompt,
             domain,
-            required_capabilities=["research_synthesis", "reasoning", "research"],
+            required_capabilities=[],
+            match_mode="all",
+            requires_external_evidence=False,
             max_cost_class=max_cost_class,
         )
     except Exception as e:
         log_error(f"Orchestrator error: {e}")
-        return None
+        return ("failed", None)
 
     llm_idea = extract_json(raw_resp)
     if not llm_idea:
@@ -493,7 +528,7 @@ def process_single_domain(run_idx: int, existing_snapshot: list, queue_snapshot:
         provider = "own-orch"
         if not llm_idea:
             log_error("Own-orch also failed JSON parse, skipping this iteration")
-            return None
+            return ("failed", None)
 
     idea_name = llm_idea.get('name', '')
 
@@ -545,6 +580,7 @@ def main():
     staged    = 0
     prioritized = 0
     rejected  = 0
+    failed = 0
 
     from concurrent.futures import ThreadPoolExecutor, as_completed
     max_workers = min(IDEAS_PER_RUN, args.max_concurrency)
@@ -556,12 +592,19 @@ def main():
         ]
 
         for future in as_completed(futures):
-            res = future.result()
+            try:
+                res = future.result()
+            except Exception as exc:
+                log_error(f"Worker crashed: {exc}")
+                failed += 1
+                continue
             if not res:
                 continue
             status, idea = res
             if status == "rejected":
                 rejected += 1
+            elif status == "failed":
+                failed += 1
             elif status == "valid" and idea:
                 # Secondary within-run dedup check in main thread
                 if is_duplicate(idea['name'], existing_names):
@@ -591,16 +634,21 @@ def main():
 
     log_info(
         f"=== Run complete: generated={generated} staged={staged} "
-        f"prioritized={prioritized} rejected={rejected} ==="
+        f"prioritized={prioritized} rejected={rejected} failed={failed} ==="
     )
     print(f"\n{'='*60}")
     print(f"  Generated   : {generated}")
     print(f"  Staged      : {staged}")
     print(f"  Prioritized : {prioritized}")
     print(f"  Rejected    : {rejected}")
+    print(f"  Failed      : {failed}")
     print(f"{'='*60}")
     print(f"  Review staged: python scripts/review-staged-ideas.py")
     print(f"  Run ranker:    python scripts/va-ranker.py")
+    if failed == IDEAS_PER_RUN:
+        log_error("FAILED: every discovery worker failed; zero-new is not a successful run")
+        return 2
+    return 0
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

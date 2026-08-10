@@ -175,6 +175,10 @@ def main():
     for line in out.strip().splitlines()[:20]:
         if line.strip():
             print(f"  {line}")
+    if rc != 0:
+        _heartbeat("failed", 0, f"provider-health rc={rc}")
+        _log("ERROR", f"Provider health check failed with code {rc}")
+        raise RuntimeError(f"critical stage provider-health failed with rc={rc}")
 
     iteration = 0
     while _running:
@@ -197,7 +201,9 @@ def main():
             if line.strip():
                 print(f"  {line}")
         if rc != 0:
-            _log("WARN", f"Idea generator exited with code {rc}")
+            _heartbeat("failed", iteration, f"idea-generation rc={rc}")
+            _log("ERROR", f"Idea generator exited with code {rc}; dependent stages skipped")
+            raise RuntimeError(f"critical stage idea-generation failed with rc={rc}")
         else:
             _log("SUCCESS", "Idea generator run complete")
 
@@ -208,6 +214,10 @@ def main():
             for line in out.strip().splitlines()[-20:]:
                 if line.strip():
                     print(f"  {line}")
+            if rc != 0:
+                _heartbeat("failed", iteration, f"validation rc={rc}")
+                _log("ERROR", f"Validator exited with code {rc}; ranking skipped")
+                raise RuntimeError(f"critical stage validation failed with rc={rc}")
 
         # 4. Optionally re-rank
         if args.rank:
@@ -216,6 +226,10 @@ def main():
             for line in out.strip().splitlines()[-30:]:
                 if line.strip():
                     print(f"  {line}")
+            if rc != 0:
+                _heartbeat("failed", iteration, f"ranking rc={rc}")
+                _log("ERROR", f"Ranker exited with code {rc}")
+                raise RuntimeError(f"critical stage ranking failed with rc={rc}")
 
         # 5. Provider status
         _print_provider_status()

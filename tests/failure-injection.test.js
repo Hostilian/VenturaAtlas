@@ -40,6 +40,9 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   assert.ok(!fs.existsSync(path.join(distPath, 'research', 'original-chat')), 'private original-chat research must not be public');
   assert.ok(!fs.existsSync(path.join(distPath, 'meeting-packets')), 'meeting packets require explicit publication and must not be public by default');
   assert.ok(!fs.existsSync(path.join(distPath, 'assets', 'AGENTS.override.md')), 'nested agent instructions must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'rankings')), 'legacy ranking markdown must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'ideas')), 'legacy dossier markdown with unsupported scores must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'data', 'ideas.csv')), 'unqualified legacy score CSV must not be public');
   const publicHome = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8');
   assert.ok(!publicHome.includes('data-scope="staged"'), 'public home must not expose private staging scope');
   assert.ok(!publicHome.includes('data-scope="all"'), 'public home must not combine private staging with published ideas');
@@ -56,6 +59,9 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   const publicIdeasRaw = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'ideas.json'), 'utf8'));
   const publicIdeas = Array.isArray(publicIdeasRaw) ? publicIdeasRaw : publicIdeasRaw.ideas;
   for (const idea of publicIdeas) {
+    assert.equal(idea.scoreMaturity, 'legacy_unverified');
+    assert.equal(idea.rankingEligible, false);
+    assert.equal(idea.scoreScaleComparabilityEstablished, false);
     for (const reference of idea.sourceReferences || []) {
       const sourceId = typeof reference === 'string' ? reference : reference.id;
       assert.ok(publicIds.has(sourceId), `public idea ${idea.id} references non-public source ${sourceId}`);
@@ -91,6 +97,13 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
       assert.notEqual(idea.legacyValidation.label, undefined);
       assert.equal(idea.lastValidatedAt, undefined);
       assert.equal(idea.sourceCheckedAt, undefined);
+    }
+    if (idea.epistemicMetadata) {
+      assert.equal(idea.epistemicMetadata.truthClass, 'T4_UNKNOWN', `public idea ${idea.id} must not retain a synthetic record-level T1/T2 label`);
+      assert.equal(idea.epistemicMetadata.confidenceClass, 'UNASSESSED', `public idea ${idea.id} must not retain synthetic HIGH/MEDIUM confidence`);
+      assert.ok(!['T1_VERIFIED_FACT', 'T2_REPUTABLE_ESTIMATE'].includes(idea.epistemicMetadata.truthClass));
+      assert.notEqual(idea.epistemicMetadata.confidenceClass, 'HIGH');
+      assert.match(idea.legacyEpistemicMigration.assessment, /unproven record-level heuristic/i);
     }
   }
   const textExtensions = new Set(['.html', '.js', '.json', '.css', '.md', '.txt', '.xml', '.csv']);

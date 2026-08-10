@@ -27,6 +27,8 @@ const FORBIDDEN_FILE_PATTERNS = [
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,
   /^docs\/REPO_AUDIT/i,
+  /^ideas(\/|$)/i,
+  /^rankings(\/|$)/i,
   /(^|\/)AGENTS(?:\.override)?\.md$/i,
   /provider-state\.json$/i,
   /package(-lock)?\.json$/i,
@@ -70,7 +72,7 @@ function checkDirectory(dirPath) {
       } else if (entry.isFile()) {
         // 2. Content Secret Scanner Gate for text files
         const ext = path.extname(entry.name).toLowerCase();
-        if (['.html', '.js', '.json', '.css', '.md', '.txt', '.xml'].includes(ext)) {
+        if (['.html', '.js', '.json', '.css', '.md', '.txt', '.xml', '.csv'].includes(ext)) {
           try {
             const content = fs.readFileSync(fullPath, 'utf-8');
             for (const item of SECRET_CONTENT_PATTERNS) {

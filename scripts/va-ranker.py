@@ -78,7 +78,8 @@ def compute_headline(idea: dict) -> tuple[float, float]:
     """Compute weighted composite headline score and coverage (0-100, 0.0-1.0)."""
     ch = idea.get('compositeScores', {}).get('compositeHeadline')
     if ch is not None and float(ch) > 0:
-        return float(ch), 1.0
+        present = sum(1 for dim in SCORE_WEIGHTS if get_val(idea, dim, default=None) is not None)
+        return float(ch), round(present / len(SCORE_WEIGHTS), 2)
     total = 0.0
     weight_sum = 0.0
     total_possible_weights = sum(SCORE_WEIGHTS.values())
@@ -129,24 +130,11 @@ def compute_evidence_confidence(idea: dict) -> float:
     Zero sources produces 0.0 (or 10.0 if initial desk research exists).
     Does NOT start at 50.0 without evidence.
     """
-    sources = idea.get("sourceReferences", [])
-    has_disconfirming = idea.get("validationChecklist", {}).get("adversarialPassCompleted", False)
-    
-    if not sources or len(sources) == 0:
-        base = 10.0 if idea.get("dossierPath") or idea.get("oneSentenceConcept") else 0.0
-    elif len(sources) >= 5:
-        base = 75.0
-    elif len(sources) >= 3:
-        base = 55.0
-    elif len(sources) >= 2:
-        base = 40.0
-    else:
-        base = 25.0
-
-    if has_disconfirming:
-        base += 20.0
-
-    return min(100.0, round(base, 1))
+    assessment = idea.get("evidenceAssessment", {})
+    if assessment.get("coverageAssessed") is not True:
+        return 0.0
+    value = assessment.get("confidenceScore")
+    return min(100.0, max(0.0, float(value))) if isinstance(value, (int, float)) else 0.0
 
 def rank_ideas(ideas: list) -> list:
     ranked = []
@@ -180,6 +168,8 @@ def rank_ideas(ideas: list) -> list:
             "killFlagged": idea.get("killCriteria", {}).get("killFlagged", False),
             "provider": idea.get("provenance", {}).get("provider", "legacy"),
             "status": idea.get("status", "canonical"),
+            "rankingEligible": idea.get("rankingEligibility", {}).get("eligible") is True,
+            "rankingMaturity": "eligibility_verified" if idea.get("rankingEligibility", {}).get("eligible") is True else "legacy_unverified",
             "topDimensions": {
                 dim: get_val(idea, dim)
                 for dim in ["overallOpportunity","bootstrappedPotential",
@@ -252,14 +242,17 @@ def update_rankings_json(ranked: list, ideas: list = None):
     ideas_list = ideas if ideas is not None else load_ideas()
     ideas_map = {i.get("id"): i for i in ideas_list}
 
-    def format_item(r, rank_num):
+    def format_item(r, rank_num, metric="score"):
         return {
             "rank": rank_num,
             "ideaId": r["id"],
             "id": r["id"],
             "name": r["name"],
             "category": r["category"],
-            "score": r["score"],
+            "score": r.get(metric, r["score"]),
+            "scoreMetric": metric,
+            "rankingEligible": r["rankingEligible"],
+            "rankingMaturity": r["rankingMaturity"],
             "checklist": r["checklist"],
             "killFlagged": r["killFlagged"],
             "provider": r["provider"],
@@ -272,15 +265,15 @@ def update_rankings_json(ranked: list, ideas: list = None):
     
     # 2. High Opportunity Attractiveness
     attractiveness_sorted = sorted(ranked, key=lambda x: (x.get("opportunityAttractiveness", 0), x["score"]), reverse=True)
-    attractiveness_items = [format_item(r, i + 1) for i, r in enumerate(attractiveness_sorted)]
+    attractiveness_items = [format_item(r, i + 1, "opportunityAttractiveness") for i, r in enumerate(attractiveness_sorted)]
 
     # 3. Best Solo Founder Fit
     founder_fit_sorted = sorted(ranked, key=lambda x: (x.get("founderFit", 0), x["score"]), reverse=True)
-    founder_fit_items = [format_item(r, i + 1) for i, r in enumerate(founder_fit_sorted)]
+    founder_fit_items = [format_item(r, i + 1, "founderFit") for i, r in enumerate(founder_fit_sorted)]
 
     # 4. Highest Evidence Confidence
     confidence_sorted = sorted(ranked, key=lambda x: (x.get("evidenceConfidence", 0), x["score"]), reverse=True)
-    confidence_items = [format_item(r, i + 1) for i, r in enumerate(confidence_sorted)]
+    confidence_items = [format_item(r, i + 1, "evidenceConfidence") for i, r in enumerate(confidence_sorted)]
 
     # 5. Fastest Path to Revenue
     fastest_sorted = sorted(ranked, key=lambda x: (get_val(ideas_map.get(x["id"], {}), "speedToFirstRevenue", 0) or 0, x["score"]), reverse=True)

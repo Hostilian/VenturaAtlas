@@ -24,15 +24,11 @@ STAGING_FILE = os.path.join(ROOT, "data", "idea-staging-queue.json")
 LEDGER_FILE = os.path.join(ROOT, "data", "extraction-ledger.json")
 
 def assign_epistemic_truth_class(idea: Dict[str, Any]) -> str:
-    sources = idea.get("sourceReferences", [])
-    checklist = idea.get("checklist", {})
-    checklist_score = idea.get("checklistScore", 0)
-
-    if sources and len(sources) >= 2:
-        return "T1_VERIFIED_FACT"
-    elif sources and len(sources) == 1:
-        return "T2_REPUTABLE_ESTIMATE"
-    elif checklist_score >= 50 or (isinstance(checklist, dict) and checklist.get("hasTargetCustomerPass")):
+    # References establish traceability, not the truth of an entire venture record.
+    # Only an explicit claim-level receipt may carry T1/T2. Legacy record-level
+    # labels are therefore quarantined rather than recomputed from reference count.
+    receipts = idea.get("claimEvidenceReceipts", [])
+    if any(r.get("truthClass") == "T1_VERIFIED_FACT" and r.get("verified") is True for r in receipts if isinstance(r, dict)):
         return "T3_MODEL_HYPOTHESIS"
     return "T4_UNKNOWN"
 

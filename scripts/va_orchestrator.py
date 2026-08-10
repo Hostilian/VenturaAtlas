@@ -684,7 +684,8 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
         return None
 
 def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
-                      required_capabilities: list[str] = None, max_cost_class: int = 1) -> tuple[str, str]:
+                      required_capabilities: list[str] = None, max_cost_class: int = 1,
+                      match_mode: str = "all", requires_external_evidence: bool = False) -> tuple[str, str]:
     """
     Query a bounded, capability/key/cost-qualified provider fanout. Candidate order is
     rotated between tasks so configured providers share useful work without redundant,
@@ -696,6 +697,8 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
         required_capabilities=required_capabilities,
         max_cost_class=max_cost_class,
         allow_own_orch=allow_own_orch,
+        match_mode=match_mode,
+        requires_external_evidence=requires_external_evidence,
     )
     providers_to_try = [p for p in providers_to_try if not _is_circuit_open(state["providers"].get(p, {}))]
     external = [p for p in providers_to_try if p != "own-orch"]
@@ -706,13 +709,11 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
         external = external[offset:] + external[:offset]
     fanout = max(1, int(os.environ.get("VA_PROVIDER_FANOUT", "2")))
     providers_to_try = external[:fanout]
-    if allow_own_orch and not providers_to_try:
+    if allow_own_orch and not providers_to_try and not required_capabilities and not requires_external_evidence:
         providers_to_try.append("own-orch")
 
     if not providers_to_try:
-        if not allow_own_orch:
-            raise NoEligibleProviderError("No external providers available and allow_own_orch is False")
-        providers_to_try = ["own-orch"]
+        raise NoEligibleProviderError(f"No provider satisfies capabilities {required_capabilities or []}")
 
     log_info(f"[BOUNDED PARALLEL AI] Launching {len(providers_to_try)} eligible providers: {', '.join(providers_to_try)}")
 
@@ -729,33 +730,36 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
     if results:
         return results[0]
 
-    if not allow_own_orch:
-        raise NoEligibleProviderError("All external parallel AI calls failed and allow_own_orch is False")
+    if not allow_own_orch or required_capabilities or requires_external_evidence:
+        raise NoEligibleProviderError("All eligible parallel AI calls failed; fallback cannot satisfy the declared contract")
 
     log_warn("[PARALLEL AI ENGINE] All parallel calls failed, invoking own-orch fallback")
     resp = _call_own_orchestrator(prompt, domain_hint)
     _record_success(state, "own-orch")
     return resp, "own-orch"
 
-def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True, required_capabilities: list[str] = None, max_cost_class: int = 3) -> tuple[str, str]:
+def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
+             required_capabilities: list[str] = None, max_cost_class: int = 3,
+             match_mode: str = "all", requires_external_evidence: bool = False) -> tuple[str, str]:
     """
     Try providers matched by capabilities and cost budget, respecting circuit breakers.
     If PARALLEL_AI_ORCHESTRATION=1 is set, queries all providers simultaneously.
     """
     if os.environ.get('PARALLEL_AI_ORCHESTRATION', '0') in ('1', 'true', 'True'):
-        return call_llm_parallel(prompt, domain_hint, allow_own_orch, required_capabilities, max_cost_class)
+        return call_llm_parallel(prompt, domain_hint, allow_own_orch, required_capabilities,
+                                 max_cost_class, match_mode, requires_external_evidence)
 
     state = _load_state()
     scheduler = get_provider_scheduler()
     candidate_providers = scheduler.select_providers_for_task(
         required_capabilities=required_capabilities,
         max_cost_class=max_cost_class,
-        allow_own_orch=allow_own_orch
+        allow_own_orch=allow_own_orch,
+        match_mode=match_mode,
+        requires_external_evidence=requires_external_evidence,
     )
     if not candidate_providers:
-        if not allow_own_orch:
-            raise NoEligibleProviderError(f"No provider matched capabilities {required_capabilities} and allow_own_orch is False")
-        candidate_providers = ["own-orch"]
+        raise NoEligibleProviderError(f"No provider matched capabilities {required_capabilities or []}")
 
     for provider in candidate_providers:
         if provider == "own-orch" and not allow_own_orch:

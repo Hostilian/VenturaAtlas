@@ -16,8 +16,8 @@ const FILES = [
 function synchronizeArchitecture(content, meta) {
   return content
     .replace(
-      /serving [\d,]+\+ canonical & staged startup dossiers/g,
-      `serving ${meta.counts.totalIdeas}+ canonical & staged startup dossiers`
+      /(?:serving [\d,]+\+ canonical & staged startup dossiers|tracking [\d,]+ repository records; the public site serves [\d,]+ canonical records and [\d,]+ dossier files)/g,
+      `tracking ${meta.counts.totalIdeas} repository records; the public site serves ${meta.counts.canonicalIdeas} canonical records and ${meta.counts.dossiers} dossier files`
     )
     .replace(
       /[\d,]+\+ generated prompt packs/g,
@@ -51,7 +51,9 @@ function main() {
     `- **${meta.counts.categories} categories**`,
     `- **${meta.counts.sources} source inventory records**`,
     `- **${meta.counts.prompts.toLocaleString()} idea-specific prompts** plus master prompts`,
-    '- One full Markdown dossier, financial model, validation plan, technical blueprint, launch plan, and 25-prompt pack per canonical idea',
+    `- **${meta.counts.dossiers} dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)`,
+    `- **${meta.counts.financialModels}/${meta.counts.canonicalIdeas} financial models**, **${meta.counts.validationPlans}/${meta.counts.canonicalIdeas} validation plans**, **${meta.counts.technicalBlueprints}/${meta.counts.canonicalIdeas} technical blueprints**, and **${meta.counts.launchPlans}/${meta.counts.canonicalIdeas} launch plans**`,
+    `- **${meta.counts.prompts.toLocaleString()} idea-specific prompt files**; per-idea pack completeness is not asserted`,
     '<!-- END GENERATED CURRENT INVENTORY -->'
   ].join('\n');
 
@@ -87,8 +89,8 @@ function main() {
     } else if (filePath.endsWith('SEARCH_AND_DISCOVERY_GUIDE.md')) {
       content = content.replace(/all \d+\+ ideas/g, `all ${meta.counts.canonicalIdeas}+ ideas`);
     } else if (filePath.endsWith('index.html')) {
-      content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ evidence-backed business ideas`);
-      content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ evidence-backed business ideas with scores`);
+      content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ heterogeneous business-idea records with public citations where available`);
+      content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ heterogeneous business-idea records with legacy scores`);
       content = content.replace(/Browse &amp; search \d+\+ ideas/g, `Browse &amp; search ${meta.counts.canonicalIdeas}+ ideas`);
       content = content.replace(/<span data-total-ideas>\d+<\/span>/g, `<span data-total-ideas>${meta.counts.canonicalIdeas}</span>`);
       content = content.replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`);

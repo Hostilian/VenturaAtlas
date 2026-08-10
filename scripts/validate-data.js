@@ -57,6 +57,7 @@ function validateCanonicalCollection(data, errors) {
 
 function main() {
   const isStrict = process.argv.includes('--strict');
+  const isCheck = process.argv.includes('--check');
   const errors = [];
   const warnings = [];
 
@@ -200,7 +201,12 @@ function main() {
     warnings: warnings.slice(0, 10)
   };
   const serializedSummary = JSON.stringify(valSummary, null, 2) + '\n';
-  if (!fs.existsSync(summaryPath) || fs.readFileSync(summaryPath, 'utf8') !== serializedSummary) {
+  const summaryMatches = fs.existsSync(summaryPath) && fs.readFileSync(summaryPath, 'utf8') === serializedSummary;
+  if (isCheck && !summaryMatches) {
+    console.error('[ERROR] validation-summary.json is stale; run validate-data.js once without --check under the repository writer lock.');
+    process.exit(1);
+  }
+  if (!isCheck && !summaryMatches) {
     const temporaryPath = `${summaryPath}.${process.pid}.tmp`;
     fs.writeFileSync(temporaryPath, serializedSummary, 'utf8');
     fs.renameSync(temporaryPath, summaryPath);

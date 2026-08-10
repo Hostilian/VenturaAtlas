@@ -33,6 +33,12 @@ test('Ranking and collaboration UI do not claim missing evidence or realtime syn
   assert.match(site, /NOT PROVEN · LEGACY LABEL:/);
 });
 
+test('Home labels the top-score order as legacy and eligibility-unproven', () => {
+  const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert.match(home, /Legacy heuristic order only/i);
+  assert.match(home, /eligibility, evidence coverage, and score-scale comparability are not established/i);
+});
+
 test('Matcher preserves missing cost and score instead of inventing neutral defaults', () => {
   const source = fs.readFileSync(path.join(ROOT, 'assets/js/features/matcher.js'), 'utf8');
   const context = {

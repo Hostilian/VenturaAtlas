@@ -5,23 +5,23 @@
 Venture Atlas OS is an autonomous venture research platform and static business intelligence atlas. It operates as a decoupled two-plane system:
 
 1. **Static Presentation Plane (GitHub Pages / PWA / Edge CDN):**
-   - High-performance, zero-cost static site serving 475+ canonical & staged startup dossiers, 4,425+ generated prompt packs, and interactive analysis tools.
+   - High-performance, zero-cost repository tracking 479 records; the public site serves 294 canonical records and 382 dossier files, plus 4,425 generated prompt files and interactive analysis tools.
    - PWA Service Worker (`sw.js`) providing offline capability with versioned cache invalidation.
 
-2. **Durable Cloud Control Plane (GCP Cloud Run Jobs / Cloud Scheduler / Secret Manager / Firestore):**
-   - Unattended 24/7 autonomous worker execution independent of developer hardware or active IDE sessions.
-   - 7-tier provider key rotation (`omniRoute`, `fcc-claude`, `active-api`, `deepseek-api`, `anthropic-full`, `hermes-ollama`, `own-orch`) with circuit breaker backoff.
+2. **Configured Cloud Control Plane (GCP Cloud Run Jobs / Cloud Scheduler / Secret Manager / Firestore):**
+   - Source-level infrastructure contract for off-device scheduled work; deployment, IAM reachability, secret versions, and a successful remote execution have not been observed.
+   - 9-provider registry (`nvidia-nim`, `cohere-api`, `omniRoute`, `fcc-claude`, `active-api`, `deepseek-api`, `anthropic-full`, `hermes-ollama`, `own-orch`) with key pools and circuit-breaker backoff where configured.
 
 ```mermaid
 graph TD
     A[Cloud Scheduler] -->|POST Trigger| B[GCP Cloud Run Job]
     B -->|Fetch Keys| C[GCP Secret Manager]
     B -->|Execute Discovery| D[Autonomous Multi-Agent Orchestrator]
-    D -->|Parallel Queries| E[Provider Key Pool - 7 Tiers]
-    D -->|Promote & Validate| F[Canonical JSON & Markdown Dossiers]
-    F -->|Rebuild Metadata| G[search-index.json & repository-meta.json]
-    G -->|Commit & Push| H[GitHub Repository main]
-    H -->|GitHub Actions| I[GitHub Pages Live Site]
+    D -->|Bounded Provider Calls| E[Capability and Cost Qualified Provider Pool]
+    D -->|Stage Unverified Candidates| F[Private Staging Queue]
+    F -->|Reviewed Publication Workflow| G[Canonical JSON and Derived Artifacts]
+    G -->|Rebuild Metadata| H[search-index.json & repository-meta.json]
+    H -->|Reviewed Commit| I[GitHub Repository]
 ```
 
 ## Core Components

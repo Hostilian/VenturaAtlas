@@ -96,7 +96,7 @@ class CapabilityProviderScheduler:
         self.rr_indices[provider_id] = idx + 1
         return pool[idx]
 
-    def select_providers_for_task(self, required_capabilities: List[str] = None, max_cost_class: int = 3, allow_own_orch: bool = True, match_mode: str = "any", requires_external_evidence: bool = False) -> List[str]:
+    def select_providers_for_task(self, required_capabilities: List[str] = None, max_cost_class: int = 3, allow_own_orch: bool = True, match_mode: str = "all", requires_external_evidence: bool = False) -> List[str]:
         """
         Select ordered list of provider IDs matching task capabilities, sorted by cost class and health.
         match_mode: 'any' (anyOf) or 'all' (allOf)
@@ -116,12 +116,14 @@ class CapabilityProviderScheduler:
                 continue
 
             p_caps = set(p_cfg.get("capabilities", []))
+            if requires_external_evidence and not p_cfg.get("webAccess", False):
+                continue
             if req_caps:
                 if match_mode == "all":
-                    if not req_caps.issubset(p_caps) and "fallback" not in p_caps:
+                    if not req_caps.issubset(p_caps):
                         continue
                 else:
-                    if not req_caps.intersection(p_caps) and "fallback" not in p_caps:
+                    if not req_caps.intersection(p_caps):
                         continue
 
             candidates.append((p_cost, p_cfg.get("tier", 99), p_id))
@@ -130,7 +132,9 @@ class CapabilityProviderScheduler:
         candidates.sort(key=lambda x: (x[0], x[1]))
         sorted_ids = [c[2] for c in candidates]
 
-        if allow_own_orch and not requires_external_evidence and "own-orch" not in sorted_ids:
+        own_caps = set(providers.get("own-orch", {}).get("capabilities", []))
+        own_matches = not req_caps or (req_caps.issubset(own_caps) if match_mode == "all" else bool(req_caps.intersection(own_caps)))
+        if allow_own_orch and not requires_external_evidence and own_matches and "own-orch" not in sorted_ids:
             sorted_ids.append("own-orch")
 
         if requires_external_evidence and not sorted_ids:

@@ -1,0 +1,35 @@
+{
+  "runId":"OMEGA-IX-20260810T131507Z",
+  "checkedAt":"2026-08-10",
+  "selectionRule":"Primary and official sources establish forcing functions, product scope and contract mechanics; they do not establish market size, willingness to pay or achieved ROI.",
+  "consideredCount":47,
+  "included":[
+    {"id":"ext-01","title":"MCP 2026-07-28 specification release","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28/","truthClass":"T1","supports":["sig-01"]},
+    {"id":"ext-02","title":"MCP Authorization specification","url":"https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization","truthClass":"T1","supports":["sig-01"]},
+    {"id":"ext-03","title":"MCP conformance suite","url":"https://github.com/modelcontextprotocol/conformance","truthClass":"T1","supports":["sig-01"]},
+    {"id":"ext-04","title":"Microsoft Entra Agent ID","url":"https://learn.microsoft.com/en-us/entra/agent-id/","truthClass":"T1","supports":["sig-02"]},
+    {"id":"ext-05","title":"Google IAM agent identity and runtime controls","url":"https://cloud.google.com/blog/products/identity-security/whats-new-in-iam-security-governance-and-runtime-defense","truthClass":"T1","supports":["sig-02"]},
+    {"id":"ext-06","title":"AWS AgentCore evaluations","url":"https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/evaluations.html","truthClass":"T1","supports":["sig-02"]},
+    {"id":"ext-07","title":"Microsoft computer use FAQ","url":"https://learn.microsoft.com/en-us/microsoft-copilot-studio/faqs-computer-use","truthClass":"T1","supports":["sig-03"]},
+    {"id":"ext-08","title":"Excel Copilot FAQ","url":"https://support.microsoft.com/en-us/excel/copilot/frequently-asked-questions-about-copilot-in-excel","truthClass":"T1","supports":["sig-03"]},
+    {"id":"ext-09","title":"Universal Commerce Protocol launch","url":"https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/","truthClass":"T1","supports":["sig-04"]},
+    {"id":"ext-10","title":"Shopify agentic storefront product eligibility","url":"https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts/products","truthClass":"T1","supports":["sig-04"]},
+    {"id":"ext-11","title":"AWS Service Catalog SLA","url":"https://aws.amazon.com/servicecatalog/sla/","truthClass":"T1","supports":["sig-05"]},
+    {"id":"ext-12","title":"EU Packaging and Packaging Waste Regulation","url":"https://eur-lex.europa.eu/eli/reg/2025/40/oj","truthClass":"T1","supports":["sig-06"]},
+    {"id":"ext-13","title":"SAP Responsible Design and Production features","url":"https://help.sap.com/docs/sap-responsible-design-and-production/feature-scope-description-sap-rdp/key-features","truthClass":"T1","supports":["sig-06"]},
+    {"id":"ext-14","title":"European Commission CRA reporting","url":"https://digital-strategy.ec.europa.eu/en/policies/cra-reporting","truthClass":"T1","supports":["sig-07"]},
+    {"id":"ext-15","title":"European Commission EUDAMED mandatory modules notice","url":"https://health.ec.europa.eu/latest-updates/eudamed-four-first-modules-will-be-mandatory-use-28-may-2026-2025-11-27_en","truthClass":"T1","supports":["sig-08"]},
+    {"id":"ext-16","title":"EUDAMED data exchange guidelines","url":"https://webgate.ec.europa.eu/eudamed-help/en/files/Guidelines%20on%20data%20exchange.pdf","truthClass":"T1","supports":["sig-08"]},
+    {"id":"ext-17","title":"EU Battery Regulation","url":"https://eur-lex.europa.eu/eli/reg/2023/1542/oj","truthClass":"T1","supports":["sig-09"]},
+    {"id":"ext-18","title":"Catena-X Digital Product Passport use case","url":"https://catena-x.net/use-case-cluster/digital-product-passport/","truthClass":"T1","supports":["sig-09"]},
+    {"id":"ext-19","title":"European Commission CBAM definitive regime","url":"https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/cbam-definitive-regime_en","truthClass":"T1","supports":["sig-10"]},
+    {"id":"ext-20","title":"Agilent iLab request management","url":"https://www.agilent.com/en/service/laboratory-services/lab-operations-management/core-facilities-management/request-management","truthClass":"T1","supports":["sig-11"]},
+    {"id":"ext-21","title":"Stratocore PPMS core facilities","url":"https://www.stratocore.com/solutions/core-facilities","truthClass":"T1","supports":["sig-11"]},
+    {"id":"ext-22","title":"Science Exchange platform","url":"https://www.scienceexchange.com/platform","truthClass":"T1","supports":["sig-11"]}
+  ],
+  "excluded":[
+    {"class":"vendor ROI or adoption claims","reason":"product pages establish shipped scope, not neutral pain magnitude, WTP, adoption or achieved ROI"},
+    {"class":"secondary market-size summaries","reason":"not required to establish forcing functions and too weak for approval"},
+    {"class":"duplicate commentary on the same official rule","reason":"no incremental decision value"}
+  ]
+}

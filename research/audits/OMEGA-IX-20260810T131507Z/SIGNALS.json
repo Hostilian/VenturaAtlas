@@ -1,0 +1,18 @@
+{
+  "runId": "OMEGA-IX-20260810T131507Z",
+  "checkedAt": "2026-08-10",
+  "signals": [
+    {"id":"sig-01","signal":"MCP authorization and transport contracts changed materially in the 2026-07-28 specification release, while official free conformance tooling already exists.","truthClass":"T1_VERIFIED_FACT","implication":"Only cross-client release evidence may remain; reject a generic MCP tester."},
+    {"id":"sig-02","signal":"Entra, Google, AWS and Okta now ship agent identity, registry, authorization, evaluation or revocation controls.","truthClass":"T1_VERIFIED_FACT","implication":"Reject broad agent IAM/governance; investigate only declared-permission versus observed-outcome reconciliation."},
+    {"id":"sig-03","signal":"Microsoft reports computer-use success around 80% for web and 35% for desktop tasks and tells users to verify AI-authored Excel work.","truthClass":"T1_VERIFIED_FACT","implication":"Deterministic last-mile outcome and workbook release assertions remain plausible."},
+    {"id":"sig-04","signal":"Shopify automatically publishes eligible products to AI channels and generates agents.md; UCP/AP2/ACP and payment-network rails are developing quickly.","truthClass":"T1_VERIFIED_FACT","implication":"Reject generic agent-commerce readiness; test B2B entitlement leakage and transaction exceptions only."},
+    {"id":"sig-05","signal":"AWS SLA claims require timely customer-filed cases, incident intervals, corroborating logs and complete information.","truthClass":"T1_VERIFIED_FACT","implication":"Multi-provider SLA credit recovery has a real evidence-reconciliation object, but dollar magnitude is unproven."},
+    {"id":"sig-06","signal":"PPWR applies from 12 August 2026 and creates packaging-information and conformity obligations; SAP already covers broad compliance data management.","truthClass":"T1_VERIFIED_FACT","implication":"Test a narrow release preflight, not another PPWR system of record."},
+    {"id":"sig-07","signal":"CRA reporting obligations begin 11 September 2026 with early-warning and notification workflows through ENISA infrastructure.","truthClass":"T1_VERIFIED_FACT","implication":"Version-to-vulnerability-to-submission rehearsal is time-bounded and testable."},
+    {"id":"sig-08","signal":"Four EUDAMED modules became mandatory on 28 May 2026 and official UI, XML upload and M2M paths coexist.","truthClass":"T1_VERIFIED_FACT","implication":"Submission rejection and published-state reconciliation are viable narrow objects; reject a portal clone."},
+    {"id":"sig-09","signal":"EU battery-passport duties begin 18 February 2027 while Catena-X and Eclipse Tractus-X provide ecosystem and open-source infrastructure.","truthClass":"T1_VERIFIED_FACT","implication":"Lifecycle delta testing is too early; reject a generic passport registry."},
+    {"id":"sig-10","signal":"CBAM entered its definitive regime on 1 January 2026 with registry, emissions and certificate-price workflows.","truthClass":"T1_VERIFIED_FACT","implication":"Reconcile shipment, embedded emissions, certificates and finance; suite absorption remains a major risk."},
+    {"id":"sig-11","signal":"iLab, PPMS and Science Exchange already span laboratory request, usage, billing and outsourced-R&D invoice workflows.","truthClass":"T1_VERIFIED_FACT","implication":"Reject broad lab operations and R&D procurement products."},
+    {"id":"sig-12","signal":"The canonical corpus already contains close analogues for the strongest external signals and the staging queue contains the 2026 regulatory variants.","truthClass":"T0_REPOSITORY_FACT","implication":"Prefer MERGE/RESEARCH_MORE decisions; this run does not add another duplicate candidate."}
+  ]
+}

@@ -83,7 +83,7 @@ def load_queue() -> list:
     except Exception:
         return []
 
-def get_score(idea: dict, dim: str, default=70.0) -> float:
+def get_score(idea: dict, dim: str, default=None):
     """Get score value from idea scores dict, handling both old and new schema."""
     scores = idea.get('scores', {})
     cs = idea.get('compositeScores', {})
@@ -103,6 +103,42 @@ def validate_idea(idea: dict, use_llm: bool = False) -> dict:
     """Full validation of a single idea. Returns validation report dict."""
     iid  = idea.get('id', '?')
     name = idea.get('name', '?')
+    # This command is an assessment, not behavioral validation. Missing evidence
+    # stays unknown and model-authored copy cannot satisfy a checklist or create a
+    # validation timestamp.
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    return {
+        "id": iid,
+        "name": name,
+        "headlineScore": None,
+        "assessmentStatus": "INSUFFICIENT_EVIDENCE",
+        "checklist": {
+            "passed": False,
+            "passedCount": 0,
+            "failedCount": 0,
+            "unknownCount": len(CHECKLIST_CRITERIA),
+            "scorePercentage": None,
+            "details": {criterion: "unknown" for criterion in CHECKLIST_CRITERIA},
+        },
+        "killCriteria": {
+            "killFlagged": False,
+            "killCount": 0,
+            "unknownCount": len(KILL_CONDITIONS),
+            "killFlags": [],
+            "details": {label: "unknown" for label, _ in KILL_CONDITIONS},
+        },
+        "topScores": {
+            dim: get_score(idea, dim)
+            for dim in ["overallOpportunity", "bootstrappedPotential", "soloFounderPotential",
+                        "fastestPathToRevenue", "differentiation", "profitPotential"]
+        },
+        "verdict": "BLOCKED",
+        "llmCritique": None,
+        "assessedAt": now,
+        "assessmentNote": "No behavioral validation receipts were evaluated.",
+    }
+
+    # Legacy heuristic assessment retained below only for migration archaeology.
     composite = idea.get('compositeScores', {})
     headline  = composite.get('compositeHeadline', idea.get('atAGlance', {}).get('overallScore', 0))
 
@@ -190,10 +226,12 @@ def print_report(results: list):
     print(f"{'='*72}")
     print(f"{'ID':<12} {'Score':<8} {'Checklist':<12} {'Kill':<6} {'Verdict':<10} Name")
     print(f"{'-'*72}")
-    for r in sorted(results, key=lambda x: x['headlineScore'], reverse=True):
+    for r in sorted(results, key=lambda x: x.get('headlineScore') if x.get('headlineScore') is not None else -1, reverse=True):
         verdict_icons = {"STRONG":"🟢","GOOD":"🟡","WEAK":"🟠","REJECT":"🔴"}
         icon = verdict_icons.get(r['verdict'], '⚪')
-        print(f"{r['id']:<12} {r['headlineScore']:<8.1f} {r['checklist']['scorePercentage']:<12.1f}"
+        score_text = f"{r['headlineScore']:.1f}" if r.get('headlineScore') is not None else "UNKNOWN"
+        checklist_text = f"{r['checklist']['scorePercentage']:.1f}" if r['checklist'].get('scorePercentage') is not None else "UNKNOWN"
+        print(f"{r['id']:<12} {score_text:<8} {checklist_text:<12}"
               f"{r['killCriteria']['killCount']:<6} {icon}{r['verdict']:<9} {r['name'][:40]}")
     print(f"\nSummary:")
     verdicts = [r['verdict'] for r in results]
@@ -211,9 +249,11 @@ def save_report(results: list, path: str):
         "| ID | Score | Checklist% | Kill | Verdict | Name |",
         "|----|-------|-----------|------|---------|------|",
     ]
-    for r in sorted(results, key=lambda x: x['headlineScore'], reverse=True):
+    for r in sorted(results, key=lambda x: x.get('headlineScore') if x.get('headlineScore') is not None else -1, reverse=True):
+        score_text = f"{r['headlineScore']:.1f}" if r.get('headlineScore') is not None else "UNKNOWN"
+        checklist_text = f"{r['checklist']['scorePercentage']:.1f}%" if r['checklist'].get('scorePercentage') is not None else "UNKNOWN"
         lines.append(
-            f"| {r['id']} | {r['headlineScore']:.1f} | {r['checklist']['scorePercentage']:.1f}% | "
+            f"| {r['id']} | {score_text} | {checklist_text} | "
             f"{r['killCriteria']['killCount']} | **{r['verdict']}** | {r['name']} |"
         )
     if any(r.get('llmCritique') for r in results):
@@ -260,8 +300,10 @@ def main():
         r = validate_idea(idea, use_llm=args.llm)
         results.append(r)
         v_icon = {"STRONG":"✅","GOOD":"👍","WEAK":"⚠️","REJECT":"❌"}.get(r['verdict'],'❓')
-        print(f"  {v_icon} {r['id']}: {r['verdict']} (score={r['headlineScore']:.1f}, "
-              f"checklist={r['checklist']['scorePercentage']}%, kill={r['killCriteria']['killCount']})")
+        score_text = f"{r['headlineScore']:.1f}" if r.get('headlineScore') is not None else "UNKNOWN"
+        checklist_text = r['checklist'].get('scorePercentage')
+        print(f"  {v_icon} {r['id']}: {r['verdict']} (score={score_text}, "
+              f"checklist={checklist_text if checklist_text is not None else 'UNKNOWN'}, kill={r['killCriteria']['killCount']})")
 
     print_report(results)
     if args.report:

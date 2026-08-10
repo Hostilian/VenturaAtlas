@@ -385,6 +385,7 @@
         <!-- Top opportunities -->
         <div class="top-ideas-panel" aria-label="Top opportunities by score">
           <h2 class="eyebrow">Top opportunities</h2>
+          <p class="muted" data-ranking-maturity="legacy-unverified">Legacy heuristic order only; eligibility, evidence coverage, and score-scale comparability are not established.</p>
           <ol id="topIdeas" aria-label="Top 7 ideas by overall score">
             <!-- Populated by site.js -->
           </ol>
@@ -597,7 +598,6 @@
         <button id="random"      class="ghost sm"     title="Open a random idea" aria-label="Open random idea">Random</button>
         <button id="compareSelected" class="primary sm" aria-label="Compare selected ideas">Compare selected</button>
         <a class="button ghost sm" download href="./data/ideas.json" aria-label="Download ideas JSON">↓ JSON</a>
-        <a class="button ghost sm" download href="./data/ideas.csv"  aria-label="Download ideas CSV">↓ CSV</a>
       </div>
 
       <!-- Cards grid (default view) -->
@@ -744,9 +744,7 @@
       <div class="notice">
         JavaScript is required to browse the idea directory interactively.
         You can instead download
-        <a href="./data/ideas.csv">ideas.csv</a>,
-        view <a href="./data/ideas.json">ideas.json</a>, or
-        browse the individual Markdown files in the <a href="./ideas/">ideas/</a> folder.
+        view <a href="./data/ideas.json">ideas.json</a>.
       </div>
     </main>
   </noscript>

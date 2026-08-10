@@ -30,10 +30,8 @@ const ALLOW_DIRS = [
   'decisions',
   'docs',
   'financial-models',
-  'ideas',
   'launch-plans',
   'prompts',
-  'rankings',
   'technical-blueprints',
   'templates',
   'validation-plans'
@@ -72,12 +70,13 @@ const DENIED_PATTERNS = [
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,
   /^docs\/REPO_AUDIT/i,
+  /^ideas(\/|$)/i,
+  /^rankings(\/|$)/i,
   /(^|\/)AGENTS(?:\.override)?\.md$/i
 ];
 
 const PUBLIC_DATA_ALLOWLIST = new Set([
   'ideas.json',
-  'ideas.csv',
   'ideas.schema.json',
   'categories.json',
   'public-sources.json',
@@ -122,6 +121,9 @@ function projectIdeasForPublic(src, dest) {
   const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
   const projected = ideas.map(idea => {
     const result = { ...idea };
+    result.scoreMaturity = 'legacy_unverified';
+    result.rankingEligible = false;
+    result.scoreScaleComparabilityEstablished = false;
     const validationProvenance = result.validationProvenance || result.researchRunId || result.validationRunId;
     const legacyValidationLabel = result.validationStatus || result.atAGlance?.validationStatus;
     if (legacyValidationLabel && !validationProvenance) {
@@ -137,6 +139,18 @@ function projectIdeasForPublic(src, dest) {
       delete result.lastValidatedAt;
       delete result.sourceCheckedAt;
       delete result.evidenceFreshness;
+    }
+    if (result.epistemicMetadata && typeof result.epistemicMetadata === 'object') {
+      result.legacyEpistemicMigration = {
+        truthClass: result.epistemicMetadata.truthClass || null,
+        confidenceClass: result.epistemicMetadata.confidenceClass || null,
+        assessment: 'unproven record-level heuristic migration; not claim-level evidence'
+      };
+      result.epistemicMetadata = {
+        truthClass: 'T4_UNKNOWN',
+        confidenceClass: 'UNASSESSED',
+        assessmentBasis: 'public projection has no verified claim-level evidence receipt'
+      };
     }
     if (Array.isArray(result.sourceReferences)) {
       result.sourceReferences = result.sourceReferences.filter(reference => {
@@ -157,7 +171,6 @@ function projectValidationSummaryForPublic(src, dest) {
   const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
   writeJson(dest, {
     schemaVersion: '1.0.0',
-    checkedAt: raw.checkedAt,
     contract: 'structural-and-referential',
     contractStatus: raw.status,
     canonicalCount: raw.canonicalCount,

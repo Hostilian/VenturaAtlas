@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { getRepositoryTruth } = require('./lib/repository-truth');
 
 const ROOT = path.resolve(__dirname, '..');
 const PKG_PATH = path.join(ROOT, 'package.json');
@@ -16,6 +17,7 @@ const STATS_FILES = [
 
 function main() {
   const errors = [];
+  const truth = getRepositoryTruth();
 
   if (!fs.existsSync(PKG_PATH) || !fs.existsSync(LOCK_PATH)) {
     errors.push('Missing package.json or package-lock.json');
@@ -52,20 +54,39 @@ function main() {
   }
 
   if (meta && meta.counts) {
+    for (const key of ['canonicalIdeas', 'stagedIdeas', 'totalIdeas', 'sources', 'rankingViews', 'rankingEntries']) {
+      if (meta.counts[key] !== truth.counts[key]) {
+        errors.push(`Repository truth drift: repository-meta counts.${key} (${meta.counts[key]}) != computed truth (${truth.counts[key]})`);
+      }
+    }
+    if (meta.counts.ideas !== truth.counts.canonicalIdeas) {
+      errors.push(`Repository truth drift: repository-meta counts.ideas (${meta.counts.ideas}) != computed canonical truth (${truth.counts.canonicalIdeas})`);
+    }
+    for (const key of ['canonicalDataRevision', 'stagingRevision', 'rankingsRevision', 'sourcesRevision']) {
+      if (meta.revisions?.[key] !== truth.revisions[key]) {
+        errors.push(`Repository truth drift: repository-meta revisions.${key} does not match computed truth`);
+      }
+    }
     STATS_FILES.forEach(filePath => {
       if (!fs.existsSync(filePath)) return;
       const content = fs.readFileSync(filePath, 'utf8');
       const basename = path.basename(filePath);
 
-      // Check generated stats block
-      const match = content.match(/- Canonical Ideas:\s+(\d+)/);
-      if (match) {
-        const found = parseInt(match[1], 10);
-        if (found !== meta.counts.ideas) {
-          errors.push(`Documentation stat block drift in ${basename}: found ${found}, expected ${meta.counts.ideas}`);
+      const generatedFields = {
+        'Canonical Ideas': meta.counts.canonicalIdeas,
+        'Staged Ideas': meta.counts.stagedIdeas,
+        'Total Ideas': meta.counts.totalIdeas,
+        'Categories': meta.counts.categories,
+        'Source References': meta.counts.sources,
+        'Generated Prompts': meta.counts.prompts
+      };
+      for (const [label, expected] of Object.entries(generatedFields)) {
+        const match = content.match(new RegExp(`- ${label}:\\s+(\\d+)`));
+        if (!match) {
+          errors.push(`Missing generated '${label}' stat in ${basename}`);
+        } else if (parseInt(match[1], 10) !== expected) {
+          errors.push(`Documentation stat drift in ${basename} for ${label}: found ${match[1]}, expected ${expected}`);
         }
-      } else {
-        errors.push(`Missing generated stats block in ${basename}`);
       }
     });
 
