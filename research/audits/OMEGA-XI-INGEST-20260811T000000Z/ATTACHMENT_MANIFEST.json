@@ -1,0 +1,14 @@
+{
+  "runId": "OMEGA-XI-INGEST-20260811T000000Z",
+  "attachments": [
+    {"name":"OMEGA-X-CODEX-WORLDGRAPH","bytes":91365,"sha256":"5EC0CCABD0C75AA0148F11D8C3C3FE62D216D0E28D68F1F95F461898147C0534","kind":"constitution"},
+    {"name":"ANOTHER-FULL-FRONTIER-RESET","bytes":66993,"sha256":"2F4D0CF7A8750A44003123240F3CA7525335B3C1B5F9BB41029DFFB03D9CB","kind":"research-pass"},
+    {"name":"OMEGA-XI-CODEX-CAUSAL-HORIZON","bytes":111244,"sha256":"FED9D0F1EC3AA1FA1F4171C5DF528237579FA422721325246C4DD2FD39F57A43","kind":"constitution"},
+    {"name":"FULL-AUGUST-11-RESET-A","bytes":61562,"sha256":"D6A5AF0E0AEFCBC22D76124D921D6B18D8465BB8358278445EC3205B230C7579","kind":"research-pass"},
+    {"name":"FULL-AUGUST-11-RESET-B","bytes":61562,"sha256":"D6A5AF0E0AEFCBC22D76124D921D6B18D8465BB8358278445EC3205B230C7579","kind":"exact-duplicate-of-reset-A"}
+  ],
+  "ingestion": "all five attachments read; duplicate pair detected byte-for-byte",
+  "canonicalAdds": 0,
+  "stagingAdds": 0,
+  "approvals": 0
+}

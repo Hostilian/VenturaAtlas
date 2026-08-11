@@ -1,0 +1,25 @@
+{
+  "status": "ingested-and-held",
+  "decisions": [
+    {"candidate":"PortCall Replay","disposition":"RESEARCH_MORE / de-duplicate before staging"},
+    {"candidate":"FuelChain Replay","disposition":"RESEARCH_MORE / de-duplicate before staging"},
+    {"candidate":"MicroMass","disposition":"RESEARCH_MORE / domain evidence required"},
+    {"candidate":"FINTRAC ShadowTest","disposition":"RESEARCH_MORE / validate current regulator rules"},
+    {"candidate":"SprayReality","disposition":"RESEARCH_MORE / de-duplicate before staging"},
+    {"candidate":"EHDS ShadowTest","disposition":"RESEARCH_MORE / early implementation stage"},
+    {"candidate":"CarrierDecision Replay","disposition":"RESEARCH_MORE / de-duplicate before staging"},
+    {"candidate":"DataCenterTruth / FlexLoad Ledger","disposition":"existing research neighborhood; no duplicate IDs"}
+  ],
+  "controls": [
+    "Constitution documents are instructions, not evidence of commercial validation.",
+    "Scores in supplied passes remain decision aids, not approvals.",
+    "No candidate is promoted without reproducible primary-source ledger, de-duplication, and paid behavioral evidence.",
+    "No ranking-contract fields are added for POF, causal horizon, market stage, or decision impact until calibrated tests exist."
+  ],
+  "openGates": [
+    "query-level source receipts for the supplied research totals",
+    "competitor and buyer evidence for each proposed winner",
+    "paid pilot or payment-first test",
+    "owner-reviewed merge mapping against canonical/staged corpus"
+  ]
+}
