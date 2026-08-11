@@ -1,15 +1,15 @@
 {
-  "dataRevision": "5e06d1835024a6f3",
-  "buildRevision": "2.3.0-5e06d1835024a6f3",
-  "generatedAt": "2026-08-10T15:14:34.716Z",
+  "dataRevision": "a08815a635361d21",
+  "buildRevision": "2.3.0-a08815a635361d21",
+  "generatedAt": "2026-08-11T11:59:23.787Z",
   "files": {
     "ideas.json": {
       "sha256": "f0aff5a18838de39261b3cfd7369f3bceb3ba17b9dc85e60236a75f5fc97a679",
       "bytes": 4608340
     },
     "idea-staging-queue.json": {
-      "sha256": "462299cd694ffc352777715cd7f260c162d43a99e23d3debd700266362e7f199",
-      "bytes": 1414972
+      "sha256": "a6c7e734e363ace1c75110a473b40eee7e97eb6cadfb1da4ffcc3dffd532ae37",
+      "bytes": 1507181
     },
     "categories.json": {
       "sha256": "6945e3a804df238b33023c27710640a168a3e0ef294139393f439f5d9676398d",
@@ -20,7 +20,7 @@
       "bytes": 68061
     },
     "rankings.json": {
-      "sha256": "470ab26b6777352e731baee802bfc0badedd1da06a04130dad4fa8c26d2d9539",
+      "sha256": "c70583305c835d19df6266652087c9ac67cf267538603fb83ef7a26dcb43f41a",
       "bytes": 1385196
     }
   }
