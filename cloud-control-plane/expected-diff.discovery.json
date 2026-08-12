@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "task": "discovery",
+  "privatePaths": [
+    "data/idea-staging-queue.json"
+  ],
+  "allowedPaths": [
+    "data/repository-meta.json",
+    "data/search-index.json",
+    "data/rankings.json",
+    "data/validation-summary.json",
+    "data/build-manifest.json",
+    "README.md",
+    "ARCHITECTURE.md",
+    "PROJECT_STATE.md",
+    "PROJECT_STATUS.md",
+    "SEARCH_AND_DISCOVERY_GUIDE.md",
+    "index.html"
+  ],
+  "requiredPaths": [],
+  "forbidDeletions": true
+}

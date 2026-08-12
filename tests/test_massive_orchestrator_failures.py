@@ -2,6 +2,8 @@ import importlib
 import os
 import sys
 import unittest
+import tempfile
+from unittest import mock
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +47,23 @@ class MassiveOrchestratorFailureTests(unittest.TestCase):
 
         _, final_status = orchestrator.execute_iteration(self.specs(), runner=runner)
         self.assertEqual(final_status, "SUCCEEDED")
+
+    def test_receipt_text_redacts_token_shapes(self):
+        redacted = orchestrator.redact_runtime_text("failed with sk-abcdefghijklmnopqrstuvwxyz123456 and ghp_abcdefghijklmnopqrstuvwxyz")
+        self.assertNotIn("abcdefghijklmnopqrstuvwxyz", redacted)
+        self.assertIn("[REDACTED]", redacted)
+
+    def test_zero_budget_emits_failed_receipt_and_nonzero_exit(self):
+        with tempfile.TemporaryDirectory() as receipt_dir, mock.patch.object(
+            sys, "argv", ["orchestrator", "--once", "--max-runtime-minutes", "0", "--receipt-dir", receipt_dir]
+        ):
+            self.assertEqual(orchestrator.main(), 1)
+            receipts = os.listdir(receipt_dir)
+            self.assertEqual(len(receipts), 1)
+            with open(os.path.join(receipt_dir, receipts[0]), "r", encoding="utf-8") as handle:
+                payload = __import__("json").load(handle)
+            self.assertEqual(payload["finalStatus"], "FAILED")
+            self.assertIn("BUDGET_EXHAUSTED", payload["steps"][0]["stderrTail"])
 
 
 if __name__ == "__main__":

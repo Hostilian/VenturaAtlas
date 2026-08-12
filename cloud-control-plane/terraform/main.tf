@@ -32,6 +32,26 @@ variable "worker_image" {
   }
 }
 
+variable "repository_url" {
+  type        = string
+  description = "Git repository URL cloned by the job; credentials are provided separately through askpass"
+}
+
+variable "baseline_commit" {
+  type        = string
+  description = "Exact immutable 40-character commit SHA used as the autonomous job baseline"
+
+  validation {
+    condition     = can(regex("^[0-9a-f]{40}$", var.baseline_commit))
+    error_message = "baseline_commit must be an exact lowercase 40-character Git commit SHA."
+  }
+}
+
+variable "private_staging_bucket_name" {
+  type        = string
+  description = "Globally unique private GCS bucket used for unreviewed discovery state"
+}
+
 provider "google" {
   project = var.gcp_project_id
   region  = var.gcp_region
@@ -45,7 +65,8 @@ resource "google_project_service" "apis" {
     "firestore.googleapis.com",
     "secretmanager.googleapis.com",
     "artifactregistry.googleapis.com",
-    "cloudscheduler.googleapis.com"
+    "cloudscheduler.googleapis.com",
+    "storage.googleapis.com"
   ])
   service            = each.key
   disable_on_destroy = false
@@ -94,7 +115,6 @@ locals {
     DEEPSEEK_API_KEYS   = "va-deepseek-01"
     NVIDIA_NIM_API_KEYS = "va-nvidia-nim-01"
     COHERE_API_KEYS     = "va-cohere-01"
-    GITHUB_TOKEN        = "va-github-token"
   }
 }
 
@@ -113,14 +133,38 @@ resource "google_service_account" "worker_sa" {
   display_name = "Venture Atlas Worker Service Account"
 }
 
-resource "google_service_account" "publisher_sa" {
-  account_id   = "va-cloud-publisher-sa"
-  display_name = "Venture Atlas Publisher Service Account"
-}
-
 resource "google_service_account" "scheduler_sa" {
   account_id   = "va-cloud-scheduler-sa"
   display_name = "Venture Atlas Scheduler Invoker"
+}
+
+resource "google_storage_bucket" "private_staging" {
+  name                        = var.private_staging_bucket_name
+  location                    = var.gcp_region
+  uniform_bucket_level_access = true
+  public_access_prevention    = "enforced"
+  force_destroy               = false
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle_rule {
+    condition {
+      num_newer_versions = 30
+    }
+    action {
+      type = "Delete"
+    }
+  }
+
+  depends_on = [google_project_service.apis]
+}
+
+resource "google_storage_bucket_iam_member" "private_staging_writer" {
+  bucket = google_storage_bucket.private_staging.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${google_service_account.worker_sa.email}"
 }
 
 resource "google_secret_manager_secret_iam_member" "secret_access" {
@@ -166,6 +210,26 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
         env {
           name  = "VA_MAX_COST_CLASS"
           value = "1"
+        }
+        env {
+          name  = "VA_REPOSITORY_URL"
+          value = var.repository_url
+        }
+        env {
+          name  = "VA_BASELINE_SHA"
+          value = var.baseline_commit
+        }
+        env {
+          name  = "VA_EXPECTED_DIFF_MANIFEST"
+          value = "cloud-control-plane/expected-diff.discovery.json"
+        }
+        env {
+          name  = "VA_PUBLICATION_EXPECTED"
+          value = "0"
+        }
+        env {
+          name  = "VA_PRIVATE_STAGING_BUCKET"
+          value = google_storage_bucket.private_staging.name
         }
       }
     }

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
-const { sha256Json } = require('./lib/lifecycle-receipts');
+const { ideaContentDigest } = require('./lib/lifecycle-receipts');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -23,6 +23,12 @@ function validateLifecycleReceipts(receiptDocument, context) {
     }
     if (receiptIds.has(receipt.receiptId)) errors.push(`duplicate receiptId: ${receipt.receiptId}`);
     receiptIds.add(receipt.receiptId);
+    if (!context.trustedReviewerIds.has(`${receipt.reviewer?.id}:${receipt.reviewer?.role}`)) {
+      errors.push(`${receipt.receiptId} reviewer is not an active trusted authority`);
+    }
+    if (receipt.baselineCommit && !context.gitCommitIds.has(receipt.baselineCommit)) {
+      errors.push(`${receipt.receiptId} baselineCommit is not present in repository history`);
+    }
 
     const ideaId = receipt.receiptType === 'CANONICALIZE' ? receipt.canonicalIdeaId : receipt.subjectId;
     const idea = context.ideasById.get(ideaId);
@@ -34,21 +40,28 @@ function validateLifecycleReceipts(receiptDocument, context) {
       if (idea.lifecycleReceiptRefs?.canonicalization !== receipt.receiptId) {
         errors.push(`${receipt.receiptId} is not referenced by canonical idea ${idea.id}`);
       }
-      if (receipt.canonicalDigest !== sha256Json(idea)) {
+      if (receipt.canonicalDigest !== ideaContentDigest(idea)) {
         errors.push(`${receipt.receiptId} canonicalDigest mismatch`);
       }
     } else {
-      if (receipt.subjectDigest !== sha256Json(idea)) errors.push(`${receipt.receiptId} subjectDigest mismatch`);
+      if (receipt.subjectDigest !== ideaContentDigest(idea)) errors.push(`${receipt.receiptId} subjectDigest mismatch`);
     }
     if (receipt.receiptType === 'RESEARCH_MATURITY') {
       if (idea.lifecycleReceiptRefs?.research !== receipt.receiptId) errors.push(`${receipt.receiptId} is not the idea research receipt`);
       for (const sourceId of receipt.sourceIds || []) {
         const source = context.sourcesById.get(sourceId);
-        if (!source || source.evidenceEligible !== true) errors.push(`${receipt.receiptId} source is missing or not evidence eligible: ${sourceId}`);
+        if (!source || source.evidenceEligible !== true || source.visibility !== 'PUBLIC' ||
+            !['PRIMARY_OR_OFFICIAL', 'COMPANY_OR_INDUSTRY'].includes(source.sourceClass)) {
+          errors.push(`${receipt.receiptId} source is missing or not eligible public evidence: ${sourceId}`);
+        }
+      }
+      for (const relationId of receipt.claimRelationIds || []) {
+        if (!context.claimRelationIds.has(relationId)) errors.push(`${receipt.receiptId} references unknown claim relation: ${relationId}`);
       }
       for (const runId of receipt.researchRunRefs || []) {
         const run = context.researchRunsById.get(runId);
-        if (!run || !['R4_CLAIM_MAPPED', 'R5_ADVERSARIAL', 'R6_REVIEWED', 'R7_DECISION_INTEGRATED'].includes(run.receiptMaturity)) {
+        if (!run || !['R4_CLAIM_MAPPED', 'R5_ADVERSARIAL', 'R6_REVIEWED', 'R7_DECISION_INTEGRATED'].includes(run.receiptMaturity) ||
+            !run.ideaIds?.includes(idea.id) || !Array.isArray(run.toolReceipts) || run.toolReceipts.length === 0) {
           errors.push(`${receipt.receiptId} research run is missing or immature: ${runId}`);
         }
       }
@@ -62,7 +75,11 @@ function validateLifecycleReceipts(receiptDocument, context) {
     if (receipt.receiptType === 'VALIDATION') {
       if (idea.lifecycleReceiptRefs?.validation !== receipt.receiptId) errors.push(`${receipt.receiptId} is not the idea validation receipt`);
       for (const runId of receipt.validationRunRefs || []) {
-        if (!context.validationRunIds.has(runId)) errors.push(`${receipt.receiptId} references unknown validation run: ${runId}`);
+        const run = context.validationRunsById.get(runId);
+        if (!run || run.ideaId !== idea.id || run.ideaContentDigest !== ideaContentDigest(idea) ||
+            run.status !== 'COMPLETED' || run.evidenceKind !== receipt.evidenceKind || !Array.isArray(run.evidenceRefs) || !run.evidenceRefs.length) {
+          errors.push(`${receipt.receiptId} references invalid validation run: ${runId}`);
+        }
       }
     }
   }
@@ -79,12 +96,18 @@ function main() {
   const researchRuns = Array.isArray(researchRaw) ? researchRaw : researchRaw.runs || [];
   const validationRaw = read('data/validation-runs.json');
   const validationRuns = Array.isArray(validationRaw) ? validationRaw : validationRaw.runs || [];
+  const claimRelations = read('data/claim-relations.json').relations || [];
+  const authorities = read('data/reviewer-authorities.json').authorities || [];
+  const gitCommits = require('child_process').execFileSync('git', ['rev-list', '--all'], { cwd: ROOT, encoding: 'utf8' }).split(/\s+/).filter(Boolean);
   const errors = validateLifecycleReceipts(receiptDocument, {
     schema: read('schemas/lifecycle-receipt.schema.json'),
     ideasById: new Map(ideas.map(idea => [idea.id, idea])),
     sourcesById: new Map(sources.map(source => [source.id, source])),
     researchRunsById: new Map(researchRuns.map(run => [run.runId, run])),
-    validationRunIds: new Set(validationRuns.map(run => run.runId))
+    validationRunsById: new Map(validationRuns.map(run => [run.runId, run])),
+    claimRelationIds: new Set(claimRelations.map(relation => relation.relationId)),
+    trustedReviewerIds: new Set(authorities.filter(item => item.active === true).map(item => `${item.id}:${item.role}`)),
+    gitCommitIds: new Set(gitCommits)
   });
   console.log(JSON.stringify({ receiptCount: receiptDocument.receipts?.length || 0, errors }, null, 2));
   if (errors.length) process.exit(1);

@@ -2,6 +2,7 @@ import datetime as dt
 import json
 import os
 import sys
+import tempfile
 import unittest
 
 
@@ -36,6 +37,7 @@ def receipt(value):
         "receiptType": "CANONICALIZE",
         "subjectId": value["id"],
         "subjectDigest": candidate_digest(value),
+        "digestContract": "idea-content-v2",
         "baselineCommit": BASELINE,
         "reviewer": {"id": "test-reviewer", "role": "human-reviewer"},
         "decision": "APPROVE",
@@ -47,6 +49,20 @@ def receipt(value):
 
 
 class PublisherAdversarialTests(unittest.TestCase):
+    def setUp(self):
+        self.authority_file = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8")
+        json.dump({"authorities": [{"id": "test-reviewer", "role": "human-reviewer", "active": True}]}, self.authority_file)
+        self.authority_file.close()
+        self.old_authority_path = os.environ.get("VA_REVIEWER_AUTHORITIES_PATH")
+        os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = self.authority_file.name
+
+    def tearDown(self):
+        if self.old_authority_path is None:
+            os.environ.pop("VA_REVIEWER_AUTHORITIES_PATH", None)
+        else:
+            os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = self.old_authority_path
+        os.unlink(self.authority_file.name)
+
     def test_promotion_boolean_is_never_authority(self):
         for promotion_value in (None, False, True):
             value = candidate()
@@ -90,6 +106,10 @@ class PublisherAdversarialTests(unittest.TestCase):
         serialized = json.dumps(packet).lower()
         for forbidden in ("overallscore", "initialverdict", "priority", '"rank"', '"score"'):
             self.assertNotIn(forbidden, serialized)
+
+    def test_blind_packet_rejects_anchor_language_hidden_in_values(self):
+        packet = blind_packet(candidate(name="Prior verdict winner, rank 1, score 99"))
+        self.assertTrue(contains_blind_anchor(packet))
 
 
 if __name__ == "__main__":

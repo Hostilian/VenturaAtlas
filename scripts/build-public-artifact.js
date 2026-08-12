@@ -95,6 +95,10 @@ let internalSourceTerms = new Set();
 let lifecycleReceipts = { schemaVersion: '1.0.0', receipts: [] };
 let researchRunIds = new Set();
 let validationRunIds = new Set();
+let researchRunById = new Map();
+let validationRunById = new Map();
+let claimRelationIds = new Set();
+let trustedReviewerIds = new Set();
 let publicLifecycleByIdea = new Map();
 
 const PROJECTED_TEXT_EXTENSIONS = new Set(['.html', '.json', '.md', '.txt', '.xml', '.csv']);
@@ -126,7 +130,10 @@ function projectIdeasForPublic(src, dest) {
   const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
   const projected = ideas.map(idea => {
     const result = { ...idea };
-    const lifecycle = deriveLifecycleForPublic(idea, lifecycleReceipts, { publicSourceIds, researchRunIds, validationRunIds });
+    const lifecycle = deriveLifecycleForPublic(idea, lifecycleReceipts, {
+      publicSourceIds, researchRunIds, validationRunIds, researchRunById,
+      validationRunById, claimRelationIds, trustedReviewerIds
+    });
     publicLifecycleByIdea.set(idea.id, lifecycle);
     result.scoreMaturity = 'legacy_unverified';
     result.canonicalIdentity = lifecycle.canonicalIdentity;
@@ -216,8 +223,8 @@ function projectRankingsForPublic(src, dest) {
   const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
   const legacyViews = raw.rankings || [];
   const overall = legacyViews.find(view => view.id === 'overall-top-opportunities') || legacyViews[0] || { items: [] };
-  const researchedItems = (overall.items || []).filter(item => publicLifecycleByIdea.get(item.ideaId || item.id)?.rankingUniverse === 'RESEARCHED');
-  const validationItems = (overall.items || []).filter(item => publicLifecycleByIdea.get(item.ideaId || item.id)?.rankingUniverse === 'VALIDATION');
+  const researchedIds = (overall.items || []).map(item => item.ideaId || item.id).filter(id => publicLifecycleByIdea.get(id)?.rankingUniverse === 'RESEARCHED');
+  const validationIds = (overall.items || []).map(item => item.ideaId || item.id).filter(id => publicLifecycleByIdea.get(id)?.rankingUniverse === 'VALIDATION');
   const projected = {
     ...raw,
     maturity: 'legacy_unverified',
@@ -226,8 +233,9 @@ function projectRankingsForPublic(src, dest) {
     scaleComparabilityEstablished: false,
     universes: {
       legacy: { maturity: 'legacy_unverified', views: legacyViews.map(view => view.id) },
-      researched: { maturity: 'receipt_verified', items: researchedItems },
-      validation: { maturity: 'receipt_verified', items: validationItems }
+      hypothesis: { maturity: 'canonical_hypothesis', eligibleIds: [...publicLifecycleByIdea.keys()] },
+      researched: { maturity: 'receipt_verified_eligibility_only', eligibleIds: researchedIds, scoresPublished: false },
+      validation: { maturity: 'receipt_verified_eligibility_only', eligibleIds: validationIds, scoresPublished: false }
     },
     rankings: legacyViews.map(view => ({
       ...view,
@@ -292,6 +300,7 @@ function build() {
   // Fail closed: a stale/missing public evidence projection must abort the build.
   console.log('[BUILD] Generating public sources projection (data/public-sources.json)...');
   execSync('python scripts/build_public_sources.py', { cwd: ROOT, stdio: 'inherit' });
+  execSync('node scripts/validate-lifecycle-receipts.js', { cwd: ROOT, stdio: 'inherit' });
   const projectedSources = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'data', 'public-sources.json'), 'utf8')
   );
@@ -299,9 +308,17 @@ function build() {
   const allSources = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'));
   lifecycleReceipts = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lifecycle-receipts.json'), 'utf8'));
   const researchRuns = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'research-runs.json'), 'utf8'));
-  researchRunIds = new Set((Array.isArray(researchRuns) ? researchRuns : researchRuns.runs || []).map(run => run.runId));
+  const researchRunList = Array.isArray(researchRuns) ? researchRuns : researchRuns.runs || [];
+  researchRunIds = new Set(researchRunList.map(run => run.runId));
+  researchRunById = new Map(researchRunList.map(run => [run.runId, run]));
   const validationRuns = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'validation-runs.json'), 'utf8'));
-  validationRunIds = new Set((Array.isArray(validationRuns) ? validationRuns : validationRuns.runs || []).map(run => run.runId));
+  const validationRunList = Array.isArray(validationRuns) ? validationRuns : validationRuns.runs || [];
+  validationRunIds = new Set(validationRunList.map(run => run.runId));
+  validationRunById = new Map(validationRunList.map(run => [run.runId, run]));
+  const claimRelations = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'claim-relations.json'), 'utf8'));
+  claimRelationIds = new Set((claimRelations.relations || []).map(relation => relation.relationId));
+  const reviewerAuthorities = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'reviewer-authorities.json'), 'utf8'));
+  trustedReviewerIds = new Set((reviewerAuthorities.authorities || []).filter(item => item.active === true).map(item => `${item.id}:${item.role}`));
   internalSourceIds = new Set(
     allSources.filter(source => source.visibility !== 'PUBLIC').map(source => source.id)
   );

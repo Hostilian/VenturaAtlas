@@ -19,7 +19,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --only=production
 
 # Copy python requirements if any, or install standard dependencies
-RUN pip install --no-cache-dir requests urllib3 google-cloud-firestore google-cloud-secretmanager
+RUN pip install --no-cache-dir requests urllib3 google-cloud-firestore google-cloud-secretmanager google-cloud-storage
 
 # Copy full application codebase
 COPY . .

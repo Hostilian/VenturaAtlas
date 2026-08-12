@@ -16,18 +16,19 @@ function fixture() {
       affectedIdeaRefs: ['idea-001'], direction: 'NEGATIVE', reviewRequired: true
     }],
     obligations: [
-      { obligationId: 'obl-rule-a', instrumentId: 'rule-one', actor: 'manufacturer', object: 'product', action: 'record', scope: 'large firms', effectiveAt: '2027-01-01T00:00:00Z', maturity: 'ADOPTED', secondaryLegislationPending: false, exemptions: ['micro firms'], sourceRefs: ['s01'], ideaRefs: ['idea-001'] },
-      { obligationId: 'obl-rule-b', instrumentId: 'rule-one', actor: 'platform', object: 'report', action: 'submit', scope: 'covered products', effectiveAt: '2028-01-01T00:00:00Z', maturity: 'SECONDARY_ACT_PENDING', secondaryLegislationPending: true, sourceRefs: ['s01'], ideaRefs: ['idea-002'] }
+      { obligationId: 'obl-rule-a', instrumentId: 'dep-rule-one', actor: 'manufacturer', object: 'product', action: 'record', scope: 'large firms', effectiveAt: '2027-01-01T00:00:00Z', maturity: 'ADOPTED', secondaryLegislationPending: false, exemptions: ['micro firms'], sourceRefs: ['s01'], ideaRefs: ['idea-001'] },
+      { obligationId: 'obl-rule-b', instrumentId: 'dep-rule-one', actor: 'platform', object: 'report', action: 'submit', scope: 'covered products', effectiveAt: '2028-01-01T00:00:00Z', maturity: 'SECONDARY_ACT_PENDING', secondaryLegislationPending: true, sourceRefs: ['s01'], ideaRefs: ['idea-002'] }
     ],
     ecosystems: [{ ecosystemId: 'eco-rule-api', name: 'Rule API', topology: 'CENTRAL_PUBLIC_API', providerDensity: 'EMERGING', stage: 'PREPARATION', sourceRefs: ['s01'], ideaRefs: ['idea-001'] }],
     counterpartyAssessments: [{
-      assessmentId: 'cp-idea-one', ideaId: 'idea-001', coordinationTax: 'HIGH', weakestCriticalParty: 'supplier', sourceRefs: [],
+      assessmentId: 'cp-idea-one', ideaId: 'idea-001', coordinationTax: 'HIGH', weakestCriticalParty: 'supplier', sourceRefs: ['s01'],
       parties: [{ role: 'supplier', mustParticipate: true, canBeForced: null, controlsData: true, controlsDecision: false, controlsBudget: false, readiness: 'UNKNOWN' }]
     }]
   };
 }
 
-const context = { schema, ideaIds: new Set(['idea-001', 'idea-002', 'idea-003']), sourceIds: new Set(['s01']) };
+const eligibleSource = { id: 's01', visibility: 'PUBLIC', evidenceEligible: true, sourceClass: 'PRIMARY_OR_OFFICIAL' };
+const context = { schema, ideaIds: new Set(['idea-001', 'idea-002', 'idea-003']), sourceIds: new Set(['s01']), sourceById: new Map([['s01', eligibleSource]]) };
 
 test('valid explicit graph supports multi-date obligations and unknown readiness', () => {
   assert.deepEqual(validateShockgraph(fixture(), context), []);
@@ -51,4 +52,18 @@ test('concentration report uses explicit edges and reports mapping coverage', ()
   assert.equal(report.dependencies[0].ideaCount, 2);
   assert.equal(report.counts.mappedIdeas, 2);
   assert.equal(report.mappingCoverage, 2 / 3);
+});
+
+test('invalid dates, mutation fields, internal evidence, and unresolved refs fail closed', () => {
+  const graph = fixture();
+  graph.dependencies[0].checkedAt = 'not-a-date';
+  graph.shocks[0].scoreDelta = 999;
+  graph.shocks[0].decision = 'AUTO_KILL';
+  graph.shocks[0].affectedClaimRefs = ['claim-missing'];
+  const badContext = { ...context, sourceById: new Map([['s01', { ...eligibleSource, visibility: 'INTERNAL' }]]) };
+  const errors = validateShockgraph(graph, badContext);
+  assert.ok(errors.some(error => error.includes('invalid checkedAt')));
+  assert.ok(errors.some(error => error.includes('additional properties')));
+  assert.ok(errors.some(error => error.includes('not eligible public evidence')));
+  assert.ok(errors.some(error => error.includes('unknown affectedClaimRefs')));
 });

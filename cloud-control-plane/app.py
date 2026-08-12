@@ -2,6 +2,8 @@ import os
 import sys
 import datetime
 import subprocess
+import shutil
+import threading
 from fastapi import FastAPI, Depends, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 import config
@@ -11,6 +13,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 app = FastAPI(title="VentureAtlas Cloud Control Plane", version="2.4.0")
+TASK_LOCK = threading.Lock()
+TASK_TIMEOUT_SECONDS = int(os.environ.get("VA_WORKER_TASK_TIMEOUT_SECONDS", "900"))
 
 class TaskResponse(BaseModel):
     runId: str
@@ -22,14 +26,32 @@ class TaskResponse(BaseModel):
     outputTail: str
 
 @app.get("/healthz")
-@app.get("/ready")
 def health_check():
     return {
-        "status": "healthy",
+        "status": "live",
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "service": "ventureatlas-cloud-control-plane",
         "version": "2.4.0"
     }
+
+@app.get("/ready")
+def readiness_check():
+    failures = []
+    token = os.environ.get("WORKER_AUTH_TOKEN", config.WORKER_AUTH_TOKEN)
+    if os.environ.get("ENVIRONMENT", "production").lower() != "development" and (
+        not token or token in {"secret-internal-token", "changeme", "placeholder"}
+    ):
+        failures.append("worker authentication is not configured")
+    for executable in (sys.executable, "node"):
+        if executable != sys.executable and not shutil.which(executable):
+            failures.append(f"missing executable: {executable}")
+    for command in TASK_CMD_MAP.values():
+        script = command[1] if len(command) > 1 and os.path.isabs(command[1]) else None
+        if script and not os.path.exists(script):
+            failures.append(f"missing task script: {script}")
+    if failures:
+        raise HTTPException(status_code=503, detail={"status": "not_ready", "failures": failures})
+    return {"status": "ready", "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()}
 
 TASK_CMD_MAP = {
     "discover": [sys.executable, os.path.join(ROOT, "scripts", "autonomous-idea-generator.py")],
@@ -37,7 +59,6 @@ TASK_CMD_MAP = {
     "score": [sys.executable, os.path.join(ROOT, "scripts", "va-ranker.py"), "--update"],
     "redteam": [sys.executable, os.path.join(ROOT, "scripts", "check_privacy.py")],
     "artifacts": ["node", os.path.join(ROOT, "scripts", "build-public-artifact.js")],
-    "publish": ["node", os.path.join(ROOT, "scripts", "build-repository-meta.js")],
     "maintenance": ["node", os.path.join(ROOT, "scripts", "check-repository-consistency.js")]
 }
 
@@ -50,7 +71,14 @@ def execute_task(task_name: str):
     run_id = f"task-{task_name}-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')}"
 
     cmd = TASK_CMD_MAP[task_name]
-    res = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
+    if not TASK_LOCK.acquire(blocking=False):
+        raise HTTPException(status_code=409, detail="another repository writer task is active")
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT, timeout=TASK_TIMEOUT_SECONDS)
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=504, detail={"runId": run_id, "task": task_name, "status": "failed", "reason": "timeout"})
+    finally:
+        TASK_LOCK.release()
     end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
 
     status = "succeeded" if res.returncode == 0 else "failed"

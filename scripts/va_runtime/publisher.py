@@ -21,7 +21,7 @@ from .lifecycle import (
     RECEIPTS_PATH,
     canonical_projection,
     current_git_commit,
-    sha256_json,
+    idea_content_digest,
     validate_canonicalization_receipt,
 )
 
@@ -41,6 +41,9 @@ TRANSACTION_PATHS = [
     os.path.join(ROOT, "README.md"),
     os.path.join(ROOT, "PROJECT_STATE.md"),
     os.path.join(ROOT, "PROJECT_STATUS.md"),
+    os.path.join(ROOT, "ARCHITECTURE.md"),
+    os.path.join(ROOT, "SEARCH_AND_DISCOVERY_GUIDE.md"),
+    os.path.join(ROOT, "index.html"),
 ]
 
 @contextlib.contextmanager
@@ -233,7 +236,8 @@ def publish_candidate(candidate: Dict[str, Any], canonicalization_receipt: Optio
                 return False, "Promotion gate failed: lifecycle receiptId already exists", None
             stored_receipt = copy.deepcopy(canonicalization_receipt)
             stored_receipt["canonicalIdeaId"] = canonical_id
-            stored_receipt["canonicalDigest"] = sha256_json(projected_candidate)
+            stored_receipt["digestContract"] = "idea-content-v2"
+            stored_receipt["canonicalDigest"] = idea_content_digest(projected_candidate)
             receipt_document.setdefault("receipts", []).append(stored_receipt)
 
             # 4. Atomic write to data/ideas.json

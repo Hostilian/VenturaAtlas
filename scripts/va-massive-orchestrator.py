@@ -16,6 +16,7 @@ import subprocess
 import contextlib
 import json
 import uuid
+import re
 from dataclasses import dataclass
 from typing import Callable, Literal, Optional
 
@@ -48,6 +49,12 @@ def log(msg: str):
     ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{ts}] [MASSIVE-ORCHESTRATOR] {msg}", flush=True)
 
+def redact_runtime_text(value: str) -> str:
+    result = value or ""
+    for pattern in [r"github_pat_[A-Za-z0-9_]{20,}", r"gh[pousr]_[A-Za-z0-9]{20,}", r"sk-[A-Za-z0-9_-]{20,}", r"(?i)(bearer\s+)[A-Za-z0-9._~-]{16,}"]:
+        result = re.sub(pattern, lambda match: (match.group(1) if match.lastindex else "") + "[REDACTED]", result)
+    return result
+
 def run_step(name: str, cmd: list, cwd: str = BASE_DIR, dry_run: bool = False,
              timeout_seconds: int = 900) -> StepResult:
     start = time.time()
@@ -59,8 +66,8 @@ def run_step(name: str, cmd: list, cwd: str = BASE_DIR, dry_run: bool = False,
         res = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout_seconds)
         duration_ms = int((time.time() - start) * 1000)
         status = "succeeded" if res.returncode == 0 else "failed"
-        stdout_tail = res.stdout.strip()[-300:] if res.stdout else ""
-        stderr_tail = res.stderr.strip()[-300:] if res.stderr else ""
+        stdout_tail = redact_runtime_text(res.stdout.strip()[-300:] if res.stdout else "")
+        stderr_tail = redact_runtime_text(res.stderr.strip()[-300:] if res.stderr else "")
         return StepResult(name, status, res.returncode, duration_ms, stdout_tail, stderr_tail)
     except subprocess.TimeoutExpired as e:
         duration_ms = int((time.time() - start) * 1000)
@@ -160,6 +167,14 @@ def main() -> int:
 
     run_id = f"orchestrator-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
     overall_exit = 0
+    if max_runtime_sec <= 0:
+        now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        spec = StepSpec("runtime-budget", ["internal"], "REQUIRED")
+        result = StepResult("runtime-budget", "failed", None, 0, "", "BUDGET_EXHAUSTED before required work")
+        receipt_path = os.path.join(args.receipt_dir, f"{run_id}-iteration-000.json")
+        atomic_write_json(receipt_path, _receipt(run_id, 0, now, now, [spec], [result], "FAILED"))
+        log(f"[FAILED] Runtime budget exhausted before required work. Receipt: {receipt_path}")
+        return 1
     with process_file_lock(LOCK_PATH):
         iteration = 0
         while iteration < max_iterations:

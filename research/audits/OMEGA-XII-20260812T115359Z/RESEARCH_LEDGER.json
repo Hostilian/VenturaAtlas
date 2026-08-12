@@ -1,4 +1,29 @@
 {
   "runId": "OMEGA-XII-20260812T115359Z",
-  "runs": []
+  "runs": [
+    {
+      "runId": "omega-xii-primary-source-pass-001",
+      "startedAt": "2026-08-12T12:30:00Z",
+      "endedAt": "2026-08-12T12:45:00Z",
+      "mode": "bounded-current-world-primary-source-review",
+      "queriesExecuted": 8,
+      "queries": [
+        "site:eur-lex.europa.eu 2024/1938 substances human origin applies 7 August 2027",
+        "site:digital-strategy.ec.europa.eu Cyber Resilience Act reporting obligations 11 September 2026",
+        "site:aspr.hhs.gov nucleic acid synthesis screening framework 2024",
+        "site:climate.ec.europa.eu carbon removals certification framework regulation 2024",
+        "site:eur-lex.europa.eu Directive 2020/2184 PFAS parameters apply 12 January 2026",
+        "site:aspr.hhs.gov nucleic acid synthesis screening framework federally funded 2026 requirements",
+        "site:health.ec.europa.eu SoHO platform implementing regulation 2025 1467",
+        "site:climate.ec.europa.eu CRCF EU registry third party verification 2026"
+      ],
+      "sourceIdsUsed": ["s65", "s69", "s79", "s83", "s96"],
+      "outputs": { "dependencies": 4, "shocks": 2, "obligations": 4, "ecosystems": 4, "counterpartyAssessments": 2 },
+      "limitations": [
+        "This is a bounded pass, not the constitution's full-duration or full-query completion target.",
+        "No buyer interviews, transactions, willingness-to-pay evidence, or provider-density census was performed.",
+        "Unknown readiness and coordination fields remain UNKNOWN; no score or decision was mutated."
+      ]
+    }
+  ]
 }

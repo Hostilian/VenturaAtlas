@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["relationId", "ideaId", "claimId", "sourceId", "relation", "reviewedAt"],
+  "properties": {
+    "relationId": { "type": "string", "pattern": "^claimrel-[a-z0-9-]+$" },
+    "ideaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
+    "claimId": { "type": "string", "pattern": "^claim-[a-f0-9]{8}$" },
+    "sourceId": { "type": "string" },
+    "relation": { "enum": ["SUPPORTS", "CONTRADICTS", "QUALIFIES"] },
+    "reviewedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

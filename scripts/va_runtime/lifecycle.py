@@ -36,7 +36,32 @@ class LifecycleReceiptError(ValueError):
 
 
 def _canonical_json(value: Any) -> str:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    """Language-neutral typed encoding for lifecycle digests (contract v2)."""
+    if value is None:
+        return "n"
+    if isinstance(value, bool):
+        return "t" if value else "f"
+    if isinstance(value, (int, float)):
+        number = float(value)
+        if not number == number or abs(number) == float("inf"):
+            raise LifecycleReceiptError("non-finite numbers cannot be lifecycle-digested")
+        if isinstance(value, int) and abs(value) > 9007199254740991:
+            raise LifecycleReceiptError("integers outside the JSON safe range cannot be lifecycle-digested")
+        if number == 0:
+            return "d:0"
+        mantissa, exponent = format(number, ".16e").split("e")
+        return f"d:{mantissa}e{int(exponent):+d}"
+    if isinstance(value, str):
+        payload = value.encode("utf-8")
+        return f"s{len(payload)}:{value}"
+    if isinstance(value, list):
+        return "[" + "".join(_canonical_json(item) for item in value) + "]"
+    if isinstance(value, dict):
+        return "{" + "".join(
+            _canonical_json(str(key)) + _canonical_json(value[key])
+            for key in sorted(value)
+        ) + "}"
+    raise LifecycleReceiptError(f"unsupported lifecycle digest type: {type(value).__name__}")
 
 
 def sha256_json(value: Any) -> str:
@@ -53,6 +78,21 @@ def receipt_subject(candidate: Dict[str, Any]) -> Dict[str, Any]:
     result.pop("canonicalizationReceipt", None)
     result.pop("lifecycleReceiptRefs", None)
     return result
+
+
+DERIVED_LIFECYCLE_FIELDS = {
+    "lifecycleReceiptRefs", "canonicalState", "researchMaturity", "rankingEligibility",
+    "validationMaturity", "decisionStatus", "promotionReview",
+}
+
+
+def idea_content_subject(idea: Dict[str, Any]) -> Dict[str, Any]:
+    """Stable substantive projection; later receipt pointers cannot invalidate prior receipts."""
+    return {key: copy.deepcopy(value) for key, value in idea.items() if key not in DERIVED_LIFECYCLE_FIELDS}
+
+
+def idea_content_digest(idea: Dict[str, Any]) -> str:
+    return sha256_json(idea_content_subject(idea))
 
 
 def candidate_digest(candidate: Dict[str, Any]) -> str:
@@ -90,7 +130,15 @@ def _basic_receipt_errors(receipt: Dict[str, Any], expected_type: str, subject_i
     if receipt.get("decision") != "APPROVE":
         errors.append("decision is not APPROVE")
     reviewer = receipt.get("reviewer") or {}
-    if not reviewer.get("id") or reviewer.get("role") not in REVIEWER_ROLES:
+    authorities_path = os.environ.get("VA_REVIEWER_AUTHORITIES_PATH", os.path.join(ROOT, "data", "reviewer-authorities.json"))
+    try:
+        with open(authorities_path, "r", encoding="utf-8") as handle:
+            authorities = json.load(handle).get("authorities", [])
+    except (OSError, ValueError):
+        authorities = []
+    authority = next((item for item in authorities if item.get("id") == reviewer.get("id") and item.get("active") is True), None)
+    if (not authority or authority.get("role") != reviewer.get("role") or
+            reviewer.get("role") not in REVIEWER_ROLES):
         errors.append("reviewer authority is invalid")
     try:
         decided_at = _parse_time(receipt.get("decidedAt", ""), "decidedAt")
@@ -182,6 +230,12 @@ def contains_blind_anchor(value: Any) -> bool:
                 return True
     elif isinstance(value, list):
         return any(contains_blind_anchor(item) for item in value)
+    elif isinstance(value, str):
+        return bool(re.search(
+            r"\b(rank(?:ed)?\s*#?\s*\d+|score\s*[:=]?\s*\d+|prior\s+verdict|"
+            r"previous\s+rank|winner|top[- ]?pick|promotion\s+eligible)\b",
+            value, flags=re.IGNORECASE,
+        ))
     return False
 
 

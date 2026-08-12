@@ -1,4 +1,10 @@
 {
   "runId": "OMEGA-XII-20260812T115359Z",
-  "sources": []
+  "sources": [
+    { "sourceId": "s65", "publisher": "EUR-Lex", "url": "https://eur-lex.europa.eu/legal-content/en/LSU/?uri=CELEX:32024R1938", "checkedAt": "2026-08-12T12:45:00Z", "usedFor": ["dep-eu-soho-2024-1938", "obl-soho-registration-traceability"] },
+    { "sourceId": "s69", "publisher": "European Commission Climate Action", "url": "https://climate.ec.europa.eu/eu-action/carbon-removals-and-carbon-farming/carbon-removals-and-carbon-farming-crcf-regulation_en", "checkedAt": "2026-08-12T12:45:00Z", "usedFor": ["dep-eu-crcf-2024-3012", "obl-crcf-third-party-verification"] },
+    { "sourceId": "s79", "publisher": "EUR-Lex", "url": "https://eur-lex.europa.eu/eli/dir/2020/2184/oj", "checkedAt": "2026-08-12T12:45:00Z", "usedFor": ["dep-eu-drinking-water-pfas", "shock-pfas-parameters-start-2026"] },
+    { "sourceId": "s83", "publisher": "European Commission Digital Strategy", "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting", "checkedAt": "2026-08-12T12:45:00Z", "usedFor": ["dep-eu-cra-reporting", "shock-cra-reporting-start-2026"] },
+    { "sourceId": "s96", "publisher": "ENISA", "url": "https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp", "checkedAt": "2026-08-12T12:45:00Z", "usedFor": ["dep-eu-cra-reporting", "eco-cra-single-reporting-platform"] }
+  ]
 }

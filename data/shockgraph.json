@@ -1,8 +1,29 @@
 {
   "schemaVersion": "1.0.0",
-  "dependencies": [],
-  "shocks": [],
-  "obligations": [],
-  "ecosystems": [],
-  "counterpartyAssessments": []
+  "dependencies": [
+    { "dependencyId": "dep-eu-cra-reporting", "type": "REGULATION", "name": "EU Cyber Resilience Act reporting obligations and Single Reporting Platform", "status": "REPORTING_APPLIES_2026-09-11", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"], "volatility": "MEDIUM" },
+    { "dependencyId": "dep-eu-drinking-water-pfas", "type": "REGULATION", "name": "Directive (EU) 2020/2184 PFAS drinking-water parameters", "status": "APPLICABLE", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s79"], "ideaRefs": ["idea-398"], "volatility": "LOW" },
+    { "dependencyId": "dep-eu-soho-2024-1938", "type": "REGULATION", "name": "Regulation (EU) 2024/1938 on substances of human origin", "status": "ADOPTED_MOST_PROVISIONS_APPLY_2027-08-07", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"], "volatility": "MEDIUM" },
+    { "dependencyId": "dep-eu-crcf-2024-3012", "type": "CERTIFICATION_SCHEME", "name": "EU Carbon Removals and Carbon Farming Certification Framework", "status": "ADOPTED_IMPLEMENTATION_IN_PROGRESS", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s69"], "ideaRefs": ["idea-388"], "volatility": "HIGH" }
+  ],
+  "shocks": [
+    { "shockId": "shock-cra-reporting-start-2026", "dependencyId": "dep-eu-cra-reporting", "kind": "APPLICATION_START", "observedAt": "2026-08-12T12:45:00Z", "effectiveAt": "2026-09-11T00:00:00Z", "sourceRefs": ["s83", "s96"], "affectedIdeaRefs": ["idea-401"], "direction": "MIXED", "reviewRequired": true },
+    { "shockId": "shock-pfas-parameters-start-2026", "dependencyId": "dep-eu-drinking-water-pfas", "kind": "APPLICATION_START", "observedAt": "2026-08-12T12:45:00Z", "effectiveAt": "2026-01-12T00:00:00Z", "sourceRefs": ["s79"], "affectedIdeaRefs": ["idea-398"], "direction": "MIXED", "reviewRequired": true }
+  ],
+  "obligations": [
+    { "obligationId": "obl-cra-active-vulnerability-reporting", "instrumentId": "dep-eu-cra-reporting", "actor": "manufacturers of products with digital elements", "object": "actively exploited vulnerabilities and severe incidents", "action": "submit staged notifications through the Single Reporting Platform", "scope": "covered products with digital elements", "effectiveAt": "2026-09-11T00:00:00Z", "maturity": "ADOPTED", "secondaryLegislationPending": false, "exemptions": ["Penalty treatment differs for certain micro and small enterprises; scope requires legal review"], "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"] },
+    { "obligationId": "obl-pfas-drinking-water-parameters", "instrumentId": "dep-eu-drinking-water-pfas", "actor": "EU Member States", "object": "water intended for human consumption", "action": "ensure compliance with PFAS Total and Sum of PFAS parametric values", "scope": "Directive (EU) 2020/2184 drinking-water scope", "effectiveAt": "2026-01-12T00:00:00Z", "maturity": "APPLICABLE", "secondaryLegislationPending": false, "exemptions": [], "sourceRefs": ["s79"], "ideaRefs": ["idea-398"] },
+    { "obligationId": "obl-soho-registration-traceability", "instrumentId": "dep-eu-soho-2024-1938", "actor": "covered SoHO entities", "object": "SoHO activities, traceability, and vigilance information", "action": "register and maintain required records and notifications", "scope": "covered substances of human origin and activities", "effectiveAt": "2027-08-07T00:00:00Z", "maturity": "ADOPTED", "secondaryLegislationPending": true, "exemptions": ["Application dates and transitional provisions vary by article"], "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"] },
+    { "obligationId": "obl-crcf-third-party-verification", "instrumentId": "dep-eu-crcf-2024-3012", "actor": "activities seeking voluntary CRCF certification", "object": "carbon removal, carbon farming, or carbon storage claims", "action": "undergo third-party verification under recognised certification schemes", "scope": "voluntary EU CRCF certification", "effectiveAt": null, "maturity": "SECONDARY_ACT_PENDING", "secondaryLegislationPending": true, "exemptions": ["The framework is voluntary; methodology and registry rollout remain staged"], "sourceRefs": ["s69"], "ideaRefs": ["idea-388"] }
+  ],
+  "ecosystems": [
+    { "ecosystemId": "eco-cra-single-reporting-platform", "name": "CRA Single Reporting Platform", "topology": "CENTRAL_PUBLIC_PORTAL", "providerDensity": "UNKNOWN", "stage": "MANDATORY_TRANSITION", "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"] },
+    { "ecosystemId": "eco-soho-platform", "name": "EU SoHO information platform", "topology": "CENTRAL_PUBLIC_PORTAL", "providerDensity": "UNKNOWN", "stage": "PREPARATION", "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"] },
+    { "ecosystemId": "eco-crcf-certification", "name": "EU CRCF certification schemes and registry", "topology": "CERTIFIED_INTERMEDIARIES", "providerDensity": "EARLY", "stage": "EARLY_ADOPTION", "sourceRefs": ["s69"], "ideaRefs": ["idea-388"] },
+    { "ecosystemId": "eco-pfas-drinking-water", "name": "EU drinking-water PFAS monitoring network", "topology": "PHYSICAL_NETWORK", "providerDensity": "UNKNOWN", "stage": "OPERATING_SCALE", "sourceRefs": ["s79"], "ideaRefs": ["idea-398"] }
+  ],
+  "counterpartyAssessments": [
+    { "assessmentId": "cp-cra-reachledger", "ideaId": "idea-401", "parties": [{ "role": "device manufacturer", "mustParticipate": true, "canBeForced": true, "controlsData": true, "controlsDecision": true, "controlsBudget": true, "readiness": "UNKNOWN" }, { "role": "component and firmware suppliers", "mustParticipate": true, "canBeForced": null, "controlsData": true, "controlsDecision": false, "controlsBudget": false, "readiness": "UNKNOWN" }], "coordinationTax": "UNKNOWN", "weakestCriticalParty": null, "sourceRefs": ["s83", "s96"] },
+    { "assessmentId": "cp-soho-donor-ledger", "ideaId": "idea-385", "parties": [{ "role": "SoHO entity or establishment", "mustParticipate": true, "canBeForced": true, "controlsData": true, "controlsDecision": true, "controlsBudget": true, "readiness": "UNKNOWN" }, { "role": "cross-border counterparties", "mustParticipate": true, "canBeForced": null, "controlsData": true, "controlsDecision": false, "controlsBudget": false, "readiness": "UNKNOWN" }], "coordinationTax": "UNKNOWN", "weakestCriticalParty": null, "sourceRefs": ["s65"] }
+  ]
 }

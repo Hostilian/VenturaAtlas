@@ -83,6 +83,10 @@ function main() {
   validateSchemaIfAvailable('source.schema.json', sources, errors);
   validateSchemaIfAvailable('ranking.schema.json', ranks, errors);
   validateSchemaIfAvailable('relationship.schema.json', rels, errors);
+  const validationRunsRaw = readJsonFile('data/validation-runs.json') || { runs: [] };
+  validateSchemaIfAvailable('validation-run.schema.json', validationRunsRaw.runs || [], errors);
+  const claimRelationsRaw = readJsonFile('data/claim-relations.json') || { relations: [] };
+  validateSchemaIfAvailable('claim-relation.schema.json', claimRelationsRaw.relations || [], errors);
 
   const ideaIds = new Set();
   const slugs = new Set();
@@ -163,6 +167,8 @@ function main() {
     'data/relationships.json',
     'data/lifecycle-receipts.json',
     'data/validation-runs.json',
+    'data/claim-relations.json',
+    'data/reviewer-authorities.json',
     'data/shockgraph.json',
     'data/ideas.schema.json',
     'schemas/category.schema.json',
@@ -170,6 +176,8 @@ function main() {
     'schemas/ranking.schema.json',
     'schemas/relationship.schema.json',
     'schemas/lifecycle-receipt.schema.json',
+    'schemas/validation-run.schema.json',
+    'schemas/claim-relation.schema.json',
     'schemas/shockgraph.schema.json'
   ];
   const revisionHasher = crypto.createHash('sha256');

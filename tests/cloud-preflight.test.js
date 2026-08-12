@@ -9,5 +9,9 @@ test('cloud preflight is read-only and does not record secrets', () => {
   const source = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'preflight.py'), 'utf8');
   assert.match(source, /offLaptopExecutionProven/);
   assert.match(source, /secretsRecorded.*False/);
+  assert.match(source, /latest-successful-execution/);
+  assert.match(source, /cloud-scheduler-enabled/);
+  assert.match(source, /immutable-worker-image/);
+  assert.match(source, /private-discovery-config/);
   assert.doesNotMatch(source, /terraform.*apply|gcloud.*deploy|secrets versions access/i);
 });

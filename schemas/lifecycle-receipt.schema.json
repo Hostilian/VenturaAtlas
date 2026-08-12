@@ -9,6 +9,7 @@
     "receiptType",
     "subjectId",
     "subjectDigest",
+    "digestContract",
     "baselineCommit",
     "reviewer",
     "decision",
@@ -22,7 +23,8 @@
     },
     "subjectId": { "type": "string", "minLength": 3 },
     "subjectDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-    "baselineCommit": { "type": "string", "pattern": "^[a-f0-9]{7,40}$" },
+    "digestContract": { "const": "idea-content-v2" },
+    "baselineCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
     "reviewer": {
       "type": "object",
       "required": ["id", "role"],
@@ -53,10 +55,12 @@
       "additionalProperties": true
     },
     "lineageVerified": { "type": "boolean" },
-    "maturity": { "type": "string" },
+    "canonicalIdeaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
+    "canonicalDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "maturity": { "enum": ["R4_CLAIM_MAPPED", "R5_ADVERSARIAL", "R6_REVIEWED", "R7_DECISION_INTEGRATED", "VALIDATED_BEHAVIORAL", "VALIDATED_TRANSACTIONAL"] },
     "universe": { "enum": ["RESEARCHED", "VALIDATION"] },
     "sourceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "claimRelationIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "claimRelationIds": { "type": "array", "items": { "type": "string", "pattern": "^claimrel-[a-z0-9-]+$" }, "uniqueItems": true },
     "researchRunRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
     "validationRunRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
     "decisionDelta": { "type": "string" },
@@ -67,7 +71,7 @@
   "allOf": [
     {
       "if": { "properties": { "receiptType": { "const": "CANONICALIZE" } } },
-      "then": { "required": ["identityReview", "duplicateReview", "lineageVerified"] }
+      "then": { "required": ["identityReview", "duplicateReview", "lineageVerified", "canonicalIdeaId", "canonicalDigest"] }
     },
     {
       "if": { "properties": { "receiptType": { "const": "RESEARCH_MATURITY" } } },
@@ -82,5 +86,5 @@
       "then": { "required": ["maturity", "evidenceKind", "validationRunRefs"] }
     }
   ],
-  "additionalProperties": true
+  "additionalProperties": false
 }

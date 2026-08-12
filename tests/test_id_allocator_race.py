@@ -46,6 +46,11 @@ def test_simultaneous_publishers_unique_ids():
     orig_receipts_path = pub.RECEIPTS_PATH
     pub.IDEAS_PATH = temp_ideas
     pub.RECEIPTS_PATH = os.path.join(temp_dir, "lifecycle-receipts.json")
+    authority_path = os.path.join(temp_dir, "reviewer-authorities.json")
+    old_authority_path = os.environ.get("VA_REVIEWER_AUTHORITIES_PATH")
+    os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = authority_path
+    with open(authority_path, "w", encoding="utf-8") as handle:
+        handle.write('{"authorities":[{"id":"race-test","role":"human-reviewer","active":true}]}\n')
     with open(pub.RECEIPTS_PATH, "w", encoding="utf-8") as handle:
         handle.write('{"schemaVersion":"1.0.0","receipts":[]}\n')
 
@@ -65,6 +70,7 @@ def test_simultaneous_publishers_unique_ids():
                 "receiptType": "CANONICALIZE",
                 "subjectId": cand["id"],
                 "subjectDigest": candidate_digest(cand),
+                "digestContract": "idea-content-v2",
                 "baselineCommit": current_git_commit(),
                 "reviewer": {"id": "race-test", "role": "human-reviewer"},
                 "decision": "APPROVE",
@@ -87,6 +93,10 @@ def test_simultaneous_publishers_unique_ids():
         assert len(allocated_ids) == len(set(allocated_ids)), "Duplicate canonical IDs detected!"
         print(f"PASS: Simultaneous publishers allocated {len(allocated_ids)} unique canonical IDs")
     finally:
+        if old_authority_path is None:
+            os.environ.pop("VA_REVIEWER_AUTHORITIES_PATH", None)
+        else:
+            os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = old_authority_path
         pub.IDEAS_PATH = orig_ideas_path
         pub.RECEIPTS_PATH = orig_receipts_path
         shutil.rmtree(temp_dir)

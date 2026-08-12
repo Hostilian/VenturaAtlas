@@ -92,7 +92,8 @@ for (const idea of ideas) {
 }
 
 // 3. Metadata count alignment (P59)
-const rawQueue = readJson('data/idea-staging-queue.json');
+const queuePath = path.join(ROOT, 'data', 'idea-staging-queue.json');
+const rawQueue = fs.existsSync(queuePath) ? readJson('data/idea-staging-queue.json') : [];
 const stagingQueueLen = Array.isArray(rawQueue) ? rawQueue.length : (rawQueue?.queue?.length || 0);
 
 if (meta && meta.counts) {
