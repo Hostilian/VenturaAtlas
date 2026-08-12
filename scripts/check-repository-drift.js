@@ -17,7 +17,7 @@ const STATS_FILES = [
 
 function main() {
   const errors = [];
-  const truth = getRepositoryTruth();
+  const truth = getRepositoryTruth({ includePrivateStaging: false });
 
   if (!fs.existsSync(PKG_PATH) || !fs.existsSync(LOCK_PATH)) {
     errors.push('Missing package.json or package-lock.json');
