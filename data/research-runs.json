@@ -1094,5 +1094,343 @@
     "startedAt": "2026-08-12T16:00:00+00:00",
     "endedAt": "2026-08-12T16:00:00+00:00",
     "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-006-20260812-expansion-iv",
+    "baselineCommit": "213de14aa00308337e9c18ed07109d0dec38722e",
+    "questions": [
+      "Which of twenty proposals own a distinct private state transition?",
+      "Where does each public primitive stop?",
+      "Which claims are enacted, adopted, proposed, or merely strategic?",
+      "Which candidates survive semantic review against 294 canonical and the private queue?"
+    ],
+    "queries": [
+      "Raw Materials Mechanism commercial negotiations",
+      "battery passport February 2027",
+      "EU Inc proposal March 2026",
+      "EU Talent Pool national immigration procedures",
+      "EUDR revised application dates",
+      "Chips Act 2.0 proposal Demand Accelerators",
+      "AI Factories operational count",
+      "EU Open Source Strategy",
+      "Industrial Accelerator Act proposal",
+      "EU Ports Strategy"
+    ],
+    "sourceCandidates": [
+      "s138",
+      "s139",
+      "s140",
+      "s141",
+      "s142",
+      "s143",
+      "s144",
+      "s145",
+      "s146",
+      "s147",
+      "s148",
+      "s149",
+      "s150",
+      "s151",
+      "s152",
+      "s153",
+      "s125"
+    ],
+    "inclusions": [
+      "candidate-9458dea6-f31b-550d-b9c8-ea021f5d3c39",
+      "candidate-4fa07f6a-a8d2-5b86-bfec-0e9e17ded819",
+      "candidate-3cfa4e35-7282-56b0-b3c5-79bad6293ed6",
+      "candidate-9ef3d9af-4f13-558c-9377-b9f182b82652",
+      "candidate-9694c845-ceaf-5ea4-90e1-7c07d0aba88a",
+      "candidate-1d0e4221-9d9f-5886-9fde-424c7188114b",
+      "candidate-8552821e-4b7b-5576-ba5b-2783f7fc5b83",
+      "candidate-9a24cec4-d556-5922-b3b5-0b071e63b9e7",
+      "candidate-36bb5180-fae4-564b-bdb6-1855f94c1815",
+      "candidate-4f5a9c17-9117-50d4-8dc6-639ff4a38870",
+      "candidate-5797eef1-9320-5f18-ac18-4acd582dc221",
+      "candidate-b509a9fd-f091-5df6-8426-3e060ed71f5b"
+    ],
+    "exclusions": [
+      "Battery Passport Underwriting API",
+      "FDI Value-Add Scenario Engine",
+      "Quantum Supply-Chain Qualification Graph",
+      "Cross-Border Skills Evidence Router",
+      "Semiconductor Demand Consortium OS",
+      "Battery Warranty Reserve Engine",
+      "Strategic Stockpile Optimizer",
+      "EU Public-Compute FinOps"
+    ],
+    "claimsChanged": [
+      "Twelve distinct candidates staged; eight proposals mapped to existing families, subordinate modules, or watch-only policy branches.",
+      "The Commission now describes 19 AI Factories and 13 antennas as operational, not merely under establishment.",
+      "EU Inc, Chips Act 2.0, and the Industrial Accelerator Act remain proposals; all corresponding candidates are bounded as watch or prebuild.",
+      "Battery Passport Underwriting maps to the existing Battery Afterlife Exchange family rather than creating a semantic duplicate.",
+      "All analyst scores and portfolio tiers remain provisional and non-ranking-eligible."
+    ],
+    "deduplicationDecisions": {
+      "Critical Materials Offtake Bankability Engine": {
+        "decision": "stage_distinct_post_match_bankability",
+        "targets": []
+      },
+      "Battery Passport Underwriting API": {
+        "decision": "enrich_existing_battery_afterlife_underwriting_family",
+        "targets": [
+          "idea-270",
+          "candidate-44fa8b82-bc67-42ff-9ff3-cd6fa70e2d67"
+        ]
+      },
+      "EU Inc Corporate Action OS": {
+        "decision": "stage_proposal_watch_prebuild",
+        "targets": []
+      },
+      "Talent Pool Hire-to-Arrival OS": {
+        "decision": "stage_distinct_post_match_execution",
+        "targets": [
+          "idea-263"
+        ]
+      },
+      "Critical Materials Treasury / Shock Twin": {
+        "decision": "stage_distinct_physical_input_treasury",
+        "targets": [
+          "idea-380"
+        ]
+      },
+      "Strategic Project Permit Graph": {
+        "decision": "stage_distinct_greenfield_project_critical_path",
+        "targets": [
+          "candidate-6ff41838-249d-5913-bb8f-1b0d2679a580",
+          "candidate-e8cbd8ea-6371-5cde-bbeb-f40b3ffb96bd"
+        ]
+      },
+      "EUDR Plot Identity Repair Engine": {
+        "decision": "stage_distinct_upstream_identity_repair",
+        "targets": [
+          "candidate-efaad4a5-2647-45bd-bd0a-5c024ba9e58c",
+          "idea-369"
+        ]
+      },
+      "Chip Design-In Qualification Engine": {
+        "decision": "stage_proposal_sensitive_qualification_graph",
+        "targets": []
+      },
+      "EuroCompute Router": {
+        "decision": "stage_distinct_entitlement_and_portability_router",
+        "targets": [
+          "candidate-fb95c237-1685-5798-98dd-5bc9d9920481"
+        ]
+      },
+      "Sovereign Refactor CI": {
+        "decision": "stage_distinct_active_remediation_layer",
+        "targets": [
+          "idea-372",
+          "idea-374"
+        ]
+      },
+      "Made-in-EU Origin Compiler": {
+        "decision": "stage_proposal_watch_architecture",
+        "targets": [
+          "idea-373",
+          "candidate-eb7452bb-060f-5de3-bc87-4dd957942d29"
+        ]
+      },
+      "FDI Value-Add Scenario Engine": {
+        "decision": "feature_of_made_in_eu_origin_compiler",
+        "targets": []
+      },
+      "European Product Release CI": {
+        "decision": "stage_distinct_pre_release_gate",
+        "targets": [
+          "candidate-489cf5fd-32fd-4c0b-91ed-5a6566686079"
+        ]
+      },
+      "Quantum Supply-Chain Qualification Graph": {
+        "decision": "watch_only_forthcoming_act_no_immediate_candidate",
+        "targets": []
+      },
+      "Port Dependency & Investment Twin": {
+        "decision": "stage_distinct_infrastructure_twin",
+        "targets": []
+      },
+      "Cross-Border Skills Evidence Router": {
+        "decision": "exact_existing_family",
+        "targets": [
+          "idea-263"
+        ]
+      },
+      "Semiconductor Demand Consortium OS": {
+        "decision": "feature_or_go_to_market_layer_for_chip_qualification",
+        "targets": []
+      },
+      "Battery Warranty Reserve Engine": {
+        "decision": "feature_of_existing_battery_underwriting_family",
+        "targets": [
+          "idea-270"
+        ]
+      },
+      "Strategic Stockpile Optimizer": {
+        "decision": "feature_of_critical_materials_treasury",
+        "targets": []
+      },
+      "EU Public-Compute FinOps": {
+        "decision": "feature_of_eurocompute_router",
+        "targets": []
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "Critical Materials Offtake Bankability Engine",
+        "analystProvisionalScore": 97,
+        "targetRefs": [
+          "candidate-9458dea6-f31b-550d-b9c8-ea021f5d3c39"
+        ],
+        "nextGate": "Complete one rare-earth or lithium workflow and test it with ten buyers, ten projects, five lenders, and five insurers or traders."
+      },
+      {
+        "rank": 2,
+        "proposal": "Battery Passport Underwriting API",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "idea-270"
+        ],
+        "nextGate": "Backtest passport plus independent diagnostic features against realized battery transaction prices and beat age, mileage, and reported state-of-health baselines."
+      },
+      {
+        "rank": 3,
+        "proposal": "Talent Pool Hire-to-Arrival OS",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "candidate-3cfa4e35-7282-56b0-b3c5-79bad6293ed6"
+        ],
+        "nextGate": "Process twenty manually assisted hires across two corridors and measure time, blocker frequency, accuracy, and employer willingness to pay."
+      },
+      {
+        "rank": 4,
+        "proposal": "EUDR Plot Identity Repair Engine",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-1d0e4221-9d9f-5886-9fde-424c7188114b"
+        ],
+        "nextGate": "Obtain messy data for 10,000 plots, inject known errors, and measure recall, false positives, repair time, and hours saved."
+      },
+      {
+        "rank": 5,
+        "proposal": "Chip Design-In Qualification Engine",
+        "analystProvisionalScore": 92,
+        "targetRefs": [
+          "candidate-8552821e-4b7b-5576-ba5b-2783f7fc5b83"
+        ],
+        "nextGate": "Select five industrial chips, identify alternatives, and have engineers score compatibility findings and estimated qualification effort."
+      },
+      {
+        "rank": 6,
+        "proposal": "EU Inc Corporate Action OS",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "candidate-4fa07f6a-a8d2-5b86-bfec-0e9e17ded819"
+        ],
+        "nextGate": "Validate the event model with corporate counsel and existing cap-table operators; stop major integration work until the enacted text and interfaces stabilise."
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "rank": 1,
+        "proposal": "Critical Materials Offtake Bankability Engine",
+        "targetRefs": [
+          "candidate-9458dea6-f31b-550d-b9c8-ea021f5d3c39"
+        ]
+      },
+      {
+        "rank": 2,
+        "proposal": "Battery Passport Underwriting API",
+        "targetRefs": [
+          "idea-270"
+        ]
+      },
+      {
+        "rank": 3,
+        "proposal": "Talent Pool Hire-to-Arrival OS",
+        "targetRefs": [
+          "candidate-3cfa4e35-7282-56b0-b3c5-79bad6293ed6"
+        ]
+      },
+      {
+        "rank": 4,
+        "proposal": "EUDR Plot Identity Repair Engine",
+        "targetRefs": [
+          "candidate-1d0e4221-9d9f-5886-9fde-424c7188114b"
+        ]
+      },
+      {
+        "rank": 5,
+        "proposal": "Chip Design-In Qualification Engine",
+        "targetRefs": [
+          "candidate-8552821e-4b7b-5576-ba5b-2783f7fc5b83"
+        ]
+      },
+      {
+        "rank": 6,
+        "proposal": "EU Inc Corporate Action OS",
+        "targetRefs": [
+          "candidate-4fa07f6a-a8d2-5b86-bfec-0e9e17ded819"
+        ]
+      }
+    ],
+    "metaDiscoveries": [
+      "public_primitive_to_private_operating_system",
+      "compliance_data_to_underwriting_data",
+      "post_match_execution",
+      "state_transition_ownership",
+      "official_rail_capture_risk",
+      "public_rail_created_moat"
+    ],
+    "researchBranches": [
+      "industrial_bankability",
+      "public_primitive_arbitrage",
+      "mandatory_data_to_financial_product",
+      "qualification_graphs",
+      "european_compute_arbitrage"
+    ],
+    "portfolioFamilies": [
+      "critical_materials_os",
+      "european_corporate_os",
+      "battery_capital_os",
+      "workforce_mobility_os",
+      "industrial_bankability_os"
+    ],
+    "newScoringDimensions": {
+      "positive": {
+        "timingUrgency": 1.3,
+        "mandatoryFrequency": 1.2,
+        "economicCoupling": 1.5,
+        "stateTransitionOwnership": 1.7,
+        "evidenceGravity": 1.2,
+        "dataNetworkEffects": 1.4,
+        "publicRailAdjacency": 1.2,
+        "integrationDepth": 1.1,
+        "expansionPotential": 1.3
+      },
+      "negative": {
+        "competition": 1.3,
+        "officialCaptureRisk": 1.6,
+        "legislativeUncertainty": 1.5,
+        "consultingIntensity": 1.0,
+        "customerConcentration": 0.8
+      }
+    },
+    "researchPasses": [
+      "enumerate_public_primitive",
+      "mark_explicit_boundary",
+      "map_before_state",
+      "map_after_state",
+      "test_transaction_value",
+      "test_official_capture",
+      "test_evidence_feedback_loop",
+      "test_legislative_certainty"
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v7-public-primitive-state-transition",
+    "startedAt": "2026-08-12T17:30:00+00:00",
+    "endedAt": "2026-08-12T17:30:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
   }
 ]

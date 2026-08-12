@@ -2813,5 +2813,341 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s138",
+    "title": "Registration opens for the Raw Materials Mechanism",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/news/registration-opens-raw-materials-mechanism-under-eu-energy-and-raw-materials-platform-2025-11-18_en",
+    "supports": [
+      "The mechanism links buyers, sellers, projects, storage providers, and finance partners",
+      "Commercial negotiations take place outside the Commission platform"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s139",
+    "title": "European Critical Raw Materials Act",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/competitiveness/green-deal-industrial-plan/european-critical-raw-materials-act_en",
+    "supports": [
+      "The CRMA establishes capacity, diversification, monitoring, and resilience measures",
+      "The policy signal does not validate customer demand for a private treasury or offtake product"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s140",
+    "title": "Batteries",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/batteries_en",
+    "supports": [
+      "The battery framework spans sourcing, use, repurposing, and recycling",
+      "Mandatory information can support—but does not itself validate—financial underwriting"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s141",
+    "title": "Regulation EU 2023/1542 concerning batteries and waste batteries",
+    "publisher": "EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ%3AL%3A2023%3A191%3AFULL",
+    "supports": [
+      "Covered batteries require a battery passport from 18 February 2027",
+      "The regulation defines battery-specific passport and health or lifetime information"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s142",
+    "title": "EU Inc - a new harmonised corporate legal regime",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/business-and-industry/doing-business-eu/company-law-and-corporate-governance/eu-inc-new-harmonised-corporate-legal-regime_en",
+    "supports": [
+      "The 18 March 2026 proposal includes digital formation, lifecycle actions, share transfers, financing, and employee options",
+      "EU Inc remains a proposal rather than adopted law"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s143",
+    "title": "One Europe, One Market roadmap",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/competitiveness/one-europe-one-market-roadmap_en",
+    "supports": [
+      "EU Inc and the Industrial Accelerator Act are pending proposals",
+      "The roadmap targets agreement by end-2026 but does not guarantee adoption or final design"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s144",
+    "title": "Council gives final go ahead to EU Talent Pool",
+    "publisher": "Council of the European Union",
+    "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/03/30/council-gives-final-go-ahead-to-eu-talent-platform-for-non-eu-jobseekers/",
+    "supports": [
+      "The Talent Pool regulation received final Council approval on 30 March 2026",
+      "Candidates still need national residence and work permits; the platform is expected operational in 2027"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s145",
+    "title": "Regulation on deforestation-free products",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en",
+    "supports": [
+      "EUDR applies from 30 December 2026 to large and medium operators",
+      "Most micro and small operators follow on 30 June 2027"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s146",
+    "title": "EUDR Information System",
+    "publisher": "European Commission - Green Forum",
+    "url": "https://green-forum.ec.europa.eu/nature-and-biodiversity/deforestation-regulation-implementation/information-system-deforestation-regulation_en",
+    "supports": [
+      "The official system supports geolocation data, GeoJSON, and machine-to-machine submission",
+      "Upstream identity and data-quality repair remains outside simple submission generation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s147",
+    "title": "Chips Act 2.0",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/chips-act-2",
+    "supports": [
+      "The 3 June 2026 proposal includes Demand Accelerators and a B2B Semiconductor Supply Chain Platform",
+      "Chips Act 2.0 remains a proposal and its final mechanisms may change"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s148",
+    "title": "AI Factories",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories",
+    "supports": [
+      "The Commission reports 19 AI Factories and 13 antennas as operational",
+      "Public access, eligibility, queues, and heterogeneous environments can create routing friction"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s149",
+    "title": "EU Open Source Strategy",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/factpages/eu-open-source-strategy",
+    "supports": [
+      "The strategy promotes control, lower lock-in, and European open-source alternatives",
+      "The strategy is a policy signal rather than proof of demand for automated refactoring"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s150",
+    "title": "Commission proposes measures to boost EU industry and jobs",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/news-and-media/news/commission-proposes-new-measures-boost-eu-industry-and-jobs-2026-03-04_en",
+    "supports": [
+      "The Industrial Accelerator Act is a proposal with Made-in-EU and low-carbon considerations",
+      "Origin formulas and implementation details remain subject to the legislative process"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s151",
+    "title": "New Legislative Framework",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/single-market/goods/new-legislative-framework_en",
+    "supports": [
+      "EU product rules use conformity assessment, accreditation, and market-surveillance structures",
+      "A planned future Product Act must not be represented as enacted law"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s152",
+    "title": "European Quantum Strategy",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/quantum",
+    "supports": [
+      "The EU has an active quantum strategy and a forthcoming Quantum Act",
+      "A forthcoming act is insufficient evidence for immediate product demand"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s153",
+    "title": "EU Ports Strategy",
+    "publisher": "European Commission - DG MOVE",
+    "url": "https://transport.ec.europa.eu/news-events/news/commission-unveils-eu-ports-strategy-strengthen-competitiveness-security-and-sustainability-european-2026-03-04_en",
+    "supports": [
+      "The Commission adopted the EU Ports Strategy on 4 March 2026",
+      "The strategy covers competitiveness, resilience, security, sustainability, investment, and digitalisation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iv-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
