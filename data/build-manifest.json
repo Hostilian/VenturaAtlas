@@ -1,7 +1,7 @@
 {
-  "dataRevision": "d4172d903f9595e2",
-  "buildRevision": "2.3.0-d4172d903f9595e2",
-  "generatedAt": "2026-08-12T14:08:14.931Z",
+  "dataRevision": "8e8f7719f11ea740",
+  "buildRevision": "2.3.0-8e8f7719f11ea740",
+  "generatedAt": "2026-08-12T14:57:39.143Z",
   "files": {
     "ideas.json": {
       "sha256": "b1f5b764ca5f247a4e7a786324964d496eea260e809ce26756f76ffa292a164c",
@@ -16,7 +16,7 @@
       "bytes": 112805
     },
     "rankings.json": {
-      "sha256": "a7104c4547a0e1215f1c5e6341f03f183d5e55f87b8e2fc504ad04fd2eba9b29",
+      "sha256": "f59909ffe30f56a40057bda8db1653a4347952c2045501b26def4ee99e937832",
       "bytes": 1345110
     }
   }
