@@ -2,9 +2,9 @@
   "project": "VenturaAtlas",
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
-  "dataRevision": "5a741dfd275cf037",
-  "buildRevision": "2.3.0-5a741dfd275cf037",
-  "generatedAt": "2026-08-12T12:44:49.712Z",
+  "dataRevision": "75f3adce53cce234",
+  "buildRevision": "2.3.0-75f3adce53cce234",
+  "generatedAt": "2026-08-12T12:46:51.507Z",
   "counts": {
     "ideas": 294,
     "canonicalIdeas": 294,
@@ -28,7 +28,7 @@
     "stagingRevision": "c69bd98792ebd590",
     "taxonomyRevision": "6945e3a804df238b",
     "sourcesRevision": "6588d632ea2b79e0",
-    "rankingsRevision": "ff45686166d16a95",
-    "canonicalDataRevision": "5a741dfd275cf037"
+    "rankingsRevision": "fb287a95fde6ef9f",
+    "canonicalDataRevision": "75f3adce53cce234"
   }
 }
