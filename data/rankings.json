@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-12T12:55:39.790539+00:00",
+  "generatedAt": "2026-08-12T13:20:39.561562+00:00",
   "totalIdeas": 294,
   "rankingViewsCount": 7,
   "algorithm": "weighted-composite-v2",
@@ -39784,36 +39784,6 @@
   ],
   "history": [
     {
-      "snapshotAt": "2026-08-12T12:24:09.803239+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
-    {
       "snapshotAt": "2026-08-12T12:27:46.533623+00:00",
       "top5": [
         {
@@ -40055,6 +40025,36 @@
     },
     {
       "snapshotAt": "2026-08-12T12:55:39.790539+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-12T13:20:39.561562+00:00",
       "top5": [
         {
           "id": "idea-385",

@@ -122,5 +122,224 @@
     "startedAt": "2026-08-10T00:00:00+00:00",
     "endedAt": "2026-08-10T00:00:00+00:00",
     "reviewStatus": "approved_for_staging_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-003-20260812-deep-research-expansion",
+    "baselineCommit": "1f4a25802c12d38c32bb8b12d084fb388657be18",
+    "questions": [
+      "Which of the fifteen supplied opportunities are actually distinct from the canonical corpus?",
+      "Which 2026 regulatory triggers are verified by current official primary sources?",
+      "Which five concepts deserve validation priority without changing canonical scores or maturity?"
+    ],
+    "queries": [
+      "EU AI Act Article 50 transparency obligations 2 August 2026 official",
+      "EU CRA reporting 11 September 2026 24 hours 72 hours official",
+      "PPWR applies generally 12 August 2026 official",
+      "Empowering Consumers Green Transition 27 September 2026 official FAQ",
+      "EUDI wallet Member States end 2026 official",
+      "DPP Registry live February 2027 batteries official",
+      "CBAM definitive regime 1 January 2026 official",
+      "AI literacy enforcement 3 August 2026 official"
+    ],
+    "sourceCandidates": [
+      "s97",
+      "s98",
+      "s99",
+      "s100",
+      "s101",
+      "s102",
+      "s103",
+      "s104",
+      "s105",
+      "s106",
+      "s107",
+      "s108",
+      "s84",
+      "s93",
+      "s95",
+      "s96"
+    ],
+    "inclusions": [
+      "candidate-c17caacb-c87c-52d9-bdc3-bc83de8f2588",
+      "candidate-440d33b6-96a0-59d9-a5f8-7dd6d05a308b",
+      "candidate-81d765fd-62af-5c3e-84f1-6b8a19e3001c",
+      "candidate-e340c18f-13bc-55b3-a9fc-3c8c60edddcc",
+      "candidate-122448ae-8137-5aaa-91d6-fea5a3e78d7a"
+    ],
+    "exclusions": [
+      "AI Provenance Gateway",
+      "GreenClaim CI",
+      "Credential Firewall for EUDI",
+      "DPP Bridge / Passport API",
+      "Open-Source CRA Evidence Graph",
+      "Repairability Operations OS",
+      "Packaging Claim Linter",
+      "EUDI Test Cloud",
+      "Space Compliance Graph",
+      "Medicine Shortage Intelligence API"
+    ],
+    "claimsChanged": [
+      "Five distinct candidates staged; ten proposals mapped to existing canonical or staged families.",
+      "Top five recorded as a validation-priority queue, not as a canonical ranking update.",
+      "EU Space Act treated as a proposal under negotiation rather than an active-law deadline.",
+      "All commercial scores, pricing, demand, and willingness-to-pay claims remain provisional."
+    ],
+    "deduplicationDecisions": {
+      "CRA Incident Compiler": {
+        "decision": "stage_distinct_adjacent_module",
+        "targets": [
+          "idea-401"
+        ]
+      },
+      "AI Provenance Gateway": {
+        "decision": "enrich_existing_family",
+        "targets": [
+          "idea-266",
+          "idea-386"
+        ]
+      },
+      "GreenClaim CI": {
+        "decision": "enrich_existing",
+        "targets": [
+          "idea-300"
+        ]
+      },
+      "Credential Firewall for EUDI": {
+        "decision": "enrich_existing_family",
+        "targets": [
+          "idea-346",
+          "idea-207"
+        ]
+      },
+      "DPP Bridge / Passport API": {
+        "decision": "enrich_existing_family",
+        "targets": [
+          "idea-261",
+          "idea-032"
+        ]
+      },
+      "AI Interaction Transparency SDK": {
+        "decision": "stage_distinct_candidate",
+        "targets": []
+      },
+      "Open-Source CRA Evidence Graph": {
+        "decision": "module_of_existing_family",
+        "targets": [
+          "idea-401",
+          "idea-019",
+          "idea-361"
+        ]
+      },
+      "Repairability Operations OS": {
+        "decision": "duplicate_existing_family",
+        "targets": [
+          "idea-295",
+          "idea-264"
+        ]
+      },
+      "Packaging Claim Linter": {
+        "decision": "feature_of_existing_claim_and_packaging_work",
+        "targets": [
+          "idea-300",
+          "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c"
+        ]
+      },
+      "EUDI Test Cloud": {
+        "decision": "duplicate_existing",
+        "targets": [
+          "idea-356"
+        ]
+      },
+      "AI Literacy Evidence Engine": {
+        "decision": "stage_distinct_candidate",
+        "targets": []
+      },
+      "Space Compliance Graph": {
+        "decision": "enrich_existing_watch_only_proposal_not_law",
+        "targets": [
+          "idea-383"
+        ]
+      },
+      "CBAM Supplier Data Network": {
+        "decision": "stage_network_extension",
+        "targets": [
+          "candidate-d4967815-830f-5375-8630-84b117af1340"
+        ]
+      },
+      "Energy Flexibility API": {
+        "decision": "stage_bounded_vertical_first_candidate",
+        "targets": [
+          "idea-274",
+          "idea-392"
+        ]
+      },
+      "Medicine Shortage Intelligence API": {
+        "decision": "enrich_existing",
+        "targets": [
+          "idea-377"
+        ]
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "CRA Incident Compiler",
+        "analystProvisionalScore": 94,
+        "targetType": "new_adjacent_candidate",
+        "targetRefs": [
+          "candidate-c17caacb-c87c-52d9-bdc3-bc83de8f2588",
+          "idea-401"
+        ],
+        "nextGate": "Interview 15 manufacturers; replay five historical incidents and determine whether awareness time, reportability, and product scope can be reconstructed; seek three paid design partners."
+      },
+      {
+        "rank": 2,
+        "proposal": "AI Provenance Gateway",
+        "analystProvisionalScore": 93,
+        "targetType": "canonical_family_enrichment",
+        "targetRefs": [
+          "idea-266",
+          "idea-386"
+        ],
+        "nextGate": "Run ten real asset pipelines and measure provenance survival, transformation lineage completeness, false assurance, and buyer willingness to pay for gateway versus CI testing."
+      },
+      {
+        "rank": 3,
+        "proposal": "GreenClaim CI",
+        "analystProvisionalScore": 92,
+        "targetType": "canonical_enrichment",
+        "targetRefs": [
+          "idea-300"
+        ],
+        "nextGate": "Scan 500 live claims from 15 EU brands; obtain counsel-reviewed precision/recall labels and three paid pilots before changing any canonical score."
+      },
+      {
+        "rank": 4,
+        "proposal": "Credential Firewall for EUDI",
+        "analystProvisionalScore": 91,
+        "targetType": "canonical_family_enrichment",
+        "targetRefs": [
+          "idea-346",
+          "idea-207"
+        ],
+        "nextGate": "Test ten relying-party flows against the current ARF; document which requested attributes are technically optional and obtain design partners without asserting legal necessity automatically."
+      },
+      {
+        "rank": 5,
+        "proposal": "DPP Bridge / Passport API",
+        "analystProvisionalScore": 90,
+        "targetType": "canonical_family_enrichment",
+        "targetRefs": [
+          "idea-261",
+          "idea-032"
+        ],
+        "nextGate": "Use the live Registry test environment to register representative battery records, map missing supplier fields, and secure three importer or manufacturer pilots."
+      }
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v4-execution-layer-dedup",
+    "startedAt": "2026-08-12T13:15:00+00:00",
+    "endedAt": "2026-08-12T13:15:00+00:00",
+    "reviewStatus": "approved_for_staging_and_validation_priority_not_canonical_promotion"
   }
 ]

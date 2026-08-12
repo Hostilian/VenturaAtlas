@@ -2161,5 +2161,257 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s97",
+    "title": "EU AI Act implementation timeline",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+    "supports": [
+      "The AI Act became generally applicable on 2 August 2026 with stated exceptions",
+      "Article 50 transparency rules apply from August 2026"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s98",
+    "title": "The Digital Product Passport Registry is now live",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en",
+    "supports": [
+      "The DPP Registry and testing environment launched on 20 July 2026",
+      "The first implementation deadline is 18 February 2027 for certain large batteries"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s99",
+    "title": "European Digital Identity Regulation",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/eudi-regulation",
+    "supports": [
+      "Member States must provide EU Digital Identity Wallets by the end of 2026",
+      "The framework prioritises user control and avoiding unnecessary data sharing"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s100",
+    "title": "Transparency obligations under Article 50 of the AI Act - Questions and Answers",
+    "publisher": "European Commission - AI Office",
+    "url": "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act",
+    "supports": [
+      "Article 50 transparency obligations apply from 2 August 2026",
+      "Interactive AI notices must be clear from the first interaction and meet accessibility requirements"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s101",
+    "title": "Directive on repair of goods",
+    "publisher": "European Commission - DG JUST",
+    "url": "https://commission.europa.eu/law/law-topic/consumer-protection-law/directive-repair-goods_en",
+    "supports": [
+      "Member States must transpose and apply the repair directive from 31 July 2026",
+      "The framework promotes repair and spare-parts availability"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s102",
+    "title": "AI Literacy - Questions and Answers",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers",
+    "supports": [
+      "AI literacy obligations have applied since 2 February 2025",
+      "Supervision and enforcement rules apply from 3 August 2026"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s103",
+    "title": "EU Space Act proposal",
+    "publisher": "European Commission - DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/eu-space-act_en",
+    "supports": [
+      "The proposal addresses safety, resilience, environmental sustainability, and competitiveness",
+      "The proposal remains under the ordinary legislative procedure and is not treated as enacted law"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s104",
+    "title": "CBAM definitive regime",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/cbam-definitive-regime_en",
+    "supports": [
+      "The CBAM definitive regime applies from 1 January 2026",
+      "Authorised declarants report embedded emissions and surrender certificates"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s105",
+    "title": "Digitalisation of the energy systems",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/eus-energy-system/digitalisation-energy-system_en",
+    "supports": [
+      "The 2026-2027 programme funds smart-grid, AI-energy, renewable, smart-building, and efficiency digitalisation",
+      "European energy digitalisation creates integration demand but does not itself prove buyer willingness to pay"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s106",
+    "title": "DG SANTE Management Plan 2026",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://commission.europa.eu/document/download/4a5ae74d-2749-45f6-bb80-91a4b4e75054_en?filename=sante_mp_2026_en.pdf",
+    "supports": [
+      "Critical-medicines policy work includes shortage resilience and supply dependency",
+      "The policy signal does not validate a commercial shortage-prediction product"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s107",
+    "title": "FAQ on Empowering Consumers for the Green Transition",
+    "publisher": "European Commission - DG JUST",
+    "url": "https://commission.europa.eu/document/download/3c257883-bb2a-4dd9-a6dc-501d587bb34f_en?filename=faq-empowerting-consumers-gtd.pdf",
+    "supports": [
+      "Environmental-claim and sustainability-label rules apply from 27 September 2026",
+      "The rules also cover existing products and old stock in business-to-consumer contexts"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s108",
+    "title": "Cyber Resilience Act reporting obligations",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+    "supports": [
+      "CRA vulnerability and severe-incident reporting starts on 11 September 2026",
+      "Early warning is due within 24 hours and full notification within 72 hours of awareness"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
