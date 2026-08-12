@@ -3358,5 +3358,341 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s154",
+    "title": "Industrial carbon management",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/carbon-management-and-fossil-fuels/industrial-carbon-management_en",
+    "supports": [
+      "CO2 transport infrastructure is a key enabler",
+      "NZIA sets a binding target of 50 million tonnes annual EU injection capacity by 2030"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s155",
+    "title": "Charter of Access for Industrial Users to Research and Technology Infrastructures",
+    "publisher": "European Commission - DG RTD",
+    "url": "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/new-charter-boosts-access-companies-cutting-edge-research-and-technology-infrastructures-europe-2026-07-28_en",
+    "supports": [
+      "The voluntary charter targets limited availability information, access conditions, contracts, IP, and data cooperation",
+      "The charter does not establish a mandatory booking market"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s156",
+    "title": "Critical Chemicals Alliance",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/sectors/chemicals/critical-chemicals-alliance_en",
+    "supports": [
+      "The Alliance is identifying critical chemical production and molecules",
+      "Policy attention does not validate a private dependency-graph buyer"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s157",
+    "title": "Soil Monitoring Law",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/soil-health/soil-monitoring-law_en",
+    "supports": [
+      "The law entered into force on 16 December 2025",
+      "Member States must transpose by 16 December 2028 and address contaminated sites"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s158",
+    "title": "PFAS pollution",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/chemicals/pfas-pollution_en",
+    "supports": [
+      "EU policy now spans PFAS monitoring, reporting, restriction, substitution, and remediation",
+      "Public monitoring data does not by itself create a calibrated land-underwriting model"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s159",
+    "title": "Towards the Advanced Materials Act",
+    "publisher": "European Commission - DG RTD",
+    "url": "https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/chemicals-and-advanced-materials/towards-advanced-materials-act_en",
+    "supports": [
+      "The Commission is preparing an Advanced Materials Act",
+      "A forthcoming initiative is a policy signal, not an adopted qualification obligation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s160",
+    "title": "Bio-based industry",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/biobased-industry_en",
+    "supports": [
+      "EU coordination supports biomanufacturing scale-up and bio-based industrial capacity",
+      "Technology-transfer and qualification demand remain customer hypotheses"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s161",
+    "title": "European Ocean Act consultation",
+    "publisher": "European Commission - DG MARE",
+    "url": "https://oceans-and-fisheries.ec.europa.eu/news/commission-launches-public-consultation-european-ocean-act-2026-04-23_en",
+    "supports": [
+      "The Commission launched consultation on a future European Ocean Act",
+      "The act remains forthcoming and cannot be treated as operative law"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s162",
+    "title": "AI Gigafactories",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/ai-gigafactories_en",
+    "supports": [
+      "The EU is coordinating large AI-compute infrastructure projects",
+      "Long-term compute offtake structures and buyer demand remain unverified"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s163",
+    "title": "Nature Restoration Regulation",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/nature-and-biodiversity/nature-restoration-regulation_en",
+    "supports": [
+      "The Regulation entered into force on 18 August 2024",
+      "Member States are expected to submit National Restoration Plans by September 2026"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s164",
+    "title": "Affordable housing",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/topics/employment-and-social-affairs/affordability/affordable-housing_en",
+    "supports": [
+      "EU policy supports faster affordable-housing delivery",
+      "Policy intent does not prove demand for a modular permit compiler or capacity market"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s165",
+    "title": "Digital Networks Act",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/digital-networks-act",
+    "supports": [
+      "The 21 January 2026 proposal supports copper-to-fibre transition and national transition plans",
+      "The Digital Networks Act remains a proposal"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s166",
+    "title": "One journey, one ticket, full rights",
+    "publisher": "European Commission - DG MOVE",
+    "url": "https://transport.ec.europa.eu/news-events/news/one-journey-one-ticket-full-rights-commission-simplifies-europe-wide-travel-booking-and-train-travel-2026-05-13_en",
+    "supports": [
+      "The Commission proposed passenger booking and journey-rights changes",
+      "The proposal does not establish an operating inter-operator disruption clearinghouse"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s167",
+    "title": "Rail infrastructure capacity rules",
+    "publisher": "European Commission - DG MOVE",
+    "url": "https://transport.ec.europa.eu/news-events/news/new-eu-rules-will-improve-cross-border-rail-traffic-and-optimise-network-capacity-2026-06-10_en",
+    "supports": [
+      "Regulation EU 2026/1184 introduces harmonised, multiannual rail-capacity planning",
+      "The first optimised timetable is expected in December 2030"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s168",
+    "title": "European SMR strategy",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/news/commission-unveils-strategy-bring-europes-first-smrs-online-early-2030s-2026-03-10_en",
+    "supports": [
+      "The strategy targets first European SMRs in the early 2030s and promotes a fleet approach",
+      "Licensing, standardisation, supply chains, and project demand remain early and uncertain"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s169",
+    "title": "OceanEye",
+    "publisher": "European Commission - DG MARE",
+    "url": "https://oceans-and-fisheries.ec.europa.eu/publications/oceaneye-making-eu-leader-ocean-observation_en",
+    "supports": [
+      "OceanEye is a developing European ocean-observation initiative",
+      "Its eventual commercial API, terms, and insurance usefulness remain uncertain"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-v-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

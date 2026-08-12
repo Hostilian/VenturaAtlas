@@ -1,29 +1,632 @@
 {
   "schemaVersion": "1.0.0",
   "dependencies": [
-    { "dependencyId": "dep-eu-cra-reporting", "type": "REGULATION", "name": "EU Cyber Resilience Act reporting obligations and Single Reporting Platform", "status": "REPORTING_APPLIES_2026-09-11", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"], "volatility": "MEDIUM" },
-    { "dependencyId": "dep-eu-drinking-water-pfas", "type": "REGULATION", "name": "Directive (EU) 2020/2184 PFAS drinking-water parameters", "status": "APPLICABLE", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s79"], "ideaRefs": ["idea-398"], "volatility": "LOW" },
-    { "dependencyId": "dep-eu-soho-2024-1938", "type": "REGULATION", "name": "Regulation (EU) 2024/1938 on substances of human origin", "status": "ADOPTED_MOST_PROVISIONS_APPLY_2027-08-07", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"], "volatility": "MEDIUM" },
-    { "dependencyId": "dep-eu-crcf-2024-3012", "type": "CERTIFICATION_SCHEME", "name": "EU Carbon Removals and Carbon Farming Certification Framework", "status": "ADOPTED_IMPLEMENTATION_IN_PROGRESS", "checkedAt": "2026-08-12T12:45:00Z", "sourceRefs": ["s69"], "ideaRefs": ["idea-388"], "volatility": "HIGH" }
+    {
+      "dependencyId": "dep-eu-cra-reporting",
+      "type": "REGULATION",
+      "name": "EU Cyber Resilience Act reporting obligations and Single Reporting Platform",
+      "status": "REPORTING_APPLIES_2026-09-11",
+      "checkedAt": "2026-08-12T12:45:00Z",
+      "sourceRefs": [
+        "s83",
+        "s96"
+      ],
+      "ideaRefs": [
+        "idea-401"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-drinking-water-pfas",
+      "type": "REGULATION",
+      "name": "Directive (EU) 2020/2184 PFAS drinking-water parameters",
+      "status": "APPLICABLE",
+      "checkedAt": "2026-08-12T12:45:00Z",
+      "sourceRefs": [
+        "s79"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ],
+      "volatility": "LOW"
+    },
+    {
+      "dependencyId": "dep-eu-soho-2024-1938",
+      "type": "REGULATION",
+      "name": "Regulation (EU) 2024/1938 on substances of human origin",
+      "status": "ADOPTED_MOST_PROVISIONS_APPLY_2027-08-07",
+      "checkedAt": "2026-08-12T12:45:00Z",
+      "sourceRefs": [
+        "s65"
+      ],
+      "ideaRefs": [
+        "idea-385",
+        "idea-391"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-crcf-2024-3012",
+      "type": "CERTIFICATION_SCHEME",
+      "name": "EU Carbon Removals and Carbon Farming Certification Framework",
+      "status": "ADOPTED_IMPLEMENTATION_IN_PROGRESS",
+      "checkedAt": "2026-08-12T12:45:00Z",
+      "sourceRefs": [
+        "s69"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ],
+      "volatility": "HIGH"
+    },
+    {
+      "dependencyId": "dep-eu-industrial-carbon-capacity",
+      "type": "INFRASTRUCTURE",
+      "name": "EU industrial carbon transport and 2030 injection-capacity buildout",
+      "status": "NZIA_2030_TARGET_IMPLEMENTATION",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s154"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ],
+      "volatility": "HIGH"
+    },
+    {
+      "dependencyId": "dep-eu-technology-infrastructure-charter",
+      "type": "STANDARD",
+      "name": "Voluntary Charter of Access for Industrial Users to Research and Technology Infrastructures",
+      "status": "VOLUNTARY_CHARTER_ADOPTED_2026-07-28",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s155"
+      ],
+      "ideaRefs": [
+        "idea-294"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-soil-monitoring-law",
+      "type": "LAW",
+      "name": "EU Soil Monitoring Law and contaminated-site framework",
+      "status": "IN_FORCE_TRANSPOSITION_DUE_2028-12-16",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s157",
+        "s158"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-nature-restoration-plans",
+      "type": "REGULATION",
+      "name": "EU Nature Restoration Regulation and national restoration plans",
+      "status": "IN_FORCE_PLANS_EXPECTED_2026-09",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s163"
+      ],
+      "ideaRefs": [],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-digital-networks-proposal",
+      "type": "REGULATION",
+      "name": "Proposed Digital Networks Act and copper transition plans",
+      "status": "PROPOSED_2026-01-21",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s165"
+      ],
+      "ideaRefs": [],
+      "volatility": "HIGH"
+    },
+    {
+      "dependencyId": "dep-eu-rail-capacity-2026-1184",
+      "type": "REGULATION",
+      "name": "Regulation EU 2026/1184 on railway infrastructure capacity",
+      "status": "ADOPTED_FIRST_OPTIMISED_TIMETABLE_EXPECTED_2030-12",
+      "checkedAt": "2026-08-12T18:30:00+00:00",
+      "sourceRefs": [
+        "s167"
+      ],
+      "ideaRefs": [
+        "idea-291"
+      ],
+      "volatility": "MEDIUM"
+    }
   ],
   "shocks": [
-    { "shockId": "shock-cra-reporting-start-2026", "dependencyId": "dep-eu-cra-reporting", "kind": "APPLICATION_START", "observedAt": "2026-08-12T12:45:00Z", "effectiveAt": "2026-09-11T00:00:00Z", "sourceRefs": ["s83", "s96"], "affectedIdeaRefs": ["idea-401"], "direction": "MIXED", "reviewRequired": true },
-    { "shockId": "shock-pfas-parameters-start-2026", "dependencyId": "dep-eu-drinking-water-pfas", "kind": "APPLICATION_START", "observedAt": "2026-08-12T12:45:00Z", "effectiveAt": "2026-01-12T00:00:00Z", "sourceRefs": ["s79"], "affectedIdeaRefs": ["idea-398"], "direction": "MIXED", "reviewRequired": true }
+    {
+      "shockId": "shock-cra-reporting-start-2026",
+      "dependencyId": "dep-eu-cra-reporting",
+      "kind": "APPLICATION_START",
+      "observedAt": "2026-08-12T12:45:00Z",
+      "effectiveAt": "2026-09-11T00:00:00Z",
+      "sourceRefs": [
+        "s83",
+        "s96"
+      ],
+      "affectedIdeaRefs": [
+        "idea-401"
+      ],
+      "direction": "MIXED",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-pfas-parameters-start-2026",
+      "dependencyId": "dep-eu-drinking-water-pfas",
+      "kind": "APPLICATION_START",
+      "observedAt": "2026-08-12T12:45:00Z",
+      "effectiveAt": "2026-01-12T00:00:00Z",
+      "sourceRefs": [
+        "s79"
+      ],
+      "affectedIdeaRefs": [
+        "idea-398"
+      ],
+      "direction": "MIXED",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-carbon-injection-capacity-target",
+      "dependencyId": "dep-eu-industrial-carbon-capacity",
+      "kind": "NEW_LAW",
+      "observedAt": "2026-08-12T18:30:00+00:00",
+      "effectiveAt": "2030-01-01T00:00:00Z",
+      "sourceRefs": [
+        "s154"
+      ],
+      "affectedIdeaRefs": [
+        "idea-388"
+      ],
+      "direction": "POSITIVE",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-technology-infrastructure-charter",
+      "dependencyId": "dep-eu-technology-infrastructure-charter",
+      "kind": "STANDARD_FINALIZED",
+      "observedAt": "2026-08-12T18:30:00+00:00",
+      "effectiveAt": "2026-07-28T00:00:00Z",
+      "sourceRefs": [
+        "s155"
+      ],
+      "affectedIdeaRefs": [
+        "idea-294"
+      ],
+      "direction": "MIXED",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-soil-monitoring-law-in-force",
+      "dependencyId": "dep-eu-soil-monitoring-law",
+      "kind": "NEW_LAW",
+      "observedAt": "2026-08-12T18:30:00+00:00",
+      "effectiveAt": "2025-12-16T00:00:00Z",
+      "sourceRefs": [
+        "s157",
+        "s158"
+      ],
+      "affectedIdeaRefs": [
+        "idea-398"
+      ],
+      "direction": "POSITIVE",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-nature-restoration-plan-window",
+      "dependencyId": "dep-eu-nature-restoration-plans",
+      "kind": "APPLICATION_START",
+      "observedAt": "2026-08-12T18:30:00+00:00",
+      "effectiveAt": "2026-09-01T00:00:00Z",
+      "sourceRefs": [
+        "s163"
+      ],
+      "affectedIdeaRefs": [],
+      "direction": "POSITIVE",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-rail-capacity-regulation-adopted",
+      "dependencyId": "dep-eu-rail-capacity-2026-1184",
+      "kind": "NEW_LAW",
+      "observedAt": "2026-08-12T18:30:00+00:00",
+      "effectiveAt": "2026-06-11T00:00:00Z",
+      "sourceRefs": [
+        "s167"
+      ],
+      "affectedIdeaRefs": [
+        "idea-291"
+      ],
+      "direction": "MIXED",
+      "reviewRequired": true
+    }
   ],
   "obligations": [
-    { "obligationId": "obl-cra-active-vulnerability-reporting", "instrumentId": "dep-eu-cra-reporting", "actor": "manufacturers of products with digital elements", "object": "actively exploited vulnerabilities and severe incidents", "action": "submit staged notifications through the Single Reporting Platform", "scope": "covered products with digital elements", "effectiveAt": "2026-09-11T00:00:00Z", "maturity": "ADOPTED", "secondaryLegislationPending": false, "exemptions": ["Penalty treatment differs for certain micro and small enterprises; scope requires legal review"], "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"] },
-    { "obligationId": "obl-pfas-drinking-water-parameters", "instrumentId": "dep-eu-drinking-water-pfas", "actor": "EU Member States", "object": "water intended for human consumption", "action": "ensure compliance with PFAS Total and Sum of PFAS parametric values", "scope": "Directive (EU) 2020/2184 drinking-water scope", "effectiveAt": "2026-01-12T00:00:00Z", "maturity": "APPLICABLE", "secondaryLegislationPending": false, "exemptions": [], "sourceRefs": ["s79"], "ideaRefs": ["idea-398"] },
-    { "obligationId": "obl-soho-registration-traceability", "instrumentId": "dep-eu-soho-2024-1938", "actor": "covered SoHO entities", "object": "SoHO activities, traceability, and vigilance information", "action": "register and maintain required records and notifications", "scope": "covered substances of human origin and activities", "effectiveAt": "2027-08-07T00:00:00Z", "maturity": "ADOPTED", "secondaryLegislationPending": true, "exemptions": ["Application dates and transitional provisions vary by article"], "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"] },
-    { "obligationId": "obl-crcf-third-party-verification", "instrumentId": "dep-eu-crcf-2024-3012", "actor": "activities seeking voluntary CRCF certification", "object": "carbon removal, carbon farming, or carbon storage claims", "action": "undergo third-party verification under recognised certification schemes", "scope": "voluntary EU CRCF certification", "effectiveAt": null, "maturity": "SECONDARY_ACT_PENDING", "secondaryLegislationPending": true, "exemptions": ["The framework is voluntary; methodology and registry rollout remain staged"], "sourceRefs": ["s69"], "ideaRefs": ["idea-388"] }
+    {
+      "obligationId": "obl-cra-active-vulnerability-reporting",
+      "instrumentId": "dep-eu-cra-reporting",
+      "actor": "manufacturers of products with digital elements",
+      "object": "actively exploited vulnerabilities and severe incidents",
+      "action": "submit staged notifications through the Single Reporting Platform",
+      "scope": "covered products with digital elements",
+      "effectiveAt": "2026-09-11T00:00:00Z",
+      "maturity": "ADOPTED",
+      "secondaryLegislationPending": false,
+      "exemptions": [
+        "Penalty treatment differs for certain micro and small enterprises; scope requires legal review"
+      ],
+      "sourceRefs": [
+        "s83",
+        "s96"
+      ],
+      "ideaRefs": [
+        "idea-401"
+      ]
+    },
+    {
+      "obligationId": "obl-pfas-drinking-water-parameters",
+      "instrumentId": "dep-eu-drinking-water-pfas",
+      "actor": "EU Member States",
+      "object": "water intended for human consumption",
+      "action": "ensure compliance with PFAS Total and Sum of PFAS parametric values",
+      "scope": "Directive (EU) 2020/2184 drinking-water scope",
+      "effectiveAt": "2026-01-12T00:00:00Z",
+      "maturity": "APPLICABLE",
+      "secondaryLegislationPending": false,
+      "exemptions": [],
+      "sourceRefs": [
+        "s79"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ]
+    },
+    {
+      "obligationId": "obl-soho-registration-traceability",
+      "instrumentId": "dep-eu-soho-2024-1938",
+      "actor": "covered SoHO entities",
+      "object": "SoHO activities, traceability, and vigilance information",
+      "action": "register and maintain required records and notifications",
+      "scope": "covered substances of human origin and activities",
+      "effectiveAt": "2027-08-07T00:00:00Z",
+      "maturity": "ADOPTED",
+      "secondaryLegislationPending": true,
+      "exemptions": [
+        "Application dates and transitional provisions vary by article"
+      ],
+      "sourceRefs": [
+        "s65"
+      ],
+      "ideaRefs": [
+        "idea-385",
+        "idea-391"
+      ]
+    },
+    {
+      "obligationId": "obl-crcf-third-party-verification",
+      "instrumentId": "dep-eu-crcf-2024-3012",
+      "actor": "activities seeking voluntary CRCF certification",
+      "object": "carbon removal, carbon farming, or carbon storage claims",
+      "action": "undergo third-party verification under recognised certification schemes",
+      "scope": "voluntary EU CRCF certification",
+      "effectiveAt": null,
+      "maturity": "SECONDARY_ACT_PENDING",
+      "secondaryLegislationPending": true,
+      "exemptions": [
+        "The framework is voluntary; methodology and registry rollout remain staged"
+      ],
+      "sourceRefs": [
+        "s69"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ]
+    },
+    {
+      "obligationId": "obl-nzia-co2-injection-capacity",
+      "instrumentId": "dep-eu-industrial-carbon-capacity",
+      "actor": "obligated EU oil and gas producers",
+      "object": "annual CO2 injection capacity",
+      "action": "contribute to development of EU storage capacity",
+      "scope": "NZIA collective 50 million tonne annual injection-capacity target",
+      "effectiveAt": "2030-01-01T00:00:00Z",
+      "maturity": "ADOPTED",
+      "secondaryLegislationPending": true,
+      "exemptions": [
+        "Producer-specific contribution and implementation details require current legal review"
+      ],
+      "sourceRefs": [
+        "s154"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ]
+    },
+    {
+      "obligationId": "obl-soil-law-national-transposition",
+      "instrumentId": "dep-eu-soil-monitoring-law",
+      "actor": "EU Member States",
+      "object": "national soil monitoring and contaminated-site framework",
+      "action": "transpose the Soil Monitoring Law",
+      "scope": "all soils and covered monitoring, assessment, and contaminated-site provisions",
+      "effectiveAt": "2028-12-16T00:00:00Z",
+      "maturity": "ADOPTED",
+      "secondaryLegislationPending": true,
+      "exemptions": [],
+      "sourceRefs": [
+        "s157",
+        "s158"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ]
+    }
   ],
   "ecosystems": [
-    { "ecosystemId": "eco-cra-single-reporting-platform", "name": "CRA Single Reporting Platform", "topology": "CENTRAL_PUBLIC_PORTAL", "providerDensity": "UNKNOWN", "stage": "MANDATORY_TRANSITION", "sourceRefs": ["s83", "s96"], "ideaRefs": ["idea-401"] },
-    { "ecosystemId": "eco-soho-platform", "name": "EU SoHO information platform", "topology": "CENTRAL_PUBLIC_PORTAL", "providerDensity": "UNKNOWN", "stage": "PREPARATION", "sourceRefs": ["s65"], "ideaRefs": ["idea-385", "idea-391"] },
-    { "ecosystemId": "eco-crcf-certification", "name": "EU CRCF certification schemes and registry", "topology": "CERTIFIED_INTERMEDIARIES", "providerDensity": "EARLY", "stage": "EARLY_ADOPTION", "sourceRefs": ["s69"], "ideaRefs": ["idea-388"] },
-    { "ecosystemId": "eco-pfas-drinking-water", "name": "EU drinking-water PFAS monitoring network", "topology": "PHYSICAL_NETWORK", "providerDensity": "UNKNOWN", "stage": "OPERATING_SCALE", "sourceRefs": ["s79"], "ideaRefs": ["idea-398"] }
+    {
+      "ecosystemId": "eco-cra-single-reporting-platform",
+      "name": "CRA Single Reporting Platform",
+      "topology": "CENTRAL_PUBLIC_PORTAL",
+      "providerDensity": "UNKNOWN",
+      "stage": "MANDATORY_TRANSITION",
+      "sourceRefs": [
+        "s83",
+        "s96"
+      ],
+      "ideaRefs": [
+        "idea-401"
+      ]
+    },
+    {
+      "ecosystemId": "eco-soho-platform",
+      "name": "EU SoHO information platform",
+      "topology": "CENTRAL_PUBLIC_PORTAL",
+      "providerDensity": "UNKNOWN",
+      "stage": "PREPARATION",
+      "sourceRefs": [
+        "s65"
+      ],
+      "ideaRefs": [
+        "idea-385",
+        "idea-391"
+      ]
+    },
+    {
+      "ecosystemId": "eco-crcf-certification",
+      "name": "EU CRCF certification schemes and registry",
+      "topology": "CERTIFIED_INTERMEDIARIES",
+      "providerDensity": "EARLY",
+      "stage": "EARLY_ADOPTION",
+      "sourceRefs": [
+        "s69"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ]
+    },
+    {
+      "ecosystemId": "eco-pfas-drinking-water",
+      "name": "EU drinking-water PFAS monitoring network",
+      "topology": "PHYSICAL_NETWORK",
+      "providerDensity": "UNKNOWN",
+      "stage": "OPERATING_SCALE",
+      "sourceRefs": [
+        "s79"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ]
+    },
+    {
+      "ecosystemId": "eco-co2-corridors",
+      "name": "European captured-CO2 transport and storage corridors",
+      "topology": "PHYSICAL_NETWORK",
+      "providerDensity": "EARLY",
+      "stage": "EARLY_ADOPTION",
+      "sourceRefs": [
+        "s154"
+      ],
+      "ideaRefs": [
+        "idea-388"
+      ]
+    },
+    {
+      "ecosystemId": "eco-technology-infrastructures",
+      "name": "European research and technology infrastructures",
+      "topology": "FEDERATED_NETWORK",
+      "providerDensity": "HIGHLY_FRAGMENTED",
+      "stage": "EARLY_ADOPTION",
+      "sourceRefs": [
+        "s155"
+      ],
+      "ideaRefs": [
+        "idea-294"
+      ]
+    },
+    {
+      "ecosystemId": "eco-contaminated-land",
+      "name": "EU contaminated-site monitoring and remediation network",
+      "topology": "CERTIFIED_INTERMEDIARIES",
+      "providerDensity": "UNKNOWN",
+      "stage": "PREPARATION",
+      "sourceRefs": [
+        "s157",
+        "s158"
+      ],
+      "ideaRefs": [
+        "idea-398"
+      ]
+    },
+    {
+      "ecosystemId": "eco-nature-restoration",
+      "name": "EU national restoration plans and project delivery",
+      "topology": "MULTI_PARTY_SUPPLY_CHAIN",
+      "providerDensity": "UNKNOWN",
+      "stage": "PREPARATION",
+      "sourceRefs": [
+        "s163"
+      ],
+      "ideaRefs": []
+    },
+    {
+      "ecosystemId": "eco-copper-transition",
+      "name": "Proposed national copper-to-fibre transition plans",
+      "topology": "PHYSICAL_NETWORK",
+      "providerDensity": "CONSOLIDATING",
+      "stage": "SPEC_FORMING",
+      "sourceRefs": [
+        "s165"
+      ],
+      "ideaRefs": []
+    },
+    {
+      "ecosystemId": "eco-rail-capacity",
+      "name": "European rail infrastructure-capacity allocation",
+      "topology": "FEDERATED_NETWORK",
+      "providerDensity": "CONSOLIDATING",
+      "stage": "MANDATORY_TRANSITION",
+      "sourceRefs": [
+        "s167"
+      ],
+      "ideaRefs": [
+        "idea-291"
+      ]
+    }
   ],
   "counterpartyAssessments": [
-    { "assessmentId": "cp-cra-reachledger", "ideaId": "idea-401", "parties": [{ "role": "device manufacturer", "mustParticipate": true, "canBeForced": true, "controlsData": true, "controlsDecision": true, "controlsBudget": true, "readiness": "UNKNOWN" }, { "role": "component and firmware suppliers", "mustParticipate": true, "canBeForced": null, "controlsData": true, "controlsDecision": false, "controlsBudget": false, "readiness": "UNKNOWN" }], "coordinationTax": "UNKNOWN", "weakestCriticalParty": null, "sourceRefs": ["s83", "s96"] },
-    { "assessmentId": "cp-soho-donor-ledger", "ideaId": "idea-385", "parties": [{ "role": "SoHO entity or establishment", "mustParticipate": true, "canBeForced": true, "controlsData": true, "controlsDecision": true, "controlsBudget": true, "readiness": "UNKNOWN" }, { "role": "cross-border counterparties", "mustParticipate": true, "canBeForced": null, "controlsData": true, "controlsDecision": false, "controlsBudget": false, "readiness": "UNKNOWN" }], "coordinationTax": "UNKNOWN", "weakestCriticalParty": null, "sourceRefs": ["s65"] }
+    {
+      "assessmentId": "cp-cra-reachledger",
+      "ideaId": "idea-401",
+      "parties": [
+        {
+          "role": "device manufacturer",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "component and firmware suppliers",
+          "mustParticipate": true,
+          "canBeForced": null,
+          "controlsData": true,
+          "controlsDecision": false,
+          "controlsBudget": false,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "UNKNOWN",
+      "weakestCriticalParty": null,
+      "sourceRefs": [
+        "s83",
+        "s96"
+      ]
+    },
+    {
+      "assessmentId": "cp-soho-donor-ledger",
+      "ideaId": "idea-385",
+      "parties": [
+        {
+          "role": "SoHO entity or establishment",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "cross-border counterparties",
+          "mustParticipate": true,
+          "canBeForced": null,
+          "controlsData": true,
+          "controlsDecision": false,
+          "controlsBudget": false,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "UNKNOWN",
+      "weakestCriticalParty": null,
+      "sourceRefs": [
+        "s65"
+      ]
+    },
+    {
+      "assessmentId": "cp-assured-test-slots",
+      "ideaId": "idea-294",
+      "parties": [
+        {
+          "role": "industrial customer",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "research or testing infrastructure",
+          "mustParticipate": true,
+          "canBeForced": false,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": false,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "HIGH",
+      "weakestCriticalParty": "research or testing infrastructure",
+      "sourceRefs": [
+        "s155"
+      ]
+    },
+    {
+      "assessmentId": "cp-pfas-land-intelligence",
+      "ideaId": "idea-398",
+      "parties": [
+        {
+          "role": "asset owner or buyer",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "laboratory and environmental consultant",
+          "mustParticipate": true,
+          "canBeForced": false,
+          "controlsData": true,
+          "controlsDecision": false,
+          "controlsBudget": false,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "regulator or liable party",
+          "mustParticipate": true,
+          "canBeForced": null,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": null,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "HIGH",
+      "weakestCriticalParty": null,
+      "sourceRefs": [
+        "s157",
+        "s158"
+      ]
+    }
   ]
 }

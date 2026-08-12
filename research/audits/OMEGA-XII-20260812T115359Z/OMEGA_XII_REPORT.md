@@ -151,3 +151,11 @@ The local run passed 52 Node tests and 44 Python tests. A fresh clone at `141920
 
 ## 50. Remaining work and verdict
 Do not mark OMEGA XII complete. Remaining work includes crash-atomic publisher recovery, provider health integration, process-tree timeout proof, deployed cloud execution proof, historical staging exposure decision, broad dependency mapping, representative provider-density research, buyer interviews, WTP/transaction evidence, negative-shock expansion, and the constitution's full research-duration/query coverage.
+
+## Expansion V continuation — 12 August 2026
+
+Five supplied files resolved to two unique SHA-256 inputs: one Expansion V brief and one OMEGA XII constitution. Expansion V recorded decisions for all 25 proposals, staged 14 distinct private candidates, added 16 official primary sources, and defined five experiments without asserting that they ran.
+
+ShockGraph now contains 10 dependencies, 7 review-required shocks, 6 obligations, 10 ecosystem topologies, and 4 counterparty assessments. Seven of 294 canonical ideas have explicit dependency mappings (2.38%). New records cover industrial-carbon capacity, voluntary technology-infrastructure access, soil and PFAS policy, nature-restoration planning, the proposed Digital Networks Act, and adopted rail-capacity rules. Proposed law remains a dependency/watch state rather than an enacted shock.
+
+This increases sections 18–25 coverage but does not change the verdict: OMEGA XII remains incomplete until the explicit remaining work above is actually evidenced.

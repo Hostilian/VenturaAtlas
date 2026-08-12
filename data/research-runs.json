@@ -1432,5 +1432,359 @@
     "startedAt": "2026-08-12T17:30:00+00:00",
     "endedAt": "2026-08-12T17:30:00+00:00",
     "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-007-20260812-expansion-v",
+    "baselineCommit": "fc87084fda7f18ce9538839b4fc25a8585b85f70",
+    "questions": [
+      "Which of 25 proposals own a distinct capacity, qualification, topology, underwriting, or plan-to-project transition?",
+      "Which live policy signals are adopted, voluntary, proposed, or long-window?",
+      "Which proposals duplicate existing canonical or private records?"
+    ],
+    "queries": [
+      "industrial carbon management injection capacity",
+      "technology infrastructure access charter",
+      "Critical Chemicals Alliance",
+      "Soil Monitoring Law PFAS",
+      "Advanced Materials Act",
+      "bio-based industry",
+      "European Ocean Act",
+      "AI Gigafactories",
+      "Nature Restoration plans",
+      "affordable housing",
+      "Digital Networks Act",
+      "multi-operator rail proposal",
+      "rail capacity regulation",
+      "SMR strategy",
+      "OceanEye"
+    ],
+    "sourceCandidates": [
+      "s154",
+      "s155",
+      "s156",
+      "s157",
+      "s158",
+      "s159",
+      "s160",
+      "s161",
+      "s162",
+      "s163",
+      "s164",
+      "s165",
+      "s166",
+      "s167",
+      "s168",
+      "s169",
+      "s148"
+    ],
+    "inclusions": [
+      "candidate-cef830c0-7d9d-5cb8-a45b-549a7303dbee",
+      "candidate-b4afe817-b899-50c7-96e5-68805fcdb4aa",
+      "candidate-b88f2728-df8a-50f1-9f97-0b0c80283d08",
+      "candidate-82e94c00-be1b-52f9-a6b4-4e78085bc4cd",
+      "candidate-c0d66e41-9706-5e2c-81be-b0e26ca4b52b",
+      "candidate-0cfc4443-fa66-5934-b331-c41824dcd1f6",
+      "candidate-54dc0301-b51d-5baf-84dc-4588c23bb08e",
+      "candidate-35d56982-3799-5ad9-8956-75ab8ad171ca",
+      "candidate-a585a1f8-ebd5-5977-88f6-69a03b8721ed",
+      "candidate-0a32ddab-f6ce-5d0e-a824-bf54cbf379b0",
+      "candidate-f9071f17-789f-5011-861b-31683756e405",
+      "candidate-22b3b1c1-89c1-5d97-9ffb-e01f9593f1a5",
+      "candidate-863c41c4-2de7-52a1-a763-c960af21363b",
+      "candidate-8446beb8-11b6-5dda-8b27-20ba4f6ad690"
+    ],
+    "exclusions": [
+      "DeepTech Lab Access OS",
+      "Copper Retirement Migration OS",
+      "PFAS Remediation Performance Network",
+      "Satellite D2D Spectrum Preflight",
+      "Chemical Substitution Qualification CI",
+      "Research Infrastructure IP Router",
+      "Offsite Housing Factory Capacity Router",
+      "Nature Restoration Landowner Router",
+      "SMR Supply-Chain Qualification Graph",
+      "Rail Gauge Migration Asset Twin",
+      "OceanEye Insurance API"
+    ],
+    "claimsChanged": [
+      "Fourteen distinct candidates staged; eleven proposals mapped to exact private families, modules, wedges, or watch layers.",
+      "DeepTech Lab Access maps to the existing PilotLine Europe private candidate; Copper Retirement maps to CriticalLine Migration.",
+      "The technology-infrastructure charter is voluntary, the Digital Networks Act is proposed, and SMR deployment remains an early-2030s strategy.",
+      "Rail capacity rules are adopted, but the first optimized timetable is expected in December 2030.",
+      "All scores and tiers remain provisional and non-ranking-eligible."
+    ],
+    "deduplicationDecisions": {
+      "CO2 Capacity Router / Carbon Corridor OS": {
+        "decision": "stage_distinct_capacity_reservation",
+        "targets": []
+      },
+      "DeepTech Lab Access OS": {
+        "decision": "exact_private_family_enrich",
+        "targets": [
+          "candidate-2fa25465-2747-46b7-a7db-530949f7c070",
+          "idea-294"
+        ]
+      },
+      "Chemical Domino Graph": {
+        "decision": "stage_distinct_hidden_topology",
+        "targets": [
+          "idea-305",
+          "idea-378",
+          "idea-384"
+        ]
+      },
+      "Brownfield PFAS Underwriter": {
+        "decision": "stage_distinct_land_underwriting",
+        "targets": [
+          "idea-398"
+        ]
+      },
+      "Advanced Materials Qualification Network": {
+        "decision": "stage_distinct_reusable_qualification",
+        "targets": [
+          "idea-175",
+          "idea-294"
+        ]
+      },
+      "Biomanufacturing Tech-Transfer Compiler": {
+        "decision": "stage_distinct_scaleup_transfer",
+        "targets": []
+      },
+      "Bio-Based Drop-In Qualification OS": {
+        "decision": "stage_distinct_material_change_qualification",
+        "targets": [
+          "candidate-345c0519-1c1d-5acb-8b6f-dd6489ca89b7"
+        ]
+      },
+      "Ocean Space Conflict Compiler": {
+        "decision": "stage_proposal_sensitive_bankability",
+        "targets": [
+          "idea-405"
+        ]
+      },
+      "Compute Offtake Bankability Engine": {
+        "decision": "stage_distinct_finance_contract_layer",
+        "targets": [
+          "candidate-6b20fbf2-dfb8-5000-895b-b8342abb4b77",
+          "candidate-fb95c237-1685-5798-98dd-5bc9d9920481"
+        ]
+      },
+      "Nature Restoration Project OS": {
+        "decision": "stage_distinct_plan_to_project",
+        "targets": []
+      },
+      "Permit-Ready Modular Housing Compiler": {
+        "decision": "stage_distinct_local_configuration_compiler",
+        "targets": []
+      },
+      "Copper Retirement Migration OS": {
+        "decision": "exact_private_family",
+        "targets": [
+          "candidate-22158a0b-1b04-4c35-a985-338f688422a7"
+        ]
+      },
+      "Multi-Operator Rail Disruption Clearinghouse": {
+        "decision": "stage_proposal_sensitive_clearing",
+        "targets": []
+      },
+      "SMR Fleet Configuration Ledger": {
+        "decision": "stage_strategy_watch",
+        "targets": []
+      },
+      "Spectrum Capacity Exchange": {
+        "decision": "stage_proposal_watch",
+        "targets": []
+      },
+      "Rail Capacity Portfolio OS": {
+        "decision": "stage_distinct_long_window_capacity",
+        "targets": [
+          "idea-291"
+        ]
+      },
+      "PFAS Remediation Performance Network": {
+        "decision": "module_of_brownfield_underwriter",
+        "targets": []
+      },
+      "Satellite D2D Spectrum Preflight": {
+        "decision": "module_or_watch_with_spectrum_exchange",
+        "targets": [
+          "idea-383"
+        ]
+      },
+      "Chemical Substitution Qualification CI": {
+        "decision": "wedge_of_advanced_materials_qualification",
+        "targets": []
+      },
+      "Research Infrastructure IP Router": {
+        "decision": "module_of_existing_lab_access_operator",
+        "targets": [
+          "candidate-2fa25465-2747-46b7-a7db-530949f7c070"
+        ]
+      },
+      "Offsite Housing Factory Capacity Router": {
+        "decision": "module_of_modular_housing_compiler",
+        "targets": []
+      },
+      "Nature Restoration Landowner Router": {
+        "decision": "module_of_nature_restoration_os",
+        "targets": []
+      },
+      "SMR Supply-Chain Qualification Graph": {
+        "decision": "module_of_smr_configuration_ledger",
+        "targets": []
+      },
+      "Rail Gauge Migration Asset Twin": {
+        "decision": "watch_module_of_rail_capacity_family",
+        "targets": []
+      },
+      "OceanEye Insurance API": {
+        "decision": "watch_module_of_ocean_space_compiler",
+        "targets": []
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "DeepTech Lab Access OS",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "candidate-2fa25465-2747-46b7-a7db-530949f7c070"
+        ],
+        "nextGate": "Manually compile ten experiment requirements into facility selection, contracting, booking, sample logistics, results, and IP receipts; test both startup and facility willingness to participate."
+      },
+      {
+        "rank": 2,
+        "proposal": "Brownfield PFAS Underwriter",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-b88f2728-df8a-50f1-9f97-0b0c80283d08"
+        ],
+        "nextGate": "Underwrite five historical sites with consultants and lenders; compare predicted remediation range and reserve against realized cost and transaction decisions."
+      },
+      {
+        "rank": 3,
+        "proposal": "CO2 Capacity Router / Carbon Corridor OS",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "candidate-cef830c0-7d9d-5cb8-a45b-549a7303dbee"
+        ],
+        "nextGate": "Build one synthetic corridor with three emitters, two transport modes, and two stores; validate reservation reality and bankability with ten operators or financiers."
+      },
+      {
+        "rank": 4,
+        "proposal": "Chemical Domino Graph",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-b4afe817-b899-50c7-96e5-68805fcdb4aa"
+        ],
+        "nextGate": "Map one specialty-chemical chain with two manufacturers and replay three historical shortages; measure unknown tiers and decision value."
+      },
+      {
+        "rank": 5,
+        "proposal": "Advanced Materials Qualification Network",
+        "analystProvisionalScore": 92,
+        "targetRefs": [
+          "candidate-82e94c00-be1b-52f9-a6b4-4e78085bc4cd"
+        ],
+        "nextGate": "Select five candidate substitutions and measure whether prior evidence can safely reduce duplicated testing with three OEMs and laboratories."
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "rank": 1,
+        "proposal": "DeepTech Lab Access OS",
+        "targetRefs": [
+          "candidate-2fa25465-2747-46b7-a7db-530949f7c070"
+        ]
+      },
+      {
+        "rank": 2,
+        "proposal": "Brownfield PFAS Underwriter",
+        "targetRefs": [
+          "candidate-b88f2728-df8a-50f1-9f97-0b0c80283d08"
+        ]
+      },
+      {
+        "rank": 3,
+        "proposal": "CO2 Capacity Router / Carbon Corridor OS",
+        "targetRefs": [
+          "candidate-cef830c0-7d9d-5cb8-a45b-549a7303dbee"
+        ]
+      },
+      {
+        "rank": 4,
+        "proposal": "Chemical Domino Graph",
+        "targetRefs": [
+          "candidate-b4afe817-b899-50c7-96e5-68805fcdb4aa"
+        ]
+      },
+      {
+        "rank": 5,
+        "proposal": "Advanced Materials Qualification Network",
+        "targetRefs": [
+          "candidate-82e94c00-be1b-52f9-a6b4-4e78085bc4cd"
+        ]
+      }
+    ],
+    "metaDiscoveries": [
+      "capacity_as_api",
+      "qualification_hidden_market",
+      "plan_to_project_gap",
+      "hidden_industrial_topology",
+      "physical_evidence_beats_ai_content"
+    ],
+    "researchBranches": [
+      "scarce_capacity_markets",
+      "qualification_graphs",
+      "plan_to_project_infrastructure",
+      "industrial_dependency_graphs",
+      "underwrite_what_engineers_fear",
+      "scarce_industrial_capacity"
+    ],
+    "portfolioFamilies": [
+      "european_deeptech_qualification_os",
+      "european_industrial_capacity_exchange",
+      "land_bankability_os",
+      "industrial_bankability_os"
+    ],
+    "newScoringDimensions": [
+      "capacityCriticality",
+      "qualificationReuse",
+      "realityFeedback",
+      "planToProjectGap"
+    ],
+    "researchPasses": [
+      "capacity",
+      "reservation",
+      "qualification",
+      "physical_evidence",
+      "plan_to_project",
+      "topology",
+      "underwriting",
+      "current_access_method",
+      "control_point",
+      "counterparty",
+      "evidence_gate",
+      "reality_feedback"
+    ],
+    "omegaXiiContribution": {
+      "dependencyRecordsAdded": 6,
+      "shockRecordsAdded": 5,
+      "obligationRecordsAdded": 2,
+      "ecosystemRecordsAdded": 6,
+      "counterpartyAssessmentsAdded": 2,
+      "completionClaim": false
+    },
+    "attachmentDeduplication": {
+      "expansionVCopies": 2,
+      "expansionVUniqueSha256": "8CC8B085708503C382BB8D0F822EA21E0351735B6F871E7EB2678DC5DFB1E2C7",
+      "omegaXiiCopies": 3,
+      "omegaXiiUniqueSha256": "AC87719C647B631DE841A5CBAE72B71E1A34EDED17B844EAFE3F3A1AB835B717"
+    },
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v8-capacity-qualification-reality",
+    "startedAt": "2026-08-12T18:30:00+00:00",
+    "endedAt": "2026-08-12T18:30:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
   }
 ]

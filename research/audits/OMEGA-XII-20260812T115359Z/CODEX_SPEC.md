@@ -22,3 +22,14 @@ Turn Venture Atlas from a static idea corpus into a fail-closed decision system 
 ## Completion evidence
 
 Completion follows the 38-point OMEGA XII contract in the attached constitution. This run may remain explicitly incomplete while continuing; elapsed time or artifact counts are not completion evidence.
+
+## 2026-08-12 continuation baseline
+
+Continuation work began after preserving and pushing autonomy runtime state at `fc87084fda7f18ce9538839b4fc25a8585b85f70`.
+
+The five supplied files contain two unique inputs:
+
+- Expansion V SHA-256: `8CC8B085708503C382BB8D0F822EA21E0351735B6F871E7EB2678DC5DFB1E2C7` (two copies);
+- OMEGA XII SHA-256: `AC87719C647B631DE841A5CBAE72B71E1A34EDED17B844EAFE3F3A1AB835B717` (three copies).
+
+This continuation must record all twenty-five Expansion V semantic decisions, add only evidence-backed ShockGraph records, preserve private staging, and keep the existing incomplete OMEGA verdict until every remaining external-evidence and runtime requirement is actually proven.
