@@ -12,4 +12,19 @@
 
 ## Status
 
-Active. No OMEGA XII completion claim has been made.
+## 2026-08-12T12:48:00Z â€” implementation and verification
+
+- Repository truth at implementation time: 294 canonical ideas, 216 local private staged candidates, 96 sources, 7 legacy ranking views, and 294 unique ranked ideas.
+- The Windows autonomy writer was paused for integration, but it restarted and moved local/remote history during the run. The observed sequence was `8dfb96c` → `b5dd64c` → `ed0c1c1` (pushed) → `88e4704` (generated follow-up). No reset or user-data discard was performed.
+- Added stable receipt-bound lifecycle contracts, an empty trusted-authority registry, claim relations and validation-run schemas, cross-language digest vectors, incremental transition tests, blind-packet anchoring rejection, and eligibility-only ranking universes.
+- Added ShockGraph validation and a bounded primary-source pass: 4 dependencies, 2 shocks, 4 obligations, 4 ecosystems, 2 counterparty assessments, and 5 mapped canonical ideas (1.70% coverage).
+- Closed reproduced provider fallback, disabled-key selection, massive-orchestrator required-stage, zero-budget, secret-tail, cloud immutable-checkout, pre-staged deletion, readiness, placeholder-authentication, and private-staging boundary failures.
+- Removed `data/idea-staging-queue.json` from future Git tracking while preserving the local ignored queue. Existing public Git history still contains earlier versions and must not be described as erased.
+- Independent post-implementation red teams found self-invalidating lifecycle digests, unchecked evidence/reference contracts, legacy-score leakage, staged-deletion bypass, queue confidentiality, and zero-budget receipt gaps; these reproduced issues were fixed and covered by tests.
+- Final local gate: 52/52 Node tests, 44/44 Python tests, strict source/lifecycle/ShockGraph validation, constitution check, privacy scan, generated public artifact scan, and PWA tests passed.
+- Exact public projection check: no staging queue; hypothesis universe contains canonical IDs; researched and validation universes contain zero eligible IDs and publish no scores.
+- No cloud deployment or successful off-laptop execution was performed or claimed. `terraform` is not installed locally, and the strengthened preflight requires an enabled scheduler, immutable deployed image, private configuration, and a latest successful execution.
+
+## Status
+
+Implemented and locally verified foundation; full OMEGA XII research/completion contract remains incomplete. See `OMEGA_XII_REPORT.md`.
