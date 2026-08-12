@@ -341,5 +341,355 @@
     "startedAt": "2026-08-12T13:15:00+00:00",
     "endedAt": "2026-08-12T13:15:00+00:00",
     "reviewStatus": "approved_for_staging_and_validation_priority_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-004-20260812-fresh-opportunity-round",
+    "baselineCommit": "a56e61b1bed173259a9191d3180e7a68e5e61180",
+    "questions": [
+      "Which of the twenty supplied proposals are distinct from 294 canonical and 221 privately staged records?",
+      "Which forcing functions are verified, and which remain proposals or strategy signals?",
+      "How should the supplied top-ten order map to actual validation targets without changing canonical ranking authority?"
+    ],
+    "queries": [
+      "delegation-scoped agent execution observability gateway 2026 primary research",
+      "Data Act cloud switching charges 12 January 2027 official",
+      "ESPR unsold apparel destruction 19 July 2026 official",
+      "EU post-quantum roadmap end 2026 official",
+      "CRCF biochar permanent removal methodology February 2026 official",
+      "posted worker e-declaration proposal official",
+      "European Business Wallet proposal verified documents official",
+      "short-term rental registration data Regulation 2024/1028 official",
+      "eFTI full application 9 July 2027 official",
+      "renovation finance EPBD official"
+    ],
+    "sourceCandidates": [
+      "s109",
+      "s110",
+      "s111",
+      "s112",
+      "s113",
+      "s114",
+      "s115",
+      "s116",
+      "s117",
+      "s118",
+      "s119",
+      "s69",
+      "s86",
+      "s87",
+      "s90",
+      "s92",
+      "s94",
+      "s95"
+    ],
+    "inclusions": [
+      "candidate-7baabce6-649d-5d79-87c7-dfa182f50323",
+      "candidate-3b787052-962d-5e4a-874a-c0f48325eaa3",
+      "candidate-95ab85c0-3f4f-5857-8b86-0771306ba0b6",
+      "candidate-3ed141a7-e497-5364-9a55-ec5d0d1c6913",
+      "candidate-91b0720f-a340-5eae-a641-2c6c5e9f1a3b",
+      "candidate-345c0519-1c1d-5acb-8b6f-dd6489ca89b7",
+      "candidate-874a84ee-df25-5394-81c8-5efdfa94619f",
+      "candidate-49dfc6c6-91ca-5679-8821-6e71bd870ab7",
+      "candidate-9a7a4184-887f-5455-a8be-a547808dd5d5",
+      "candidate-caa002e8-0906-5033-875e-f52f54196e82"
+    ],
+    "exclusions": [
+      "Cloud Exit Drill / ExitOps",
+      "Grid Connection Underwriter",
+      "Unsold Inventory Surplus Router",
+      "Machine Data Switchboard",
+      "Worker Decision Ledger",
+      "Software Liability Replay",
+      "Building GWP Compiler",
+      "SovereigntyGraph",
+      "Waste Shipment Adapter API",
+      "Cross-Border Worker Proof API"
+    ],
+    "claimsChanged": [
+      "Ten distinct concepts staged; ten proposals mapped to existing canonical or staged families.",
+      "All twenty proposals received an explicit semantic-resolution decision.",
+      "The supplied top-ten order is recorded as a validation queue, not a ranking or publication instruction.",
+      "European Business Wallet, posted-worker e-declaration, and Digital Fairness Act signals are treated as proposals or watch items rather than enacted-law deadlines.",
+      "Scores, market sizes, prices, demand, and willingness-to-pay claims remain provisional."
+    ],
+    "researchMethodExtensions": [
+      "official_rail_to_missing_last_mile_adapter",
+      "autonomous_software_to_missing_authority_and_consequence_record",
+      "forbidden_previous_behavior_to_disposition_or_exception_workflow",
+      "scarce_physical_capacity_to_underwriting_or_optimization"
+    ],
+    "prototypePriority": [
+      {
+        "rank": 1,
+        "proposal": "Agent Action Flight Recorder",
+        "targetRefs": [
+          "candidate-7baabce6-649d-5d79-87c7-dfa182f50323"
+        ]
+      },
+      {
+        "rank": 2,
+        "proposal": "Cloud Exit Drill / ExitOps",
+        "targetRefs": [
+          "idea-372"
+        ]
+      },
+      {
+        "rank": 3,
+        "proposal": "Grid Connection Underwriter",
+        "targetRefs": [
+          "idea-273",
+          "idea-395",
+          "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904"
+        ]
+      }
+    ],
+    "deduplicationDecisions": {
+      "Agent Action Flight Recorder": {
+        "decision": "stage_distinct_delegation_scoped_execution_layer",
+        "targets": [
+          "idea-341",
+          "idea-347"
+        ]
+      },
+      "Cloud Exit Drill / ExitOps": {
+        "decision": "duplicate_existing",
+        "targets": [
+          "idea-372",
+          "candidate-e3fa364c-faad-4648-9d30-a195af007ac3"
+        ]
+      },
+      "Grid Connection Underwriter": {
+        "decision": "enrich_existing_grid_readiness_family",
+        "targets": [
+          "idea-273",
+          "idea-395",
+          "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904"
+        ]
+      },
+      "Unsold Inventory Surplus Router": {
+        "decision": "duplicate_existing_family",
+        "targets": [
+          "idea-381",
+          "candidate-652d0198-f85e-4df4-9679-25065c1a23d6"
+        ]
+      },
+      "Machine Data Switchboard": {
+        "decision": "duplicate_existing",
+        "targets": [
+          "idea-276",
+          "idea-366",
+          "idea-362"
+        ]
+      },
+      "Worker Decision Ledger": {
+        "decision": "exact_duplicate",
+        "targets": [
+          "idea-363"
+        ]
+      },
+      "PQC Migration CI": {
+        "decision": "stage_distinct_candidate",
+        "targets": []
+      },
+      "BiocharTrace / CRCF MRV Compiler": {
+        "decision": "stage_distinct_mrv_module",
+        "targets": [
+          "idea-388"
+        ]
+      },
+      "Posted Worker Orchestrator": {
+        "decision": "stage_distinct_operational_wedge",
+        "targets": [
+          "idea-263"
+        ]
+      },
+      "Software Liability Replay": {
+        "decision": "exact_duplicate_existing_family",
+        "targets": [
+          "idea-364",
+          "candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4"
+        ]
+      },
+      "Building GWP Compiler": {
+        "decision": "enrich_existing",
+        "targets": [
+          "idea-394"
+        ]
+      },
+      "European Business Credential Router": {
+        "decision": "stage_distinct_router_adjacent_to_authority_family",
+        "targets": [
+          "idea-341",
+          "idea-344",
+          "idea-353"
+        ]
+      },
+      "Secondary Material Quality Graph": {
+        "decision": "stage_distinct_candidate",
+        "targets": [
+          "idea-269",
+          "idea-380"
+        ]
+      },
+      "SovereigntyGraph": {
+        "decision": "enrich_existing_family",
+        "targets": [
+          "idea-374",
+          "idea-372"
+        ]
+      },
+      "Waste Shipment Adapter API": {
+        "decision": "feature_of_existing_staged_candidate",
+        "targets": [
+          "candidate-153e8656-5387-5bd7-a153-3ea9a4cbd468"
+        ]
+      },
+      "Cross-Border Worker Proof API": {
+        "decision": "merge_into_posted_worker_and_trade_passport_family",
+        "targets": [
+          "idea-263"
+        ]
+      },
+      "STR Registration Router": {
+        "decision": "stage_distinct_candidate",
+        "targets": []
+      },
+      "eFTI Adapter Mesh": {
+        "decision": "stage_distinct_adapter_adjacent_to_preflight",
+        "targets": [
+          "candidate-e78f2fd2-bd47-41fa-9471-485703cc779f",
+          "candidate-249a46c3-f3a3-5bb6-81db-7d8a1afa639c"
+        ]
+      },
+      "UX Fairness CI": {
+        "decision": "stage_watch_only_candidate",
+        "targets": [
+          "idea-213",
+          "idea-306"
+        ]
+      },
+      "Renovation Finance Graph": {
+        "decision": "stage_bounded_country_first_candidate",
+        "targets": []
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "Agent Action Flight Recorder",
+        "analystProvisionalScore": 97,
+        "targetType": "new_adjacent_candidate",
+        "targetRefs": [
+          "candidate-7baabce6-649d-5d79-87c7-dfa182f50323",
+          "idea-341",
+          "idea-347"
+        ],
+        "nextGate": "Interview 15 enterprise security and platform teams; replay five agent incidents and prove that delegation-scoped reconstruction adds evidence their observability stack cannot supply."
+      },
+      {
+        "rank": 2,
+        "proposal": "Cloud Exit Drill / ExitOps",
+        "analystProvisionalScore": 96,
+        "targetType": "canonical_validation",
+        "targetRefs": [
+          "idea-372"
+        ],
+        "nextGate": "Interview 15 CTO and procurement teams with more than EUR250k annual cloud spend; run a real restore drill and test whether exitability changes resilience, procurement, or negotiation decisions."
+      },
+      {
+        "rank": 3,
+        "proposal": "Grid Connection Underwriter",
+        "analystProvisionalScore": 95,
+        "targetType": "existing_family_validation",
+        "targetRefs": [
+          "idea-273",
+          "idea-395",
+          "candidate-d8eac9f2-5d74-55ad-9e26-624a866b0904"
+        ],
+        "nextGate": "Choose one jurisdiction, build ten manual probability-time-cost site reports, and sell at least three before adding a new grid idea."
+      },
+      {
+        "rank": 4,
+        "proposal": "Unsold Inventory Surplus Router",
+        "analystProvisionalScore": 94,
+        "targetType": "existing_family_validation",
+        "targetRefs": [
+          "idea-381",
+          "candidate-652d0198-f85e-4df4-9679-25065c1a23d6"
+        ],
+        "nextGate": "Obtain one anonymized inventory CSV and manually optimize lawful disposition under brand, value, timing, and derogation constraints; measure recovered value and evidence completeness."
+      },
+      {
+        "rank": 5,
+        "proposal": "Machine Data Switchboard",
+        "analystProvisionalScore": 93,
+        "targetType": "canonical_validation",
+        "targetRefs": [
+          "idea-276",
+          "idea-366",
+          "idea-362"
+        ],
+        "nextGate": "Use exactly three OEMs in one vertical and prove that statutory access can be normalized into a stable operational contract with acceptable latency, completeness, and maintenance cost."
+      },
+      {
+        "rank": 6,
+        "proposal": "Worker Decision Ledger",
+        "analystProvisionalScore": 93,
+        "targetType": "canonical_validation",
+        "targetRefs": [
+          "idea-363"
+        ],
+        "nextGate": "Demo an end-to-end consequential-decision, explanation, appeal, human-review, and remedy workflow with platform operators and worker representatives."
+      },
+      {
+        "rank": 7,
+        "proposal": "PQC Migration CI",
+        "analystProvisionalScore": 92,
+        "targetType": "new_candidate_validation",
+        "targetRefs": [
+          "candidate-3b787052-962d-5e4a-874a-c0f48325eaa3"
+        ],
+        "nextGate": "Benchmark on five open-source repositories and measure correct pull-request rate, hybrid interoperability, performance regression, maintainer acceptance, and rollback safety."
+      },
+      {
+        "rank": 8,
+        "proposal": "BiocharTrace / CRCF MRV Compiler",
+        "analystProvisionalScore": 91,
+        "targetType": "new_adjacent_candidate",
+        "targetRefs": [
+          "candidate-95ab85c0-3f4f-5857-8b86-0771306ba0b6",
+          "idea-388"
+        ],
+        "nextGate": "Translate one complete biochar methodology into executable requirements and process one real project batch with a developer and certification expert."
+      },
+      {
+        "rank": 9,
+        "proposal": "Posted Worker Orchestrator",
+        "analystProvisionalScore": 90,
+        "targetType": "new_adjacent_candidate",
+        "targetRefs": [
+          "candidate-3ed141a7-e497-5364-9a55-ec5d0d1c6913",
+          "idea-263"
+        ],
+        "nextGate": "Run ten Czech-German-Polish-Austrian posting scenarios with payroll and labour-mobility experts; separate current national duties from proposed EU interfaces."
+      },
+      {
+        "rank": 10,
+        "proposal": "Software Liability Replay",
+        "analystProvisionalScore": 90,
+        "targetType": "canonical_validation",
+        "targetRefs": [
+          "idea-364",
+          "candidate-ffb826bb-b1b6-5ce8-bf39-fc40c1f454c4"
+        ],
+        "nextGate": "Interview ten manufacturers and product-liability practitioners; replay five incidents and measure whether exact historical product-state reconstruction changes investigation time or claim outcomes."
+      }
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v5-rail-consequence-bottleneck-dedup",
+    "startedAt": "2026-08-12T15:00:00+00:00",
+    "endedAt": "2026-08-12T15:00:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
   }
 ]

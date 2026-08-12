@@ -2413,5 +2413,236 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s109",
+    "title": "Observability for Delegated Execution in Agentic AI Systems",
+    "publisher": "arXiv - Abhinav Mishra and Kumar Sharad",
+    "url": "https://arxiv.org/abs/2606.09692",
+    "supports": [
+      "Standard logs cannot reliably reconstruct which heterogeneous actions occurred under a delegation",
+      "A gateway and shared information model can bind delegation context at execution time"
+    ],
+    "type": "primary_research",
+    "date": "2026-06-08",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s110",
+    "title": "Data Act explained",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained",
+    "supports": [
+      "The Data Act includes cloud-switching and functional-equivalence duties",
+      "Switching charges including data-egress charges are removed from 12 January 2027"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s111",
+    "title": "New EU rules to stop the destruction of unsold clothes and shoes",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/news/new-eu-rules-stop-destruction-unsold-clothes-and-shoes-2026-02-09_en",
+    "supports": [
+      "The ESPR ban and its derogations apply to large companies from 19 July 2026",
+      "Resale, remanufacturing, donation, reuse, returns handling, and justified destruction exceptions create disposition workflows"
+    ],
+    "type": "official_guidance",
+    "date": "2026-02-09",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s112",
+    "title": "EU reinforces its cybersecurity with post-quantum cryptography",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/news/eu-reinforces-its-cybersecurity-post-quantum-cryptography",
+    "supports": [
+      "All Member States should start transitioning to post-quantum cryptography by the end of 2026",
+      "Critical infrastructure should complete transition as soon as possible and no later than the end of 2030"
+    ],
+    "type": "official_guidance",
+    "date": "2025-06-23",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s113",
+    "title": "EU sets the first voluntary standard for permanent carbon removals",
+    "publisher": "European Commission - DG Climate Action",
+    "url": "https://climate.ec.europa.eu/news-other-reads/news/eu-sets-worlds-first-voluntary-standard-permanent-carbon-removals-2026-02-03_en",
+    "supports": [
+      "The first CRCF permanent-removal methodologies cover DACCS, BioCCS, and biochar carbon removal",
+      "The methodologies define quantification, permanence, leakage, liability, and certification requirements"
+    ],
+    "type": "official_guidance",
+    "date": "2026-02-03",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s114",
+    "title": "Proposal for a public interface for the declaration of posting of workers",
+    "publisher": "European Commission / EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52024PC0531",
+    "supports": [
+      "The proposal would create a multilingual IMI-connected public interface for posting declarations",
+      "Participation would be voluntary for Member States, so proposal timing is not treated as enacted-law certainty"
+    ],
+    "type": "official_legislative_proposal",
+    "date": "2024-11-13",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s115",
+    "title": "Simpler digital rules to help EU businesses grow",
+    "publisher": "European Commission - DG Communication",
+    "url": "https://commission.europa.eu/news-and-media/news/simpler-digital-rules-help-eu-businesses-grow-2025-11-19_en",
+    "supports": [
+      "The proposed European Business Wallet would support digital signing, timestamps, seals, verified documents, and secure exchange",
+      "The wallet remains a legislative proposal and is not treated as a current mandate"
+    ],
+    "type": "official_legislative_proposal",
+    "date": "2025-11-19",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s116",
+    "title": "European Steel and Metals Action Plan",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/document/download/7807ca8b-10ce-4ee2-9c11-357afe163190_en?filename=Communication+-+Steel+and+Metals+Action+Plan.pdf",
+    "supports": [
+      "The Commission identifies refined scrap-quality classifications as necessary for matching secondary-material supply and demand",
+      "Policy support for secondary-material markets does not prove a paid quality-graph business"
+    ],
+    "type": "official_strategy",
+    "date": "2025-03-19",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s117",
+    "title": "Regulation (EU) 2024/1028 on short-term accommodation rental data",
+    "publisher": "European Union / EUR-Lex",
+    "url": "https://eur-lex.europa.eu/legal-content/en/LSU/?uri=CELEX:32024R1028",
+    "supports": [
+      "The short-term accommodation rental data regulation applies from 20 May 2026",
+      "Where registration systems exist, hosts, platforms, authorities, registration numbers, and national digital entry points form a fragmented operational workflow"
+    ],
+    "type": "official_law",
+    "date": "2024-04-11",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s118",
+    "title": "The 2030 Consumer Agenda",
+    "publisher": "European Commission - DG Communication",
+    "url": "https://commission.europa.eu/news-and-media/news/2030-consumer-agenda-strengthening-consumer-protection-competitiveness-and-sustainable-growth-2025-11-19_en",
+    "supports": [
+      "The Commission announced a Digital Fairness Act proposal for 2026",
+      "The proposal is not enacted, so it supports watch-and-test activity rather than a compliance-deadline claim"
+    ],
+    "type": "official_strategy",
+    "date": "2025-11-19",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s119",
+    "title": "Financing building renovations",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/energy-efficiency/financing/financing-building-renovations_en",
+    "supports": [
+      "The revised EPBD adds common data instruments and a framework intended to increase renovation lending",
+      "Public support, technical assistance, and private lending are separate inputs that still require country-specific underwriting validation"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "fresh-opportunity-round-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
