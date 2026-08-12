@@ -100,7 +100,10 @@ if (meta && meta.counts) {
   if (meta.counts.canonicalIdeas !== undefined && meta.counts.canonicalIdeas !== ideas.length) {
     errors.push(`Stale repository-meta.json: canonicalIdeas count (${meta.counts.canonicalIdeas}) does not match ideas.json length (${ideas.length})`);
   }
-  const expectedTotal = ideas.length + stagingQueueLen;
+  const expectedTotal = ideas.length + (meta.privateStagingIncluded === true ? stagingQueueLen : 0);
+  if (meta.counts.stagedIdeas !== undefined && meta.counts.stagedIdeas !== (meta.privateStagingIncluded === true ? stagingQueueLen : 0)) {
+    errors.push(`Stale repository-meta.json: stagedIdeas count does not match its privateStagingIncluded contract`);
+  }
   if (meta.counts.totalIdeas !== undefined && meta.counts.totalIdeas !== expectedTotal) {
     errors.push(`Stale repository-meta.json: totalIdeas count (${meta.counts.totalIdeas}) does not match canonical (${ideas.length}) + staging (${stagingQueueLen}) = ${expectedTotal}`);
   }

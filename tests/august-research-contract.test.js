@@ -1,8 +1,11 @@
 const assert = require('node:assert');
 const test = require('node:test');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const canonical = require('../data/ideas.json').ideas;
-const queue = require('../data/idea-staging-queue.json');
+const queuePath = path.join(__dirname, '..', 'data', 'idea-staging-queue.json');
+const queue = fs.existsSync(queuePath) ? JSON.parse(fs.readFileSync(queuePath, 'utf8')) : [];
 const sources = require('../data/sources.json');
 
 const RUN_ID = 'run-res-002-20260810-august-operational-chokepoints';
@@ -16,7 +19,13 @@ const expectedNames = [
   'FreightContract Testbench — eFTI Data Conformance Lab'
 ];
 
-test('August operational-chokepoint pass remains staged and explicitly provisional', () => {
+test('August operational-chokepoint pass remains staged and explicitly provisional', (t) => {
+  if (!fs.existsSync(queuePath)) {
+    const canonicalNames = new Set(canonical.map(item => item.name));
+    assert.ok(expectedNames.every(name => !canonicalNames.has(name)));
+    t.skip('private staging queue is intentionally absent from a clean public checkout');
+    return;
+  }
   const staged = queue.filter(item => item.provenance?.researchRunId === RUN_ID);
   assert.deepStrictEqual(staged.map(item => item.name).sort(), [...expectedNames].sort());
   assert.ok(staged.every(item => item.promotionEligible === false));

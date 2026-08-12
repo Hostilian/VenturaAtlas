@@ -18,7 +18,7 @@ function atomicJsonWrite(targetPath, value) {
 
 function main() {
   const isCheckMode = process.argv.includes('--check');
-  const truth = getRepositoryTruth();
+  const truth = getRepositoryTruth({ includePrivateStaging: false });
 
   // A tracked generated file cannot embed HEAD: committing that file changes HEAD
   // and makes the freshly committed output stale. Use the canonical content
@@ -47,6 +47,7 @@ function main() {
     project: 'VenturaAtlas',
     version: truth.version,
     schemaVersion: truth.schemaVersion,
+    privateStagingIncluded: false,
     dataRevision: truth.canonicalDataRevision,
     buildRevision,
     generatedAt: existingTimestamp,
@@ -64,6 +65,7 @@ function main() {
       current.project === metaData.project &&
       current.version === metaData.version &&
       current.schemaVersion === metaData.schemaVersion &&
+      current.privateStagingIncluded === false &&
       current.dataRevision === metaData.dataRevision &&
       current.buildRevision === metaData.buildRevision &&
       !Object.hasOwn(current, 'gitCommit') &&

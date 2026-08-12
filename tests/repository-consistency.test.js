@@ -25,7 +25,8 @@ test('Repository Consistency — Metadata Count Alignment', () => {
   const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas.ideas || []);
 
   assert.strictEqual(meta.counts.ideas, ideas.length, `repository-meta.json counts.ideas (${meta.counts.ideas}) matches ideas.json length (${ideas.length})`);
-  const truth = getRepositoryTruth();
+  const truth = getRepositoryTruth({ includePrivateStaging: false });
+  assert.strictEqual(meta.privateStagingIncluded, false);
   assert.strictEqual(meta.counts.canonicalIdeas, truth.counts.canonicalIdeas);
   assert.strictEqual(meta.counts.stagedIdeas, truth.counts.stagedIdeas);
   assert.strictEqual(meta.counts.totalIdeas, truth.counts.totalIdeas);

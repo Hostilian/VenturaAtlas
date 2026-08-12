@@ -19,7 +19,8 @@ function computeFileHash(filePath) {
   return { sha256, bytes: content.length };
 }
 
-function getRepositoryTruth() {
+function getRepositoryTruth(options = {}) {
+  const includePrivateStaging = options.includePrivateStaging !== false;
   const pkg = JSON.parse(fs.readFileSync(PACKAGE_PATH, 'utf8'));
   const version = pkg.version || '2.3.0';
 
@@ -36,7 +37,7 @@ function getRepositoryTruth() {
   }
 
   let stagedCandidateCount = 0;
-  if (fs.existsSync(QUEUE_PATH)) {
+  if (includePrivateStaging && fs.existsSync(QUEUE_PATH)) {
     const raw = JSON.parse(fs.readFileSync(QUEUE_PATH, 'utf8'));
     const list = Array.isArray(raw) ? raw : (raw.ideas || raw.queue || []);
     stagedCandidateCount = list.length;
@@ -105,7 +106,7 @@ function getRepositoryTruth() {
 
   // Component Revisions
   const canonicalRevision = computeFileHash(IDEAS_PATH).sha256?.substring(0, 16) || 'none';
-  const stagingRevision = computeFileHash(QUEUE_PATH).sha256?.substring(0, 16) || 'none';
+  const stagingRevision = includePrivateStaging ? (computeFileHash(QUEUE_PATH).sha256?.substring(0, 16) || 'none') : 'private-withheld';
   const taxonomyRevision = computeFileHash(CATEGORIES_PATH).sha256?.substring(0, 16) || 'none';
   const sourcesRevision = computeFileHash(SOURCES_PATH).sha256?.substring(0, 16) || 'none';
   const rankingsRevision = computeFileHash(RANKINGS_PATH).sha256?.substring(0, 16) || 'none';
@@ -120,13 +121,14 @@ function getRepositoryTruth() {
   const canonicalDataRevision = masterHasher.digest('hex').substring(0, 16);
 
   const fileManifests = {};
-  [
+  const manifestFiles = [
     'data/ideas.json',
-    'data/idea-staging-queue.json',
     'data/categories.json',
     'data/sources.json',
     'data/rankings.json'
-  ].forEach(relFile => {
+  ];
+  if (includePrivateStaging) manifestFiles.splice(1, 0, 'data/idea-staging-queue.json');
+  manifestFiles.forEach(relFile => {
     const full = path.join(ROOT, relFile);
     const hashObj = computeFileHash(full);
     fileManifests[path.basename(relFile)] = {
@@ -138,6 +140,7 @@ function getRepositoryTruth() {
   return {
     version,
     schemaVersion: '2.0.0',
+    privateStagingIncluded: includePrivateStaging,
     canonicalDataRevision,
     revisions: {
       canonicalRevision,

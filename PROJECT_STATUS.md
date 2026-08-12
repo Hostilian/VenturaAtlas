@@ -73,8 +73,8 @@
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.3.0
 - Canonical Ideas: 294
-- Staged Ideas: 216
-- Total Ideas: 510
+- Staged Ideas: 0
+- Total Ideas: 294
 - Categories: 122
 - Source References: 96
 - Generated Prompts: 4425
