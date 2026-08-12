@@ -64,24 +64,22 @@
     "check": "npm run quality:source"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.758.0",
-    "@aws-sdk/s3-request-presigner": "3.758.0",
-    "@types/sqlite3": "3.1.11",
-    "ajv": "8.17.1",
+    "@aws-sdk/client-s3": "3.1108.0",
+    "@aws-sdk/s3-request-presigner": "3.1108.0",
+    "ajv": "8.20.0",
     "ajv-formats": "3.0.1",
-    "express": "4.21.2",
+    "express": "4.22.2",
     "express-rate-limit": "7.5.0",
     "helmet": "8.0.0",
     "jose": "5.10.0",
-    "sqlite3": "5.1.7",
     "stripe": "17.7.0",
-    "supertest": "7.0.0",
+    "supertest": "7.2.2",
     "tsx": "4.19.3",
     "typescript": "5.7.3",
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@playwright/test": "1.49.1",
+    "@playwright/test": "1.62.1",
     "@types/express": "5.0.0",
     "@types/node": "22.13.4",
     "@types/supertest": "6.0.2"

@@ -14,6 +14,7 @@
     { "id": "F-011", "severity": "P1", "status": "open", "summary": "provider 401/429 runtime results are not fully wired into shared KeyState health" },
     { "id": "F-012", "severity": "P1", "status": "open", "summary": "subprocess timeouts do not yet prove descendant process-tree termination on every platform" },
     { "id": "F-013", "severity": "P1", "status": "open", "summary": "cloud changes are locally committed but not deployed or off-laptop proven" },
-    { "id": "F-014", "severity": "P2", "status": "open", "summary": "ShockGraph mapping coverage is 5/294 and current-world research is bounded, not exhaustive" }
+    { "id": "F-014", "severity": "P2", "status": "open", "summary": "ShockGraph mapping coverage is 5/294 and current-world research is bounded, not exhaustive" },
+    { "id": "F-015", "severity": "P0", "status": "fixed", "summary": "dependency tree contained 33 advisories, including two critical transitive packages; patched or unused chains now audit at zero" }
   ]
 }
