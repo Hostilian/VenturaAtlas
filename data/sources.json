@@ -2644,5 +2644,383 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s120",
+    "title": "Protecting and empowering energy consumers",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/markets-and-consumers/energy-consumers-and-prosumers/protecting-and-empowering-energy-consumers_en",
+    "supports": [
+      "Energy-sharing and multiple-supplier rules apply by 17 July 2026",
+      "National implementation still determines settlement details"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s121",
+    "title": "DAC8",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/taxation/tax-transparency-cooperation/administrative-co-operation-and-mutual-assistance/directive-administrative-cooperation-dac/dac8_en",
+    "supports": [
+      "DAC8 applies from 1 January 2026",
+      "The first reporting year is 2026 and exchanges are due by 30 September 2027"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s122",
+    "title": "Digital euro scheme rulebook",
+    "publisher": "European Central Bank",
+    "url": "https://www.ecb.europa.eu/euro/digital_euro/timeline/rulebook/html/index.en.html",
+    "supports": [
+      "Draft rulebook v0.91 and testing, UX, process, API, security, dispute, and settlement annexes were published on 2 July 2026",
+      "Issuance remains contingent on EU legislation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s123",
+    "title": "European Health Data Space Regulation",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space-regulation-ehds_en",
+    "supports": [
+      "Key implementing acts are due by March 2027",
+      "Major primary- and secondary-use provisions apply gradually from 2029"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s124",
+    "title": "EHDS Platform",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/ehealth-digital-health-and-care/ehds-action/ehds-platform_en",
+    "supports": [
+      "European testing environments will automatically test harmonised EHR components",
+      "Manufacturers must use official environments before market placement and retain results in technical documentation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s125",
+    "title": "The Net-Zero Industry Act",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/industry/sustainability/net-zero-industry-act_en",
+    "supports": [
+      "Specified renewable auctions apply resilience, sustainability, cybersecurity, responsible-business, and delivery criteria",
+      "Non-price criteria cover at least 30 percent of annual auction volume or 6 GW per country"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s126",
+    "title": "New rules for urban wastewater management",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/news/new-rules-urban-wastewater-management-set-enter-force-2024-12-20_en",
+    "supports": [
+      "Pharmaceutical and cosmetics producers must cover at least 80 percent of micropollutant removal costs",
+      "The rule creates multi-party formulation, volume, evidence, and fee-allocation workflows"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s127",
+    "title": "Interoperability assessments are now mandatory",
+    "publisher": "European Commission - Interoperable Europe Portal",
+    "url": "https://interoperable-europe.ec.europa.eu/interoperable-europe/news/interoperability-assessments-are-now-mandatory",
+    "supports": [
+      "Assessments became mandatory on 12 January 2025 for relevant new or revised cross-border digital public-service requirements",
+      "Assessments cover legal, organisational, semantic, and technical interoperability"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s128",
+    "title": "Revised Industrial Emissions Directive comes into effect",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/news/revised-industrial-emissions-directive-comes-effect-2024-08-02_en",
+    "supports": [
+      "The revised directive tightens emissions and permit conditions and mandates electronic permitting",
+      "Operating permits constrain around 75,000 large installations and farms"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s129",
+    "title": "Import Control System 2",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/customs-4/customs-security/ics2_en",
+    "supports": [
+      "ICS2 safety and security requirements became fully mandatory across all modes on 1 September 2025",
+      "Accurate and complete ENS data is required and may be supplied through linked partial filings"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s130",
+    "title": "New EU rules on substances of human origin",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/blood-tissues-cells-and-organs/soho-regulation/new-eu-rules-substances-human-origin_en",
+    "supports": [
+      "The SoHO Regulation applies from 7 August 2027 with later application for specified provisions",
+      "The framework strengthens crisis preparedness, resilience, traceability, and digital coordination"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s131",
+    "title": "Water Resilience Strategy Actions Tracker",
+    "publisher": "European Commission - DG Environment",
+    "url": "https://environment.ec.europa.eu/topics/water/water-resilience-strategy-actions-tracker_en",
+    "supports": [
+      "The strategy advances water reuse, digitalisation, smart metering, and AI-supported water management",
+      "A policy signal does not validate site-level water-risk predictions or buyer willingness to pay"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s132",
+    "title": "SAFE - Security Action for Europe",
+    "publisher": "European Commission - DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/eu-defence-industry/safe-security-action-europe_en",
+    "supports": [
+      "SAFE provides up to EUR150 billion in long-maturity loans for defence investments",
+      "Common-procurement and category-specific contractor conditions create eligibility evidence requirements"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s133",
+    "title": "EU Customs Reform",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/customs/eu-customs-reform_en",
+    "supports": [
+      "The Customs Data Hub is intended to create one environment for product and supply-chain information",
+      "The Hub timeline remains phased and the architecture has evolved through legislation and implementation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s134",
+    "title": "Rating scheme for data centres in the EU",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/news/rating-scheme-data-centres-eu-commission-launches-call-feedback-2026-03-27_en",
+    "supports": [
+      "The EU database already collects data-centre performance indicators",
+      "The rating scheme covers energy, water, renewables, heat reuse, and grid efficiency"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s135",
+    "title": "REPowerEU - phase out of Russian energy imports",
+    "publisher": "European Commission - DG Energy",
+    "url": "https://energy.ec.europa.eu/strategy/repowereu-phase-out-russian-energy-imports_en",
+    "supports": [
+      "Regulation EU/2026/261 turned the Russian-gas phase-out into EU law",
+      "Russian LNG is scheduled to be phased out by end-2026 and pipeline gas by 30 November 2027"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s136",
+    "title": "Gigabit Infrastructure Act",
+    "publisher": "European Commission - DG CONNECT",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/gigabit-infrastructure-act",
+    "supports": [
+      "The GIA fully applies from 12 May 2026",
+      "It promotes reuse of ducts and poles and coordination of civil works"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s137",
+    "title": "Power-Flexible AI Data Centers: A New Paradigm for Grid-Responsive Compute",
+    "publisher": "arXiv - Williams et al.",
+    "url": "https://arxiv.org/abs/2606.25098",
+    "supports": [
+      "A real GPU-cluster deployment demonstrated rapid reduction, sustained curtailment, and workload shifting",
+      "Technical feasibility does not establish a liquid flexibility market or broker demand"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-iii-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

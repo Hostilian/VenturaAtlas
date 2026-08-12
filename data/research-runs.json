@@ -691,5 +691,408 @@
     "startedAt": "2026-08-12T15:00:00+00:00",
     "endedAt": "2026-08-12T15:00:00+00:00",
     "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-005-20260812-expansion-iii",
+    "baselineCommit": "8078c75095595d1a4a93045d44d015b8a504e9a6",
+    "questions": [
+      "Which of 24 proposals are distinct from 294 canonical and 231 private staged records?",
+      "Which implementation windows are verified and which are drafts or future architecture?",
+      "Which existing or new targets deserve the requested 11-item validation queue without changing canonical ranking authority?"
+    ],
+    "queries": [
+      "EU energy sharing multiple suppliers July 2026",
+      "DAC8 2026 collection 2027 reporting",
+      "digital euro v0.91 draft rulebook",
+      "methane import MRV 2027 and Russian gas phase-out",
+      "NZIA non-price auction criteria",
+      "EHDS testing environments and secondary-use timeline",
+      "urban wastewater producer responsibility 80 percent",
+      "interoperability assessments January 2025",
+      "ICS2 mandatory all modes",
+      "SoHO August 2027",
+      "SAFE procurement eligibility",
+      "Customs Data Hub timeline"
+    ],
+    "sourceCandidates": [
+      "s120",
+      "s121",
+      "s122",
+      "s123",
+      "s124",
+      "s125",
+      "s126",
+      "s127",
+      "s128",
+      "s129",
+      "s130",
+      "s131",
+      "s132",
+      "s133",
+      "s134",
+      "s135",
+      "s136",
+      "s137",
+      "s65",
+      "s82",
+      "s88",
+      "s89",
+      "s105"
+    ],
+    "inclusions": [
+      "candidate-670c1fa6-1d19-5ac0-a6fc-cfef651318b6",
+      "candidate-d418002b-b14f-552d-b727-685ed8ad7838",
+      "candidate-04f17aec-388a-5013-bcae-34fef23dbf29",
+      "candidate-e6806538-76dd-50d8-bb5c-a199dcf026af",
+      "candidate-6ff41838-249d-5913-bb8f-1b0d2679a580",
+      "candidate-82bab1bf-8e9b-5d2a-a506-3993f04d2af0",
+      "candidate-e8cbd8ea-6371-5cde-bbeb-f40b3ffb96bd",
+      "candidate-9ece6f52-f118-56cd-ac52-4958c6bc6f49",
+      "candidate-eb7452bb-060f-5de3-bc87-4dd957942d29",
+      "candidate-fb95c237-1685-5798-98dd-5bc9d9920481"
+    ],
+    "exclusions": [
+      "Energy Sharing Settlement Router",
+      "NZIA Resilience BOM Compiler",
+      "DAC8 Data Repair Engine",
+      "EHDS Study Permit Compiler",
+      "Micropollutant EPR Ledger",
+      "ICS2 Cargo Data Repair Gateway",
+      "Duct & Civil Works Router",
+      "Robot Safety-Case CI",
+      "Refrigerant Lifecycle Ledger",
+      "Data-Centre Rating Digital Twin",
+      "Biotech SandboxOps",
+      "Agent-Commerce Mandate Reconciler",
+      "Shortage-Aware SoHO Logistics API",
+      "Water-Smart Factory Optimizer"
+    ],
+    "claimsChanged": [
+      "Ten distinct candidates staged; fourteen proposals mapped to existing families, merged as features, or retained watch-only.",
+      "ICS2 full mandatory cross-modal timing is recorded as 1 September 2025; the June 2026 source is a status announcement.",
+      "Digital euro v0.91 remains draft and issuance remains contingent on legislation.",
+      "All analyst scores and portfolio-tier assertions remain provisional and non-ranking-eligible."
+    ],
+    "deduplicationDecisions": {
+      "Molecule Passport / Gas Provenance Graph": {
+        "decision": "stage_distinct_commingled_provenance_layer",
+        "targets": [
+          "idea-399",
+          "idea-400"
+        ]
+      },
+      "Energy Sharing Settlement Router": {
+        "decision": "enrich_existing_exact_family",
+        "targets": [
+          "idea-392"
+        ]
+      },
+      "NZIA Resilience BOM Compiler": {
+        "decision": "exact_duplicate",
+        "targets": [
+          "idea-373"
+        ]
+      },
+      "DAC8 Data Repair Engine": {
+        "decision": "exact_duplicate_private_candidate",
+        "targets": [
+          "candidate-913fb71e-5066-49a7-aab7-4a51c92dc54c"
+        ]
+      },
+      "EHDS Study Permit Compiler": {
+        "decision": "exact_duplicate",
+        "targets": [
+          "idea-379"
+        ]
+      },
+      "Micropollutant EPR Ledger": {
+        "decision": "existing_family",
+        "targets": [
+          "idea-293",
+          "idea-378",
+          "idea-384"
+        ]
+      },
+      "EHDS EHR Preflight CI": {
+        "decision": "stage_distinct_candidate",
+        "targets": [
+          "idea-379"
+        ]
+      },
+      "Digital Euro Conformance CI": {
+        "decision": "stage_draft_sensitive_candidate",
+        "targets": [
+          "idea-304"
+        ]
+      },
+      "GovInterop CI": {
+        "decision": "stage_distinct_candidate",
+        "targets": [
+          "idea-169",
+          "idea-334"
+        ]
+      },
+      "Industrial Permit Diff Engine": {
+        "decision": "stage_distinct_candidate",
+        "targets": []
+      },
+      "ICS2 Cargo Data Repair Gateway": {
+        "decision": "exact_duplicate_private_candidate",
+        "targets": [
+          "candidate-3985f6d1-450a-4a96-bd1f-872648c43b03"
+        ]
+      },
+      "Duct & Civil Works Router": {
+        "decision": "exact_duplicate",
+        "targets": [
+          "idea-287"
+        ]
+      },
+      "SoHO Supply Continuity Router": {
+        "decision": "stage_distinct_safety_constrained_candidate",
+        "targets": [
+          "idea-385",
+          "idea-391"
+        ]
+      },
+      "Industrial Water Dependency Graph": {
+        "decision": "stage_distinct_underwriting_candidate",
+        "targets": [
+          "idea-280"
+        ]
+      },
+      "SAFE Procurement Eligibility Graph": {
+        "decision": "stage_distinct_specialist_candidate",
+        "targets": [
+          "idea-374"
+        ]
+      },
+      "Customs Product Identity Compiler": {
+        "decision": "stage_distinct_identity_layer",
+        "targets": [
+          "idea-261",
+          "idea-361"
+        ]
+      },
+      "Robot Safety-Case CI": {
+        "decision": "duplicate_existing_family",
+        "targets": [
+          "idea-299",
+          "idea-367"
+        ]
+      },
+      "Refrigerant Lifecycle Ledger": {
+        "decision": "duplicate_existing_family",
+        "targets": [
+          "idea-400",
+          "candidate-e67ca315-3ce7-4b92-8401-660d0eedbf71"
+        ]
+      },
+      "Data-Centre Rating Digital Twin": {
+        "decision": "exact_duplicate",
+        "targets": [
+          "idea-389"
+        ]
+      },
+      "Grid-Responsive Compute Broker": {
+        "decision": "stage_narrow_broker_layer",
+        "targets": [
+          "idea-396"
+        ]
+      },
+      "Biotech SandboxOps": {
+        "decision": "watch_only_policy_dependent_not_staged",
+        "targets": []
+      },
+      "Agent-Commerce Mandate Reconciler": {
+        "decision": "merge_into_machine_authority_family",
+        "targets": [
+          "idea-213",
+          "idea-341",
+          "candidate-16a1a702-eda3-56d1-81b0-f2cfc321a71d"
+        ]
+      },
+      "Shortage-Aware SoHO Logistics API": {
+        "decision": "feature_of_soho_supply_continuity_router",
+        "targets": []
+      },
+      "Water-Smart Factory Optimizer": {
+        "decision": "feature_of_industrial_water_graph",
+        "targets": []
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "Molecule Passport / Gas Provenance Graph",
+        "analystProvisionalScore": 97,
+        "targetRefs": [
+          "candidate-670c1fa6-1d19-5ac0-a6fc-cfef651318b6",
+          "idea-399"
+        ],
+        "nextGate": "Model one synthetic US-LNG-to-EU cargo with commingling, unknown origin, expired verification, and a missing contract clause; replay it with four domain practitioners."
+      },
+      {
+        "rank": 2,
+        "proposal": "Energy Sharing Settlement Router",
+        "analystProvisionalScore": 96,
+        "targetRefs": [
+          "idea-392"
+        ],
+        "nextGate": "Use one Member State, one 20-unit building, two suppliers, 15-minute meter values, and four allocation rules; verify settlement instructions with a utility or community provider."
+      },
+      {
+        "rank": 3,
+        "proposal": "NZIA Resilience BOM Compiler",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "idea-373"
+        ],
+        "nextGate": "Load one solar project BOM and one auction's resilience criteria; quantify supplier substitutions, cost, evidence gaps, and projected score impact with procurement practitioners."
+      },
+      {
+        "rank": 4,
+        "proposal": "DAC8 Data Repair Engine",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-913fb71e-5066-49a7-aab7-4a51c92dc54c"
+        ],
+        "nextGate": "Inject missing TINs, duplicate identities, residency conflicts, asset ambiguity, and ledger mismatches into a 100,000-user fixture; measure repair completeness and reviewer effort."
+      },
+      {
+        "rank": 5,
+        "proposal": "EHDS Study Permit Compiler",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "idea-379"
+        ],
+        "nextGate": "Compile one Czech-German-Portuguese diabetes study into variables, dataset feasibility, minimum-necessary fields, and permit requirements without processing patient data."
+      },
+      {
+        "rank": 6,
+        "proposal": "Micropollutant EPR Ledger",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "idea-293",
+          "idea-378",
+          "idea-384"
+        ],
+        "nextGate": "Map one cosmetics portfolio from SKU and formulation to substances, national volumes, evidence, fee scenarios, and reformulation economics with a producer and wastewater expert."
+      },
+      {
+        "rank": 7,
+        "proposal": "EHDS EHR Preflight CI",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "candidate-d418002b-b14f-552d-b727-685ed8ad7838"
+        ],
+        "nextGate": "Test two real EHR export/import implementations against 100 synthetic edge cases and compare findings with official environment requirements and vendor remediation time."
+      },
+      {
+        "rank": 8,
+        "proposal": "Digital Euro Conformance CI",
+        "analystProvisionalScore": 92,
+        "targetRefs": [
+          "candidate-04f17aec-388a-5013-bcae-34fef23dbf29"
+        ],
+        "nextGate": "Implement 100 v0.91 scenarios against one reference wallet flow and measure test determinism, specification ambiguity, and PSP interest while legislation remains unresolved."
+      },
+      {
+        "rank": 9,
+        "proposal": "GovInterop CI",
+        "analystProvisionalScore": 92,
+        "targetRefs": [
+          "candidate-e6806538-76dd-50d8-bb5c-a199dcf026af"
+        ],
+        "nextGate": "Replay ten historical public-system changes with two integrators and compare generated impact findings, false positives, and assessment preparation time against their prior process."
+      },
+      {
+        "rank": 10,
+        "proposal": "Industrial Permit Diff Engine",
+        "analystProvisionalScore": 91,
+        "targetRefs": [
+          "candidate-6ff41838-249d-5913-bb8f-1b0d2679a580"
+        ],
+        "nextGate": "Replay 20 historical plant modifications in one industrial vertical with environmental engineers and measure recall, review effort, false assurance, and avoided delay."
+      },
+      {
+        "rank": 11,
+        "proposal": "ICS2 Cargo Data Repair Gateway",
+        "analystProvisionalScore": 91,
+        "targetRefs": [
+          "candidate-3985f6d1-450a-4a96-bd1f-872648c43b03"
+        ],
+        "nextGate": "Replay 10,000 historical ENS records, learn shipper-specific errors, and compare preflight findings against actual rejects, delays, and broker corrections."
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "rank": 1,
+        "proposal": "Molecule Passport",
+        "targetRefs": [
+          "candidate-670c1fa6-1d19-5ac0-a6fc-cfef651318b6"
+        ]
+      },
+      {
+        "rank": 2,
+        "proposal": "Energy Sharing Settlement Router",
+        "targetRefs": [
+          "idea-392"
+        ]
+      },
+      {
+        "rank": 3,
+        "proposal": "NZIA Resilience BOM Compiler",
+        "targetRefs": [
+          "idea-373"
+        ]
+      },
+      {
+        "rank": 4,
+        "proposal": "DAC8 Data Repair Engine",
+        "targetRefs": [
+          "candidate-913fb71e-5066-49a7-aab7-4a51c92dc54c"
+        ]
+      },
+      {
+        "rank": 5,
+        "proposal": "EHDS Study Permit Compiler",
+        "targetRefs": [
+          "idea-379"
+        ]
+      }
+    ],
+    "researchBranches": [
+      "commingled_asset_ledgers",
+      "continuous_regulatory_conformance",
+      "regulatory_data_debt_windows"
+    ],
+    "portfolioFamilies": [
+      "machine_authority",
+      "regulated_attribute_infrastructure",
+      "european_rail_adapters",
+      "continuous_conformance",
+      "scarcity_intelligence"
+    ],
+    "newScoringDimensions": [
+      "economicCoupling",
+      "involuntaryFrequency",
+      "evidenceGravity"
+    ],
+    "researchPasses": [
+      "new_obligation",
+      "official_rail",
+      "regulated_attribute",
+      "data_debt",
+      "preflight",
+      "physical_bottleneck",
+      "forbidden_old_workflow",
+      "machine_consequence"
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v6-attribute-data-debt-conformance",
+    "startedAt": "2026-08-12T16:00:00+00:00",
+    "endedAt": "2026-08-12T16:00:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
   }
 ]
