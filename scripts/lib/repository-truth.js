@@ -12,9 +12,17 @@ const PROMPTS_DIR = path.join(ROOT, 'prompts', 'idea-specific');
 const DOSSIERS_DIR = path.join(ROOT, 'ideas');
 const PACKAGE_PATH = path.join(ROOT, 'package.json');
 
+function normalizedFileBytes(filePath) {
+  const content = fs.readFileSync(filePath);
+  if (/\.(json|md|html|css|js|txt|xml|csv)$/i.test(filePath)) {
+    return Buffer.from(content.toString('utf8').replace(/\r\n/g, '\n'), 'utf8');
+  }
+  return content;
+}
+
 function computeFileHash(filePath) {
   if (!fs.existsSync(filePath)) return { sha256: null, bytes: 0 };
-  const content = fs.readFileSync(filePath);
+  const content = normalizedFileBytes(filePath);
   const sha256 = crypto.createHash('sha256').update(content).digest('hex');
   return { sha256, bytes: content.length };
 }
@@ -115,7 +123,7 @@ function getRepositoryTruth(options = {}) {
   const masterHasher = crypto.createHash('sha256');
   [IDEAS_PATH, CATEGORIES_PATH, SOURCES_PATH, RANKINGS_PATH].forEach(fp => {
     if (fs.existsSync(fp)) {
-      masterHasher.update(fs.readFileSync(fp));
+      masterHasher.update(normalizedFileBytes(fp));
     }
   });
   const canonicalDataRevision = masterHasher.digest('hex').substring(0, 16);
@@ -174,5 +182,6 @@ function getRepositoryTruth(options = {}) {
 
 module.exports = {
   getRepositoryTruth,
-  computeFileHash
+  computeFileHash,
+  normalizedFileBytes
 };

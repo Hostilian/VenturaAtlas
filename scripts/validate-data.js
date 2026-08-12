@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
 const crypto = require('crypto');
+const { normalizedFileBytes } = require('./lib/repository-truth');
 
 const ROOT = path.resolve(__dirname, '..');
 const ajv = new Ajv({ allErrors: true, strict: false });
@@ -184,7 +185,7 @@ function main() {
   for (const relativePath of revisionInputs) {
     const fullPath = path.join(ROOT, relativePath);
     revisionHasher.update(relativePath);
-    if (fs.existsSync(fullPath)) revisionHasher.update(fs.readFileSync(fullPath));
+    if (fs.existsSync(fullPath)) revisionHasher.update(normalizedFileBytes(fullPath));
   }
   const validationRevision = revisionHasher.digest('hex');
   const summaryPath = path.join(ROOT, 'data', 'validation-summary.json');

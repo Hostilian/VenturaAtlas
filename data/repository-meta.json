@@ -3,9 +3,9 @@
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
   "privateStagingIncluded": false,
-  "dataRevision": "75f3adce53cce234",
-  "buildRevision": "2.3.0-75f3adce53cce234",
-  "generatedAt": "2026-08-12T12:52:33.059Z",
+  "dataRevision": "3875d806112da7d5",
+  "buildRevision": "2.3.0-3875d806112da7d5",
+  "generatedAt": "2026-08-12T12:55:14.990Z",
   "counts": {
     "ideas": 294,
     "canonicalIdeas": 294,
@@ -25,11 +25,11 @@
     "launchPlans": 60
   },
   "revisions": {
-    "canonicalRevision": "f0aff5a18838de39",
+    "canonicalRevision": "b1f5b764ca5f247a",
     "stagingRevision": "private-withheld",
     "taxonomyRevision": "6945e3a804df238b",
-    "sourcesRevision": "6588d632ea2b79e0",
-    "rankingsRevision": "fb287a95fde6ef9f",
-    "canonicalDataRevision": "75f3adce53cce234"
+    "sourcesRevision": "1844fdc3741c4fcf",
+    "rankingsRevision": "ccf57d6d4b72bdce",
+    "canonicalDataRevision": "3875d806112da7d5"
   }
 }
