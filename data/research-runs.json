@@ -1786,5 +1786,400 @@
     "startedAt": "2026-08-12T18:30:00+00:00",
     "endedAt": "2026-08-12T18:30:00+00:00",
     "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-008-20260812-expansion-vi",
+    "baselineCommit": "460c7754b18139b4fcf5d9175cb9a761c98aa777",
+    "questions": [
+      "Which of twenty proposals own a distinct continuity, readiness, underwriting, qualification, or commercialisation transition?",
+      "Which proposals are modules or exact matches for existing canonical/private families?",
+      "Which 2026 policy signals are operational, in application, under consultation, or still forthcoming?"
+    ],
+    "queries": [
+      "EUCC assurance continuity",
+      "HERA ever-warm readiness stockpiling",
+      "EUIPO IP-backed finance",
+      "IMERA application",
+      "academic spinout blueprint",
+      "eSAF investment and ReFuelEU",
+      "construction products regulation used products",
+      "eInvoicing revision",
+      "agri-food unfair trading practices",
+      "public procurement revision"
+    ],
+    "sourceCandidates": [
+      "s170",
+      "s171",
+      "s172",
+      "s173",
+      "s174",
+      "s175",
+      "s176",
+      "s177",
+      "s178",
+      "s179",
+      "s180",
+      "s181",
+      "s182",
+      "s183"
+    ],
+    "inclusions": [
+      "candidate-19f5af50-aa76-59b2-bcb9-b9a17386eb4d",
+      "candidate-ea7a6259-d204-542d-9681-259c22c111d9",
+      "candidate-f7575b19-2341-58a4-99e9-42b0b20df4f9",
+      "candidate-192e8d1b-3c62-52ee-9d73-3aa95b5f903d",
+      "candidate-ec6fc182-3e1e-52ba-b5a6-70ed5deae484",
+      "candidate-a81626c8-205d-5982-adfb-5faa255f19ce",
+      "candidate-19dcd04b-8982-5224-8856-1d2c00380bea",
+      "candidate-7cff6cd6-6f34-5e12-84de-ffcd4f9e60c5",
+      "candidate-ec85816e-277f-50ff-9dad-35610465dfc0",
+      "candidate-4e0a154f-4244-56cc-81a1-8c9033b19e2c",
+      "candidate-063c2845-603f-5541-9858-3663c1747dd5",
+      "candidate-cb35453a-8b7e-5f5d-bacd-e5ea3e332f61"
+    ],
+    "exclusions": [
+      "Cyber Assurance Reuse Graph",
+      "Academic IP Clean-Title Graph",
+      "Innovation Procurement Qualification Passport",
+      "Cyber Assessment Capacity Router",
+      "SAF Airport Deliverability Router",
+      "Emergency Supplier Qualification Graph",
+      "Public Procurement Evidence Compiler",
+      "IP Royalty Underwriting Engine"
+    ],
+    "claimsChanged": [
+      "Twelve distinct candidates staged; eight proposals mapped to modules or exact existing families.",
+      "EUCC assurance continuity and IMERA application are operational forcing functions; the spinout Blueprint, procurement revision, and eInvoicing revision are still developing.",
+      "HERA and ReFuelEU confirm multi-party readiness and delivery dependencies, not customer demand for these products.",
+      "IP-backed finance has an endorsed roadmap and structural barriers, but lender adoption, recovery data, and advance rates remain unverified.",
+      "All scores and tiers remain analyst hypotheses and are not ranking eligible."
+    ],
+    "deduplicationDecisions": {
+      "Cyber Assurance Continuity OS": {
+        "decision": "stage_distinct_assurance_continuity",
+        "targets": []
+      },
+      "Medical Countermeasure Readiness OS": {
+        "decision": "stage_distinct_activation_readiness",
+        "targets": [
+          "idea-377"
+        ]
+      },
+      "IP Collateral Underwriter": {
+        "decision": "stage_distinct_recovery_underwriting",
+        "targets": []
+      },
+      "IMERA Crisis Capacity OS": {
+        "decision": "stage_distinct_crisis_production",
+        "targets": [
+          "idea-373"
+        ]
+      },
+      "University Spinout Deal OS": {
+        "decision": "stage_distinct_transaction_system",
+        "targets": []
+      },
+      "eSAF Offtake Bankability Engine": {
+        "decision": "stage_distinct_project_bankability",
+        "targets": [
+          "idea-405",
+          "candidate-9458dea6-f31b-550d-b9c8-ea021f5d3c39"
+        ]
+      },
+      "Strategic API Stockpile Rotation OS": {
+        "decision": "stage_distinct_inventory_rotation",
+        "targets": [
+          "idea-377"
+        ]
+      },
+      "Construction Certification Delta CI": {
+        "decision": "stage_vertical_change_assurance",
+        "targets": [
+          "candidate-5797eef1-9320-5f18-ac18-4acd582dc221",
+          "idea-175",
+          "idea-394"
+        ]
+      },
+      "Critical-Medicine Source-Change Compiler": {
+        "decision": "stage_distinct_source_qualification",
+        "targets": [
+          "idea-377"
+        ]
+      },
+      "Cyber Assurance Reuse Graph": {
+        "decision": "module_of_cyber_assurance_continuity",
+        "targets": []
+      },
+      "Academic IP Clean-Title Graph": {
+        "decision": "module_of_spinout_and_ip_underwriting",
+        "targets": []
+      },
+      "Innovation Procurement Qualification Passport": {
+        "decision": "exact_private_and_canonical_family",
+        "targets": [
+          "candidate-9ece6f52-f118-56cd-ac52-4958c6bc6f49",
+          "idea-211",
+          "idea-265"
+        ]
+      },
+      "eInvoice Semantic Repair Gateway": {
+        "decision": "stage_distinct_semantic_repair",
+        "targets": [
+          "idea-215",
+          "candidate-f97bf26a-9e2b-4ae7-991f-d2279e8c6820"
+        ]
+      },
+      "Agri Contract Evidence Ledger": {
+        "decision": "stage_distinct_utp_evidence",
+        "targets": []
+      },
+      "Refurbished Construction Requalification Network": {
+        "decision": "stage_distinct_used_product_requalification",
+        "targets": [
+          "idea-175",
+          "idea-269"
+        ]
+      },
+      "Cyber Assessment Capacity Router": {
+        "decision": "module_of_assurance_graph_and_test_capacity",
+        "targets": [
+          "idea-294"
+        ]
+      },
+      "SAF Airport Deliverability Router": {
+        "decision": "module_of_esaf_bankability",
+        "targets": []
+      },
+      "Emergency Supplier Qualification Graph": {
+        "decision": "module_of_strategic_health_manufacturing",
+        "targets": [
+          "idea-377"
+        ]
+      },
+      "Public Procurement Evidence Compiler": {
+        "decision": "exact_existing_procurement_family",
+        "targets": [
+          "candidate-9ece6f52-f118-56cd-ac52-4958c6bc6f49",
+          "idea-211",
+          "idea-265"
+        ]
+      },
+      "IP Royalty Underwriting Engine": {
+        "decision": "module_of_ip_collateral_underwriter",
+        "targets": [
+          "idea-333"
+        ]
+      }
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "Cyber Assurance Continuity OS",
+        "analystProvisionalScore": 96,
+        "targetRefs": [
+          "candidate-19f5af50-aa76-59b2-bcb9-b9a17386eb4d"
+        ],
+        "nextGate": "Connect one real product repository to one EUCC target and have qualified assessors grade affected-evidence recall, precision, and false-safe decisions."
+      },
+      {
+        "rank": 2,
+        "proposal": "University Spinout Deal OS",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-ec6fc182-3e1e-52ba-b5a6-70ed5deae484"
+        ],
+        "nextGate": "Model 20 completed or anonymized university licence and spinout transactions; test cycle-time, issue discovery, and acceptance with TTOs and investors."
+      },
+      {
+        "rank": 3,
+        "proposal": "IP Collateral Underwriter",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "candidate-f7575b19-2341-58a4-99e9-42b0b20df4f9"
+        ],
+        "nextGate": "Underwrite 25 anonymized patent or software portfolios and test whether lenders find recovery, covenant, and advance-rate outputs decision-useful."
+      },
+      {
+        "rank": 4,
+        "proposal": "Medical Countermeasure Readiness OS",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "candidate-ea7a6259-d204-542d-9681-259c22c111d9"
+        ],
+        "nextGate": "Model one production line, run a bounded activation exercise, and compare predicted activation time and blockers with observed results."
+      },
+      {
+        "rank": 5,
+        "proposal": "Strategic API Stockpile Rotation OS",
+        "analystProvisionalScore": 94,
+        "targetRefs": [
+          "candidate-19dcd04b-8982-5224-8856-1d2c00380bea"
+        ],
+        "nextGate": "Optimize one real or representative inventory portfolio and measure expiry reduction, emergency coverage, and operational feasibility with reserve owners."
+      },
+      {
+        "rank": 6,
+        "proposal": "Construction Certification Delta CI",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "candidate-7cff6cd6-6f34-5e12-84de-ffcd4f9e60c5"
+        ],
+        "nextGate": "Ingest one product BOM, technical file, and engineering revision; compare reassessment findings with qualified reviewers."
+      },
+      {
+        "rank": 7,
+        "proposal": "eSAF Offtake Bankability Engine",
+        "analystProvisionalScore": 93,
+        "targetRefs": [
+          "candidate-a81626c8-205d-5982-adfb-5faa255f19ce"
+        ],
+        "nextGate": "Reconstruct ten eSAF project contract stacks and ask project-finance practitioners to distinguish credible FID paths from structurally weak projects."
+      },
+      {
+        "rank": 8,
+        "proposal": "IMERA Crisis Capacity OS",
+        "analystProvisionalScore": 95,
+        "targetRefs": [
+          "candidate-192e8d1b-3c62-52ee-9d73-3aa95b5f903d"
+        ],
+        "nextGate": "Simulate one crisis-demand scenario at a manufacturer and measure whether planners discover unmodelled blockers and produce a feasible activation plan."
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "rank": 1,
+        "proposal": "Cyber Assurance Continuity OS",
+        "targetRefs": [
+          "candidate-19f5af50-aa76-59b2-bcb9-b9a17386eb4d"
+        ],
+        "nextGate": "Connect one real product repository to one EUCC target and have qualified assessors grade affected-evidence recall, precision, and false-safe decisions."
+      },
+      {
+        "rank": 2,
+        "proposal": "University Spinout Deal OS",
+        "targetRefs": [
+          "candidate-ec6fc182-3e1e-52ba-b5a6-70ed5deae484"
+        ],
+        "nextGate": "Model 20 completed or anonymized university licence and spinout transactions; test cycle-time, issue discovery, and acceptance with TTOs and investors."
+      },
+      {
+        "rank": 3,
+        "proposal": "IP Collateral Underwriter",
+        "targetRefs": [
+          "candidate-f7575b19-2341-58a4-99e9-42b0b20df4f9"
+        ],
+        "nextGate": "Underwrite 25 anonymized patent or software portfolios and test whether lenders find recovery, covenant, and advance-rate outputs decision-useful."
+      },
+      {
+        "rank": 4,
+        "proposal": "Medical Countermeasure Readiness OS",
+        "targetRefs": [
+          "candidate-ea7a6259-d204-542d-9681-259c22c111d9"
+        ],
+        "nextGate": "Model one production line, run a bounded activation exercise, and compare predicted activation time and blockers with observed results."
+      },
+      {
+        "rank": 5,
+        "proposal": "Strategic API Stockpile Rotation OS",
+        "targetRefs": [
+          "candidate-19dcd04b-8982-5224-8856-1d2c00380bea"
+        ],
+        "nextGate": "Optimize one real or representative inventory portfolio and measure expiry reduction, emergency coverage, and operational feasibility with reserve owners."
+      },
+      {
+        "rank": 6,
+        "proposal": "Construction Certification Delta CI",
+        "targetRefs": [
+          "candidate-7cff6cd6-6f34-5e12-84de-ffcd4f9e60c5"
+        ],
+        "nextGate": "Ingest one product BOM, technical file, and engineering revision; compare reassessment findings with qualified reviewers."
+      },
+      {
+        "rank": 7,
+        "proposal": "eSAF Offtake Bankability Engine",
+        "targetRefs": [
+          "candidate-a81626c8-205d-5982-adfb-5faa255f19ce"
+        ],
+        "nextGate": "Reconstruct ten eSAF project contract stacks and ask project-finance practitioners to distinguish credible FID paths from structurally weak projects."
+      },
+      {
+        "rank": 8,
+        "proposal": "IMERA Crisis Capacity OS",
+        "targetRefs": [
+          "candidate-192e8d1b-3c62-52ee-9d73-3aa95b5f903d"
+        ],
+        "nextGate": "Simulate one crisis-demand scenario at a manufacturer and measure whether planners discover unmodelled blockers and produce a feasible activation plan."
+      }
+    ],
+    "killAndDowngradeDecisions": {
+      "Generic cybersecurity certification dashboard": "kill_authoritative_portal_exists",
+      "Generic medical stockpile dashboard": "kill_gap_is_readiness_not_inventory",
+      "Generic IP valuation PDF": "kill_need_underwriting_not_report",
+      "Academic spinout document generator": "downgrade_transaction_state_is_moat",
+      "Generic SAF marketplace": "kill_public_intermediation_emerging",
+      "Public procurement opportunity search": "crowded_existing_family"
+    },
+    "metaDiscoveries": [
+      "continuity_is_a_startup_category",
+      "reserve_is_not_ready",
+      "assurance_debt",
+      "intangible_to_bankable",
+      "research_commercialisation_infrastructure",
+      "crisis_readiness_option_value",
+      "contract_duration_mismatch"
+    ],
+    "portfolioFamilies": {
+      "AssuranceGraph": [
+        "candidate-19f5af50-aa76-59b2-bcb9-b9a17386eb4d",
+        "module:cyber-assurance-reuse-graph"
+      ],
+      "Strategic Health Manufacturing OS": [
+        "candidate-ea7a6259-d204-542d-9681-259c22c111d9",
+        "candidate-19dcd04b-8982-5224-8856-1d2c00380bea",
+        "candidate-ec85816e-277f-50ff-9dad-35610465dfc0"
+      ],
+      "Lab-to-Industry OS": [
+        "candidate-ec6fc182-3e1e-52ba-b5a6-70ed5deae484",
+        "candidate-f7575b19-2341-58a4-99e9-42b0b20df4f9",
+        "candidate-2fa25465-2747-46b7-a7db-530949f7c070",
+        "candidate-82e94c00-be1b-52f9-a6b4-4e78085bc4cd"
+      ]
+    },
+    "newScoringDimensions": [
+      "stateDecay"
+    ],
+    "researchPasses": [
+      "state_creation",
+      "state_decay",
+      "reserved_vs_ready",
+      "state_transition",
+      "qualification",
+      "duration_mismatch",
+      "collateral_conversion",
+      "evidence_reuse",
+      "reality_feedback",
+      "option_value",
+      "official_capture_risk",
+      "system_of_record_gravity"
+    ],
+    "omegaXiiContribution": {
+      "dependencyRecordsAdded": 6,
+      "shockRecordsAdded": 2,
+      "obligationRecordsAdded": 0,
+      "ecosystemRecordsAdded": 5,
+      "counterpartyAssessmentsAdded": 2,
+      "completionClaim": false
+    },
+    "attachment": {
+      "sha256": "B2B0F57F817EE550A8492E72A68697AE4BE3A1443B39C26750E289623895F951",
+      "bytes": 60085,
+      "lines": 2439,
+      "copiesProcessed": 1
+    },
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v9-continuity-readiness-bankability",
+    "startedAt": "2026-08-12T19:30:00+00:00",
+    "endedAt": "2026-08-12T19:30:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
   }
 ]

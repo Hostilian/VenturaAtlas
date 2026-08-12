@@ -159,3 +159,11 @@ Five supplied files resolved to two unique SHA-256 inputs: one Expansion V brief
 ShockGraph now contains 10 dependencies, 7 review-required shocks, 6 obligations, 10 ecosystem topologies, and 4 counterparty assessments. Seven of 294 canonical ideas have explicit dependency mappings (2.38%). New records cover industrial-carbon capacity, voluntary technology-infrastructure access, soil and PFAS policy, nature-restoration planning, the proposed Digital Networks Act, and adopted rail-capacity rules. Proposed law remains a dependency/watch state rather than an enacted shock.
 
 This increases sections 18–25 coverage but does not change the verdict: OMEGA XII remains incomplete until the explicit remaining work above is actually evidenced.
+
+## Expansion VI continuation — 12 August 2026
+
+The supplied Expansion VI brief was hashed and processed once. All 20 proposals were resolved: 12 distinct private candidates and eight module or exact-family mappings. Fourteen official primary sources support the forcing-function boundaries, and eight experiments were recorded without claiming execution, customer validation, willingness to pay, or canonical ranking eligibility.
+
+ShockGraph gains six dependencies, two review-required shocks, five ecosystem topologies, and two counterparty-readiness assessments covering EUCC assurance continuity, HERA readiness and stockpiling, the IP-backed-finance roadmap, IMERA application, the revised construction-products framework, and ReFuelEU delivery coordination. These records distinguish operational guidance and in-application law from roadmaps, consultations, phased implementation, and unverified product demand.
+
+The OMEGA XII verdict remains incomplete. Expansion VI does not satisfy the remaining buyer-evidence, runtime, deployed-cloud, historical-privacy, broad-mapping, or full research-duration requirements.

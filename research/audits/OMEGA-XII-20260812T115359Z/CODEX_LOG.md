@@ -55,3 +55,15 @@ Local implementation and verification closure is complete; the explicitly listed
 ## Continuation status
 
 The deterministic and bounded-research foundation advanced. OMEGA XII remains incomplete: no buyer interviews or WTP evidence were fabricated; broad dependency/provider-density coverage, crash-atomic publisher recovery, runtime health integration, process-tree proof, deployed cloud execution, historical staging exposure decision, and the full research-duration/query contract remain open.
+
+## 2026-08-12T19:30:00Z — Expansion VI / continuity continuation
+
+- Preserved and pushed the intervening autonomous snapshot before research writes, then kept the autonomy task paused during integration.
+- Hashed and parsed the single 60,085-byte, 2,439-line Expansion VI attachment (`B2B0F57F817EE550A8492E72A68697AE4BE3A1443B39C26750E289623895F951`).
+- Resolved all 20 proposals against 294 canonical records and the private queue. Twelve distinct candidates were staged privately; eight proposals were mapped to modules or exact existing families. No canonical idea or score changed.
+- Added 14 official primary sources, eight falsifiable experiments, six kill/downgrade decisions, seven meta-discoveries, three portfolio families, and the `stateDecay` research dimension. No experiment was represented as executed.
+- Added six dependency records, two review-required shocks, five ecosystem records, and two counterparty assessments. Consultation, roadmap, operational-program, phased-implementation, and in-application states remain explicit.
+
+## Continuation status
+
+Expansion VI advances bounded dependency and opportunity coverage. OMEGA XII remains incomplete under the previously recorded external-evidence, runtime, cloud, historical-privacy, and full-duration research requirements.

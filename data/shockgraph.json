@@ -139,6 +139,94 @@
         "idea-291"
       ],
       "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eucc-assurance-continuity",
+      "type": "STANDARD",
+      "name": "EUCC assurance-continuity rules and guidance",
+      "status": "OPERATIONAL_GUIDANCE_2025-12-10",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s170"
+      ],
+      "ideaRefs": [
+        "idea-401"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-medical-countermeasure-readiness",
+      "type": "INFRASTRUCTURE",
+      "name": "HERA ever-warm manufacturing and strategic stockpile readiness",
+      "status": "ACTIVE_PROGRAM",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s171",
+        "s172",
+        "s183"
+      ],
+      "ideaRefs": [
+        "idea-377"
+      ],
+      "volatility": "HIGH"
+    },
+    {
+      "dependencyId": "dep-eu-ip-backed-finance-roadmap",
+      "type": "STANDARD",
+      "name": "European IP-Backed Finance Roadmap",
+      "status": "ROADMAP_ENDORSED_OPERATIONAL_COMPONENTS_EXPECTED_2027",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s173",
+        "s174"
+      ],
+      "ideaRefs": [
+        "idea-333"
+      ],
+      "volatility": "HIGH"
+    },
+    {
+      "dependencyId": "dep-eu-imera",
+      "type": "REGULATION",
+      "name": "Internal Market Emergency and Resilience Act",
+      "status": "IN_APPLICATION_SINCE_2026-05-29",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s175"
+      ],
+      "ideaRefs": [
+        "idea-373"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-construction-products-2024-3110",
+      "type": "REGULATION",
+      "name": "Revised Construction Products Regulation EU 2024/3110",
+      "status": "IN_FORCE_PHASED_IMPLEMENTATION",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s178"
+      ],
+      "ideaRefs": [
+        "idea-175",
+        "idea-394"
+      ],
+      "volatility": "MEDIUM"
+    },
+    {
+      "dependencyId": "dep-eu-refueleu-aviation",
+      "type": "REGULATION",
+      "name": "ReFuelEU Aviation supply-chain and airport infrastructure obligations",
+      "status": "IN_APPLICATION",
+      "checkedAt": "2026-08-12T19:30:00+00:00",
+      "sourceRefs": [
+        "s181"
+      ],
+      "ideaRefs": [
+        "idea-405"
+      ],
+      "volatility": "MEDIUM"
     }
   ],
   "shocks": [
@@ -245,6 +333,36 @@
         "idea-291"
       ],
       "direction": "MIXED",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-eucc-assurance-continuity-guidance",
+      "dependencyId": "dep-eucc-assurance-continuity",
+      "kind": "STANDARD_FINALIZED",
+      "observedAt": "2026-08-12T19:30:00+00:00",
+      "effectiveAt": "2025-12-10T00:00:00Z",
+      "sourceRefs": [
+        "s170"
+      ],
+      "affectedIdeaRefs": [
+        "idea-401"
+      ],
+      "direction": "POSITIVE",
+      "reviewRequired": true
+    },
+    {
+      "shockId": "shock-imera-application-start",
+      "dependencyId": "dep-eu-imera",
+      "kind": "APPLICATION_START",
+      "observedAt": "2026-08-12T19:30:00+00:00",
+      "effectiveAt": "2026-05-29T00:00:00Z",
+      "sourceRefs": [
+        "s175"
+      ],
+      "affectedIdeaRefs": [
+        "idea-373"
+      ],
+      "direction": "POSITIVE",
       "reviewRequired": true
     }
   ],
@@ -498,6 +616,75 @@
       "ideaRefs": [
         "idea-291"
       ]
+    },
+    {
+      "ecosystemId": "eco-eucc-assurance-continuity",
+      "name": "EUCC vendors, evaluators, and certification bodies",
+      "topology": "CERTIFIED_INTERMEDIARIES",
+      "providerDensity": "UNKNOWN",
+      "stage": "EARLY_ADOPTION",
+      "sourceRefs": [
+        "s170"
+      ],
+      "ideaRefs": [
+        "idea-401"
+      ]
+    },
+    {
+      "ecosystemId": "eco-medical-countermeasure-readiness",
+      "name": "EU emergency medical manufacturing and reserve network",
+      "topology": "MULTI_PARTY_SUPPLY_CHAIN",
+      "providerDensity": "CONSOLIDATING",
+      "stage": "EARLY_ADOPTION",
+      "sourceRefs": [
+        "s171",
+        "s172",
+        "s183"
+      ],
+      "ideaRefs": [
+        "idea-377"
+      ]
+    },
+    {
+      "ecosystemId": "eco-ip-backed-finance",
+      "name": "European IP-backed finance ecosystem",
+      "topology": "CERTIFIED_INTERMEDIARIES",
+      "providerDensity": "EARLY",
+      "stage": "SPEC_FORMING",
+      "sourceRefs": [
+        "s173",
+        "s174"
+      ],
+      "ideaRefs": [
+        "idea-333"
+      ]
+    },
+    {
+      "ecosystemId": "eco-crisis-capacity-imera",
+      "name": "IMERA crisis-relevant goods production network",
+      "topology": "MULTI_PARTY_SUPPLY_CHAIN",
+      "providerDensity": "UNKNOWN",
+      "stage": "MANDATORY_TRANSITION",
+      "sourceRefs": [
+        "s175"
+      ],
+      "ideaRefs": [
+        "idea-373"
+      ]
+    },
+    {
+      "ecosystemId": "eco-saf-airport-delivery",
+      "name": "SAF producers, suppliers, airports, and aircraft operators",
+      "topology": "PHYSICAL_NETWORK",
+      "providerDensity": "EARLY",
+      "stage": "MANDATORY_TRANSITION",
+      "sourceRefs": [
+        "s177",
+        "s181"
+      ],
+      "ideaRefs": [
+        "idea-405"
+      ]
     }
   ],
   "counterpartyAssessments": [
@@ -626,6 +813,76 @@
       "sourceRefs": [
         "s157",
         "s158"
+      ]
+    },
+    {
+      "assessmentId": "cp-medicine-resilience-readiness",
+      "ideaId": "idea-377",
+      "parties": [
+        {
+          "role": "public procurer or reserve owner",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "manufacturer or API supplier",
+          "mustParticipate": true,
+          "canBeForced": false,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": false,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "HIGH",
+      "weakestCriticalParty": "manufacturer or API supplier",
+      "sourceRefs": [
+        "s171",
+        "s172",
+        "s183"
+      ]
+    },
+    {
+      "assessmentId": "cp-refueleu-deliverability",
+      "ideaId": "idea-405",
+      "parties": [
+        {
+          "role": "fuel producer or supplier",
+          "mustParticipate": true,
+          "canBeForced": false,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "airport managing body",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        },
+        {
+          "role": "aircraft operator or offtaker",
+          "mustParticipate": true,
+          "canBeForced": true,
+          "controlsData": true,
+          "controlsDecision": true,
+          "controlsBudget": true,
+          "readiness": "UNKNOWN"
+        }
+      ],
+      "coordinationTax": "HIGH",
+      "weakestCriticalParty": null,
+      "sourceRefs": [
+        "s177",
+        "s181"
       ]
     }
   ]

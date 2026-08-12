@@ -3694,5 +3694,299 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s170",
+    "title": "Guidelines on assurance continuity - practical change scenarios for certified ICT products",
+    "publisher": "European Union Agency for Cybersecurity",
+    "url": "https://certification.enisa.europa.eu/publications/guidelines-assurance-continuity-practical-change-scenarios-certified-ict-products_en",
+    "supports": [
+      "EUCC assurance-continuity guidance distinguishes minor and major product changes",
+      "Prior evaluation work may or may not need to be repeated after a change"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s171",
+    "title": "Addressing market challenges",
+    "publisher": "European Commission - DG HERA",
+    "url": "https://health.ec.europa.eu/health-emergency-preparedness-and-response-hera/preparedness/addressing-market-challenges_en",
+    "supports": [
+      "HERA maps supply chains, manufacturing capacity, and ever-warm sites",
+      "EU FAB is intended to keep agile vaccine manufacturing capacity available for emergencies"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s172",
+    "title": "Procurement and stockpiling",
+    "publisher": "European Commission - DG HERA",
+    "url": "https://health.ec.europa.eu/health-emergency-preparedness-and-response-hera/preparedness/procurement-and-stockpiling_en",
+    "supports": [
+      "HERA maps transport, storage, and distribution bottlenecks",
+      "Strategic reserves are intended for timely emergency deployment"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s173",
+    "title": "IP-backed finance in Europe: state of play and future perspectives",
+    "publisher": "European Union Intellectual Property Office",
+    "url": "https://www.euipo.europa.eu/en/publications/IP-backed-finance-in-Europe-state-of-play-and-future-perspectives",
+    "supports": [
+      "IP-rich firms face information asymmetry, uncertain value, weak secondary markets, and limited comparable data",
+      "Valuation remains costly, complex, and inconsistent"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s174",
+    "title": "Europe moves from analysis to action on IP-backed finance",
+    "publisher": "European Union Intellectual Property Office",
+    "url": "https://www.euipo.europa.eu/en/news/europe-moves-from-analysis-to-action-on-ip-backed-finance",
+    "supports": [
+      "The European IP-Backed Finance Roadmap was endorsed in June 2026",
+      "Operational components are expected by the end of 2027; this is not current lending-market validation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s175",
+    "title": "Internal Market Emergency and Resilience Act",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/single-market/internal-market-emergency-and-resilience-act_en",
+    "supports": [
+      "IMERA entered into application on 29 May 2026",
+      "The framework addresses crisis-relevant goods and services while company demand for a private crisis-capacity OS remains unverified"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s176",
+    "title": "Survey on an EU Blueprint for intellectual property licensing and spinoff creation",
+    "publisher": "European Commission - DG RTD",
+    "url": "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/survey-eu-blueprint-intellectual-property-licensing-and-spinoff-creation-2026-07-17_en",
+    "supports": [
+      "The Commission is consulting on licensing, royalty sharing, equity participation, and academic spinoffs",
+      "The Blueprint is expected by the end of 2026 and is not yet final"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s177",
+    "title": "Sustainable transport investment plan",
+    "publisher": "European Commission - DG MOVE",
+    "url": "https://transport.ec.europa.eu/transport-themes/clean-transport/sustainable-transport-investment-plan_en",
+    "supports": [
+      "The plan seeks to unlock investment in renewable and low-carbon fuels",
+      "Public support and planned auction mechanisms do not by themselves prove a private project's bankability"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s178",
+    "title": "Construction Products Regulation",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/sectors/construction/construction-products-regulation-cpr_en",
+    "supports": [
+      "Regulation EU 2024/3110 establishes the revised construction-products framework",
+      "Its technical implementation does not validate automated reassessment decisions"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s179",
+    "title": "Commission launches public consultation on the revision of the eInvoicing Directive",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/news/commission-launches-public-consultation-revision-einvoicing-directive-2026-03-18_en",
+    "supports": [
+      "The Commission identified eInvoicing uptake and interoperability barriers",
+      "The revision is still being prepared"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s180",
+    "title": "Unfair trading practices",
+    "publisher": "European Commission - DG AGRI",
+    "url": "https://agriculture.ec.europa.eu/common-agricultural-policy/agri-food-supply-chain/unfair-trading-practices_en",
+    "supports": [
+      "EU rules prohibit specified practices including late payments and unilateral contract changes",
+      "A ledger's evidentiary sufficiency and farmer willingness to pay remain unproven"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s181",
+    "title": "ReFuelEU Aviation",
+    "publisher": "European Commission - DG MOVE",
+    "url": "https://transport.ec.europa.eu/transport-modes/air/environment/refueleu-aviation_en",
+    "supports": [
+      "Implementation requires collaboration among suppliers, airports, and airlines",
+      "Airports must facilitate infrastructure for SAF delivery, storage, and refuelling"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s182",
+    "title": "Public procurement",
+    "publisher": "European Commission - DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/single-market/public-procurement_en",
+    "supports": [
+      "The Commission is preparing a 2026 revision of public-procurement rules",
+      "Sustainability, resilience, and Made in Europe criteria are policy direction, not a final revised framework"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s183",
+    "title": "Critical Medicines Alliance",
+    "publisher": "European Commission - DG HERA",
+    "url": "https://health.ec.europa.eu/health-emergency-preparedness-and-response-hera/overview/critical-medicines-alliance_en",
+    "supports": [
+      "The Alliance highlights vulnerabilities in critical-medicine and API supply chains",
+      "Recommendations include diversification, manufacturing, procurement, and balanced stockpiling"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-12",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "deep-research-expansion-vi-2026-08-12",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
