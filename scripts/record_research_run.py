@@ -7,7 +7,10 @@ import subprocess
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 runs_file = os.path.join(ROOT, "data", "research-runs.json")
 
-def record_run(questions: list, queries: list, candidate_sources: list, inclusions: list, exclusions: list, claims_changed: list):
+def record_run(questions: list, queries: list, candidate_sources: list, inclusions: list,
+               exclusions: list, claims_changed: list, *, started_at: str,
+               ended_at: str, receipt_maturity: str = "R0_DECLARED",
+               tool_receipts: list | None = None, decision_delta: str = ""):
     runs = []
     if os.path.exists(runs_file):
         try:
@@ -22,8 +25,23 @@ def record_run(questions: list, queries: list, candidate_sources: list, inclusio
     except Exception:
         pass
 
-    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
     run_id = f"run-res-{len(runs)+1:03d}-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d')}"
+
+    start = datetime.datetime.fromisoformat(started_at.replace("Z", "+00:00"))
+    end = datetime.datetime.fromisoformat(ended_at.replace("Z", "+00:00"))
+    if end < start:
+        raise ValueError("ended_at precedes started_at")
+    if receipt_maturity not in {
+        "R0_DECLARED", "R1_IMPORTED", "R2_EXECUTED", "R3_SCREENED",
+        "R4_CLAIM_MAPPED", "R5_ADVERSARIAL", "R6_REVIEWED", "R7_DECISION_INTEGRATED"
+    }:
+        raise ValueError("unknown research receipt maturity")
+    if receipt_maturity not in {"R0_DECLARED", "R1_IMPORTED"} and end <= start:
+        raise ValueError("executed research cannot have zero duration")
+    if receipt_maturity in {"R2_EXECUTED", "R3_SCREENED", "R4_CLAIM_MAPPED", "R5_ADVERSARIAL", "R6_REVIEWED", "R7_DECISION_INTEGRATED"} and not tool_receipts:
+        raise ValueError("executed research requires tool execution receipts")
+    if receipt_maturity == "R7_DECISION_INTEGRATED" and not decision_delta.strip():
+        raise ValueError("R7 requires an explicit decision delta")
 
     run_entry = {
         "runId": run_id,
@@ -36,9 +54,12 @@ def record_run(questions: list, queries: list, candidate_sources: list, inclusio
         "claimsChanged": claims_changed,
         "agent": "research-intelligence-agent",
         "methodVersion": "epistemic-v2",
-        "startedAt": now,
-        "endedAt": now,
-        "reviewStatus": "approved"
+        "startedAt": start.astimezone(datetime.timezone.utc).isoformat(),
+        "endedAt": end.astimezone(datetime.timezone.utc).isoformat(),
+        "receiptMaturity": receipt_maturity,
+        "toolReceipts": tool_receipts or [],
+        "decisionDelta": decision_delta,
+        "reviewStatus": "unreviewed"
     }
 
     runs.append(run_entry)
@@ -50,12 +71,7 @@ def record_run(questions: list, queries: list, candidate_sources: list, inclusio
     print(f"[OK] Logged prospective research run '{run_id}' in data/research-runs.json (Total runs: {len(runs)}).")
 
 if __name__ == "__main__":
-    # Test record run
-    record_run(
-        questions=["How much better was reality because X happened?", "What donor conception family limits exist in EU law?"],
-        queries=["ESHRE 2026 donor limits", "EU SoHO Regulation 2024/1938 implementation"],
-        candidate_sources=["s63", "s64", "s65"],
-        inclusions=["idea-385"],
-        exclusions=[],
-        claims_changed=["KinLedger #1 overall ranking verification"]
+    raise SystemExit(
+        "This module no longer manufactures example research runs. Import record_run and provide "
+        "prospective timestamps, tool receipts, and truthful maturity."
     )

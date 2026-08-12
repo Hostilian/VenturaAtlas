@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { deriveLifecycleForPublic } = require('./lib/lifecycle-receipts');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
@@ -91,6 +92,10 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
 let publicSourceIds = new Set();
 let internalSourceIds = new Set();
 let internalSourceTerms = new Set();
+let lifecycleReceipts = { schemaVersion: '1.0.0', receipts: [] };
+let researchRunIds = new Set();
+let validationRunIds = new Set();
+let publicLifecycleByIdea = new Map();
 
 const PROJECTED_TEXT_EXTENSIONS = new Set(['.html', '.json', '.md', '.txt', '.xml', '.csv']);
 
@@ -121,12 +126,18 @@ function projectIdeasForPublic(src, dest) {
   const ideas = Array.isArray(raw) ? raw : (raw.ideas || []);
   const projected = ideas.map(idea => {
     const result = { ...idea };
+    const lifecycle = deriveLifecycleForPublic(idea, lifecycleReceipts, { publicSourceIds, researchRunIds, validationRunIds });
+    publicLifecycleByIdea.set(idea.id, lifecycle);
     result.scoreMaturity = 'legacy_unverified';
-    result.rankingEligible = false;
+    result.canonicalIdentity = lifecycle.canonicalIdentity;
+    result.researchMaturity = lifecycle.researchMaturity;
+    result.rankingEligible = lifecycle.rankingEligible;
+    result.rankingUniverse = lifecycle.rankingUniverse;
+    result.validationMaturity = lifecycle.validationMaturity;
+    result.lifecycleReceiptStatus = lifecycle.receiptStatus;
     result.scoreScaleComparabilityEstablished = false;
-    const validationProvenance = result.validationProvenance || result.researchRunId || result.validationRunId;
     const legacyValidationLabel = result.validationStatus || result.atAGlance?.validationStatus;
-    if (legacyValidationLabel && !validationProvenance) {
+    if (legacyValidationLabel && lifecycle.validationMaturity === 'NOT_VALIDATED') {
       result.legacyValidation = {
         label: legacyValidationLabel,
         recordedAt: result.lastValidatedAt || result.sourceCheckedAt || null,
@@ -139,6 +150,11 @@ function projectIdeasForPublic(src, dest) {
       delete result.lastValidatedAt;
       delete result.sourceCheckedAt;
       delete result.evidenceFreshness;
+    } else if (lifecycle.validationMaturity !== 'NOT_VALIDATED') {
+      result.validationStatus = lifecycle.validationMaturity;
+      if (result.atAGlance && typeof result.atAGlance === 'object') {
+        result.atAGlance = { ...result.atAGlance, validationStatus: lifecycle.validationMaturity };
+      }
     }
     if (result.epistemicMetadata && typeof result.epistemicMetadata === 'object') {
       result.legacyEpistemicMigration = {
@@ -198,13 +214,22 @@ function projectRepositoryMetaForPublic(src, dest) {
 
 function projectRankingsForPublic(src, dest) {
   const raw = JSON.parse(fs.readFileSync(src, 'utf8'));
+  const legacyViews = raw.rankings || [];
+  const overall = legacyViews.find(view => view.id === 'overall-top-opportunities') || legacyViews[0] || { items: [] };
+  const researchedItems = (overall.items || []).filter(item => publicLifecycleByIdea.get(item.ideaId || item.id)?.rankingUniverse === 'RESEARCHED');
+  const validationItems = (overall.items || []).filter(item => publicLifecycleByIdea.get(item.ideaId || item.id)?.rankingUniverse === 'VALIDATION');
   const projected = {
     ...raw,
     maturity: 'legacy_unverified',
     eligibilityEnforced: false,
     coverageAssessed: false,
     scaleComparabilityEstablished: false,
-    rankings: (raw.rankings || []).map(view => ({
+    universes: {
+      legacy: { maturity: 'legacy_unverified', views: legacyViews.map(view => view.id) },
+      researched: { maturity: 'receipt_verified', items: researchedItems },
+      validation: { maturity: 'receipt_verified', items: validationItems }
+    },
+    rankings: legacyViews.map(view => ({
       ...view,
       maturity: 'legacy_unverified',
       description: 'Legacy heuristic order retained for provenance; eligibility, evidence coverage, and score-scale comparability are not established.'
@@ -272,6 +297,11 @@ function build() {
   );
   publicSourceIds = new Set(projectedSources.map(source => source.id));
   const allSources = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'));
+  lifecycleReceipts = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lifecycle-receipts.json'), 'utf8'));
+  const researchRuns = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'research-runs.json'), 'utf8'));
+  researchRunIds = new Set((Array.isArray(researchRuns) ? researchRuns : researchRuns.runs || []).map(run => run.runId));
+  const validationRuns = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'validation-runs.json'), 'utf8'));
+  validationRunIds = new Set((Array.isArray(validationRuns) ? validationRuns : validationRuns.runs || []).map(run => run.runId));
   internalSourceIds = new Set(
     allSources.filter(source => source.visibility !== 'PUBLIC').map(source => source.id)
   );

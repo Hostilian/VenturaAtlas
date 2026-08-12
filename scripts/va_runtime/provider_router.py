@@ -109,8 +109,13 @@ class CapabilityProviderScheduler:
         for p_id, p_cfg in providers.items():
             if p_id == "own-orch" and (not allow_own_orch or requires_external_evidence):
                 continue
-            if p_cfg.get("requiresApiKey", False) and len(self.key_pools.get(p_id, [])) == 0:
-                continue
+            if p_cfg.get("requiresApiKey", False):
+                eligible_keys = [
+                    key_state for key_state in self.key_pools.get(p_id, [])
+                    if not key_state.disabled and time.time() >= key_state.cooldown_until
+                ]
+                if not eligible_keys:
+                    continue
             p_cost = p_cfg.get("costClass", 0)
             if p_cost > max_cost_class:
                 continue
@@ -141,7 +146,11 @@ class CapabilityProviderScheduler:
             raise NoEligibleProviderError("BLOCKED_NO_ELIGIBLE_RESEARCH_PROVIDER: Task requires external evidence but no eligible external LLM provider key is active.")
 
         # Emit degraded mode warning if only own-orch is active
-        has_external_keys = any(len(pool) > 0 for p_id, pool in self.key_pools.items() if p_id != "own-orch")
+        has_external_keys = any(
+            any(not key_state.disabled and time.time() >= key_state.cooldown_until for key_state in pool)
+            for p_id, pool in self.key_pools.items()
+            if p_id != "own-orch"
+        )
         if not has_external_keys and allow_own_orch and not requires_external_evidence:
             print("[DEGRADED MODE] No external LLM keys configured. Pipeline is operating in deterministic rule engine mode (own-orch).", file=sys.stderr)
 

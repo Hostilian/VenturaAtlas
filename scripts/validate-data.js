@@ -161,11 +161,16 @@ function main() {
     'data/sources.json',
     'data/rankings.json',
     'data/relationships.json',
+    'data/lifecycle-receipts.json',
+    'data/validation-runs.json',
+    'data/shockgraph.json',
     'data/ideas.schema.json',
     'schemas/category.schema.json',
     'schemas/source.schema.json',
     'schemas/ranking.schema.json',
-    'schemas/relationship.schema.json'
+    'schemas/relationship.schema.json',
+    'schemas/lifecycle-receipt.schema.json',
+    'schemas/shockgraph.schema.json'
   ];
   const revisionHasher = crypto.createHash('sha256');
   for (const relativePath of revisionInputs) {

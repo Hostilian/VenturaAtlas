@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/lifecycle-receipt.schema.json",
+  "title": "Venture Atlas lifecycle decision receipt",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "receiptType",
+    "subjectId",
+    "subjectDigest",
+    "baselineCommit",
+    "reviewer",
+    "decision",
+    "decidedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "receiptId": { "type": "string", "pattern": "^receipt-[a-z0-9-]{8,}$" },
+    "receiptType": {
+      "enum": ["CANONICALIZE", "RESEARCH_MATURITY", "RANK_ELIGIBILITY", "VALIDATION"]
+    },
+    "subjectId": { "type": "string", "minLength": 3 },
+    "subjectDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "baselineCommit": { "type": "string", "pattern": "^[a-f0-9]{7,40}$" },
+    "reviewer": {
+      "type": "object",
+      "required": ["id", "role"],
+      "properties": {
+        "id": { "type": "string", "minLength": 2 },
+        "role": {
+          "enum": ["repository-owner", "human-reviewer", "integration-release-agent"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision": { "enum": ["APPROVE", "REJECT"] },
+    "decidedAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": ["string", "null"], "format": "date-time" },
+    "identityReview": {
+      "type": "object",
+      "required": ["status"],
+      "properties": { "status": { "const": "APPROVED" } },
+      "additionalProperties": true
+    },
+    "duplicateReview": {
+      "type": "object",
+      "required": ["status", "semanticReviewId"],
+      "properties": {
+        "status": { "const": "APPROVED" },
+        "semanticReviewId": { "type": "string", "minLength": 3 }
+      },
+      "additionalProperties": true
+    },
+    "lineageVerified": { "type": "boolean" },
+    "maturity": { "type": "string" },
+    "universe": { "enum": ["RESEARCHED", "VALIDATION"] },
+    "sourceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "claimRelationIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "researchRunRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "validationRunRefs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "decisionDelta": { "type": "string" },
+    "methodVersion": { "type": "string" },
+    "scoreScaleVersion": { "type": "string" },
+    "evidenceKind": { "enum": ["BEHAVIORAL", "TRANSACTIONAL", "DESK_RESEARCH"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "receiptType": { "const": "CANONICALIZE" } } },
+      "then": { "required": ["identityReview", "duplicateReview", "lineageVerified"] }
+    },
+    {
+      "if": { "properties": { "receiptType": { "const": "RESEARCH_MATURITY" } } },
+      "then": { "required": ["maturity", "sourceIds", "claimRelationIds", "researchRunRefs"] }
+    },
+    {
+      "if": { "properties": { "receiptType": { "const": "RANK_ELIGIBILITY" } } },
+      "then": { "required": ["universe", "methodVersion", "scoreScaleVersion", "researchRunRefs"] }
+    },
+    {
+      "if": { "properties": { "receiptType": { "const": "VALIDATION" } } },
+      "then": { "required": ["maturity", "evidenceKind", "validationRunRefs"] }
+    }
+  ],
+  "additionalProperties": true
+}

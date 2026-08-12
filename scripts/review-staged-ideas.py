@@ -55,7 +55,7 @@ def list_queue():
     print("\nTo promote an idea: python scripts/review-staged-ideas.py promote <idea-id>")
     print("To clear queue:     python scripts/review-staged-ideas.py clear")
 
-def promote_idea(target_id):
+def promote_idea(target_id, receipt_path):
     queue = load_json(QUEUE_JSON_PATH)
     
     match = None
@@ -70,8 +70,14 @@ def promote_idea(target_id):
         print(f"❌ Error: Idea/Candidate ID '{target_id}' not found in staging queue.")
         return
 
+    if not receipt_path or not os.path.exists(receipt_path):
+        print("❌ Publication requires an explicit reviewed CANONICALIZE receipt JSON file.")
+        return
+    with open(receipt_path, "r", encoding="utf-8") as receipt_file:
+        receipt = json.load(receipt_file)
+
     from va_runtime.publisher import publish_candidate
-    ok, msg, canonical_id = publish_candidate(match)
+    ok, msg, canonical_id = publish_candidate(match, receipt)
     if not ok:
         print(f"❌ Publication failed: {msg}")
         return
@@ -91,12 +97,12 @@ def main():
     cmd = sys.argv[1].lower()
     if cmd == 'list':
         list_queue()
-    elif cmd == 'promote' and len(sys.argv) >= 3:
-        promote_idea(sys.argv[2])
+    elif cmd == 'promote' and len(sys.argv) >= 4:
+        promote_idea(sys.argv[2], sys.argv[3])
     elif cmd == 'clear':
         clear_queue()
     else:
-        print("Usage: python scripts/review-staged-ideas.py [list|promote <id>|clear]")
+        print("Usage: python scripts/review-staged-ideas.py [list|promote <id> <canonicalization-receipt.json>|clear]")
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/shockgraph.schema.json",
+  "title": "Venture Atlas ShockGraph",
+  "type": "object",
+  "required": ["schemaVersion", "dependencies", "shocks", "obligations", "ecosystems", "counterpartyAssessments"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dependencyId", "type", "name", "status", "checkedAt", "sourceRefs", "ideaRefs", "volatility"],
+        "properties": {
+          "dependencyId": { "type": "string", "pattern": "^dep-[a-z0-9-]+$" },
+          "type": { "enum": ["LAW", "REGULATION", "DEADLINE", "IMPLEMENTING_ACT", "STANDARD", "PROTOCOL", "API", "OFFICIAL_PORTAL", "OPEN_SOURCE_PROJECT", "DATASET", "PLATFORM", "MODEL_CAPABILITY", "PRICE_ASSUMPTION", "DISTRIBUTION_CHANNEL", "CERTIFICATION_SCHEME", "INFRASTRUCTURE"] },
+          "name": { "type": "string", "minLength": 3 },
+          "status": { "type": "string", "minLength": 2 },
+          "checkedAt": { "type": "string", "format": "date-time" },
+          "sourceRefs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "ideaRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^idea-[0-9]{3}$" } },
+          "volatility": { "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "shocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["shockId", "dependencyId", "kind", "observedAt", "sourceRefs", "affectedIdeaRefs", "direction", "reviewRequired"],
+        "properties": {
+          "shockId": { "type": "string", "pattern": "^shock-[a-z0-9-]+$" },
+          "dependencyId": { "type": "string" },
+          "kind": { "enum": ["NEW_LAW", "APPLICATION_START", "APPLICATION_DELAY", "DE_SCOPE", "SIMPLIFICATION", "REPEAL", "IMPLEMENTING_ACT", "STANDARD_FINALIZED", "STANDARD_DELAY", "OFFICIAL_API_LAUNCH", "OFFICIAL_TOOL_LAUNCH", "FREE_TOOL_LAUNCH", "API_SHUTDOWN", "PRICE_INCREASE", "PRICE_DECREASE", "OPEN_SOURCE_RELEASE", "COMPETITOR_ENTRY", "COMPETITOR_EXIT", "PROVIDER_EXPLOSION", "CONSOLIDATION", "ENFORCEMENT_ACTION", "DATASET_RELEASE"] },
+          "observedAt": { "type": "string", "format": "date-time" },
+          "effectiveAt": { "type": ["string", "null"], "format": "date-time" },
+          "sourceRefs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "affectedIdeaRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "affectedClaimRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "affectedRankingRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "affectedValidationPlanRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "affectedPublicClaimRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "direction": { "enum": ["POSITIVE", "NEGATIVE", "MIXED", "UNKNOWN"] },
+          "reviewRequired": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["obligationId", "instrumentId", "actor", "object", "action", "scope", "effectiveAt", "maturity", "secondaryLegislationPending", "sourceRefs", "ideaRefs"],
+        "properties": {
+          "obligationId": { "type": "string", "pattern": "^obl-[a-z0-9-]+$" },
+          "instrumentId": { "type": "string", "minLength": 2 },
+          "actor": { "type": "string", "minLength": 2 },
+          "object": { "type": "string", "minLength": 2 },
+          "action": { "type": "string", "minLength": 2 },
+          "scope": { "type": "string", "minLength": 2 },
+          "effectiveAt": { "type": ["string", "null"], "format": "date-time" },
+          "maturity": { "enum": ["PROPOSED", "ADOPTED", "SECONDARY_ACT_PENDING", "APPLICABLE", "DELAYED", "REPEALED", "UNKNOWN"] },
+          "secondaryLegislationPending": { "type": "boolean" },
+          "exemptions": { "type": "array", "items": { "type": "string" } },
+          "sourceRefs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "ideaRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "ecosystems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ecosystemId", "name", "topology", "providerDensity", "stage", "sourceRefs", "ideaRefs"],
+        "properties": {
+          "ecosystemId": { "type": "string", "pattern": "^eco-[a-z0-9-]+$" },
+          "name": { "type": "string", "minLength": 2 },
+          "topology": { "enum": ["CENTRAL_PUBLIC_PORTAL", "CENTRAL_PUBLIC_API", "HUB_AND_SPOKE", "CERTIFIED_INTERMEDIARIES", "FEDERATED_NETWORK", "OPEN_STANDARD", "DECENTRALIZED_HOSTING", "PRIVATE_PLATFORM", "MARKETPLACE", "BILATERAL_B2B", "MULTI_PARTY_SUPPLY_CHAIN", "PHYSICAL_NETWORK"] },
+          "providerDensity": { "enum": ["NONE", "EARLY", "EMERGING", "CROWDED", "HIGHLY_FRAGMENTED", "CONSOLIDATING", "UNKNOWN"] },
+          "stage": { "enum": ["SPEC_FORMING", "PREPARATION", "EARLY_ADOPTION", "MANDATORY_TRANSITION", "OPERATING_SCALE", "NORMALIZATION", "COMMODITIZATION", "UNKNOWN"] },
+          "sourceRefs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+          "ideaRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "counterpartyAssessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["assessmentId", "ideaId", "parties", "coordinationTax", "weakestCriticalParty", "sourceRefs"],
+        "properties": {
+          "assessmentId": { "type": "string", "pattern": "^cp-[a-z0-9-]+$" },
+          "ideaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
+          "parties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["role", "mustParticipate", "canBeForced", "controlsData", "controlsDecision", "controlsBudget", "readiness"],
+              "properties": {
+                "role": { "type": "string", "minLength": 2 },
+                "mustParticipate": { "type": "boolean" },
+                "canBeForced": { "type": ["boolean", "null"] },
+                "controlsData": { "type": ["boolean", "null"] },
+                "controlsDecision": { "type": ["boolean", "null"] },
+                "controlsBudget": { "type": ["boolean", "null"] },
+                "readiness": { "enum": ["READY", "PARTIAL", "NOT_READY", "UNKNOWN"] }
+              },
+              "additionalProperties": true
+            }
+          },
+          "coordinationTax": { "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"] },
+          "weakestCriticalParty": { "type": ["string", "null"] },
+          "sourceRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

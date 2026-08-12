@@ -726,18 +726,22 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
 
     log_info(f"[BOUNDED PARALLEL AI] Launching {len(providers_to_try)} eligible providers: {', '.join(providers_to_try)}")
 
-    results = []
-    with ThreadPoolExecutor(max_workers=len(providers_to_try)) as executor:
+    executor = ThreadPoolExecutor(max_workers=len(providers_to_try))
+    futures = {}
+    try:
         futures = {executor.submit(_call_single_provider, p, prompt, domain_hint): p for p in providers_to_try}
         for future in as_completed(futures):
             res = future.result()
             if res:
-                results.append(res)
-                # First valid response returns immediately for speed, but all were executed concurrently
-                break
-
-    if results:
-        return results[0]
+                for pending in futures:
+                    if pending is not future:
+                        pending.cancel()
+                return res
+    finally:
+        # A valid fast response must not wait for unrelated slow providers. Running
+        # HTTP calls are allowed to finish in their worker threads, but no longer
+        # delay this task's decision path.
+        executor.shutdown(wait=False, cancel_futures=True)
 
     if not allow_own_orch or required_capabilities or requires_external_evidence:
         raise NoEligibleProviderError("All eligible parallel AI calls failed; fallback cannot satisfy the declared contract")
@@ -811,8 +815,11 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
             log_warn(f"Provider {provider} failed: {e}", provider=provider)
             _record_failure(state, provider)
 
-    if not allow_own_orch:
-        raise NoEligibleProviderError(f"All external providers failed for task capabilities {required_capabilities} and allow_own_orch is False")
+    if not allow_own_orch or required_capabilities or requires_external_evidence:
+        raise NoEligibleProviderError(
+            "All eligible providers failed; deterministic fallback cannot satisfy "
+            f"capabilities={required_capabilities or []}, external_evidence={requires_external_evidence}"
+        )
 
     log_warn("All providers failed, using own-orch as absolute fallback")
     resp = _call_own_orchestrator(prompt, domain_hint)

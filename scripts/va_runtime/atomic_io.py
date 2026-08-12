@@ -63,6 +63,25 @@ def atomic_write_json(filepath: str, data: Any, indent: int = 2) -> None:
                 pass
         raise IOError(f"Atomic JSON write failed for '{filepath}': {e}") from e
 
+def atomic_write_bytes(filepath: str, data: bytes) -> None:
+    """Atomically replace an arbitrary file with already-serialized bytes."""
+    directory = os.path.dirname(os.path.abspath(filepath))
+    os.makedirs(directory, exist_ok=True)
+    temp_fd, temp_path = tempfile.mkstemp(dir=directory, prefix=".tmp_va_", suffix=".bin")
+    try:
+        with os.fdopen(temp_fd, "wb") as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temp_path, filepath)
+    except Exception as exc:
+        if os.path.exists(temp_path):
+            try:
+                os.remove(temp_path)
+            except OSError:
+                pass
+        raise IOError(f"Atomic byte write failed for '{filepath}': {exc}") from exc
+
 def read_json_safe(filepath: str, default_if_missing: Any = None) -> Any:
     """Safely read JSON file with explicit corruption error reporting."""
     if not os.path.exists(filepath):
