@@ -3,36 +3,36 @@
     "nvidia-nim": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T15:31:06.592296+00:00",
-      "totalCalls": 25,
-      "successCalls": 23
+      "lastUsed": "2026-08-11T12:55:48.584426+00:00",
+      "totalCalls": 26,
+      "successCalls": 24
     },
     "cohere-api": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-10T15:31:10.335299+00:00",
-      "totalCalls": 33,
-      "successCalls": 33
+      "lastUsed": "2026-08-11T12:55:55.434177+00:00",
+      "totalCalls": 35,
+      "successCalls": 35
     },
     "hermes-ollama": {
-      "failures": 11,
-      "circuitUntil": "2026-08-11T12:00:18.888822+00:00",
+      "failures": 114,
+      "circuitUntil": "2026-08-12T00:12:43.596578+00:00",
       "lastUsed": "2026-08-10T15:07:09.311037+00:00",
-      "totalCalls": 25,
+      "totalCalls": 128,
       "successCalls": 1
     },
     "omniRoute": {
-      "failures": 21,
-      "circuitUntil": "2026-08-10T15:31:46.261663+00:00",
+      "failures": 24,
+      "circuitUntil": "2026-08-11T12:58:49.748507+00:00",
       "lastUsed": "",
-      "totalCalls": 21,
+      "totalCalls": 24,
       "successCalls": 0
     },
     "fcc-claude": {
-      "failures": 10,
-      "circuitUntil": "2026-08-10T15:34:03.276403+00:00",
+      "failures": 11,
+      "circuitUntil": "2026-08-11T12:58:46.174454+00:00",
       "lastUsed": "",
-      "totalCalls": 10,
+      "totalCalls": 11,
       "successCalls": 0
     },
     "active-api": {
@@ -43,28 +43,28 @@
       "successCalls": 0
     },
     "deepseek-api": {
-      "failures": 12,
-      "circuitUntil": "2026-08-10T15:31:41.899778+00:00",
+      "failures": 14,
+      "circuitUntil": "2026-08-11T12:58:45.368369+00:00",
       "lastUsed": "",
-      "totalCalls": 12,
+      "totalCalls": 14,
       "successCalls": 0
     },
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-11T11:59:21.855525+00:00",
-      "totalCalls": 86,
-      "successCalls": 86
+      "lastUsed": "2026-08-12T00:11:46.132426+00:00",
+      "totalCalls": 296,
+      "successCalls": 296
     },
     "anthropic-full": {
-      "failures": 0,
+      "failures": 2,
       "circuitUntil": "",
       "lastUsed": "",
-      "totalCalls": 0,
+      "totalCalls": 2,
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-11T11:59:21.906506+00:00",
+  "lastRun": "2026-08-12T00:11:46.184458+00:00",
   "totalIdeasGenerated": 32,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
