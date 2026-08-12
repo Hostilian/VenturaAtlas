@@ -2,6 +2,9 @@
   "graph_version": "2.4.0",
   "generated_at": "2026-08-09T11:42:30.790541+00:00",
   "total_tasks": 30,
+  "runtime_private_paths": [
+    "data/idea-staging-queue.json"
+  ],
   "tasks": [
     {
       "id": "TASK-001",
