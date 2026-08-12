@@ -147,7 +147,7 @@ Earlier queue versions remain in public Git history. Forward tracking is removed
 Terraform declares the private bucket and immutable job configuration, but no deployment was performed. Off-laptop capability remains unproven until strengthened preflight passes against a real successful execution.
 
 ## 49. Verification evidence
-The final local run passed 52 Node tests, 44 Python tests, strict data/lifecycle/ShockGraph validation, link/consistency/drift/constitution/privacy checks, public build scan, and PWA tests.
+The local run passed 52 Node tests and 44 Python tests. A fresh clone at `141920aa7c6aff674bf76d3179d3791199e10a11`, without the private queue, passed the full quality gate with one intentional private-queue test skip. Its 5,091-file public artifact digest was `0650321f6fa870c7691be375bf66ac3044fb64ec7c464d1da19fa7fa763a8087`.
 
 ## 50. Remaining work and verdict
-Do not mark OMEGA XII complete. Remaining work includes crash-atomic publisher recovery, provider health integration, process-tree timeout proof, fresh-clone verification, deployed cloud execution proof, historical staging exposure decision, broad dependency mapping, representative provider-density research, buyer interviews, WTP/transaction evidence, negative-shock expansion, and the constitution's full research-duration/query coverage.
+Do not mark OMEGA XII complete. Remaining work includes crash-atomic publisher recovery, provider health integration, process-tree timeout proof, deployed cloud execution proof, historical staging exposure decision, broad dependency mapping, representative provider-density research, buyer interviews, WTP/transaction evidence, negative-shock expansion, and the constitution's full research-duration/query coverage.

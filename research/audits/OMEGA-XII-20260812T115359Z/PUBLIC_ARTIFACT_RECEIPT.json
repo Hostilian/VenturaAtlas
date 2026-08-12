@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceCommit": "141920aa7c6aff674bf76d3179d3791199e10a11",
+  "buildCommand": "npm run quality",
+  "qualityExitCode": 0,
+  "nodeTests": { "passed": 51, "failed": 0, "skipped": 1, "total": 52 },
+  "pythonTests": { "passed": 44, "failed": 0 },
+  "artifactPath": "_site",
+  "fileCount": 5091,
+  "treeDigestAlgorithm": "sha256(path + NUL + bytes, paths sorted)",
+  "treeDigest": "0650321f6fa870c7691be375bf66ac3044fb64ec7c464d1da19fa7fa763a8087",
+  "privateQueuePresent": false,
+  "publicArtifactScanPassed": true,
+  "pwaTestsPassed": true,
+  "cloudDeploymentProven": false
+}

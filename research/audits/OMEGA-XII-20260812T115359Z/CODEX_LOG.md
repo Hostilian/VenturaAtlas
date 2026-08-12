@@ -23,6 +23,7 @@
 - Independent post-implementation red teams found self-invalidating lifecycle digests, unchecked evidence/reference contracts, legacy-score leakage, staged-deletion bypass, queue confidentiality, and zero-budget receipt gaps; these reproduced issues were fixed and covered by tests.
 - Final local gate: 52/52 Node tests, 44/44 Python tests, strict source/lifecycle/ShockGraph validation, constitution check, privacy scan, generated public artifact scan, and PWA tests passed.
 - Exact public projection check: no staging queue; hypothesis universe contains canonical IDs; researched and validation universes contain zero eligible IDs and publish no scores.
+- Fresh-clone proof at `141920aa7c6aff674bf76d3179d3791199e10a11`: the private queue was absent; the full quality gate passed with one intentional private-queue test skip; the exact 5,091-file public artifact digest is `0650321f6fa870c7691be375bf66ac3044fb64ec7c464d1da19fa7fa763a8087`.
 - No cloud deployment or successful off-laptop execution was performed or claimed. `terraform` is not installed locally, and the strengthened preflight requires an enabled scheduler, immutable deployed image, private configuration, and a latest successful execution.
 
 ## Status
