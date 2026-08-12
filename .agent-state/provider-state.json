@@ -15,10 +15,10 @@
       "successCalls": 35
     },
     "hermes-ollama": {
-      "failures": 149,
-      "circuitUntil": "2026-08-12T12:47:48.274755+00:00",
+      "failures": 152,
+      "circuitUntil": "2026-08-12T12:58:39.129517+00:00",
       "lastUsed": "2026-08-10T15:07:09.311037+00:00",
-      "totalCalls": 163,
+      "totalCalls": 166,
       "successCalls": 1
     },
     "omniRoute": {
@@ -52,9 +52,9 @@
     "own-orch": {
       "failures": 0,
       "circuitUntil": "",
-      "lastUsed": "2026-08-12T12:46:50.728037+00:00",
-      "totalCalls": 367,
-      "successCalls": 367
+      "lastUsed": "2026-08-12T12:55:39.153519+00:00",
+      "totalCalls": 370,
+      "successCalls": 370
     },
     "anthropic-full": {
       "failures": 2,
@@ -64,7 +64,7 @@
       "successCalls": 0
     }
   },
-  "lastRun": "2026-08-12T12:46:50.751045+00:00",
+  "lastRun": "2026-08-12T12:55:39.185518+00:00",
   "totalIdeasGenerated": 32,
   "totalIdeasPromoted": 0,
   "schemaVersion": "1.0.0",
