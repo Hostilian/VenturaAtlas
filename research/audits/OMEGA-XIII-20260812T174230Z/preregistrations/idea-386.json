@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-386-e1373ed28ded",
+  "candidateId": "idea-386",
+  "candidateContentDigest": "c597ba97e9675b836dee4c76ec30946dd5c870c5fa4dc6c1a3abadd438f96875",
+  "createdAt": "2026-08-13T16:30:24.767868+00:00",
+  "lockedAt": "2026-08-13T16:30:24.767868+00:00",
+  "expectations": {
+    "buyer": "Media publishers, generative-AI platforms, camera and editing vendors, brand-safety teams, and provenance programme owners",
+    "pain": "Content credentials or watermarks disappear, become misleading, or fail to bind after real editing, transcoding, social distribution, and recomposition pipelines",
+    "strongestIncumbent": "C2PA conformance tools and trust lists, Content Credentials Verify, vendor SDK test suites, watermark benchmarks, media QA, and platform upload tests",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Open conformance tools and platform-owned testing may absorb the product, provenance is not truth, invisible watermark performance is vendor-specific, and buyers may not control downstream transformations",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "0e85c2d360d75082bcfed2a5044fb363750ba5d136ffe91e75af31793594f874"
+}

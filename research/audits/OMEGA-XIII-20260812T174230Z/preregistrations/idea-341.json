@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-341-996eda733d8f",
+  "candidateId": "idea-341",
+  "candidateContentDigest": "669b4ec8871f4b9b11f154a96f68765388ee281da3d48b972d13176bfc821c79",
+  "createdAt": "2026-08-13T16:30:24.992584+00:00",
+  "lockedAt": "2026-08-13T16:30:24.992584+00:00",
+  "expectations": {
+    "buyer": "Enterprise treasury, procurement, legal, identity, security, and agent-platform teams authorizing AI-initiated transactions",
+    "pain": "An enterprise cannot prove that an AI agent acts for the right legal entity, principal, role, purpose, amount, counterparty, and time window across systems",
+    "strongestIncumbent": "IAM and workload identity, ERP approval matrices, corporate registers, e-signatures, delegated OAuth, verifiable credentials, payment-network mandates, and agent authorization protocols",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Existing identity and payment protocols may cover delegation primitives while corporate authority remains jurisdiction-specific, revocation-heavy, and controlled by enterprise systems of record",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ec7ed2e13220ffd36e810a1cff1f91164ab743ef28901e4e5c5558a921bf91ee"
+}

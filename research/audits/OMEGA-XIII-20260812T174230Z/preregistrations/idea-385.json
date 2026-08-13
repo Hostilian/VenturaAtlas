@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-385-0d14bd5308b4",
+  "candidateId": "idea-385",
+  "candidateContentDigest": "f0ba2b81693eb03c0b48e4e8884f695344e493e2f760ef909bd4de4e60deafe5",
+  "createdAt": "2026-08-13T16:30:24.090659+00:00",
+  "lockedAt": "2026-08-13T16:30:24.090659+00:00",
+  "expectations": {
+    "buyer": "Gamete tissue establishments, fertility networks, competent authorities, donor-conceived family support and recall coordinators",
+    "pain": "A donor exceeds family limits across institutions or a later genetic safety signal cannot be traced and communicated quickly across jurisdictions",
+    "strongestIncumbent": "National donor registries, clinic donor-management systems, coding under EU SoHO rules, HFEA-style authority registers, manual bilateral notices, and identity-release processes",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Member States and competent authorities may own the registry control plane, legal bases and identifiers may not permit cross-border linkage, and the network cannot launch without simultaneous institutional participation",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "963b6143dbb2aadbe0bd28c2fa65742eef3030e85eac989815965603ca1a2bfb"
+}

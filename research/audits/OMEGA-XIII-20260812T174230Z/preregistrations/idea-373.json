@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-373-d96bed7dd432",
+  "candidateId": "idea-373",
+  "candidateContentDigest": "6762f4cf7211bf64927d98e57152c88931b9f1a4b4fe11d3995e1224a0385244",
+  "createdAt": "2026-08-13T16:30:24.319136+00:00",
+  "lockedAt": "2026-08-13T16:30:24.319136+00:00",
+  "expectations": {
+    "buyer": "Renewable-energy developers, auction bidders, lenders, EPC contractors, component suppliers, and public auction authorities",
+    "pain": "A bid wins on non-price resilience, origin, or cybersecurity promises that are later difficult to evidence through procurement, construction, and operation",
+    "strongestIncumbent": "Auction prequalification portals, certification and guarantee-of-origin schemes, EPC document control, lender technical advisers, procurement suites, and owner engineering teams",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Criteria may remain authority- and auction-specific, project financiers already demand evidence, and public qualification/certification rules may absorb the generic layer",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "e7ddcaf30e7f88599069324037ff3f3f54ebfc7ecac314f40a6f187059c2f90b"
+}

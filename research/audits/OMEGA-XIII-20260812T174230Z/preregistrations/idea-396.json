@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-396-ba39bfa5d47c",
+  "candidateId": "idea-396",
+  "candidateContentDigest": "cafeb404bc1e357359f5b0dca05dca5526f11adf0c3f5d7c5a580a89aa4233d6",
+  "createdAt": "2026-08-13T16:30:24.543170+00:00",
+  "lockedAt": "2026-08-13T16:30:24.543170+00:00",
+  "expectations": {
+    "buyer": "AI data-centre developers and operators, utilities, RTOs or ISOs, engineering firms, insurers, and grid-connection programme owners",
+    "pain": "Built electrical load ramps, disturbances, backup generation, and control behavior diverge from interconnection promises and threaten energisation or operating permission",
+    "strongestIncumbent": "Utility telemetry and SCADA, power-system studies, commissioning agents, relay and power-quality testing, data-centre infrastructure management, and interconnection agreements",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The utility owns acceptance and telemetry, bespoke engineering may dominate, test data is inaccessible, and few operators may pay for a neutral continuous harness",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "b16b598cf4ca35d18ef66c1cd40d8430c95bdb1a4d051fb445a9ba0bdfe02987"
+}
