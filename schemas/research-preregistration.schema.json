@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/research-preregistration.schema.json",
+  "title": "Private prospective research expectation receipt",
+  "type": "object",
+  "required": ["schemaVersion", "preregistrationId", "candidateId", "candidateContentDigest", "createdAt", "lockedAt", "expectations", "author", "digestContract", "digest"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "preregistrationId": { "type": "string", "pattern": "^prereg-[a-z0-9-]+$" },
+    "candidateId": { "type": "string", "minLength": 3 },
+    "candidateContentDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "lockedAt": { "type": "string", "format": "date-time" },
+    "expectations": {
+      "type": "object",
+      "required": ["buyer", "pain", "strongestIncumbent", "willingnessToPayMaturity", "biggestRisk", "verdict"],
+      "properties": {
+        "buyer": { "type": "string", "minLength": 2 }, "pain": { "type": "string", "minLength": 2 },
+        "strongestIncumbent": { "type": "string", "minLength": 2 },
+        "willingnessToPayMaturity": { "enum": ["UNKNOWN", "ASSUMED", "REPORTED", "BEHAVIORAL", "TRANSACTIONAL"] },
+        "biggestRisk": { "type": "string", "minLength": 2 },
+        "verdict": { "enum": ["LIKELY_KILL", "LIKELY_WAIT", "LIKELY_CONTINUE", "UNKNOWN"] }
+      }, "additionalProperties": false
+    },
+    "author": { "type": "object", "required": ["id", "role"], "properties": { "id": { "type": "string", "minLength": 2 }, "role": { "enum": ["repository-owner", "human-reviewer", "research-agent"] } }, "additionalProperties": false },
+    "digestContract": { "const": "research-prereg-v1" },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "additionalProperties": false
+}

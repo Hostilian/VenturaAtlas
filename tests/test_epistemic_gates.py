@@ -54,6 +54,26 @@ class TestEpistemicGates(unittest.TestCase):
         self.assertEqual(score, 92)
         self.assertEqual(coverage, 0)
 
+    def test_numeric_magnitude_never_selects_a_score_scale(self):
+        registry = {
+            "dimensions": {
+                "overallOpportunity": {"minimum": 0, "maximum": 100},
+                "compositeHeadline": {"minimum": 0, "maximum": 100},
+            }
+        }
+        score, coverage = ranker.compute_headline({
+            "scores": {"overallOpportunity": {"value": 9}},
+        }, registry)
+        self.assertEqual(score, 9)
+        self.assertGreater(coverage, 0)
+
+    def test_undeclared_score_scale_fails_closed(self):
+        score, coverage = ranker.compute_headline({
+            "scores": {"overallOpportunity": {"value": 90}},
+        }, {"dimensions": {}})
+        self.assertIsNone(score)
+        self.assertEqual(coverage, 0)
+
     def test_urls_do_not_create_evidence_confidence(self):
         self.assertEqual(ranker.compute_evidence_confidence({
             "sourceReferences": ["https://example.test/a", "https://example.test/b"]

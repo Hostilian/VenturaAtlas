@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/validation-funnel.schema.json",
+  "title": "Append-only validation funnel events",
+  "type": "object",
+  "required": ["schemaVersion", "events"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["eventId", "funnelId", "lineageRef", "ideaId", "from", "to", "predecessorEventId", "occurredAt", "evidenceRefs", "validationRunRefs", "externalOutcome", "moneyCost", "currency", "founderMinutes", "cashCollected"],
+        "properties": {
+          "eventId": { "type": "string", "pattern": "^funnel-event-[a-z0-9-]+$" },
+          "funnelId": { "type": "string", "pattern": "^funnel-[a-z0-9-]+$" },
+          "lineageRef": { "type": "string", "minLength": 2 },
+          "ideaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
+          "from": { "enum": ["NONE", "GENERATED", "DEDUPED", "STAGED", "DESK_RESEARCHED", "COMMERCIAL_RESEARCHED", "APPROVED_FOR_VALIDATION", "CONTACTED", "INTERVIEWED", "DESIGN_PARTNER", "PAID_PILOT", "REPEAT_PAYMENT"] },
+          "to": { "enum": ["GENERATED", "DEDUPED", "STAGED", "DESK_RESEARCHED", "COMMERCIAL_RESEARCHED", "APPROVED_FOR_VALIDATION", "CONTACTED", "INTERVIEWED", "DESIGN_PARTNER", "PAID_PILOT", "REPEAT_PAYMENT"] },
+          "predecessorEventId": { "type": ["string", "null"] },
+          "occurredAt": { "type": "string", "format": "date-time" },
+          "evidenceRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "validationRunRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+          "externalOutcome": { "type": "boolean" },
+          "moneyCost": { "type": "number", "minimum": 0 },
+          "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+          "founderMinutes": { "type": "integer", "minimum": 0 },
+          "cashCollected": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

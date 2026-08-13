@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/phaseshift.schema.json",
+  "title": "Venture Atlas PhaseShift private decision state",
+  "type": "object",
+  "required": ["schemaVersion", "markets", "phaseTransitions", "enforcementEvents", "intermediaryAssessments", "milestones", "milestoneEdges", "sourceConflicts", "counterpartyDeadlocks"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "markets": { "type": "array", "items": { "$ref": "#/definitions/market" } },
+    "phaseTransitions": { "type": "array", "items": { "$ref": "#/definitions/transition" } },
+    "enforcementEvents": { "type": "array", "items": { "$ref": "#/definitions/enforcement" } },
+    "intermediaryAssessments": { "type": "array", "items": { "$ref": "#/definitions/intermediary" } },
+    "milestones": { "type": "array", "items": { "$ref": "#/definitions/milestone" } },
+    "milestoneEdges": { "type": "array", "items": { "$ref": "#/definitions/milestoneEdge" } },
+    "sourceConflicts": { "type": "array", "items": { "$ref": "#/definitions/sourceConflict" } },
+    "counterpartyDeadlocks": { "type": "array", "items": { "$ref": "#/definitions/deadlock" } }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "phase": { "enum": ["P0_SIGNAL", "P1_SPEC_FORMING", "P2_PREPARATION", "P3_MIGRATION", "P4_CUTOVER", "P5_CONFORMANCE", "P6_OPERATIONAL_SCALE", "P7_EXCEPTION_OPTIMIZATION", "P8_CONSOLIDATION", "P9_COMMODITIZATION"] },
+    "refArray": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 2 } },
+    "ideaRefs": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^idea-[0-9]{3}$" } },
+    "dateTime": { "type": "string", "format": "date-time" },
+    "market": {
+      "type": "object",
+      "required": ["marketId", "name", "phase", "phaseConfidence", "status", "waitTrigger", "valueNow", "valueNext", "informationValue", "currentStartupValue", "observedAt", "dependencyRefs", "ecosystemRefs", "ideaRefs", "sourceRefs"],
+      "properties": {
+        "marketId": { "type": "string", "pattern": "^market-[a-z0-9-]+$" }, "name": { "type": "string", "minLength": 3 },
+        "phase": { "$ref": "#/definitions/phase" }, "phaseConfidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+        "status": { "enum": ["ACTIVE", "WAIT_FOR_TRIGGER", "REASSESS", "CLOSED", "UNKNOWN"] },
+        "waitTrigger": { "type": ["string", "null"] },
+        "valueNow": { "type": "array", "uniqueItems": true, "items": { "enum": ["POLICY_INTERPRETATION", "READINESS", "DATA_PREPARATION", "MIGRATION", "MAPPING", "INTEGRATION", "CONFORMANCE", "CERTIFICATION", "CUTOVER", "EXCEPTION_HANDLING", "OBSERVABILITY", "AUDIT", "SWITCHING", "OPTIMIZATION", "ANALYTICS", "VERTICAL_WORKFLOW"] } },
+        "valueNext": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "informationValue": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "currentStartupValue": { "enum": ["HIGH", "MEDIUM", "LOW", "WAIT", "UNKNOWN"] },
+        "observedAt": { "$ref": "#/definitions/dateTime" }, "dependencyRefs": { "$ref": "#/definitions/refArray" }, "ecosystemRefs": { "$ref": "#/definitions/refArray" }, "ideaRefs": { "$ref": "#/definitions/ideaRefs" }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 }
+      }, "additionalProperties": false
+    },
+    "transition": {
+      "type": "object", "required": ["transitionId", "marketId", "from", "to", "transitionKind", "observedAt", "effectiveAt", "sourceRefs", "affectedIdeaRefs", "reassessmentRequired"],
+      "properties": { "transitionId": { "type": "string", "pattern": "^phase-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "from": { "$ref": "#/definitions/phase" }, "to": { "$ref": "#/definitions/phase" }, "transitionKind": { "enum": ["ADVANCE", "SKIP", "REGRESSION", "RESET"] }, "observedAt": { "$ref": "#/definitions/dateTime" }, "effectiveAt": { "oneOf": [{ "$ref": "#/definitions/dateTime" }, { "type": "null" }] }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 }, "affectedIdeaRefs": { "$ref": "#/definitions/ideaRefs" }, "reassessmentRequired": { "const": true } }, "additionalProperties": false
+    },
+    "enforcement": {
+      "type": "object", "required": ["enforcementId", "marketId", "mode", "frictionLevel", "checker", "checkedObject", "trigger", "mechanism", "failureStatus", "remedy", "sla", "financialConsequence", "observedAt", "sourceRefs", "ideaRefs"],
+      "properties": { "enforcementId": { "type": "string", "pattern": "^enf-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "mode": { "enum": ["SELF_DECLARATION", "MACHINE_ACCEPT_REJECT", "CERTIFIED_INTERMEDIARY", "ACCREDITED_VERIFIER", "NOTIFIED_BODY", "REGULATOR_INSPECTION", "BUYER_CONTRACT", "MARKETPLACE_GATE", "CONSUMER_ENFORCEMENT", "COURT_LIABILITY", "INSURER_REQUIREMENT"] }, "frictionLevel": { "enum": ["F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "UNKNOWN"] }, "checker": { "type": "string", "minLength": 2 }, "checkedObject": { "type": "string", "minLength": 2 }, "trigger": { "type": "string", "minLength": 2 }, "mechanism": { "type": "string", "minLength": 2 }, "failureStatus": { "type": "string", "minLength": 2 }, "remedy": { "type": ["string", "null"] }, "sla": { "type": ["string", "null"] }, "financialConsequence": { "type": ["string", "null"] }, "observedAt": { "$ref": "#/definitions/dateTime" }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 }, "ideaRefs": { "$ref": "#/definitions/ideaRefs" } }, "additionalProperties": false
+    },
+    "intermediary": {
+      "type": "object", "required": ["assessmentId", "marketId", "saturation", "providerCount", "asOf", "approvalBarrier", "switchingAbility", "interoperability", "specialization", "concentration", "sourceRefs", "ideaRefs"],
+      "properties": { "assessmentId": { "type": "string", "pattern": "^intermediary-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "saturation": { "enum": ["NO_PROVIDER", "EARLY", "EMERGING", "FRAGMENTED", "SATURATED", "CONSOLIDATING", "OLIGOPOLY", "UNKNOWN"] }, "providerCount": { "type": ["integer", "null"], "minimum": 0 }, "asOf": { "oneOf": [{ "$ref": "#/definitions/dateTime" }, { "type": "null" }] }, "approvalBarrier": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "switchingAbility": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "interoperability": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "specialization": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "concentration": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 }, "ideaRefs": { "$ref": "#/definitions/ideaRefs" } }, "additionalProperties": false
+    },
+    "milestone": {
+      "type": "object", "required": ["milestoneId", "marketId", "kind", "label", "date", "certainty", "buyerImplication", "sourceRefs"],
+      "properties": { "milestoneId": { "type": "string", "pattern": "^milestone-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "kind": { "enum": ["LAW_ADOPTED", "LAW_APPLIES", "TECHNICAL_SPEC_PUBLISHED", "SANDBOX_OPENS", "API_OPENS", "PROVIDER_REGISTRATION_OPENS", "PILOT_STARTS", "MANDATORY_RECEPTION", "MANDATORY_SENDING", "FULL_OPERATION", "ENFORCEMENT_BEGINS", "TRANSITION_ENDS", "OTHER"] }, "label": { "type": "string", "minLength": 3 }, "date": { "type": ["string", "null"], "format": "date-time" }, "certainty": { "enum": ["FIXED", "ANNOUNCED", "EXPECTED", "ESTIMATED", "UNKNOWN"] }, "buyerImplication": { "type": "string", "minLength": 3 }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 } }, "additionalProperties": false
+    },
+    "milestoneEdge": { "type": "object", "required": ["edgeId", "from", "to", "relation"], "properties": { "edgeId": { "type": "string", "pattern": "^milestone-edge-[a-z0-9-]+$" }, "from": { "type": "string" }, "to": { "type": "string" }, "relation": { "enum": ["PRECEDES", "ENABLES", "RELATES_TO"] } }, "additionalProperties": false },
+    "sourceConflict": {
+      "type": "object", "required": ["conflictId", "marketId", "claim", "positions", "difference", "explanationHypothesis", "status", "resolution", "resolutionSourceRefs", "resolvedAt"],
+      "properties": { "conflictId": { "type": "string", "pattern": "^conflict-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "claim": { "type": "string", "minLength": 3 }, "positions": { "type": "array", "minItems": 2, "items": { "type": "object", "required": ["sourceRef", "position", "publishedAt", "updatedAt", "effectiveAt", "retrievedAt"], "properties": { "sourceRef": { "type": "string" }, "position": { "type": "string", "minLength": 2 }, "publishedAt": { "type": ["string", "null"], "format": "date-time" }, "updatedAt": { "type": ["string", "null"], "format": "date-time" }, "effectiveAt": { "type": ["string", "null"], "format": "date-time" }, "retrievedAt": { "$ref": "#/definitions/dateTime" } }, "additionalProperties": false } }, "difference": { "type": "string", "minLength": 3 }, "explanationHypothesis": { "type": ["string", "null"] }, "status": { "enum": ["OPEN", "RESOLVED", "SUPERSEDED"] }, "resolution": { "type": ["string", "null"] }, "resolutionSourceRefs": { "$ref": "#/definitions/refArray" }, "resolvedAt": { "oneOf": [{ "$ref": "#/definitions/dateTime" }, { "type": "null" }] } }, "additionalProperties": false
+    },
+    "deadlock": {
+      "type": "object", "required": ["deadlockId", "marketId", "counterpartyAssessmentRef", "requiredRoles", "simultaneousReadinessRequired", "leastReadyCriticalRole", "buyerCanCompel", "status", "observedAt", "sourceRefs", "ideaRefs"],
+      "properties": { "deadlockId": { "type": "string", "pattern": "^deadlock-[a-z0-9-]+$" }, "marketId": { "type": "string" }, "counterpartyAssessmentRef": { "type": "string" }, "requiredRoles": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "type": "string" } }, "simultaneousReadinessRequired": { "type": "boolean" }, "leastReadyCriticalRole": { "type": ["string", "null"] }, "buyerCanCompel": { "type": ["boolean", "null"] }, "status": { "enum": ["UNKNOWN", "RISK", "ACTIVE", "RESOLVED"] }, "observedAt": { "$ref": "#/definitions/dateTime" }, "sourceRefs": { "$ref": "#/definitions/refArray", "minItems": 1 }, "ideaRefs": { "$ref": "#/definitions/ideaRefs" } }, "additionalProperties": false
+    }
+  }
+}

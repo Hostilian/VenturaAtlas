@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "1.0.0",
+  "markets": [
+    {
+      "marketId": "market-cra-reporting",
+      "name": "Cyber Resilience Act vulnerability and incident reporting",
+      "phase": "P4_CUTOVER",
+      "phaseConfidence": "HIGH",
+      "status": "ACTIVE",
+      "waitTrigger": null,
+      "valueNow": ["READINESS", "DATA_PREPARATION", "INTEGRATION"],
+      "valueNext": ["EXCEPTION_HANDLING", "OBSERVABILITY", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "MEDIUM",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "dependencyRefs": ["dep-eu-cra-reporting"],
+      "ecosystemRefs": ["eco-cra-single-reporting-platform"],
+      "ideaRefs": ["idea-401"],
+      "sourceRefs": ["s83", "s96", "s108", "s184"]
+    },
+    {
+      "marketId": "market-eu-consumer-repair",
+      "name": "EU consumer repair routing and after-sales coordination",
+      "phase": "P3_MIGRATION",
+      "phaseConfidence": "MEDIUM",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "European Repair Platform workflow and integration boundary becomes observable",
+      "valueNow": ["READINESS", "MAPPING"],
+      "valueNext": ["INTEGRATION", "EXCEPTION_HANDLING", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-264", "idea-295", "idea-371"],
+      "sourceRefs": ["s101", "s185"]
+    },
+    {
+      "marketId": "market-france-einvoicing",
+      "name": "France B2B e-invoicing and e-reporting platform ecosystem",
+      "phase": "P4_CUTOVER",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["READINESS", "MAPPING", "INTEGRATION", "CONFORMANCE"],
+      "valueNext": ["SWITCHING", "EXCEPTION_HANDLING", "OBSERVABILITY"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-215"],
+      "sourceRefs": ["s190", "s191"]
+    },
+    {
+      "marketId": "market-eu-catch-imports",
+      "name": "EU seafood CATCH import-certificate workflow",
+      "phase": "P6_OPERATIONAL_SCALE",
+      "phaseConfidence": "HIGH",
+      "status": "ACTIVE",
+      "waitTrigger": null,
+      "valueNow": ["CONFORMANCE", "EXCEPTION_HANDLING"],
+      "valueNext": ["OBSERVABILITY", "ANALYTICS", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "MEDIUM",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-376"],
+      "sourceRefs": ["s192"]
+    },
+    {
+      "marketId": "market-ehds-secondary-use",
+      "name": "EHDS secondary-use dataset discovery and access",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "HIGH",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "Implementing acts and representative national catalogue metadata make feasibility testable",
+      "valueNow": ["READINESS", "DATA_PREPARATION", "MAPPING"],
+      "valueNext": ["INTEGRATION", "CONFORMANCE", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-379"],
+      "sourceRefs": ["s123", "s188", "s189"]
+    }
+  ],
+  "phaseTransitions": [],
+  "enforcementEvents": [
+    {
+      "enforcementId": "enf-cra-srp-reporting",
+      "marketId": "market-cra-reporting",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F1",
+      "checker": "designated CSIRT coordinator and market-surveillance authorities",
+      "checkedObject": "actively exploited vulnerability or severe incident notification",
+      "trigger": "manufacturer awareness of a reportable vulnerability or incident",
+      "mechanism": "24-hour early warning, 72-hour notification, and final report through ENISA SRP",
+      "failureStatus": "non-compliance with CRA reporting obligation; no observed operator rejection code collected",
+      "remedy": "submit or complete the required notification",
+      "sla": "24 hours, 72 hours, then event-specific final-report deadline",
+      "financialConsequence": null,
+      "observedAt": "2026-08-13T12:20:00Z",
+      "sourceRefs": ["s184"],
+      "ideaRefs": ["idea-401"]
+    },
+    {
+      "enforcementId": "enf-catch-mandatory-channel",
+      "marketId": "market-eu-catch-imports",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F1",
+      "checker": "EU Member State import authority",
+      "checkedObject": "catch certificate and related import documents",
+      "trigger": "fishery-product import into the EU",
+      "mechanism": "mandatory CATCH submission channel",
+      "failureStatus": "unknown; no primary rejection code or blocked-shipment receipt collected in this run",
+      "remedy": null,
+      "sla": null,
+      "financialConsequence": null,
+      "observedAt": "2026-08-13T12:20:00Z",
+      "sourceRefs": ["s192"],
+      "ideaRefs": ["idea-376"]
+    }
+  ],
+  "intermediaryAssessments": [
+    {
+      "assessmentId": "intermediary-france-einvoice-2026",
+      "marketId": "market-france-einvoicing",
+      "saturation": "SATURATED",
+      "providerCount": 100,
+      "asOf": "2026-08-13T12:20:00Z",
+      "approvalBarrier": "HIGH",
+      "switchingAbility": "UNKNOWN",
+      "interoperability": "MEDIUM",
+      "specialization": "MEDIUM",
+      "concentration": "LOW",
+      "sourceRefs": ["s190"],
+      "ideaRefs": ["idea-215"]
+    }
+  ],
+  "milestones": [
+    {
+      "milestoneId": "milestone-cra-reporting-applies",
+      "marketId": "market-cra-reporting",
+      "kind": "LAW_APPLIES",
+      "label": "CRA vulnerability and incident reporting applies",
+      "date": "2026-09-11T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Manufacturers need a working reporting and evidence workflow before general CRA application",
+      "sourceRefs": ["s184"]
+    },
+    {
+      "milestoneId": "milestone-repair-directive-applies",
+      "marketId": "market-eu-consumer-repair",
+      "kind": "LAW_APPLIES",
+      "label": "Member States apply the repair directive",
+      "date": "2026-07-31T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "After-sales obligations move from preparation into national implementation",
+      "sourceRefs": ["s185"]
+    },
+    {
+      "milestoneId": "milestone-eu-repair-platform",
+      "marketId": "market-eu-consumer-repair",
+      "kind": "FULL_OPERATION",
+      "label": "European Repair Platform expected operational during 2027; exact date not established",
+      "date": null,
+      "certainty": "EXPECTED",
+      "buyerImplication": "Generic repair discovery features face direct public-platform absorption",
+      "sourceRefs": ["s185"]
+    },
+    {
+      "milestoneId": "milestone-france-einvoice-wave-one",
+      "marketId": "market-france-einvoicing",
+      "kind": "MANDATORY_RECEPTION",
+      "label": "France first B2B e-invoicing and e-reporting wave",
+      "date": "2026-09-01T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Large taxpayers enter cutover in an already dense accredited-platform ecosystem",
+      "sourceRefs": ["s190"]
+    },
+    {
+      "milestoneId": "milestone-vida-cross-border",
+      "marketId": "market-france-einvoicing",
+      "kind": "MANDATORY_SENDING",
+      "label": "ViDA cross-border B2B e-invoicing and digital reporting",
+      "date": "2030-07-01T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Cross-border standardisation increases while country-specific transition work persists",
+      "sourceRefs": ["s191"]
+    },
+    {
+      "milestoneId": "milestone-catch-compulsory",
+      "marketId": "market-eu-catch-imports",
+      "kind": "MANDATORY_SENDING",
+      "label": "CATCH compulsory for EU importer submissions",
+      "date": "2026-01-10T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "The market is past migration; exception and rejection evidence is now the critical unknown",
+      "sourceRefs": ["s192"]
+    },
+    {
+      "milestoneId": "milestone-ehds-implementing-acts",
+      "marketId": "market-ehds-secondary-use",
+      "kind": "TECHNICAL_SPEC_PUBLISHED",
+      "label": "Key EHDS implementing acts due in March 2027; exact day not established",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "Preflight product requirements remain unstable until detailed operational rules land",
+      "sourceRefs": ["s188"]
+    },
+    {
+      "milestoneId": "milestone-ehds-secondary-use-most-data",
+      "marketId": "market-ehds-secondary-use",
+      "kind": "LAW_APPLIES",
+      "label": "Secondary-use rules apply to most data categories in March 2029; exact day not established",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "Commercial urgency is later than present infrastructure preparation",
+      "sourceRefs": ["s188"]
+    }
+  ],
+  "milestoneEdges": [
+    { "edgeId": "milestone-edge-repair-law-platform", "from": "milestone-repair-directive-applies", "to": "milestone-eu-repair-platform", "relation": "PRECEDES" },
+    { "edgeId": "milestone-edge-france-vida", "from": "milestone-france-einvoice-wave-one", "to": "milestone-vida-cross-border", "relation": "PRECEDES" },
+    { "edgeId": "milestone-edge-ehds-acts-application", "from": "milestone-ehds-implementing-acts", "to": "milestone-ehds-secondary-use-most-data", "relation": "ENABLES" }
+  ],
+  "sourceConflicts": [
+    {
+      "conflictId": "conflict-customs-hub-full-timeline",
+      "marketId": "market-eu-catch-imports",
+      "claim": "When the EU Customs Data Hub becomes voluntary for general importers and mandatory for all importers",
+      "positions": [
+        {
+          "sourceRef": "s187",
+          "position": "2023 proposal factsheet: voluntary in 2032 and mandatory in 2038",
+          "publishedAt": "2023-05-01T00:00:00Z",
+          "updatedAt": null,
+          "effectiveAt": null,
+          "retrievedAt": "2026-08-13T12:20:00Z"
+        },
+        {
+          "sourceRef": "s186",
+          "position": "Current reform page: other importers voluntary in 2031 and mandatory from 2034",
+          "publishedAt": null,
+          "updatedAt": null,
+          "effectiveAt": null,
+          "retrievedAt": "2026-08-13T12:20:00Z"
+        }
+      ],
+      "difference": "Official summaries give different voluntary and mandatory years",
+      "explanationHypothesis": "The legislative and implementation timeline evolved after the 2023 proposal",
+      "status": "OPEN",
+      "resolution": null,
+      "resolutionSourceRefs": [],
+      "resolvedAt": null
+    }
+  ],
+  "counterpartyDeadlocks": [
+    {
+      "deadlockId": "deadlock-cra-supplier-reachability-unknown",
+      "marketId": "market-cra-reporting",
+      "counterpartyAssessmentRef": "cp-cra-reachledger",
+      "requiredRoles": ["device manufacturer", "component and firmware suppliers"],
+      "simultaneousReadinessRequired": true,
+      "leastReadyCriticalRole": null,
+      "buyerCanCompel": null,
+      "status": "UNKNOWN",
+      "observedAt": "2026-08-13T12:20:00Z",
+      "sourceRefs": ["s184"],
+      "ideaRefs": ["idea-401"]
+    }
+  ]
+}

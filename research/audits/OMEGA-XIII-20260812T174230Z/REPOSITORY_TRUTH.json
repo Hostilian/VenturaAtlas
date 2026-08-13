@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "OMEGA-XIII-20260812T174230Z",
+  "baselineSha": "476a4145946a075d924abcd07943ea19a57b9419",
+  "branch": "main",
+  "remoteMainSha": "476a4145946a075d924abcd07943ea19a57b9419",
+  "startingDirty": false,
+  "toolchain": {
+    "codex": "0.144.5",
+    "node": "v22.11.0",
+    "npm": "10.9.0",
+    "python": "3.12.5",
+    "os": "Windows 10.0.22631.0"
+  },
+  "truth": {
+    "version": "2.3.0",
+    "schemaVersion": "2.0.0",
+    "privateStagingIncluded": true,
+    "canonicalDataRevision": "0556c900ee4548a8",
+    "revisions": {
+      "canonicalRevision": "b1f5b764ca5f247a",
+      "stagingRevision": "f2ea4c5584df596d",
+      "taxonomyRevision": "6945e3a804df238b",
+      "sourcesRevision": "fa44adfb38c0f7a9",
+      "rankingsRevision": "3cb02d27c62a58ef",
+      "canonicalDataRevision": "0556c900ee4548a8"
+    },
+    "counts": {
+      "ideas": 294,
+      "canonicalIdeas": 294,
+      "stagedIdeas": 306,
+      "totalIdeas": 600,
+      "categories": 122,
+      "canonicalCategoryLabels": 122,
+      "taxonomyCategories": 31,
+      "sources": 183,
+      "rankingViews": 7,
+      "rankingEntries": 294,
+      "prompts": 4425,
+      "dossiers": 382,
+      "financialModels": 60,
+      "validationPlans": 60,
+      "technicalBlueprints": 60,
+      "launchPlans": 60
+    },
+    "files": {
+      "ideas.json": {
+        "sha256": "b1f5b764ca5f247a4e7a786324964d496eea260e809ce26756f76ffa292a164c",
+        "bytes": 4507077
+      },
+      "idea-staging-queue.json": {
+        "sha256": "f2ea4c5584df596da41b355e4a23e645f452e9a2e56d1f3451294d529228c1e7",
+        "bytes": 2003645
+      },
+      "categories.json": {
+        "sha256": "6945e3a804df238b33023c27710640a168a3e0ef294139393f439f5d9676398d",
+        "bytes": 6125
+      },
+      "sources.json": {
+        "sha256": "fa44adfb38c0f7a90985de5c62d4a84f3b63a32ee9ea80fc29c4943c8e1d57d4",
+        "bytes": 137451
+      },
+      "rankings.json": {
+        "sha256": "3cb02d27c62a58ef012dfafc5f978fec15eac417d79c4889ef07ff88c29e0b98",
+        "bytes": 1345110
+      }
+    }
+  },
+  "structured": {
+    "researchRuns": 8,
+    "rankingRuns": 0,
+    "lifecycleReceipts": 0,
+    "reviewerAuthorities": 0,
+    "claimRelations": 0,
+    "phaseShiftMarkets": 0,
+    "phaseTransitions": 0,
+    "enforcementEvents": 0,
+    "milestones": 0,
+    "sourceConflicts": 0,
+    "funnelEvents": 0
+  },
+  "artifactFiles": {
+    "all": 17719,
+    "ideas": 383,
+    "validationPlans": 60,
+    "financialModels": 60,
+    "technicalBlueprints": 60,
+    "launchPlans": 60,
+    "prompts": 4727,
+    "scripts": 152,
+    "tests": 52
+  },
+  "cohorts": {
+    "canonical": 294,
+    "privateStaged": 306,
+    "prioritizedPrivate": 36
+  }
+}

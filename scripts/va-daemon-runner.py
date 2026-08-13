@@ -22,8 +22,10 @@ import signal
 import json
 import subprocess
 import argparse
+import uuid
 from va_runtime.atomic_io import atomic_write_json
 from va_runtime.process_lock import process_file_lock
+from va_runtime.semantic_utility import classify_iteration, mutation_receipt, semantic_digest
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -35,6 +37,7 @@ LOG_PATH     = os.path.join(BASE_DIR, '.agent-state', 'logs', 'unattended-runner
 STATE_PATH   = os.path.join(BASE_DIR, '.agent-state', 'provider-state.json')
 LOCK_PATH    = os.path.join(BASE_DIR, '.agent-state', 'locks', 'autonomy-supervisor.lock')
 HEARTBEAT_PATH = os.path.join(BASE_DIR, '.agent-state', 'autonomy-heartbeat.json')
+RECEIPTS_DIR = os.path.join(BASE_DIR, '.agent-state', 'autonomy-receipts')
 SCRIPTS_DIR  = os.path.dirname(os.path.abspath(__file__))
 
 os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
@@ -105,6 +108,55 @@ def _run_command(cmd: list[str]) -> tuple[int, str]:
         return result.returncode, result.stdout + result.stderr
     except Exception as e:
         return 1, str(e)
+
+
+def _read_json(path: str, fallback):
+    try:
+        with open(path, 'r', encoding='utf-8') as handle:
+            return json.load(handle)
+    except (OSError, ValueError):
+        return fallback
+
+
+def _content_snapshot() -> dict:
+    """Return content-plane state only; provider/heartbeat telemetry is excluded."""
+    canonical = _read_json(os.path.join(BASE_DIR, 'data', 'ideas.json'), {"ideas": []})
+    staging = _read_json(os.path.join(BASE_DIR, 'data', 'idea-staging-queue.json'), [])
+    return {
+        "canonicalIdeas": canonical.get("ideas", []) if isinstance(canonical, dict) else canonical,
+        "stagedIdeas": staging if isinstance(staging, list) else [],
+    }
+
+
+def _baseline_revision() -> str:
+    rc, output = _run_command(['git', 'rev-parse', 'HEAD'])
+    return output.strip() if rc == 0 else 'UNKNOWN'
+
+
+def _material_deltas(before: dict, after: dict) -> list[dict]:
+    deltas = []
+    for key, change_type in (("canonicalIdeas", "CANONICAL_CONTENT"), ("stagedIdeas", "STAGING_CONTENT")):
+        old, new = before.get(key, []), after.get(key, [])
+        if semantic_digest(old) != semantic_digest(new):
+            deltas.append({
+                "type": change_type,
+                "beforeCount": len(old),
+                "afterCount": len(new),
+                "beforeDigest": semantic_digest(old),
+                "afterDigest": semantic_digest(new),
+            })
+    return deltas
+
+
+def _write_iteration_receipt(run_id: str, baseline: str, before: dict, after: dict,
+                             changes: list[dict], started_at: str, result: str | None = None) -> dict:
+    ended_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    receipt = mutation_receipt(
+        run_id, baseline, before, after, changes, [], started_at, ended_at, result=result
+    )
+    os.makedirs(RECEIPTS_DIR, exist_ok=True)
+    atomic_write_json(os.path.join(RECEIPTS_DIR, f'{run_id}.json'), receipt)
+    return receipt
 
 def _print_banner(iteration: int, max_iter: int, interval: int):
     max_str = str(max_iter) if max_iter else "∞"
@@ -204,6 +256,10 @@ def main():
         _log("INFO", f"Starting idea discovery run #{iteration}", extra={"iteration": iteration})
 
         degraded_reasons = []
+        run_id = f"autonomy-{datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:12]}"
+        started_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        baseline = _baseline_revision()
+        content_before = _content_snapshot()
 
         # 2. Run idea generator
         _log("INFO", "Running autonomous-idea-generator.py...")
@@ -216,14 +272,26 @@ def main():
             if line.strip():
                 print(f"  {line}")
         if rc != 0:
+            content_after = _content_snapshot()
+            changes = _material_deltas(content_before, content_after)
+            _write_iteration_receipt(run_id, baseline, content_before, content_after, changes, started_at, result="FAILED")
             _heartbeat("failed", iteration, f"idea-generation rc={rc}")
             _log("ERROR", f"Idea generator exited with code {rc}; dependent stages skipped")
             raise RuntimeError(f"critical stage idea-generation failed with rc={rc}")
         else:
             _log("SUCCESS", "Idea generator run complete")
 
+        content_after = _content_snapshot()
+        changes = _material_deltas(content_before, content_after)
+        outcome = classify_iteration(content_before, content_after, changes)
+        receipt = _write_iteration_receipt(run_id, baseline, content_before, content_after, changes, started_at)
+        has_material_change = outcome == "MATERIAL_CHANGE"
+        _log("SUCCESS" if has_material_change else "INFO",
+             f"Discovery utility outcome: {outcome}",
+             extra={"runId": run_id, "semanticRevisionAfter": receipt["semanticRevisionAfter"]})
+
         # 3. Optionally validate staged
-        if args.validate:
+        if args.validate and has_material_change:
             _log("INFO", "Running validator on staged ideas...")
             rc, out = _run_script('va-validator.py', ['--staged'])
             for line in out.strip().splitlines()[-20:]:
@@ -235,7 +303,7 @@ def main():
                 raise RuntimeError(f"critical stage validation failed with rc={rc}")
 
         # 4. Optionally re-rank
-        if args.rank:
+        if args.rank and has_material_change:
             _log("INFO", "Updating rankings...")
             rc, out = _run_script('va-ranker.py', ['--update', '--top', '10'])
             for line in out.strip().splitlines()[-30:]:
@@ -248,16 +316,19 @@ def main():
 
         # 5. Refresh derived metadata and documentation after any staged/ranking
         # changes so the next integrity check observes one coherent repository state.
-        _log("INFO", "Refreshing derived repository metadata...")
-        rc, out = _run_command(['node', 'scripts/build-repository-meta.js'])
-        if rc == 0:
-            rc, out = _run_command(['node', 'scripts/update-documentation-stats.js'])
-        if rc == 0:
-            rc, out = _run_command(['node', 'scripts/validate-data.js'])
-        if rc != 0:
-            _heartbeat("failed", iteration, f"derived-metadata rc={rc}")
-            _log("ERROR", f"Derived metadata refresh failed with code {rc}")
-            raise RuntimeError(f"critical stage derived-metadata failed with rc={rc}")
+        if has_material_change:
+            _log("INFO", "Refreshing derived repository metadata...")
+            rc, out = _run_command(['node', 'scripts/build-repository-meta.js'])
+            if rc == 0:
+                rc, out = _run_command(['node', 'scripts/update-documentation-stats.js'])
+            if rc == 0:
+                rc, out = _run_command(['node', 'scripts/validate-data.js'])
+            if rc != 0:
+                _heartbeat("failed", iteration, f"derived-metadata rc={rc}")
+                _log("ERROR", f"Derived metadata refresh failed with code {rc}")
+                raise RuntimeError(f"critical stage derived-metadata failed with rc={rc}")
+        else:
+            _log("INFO", "NO_OP: skipped validation, ranking, and derived-content rebuild")
 
         # 6. Periodic integrity work. This is read-only and degrades gracefully:
         # discovery may continue even when documentation/revision drift needs repair.

@@ -3988,5 +3988,194 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s184",
+    "title": "Single Reporting Platform (SRP)",
+    "publisher": "ENISA",
+    "url": "https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp",
+    "supports": [
+      "CRA mandatory reporting starts on 11 September 2026 through the SRP",
+      "Initial reporting has 24-hour and 72-hour stages; no reporting API is provided at launch"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-17",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-401"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s185",
+    "title": "Directive on repair of goods",
+    "publisher": "European Commission - DG JUST",
+    "url": "https://commission.europa.eu/law/law-topic/consumer-protection-law/directive-repair-goods_en",
+    "supports": [
+      "Member States apply the repair directive from 31 July 2026",
+      "A European Repair Platform extending Your Europe is planned to become operational in 2027"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-264", "idea-295", "idea-371"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s186",
+    "title": "EU Customs Reform",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/customs/eu-customs-reform_en",
+    "supports": [
+      "Current Commission reform page says the Customs Data Hub opens for e-commerce in 2028 and other importers voluntarily in 2031",
+      "Current Commission reform page says the Hub becomes mandatory from 2034"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-261", "idea-376"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s187",
+    "title": "EU Customs Reform factsheet (2023 proposal timeline)",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/system/files/2023-05/Customs%20Reform%20Factsheet.pdf",
+    "supports": [
+      "The 2023 proposal factsheet gave a 2028 e-commerce, 2032 voluntary, and 2038 mandatory Customs Data Hub timeline",
+      "This historical official summary conflicts with the current implementation summary and must not be silently overwritten"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2023-05",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-261", "idea-376"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s188",
+    "title": "European Health Data Space Regulation timeline",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/ehealth-digital-health-and-care/european-health-data-space-regulation-ehds_en",
+    "supports": [
+      "Key EHDS implementing acts are due by March 2027",
+      "Secondary-use rules start for most data categories in March 2029 and remaining categories in March 2031"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-379"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s189",
+    "title": "Projects supporting EHDS",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/ehealth-digital-health-and-care/ehds-action/projects-supporting-ehds_en",
+    "supports": [
+      "The Commission is developing a central platform for cross-border secondary use",
+      "National catalogue, access-application, secure-environment, and data-quality capabilities remain in implementation and training"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-379"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s190",
+    "title": "eInvoicing in France",
+    "publisher": "European Commission Digital Building Blocks",
+    "url": "https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/eInvoicing%2Bin%2BFrance",
+    "supports": [
+      "France starts phased B2B e-invoicing and e-reporting in September 2026",
+      "France abandoned a public business invoicing portal and has nearly 100 accredited private platforms"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-215"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s191",
+    "title": "VAT in the Digital Age: 2026 Work Programme",
+    "publisher": "European Commission - DG TAXUD",
+    "url": "https://taxation-customs.ec.europa.eu/news/vat-digital-age-2026-work-programme-available-2026-05-22_en",
+    "supports": [
+      "Cross-border B2B digital reporting based on mandatory e-invoicing starts 1 July 2030",
+      "Domestic systems remain country-specific during a long phased implementation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-22",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-215"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s192",
+    "title": "CATCH compulsory-use FAQ",
+    "publisher": "European Commission - DG MARE",
+    "url": "https://oceans-and-fisheries.ec.europa.eu/system/files/2024-01/FAQ-amendment-IUU-Regulation_en.pdf",
+    "supports": [
+      "EU importers must submit catch certificates through CATCH from 10 January 2026",
+      "The system was already operational before compulsory use; non-EU exporters and authorities may use it voluntarily"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2024-01",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-phaseshift",
+    "ideaIds": ["idea-376"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

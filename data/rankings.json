@@ -1,9 +1,11 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-12T15:25:33.267713+00:00",
+  "generatedAt": "2026-08-12T15:56:11.665659+00:00",
   "totalIdeas": 294,
   "rankingViewsCount": 7,
-  "algorithm": "weighted-composite-v2",
+  "algorithm": "weighted-composite-v3-explicit-scale",
+  "scoreScaleVersion": "va-score-scales-v1",
+  "rankingSemanticDigest": "8e6508b31f39dd63867fd2602fa9ada56bd734809294800eecf60728479851fb",
   "weights": {
     "overallOpportunity": 0.25,
     "bootstrappedPotential": 0.15,
@@ -39782,97 +39784,1795 @@
       ]
     }
   ],
+  "universes": {
+    "LEGACY_HISTORICAL": {
+      "comparable": false,
+      "items": [
+        "idea-385",
+        "idea-395",
+        "idea-373",
+        "idea-396",
+        "idea-374",
+        "idea-361",
+        "idea-397",
+        "idea-386",
+        "idea-341",
+        "idea-362",
+        "idea-363",
+        "idea-387",
+        "idea-375",
+        "idea-364",
+        "idea-376",
+        "idea-342",
+        "idea-365",
+        "idea-388",
+        "idea-398",
+        "idea-377",
+        "idea-343",
+        "idea-366",
+        "idea-344",
+        "idea-319",
+        "idea-399",
+        "idea-082",
+        "idea-367",
+        "idea-378",
+        "idea-320",
+        "idea-345",
+        "idea-083",
+        "idea-389",
+        "idea-084",
+        "idea-379",
+        "idea-346",
+        "idea-331",
+        "idea-368",
+        "idea-390",
+        "idea-085",
+        "idea-380",
+        "idea-400",
+        "idea-347",
+        "idea-391",
+        "idea-381",
+        "idea-086",
+        "idea-332",
+        "idea-321",
+        "idea-348",
+        "idea-369",
+        "idea-349",
+        "idea-333",
+        "idea-350",
+        "idea-382",
+        "idea-322",
+        "idea-351",
+        "idea-370",
+        "idea-401",
+        "idea-334",
+        "idea-323",
+        "idea-383",
+        "idea-352",
+        "idea-335",
+        "idea-353",
+        "idea-392",
+        "idea-324",
+        "idea-371",
+        "idea-384",
+        "idea-354",
+        "idea-336",
+        "idea-393",
+        "idea-325",
+        "idea-355",
+        "idea-402",
+        "idea-394",
+        "idea-337",
+        "idea-356",
+        "idea-326",
+        "idea-338",
+        "idea-372",
+        "idea-357",
+        "idea-358",
+        "idea-327",
+        "idea-339",
+        "idea-359",
+        "idea-328",
+        "idea-340",
+        "idea-360",
+        "idea-329",
+        "idea-403",
+        "idea-330",
+        "idea-404",
+        "idea-405",
+        "idea-406",
+        "idea-001",
+        "idea-002",
+        "idea-003",
+        "idea-004",
+        "idea-005",
+        "idea-006",
+        "idea-007",
+        "idea-008",
+        "idea-009",
+        "idea-010",
+        "idea-011",
+        "idea-012",
+        "idea-013",
+        "idea-014",
+        "idea-015",
+        "idea-016",
+        "idea-017",
+        "idea-018",
+        "idea-019",
+        "idea-020",
+        "idea-021",
+        "idea-022",
+        "idea-023",
+        "idea-024",
+        "idea-025",
+        "idea-026",
+        "idea-027",
+        "idea-028",
+        "idea-029",
+        "idea-030",
+        "idea-031",
+        "idea-032",
+        "idea-033",
+        "idea-034",
+        "idea-035",
+        "idea-036",
+        "idea-037",
+        "idea-038",
+        "idea-039",
+        "idea-040",
+        "idea-041",
+        "idea-042",
+        "idea-043",
+        "idea-044",
+        "idea-045",
+        "idea-046",
+        "idea-047",
+        "idea-048",
+        "idea-049",
+        "idea-050",
+        "idea-051",
+        "idea-052",
+        "idea-053",
+        "idea-054",
+        "idea-055",
+        "idea-056",
+        "idea-057",
+        "idea-058",
+        "idea-059",
+        "idea-060",
+        "idea-061",
+        "idea-062",
+        "idea-063",
+        "idea-064",
+        "idea-065",
+        "idea-066",
+        "idea-067",
+        "idea-068",
+        "idea-069",
+        "idea-070",
+        "idea-166",
+        "idea-167",
+        "idea-168",
+        "idea-169",
+        "idea-170",
+        "idea-171",
+        "idea-172",
+        "idea-173",
+        "idea-174",
+        "idea-175",
+        "idea-176",
+        "idea-177",
+        "idea-178",
+        "idea-179",
+        "idea-180",
+        "idea-181",
+        "idea-182",
+        "idea-183",
+        "idea-184",
+        "idea-185",
+        "idea-187",
+        "idea-188",
+        "idea-189",
+        "idea-190",
+        "idea-191",
+        "idea-192",
+        "idea-193",
+        "idea-194",
+        "idea-195",
+        "idea-196",
+        "idea-206",
+        "idea-207",
+        "idea-208",
+        "idea-209",
+        "idea-210",
+        "idea-211",
+        "idea-212",
+        "idea-213",
+        "idea-214",
+        "idea-215",
+        "idea-219",
+        "idea-220",
+        "idea-221",
+        "idea-222",
+        "idea-223",
+        "idea-224",
+        "idea-225",
+        "idea-226",
+        "idea-227",
+        "idea-228",
+        "idea-230",
+        "idea-231",
+        "idea-232",
+        "idea-233",
+        "idea-234",
+        "idea-235",
+        "idea-236",
+        "idea-237",
+        "idea-238",
+        "idea-239",
+        "idea-240",
+        "idea-241",
+        "idea-242",
+        "idea-243",
+        "idea-244",
+        "idea-245",
+        "idea-246",
+        "idea-247",
+        "idea-248",
+        "idea-249",
+        "idea-250",
+        "idea-251",
+        "idea-252",
+        "idea-253",
+        "idea-254",
+        "idea-255",
+        "idea-256",
+        "idea-257",
+        "idea-258",
+        "idea-259",
+        "idea-261",
+        "idea-262",
+        "idea-263",
+        "idea-264",
+        "idea-265",
+        "idea-266",
+        "idea-267",
+        "idea-268",
+        "idea-269",
+        "idea-270",
+        "idea-273",
+        "idea-274",
+        "idea-275",
+        "idea-276",
+        "idea-277",
+        "idea-278",
+        "idea-279",
+        "idea-280",
+        "idea-281",
+        "idea-282",
+        "idea-287",
+        "idea-288",
+        "idea-289",
+        "idea-290",
+        "idea-291",
+        "idea-292",
+        "idea-293",
+        "idea-294",
+        "idea-295",
+        "idea-296",
+        "idea-298",
+        "idea-299",
+        "idea-300",
+        "idea-301",
+        "idea-302",
+        "idea-303",
+        "idea-304",
+        "idea-305",
+        "idea-306",
+        "idea-307",
+        "idea-308",
+        "idea-309",
+        "idea-310",
+        "idea-311",
+        "idea-312",
+        "idea-313",
+        "idea-314",
+        "idea-315",
+        "idea-316",
+        "idea-317",
+        "idea-318"
+      ]
+    },
+    "HYPOTHESIS": {
+      "comparable": false,
+      "items": [
+        {
+          "ideaId": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-361",
+          "name": "RegDiff / ProductIdentity CI — Continuous Regulatory Change Impact Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-397",
+          "name": "BioScreen CI — Continuous Independent Assurance for Nucleic-Acid Synthesis Screening",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-386",
+          "name": "ProvenanceChaos / MarkCI — AI-Content Provenance Whole-Pipeline Chaos Harness",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-341",
+          "name": "EntityMandate — Legal Authority Graph for Companies + AI Agents",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-362",
+          "name": "DataRight SLO — Machine Data Access Quality & SLO Monitoring",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-363",
+          "name": "WorkerDecision Ledger — Algorithmic Workforce Decision & Audit Protocol",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-387",
+          "name": "LicenseMeter / ModelRights Compiler — Dynamic AI Model License Telemetry Compiler",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-375",
+          "name": "PayerTruth / DenialGraph — Empirical Healthcare Coverage & Denial Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-364",
+          "name": "ProductTimeMachine — Historical Product State & Defect Evidence Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-376",
+          "name": "CatchLint / BorderPreflight — Digital Customs & CATCH Preflight Compiler",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-342",
+          "name": "ResearchProof — Evidence Infrastructure for AI-Assisted R&D",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-365",
+          "name": "WorkerPassport — Portable Platform Work Reputation Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-388",
+          "name": "PermanenceDesk — Certified Carbon Removal Asset-Liability Management Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-398",
+          "name": "FilterLife SLO / MediaTruth — PFAS Filter Life & Vendor-Neutral Performance Intelligence",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-377",
+          "name": "MedicineResilience Twin — Critical Medicine Supply Resilience & Tender Optimizer",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-343",
+          "name": "AgentRatings — Independent Reliability & ROI Ratings for AI Workers",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-366",
+          "name": "MachinePort — Multi-OEM Equipment Data Abstraction API",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-344",
+          "name": "MandateCompiler — Corporate Authority Machine-Readable Compiler",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-319",
+          "name": "OutcomeProof — Machine Labor M&V",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-399",
+          "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-082",
+          "name": "Vendor Slot Rescue",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-367",
+          "name": "RobotChangeControl — Industrial Robot Safety Change Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-378",
+          "name": "MicroFee / PolluterLedger — Urban Wastewater EPR Fee Scenario & Audit Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-320",
+          "name": "Billing RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-345",
+          "name": "ExceptionEconomics — True Cost Accounting for AI Automation",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-083",
+          "name": "Wedding Lead Spend Forensics",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-389",
+          "name": "DataCentre LabelTwin — EU Sustainability Rating Simulator & Optimization Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-084",
+          "name": "Cancellation Revenue Recovery",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-379",
+          "name": "CohortPreflight Europe — EHDS Secondary Data Cohort & Feasibility Preflight",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-346",
+          "name": "DisclosureFirewall — Minimum-Disclosure Layer for EU Digital Identity",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-331",
+          "name": "BaselineLock — Counterfactual Contract Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-368",
+          "name": "DataAct Claims Engine — Statutory Data Access Dispute Operations",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-390",
+          "name": "ForcedLabor CaseGraph — Supply Chain Allegation Blast-Radius & Response Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-085",
+          "name": "Event Sponsor Proof Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-380",
+          "name": "UrbanMine Futures — Strategic Raw Material Feedstock Forecasting Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-400",
+          "name": "ReclaimProof — Physical & Mass-Balance Provenance Assurance for Reclaimed Refrigerants",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-347",
+          "name": "AgentIncident — Forensic Evidence Packs for AI Incidents",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-391",
+          "name": "Donor VariantWatch — Post-Donation Genomic Surveillance Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-381",
+          "name": "Deadstock Control Plane — ESPR Unsold Apparel Policy & Disposition Control Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-086",
+          "name": "Booked-Out Referral Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-332",
+          "name": "RobotWork Neutral Meter",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-321",
+          "name": "Returns RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-348",
+          "name": "ClimateProof — Verified Property-Mitigation Passport",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-369",
+          "name": "DeforestAppeal — Satellite Deforestation False Positive Counter-Evidence",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-349",
+          "name": "B2B Agent Gateway — Legacy Supplier Machine-Buyable Adapter",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-333",
+          "name": "AI Rights Royalty Subledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-350",
+          "name": "AgentWarranty — Warranty & Insurance Infrastructure for Autonomous Work",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-382",
+          "name": "DismantleException — Vehicle Circularity Disproportionate Cost Exception Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-322",
+          "name": "Meter-to-Bill RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-351",
+          "name": "RobotDataRights — Provenance & Licensing for Robot Training Data",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-370",
+          "name": "MethaneMismatch — Methane Certification vs Satellite Observation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-401",
+          "name": "CRA ReachLedger — Firmware Vulnerability Exposure & Patch Deployment Reachability Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-334",
+          "name": "PublicTech Impact Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-323",
+          "name": "Marketplace Payout ChaosGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-383",
+          "name": "SpaceEvidence CI — Satellite Mission Safety & Debris Conformity Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-352",
+          "name": "TokenRail Ops — Exception & Reconciliation Engine for Payment Rails",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-335",
+          "name": "RaaS SLA Settlement Grid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-353",
+          "name": "Corporate Credential Freshness Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-392",
+          "name": "EnergyShare Auditor — Peer-to-Peer Energy Allocation & Billing Audit Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-324",
+          "name": "Airline Order Settlement RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-371",
+          "name": "RepairAccess Monitor — OEM Aftermarket Repairability Evidence Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-384",
+          "name": "Micropollutant Evidence Exchange — Chemical Persistence & Degradability Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-354",
+          "name": "Multi-Agent Governance Board",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-336",
+          "name": "Supplier Recall CostSplit",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-393",
+          "name": "BioScreen Bench — DNA Synthesis Provider Biosecurity Benchmark",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-325",
+          "name": "Vendor Guarantee M&V",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-355",
+          "name": "Regulated Agent Benchmark Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-402",
+          "name": "Medicare MFP Reconcile — Negotiated-Price Claim & Refund Reconciliation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-394",
+          "name": "As-Built Carbon Drift — Building Passport Embodied Carbon Audit Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-337",
+          "name": "Cross-Marketplace Revenue Subledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-356",
+          "name": "EUDI Relying-Party Readiness Cloud",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-326",
+          "name": "Retail Media Measurement Contract Grid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-338",
+          "name": "Performance-Guarantee Clearinghouse",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-372",
+          "name": "CloudExit Drill — Continuous Cloud Portability & Data Act Exit Testing",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-357",
+          "name": "Physical-AI Dataset Quality Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-358",
+          "name": "Cross-Rail Corporate Treasury Router",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-327",
+          "name": "3PL Activity-to-Invoice Grid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-339",
+          "name": "Parametric Basis-Risk Mirror",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-359",
+          "name": "Small-Software Deployment Cloud",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-328",
+          "name": "Entitlement RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-340",
+          "name": "Agent License Cost Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-360",
+          "name": "Self-Maintaining Third-Party API Layer",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-329",
+          "name": "Cloud Marketplace Revenue Share Grid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-403",
+          "name": "WaterContact Compiler — Drinking Water Contact Material Formulation Compliance Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-330",
+          "name": "Telecom Roaming Settlement RealityGrid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-404",
+          "name": "Transformer Procurement Marketplace — AI Transformer Sourcing & Lead-Time Marketplace [KILLED]",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-405",
+          "name": "FuelEU Pooling Marketplace — Maritime FuelEU Compliance Pool Exchange [KILLED]",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-406",
+          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-001",
+          "name": "ProofRail — AI Work Acceptance Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-002",
+          "name": "AI Model Ranking Observatory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-003",
+          "name": "AI Agent Budget & Credit Controller",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-004",
+          "name": "Verified Rankings Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-005",
+          "name": "Prompt Registry & Evaluation Lab",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-006",
+          "name": "CodeQL Remediation Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-007",
+          "name": "Creator Video Automation Pipeline",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-008",
+          "name": "Research-to-Startup Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-009",
+          "name": "Autonomous Experiment Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-010",
+          "name": "Repository Autopilot",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-011",
+          "name": "Official Source Change Monitor",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-012",
+          "name": "Content Opportunity Ranker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-013",
+          "name": "Autonomous Agent Operating System",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-014",
+          "name": "Venture Atlas OS",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-015",
+          "name": "Evidence-Backed Recommendation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-016",
+          "name": "Multi-Provider AI Workspace",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-017",
+          "name": "Semantic Multi-Agent Merge Coordinator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-018",
+          "name": "Verified Agent Skill Marketplace",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-019",
+          "name": "Release Evidence Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-020",
+          "name": "Longitudinal Research Memory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-021",
+          "name": "Clip-to-Quiz Language Learning",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-022",
+          "name": "Subscription Change Tracker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-023",
+          "name": "Applications Closing Soon",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-024",
+          "name": "Movie-to-100-Shorts Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-025",
+          "name": "EU Marketplace Compliance OS",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-026",
+          "name": "Marketplace Trust Layer",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-027",
+          "name": "Commerce Knowledge Graph Platform",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-028",
+          "name": "FoodSpec Evidence Registry",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-029",
+          "name": "Verified Seller Onboarding API",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-030",
+          "name": "Autonomous Mobile App Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-031",
+          "name": "Mobile Release Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-032",
+          "name": "Digital Product Passport & Repair Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-033",
+          "name": "Evidence-Backed Food Route Builder",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-034",
+          "name": "Founder Decision Journal",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-035",
+          "name": "Local-First Personal AI / Jarvis",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-036",
+          "name": "Free Before Midnight",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-037",
+          "name": "Multi-Platform Publishing OS",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-038",
+          "name": "CourseMatch Erasmus Equivalence",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-039",
+          "name": "Local Event & Early-Bird Radar",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-040",
+          "name": "European Food Knowledge Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-041",
+          "name": "Living European Food Atlas",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-042",
+          "name": "Verified Local Value Rankings",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-043",
+          "name": "Regional Commerce Launchpad",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-044",
+          "name": "EUshop — Pan-European Specialty Food Marketplace",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-045",
+          "name": "Repair Decision Assistant",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-046",
+          "name": "API Opportunity Ranker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-047",
+          "name": "Autonomous Game Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-048",
+          "name": "SSD Storage Culprit Analyzer",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-049",
+          "name": "GitHub Pages Version Lab",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-050",
+          "name": "Momentum / Kinetic FPS",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-051",
+          "name": "AgentLingo — Multilingual AI Agent Launch Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-052",
+          "name": "RAG Citation Fidelity Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-053",
+          "name": "Model & Prompt Regression Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-054",
+          "name": "MCP Cross-Client Release Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-055",
+          "name": "Prague Guest Intent Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-056",
+          "name": "Erasmus Course Rescue Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-057",
+          "name": "Indie Game Launch-Language Preflight",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-058",
+          "name": "Small-Tour Empty-Seat Rescue Circle",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-059",
+          "name": "PSTN Accent & Noise Regression Suite",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-060",
+          "name": "Policy-Journey Adherence Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-061",
+          "name": "FactBounty — Buyer-Funded Product Proof Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-062",
+          "name": "MeasureGraph — Exact Dimensions Evidence Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-063",
+          "name": "Compatibility Bounties — Device-Accessory Proof Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-064",
+          "name": "Verified Owner Answers — Cross-Retailer Q&A Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-065",
+          "name": "Local Shelf Proof — Real-Time Retail Stock Evidence",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-066",
+          "name": "Revision & Variant Proof Registry",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-067",
+          "name": "Real-World Noise & Clearance Facts",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-068",
+          "name": "Product Evidence API for Shopping Agents",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-069",
+          "name": "Receipt-Verified Purchase Data Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-070",
+          "name": "Seller ProofLink — Guided Listing Verification",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-166",
+          "name": "Industrial Automation Obsolescence Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-167",
+          "name": "Codebase-Aware API Change Radar",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-168",
+          "name": "PLC Project Migration Linter",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-169",
+          "name": "Public Data Contract Watch",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-170",
+          "name": "Dependency License-Change Impact Diff",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-171",
+          "name": "Industrial Protocol Gateway Selector",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-172",
+          "name": "Scientific Consumables Compatibility Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-173",
+          "name": "Industrial Manual Revision Resolver",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-174",
+          "name": "Lab Software Exit-Risk Index",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-175",
+          "name": "Construction Product Substitution Matrix",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-176",
+          "name": "Discord Ritual Rooms",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-177",
+          "name": "Roblox Safe Micro-World Kits",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-178",
+          "name": "Roblox Asset Trust Scanner",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-179",
+          "name": "Discord Local-Language Party Packs",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-180",
+          "name": "Roblox Mobile-Ready Environment Packs",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-181",
+          "name": "Framer Template Preflight Checker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-182",
+          "name": "Micro-IP Creator Kits",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-183",
+          "name": "Solo Story Seasons",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-184",
+          "name": "Bluesky Intentional Feed Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-185",
+          "name": "Fortnite Friends-First Social Island",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-187",
+          "name": "Renter Deposit Evidence Capsule",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-188",
+          "name": "Second-Life Product Passport",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-189",
+          "name": "Family Archive Survivability Kit",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-190",
+          "name": "Camera Gear Claim Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-191",
+          "name": "Committee Handover Capsule",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-192",
+          "name": "Used E-Bike Life Passport",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-193",
+          "name": "Renter Repair Evidence Trail",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-194",
+          "name": "Collectible Insurance Schedule Builder",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-195",
+          "name": "Pet Adoption Handover Passport",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-196",
+          "name": "Moving Box Evidence Passport",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-206",
+          "name": "Founder Absence Stress Test",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-207",
+          "name": "Credential Request Firewall",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-208",
+          "name": "Scamfire Drill",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-209",
+          "name": "Vendor Payment Change Challenge",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-210",
+          "name": "Accessible Checkout Replay",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-211",
+          "name": "Tender Bid/No-Bid Fit Scanner",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-212",
+          "name": "Dynamic Tariff Counterfactual Simulator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-213",
+          "name": "AI-Agent Purchase Guardrail",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-214",
+          "name": "Older-Adult Tech Support Interpreter",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-215",
+          "name": "E-invoice Readiness Map",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-219",
+          "name": "Fit-First Parametric Repair Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-220",
+          "name": "Printer-Specific Fit Profile",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-221",
+          "name": "Repair Café Parametric Intake System",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-222",
+          "name": "Appliance Control-Knob Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-223",
+          "name": "Furniture Foot and End-Cap Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-224",
+          "name": "Print-Shop Measurement Intake Portal",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-225",
+          "name": "Custom Drill-Alignment Guide",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-226",
+          "name": "Damage-Shaped Mending Pattern Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-227",
+          "name": "Heatwave Window-Insert Pattern Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-228",
+          "name": "Board-Game Insert Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-230",
+          "name": "Fit-First Parametric Repair Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-231",
+          "name": "Printer-Specific Fit Profile",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-232",
+          "name": "Repair Café Parametric Intake System",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-233",
+          "name": "Appliance Control-Knob Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-234",
+          "name": "Furniture Foot and End-Cap Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-235",
+          "name": "Print-Shop Measurement Intake Portal",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-236",
+          "name": "Custom Drill-Alignment Guide",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-237",
+          "name": "Damage-Shaped Mending Pattern Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-238",
+          "name": "Heatwave Window-Insert Pattern Studio",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-239",
+          "name": "Board-Game Insert Generator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-240",
+          "name": "Result Lineage Release Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-241",
+          "name": "Data Availability Statement Reality Checker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-242",
+          "name": "Anonymous Artifact Leak Scanner",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-243",
+          "name": "Research Software Citation Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-244",
+          "name": "Scientific Figure Accessibility Preflight",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-245",
+          "name": "DMS Plan-to-Actual Workflow",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-246",
+          "name": "Preprint–Publication Change Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-247",
+          "name": "Research Data Anonymization Red Team",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-248",
+          "name": "Review Concern Ledger",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-249",
+          "name": "Retraction-Aware Review Update",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-250",
+          "name": "ExactRoom Access Confirmation",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-251",
+          "name": "Measured Accessible Room Specification",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-252",
+          "name": "Temporary Event Access Reality Pack",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-253",
+          "name": "Time-Based Sensory Visit Profile",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-254",
+          "name": "Elevator Outage Journey Assurance",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-255",
+          "name": "Trusted Product Label Change Watch",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-256",
+          "name": "Room-Side Sleepability Specification",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-257",
+          "name": "Assistance Confirmation Receipt",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-258",
+          "name": "Senior Comfort Route Card",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-259",
+          "name": "Official Letter Action Extractor",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-261",
+          "name": "BorderGraph — EU Product Compliance Control Plane",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-262",
+          "name": "FreightRecover — Automatic Logistics Money Recovery",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-263",
+          "name": "TradePassport — Cross-Border Skilled Worker Infrastructure",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-264",
+          "name": "RepairRail — Infrastructure for Europe's Right-to-Repair Economy",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-265",
+          "name": "TenderFactory — Autonomous Government-Sales Department for SMEs",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-266",
+          "name": "ProofOfAI — AI Content Provenance Gateway",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-267",
+          "name": "PDF Debt Exchange — Accessibility Remediation Factory",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-268",
+          "name": "PayMe — Autonomous B2B Receivables Recovery Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-269",
+          "name": "SiteMesh — Construction Material Exchange Between Worksites",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-270",
+          "name": "Battery Afterlife Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-273",
+          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-274",
+          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-276",
+          "name": "MachineKey — Unified Industrial Machine Telemetry API",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-277",
+          "name": "LabGrid — Remote Scientific Equipment & Sample Routing API",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-278",
+          "name": "ExitReady — SME Acquisition Readiness & Succession Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-279",
+          "name": "RobotOps — Teleoperated Human-in-the-Loop Robot Operations",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-280",
+          "name": "Fireproof — Climate Resilience & Property Risk Passports",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-281",
+          "name": "CalibraRisk — Risk-Based Industrial Equipment Calibration Optimizer",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-282",
+          "name": "HeatExpert Cloud — Remote Expert Supervision for Heat Pump Technicians",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-287",
+          "name": "DuctExchange — EU Civil Infrastructure Access Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-288",
+          "name": "Agent Loss Exchange — Autonomous Agent Claims & Loss Data Utility",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-289",
+          "name": "QueueSure — Data Centre Grid Commitment Surety Underwriting",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-290",
+          "name": "ResilienceProof — Climate Resilience & Property Adaptation Verification Rail",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-291",
+          "name": "Low-Water Capacity Options — Rhine Industrial Freight Contingency Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-292",
+          "name": "Uptime Mutual — Obsolete Controls Spare Pooling & SLA Guarantee Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-293",
+          "name": "Wastewater EPR Settlement Rail — Pharma & Cosmetics Micropollutant Clearing Network",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-294",
+          "name": "Assured Test Slots — Regulatory Testing SLA Capacity Market",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-295",
+          "name": "OEM Repair Fulfilment Rail — Right to Repair After-Sales Logistics Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-296",
+          "name": "Grid Equipment Cancellation Exchange — Secondary Transformer & Switchgear Allocation",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-298",
+          "name": "SKU Resurrection Lab — Marketplace Product Safety & Anti-Reappearance QA",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-299",
+          "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-300",
+          "name": "Live Claim Provenance Gate — Commercial Environmental Claim Lineage & Expiry",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-301",
+          "name": "FCC Robot Market-Access Graph — Foreign Mobile Robotics Authorization",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-302",
+          "name": "ControlRight — Contract-to-Land-Registry Preflight & Event Clock",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-303",
+          "name": "Publisher Rights Probe — AI Search Publisher Conduct & Attribution Monitor",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-304",
+          "name": "Instant-Payment Reality Grid — VoP & Non-Euro EU Instant Payment Simulator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-305",
+          "name": "CLP Render-to-Shelf Drift Gate — Chemical Label & SDS Output Alignment",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-306",
+          "name": "Subscription Rights Chaos Lab — Recurring Payment State-Machine QA",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-307",
+          "name": "Connected-Vehicle Origin Graph — MY2027 Vehicle Software Origin Compliance",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-308",
+          "name": "PA RealityGrid — Synthetic-Patient Failure Laboratory for Prior Authorization",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-309",
+          "name": "AgeGate Chaos Lab — Adversarial Age Assurance Fail-Safe & Integration Red Team",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-310",
+          "name": "RxTrace Chaos Lab — DSCSA Exception Drill & Physical/Data Reconciliation Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-311",
+          "name": "Finance Control Red Team — Synthetic Transaction Fraud & ERP Separation Tester",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-312",
+          "name": "Telco Identity Recovery Grid — SIM-Swap & Account Migration Recovery Tester",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-313",
+          "name": "PA Denial Semantics Observatory — Payer Authorization Metrics & Transparency Index",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-314",
+          "name": "APP Reimbursement Replay — Synthetic Scam Claim & Multi-Bank Clock Simulator",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-315",
+          "name": "EmergencyComms Regression Cloud — NG112 & eCall Interoperability Test Suite",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-316",
+          "name": "CMMC Enclave Escape Test — Controlled CUI Boundary & Drift Testing Engine",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-317",
+          "name": "EES Carrier Journey Monitor — EU Entry/Exit System Synthetic API & Fallback Tester",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-318",
+          "name": "ETIAS Carrier Preflight — Travel Authorization Pre-Boarding Exception Checker",
+          "rankingEligible": false
+        }
+      ]
+    },
+    "RESEARCHED": {
+      "comparable": true,
+      "items": []
+    },
+    "VALIDATED": {
+      "comparable": true,
+      "items": []
+    },
+    "FOUNDER_FIT": {
+      "comparable": true,
+      "items": []
+    }
+  },
   "history": [
-    {
-      "snapshotAt": "2026-08-12T14:42:41.169465+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-12T14:46:17.503745+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-12T14:49:55.133402+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
     {
       "snapshotAt": "2026-08-12T14:51:58.235765+00:00",
       "top5": [
@@ -40055,6 +41755,99 @@
     },
     {
       "snapshotAt": "2026-08-12T15:25:33.267713+00:00",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-12T15:51:53.341936+00:00",
+      "rankingSemanticDigest": "3c7837f6690fa000b0e7e869fa51daa1b22434b1d4124f561db604a1248ac69e",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-12T15:54:36.934229+00:00",
+      "rankingSemanticDigest": "bdb3f0e30422047718f0913d56079856f0693423a27d522fbf185a1114920a7a",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-12T15:56:11.665659+00:00",
+      "rankingSemanticDigest": "8e6508b31f39dd63867fd2602fa9ada56bd734809294800eecf60728479851fb",
       "top5": [
         {
           "id": "idea-385",

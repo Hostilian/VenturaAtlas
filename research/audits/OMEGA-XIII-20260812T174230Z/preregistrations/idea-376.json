@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-376-5e88a5de993a",
+  "candidateId": "idea-376",
+  "candidateContentDigest": "8c5306ee145b49320d7d1bd9e864862e74f97bdb0eca50534c4a580bf9e40604",
+  "createdAt": "2026-08-13T12:12:55.427872+00:00",
+  "lockedAt": "2026-08-13T12:12:55.427872+00:00",
+  "expectations": {
+    "buyer": "Seafood exporters and customs brokers",
+    "pain": "CATCH data or schema errors block border submissions after shipment dispatch",
+    "strongestIncumbent": "Customs broker software and EU CATCH validation",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The official system provides sufficient validation and the immediate buyer pool is too narrow",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "e0a9674602aa47f0205ee683f70ed71d6bf0cb1e10eafc872f72f772c0964bd6"
+}

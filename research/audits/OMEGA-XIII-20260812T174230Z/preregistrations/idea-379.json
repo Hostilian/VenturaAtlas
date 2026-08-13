@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-379-eaa90223eca2",
+  "candidateId": "idea-379",
+  "candidateContentDigest": "3e75967698616c84a67fd24e07373f55e0046609576907c638eca9fd43f0625f",
+  "createdAt": "2026-08-13T12:12:55.560226+00:00",
+  "lockedAt": "2026-08-13T12:12:55.560226+00:00",
+  "expectations": {
+    "buyer": "Pharma real-world-evidence and CRO feasibility teams",
+    "pain": "Cross-country dataset feasibility is unclear before an EHDS access request",
+    "strongestIncumbent": "Data catalogues, health-data brokers, and CRO feasibility services",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "EHDS implementation is too early and dataset metadata remains inaccessible",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "477219f0a53c139f74cb223f4ed4e24c7391d3f6e99c4114f2f090ba9b046efd"
+}

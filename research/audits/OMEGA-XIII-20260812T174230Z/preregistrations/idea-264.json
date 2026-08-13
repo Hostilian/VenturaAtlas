@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-264-a2933bd91cfd",
+  "candidateId": "idea-264",
+  "candidateContentDigest": "028f5044bd03f828e8badadb3dcaa2ea8f84cfec0bdb53f61de2186e7730593b",
+  "createdAt": "2026-08-13T12:12:55.158622+00:00",
+  "lockedAt": "2026-08-13T12:12:55.158622+00:00",
+  "expectations": {
+    "buyer": "Retailers and OEM after-sales operations",
+    "pain": "Repair cases require multi-party routing, parts, evidence, and warranty handoff",
+    "strongestIncumbent": "OEM service networks and field-service/after-sales suites",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Official repair platform and mature after-sales software leave no neutral clearing gap",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "bf1a3e52d3b13cb9c7ca1019877ddeb9b5196e1233bf556f4fc8d6ab169785ba"
+}

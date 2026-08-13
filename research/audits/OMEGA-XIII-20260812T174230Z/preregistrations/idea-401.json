@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-401-e8e2d94109c6",
+  "candidateId": "idea-401",
+  "candidateContentDigest": "0ece6a1184febfb00364034064d6f91fe2a0c267210a57c0a0700a506afbbdca",
+  "createdAt": "2026-08-13T12:12:55.023656+00:00",
+  "lockedAt": "2026-08-13T12:12:55.023656+00:00",
+  "expectations": {
+    "buyer": "IoT and industrial-device product-security leaders",
+    "pain": "CRA reporting clock exposes inability to identify affected deployed products and remediation reach",
+    "strongestIncumbent": "PLM/SBOM tooling plus manual incident response",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The official reporting platform and existing product-security suites absorb the workflow",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f3bd6bb2f9808f781180237a6e84ac7bbf79580c3f49b504597c097e7e2ef8dd"
+}

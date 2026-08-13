@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryVersion": "va-score-scales-v1",
+  "dimensions": {
+    "compositeHeadline": { "minimum": 0, "maximum": 100 }
+  },
+  "notes": [
+    "Scale selection is metadata-driven; numeric magnitude never selects a scale.",
+    "Legacy cohorts remain historically visible but score comparability is false until cohort-specific provenance is established.",
+    "Only fields with one demonstrated repository-wide scale are registered; mixed legacy dimensions remain undeclared and therefore unknown."
+  ]
+}

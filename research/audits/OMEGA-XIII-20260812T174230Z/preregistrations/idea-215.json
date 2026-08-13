@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-215-c483d05a8fb6",
+  "candidateId": "idea-215",
+  "candidateContentDigest": "9ef992acf1ec82a51068c237f83a85ca55e77478fef9eb60da0b16086105be60",
+  "createdAt": "2026-08-13T12:12:55.295247+00:00",
+  "lockedAt": "2026-08-13T12:12:55.295247+00:00",
+  "expectations": {
+    "buyer": "SME finance and ERP implementation teams",
+    "pain": "Country-specific e-invoice rules and provider choices create readiness and rejection work",
+    "strongestIncumbent": "ERP vendors, Peppol access points, and local certified platforms",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Provider market is saturated and incumbent ERP products include readiness tooling",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "b504795e16a8514c71af73c7bbf2fe29ab8228d93f00ca4b6b9c202722e7a1d8"
+}
