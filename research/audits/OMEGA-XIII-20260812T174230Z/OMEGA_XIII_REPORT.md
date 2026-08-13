@@ -2,7 +2,7 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: `5b7047db88bf6721727fd86b963645b81e733751`
+Verified evidence HEAD: `169ed9b2f035d7cfc520597f6d0cadfab04df563`
 
 ## 01 Executive Verdict
 
@@ -284,7 +284,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact evidence commit `5b7047db88bf6721727fd86b963645b81e733751` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-4e90cd38c0b84343aa18044de7270fa9`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages in that clone with zero reported vulnerabilities, source quality passed 95 Node tests (85 executed and 10 explicit private-staging skips), 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The same clone rebuilt 5,091 public files, projected 225 eligible public sources from 238 total, passed the secret/private-path scanner, and passed four PWA tests.
+Exact evidence commit `169ed9b2f035d7cfc520597f6d0cadfab04df563` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-31927430a4574c06ae0ae79546f117ff`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages in that clone with zero reported vulnerabilities, source quality passed 95 Node tests (85 executed and 10 explicit private-staging skips), 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The same clone rebuilt 5,091 public files, projected 237 eligible public sources from 250 total, passed the secret/private-path scanner, and passed four PWA tests.
 
 ## 61 Remaining Unknowns
 
