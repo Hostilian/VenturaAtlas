@@ -4103,5 +4103,279 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s199",
+    "title": "FERC large-load show-cause orders",
+    "publisher": "Federal Energy Regulatory Commission",
+    "url": "https://www.ferc.gov/sites/default/files/2026-06/EL26-68-000.pdf",
+    "supports": [
+      "FERC identified duplicative or speculative large-load requests as a source of distorted forecasts and unnecessary study work",
+      "The orders target those requests with escalating readiness requirements and encourage objective evidence such as physical site control"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-06-18",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-395"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s200",
+    "title": "Removing PFAS from community drinking water with granular activated carbon",
+    "publisher": "United States Environmental Protection Agency",
+    "url": "https://www.epa.gov/research-states/epa-research-partner-support-story-removing-pfas-community-drinking-water-granular",
+    "supports": [
+      "EPA and a utility used multi-season pilot data covering 16 PFAS species and five commercial carbons to model full-scale GAC performance",
+      "The public EPA model evaluated changing concentrations, demand, pretreatment, carbon choice, contactor configuration, and uncertainty"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-03-30",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-398"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s201",
+    "title": "Environmental Technologies Design Option Tool (ETDOT)",
+    "publisher": "United States Environmental Protection Agency",
+    "url": "https://www.epa.gov/water-research/environmental-technologies-design-option-tool-etdot",
+    "supports": [
+      "EPA offers a public software suite for evaluating and designing granular activated carbon and ion-exchange treatment systems, including PFAS applications",
+      "The tool is intended to inform utility understanding of adsorption fundamentals, performance, operation, and costs"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-398"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s202",
+    "title": "Critical medicines act: Council and Parliament reach provisional deal",
+    "publisher": "Council of the European Union",
+    "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/05/12/critical-medicines-act-council-and-parliament-reach-provisional-deal/",
+    "supports": [
+      "The provisional agreement would require contracting authorities to apply resilience-related requirements when procuring critical medicines",
+      "Formal endorsement, legal-linguistic revision, and adoption still remained after the political agreement"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-12",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-377"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s203",
+    "title": "IRIS2 concession awarded to the SpaceRISE consortium",
+    "publisher": "European Commission - DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/iris2-european-commission-awards-concession-contract-spacerise-consortium-2024-10-31_en",
+    "supports": [
+      "The 12-year public-private concession covers more than 290 satellites and associated ground infrastructure for governmental services by 2030",
+      "Three network operators and a named core team of major European primes anchor delivery, while competitive subcontracting is intended to include SMEs"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2024-10-31",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-383"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s204",
+    "title": "EU Space Act factsheet",
+    "publisher": "European Commission - DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/document/download/540afc7b-dd3d-4b8c-96f1-bf8e861ec23c_en?filename=EU-Space-Act-factsheet.pdf",
+    "supports": [
+      "The proposed common rulebook covers safety, resilience, and sustainability for space activities",
+      "Proposed controls include collision-avoidance services, satellite-position sharing, lifecycle risk assessment, cybersecurity, and comparable lifecycle assessments"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2025-06",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-383"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s205",
+    "title": "ESA Space Debris User Portal and DRAMA",
+    "publisher": "European Space Agency",
+    "url": "https://sdup.esoc.esa.int/",
+    "supports": [
+      "ESA already provides DRAMA as a comprehensive mission-compliance analysis tool for space-debris mitigation standards",
+      "The portal distributes ESA space-debris software, data, patches, licences, and support to eligible professional users"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-383"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s206",
+    "title": "AI Factories access modes",
+    "publisher": "European High Performance Computing Joint Undertaking",
+    "url": "https://www.eurohpc-ju.europa.eu/ai-factories/ai-factories-access-modes_en",
+    "supports": [
+      "EuroHPC AI Factories provide tailored supercomputing access for startups, industry, and scientific users",
+      "Eligible AI SMEs and publicly funded research can obtain free access under defined modes, while other industrial use can be pay-per-use"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-342"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s207",
+    "title": "MLflow open-source AI engineering platform",
+    "publisher": "MLflow Project",
+    "url": "https://github.com/mlflow/mlflow",
+    "supports": [
+      "The open-source platform already provides experiment tracking, dataset lineage, model and prompt registries, evaluation, and production tracing",
+      "Its agent and LLM functions include prompt versioning, observability, evaluations, and OpenTelemetry-compatible traces"
+    ],
+    "type": "open_source_substitution",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-342"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s208",
+    "title": "RO-Crate 1.3 specification",
+    "publisher": "Research Object Crate community",
+    "url": "https://www.researchobject.org/ro-crate/specification.html",
+    "supports": [
+      "RO-Crate is an open Apache-licensed specification for packaging research objects and structured metadata",
+      "Its workflow and provenance profiles provide a public interoperability substrate for research execution records"
+    ],
+    "type": "open_source_substitution",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-342"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s209",
+    "title": "European Commission simplification implementation tracker",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/law/law-making-process/better-regulation/simplification-implementation-and-enforcement/simplification_en",
+    "supports": [
+      "Adopted CBAM simplification removes obligations for about 182,000, or 90 percent, of importers",
+      "Adopted sustainability-reporting and due-diligence amendments narrow or postpone requirements, demonstrating that compliance surface can contract"
+    ],
+    "type": "official_negative_shock_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s210",
+    "title": "ESA space-debris mitigation compliance resources",
+    "publisher": "European Space Agency",
+    "url": "https://technology.esa.int/page/space-debris-mitigation",
+    "supports": [
+      "ESA publishes debris-mitigation policy, technical requirements, compliance-verification guidance, matrices, plans, and report templates",
+      "Verification spans design, operations, and disposal and points to ESA analysis tools for impact, collision avoidance, and re-entry"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-undercovered-opportunities",
+    "ideaIds": [
+      "idea-383"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

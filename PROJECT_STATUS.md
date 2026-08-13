@@ -76,7 +76,7 @@
 - Staged Ideas: 0
 - Total Ideas: 294
 - Categories: 122
-- Source References: 198
+- Source References: 210
 - Generated Prompts: 4425
 - Last Updated: 2026-08-13
 <!-- END GENERATED REPOSITORY STATS -->

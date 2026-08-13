@@ -102,6 +102,57 @@
       "ecosystemRefs": [],
       "ideaRefs": [],
       "sourceRefs": ["s198"]
+    },
+    {
+      "marketId": "market-us-large-load-interconnection",
+      "name": "US large-load transmission interconnection readiness",
+      "phase": "P3_MIGRATION",
+      "phaseConfidence": "MEDIUM",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["READINESS", "DATA_PREPARATION", "MAPPING"],
+      "valueNext": ["INTEGRATION", "OBSERVABILITY", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "MEDIUM",
+      "observedAt": "2026-08-13T14:11:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-395"],
+      "sourceRefs": ["s199"]
+    },
+    {
+      "marketId": "market-eu-critical-medicine-procurement",
+      "name": "EU critical-medicine resilience procurement",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "HIGH",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "Formal adoption and buyer-specific resilience criteria or guidance become observable",
+      "valueNow": ["POLICY_INTERPRETATION", "READINESS", "DATA_PREPARATION"],
+      "valueNext": ["MAPPING", "INTEGRATION", "CONFORMANCE", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T14:11:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-377"],
+      "sourceRefs": ["s202"]
+    },
+    {
+      "marketId": "market-eu-space-safety-evidence",
+      "name": "EU satellite safety, debris, and lifecycle evidence",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "MEDIUM",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "EU Space Act text is formally adopted and operator change-control evidence requirements become testable",
+      "valueNow": ["POLICY_INTERPRETATION", "READINESS", "MAPPING"],
+      "valueNext": ["INTEGRATION", "CONFORMANCE", "CERTIFICATION", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T14:11:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-383"],
+      "sourceRefs": ["s204", "s205", "s210"]
     }
   ],
   "phaseTransitions": [],
@@ -156,6 +207,23 @@
       "observedAt": "2026-08-13T12:50:00Z",
       "sourceRefs": ["s193", "s194"],
       "ideaRefs": ["idea-215"]
+    },
+    {
+      "enforcementId": "enf-us-large-load-readiness",
+      "marketId": "market-us-large-load-interconnection",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F2",
+      "checker": "RTO or ISO transmission provider under FERC-directed tariff reform",
+      "checkedObject": "large-load project identity, site control, and escalating commercial readiness",
+      "trigger": "entry into and progression through transmission study phases",
+      "mechanism": "objective readiness evidence intended to deter duplicative or speculative service requests",
+      "failureStatus": "project may fail a readiness gate or leave the study process; uniform production rejection codes were not collected",
+      "remedy": null,
+      "sla": null,
+      "financialConsequence": null,
+      "observedAt": "2026-08-13T14:11:00Z",
+      "sourceRefs": ["s199"],
+      "ideaRefs": ["idea-395"]
     }
   ],
   "intermediaryAssessments": [
@@ -264,12 +332,64 @@
       "certainty": "FIXED",
       "buyerImplication": "Passenger and freight actors move from separate legacy telematics specifications into a shared migration and interoperability programme",
       "sourceRefs": ["s198"]
+    },
+    {
+      "milestoneId": "milestone-us-large-load-orders",
+      "marketId": "market-us-large-load-interconnection",
+      "kind": "OTHER",
+      "label": "FERC issues large-load show-cause orders on readiness and speculative requests",
+      "date": "2026-06-18T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "A neutral readiness product must interoperate with utility-owned gates rather than claim authority over queue admission",
+      "sourceRefs": ["s199"]
+    },
+    {
+      "milestoneId": "milestone-critical-medicines-political-agreement",
+      "marketId": "market-eu-critical-medicine-procurement",
+      "kind": "OTHER",
+      "label": "Council and Parliament reach provisional Critical Medicines Act agreement",
+      "date": "2026-05-12T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Resilience criteria are politically agreed but the formal rule and buyer implementation boundary are not yet final",
+      "sourceRefs": ["s202"]
+    },
+    {
+      "milestoneId": "milestone-critical-medicines-formal-adoption",
+      "marketId": "market-eu-critical-medicine-procurement",
+      "kind": "LAW_ADOPTED",
+      "label": "Critical Medicines Act formal adoption; exact date not established",
+      "date": null,
+      "certainty": "EXPECTED",
+      "buyerImplication": "Only final text can establish the durable procurement evidence boundary",
+      "sourceRefs": ["s202"]
+    },
+    {
+      "milestoneId": "milestone-eu-space-act-proposal",
+      "marketId": "market-eu-space-safety-evidence",
+      "kind": "OTHER",
+      "label": "European Commission publishes EU Space Act proposal; exact June day not established in the retained factsheet",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "Lifecycle risk and sustainability evidence are emerging requirements, not yet a live uniform gate",
+      "sourceRefs": ["s204"]
+    },
+    {
+      "milestoneId": "milestone-iris2-government-service",
+      "marketId": "market-eu-space-safety-evidence",
+      "kind": "FULL_OPERATION",
+      "label": "IRIS2 governmental service targeted for 2030; exact date not established",
+      "date": null,
+      "certainty": "ANNOUNCED",
+      "buyerImplication": "A concentrated prime-led programme creates subcontract assurance demand but a narrow channel and strong incumbent control",
+      "sourceRefs": ["s203"]
     }
   ],
   "milestoneEdges": [
     { "edgeId": "milestone-edge-repair-law-platform", "from": "milestone-repair-directive-applies", "to": "milestone-eu-repair-platform", "relation": "PRECEDES" },
     { "edgeId": "milestone-edge-france-vida", "from": "milestone-france-einvoice-wave-one", "to": "milestone-vida-cross-border", "relation": "PRECEDES" },
-    { "edgeId": "milestone-edge-ehds-acts-application", "from": "milestone-ehds-implementing-acts", "to": "milestone-ehds-secondary-use-most-data", "relation": "ENABLES" }
+    { "edgeId": "milestone-edge-ehds-acts-application", "from": "milestone-ehds-implementing-acts", "to": "milestone-ehds-secondary-use-most-data", "relation": "ENABLES" },
+    { "edgeId": "milestone-edge-critical-medicines-agreement-adoption", "from": "milestone-critical-medicines-political-agreement", "to": "milestone-critical-medicines-formal-adoption", "relation": "PRECEDES" },
+    { "edgeId": "milestone-edge-space-act-iris2", "from": "milestone-eu-space-act-proposal", "to": "milestone-iris2-government-service", "relation": "RELATES_TO" }
   ],
   "sourceConflicts": [
     {

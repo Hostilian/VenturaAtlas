@@ -6,7 +6,7 @@ Verified implementation HEAD: `6ce8a1d2aac3f5db6f2ba2f8737b10521614c6a4`
 
 ## 01 Executive Verdict
 
-This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Five preregistered ideas received bounded desk-commercial disconfirmation, six market maps validate, and exact public/fresh-clone gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Ten existing ideas received preregistered desk-commercial review across two evidence tranches, nine market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -22,7 +22,7 @@ The detailed classification is in `LANDED_FIX_MATRIX.md`. Useful landed mechanis
 
 ## 05 Repository Truth
 
-Current source truth is 294 canonical ideas, 306 local private staged candidates, 198 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero.
+Current source truth is 294 canonical ideas, 306 local private staged candidates, 210 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero.
 
 ## 06 Autonomy Utility
 
@@ -62,7 +62,7 @@ Canonical and receipt replacements are protected as a set by a durable PREPARED/
 
 ## 15 Research Execution
 
-Five immutable preregistrations were locked before browsing for ideas 401, 264, 215, 376, and 379. The bounded evidence pass recorded five meaningful query families, six included sources (s193–s198), four explicit exclusions, and claims that were not earned. This does not satisfy the 75-round floor.
+Ten immutable preregistrations were locked before their respective searches: ideas 401, 264, 215, 376, 379, 395, 398, 377, 383, and 342. The second tranche added six meaningful query families, twelve retained sources (s199–s210), and seven explicit exclusions spanning grid-load readiness, PFAS treatment, critical medicines, space/IRIS², AI public infrastructure/open source, and simplification shocks. The same investigator preregistered and researched the second tranche, so it is prospective but not independent/blinded. No lifecycle research receipt was issued, and this still does not satisfy the 75-round floor.
 
 ## 16 Blind Review
 
@@ -70,7 +70,7 @@ The allowlisted blind-packet generator removes prior scores, rank, priority, ver
 
 ## 17 Confirmation-Bias Findings
 
-Preregistered expectations changed under negative evidence. France e-invoicing was reassessed downward; EHDS and repair remained WAIT; CATCH continued only after narrowing; rail was held as a signal without idea generation. This is evidence of decision change, not a quantified anchoring experiment.
+Preregistered expectations changed under negative evidence. France e-invoicing, SpaceEvidence, and ResearchProof were reassessed downward; EHDS, repair, and medicine resilience remained WAIT; CATCH, PFAS, and grid readiness continued only after narrowing; rail was held as a signal without idea generation. This is evidence of decision change, not a quantified anchoring experiment.
 
 ## 18 Massive Orchestrator
 
@@ -86,11 +86,11 @@ Liveness and readiness are separate. Readiness fails on missing/placeholder auth
 
 ## 21 Public Artifact
 
-The exact `_site` build contains 5,091 files and projects 185 explicitly public evidence-eligible sources from 198 total sources. It contains zero lifecycle receipts, no private staging, no agent state, and no detected secrets. Both the source privacy heuristic and exact artifact scanner passed.
+The exact `_site` build contains 5,091 files and projects 197 explicitly public evidence-eligible sources from 210 total sources. It contains zero lifecycle receipts, no private staging, no agent state, and no detected secrets. Both the source privacy heuristic and exact artifact scanner passed.
 
 ## 22 PhaseShift Landscape
 
-Strict structured state now covers six markets, zero inferred phase transitions, three enforcement events, one intermediary assessment, nine milestones, three milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
+Strict structured state now covers nine markets, zero inferred phase transitions, four enforcement events, one intermediary assessment, fourteen milestones, five milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
 
 ## 23 Market Phase Map
 
@@ -100,10 +100,13 @@ Strict structured state now covers six markets, zero inferred phase transitions,
 - CATCH imports: P6 OPERATIONAL SCALE, active but narrow.
 - EHDS secondary use: P2 PREPARATION, wait for operational metadata.
 - Rail telematics: P3 MIGRATION, signal/reassess with startup value unknown.
+- US large-load interconnection: P3 MIGRATION, reassess around utility-owned readiness gates.
+- EU critical-medicine procurement: P2 PREPARATION, wait for formal adoption and buyer-specific criteria.
+- EU space-safety evidence: P2 PREPARATION, wait for adopted rules and testable operator change-control requirements.
 
 ## 24 Enforcement Topology
 
-CRA reporting is checked by CSIRT/market-surveillance channels through 24/72-hour SRP stages. CATCH submissions pass through Member State import authorities. France regulated invoice transmission is controlled by accredited platforms and the DGFiP registration service; non-accredited compatible software cannot own that control plane.
+CRA reporting is checked by CSIRT/market-surveillance channels through 24/72-hour SRP stages. CATCH submissions pass through Member State import authorities. France regulated invoice transmission is controlled by accredited platforms and the DGFiP registration service; non-accredited compatible software cannot own that control plane. Large-load progression is moving toward RTO/ISO readiness evidence and objective site-control gates; a startup cannot claim queue-admission authority.
 
 ## 25 Intermediary Saturation
 
@@ -111,7 +114,7 @@ France has approximately one hundred accredited platforms and a high approval ba
 
 ## 26 Control Plane Opportunities
 
-The surviving wedges sit beside—not inside—the official rail: deployed-device reachability before CRA filing, pre-submission correctness and recovery reconciliation around CATCH, and possibly study-specific feasibility beyond EHDS catalogue/search. Each still lacks buyer and WTP proof.
+The surviving wedges sit beside—not inside—the official rail: deployed-device reachability before CRA filing, pre-submission correctness and recovery reconciliation around CATCH, study-specific feasibility beyond EHDS catalogue/search, portable evidence for utility-owned load gates, and continuous PFAS operating-data calibration beyond public models. Each still lacks buyer and WTP proof.
 
 ## 27 Counterparty Readiness
 
@@ -119,7 +122,7 @@ CRA supplier reachability remains an UNKNOWN deadlock because no least-ready cri
 
 ## 28 Milestone Graph
 
-Nine separate milestones preserve CRA reporting application, repair directive application, expected repair platform operation, France's first wave, ViDA cross-border reporting, CATCH compulsory use, two EHDS stages, and rail telematics entry into force. Distinct dates are nodes, not collapsed into one “deadline.”
+Fourteen separate milestones preserve the original nine plus FERC's large-load orders, the Critical Medicines political agreement and expected formal adoption, the EU Space Act proposal, and IRIS²'s announced 2030 service target. Unknown exact days remain null rather than invented. Distinct dates are nodes, not collapsed into one “deadline.”
 
 ## 29 Source Conflicts
 
@@ -127,15 +130,15 @@ The Customs Data Hub timeline conflict remains OPEN: the 2023 proposal factsheet
 
 ## 30 Free Public Infrastructure
 
-Public primitives materially subtract scope: HealthData@EU is intended to search/filter the EU dataset catalogue and submit access requests; the European Repair Platform threatens generic discovery; CATCH supplies outage templates; France publishes interface specifications and standards.
+Public primitives materially subtract scope: HealthData@EU is intended to search/filter the EU dataset catalogue and submit access requests; the European Repair Platform threatens generic discovery; CATCH supplies outage templates; France publishes interface specifications and standards; EPA supplies ETDOT and open GAC models; ESA supplies DRAMA, verification resources, portals, matrices, and templates; EuroHPC subsidises eligible AI-for-science compute.
 
 ## 31 Open-Source Substitution
 
-No bounded open-source scan sufficient to satisfy this section's research condition was completed. The system model includes open-source substitution as a required counterfactual; residual work is explicit.
+A bounded open-source substitution scan was completed for ResearchProof. MLflow already covers experiment tracking, prompt/model registries, dataset lineage, evaluation, and OpenTelemetry-compatible tracing. Apache-licensed RO-Crate and workflow-run profiles provide a public provenance interchange substrate. A generic provenance recorder is therefore reassessed down; only an institution-enforced evidence/submission gate remains plausible and still requires buyer proof.
 
 ## 32 Regulatory Simplification Shocks
 
-No new verified simplification shock was structured in this pass. France's standardized APIs/specifications and CATCH contingency flow reduce private scope but are infrastructure/substitution findings, not a claim that legal obligations were simplified.
+The Commission's current implementation tracker confirms adopted negative shocks: CBAM simplification removes obligations for about 182,000 (approximately 90%) importers, while CSRD/CSDDD measures narrow or postpone duties. This evidence is retained as a portfolio-wide regression hazard rather than forced into an unrelated market transition. Announced obligated populations cannot be treated as durable demand.
 
 ## 33 Existing Candidate Verdicts
 
@@ -144,18 +147,23 @@ No new verified simplification shock was structured in this pass. France's stand
 - `idea-215`: reassess downward; test only cross-provider exception evidence.
 - `idea-376`: continue narrowly; first obtain real rejected/returned filings.
 - `idea-379`: wait for representative metadata and public-platform boundary.
+- `idea-395`: reassess as an interoperability/evidence layer around utility-owned readiness gates.
+- `idea-398`: continue narrowly only if proprietary continuous operating data beats EPA's public models.
+- `idea-377`: wait for formal adoption and concrete critical-medicine tender scoring.
+- `idea-383`: reassess downward because ESA/prime tooling absorbs broad compliance.
+- `idea-342`: reassess downward because MLflow and RO-Crate absorb generic provenance capture.
 
 ## 34 Current Buyer Evidence
 
-No buyer interview or design-partner receipt exists. Buyer names in preregistration are hypotheses only: IoT product-security leadership, OEM/retail after-sales, SME finance/ERP teams, seafood importers/brokers, and pharma/CRO feasibility teams.
+No buyer interview or design-partner receipt exists. Buyer names in preregistration are hypotheses only, now also including transmission providers/large-load developers, drinking-water utilities, medicine procurers/manufacturers, satellite operators/primes, and research-integrity offices.
 
 ## 35 Current WTP Evidence
 
-WTP maturity is ASSUMED for all five preregistered ideas. There is no reported, behavioral, or transactional WTP and no budget evidence.
+WTP maturity is ASSUMED for all ten preregistered ideas. There is no reported, behavioral, or transactional WTP and no budget evidence.
 
 ## 36 Data Access
 
-CRA product/supplier reachability, CATCH rejection examples, repair parts/workflow data, and EHDS representative metadata are not yet demonstrated accessible. France's external specifications are accessible and reduce technical ambiguity, but do not provide customer exception corpora.
+CRA product/supplier reachability, CATCH rejection examples, repair parts/workflow data, EHDS representative metadata, large-load project records, PFAS operating histories, medicine tender scoring, and satellite change-control failures are not yet demonstrated accessible. France's external specifications and public EPA/ESA tools are accessible but do not provide customer outcome corpora.
 
 ## 37 Distribution
 
@@ -179,19 +187,19 @@ The new Telematics Applications TSI entered force on 2 March 2026 and covers pas
 
 ## 42 IRIS² / Industrial Research
 
-No sufficient IRIS² terminal or industrial-operations research round was completed in this bounded pass. The absence is a remaining coverage gap, not evidence of no opportunity.
+IRIS² is a 12-year concession for more than 290 satellites and ground infrastructure, anchored by three network operators and major European primes, with governmental services targeted for 2030. That is a real assurance workload but a concentrated channel. Combined with ESA supervision, DRAMA, professional portals, compliance matrices, and report templates, it argues against a broad independent compliance engine and for a narrowly tested cross-tool change-impact layer, if operators confirm pain.
 
 ## 43 AI Public Infrastructure
 
-No sufficient current AI public-infrastructure/free-evaluation scan was completed. The public-primitive subtraction logic is implemented and tested, but this domain condition remains open.
+EuroHPC AI Factories provide free eligible access for AI SMEs and publicly funded research, plus commercial pay-per-use modes. This expands compute access but does not itself prove demand for ResearchProof. MLflow and RO-Crate materially subtract the capture layer, so institution-level enforcement and repository acceptance—not raw provenance storage—would need to supply the private wedge.
 
 ## 44 Other Undercovered Domains
 
-Industrial operations, science bottlenecks, logistics, procurement/money recovery, agentic commerce, space terminals, and non-regulatory physical constraints remain undercovered relative to the constitution's distribution.
+The second tranche added grid-capacity queues and PFAS treatment as non-regulatory/physical constraints, plus medicine procurement and space/AI infrastructure. Industrial plant operations, logistics, money recovery, agentic commerce, space terminals, and many science bottlenecks remain undercovered relative to the constitution's distribution.
 
 ## 45 New Signals
 
-One held signal was added: EU rail telematics interoperability at P3 MIGRATION. Decision-changing negative signals were also retained for public EHDS catalogue/request functions, CATCH contingency, France's accredited-platform control plane, and repair implementation gaps.
+Signals now include rail telematics at P3, US large-load readiness at P3, medicine procurement at P2, and space-safety evidence at P2. Decision-changing negative signals include public EHDS/CATCH/France infrastructure, repair implementation gaps, EPA/ESA public tooling, open-source provenance substitution, programme concentration, and adopted EU simplification.
 
 ## 46 New Candidates
 
@@ -199,11 +207,11 @@ Zero new candidates were generated in this tranche. This complies with the no-id
 
 ## 47 Strongest Rejections
 
-Rejected/narrowed layers include generic EHDS catalogue/search, generic European repair discovery, a non-accredited France invoice transport platform, basic e-invoice schema mapping, and a CATCH outage-only fallback.
+Rejected/narrowed layers include generic EHDS catalogue/search, generic European repair discovery, a non-accredited France invoice transport platform, basic e-invoice schema mapping, a CATCH outage-only fallback, a neutral queue-admission network, a PFAS model without proprietary operating data, broad satellite compliance, and generic AI-research provenance capture.
 
 ## 48 WAIT_FOR_TRIGGER
 
-RepairRail waits for a concrete country/vertical workflow and control authority. CohortPreflight waits for representative catalogue metadata and operational public-platform boundaries.
+RepairRail waits for a concrete country/vertical workflow and control authority. CohortPreflight waits for representative metadata and public-platform boundaries. MedicineResilience waits for final law and tender implementation; SpaceEvidence waits for adopted rules and observable operator change-control gaps.
 
 ## 49 SIGNAL_ONLY
 
@@ -215,7 +223,7 @@ No idea is promoted into an earned validation state. The desk ledger proposes ch
 
 ## 51 Kill Experiments
 
-Each of the five decision packets defines a falsifiable next test: manufacturer reachability packets, one-country repair control mapping, cross-provider rejection equivalence, 25 redacted CATCH filings, and historical protocol feasibility against representative EHDS metadata.
+Each of the ten decision packets defines a falsifiable next test. The new five require utility acceptance of portable readiness packets, historical PFAS lead/lag data versus ETDOT, post-adoption medicine tender reconstruction, satellite mission-change comparison against ESA/current tools, and repository-ingest requirements that MLflow plus RO-Crate cannot express or enforce.
 
 ## 52 Market Windows
 
@@ -231,15 +239,15 @@ No candidate-generation round was run, so novelty yield is not computed. Zero ge
 
 ## 55 Decision Yield
 
-Five preregistered candidate decisions changed or were narrowed, and one rail signal was held without generation. A normalized yield rate is not claimed because the 75-round denominator was not executed.
+Ten preregistered candidate decisions changed or were narrowed, and one rail signal was held without generation. A normalized yield rate is not claimed because the 75-round denominator was not executed.
 
 ## 56 Research Utility
 
-Highest-utility findings removed or narrowed product scope: public EHDS absorption, France intermediary authority and technical standardization, CATCH contingency, and repair's unresolved multi-party implementation. These changed decisions rather than merely increasing source count.
+Highest-utility findings removed or narrowed product scope: public EHDS absorption, France intermediary authority, CATCH contingency, repair implementation, utility-owned load gates, EPA/ESA public tools, prime-led IRIS² delivery, MLflow/RO-Crate substitution, and adopted simplification. These changed decisions rather than merely increasing source count.
 
 ## 57 Research Waste
 
-Generic TED, repair homepage, health procurement index, and superseded France candidate-platform pages were excluded because they did not establish thesis-specific demand, WTP, control, or current authority.
+Generic TED, repair homepage, health procurement index, superseded France candidate-platform pages, a broad DOE report, generator-only FERC context, a recent secondary space preprint, Wikipedia, an imprecise DVC result, and household PFAS evidence were excluded because they did not establish the exact thesis-specific boundary as directly as retained sources.
 
 ## 58 Failure Injection
 
@@ -251,18 +259,18 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact report commit `681aa14` was cloned into a new temporary checkout, 157 lockfile packages installed, and source quality passed with 94 Node tests plus 75 Python tests. Private staging was absent and staging-dependent tests skipped explicitly. The exact public build then produced 5,091 files and passed the artifact scanner in that clone.
+The earlier report commit `681aa14` was cloned into a temporary checkout and passed 94 Node plus 75 Python tests and the exact public scanner. The current evidence-expanded working tree passes 95 Node plus 75 Python tests, strict validators, constitution/privacy gates, and a 5,091-file public build projecting 197 eligible public sources. A fresh clone of the final evidence commit is still required before this section can claim final-tree closure.
 
 ## 61 Remaining Unknowns
 
-Unknowns include buyer urgency, budgets, WTP, data access, rejection/failure frequencies, provider switching, cross-party compulsion, incumbent response, open-source substitution, deployment state, and actual validation outcomes. Historical Git exposure of old private staging content requires an explicit repository-owner risk/history-rewrite decision.
+Unknowns include buyer urgency, budgets, WTP, data access, rejection/failure frequencies, provider switching, cross-party compulsion, incumbent response, exact open-source gaps, formal medicine/space implementation, deployment state, and actual validation outcomes. Historical Git exposure of old private staging content requires an explicit repository-owner risk/history-rewrite decision.
 
 ## 62 Next Actions
 
 1. Provision reviewer authority only through a repository-owner decision or replace it with a signed-key boundary.
 2. Run independent blinded reviews and measure anchoring delta.
-3. Continue purposeful research toward the 75-round distribution, prioritizing industrial/non-regulatory, open-source, negative-shock, and buyer evidence.
-4. Execute the five cheap falsification tests and append only real external outcomes to the validation funnel.
+3. Continue purposeful research toward the 75-round distribution, prioritizing buyer evidence, industrial operations, logistics, money recovery, agentic commerce, and remaining physical bottlenecks.
+4. Execute the ten cheap falsification tests and append only real external outcomes to the validation funnel.
 5. Fresh-clone and scan final latest HEAD, then decide whether to push/deploy.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 

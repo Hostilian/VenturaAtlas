@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T12:50:00Z",
+  "observedAt": "2026-08-13T14:11:25Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -52,6 +52,75 @@
       ],
       "includedSourceRefs": ["s198"],
       "decisionImpact": "The market is in a live migration/interoperability phase, but no canonical venture is linked and no buyer/WTP evidence was collected; status remains REASSESS rather than generating a new idea."
+    },
+    {
+      "queryFamilyId": "qf-large-load-readiness",
+      "purpose": "Test whether duplicate and speculative electricity-load queues create a neutral identity product or are becoming utility-owned admission controls",
+      "queries": [
+        "DOE large-load interconnection duplicate speculative requests and readiness",
+        "FERC large-load interconnection co-location duplicate requests readiness deposits",
+        "EPRI large-load interconnection queue readiness data centres",
+        "commercial large-load interconnection queue-management software"
+      ],
+      "includedSourceRefs": ["s199"],
+      "decisionImpact": "The pain is official and current, but FERC-directed escalating readiness and site-control gates put authority with RTOs, ISOs, and utilities. DemandProof must be an evidence exchange or interoperability layer; it cannot assume control of admission."
+    },
+    {
+      "queryFamilyId": "qf-pfas-filter-performance",
+      "purpose": "Test whether PFAS-media lifetime is a repeatable data problem and whether a public model absorbs the analytical wedge",
+      "queries": [
+        "EPA PFAS granular activated carbon ion exchange breakthrough performance monitoring",
+        "EPA GAC pilot-scale full-scale replacement interval model",
+        "official PFAS treatment modelling software and media-replacement service"
+      ],
+      "includedSourceRefs": ["s200", "s201"],
+      "decisionImpact": "Site, water-matrix, PFAS, media, and operating variation support the problem. EPA's open ETDOT and pore-surface diffusion methods absorb a model-only product, leaving a possible operational-data and continuous-calibration wedge that has not been commercially validated."
+    },
+    {
+      "queryFamilyId": "qf-critical-medicine-procurement",
+      "purpose": "Resolve the legislative phase and whether medicine-resilience criteria create a live procurement gate",
+      "queries": [
+        "European Commission Critical Medicines Act procurement resilience criteria 2025",
+        "Council Critical Medicines Act political agreement 2026 procurement resilience",
+        "pharmaceutical supply-chain resilience procurement software API origin"
+      ],
+      "includedSourceRefs": ["s202"],
+      "decisionImpact": "A provisional co-legislator agreement would require resilience-related procurement criteria, but formal adoption and buyer-specific scoring remain outstanding. MedicineResilience Twin stays WAIT_FOR_TRIGGER rather than earning a live conformance claim."
+    },
+    {
+      "queryFamilyId": "qf-space-programme-and-compliance-substitution",
+      "purpose": "Test IRIS2 and EU Space Act demand against programme concentration, ESA tools, standards, and engineering incumbents",
+      "queries": [
+        "European Commission IRIS2 concession SpaceRISE satellites services",
+        "ESA IRIS2 programme launch and service schedule",
+        "EU Space Act debris safety official",
+        "ESA Zero Debris standards tools software",
+        "satellite mission-assurance debris-compliance software"
+      ],
+      "includedSourceRefs": ["s203", "s204", "s205", "s210"],
+      "decisionImpact": "Lifecycle evidence demand is emerging, but IRIS2 is prime-led and ESA already supplies DRAMA, verification guidance, matrices, templates, and professional portals. A broad compliance engine is highly absorbable; only change-impact evidence across existing tools remains plausible."
+    },
+    {
+      "queryFamilyId": "qf-ai-public-infrastructure-and-open-source",
+      "purpose": "Test whether AI-research provenance benefits from new public infrastructure and whether open-source standards already cover the core capture layer",
+      "queries": [
+        "EuroHPC AI Factories access services research SMEs",
+        "official open-source research provenance RO-Crate Workflow Run Crate",
+        "MLflow model tracking prompts datasets official repository",
+        "DVC experiment tracking data versioning reproducibility"
+      ],
+      "includedSourceRefs": ["s206", "s207", "s208"],
+      "decisionImpact": "Public compute access increases AI-assisted research volume, but MLflow and RO-Crate already cover much of prompt, model, dataset, workflow, and provenance capture. ResearchProof should not proceed as a generic recorder; an institution-enforced evidence or submission gate would need direct buyer proof."
+    },
+    {
+      "queryFamilyId": "qf-regulatory-simplification-negative-shock",
+      "purpose": "Seek counterevidence to the assumption that EU compliance surfaces only expand",
+      "queries": [
+        "European Commission simplification omnibus 2026 CBAM sustainability reporting",
+        "Council omnibus simplification CBAM final adopted"
+      ],
+      "includedSourceRefs": ["s209"],
+      "decisionImpact": "Adopted CBAM and sustainability simplifications show abrupt demand destruction is real. Regulatory ventures must model scope contraction and not capitalize the entire originally announced obligated population."
     }
   ],
   "excluded": [
@@ -70,6 +139,30 @@
     {
       "url": "https://www.impots.gouv.fr/actualite/facturation-electronique-liste-des-operateurs-candidats-pour-devenir-plateforme-de",
       "reason": "Historical candidate-platform list was superseded for current authority questions by the accredited-platform and current specification pages."
+    },
+    {
+      "url": "https://www.energy.gov/sites/default/files/2025-12/Bottleneck%20to%20Breakthrough_2025-12-3.pdf",
+      "reason": "Broad infrastructure report did not establish the exact large-load identity/readiness control boundary as directly as the 2026 FERC order."
+    },
+    {
+      "url": "https://www.ferc.gov/explainer-interconnection-final-rule",
+      "reason": "Generator-interconnection cluster readiness was contextual but was not treated as proof of the distinct large-load process."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.23552",
+      "reason": "Interesting market-formation synthesis, but it was a recent secondary preprint and unnecessary for the retained official space claims."
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Systems_Tool_Kit",
+      "reason": "Search-result context was excluded because an encyclopedia entry is not adequate evidence for incumbent product capability."
+    },
+    {
+      "url": "https://docs.dvc.org/",
+      "reason": "The query did not return a sufficiently precise page in this run; no DVC capability claim was retained."
+    },
+    {
+      "url": "https://www.epa.gov/sciencematters/epa-researchers-investigate-effectiveness-point-usepoint-entry-systems-remove-and",
+      "reason": "Household point-of-use evidence was less relevant to the preregistered municipal utility buyer than the full-scale utility and ETDOT sources retained."
     }
   ],
   "claimsNotEarned": [
@@ -82,5 +175,11 @@
     "provider switching frequency",
     "CATCH rejection frequency",
     "EHDS dataset-feasibility failure rate"
+    ,"independent blinded investigator"
+    ,"formal research-run execution receipt"
+    ,"large-load project-data access"
+    ,"PFAS utility operating-data access"
+    ,"medicine tender scoring implementation"
+    ,"satellite operator change-control failure rate"
   ]
 }
