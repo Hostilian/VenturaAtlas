@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-262-52f1cdfbe4a9",
+  "candidateId": "idea-262",
+  "candidateContentDigest": "056c9862677f867f388e12e464d097e1194b08a8ae9c739aa5e96a3fcb6f3ee9",
+  "createdAt": "2026-08-13T14:24:51.627192+00:00",
+  "lockedAt": "2026-08-13T14:24:51.627192+00:00",
+  "expectations": {
+    "buyer": "Motor carriers, freight brokers, and logistics finance teams",
+    "pain": "Detention, layover, and demurrage revenue is lost because proof is split across GPS, POD, TMS, contracts, and email",
+    "strongestIncumbent": "TMS workflows, factoring providers, audit firms, carrier back offices, and shipper portals",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Contingency recovery economics may be attractive but contract variability, weak proof, and incumbent TMS/payment features may cap automation",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "de620e4b876f841de7701643ed9f852199188506dcd8f84f8337d3aad8cbf9de"
+}

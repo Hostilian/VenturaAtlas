@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-349-ed4d90b98ef3",
+  "candidateId": "idea-349",
+  "candidateContentDigest": "0f3016e1a4806a65ed739c915c64c5153048a6fedad9b11dc2b3b6fa888703ae",
+  "createdAt": "2026-08-13T14:24:52.892626+00:00",
+  "lockedAt": "2026-08-13T14:24:52.892626+00:00",
+  "expectations": {
+    "buyer": "Long-tail industrial and B2B suppliers plus procurement platforms",
+    "pain": "PDF catalogues, quotes, email orders, and bespoke terms prevent agents from transacting safely with legacy suppliers",
+    "strongestIncumbent": "EDI/P2P suites, supplier networks, catalog-management platforms, marketplaces, and human procurement teams",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Emerging commerce protocols and dominant procurement networks may standardize the gateway while supplier authorization and exception liability remain unsolved",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "dbb7190304e7fd13c93ba6c7381f026be0dd9bad35f57b68e6c65782a8596894"
+}

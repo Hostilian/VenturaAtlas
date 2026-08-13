@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-291-f5bb7e9bcca5",
+  "candidateId": "idea-291",
+  "candidateContentDigest": "cfe71d371f2f1a0c320b831d5c5490f52fda67578af2915764d786402cc1e8ab",
+  "createdAt": "2026-08-13T14:24:53.546267+00:00",
+  "lockedAt": "2026-08-13T14:24:53.546267+00:00",
+  "expectations": {
+    "buyer": "Rhine-dependent manufacturers, freight forwarders, and multimodal capacity providers",
+    "pain": "Low water makes spot freight capacity scarce and exposes production plans to volatile transport constraints",
+    "strongestIncumbent": "Forwarder contingency contracts, inventory buffers, rail/truck procurement, low-draft fleets, and bilateral capacity reservations",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "A tradable option may fail on capacity commitment, trigger basis, regulation, correlated scarcity, and incumbent forwarder relationships",
+    "verdict": "LIKELY_KILL"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "03dd03348b6303d66ed88b8c32e480912ab10f885b22b16e0c02e1a3644e51b5"
+}

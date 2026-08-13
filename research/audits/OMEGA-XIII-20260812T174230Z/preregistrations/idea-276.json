@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-276-b351362515aa",
+  "candidateId": "idea-276",
+  "candidateContentDigest": "7236fd9c7e7591ec4a398173b93e18f979eb2d6eb34a9c34ad96b733eaceba84",
+  "createdAt": "2026-08-13T14:24:50.973819+00:00",
+  "lockedAt": "2026-08-13T14:24:50.973819+00:00",
+  "expectations": {
+    "buyer": "Industrial operators, OEM-neutral integrators, and maintenance teams",
+    "pain": "Multi-vendor machine data remains fragmented across protocols, schemas, licences, and OEM access controls",
+    "strongestIncumbent": "OPC UA/MQTT gateways, industrial data platforms, hyperscaler connectors, OEM clouds, and system integrators",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Open industrial standards and existing connectivity platforms may absorb the API layer while Data Act access remains bilateral and equipment-specific",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "9a5a1d7d09632036f5714351306a5efa54d1500cb3c54d8853eab4d6ee2975d1"
+}

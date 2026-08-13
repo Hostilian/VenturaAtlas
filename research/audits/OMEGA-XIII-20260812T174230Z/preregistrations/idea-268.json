@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-268-d8c3a766d4ab",
+  "candidateId": "idea-268",
+  "candidateContentDigest": "fe7c125e13dc28569cc90e0ce28d469ad0d3e92fcb84dd739ceec5762cdaa8d2",
+  "createdAt": "2026-08-13T14:24:52.252859+00:00",
+  "lockedAt": "2026-08-13T14:24:52.252859+00:00",
+  "expectations": {
+    "buyer": "SME and mid-market finance leaders managing overdue B2B invoices",
+    "pain": "Collections work is repetitive, fragmented, and escalates too late to protect cash flow",
+    "strongestIncumbent": "ERP/AR automation suites, payment networks, collections agencies, factoring, and legal providers",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The category is crowded and distribution, payment data, legal variation, and incumbent bundling may erase a standalone agent wedge",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "fa076ef047fae8426c296fae08c4c0c3dd5ba4bfccdb7e33b7a0ddc28c1234c3"
+}
