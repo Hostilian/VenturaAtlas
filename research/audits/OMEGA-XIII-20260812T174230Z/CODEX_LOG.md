@@ -96,3 +96,14 @@ Mission active and incomplete. No external research quota, buyer evidence, WTP, 
 - The first dependency-install command mistakenly executed in the source repository after the clone command, leaving the clone without `node_modules`; TypeScript then failed only on unresolved installed-package imports. This path error is retained and is not counted as a repository failure or verification pass.
 - Installed 157 lockfile packages in the clone's actual working directory (zero reported vulnerabilities). Correctly rooted source quality passed 95 Node tests (85 pass, 10 explicit staging-absence skips), 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy.
 - In the same clone, `build:verified` regenerated 5,091 public files, projected 197 eligible public sources from 210 total, passed the public secret/private-path scanner, and passed all four PWA tests.
+
+## 2026-08-13T15:42:00Z — industrial-commerce tranche and exact clone proof
+
+- Preregistered MachineKey, FreightRecover, PayMe, B2B Agent Gateway, and Rhine Low-Water Capacity Options at commit `04fea16` before browsing. All five WTP states were locked at ASSUMED.
+- Retained fourteen decision-relevant sources (s211–s224) across industrial-data access, telemetry incumbents, freight rules/products, late-payment law and AR bundling, agent protocols and supplier networks, and Rhine low-water operations.
+- Added connected-product data access at P5 CONFORMANCE and agent-commerce protocols at P1 SPEC_FORMING without inventing transitions. Totals are 11 markets, 0 transitions, 4 enforcement events, 1 intermediary assessment, 16 milestones, 5 edges, 1 OPEN conflict, and 1 UNKNOWN deadlock.
+- Killed the broad autonomous receivables-agent and neutral Rhine option-marketplace theses. Reassessed MachineKey and FreightRecover downward and kept B2B Agent Gateway at WAIT after narrowing.
+- A concurrent repository writer committed the integrated data as `ce272d4` with message `l` and advanced `origin/main`; it was preserved. Derived files and the corrected 62-section report were committed as `6d89992`.
+- Source-worktree quality passed 95 Node and 75 Python tests plus every strict validator, consistency, drift, constitution, and privacy. The public build produced 5,091 files, projected 211 of 224 sources, and passed artifact/PWA gates.
+- An exact `6d89992e790bfbb0225a05c925ef062589d37a8a` clone confirmed private staging absent, installed 157 lockfile packages with zero reported vulnerabilities, passed the same source/public gates, and finished clean at the same SHA.
+- No receipt, semantic review, promotion, interview, WTP, paid pilot, funnel event, or deployment was created. The mission remains active because the 75-round distribution, independent blind anchoring measurement, and external validation are incomplete.
