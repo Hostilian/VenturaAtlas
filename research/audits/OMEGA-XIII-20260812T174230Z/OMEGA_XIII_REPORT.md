@@ -2,11 +2,11 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: pending cross-system-authority integration and immutable clone proof; preregistration baseline `815ab473eb0ec4343a9ee50306e7da8dd947c759`
+Verified evidence HEAD: `a7ce07288ba5f78523c5f6ab18a53e8c48a0a4ab`
 
 ## 01 Executive Verdict
 
-This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Forty existing ideas have received preregistered desk-commercial review across eight evidence tranches and twenty-six market maps validate. The eighth tranche still requires immutable integration and exact-commit clone proof. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Forty existing ideas have received preregistered desk-commercial review across eight evidence tranches and twenty-six market maps validate. The eighth tranche passed immutable integration and exact-commit clone proof. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -310,7 +310,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact evidence commit `0870b8e175cefe3ba503e403cbc50c3e718ff34c` was cloned with local object sharing disabled into `C:\Users\HOSTIL~1\AppData\Local\Temp\venture-atlas-omega13-bbaac30cb58b4f38a0516c731694d912`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 85 executed Node tests plus 10 intentional private-staging skips, 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The clone rebuilt 5,091 public files, projected 256 eligible public sources from 269 total, passed the secret/private-path scanner, and passed four PWA tests.
+Exact evidence commit `a7ce07288ba5f78523c5f6ab18a53e8c48a0a4ab` was cloned with local object sharing disabled into `C:\Users\HOSTIL~1\AppData\Local\Temp\venture-atlas-omega13-ea7732201b034799a1b832f05872a7b8`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 85 executed Node tests plus 10 intentional private-staging skips, 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The clone rebuilt 5,091 public files, projected 262 eligible public sources from 275 total, passed the secret/private-path scanner, and passed four PWA tests.
 
 ## 61 Remaining Unknowns
 
