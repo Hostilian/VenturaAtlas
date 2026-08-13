@@ -2,7 +2,7 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: pending immutable integration commit and fresh-clone receipt for the sixth tranche
+Verified evidence HEAD: `2cba9a89c03ef4a85869e755221c467a78c30a8d`
 
 ## 01 Executive Verdict
 
@@ -292,7 +292,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-The most recent completed clean-clone proof remains exact commit `169ed9b2f035d7cfc520597f6d0cadfab04df563`: private staging absent, 157 packages with zero reported vulnerabilities, 85 executed Node tests plus 10 intentional staging skips, 75 Python tests, all strict/consistency/drift/constitution/privacy gates, a 5,091-file build with 237/250 public sources, scanner, and four PWA tests. The sixth tranche is not yet covered by that receipt; its exact integration SHA and fresh-clone results must replace this paragraph after verification.
+Exact evidence commit `2cba9a89c03ef4a85869e755221c467a78c30a8d` was cloned with local object sharing disabled into `C:\Users\HOSTIL~1\AppData\Local\Temp\venture-atlas-omega13-2123aa176540498da2e7d531bb98fb92`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages with zero reported vulnerabilities, source quality passed 85 executed Node tests plus 10 intentional private-staging skips, 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The clone rebuilt 5,091 public files, projected 247 eligible public sources from 260 total, passed the secret/private-path scanner, and passed four PWA tests.
 
 ## 61 Remaining Unknowns
 
