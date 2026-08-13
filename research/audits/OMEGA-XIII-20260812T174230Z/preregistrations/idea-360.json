@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-360-9ed078cdb49b",
+  "candidateId": "idea-360",
+  "candidateContentDigest": "d849028a842eb1f25405004e561777e6f04cf95879c955a89a057b30b27640b6",
+  "createdAt": "2026-08-13T15:48:00.572859+00:00",
+  "lockedAt": "2026-08-13T15:48:00.572859+00:00",
+  "expectations": {
+    "buyer": "SaaS engineering, integration-platform, and enterprise application teams operating many third-party APIs and webhooks",
+    "pain": "Provider schema, authentication, endpoint, and webhook changes break integrations and consume maintenance effort",
+    "strongestIncumbent": "API gateways, iPaaS, SDK generators, contract testing, observability, provider changelogs, and managed connectors",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Incumbents already detect or regenerate common changes, while autonomous repair without provider intent can silently corrupt transactions",
+    "verdict": "LIKELY_KILL"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "2f4fe9b2cba856df388e0359267d78665f39edf4e7b9657a2fc6d64948e17adb"
+}

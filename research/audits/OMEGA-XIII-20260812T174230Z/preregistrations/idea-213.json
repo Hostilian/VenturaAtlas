@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-213-193ae77031fd",
+  "candidateId": "idea-213",
+  "candidateContentDigest": "579918d9adffa2762bc4bcedf04f8ec39a869db278b1229387f4c833b60c68ae",
+  "createdAt": "2026-08-13T15:48:00.085219+00:00",
+  "lockedAt": "2026-08-13T15:48:00.085219+00:00",
+  "expectations": {
+    "buyer": "Merchants, procurement teams, consumer platforms, and payment-risk leaders enabling autonomous purchases",
+    "pain": "AI agents can exceed scope, select wrong merchants or items, mishandle substitutions, and create irreversible transactions without clear mandate evidence",
+    "strongestIncumbent": "Card-network controls, wallet limits, merchant risk, AP2/UCP/TAP protocols, procurement policies, and payment-provider authorization tooling",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Open protocols and existing issuer or wallet controls may absorb generic guardrails; the product may lack authority at the payment rail",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "eb9a05e8dcced98745bf55eb19ded622891a498e9b16a41c0c7779d317324e69"
+}

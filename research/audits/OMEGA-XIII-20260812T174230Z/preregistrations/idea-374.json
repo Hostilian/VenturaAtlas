@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-374-13fdfc888ab6",
+  "candidateId": "idea-374",
+  "candidateContentDigest": "f7e8ddd3bac17a2919ac1d88d9130fbf51b1c4a4d636b792216356a1ee4ea78e",
+  "createdAt": "2026-08-13T15:48:00.814150+00:00",
+  "lockedAt": "2026-08-13T15:48:00.814150+00:00",
+  "expectations": {
+    "buyer": "Regulated enterprises, governments, critical-infrastructure operators, and procurement/security teams managing foreign-vendor dependency",
+    "pain": "Organizations cannot prove they can rebuild, sign, modify, recover, and operate critical systems when a vendor, cloud, signing service, or jurisdiction becomes unavailable",
+    "strongestIncumbent": "Software escrow, source-available delivery, disaster recovery, SBOM and reproducible-build tooling, sovereign cloud, continuity audits, and procurement clauses",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The full drill is expensive, hardware and licensing rights remain inaccessible, and incumbent escrow/continuity audits may satisfy procurement",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "0d61578c7696c841ae26e0ca9f573a3eaf123cf132e38ba427ca23925c0354e9"
+}

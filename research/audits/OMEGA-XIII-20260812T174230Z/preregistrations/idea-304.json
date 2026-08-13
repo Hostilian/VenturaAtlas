@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-304-3d948c747792",
+  "candidateId": "idea-304",
+  "candidateContentDigest": "7a345a1f67867c17a40ee7139365ef450b1f99ccd37001034889f4c4157322a9",
+  "createdAt": "2026-08-13T15:48:00.333370+00:00",
+  "lockedAt": "2026-08-13T15:48:00.333370+00:00",
+  "expectations": {
+    "buyer": "Banks, payment service providers, fraud teams, and scheme participants implementing Verification of Payee and instant payments",
+    "pain": "Name matching, diacritics, identifiers, latency, exception codes, and cross-provider behavior can diverge across implementations",
+    "strongestIncumbent": "European Payments Council specifications and test artefacts, national schemes, payment processors, bank certification labs, and conformance vendors",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Scheme-owned test environments and certification may absorb the simulator; non-euro scope may be too fragmented and inaccessible",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a6e761500d1b2592bc4118f343606399df4e3409d38f29cb5af03534d68a5f66"
+}
