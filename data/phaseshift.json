@@ -221,6 +221,40 @@
       "ecosystemRefs": [],
       "ideaRefs": ["idea-265"],
       "sourceRefs": ["s235", "s236"]
+    },
+    {
+      "marketId": "market-eu-non-euro-vop",
+      "name": "EU non-euro-area Verification of Payee implementation",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["READINESS", "CONFORMANCE", "CERTIFICATION"],
+      "valueNext": ["CUTOVER", "EXCEPTION_HANDLING", "OBSERVABILITY", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T16:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-304"],
+      "sourceRefs": ["s241", "s242"]
+    },
+    {
+      "marketId": "market-eu-cloud-switching-continuity",
+      "name": "EU cloud switching, reversibility, and operational continuity",
+      "phase": "P5_CONFORMANCE",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["MAPPING", "CONFORMANCE", "SWITCHING", "AUDIT"],
+      "valueNext": ["CERTIFICATION", "EXCEPTION_HANDLING", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "MEDIUM",
+      "observedAt": "2026-08-13T16:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-374"],
+      "sourceRefs": ["s247", "s248", "s249", "s250"]
     }
   ],
   "phaseTransitions": [],
@@ -490,6 +524,26 @@
       "certainty": "FIXED",
       "buyerImplication": "Tender discovery and normalization increasingly rest on public machine-readable schemas rather than scarce proprietary extraction",
       "sourceRefs": ["s235"]
+    },
+    {
+      "milestoneId": "milestone-non-euro-vop-deadline",
+      "marketId": "market-eu-non-euro-vop",
+      "kind": "LAW_APPLIES",
+      "label": "Verification of Payee applies to non-euro-area payment service providers",
+      "date": "2027-07-09T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Scheme-owned conformance testing is available before cutover; an independent product must prove cross-provider production exceptions beyond the reference toolbox",
+      "sourceRefs": ["s241", "s242"]
+    },
+    {
+      "milestoneId": "milestone-cloud-switching-charges-end",
+      "marketId": "market-eu-cloud-switching-continuity",
+      "kind": "LAW_APPLIES",
+      "label": "EU Data Act cloud and data-processing switching charges are removed",
+      "date": "2027-01-12T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Egress-fee removal reduces one barrier but leaves technical, architectural, licensing, signing, and operational-continuity work to customers and providers",
+      "sourceRefs": ["s249"]
     }
   ],
   "milestoneEdges": [

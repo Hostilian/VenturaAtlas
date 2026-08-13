@@ -2223,5 +2223,47 @@
     "startedAt": "2026-08-13T15:24:00Z",
     "endedAt": "2026-08-13T15:35:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-010-20260813-public-primitive-countertrend",
+    "baselineCommit": "8d2677443fef9c09831cda5aab7c205a7795da81",
+    "questions": [
+      "Which public or scheme-owned primitives absorb public-data monitoring, agent-purchase controls, and Verification of Payee testing?",
+      "Can autonomous third-party API repair be safe without provider intent and consumer transaction evidence?",
+      "Do software supply-chain standards and cloud-switching rights prove independent operation, or is an executed continuity drill still scarce?"
+    ],
+    "queries": [
+      "data.europa.eu OpenAPI metadata quality SHACL public data APIs",
+      "EPC Verification of Payee API Reference Toolbox test cases non-euro deadline",
+      "AP2 Visa TAP Agentic Commerce Protocol delegated payment mandates",
+      "MuleSoft API governance Postman contract testing breaking changes",
+      "SLSA reproducible builds NIST maintenance source test access",
+      "EU Data Act cloud switching charges interfaces 2027",
+      "CISA free software acquisition supplier response tool"
+    ],
+    "sourceCandidates": ["s239", "s240", "s241", "s242", "s243", "s244", "s245", "s246", "s247", "s248", "s249", "s250"],
+    "inclusions": ["idea-169", "idea-213", "idea-304", "idea-360", "idea-374"],
+    "exclusions": [],
+    "claimsChanged": [
+      "Public Data Contract Watch is killed as a generic catalogue/schema-quality monitor and narrowed to downstream consumer-impact evidence for specific public APIs.",
+      "AI-Agent Purchase Guardrail is killed as generic transaction middleware and narrowed to merchant or procurement policy exceptions not covered by mandates and payment-network controls.",
+      "Instant-Payment Reality Grid is reassessed down because the EPC owns an official VoP conformance toolbox; only cross-RVM production divergence remains plausible.",
+      "Self-Maintaining Third-Party API Layer is killed broadly; detection and conformance are incumbent capabilities and autonomous mutation lacks provider authority.",
+      "FreedomToModify remains a narrow continue as an executed rebuild, signing, recovery, and operation drill rather than a questionnaire, SBOM, or portability score.",
+      "No buyer, WTP, live API, transaction, continuity execution, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-169-2acfc3917e62",
+      "prereg-idea-213-193ae77031fd",
+      "prereg-idea-304-3d948c747792",
+      "prereg-idea-360-9ed078cdb49b",
+      "prereg-idea-374-13fdfc888ab6"
+    ],
+    "ideaIds": ["idea-169", "idea-213", "idea-304", "idea-360", "idea-374"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T15:50:00Z",
+    "endedAt": "2026-08-13T16:05:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]

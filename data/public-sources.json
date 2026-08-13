@@ -5021,5 +5021,281 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s239",
+    "title": "European Data Portal API documentation",
+    "publisher": "data.europa.eu",
+    "url": "https://dataeuropa.gitlab.io/data-provider-manual/api-documentation/",
+    "supports": [
+      "The European Data Portal publishes OpenAPI-described Search, SPARQL, Registry, metadata-quality, and SHACL validation APIs",
+      "Official machine-readable metadata and validation absorb a generic public-data catalogue or schema-quality monitor, while downstream consumer impact remains outside the primitive"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-169"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s240",
+    "title": "Data.europa.eu Data Quality Guidelines",
+    "publisher": "Publications Office of the European Union",
+    "url": "https://op.europa.eu/webpub/op/data-quality-guidelines/en/",
+    "supports": [
+      "The official guidelines cover accessibility, availability, interoperability, reusability, formats, APIs, status codes, metadata, and dataset publication quality",
+      "Provider guidance and portal-level metrics do not identify which downstream consumer workflow breaks after a public-data change"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-169"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s241",
+    "title": "Verification of Payee API Reference Toolbox test cases",
+    "publisher": "European Payments Council",
+    "url": "https://www.europeanpaymentscouncil.eu/document-library/other/verification-payee-api-reference-toolbox-test-cases",
+    "supports": [
+      "The EPC operates an API Reference Toolbox for PSPs and routing or verification mechanisms to test requesting and responding roles against positive and negative VoP compliance cases",
+      "Scheme-owned reference testing directly absorbs a generic VoP conformance simulator; cross-provider production divergence is a separate unproven boundary"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-304"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s242",
+    "title": "Instant Payments Regulation implementation timeline",
+    "publisher": "European Central Bank",
+    "url": "https://www.ecb.europa.eu/paym/retail/instant_payments/html/instant_payments_regulation.en.html",
+    "supports": [
+      "Verification of Payee applies to standard and instant credit transfers and returns match, close match, no match, or other before payment initiation",
+      "The non-euro-area VoP deadline is 9 July 2027, so the preregistered non-euro implementation surface is in preparation rather than completed operational scale"
+    ],
+    "type": "official_phase_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-304"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s243",
+    "title": "Agent Payments Protocol specification",
+    "publisher": "AP2 Protocol",
+    "url": "https://ap2-protocol.org/ap2/specification/",
+    "supports": [
+      "AP2 defines intent, cart, checkout, and payment mandates for delegated agent purchasing and constrains autonomous actions through explicit authorization objects",
+      "The current specification leaves agents to determine applicable mandates and disclosures in context, so protocol conformance is not proof of safe merchant-specific policy execution"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-213"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s244",
+    "title": "Agentic Commerce Protocol and delegated payments",
+    "publisher": "OpenAI",
+    "url": "https://openai.com/index/buy-it-in-chatgpt/",
+    "supports": [
+      "The open Agentic Commerce Protocol supports agent checkout and a delegated-payments specification without requiring merchants to replace their payment processor",
+      "A platform and payment primitive already occupies the generic transaction middleware layer; independent merchant or procurement exception control remains unproven"
+    ],
+    "type": "primary_specification",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-213"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s245",
+    "title": "Anypoint API Governance overview",
+    "publisher": "MuleSoft",
+    "url": "https://docs.mulesoft.com/api-governance/",
+    "supports": [
+      "MuleSoft applies rulesets and conformance checks across API specifications, instances, catalogues, CI/CD, REST, AsyncAPI, gRPC, agents, and MCP services",
+      "Current enterprise governance products absorb broad API change visibility and conformance, narrowing any repair product to consumer-specific impact and approved remediation"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-360"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s246",
+    "title": "Postman API contract-testing best practices",
+    "publisher": "Postman",
+    "url": "https://voyager.postman.com/pdf/postman-best-practices.pdf",
+    "supports": [
+      "Postman contract tests surface API compatibility and breaking-change issues and can run continuously with monitoring and external result export",
+      "Detecting a contract break is an incumbent capability; autonomously changing a consumer without provider intent or transaction validation is not established as safe"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-360"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s247",
+    "title": "SLSA reproducible-build limitations",
+    "publisher": "OpenSSF SLSA",
+    "url": "https://slsa.dev/spec/v1.0/faq",
+    "supports": [
+      "SLSA distinguishes reproducible from independently verified reproducible builds and notes that reproducibility does not cover source, dependency, or distribution threats",
+      "Closed-source independent rebuilds may require unacceptable source access or prohibitively expensive separate build systems, preserving a real execution boundary beyond provenance"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-374"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s248",
+    "title": "NIST Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations",
+    "publisher": "National Institute of Standards and Technology",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-161r1-upd1.pdf",
+    "supports": [
+      "NIST says software-maintenance contracts should state the source code, test cases, tools, access, and other items needed to maintain critical systems",
+      "Contractual accessibility is a prerequisite but not evidence that an organization can actually rebuild, sign, deploy, recover, and operate without the supplier"
+    ],
+    "type": "official_control_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-374"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s249",
+    "title": "Regulation EU 2023/2854 Data Act cloud-switching provisions",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R2854",
+    "supports": [
+      "The Data Act requires contractual switching provisions and open interfaces and removes cloud or data-processing switching charges from 12 January 2027",
+      "The regulation explicitly recognizes services where switching is highly complex, costly, or impossible without significant interference with data, digital assets, or architecture"
+    ],
+    "type": "official_forcing_function",
+    "date": "2023",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-374"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s250",
+    "title": "Software Acquisition Guide Supplier Response Web Tool",
+    "publisher": "Cybersecurity and Infrastructure Security Agency",
+    "url": "https://www.cisa.gov/news-events/news/cisa-unveils-tool-boost-procurement-software-supply-chain-security",
+    "supports": [
+      "CISA provides a no-cost interactive supplier-response tool for risk-informed software procurement and supply-chain assurance",
+      "A free public questionnaire and assessment primitive absorbs a generic vendor-risk score but does not execute continuity or independent operation"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-public-primitive-countertrend",
+    "ideaIds": [
+      "idea-374"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

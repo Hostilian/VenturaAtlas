@@ -232,6 +232,61 @@
       ],
       "includedSourceRefs": ["s237", "s238"],
       "decisionImpact": "A direct buyer-side audit/recovery service and system-of-record activity billing already implement the thesis from both sides. The broad 3PL Activity-to-Invoice Grid is killed unless a multi-3PL historical invoice corpus proves a repeatable, collectible residual missed by both classes."
+    },
+    {
+      "queryFamilyId": "qf-public-data-contract-primitives",
+      "purpose": "Test whether public-data schema and quality monitoring is scarce or already provided by official machine-readable catalogues and validation services",
+      "queries": [
+        "data.europa.eu OpenAPI metadata quality SHACL API",
+        "European Data Portal data quality accessibility availability guidelines"
+      ],
+      "includedSourceRefs": ["s239", "s240"],
+      "decisionImpact": "Official OpenAPI, metadata-quality, and SHACL services absorb generic catalogue/schema monitoring. Public Data Contract Watch is killed broadly and may re-enter only for consumer-specific impact mapping on an observed high-value public API break."
+    },
+    {
+      "queryFamilyId": "qf-vop-scheme-owned-testing",
+      "purpose": "Determine whether non-euro Verification of Payee needs an independent simulator or whether scheme-owned conformance tooling already controls the test boundary",
+      "queries": [
+        "EPC Verification of Payee API Reference Toolbox test cases 2026",
+        "ECB Instant Payments Regulation non-euro Verification of Payee 2027"
+      ],
+      "includedSourceRefs": ["s241", "s242"],
+      "decisionImpact": "The EPC already owns positive/negative inter-PSP compliance testing and the non-euro deadline is fixed for July 2027. Instant-Payment Reality Grid is reassessed down to cross-RVM production exception observation that the reference toolbox does not reproduce."
+    },
+    {
+      "queryFamilyId": "qf-agent-purchase-mandates-and-rails",
+      "purpose": "Test whether independent agent-purchase middleware owns a control plane beyond open mandates, merchant recognition, delegated payments, and network authorization",
+      "queries": [
+        "AP2 agent authorization open mandates constraint types",
+        "Visa Trusted Agent Protocol merchant recognition",
+        "OpenAI Agentic Commerce Protocol delegated payments",
+        "Mastercard Agent Pay agentic tokens"
+      ],
+      "includedSourceRefs": ["s220", "s243", "s244"],
+      "decisionImpact": "Mandates, recognition signatures, delegated payments, and network controls absorb generic purchase middleware. AI-Agent Purchase Guardrail is killed broadly and may re-enter only for merchant/procurement policy exceptions with accepted authority and transaction-level failure evidence."
+    },
+    {
+      "queryFamilyId": "qf-api-repair-incumbents-and-authority",
+      "purpose": "Test whether autonomous repair is a scarce capability after API governance and contract testing, and whether a third party can infer provider intent safely",
+      "queries": [
+        "MuleSoft API governance conformance REST AsyncAPI gRPC MCP agents",
+        "Postman contract tests API compatibility breaking changes",
+        "OpenAPI breaking change diff consumer contract"
+      ],
+      "includedSourceRefs": ["s245", "s246"],
+      "decisionImpact": "Governance, conformance, and compatibility detection are already incumbent capabilities. Autonomous mutation has no provider authority and can silently change transaction meaning, so Self-Maintaining Third-Party API Layer is killed except for human-approved consumer-impact patches."
+    },
+    {
+      "queryFamilyId": "qf-sovereignty-continuity-execution",
+      "purpose": "Separate free procurement/provenance/switching primitives from the ability to rebuild, sign, recover, and operate critical technology independently",
+      "queries": [
+        "SLSA verified reproducible build limitations closed source",
+        "NIST 800-161 maintenance source code test cases access",
+        "EU Data Act cloud switching interfaces charges 12 January 2027",
+        "CISA Software Acquisition Guide Supplier Response Web Tool"
+      ],
+      "includedSourceRefs": ["s247", "s248", "s249", "s250"],
+      "decisionImpact": "Free guidance, supplier questionnaires, provenance, and switching rights absorb documentary scoring. They do not prove rebuild/signing/license/hardware/operation continuity. FreedomToModify continues only as an authorized executed drill with observable recovery outcomes."
     }
   ],
   "excluded": [
@@ -306,6 +361,22 @@
     {
       "url": "https://enotices2.preview.ted.europa.eu/home",
       "reason": "The notice-entry interface did not add a distinct control or evidence claim beyond the retained EU eProcurement primitives."
+    },
+    {
+      "url": "https://www.mastercard.com/us/en/business/artificial-intelligence/mastercard-agent-pay.html",
+      "reason": "Mastercard Agent Pay corroborated network-owned agentic payment controls but added less implementation detail than the retained mandate, Visa, and delegated-payment specifications."
+    },
+    {
+      "url": "https://github.com/Tufin/oasdiff",
+      "reason": "Open-source OpenAPI diff tooling was relevant context but unnecessary after retaining enterprise governance and contract-testing product documentation."
+    },
+    {
+      "url": "https://slsa.dev/spec/v1.0/levels",
+      "reason": "The levels page was contextual; the retained SLSA limitations page established the independent-rebuild boundary more directly."
+    },
+    {
+      "url": "https://www.cisa.gov/news-events/alerts/2022/11/17/cisa-nsa-and-odni-release-guidance-customers-securing-software-supply-chain",
+      "reason": "The archived alert was superseded for the public-primitive question by CISA's current no-cost supplier-response tool."
     }
   ],
   "claimsNotEarned": [
@@ -336,5 +407,10 @@
     ,"neutral consumables substitution liability acceptance"
     ,"public tender submission or award"
     ,"3PL invoice corpus access or recovered overcharge"
+    ,"public API consumer dependency graph or observed breaking change"
+    ,"agent purchase mandate accepted by a merchant or procurement authority"
+    ,"cross-RVM production Verification of Payee divergence"
+    ,"authorized third-party API repair or transaction-safe patch"
+    ,"independent rebuild, signing, recovery, or vendor-loss operation drill"
   ]
 }

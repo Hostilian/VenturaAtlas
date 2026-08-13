@@ -6,7 +6,7 @@ Verified evidence HEAD: `5b7047db88bf6721727fd86b963645b81e733751`
 
 ## 01 Executive Verdict
 
-This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Twenty existing ideas received preregistered desk-commercial review across four evidence tranches, thirteen market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Twenty-five existing ideas received preregistered desk-commercial review across five evidence tranches, fifteen market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -22,7 +22,7 @@ The detailed classification is in `LANDED_FIX_MATRIX.md`. Useful landed mechanis
 
 ## 05 Repository Truth
 
-Current source truth is 294 canonical ideas, 306 local private staged candidates, 238 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero. The nine research-run records remain desk/provenance state and lack the maturity and tool receipts required for an earned lifecycle state.
+Current source truth is 294 canonical ideas, 306 local private staged candidates, 250 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero. The ten research-run records remain desk/provenance state and lack the maturity and tool receipts required for an earned lifecycle state.
 
 ## 06 Autonomy Utility
 
@@ -62,7 +62,7 @@ Canonical and receipt replacements are protected as a set by a durable PREPARED/
 
 ## 15 Research Execution
 
-Twenty immutable preregistrations were locked before their respective searches: ideas 401, 264, 215, 376, 379, 395, 398, 377, 383, 342, 276, 262, 268, 349, 291, 277, 172, 174, 265, and 327. The fourth tranche added five decision-oriented query families and fourteen retained sources (s225–s238) spanning research-infrastructure access, science marketplaces, lab interoperability and exports, consumables compatibility, EU procurement primitives, and 3PL billing/audit. The same investigator preregistered and researched all four tranches, so the work is prospective but not independent/blinded. No lifecycle research receipt was issued, and this still does not satisfy the 75-round floor.
+Twenty-five immutable preregistrations were locked before their respective searches, now also including ideas 169, 213, 304, 360, and 374. The fifth tranche added five decision-oriented query families and twelve retained sources (s239–s250) spanning public-data primitives, VoP scheme testing, agent-payment mandates, API governance/contract tests, software supply-chain continuity, and cloud switching. The same investigator preregistered and researched all five tranches, so the work is prospective but not independent/blinded. No lifecycle research receipt was issued, and this still does not satisfy the 75-round floor.
 
 ## 16 Blind Review
 
@@ -70,7 +70,7 @@ The allowlisted blind-packet generator removes prior scores, rank, priority, ver
 
 ## 17 Confirmation-Bias Findings
 
-Preregistered expectations changed under negative evidence. MachineKey, FreightRecover, and PayMe were reassessed downward; broad PayMe, Rhine options, LabGrid, consumables compatibility, TenderFactory, and generic 3PL audit were killed; B2B Agent Gateway remained WAIT and Lab Software Exit-Risk narrowed to an export/restore drill. This is evidence of decision change, not a quantified anchoring experiment.
+Preregistered expectations changed under negative evidence. Public Data Contract Watch, AI-Agent Purchase Guardrail, and Self-Maintaining API were killed at the generic layer; VoP Reality Grid narrowed to production divergence beyond scheme tests; FreedomToModify survived only as an executed continuity drill. This is evidence of decision change, not a quantified anchoring experiment.
 
 ## 18 Massive Orchestrator
 
@@ -86,11 +86,11 @@ Liveness and readiness are separate. Readiness fails on missing/placeholder auth
 
 ## 21 Public Artifact
 
-The current source-worktree `_site` build contains 5,091 files and projects 225 explicitly public evidence-eligible sources from 238 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and four PWA tests pass. A fresh-clone receipt for the forthcoming immutable evidence commit is still required.
+The current source-worktree `_site` build contains 5,091 files and projects 237 explicitly public evidence-eligible sources from 250 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and four PWA tests pass. A fresh-clone receipt for the forthcoming immutable evidence commit is still required.
 
 ## 22 PhaseShift Landscape
 
-Strict structured state now covers thirteen markets, zero inferred phase transitions, four enforcement events, one intermediary assessment, eighteen milestones, five milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
+Strict structured state now covers fifteen markets, zero inferred phase transitions, four enforcement events, one intermediary assessment, twenty milestones, five milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
 
 ## 23 Market Phase Map
 
@@ -107,6 +107,8 @@ Strict structured state now covers thirteen markets, zero inferred phase transit
 - Agentic-commerce protocols: P1 SPEC_FORMING, wait for a demonstrable B2B workflow beyond trust/payment protocols and supplier networks.
 - EU research-infrastructure access: P1 SPEC_FORMING, reassess a narrow corridor after the voluntary access charter and facility-owned gates.
 - EU public-procurement digital rails: P6 OPERATIONAL SCALE, reassess/low startup value because public schemas and official services absorb the generic layer.
+- EU non-euro-area Verification of Payee: P2 PREPARATION, reassess production exceptions beyond the official reference toolbox.
+- EU cloud switching and operational continuity: P5 CONFORMANCE, continue only for executed reversibility and vendor-loss evidence.
 
 ## 24 Enforcement Topology
 
@@ -126,7 +128,7 @@ CRA supplier reachability remains an UNKNOWN deadlock because no least-ready cri
 
 ## 28 Milestone Graph
 
-Eighteen separate milestones preserve the prior graph and add date-null records for the July 2026 research-infrastructure access charter and October 2023 mandatory eForms. No phase transition is inferred from a milestone. Unknown exact days remain null rather than invented.
+Twenty separate milestones preserve the prior graph and add fixed 12 January 2027 cloud-switching-fee removal and 9 July 2027 non-euro VoP application dates. No phase transition is inferred from a milestone.
 
 ## 29 Source Conflicts
 
@@ -166,18 +168,23 @@ The Commission's current implementation tracker confirms adopted negative shocks
 - `idea-174`: continue only as an authorized object-level export completeness and restoration drill.
 - `idea-265`: kill the broad autonomous tender product; public rails and bidder authority absorb the control plane.
 - `idea-327`: kill the generic activity-to-invoice grid; direct audit and WMS/TMS billing substitutes exist.
+- `idea-169`: kill generic public-data monitoring; test only downstream consumer impact missed by official metadata/quality primitives.
+- `idea-213`: kill generic agent-purchase middleware; test only authoritative enterprise policy exceptions beyond mandates and network controls.
+- `idea-304`: reassess downward to multilingual/cross-RVM production divergence after official VoP toolbox conformance.
+- `idea-360`: kill autonomous API repair; allow only consumer-impact mapping and human-approved patches.
+- `idea-374`: continue narrowly as an executed rebuild/sign/recover/operate continuity drill.
 
 ## 34 Current Buyer Evidence
 
-No buyer interview or design-partner receipt exists. Buyer names in preregistration are hypotheses only, now also including research facilities, laboratory IT/quality teams, analytical-lab procurement, SME bid teams, and brand/logistics finance teams.
+No buyer interview or design-partner receipt exists. Buyer names in preregistration are hypotheses only, now also including public-data product teams, PSP/RVM implementers, merchant/payment-risk teams, integration engineering, and critical-technology procurement/security leaders.
 
 ## 35 Current WTP Evidence
 
-WTP maturity is ASSUMED for all twenty preregistered ideas. Vendor list prices and incumbent transaction scale are competitive context, not WTP evidence for these concepts. No buyer budget evidence exists.
+WTP maturity is ASSUMED for all twenty-five preregistered ideas. Vendor list prices and incumbent transaction scale are competitive context, not WTP evidence for these concepts. No buyer budget evidence exists.
 
 ## 36 Data Access
 
-Machine endpoints, freight claim outcomes, receivables ledgers, authorized supplier transactions, Rhine capacity commitments, facility requests, ELN tenant exports, lab substitutions, tender histories, and 3PL invoice/event corpora join the inaccessible outcome corpora. Public specifications and incumbent pages do not establish customer-data access.
+Public-API consumer dependencies, accepted purchase mandates, RVM/bank test environments, historical integration breaks, source escrow, signing keys, licenses, hardware, and vendor-loss recovery environments join the inaccessible outcome corpora. Public specifications and incumbent pages do not establish customer-data access.
 
 ## 37 Distribution
 
@@ -209,13 +216,15 @@ EuroHPC AI Factories provide free eligible access for AI SMEs and publicly funde
 
 The science/procurement tranche adds a distinct negative result. The Commission's [industrial access charter](https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/charter-access-industrial-users-research-and-technology-infrastructures_en) improves coordination but remains voluntary, while [APS proposal controls](https://www.aps.anl.gov/Users-Information/About-Proposals/Proposal-Types) keep scientific review and safety with the facility. Commercial platforms [Scientist.com](https://www.scientist.com/) and [Science Exchange](https://www.scienceexchange.com/platform) already cover broad sourcing/procurement. For lab exit, [Benchling exports](https://help.benchling.com/hc/en-us/articles/39943855017229-Share-data-in-Benchling), [eLabFTW ELN interchange](https://doc.elabftw.net/docs/usage/user-guide/experiments/), and [LabArchives offline/PDF behavior](https://help.labarchives.com/hc/en-us/articles/11778414125076-Downloading-a-Notebook-to-PDF) differ enough that only an object-level restoration test is defensible.
 
+The public-primitive tranche found more direct absorption. [Data.europa.eu APIs](https://dataeuropa.gitlab.io/data-provider-manual/api-documentation/) already expose search, registry, quality, and SHACL services; the [EPC VoP toolbox](https://www.europeanpaymentscouncil.eu/document-library/other/verification-payee-api-reference-toolbox-test-cases) owns reference conformance; [AP2](https://ap2-protocol.org/ap2/specification/) and the [Agentic Commerce Protocol](https://openai.com/index/buy-it-in-chatgpt/) own delegated authorization/payment primitives. For continuity, the [EU Data Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R2854) and [NIST C-SCRM](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-161r1-upd1.pdf) create rights and contractual prerequisites, but neither proves independent operation.
+
 ## 44 Other Undercovered Domains
 
-The fourth tranche now covers scientific-facility access, lab interoperability/exit, consumables substitution, EU procurement rails, and 3PL invoice leakage. Coverage remains desk research rather than commercial validation. Space terminals, sample-logistics outcomes, wet-lab requalification, cross-border procurement exceptions, and the wider purposeful-round distribution remain undercovered.
+The fifth tranche covers public-data primitives, agent-payment controls, non-euro VoP preparation, API-maintenance substitution, and technology-continuity execution. Coverage remains desk research rather than commercial validation. Blind exploration, a missing-domain challenge, physical sample/logistics outcomes, and the wider purposeful-round distribution remain undercovered.
 
 ## 45 New Signals
 
-Signals now include research-infrastructure access coordination at P1 and EU procurement digital rails at P6. Negative signals include commercial science marketplaces, facility-owned review/safety gates, open lab standards, heterogeneous export fidelity, OEM suitability disclaimers, public tender primitives, and direct 3PL audit/billing substitutes.
+Signals now include non-euro VoP preparation at P2 and cloud-switching/continuity conformance at P5. Negative signals include public metadata/quality APIs, scheme-owned VoP testing, agent-payment mandates and network controls, API governance/contract-testing incumbents, and free procurement questionnaires.
 
 ## 46 New Candidates
 
@@ -223,11 +232,11 @@ Zero new candidates were generated in this tranche. This complies with the no-id
 
 ## 47 Strongest Rejections
 
-Rejected/narrowed layers now also include a generic scientific-capacity marketplace, a neutral consumables graph, a documentation-only ELN exit score, broad autonomous tendering, and generic 3PL activity-to-invoice audit.
+Rejected/narrowed layers now also include generic public-data monitoring, generic agent-purchase middleware, scheme-duplicate VoP simulation, autonomous third-party API mutation, and documentary sovereignty scoring without an executed drill.
 
 ## 48 WAIT_FOR_TRIGGER
 
-RepairRail, CohortPreflight, MedicineResilience, and SpaceEvidence retain their prior triggers. B2B Agent Gateway waits for interoperable B2B adoption to expose a repeatable catalog/quote/terms/exception gap. Lab Software Exit-Risk waits for an authorized export/restore tenant. LabGrid, consumables compatibility, TenderFactory, 3PL audit, and PayMe remain killed broadly and may re-enter only through their recorded bounded residual tests.
+RepairRail, CohortPreflight, MedicineResilience, and SpaceEvidence retain their prior triggers. Lab Software Exit-Risk waits for an authorized export/restore tenant; VoP Reality Grid waits for authorized cross-RVM production evidence; FreedomToModify requires an authorized vendor-loss exercise. Generic public-data monitoring, agent-purchase middleware, API repair, LabGrid, consumables compatibility, TenderFactory, 3PL audit, and PayMe remain killed broadly.
 
 ## 49 SIGNAL_ONLY
 
@@ -239,7 +248,7 @@ No idea is promoted into an earned validation state. The desk ledger proposes ch
 
 ## 51 Kill Experiments
 
-Each of the twenty decision packets defines a falsifiable next test. The fourth tranche requires facility-request failures, an authorized consumables outcome corpus, an ELN export/restore drill, one-jurisdiction bid-loss analysis, and a multi-3PL invoice/event audit. None is counted as executed validation.
+Each of the twenty-five decision packets defines a falsifiable next test. The fifth tranche requires instrumented public-API consumers, purchase-exception replay, post-ART cross-RVM testing, historical integration-break replay with human-approved patches, and a vendor-loss continuity drill. None is counted as executed validation.
 
 ## 52 Market Windows
 
@@ -255,15 +264,15 @@ No candidate-generation round was run, so novelty yield is not computed. Zero ge
 
 ## 55 Decision Yield
 
-Twenty preregistered candidate decisions changed or were narrowed; the fourth tranche killed four broad theses and narrowed one to a restore drill. One rail signal remains held without generation. A normalized yield rate is not claimed because the 75-round denominator was not executed.
+Twenty-five preregistered candidate decisions changed or were narrowed; the fifth tranche killed three generic theses, narrowed VoP to production exceptions, and retained one executed-continuity wedge. A normalized yield rate is not claimed because the 75-round denominator was not executed.
 
 ## 56 Research Utility
 
-Highest-utility findings removed or narrowed product scope: facility authority, commercial science marketplaces, open lab standards, cross-product export differences, OEM suitability liability, public procurement rails, and direct 3PL audit/billing substitutes. These changed decisions rather than merely increasing source count.
+Highest-utility findings removed or narrowed product scope: public-data quality primitives, scheme-owned VoP tests, agent mandates/payment rails, API governance and contract testing, free software-acquisition tools, and the gap between switching rights/provenance and actual independent operation.
 
 ## 57 Research Waste
 
-Generic indexes, duplicative company pages, imprecise selector indexes, extra 3PL vendors, legal schedules, and notice-entry interfaces were excluded because they did not establish the thesis-specific boundary as directly as retained sources.
+Duplicative card-network pages, generic OpenAPI diff repositories, contextual SLSA pages, and archived supply-chain alerts were excluded because retained primary specifications and current official tools established the boundary more directly.
 
 ## 58 Failure Injection
 
@@ -279,14 +288,14 @@ Exact evidence commit `5b7047db88bf6721727fd86b963645b81e733751` was cloned with
 
 ## 61 Remaining Unknowns
 
-Unknowns include buyer urgency, budgets, WTP, machine/claim/ledger/transaction/capacity/facility/lab/tender/3PL data access, export restoration fidelity, substitution outcomes, incremental recovery, supplier authorization, option enforceability, rejection frequencies, cross-party compulsion, incumbent response, formal medicine/space implementation, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
+Unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accepted agent mandates, production VoP divergence, transaction-safe API remediation, independent rebuild/signing/license/hardware recovery, all prior inaccessible corpora, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
 
 ## 62 Next Actions
 
 1. Provision reviewer authority only through a repository-owner decision or replace it with a signed-key boundary.
 2. Run independent blinded reviews and measure anchoring delta.
 3. Continue purposeful research toward the 75-round distribution, prioritizing real buyer evidence and remaining physical/scientific bottlenecks.
-4. Execute the twenty cheap falsification tests and append only real external outcomes to the validation funnel.
+4. Execute the twenty-five cheap falsification tests and append only real external outcomes to the validation funnel.
 5. Fresh-clone and scan final latest HEAD, then decide whether to push/deploy.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 
