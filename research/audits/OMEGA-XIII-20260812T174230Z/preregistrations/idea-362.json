@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-362-31ea2dd7d4b7",
+  "candidateId": "idea-362",
+  "candidateContentDigest": "b6ff95399d7f4db187a03d33fd5883fd66c4b0bc236d5de802771f6cb9bc1906",
+  "createdAt": "2026-08-13T16:43:49.430370+00:00",
+  "lockedAt": "2026-08-13T16:43:49.430370+00:00",
+  "expectations": {
+    "buyer": "Connected-product users, industrial fleet operators, OEM data-service teams, integrators, and Data Act dispute or compliance owners",
+    "pain": "A statutory machine-data feed exists contractually but is stale, incomplete, unstable, semantically unusable, or unavailable when operations depend on it",
+    "strongestIncumbent": "OEM portals and APIs, cloud IoT observability, OPC UA and MQTT tooling, data contracts, integration monitoring, and statutory dispute channels",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "No explicit service level may exist, derived data may be out of scope, observability is already bundled, and buyers need endpoint access before value can be measured",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "26b2bf3379d0ea5881db7c68eb4e5b3b20917b47081b896f846371397a09b272"
+}

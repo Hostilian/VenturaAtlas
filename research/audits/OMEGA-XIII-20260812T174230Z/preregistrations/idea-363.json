@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-363-09cc7565f0d4",
+  "candidateId": "idea-363",
+  "candidateContentDigest": "30c66ff2bcf0524ba3fc9e219362f86240059c1d12aa742e395170f2f1db4527",
+  "createdAt": "2026-08-13T16:43:49.911365+00:00",
+  "lockedAt": "2026-08-13T16:43:49.911365+00:00",
+  "expectations": {
+    "buyer": "Employers, platform operators, HR and workforce software vendors, works councils, labor counsel, compliance teams, and affected workers",
+    "pain": "An automated hiring, scheduling, pay, performance, discipline, or termination decision lacks meaningful human oversight, explanation, contestability, or a timely appeal trail",
+    "strongestIncumbent": "HRIS and case management, works-council processes, labor counsel, algorithmic-impact assessments, audit logs, regulator guidance, and employment dispute procedures",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Law may prohibit or require human judgment rather than a ledger, worker voice and collective bargaining are not software fields, and HR suites can bundle workflow and logs",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a04bcba59a337d9a7f3f5a664733a95f7a08d3f77db84f524f6a1336a2bcaa42"
+}

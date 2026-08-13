@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-273-c39f37ccb6f2",
+  "candidateId": "idea-273",
+  "candidateContentDigest": "58a9cb40cf3d4770a9c90e4393b82a4b6b7b926cfdb738f0c72b30ff2d8408bd",
+  "createdAt": "2026-08-13T16:43:49.667327+00:00",
+  "lockedAt": "2026-08-13T16:43:49.667327+00:00",
+  "expectations": {
+    "buyer": "Data-centre, battery, and industrial developers; landowners; utilities; economic-development agencies; brokers; and infrastructure financiers",
+    "pain": "A site is marketed as grid-ready but capacity, upgrade cost, energisation schedule, queue identity, land control, and load behavior are not bankable together",
+    "strongestIncumbent": "Utility capacity maps and queues, site-selection consultants, economic-development agencies, land brokers, interconnection studies, and developer diligence",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Capacity truth is utility-owned and time-varying, public maps carry disclaimers, speculative listings distort supply, and a marketplace cannot guarantee energisation",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "046af19f334c4d0685ac9b98c94c6a3bb6ba66a868eca203927c6dea785f1c8f"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-361-f3e895ec62de",
+  "candidateId": "idea-361",
+  "candidateContentDigest": "22f159c81dfc20dbfee6b51daf588709cccd0acd7db9cd949b50dd5ff38f2183",
+  "createdAt": "2026-08-13T16:43:48.968726+00:00",
+  "lockedAt": "2026-08-13T16:43:48.968726+00:00",
+  "expectations": {
+    "buyer": "Machinery manufacturers, integrators, safety and conformity leaders, product counsel, and software release teams",
+    "pain": "A firmware, model, PLC, or software change silently invalidates a risk assessment or creates a substantial-modification obligation before release",
+    "strongestIncumbent": "PLM/QMS change control, safety lifecycle tools, OEM signature and version controls, risk assessors, notified bodies, legal counsel, and CI policy checks",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The legal decision is context-specific and human-authority-bound, existing change control may already route it, and code diffs alone cannot determine physical risk",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f6944707639124242ab240426b194aac9b3de7685d690631264cc36b01737cb0"
+}

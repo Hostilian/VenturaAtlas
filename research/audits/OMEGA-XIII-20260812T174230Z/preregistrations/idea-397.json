@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-397-d4d8b3e5e83b",
+  "candidateId": "idea-397",
+  "candidateContentDigest": "7443595e621941c63d69627ac3c082862c5b98c38577a01a0754dead91434cd4",
+  "createdAt": "2026-08-13T16:43:49.196420+00:00",
+  "lockedAt": "2026-08-13T16:43:49.196420+00:00",
+  "expectations": {
+    "buyer": "Nucleic-acid synthesis providers, screening vendors, biosecurity leaders, institutional biosafety offices, and public programme operators",
+    "pain": "A screening implementation degrades, misses new sequences or customer risks, or fails operational escalation despite passing static benchmarks",
+    "strongestIncumbent": "IBBIS Common Mechanism, SecureDNA, provider screening pipelines, consortium standards, internal red teams, customer verification, and government guidance",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Free and consortium-owned infrastructure absorbs assurance, evasion-sensitive tests cannot be public, provider authorization is scarce, and current policy authority is moving",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ec697d4721a602e90776368fd9027262eaad2d3b51fde0310c01ef76fcd478fa"
+}

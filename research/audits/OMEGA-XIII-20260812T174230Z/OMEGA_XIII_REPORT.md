@@ -10,7 +10,7 @@ This is a substantial OMEGA XIII checkpoint, not mission completion. The autonom
 
 ## 02 Frozen Git Baseline
 
-The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. An external writer created `4262cc3` during the first verification suite; it was preserved. This run then created local commits `127e55e` and `6ce8a1d`. A final read-only fetch found `origin/main` unchanged, leaving local HEAD three commits ahead and upstream zero commits ahead. Nothing was pushed or deployed.
+The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. Concurrent repository and remote writers were preserved throughout. The latest read-only fetch found `origin/main` at the exact eighth-tranche integration commit `a7ce07288ba5f78523c5f6ab18a53e8c48a0a4ab`; local HEAD is one proof-archive commit ahead with zero upstream commits missing. This task did not push or deploy.
 
 ## 03 Codex Instruction Chain
 
