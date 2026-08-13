@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-175-99aeb730962e",
+  "candidateId": "idea-175",
+  "candidateContentDigest": "73cfc96b875b3bae37bf70a6b6a8d291a5876eef230e46f86b35efa8515729d7",
+  "createdAt": "2026-08-13T16:15:40.099233+00:00",
+  "lockedAt": "2026-08-13T16:15:40.099233+00:00",
+  "expectations": {
+    "buyer": "Architects, contractors, specification teams, distributors, product manufacturers, and conformity reviewers",
+    "pain": "A specified construction product becomes unavailable or unsuitable and a replacement must preserve fire, structural, acoustic, environmental, and declared-performance requirements",
+    "strongestIncumbent": "Manufacturer declarations of performance, harmonised standards, ETA/EAD routes, BIM and specification platforms, distributors, consultants, and notified or technical assessment bodies",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Product equivalence is use- and system-specific, public declarations and existing specification tools may absorb lookup, and a neutral matrix cannot assume designer or conformity authority",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "fc692af0b43701a2b19bd35fac94687fe8894e5efc5c9ee8e9d9c0ea2fc14361"
+}

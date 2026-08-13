@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-403-b808ef901294",
+  "candidateId": "idea-403",
+  "candidateContentDigest": "c8048d4eaa3c4c5c5c64c3cc511ec6316d02d0e58037398ca178f518e053aab1",
+  "createdAt": "2026-08-13T16:15:41.053278+00:00",
+  "lockedAt": "2026-08-13T16:15:41.053278+00:00",
+  "expectations": {
+    "buyer": "Pipe, valve, fitting, coating, membrane, and drinking-water material manufacturers plus laboratories and certification bodies",
+    "pain": "Formulations and migration test evidence must meet EU positive-list and hygiene requirements before market access",
+    "strongestIncumbent": "EU implementing acts and positive lists, accredited migration laboratories, national certification schemes, material suppliers, and regulatory consultants",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "A formulation preflight cannot replace migration testing, confidential composition may be inaccessible, and official lists or lab portals may absorb rule checking",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "cd31ea24bba1dca7197b0588427f838a8cef97573d94862fa5617e40624654f6"
+}

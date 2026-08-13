@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-310-4581cc551c26",
+  "candidateId": "idea-310",
+  "candidateContentDigest": "25ff6a8e6a3a590a8a660ac575585675c627a89c1ea0cb85480957c54ba1d918",
+  "createdAt": "2026-08-13T16:15:40.810060+00:00",
+  "lockedAt": "2026-08-13T16:15:40.810060+00:00",
+  "expectations": {
+    "buyer": "Pharmacy software vendors, wholesalers, PSAOs, dispensers, and DSCSA compliance teams",
+    "pain": "Physical packages, identifiers, and EPCIS transaction data can diverge, creating quarantine and exception-handling failures",
+    "strongestIncumbent": "FDA guidance and stabilization periods, GS1 standards and test tools, wholesaler/vendor sandboxes, EPCIS solution providers, and industry interoperability programs",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The stated November 2026 small-dispenser deadline may be outdated or oversimplified, incumbents may already test the flows, and synthetic drills may not predict production partner exceptions",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f9c6a40c5811b32a46f997f03209b13f41a714259bf3b005454be2186edaf5fc"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-270-dc1b389869e9",
+  "candidateId": "idea-270",
+  "candidateContentDigest": "5af3b0dc369743c34947e41035efcfc72e53b7e02f568af535474919e2adf518",
+  "createdAt": "2026-08-13T16:15:40.332780+00:00",
+  "lockedAt": "2026-08-13T16:15:40.332780+00:00",
+  "expectations": {
+    "buyer": "EV fleet owners, battery dismantlers, second-life integrators, recyclers, insurers, and storage project developers",
+    "pain": "Used traction batteries need safe qualification, state-of-health evidence, liability allocation, logistics, and bankable valuation before reuse or recycling",
+    "strongestIncumbent": "OEM battery management data, EU battery-passport infrastructure, certified testing and logistics providers, recyclers, repurposers, and existing battery marketplaces",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Passport data may not prove remaining useful life or safety, OEM access and physical testing may dominate, and marketplace liquidity/liability may be weak",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "eb4d7824179054f41d257c58852f45e4760c7ddbe5170087dfc76f389dead945"
+}

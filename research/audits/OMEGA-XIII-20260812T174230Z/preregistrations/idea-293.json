@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-293-40354dd99861",
+  "candidateId": "idea-293",
+  "candidateContentDigest": "183332176a8f04483f0468a6cb5e1bd98fa6cf5b3cf8b01e8be23d3e8ba2deeb",
+  "createdAt": "2026-08-13T16:15:40.575081+00:00",
+  "lockedAt": "2026-08-13T16:15:40.575081+00:00",
+  "expectations": {
+    "buyer": "Pharmaceutical and cosmetics producer organisations, wastewater utilities, national authorities, and finance operators",
+    "pain": "Micropollutant treatment costs must be allocated, invoiced, disputed, and settled across producers and utilities under evolving national implementation",
+    "strongestIncumbent": "Statutory producer responsibility organisations, national registers, environmental agencies, ERP/payment rails, sector associations, and specialist compliance administrators",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "National schemes may appoint a small number of incumbent PROs and prescribe simple fee formulas, leaving no neutral settlement rail or accessible transaction data",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ab70534a05ebf8cc303401e5faf8ed84cc17cf6a762987ee171270222308a8fe"
+}
