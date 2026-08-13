@@ -22,12 +22,20 @@ function validateAuthorityRegistries(documents, schemas) {
       keys.add(key);
     }
   }
+  const activeAuthorities = new Set((documents.authorities?.authorities || [])
+    .filter(item => item.active === true)
+    .map(item => `${item.id}:${item.role}`));
+  for (const review of documents.semantic.reviews || []) {
+    if (!activeAuthorities.has(`${review.reviewer?.id}:${review.reviewer?.role}`)) {
+      errors.push(`semantic review ${review.semanticReviewId} reviewer is not an active configured authority`);
+    }
+  }
   return errors;
 }
 
 function main() {
   const errors = validateAuthorityRegistries(
-    { semantic: read('data/semantic-reviews.json'), ranking: read('data/ranking-method-registry.json') },
+    { semantic: read('data/semantic-reviews.json'), ranking: read('data/ranking-method-registry.json'), authorities: read('data/reviewer-authorities.json') },
     { semantic: read('schemas/semantic-review.schema.json'), ranking: read('schemas/ranking-method-registry.schema.json') }
   );
   console.log(JSON.stringify({ semanticReviews: read('data/semantic-reviews.json').reviews.length, rankingMethods: read('data/ranking-method-registry.json').methods.length, errors }, null, 2));

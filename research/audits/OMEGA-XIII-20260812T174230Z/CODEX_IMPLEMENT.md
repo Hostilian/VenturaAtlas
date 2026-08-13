@@ -20,12 +20,13 @@ Status: active
 - Private cloud checkpoints are byte-semantic idempotent and keep generation-match CAS for changed queues.
 - Canonical publication now prepares a durable multi-file recovery journal before live replacement; interrupted PREPARED transactions are restored on the next publisher invocation.
 - Five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
+- A serialized semantic-review issuer now derives candidate/corpus bindings itself and accepts only an already-active configured reviewer; the empty production authority registry remains fail-closed.
 - Exact public artifact rebuilt and privacy-scanned; source-quality suite passed 93 Node and 58 Python tests at the first PhaseShift checkpoint.
 
 ## Pending
 
 - Expand evidence program toward substitute workload targets without padding; current bounded pass is not the 75-round floor.
-- Authorized semantic-review writer workflow and signed reviewer authority boundary.
+- Repository-owner provisioning or a stronger signed reviewer authority boundary; no production reviewer is currently authorized.
 - Dedicated clean publication job and exact staged-tree semantic validation.
 - Additional PhaseShift lanes, commercial/competitor/negative evidence, decision packs, and limited validation slate.
 - Public integration, failure injection, fresh clone, and final report.

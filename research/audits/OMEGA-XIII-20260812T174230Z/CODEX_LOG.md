@@ -64,3 +64,11 @@ Mission active and incomplete. No external research quota, buyer evidence, WTP, 
 - Rail telematics is now mapped as P3 MIGRATION without generating a new candidate. No concrete buyer, failed workflow, data-access proof, or WTP evidence was collected.
 - Validation-funnel events remain zero; no customer interview, design partner, paid pilot, WTP, budget, or transactional validation is claimed.
 - First evidence-expanded quality run failed only on documentation count drift (192 versus 198 sources). The repository generator repaired the three summaries, and the rerun passed 93 Node and 72 Python tests, all validators, consistency, drift, constitution, and privacy. Exact public build produced 5,091 files, projected 185 eligible public sources, and passed scanning.
+
+## 2026-08-13T13:05:00Z â€” fresh-clone and review issuance
+
+- Fetched `origin/main` read-only. It remains `476a414`; verified local commit `127e55e` is two commits ahead and no upstream commit required reconciliation.
+- Cloned exact commit `127e55e` into a new temporary checkout, installed 157 lockfile packages, and passed source quality plus the exact public build/scanner. Private staging was absent; staging-dependent tests reported explicit skips.
+- Implemented a serialized semantic-review issuer. It accepts only private candidate identities, derives candidate and corpus digests from current files, resolves nearest canonical IDs, rejects duplicate candidate/corpus reviews, and copies reviewer identity only from an active configured authority.
+- Extended registry validation so every stored semantic review must still resolve to an active authority. The production authority registry remains empty, so issuance and promotion are deliberately unavailable until a repository owner provisions trust.
+- No semantic review, lifecycle receipt, canonical promotion, research maturity, ranking eligibility, or validation event was minted by this implementation test.
