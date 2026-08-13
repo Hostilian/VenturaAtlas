@@ -6,7 +6,7 @@ Verified evidence HEAD: `6b458043832d152b2d6409d41fbe7cde6fd013f1`
 
 ## 01 Executive Verdict
 
-This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Ten existing ideas received preregistered desk-commercial review across two evidence tranches, nine market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Fifteen existing ideas received preregistered desk-commercial review across three evidence tranches, eleven market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -22,7 +22,7 @@ The detailed classification is in `LANDED_FIX_MATRIX.md`. Useful landed mechanis
 
 ## 05 Repository Truth
 
-Current source truth is 294 canonical ideas, 306 local private staged candidates, 210 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero.
+Current source truth is 294 canonical ideas, 306 local private staged candidates, 224 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero.
 
 ## 06 Autonomy Utility
 

@@ -121,6 +121,61 @@
       ],
       "includedSourceRefs": ["s209"],
       "decisionImpact": "Adopted CBAM and sustainability simplifications show abrupt demand destruction is real. Regulatory ventures must model scope contraction and not capitalize the entire originally announced obligated population."
+    },
+    {
+      "queryFamilyId": "qf-industrial-data-access-and-incumbents",
+      "purpose": "Test whether the Data Act creates a scarce unified machine-data API or whether standards and industrial platforms absorb connectivity",
+      "queries": [
+        "European Commission Data Act industrial machinery raw preprocessed data access",
+        "AWS IoT SiteWise OPC UA MQTT industrial protocol partners",
+        "OPC Foundation industrial interoperability information models"
+      ],
+      "includedSourceRefs": ["s211", "s212"],
+      "decisionImpact": "The access right is live and applies to industrial machinery, but it is bounded to readily available raw/pre-processed data. Existing hyperscaler and protocol ecosystems absorb generic connectivity, so MachineKey is reassessed toward repeated OEM-specific semantic, permission, and portability gaps only."
+    },
+    {
+      "queryFamilyId": "qf-freight-recovery-evidence-and-substitution",
+      "purpose": "Distinguish real detention/demurrage losses from a defensible automated recovery product",
+      "queries": [
+        "US DOT truck driver detention learning agenda economic loss",
+        "FMC detention demurrage invoice dispute final rule",
+        "GPS detention billing evidence recovery software",
+        "freight audit payment network incumbent scale"
+      ],
+      "includedSourceRefs": ["s213", "s214", "s215", "s216"],
+      "decisionImpact": "The economic pain and invoice boundary are real. GPS evidence, billing packets, audit, payment, and exceptions already have specialised and scaled providers, so FreightRecover's generic recovery thesis is reassessed down pending claim-level residual outcome data."
+    },
+    {
+      "queryFamilyId": "qf-late-payment-force-and-ar-bundling",
+      "purpose": "Test whether late-payment prevalence and policy create a standalone recovery network despite ERP and AR-suite automation",
+      "queries": [
+        "European Commission 2026 SME late payments 73 percent",
+        "European Parliament late payment regulation legislative status June 2026",
+        "SAP accounts receivable AI collections disputes promise to pay"
+      ],
+      "includedSourceRefs": ["s217", "s218", "s219"],
+      "decisionImpact": "Late payments remain widespread, but the stronger EU regime is not an adopted operational gate and SAP bundles the generic workflow. PayMe is killed as a broad autonomous agent and retained only as a search for segment-specific incremental recovery outside incumbent coverage."
+    },
+    {
+      "queryFamilyId": "qf-agent-commerce-protocol-and-network-substitution",
+      "purpose": "Separate a long-tail B2B adapter wedge from emerging trust/payment protocols and established supplier networks",
+      "queries": [
+        "Visa Trusted Agent Protocol specification merchant agent trust",
+        "Google AP2 UCP agent authorization payment protocol",
+        "SAP Business Network supplier catalogs purchase orders cXML EDI"
+      ],
+      "includedSourceRefs": ["s220", "s221", "s222"],
+      "decisionImpact": "Trust, authorization, payment, catalog, order, and invoice rails are rapidly standardising or already network-owned. B2B Agent Gateway remains WAIT and must prove a repeatable long-tail catalog/quote/terms/exception gap rather than claim the whole control plane."
+    },
+    {
+      "queryFamilyId": "qf-rhine-low-water-contracting",
+      "purpose": "Test whether low-water capacity scarcity supports an enforceable option marketplace rather than incumbent surcharges and contingency routing",
+      "queries": [
+        "CCNR Rhine low water freight rates 2026",
+        "Contargo Rhine low water surcharge gauge capacity modal switch"
+      ],
+      "includedSourceRefs": ["s223", "s224"],
+      "decisionImpact": "Current low water creates severe and observable capacity/pricing stress, but carrier-published gauge ladders, bilateral by-agreement pricing, and modal switching already govern the response. The neutral option marketplace is killed until both sides provide enforceable term sheets."
     }
   ],
   "excluded": [
@@ -163,6 +218,18 @@
     {
       "url": "https://www.epa.gov/sciencematters/epa-researchers-investigate-effectiveness-point-usepoint-entry-systems-remove-and",
       "reason": "Household point-of-use evidence was less relevant to the preregistered municipal utility buyer than the full-scale utility and ETDOT sources retained."
+    },
+    {
+      "url": "https://www.peppol.org/",
+      "reason": "The search did not return a precise current ordering/catalogue specification page; no Peppol capability claim was retained."
+    },
+    {
+      "url": "https://bastionrecovery.com/",
+      "reason": "The search surfaced a relevant detention-recovery vendor, but DockStamp and U.S. Bank established the evidence-packet and scaled audit/payment boundaries more directly; duplicative vendor claims were not added."
+    },
+    {
+      "url": "https://www.fmc.gov/vooc-audit-program/",
+      "reason": "The general audit-program material added less to the invoice and dispute boundary than the retained FMC final-rule source."
     }
   ],
   "claimsNotEarned": [
@@ -181,5 +248,10 @@
     ,"PFAS utility operating-data access"
     ,"medicine tender scoring implementation"
     ,"satellite operator change-control failure rate"
+    ,"industrial-machine endpoint or plant-workflow access"
+    ,"incremental freight claim recovery rate"
+    ,"incremental receivables recovery lift"
+    ,"authorized agentic B2B purchase"
+    ,"Rhine capacity-provider option commitment"
   ]
 }

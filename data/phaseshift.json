@@ -153,6 +153,40 @@
       "ecosystemRefs": [],
       "ideaRefs": ["idea-383"],
       "sourceRefs": ["s204", "s205", "s210"]
+    },
+    {
+      "marketId": "market-eu-connected-product-data-access",
+      "name": "EU connected-product and industrial-machine data access",
+      "phase": "P5_CONFORMANCE",
+      "phaseConfidence": "MEDIUM",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["MAPPING", "INTEGRATION", "CONFORMANCE"],
+      "valueNext": ["EXCEPTION_HANDLING", "OBSERVABILITY", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T15:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-276"],
+      "sourceRefs": ["s211", "s212"]
+    },
+    {
+      "marketId": "market-agentic-commerce-protocols",
+      "name": "Agentic-commerce trust, authorization, and purchasing protocols",
+      "phase": "P1_SPEC_FORMING",
+      "phaseConfidence": "MEDIUM",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "Interoperable B2B adoption exposes an unresolved long-tail supplier catalog, quote, terms, or exception boundary beyond trust and payment protocols",
+      "valueNow": ["MAPPING", "INTEGRATION"],
+      "valueNext": ["CONFORMANCE", "CERTIFICATION", "EXCEPTION_HANDLING", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T15:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-349"],
+      "sourceRefs": ["s220", "s221", "s222"]
     }
   ],
   "phaseTransitions": [],
@@ -382,6 +416,26 @@
       "certainty": "ANNOUNCED",
       "buyerImplication": "A concentrated prime-led programme creates subcontract assurance demand but a narrow channel and strong incumbent control",
       "sourceRefs": ["s203"]
+    },
+    {
+      "milestoneId": "milestone-data-act-general-application",
+      "marketId": "market-eu-connected-product-data-access",
+      "kind": "LAW_APPLIES",
+      "label": "EU Data Act generally applies",
+      "date": "2025-09-12T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Connected-product users can seek readily available raw and pre-processed data, but OEM-specific access and semantics still determine implementation cost",
+      "sourceRefs": ["s211"]
+    },
+    {
+      "milestoneId": "milestone-agent-commerce-protocol-publication",
+      "marketId": "market-agentic-commerce-protocols",
+      "kind": "TECHNICAL_SPEC_PUBLISHED",
+      "label": "Visa Trusted Agent Protocol and complementary agent-payment specifications are publicly documented",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "A startup must interoperate with emerging trust and authorization standards and prove a distinct B2B supplier-workflow gap",
+      "sourceRefs": ["s220", "s222"]
     }
   ],
   "milestoneEdges": [

@@ -4555,5 +4555,299 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s211",
+    "title": "Data Act explained",
+    "publisher": "European Commission",
+    "url": "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained",
+    "supports": [
+      "The Data Act applies to connected products including industrial machinery and gives users access to readily available raw and pre-processed use data",
+      "The access right does not automatically include every inferred or derived dataset, preserving an equipment-specific implementation boundary"
+    ],
+    "type": "official_forcing_function",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-276"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s212",
+    "title": "AWS IoT SiteWise OPC UA data sources",
+    "publisher": "Amazon Web Services",
+    "url": "https://docs.aws.amazon.com/iot-sitewise/latest/userguide/configure-sources-opcua.html",
+    "supports": [
+      "SiteWise Edge directly ingests OPC UA and MQTT industrial streams and maps them to industrial assets",
+      "AWS partner integrations advertise connectivity across more than 200 additional industrial protocols"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-276"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s213",
+    "title": "US DOT Learning Agenda FY 2024-2026",
+    "publisher": "United States Department of Transportation",
+    "url": "https://www.transportation.gov/sites/dot.gov/files/2024-11/DOT_Learning_Agenda_FY_2024-2026.pdf",
+    "supports": [
+      "Approximately two thirds of drivers were reported to have experienced detention in the prior month",
+      "DOT cites estimated annual driver earnings losses of 1.1 to 1.3 billion dollars and substantial carrier and safety effects, while noting detention measurement gaps"
+    ],
+    "type": "official_problem_evidence",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-262"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s214",
+    "title": "Detention and Demurrage Billing Practices final rule",
+    "publisher": "Federal Maritime Commission",
+    "url": "https://www.fmc.gov/articles/fmc-publishes-final-rule-on-detention-and-demurrage-billing-practices/",
+    "supports": [
+      "The final rule specifies who may be billed for ocean detention and demurrage and establishes a dispute process",
+      "Common carriers and marine terminal operators generally must issue compliant invoices within 30 calendar days after charges were last incurred"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-262"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s215",
+    "title": "DockStamp detention billing",
+    "publisher": "DockStamp",
+    "url": "https://dockstamp.com/",
+    "supports": [
+      "A current entrant already offers GPS-verified arrival, locked timestamps, automatic detention calculation, and export-ready billing packets",
+      "The published pilot price begins around 49 dollars per carrier per month, providing product and pricing counterevidence rather than buyer validation for FreightRecover"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-262"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s216",
+    "title": "Freight audit and freight payment services",
+    "publisher": "U.S. Bank",
+    "url": "https://www.usbank.com/corporate-and-commercial-banking/industry-expertise/transportation/freight-audit-payment.html",
+    "supports": [
+      "U.S. Bank reports processing more than 46 billion dollars in 2025 freight payments for hundreds of customers and nearly 20,000 carrier payees",
+      "The incumbent combines electronic payment, audit, exception handling, data, and working-capital services at substantial network scale"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-262"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s217",
+    "title": "Single Market Strategy 2026 annex on late payments",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/document/download/0c89747f-881a-47c4-a816-c77da07246c1_en?filename=com-2026-380_annex-2_en.pdf",
+    "supports": [
+      "The Commission reports that 73 percent of SMEs suffer from late payments, impairing growth, investment, liquidity, and survival",
+      "The same annex says Member States still apply the existing directive incorrectly, so problem prevalence is not proof of reliable enforcement"
+    ],
+    "type": "official_problem_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-268"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s218",
+    "title": "Revision of the late payments directive legislative train",
+    "publisher": "European Parliament",
+    "url": "https://www.europarl.europa.eu/legislative-train/package-sme-relief-package/file-late-payments-directive-revision?sid=10401",
+    "supports": [
+      "Parliament adopted its first-reading position in April 2024, including payment terms, automatic interest and compensation, and enforcement measures",
+      "As of June 2026 the stronger regime remained a legislative proposal rather than an adopted operational enforcement trigger"
+    ],
+    "type": "official_phase_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-268"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s219",
+    "title": "Accounts Receivable Assistant",
+    "publisher": "SAP",
+    "url": "https://www.sap.com/uk/use-cases/joule-assistant/accounts-receivable-ai",
+    "supports": [
+      "SAP embeds AI-supported collections prioritisation, customer communications, dispute resolution, account context, and promise-to-pay tracking in its finance suite",
+      "The product directly absorbs much of a generic autonomous receivables-agent workflow for existing SAP customers"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-268"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s220",
+    "title": "Trusted Agent Protocol specification",
+    "publisher": "Visa",
+    "url": "https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications/",
+    "supports": [
+      "Visa specifies cryptographic agent recognition, consumer identity, authorization, and payment-container signatures over existing web, API, MCP, and ACP channels",
+      "The protocol addresses trust and payment for agents initially unknown to merchants but does not itself normalize long-tail B2B catalog, quote, contract, or exception semantics"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-349"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s221",
+    "title": "About SAP Business Network",
+    "publisher": "SAP",
+    "url": "https://help.sap.com/docs/business-network-for-procurement/introduction-to-business-network/about-sap-business-network",
+    "supports": [
+      "SAP Business Network already supports supplier catalogs, discovery, purchase orders, confirmations, shipping notices, invoices, cXML, EDI, email, and online routing",
+      "Supplier onboarding and buyer-specific relationships remain part of the control plane, limiting a generic adapter's ability to make any supplier immediately machine-buyable"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-349"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s222",
+    "title": "Developer guide to AI agent protocols",
+    "publisher": "Google Developers",
+    "url": "https://developers.googleblog.com/en/developers-guide-to-ai-agent-protocols/",
+    "supports": [
+      "Google documents UCP for commerce interactions and AP2 typed mandates for authorization, spending limits, approved merchants, and transaction audit trails",
+      "Open protocol work is rapidly standardising agent purchase authorization, reducing the scarcity of a proprietary generic gateway"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-349"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s223",
+    "title": "Market Insight: Inland Navigation in Europe, April 2026",
+    "publisher": "Central Commission for the Navigation of the Rhine",
+    "url": "https://www.ccr-zkr.org/files/documents/om/om26_I_en.pdf",
+    "supports": [
+      "A short April 2025 low-water period had a minor cargo-turnover impact, while a tendency toward low water raised Rhine freight rates in the second quarter",
+      "The evidence supports episodic price and capacity stress but not demand for a tradable multi-modal option marketplace"
+    ],
+    "type": "official_problem_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-291"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s224",
+    "title": "Low Water Surcharge Information for Container Transport",
+    "publisher": "Contargo",
+    "url": "https://www.contargo.net/en/business/auxiliary-conditions/low-water",
+    "supports": [
+      "Contargo publishes gauge-specific daily surcharge ladders for Rhine container transport and can switch modes when navigation becomes uneconomic",
+      "At the lowest water levels capacity acceptance may be constrained and pricing becomes by agreement, showing bilateral carrier control rather than a proven neutral-options market"
+    ],
+    "type": "incumbent_contracting_mechanism",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-industrial-commerce",
+    "ideaIds": ["idea-291"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
