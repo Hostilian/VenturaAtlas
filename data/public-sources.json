@@ -4699,5 +4699,327 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s225",
+    "title": "Charter of Access for Industrial Users to Research and Technology Infrastructures",
+    "publisher": "European Commission",
+    "url": "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/charter-access-industrial-users-research-and-technology-infrastructures_en",
+    "supports": [
+      "The voluntary July 2026 charter responds to fragmented visibility and access by defining principles for discoverability, transparent access, clear contracts, safe IP handling, tailored support, and cooperation",
+      "A public coordination primitive is forming, but the charter does not create automatic booking, scientific qualification, safety approval, or marketplace demand"
+    ],
+    "type": "official_phase_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-277"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s226",
+    "title": "Advanced Photon Source proposal types",
+    "publisher": "Argonne National Laboratory",
+    "url": "https://www.aps.anl.gov/Users-Information/About-Proposals/Proposal-Types",
+    "supports": [
+      "APS beam time is allocated through a universal proposal system and requires proposal, experiment-team registration, and safety workflows",
+      "Access remains controlled by scientific review, facility policy, safety, and instrument-specific processes rather than a generic capacity marketplace"
+    ],
+    "type": "official_operating_boundary",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-277"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s227",
+    "title": "Scientist.com research marketplace",
+    "publisher": "Scientist.com",
+    "url": "https://www.scientist.com/",
+    "supports": [
+      "Scientist.com already offers research-provider discovery, proposal collection, approvals, award, contracting, compliance, and spend workflows across thousands of providers and categories",
+      "Published marketplace activity is incumbent counterevidence, not independently verified buyer demand for LabGrid"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-277"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s228",
+    "title": "Science Exchange R&D procurement platform",
+    "publisher": "Science Exchange",
+    "url": "https://www.scienceexchange.com/platform",
+    "supports": [
+      "Science Exchange offers supplier sourcing, compliance, contracts, payment, performance tracking, and access to precontracted research suppliers",
+      "The current commercial platform directly substitutes broad outsourced-research routing and procurement, while its transaction figures remain company claims"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-277"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s229",
+    "title": "Allotrope Data Format",
+    "publisher": "Allotrope Foundation",
+    "url": "https://docs.allotrope.org/Allotrope%20Data%20Format.html",
+    "supports": [
+      "ADF is designed to standardize acquisition, exchange, storage, and access for analytical data with contextual metadata, audit trails, electronic signatures, checksums, and platform independence",
+      "An open vendor-neutral standard absorbs part of a proprietary lab-software exit model, but documentation alone does not prove complete cross-product restore"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-174"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s230",
+    "title": "SiLA laboratory interoperability standards",
+    "publisher": "SiLA Consortium",
+    "url": "https://sila-standard.com/standards/",
+    "supports": [
+      "SiLA publishes an open HTTP/2, Protocol Buffers, and gRPC-based service standard for laboratory-device and software interoperability, including LIMS and ELN integration",
+      "Open reference implementations and service discovery reduce the scarcity of a proprietary generic integration layer"
+    ],
+    "type": "primary_specification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-174"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s231",
+    "title": "Share data in Benchling",
+    "publisher": "Benchling",
+    "url": "https://help.benchling.com/hc/en-us/articles/39943855017229-Share-data-in-Benchling",
+    "supports": [
+      "Benchling documents separate project, notebook, registry, inventory, and audit exports using ZIP, PDF or HTML, CSV, GenBank, and other application-specific formats",
+      "Export availability does not establish tenant reconstruction fidelity; format and metadata completeness must be tested object by object"
+    ],
+    "type": "incumbent_export_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-174"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s232",
+    "title": "eLabFTW experiment export and ELN interchange",
+    "publisher": "eLabFTW",
+    "url": "https://doc.elabftw.net/docs/usage/user-guide/experiments/",
+    "supports": [
+      "eLabFTW exports experiments in an ELN format based on RO-Crate with JSON-LD metadata and supports PDF, archive, ZIP, CSV, and structured API representations",
+      "The open interchange format shows that portability can be concrete and testable, but does not prove fidelity between every ELN pair"
+    ],
+    "type": "primary_product_documentation",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary_specification",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-174"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s233",
+    "title": "Downloading a Notebook to PDF",
+    "publisher": "LabArchives",
+    "url": "https://help.labarchives.com/hc/en-us/articles/11778414125076-Downloading-a-Notebook-to-PDF",
+    "supports": [
+      "LabArchives distinguishes PDF export, whose attachment links still require access, from an offline notebook that includes eligible attachments below a documented size limit",
+      "A visible notebook export is not equivalent to a complete portable or restorable system of record"
+    ],
+    "type": "incumbent_export_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-174"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s234",
+    "title": "Chromatography consumables cross references",
+    "publisher": "Thermo Fisher Scientific",
+    "url": "https://www.thermofisher.com/de/de/home/industrial/chromatography/chromatography-learning-center/chromatography-consumables-resources/chromatography-consumables-cross-references.html",
+    "supports": [
+      "Thermo Fisher publishes selectors and cross references for columns, vials, closures, and well plates using method and instrument attributes",
+      "The manufacturer explicitly leaves suitability verification with the customer, so lookup is available while neutral substitution liability and method revalidation remain unresolved"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-172"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s235",
+    "title": "EU eProcurement vocabularies and ontology",
+    "publisher": "Publications Office of the European Union",
+    "url": "https://op.europa.eu/en/web/eu-vocabularies/e-procurement",
+    "supports": [
+      "The EU publishes machine-readable eForms schemas, authority tables, controlled vocabularies, and an eProcurement ontology for public-procurement data",
+      "These public primitives absorb much of a proprietary tender-normalization and discovery layer"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-265"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s236",
+    "title": "Digital procurement tools for public buyers",
+    "publisher": "European Commission",
+    "url": "https://commission.europa.eu/funding-and-tenders/tools-public-buyers/digital-procurement_sw",
+    "supports": [
+      "The Commission provides or coordinates eSubmission, eAccess, eInvoicing, ESPD, eCertis, and once-only procurement services",
+      "Official portals and credential controls own core submission and qualification rails, limiting safe autonomous cross-portal submission"
+    ],
+    "type": "official_product_or_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-265"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s237",
+    "title": "3PL invoice audit and recovery",
+    "publisher": "3PLInvoiceAudit",
+    "url": "https://www.3plinvoiceaudit.com/",
+    "supports": [
+      "A current buyer-side service already compares 3PL rate cards with invoices, identifies overcharges, supports claims, and offers recovery-oriented auditing",
+      "The capability is direct commercial substitution for the broad 3PL Activity-to-Invoice Grid thesis, not proof of market size or customer outcomes"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-327"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s238",
+    "title": "3PL billing and invoicing",
+    "publisher": "CartonCloud",
+    "url": "https://www.cartoncloud.com/en-us/platform/billing-invoicing",
+    "supports": [
+      "CartonCloud converts warehouse and transport activity into charges using configurable rate cards inside its WMS and TMS",
+      "System-of-record billing functionality absorbs the supplier-side activity-to-invoice layer and narrows any residual opportunity to independent buyer controls"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "company_or_industry",
+    "researchRound": "omega-xiii-science-procurement",
+    "ideaIds": [
+      "idea-327"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

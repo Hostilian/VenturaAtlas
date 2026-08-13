@@ -2181,5 +2181,47 @@
     "startedAt": "2026-08-12T19:30:00+00:00",
     "endedAt": "2026-08-12T19:30:00+00:00",
     "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-009-20260813-science-procurement",
+    "baselineCommit": "c06784088885e888eaee2e0e452c7ae8a4255c7b",
+    "questions": [
+      "Does scientific-infrastructure fragmentation leave an unowned marketplace or a narrow facility-specific exception corridor?",
+      "Can laboratory software exit risk be measured as reproducible export completeness and restoration rather than a generic documentary score?",
+      "Do OEM selectors, public procurement primitives, and 3PL billing or audit products absorb three broad canonical theses?"
+    ],
+    "queries": [
+      "European Commission research infrastructure access charter industrial users 2026",
+      "Argonne APS beam time proposal safety access",
+      "Scientist.com and Science Exchange research marketplace procurement",
+      "Allotrope SiLA Benchling eLabFTW LabArchives export interoperability restore",
+      "Thermo Fisher chromatography consumables cross reference suitability",
+      "EU eProcurement eForms ontology eSubmission ESPD eCertis",
+      "3PL rate card activity invoice audit recovery WMS billing"
+    ],
+    "sourceCandidates": ["s225", "s226", "s227", "s228", "s229", "s230", "s231", "s232", "s233", "s234", "s235", "s236", "s237", "s238"],
+    "inclusions": ["idea-277", "idea-172", "idea-174", "idea-265", "idea-327"],
+    "exclusions": [],
+    "claimsChanged": [
+      "LabGrid is killed as a generic marketplace; only a technique- and corridor-specific access failure may re-enter.",
+      "Scientific Consumables Compatibility Graph is killed broadly because OEM cross references absorb lookup while suitability liability remains with the laboratory.",
+      "Lab Software Exit-Risk Index is narrowed to an authorized object-level export completeness and restore drill; no cross-vendor score is earned.",
+      "TenderFactory is killed as a broad autonomous product because public schemas and official services own major data, qualification, and submission rails.",
+      "3PL Activity-to-Invoice Grid is killed generically because buyer-side audit and system-of-record billing products directly substitute the thesis.",
+      "No buyer, WTP, data-access, transaction, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-277-159d1690a9dd",
+      "prereg-idea-172-222dc3cfc4a4",
+      "prereg-idea-174-bb88651e1dbe",
+      "prereg-idea-265-e8fb0ddcad6c",
+      "prereg-idea-327-d13f22202833"
+    ],
+    "ideaIds": ["idea-277", "idea-172", "idea-174", "idea-265", "idea-327"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T15:24:00Z",
+    "endedAt": "2026-08-13T15:35:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]

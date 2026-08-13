@@ -187,6 +187,40 @@
       "ecosystemRefs": [],
       "ideaRefs": ["idea-349"],
       "sourceRefs": ["s220", "s221", "s222"]
+    },
+    {
+      "marketId": "market-eu-research-infrastructure-access",
+      "name": "EU industrial access to research and technology infrastructures",
+      "phase": "P1_SPEC_FORMING",
+      "phaseConfidence": "MEDIUM",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["MAPPING", "READINESS"],
+      "valueNext": ["INTEGRATION", "CONFORMANCE", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T15:29:23Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-277"],
+      "sourceRefs": ["s225", "s226", "s227", "s228"]
+    },
+    {
+      "marketId": "market-eu-public-procurement-digital-rails",
+      "name": "EU public-procurement data, qualification, and submission rails",
+      "phase": "P6_OPERATIONAL_SCALE",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["EXCEPTION_HANDLING", "AUDIT", "VERTICAL_WORKFLOW"],
+      "valueNext": ["OPTIMIZATION", "ANALYTICS"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T15:29:23Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-265"],
+      "sourceRefs": ["s235", "s236"]
     }
   ],
   "phaseTransitions": [],
@@ -436,6 +470,26 @@
       "certainty": "FIXED",
       "buyerImplication": "A startup must interoperate with emerging trust and authorization standards and prove a distinct B2B supplier-workflow gap",
       "sourceRefs": ["s220", "s222"]
+    },
+    {
+      "milestoneId": "milestone-research-infrastructure-access-charter",
+      "marketId": "market-eu-research-infrastructure-access",
+      "kind": "OTHER",
+      "label": "European Commission adopts a voluntary charter for industrial access to research and technology infrastructures in July 2026; exact day not established",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "Public coordination is improving discoverability and access practice, while scientific review, safety, contracts, IP, and facility authority remain outside a generic router",
+      "sourceRefs": ["s225"]
+    },
+    {
+      "milestoneId": "milestone-eforms-mandatory",
+      "marketId": "market-eu-public-procurement-digital-rails",
+      "kind": "TECHNICAL_SPEC_PUBLISHED",
+      "label": "EU eForms became mandatory for procurement notices in October 2023; exact day not retained in this run",
+      "date": null,
+      "certainty": "FIXED",
+      "buyerImplication": "Tender discovery and normalization increasingly rest on public machine-readable schemas rather than scarce proprietary extraction",
+      "sourceRefs": ["s235"]
     }
   ],
   "milestoneEdges": [

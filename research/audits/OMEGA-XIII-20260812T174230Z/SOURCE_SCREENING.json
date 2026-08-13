@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T14:11:25Z",
+  "observedAt": "2026-08-13T15:35:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -176,6 +176,62 @@
       ],
       "includedSourceRefs": ["s223", "s224"],
       "decisionImpact": "Current low water creates severe and observable capacity/pricing stress, but carrier-published gauge ladders, bilateral by-agreement pricing, and modal switching already govern the response. The neutral option marketplace is killed until both sides provide enforceable term sheets."
+    },
+    {
+      "queryFamilyId": "qf-scientific-facility-access-and-marketplaces",
+      "purpose": "Test whether fragmented scientific-infrastructure access leaves an unowned capacity-routing layer or is governed by facility controls and established research marketplaces",
+      "queries": [
+        "European Commission technology infrastructures industrial access charter 2026",
+        "Argonne APS beam time proposal safety access",
+        "Scientist.com research marketplace providers contracts compliance",
+        "Science Exchange platform sourcing compliance contracts payments"
+      ],
+      "includedSourceRefs": ["s225", "s226", "s227", "s228"],
+      "decisionImpact": "The EU acknowledges fragmented access and has adopted a voluntary charter, but facility-level science review, safety, contracts, and IP remain authoritative. Scientist.com and Science Exchange already provide broad sourcing and procurement, so LabGrid is killed as a generic marketplace and retained only as a search for a specific underserved public-facility corridor."
+    },
+    {
+      "queryFamilyId": "qf-lab-exit-and-interoperability",
+      "purpose": "Determine whether laboratory software exit risk can be measured consistently and whether standards or vendor exports absorb a generic index",
+      "queries": [
+        "Allotrope Data Format analytical data metadata audit trail",
+        "SiLA standards laboratory device LIMS ELN integration",
+        "Benchling export project notebook registry inventory audit log",
+        "eLabFTW ELN RO-Crate export restore backup",
+        "LabArchives offline notebook PDF attachment export"
+      ],
+      "includedSourceRefs": ["s229", "s230", "s231", "s232", "s233"],
+      "decisionImpact": "Open standards and documented exports absorb a generic portability score, while materially different formats and attachment/audit behavior make a vendor-agnostic score unsafe. Lab Software Exit-Risk Index is narrowed to evidence-based export completeness and restoration drills against a declared object inventory."
+    },
+    {
+      "queryFamilyId": "qf-consumables-compatibility-and-liability",
+      "purpose": "Test whether a neutral consumables compatibility graph owns scarce data or duplicates OEM selectors while assuming unsafe substitution liability",
+      "queries": [
+        "Thermo Fisher chromatography consumables cross reference compatibility disclaimer",
+        "Agilent LC column selector chemistry temperature USP"
+      ],
+      "includedSourceRefs": ["s234"],
+      "decisionImpact": "OEM selectors and cross references already cover much of discovery, while suitability remains the customer's responsibility. The broad neutral compatibility graph is killed; only provenance-backed method-transfer and requalification evidence could re-enter after a bounded lab test."
+    },
+    {
+      "queryFamilyId": "qf-public-procurement-primitives-and-control",
+      "purpose": "Test whether TenderFactory can own discovery, qualification, and submission despite public schemas, services, and portal authority",
+      "queries": [
+        "EU eProcurement vocabularies eForms ontology",
+        "European Commission digital procurement eSubmission ESPD eCertis once only"
+      ],
+      "includedSourceRefs": ["s235", "s236"],
+      "decisionImpact": "Machine-readable public schemas and Commission services absorb discovery, normalization, evidence reuse, and major submission primitives. Portal credentials and bidder authority remain controlling, so broad autonomous TenderFactory is killed; a single-jurisdiction qualification-exception wedge would require observed failed bids and buyer proof."
+    },
+    {
+      "queryFamilyId": "qf-3pl-activity-invoice-substitution",
+      "purpose": "Test whether independent activity-to-invoice auditing is unserved or already available from buyer-side auditors and WMS/TMS billing products",
+      "queries": [
+        "3PL rate card invoice audit overcharge recovery",
+        "CartonCloud 3PL billing invoicing rate card WMS TMS",
+        "3PL activity invoice discrepancy software"
+      ],
+      "includedSourceRefs": ["s237", "s238"],
+      "decisionImpact": "A direct buyer-side audit/recovery service and system-of-record activity billing already implement the thesis from both sides. The broad 3PL Activity-to-Invoice Grid is killed unless a multi-3PL historical invoice corpus proves a repeatable, collectible residual missed by both classes."
     }
   ],
   "excluded": [
@@ -230,6 +286,26 @@
     {
       "url": "https://www.fmc.gov/vooc-audit-program/",
       "reason": "The general audit-program material added less to the invoice and dispute boundary than the retained FMC final-rule source."
+    },
+    {
+      "url": "https://www.scientist.com/about",
+      "reason": "The marketplace landing page captured the relevant sourcing and workflow boundary; the about page added only duplicative company scale claims."
+    },
+    {
+      "url": "https://www.scienceexchange.com/terms",
+      "reason": "Detailed legal schedules confirmed contracting complexity but were unnecessary to establish the platform substitution boundary."
+    },
+    {
+      "url": "https://www.thermofisher.com/us/en/home/product-selection-guides-and-tools.html",
+      "reason": "The generic selector index was less precise than the retained chromatography cross-reference page."
+    },
+    {
+      "url": "https://www.bllbl.com/",
+      "reason": "This activity-to-rate-card discrepancy product was relevant but duplicative after retaining buyer-side 3PLInvoiceAudit and system-of-record CartonCloud."
+    },
+    {
+      "url": "https://enotices2.preview.ted.europa.eu/home",
+      "reason": "The notice-entry interface did not add a distinct control or evidence claim beyond the retained EU eProcurement primitives."
     }
   ],
   "claimsNotEarned": [
@@ -253,5 +329,12 @@
     ,"incremental receivables recovery lift"
     ,"authorized agentic B2B purchase"
     ,"Rhine capacity-provider option commitment"
+    ,"scientific facility capacity access or accepted proposal"
+    ,"cross-lab sample shipment or normalized result"
+    ,"complete ELN tenant reconstruction"
+    ,"laboratory software switching budget"
+    ,"neutral consumables substitution liability acceptance"
+    ,"public tender submission or award"
+    ,"3PL invoice corpus access or recovered overcharge"
   ]
 }
