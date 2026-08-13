@@ -251,7 +251,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact commit `127e55e` was cloned into a new temporary checkout, 157 lockfile packages installed, and source quality plus public build/scanner passed. Private staging was absent and staging-dependent tests skipped explicitly. The subsequent issuer-only commit `6ce8a1d` passed the complete local quality gate (94 Node, 75 Python); a final latest-HEAD clean-clone check remains a release task.
+Exact report commit `681aa14` was cloned into a new temporary checkout, 157 lockfile packages installed, and source quality passed with 94 Node tests plus 75 Python tests. Private staging was absent and staging-dependent tests skipped explicitly. The exact public build then produced 5,091 files and passed the artifact scanner in that clone.
 
 ## 61 Remaining Unknowns
 
