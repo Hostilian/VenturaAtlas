@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-398-ad1a0915828a",
+  "candidateId": "idea-398",
+  "candidateContentDigest": "cf87bb525901b1442943f9d2537027cd2046ff65599f014418d2cde6d5387d81",
+  "createdAt": "2026-08-13T14:04:25.384598+00:00",
+  "lockedAt": "2026-08-13T14:04:25.384598+00:00",
+  "expectations": {
+    "buyer": "Municipal drinking-water utilities and PFAS treatment operators",
+    "pain": "Media exhaustion and breakthrough timing create replacement-cost and compliance risk",
+    "strongestIncumbent": "Media-vendor models, lab sampling, pilot studies, and engineering consultants",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Sparse site-specific data and vendor control of performance curves may prevent a defensible independent model",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a3750eff403a00b0b21b7f0b22ea3f1086b213302d0726ffa3f2d79e96abc503"
+}

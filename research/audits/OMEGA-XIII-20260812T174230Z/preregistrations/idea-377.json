@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-377-e656736e5345",
+  "candidateId": "idea-377",
+  "candidateContentDigest": "9f7cd7c2f079d1d435a6ee3453a6e672a812a02b1ae7bfdd3b92a96f7d32552e",
+  "createdAt": "2026-08-13T14:04:26.076601+00:00",
+  "lockedAt": "2026-08-13T14:04:26.076601+00:00",
+  "expectations": {
+    "buyer": "Hospital procurement authorities, medicine manufacturers, and national shortage teams",
+    "pain": "Tender optimization rewards price while resilience evidence is fragmented across API origin, inventory, and sites",
+    "strongestIncumbent": "ERP/supply-chain suites, wholesalers, consultants, and buyer tender documentation",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Mandatory public scoring may remain immature and incumbents can add resilience fields to procurement suites",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "503545f5c4bb9f3ceb3168ffbbfdf7bb106576493c7da9f29c04b933d9c1c183"
+}

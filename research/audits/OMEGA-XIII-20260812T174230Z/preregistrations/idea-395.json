@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-395-05e96986eb8e",
+  "candidateId": "idea-395",
+  "candidateContentDigest": "f0aec25934df1c1c504482a42250c12c15efdbc7b2ca32620f86ce8f3fe6e437",
+  "createdAt": "2026-08-13T14:04:24.826566+00:00",
+  "lockedAt": "2026-08-13T14:04:24.826566+00:00",
+  "expectations": {
+    "buyer": "Transmission/distribution connection teams and large-load developers",
+    "pain": "Duplicate or speculative load applications distort grid investment and delay credible projects",
+    "strongestIncumbent": "TSO/DSO queue studies, deposits, consultants, and bilateral spreadsheets",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Neutral identity adoption may be blocked by utility-specific process and confidentiality; deposits and milestone rules may solve the problem without software",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ba9fe96ebbe7c03a8f7e824297fb8b4c53c4fd03524e09d08b5cbc322fc6fc77"
+}

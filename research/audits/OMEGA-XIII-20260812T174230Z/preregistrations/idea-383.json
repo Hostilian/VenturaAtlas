@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-383-52a02657fd23",
+  "candidateId": "idea-383",
+  "candidateContentDigest": "88c4c3677504c5f43033c7488804bb67704168b809fb79791fdfef9d18b05713",
+  "createdAt": "2026-08-13T14:04:26.606603+00:00",
+  "lockedAt": "2026-08-13T14:04:26.606603+00:00",
+  "expectations": {
+    "buyer": "Satellite operators, primes, and mission assurance teams",
+    "pain": "Mission changes and evolving debris rules require evidence that safety assumptions still hold",
+    "strongestIncumbent": "Systems-engineering tools, flight dynamics suites, certification consultants, and internal safety cases",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The buyer set is concentrated and established engineering stacks may absorb regulatory traceability",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "11a41ecf547df1e7a466bdd6b8b988906cd3ecd5a3d06e9d29db4ec80a3c8e27"
+}

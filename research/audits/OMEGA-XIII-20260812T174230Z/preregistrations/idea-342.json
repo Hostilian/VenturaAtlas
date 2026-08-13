@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-342-adf631386240",
+  "candidateId": "idea-342",
+  "candidateContentDigest": "58716874f56d5fa613c5de024898cf6ef5c46ac541eb3795366c0eb5330360c4",
+  "createdAt": "2026-08-13T14:04:27.055598+00:00",
+  "lockedAt": "2026-08-13T14:04:27.055598+00:00",
+  "expectations": {
+    "buyer": "Research institutions, regulated R&D teams, and scientific integrity offices",
+    "pain": "AI-assisted research lacks reproducible provenance across prompts, models, datasets, and human edits",
+    "strongestIncumbent": "Electronic lab notebooks, model registries, Git/DVC, workflow engines, and repository metadata",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Open standards and existing experiment-tracking or repository platforms may commoditize provenance capture",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "2996d0f375a0e90463f5d1161d8865e1178bdc82a121d116818d511195b04caa"
+}
