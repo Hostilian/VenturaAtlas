@@ -2,11 +2,11 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: pending qualification-tranche integration and immutable clone proof; preregistration baseline `89860ef5f957622ca373f5b2bc0555875585dd9d`
+Verified evidence HEAD: `0870b8e175cefe3ba503e403cbc50c3e718ff34c`
 
 ## 01 Executive Verdict
 
-This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Thirty-five existing ideas have received preregistered desk-commercial review across seven evidence tranches and twenty-three market maps validate. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. The seventh tranche still requires immutable integration and clone proof. Those gaps prohibit a completion claim.
+This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Thirty-five existing ideas have received preregistered desk-commercial review across seven evidence tranches and twenty-three market maps validate. The seventh tranche passed immutable integration and exact-commit clone proof. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -302,7 +302,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-The prior exact evidence commit `2cba9a89c03ef4a85869e755221c467a78c30a8d` passed immutable clone proof with private staging absent, 85 executed Node tests plus 10 intentional staging skips, 75 Python tests, all strict gates, a 5,091-file build, 247/260 public sources, scanner, PWA checks, and a clean checkout. The seventh tranche is not yet immutable clone evidence; its exact integration SHA and results must replace this paragraph after verification.
+Exact evidence commit `0870b8e175cefe3ba503e403cbc50c3e718ff34c` was cloned with local object sharing disabled into `C:\Users\HOSTIL~1\AppData\Local\Temp\venture-atlas-omega13-bbaac30cb58b4f38a0516c731694d912`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 85 executed Node tests plus 10 intentional private-staging skips, 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The clone rebuilt 5,091 public files, projected 256 eligible public sources from 269 total, passed the secret/private-path scanner, and passed four PWA tests.
 
 ## 61 Remaining Unknowns
 
