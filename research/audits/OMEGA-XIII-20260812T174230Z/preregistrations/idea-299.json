@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-299-d2033b9806ae",
+  "candidateId": "idea-299",
+  "candidateContentDigest": "d95e7bd87fd371dc1c273d5380a020b5c9b66a0ba26e982ba0182cb3fe72412e",
+  "createdAt": "2026-08-13T15:59:26.156877+00:00",
+  "lockedAt": "2026-08-13T15:59:26.156877+00:00",
+  "expectations": {
+    "buyer": "Machine builders, factory safety engineers, integrators, and conformity-assessment teams",
+    "pain": "PLC, drive, robot, and safety-logic changes can alter machine safety after initial conformity without a coherent cross-vendor state baseline",
+    "strongestIncumbent": "PLM/QMS, OEM engineering tools, safety PLC signatures, version control, functional-safety assessments, and machinery conformity processes",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "OEM tools already fingerprint configurations and legal revalidation depends on qualified human assessment rather than a universal drift rule",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ee1e24250ced489cdcf2a79e5235d17356679e705e92d4b3a047abdc335e917c"
+}

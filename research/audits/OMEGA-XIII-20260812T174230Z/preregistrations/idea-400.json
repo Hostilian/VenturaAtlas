@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-400-2b81c5d70062",
+  "candidateId": "idea-400",
+  "candidateContentDigest": "b7152500b08cba43883b5a14e3dde90c5cb0861bd062bc4828b33348fd78acb9",
+  "createdAt": "2026-08-13T15:59:27.051972+00:00",
+  "lockedAt": "2026-08-13T15:59:27.051972+00:00",
+  "expectations": {
+    "buyer": "Refrigerant reclaimers, equipment operators, distributors, auditors, and regulators enforcing reclaimed-gas rules",
+    "pain": "Virgin fluorinated gas can be mislabeled as reclaimed, while purity, origin, mass balance, and quota treatment cross several custody and test points",
+    "strongestIncumbent": "Reclaimer certificates, laboratory purity testing, cylinder tracking, customs/quota systems, chain-of-custody documents, and F-gas enforcement",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Accredited lab testing and regulator documentation may own the truth; mass balance alone cannot prove physical identity or detect blended gas",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "bc8c3a4324f5fe20fec2c4d9357488e0dd88ae5cf58d89d69d26e68e19c01e9b"
+}

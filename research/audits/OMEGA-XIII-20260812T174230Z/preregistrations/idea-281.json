@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-281-a3f89cf770b0",
+  "candidateId": "idea-281",
+  "candidateContentDigest": "2cbd641c47988dcff34d6bca8a96f7657bb4b4907de036bad573af25596b21e9",
+  "createdAt": "2026-08-13T15:59:25.827942+00:00",
+  "lockedAt": "2026-08-13T15:59:25.827942+00:00",
+  "expectations": {
+    "buyer": "Plant quality, maintenance, metrology, and reliability leaders operating calibrated industrial equipment",
+    "pain": "Fixed calibration intervals create downtime and cost, while extending intervals can increase measurement and compliance risk",
+    "strongestIncumbent": "ISO/IEC 17025 systems, OEM guidance, calibration management software, metrology consultants, reliability methods, and accreditation rules",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Risk-based interval methods and incumbent calibration software may already exist, while regulated buyers may not accept algorithmic interval changes without accredited evidence",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "cb6f601a9124967d2482b59128fe6b53ead8b3972afc9090f147fec71cf31cd4"
+}

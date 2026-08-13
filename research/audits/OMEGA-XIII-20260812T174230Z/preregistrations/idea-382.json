@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-382-71b6fdc5b3fc",
+  "candidateId": "idea-382",
+  "candidateContentDigest": "0c642c52f5c7df7649152fccf3c38128c4ae869868e43cc46f2f3c7c7342d2ff",
+  "createdAt": "2026-08-13T15:59:26.462641+00:00",
+  "lockedAt": "2026-08-13T15:59:26.462641+00:00",
+  "expectations": {
+    "buyer": "Vehicle dismantlers, recyclers, producer-responsibility schemes, and competent authorities",
+    "pain": "Mandatory part removal may be technically impracticable or disproportionately costly because of corrosion, damage, labor, and vehicle condition",
+    "strongestIncumbent": "Dismantler management systems, regulatory forms, photographic evidence, recycler associations, vehicle databases, and authority inspections",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The exception may remain a proposal, apply narrowly, or be satisfied by simple records rather than a standalone ledger",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "3d7d8d6fb9cb6d0aab110fba6f2c9da2898e6691adb697b88ee628b099d9b3d0"
+}

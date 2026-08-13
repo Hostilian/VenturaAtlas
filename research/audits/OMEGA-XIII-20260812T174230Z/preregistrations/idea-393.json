@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-393-68e721640b24",
+  "candidateId": "idea-393",
+  "candidateContentDigest": "6e3e7ce73404f37e2100411d8f2426c10625904f699ead2f4dc079ae1ddff72e",
+  "createdAt": "2026-08-13T15:59:26.764280+00:00",
+  "lockedAt": "2026-08-13T15:59:26.764280+00:00",
+  "expectations": {
+    "buyer": "DNA synthesis providers, biosecurity/compliance leaders, funders, and institutional buyers of synthetic nucleic acids",
+    "pain": "Providers and customers need consistent sequence screening, customer verification, escalation, and audit evidence across changing guidance and threat databases",
+    "strongestIncumbent": "Provider screening pipelines, IBBIS Common Mechanism, SecureDNA, IGSC protocols, government guidance, and customer due diligence",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Free/open screening mechanisms and provider-controlled sensitive systems may absorb benchmarking, while public testing could expose evasion methods",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "83af03ab2e504746a5b8683f0e52329cbb2199a07b30b986e56f11889ff58c34"
+}
