@@ -5794,5 +5794,131 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s270",
+    "title": "Implementing Regulation EU 2025/1467 on the EU SoHO Platform",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/eli/reg_impl/2025/1467/oj/eng",
+    "supports": [
+      "The Commission-operated EU SoHO Platform has authenticated, role-based actors for authorities and SoHO entities and becomes operational with the main Regulation from 7 August 2027",
+      "The public control plane exchanges regulatory information but does not itself establish an EU-wide reproductive-donor identity or family-limit ledger"
+    ],
+    "type": "official_platform_implementing_act",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-385"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s271",
+    "title": "Commission guidance on Net-Zero Industry Act non-price criteria",
+    "publisher": "European Commission Directorate-General for Energy",
+    "url": "https://energy.ec.europa.eu/news/commission-publishes-guidance-application-non-price-criteria-under-net-zero-industry-act-2026-07-22_en",
+    "supports": [
+      "Renewable-energy auctions must apply non-price prequalification and award criteria including cybersecurity, data security, delivery ability, sustainability, and resilience",
+      "The obligations have applied since 30 December 2025 and Commission guidance now helps auction authorities and market participants implement authority-specific criteria"
+    ],
+    "type": "official_implementation_guidance",
+    "date": "2026-07-22",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-373"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s272",
+    "title": "Characteristics and Risks of Emerging Large Loads",
+    "publisher": "North American Electric Reliability Corporation",
+    "url": "https://www.nerc.com/globalassets/who-we-are/standing-committees/rstc/whitepaper-characteristics-and-risks-of-emerging-large-loads.pdf",
+    "supports": [
+      "Large-load assessment cannot rely only on peak MW because ramp rate, real-time behavior, flexibility, protection, backup power, voltage sensitivity, dynamic models, and internal segmentation affect reliability",
+      "NERC records an observed data-centre ramp from roughly 450 MW to 40 MW in 36 seconds and says operators need accurate dynamic models and operating coordination"
+    ],
+    "type": "official_reliability_whitepaper",
+    "date": "2025-07",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-396"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s273",
+    "title": "C2PA Conformance Program and official Trust List",
+    "publisher": "Coalition for Content Provenance and Authenticity",
+    "url": "https://c2pa.org/conformance/",
+    "supports": [
+      "C2PA already operates a formal conformance program, conforming-products list, certificate policy, and official trust-list boundary for claim generators and verifiers",
+      "Generic C2PA implementation conformance is therefore standards-owned infrastructure rather than an unoccupied independent testing layer"
+    ],
+    "type": "standards_conformance_program",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-386"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s274",
+    "title": "Content Authenticity Initiative open-source C2PA SDK",
+    "publisher": "Content Authenticity Initiative",
+    "url": "https://github.com/contentauth/c2pa-rs",
+    "supports": [
+      "The open-source SDK can create, sign, parse, and validate C2PA claims and manifests across desktop, mobile, embedded, and C-integrated applications",
+      "Free SDKs and the official command-line tooling absorb basic manifest generation and validation, leaving only production transformation behavior and organizational assurance as possible residuals"
+    ],
+    "type": "open_source_substitute",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-386"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s275",
+    "title": "AI Agent Authentication and Authorization Internet-Draft",
+    "publisher": "IETF Datatracker",
+    "url": "https://datatracker.ietf.org/doc/draft-klrc-aiagent-auth/02/",
+    "supports": [
+      "The active work-in-progress applies OAuth and workload-identity concepts to AI agents and discusses authorization policy and transaction-token risk reduction",
+      "It is an expiring Internet-Draft rather than an adopted standard and cannot establish corporate legal authority, but it demonstrates that generic technical agent identity and authorization are already a standards workstream"
+    ],
+    "type": "work_in_progress_protocol_draft",
+    "date": "2026-06",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-cross-system-authority",
+    "ideaIds": ["idea-341"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

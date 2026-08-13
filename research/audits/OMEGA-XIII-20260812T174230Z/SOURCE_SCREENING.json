@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T16:17:00Z",
+  "observedAt": "2026-08-13T16:37:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -388,6 +388,56 @@
       ],
       "includedSourceRefs": ["s268", "s269"],
       "decisionImpact": "Official positive lists make rule preflight tractable, but final materials require condition-specific test pieces, migration-water analysis, and qualified pass/fail evidence. WaterContact continues only as confidential lab-intake and evidence-completeness orchestration, never an automated certificate."
+    },
+    {
+      "queryFamilyId": "qf-soho-donor-registry-control-plane",
+      "purpose": "Test whether a neutral EU-wide gamete donor ledger can own family-limit and genetic-signal coordination",
+      "queries": [
+        "Regulation EU 2024/1938 reproductive donor limits registries serious genetic condition communication",
+        "Implementing Regulation EU 2025/1467 EU SoHO Platform authenticated actors"
+      ],
+      "includedSourceRefs": ["s65", "s270"],
+      "decisionImpact": "The safety problem and 7 August 2027 forcing function are real, but family limits remain national and monitoring sits with SoHO entities and registries. The Commission platform is a role-controlled regulatory exchange, not proof that a startup can create the cross-border donor identity or compel network participation. KinLedger waits for authority sponsorship and a lawful identifier/interoperability design."
+    },
+    {
+      "queryFamilyId": "qf-renewable-auction-nonprice-authority",
+      "purpose": "Determine whether non-price renewable-auction promises create a scarce bid-to-built evidence product or remain auction-authority-specific qualification",
+      "queries": [
+        "EU Net-Zero Industry Act Article 26 renewable auction non-price criteria guidance 2026",
+        "renewable auction cybersecurity resilience delivery prequalification implementation"
+      ],
+      "includedSourceRefs": ["s271"],
+      "decisionImpact": "Non-price criteria are now operational, but Commission guidance and national auction authorities define prequalification and award implementation. BidTwin waits and narrows to one auction and one evidence chain; no generic continuous compliance authority or awarded implementation budget was found."
+    },
+    {
+      "queryFamilyId": "qf-large-load-behavioral-assurance",
+      "purpose": "Test whether large-load electrical behavior is a distinct measurable object beyond queue readiness and conventional commissioning",
+      "queries": [
+        "NERC characteristics risks emerging large loads ramp rate voltage sensitivity dynamic models",
+        "FERC large load reliability technical conference data center behavior"
+      ],
+      "includedSourceRefs": ["s199", "s272"],
+      "decisionImpact": "NERC confirms a distinct, high-consequence behavioral object: fast ramps, voltage sensitivity, protection, backup power, dynamic models, and internal segmentation. LoadEnvelope continues only as facility-to-utility model and test evidence; utility acceptance, protected telemetry, bespoke studies, and commissioning remain the control plane."
+    },
+    {
+      "queryFamilyId": "qf-content-provenance-conformance-substitution",
+      "purpose": "Separate C2PA standards conformance from whole-pipeline production transformation failure",
+      "queries": [
+        "C2PA conformance program official trust list conforming products",
+        "Content Authenticity Initiative open source C2PA SDK validation tool"
+      ],
+      "includedSourceRefs": ["s273", "s274"],
+      "decisionImpact": "C2PA owns formal conformance and trust-list qualification, while free SDKs and tooling implement signing and validation. ProvenanceChaos is killed as a generic conformance harness; re-entry requires authorized multi-platform transformation corpora and a buyer problem beyond standards compliance."
+    },
+    {
+      "queryFamilyId": "qf-enterprise-agent-authority-protocols",
+      "purpose": "Test whether an independent legal-authority graph is scarce after payment-network and OAuth-agent authorization protocols",
+      "queries": [
+        "Visa Trusted Agent Protocol authorization signatures merchant agent intent",
+        "IETF AI agent authentication authorization OAuth transaction tokens 2026"
+      ],
+      "includedSourceRefs": ["s220", "s275"],
+      "decisionImpact": "Visa already binds agent, consumer intent, and payment context in commerce, while IETF drafts are actively specifying technical agent identity and authorization. EntityMandate waits and narrows to enterprise system-of-record translation and jurisdiction-specific legal review; a universal authority graph is not earned."
     }
   ],
   "excluded": [
@@ -510,6 +560,18 @@
     {
       "url": "https://www.umweltbundesamt.de/en/topics/water/drinking-water/distributing-drinking-water/evaluation-criteria-guidelines",
       "reason": "National transition guidance was relevant but the Union positive-list and final-material testing acts were the narrower authoritative evidence for this tranche."
+    },
+    {
+      "url": "https://www.ferc.gov/news-events/events/north-american-electric-reliability-corporation-emerging-large-loads-technical",
+      "reason": "The conference and docket index established continuing regulatory attention but did not contain the behavioral evidence as directly as the retained NERC white paper."
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/draft-bates-atp/",
+      "reason": "The Agent Transaction Protocol is a work-in-progress action-evidence proposal; the retained AI authentication draft and Visa specification established the identity and authorization substitution boundary more directly."
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/draft-mishra-oauth-agent-grants-00.html",
+      "reason": "The individual DAAP draft was not treated as an adopted standard and added no stronger current authority than the retained active IETF authorization workstream."
     }
   ],
   "claimsNotEarned": [
@@ -555,5 +617,10 @@
     ,"authorized producer responsibility organisation, national fee rule, producer declaration, utility invoice, dispute, or settled wastewater EPR payment"
     ,"pharmacy or vendor EPCIS environment, physical package, scanner event, quarantine outcome, trading-partner correction, or paid DSCSA test"
     ,"confidential drinking-water formulation, laboratory intake, migration-water result, conformity decision, or certificate"
+    ,"cross-border reproductive donor identity linkage, clinic registry access, offspring-count event, genetic recall outcome, or authority sponsorship"
+    ,"renewable-auction bid packet, award, EPC evidence stream, lender acceptance, or procurement budget"
+    ,"data-centre dynamic model, commissioning waveform, protected utility telemetry, acceptance test, or operating permission"
+    ,"authorized multi-platform media corpus, watermark-vendor access, production provenance failure rate, or assurance budget"
+    ,"enterprise delegation policy, board authority record, agent transaction, revocation outcome, or legal acceptance"
   ]
 }

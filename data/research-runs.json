@@ -2345,5 +2345,45 @@
     "startedAt": "2026-08-13T16:13:00Z",
     "endedAt": "2026-08-13T16:17:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-013-20260813-cross-system-authority",
+    "baselineCommit": "815ab473eb0ec4343a9ee50306e7da8dd947c759",
+    "questions": [
+      "Which cross-institution authority layers remain scarce after official registries, conformance programs, public guidance, utility studies, payment-network protocols, and OAuth workstreams?",
+      "Does the market expose a measurable behavioral or operational object that incumbents do not already certify or control?",
+      "Can the hypothesized buyer access the protected data and compel all counterparties needed for a product to work?"
+    ],
+    "queries": [
+      "EU SoHO reproductive donor registries family limits genetic alerts and EU SoHO Platform",
+      "EU renewable auction non-price cybersecurity resilience and delivery criteria guidance",
+      "NERC emerging large load ramp rate voltage sensitivity dynamic model behavior",
+      "C2PA conformance program trust list and open-source SDK substitution",
+      "Visa and IETF AI-agent identity delegation and transaction authorization protocols"
+    ],
+    "sourceCandidates": ["s65", "s199", "s220", "s270", "s271", "s272", "s273", "s274", "s275"],
+    "inclusions": ["idea-385", "idea-373", "idea-396", "idea-386", "idea-341"],
+    "exclusions": [],
+    "claimsChanged": [
+      "KinLedger waits because reproductive family limits remain national and registry/entity-controlled; the EU SoHO Platform does not grant a startup a cross-border donor identity or participation mandate.",
+      "BidTwin waits and narrows to one operational auction because non-price criteria are real but implementation and evidence acceptance remain auction-authority-specific.",
+      "LoadEnvelope continues narrowly because NERC documents distinct fast-ramp, voltage-sensitivity, protection, model, and coordination risks; utility acceptance and protected telemetry remain mandatory.",
+      "ProvenanceChaos is killed at the generic conformance layer because C2PA operates conformance and trust-list programs and free open-source SDKs already create and validate manifests.",
+      "EntityMandate waits and narrows to enterprise system-of-record translation because payment networks and IETF workstreams are standardising technical agent identity, intent, delegation, and transaction context while legal corporate authority remains jurisdiction-specific.",
+      "No buyer, WTP, authority sponsorship, protected dataset, physical test, accepted model, media corpus, transaction, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-385-0d14bd5308b4",
+      "prereg-idea-373-d96bed7dd432",
+      "prereg-idea-396-ba39bfa5d47c",
+      "prereg-idea-386-e1373ed28ded",
+      "prereg-idea-341-996eda733d8f"
+    ],
+    "ideaIds": ["idea-385", "idea-373", "idea-396", "idea-386", "idea-341"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T16:29:00Z",
+    "endedAt": "2026-08-13T16:37:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]

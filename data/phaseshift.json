@@ -117,8 +117,8 @@
       "observedAt": "2026-08-13T14:11:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
-      "ideaRefs": ["idea-395"],
-      "sourceRefs": ["s199"]
+      "ideaRefs": ["idea-395", "idea-396"],
+      "sourceRefs": ["s199", "s272"]
     },
     {
       "marketId": "market-eu-critical-medicine-procurement",
@@ -185,8 +185,8 @@
       "observedAt": "2026-08-13T15:05:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
-      "ideaRefs": ["idea-349"],
-      "sourceRefs": ["s220", "s221", "s222"]
+      "ideaRefs": ["idea-349", "idea-341"],
+      "sourceRefs": ["s220", "s221", "s222", "s275"]
     },
     {
       "marketId": "market-eu-research-infrastructure-access",
@@ -391,6 +391,57 @@
       "ecosystemRefs": [],
       "ideaRefs": ["idea-403"],
       "sourceRefs": ["s268", "s269"]
+    },
+    {
+      "marketId": "market-eu-soho-reproductive-registry",
+      "name": "EU reproductive SoHO donor-limit and genetic-signal coordination",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "HIGH",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "A competent authority or multi-clinic network sponsors a lawful cross-registry identifier and interoperability corridor that preserves national family-limit and identity rules",
+      "valueNow": ["READINESS", "MAPPING", "DATA_PREPARATION"],
+      "valueNext": ["INTEGRATION", "EXCEPTION_HANDLING", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T16:37:00Z",
+      "dependencyRefs": ["dep-eu-soho-2024-1938"],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-385"],
+      "sourceRefs": ["s65", "s270"]
+    },
+    {
+      "marketId": "market-eu-renewable-auction-nonprice",
+      "name": "EU renewable-auction non-price resilience and cybersecurity qualification",
+      "phase": "P5_CONFORMANCE",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["POLICY_INTERPRETATION", "READINESS", "CONFORMANCE", "DATA_PREPARATION"],
+      "valueNext": ["INTEGRATION", "AUDIT", "EXCEPTION_HANDLING"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T16:37:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-373"],
+      "sourceRefs": ["s271"]
+    },
+    {
+      "marketId": "market-content-provenance-conformance",
+      "name": "C2PA content-provenance conformance and production transformation assurance",
+      "phase": "P6_OPERATIONAL_SCALE",
+      "phaseConfidence": "HIGH",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["CONFORMANCE", "CERTIFICATION", "INTEGRATION"],
+      "valueNext": ["OBSERVABILITY", "EXCEPTION_HANDLING", "AUDIT"],
+      "informationValue": "MEDIUM",
+      "currentStartupValue": "LOW",
+      "observedAt": "2026-08-13T16:37:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-386"],
+      "sourceRefs": ["s273", "s274"]
     }
   ],
   "phaseTransitions": [],
@@ -530,6 +581,40 @@
       "observedAt": "2026-08-13T16:17:00Z",
       "sourceRefs": ["s268", "s269"],
       "ideaRefs": ["idea-403"]
+    },
+    {
+      "enforcementId": "enf-soho-reproductive-donor-limits",
+      "marketId": "market-eu-soho-reproductive-registry",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F4",
+      "checker": "SoHO entity and competent authority under applicable national reproductive-donation rules",
+      "checkedObject": "donor registry history, national offspring or application limits, cross-border distribution, and serious genetic-condition notification",
+      "trigger": "repeated donation, cross-border reproductive SoHO distribution, or a serious genetic condition detected in donor-conceived offspring",
+      "mechanism": "entity or national registries, case-by-case interconnected checks, vigilance communication, and competent-authority inspection",
+      "failureStatus": "unsafe repeat donation, exceeded national limit, or delayed genetic-risk action; no case-level receipt was collected",
+      "remedy": "stop implicated distribution, investigate through authorized entities, and comply with national identity, data-protection, and family-limit rules",
+      "sla": "serious genetic-condition information is communicated without undue delay; no numeric operational SLA was collected",
+      "financialConsequence": null,
+      "observedAt": "2026-08-13T16:37:00Z",
+      "sourceRefs": ["s65"],
+      "ideaRefs": ["idea-385"]
+    },
+    {
+      "enforcementId": "enf-renewable-auction-nonprice",
+      "marketId": "market-eu-renewable-auction-nonprice",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F3",
+      "checker": "Member State renewable-auction authority",
+      "checkedObject": "responsible-business, cybersecurity, data-security, delivery, sustainability, and resilience prequalification or award evidence",
+      "trigger": "participation in an in-scope renewable-energy deployment auction",
+      "mechanism": "national auction documents apply the Net-Zero Industry Act non-price prequalification and award criteria under Commission rules and guidance",
+      "failureStatus": "bid can fail prequalification or lose non-price award scoring; no rejected bid or award receipt was collected",
+      "remedy": "satisfy the specific auction authority's evidence and correction process",
+      "sla": null,
+      "financialConsequence": null,
+      "observedAt": "2026-08-13T16:37:00Z",
+      "sourceRefs": ["s271"],
+      "ideaRefs": ["idea-373"]
     }
   ],
   "intermediaryAssessments": [
@@ -818,6 +903,26 @@
       "certainty": "FIXED",
       "buyerImplication": "Manufacturers and laboratories need confidential composition intake, list checks, representative test plans, migration analysis, and conformity evidence before cutover",
       "sourceRefs": ["s268", "s269"]
+    },
+    {
+      "milestoneId": "milestone-soho-main-application",
+      "marketId": "market-eu-soho-reproductive-registry",
+      "kind": "LAW_APPLIES",
+      "label": "Main Regulation EU 2024/1938 and EU SoHO Platform implementing rules apply",
+      "date": "2027-08-07T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "SoHO entities and authorities must prepare authenticated platform and vigilance workflows while reproductive family-limit rules remain national",
+      "sourceRefs": ["s65", "s270"]
+    },
+    {
+      "milestoneId": "milestone-renewable-auction-nonprice-applied",
+      "marketId": "market-eu-renewable-auction-nonprice",
+      "kind": "LAW_APPLIES",
+      "label": "Net-Zero Industry Act renewable-auction non-price obligations apply",
+      "date": "2025-12-30T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Bidders must satisfy authority-specific non-price prequalification and award evidence rather than relying only on bid price",
+      "sourceRefs": ["s271"]
     }
   ],
   "milestoneEdges": [

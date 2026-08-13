@@ -3,9 +3,9 @@
   "version": "2.3.0",
   "schemaVersion": "2.0.0",
   "privateStagingIncluded": false,
-  "dataRevision": "f0e7d959dee35e93",
-  "buildRevision": "2.3.0-f0e7d959dee35e93",
-  "generatedAt": "2026-08-13T16:23:46.006Z",
+  "dataRevision": "cb5284cf919e94a9",
+  "buildRevision": "2.3.0-cb5284cf919e94a9",
+  "generatedAt": "2026-08-13T16:38:28.598Z",
   "counts": {
     "ideas": 294,
     "canonicalIdeas": 294,
@@ -14,7 +14,7 @@
     "categories": 122,
     "canonicalCategoryLabels": 122,
     "taxonomyCategories": 31,
-    "sources": 269,
+    "sources": 275,
     "rankingViews": 7,
     "rankingEntries": 294,
     "prompts": 4425,
@@ -28,8 +28,8 @@
     "canonicalRevision": "b1f5b764ca5f247a",
     "stagingRevision": "private-withheld",
     "taxonomyRevision": "6945e3a804df238b",
-    "sourcesRevision": "9be1fb08727a2059",
+    "sourcesRevision": "6da4875876e7a232",
     "rankingsRevision": "0cbb77464fdbaa11",
-    "canonicalDataRevision": "f0e7d959dee35e93"
+    "canonicalDataRevision": "cb5284cf919e94a9"
   }
 }
