@@ -68,8 +68,11 @@ function validateLifecycleReceipts(receiptDocument, context) {
     }
     if (receipt.receiptType === 'RANK_ELIGIBILITY') {
       if (idea.lifecycleReceiptRefs?.ranking !== receipt.receiptId) errors.push(`${receipt.receiptId} is not the idea ranking receipt`);
+      const methodKey = `${receipt.methodVersion}:${receipt.scoreScaleVersion}`;
+      if (!(context.rankingMethodKeys || new Set()).has(methodKey)) errors.push(`${receipt.receiptId} references unregistered ranking method/scale: ${methodKey}`);
       for (const runId of receipt.researchRunRefs || []) {
-        if (!context.researchRunsById.has(runId)) errors.push(`${receipt.receiptId} references unknown research run: ${runId}`);
+        const run = context.researchRunsById.get(runId);
+        if (!run || !run.ideaIds?.includes(idea.id) || !['R4_CLAIM_MAPPED', 'R5_ADVERSARIAL', 'R6_REVIEWED', 'R7_DECISION_INTEGRATED'].includes(run.receiptMaturity) || !Array.isArray(run.toolReceipts) || !run.toolReceipts.length) errors.push(`${receipt.receiptId} references unrelated or immature research run: ${runId}`);
       }
     }
     if (receipt.receiptType === 'VALIDATION') {
@@ -98,6 +101,7 @@ function main() {
   const validationRuns = Array.isArray(validationRaw) ? validationRaw : validationRaw.runs || [];
   const claimRelations = read('data/claim-relations.json').relations || [];
   const authorities = read('data/reviewer-authorities.json').authorities || [];
+  const rankingMethods = read('data/ranking-method-registry.json').methods || [];
   const gitCommits = require('child_process').execFileSync('git', ['rev-list', '--all'], { cwd: ROOT, encoding: 'utf8' }).split(/\s+/).filter(Boolean);
   const errors = validateLifecycleReceipts(receiptDocument, {
     schema: read('schemas/lifecycle-receipt.schema.json'),
@@ -107,7 +111,8 @@ function main() {
     validationRunsById: new Map(validationRuns.map(run => [run.runId, run])),
     claimRelationIds: new Set(claimRelations.map(relation => relation.relationId)),
     trustedReviewerIds: new Set(authorities.filter(item => item.active === true).map(item => `${item.id}:${item.role}`)),
-    gitCommitIds: new Set(gitCommits)
+    gitCommitIds: new Set(gitCommits),
+    rankingMethodKeys: new Set(rankingMethods.filter(item => item.active === true).map(item => `${item.methodVersion}:${item.scoreScaleVersion}`))
   });
   console.log(JSON.stringify({ receiptCount: receiptDocument.receipts?.length || 0, errors }, null, 2));
   if (errors.length) process.exit(1);

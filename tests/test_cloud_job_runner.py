@@ -98,6 +98,32 @@ class CloudJobRunnerTests(unittest.TestCase):
         finally:
             runner.BASE_DIR = old_base
 
+    def test_unchanged_private_checkpoint_does_not_upload(self):
+        queue_path = self.repo / "data" / "idea-staging-queue.json"
+        queue_path.write_text("[]\n", encoding="utf-8")
+        digest = __import__("hashlib").sha256(b"[]").hexdigest()
+        blob = mock.Mock()
+        blob.bucket.name = "private-bucket"
+        blob.name = "queue.json"
+        with mock.patch.object(runner, "BASE_DIR", str(self.repo)), \
+             mock.patch.object(runner, "private_staging_blob", return_value=blob):
+            result = runner.persist_private_staging({"generation": 7, "queueDigest": digest})
+        blob.upload_from_string.assert_not_called()
+        self.assertEqual(result["status"], "unchanged")
+
+    def test_changed_private_checkpoint_uses_generation_precondition(self):
+        queue_path = self.repo / "data" / "idea-staging-queue.json"
+        queue_path.write_text("[]\n", encoding="utf-8")
+        blob = mock.Mock()
+        blob.bucket.name = "private-bucket"
+        blob.name = "queue.json"
+        blob.generation = 8
+        with mock.patch.object(runner, "BASE_DIR", str(self.repo)), \
+             mock.patch.object(runner, "private_staging_blob", return_value=blob):
+            result = runner.persist_private_staging({"generation": 7, "queueDigest": "old"})
+        self.assertEqual(blob.upload_from_string.call_args.kwargs["if_generation_match"], 7)
+        self.assertEqual(result["status"], "updated")
+
 
 if __name__ == "__main__":
     unittest.main()

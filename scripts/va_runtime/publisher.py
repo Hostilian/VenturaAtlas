@@ -45,6 +45,8 @@ TRANSACTION_PATHS = [
     os.path.join(ROOT, "SEARCH_AND_DISCOVERY_GUIDE.md"),
     os.path.join(ROOT, "index.html"),
 ]
+JOURNAL_DIR = os.path.join(ROOT, ".agent-state", "publisher-transaction")
+JOURNAL_MANIFEST = os.path.join(JOURNAL_DIR, "manifest.json")
 
 @contextlib.contextmanager
 def process_file_lock(lock_path: str):
@@ -96,6 +98,76 @@ def _restore(snapshot: Dict[str, Optional[bytes]]) -> None:
                 os.remove(path)
         else:
             atomic_write_bytes(path, payload)
+
+
+def _clear_transaction_journal(manifest: Optional[Dict[str, Any]] = None) -> None:
+    if manifest is None and os.path.exists(JOURNAL_MANIFEST):
+        manifest = read_json_safe(JOURNAL_MANIFEST, default_if_missing={})
+    for entry in (manifest or {}).get("entries", []):
+        backup = entry.get("backup")
+        if backup and os.path.exists(backup):
+            os.remove(backup)
+    if os.path.exists(JOURNAL_MANIFEST):
+        os.remove(JOURNAL_MANIFEST)
+    if os.path.isdir(JOURNAL_DIR):
+        try:
+            os.rmdir(JOURNAL_DIR)
+        except OSError:
+            pass
+
+
+def _begin_transaction_journal(snapshot: Dict[str, Optional[bytes]]) -> Dict[str, Any]:
+    """Durably prepare recovery material before the first live replacement."""
+    if os.path.exists(JOURNAL_MANIFEST):
+        _recover_transaction_journal()
+    elif os.path.isdir(JOURNAL_DIR):
+        _clear_transaction_journal({"entries": []})
+    os.makedirs(JOURNAL_DIR, exist_ok=True)
+    entries = []
+    for index, (path, payload) in enumerate(snapshot.items()):
+        backup = os.path.join(JOURNAL_DIR, f"backup-{index:03d}.bin")
+        entry = {"path": path, "existed": payload is not None, "backup": backup if payload is not None else None}
+        if payload is not None:
+            atomic_write_bytes(backup, payload)
+        entries.append(entry)
+    manifest = {
+        "schemaVersion": "1.0.0",
+        "state": "PREPARED",
+        "createdAt": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "entries": entries,
+    }
+    atomic_write_json(JOURNAL_MANIFEST, manifest)
+    return manifest
+
+
+def _recover_transaction_journal() -> bool:
+    """Roll back an interrupted prepare, or clean a committed journal."""
+    if not os.path.exists(JOURNAL_MANIFEST):
+        return False
+    manifest = read_json_safe(JOURNAL_MANIFEST)
+    if manifest.get("schemaVersion") != "1.0.0" or manifest.get("state") not in {"PREPARED", "COMMITTED"}:
+        raise RuntimeError("Invalid publisher transaction journal; refusing canonical writes")
+    if manifest["state"] == "PREPARED":
+        for entry in manifest.get("entries", []):
+            path = entry["path"]
+            if entry.get("existed"):
+                backup = entry.get("backup")
+                if not backup or not os.path.exists(backup):
+                    raise RuntimeError(f"Publisher transaction backup missing for {path}")
+                with open(backup, "rb") as handle:
+                    atomic_write_bytes(path, handle.read())
+            elif os.path.exists(path):
+                os.remove(path)
+    _clear_transaction_journal(manifest)
+    return manifest["state"] == "PREPARED"
+
+
+def _commit_transaction_journal(manifest: Dict[str, Any]) -> None:
+    committed = dict(manifest)
+    committed["state"] = "COMMITTED"
+    committed["committedAt"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    atomic_write_json(JOURNAL_MANIFEST, committed)
+    _clear_transaction_journal(committed)
 
 
 def evaluate_promotion_gates(candidate: Dict[str, Any], existing_ideas: List[Dict[str, Any]],
@@ -196,6 +268,7 @@ def publish_candidate(candidate: Dict[str, Any], canonicalization_receipt: Optio
     """
     with _THREAD_LOCK:
         with process_file_lock(LOCK_PATH):
+            _recover_transaction_journal()
             if not os.path.exists(IDEAS_PATH):
                 ideas_raw = {"schemaVersion": "2.0.0", "ideas": []}
             else:
@@ -240,16 +313,16 @@ def publish_candidate(candidate: Dict[str, Any], canonicalization_receipt: Optio
             stored_receipt["canonicalDigest"] = idea_content_digest(projected_candidate)
             receipt_document.setdefault("receipts", []).append(stored_receipt)
 
-            # 4. Atomic write to data/ideas.json
-            atomic_write_json(IDEAS_PATH, {"schemaVersion": "2.0.0", "ideas": ideas_list})
-            atomic_write_json(RECEIPTS_PATH, receipt_document)
-
-            # 5. Transactional Build Verification
+            # 4. Journaled multi-file replacement and build verification. Atomic
+            # replacement protects each file; the durable journal protects the set.
+            journal = _begin_transaction_journal(transaction_snapshot)
             npm_cmd = ["npm.cmd", "run", "generate"] if os.name == "nt" else ["npm", "run", "generate"]
             try:
+                atomic_write_json(IDEAS_PATH, {"schemaVersion": "2.0.0", "ideas": ideas_list})
+                atomic_write_json(RECEIPTS_PATH, receipt_document)
                 res = subprocess.run(npm_cmd, cwd=ROOT, capture_output=True, text=True, timeout=180)
                 if res.returncode != 0:
-                    _restore(transaction_snapshot)
+                    _recover_transaction_journal()
                     return False, f"Transactional publication rollback: derived generation failed: {res.stderr.strip()[:200]}", None
                 checks = [
                     [sys.executable, "scripts/validate-schema.py"],
@@ -258,11 +331,12 @@ def publish_candidate(candidate: Dict[str, Any], canonicalization_receipt: Optio
                 for command in checks:
                     checked = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=120)
                     if checked.returncode != 0:
-                        _restore(transaction_snapshot)
+                        _recover_transaction_journal()
                         message = (checked.stderr or checked.stdout).strip()[:240]
                         return False, f"Transactional publication rollback: post-write validation failed: {message}", None
             except Exception as e:
-                _restore(transaction_snapshot)
+                _recover_transaction_journal()
                 return False, f"Transactional publication rollback exception: {str(e)}", None
 
+            _commit_transaction_journal(journal)
             return True, f"Successfully published canonical idea '{canonical_id}'", canonical_id

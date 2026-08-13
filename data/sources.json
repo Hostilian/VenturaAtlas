@@ -4177,5 +4177,131 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s193",
+    "title": "Facturation electronique et plateformes agreees",
+    "publisher": "Direction generale des Finances publiques (France)",
+    "url": "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees",
+    "supports": [
+      "Only an accredited platform may transmit and receive regulated B2B invoices and report transaction or payment data",
+      "The registration service monitors platform and user transmission duties and may impose financial sanctions or withdraw repeated offenders' registration"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": ["idea-215"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s194",
+    "title": "Specifications externes et normes pour la facturation electronique",
+    "publisher": "Direction generale des Finances publiques (France)",
+    "url": "https://www.impots.gouv.fr/specifications-externes-b2b",
+    "supports": [
+      "France published version 3.2 external specifications, examples, XSD files, and Swagger definitions on 30 April 2026",
+      "AFNOR standards specify invoice and lifecycle-status formats, APIs between enterprise systems and accredited platforms, and B2B use cases"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-04-30",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": ["idea-215"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s195",
+    "title": "Templates to be used in case of unavailability of CATCH",
+    "publisher": "European Commission - DG MARE",
+    "url": "https://oceans-and-fisheries.ec.europa.eu/publications/templates-catch_en",
+    "supports": [
+      "Official fillable templates may be used when CATCH is unavailable",
+      "After service recovery the importer must enter the contingency information and attach the marked documents in CATCH"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-01-09",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": ["idea-376"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s196",
+    "title": "EHDS Platform",
+    "publisher": "European Commission - DG SANTE",
+    "url": "https://health.ec.europa.eu/ehealth-digital-health-and-care/ehds-action/ehds-platform_en",
+    "supports": [
+      "The HealthData@EU Central Platform is intended to search and filter the EU Dataset Catalogue",
+      "The same public platform is intended to submit secondary-use data access applications"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": ["idea-379"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s197",
+    "title": "The state of Right to Repair in 2026",
+    "publisher": "Right to Repair Europe",
+    "url": "https://repair.eu/es/news/the-state-of-right-to-repair-in-2026/",
+    "supports": [
+      "The repair advocacy coalition expected substantial national implementation work to remain unfinished during 2026",
+      "The coalition identifies spare-part prices, part pairing, and incomplete product coverage as unresolved barriers"
+    ],
+    "type": "stakeholder_context",
+    "date": "2026-02-16",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "stakeholder",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": ["idea-264", "idea-295", "idea-371"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMMUNITY",
+    "evidenceEligible": false,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s198",
+    "title": "Understanding the New Telematics TSI",
+    "publisher": "European Union Agency for Railways",
+    "url": "https://www.era.europa.eu/understanding-new-telematics-tsi",
+    "supports": [
+      "The new Telematics Applications TSI entered into force on 2 March 2026",
+      "ERA's implementation Q&A covers governance, interoperability, APIs, ontology, cybersecurity, and data exchange across passenger and freight actors"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-commercial-disconfirmation",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

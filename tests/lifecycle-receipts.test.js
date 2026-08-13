@@ -35,6 +35,7 @@ function earnedContext(idea) {
   return { now: new Date('2026-08-12T12:00:00Z'), publicSourceIds: new Set(['s01']),
     researchRunIds: new Set(['run-test']), validationRunIds: new Set(['validation-test']),
     claimRelationIds: new Set(['claimrel-test']), trustedReviewerIds: new Set(['test-reviewer:human-reviewer']),
+    rankingMethodKeys: new Set(['method-v1:scale-v1']),
     researchRunById: new Map([['run-test', { ideaIds: [idea.id], receiptMaturity: 'R6_REVIEWED', toolReceipts: ['tool-test'] }]]),
     validationRunById: new Map([['validation-test', { ideaId: idea.id, ideaContentDigest: ideaContentDigest(idea),
       status: 'COMPLETED', evidenceKind: 'BEHAVIORAL', evidenceRefs: ['evidence-test'] }]]) };
@@ -86,6 +87,15 @@ test('validation universe requires a valid real-world validation receipt', () =>
   const { idea, receipts } = earnedFixture(); receipts.receipts[2].universe = 'VALIDATION';
   const result = deriveLifecycleForPublic(idea, { receipts: receipts.receipts.slice(0, 3) }, earnedContext(idea));
   assert.equal(result.rankingEligible, false); assert.equal(result.rankingUniverse, null);
+});
+
+test('invented ranking method or unrelated run cannot earn eligibility', () => {
+  const { idea, receipts } = earnedFixture(); const context = earnedContext(idea);
+  context.rankingMethodKeys = new Set();
+  assert.equal(deriveLifecycleForPublic(idea, receipts, context).rankingEligible, false);
+  context.rankingMethodKeys = new Set(['method-v1:scale-v1']);
+  context.researchRunById.set('run-test', { ideaIds: ['idea-998'], receiptMaturity: 'R6_REVIEWED', toolReceipts: ['tool-test'] });
+  assert.equal(deriveLifecycleForPublic(idea, receipts, context).rankingEligible, false);
 });
 
 test('Python and JavaScript share lifecycle digest vectors', () => {

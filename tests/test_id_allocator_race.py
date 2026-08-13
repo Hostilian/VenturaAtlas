@@ -20,7 +20,8 @@ generate_candidate_id = aig.generate_candidate_id
 
 from va_runtime.id_allocator import allocate_next_canonical_id
 import va_runtime.publisher as pub
-from va_runtime.lifecycle import candidate_digest, current_git_commit
+from va_runtime.lifecycle import candidate_digest, current_git_commit, corpus_revision
+import va_runtime.lifecycle as lifecycle
 
 def test_20_candidates_unique_uuids():
     def worker_task(idx):
@@ -48,11 +49,21 @@ def test_simultaneous_publishers_unique_ids():
     pub.RECEIPTS_PATH = os.path.join(temp_dir, "lifecycle-receipts.json")
     authority_path = os.path.join(temp_dir, "reviewer-authorities.json")
     old_authority_path = os.environ.get("VA_REVIEWER_AUTHORITIES_PATH")
+    old_semantic_path = lifecycle.SEMANTIC_REVIEWS_PATH
+    old_lifecycle_ideas_path = lifecycle.IDEAS_PATH
+    lifecycle.SEMANTIC_REVIEWS_PATH = os.path.join(temp_dir, "semantic-reviews.json")
+    lifecycle.IDEAS_PATH = temp_ideas
     os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = authority_path
     with open(authority_path, "w", encoding="utf-8") as handle:
         handle.write('{"authorities":[{"id":"race-test","role":"human-reviewer","active":true}]}\n')
     with open(pub.RECEIPTS_PATH, "w", encoding="utf-8") as handle:
         handle.write('{"schemaVersion":"1.0.0","receipts":[]}\n')
+    with open(temp_ideas, "r", encoding="utf-8") as handle:
+        existing_doc = __import__('json').load(handle)
+    existing_ideas = existing_doc.get("ideas", []) if isinstance(existing_doc, dict) else existing_doc
+    review_lock = __import__('threading').Lock()
+    with open(lifecycle.SEMANTIC_REVIEWS_PATH, "w", encoding="utf-8") as handle:
+        handle.write('{"schemaVersion":"1.0.0","reviews":[]}\n')
 
     try:
         def publisher_task(idx):
@@ -79,8 +90,18 @@ def test_simultaneous_publishers_unique_ids():
                 "duplicateReview": {"status": "APPROVED", "semanticReviewId": f"semantic-race-{idx}"},
                 "lineageVerified": True,
             }
-            ok, msg, cid = pub.publish_candidate(cand, receipt)
-            return ok, cid
+            # The publisher serializes admission. Bind each fixture to the corpus state
+            # visible immediately before its own admission while holding the test lock.
+            with review_lock:
+                current = __import__('json').load(open(temp_ideas, encoding="utf-8")).get("ideas", [])
+                reviews = __import__('json').load(open(lifecycle.SEMANTIC_REVIEWS_PATH, encoding="utf-8"))
+                reviews["reviews"].append({"semanticReviewId": f"semantic-race-{idx}", "candidateId": cand["id"],
+                    "candidateDigest": candidate_digest(cand), "corpusRevision": corpus_revision(current), "nearestIdeaIds": [],
+                    "decision": "DISTINCT", "reviewer": receipt["reviewer"], "reviewedAt": receipt["decidedAt"]})
+                with open(lifecycle.SEMANTIC_REVIEWS_PATH, "w", encoding="utf-8") as handle:
+                    __import__('json').dump(reviews, handle)
+                ok, msg, cid = pub.publish_candidate(cand, receipt)
+                return ok, cid
 
         successful = mock.Mock(returncode=0, stdout="ok", stderr="")
         with mock.patch.object(pub.subprocess, "run", return_value=successful):
@@ -99,6 +120,8 @@ def test_simultaneous_publishers_unique_ids():
             os.environ["VA_REVIEWER_AUTHORITIES_PATH"] = old_authority_path
         pub.IDEAS_PATH = orig_ideas_path
         pub.RECEIPTS_PATH = orig_receipts_path
+        lifecycle.SEMANTIC_REVIEWS_PATH = old_semantic_path
+        lifecycle.IDEAS_PATH = old_lifecycle_ideas_path
         shutil.rmtree(temp_dir)
 
 if __name__ == "__main__":

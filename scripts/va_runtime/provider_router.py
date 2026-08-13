@@ -157,11 +157,18 @@ class CapabilityProviderScheduler:
         return sorted_ids
 
     def handle_rate_limit(self, key_state: KeyState, retry_after_sec: int = 60):
-        key_state.cooldown_until = time.time() + max(10, retry_after_sec)
+        cooldown_until = time.time() + max(10, retry_after_sec)
+        for pool in self.key_pools.values():
+            for candidate in pool:
+                if candidate.key == key_state.key:
+                    candidate.cooldown_until = cooldown_until
         print(f"[WARN] Rate limit on {key_state.alias} — cooling down for {retry_after_sec}s", file=sys.stderr)
 
     def handle_auth_invalid(self, key_state: KeyState):
-        key_state.disabled = True
+        for pool in self.key_pools.values():
+            for candidate in pool:
+                if candidate.key == key_state.key:
+                    candidate.disabled = True
         print(f"[ERROR] Auth invalid for {key_state.alias} — key disabled", file=sys.stderr)
 
 _SCHEDULER = CapabilityProviderScheduler()

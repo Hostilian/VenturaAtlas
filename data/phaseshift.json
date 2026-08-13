@@ -50,7 +50,7 @@
       "dependencyRefs": [],
       "ecosystemRefs": [],
       "ideaRefs": ["idea-215"],
-      "sourceRefs": ["s190", "s191"]
+      "sourceRefs": ["s190", "s191", "s193", "s194"]
     },
     {
       "marketId": "market-eu-catch-imports",
@@ -67,7 +67,7 @@
       "dependencyRefs": [],
       "ecosystemRefs": [],
       "ideaRefs": ["idea-376"],
-      "sourceRefs": ["s192"]
+      "sourceRefs": ["s192", "s195"]
     },
     {
       "marketId": "market-ehds-secondary-use",
@@ -77,14 +77,31 @@
       "status": "WAIT_FOR_TRIGGER",
       "waitTrigger": "Implementing acts and representative national catalogue metadata make feasibility testable",
       "valueNow": ["READINESS", "DATA_PREPARATION", "MAPPING"],
-      "valueNext": ["INTEGRATION", "CONFORMANCE", "VERTICAL_WORKFLOW"],
+      "valueNext": ["DATA_QUALITY", "INTEGRATION", "CONFORMANCE", "VERTICAL_WORKFLOW"],
       "informationValue": "HIGH",
       "currentStartupValue": "WAIT",
       "observedAt": "2026-08-13T12:20:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
       "ideaRefs": ["idea-379"],
-      "sourceRefs": ["s123", "s188", "s189"]
+      "sourceRefs": ["s123", "s188", "s189", "s196"]
+    },
+    {
+      "marketId": "market-eu-rail-telematics",
+      "name": "EU railway passenger and freight telematics interoperability",
+      "phase": "P3_MIGRATION",
+      "phaseConfidence": "MEDIUM",
+      "status": "REASSESS",
+      "waitTrigger": null,
+      "valueNow": ["MAPPING", "MIGRATION", "INTEGRATION", "CONFORMANCE"],
+      "valueNext": ["EXCEPTION_HANDLING", "OBSERVABILITY", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "UNKNOWN",
+      "observedAt": "2026-08-13T12:50:00Z",
+      "dependencyRefs": ["dep-eu-rail-capacity-2026-1184"],
+      "ecosystemRefs": [],
+      "ideaRefs": [],
+      "sourceRefs": ["s198"]
     }
   ],
   "phaseTransitions": [],
@@ -122,6 +139,23 @@
       "observedAt": "2026-08-13T12:20:00Z",
       "sourceRefs": ["s192"],
       "ideaRefs": ["idea-376"]
+    },
+    {
+      "enforcementId": "enf-france-einvoice-accredited-platform",
+      "marketId": "market-france-einvoicing",
+      "mode": "CERTIFIED_INTERMEDIARY",
+      "frictionLevel": "F3",
+      "checker": "DGFiP registration service and accredited platforms",
+      "checkedObject": "regulated invoice transmission and transaction or payment reporting",
+      "trigger": "business transmission or receipt of a regulated electronic invoice",
+      "mechanism": "only accredited platforms may transmit the regulated flows; registration is monitored and renewable",
+      "failureStatus": "non-accredited compatible software cannot perform the regulated transmission; repeated accredited-platform breaches may cause financial sanction or registration withdrawal",
+      "remedy": "route through an accredited platform and conform to published formats, lifecycle statuses, and API standards",
+      "sla": null,
+      "financialConsequence": "financial sanctions are possible, but no quantified consequence was collected in this run",
+      "observedAt": "2026-08-13T12:50:00Z",
+      "sourceRefs": ["s193", "s194"],
+      "ideaRefs": ["idea-215"]
     }
   ],
   "intermediaryAssessments": [
@@ -220,6 +254,16 @@
       "certainty": "FIXED",
       "buyerImplication": "Commercial urgency is later than present infrastructure preparation",
       "sourceRefs": ["s188"]
+    },
+    {
+      "milestoneId": "milestone-rail-telematics-entry-force",
+      "marketId": "market-eu-rail-telematics",
+      "kind": "LAW_APPLIES",
+      "label": "New Telematics Applications TSI enters into force",
+      "date": "2026-03-02T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Passenger and freight actors move from separate legacy telematics specifications into a shared migration and interoperability programme",
+      "sourceRefs": ["s198"]
     }
   ],
   "milestoneEdges": [

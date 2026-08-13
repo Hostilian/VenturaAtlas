@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "OMEGA-XIII-20260812T174230Z",
+  "observedAt": "2026-08-13T12:50:00Z",
+  "queryFamilies": [
+    {
+      "queryFamilyId": "qf-einvoice-authority-access",
+      "purpose": "Test whether a neutral e-invoice readiness product can control regulated transmission or whether accredited platforms absorb the workflow",
+      "queries": [
+        "France accredited e-invoice platform authority and sanctions",
+        "France B2B e-invoice external specifications APIs XSD Swagger 2026"
+      ],
+      "includedSourceRefs": ["s193", "s194"],
+      "decisionImpact": "The regulated transport/control plane belongs to accredited platforms and published standards reduce basic mapping scarcity; a generic readiness map remains low-value unless narrowed to cross-provider exceptions or independent verification."
+    },
+    {
+      "queryFamilyId": "qf-catch-contingency",
+      "purpose": "Test system-outage and blocked-shipment assumptions for CATCH",
+      "queries": [
+        "CATCH official outage contingency templates 2026",
+        "CATCH interoperability access and importer workflow"
+      ],
+      "includedSourceRefs": ["s195"],
+      "decisionImpact": "Official contingency templates partially absorb the outage-resilience thesis. Remaining value must concern pre-submission correctness or post-recovery reconciliation, not merely service unavailability."
+    },
+    {
+      "queryFamilyId": "qf-ehds-public-primitive",
+      "purpose": "Identify which CohortPreflight functions the public EHDS platform is already designed to provide",
+      "queries": [
+        "HealthData@EU central platform dataset catalogue search access application",
+        "EHDS national catalogue metadata implementation status"
+      ],
+      "includedSourceRefs": ["s196"],
+      "decisionImpact": "Public dataset search and request submission directly absorb a generic catalogue/front-door. Any private wedge must add cross-catalogue data quality, study-specific feasibility, or workflow evidence unavailable in the public primitive."
+    },
+    {
+      "queryFamilyId": "qf-repair-commercial-negative",
+      "purpose": "Seek operator-side negative evidence beyond the directive text",
+      "queries": [
+        "European repair platform implementation 2026 repairer pain spare parts part pairing",
+        "right to repair 2026 national implementation barriers"
+      ],
+      "includedSourceRefs": ["s197"],
+      "decisionImpact": "Stakeholder evidence says national implementation is incomplete and highlights parts pricing/part pairing/product-scope gaps. This supports WAIT_FOR_TRIGGER, not a clearing-network demand claim."
+    },
+    {
+      "queryFamilyId": "qf-rail-telematics-phase",
+      "purpose": "Determine whether rail telematics is signal, specification, or migration and whether an existing idea is already mapped",
+      "queries": [
+        "ERA new Telematics Applications TSI entry into force APIs ontology implementation 2026",
+        "rail telematics passenger freight implementation guide vendors conformance"
+      ],
+      "includedSourceRefs": ["s198"],
+      "decisionImpact": "The market is in a live migration/interoperability phase, but no canonical venture is linked and no buyer/WTP evidence was collected; status remains REASSESS rather than generating a new idea."
+    }
+  ],
+  "excluded": [
+    {
+      "url": "https://ted.europa.eu/en",
+      "reason": "Generic procurement landing page did not identify a relevant buyer-specific contract or award for the five preregistered theses."
+    },
+    {
+      "url": "https://repair.eu/",
+      "reason": "Coalition homepage was too broad; the dated 2026 implementation article was retained instead and classified COMMUNITY/non-evidence-eligible."
+    },
+    {
+      "url": "https://health.ec.europa.eu/funding/tenders-calls-and-procurement_en",
+      "reason": "Generic tender index did not establish demand, WTP, or a relevant awarded implementation contract."
+    },
+    {
+      "url": "https://www.impots.gouv.fr/actualite/facturation-electronique-liste-des-operateurs-candidats-pour-devenir-plateforme-de",
+      "reason": "Historical candidate-platform list was superseded for current authority questions by the accredited-platform and current specification pages."
+    }
+  ],
+  "claimsNotEarned": [
+    "customer interview",
+    "willingness to pay",
+    "paid pilot",
+    "design partner",
+    "buyer budget",
+    "transactional validation",
+    "provider switching frequency",
+    "CATCH rejection frequency",
+    "EHDS dataset-feasibility failure rate"
+  ]
+}

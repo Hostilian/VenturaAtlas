@@ -99,6 +99,7 @@ let researchRunById = new Map();
 let validationRunById = new Map();
 let claimRelationIds = new Set();
 let trustedReviewerIds = new Set();
+let rankingMethodKeys = new Set();
 let publicLifecycleByIdea = new Map();
 
 const PROJECTED_TEXT_EXTENSIONS = new Set(['.html', '.json', '.md', '.txt', '.xml', '.csv']);
@@ -132,7 +133,7 @@ function projectIdeasForPublic(src, dest) {
     const result = { ...idea };
     const lifecycle = deriveLifecycleForPublic(idea, lifecycleReceipts, {
       publicSourceIds, researchRunIds, validationRunIds, researchRunById,
-      validationRunById, claimRelationIds, trustedReviewerIds
+      validationRunById, claimRelationIds, trustedReviewerIds, rankingMethodKeys
     });
     publicLifecycleByIdea.set(idea.id, lifecycle);
     result.scoreMaturity = 'legacy_unverified';
@@ -319,6 +320,8 @@ function build() {
   claimRelationIds = new Set((claimRelations.relations || []).map(relation => relation.relationId));
   const reviewerAuthorities = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'reviewer-authorities.json'), 'utf8'));
   trustedReviewerIds = new Set((reviewerAuthorities.authorities || []).filter(item => item.active === true).map(item => `${item.id}:${item.role}`));
+  const rankingMethods = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ranking-method-registry.json'), 'utf8'));
+  rankingMethodKeys = new Set((rankingMethods.methods || []).filter(item => item.active === true).map(item => `${item.methodVersion}:${item.scoreScaleVersion}`));
   internalSourceIds = new Set(
     allSources.filter(source => source.visibility !== 'PUBLIC').map(source => source.id)
   );

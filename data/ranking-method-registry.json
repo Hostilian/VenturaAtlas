@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0.0",
+  "methods": [
+    {
+      "methodVersion": "weighted-composite-v3-explicit-scale",
+      "scoreScaleVersion": "va-score-scales-v1",
+      "active": true,
+      "eligibilityContract": "receipt-earned-research-v1"
+    }
+  ]
+}

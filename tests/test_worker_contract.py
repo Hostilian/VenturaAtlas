@@ -2,6 +2,7 @@ import importlib.util
 import os
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -70,6 +71,33 @@ class WorkerContractTests(unittest.TestCase):
             control_plane.TASK_LOCK.release()
         self.assertEqual(raised.exception.status_code, 409)
 
+    def test_control_plane_readiness_fails_while_in_process_writer_is_busy(self):
+        with mock.patch.dict(os.environ, {
+            "ENVIRONMENT": "production", "WORKER_AUTH_TOKEN": "configured-token",
+        }, clear=False), mock.patch.object(control_plane.shutil, "which", return_value="node"):
+            control_plane.TASK_LOCK.acquire()
+            try:
+                with self.assertRaises(HTTPException) as raised:
+                    control_plane.readiness_check()
+            finally:
+                control_plane.TASK_LOCK.release()
+        self.assertEqual(raised.exception.status_code, 503)
+
+    def test_readiness_fails_while_cross_process_writer_lock_is_busy(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            lock_path = os.path.join(temp_dir, "repository-writer.lock")
+            env = {"ENVIRONMENT": "production", "WORKER_AUTH_TOKEN": "configured-token"}
+            with control_plane.process_file_lock(lock_path, timeout_seconds=0), \
+                 mock.patch.dict(os.environ, env, clear=False), \
+                 mock.patch.object(control_plane, "WRITER_LOCK_PATH", lock_path), \
+                 mock.patch.object(worker, "WRITER_LOCK_PATH", lock_path), \
+                 mock.patch.object(control_plane.shutil, "which", return_value="node"), \
+                 mock.patch.object(worker.shutil, "which", return_value="node"):
+                with self.assertRaises(HTTPException) as raised:
+                    control_plane.readiness_check()
+                self.assertIn("repository writer is busy", worker.readiness_failures())
+        self.assertEqual(raised.exception.status_code, 503)
+
     def test_worker_readiness_is_not_liveness(self):
         with mock.patch.dict(os.environ, {
             "ENVIRONMENT": "production", "WORKER_AUTH_TOKEN": "placeholder",
@@ -82,6 +110,13 @@ class WorkerContractTests(unittest.TestCase):
         for placeholder in worker.PLACEHOLDER_TOKENS:
             self.assertFalse(worker.authentication_valid(placeholder, placeholder, False))
         self.assertTrue(worker.authentication_valid("configured-token", "configured-token", False))
+
+    def test_worker_output_redactor_removes_common_secret_forms(self):
+        raw = "Authorization: Bearer secretvalue sk-abcdefghijklmnopqrstuv ghp_abcdefghijklmnopqrstuvwxyz"
+        cleaned = worker.redact_secrets(raw)
+        self.assertNotIn("secretvalue", cleaned)
+        self.assertNotIn("abcdefghijklmnopqrstuv", cleaned)
+        self.assertNotIn("abcdefghijklmnopqrstuvwxyz", cleaned)
 
     def test_discovery_import_wrapper_propagates_child_failure(self):
         failed = subprocess.CompletedProcess([], 7, stdout="", stderr="boom")

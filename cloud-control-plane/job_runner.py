@@ -137,7 +137,7 @@ def private_staging_blob():
     return client.bucket(bucket_name).blob(PRIVATE_STAGING_OBJECT)
 
 
-def hydrate_private_staging() -> int | None:
+def hydrate_private_staging() -> dict | None:
     """Restore the private queue without ever treating a public Git branch as storage."""
     blob = private_staging_blob()
     destination = os.path.join(BASE_DIR, "data", "idea-staging-queue.json")
@@ -168,10 +168,10 @@ def hydrate_private_staging() -> int | None:
     with open(temporary, "wb") as handle:
         handle.write((json.dumps(parsed, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
     os.replace(temporary, destination)
-    return blob.generation
+    return {"generation": blob.generation, "queueDigest": expected_digest}
 
 
-def persist_private_staging(expected_generation: int | None) -> dict:
+def persist_private_staging(checkpoint_state: dict | int | None) -> dict:
     """CAS-write the queue to a private bucket before any repository publication step."""
     blob = private_staging_blob()
     source = os.path.join(BASE_DIR, "data", "idea-staging-queue.json")
@@ -186,6 +186,15 @@ def persist_private_staging(expected_generation: int | None) -> dict:
     payload = (json.dumps(envelope, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
     if len(payload) > MAX_STAGING_BYTES:
         raise RuntimeError("generated staging checkpoint exceeds size limit")
+    if isinstance(checkpoint_state, dict) and checkpoint_state.get("queueDigest") == queue_digest:
+        return {
+            "bucket": blob.bucket.name,
+            "object": blob.name,
+            "generation": checkpoint_state.get("generation"),
+            "records": len(parsed),
+            "status": "unchanged",
+        }
+    expected_generation = checkpoint_state.get("generation") if isinstance(checkpoint_state, dict) else checkpoint_state
     precondition = expected_generation if expected_generation is not None else 0
     blob.upload_from_string(
         payload,
@@ -198,6 +207,7 @@ def persist_private_staging(expected_generation: int | None) -> dict:
         "object": blob.name,
         "generation": blob.generation,
         "records": len(parsed if isinstance(parsed, list) else parsed.get("queue", [])),
+        "status": "updated",
     }
 
 

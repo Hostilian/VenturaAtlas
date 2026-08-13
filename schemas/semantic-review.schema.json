@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["schemaVersion", "reviews"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "reviews": { "type": "array", "items": { "$ref": "#/definitions/review" } }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "review": {
+      "type": "object",
+      "required": ["semanticReviewId", "candidateId", "candidateDigest", "corpusRevision", "nearestIdeaIds", "decision", "reviewer", "reviewedAt"],
+      "properties": {
+        "semanticReviewId": { "type": "string", "pattern": "^semantic-[a-z0-9-]+$" },
+        "candidateId": { "type": "string", "minLength": 3 },
+        "candidateDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "corpusRevision": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "nearestIdeaIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^idea-[0-9]{3}$" } },
+        "decision": { "enum": ["DISTINCT", "DUPLICATE", "FEATURE_OF_EXISTING", "UNRESOLVED"] },
+        "reviewer": { "type": "object", "required": ["id", "role"], "properties": { "id": { "type": "string" }, "role": { "enum": ["repository-owner", "human-reviewer", "integration-release-agent"] } }, "additionalProperties": false },
+        "reviewedAt": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

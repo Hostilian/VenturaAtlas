@@ -48,10 +48,11 @@ try {
     Write-StartupLog "[WARN] Unable to inspect Git status: $_"
 }
 
-# 3. Perform provider health check
+# 3. Run deterministic provider contract checks (not a live-provider health claim)
 try {
-    $providerCheck = python scripts/test_providers_mock.py 2>&1
-    Write-StartupLog "[OK] Provider routing & fallback engine verified."
+    $providerCheck = & python scripts/test_providers_mock.py 2>&1
+    if ($LASTEXITCODE -ne 0) { throw "provider contract checks exited $LASTEXITCODE" }
+    Write-StartupLog "[OK] Mock provider routing contract verified (live availability not assessed)."
 } catch {
     Write-StartupLog "[ERROR] Provider health check failed: $_"
 }
@@ -64,14 +65,16 @@ if (Test-Path $stateFile) {
     Write-StartupLog "[WARN] Agent state file missing. Will be initialized on daemon run."
 }
 
-# 5. Launch background orchestrator bounded pass
+# 5. Launch the actual bounded orchestrator and propagate native exit failure
 Write-StartupLog "[INFO] Triggering autonomous orchestrator iteration pass..."
 try {
-    $orchOutput = python scripts/va_orchestrator.py --bounded 2>&1
+    $orchOutput = & python scripts/va-massive-orchestrator.py --once 2>&1
+    if ($LASTEXITCODE -ne 0) { throw "bounded orchestrator exited $LASTEXITCODE" }
     Write-StartupLog "[OK] Orchestrator pass finished cleanly."
     Write-StartupLog $orchOutput
 } catch {
     Write-StartupLog "[ERROR] Autonomous orchestrator pass failed: $_"
+    exit 1
 }
 
 Write-StartupLog "Auto-Resume Pass Complete."

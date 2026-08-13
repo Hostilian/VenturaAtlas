@@ -103,12 +103,16 @@ function deriveLifecycleForPublic(idea, receiptDocument, context = {}) {
     (researchReceipt.maturity !== 'R7_DECISION_INTEGRATED' || Boolean(researchReceipt.decisionDelta));
 
   const rankReceipt = receiptById.get(refs.ranking);
+  const rankingMethodKeys = context.rankingMethodKeys || new Set();
   let rankValid = researchValid && basicValid(rankReceipt, 'RANK_ELIGIBILITY', idea, context.now || new Date(), true, context.trustedReviewerIds) &&
     rankReceipt?.digestContract === 'idea-content-v2' && rankReceipt.subjectDigest === ideaContentDigest(idea) &&
     ['RESEARCHED', 'VALIDATION'].includes(rankReceipt?.universe) &&
-    Boolean(rankReceipt?.methodVersion) && Boolean(rankReceipt?.scoreScaleVersion) &&
+    rankingMethodKeys.has(`${rankReceipt?.methodVersion}:${rankReceipt?.scoreScaleVersion}`) &&
     Array.isArray(rankReceipt?.researchRunRefs) && rankReceipt.researchRunRefs.length > 0 &&
-    rankReceipt.researchRunRefs.every(id => researchRunIds.has(id));
+    rankReceipt.researchRunRefs.every(id => {
+      const run = researchRunById.get(id);
+      return researchRunIds.has(id) && run?.ideaIds?.includes(idea.id) && RESEARCH_LEVELS.has(run?.receiptMaturity) && Array.isArray(run?.toolReceipts) && run.toolReceipts.length > 0;
+    });
 
   const validationReceipt = receiptById.get(refs.validation);
   const validationRunById = context.validationRunById || new Map();

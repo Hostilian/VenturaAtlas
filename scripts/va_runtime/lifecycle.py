@@ -21,6 +21,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 RECEIPTS_PATH = os.path.join(ROOT, "data", "lifecycle-receipts.json")
 SOURCES_PATH = os.path.join(ROOT, "data", "sources.json")
 RUNS_PATH = os.path.join(ROOT, "data", "research-runs.json")
+SEMANTIC_REVIEWS_PATH = os.path.join(ROOT, "data", "semantic-reviews.json")
+IDEAS_PATH = os.path.join(ROOT, "data", "ideas.json")
 
 REVIEWER_ROLES = {"repository-owner", "human-reviewer", "integration-release-agent"}
 HIGHER_RESEARCH_MATURITY = {"R4_CLAIM_MAPPED", "R5_ADVERSARIAL", "R6_REVIEWED", "R7_DECISION_INTEGRATED"}
@@ -99,6 +101,15 @@ def candidate_digest(candidate: Dict[str, Any]) -> str:
     return sha256_json(receipt_subject(candidate))
 
 
+def corpus_revision(ideas: List[Dict[str, Any]]) -> str:
+    """Bind semantic review to the exact canonical identity/content set it examined."""
+    return sha256_json([
+        {"id": idea.get("id"), "slug": idea.get("slug"), "name": idea.get("name"),
+         "oneSentenceConcept": idea.get("oneSentenceConcept")}
+        for idea in sorted(ideas, key=lambda item: str(item.get("id", "")))
+    ])
+
+
 def _parse_time(value: str, field: str) -> dt.datetime:
     try:
         parsed = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
@@ -169,6 +180,22 @@ def validate_canonicalization_receipt(candidate: Dict[str, Any], receipt: Dict[s
     duplicate_review = receipt.get("duplicateReview") or {}
     if duplicate_review.get("status") != "APPROVED" or not duplicate_review.get("semanticReviewId"):
         errors.append("semantic duplicate review receipt is missing or not approved")
+    else:
+        try:
+            with open(SEMANTIC_REVIEWS_PATH, "r", encoding="utf-8") as handle:
+                reviews = json.load(handle).get("reviews", [])
+            with open(IDEAS_PATH, "r", encoding="utf-8") as handle:
+                ideas_raw = json.load(handle)
+            ideas = ideas_raw.get("ideas", []) if isinstance(ideas_raw, dict) else ideas_raw
+        except (OSError, ValueError):
+            reviews, ideas = [], []
+        review = next((item for item in reviews if item.get("semanticReviewId") == duplicate_review.get("semanticReviewId")), None)
+        if (not review or review.get("candidateId") != subject_id or
+                review.get("candidateDigest") != candidate_digest(candidate) or
+                review.get("corpusRevision") != corpus_revision(ideas) or
+                review.get("decision") != "DISTINCT" or
+                review.get("reviewer") != receipt.get("reviewer")):
+            errors.append("semantic duplicate review is missing, stale, unbound, or not DISTINCT")
     if receipt.get("lineageVerified") is not True:
         errors.append("lineageVerified must be true")
     return not errors, errors

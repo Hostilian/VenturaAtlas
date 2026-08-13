@@ -18,7 +18,10 @@ from config import PORT, WORKER_AUTH_TOKEN
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, ROOT)
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from va_runtime.process_lock import process_file_lock
+from va_runtime.redaction import redact_secrets
 TASK_LOCK = threading.Lock()
+WRITER_LOCK_PATH = os.path.join(ROOT, ".agent-state", "locks", "repository-writer.lock")
 TASK_TIMEOUT_SECONDS = int(os.environ.get("VA_WORKER_TASK_TIMEOUT_SECONDS", "900"))
 PLACEHOLDER_TOKENS = {"secret-internal-token", "changeme", "placeholder"}
 
@@ -35,6 +38,23 @@ def readiness_failures():
         failures.append("missing executable: node")
     if not os.path.isdir(os.path.join(ROOT, "data")):
         failures.append("repository data directory is unavailable")
+    if TASK_LOCK.locked():
+        failures.append("repository writer is busy")
+    else:
+        try:
+            with process_file_lock(WRITER_LOCK_PATH, timeout_seconds=0):
+                pass
+        except TimeoutError:
+            failures.append("repository writer is busy")
+    data_dir = os.path.join(ROOT, "data")
+    for name in ("ideas.json", "sources.json", "rankings.json"):
+        try:
+            with open(os.path.join(data_dir, name), "r", encoding="utf-8") as handle:
+                json.load(handle)
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"canonical data unavailable: {name}: {type(exc).__name__}")
+    if not os.access(data_dir, os.W_OK):
+        failures.append("repository data directory is not writable")
     return failures
 
 class TaskWorkerHandler(BaseHTTPRequestHandler):
@@ -92,10 +112,15 @@ class TaskWorkerHandler(BaseHTTPRequestHandler):
                     self._send_json(409, {"error": "another repository writer task is active"})
                     return
                 try:
-                    res = subprocess.run(
-                        task_cmd_map[path], capture_output=True, text=True,
-                        cwd=ROOT, timeout=TASK_TIMEOUT_SECONDS
-                    )
+                    try:
+                        with process_file_lock(WRITER_LOCK_PATH, timeout_seconds=0):
+                            res = subprocess.run(
+                                task_cmd_map[path], capture_output=True, text=True,
+                                cwd=ROOT, timeout=TASK_TIMEOUT_SECONDS
+                            )
+                    except TimeoutError:
+                        self._send_json(409, {"error": "another repository writer process is active"})
+                        return
                 finally:
                     TASK_LOCK.release()
                 end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -107,7 +132,7 @@ class TaskWorkerHandler(BaseHTTPRequestHandler):
                     "exitCode": res.returncode,
                     "startedAt": start_time,
                     "endedAt": end_time,
-                    "outputTail": (res.stdout[-300:] if res.stdout else res.stderr[-300:])
+                    "outputTail": redact_secrets(res.stdout[-300:] if res.stdout else res.stderr[-300:])
                 })
             except subprocess.TimeoutExpired:
                 end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()

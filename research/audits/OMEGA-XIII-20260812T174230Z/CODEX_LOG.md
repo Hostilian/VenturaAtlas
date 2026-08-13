@@ -32,3 +32,35 @@ Mission active and incomplete. No external research quota, buyer evidence, WTP, 
 - Added separate strict PhaseShift, validation-funnel, and research-preregistration contracts. ShockGraph ecosystem topology is not treated as enforcement topology, and market phase is not inferred from ecosystem stage or dates.
 - Added eight adversarial PhaseShift/funnel tests plus three preregistration tests. Empty production collections remain truthful until prospective evidence is gathered.
 - Independent audits remain authoritative residual inputs; no completion, deployment, customer validation, WTP, or external execution is claimed.
+
+## 2026-08-13T12:24:00Z — prospective evidence and authority closure
+
+- Locked five immutable preregistrations before browsing: CRA reporting, repair, France e-invoicing, CATCH imports, and EHDS secondary use.
+- Added nine official/primary source records (s184–s192). Results include: CRA SRP has no API at launch; the official repair platform directly absorbs generic discovery; France reports nearly 100 accredited private invoice platforms; CATCH is already compulsory; EHDS commercial application remains downstream of 2027/2029 milestones.
+- Preserved the conflict between the 2023 Customs Data Hub proposal timeline (2032/2038) and current Commission reform page (2031/2034) as OPEN instead of applying newest-wins.
+- Structured PhaseShift truth now contains 5 markets, 2 enforcement events, 1 intermediary assessment, 8 milestones, 3 milestone edges, 1 source conflict, and 1 UNKNOWN counterparty deadlock. No real-world validation or WTP evidence was found.
+- Source-quality suite passed 93 Node and 58 Python tests, drift, consistency, constitution, and privacy checks. Public build produced 5,091 files and passed its secret/private-path scanner.
+- During that suite an external writer committed the work as `4262cc3` with message `l`. This agent did not create or rewrite that commit; it was preserved as user/external state. `origin/main` remains `476a414`.
+- Added candidate/corpus-bound semantic-review registry and registered ranking method/scale authority. Invented review IDs, invented method/scale pairs, unrelated runs, and immature runs now fail closed in focused tests.
+- Bounded orchestrator now emits `SUCCEEDED_USEFUL` versus `SUCCEEDED_NO_OP` and skips migration/rank/generate/quality descendants after semantically empty discovery.
+
+## 2026-08-13T12:36:00Z â€” runtime, cloud, and crash-recovery closure
+
+- Consolidated real provider requests onto scheduler-owned KeyState records. Behavioral tests prove a 401 is attempted once then disabled, a 429 key is excluded until cooldown, and a shared Anthropic credential is disabled across both provider aliases.
+- Split worker liveness from honest readiness under contention: both services now return not-ready while either their in-process lock or the repository writer lock is held, and they validate required canonical JSON plus data-directory writability.
+- Added one shared worker redactor for returned output tails. Common bearer, OpenAI-style, and GitHub token shapes no longer survive the response boundary.
+- Made the bounded runtime a monotonic hard deadline. Each stage receives only its remaining budget, an already-exhausted deadline invokes no child, and timed-out children are terminated as process trees.
+- Kept cloud diff closure HEAD-wide for staged deletions and made private queue persistence idempotent. An unchanged queue emits `unchanged` without a GCS upload; changed queues retain generation-match CAS.
+- Added a durable publisher transaction journal. PREPARED backups are fsynced before canonical/receipt replacement, an interrupted set is restored on the next invocation, and COMMITTED journals are cleaned. The split-authority crash fixture passes.
+- Focused runtime/worker/provider suite passed 29 tests; cloud suite passed 10; publisher adversarial suite passed 8. Full source-quality and public projection gates follow.
+
+## 2026-08-13T12:50:00Z â€” commercial disconfirmation and rail signal
+
+- Screened five meaningful query families and retained six new sources (s193â€“s198): two current French tax-authority implementation sources, CATCH contingency templates, the EHDS public-platform boundary, one stakeholder repair counterevidence source, and ERA's current Telematics TSI implementation reference.
+- France e-invoicing was reassessed downward: regulated transport belongs to accredited platforms, while published formats, lifecycle statuses, APIs, XSD, Swagger, and nearly one hundred accredited providers commoditize generic readiness mapping.
+- CATCH continues narrowly, but official outage templates remove a generic fallback wedge. A static preflight thesis still lacks a primary rejection-code corpus and blocked-shipment frequency.
+- EHDS remains WAIT_FOR_TRIGGER because the public HealthData@EU platform explicitly absorbs catalogue search/filtering and access-request submission. Any private thesis must prove study-specific feasibility value beyond that primitive.
+- Repair remains WAIT_FOR_TRIGGER. Stakeholder evidence identifies incomplete national implementation, parts pricing, part pairing, and scope gaps; this is counterevidence/context, not buyer demand, and is classified COMMUNITY/non-evidence-eligible.
+- Rail telematics is now mapped as P3 MIGRATION without generating a new candidate. No concrete buyer, failed workflow, data-access proof, or WTP evidence was collected.
+- Validation-funnel events remain zero; no customer interview, design partner, paid pilot, WTP, budget, or transactional validation is claimed.
+- First evidence-expanded quality run failed only on documentation count drift (192 versus 198 sources). The repository generator repaired the three summaries, and the rerun passed 93 Node and 72 Python tests, all validators, consistency, drift, constitution, and privacy. Exact public build produced 5,091 files, projected 185 eligible public sources, and passed scanning.

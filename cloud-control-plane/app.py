@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import datetime
 import subprocess
 import shutil
@@ -11,9 +12,13 @@ from auth import verify_worker_auth
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from va_runtime.process_lock import process_file_lock
+from va_runtime.redaction import redact_secrets
 
 app = FastAPI(title="VentureAtlas Cloud Control Plane", version="2.4.0")
 TASK_LOCK = threading.Lock()
+WRITER_LOCK_PATH = os.path.join(ROOT, ".agent-state", "locks", "repository-writer.lock")
 TASK_TIMEOUT_SECONDS = int(os.environ.get("VA_WORKER_TASK_TIMEOUT_SECONDS", "900"))
 
 class TaskResponse(BaseModel):
@@ -49,6 +54,24 @@ def readiness_check():
         script = command[1] if len(command) > 1 and os.path.isabs(command[1]) else None
         if script and not os.path.exists(script):
             failures.append(f"missing task script: {script}")
+    if TASK_LOCK.locked():
+        failures.append("repository writer is busy")
+    else:
+        try:
+            with process_file_lock(WRITER_LOCK_PATH, timeout_seconds=0):
+                pass
+        except TimeoutError:
+            failures.append("repository writer is busy")
+    data_dir = os.path.join(ROOT, "data")
+    for name in ("ideas.json", "sources.json", "rankings.json"):
+        path = os.path.join(data_dir, name)
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                json.load(handle)
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"canonical data unavailable: {name}: {type(exc).__name__}")
+    if not os.access(data_dir, os.W_OK):
+        failures.append("repository data directory is not writable")
     if failures:
         raise HTTPException(status_code=503, detail={"status": "not_ready", "failures": failures})
     return {"status": "ready", "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()}
@@ -74,7 +97,11 @@ def execute_task(task_name: str):
     if not TASK_LOCK.acquire(blocking=False):
         raise HTTPException(status_code=409, detail="another repository writer task is active")
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT, timeout=TASK_TIMEOUT_SECONDS)
+        try:
+            with process_file_lock(WRITER_LOCK_PATH, timeout_seconds=0):
+                res = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT, timeout=TASK_TIMEOUT_SECONDS)
+        except TimeoutError:
+            raise HTTPException(status_code=409, detail="another repository writer process is active")
     except subprocess.TimeoutExpired:
         raise HTTPException(status_code=504, detail={"runId": run_id, "task": task_name, "status": "failed", "reason": "timeout"})
     finally:
@@ -82,7 +109,7 @@ def execute_task(task_name: str):
     end_time = datetime.datetime.now(datetime.timezone.utc).isoformat()
 
     status = "succeeded" if res.returncode == 0 else "failed"
-    tail = res.stdout[-300:] if res.stdout else (res.stderr[-300:] if res.stderr else "")
+    tail = redact_secrets(res.stdout[-300:] if res.stdout else (res.stderr[-300:] if res.stderr else ""))
 
     if res.returncode != 0:
         raise HTTPException(status_code=500, detail={

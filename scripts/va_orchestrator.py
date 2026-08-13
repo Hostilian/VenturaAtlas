@@ -52,70 +52,42 @@ OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
 
-from va_runtime.provider_router import is_placeholder_key
+from va_runtime.provider_router import (
+    NoEligibleProviderError,
+    get_provider_scheduler,
+)
 
-# Round-robin key pool parser for OpenRouter, Anthropic, Active API, DeepSeek, NVIDIA NIM, and Cohere
-_raw_openrouter_keys = [k.strip() for k in os.environ.get('OPENROUTER_API_KEYS', os.environ.get('OPENROUTER_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
-_raw_anthropic_keys  = [k.strip() for k in os.environ.get('ANTHROPIC_API_KEYS', os.environ.get('ANTHROPIC_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
-_raw_active_keys     = [k.strip() for k in os.environ.get('ACTIVE_API_KEYS', os.environ.get('ACTIVE_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
-_raw_deepseek_keys   = [k.strip() for k in os.environ.get('DEEPSEEK_API_KEYS', os.environ.get('DEEPSEEK_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
-_raw_nvidia_keys     = [k.strip() for k in os.environ.get('NVIDIA_NIM_API_KEYS', os.environ.get('NVIDIA_NIM_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
-_raw_cohere_keys     = [k.strip() for k in os.environ.get('COHERE_API_KEYS', os.environ.get('COHERE_API_KEY', '')).split(',') if k.strip() and not is_placeholder_key(k.strip())]
+def _eligible_key_count(provider_id: str) -> int:
+    """Return call-path eligible keys, not merely configured keys."""
+    scheduler = get_provider_scheduler()
+    now = time.time()
+    return sum(
+        1 for key_state in scheduler.key_pools.get(provider_id, [])
+        if not key_state.disabled and now >= key_state.cooldown_until
+    )
 
-_openrouter_key_idx = 0
-_anthropic_key_idx  = 0
-_active_key_idx     = 0
-_deepseek_key_idx   = 0
-_nvidia_key_idx     = 0
-_cohere_key_idx     = 0
 
-def _get_next_openrouter_key() -> str:
-    global _openrouter_key_idx
-    if not _raw_openrouter_keys:
-        return ''
-    key = _raw_openrouter_keys[_openrouter_key_idx % len(_raw_openrouter_keys)]
-    _openrouter_key_idx += 1
-    return key
+def _get_next_provider_key(provider_id: str):
+    key_state = get_provider_scheduler().get_next_key(provider_id)
+    if key_state is None:
+        raise ValueError(f"No eligible API key available for {provider_id}")
+    return key_state
 
-def _get_next_anthropic_key() -> str:
-    global _anthropic_key_idx
-    if not _raw_anthropic_keys:
-        return ''
-    key = _raw_anthropic_keys[_anthropic_key_idx % len(_raw_anthropic_keys)]
-    _anthropic_key_idx += 1
-    return key
 
-def _get_next_active_key() -> str:
-    global _active_key_idx
-    if not _raw_active_keys:
-        return ''
-    key = _raw_active_keys[_active_key_idx % len(_raw_active_keys)]
-    _active_key_idx += 1
-    return key
-
-def _get_next_deepseek_key() -> str:
-    global _deepseek_key_idx
-    if not _raw_deepseek_keys:
-        return ''
-    key = _raw_deepseek_keys[_deepseek_key_idx % len(_raw_deepseek_keys)]
-    _deepseek_key_idx += 1
-    return key
-
-def _get_next_nvidia_key() -> str:
-    global _nvidia_key_idx
-    if not _raw_nvidia_keys:
-        return ''
-    key = _raw_nvidia_keys[_nvidia_key_idx % len(_raw_nvidia_keys)]
-    _nvidia_key_idx += 1
-    return key
-
-def _get_next_cohere_key() -> str:
-    global _cohere_key_idx
-    if not _raw_cohere_keys:
-        return ''
-    key = _raw_cohere_keys[_cohere_key_idx % len(_raw_cohere_keys)]
-    _cohere_key_idx += 1
-    return key
+def _handle_key_http_failure(key_state, error: Exception) -> None:
+    """Update the exact key used when the provider reports auth/rate failures."""
+    if not isinstance(error, urllib.error.HTTPError):
+        return
+    scheduler = get_provider_scheduler()
+    if error.code in (401, 403):
+        scheduler.handle_auth_invalid(key_state)
+    elif error.code == 429:
+        retry_after = 60
+        try:
+            retry_after = int(error.headers.get("Retry-After", retry_after))
+        except (AttributeError, TypeError, ValueError):
+            pass
+        scheduler.handle_rate_limit(key_state, retry_after)
 
 OMNIROUTE_URL        = os.environ.get('OMNIROUTE_BASE_URL', 'https://openrouter.ai/api/v1')
 OMNIROUTE_MODEL      = os.environ.get('OMNIROUTE_MODEL', 'openrouter/free')
@@ -268,14 +240,15 @@ def _http_post(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
 
 # ── Tier 0: NVIDIA NIM ─────────────────────────────────────────────────────────
 def _call_nvidia_nim(prompt: str) -> str:
-    if not _raw_nvidia_keys:
+    attempts = _eligible_key_count("nvidia-nim")
+    if not attempts:
         raise ValueError("No valid NVIDIA NIM API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_nvidia_keys)):
-        key = _get_next_nvidia_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("nvidia-nim")
         try:
             url = f"{NVIDIA_NIM_URL.rstrip('/')}/chat/completions"
-            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key_state.key}"}
             body = {
                 "model": NVIDIA_NIM_MDL,
                 "messages": [
@@ -288,6 +261,7 @@ def _call_nvidia_nim(prompt: str) -> str:
             result = _http_post(url, headers, body, timeout=60)
             return result["choices"][0]["message"]["content"].strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"NVIDIA NIM key call failed: {e}")
     raise last_err or ValueError("All NVIDIA NIM API keys in pool failed")
@@ -295,18 +269,20 @@ def _call_nvidia_nim(prompt: str) -> str:
 
 # ── Tier 0.5: Cohere API ───────────────────────────────────────────────────────
 def _call_cohere_api(prompt: str) -> str:
-    if not _raw_cohere_keys:
+    attempts = _eligible_key_count("cohere-api")
+    if not attempts:
         raise ValueError("No valid Cohere API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_cohere_keys)):
-        key = _get_next_cohere_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("cohere-api")
         try:
             url = f"{COHERE_URL.rstrip('/')}/chat"
-            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key_state.key}"}
             body = {"message": prompt}
             result = _http_post(url, headers, body, timeout=60)
             return result.get("text", "").strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"Cohere API key call failed: {e}")
     raise last_err or ValueError("All Cohere API keys in pool failed")
@@ -324,18 +300,19 @@ def _call_hermes(prompt: str, model: str = None) -> str:
 
 # ── Tier 2: OmniRoute → OpenRouter ────────────────────────────────────────────
 def _call_omniRoute(prompt: str) -> str:
-    if not _raw_openrouter_keys:
+    attempts = _eligible_key_count("omniRoute")
+    if not attempts:
         raise ValueError("No valid OpenRouter API key configured in key pool")
     last_err = None
     endpoints = [OMNIROUTE_URL, "https://openrouter.ai/api/v1"]
     for base_url in endpoints:
-        for _ in range(len(_raw_openrouter_keys)):
-            key = _get_next_openrouter_key()
+        for _ in range(attempts):
+            key_state = _get_next_provider_key("omniRoute")
             try:
                 url = f"{base_url.rstrip('/')}/chat/completions"
                 headers = {
                     "Content-Type": "application/json",
-                    "Authorization": f"Bearer {key}",
+                    "Authorization": f"Bearer {key_state.key}",
                     "HTTP-Referer": "https://venture-atlas-os.github.io",
                     "X-Title": "Venture Atlas OS",
                 }
@@ -351,6 +328,7 @@ def _call_omniRoute(prompt: str) -> str:
                 result = _http_post(url, headers, body, timeout=60)
                 return result["choices"][0]["message"]["content"].strip()
             except Exception as e:
+                _handle_key_http_failure(key_state, e)
                 last_err = e
                 log_debug(f"OpenRouter key call failed on {base_url}: {e}")
     raise last_err or ValueError("All OpenRouter API keys in pool failed")
@@ -358,16 +336,17 @@ def _call_omniRoute(prompt: str) -> str:
 
 # ── Tier 3: FCC Claude (Anthropic Haiku) ──────────────────────────────────────
 def _call_fcc_claude(prompt: str) -> str:
-    if not _raw_anthropic_keys:
+    attempts = _eligible_key_count("fcc-claude")
+    if not attempts:
         raise ValueError("No valid Anthropic API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_anthropic_keys)):
-        key = _get_next_anthropic_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("fcc-claude")
         try:
             url = "https://api.anthropic.com/v1/messages"
             headers = {
                 "Content-Type": "application/json",
-                "x-api-key": key,
+                "x-api-key": key_state.key,
                 "anthropic-version": "2023-06-01",
             }
             body = {
@@ -379,6 +358,7 @@ def _call_fcc_claude(prompt: str) -> str:
             result = _http_post(url, headers, body, timeout=60)
             return result["content"][0]["text"].strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"Anthropic Haiku key call failed, trying next key: {e}")
     raise last_err or ValueError("All Anthropic API keys in pool failed")
@@ -516,16 +496,17 @@ def _call_own_orchestrator(prompt: str, domain_hint: dict = None) -> str:
 
 # ── Tier 5: Anthropic Full ────────────────────────────────────────────────────
 def _call_anthropic_full(prompt: str) -> str:
-    if not _raw_anthropic_keys:
+    attempts = _eligible_key_count("anthropic-full")
+    if not attempts:
         raise ValueError("No valid Anthropic API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_anthropic_keys)):
-        key = _get_next_anthropic_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("anthropic-full")
         try:
             url = "https://api.anthropic.com/v1/messages"
             headers = {
                 "Content-Type": "application/json",
-                "x-api-key": key,
+                "x-api-key": key_state.key,
                 "anthropic-version": "2023-06-01",
             }
             body = {
@@ -537,6 +518,7 @@ def _call_anthropic_full(prompt: str) -> str:
             result = _http_post(url, headers, body, timeout=90)
             return result["content"][0]["text"].strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"Anthropic Full key call failed, trying next key: {e}")
     raise last_err or ValueError("All Anthropic API keys in pool failed")
@@ -544,16 +526,17 @@ def _call_anthropic_full(prompt: str) -> str:
 
 # ── Tier 6: Active API (PekPik / Gemini proxy) ────────────────────────────────
 def _call_active_api(prompt: str) -> str:
-    if not _raw_active_keys:
+    attempts = _eligible_key_count("active-api")
+    if not attempts:
         raise ValueError("No valid Active API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_active_keys)):
-        key = _get_next_active_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("active-api")
         try:
             url = f"{ACTIVE_API_BASE_URL.rstrip('/')}/chat/completions"
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {key}",
+                "Authorization": f"Bearer {key_state.key}",
             }
             body = {
                 "model": ACTIVE_API_MDL,
@@ -567,6 +550,7 @@ def _call_active_api(prompt: str) -> str:
             result = _http_post(url, headers, body, timeout=60)
             return result["choices"][0]["message"]["content"].strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"Active API key call failed, trying next key: {e}")
     raise last_err or ValueError("All Active API keys in pool failed")
@@ -574,16 +558,17 @@ def _call_active_api(prompt: str) -> str:
 
 # ── Tier 7: DeepSeek API ──────────────────────────────────────────────────────
 def _call_deepseek_api(prompt: str) -> str:
-    if not _raw_deepseek_keys:
+    attempts = _eligible_key_count("deepseek-api")
+    if not attempts:
         raise ValueError("No valid DeepSeek API key configured in key pool")
     last_err = None
-    for _ in range(len(_raw_deepseek_keys)):
-        key = _get_next_deepseek_key()
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("deepseek-api")
         try:
             url = f"{DEEPSEEK_BASE_URL.rstrip('/')}/chat/completions"
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {key}",
+                "Authorization": f"Bearer {key_state.key}",
             }
             body = {
                 "model": DEEPSEEK_MDL,
@@ -597,6 +582,7 @@ def _call_deepseek_api(prompt: str) -> str:
             result = _http_post(url, headers, body, timeout=60)
             return result["choices"][0]["message"]["content"].strip()
         except Exception as e:
+            _handle_key_http_failure(key_state, e)
             last_err = e
             log_debug(f"DeepSeek API key call failed, trying next key: {e}")
     raise last_err or ValueError("All DeepSeek API keys in pool failed")
@@ -607,9 +593,9 @@ def health_check() -> dict:
     """Check which providers are available. Returns dict of provider → bool."""
     results = {}
     # NVIDIA NIM
-    results["nvidia-nim"] = len(_raw_nvidia_keys) > 0
+    results["nvidia-nim"] = _eligible_key_count("nvidia-nim") > 0
     # Cohere API
-    results["cohere-api"] = len(_raw_cohere_keys) > 0
+    results["cohere-api"] = _eligible_key_count("cohere-api") > 0
     # Hermes/Ollama
     try:
         url = f"{OLLAMA_BASE_URL}/api/tags"
@@ -621,33 +607,30 @@ def health_check() -> dict:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
     # OmniRoute
-    results["omniRoute"] = len(_raw_openrouter_keys) > 0
+    results["omniRoute"] = _eligible_key_count("omniRoute") > 0
     # FCC Claude
-    results["fcc-claude"] = len(_raw_anthropic_keys) > 0
+    results["fcc-claude"] = _eligible_key_count("fcc-claude") > 0
     # Active API
-    results["active-api"] = len(_raw_active_keys) > 0
+    results["active-api"] = _eligible_key_count("active-api") > 0
     # DeepSeek API
-    results["deepseek-api"] = len(_raw_deepseek_keys) > 0
+    results["deepseek-api"] = _eligible_key_count("deepseek-api") > 0
     # Own Orch always available
     results["own-orch"] = True
     # Anthropic Full
-    results["anthropic-full"] = len(_raw_anthropic_keys) > 0
+    results["anthropic-full"] = _eligible_key_count("anthropic-full") > 0
     log_info("Provider health check complete", results=results,
-             nvidia_keys=len(_raw_nvidia_keys),
-             cohere_keys=len(_raw_cohere_keys),
-             openrouter_keys=len(_raw_openrouter_keys),
-             anthropic_keys=len(_raw_anthropic_keys),
-             active_keys=len(_raw_active_keys),
-             deepseek_keys=len(_raw_deepseek_keys))
+             nvidia_eligible_keys=_eligible_key_count("nvidia-nim"),
+             cohere_eligible_keys=_eligible_key_count("cohere-api"),
+             openrouter_eligible_keys=_eligible_key_count("omniRoute"),
+             fcc_eligible_keys=_eligible_key_count("fcc-claude"),
+             anthropic_full_eligible_keys=_eligible_key_count("anthropic-full"),
+             active_eligible_keys=_eligible_key_count("active-api"),
+             deepseek_eligible_keys=_eligible_key_count("deepseek-api"))
     return results
 
 
 # ── Core Orchestration Call ────────────────────────────────────────────────────
-from va_runtime.provider_router import get_provider_scheduler
-
 DEFAULT_PROVIDER_ORDER = ["nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
-
-from va_runtime.provider_router import get_provider_scheduler, NoEligibleProviderError
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 

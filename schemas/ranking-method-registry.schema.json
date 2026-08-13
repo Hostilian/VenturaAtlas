@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["schemaVersion", "methods"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["methodVersion", "scoreScaleVersion", "active", "eligibilityContract"],
+        "properties": {
+          "methodVersion": { "type": "string", "minLength": 3 },
+          "scoreScaleVersion": { "type": "string", "minLength": 3 },
+          "active": { "type": "boolean" },
+          "eligibilityContract": { "type": "string", "minLength": 3 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

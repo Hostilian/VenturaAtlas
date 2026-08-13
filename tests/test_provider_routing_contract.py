@@ -4,6 +4,7 @@ import os
 import sys
 import tempfile
 import unittest
+import urllib.error
 from unittest import mock
 
 
@@ -14,6 +15,49 @@ from va_runtime.provider_router import CapabilityProviderScheduler, NoEligiblePr
 
 
 class ProviderRoutingContractTests(unittest.TestCase):
+    def test_http_401_disables_exact_key_and_next_call_excludes_it(self):
+        env = {"NVIDIA_NIM_API_KEYS": "unit-key-invalid-12345,unit-key-valid-67890"}
+        with mock.patch.dict(os.environ, env, clear=False):
+            scheduler = CapabilityProviderScheduler()
+
+        calls = []
+
+        def fake_http(_url, headers, _body, timeout=60):
+            calls.append(headers["Authorization"])
+            if headers["Authorization"].endswith("invalid-12345"):
+                raise urllib.error.HTTPError(_url, 401, "invalid", {}, None)
+            return {"choices": [{"message": {"content": "ok"}}]}
+
+        with mock.patch.object(orchestrator, "get_provider_scheduler", return_value=scheduler), \
+             mock.patch.object(orchestrator, "_http_post", side_effect=fake_http):
+            self.assertEqual(orchestrator._call_nvidia_nim("probe"), "ok")
+            self.assertEqual(orchestrator._call_nvidia_nim("probe again"), "ok")
+
+        self.assertEqual(calls.count("Bearer unit-key-invalid-12345"), 1)
+        self.assertTrue(scheduler.key_pools["nvidia-nim"][0].disabled)
+
+    def test_http_429_cools_exact_key_and_next_call_excludes_it(self):
+        env = {"DEEPSEEK_API_KEYS": "unit-key-rate-limited-12345"}
+        with mock.patch.dict(os.environ, env, clear=False):
+            scheduler = CapabilityProviderScheduler()
+        error = urllib.error.HTTPError("https://example.invalid", 429, "limited", {"Retry-After": "12"}, None)
+
+        with mock.patch.object(orchestrator, "get_provider_scheduler", return_value=scheduler), \
+             mock.patch.object(orchestrator, "_http_post", side_effect=error):
+            with self.assertRaises(urllib.error.HTTPError):
+                orchestrator._call_deepseek_api("probe")
+            with self.assertRaisesRegex(ValueError, "No valid DeepSeek"):
+                orchestrator._call_deepseek_api("probe again")
+
+        self.assertGreater(scheduler.key_pools["deepseek-api"][0].cooldown_until, 0)
+
+    def test_shared_anthropic_key_health_applies_to_both_aliases(self):
+        env = {"ANTHROPIC_API_KEYS": "unit-shared-anthropic-key-12345"}
+        with mock.patch.dict(os.environ, env, clear=False):
+            scheduler = CapabilityProviderScheduler()
+        scheduler.handle_auth_invalid(scheduler.key_pools["fcc-claude"][0])
+        self.assertTrue(scheduler.key_pools["anthropic-full"][0].disabled)
+
     def test_sequential_external_evidence_failure_never_uses_own_orch(self):
         scheduler = mock.Mock()
         scheduler.select_providers_for_task.return_value = ["nvidia-nim"]
