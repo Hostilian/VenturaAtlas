@@ -2305,5 +2305,45 @@
     "startedAt": "2026-08-13T15:58:00Z",
     "endedAt": "2026-08-13T16:06:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-012-20260813-qualification-evidence",
+    "baselineCommit": "89860ef5f957622ca373f5b2bc0555875585dd9d",
+    "questions": [
+      "Do official product passports and positive lists establish use-specific equivalence, residual safety, or final-material conformity?",
+      "Can a neutral startup own wastewater EPR settlement before Member States approve producer responsibility organisations and fee mechanics?",
+      "Does GS1 message conformance leave a scarce end-to-end DSCSA physical and operational exception-testing boundary?"
+    ],
+    "queries": [
+      "Regulation EU 2024/3110 construction declarations and EOTA intended-use assessment",
+      "Regulation EU 2023/1542 battery passport and JRC second-life physical qualification",
+      "Directive EU 2024/3019 wastewater EPR control plane and producer responsibility organisations",
+      "FDA small-dispenser exemption and GS1 DSCSA exception/conformance testing",
+      "EU drinking-water contact positive lists and migration-water testing"
+    ],
+    "sourceCandidates": ["s126", "s141", "s261", "s262", "s263", "s264", "s265", "s266", "s267", "s268", "s269"],
+    "inclusions": ["idea-175", "idea-270", "idea-293", "idea-310", "idea-403"],
+    "exclusions": [],
+    "claimsChanged": [
+      "Construction Product Substitution Matrix waits and narrows to a cited comparison packet because intended-use equivalence and assessment authority remain with responsible professionals and designated bodies.",
+      "Battery Afterlife Exchange waits because role-limited passport data and BMS health indicators do not replace physical qualification, liability allocation, logistics, or two-sided liquidity.",
+      "Wastewater EPR Settlement Rail waits for an implemented national scheme and authorized PRO because the Directive delegates the transactional control plane to Member States.",
+      "RxTrace Chaos Lab waits and narrows to end-to-end physical/data/quarantine reconciliation because GS1 already owns exception patterns and certified EPCIS conformance testing.",
+      "WaterContact Compiler continues narrowly as confidential laboratory intake and evidence-completeness orchestration; positive-list lookup cannot replace migration testing or issue conformity.",
+      "No buyer, WTP, assembly, battery, wastewater payment, DSCSA transaction, material sample, laboratory result, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-175-99aeb730962e",
+      "prereg-idea-270-dc1b389869e9",
+      "prereg-idea-293-40354dd99861",
+      "prereg-idea-310-4581cc551c26",
+      "prereg-idea-403-b808ef901294"
+    ],
+    "ideaIds": ["idea-175", "idea-270", "idea-293", "idea-310", "idea-403"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T16:13:00Z",
+    "endedAt": "2026-08-13T16:17:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]

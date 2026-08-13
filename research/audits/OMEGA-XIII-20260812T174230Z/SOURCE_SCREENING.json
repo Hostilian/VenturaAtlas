@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T16:06:00Z",
+  "observedAt": "2026-08-13T16:17:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -338,6 +338,56 @@
       ],
       "includedSourceRefs": ["s259", "s260"],
       "decisionImpact": "EU batch/facility labels and AHRI analytical purity testing form complementary evidence. ReclaimProof continues only as cross-point chain-of-custody reconciliation anchored to certified lab results; a ledger or mass balance must never claim the physical identity or purity of a cylinder."
+    },
+    {
+      "queryFamilyId": "qf-construction-substitution-authority",
+      "purpose": "Separate accessible product performance declarations from use-specific substitution and conformity authority",
+      "queries": [
+        "Regulation EU 2024/3110 construction digital product passport declaration performance",
+        "EOTA European Technical Assessment intended use installed condition Technical Assessment Body"
+      ],
+      "includedSourceRefs": ["s261", "s262"],
+      "decisionImpact": "Public declarations and future passports absorb performance extraction, while designated assessment bodies and the responsible designer or manufacturer retain intended-use and system authority. The broad equivalence matrix waits; only a cited comparison packet routed for approval remains plausible."
+    },
+    {
+      "queryFamilyId": "qf-battery-second-life-qualification",
+      "purpose": "Test whether battery-passport data is sufficient for second-life valuation, safety, and market matching",
+      "queries": [
+        "Regulation EU 2023/1542 battery passport state of health second life access",
+        "JRC second-life automotive batteries experimental state-of-health tests"
+      ],
+      "includedSourceRefs": ["s141", "s263"],
+      "decisionImpact": "The passport supplies controlled health, history, status, dismantling, and test information, but access is role-bounded and experimental qualification remains necessary. Battery Afterlife Exchange waits for repeatable physical qualification, liability, logistics, and two-sided liquidity rather than assuming passport data creates a market."
+    },
+    {
+      "queryFamilyId": "qf-wastewater-epr-control-plane",
+      "purpose": "Determine whether an independent neutral settlement rail can own mandatory wastewater EPR flows before national schemes are established",
+      "queries": [
+        "Directive EU 2024/3019 urban wastewater extended producer responsibility 80 percent 2028",
+        "producer responsibility organisation approval financial guarantee micropollutant treatment"
+      ],
+      "includedSourceRefs": ["s126", "s264"],
+      "decisionImpact": "The forcing function is real and financially material, but Member States approve PROs and determine national contribution and allocation mechanics. The neutral clearinghouse waits for one implemented country, an authorized PRO, and actual producer/utility transaction data."
+    },
+    {
+      "queryFamilyId": "qf-dscsa-exception-incumbents",
+      "purpose": "Verify the small-dispenser deadline and distinguish message conformance from end-to-end physical and operational exception testing",
+      "queries": [
+        "FDA DSCSA small dispenser exemption November 27 2026",
+        "GS1 DSCSA EPCIS conformance exception handling certified tester"
+      ],
+      "includedSourceRefs": ["s265", "s266", "s267"],
+      "decisionImpact": "The date is valid only for defined small dispensers, and GS1 already owns schemas, exception examples, and certified message conformance testing. RxTrace waits and narrows to authorized physical-package/data/quarantine reconciliation with software vendors or networks, not a $249 generic pharmacy schema test."
+    },
+    {
+      "queryFamilyId": "qf-water-contact-lab-boundary",
+      "purpose": "Test whether official positive lists enable software-only compliance or merely preflight before required migration testing",
+      "queries": [
+        "EU 2024/367 drinking water contact positive lists 31 December 2026",
+        "EU 2024/368 migration water testing ISO IEC 17025 pass fail"
+      ],
+      "includedSourceRefs": ["s268", "s269"],
+      "decisionImpact": "Official positive lists make rule preflight tractable, but final materials require condition-specific test pieces, migration-water analysis, and qualified pass/fail evidence. WaterContact continues only as confidential lab-intake and evidence-completeness orchestration, never an automated certificate."
     }
   ],
   "excluded": [
@@ -444,6 +494,22 @@
     {
       "url": "https://www.epa.gov/section608/checklist-refrigerant-reclaimers-seeking-epa-certification",
       "reason": "The US reclaimer checklist corroborated the lab boundary but did not add a distinct EU control claim beyond Regulation EU 2024/573 and the retained AHRI analytical standard."
+    },
+    {
+      "url": "https://www.nbs.com/",
+      "reason": "The broad specification-platform landing page did not establish a precise current substitution-authority boundary; the final CPR and EOTA assessment authority were retained instead."
+    },
+    {
+      "url": "https://circulareconomy.europa.eu/platform/en/knowledge/overcoming-challenges-second-life-applications-battery-packs-lessons-pilot-cases",
+      "reason": "Useful secondary pilot synthesis, but the Batteries Regulation and JRC experimental assessment established passport access and physical qualification more directly."
+    },
+    {
+      "url": "https://www.fda.gov/drugs/drug-supply-chain-security-act-dscsa/drug-supply-chain-security-act-dscsa-assessment-small-dispensers",
+      "reason": "The assessment page confirmed affordability and integration concerns but added less current deadline and operational detail than the retained FDA exemption page."
+    },
+    {
+      "url": "https://www.umweltbundesamt.de/en/topics/water/drinking-water/distributing-drinking-water/evaluation-criteria-guidelines",
+      "reason": "National transition guidance was relevant but the Union positive-list and final-material testing acts were the narrower authoritative evidence for this tranche."
     }
   ],
   "claimsNotEarned": [
@@ -484,5 +550,10 @@
     ,"authorized treatment facility dismantling record, measured removal time, or exception acceptance"
     ,"synthesis-provider order, customer-verification record, escalation outcome, or current authoritative framework conformance"
     ,"refrigerant batch sample, accredited purity result, cylinder chain of custody, or detected fraud"
+    ,"construction assembly specification, substitution decision, designer approval, or Technical Assessment Body review"
+    ,"used battery pack access, controlled passport fields, physical qualification, liability acceptance, logistics quote, bid, or completed second-life transaction"
+    ,"authorized producer responsibility organisation, national fee rule, producer declaration, utility invoice, dispute, or settled wastewater EPR payment"
+    ,"pharmacy or vendor EPCIS environment, physical package, scanner event, quarantine outcome, trading-partner correction, or paid DSCSA test"
+    ,"confidential drinking-water formulation, laboratory intake, migration-water result, conformity decision, or certificate"
   ]
 }

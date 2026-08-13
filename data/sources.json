@@ -5605,5 +5605,194 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s261",
+    "title": "Regulation EU 2024/3110 on construction products",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/3110/oj",
+    "supports": [
+      "The construction-product declaration of performance and conformity is tied to the product type, intended characteristics, and manufacturer responsibility, with a future interoperable construction digital product passport",
+      "A product passport makes declared performance accessible but does not establish that a substitute is suitable in a specific assembly, installation, or intended use"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-175"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s262",
+    "title": "European Technical Assessment authority and intended-use boundary",
+    "publisher": "European Organisation for Technical Assessment",
+    "url": "https://www.eota.eu/about-eta",
+    "supports": [
+      "Only designated independent Technical Assessment Bodies issue European Technical Assessments for products not fully covered by a harmonised standard",
+      "An assessment is product-, characteristic-, and intended-use-specific and can depend on installed condition and interaction with surrounding components"
+    ],
+    "type": "assessment_authority_documentation",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-175"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s263",
+    "title": "JRC second-life automotive battery sustainability assessment",
+    "publisher": "Publications Office of the European Union / Joint Research Centre",
+    "url": "https://op.europa.eu/en/publication-detail/-/publication/743e967a-b187-11e8-99ee-01aa75ed71a1/language-en",
+    "supports": [
+      "Second-life pathway assessment requires stakeholder information, literature, and experimental tests of battery state of health",
+      "Battery-passport or BMS data is an input to technical qualification and residual valuation rather than a standalone safety or suitability verdict"
+    ],
+    "type": "official_research",
+    "date": "2018",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "medium",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-270"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s264",
+    "title": "Directive EU 2024/3019 on urban wastewater treatment",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024L3019",
+    "supports": [
+      "Member States must establish extended producer responsibility by 31 December 2028 for covered pharmaceutical and cosmetic products and make producers cover at least 80 percent of specified quaternary-treatment and monitoring costs",
+      "Nationally approved producer responsibility organisations require financial and organisational capacity, guarantees, defined coverage, contribution transparency, product data collection and verification, and country-specific implementation"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-293"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s265",
+    "title": "FDA DSCSA waivers and exemptions beyond the stabilization period",
+    "publisher": "U.S. Food and Drug Administration",
+    "url": "https://www.fda.gov/drugs/drug-supply-chain-security-act-dscsa/waivers-and-exemptions-beyond-stabilization-period",
+    "supports": [
+      "The 27 November 2026 exemption applies to defined small dispensers with 25 or fewer qualifying full-time employees and, where applicable, their trading partners",
+      "The exemption exists because data connections, data quality, reliability, cost, resources, and operational integration remain real implementation constraints"
+    ],
+    "type": "official_forcing_function",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-310"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s266",
+    "title": "GS1 US DSCSA implementation and exception guidance",
+    "publisher": "GS1 US",
+    "url": "https://www.gs1us.org/industries-and-insights/by-industry/healthcare/standards-in-use/pharmaceutical/dscsa-implementation-guidelines",
+    "supports": [
+      "GS1 already publishes EPCIS schemas, conformance guidance, and serialized exception-handling examples for DSCSA",
+      "Standard conformance does not prove that a physical package, local scanner, trading-partner connection, quarantine decision, and correction workflow reconcile in production"
+    ],
+    "type": "industry_standard_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-310"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s267",
+    "title": "GS1 US certified Rx EPCIS conformance testing services",
+    "publisher": "GS1 US",
+    "url": "https://www.gs1us.org/services/find-gs1-us-solution-partner/rx-epcis-conformance-tester",
+    "supports": [
+      "GS1 US operates a certification boundary for independent services that test EPCIS messages against its DSCSA implementation guideline",
+      "A generic schema or message conformance tester is directly substituted; any residual drill must test authorized end-to-end physical and operational exceptions beyond message syntax"
+    ],
+    "type": "industry_certification_directory",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-310"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s268",
+    "title": "Commission Implementing Decision EU 2024/367 — drinking-water contact positive lists",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/eli/dec_impl/2024/367/oj",
+    "supports": [
+      "European positive lists establish authorized starting substances, compositions, constituents, technical functions, material categories, concentration limits, and conditions of use from 31 December 2026",
+      "List membership supports formulation preflight but is not final-product migration or conformity evidence"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-403"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s269",
+    "title": "Commission Implementing Decision EU 2024/368 — drinking-water contact material testing",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024D0368",
+    "supports": [
+      "Final materials require risk-based test pieces, migration-water testing under specified time and temperature conditions, analysis, and pass/fail acceptance criteria",
+      "Analytical methods for relevant substances must be validated and documented under ISO/IEC 17025 or an accepted equivalent, so a compiler cannot replace qualified physical testing"
+    ],
+    "type": "official_testing_and_acceptance_method",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-qualification-evidence",
+    "ideaIds": ["idea-403"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]
