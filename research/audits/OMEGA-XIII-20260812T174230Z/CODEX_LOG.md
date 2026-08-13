@@ -89,3 +89,10 @@ Mission active and incomplete. No external research quota, buyer evidence, WTP, 
 - Retained the Commission's adopted CBAM and CSRD/CSDDD simplifications as negative-shock evidence. They demonstrate that announced compliance populations can contract and are not durable reachable-market truth.
 - This was preregistered sequential desk research by the same investigator, not independent blind review. No research receipt, interview, WTP, design partner, funnel event, ranking eligibility, or canonical promotion was minted.
 - Full working-tree quality passed 95 Node and 75 Python tests, strict source/authority/lifecycle/ShockGraph/PhaseShift/funnel validators, consistency, drift, constitution, privacy, a 5,091-file public build, a 197-of-210 public evidence projection, and the artifact secret scanner.
+
+## 2026-08-13T14:24:00Z — exact evidence-commit clone proof
+
+- Committed the second tranche as `6b458043832d152b2d6409d41fbe7cde6fd013f1` and cloned that immutable commit into a new temporary checkout. The private staging queue was absent as intended.
+- The first dependency-install command mistakenly executed in the source repository after the clone command, leaving the clone without `node_modules`; TypeScript then failed only on unresolved installed-package imports. This path error is retained and is not counted as a repository failure or verification pass.
+- Installed 157 lockfile packages in the clone's actual working directory (zero reported vulnerabilities). Correctly rooted source quality passed 95 Node tests (85 pass, 10 explicit staging-absence skips), 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy.
+- In the same clone, `build:verified` regenerated 5,091 public files, projected 197 eligible public sources from 210 total, passed the public secret/private-path scanner, and passed all four PWA tests.

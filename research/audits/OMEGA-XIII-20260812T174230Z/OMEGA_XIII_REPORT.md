@@ -2,7 +2,7 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified implementation HEAD: `6ce8a1d2aac3f5db6f2ba2f8737b10521614c6a4`
+Verified evidence HEAD: `6b458043832d152b2d6409d41fbe7cde6fd013f1`
 
 ## 01 Executive Verdict
 
@@ -259,7 +259,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-The earlier report commit `681aa14` was cloned into a temporary checkout and passed 94 Node plus 75 Python tests and the exact public scanner. The current evidence-expanded working tree passes 95 Node plus 75 Python tests, strict validators, constitution/privacy gates, and a 5,091-file public build projecting 197 eligible public sources. A fresh clone of the final evidence commit is still required before this section can claim final-tree closure.
+Exact evidence commit `6b458043832d152b2d6409d41fbe7cde6fd013f1` was cloned into a new temporary checkout. Private staging was absent. After installing 157 lockfile packages in the clone, source quality passed 95 Node tests (85 pass and 10 explicit private-staging skips), 75 Python tests, all strict validators, consistency, drift, constitution integrity, and privacy. The same clone rebuilt 5,091 public files, projected 197 eligible public sources from 210 total, passed the secret/private-path scanner, and passed four PWA tests. An initial attempt installed dependencies in the source worktree rather than the clone and failed TypeScript module resolution; it is not counted as evidence, and the correctly rooted rerun is the reported pass.
 
 ## 61 Remaining Unknowns
 
