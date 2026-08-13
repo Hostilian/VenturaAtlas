@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T16:37:00Z",
+  "observedAt": "2026-08-13T17:05:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -438,6 +438,56 @@
       ],
       "includedSourceRefs": ["s220", "s275"],
       "decisionImpact": "Visa already binds agent, consumer intent, and payment context in commerce, while IETF drafts are actively specifying technical agent identity and authorization. EntityMandate waits and narrows to enterprise system-of-record translation and jurisdiction-specific legal review; a universal authority graph is not earned."
+    },
+    {
+      "queryFamilyId": "qf-machinery-change-authority",
+      "purpose": "Test whether a code-diff gate can determine substantial modification or must route a machinery change to qualified risk and conformity authority",
+      "queries": [
+        "Regulation EU 2023/1230 physical or digital substantial modification new hazard increased risk",
+        "machinery software safety change manufacturer risk assessment conformity procedure"
+      ],
+      "includedSourceRefs": ["s251"],
+      "decisionImpact": "The Regulation creates a real digital-change boundary but makes the conclusion depend on hazards, risks, and protective measures in the physical machine context. RegDiff waits and narrows to evidence assembly and assessor routing; a CI diff cannot autonomously issue the legal or safety decision."
+    },
+    {
+      "queryFamilyId": "qf-synthesis-screening-continuity",
+      "purpose": "Test whether continuous synthesis-screening assurance remains scarce after free open tools and a moving US policy control plane",
+      "queries": [
+        "IBBIS Common Mechanism sequence screening performance free open source customer screening",
+        "Executive Order 14292 revised nucleic acid synthesis framework verifiable enforcement"
+      ],
+      "includedSourceRefs": ["s256", "s257", "s258"],
+      "decisionImpact": "IBBIS and SecureDNA absorb generic screening and benchmark functions, while Executive Order 14292 made the authoritative federal framework a moving control surface. BioScreen CI waits unless a provider supplies an authorized, safely governed operational corpus and pays for assurance beyond its native and consortium controls."
+    },
+    {
+      "queryFamilyId": "qf-data-act-feed-quality",
+      "purpose": "Separate the Data Act's access and quality duties from an assumed commercial service-level guarantee",
+      "queries": [
+        "Regulation EU 2023/2854 Article 4 same quality without undue delay continuously real time",
+        "Data Act connected product readily available data metadata technical feasibility security dispute"
+      ],
+      "includedSourceRefs": ["s211", "s277"],
+      "decisionImpact": "Article 4 creates a testable same-quality, metadata, timeliness, and where-feasible continuous/real-time boundary, but readily available scope, technical feasibility, security, and dispute processes constrain it. DataRight SLO continues only as authorized feed observability against explicit product and contract expectations, never as an inferred statutory SLA."
+    },
+    {
+      "queryFamilyId": "qf-grid-site-truth-authority",
+      "purpose": "Test whether public hosting-capacity maps can support a bankable grid-ready property market",
+      "queries": [
+        "DOE atlas hosting capacity maps site specific interconnection disclaimer utilities",
+        "FERC large load site control readiness speculative requests interconnection"
+      ],
+      "includedSourceRefs": ["s199", "s278"],
+      "decisionImpact": "Public maps are useful screening primitives but DOE explicitly says they do not answer site-specific interconnection and users must work with utilities. FERC's site-control/readiness work further locates authority with the grid process. PowerPlot waits and narrows to a dated diligence packet; the broad marketplace cannot advertise bankable capacity."
+    },
+    {
+      "queryFamilyId": "qf-platform-work-human-review",
+      "purpose": "Determine the enforceable scope of automated-worker-decision review and whether a generic workforce ledger matches it",
+      "queries": [
+        "Directive EU 2024/2831 human oversight override account termination platform work",
+        "Directive EU 2024/2831 human review explanation substantiated reply two weeks transposition"
+      ],
+      "includedSourceRefs": ["s276"],
+      "decisionImpact": "The Directive creates a concrete explanation, authorized human oversight, review, rectification, and two-week response workflow for digital labour platforms. It does not establish a universal all-employer ledger. WorkerDecision Ledger waits for one platform and Member State implementation, narrowed to workflow evidence that preserves actual human authority and worker rights."
     }
   ],
   "excluded": [
@@ -622,5 +672,10 @@
     ,"data-centre dynamic model, commissioning waveform, protected utility telemetry, acceptance test, or operating permission"
     ,"authorized multi-platform media corpus, watermark-vendor access, production provenance failure rate, or assurance budget"
     ,"enterprise delegation policy, board authority record, agent transaction, revocation outcome, or legal acceptance"
+    ,"machinery change file, hazard analysis, physical risk assessment, assessor decision, or conformity acceptance"
+    ,"authorized synthesis-provider regression corpus, controlled evasion test, screening incident, or assurance budget"
+    ,"connected-product endpoint, authorized user request, feed telemetry, same-quality baseline, dispute, or service-level budget"
+    ,"site-specific utility study, queue position, upgrade estimate, energisation commitment, land-control file, or property transaction"
+    ,"platform-work case file, human-review response, worker or representative participation, national implementation decision, or HR-platform budget"
   ]
 }

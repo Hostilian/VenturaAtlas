@@ -117,8 +117,8 @@
       "observedAt": "2026-08-13T14:11:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
-      "ideaRefs": ["idea-395", "idea-396"],
-      "sourceRefs": ["s199", "s272"]
+      "ideaRefs": ["idea-273", "idea-395", "idea-396"],
+      "sourceRefs": ["s199", "s272", "s278"]
     },
     {
       "marketId": "market-eu-critical-medicine-procurement",
@@ -168,8 +168,8 @@
       "observedAt": "2026-08-13T15:05:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
-      "ideaRefs": ["idea-276"],
-      "sourceRefs": ["s211", "s212"]
+      "ideaRefs": ["idea-276", "idea-362"],
+      "sourceRefs": ["s211", "s212", "s277"]
     },
     {
       "marketId": "market-agentic-commerce-protocols",
@@ -270,7 +270,7 @@
       "observedAt": "2026-08-13T16:06:00Z",
       "dependencyRefs": [],
       "ecosystemRefs": [],
-      "ideaRefs": ["idea-299"],
+      "ideaRefs": ["idea-299", "idea-361"],
       "sourceRefs": ["s91", "s251", "s252"]
     },
     {
@@ -442,6 +442,40 @@
       "ecosystemRefs": [],
       "ideaRefs": ["idea-386"],
       "sourceRefs": ["s273", "s274"]
+    },
+    {
+      "marketId": "market-us-nucleic-acid-screening",
+      "name": "US nucleic-acid synthesis screening and provider assurance",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "MEDIUM",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "current authoritative federal framework and an authorized provider assurance corpus become available",
+      "valueNow": ["POLICY_INTERPRETATION", "READINESS", "CONFORMANCE"],
+      "valueNext": ["CERTIFICATION", "EXCEPTION_HANDLING", "OBSERVABILITY", "AUDIT"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T17:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-393", "idea-397"],
+      "sourceRefs": ["s256", "s257", "s258"]
+    },
+    {
+      "marketId": "market-eu-platform-work-algorithmic-management",
+      "name": "EU digital-labour-platform algorithmic management and human review",
+      "phase": "P2_PREPARATION",
+      "phaseConfidence": "HIGH",
+      "status": "WAIT_FOR_TRIGGER",
+      "waitTrigger": "one Member State transposes Directive EU 2024/2831 and exposes an operational platform-work review workflow",
+      "valueNow": ["POLICY_INTERPRETATION", "READINESS", "MAPPING"],
+      "valueNext": ["INTEGRATION", "EXCEPTION_HANDLING", "AUDIT", "VERTICAL_WORKFLOW"],
+      "informationValue": "HIGH",
+      "currentStartupValue": "WAIT",
+      "observedAt": "2026-08-13T17:05:00Z",
+      "dependencyRefs": [],
+      "ecosystemRefs": [],
+      "ideaRefs": ["idea-363"],
+      "sourceRefs": ["s276"]
     }
   ],
   "phaseTransitions": [],
@@ -615,6 +649,23 @@
       "observedAt": "2026-08-13T16:37:00Z",
       "sourceRefs": ["s271"],
       "ideaRefs": ["idea-373"]
+    },
+    {
+      "enforcementId": "enf-platform-work-human-review",
+      "marketId": "market-eu-platform-work-algorithmic-management",
+      "mode": "REGULATOR_INSPECTION",
+      "frictionLevel": "F4",
+      "checker": "Member State competent authorities, courts, and affected persons or their representatives",
+      "checkedObject": "authorized human oversight, explanation, review, rectification, and decisions of equivalent detriment in digital platform work",
+      "trigger": "an automated monitoring or decision system affects a person performing platform work, including account or contractual restrictions, suspension, termination, pay, or essential contractual aspects",
+      "mechanism": "national transposition must require competent and authorized human oversight, access to explanation and review, and a sufficiently precise and substantiated response within two weeks",
+      "failureStatus": "rights infringement or non-compliance can require rectification or adequate compensation; no operator case or national penalty was collected",
+      "remedy": "provide authorized human review and rectify the decision without delay and within the applicable two-week boundary where required",
+      "sla": "substantiated review response within two weeks; rectification without delay and in any case within two weeks after the review decision",
+      "financialConsequence": "adequate compensation where rectification is not possible; amount is case-specific and unknown",
+      "observedAt": "2026-08-13T17:05:00Z",
+      "sourceRefs": ["s276"],
+      "ideaRefs": ["idea-363"]
     }
   ],
   "intermediaryAssessments": [
@@ -923,6 +974,16 @@
       "certainty": "FIXED",
       "buyerImplication": "Bidders must satisfy authority-specific non-price prequalification and award evidence rather than relying only on bid price",
       "sourceRefs": ["s271"]
+    },
+    {
+      "milestoneId": "milestone-platform-work-transposition",
+      "marketId": "market-eu-platform-work-algorithmic-management",
+      "kind": "LAW_APPLIES",
+      "label": "Member States transpose Directive EU 2024/2831 into national law",
+      "date": "2026-12-02T00:00:00Z",
+      "certainty": "FIXED",
+      "buyerImplication": "Digital labour platforms must prepare jurisdiction-specific human-oversight, explanation, review, worker-representation, rectification, and evidence workflows",
+      "sourceRefs": ["s276"]
     }
   ],
   "milestoneEdges": [

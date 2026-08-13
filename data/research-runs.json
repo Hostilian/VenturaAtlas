@@ -2385,5 +2385,45 @@
     "startedAt": "2026-08-13T16:29:00Z",
     "endedAt": "2026-08-13T16:37:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-014-20260813-operational-authority",
+    "baselineCommit": "c4af0465e961827e3dc0f65c2ef7c8236c810147",
+    "questions": [
+      "Which operational decisions can software measure without falsely assuming the legal, safety, utility, biological, or human-review authority?",
+      "Where do official public primitives or free tools absorb the generic product while leaving a narrow evidence or observability boundary?",
+      "Can the hypothesized buyer access the protected object and compel the authority needed for the workflow to change an outcome?"
+    ],
+    "queries": [
+      "EU Machinery Regulation substantial digital modification and risk-assessment authority",
+      "IBBIS SecureDNA and current US nucleic-acid screening policy authority",
+      "EU Data Act same-quality continuous real-time connected-product access boundary",
+      "DOE hosting-capacity-map site-specific limits and FERC large-load readiness",
+      "EU Platform Work Directive human oversight explanation review and two-week response"
+    ],
+    "sourceCandidates": ["s199", "s211", "s251", "s256", "s257", "s258", "s276", "s277", "s278"],
+    "inclusions": ["idea-361", "idea-397", "idea-362", "idea-273", "idea-363"],
+    "exclusions": [],
+    "claimsChanged": [
+      "RegDiff waits and narrows to evidence assembly and qualified risk or conformity routing because code change alone cannot determine physical hazard, protective measures, or legal substantial modification.",
+      "BioScreen CI waits because free open and nonprofit screeners absorb the generic benchmark while current policy authority and safe handling of adversarial evidence remain unresolved.",
+      "DataRight SLO continues narrowly as authorized same-quality, metadata, latency, continuity, and failure observability, not an inferred statutory commercial SLA.",
+      "PowerPlot waits and kills the bankable-marketplace claim because DOE says hosting-capacity maps do not answer site-specific interconnection and grid authorities own the readiness and study process.",
+      "WorkerDecision Ledger waits and narrows from all employment to one digital-labour-platform jurisdiction with actual authorized human review and worker-representation workflows.",
+      "No buyer, WTP, machine file, synthesis corpus, connected-product feed, site study, platform-work case, payment, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-361-f3e895ec62de",
+      "prereg-idea-397-d4d8b3e5e83b",
+      "prereg-idea-362-31ea2dd7d4b7",
+      "prereg-idea-273-c39f37ccb6f2",
+      "prereg-idea-363-09cc7565f0d4"
+    ],
+    "ideaIds": ["idea-361", "idea-397", "idea-362", "idea-273", "idea-363"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T16:48:00Z",
+    "endedAt": "2026-08-13T17:05:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]
