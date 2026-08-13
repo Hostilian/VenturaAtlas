@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T15:35:00Z",
+  "observedAt": "2026-08-13T16:06:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -287,6 +287,57 @@
       ],
       "includedSourceRefs": ["s247", "s248", "s249", "s250"],
       "decisionImpact": "Free guidance, supplier questionnaires, provenance, and switching rights absorb documentary scoring. They do not prove rebuild/signing/license/hardware/operation continuity. FreedomToModify continues only as an authorized executed drill with observable recovery outcomes."
+    },
+    {
+      "queryFamilyId": "qf-machinery-digital-safety-change",
+      "purpose": "Test whether a neutral change fingerprint owns the machinery-safety decision or whether law, OEM signatures, and qualified conformity review retain authority",
+      "queries": [
+        "EU Regulation 2023/1230 substantial modification digital means software safety",
+        "Siemens safety PLC collective signature acceptance"
+      ],
+      "includedSourceRefs": ["s251", "s252"],
+      "decisionImpact": "The 2027 regulation makes digital safety changes consequential, but OEM tools already fingerprint accepted safety programs and a signature change is not a conformity decision. Machine Safety State Drift Gate continues only as evidence assembly and routing to an authorized assessor, never automatic safe/unsafe adjudication."
+    },
+    {
+      "queryFamilyId": "qf-calibration-interval-authority",
+      "purpose": "Determine whether calibration-interval optimization is a new scarce method or an established evidence-driven metrology workflow",
+      "queries": [
+        "ILAC G24 OIML D10 recalibration interval guidance",
+        "NIST recommended calibration interval measurement history"
+      ],
+      "includedSourceRefs": ["s253", "s254"],
+      "decisionImpact": "ILAC/OIML and NIST already establish risk- and history-based interval methods. CalibraRisk waits unless a plant-specific workflow can integrate accredited results and obtain documented approval without claiming autonomous metrological authority."
+    },
+    {
+      "queryFamilyId": "qf-elv-dismantling-exceptions",
+      "purpose": "Verify the current legal status and determine whether a dismantling exception can be decided digitally without facility evidence",
+      "queries": [
+        "EU Regulation 2026/1738 end-of-life vehicles parts removal feasibility excessive cost",
+        "EU vehicle circularity final adoption July 2026"
+      ],
+      "includedSourceRefs": ["s255"],
+      "decisionImpact": "The end-of-life vehicle rule is adopted rather than proposed, strengthening preparation work. The final text still makes removal feasibility, condition, treatment, and records physically and facility specific, so DismantleException waits for an authorized facility corpus and cannot automate the exception decision."
+    },
+    {
+      "queryFamilyId": "qf-nucleic-screening-free-primitives",
+      "purpose": "Test whether sequence-screening software or benchmarking remains scarce after current policy revisions and free privacy-preserving tools",
+      "queries": [
+        "US nucleic acid synthesis screening framework revision enforcement federal funding",
+        "IBBIS Common Mechanism free open source local DNA RNA screening",
+        "SecureDNA free privacy preserving synthesis screening"
+      ],
+      "includedSourceRefs": ["s256", "s257", "s258"],
+      "decisionImpact": "IBBIS and SecureDNA directly absorb generic screening and much benchmark infrastructure, while US policy is an evolving authoritative control. BioScreen Bench waits and may re-enter only for privacy-preserving operational assurance, customer-verification escalation, and policy-update evidence that does not publish evasion-sensitive material."
+    },
+    {
+      "queryFamilyId": "qf-refrigerant-physical-proof",
+      "purpose": "Separate documentary reclaimed-refrigerant identity from physical composition and accredited purity evidence",
+      "queries": [
+        "EU Regulation 2024/573 reclaimed refrigerant batch label quota",
+        "AHRI 700 reclaimed refrigerant purity analytical certification"
+      ],
+      "includedSourceRefs": ["s259", "s260"],
+      "decisionImpact": "EU batch/facility labels and AHRI analytical purity testing form complementary evidence. ReclaimProof continues only as cross-point chain-of-custody reconciliation anchored to certified lab results; a ledger or mass balance must never claim the physical identity or purity of a cylinder."
     }
   ],
   "excluded": [
@@ -377,6 +428,22 @@
     {
       "url": "https://www.cisa.gov/news-events/alerts/2022/11/17/cisa-nsa-and-odni-release-guidance-customers-securing-software-supply-chain",
       "reason": "The archived alert was superseded for the public-primitive question by CISA's current no-cost supplier-response tool."
+    },
+    {
+      "url": "https://environment.ec.europa.eu/publications/proposal-regulation-circularity-requirements-vehicle-design-and-management-end-life-vehicles_en",
+      "reason": "The 2023 proposal page was superseded by adopted Regulation EU 2026/1738 and was not retained as current authority."
+    },
+    {
+      "url": "https://www.consilium.europa.eu/en/press/press-releases/2025/06/17/circular-economy-council-adopts-position-on-the-recycling-of-vehicles-at-the-end-of-their-life/",
+      "reason": "The Council negotiating position was superseded by the final July 2026 regulation."
+    },
+    {
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2024/10/OSTP-Nucleic-Acid_Synthesis_Screening_Framework-Sep2024-Final.pdf",
+      "reason": "The 2024 framework established historical context, but Executive Order 14292 ordered it revised or replaced; the unresolved current policy version was kept explicit rather than treating the older document as current authority."
+    },
+    {
+      "url": "https://www.epa.gov/section608/checklist-refrigerant-reclaimers-seeking-epa-certification",
+      "reason": "The US reclaimer checklist corroborated the lab boundary but did not add a distinct EU control claim beyond Regulation EU 2024/573 and the retained AHRI analytical standard."
     }
   ],
   "claimsNotEarned": [
@@ -412,5 +479,10 @@
     ,"cross-RVM production Verification of Payee divergence"
     ,"authorized third-party API repair or transaction-safe patch"
     ,"independent rebuild, signing, recovery, or vendor-loss operation drill"
+    ,"plant calibration history, accredited results, or interval-approval decision"
+    ,"machine safety program, accepted signature baseline, or conformity-assessor decision"
+    ,"authorized treatment facility dismantling record, measured removal time, or exception acceptance"
+    ,"synthesis-provider order, customer-verification record, escalation outcome, or current authoritative framework conformance"
+    ,"refrigerant batch sample, accredited purity result, cylinder chain of custody, or detected fraud"
   ]
 }

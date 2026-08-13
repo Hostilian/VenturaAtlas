@@ -2,11 +2,11 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: `169ed9b2f035d7cfc520597f6d0cadfab04df563`
+Verified evidence HEAD: pending immutable integration commit and fresh-clone receipt for the sixth tranche
 
 ## 01 Executive Verdict
 
-This is a substantial, verified OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations now fail closed under the reproduced attacks. Twenty-five existing ideas received preregistered desk-commercial review across five evidence tranches, fifteen market maps validate, and exact public gates pass. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Thirty existing ideas have received preregistered desk-commercial review across six evidence tranches, eighteen market maps validate, and the sixth tranche is awaiting immutable fresh-clone proof. The constitution's 75 purposeful research-round floor, blind anchoring measurement, real buyer interviews, WTP evidence, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
@@ -22,7 +22,7 @@ The detailed classification is in `LANDED_FIX_MATRIX.md`. Useful landed mechanis
 
 ## 05 Repository Truth
 
-Current source truth is 294 canonical ideas, 306 local private staged candidates, 250 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero. The ten research-run records remain desk/provenance state and lack the maturity and tool receipts required for an earned lifecycle state.
+Current source truth is 294 canonical ideas, 306 local private staged candidates, 260 sources, seven legacy ranking views, 16 ShockGraph dependencies, nine shocks, six obligations, 15 ecosystems, and six counterparty assessments. Public repository metadata intentionally exposes zero staged records. Lifecycle receipts, semantic reviews, active reviewer authorities, validation-funnel events, and real validation runs remain zero. The eleven research-run records remain desk/provenance state and lack the maturity and tool receipts required for an earned lifecycle state.
 
 ## 06 Autonomy Utility
 
@@ -62,7 +62,7 @@ Canonical and receipt replacements are protected as a set by a durable PREPARED/
 
 ## 15 Research Execution
 
-Twenty-five immutable preregistrations were locked before their respective searches, now also including ideas 169, 213, 304, 360, and 374. The fifth tranche added five decision-oriented query families and twelve retained sources (s239–s250) spanning public-data primitives, VoP scheme testing, agent-payment mandates, API governance/contract tests, software supply-chain continuity, and cloud switching. The same investigator preregistered and researched all five tranches, so the work is prospective but not independent/blinded. No lifecycle research receipt was issued, and this still does not satisfy the 75-round floor.
+Thirty immutable preregistrations were locked before their respective searches, now also including ideas 281, 299, 382, 393, and 400. The sixth tranche added five decision-oriented query families and ten retained sources (s251–s260) spanning machinery safety changes, calibration intervals, adopted vehicle dismantling rules, nucleic-acid screening, and reclaimed-refrigerant proof. The same investigator preregistered and researched all six tranches, so the work is prospective but not independent/blinded. No lifecycle research receipt was issued, and 31 recorded query families still do not satisfy the 75 purposeful-round floor.
 
 ## 16 Blind Review
 
@@ -86,7 +86,7 @@ Liveness and readiness are separate. Readiness fails on missing/placeholder auth
 
 ## 21 Public Artifact
 
-The current source-worktree `_site` build contains 5,091 files and projects 237 explicitly public evidence-eligible sources from 250 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and four PWA tests pass. A fresh-clone receipt for the forthcoming immutable evidence commit is still required.
+The sixth-tranche source-worktree `_site` build contains 5,091 files and projects 247 explicitly public evidence-eligible sources from 260 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and four PWA tests pass. An immutable integration commit and clean-clone rerun remain required before this becomes release evidence.
 
 ## 22 PhaseShift Landscape
 
@@ -109,6 +109,9 @@ Strict structured state now covers fifteen markets, zero inferred phase transiti
 - EU public-procurement digital rails: P6 OPERATIONAL SCALE, reassess/low startup value because public schemas and official services absorb the generic layer.
 - EU non-euro-area Verification of Payee: P2 PREPARATION, reassess production exceptions beyond the official reference toolbox.
 - EU cloud switching and operational continuity: P5 CONFORMANCE, continue only for executed reversibility and vendor-loss evidence.
+- EU machinery digital safety change: P3 MIGRATION, continue only as evidence routing to qualified conformity authority.
+- EU end-of-life vehicle dismantling: P2 PREPARATION, wait for authorized facility removal and exception records.
+- EU reclaimed F-gas proof: P6 OPERATIONAL SCALE, continue only as lab-anchored chain-of-custody reconciliation.
 
 ## 24 Enforcement Topology
 
@@ -173,6 +176,11 @@ The Commission's current implementation tracker confirms adopted negative shocks
 - `idea-304`: reassess downward to multilingual/cross-RVM production divergence after official VoP toolbox conformance.
 - `idea-360`: kill autonomous API repair; allow only consumer-impact mapping and human-approved patches.
 - `idea-374`: continue narrowly as an executed rebuild/sign/recover/operate continuity drill.
+- `idea-281`: wait; ILAC/OIML and NIST absorb the generic interval method, so require approved plant-specific evidence.
+- `idea-299`: continue narrowly as safety-change evidence assembly and assessor routing, never automated conformity judgment.
+- `idea-382`: wait for an authorized treatment-facility corpus under adopted Regulation EU 2026/1738.
+- `idea-393`: wait; free IBBIS and SecureDNA primitives absorb generic screening/benchmarking, and current policy authority must be resolved.
+- `idea-400`: continue narrowly as cylinder/batch reconciliation anchored to qualified analytical purity results.
 
 ## 34 Current Buyer Evidence
 
@@ -180,7 +188,7 @@ No buyer interview or design-partner receipt exists. Buyer names in preregistrat
 
 ## 35 Current WTP Evidence
 
-WTP maturity is ASSUMED for all twenty-five preregistered ideas. Vendor list prices and incumbent transaction scale are competitive context, not WTP evidence for these concepts. No buyer budget evidence exists.
+WTP maturity is ASSUMED for all thirty preregistered ideas. Vendor list prices and incumbent transaction scale are competitive context, not WTP evidence for these concepts. No buyer budget evidence exists.
 
 ## 36 Data Access
 
@@ -220,7 +228,7 @@ The public-primitive tranche found more direct absorption. [Data.europa.eu APIs]
 
 ## 44 Other Undercovered Domains
 
-The fifth tranche covers public-data primitives, agent-payment controls, non-euro VoP preparation, API-maintenance substitution, and technology-continuity execution. Coverage remains desk research rather than commercial validation. Blind exploration, a missing-domain challenge, physical sample/logistics outcomes, and the wider purposeful-round distribution remain undercovered.
+The sixth tranche extends coverage into physical and regulatory proof: machinery safety change, metrology intervals, vehicle dismantling, synthesis-screening operations, and refrigerant identity/purity. Coverage remains desk research rather than commercial validation. It adds a missing-domain challenge but no physical sample, facility outcome, buyer contact, blind exploration, or independent review; the wider purposeful-round distribution remains undercovered.
 
 ## 45 New Signals
 
@@ -248,7 +256,7 @@ No idea is promoted into an earned validation state. The desk ledger proposes ch
 
 ## 51 Kill Experiments
 
-Each of the twenty-five decision packets defines a falsifiable next test. The fifth tranche requires instrumented public-API consumers, purchase-exception replay, post-ART cross-RVM testing, historical integration-break replay with human-approved patches, and a vendor-loss continuity drill. None is counted as executed validation.
+Each of the thirty decision packets defines a falsifiable next test. The sixth tranche requires plant calibration histories, assessor-reviewed machinery changes, observed dismantling attempts, provider-authorized non-sensitive screening operations, and blinded cylinder/lab reconciliation. None is counted as executed validation.
 
 ## 52 Market Windows
 
@@ -264,7 +272,7 @@ No candidate-generation round was run, so novelty yield is not computed. Zero ge
 
 ## 55 Decision Yield
 
-Twenty-five preregistered candidate decisions changed or were narrowed; the fifth tranche killed three generic theses, narrowed VoP to production exceptions, and retained one executed-continuity wedge. A normalized yield rate is not claimed because the 75-round denominator was not executed.
+Thirty preregistered candidate decisions changed or were narrowed; the sixth tranche killed or held broad calibration and synthesis-screening layers, preserved qualified-human authority for machinery and dismantling, and retained lab-anchored refrigerant reconciliation. A normalized yield rate is not claimed because the 75-round denominator was not executed.
 
 ## 56 Research Utility
 
@@ -284,7 +292,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact evidence commit `169ed9b2f035d7cfc520597f6d0cadfab04df563` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-31927430a4574c06ae0ae79546f117ff`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages in that clone with zero reported vulnerabilities, source quality passed 95 Node tests (85 executed and 10 explicit private-staging skips), 75 Python tests, every strict validator, consistency, drift, constitution integrity, and privacy. The same clone rebuilt 5,091 public files, projected 237 eligible public sources from 250 total, passed the secret/private-path scanner, and passed four PWA tests.
+The most recent completed clean-clone proof remains exact commit `169ed9b2f035d7cfc520597f6d0cadfab04df563`: private staging absent, 157 packages with zero reported vulnerabilities, 85 executed Node tests plus 10 intentional staging skips, 75 Python tests, all strict/consistency/drift/constitution/privacy gates, a 5,091-file build with 237/250 public sources, scanner, and four PWA tests. The sixth tranche is not yet covered by that receipt; its exact integration SHA and fresh-clone results must replace this paragraph after verification.
 
 ## 61 Remaining Unknowns
 
@@ -295,7 +303,7 @@ Unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accept
 1. Provision reviewer authority only through a repository-owner decision or replace it with a signed-key boundary.
 2. Run independent blinded reviews and measure anchoring delta.
 3. Continue purposeful research toward the 75-round distribution, prioritizing real buyer evidence and remaining physical/scientific bottlenecks.
-4. Execute the twenty-five cheap falsification tests and append only real external outcomes to the validation funnel.
+4. Execute the thirty cheap falsification tests and append only real external outcomes to the validation funnel.
 5. Fresh-clone and scan final latest HEAD, then decide whether to push/deploy.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 

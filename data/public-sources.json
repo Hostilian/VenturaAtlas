@@ -5297,5 +5297,235 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s251",
+    "title": "Regulation EU 2023/1230 on machinery — consolidated text",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/eli/reg/2023/1230/en",
+    "supports": [
+      "A physical or digital modification that creates a new hazard or increases an existing risk can be a substantial modification, and the modifying party can assume manufacturer obligations",
+      "The regulation treats safety software and compliance-relevant digital changes as part of the machinery conformity boundary and applies from 20 January 2027"
+    ],
+    "type": "official_forcing_function",
+    "date": "2023",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-299"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s252",
+    "title": "SIMATIC S7 F/FH Systems — Configuring and Programming",
+    "publisher": "Siemens",
+    "url": "https://support.industry.siemens.com/cs/attachments/109802562/s7ftsysb_en-US.pdf",
+    "supports": [
+      "Siemens safety tooling already produces collective safety-program signatures and requires signature checks before acceptance",
+      "Even apparently administrative program operations such as compression can change the signature, so a fingerprint detects change but does not itself decide safety or conformity"
+    ],
+    "type": "company_product_documentation",
+    "date": "2021",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-299"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s253",
+    "title": "ILAC-G24:2022 Guidelines for determination of recalibration intervals",
+    "publisher": "International Laboratory Accreditation Cooperation",
+    "url": "https://ilac.org/latest_ilac_news/revised-ilac-g24-document-published/",
+    "supports": [
+      "ILAC and OIML already publish formal guidance for determining recalibration intervals of measuring equipment",
+      "A generic calibration-interval optimizer is therefore not a new method and must prove an approved plant-specific evidence workflow"
+    ],
+    "type": "official_guidance",
+    "date": "2022",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-281"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s254",
+    "title": "NIST recommended calibration interval guidance",
+    "publisher": "National Institute of Standards and Technology",
+    "url": "https://www.nist.gov/calibrations/recommended-calibration-interval",
+    "supports": [
+      "NIST does not prescribe one recalibration interval; the interval depends on accuracy needs, contracts or regulation, instrument stability, environment, and measurement history",
+      "NIST recommends measurement-assurance data and as-submitted and post-calibration results to validate or refine intervals"
+    ],
+    "type": "official_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-281"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s255",
+    "title": "Regulation EU 2026/1738 on vehicle circularity and end-of-life vehicles",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601738",
+    "supports": [
+      "The vehicle-circularity and end-of-life regime was adopted on 8 July 2026 and published on 24 July 2026; it is no longer merely a proposal",
+      "The final regulation contains treatment, removal, technical-evaluation, labeling, and record duties, while physical feasibility and excessive cost remain facility-specific judgments"
+    ],
+    "type": "official_forcing_function",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-382"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s256",
+    "title": "IBBIS Common Mechanism synthesis-screening FAQ",
+    "publisher": "International Biosecurity and Biosafety Initiative for Science",
+    "url": "https://ibbis.bio/our-work/common-mechanism/faq/",
+    "supports": [
+      "IBBIS provides free, open-source, globally available, local-first DNA and RNA sequence-screening software plus customer-screening resources",
+      "The software protects sequence confidentiality by running locally, but customer legitimacy, escalation, policy updates, and provider operations remain distinct workflow boundaries"
+    ],
+    "type": "nonprofit_product_documentation",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-393"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s257",
+    "title": "Executive Order 14292 — Improving the Safety and Security of Biological Research",
+    "publisher": "The White House",
+    "url": "https://www.whitehouse.gov/presidential-actions/2025/05/improving-the-safety-and-security-of-biological-research/",
+    "supports": [
+      "The order directed OSTP to revise or replace the 2024 nucleic-acid synthesis screening framework and add scalable, verifiable mechanisms and enforcement through federal funding agreements",
+      "The policy control surface was explicitly in revision; an implementation must bind itself to current authoritative policy rather than hard-code the superseded framework"
+    ],
+    "type": "official_forcing_function",
+    "date": "2025",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-393"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s258",
+    "title": "SecureDNA synthesis-screening FAQ",
+    "publisher": "SecureDNA Foundation",
+    "url": "https://securedna.org/faq/",
+    "supports": [
+      "SecureDNA offers a free nonprofit screening platform with privacy-preserving sequence matching, provider deployment, source code, binaries, and container images",
+      "A paid generic sequence-screening benchmark is directly substituted by free tools; a residual product would need authorized operational assurance without exposing sensitive sequences or evasion details"
+    ],
+    "type": "nonprofit_product_documentation",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-393"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s259",
+    "title": "Regulation EU 2024/573 on fluorinated greenhouse gases",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/573/oj",
+    "supports": [
+      "Containers of reclaimed or recycled fluorinated greenhouse gases must be labeled accordingly; reclaimed batches also require batch number and the Union reclamation facility's name and address",
+      "The regulation establishes a documentary identity and quota boundary, but labels and mass balance alone do not establish chemical purity"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-400"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s260",
+    "title": "AHRI Reclaimed Refrigerant Certification Program",
+    "publisher": "Air-Conditioning, Heating, and Refrigeration Institute",
+    "url": "https://www.ahrinet.org/certification/ahri-certification-programs/reclaimed-refrigerant-recl",
+    "supports": [
+      "Reclaimed refrigerant is defined by reprocessing to AHRI Standard 700 purity and verification through prescribed analytical methods",
+      "Certified ratings include water, chloride, acidity, residue, solids, non-condensables, and volatile impurities, placing physical composition truth with laboratory analysis rather than ledger inference"
+    ],
+    "type": "industry_standard_and_certification",
+    "date": "2026",
+    "accessDate": "2026-08-13",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-physical-regulatory",
+    "ideaIds": [
+      "idea-400"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

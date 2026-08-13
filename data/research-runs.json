@@ -2265,5 +2265,45 @@
     "startedAt": "2026-08-13T15:50:00Z",
     "endedAt": "2026-08-13T16:05:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-011-20260813-physical-regulatory",
+    "baselineCommit": "ef09df369db0a4fa439d11f8c1528fe20f2a8b44",
+    "questions": [
+      "Which physical and regulatory decisions remain scarce after OEM safety signatures, metrology guidance, free biosecurity screeners, and accredited laboratory testing?",
+      "Did the EU end-of-life vehicle rule remain a proposal, and can dismantling feasibility be decided without facility evidence?",
+      "Can documentary provenance prove machinery safety or refrigerant purity without qualified assessment and physical measurement?"
+    ],
+    "queries": [
+      "EU Regulation 2023/1230 substantial modification software safety and Siemens safety-program signatures",
+      "ILAC G24 OIML D10 and NIST calibration interval evidence",
+      "EU Regulation 2026/1738 end-of-life vehicle removal feasibility and treatment records",
+      "US nucleic-acid synthesis framework revision, IBBIS Common Mechanism, and SecureDNA",
+      "EU Regulation 2024/573 reclaimed refrigerant labeling and AHRI 700 analytical purity"
+    ],
+    "sourceCandidates": ["s251", "s252", "s253", "s254", "s255", "s256", "s257", "s258", "s259", "s260"],
+    "inclusions": ["idea-281", "idea-299", "idea-382", "idea-393", "idea-400"],
+    "exclusions": [],
+    "claimsChanged": [
+      "CalibraRisk waits because formal ILAC/OIML and NIST methods absorb a generic optimizer; re-entry requires plant-specific accredited evidence and an approved workflow.",
+      "Machine Safety State Drift Gate continues narrowly as evidence assembly and qualified-assessor routing; an OEM signature change does not establish whether a change is safe or substantially modifies machinery.",
+      "DismantleException moves from proposal-watch to P2 preparation because Regulation EU 2026/1738 is adopted, but physical feasibility and excessive cost remain facility decisions.",
+      "BioScreen Bench waits because free local or privacy-preserving screeners absorb the generic benchmark, while current US policy authority and safe handling of evasion-sensitive evidence remain unresolved.",
+      "ReclaimProof continues narrowly as chain-of-custody reconciliation anchored to certified analytical results; labels, ledger entries, and mass balance cannot prove cylinder composition.",
+      "No buyer, WTP, facility record, plant program, biological order, refrigerant sample, accredited result, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-281-a3f89cf770b0",
+      "prereg-idea-299-d2033b9806ae",
+      "prereg-idea-382-71b6fdc5b3fc",
+      "prereg-idea-393-68e721640b24",
+      "prereg-idea-400-2b81c5d70062"
+    ],
+    "ideaIds": ["idea-281", "idea-299", "idea-382", "idea-393", "idea-400"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-13T15:58:00Z",
+    "endedAt": "2026-08-13T16:06:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]
