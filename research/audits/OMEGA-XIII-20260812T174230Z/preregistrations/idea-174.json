@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-174-bb88651e1dbe",
+  "candidateId": "idea-174",
+  "candidateContentDigest": "6f6d4a8815d1f6476c8a09f1cac63fff0af8475e35377d46f18d53bd956d7b61",
+  "createdAt": "2026-08-13T15:22:56.362566+00:00",
+  "lockedAt": "2026-08-13T15:22:56.362566+00:00",
+  "expectations": {
+    "buyer": "Laboratory IT, quality, research operations, and regulated lab leadership",
+    "pain": "LIMS and ELN customers may discover too late that data, metadata, workflows, audit trails, and signatures cannot be exported or migrated completely",
+    "strongestIncumbent": "LIMS/ELN vendors, implementation consultants, archive tools, open standards, and buyer security/procurement questionnaires",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Exit risk may be a low-frequency procurement concern handled by consultants or standards, and vendors may not expose enough evidence for an independent score",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "c07f27ed329749a8ce3c5bd6450a0979ff709a43ca7d0a1a5908eaabf2e8414e"
+}

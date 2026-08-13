@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-265-e8fb0ddcad6c",
+  "candidateId": "idea-265",
+  "candidateContentDigest": "603519d667388c5bb8a68fd045bcf7a44a90b5843e6f669a34c7f66c4f7af6f0",
+  "createdAt": "2026-08-13T15:22:56.527581+00:00",
+  "lockedAt": "2026-08-13T15:22:56.527581+00:00",
+  "expectations": {
+    "buyer": "SMEs selling to public authorities and bid-management or government-sales teams",
+    "pain": "Tender discovery, qualification evidence, bid/no-bid decisions, document reuse, portal submission, and compliance consume scarce specialist time",
+    "strongestIncumbent": "EU and national tender portals, eProcurement suites, bid consultants, CRM/content libraries, and generative proposal tools",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Public portals and incumbent suites may absorb the workflow, autonomous submission may be legally or operationally unsafe, and win probability depends on relationships and offer quality rather than document assembly",
+    "verdict": "LIKELY_KILL"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f932d8b7b7a7ac94ecb9d2d4623559094830f19d7f9bc80b5a3f21bb5bc3ba55"
+}

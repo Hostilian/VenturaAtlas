@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-172-222dc3cfc4a4",
+  "candidateId": "idea-172",
+  "candidateContentDigest": "864865d8151b56fddb21b9e5d575be66806b7ee82d2fca660bfebf1b09ba617e",
+  "createdAt": "2026-08-13T15:22:56.193581+00:00",
+  "lockedAt": "2026-08-13T15:22:56.193581+00:00",
+  "expectations": {
+    "buyer": "Analytical laboratory managers, procurement teams, and method-development scientists",
+    "pain": "Consumable substitutions can fail on geometry, material, solvent, instrument, and validated-method compatibility while OEM parts are costly or unavailable",
+    "strongestIncumbent": "OEM compatibility tables, distributor catalogues, method libraries, laboratory experts, and chromatography supplier selectors",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Manufacturers and distributors may already publish sufficient cross-reference data, while liability and method revalidation make a neutral compatibility claim unsafe",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "24bd43711f3f5acaa8c94e0d722a6e17c41626e174917212f57835ee19d6d477"
+}

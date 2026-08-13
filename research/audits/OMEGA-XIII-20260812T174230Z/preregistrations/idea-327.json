@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-327-d13f22202833",
+  "candidateId": "idea-327",
+  "candidateContentDigest": "562ec5baef9f11bad89e2371d01ad3685403cd4bb8b648a1af0a287d6aca3e66",
+  "createdAt": "2026-08-13T15:22:56.701566+00:00",
+  "lockedAt": "2026-08-13T15:22:56.701566+00:00",
+  "expectations": {
+    "buyer": "E-commerce brands, retailers, and finance/logistics teams outsourcing fulfillment to 3PLs",
+    "pain": "Complex rate cards and WMS activity records create storage, pick-pack, materials, accessorial, and surcharge invoice leakage",
+    "strongestIncumbent": "3PL billing modules, freight audit firms, AP automation, supply-chain finance platforms, consultants, and spreadsheet reconciliation",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "3PL contracts and event data may be inaccessible or non-standard, incumbents may already audit the spend, and contingency economics may fail on low recoverable value",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "9cd16f855aa6fc97e41609972fd11d81a5ae9e7177a22d2064565908bdf75d92"
+}

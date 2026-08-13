@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-277-159d1690a9dd",
+  "candidateId": "idea-277",
+  "candidateContentDigest": "ca1ee80ab143bc456520665907640e95c5b92c083366a472d03b98859267b5ec",
+  "createdAt": "2026-08-13T15:22:56.025580+00:00",
+  "lockedAt": "2026-08-13T15:22:56.025580+00:00",
+  "expectations": {
+    "buyer": "University core facilities, biotech and materials R&D teams, and specialized analytical labs",
+    "pain": "Scientific samples face fragmented facility discovery, protocol qualification, booking, contracting, shipping, chain-of-custody, and result normalization",
+    "strongestIncumbent": "Local core-facility portals, institutional research infrastructures, commercial CRO laboratories, equipment networks, and manual expert referrals",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Public facility catalogues and existing CRO/core networks may absorb discovery while heterogeneous protocols, liability, IP, and sample logistics prevent an automated cross-lab marketplace",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "656ceed24ccc8e6410f174aa52add3dbe8478e4211e1be9e40c1767c6b5f7e2e"
+}
