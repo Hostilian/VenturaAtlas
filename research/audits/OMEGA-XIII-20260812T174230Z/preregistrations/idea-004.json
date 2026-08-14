@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-004-1d9342b95c69",
+  "candidateId": "idea-004",
+  "candidateContentDigest": "7d9b5f51eeb8918b202b40e09b103ecb6e6a12a96ff8603b63bb75e98edf761e",
+  "createdAt": "2026-08-14T11:26:53.393874+00:00",
+  "lockedAt": "2026-08-14T11:26:53.393874+00:00",
+  "expectations": {
+    "buyer": "Consumers, procurement teams, publishers, marketplaces, and ranking operators",
+    "pain": "Rankings hide evidence, conflicts, sponsorship, uncertainty, and revision history",
+    "strongestIncumbent": "Review platforms, comparison sites, standards, public datasets, audit trails, and incumbent ranking publishers",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Network effects and anti-gaming dominate; transparency alone does not create contributors, distribution, or payment",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "047f0237ae52d91a666619cd5577ed8d2735f5366b2cfce9b36d4b15e459e7a0"
+}

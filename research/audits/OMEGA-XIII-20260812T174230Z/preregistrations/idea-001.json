@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-001-f39fa9f25d68",
+  "candidateId": "idea-001",
+  "candidateContentDigest": "dd8a7e97e93ecf1cef040b6c8439617719e7d40c9a581f6f2a6096695702cbb4",
+  "createdAt": "2026-08-14T11:26:53.127580+00:00",
+  "lockedAt": "2026-08-14T11:26:53.127580+00:00",
+  "expectations": {
+    "buyer": "Engineering leaders, AI product teams, reviewers, and release owners",
+    "pain": "AI-produced work reaches merge or release without task-specific acceptance evidence",
+    "strongestIncumbent": "CI/CD, code review, tests, policy-as-code, GitHub checks, evaluation frameworks, and human approval",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Generic CI absorbs the gate and proof quality depends on task-specific oracles and authority",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "dee714db4058261338b202569709864df1f8acceaa81d62393e9d3a782c90bce"
+}

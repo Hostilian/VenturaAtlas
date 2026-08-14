@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-220-06ae8c9d62f6",
+  "candidateId": "idea-220",
+  "candidateContentDigest": "f54ca342986861f72066c61b5410780da06ca213b89608254943af350051f572",
+  "createdAt": "2026-08-14T11:26:55.402055+00:00",
+  "lockedAt": "2026-08-14T11:26:55.402055+00:00",
+  "expectations": {
+    "buyer": "3D-printer owners, print farms, service bureaus, repair studios, and slicer vendors",
+    "pain": "Nominal dimensions produce different fits across printer, material, nozzle, orientation, and environment",
+    "strongestIncumbent": "Slicer compensation, calibration models, test coupons, printer profiles, metrology, and operator experience",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Profiles drift with wear and environment and incumbents can bundle calibration; repeat willingness to pay is unknown",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "7b700f7797c82baa2bed8759e363a57fc6306fe532c5fb4e54322e732925c9ed"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-221-e1ab64f8b155",
+  "candidateId": "idea-221",
+  "candidateContentDigest": "0401f06658cc2877c29e9b9f7aa7bff0f0306d9b90424f66d19375915894ec11",
+  "createdAt": "2026-08-14T11:26:55.535877+00:00",
+  "lockedAt": "2026-08-14T11:26:55.535877+00:00",
+  "expectations": {
+    "buyer": "Repair cafes, community workshops, libraries, makerspaces, volunteers, and municipal funders",
+    "pain": "Volunteer repair intake misses measurements, safety exclusions, evidence, and handoff needed for custom part work",
+    "strongestIncumbent": "Repair Café tools, ticketing, forms, volunteer expertise, CAD libraries, and local workshop procedures",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Community budgets are low and mandatory process can burden volunteers; safety/liability stays local",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "dc28f7c2ddca140843db2edcf9bd5c2d83ae94d63ed544fcf122afc1de631154"
+}

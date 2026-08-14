@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-209-f497fee4b280",
+  "candidateId": "idea-209",
+  "candidateContentDigest": "d79808c97b93fee504b80feb831423879053c124d617da51d0b8a88dcf0c7192",
+  "createdAt": "2026-08-14T11:26:54.883026+00:00",
+  "lockedAt": "2026-08-14T11:26:54.883026+00:00",
+  "expectations": {
+    "buyer": "Small-business finance teams, owners, suppliers, banks, insurers, and accountants",
+    "pain": "Fraudulent bank-detail changes exploit email and process gaps before payment",
+    "strongestIncumbent": "Bank confirmation, call-back procedures, ERP vendor masters, payment controls, Verification of Payee, and cyber insurance guidance",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "A procedure is cheap and incumbents own identity/payment rails; a tool cannot guarantee the supplier or account",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "d2ec409a8e9dec13d98d10dc98353751e77ae398aa21a6fbffe96a4817725d48"
+}

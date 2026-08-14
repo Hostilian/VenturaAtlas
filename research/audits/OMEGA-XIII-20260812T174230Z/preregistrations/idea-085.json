@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-085-1bccacfb154f",
+  "candidateId": "idea-085",
+  "candidateContentDigest": "ae833d1970e4517b3bd4cd33273a22e758eb38823a947e631fa3c997010fa7fe",
+  "createdAt": "2026-08-14T11:26:56.385754+00:00",
+  "lockedAt": "2026-08-14T11:26:56.385754+00:00",
+  "expectations": {
+    "buyer": "Event organizers, sponsors, agencies, venues, and measurement vendors",
+    "pain": "Sponsors receive inconsistent post-event evidence and cannot connect exposure to agreed deliverables",
+    "strongestIncumbent": "Event platforms, CRM, ticketing, media monitoring, surveys, agencies, and sponsorship measurement firms",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Attribution is weak and much evidence is self-reported; productized reporting may become low-margin agency work",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "3d1cdebb939f04d64153abee605fa46e7a88453f41459903ff644ca28ebebe82"
+}

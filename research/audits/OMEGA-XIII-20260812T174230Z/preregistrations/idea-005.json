@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-005-af8466b13cc3",
+  "candidateId": "idea-005",
+  "candidateContentDigest": "39c77670b4c6f2abbbaac89a747ae7502d2a9a1cccf776737653bdb87eafb54e",
+  "createdAt": "2026-08-14T11:26:53.531898+00:00",
+  "lockedAt": "2026-08-14T11:26:53.531898+00:00",
+  "expectations": {
+    "buyer": "AI application teams, prompt engineers, quality leaders, and regulated product owners",
+    "pain": "Prompt changes regress task quality, safety, cost, or latency without versioned datasets and approval",
+    "strongestIncumbent": "Evaluation platforms, experiment tracking, prompt management, CI tests, model-provider tooling, and internal review",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Mature platforms bundle versioning and evals; datasets and acceptance criteria remain the scarce proprietary asset",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "eb02a00cdc7a8d5be971b8f1040bad391b0c1aea294838f23ca5b6c958f0b0eb"
+}

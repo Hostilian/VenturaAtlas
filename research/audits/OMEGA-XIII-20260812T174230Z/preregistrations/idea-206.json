@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-206-bd16b82d61ed",
+  "candidateId": "idea-206",
+  "candidateContentDigest": "911edf5b8e8f6a738597701ebd2c069a0cb99a6621366f592d62758a95a2c16a",
+  "createdAt": "2026-08-14T11:26:54.466197+00:00",
+  "lockedAt": "2026-08-14T11:26:54.466197+00:00",
+  "expectations": {
+    "buyer": "Owner-led small businesses, operators, advisers, insurers, and succession planners",
+    "pain": "Hidden founder dependencies surface only during absence and interrupt operations",
+    "strongestIncumbent": "Business continuity plans, SOPs, key-person insurance, delegation, virtual assistants, and operational coaching",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "A staged absence can harm customers or safety, and consulting can absorb the experiment without repeat software demand",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ab3c9d9acf5cd297e81c473428299818198d4461b0f5d2a3e9ed0ab2431bebdf"
+}

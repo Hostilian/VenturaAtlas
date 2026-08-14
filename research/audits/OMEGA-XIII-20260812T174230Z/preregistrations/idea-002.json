@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-002-5257243be369",
+  "candidateId": "idea-002",
+  "candidateContentDigest": "d9ee13a4963e91d0ac2b3e30b18f6ce96fd26e02968e9a1b24292ae9c9080960",
+  "createdAt": "2026-08-14T11:26:53.258619+00:00",
+  "lockedAt": "2026-08-14T11:26:53.258619+00:00",
+  "expectations": {
+    "buyer": "AI buyers, platform teams, procurement, analysts, and model-routing operators",
+    "pain": "Model choices change faster than static benchmarks and quality, latency, price, and reliability differ by workload",
+    "strongestIncumbent": "Vendor benchmarks, public leaderboards, evaluation suites, routing platforms, and internal task evaluations",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Public leaderboards and vendors absorb generic rankings while reproducible production workloads and pricing change continuously",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "7adc77787add5930cb75481dd42836009b976f7f11e8eca6d5b95511f71f49cf"
+}

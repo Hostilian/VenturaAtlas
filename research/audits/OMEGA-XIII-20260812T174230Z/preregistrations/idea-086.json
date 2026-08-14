@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-086-3d21f0124663",
+  "candidateId": "idea-086",
+  "candidateContentDigest": "3410a55b4a2715f609d23de5ab5040d01acdfb0f58577117e5c5554b9070df05",
+  "createdAt": "2026-08-14T11:26:56.521680+00:00",
+  "lockedAt": "2026-08-14T11:26:56.521680+00:00",
+  "expectations": {
+    "buyer": "Booked-out service providers, customers, referral partners, directories, and marketplaces",
+    "pain": "Providers discard qualified inquiries they cannot serve while trusted alternatives need demand",
+    "strongestIncumbent": "Personal referrals, directories, marketplaces, franchise networks, lead exchanges, and CRM partner routing",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Quality liability, consent, anti-spam, reciprocity, and marketplace network effects make neutral exchange difficult",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "3614c717fbd173645080433a9f1b03f37dfc32b0ef5116bef3f0aa951b648c62"
+}

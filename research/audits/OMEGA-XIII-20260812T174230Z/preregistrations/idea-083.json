@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-083-11f4d459eac4",
+  "candidateId": "idea-083",
+  "candidateContentDigest": "326e348f9453d194311ff1e423b0e35222eec035196b00ae3522cf34a2304c18",
+  "createdAt": "2026-08-14T11:26:56.094518+00:00",
+  "lockedAt": "2026-08-14T11:26:56.094518+00:00",
+  "expectations": {
+    "buyer": "Wedding vendors, photographers, venues, planners, and marketing advisers",
+    "pain": "Vendors spend on lead channels without knowing inquiry quality, response behavior, or booking economics",
+    "strongestIncumbent": "CRM and advertising attribution, marketplace dashboards, agencies, spreadsheets, and sales coaching",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Small samples, offline conversions, seasonality, and platform attribution limits make a one-off audit inconclusive",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "672607d85bf58255c27300f4c49ce97c032737010ce82f61340c3a603efb9749"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-061-d7f57df79886",
+  "candidateId": "idea-061",
+  "candidateContentDigest": "ee40a7f992e2581dcf2179576083e7e5cf7ce6a4f2e685da98fc5176dd746d1c",
+  "createdAt": "2026-08-14T11:26:53.799585+00:00",
+  "lockedAt": "2026-08-14T11:26:53.799585+00:00",
+  "expectations": {
+    "buyer": "High-consideration shoppers, sellers, marketplaces, brands, and independent verifiers",
+    "pain": "A buyer needs one objective product fact absent from listings before purchase",
+    "strongestIncumbent": "Retailer Q&A, reviews, seller support, creator content, inspection services, returns, and platform buyer protection",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Verifier recruitment, fraud, safety, privacy, dispute handling, and bounty economics can exceed the value of one fact",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "877fe8274f40c1d206c8b093f2e3dc4c058af591288a1ea34b72377800389a1c"
+}

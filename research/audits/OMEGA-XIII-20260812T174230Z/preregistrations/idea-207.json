@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-207-ca1cf384151f",
+  "candidateId": "idea-207",
+  "candidateContentDigest": "86cc64ec056a654cfbef17f81afb481d0b9769237e954148fe7dfd38f1291c49",
+  "createdAt": "2026-08-14T11:26:54.601437+00:00",
+  "lockedAt": "2026-08-14T11:26:54.601437+00:00",
+  "expectations": {
+    "buyer": "Digital-wallet users, relying parties, wallet providers, privacy officers, and public-service designers",
+    "pain": "People cannot tell why an attribute is requested or whether a smaller disclosure is sufficient",
+    "strongestIncumbent": "Wallet consent screens, selective disclosure, relying-party policy, GDPR notices, identity standards, and privacy counsel",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "The wallet and relying party control the request; a third-party assistant lacks authoritative legal and transaction context",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "ddcaf24ef5c9e4aecb2cc69529cba73546226ebcec974f72d99280c6f0a6265d"
+}

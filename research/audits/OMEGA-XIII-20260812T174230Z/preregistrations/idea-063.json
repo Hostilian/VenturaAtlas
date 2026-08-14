@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-063-a310a16434d4",
+  "candidateId": "idea-063",
+  "candidateContentDigest": "1fae04f7cabba7a4fca6ec55ccde991c52ed572826e1ea1d5370ba14a6853d3e",
+  "createdAt": "2026-08-14T11:26:54.063350+00:00",
+  "lockedAt": "2026-08-14T11:26:54.063350+00:00",
+  "expectations": {
+    "buyer": "Buyers of device-accessory combinations, manufacturers, retailers, and expert owners",
+    "pain": "Nominally compatible exact revisions fail physically or functionally in real use",
+    "strongestIncumbent": "Manufacturer compatibility lists, retailer fit checkers, forums, reviews, return policies, and certification labs",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Anecdotal proof does not generalize across firmware, tolerances, configuration, or safety and network liquidity is hard",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "8eb5fff6c5711aba25d13fd0961385c838855493cdbfd500c7eabbb027bb9a37"
+}

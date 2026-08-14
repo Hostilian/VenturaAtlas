@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-062-c62953efb346",
+  "candidateId": "idea-062",
+  "candidateContentDigest": "854be788a15dc37d7305c040780452a07400a0f2829112686b635829a9c011e4",
+  "createdAt": "2026-08-14T11:26:53.930746+00:00",
+  "lockedAt": "2026-08-14T11:26:53.930746+00:00",
+  "expectations": {
+    "buyer": "Buyers of fit-sensitive products, retailers, manufacturers, installers, and shopping agents",
+    "pain": "Usable internal or mounting dimensions are absent or inconsistent across exact revisions",
+    "strongestIncumbent": "Manufacturer drawings, CAD, retailer specifications, community measurements, reviews, and return policies",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Measurements vary by method and revision; liability and low repeat demand may prevent a standalone data network",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "34222a98bcca8696addc83733685d811785b083d9ed8be27ee6b9c33dd35b4a4"
+}

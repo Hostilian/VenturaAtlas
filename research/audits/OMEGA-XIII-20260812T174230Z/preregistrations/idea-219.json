@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-219-9d5ffb7bafe1",
+  "candidateId": "idea-219",
+  "candidateContentDigest": "e8722ee24a5a7b786a2b26ab0f5535084790630c5294a080172f0eef0e8acab6",
+  "createdAt": "2026-08-14T11:26:55.268315+00:00",
+  "lockedAt": "2026-08-14T11:26:55.268315+00:00",
+  "expectations": {
+    "buyer": "Repair shops, makers, households, repair cafes, printers, and parts suppliers",
+    "pain": "A low-risk plastic replacement part fails because measurement, printer variation, material, and fit were not controlled",
+    "strongestIncumbent": "CAD services, parametric model libraries, scanning, OEM spares, print shops, repair cafes, and trial-and-error coupons",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Safety classification and liability limit scope; measurement effort and cheap OEM or marketplace parts can erase margin",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "bd08e1565fbce0981b2724c5d6e88db5c2f132268faec7623c349e89a7d3c03d"
+}

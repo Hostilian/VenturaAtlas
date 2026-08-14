@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-210-e8c753b52d04",
+  "candidateId": "idea-210",
+  "candidateContentDigest": "dd0e426012727c71df9ce6ef053780824dfa10ce030dba1d90d15ac45e14d006",
+  "createdAt": "2026-08-14T11:26:55.134319+00:00",
+  "lockedAt": "2026-08-14T11:26:55.134319+00:00",
+  "expectations": {
+    "buyer": "E-commerce teams, accessibility leaders, disabled users, agencies, regulators, and payment providers",
+    "pain": "Automated scans miss task-level barriers that prevent real checkout completion",
+    "strongestIncumbent": "WCAG scanners, browser tools, manual audits, user testing panels, payment sandboxes, and accessibility consultancies",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Real purchases, consent, test accounts, payment state, assistive technology, and legal interpretation complicate automation",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a205dc3d5921c8a02c02f1822d5f6345efed9b6d280a4fbede92563060ccda6d"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-064-529341136cd5",
+  "candidateId": "idea-064",
+  "candidateContentDigest": "62734082b5543c43fa7bcc69c400ac73d62dbedccb6c6a03bd230cbddef7b537",
+  "createdAt": "2026-08-14T11:26:54.197616+00:00",
+  "lockedAt": "2026-08-14T11:26:54.197616+00:00",
+  "expectations": {
+    "buyer": "Shoppers, marketplaces, brands, verified owners, and shopping agents",
+    "pain": "Product questions remain unanswered or are answered by unverified people without evidence",
+    "strongestIncumbent": "Retailer Q&A, reviews, seller support, communities, creators, and receipt-verified review programmes",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Identity and receipts do not prove expertise or truth; platforms own distribution and can add video answers",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f2986d3d51707230ca863bcb2dc9d0538e89b3b82bed2697a4b0d2b23b0fb5f6"
+}

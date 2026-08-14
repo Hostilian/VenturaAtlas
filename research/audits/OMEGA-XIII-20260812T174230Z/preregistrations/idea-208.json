@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-208-9cebebd63386",
+  "candidateId": "idea-208",
+  "candidateContentDigest": "9710d8344dcf0b9fee58596f75412ba7b5e7e50afa6871798f3f15b9c0086611",
+  "createdAt": "2026-08-14T11:26:54.737484+00:00",
+  "lockedAt": "2026-08-14T11:26:54.737484+00:00",
+  "expectations": {
+    "buyer": "Households, schools, employers, banks, insurers, and community groups",
+    "pain": "People recognize scam advice but fail under urgency, impersonation, and emotional pressure",
+    "strongestIncumbent": "Bank education, government campaigns, phishing simulations, security-awareness vendors, and family protocols",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Consumer willingness to pay is weak and simulations can normalize unsafe behavior or expose sensitive scenarios",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "6b3183c2bb0ea4e632b97a06b4a4f8364a29313c0f37c7a6444b6cdd7a609b9d"
+}

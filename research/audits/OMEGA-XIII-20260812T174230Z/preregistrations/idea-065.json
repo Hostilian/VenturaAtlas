@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-065-40829aa7c857",
+  "candidateId": "idea-065",
+  "candidateContentDigest": "68defb5ee76ad266ed1ca10c2e63b0349ad5e9ec576d1f0efe8643ef779eb5f1",
+  "createdAt": "2026-08-14T11:26:54.334152+00:00",
+  "lockedAt": "2026-08-14T11:26:54.334152+00:00",
+  "expectations": {
+    "buyer": "Urgent local shoppers, retailers, brands, delivery platforms, and shopping agents",
+    "pain": "Online stock and price differ from what is physically on a specific shelf now",
+    "strongestIncumbent": "Retailer inventory, store calls, delivery apps, crowdsourcing, mystery shopping, and reservation systems",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Geotagged proof becomes stale immediately and may violate store policy; verifier density and unit economics are weak",
+    "verdict": "LIKELY_KILL"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "fb6e5312a5b85d3fafd3354142b5eaadbd43d133671287bc88fecee2ac8d35de"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-222-6b916e6c3cea",
+  "candidateId": "idea-222",
+  "candidateContentDigest": "e130033e9f9d68e7b340c3c33cd87d00e7db7a607e614e0e5c2620a6bcff0255",
+  "createdAt": "2026-08-14T11:26:55.669223+00:00",
+  "lockedAt": "2026-08-14T11:26:55.669223+00:00",
+  "expectations": {
+    "buyer": "Households, appliance repairers, makers, print shops, and parts retailers",
+    "pain": "A missing or broken low-risk appliance knob is unavailable or does not fit its shaft and orientation",
+    "strongestIncumbent": "OEM spares, generic knobs, marketplaces, model libraries, calipers, CAD, and local print services",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Heat, electrical, gas, load, labeling, and control ambiguity create safety exclusions; commodity replacements may be cheaper",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "17d3d6eb9850e50bfa7cc5f46d4618e06a2fa25e9cc02018acbd76d851dc81d6"
+}

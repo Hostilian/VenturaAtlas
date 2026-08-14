@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-082-351ddfd4c361",
+  "candidateId": "idea-082",
+  "candidateContentDigest": "f316e6d60de28bf772152e0372d282d2383d42f0b73a6fb41d8e02e8aadae24b",
+  "createdAt": "2026-08-14T11:26:55.950876+00:00",
+  "lockedAt": "2026-08-14T11:26:55.950876+00:00",
+  "expectations": {
+    "buyer": "Event organizers, vendors, market operators, and pop-up sellers",
+    "pain": "A late booth cancellation leaves sunk capacity while suitable vendors cannot discover or qualify in time",
+    "strongestIncumbent": "Organizer waitlists, vendor groups, event platforms, social media, email lists, and local networks",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Organizer approval, insurance, permits, inventory, travel, and low lead time make a neutral performance-fee network hard",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "89eae3ff6beed4057d95db2916220a705ef9ed3ff93797ea8dd3aade6ebb131f"
+}

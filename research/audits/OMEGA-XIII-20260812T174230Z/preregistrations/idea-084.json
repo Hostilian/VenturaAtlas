@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-084-3f9746c7c813",
+  "candidateId": "idea-084",
+  "candidateContentDigest": "1e1969b6e96edcde10f3da6c5e8eec9d207bd8d0fb1dc85ba351fd7f47b3d520",
+  "createdAt": "2026-08-14T11:26:56.239759+00:00",
+  "lockedAt": "2026-08-14T11:26:56.239759+00:00",
+  "expectations": {
+    "buyer": "Appointment businesses, salons, clinics, classes, and scheduling platforms",
+    "pain": "Late cancellations create perishable capacity while waitlist customers are not activated effectively",
+    "strongestIncumbent": "Scheduling platforms, automated waitlists, deposits, cancellation fees, SMS, marketplaces, and staff calls",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Native schedulers bundle waitlists and messaging; performance attribution and consent can defeat an external fee",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a8d3da3c39552d15cbb582b2b2c5776585084689d5b6afe6df4e88449ee06342"
+}

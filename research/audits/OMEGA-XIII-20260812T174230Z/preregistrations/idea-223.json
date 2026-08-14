@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-223-a9bfc157f6c7",
+  "candidateId": "idea-223",
+  "candidateContentDigest": "f58f344407710fe01927a3aa3160b029cbee54ea5d0f91f71ca651d223baf13b",
+  "createdAt": "2026-08-14T11:26:55.805683+00:00",
+  "lockedAt": "2026-08-14T11:26:55.805683+00:00",
+  "expectations": {
+    "buyer": "Households, furniture repairers, makers, print shops, and facility teams",
+    "pain": "A non-structural foot, cap, glide, or protector is unavailable in the exact profile",
+    "strongestIncumbent": "Hardware stores, marketplaces, generic caps, CAD libraries, scanning, and local print services",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Low ticket values and measurement friction make acquisition expensive; structural misclassification creates liability",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "9195cd4d7d788d3671805fc67b4d58a69bde60364bdeb7a967970fbf0b065a13"
+}

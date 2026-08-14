@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-006-0c7e2d6322c7",
+  "candidateId": "idea-006",
+  "candidateContentDigest": "8d696ae08513422c5fbde95a7af60d3802c9461c94733bb3229302b2f48ea6a9",
+  "createdAt": "2026-08-14T11:26:53.660396+00:00",
+  "lockedAt": "2026-08-14T11:26:53.660396+00:00",
+  "expectations": {
+    "buyer": "Application-security, developer, platform, and remediation teams",
+    "pain": "Static-analysis findings are noisy or hard to remediate and fixes can introduce regressions",
+    "strongestIncumbent": "GitHub CodeQL autofix and Copilot, SAST vendors, code review, tests, security engineers, and IDE remediation",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Vendor-native autofix absorbs generic explanation and patching; semantic correctness and deployment evidence remain human-bound",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "8d34a52cdf3ab689f2aa5b838fdba1b26466017f79872b4617478013c4c95dea"
+}
