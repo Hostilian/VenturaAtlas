@@ -29,7 +29,7 @@ Status: active
 - Canonical publication now prepares a durable multi-file recovery journal before live replacement; interrupted PREPARED transactions are restored on the next publisher invocation.
 - Seventy-five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, incumbent substitution, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
 - A serialized semantic-review issuer now derives candidate/corpus bindings itself and accepts only an already-active configured reviewer; the empty production authority registry remains fail-closed.
-- Exact public artifact rebuilt and privacy-scanned; exact commit `90d0bef` independently reproduced 89 executed Node tests plus 10 intentional private-staging skips, all 86 Python tests, strict source/completion/privacy gates, the 5,091-file public build, and a clean final tree.
+- Exact public artifact rebuilt and privacy-scanned; exact commit `bfc70e9` independently reproduced 89 executed Node tests plus 10 intentional private-staging skips, all 95 Python tests, strict source/completion/privacy gates, the 5,091-file public build, and a clean final tree.
 
 ## Pending
 
@@ -37,7 +37,7 @@ Status: active
 - Repository-owner provisioning or a stronger signed reviewer authority boundary; no production reviewer is currently authorized.
 - Dedicated clean publication job and exact staged-tree semantic validation.
 - Execute the prepared 36-candidate private campaign with authorized buyer contacts and interviews, then WTP tests, protected-data drills, paid pilots, repeat-payment tests, and external validation; current contact/interview counts remain zero.
-- Repository-owner review of historical private-staging exposure and a release decision for eight local commits; nothing was pushed or deployed.
+- Repository-owner review of historical private-staging exposure and a release decision for ten local commits; nothing was pushed or deployed.
 
 ## Completion boundary
 

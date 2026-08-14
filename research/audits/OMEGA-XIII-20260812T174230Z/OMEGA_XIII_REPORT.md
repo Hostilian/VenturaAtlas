@@ -2,7 +2,7 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: `90d0befc8de187acbef9a463674ae33d2ec170be`
+Verified evidence HEAD: `bfc70e9f6296b788e0b2bb037473b757fa84fcec`
 
 ## 01 Executive Verdict
 
@@ -10,7 +10,7 @@ This is a substantial OMEGA XIII checkpoint, not mission completion. The autonom
 
 ## 02 Frozen Git Baseline
 
-The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. Concurrent repository and remote writers were preserved throughout. The final read-only fetch found `origin/main` at `c4af0465e961827e3dc0f65c2ef7c8236c810147`; verified evidence commit `90d0befc8de187acbef9a463674ae33d2ec170be` is eight commits ahead and zero behind. This task did not push or deploy.
+The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. Concurrent repository and remote writers were preserved throughout. The final read-only fetch found `origin/main` at `c4af0465e961827e3dc0f65c2ef7c8236c810147`; verified evidence commit `bfc70e9f6296b788e0b2bb037473b757fa84fcec` is ten commits ahead and zero behind. This task did not push or deploy.
 
 ## 03 Codex Instruction Chain
 
@@ -86,7 +86,7 @@ Liveness and readiness are separate. Readiness fails on missing/placeholder auth
 
 ## 21 Public Artifact
 
-The final source-worktree `_site` build contains 5,091 files and projects 288 explicitly public evidence-eligible sources from 301 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and PWA contract tests pass. Exact commit `c30b0556336c07977ab061a891a5c5c076e9171b` independently reproduced those results in a clean clone.
+The final source-worktree `_site` build contains 5,091 files and projects 288 explicitly public evidence-eligible sources from 301 total sources. It contains zero lifecycle receipts, private staging, or agent state; the exact artifact scanner and PWA contract tests pass. Exact commit `bfc70e9f6296b788e0b2bb037473b757fa84fcec` independently reproduced those results in a clean clone.
 
 ## 22 PhaseShift Landscape
 
@@ -357,7 +357,7 @@ Three independent reviewers audited publisher/ranking authority, runtime/cloud b
 
 ## 60 Fresh Clone
 
-Exact evidence commit `90d0befc8de187acbef9a463674ae33d2ec170be` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-final-90d0bef`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 89 executed Node tests plus 10 intentional private-staging skips, 86 Python tests, all 45 completion-matrix checks, every strict validator, links, consistency, drift, constitution integrity, privacy, and task-graph structure with zero warnings. The clone rebuilt 5,091 public files, projected 288 eligible public sources from 301 total, and passed the secret/private-path scanner plus four PWA tests.
+Exact evidence commit `bfc70e9f6296b788e0b2bb037473b757fa84fcec` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-external-bfc70e9`. Private staging and the live private campaign were absent, and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 89 executed Node tests plus 10 intentional private-staging skips, 95 Python tests, all 45 completion-matrix checks, every strict validator, links, consistency, drift, constitution integrity, privacy, and task-graph structure with zero warnings. The clone rebuilt 5,091 public files, projected 288 eligible public sources from 301 total, and passed the secret/private-path scanner plus four PWA tests.
 
 ## 61 Remaining Unknowns
 
@@ -369,7 +369,7 @@ The exact completion audit records 43 PROVEN, zero PARTIAL, and two MISSING_EXTE
 2. Supply a real independent reviewer roster to the committed paired experiment, run every blind/informed assignment, and finalize the prespecified anchoring delta.
 3. Execute the seventy-five cheap falsification tests and append only real external outcomes to the validation funnel.
 4. Execute the prepared 36-candidate private campaign with real delivery receipts and consented buyer interviews; obtain budget/WTP evidence, paid pilots, and repeat-payment outcomes before any validated-market claim.
-5. Decide whether the evidence line's eight commits plus this report archive should be reviewed and pushed/deployed; no publication occurred in this run.
+5. Decide whether the evidence line's ten commits plus this report archive should be reviewed and pushed/deployed; no publication occurred in this run.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 
 **Final status: OMEGA XIII ACTIVE / INCOMPLETE.**
