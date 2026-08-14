@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "constitutionDigest": "12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED",
-  "sourceEvidenceCommit": "c30b0556336c07977ab061a891a5c5c076e9171b",
+  "sourceEvidenceCommit": "90d0befc8de187acbef9a463674ae33d2ec170be",
   "completionClaim": false,
   "statusSemantics": {
     "PROVEN": "Direct current-state evidence covers the requirement.",
@@ -310,14 +310,14 @@
       "requirement": "fresh clone passes",
       "status": "PROVEN",
       "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/CODEX_LOG.md", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
-      "finding": "Exact evidence commit c30b055 passed dependency install, 85 executed Node plus 10 explicit skips, 75 Python, strict gates, build, and scan in a no-hardlink clone."
+      "finding": "Exact evidence commit 90d0bef passed dependency install, 89 executed Node plus 10 explicit private-staging skips, 86 Python, strict gates, completion audit, 5,091-file build, scan, and zero-warning task-graph validation in a no-local clone."
     },
     {
       "id": 44,
       "requirement": "latest main is reconciled",
       "status": "PROVEN",
       "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/CODEX_LOG.md", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
-      "finding": "The final recorded read-only fetch showed the evidence line zero behind origin/main; no push or deploy occurred."
+      "finding": "The final recorded read-only fetch showed evidence commit 90d0bef eight commits ahead and zero behind origin/main; no push or deploy occurred."
     },
     {
       "id": 45,

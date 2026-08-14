@@ -14,6 +14,11 @@ Status: active
 - Strict PhaseShift, validation-funnel, and prospective preregistration schemas/validators implemented with adversarial tests.
 - Seventy-five prospectively preregistered ideas were researched across eleven bounded evidence tranches and 76 distinct purposeful query families without padding; 301 screened sources and sixteen desk-research run records now validate.
 - PhaseShift now validates 30 markets, zero inferred transitions, 11 enforcement events, one intermediary assessment, 30 milestones, six milestone edges, one preserved source conflict, and one explicitly unknown deadlock.
+- A fail-closed blind-research CLI/state machine enforces separate investigators, digest-bound anchor-free packets, findings lock before unblinding, and tamper detection; no independent assignment or anchoring measurement is claimed.
+- A bounded novelty-yield gate skips provider calls during low-yield cooldown and records an explicit decision receipt; provider failures do not depress the semantic yield denominator.
+- All 30 markets have deterministic one-phase-forward counterfactuals with survival/absorption decisions, kill conditions, and buyer/data-access fields held unproven pending external receipts.
+- The exact 45-condition completion audit reports 43 PROVEN, zero PARTIAL, and two MISSING_EXTERNAL; completion remains false.
+- The 30-task agent graph now contains 79 validated prerequisite edges and passes without structural warnings.
 - Semantic duplicate reviews are bound to candidate digest plus canonical corpus revision; rank receipts require registered method/scale and mature idea-bound research runs.
 - Remote HTTP calls now acquire the scheduler's exact eligible key; 401/403 disables that credential, 429 applies cooldown, and shared aliases inherit the same health state.
 - Worker readiness now fails while an in-process or repository-wide writer is active, validates canonical JSON/writability, and redacts task output.
@@ -22,16 +27,16 @@ Status: active
 - Canonical publication now prepares a durable multi-file recovery journal before live replacement; interrupted PREPARED transactions are restored on the next publisher invocation.
 - Seventy-five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, incumbent substitution, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
 - A serialized semantic-review issuer now derives candidate/corpus bindings itself and accepts only an already-active configured reviewer; the empty production authority registry remains fail-closed.
-- Exact public artifact rebuilt and privacy-scanned; source-quality suite passed 95 Node and 75 Python tests, and exact commit `c30b055` independently reproduced 85 executed Node tests plus 10 intentional private-staging skips and all 75 Python tests.
+- Exact public artifact rebuilt and privacy-scanned; exact commit `90d0bef` independently reproduced 89 executed Node tests plus 10 intentional private-staging skips, all 86 Python tests, strict source/completion/privacy gates, the 5,091-file public build, and a clean final tree.
 
 ## Pending
 
-- Run independent blinded investigators and quantify anchoring delta; the 75-round desk-research floor is cleared but blind execution is not.
+- Execute randomized independent blind and informed assignments through the landed workflow and quantify anchoring delta; the 75-round desk-research floor is cleared but the external experiment is not.
 - Repository-owner provisioning or a stronger signed reviewer authority boundary; no production reviewer is currently authorized.
 - Dedicated clean publication job and exact staged-tree semantic validation.
 - Execute authorized buyer interviews, WTP tests, protected-data drills, paid pilots, repeat-payment tests, and external validation; the structured funnel remains empty.
-- Repository-owner review of historical private-staging exposure and a release decision for six local commits; nothing was pushed or deployed.
+- Repository-owner review of historical private-staging exposure and a release decision for eight local commits; nothing was pushed or deployed.
 
 ## Completion boundary
 
-OMEGA XIII is not complete. The purposeful desk-research floor and clean-clone proof are complete, but no customer interview, WTP result, paid pilot, repeat payment, deployed-cloud execution, independent blinded run, or external validation will be claimed without a concrete receipt.
+OMEGA XIII is not complete. Forty-three of forty-five completion conditions are proven, but no customer interview, WTP result, paid pilot, repeat payment, deployed-cloud execution, independent blind assignment, anchoring delta, or external validation will be claimed without a concrete receipt.

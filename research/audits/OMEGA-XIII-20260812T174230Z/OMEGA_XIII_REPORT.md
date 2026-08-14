@@ -2,15 +2,15 @@
 
 Run: `OMEGA-XIII-20260812T174230Z`  
 Constitution SHA-256: `12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED`  
-Verified evidence HEAD: `c30b0556336c07977ab061a891a5c5c076e9171b`
+Verified evidence HEAD: `90d0befc8de187acbef9a463674ae33d2ec170be`
 
 ## 01 Executive Verdict
 
-This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Seventy-five existing ideas have received preregistered desk-commercial review across eleven evidence tranches, 76 distinct purposeful query families clear the constitution's suggested research-round floor, and thirty market maps validate. The complete evidence line passed immutable integration and exact-commit clone proof. Independent blinded review, anchoring measurement, real buyer interviews, WTP evidence, paid outcomes, repeat payments, and external validation have not occurred. Those gaps prohibit a completion claim.
+This is a substantial OMEGA XIII checkpoint, not mission completion. The autonomy, ranking, publisher, runtime, public-projection, and PhaseShift foundations fail closed under the reproduced attacks. Seventy-five existing ideas have received preregistered desk-commercial review across eleven evidence tranches, 76 distinct purposeful query families clear the constitution's suggested research-round floor, and thirty market maps validate. A machine-checked matrix proves 43 of the constitution's 45 completion conditions, with zero partial conditions and two explicitly external gaps. The complete evidence line passed immutable integration and exact-commit clone proof. Independent blind assignments and anchoring measurement, real buyer interviews, WTP evidence, paid outcomes, repeat payments, and external validation have not occurred. Those gaps prohibit a completion claim.
 
 ## 02 Frozen Git Baseline
 
-The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. Concurrent repository and remote writers were preserved throughout. The final read-only fetch found `origin/main` at `c4af0465e961827e3dc0f65c2ef7c8236c810147`; verified evidence commit `c30b0556336c07977ab061a891a5c5c076e9171b` is six commits ahead and zero behind. This task did not push or deploy.
+The frozen baseline was clean `main` at `476a4145946a075d924abcd07943ea19a57b9419`, equal to `origin/main`. Concurrent repository and remote writers were preserved throughout. The final read-only fetch found `origin/main` at `c4af0465e961827e3dc0f65c2ef7c8236c810147`; verified evidence commit `90d0befc8de187acbef9a463674ae33d2ec170be` is eight commits ahead and zero behind. This task did not push or deploy.
 
 ## 03 Codex Instruction Chain
 
@@ -66,7 +66,7 @@ Seventy-five immutable preregistrations were locked before their respective sear
 
 ## 16 Blind Review
 
-The allowlisted blind-packet generator removes prior scores, rank, priority, verdict, and anchor language in both keys and values. Preregistration exists, but independent blinded investigators were not run and anchoring delta was not measured. The blind-review completion condition remains open.
+The allowlisted blind-packet generator removes prior scores, rank, priority, verdict, and anchor language in both keys and values. A production CLI and fail-closed state machine now enforce PREPARED -> FINDINGS_LOCKED -> UNBLINDED, distinct preregistration author and investigator identities, content/preregistration digest binding, exact findings shape, and tamper detection. This proves that blind commercial research is operational. No independent assignment has actually run, however, and no blind-versus-informed anchoring delta exists; the separate measurement condition remains external and open.
 
 ## 17 Confirmation-Bias Findings
 
@@ -74,7 +74,7 @@ Preregistered expectations changed under negative evidence. Public Data Contract
 
 ## 18 Massive Orchestrator
 
-Required-stage failures propagate through explicit dependencies and produce nonzero exit. Zero budget produces a failed receipt without invoking work. Each child receives only remaining whole-run budget, and timeout termination targets the process tree. Output tails are redacted.
+Required-stage failures propagate through explicit dependencies and produce nonzero exit. Zero budget produces a failed receipt without invoking work. Each child receives only remaining whole-run budget, and timeout termination targets the process tree. Output tails are redacted. The 30-task repository graph now carries 79 explicit prerequisite edges; reference, cycle, ownership, and reachability structure validates with zero warnings.
 
 ## 19 Cloud Runtime
 
@@ -90,7 +90,7 @@ The final source-worktree `_site` build contains 5,091 files and projects 288 ex
 
 ## 22 PhaseShift Landscape
 
-Strict structured state now covers thirty markets, zero inferred phase transitions, eleven enforcement events, one intermediary assessment, thirty milestones, six milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
+Strict structured state now covers thirty markets, zero inferred phase transitions, eleven enforcement events, one intermediary assessment, thirty milestones, six milestone edges, one preserved source conflict, and one explicitly UNKNOWN deadlock. A deterministic phase-forward registry advances every market by one phase and records seven narrow survivors, eleven wait states, eleven absorbed generic layers, and one signal-only market. Every scenario preserves buyer authority and data access as unproven pending external receipts. Ecosystem topology, enforcement topology, market phase, and provider density remain separate concepts.
 
 ## 23 Market Phase Map
 
@@ -333,7 +333,7 @@ Events: 0. Money cost: 0 recorded. Founder minutes: 0 recorded in the funnel. Ca
 
 ## 54 Novelty Yield
 
-No candidate-generation round was run, so novelty yield is not computed. Zero generated candidates is intentional and is not interpreted as a failed market scan.
+No candidate-generation round was run, so novelty yield is not computed. Zero generated candidates is intentional and is not interpreted as a failed market scan. The generator now persists a bounded novelty-yield window, excludes provider failures from the denominator, enters a two-run cooldown after three below-threshold evaluated runs, skips provider calls while throttled, and permits an explicit operator override. Behavioral tests prove the worker is not called during cooldown.
 
 ## 55 Decision Yield
 
@@ -353,23 +353,23 @@ Behavioral injections covered provider 401/429 state, external-evidence fallback
 
 ## 59 Independent Red Team
 
-Three independent reviewers audited publisher/ranking authority, runtime/cloud behavior, and ShockGraph/PhaseShift structure. Their reproduced findings drove the implemented changes. Residual substantive gaps include signed reviewer provisioning, independent blinded research, public-history exposure assessment, buyer/WTP proof, paid outcomes, and external validation.
+Three independent reviewers audited publisher/ranking authority, runtime/cloud behavior, and ShockGraph/PhaseShift structure. Their reproduced findings drove the implemented changes. Residual substantive gaps include signed reviewer provisioning, execution of independent blind assignments, public-history exposure assessment, buyer/WTP proof, paid outcomes, and external validation.
 
 ## 60 Fresh Clone
 
-Exact evidence commit `c30b0556336c07977ab061a891a5c5c076e9171b` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-final-c30b055`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages with zero reported vulnerabilities, source quality passed 85 executed Node tests plus 10 intentional private-staging skips, 75 Python tests, every strict validator, links, consistency, drift, constitution integrity, privacy, and task-graph structure with its disclosed no-edge warning. The clone rebuilt 5,091 public files, projected 288 eligible public sources from 301 total, and passed the secret/private-path scanner.
+Exact evidence commit `90d0befc8de187acbef9a463674ae33d2ec170be` was cloned with local object sharing disabled into `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-final-90d0bef`. Private staging was absent and the checkout began and ended clean. After installing 157 lockfile packages, source quality passed 89 executed Node tests plus 10 intentional private-staging skips, 86 Python tests, all 45 completion-matrix checks, every strict validator, links, consistency, drift, constitution integrity, privacy, and task-graph structure with zero warnings. The clone rebuilt 5,091 public files, projected 288 eligible public sources from 301 total, and passed the secret/private-path scanner plus four PWA tests.
 
 ## 61 Remaining Unknowns
 
-Unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accepted agent mandates, production VoP divergence, transaction-safe API remediation, independent rebuild/signing/license/hardware recovery, qualified machinery and industrial migration decisions, provider-authorized synthesis assurance, connected-product feed behavior, site-specific grid truth, platform-work review outcomes, accepted AI oracles, product-truth error rates, accessibility outcomes, repair safety and economics, event incremental revenue, all prior inaccessible corpora, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
+The exact completion audit records 43 PROVEN, zero PARTIAL, and two MISSING_EXTERNAL conditions: measured reviewer anchoring and real commercial research for the current high-priority private candidates. Other unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accepted agent mandates, production VoP divergence, transaction-safe API remediation, independent rebuild/signing/license/hardware recovery, qualified machinery and industrial migration decisions, provider-authorized synthesis assurance, connected-product feed behavior, site-specific grid truth, platform-work review outcomes, accepted AI oracles, product-truth error rates, accessibility outcomes, repair safety and economics, event incremental revenue, all prior inaccessible corpora, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
 
 ## 62 Next Actions
 
 1. Provision reviewer authority only through a repository-owner decision or replace it with a signed-key boundary.
-2. Run independent blinded reviews and measure anchoring delta.
+2. Use the operational blind-research state machine to run randomized independent blind and informed assignments, then measure the preregistered anchoring delta.
 3. Execute the seventy-five cheap falsification tests and append only real external outcomes to the validation funnel.
 4. Obtain real buyer interviews, budget/WTP evidence, paid pilots, and repeat-payment outcomes before any validated-market claim.
-5. Decide whether the evidence line's six commits plus this report archive should be reviewed and pushed/deployed; no publication occurred in this run.
+5. Decide whether the evidence line's eight commits plus this report archive should be reviewed and pushed/deployed; no publication occurred in this run.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 
 **Final status: OMEGA XIII ACTIVE / INCOMPLETE.**
