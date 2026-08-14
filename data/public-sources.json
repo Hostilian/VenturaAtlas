@@ -5947,5 +5947,120 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s279",
+    "title": "Product Compatibility and Migration",
+    "publisher": "Rockwell Automation",
+    "url": "https://www.rockwellautomation.com/en-us/support/product/product-compatibility-migration.html",
+    "supports": [
+      "Rockwell's Product Compatibility and Download Center compares products and features and exposes release notes, firmware, lifecycle status, dependencies, and known issues",
+      "Rockwell also publishes current lifecycle status and recommended replacements and offers modernization assessment, planning, and execution, absorbing a generic lifecycle lookup or migration graph"
+    ],
+    "type": "company_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-lifecycle",
+    "ideaIds": [
+      "idea-166"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s280",
+    "title": "SIMATIC S7-1200 G2 Migration Guideline",
+    "publisher": "Siemens Industry Online Support",
+    "url": "https://support.industry.siemens.com/cs/attachments/109986503/109986503_S7-1200G2_MigrationGuideline_DOC_V10_en.pdf",
+    "supports": [
+      "Siemens' TIA Portal Migration Tool Add-In includes a Migration Checker that tests hardware and software support and produces compatibility issues and recommendations before conversion",
+      "The tool can migrate hardware, networks, and software, but Siemens still directs users to account for unsupported blocks, target-CPU behavior changes, hardware availability, and troubleshooting"
+    ],
+    "type": "company_product_documentation",
+    "date": "2025-03",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-lifecycle",
+    "ideaIds": [
+      "idea-168"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s281",
+    "title": "Rockwell Automation documentation frequently asked questions",
+    "publisher": "Rockwell Automation",
+    "url": "https://www.rockwellautomation.com/en-us/support/documentation/frequently-asked-questions.html",
+    "supports": [
+      "Rockwell's Technical Documentation Center, Literature Library, release notes, and Product Compatibility and Download Center already organize manuals, product versions, EDS histories, and other revision-specific files",
+      "Some previous manual versions require a contract for the associated product, demonstrating that a neutral resolver cannot assume lawful or complete access to revision history"
+    ],
+    "type": "company_product_documentation",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-lifecycle",
+    "ideaIds": [
+      "idea-173"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s282",
+    "title": "OPC certification and product-quality guidance",
+    "publisher": "OPC Foundation",
+    "url": "https://opcfoundation.org/wp-content/uploads/2014/10/5-Steps-to-Success-with-OPC-Certification-v4.pdf",
+    "supports": [
+      "Official OPC certification uses sanctioned test laboratories to test specification compliance, interoperability with other products, robustness, and recovery before listing a certified product",
+      "A gateway selector cannot infer operational interoperability merely from protocol labels; certified products and a representative bench are stronger evidence boundaries"
+    ],
+    "type": "standards_conformance_program",
+    "date": "2014",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-lifecycle",
+    "ideaIds": [
+      "idea-171"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s283",
+    "title": "About open source license compliance",
+    "publisher": "GitHub Docs",
+    "url": "https://docs.github.com/en/code-security/concepts/supply-chain-security/open-source-license-compliance",
+    "supports": [
+      "GitHub can detect direct and transitive dependency licenses, compare pull-request dependency changes with an enterprise policy, report violations, and block merge through active rulesets until resolution",
+      "The feature remains public preview and GitHub explicitly says license categories are informational rather than legal advice, leaving context-specific distribution, exception, and legal analysis outside the automated gate"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-industrial-lifecycle",
+    "ideaIds": [
+      "idea-170"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

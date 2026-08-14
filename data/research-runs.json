@@ -2425,5 +2425,45 @@
     "startedAt": "2026-08-13T16:48:00Z",
     "endedAt": "2026-08-13T17:05:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-015-20260814-industrial-lifecycle",
+    "baselineCommit": "2b9bef84f03e7c4200d3e0d80b1b2be83a2a187d",
+    "questions": [
+      "Which industrial lifecycle, migration, gateway, and documentation functions are already controlled by OEM portals, conversion tools, certified products, and support contracts?",
+      "Can a neutral layer produce useful evidence without claiming hardware, safety, interoperability, or maintenance authority it does not possess?",
+      "Does software license-change analysis retain a scarce shipped-artifact boundary after source-control platforms enforce direct and transitive license policy?"
+    ],
+    "queries": [
+      "Rockwell product lifecycle compatibility replacement and modernization services",
+      "Siemens PLC migration checker hardware software support and compatibility reports",
+      "OPC certification interoperability robustness and recovery tests",
+      "Rockwell documentation libraries revision history and prior-version access",
+      "GitHub dependency review and open-source license compliance policy enforcement"
+    ],
+    "sourceCandidates": ["s279", "s280", "s281", "s282", "s283"],
+    "inclusions": ["idea-166", "idea-168", "idea-171", "idea-173", "idea-170"],
+    "exclusions": [],
+    "claimsChanged": [
+      "Industrial Automation Obsolescence Graph continues only as authorized multi-OEM installed-base reconciliation because OEM portals own current lifecycle, compatibility, issue, and replacement truth.",
+      "PLC Project Migration Linter is reassessed to cross-OEM evidence and test planning because Siemens already performs compatibility checking and conversion while physical and behavioral acceptance remain outside static lint.",
+      "Industrial Protocol Gateway Selector waits and narrows to a source-linked shortlist plus representative bench because certified interoperability and robustness are stronger than protocol labels.",
+      "Industrial Manual Revision Resolver waits for owner-authorized configuration and access because OEM libraries already organize documents and some legacy revisions are contract-restricted.",
+      "Dependency License-Change Impact Diff waits and narrows to build-resolved shipped-artifact reachability and counsel-approved exceptions because GitHub now enforces direct and transitive license policy.",
+      "No buyer, WTP, installed-base inventory, PLC project, gateway bench, lawful manual corpus, shipped dependency graph, purchase, or validation claim was earned."
+    ],
+    "preregistrationRefs": [
+      "prereg-idea-166-1c237dcd7391",
+      "prereg-idea-168-cf1980c16712",
+      "prereg-idea-171-356084e10f81",
+      "prereg-idea-173-7b7f687ae472",
+      "prereg-idea-170-41fac5f88ce6"
+    ],
+    "ideaIds": ["idea-166", "idea-168", "idea-171", "idea-173", "idea-170"],
+    "agent": "codex-phaseshift",
+    "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
+    "startedAt": "2026-08-14T00:04:00Z",
+    "endedAt": "2026-08-14T00:15:00Z",
+    "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
   }
 ]

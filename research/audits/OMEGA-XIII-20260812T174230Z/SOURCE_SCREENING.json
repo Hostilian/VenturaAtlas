@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-13T17:05:00Z",
+  "observedAt": "2026-08-14T00:15:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -488,6 +488,56 @@
       ],
       "includedSourceRefs": ["s276"],
       "decisionImpact": "The Directive creates a concrete explanation, authorized human oversight, review, rectification, and two-week response workflow for digital labour platforms. It does not establish a universal all-employer ledger. WorkerDecision Ledger waits for one platform and Member State implementation, narrowed to workflow evidence that preserves actual human authority and worker rights."
+    },
+    {
+      "queryFamilyId": "qf-industrial-obsolescence-incumbent-control",
+      "purpose": "Test whether an independent industrial lifecycle graph owns scarce truth beyond OEM status, replacement, compatibility, and modernization services",
+      "queries": [
+        "Rockwell Product Compatibility Download Center lifecycle status replacements dependencies migration",
+        "Siemens lifecycle services inventory baseline legacy system services"
+      ],
+      "includedSourceRefs": ["s279"],
+      "decisionImpact": "OEM portals already own current lifecycle, compatibility, issue, dependency, replacement, and service truth. Industrial Automation Obsolescence Graph continues only as installed-base reconciliation across OEMs and facilities; a generic public catalogue is absorbed."
+    },
+    {
+      "queryFamilyId": "qf-plc-migration-checker-substitution",
+      "purpose": "Determine which PLC migration-lint functions OEM conversion tools already perform and which claims still require physical and behavioral verification",
+      "queries": [
+        "Siemens S7-1200 G2 Migration Checker hardware software compatibility report",
+        "Siemens S7-300 S7-1500 migration unsupported blocks readiness check"
+      ],
+      "includedSourceRefs": ["s280"],
+      "decisionImpact": "Siemens already checks hardware/software support and reports compatibility issues before automated migration. PLC Project Migration Linter is reassessed down to cross-OEM evidence and test planning; static lint cannot prove I/O, timing, safety, or process behavior."
+    },
+    {
+      "queryFamilyId": "qf-industrial-gateway-interoperability-proof",
+      "purpose": "Test whether protocol labels and a neutral compatibility resolver can substitute for certified and bench-tested gateway interoperability",
+      "queries": [
+        "OPC Foundation certified products interoperability robustness recovery test lab",
+        "industrial gateway compatibility certification representative device bench"
+      ],
+      "includedSourceRefs": ["s282"],
+      "decisionImpact": "OPC certification explicitly tests interoperability, robustness, and recovery in sanctioned labs. Industrial Protocol Gateway Selector waits and narrows to source-linked shortlist plus representative bench plan; it cannot warrant timing, security, redundancy, diagnostics, or vendor-specific behavior from labels."
+    },
+    {
+      "queryFamilyId": "qf-industrial-manual-revision-access",
+      "purpose": "Test whether a neutral manual resolver can lawfully and completely index legacy industrial revisions and determine applicability",
+      "queries": [
+        "Rockwell Literature Library Technical Documentation Center previous manual versions contract",
+        "Rockwell Product Compatibility Download Center release notes EDS revision history"
+      ],
+      "includedSourceRefs": ["s281"],
+      "decisionImpact": "OEM libraries already organize product/revision documentation, and some previous versions require a product contract. Industrial Manual Revision Resolver waits and narrows to owner-authorized machine/serial/configuration evidence; generic aggregation faces access limits and cannot authorize service action."
+    },
+    {
+      "queryFamilyId": "qf-license-policy-diff-substitution",
+      "purpose": "Test whether dependency-license change gates are already an incumbent source-control capability and where legal impact remains unautomatable",
+      "queries": [
+        "GitHub dependency review license direct transitive dependency pull request",
+        "GitHub open source license compliance policy ruleset block merge legal advice"
+      ],
+      "includedSourceRefs": ["s283"],
+      "decisionImpact": "GitHub now detects and enforces direct/transitive license policy at pull request time, absorbing a generic license-change gate. Dependency License-Change Impact Diff waits and narrows to build-resolved shipped-artifact reachability and counsel-approved exceptions; automated metadata is not legal advice."
     }
   ],
   "excluded": [
@@ -677,5 +727,10 @@
     ,"connected-product endpoint, authorized user request, feed telemetry, same-quality baseline, dispute, or service-level budget"
     ,"site-specific utility study, queue position, upgrade estimate, energisation commitment, land-control file, or property transaction"
     ,"platform-work case file, human-review response, worker or representative participation, national implementation decision, or HR-platform budget"
+    ,"authoritative multi-OEM installed-base inventory, lifecycle-change event, migration purchase, avoided downtime, or asset-owner budget"
+    ,"authorized PLC project, physical I/O map, safety validation, FAT/SAT result, or measured migration outcome"
+    ,"representative gateway/device bench, certified product pairing, timing trace, failure-recovery result, or buyer acceptance"
+    ,"lawful legacy-manual corpus, machine serial/configuration mapping, service bulletin applicability decision, or maintenance outcome"
+    ,"build-resolved shipped dependency graph, counsel decision, approved exception, release block, or avoided license incident"
   ]
 }
