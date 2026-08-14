@@ -6088,5 +6088,383 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s284",
+    "title": "Evaluating AI models",
+    "publisher": "GitHub Docs",
+    "url": "https://docs.github.com/en/enterprise-cloud@latest/github-models/use-github-models/evaluating-ai-models",
+    "supports": [
+      "GitHub Models already compares models and prompts against test data with repeatable evaluators and exposes quality, latency, and cost trade-offs inside a developer workflow",
+      "A generic model-ranking or prompt-evaluation layer is therefore highly substitutable; any residual must own proprietary task data, accepted oracles, or an authoritative release decision"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-001", "idea-002", "idea-004", "idea-005"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s285",
+    "title": "Run evaluations on prompts and evaluation datasets",
+    "publisher": "MLflow Documentation",
+    "url": "https://mlflow.org/docs/latest/genai/eval-monitor/running-evaluation/prompts/",
+    "supports": [
+      "MLflow already combines a versioned Prompt Registry, evaluation datasets, expectations, built-in or custom scorers, version comparison, and optimization",
+      "MLflow evaluation datasets can be built from production traces or curated examples, making proprietary cases and trusted expectations the scarce input rather than generic registry or scoring mechanics"
+    ],
+    "type": "incumbent_open_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-001", "idea-002", "idea-005"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s286",
+    "title": "2025 Foundation Model Transparency Index",
+    "publisher": "Stanford Center for Research on Foundation Models",
+    "url": "https://crfm.stanford.edu/fmti/December-2025/index.html",
+    "supports": [
+      "The research team publishes a documented 100-indicator transparency assessment of major foundation-model developers and changes the indicators as the ecosystem evolves",
+      "The index demonstrates both an incumbent public ranking method and a material disclosure limitation: a ranking can score available transparency but cannot infer undisclosed performance or reproduce private model claims"
+    ],
+    "type": "primary_research_index",
+    "date": "2025-12",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-002", "idea-004"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s287",
+    "title": "About autofix for code scanning",
+    "publisher": "GitHub Docs",
+    "url": "https://docs.github.com/en/code-security/concepts/code-scanning/autofix-for-code-scanning",
+    "supports": [
+      "GitHub already translates CodeQL alerts into code-change suggestions and can validate supported fixes by rerunning the applicable CodeQL suite",
+      "Coverage is best effort and does not prove custom-query, security-extended, third-party, or intended-behavior correctness, so any residual factory must remain human-reviewed and outcome-tested"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-006"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s288",
+    "title": "GS1 Package and Product Measurement Standard",
+    "publisher": "GS1",
+    "url": "https://www.gs1.org/standards/gs1-package-and-product-measurement-standard/10",
+    "supports": [
+      "GS1 already defines consistent and repeatable rules for dimensional attributes and tolerances across package and product measurement",
+      "Standardized measurement reduces generic schema scarcity but does not prove an exact user-object fit, a compatibility outcome, or a current local shelf condition"
+    ],
+    "type": "standards_measurement_primitive",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-061", "idea-062", "idea-063"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s289",
+    "title": "Inventory verification for local inventory ads and free local listings",
+    "publisher": "Google Merchant Center Help",
+    "url": "https://support.google.com/merchants/answer/14684499?hl=en",
+    "supports": [
+      "Google already verifies selected stores by surveying a sample of products and collecting photographs of labels or shelf prices, and can require reverification",
+      "Google also requires frequent inventory updates, confirming that a one-time local-shelf observation decays and that generic store-proof collection is already an incumbent workflow"
+    ],
+    "type": "incumbent_verification_workflow",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-061", "idea-064", "idea-065"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s290",
+    "title": "Regulation EU 2024/1183 establishing the European Digital Identity Framework",
+    "publisher": "Official Journal of the European Union",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1183",
+    "supports": [
+      "Wallet relying parties must register intended use and requested data and may not request data beyond the registered use, while the wallet supports selective disclosure and a transaction dashboard",
+      "These statutory and wallet controls absorb a generic credential-request firewall; any residual must test actual relying-party behavior without claiming regulatory authority"
+    ],
+    "type": "official_forcing_function",
+    "date": "2024-04-11",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-207"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s291",
+    "title": "Evaluating Web Accessibility Overview and WCAG-EM",
+    "publisher": "W3C Web Accessibility Initiative",
+    "url": "https://www.w3.org/WAI/test-evaluate/conformance/",
+    "supports": [
+      "W3C provides a conformance-evaluation method combining automated, semi-automated, and manual testing and recommends involving users with disabilities",
+      "A replay service cannot equate an automated checkout run with accessibility conformance or usability; the plausible residual is authorized recurring evidence with real-user participation"
+    ],
+    "type": "standards_conformance_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-210"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s292",
+    "title": "Business Email Compromise",
+    "publisher": "FBI Internet Crime Complaint Center",
+    "url": "https://www.ic3.gov/CrimeInfo/BEC",
+    "supports": [
+      "The FBI describes business email compromise as a sophisticated payment-transfer scam and recommends verifying account-information changes through a secondary channel or two-factor process",
+      "The official control strongly supports a known-channel vendor-payment challenge but does not prove willingness to buy a standalone product or authorize it to release funds"
+    ],
+    "type": "official_operational_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-209"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s293",
+    "title": "Cybersecurity Scenarios and Tabletop Exercise Packages",
+    "publisher": "Cybersecurity and Infrastructure Security Agency",
+    "url": "https://www.cisa.gov/resources-tools/resources/cybersecurity-scenarios",
+    "supports": [
+      "CISA already publishes exercise and training scenarios for phishing, ransomware, insider threats, and other cyber incidents",
+      "Public scenario packs absorb a generic scam drill; a commercial residual would need segment-specific execution evidence and measured control improvement"
+    ],
+    "type": "official_public_primitive",
+    "date": "2023-08-15",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-208"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s294",
+    "title": "Continuity Guidance Circular",
+    "publisher": "Ready.gov",
+    "url": "https://www.ready.gov/sites/default/files/2020-03/continuity_guidance_circular.pdf",
+    "supports": [
+      "Official continuity guidance calls for key continuity personnel and a clear line of succession when leadership is absent",
+      "Planning guidance validates the control objective but absorbs a generic checklist; an absence stress test must measure execution and recovery rather than document presence"
+    ],
+    "type": "official_continuity_guidance",
+    "date": "2018-01",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-206"],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s295",
+    "title": "First Layer Calibration",
+    "publisher": "Prusa Research Knowledge Base",
+    "url": "https://help.prusa3d.com/article/first-layer-calibration-mini-mini_229122",
+    "supports": [
+      "First-layer settings are unique to each printer, can change with time and use, require visual assessment, and should be repeated after material assembly changes or relocation",
+      "A universal printer-fit profile cannot safely treat a stored number as portable proof; test coupons and current printer-specific calibration remain necessary"
+    ],
+    "type": "manufacturer_operating_guidance",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-219", "idea-220", "idea-222", "idea-223"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s296",
+    "title": "RepairMonitor 2024 factsheet summary",
+    "publisher": "Repair Cafe International Foundation",
+    "url": "https://www.repaircafe.org/en/category/repairmonitor-en/",
+    "supports": [
+      "Repair Cafes recorded more than 37,000 repairs in 2024 with a reported 62 percent success rate and publish a filterable, downloadable repair dataset",
+      "The existing data-collection workflow absorbs a generic community intake database, while outcome quality, part availability, safety, and local operations remain distinct"
+    ],
+    "type": "operator_dataset_summary",
+    "date": "2025-05-13",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "medium",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-221"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s297",
+    "title": "Repair Cafe house rules",
+    "publisher": "Repair Cafe International Foundation",
+    "url": "https://www.repaircafe.org/en/house-rules/",
+    "supports": [
+      "Repair Cafe work is volunteer-led, visitors repair at their own risk, experts may refuse objects, and no guarantee is offered for completed repairs",
+      "These operating and liability boundaries make a universal intake or generated-part promise unsafe without local expert authority, exclusions, and outcome tracking"
+    ],
+    "type": "operator_policy",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-221", "idea-222"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s298",
+    "title": "Event waitlist management for sold-out events",
+    "publisher": "Eventbrite",
+    "url": "https://www.eventbrite.com/features/waitlist/",
+    "supports": [
+      "Eventbrite already captures waitlist demand, automatically offers released tickets after cancellation or refund, and reports waitlist conversion",
+      "A generic event-slot rescue product is directly substituted inside the ticketing platform; vendor-specific non-ticket capacity would require separate authorization and economics"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-082", "idea-084"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s299",
+    "title": "Square Appointments cancellation, prepayment, and waitlist controls",
+    "publisher": "Square Support Center",
+    "url": "https://squareup.com/help/us/en/article/5493-manage-booking-cancellations-and-prepayment-policies",
+    "supports": [
+      "Square already supports prepayment, card holds, cancellation cutoffs, no-show fees, refunds, and waitlist capabilities in the booking system of record",
+      "Generic cancellation recovery is absorbed; a residual must prove incremental filled revenue beyond native policies and respect merchant discretion and customer consent"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-082", "idea-084", "idea-086"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s300",
+    "title": "Event reporting software and sponsor engagement reporting",
+    "publisher": "Cvent",
+    "url": "https://www.cvent.com/en/event-management-software/event-reporting",
+    "supports": [
+      "Cvent already unifies registration, attendance, engagement, satisfaction, financial, pipeline, revenue-influence, and campaign-performance reporting",
+      "Its sponsor tooling can report impressions, clicks, and attendee engagement, absorbing a generic sponsor proof pack while leaving only independently accepted outcome attribution unresolved"
+    ],
+    "type": "incumbent_product_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-084", "idea-085"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s301",
+    "title": "WeddingPro advertising for wedding vendors",
+    "publisher": "WeddingPro",
+    "url": "https://pros.weddingpro.com/",
+    "supports": [
+      "WeddingPro combines The Knot and WeddingWire distribution to market vendor profiles, leads, and bookings to wedding professionals",
+      "The vendor acquisition and lead channel is incumbent-owned; a spend-forensics or referral product still needs authorized campaign-to-booking data and incremental outcome proof"
+    ],
+    "type": "incumbent_marketplace_capability",
+    "date": "2026",
+    "accessDate": "2026-08-14",
+    "confidenceLabel": "medium",
+    "sourceType": "primary",
+    "researchRound": "omega-xiii-final-coverage",
+    "ideaIds": ["idea-083", "idea-086"],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "runId": "OMEGA-XIII-20260812T174230Z",
-  "observedAt": "2026-08-14T00:15:00Z",
+  "observedAt": "2026-08-14T11:33:00Z",
   "queryFamilies": [
     {
       "queryFamilyId": "qf-einvoice-authority-access",
@@ -538,6 +538,181 @@
       ],
       "includedSourceRefs": ["s283"],
       "decisionImpact": "GitHub now detects and enforces direct/transitive license policy at pull request time, absorbing a generic license-change gate. Dependency License-Change Impact Diff waits and narrows to build-resolved shipped-artifact reachability and counsel-approved exceptions; automated metadata is not legal advice."
+    },
+    {
+      "queryFamilyId": "qf-proofrail-authoritative-oracles",
+      "purpose": "Test whether generic AI-output gating is already part of developer evaluation and CI tooling and identify the scarce proof object",
+      "queries": ["GitHub Models evaluate prompts models test data quality cost latency", "MLflow evaluation datasets expectations scorers production traces"],
+      "includedSourceRefs": ["s284", "s285"],
+      "decisionImpact": "GitHub and MLflow already supply repeatable model, prompt, dataset, and scorer workflows. ProofRail waits and narrows to buyer-owned task cases, accepted oracles, and release authority; generic evaluation plumbing is absorbed."
+    },
+    {
+      "queryFamilyId": "qf-model-ranking-observability",
+      "purpose": "Determine whether an AI model ranking observatory can make comparable claims from public evidence despite changing methods and proprietary evaluation data",
+      "queries": ["GitHub Models model comparison repeatable evaluators cost latency", "Stanford Foundation Model Transparency Index 2025 methodology indicators"],
+      "includedSourceRefs": ["s284", "s286"],
+      "decisionImpact": "Public comparison and transparency indices already exist, but their methods and observable fields define the claim boundary. AI Model Ranking Observatory waits for a versioned task corpus and reproducible run receipts; it cannot infer undisclosed model quality."
+    },
+    {
+      "queryFamilyId": "qf-verified-ranking-governance",
+      "purpose": "Test whether a verified rankings network has a credible authority and update boundary beyond a published methodology",
+      "queries": ["Stanford FMTI 2025 100 indicators score companies methodology changes", "GitHub Models repeatable evaluation compare models prompts"],
+      "includedSourceRefs": ["s284", "s286"],
+      "decisionImpact": "Existing documented indices and evaluation tools demonstrate that methodology, corpus, disclosure, and versioning determine rank meaning. Verified Rankings Network waits; no buyer, neutral authority, challenge process, or paid decision right was found."
+    },
+    {
+      "queryFamilyId": "qf-prompt-registry-substitution",
+      "purpose": "Test whether prompt versioning and evaluation are already bundled and what remains commercially scarce",
+      "queries": ["MLflow Prompt Registry version evaluation dataset expectations scorers", "GitHub Models prompt management evaluations compare versions"],
+      "includedSourceRefs": ["s284", "s285"],
+      "decisionImpact": "MLflow and GitHub directly implement prompt management and evaluation. Prompt Registry and Evaluation Lab is killed generically and may re-enter only for a regulated or proprietary task corpus with accepted decision oracles and measured release outcomes."
+    },
+    {
+      "queryFamilyId": "qf-codeql-remediation-incumbent",
+      "purpose": "Determine whether CodeQL remediation is already automated and which correctness claims remain outside incumbent validation",
+      "queries": ["GitHub CodeQL Copilot Autofix rerun query suite limitations", "GitHub code scanning autofix custom query intended behavior human review"],
+      "includedSourceRefs": ["s287"],
+      "decisionImpact": "GitHub already generates and validates supported CodeQL fixes. CodeQL Remediation Factory waits and narrows to authorized backlog operations, custom-query coverage, regression tests, and human acceptance; it cannot promise semantic correctness."
+    },
+    {
+      "queryFamilyId": "qf-fact-bounty-authority",
+      "purpose": "Test whether paid fact collection owns a trustworthy measurement and freshness boundary",
+      "queries": ["GS1 product measurement standard repeatable dimensions tolerances", "Google Merchant local inventory verification sample products photographs labels shelf prices"],
+      "includedSourceRefs": ["s288", "s289"],
+      "decisionImpact": "Standards and incumbent field verification absorb generic fact schemas and collection. FactBounty waits for a single authorized fact class, dispute process, freshness SLA, and buyer acceptance; crowd evidence alone is not truth."
+    },
+    {
+      "queryFamilyId": "qf-measuregraph-standardization",
+      "purpose": "Test whether product measurement normalization is scarce after GS1 rules and where use-specific uncertainty remains",
+      "queries": ["GS1 Package and Product Measurement Standard dimensions tolerances", "GS1 consistent repeatable product measurement rules"],
+      "includedSourceRefs": ["s288"],
+      "decisionImpact": "GS1 owns measurement rules, reducing schema scarcity. MeasureGraph waits and narrows to provenance, instrument, orientation, tolerance, and use-specific fit evidence; no demand for another general graph was found."
+    },
+    {
+      "queryFamilyId": "qf-compatibility-bounty-fit-proof",
+      "purpose": "Determine whether dimensional records can establish compatibility and whether a bounty changes the liability boundary",
+      "queries": ["GS1 product measurement tolerances package versus product", "verified product compatibility exact fit measurement evidence"],
+      "includedSourceRefs": ["s288"],
+      "decisionImpact": "Standardized dimensions do not establish assembly, electrical, firmware, safety, or user-specific fit. Compatibility Bounties waits for narrow low-risk pairings and observed outcomes; payment incentives do not turn a claim into validated compatibility."
+    },
+    {
+      "queryFamilyId": "qf-owner-answer-verification",
+      "purpose": "Test whether owner-supplied product answers remain current and independently verifiable",
+      "queries": ["Google Merchant inventory verification store representative product survey photos", "local inventory data update frequency daily Merchant Center"],
+      "includedSourceRefs": ["s289"],
+      "decisionImpact": "Google already combines owner participation, sampling, photographs, and reverification. Verified Owner Answers waits and narrows to dated answers with accountable owner identity and independent sampling; no cross-category authority or WTP was established."
+    },
+    {
+      "queryFamilyId": "qf-local-shelf-proof-decay",
+      "purpose": "Test the durability and commercial scarcity of local shelf availability proof",
+      "queries": ["Google Merchant local inventory verification 100 products shelf photos", "Google local inventory ads update inventory daily"],
+      "includedSourceRefs": ["s289"],
+      "decisionImpact": "Google already verifies store inventory and requires frequent updates. Local Shelf Proof is killed generically: evidence decays quickly, the incumbent owns merchant distribution, and no buyer proved a need for a separate point observation."
+    },
+    {
+      "queryFamilyId": "qf-founder-absence-execution",
+      "purpose": "Test whether founder-absence resilience is more than a continuity checklist and succession document",
+      "queries": ["Ready.gov continuity guidance line of succession absence leadership", "business continuity key personnel dependency exercise official"],
+      "includedSourceRefs": ["s294"],
+      "decisionImpact": "Official continuity planning absorbs a generic checklist. Founder Absence Stress Test waits for an authorized timed drill with access, approval, payment, customer, and recovery evidence; no owner or insurer demand was observed."
+    },
+    {
+      "queryFamilyId": "qf-credential-request-minimization",
+      "purpose": "Test whether a generic credential-request firewall is already a wallet and regulatory control",
+      "queries": ["EU Digital Identity Wallet relying party registration intended use data requested", "EUDI wallet selective disclosure transaction dashboard data minimisation"],
+      "includedSourceRefs": ["s290"],
+      "decisionImpact": "The EUDI framework already constrains registered relying-party use and supports selective disclosure. Credential Request Firewall waits and narrows to observed relying-party behavior and user remedies; it cannot substitute for wallet or regulator authority."
+    },
+    {
+      "queryFamilyId": "qf-scam-drill-public-scenarios",
+      "purpose": "Determine whether a commercial scam drill owns unique content or measurable behavior beyond public exercises",
+      "queries": ["CISA cybersecurity scenarios phishing tabletop exercise packages", "CISA phishing simulation employee training official"],
+      "includedSourceRefs": ["s293"],
+      "decisionImpact": "CISA publishes reusable scenario packages, absorbing generic drill content. Scamfire Drill waits for a single segment, safe execution, baseline and post-drill behavior, and an authoritative control owner; no buyer or loss reduction was proven."
+    },
+    {
+      "queryFamilyId": "qf-vendor-payment-change-control",
+      "purpose": "Test whether vendor-payment change verification is an official high-consequence control and which execution evidence is scarce",
+      "queries": ["FBI IC3 BEC verify account changes secondary channel", "FBI vendor payment change known phone number two factor verification"],
+      "includedSourceRefs": ["s292"],
+      "decisionImpact": "The FBI explicitly recommends an out-of-band known-channel control. Vendor Payment Change Challenge continues narrowly as system-of-record evidence, dual authorization, and exception handling; it must never infer vendor identity or release funds autonomously."
+    },
+    {
+      "queryFamilyId": "qf-accessible-checkout-conformance",
+      "purpose": "Test whether replay alone can establish accessible checkout conformance and usable completion",
+      "queries": ["W3C WCAG-EM automated manual evaluation users with disabilities", "WCAG 2.2 complete process checkout conformance human testing"],
+      "includedSourceRefs": ["s291"],
+      "decisionImpact": "W3C requires a mixed evaluation method and recommends real users. Accessible Checkout Replay continues narrowly as recurring scenario evidence with disabled participants; automated replay alone cannot claim conformance or usability."
+    },
+    {
+      "queryFamilyId": "qf-parametric-repair-low-risk",
+      "purpose": "Test whether parametric repair files can safely generalize across printers and objects",
+      "queries": ["Prusa first layer calibration unique each printer changes over time", "Repair Cafe repair outcomes spare parts common unsuccessful reasons"],
+      "includedSourceRefs": ["s295", "s296"],
+      "decisionImpact": "Printer state is machine-specific and repair outcomes are heterogeneous. Fit-First Parametric Repair Studio continues only for low-risk parts with test coupons, measured fit, material disclosure, and explicit safety exclusions; no transaction or repair outcome was earned."
+    },
+    {
+      "queryFamilyId": "qf-printer-fit-profile-portability",
+      "purpose": "Determine whether a printer-specific fit profile remains stable and transferable enough to support compatibility claims",
+      "queries": ["Prusa first layer calibration unique to printer changes time use", "Prusa calibration after nozzle extruder relocation sheet profile"],
+      "includedSourceRefs": ["s295"],
+      "decisionImpact": "Manufacturer guidance says calibration values are unique, visually assessed, and mutable after changes. Printer-Specific Fit Profile waits for dated test coupons and recalibration triggers; a static universal profile is disproved."
+    },
+    {
+      "queryFamilyId": "qf-repair-cafe-intake-substitution",
+      "purpose": "Test whether a parametric intake system is scarce relative to Repair Cafe's existing collection and volunteer workflow",
+      "queries": ["RepairMonitor 2024 repairs recorded success rate downloadable dataset", "Repair Cafe volunteer intake one item house rules"],
+      "includedSourceRefs": ["s296", "s297"],
+      "decisionImpact": "Repair Cafe already collects repair records at scale and local volunteers control what they accept. Repair Cafe Parametric Intake waits; any pilot must be invited by a local operator and prove less triage time without shifting safety or liability."
+    },
+    {
+      "queryFamilyId": "qf-appliance-knob-safety-boundary",
+      "purpose": "Test whether appliance control-knob generation can be treated as low-risk dimensional replacement",
+      "queries": ["Repair Cafe house rules refuse repair liability no guarantee", "Prusa printer-specific calibration material change fit"],
+      "includedSourceRefs": ["s295", "s297"],
+      "decisionImpact": "Volunteer repair rules preserve refusal and liability boundaries, while printed fit depends on current calibration. Appliance Control-Knob Generator waits and excludes gas, heat, mains, safety interlocks, and ambiguous indexing until qualified review and physical tests exist."
+    },
+    {
+      "queryFamilyId": "qf-furniture-endcap-economics",
+      "purpose": "Test whether simple furniture end-cap generation has enough scarce proof and value after printer calibration requirements",
+      "queries": ["Prusa first layer calibration unique printer visual reference", "parametric furniture foot end cap replacement measured fit"],
+      "includedSourceRefs": ["s295"],
+      "decisionImpact": "Even low-risk geometry needs machine-specific calibration, and no evidence established repeat demand or attractive unit economics. Furniture Foot and End-Cap Generator waits for a paid batch test with measured fit, failure, print time, and net margin."
+    },
+    {
+      "queryFamilyId": "qf-vendor-slot-rescue-incumbents",
+      "purpose": "Test whether cancellation-triggered slot rescue is already native to booking and ticketing systems",
+      "queries": ["Eventbrite automatic waitlist offer cancellation refund conversion", "Square Appointments waitlist cancellation prepayment no show"],
+      "includedSourceRefs": ["s298", "s299"],
+      "decisionImpact": "Eventbrite and Square already automate waitlists and cancellation controls. Vendor Slot Rescue is killed generically and may re-enter only for non-ticket vendor capacity where the seller authorizes inventory and incremental paid fills can be measured."
+    },
+    {
+      "queryFamilyId": "qf-wedding-lead-attribution",
+      "purpose": "Test whether wedding lead-spend forensics can access authoritative channel and booking outcomes beyond marketplace reporting",
+      "queries": ["WeddingPro The Knot WeddingWire leads bookings vendor advertising", "wedding vendor lead source booking attribution reporting"],
+      "includedSourceRefs": ["s301"],
+      "decisionImpact": "WeddingPro owns major distribution and lead reporting, but the search produced no independent campaign-to-cash evidence. Wedding Lead Spend Forensics waits for authorized cross-channel spend, lead, quote, booking, cancellation, and margin data."
+    },
+    {
+      "queryFamilyId": "qf-cancellation-revenue-native-controls",
+      "purpose": "Determine whether cancellation recovery has a residual after native waitlists, prepayment, refunds, and no-show policies",
+      "queries": ["Square Appointments cancellation fee prepayment waitlist", "Eventbrite cancellation refund waitlist ticket release"],
+      "includedSourceRefs": ["s298", "s299"],
+      "decisionImpact": "Native platforms already control the booking, payment policy, refund, and waitlist. Cancellation Revenue Recovery waits and narrows to merchant-authorized incremental fill measurement; avoided loss cannot be claimed without counterfactual transaction data."
+    },
+    {
+      "queryFamilyId": "qf-sponsor-proof-incumbent-reporting",
+      "purpose": "Test whether sponsor proof is already bundled in event engagement and revenue reporting",
+      "queries": ["Cvent sponsor engagement reporting impressions clicks attendee actions", "Cvent event ROI pipeline revenue influence reports"],
+      "includedSourceRefs": ["s300"],
+      "decisionImpact": "Cvent already reports engagement, financial, pipeline, and sponsor interaction metrics. Event Sponsor Proof Pack waits and narrows to a sponsor-accepted causal or reconciliation object; repackaging platform metrics is not scarce."
+    },
+    {
+      "queryFamilyId": "qf-booked-out-referral-governance",
+      "purpose": "Test whether a neutral referral exchange can overcome incumbent marketplaces, consent, quality, and reciprocity constraints",
+      "queries": ["WeddingPro vendor leads bookings marketplace", "Square Appointments waitlist matching openings customers"],
+      "includedSourceRefs": ["s299", "s301"],
+      "decisionImpact": "Marketplaces and booking systems already route demand. Booked-Out Referral Exchange waits for one trusted vertical with explicit customer consent, provider acceptance, quality remedies, and paid closed-loop outcomes; no network liquidity or WTP was found."
     }
   ],
   "excluded": [
@@ -732,5 +907,10 @@
     ,"representative gateway/device bench, certified product pairing, timing trace, failure-recovery result, or buyer acceptance"
     ,"lawful legacy-manual corpus, machine serial/configuration mapping, service bulletin applicability decision, or maintenance outcome"
     ,"build-resolved shipped dependency graph, counsel decision, approved exception, release block, or avoided license incident"
+    ,"authorized AI evaluation corpus, accepted task oracle, release decision, independent model run, ranking challenge, or prompt-registry budget"
+    ,"paid fact bounty, accountable measurement dispute, verified compatibility outcome, owner-answer freshness SLA, or local-shelf transaction"
+    ,"executed founder-absence drill, relying-party credential request, measured scam-control improvement, challenged payment change, or disabled-user checkout completion"
+    ,"printed repair test coupon, machine-specific fit tolerance, local Repair Cafe invitation, qualified appliance safety review, or paid furniture-part batch"
+    ,"authorized event inventory, incremental recovered booking revenue, cross-channel wedding booking attribution, sponsor acceptance, or closed-loop paid referral"
   ]
 }
