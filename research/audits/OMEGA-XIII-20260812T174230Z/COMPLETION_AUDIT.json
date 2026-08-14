@@ -1,0 +1,330 @@
+{
+  "schemaVersion": "1.0.0",
+  "constitutionDigest": "12BE0235DC315575E2DCAC1116DBFFF5AAE82AC8ED4670748A64B4495241DDED",
+  "sourceEvidenceCommit": "c30b0556336c07977ab061a891a5c5c076e9171b",
+  "completionClaim": false,
+  "statusSemantics": {
+    "PROVEN": "Direct current-state evidence covers the requirement.",
+    "PARTIAL": "A mechanism or bounded subset exists, but the full requirement is not demonstrated.",
+    "MISSING_EXTERNAL": "Completion requires an authorized independent or real-world event that has not occurred."
+  },
+  "conditions": [
+    {
+      "id": 1,
+      "requirement": "repository baseline is frozen",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/REPOSITORY_TRUTH.json", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "The initial clean SHA, branch, instruction chain, attachment digest, and remote relation are recorded."
+    },
+    {
+      "id": 2,
+      "requirement": "current state is computed locally",
+      "status": "PROVEN",
+      "evidence": ["data/repository-meta.json", "data/validation-summary.json", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "Canonical, source, graph, receipt, research, and funnel counts are generated from repository data."
+    },
+    {
+      "id": 3,
+      "requirement": "prior fixes are classified",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/LANDED_FIX_MATRIX.md"],
+      "finding": "OMEGA XII mechanisms are classified as landed, partial, regressed, or missing with concrete boundaries."
+    },
+    {
+      "id": 4,
+      "requirement": "autonomy semantic utility is measured",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/semantic_utility.py", "tests/test_semantic_utility.py", "tests/test_daemon_semantic_utility.py"],
+      "finding": "Run receipts bind before/after semantic digests and classify material change versus no-op."
+    },
+    {
+      "id": 5,
+      "requirement": "no-op execution is supported",
+      "status": "PROVEN",
+      "evidence": ["scripts/va-massive-orchestrator.py", "tests/test_massive_orchestrator_failures.py"],
+      "finding": "Successful no-op is an explicit terminal outcome and semantic rebuild descendants are skipped."
+    },
+    {
+      "id": 6,
+      "requirement": "timestamp-only activity no longer implies semantic work",
+      "status": "PROVEN",
+      "evidence": ["scripts/va-ranker.py", "scripts/va_runtime/semantic_utility.py", "tests/test_ranker_semantic_history.py"],
+      "finding": "Semantic digests exclude clock-only fields and fixed-point runs do not append history."
+    },
+    {
+      "id": 7,
+      "requirement": "semantic revision is distinguished from telemetry",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/semantic_utility.py", ".gitignore", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "Content-plane digests exclude provider counters, logs, timestamps, and private runtime telemetry."
+    },
+    {
+      "id": 8,
+      "requirement": "rank history is semantic rather than clock-driven",
+      "status": "PROVEN",
+      "evidence": ["scripts/va-ranker.py", "tests/test_ranker_semantic_history.py"],
+      "finding": "History appends only when the normalized ranking payload changes."
+    },
+    {
+      "id": 9,
+      "requirement": "score scales are explicit",
+      "status": "PROVEN",
+      "evidence": ["data/score-scale-registry.json", "data/ranking-method-registry.json", "tests/lifecycle-receipts.test.js"],
+      "finding": "Registered method and scale identifiers replace value-magnitude scale inference."
+    },
+    {
+      "id": 10,
+      "requirement": "researched rank universe excludes ineligible records",
+      "status": "PROVEN",
+      "evidence": ["scripts/build-public-artifact.js", "scripts/lib/lifecycle-receipts.js", "tests/lifecycle-receipts.test.js"],
+      "finding": "Receipt-derived universes filter eligibility before ordering and fail closed with zero receipts."
+    },
+    {
+      "id": 11,
+      "requirement": "canonical identity is separate from evidence maturity",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/lifecycle.py", "scripts/lib/lifecycle-receipts.js", "tests/lifecycle-receipts.test.js"],
+      "finding": "Stable idea-content subjects exclude lifecycle refs and derived maturity fields."
+    },
+    {
+      "id": 12,
+      "requirement": "publisher authority is receipt-driven",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/publisher.py", "scripts/va_runtime/lifecycle.py", "tests/test_publisher_adversarial.py"],
+      "finding": "Candidate/baseline-bound decisions, active authority, semantic review, sources, and transaction recovery are required."
+    },
+    {
+      "id": 13,
+      "requirement": "semantic duplicate review is enforced",
+      "status": "PROVEN",
+      "evidence": ["scripts/issue-semantic-review.py", "scripts/validate-authority-registries.js", "tests/test_semantic_review_issuance.py", "tests/authority-registries.test.js"],
+      "finding": "Reviews bind candidate digest, canonical corpus revision, decision, and active authority."
+    },
+    {
+      "id": 14,
+      "requirement": "orchestrator failure propagation is dependency-aware",
+      "status": "PROVEN",
+      "evidence": ["scripts/va-massive-orchestrator.py", "tests/test_massive_orchestrator_failures.py"],
+      "finding": "Required-stage failures skip descendants, emit failed receipts, and return nonzero."
+    },
+    {
+      "id": 15,
+      "requirement": "worker readiness is truthful",
+      "status": "PROVEN",
+      "evidence": ["cloud-control-plane/app.py", "services/ventureatlas-worker/app.py", "tests/test_worker_contract.py"],
+      "finding": "Readiness checks auth, executables, canonical JSON, writability, and writer-lock availability."
+    },
+    {
+      "id": 16,
+      "requirement": "cloud autonomous diff closure is verified",
+      "status": "PROVEN",
+      "evidence": ["cloud-control-plane/job_runner.py", "cloud-control-plane/expected-diff.discovery.json", "tests/test_cloud_job_runner.py"],
+      "finding": "Frozen checkout, private/unexpected/deleted diff rejection, exact staged-tree verification, and idempotent CAS are behaviorally tested."
+    },
+    {
+      "id": 17,
+      "requirement": "blind commercial research is operational",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/blind_research.py", "scripts/blind-commercial-research.py", "scripts/va_runtime/preregistration.py", "tests/test_blind_research.py", "tests/test_preregistration.py"],
+      "finding": "A private end-to-end PREPARED to FINDINGS_LOCKED to UNBLINDED state machine enforces distinct investigator identity, anchor-free packets, digest-bound immutable findings, and lock order. Production assignments remain zero and anchoring measurement remains a separate open condition."
+    },
+    {
+      "id": 18,
+      "requirement": "reviewer anchoring is measured",
+      "status": "MISSING_EXTERNAL",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "No blind-versus-informed reviewer comparison or anchoring delta has been executed.",
+      "closureNeeded": "Randomize comparable packets across independent blinded and informed reviewers, lock findings before unblinding, and compute a prespecified delta."
+    },
+    {
+      "id": 19,
+      "requirement": "current high-priority staged candidates receive real commercial research",
+      "status": "MISSING_EXTERNAL",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md", "data/validation-funnel.json"],
+      "finding": "Desk research is extensive, but there are no buyer interviews, budgets, WTP receipts, protected data, or behavioral/transactional outcomes.",
+      "closureNeeded": "With owner authorization, select the current private priority set and record real buyer, workflow, budget, access, and outcome evidence in the append-only funnel."
+    },
+    {
+      "id": 20,
+      "requirement": "new generation is throttled when novelty yield is poor",
+      "status": "PROVEN",
+      "evidence": ["scripts/va_runtime/novelty_throttle.py", "scripts/autonomous-idea-generator.py", "tests/test_novelty_throttle.py", "tests/test_autonomous_generator_throttle.py"],
+      "finding": "Three bounded low-yield evaluated runs trigger a persisted two-run cooldown before provider-backed workers start; outages are excluded from the novelty denominator and the decision is receipt-visible."
+    },
+    {
+      "id": 21,
+      "requirement": "market PhaseShift states exist",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "schemas/phaseshift.schema.json", "tests/phaseshift.test.js"],
+      "finding": "Thirty explicit P0-P9 market states validate without inferred transitions."
+    },
+    {
+      "id": 22,
+      "requirement": "enforcement topology is mapped",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "schemas/phaseshift.schema.json", "scripts/validate-phaseshift.js"],
+      "finding": "Eleven enforcement events remain distinct from ecosystem topology."
+    },
+    {
+      "id": 23,
+      "requirement": "provider/intermediary saturation is considered",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md"],
+      "finding": "Saturation is explicit and never inferred from provider count alone."
+    },
+    {
+      "id": 24,
+      "requirement": "counterparty deadlocks are considered",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "tests/phaseshift.test.js"],
+      "finding": "Unknown readiness cannot become an active deadlock and least-ready roles must resolve."
+    },
+    {
+      "id": 25,
+      "requirement": "milestone graphs replace simplistic single-date models",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "tests/phaseshift.test.js"],
+      "finding": "Thirty distinct milestones and six typed edges preserve multiple dates and reject cycles."
+    },
+    {
+      "id": 26,
+      "requirement": "source conflicts are preserved/resolved explicitly",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "tests/phaseshift.test.js"],
+      "finding": "The Customs Data Hub conflict preserves both official positions and remains OPEN."
+    },
+    {
+      "id": 27,
+      "requirement": "free public infrastructure is subtracted from startup scope",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/SOURCE_SCREENING.json", "research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md"],
+      "finding": "Public, standards, open-source, and incumbent primitives repeatedly kill or narrow generic layers."
+    },
+    {
+      "id": 28,
+      "requirement": "right-to-repair ecosystem is researched",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "data/sources.json"],
+      "finding": "Directive, public-platform, stakeholder, operator, safety, and repair-data boundaries are retained."
+    },
+    {
+      "id": 29,
+      "requirement": "e-invoice intermediary ecosystems are researched",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "data/phaseshift.json"],
+      "finding": "France accredited-platform authority, interfaces, saturation, and cutover are mapped."
+    },
+    {
+      "id": 30,
+      "requirement": "customs transition is researched with correct time horizon",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "data/phaseshift.json"],
+      "finding": "CATCH is operationally separated from the unresolved Customs Data Hub 2031/2034 versus 2032/2038 timeline."
+    },
+    {
+      "id": 31,
+      "requirement": "rail TEL TSI is researched",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "data/phaseshift.json"],
+      "finding": "Rail Telematics TSI is mapped as a signal with no fabricated buyer or candidate."
+    },
+    {
+      "id": 32,
+      "requirement": "non-regulatory/industrial opportunities receive substantial attention",
+      "status": "PROVEN",
+      "evidence": ["data/research-runs.json", "research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md"],
+      "finding": "Industrial lifecycle, PLC, gateways, manuals, licensing, AI tooling, product proof, repair, and event services received preregistered bounded research."
+    },
+    {
+      "id": 33,
+      "requirement": "new candidates are bounded",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "research/audits/OMEGA-XIII-20260812T174230Z/CODEX_LOG.md"],
+      "finding": "No candidate-generation round or idea flood was used to satisfy research quotas."
+    },
+    {
+      "id": 34,
+      "requirement": "disconfirmation is substantial",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md", "research/audits/OMEGA-XIII-20260812T174230Z/SOURCE_SCREENING.json"],
+      "finding": "Seventy-five decisions retain kills, narrowed scope, exclusions, substitutes, and claims not earned."
+    },
+    {
+      "id": 35,
+      "requirement": "first-buyer hypotheses are concrete",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/preregistrations/idea-001.json", "research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md"],
+      "finding": "Each preregistration names a buyer hypothesis while explicitly avoiding a claim that the buyer was contacted."
+    },
+    {
+      "id": 36,
+      "requirement": "WTP remains evidence-based",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md", "data/validation-funnel.json"],
+      "finding": "All WTP is labeled ASSUMED and zero buyer-budget, paid-pilot, or cash evidence is promoted."
+    },
+    {
+      "id": 37,
+      "requirement": "data access is explicit",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/SOURCE_SCREENING.json", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "Protected, unavailable, public, contractual, physical, and authority-controlled data boundaries are enumerated."
+    },
+    {
+      "id": 38,
+      "requirement": "market window is explicit",
+      "status": "PROVEN",
+      "evidence": ["data/phaseshift.json", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "Phase, enforcement, milestones, cutover, preparation, scale, and consolidation are separated from opportunity claims."
+    },
+    {
+      "id": 39,
+      "requirement": "phase-forward counterfactuals run",
+      "status": "PROVEN",
+      "evidence": ["data/phase-forward-counterfactuals.json", "scripts/build-phase-forward-counterfactuals.js", "tests/phase-forward-counterfactuals.test.js"],
+      "finding": "Every PhaseShift market has a deterministic next-phase scenario, survival decision, surviving-value hypothesis, kill condition, and explicit unproven buyer/data boundary."
+    },
+    {
+      "id": 40,
+      "requirement": "validation experiments are falsifiable",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md", "data/validation-funnel.json"],
+      "finding": "Each decision packet names a cheap kill test; none is falsely recorded as executed."
+    },
+    {
+      "id": 41,
+      "requirement": "actual failure injections run",
+      "status": "PROVEN",
+      "evidence": ["tests/test_publisher_adversarial.py", "tests/test_massive_orchestrator_failures.py", "tests/test_cloud_job_runner.py", "tests/test_worker_contract.py", "tests/test_provider_routing_contract.py"],
+      "finding": "Behavioral failures cover forged authority, split writes, required stages, budgets, process trees, keys, locks, diff closure, and redaction."
+    },
+    {
+      "id": 42,
+      "requirement": "exact public artifact is scanned",
+      "status": "PROVEN",
+      "evidence": ["scripts/build-public-artifact.js", "scripts/check-public-artifact.js", "data/build-manifest.json"],
+      "finding": "The exact 5,091-file projection with 288 of 301 eligible sources passed private-path and secret scanning."
+    },
+    {
+      "id": 43,
+      "requirement": "fresh clone passes",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/CODEX_LOG.md", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "Exact evidence commit c30b055 passed dependency install, 85 executed Node plus 10 explicit skips, 75 Python, strict gates, build, and scan in a no-hardlink clone."
+    },
+    {
+      "id": 44,
+      "requirement": "latest main is reconciled",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/CODEX_LOG.md", "research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
+      "finding": "The final recorded read-only fetch showed the evidence line zero behind origin/main; no push or deploy occurred."
+    },
+    {
+      "id": 45,
+      "requirement": "unresolved uncertainty is visible",
+      "status": "PROVEN",
+      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md", "research/audits/OMEGA-XIII-20260812T174230Z/CODEX_IMPLEMENT.md"],
+      "finding": "Blind review, anchoring, buyers, WTP, protected data, paid outcomes, external validation, historical exposure, and deployment remain explicit."
+    }
+  ]
+}

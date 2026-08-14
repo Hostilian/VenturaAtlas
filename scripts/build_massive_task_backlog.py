@@ -373,10 +373,48 @@ tasks = [
     }
 ]
 
+# Explicit execution ordering. These are prerequisite edges, not claims that a
+# pending task has run. Keeping them in the generator prevents a future rebuild
+# from silently flattening the graph back into an unordered list.
+dependency_map = {
+    "TASK-003": ["TASK-001", "TASK-002"],
+    "TASK-004": ["TASK-003"],
+    "TASK-005": ["TASK-004"],
+    "TASK-006": ["TASK-005"],
+    "TASK-007": ["TASK-005"],
+    "TASK-008": ["TASK-005", "TASK-006", "TASK-007"],
+    "TASK-009": ["TASK-004"],
+    "TASK-010": ["TASK-009"],
+    "TASK-011": ["TASK-001"],
+    "TASK-012": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011"],
+    "TASK-013": ["TASK-009", "TASK-010"],
+    "TASK-014": ["TASK-004", "TASK-005"],
+    "TASK-015": ["TASK-001", "TASK-003", "TASK-011"],
+    "TASK-016": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011", "TASK-012", "TASK-013", "TASK-015"],
+    "TASK-017": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-018": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-019": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-020": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-021": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-022": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-023": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-024": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-025": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-026": ["TASK-003", "TASK-004", "TASK-005"],
+    "TASK-027": ["TASK-009", "TASK-010", "TASK-013"],
+    "TASK-028": ["TASK-002", "TASK-003", "TASK-011"],
+    "TASK-029": ["TASK-003", "TASK-004", "TASK-011", "TASK-015"],
+    "TASK-030": ["TASK-016", "TASK-027", "TASK-028", "TASK-029"],
+}
+
+for task in tasks:
+    task["dependencies"] = dependency_map.get(task["id"], [])
+
 graph_data = {
     "graph_version": "2.4.0",
     "generated_at": now,
     "total_tasks": len(tasks),
+    "runtime_private_paths": ["data/idea-staging-queue.json"],
     "tasks": tasks
 }
 

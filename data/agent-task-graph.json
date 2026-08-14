@@ -8,6 +8,7 @@
   "tasks": [
     {
       "id": "TASK-001",
+      "dependencies": [],
       "title": "Establish Canonical Provider Registry & Eliminate Configuration Drift",
       "goal": "Maintain non-secret config/providers.json defining provider capabilities, cost classes, local status, and env variable mappings.",
       "workstream": "Foundation & Data Integrity",
@@ -28,6 +29,7 @@
     },
     {
       "id": "TASK-002",
+      "dependencies": [],
       "title": "Refactor VenturaAtlas Agent Roster & File Ownership Rules",
       "goal": "Update .agents/AGENTS.md and maintain specialist role manifests for VenturaAtlas domain agents.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -48,6 +50,7 @@
     },
     {
       "id": "TASK-003",
+      "dependencies": ["TASK-001", "TASK-002"],
       "title": "Build Capability-Aware Provider Scheduler & Health Monitor",
       "goal": "Maintain scripts/va_orchestrator.py to select providers based on task capabilities, health, cost, and latency.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -68,6 +71,7 @@
     },
     {
       "id": "TASK-004",
+      "dependencies": ["TASK-003"],
       "title": "Autonomous Idea Generation & Candidate Screening",
       "goal": "Discover frontier business opportunities under EU regulations and emerging tech paradigms.",
       "workstream": "Autonomous Discovery & Research",
@@ -83,6 +87,7 @@
     },
     {
       "id": "TASK-005",
+      "dependencies": ["TASK-004"],
       "title": "Evidence Verification & Claim-to-Source Mapping",
       "goal": "Extract primary regulatory and market sources and map supporting citations to canonical opportunities.",
       "workstream": "Evidence & Provenance",
@@ -99,6 +104,7 @@
     },
     {
       "id": "TASK-006",
+      "dependencies": ["TASK-005"],
       "title": "Multi-Lens Opportunity Ranking & Sensitivity Analysis",
       "goal": "Recompute composite scores and ranking views across 282 canonical ideas and output leaderboard.",
       "workstream": "Decision Science & Ranking",
@@ -114,6 +120,7 @@
     },
     {
       "id": "TASK-007",
+      "dependencies": ["TASK-005"],
       "title": "Financial Model Scenarios & Gross Margin Audit",
       "goal": "Validate unit economics, CAC/LTV bounds, and zero-dollar MVP expenditure templates.",
       "workstream": "Opportunity Economics",
@@ -129,6 +136,7 @@
     },
     {
       "id": "TASK-008",
+      "dependencies": ["TASK-005", "TASK-006", "TASK-007"],
       "title": "Disconfirming Red-Team Pass — 'Why This Might Fail'",
       "goal": "Execute adversarial pass over high-ranked opportunities to identify unevidenced assumptions and kill criteria.",
       "workstream": "Adversarial Review",
@@ -144,6 +152,7 @@
     },
     {
       "id": "TASK-009",
+      "dependencies": ["TASK-004"],
       "title": "Client-Side Search Index & Global Command Palette",
       "goal": "Rebuild compact search-index.json and optimize client-side search latency under 50ms.",
       "workstream": "Search & UX",
@@ -159,6 +168,7 @@
     },
     {
       "id": "TASK-010",
+      "dependencies": ["TASK-009"],
       "title": "PWA Offline Caching & Service Worker Contract Audit",
       "goal": "Verify sw.js offline precaching, manifest icons, and sitemap resolution.",
       "workstream": "PWA Platform",
@@ -175,6 +185,7 @@
     },
     {
       "id": "TASK-011",
+      "dependencies": ["TASK-001"],
       "title": "Security & Secret Redaction Scanner",
       "goal": "Run check_privacy.py and check-public-artifact.js to guarantee zero API keys or private room data leak into _site/.",
       "workstream": "Security & Privacy",
@@ -190,6 +201,7 @@
     },
     {
       "id": "TASK-012",
+      "dependencies": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011"],
       "title": "Repository Metadata & Documentation Stats Sync",
       "goal": "Generate repository-meta.json and synchronize prose counts across README, status, and index.html.",
       "workstream": "Build & Release",
@@ -205,6 +217,7 @@
     },
     {
       "id": "TASK-013",
+      "dependencies": ["TASK-009", "TASK-010"],
       "title": "Deep Frontend Audit & DOM Event Inspection",
       "goal": "Verify zero inline event handlers, 100% accessible keyboard navigation, and zero console errors.",
       "workstream": "Frontend UX",
@@ -220,6 +233,7 @@
     },
     {
       "id": "TASK-014",
+      "dependencies": ["TASK-004", "TASK-005"],
       "title": "Prospective Research Run Provenance Logging",
       "goal": "Record research queries, candidate sources, inclusions/exclusions, and claims changed in research-runs.json.",
       "workstream": "Evidence & Provenance",
@@ -235,6 +249,7 @@
     },
     {
       "id": "TASK-015",
+      "dependencies": ["TASK-001", "TASK-003", "TASK-011"],
       "title": "Cloud Run Job & Control Plane Fail-Closed Auth Audit",
       "goal": "Verify cloud-control-plane/job_runner.py and worker service fail-closed authentication and execution receipts.",
       "workstream": "Cloud Runtime",
@@ -250,6 +265,7 @@
     },
     {
       "id": "TASK-016",
+      "dependencies": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011", "TASK-012", "TASK-013", "TASK-015"],
       "title": "Static Artifact Compilation & GitHub Pages Release Build",
       "goal": "Execute npm run quality to produce 5,500+ static files in _site/ with 100% test pass.",
       "workstream": "Release Gate",
@@ -265,6 +281,7 @@
     },
     {
       "id": "TASK-017",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "EU SoHO Regulation 2024/1938 Gamete Ledger Surveillance",
       "goal": "Continuously update donor conception family-limit ledger parameters and cross-institution coordination schemas.",
       "workstream": "Autonomous Discovery & Research",
@@ -279,6 +296,7 @@
     },
     {
       "id": "TASK-018",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "AI Content Provenance C2PA & SynthID Chaos Test Expansion",
       "goal": "Expand test cases for MarkCI automated chaos testing harness for AI content provenance under EU AI Act Art. 50.",
       "workstream": "Adversarial Review",
@@ -293,6 +311,7 @@
     },
     {
       "id": "TASK-019",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "Open AI Model SCA License Meter & Telemetry Mapping",
       "goal": "Update ModelRights Compiler mappings for open AI model licenses linked to real-time business telemetry.",
       "workstream": "Opportunity Economics",
@@ -307,6 +326,7 @@
     },
     {
       "id": "TASK-020",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "EU CRCF 2026 Permanent Carbon Removal Reversal Ledger Audit",
       "goal": "Refine asset-liability management formulas for certified carbon removals under EU CRCF 2026 methodology.",
       "workstream": "Evidence & Provenance",
@@ -321,6 +341,7 @@
     },
     {
       "id": "TASK-021",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "Data Centre Sustainability Rating Pre-Observation Twin Simulator",
       "goal": "Update competitive benchmarking formulas for EU data centre sustainability labels.",
       "workstream": "Opportunity Economics",
@@ -335,6 +356,7 @@
     },
     {
       "id": "TASK-022",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "EU Forced Labour Ban SKU Blast-Radius Investigation Engine",
       "goal": "Update supply chain allegation incident response rules under EU Forced Labour Regulation (EU) 2024/1390.",
       "workstream": "Autonomous Discovery & Research",
@@ -349,6 +371,7 @@
     },
     {
       "id": "TASK-023",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "Post-Donation Genomic Surveillance & Variant Re-interpretation",
       "goal": "Update historical screening context engine for gamete cryobanks under BASG 2026 safety notices.",
       "workstream": "Evidence & Provenance",
@@ -363,6 +386,7 @@
     },
     {
       "id": "TASK-024",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "Peer-to-Peer Energy Sharing Allocation & Billing Ledger Audit",
       "goal": "Update peer-to-peer energy sharing audit formulas under EU electricity market reform.",
       "workstream": "Opportunity Economics",
@@ -377,6 +401,7 @@
     },
     {
       "id": "TASK-025",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "DNA Synthesis Provider Biosecurity Screening Benchmark",
       "goal": "Update customer verification rules under Global Nucleic Acid Synthesis Screening Standards (GDM 2026).",
       "workstream": "Security & Privacy",
@@ -391,6 +416,7 @@
     },
     {
       "id": "TASK-026",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
       "title": "EU EPBD Building Passport Embodied Carbon Drift Auditor",
       "goal": "Update as-built vs as-designed embodied carbon divergence audit formulas for EU EPBD building passports.",
       "workstream": "Decision Science & Ranking",
@@ -405,6 +431,7 @@
     },
     {
       "id": "TASK-027",
+      "dependencies": ["TASK-009", "TASK-010", "TASK-013"],
       "title": "Offline Local Room Collaboration Export Packet Validation",
       "goal": "Audit JSON import/export decision packet validation in docs/room.html and assets/js/features/collaboration.js.",
       "workstream": "Frontend UX",
@@ -420,6 +447,7 @@
     },
     {
       "id": "TASK-028",
+      "dependencies": ["TASK-002", "TASK-003", "TASK-011"],
       "title": "Antigravity Reusable Workflow Integrity Verification",
       "goal": "Verify all 7 native workflows in .agents/workflows/ against current CLI scripts.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -434,6 +462,7 @@
     },
     {
       "id": "TASK-029",
+      "dependencies": ["TASK-003", "TASK-004", "TASK-011", "TASK-015"],
       "title": "Continuous Unattended Daemon Loop Health Monitor",
       "goal": "Run va-daemon-runner.py in background mode and monitor .agent-state/logs/unattended-runner.log.",
       "workstream": "Autonomous Discovery & Research",
@@ -449,6 +478,7 @@
     },
     {
       "id": "TASK-030",
+      "dependencies": ["TASK-016", "TASK-027", "TASK-028", "TASK-029"],
       "title": "Full Static Site Re-build & Verification Gate",
       "goal": "Execute full static build and ensure 5,400+ HTML files and search indexes are up to date.",
       "workstream": "Release Gate",

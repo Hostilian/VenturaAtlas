@@ -34,6 +34,9 @@ from va_orchestrator import (
     log_info, log_warn, log_error, log_success, log_debug,
     _load_state, _save_state
 )
+from va_runtime.novelty_throttle import (
+    consume_cooldown, gate_receipt, is_throttled, normalize_control, record_result,
+)
 
 # ── Load .env ─────────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,6 +54,9 @@ IDEAS_JSON_PATH  = os.path.join(BASE_DIR, 'data', 'ideas.json')
 QUEUE_JSON_PATH  = os.path.join(BASE_DIR, 'data', 'idea-staging-queue.json')
 IDEAS_PER_RUN    = int(os.environ.get('IDEAS_PER_ITERATION', '3'))
 AUTO_PROMOTE_THR = float(os.environ.get('AUTO_PROMOTE_THRESHOLD', '85'))
+NOVELTY_WINDOW_RUNS = int(os.environ.get('NOVELTY_WINDOW_RUNS', '3'))
+NOVELTY_MIN_YIELD = float(os.environ.get('NOVELTY_MIN_YIELD', '0.20'))
+NOVELTY_COOLDOWN_RUNS = int(os.environ.get('NOVELTY_COOLDOWN_RUNS', '2'))
 
 # ── 15 Search Domains ─────────────────────────────────────────────────────────
 SEARCH_DOMAINS = [
@@ -567,6 +573,7 @@ def main():
     parser.add_argument('--max-cost', type=int, default=3, help='Maximum cost class (0=free, 3=high)')
     parser.add_argument('--worktrees', action='store_true', help='Enable Git worktree isolation for workers')
     parser.add_argument('--no-promote', action='store_true', help='Disable automatic candidate promotion')
+    parser.add_argument('--force-discovery', action='store_true', help='Explicitly bypass the persisted novelty cooldown for this run')
     args, _ = parser.parse_known_args()
 
     log_info(f"=== Venture Atlas Autonomous Parallel Idea Engine v2.5 Started (bounded={not args.worktrees}) ===")
@@ -575,6 +582,27 @@ def main():
     existing_names = get_all_existing_names(existing, queue)
     log_info(f"Loaded {len(existing)} canonical ideas, {len(queue)} staged, "
              f"{len(existing_names)} known names for dedup")
+
+    state = _load_state()
+    novelty_settings = {
+        "window_runs": NOVELTY_WINDOW_RUNS,
+        "minimum_yield": NOVELTY_MIN_YIELD,
+        "cooldown_runs": NOVELTY_COOLDOWN_RUNS,
+    }
+    novelty_control = normalize_control(state.get("noveltyControl"), **novelty_settings)
+    if is_throttled(novelty_control, **novelty_settings) and not args.force_discovery:
+        receipt = gate_receipt(novelty_control, **novelty_settings)
+        state["noveltyControl"] = consume_cooldown(novelty_control, **novelty_settings)
+        _save_state(state)
+        log_warn(
+            "NOVELTY_THROTTLED: recent evaluated discovery runs remained below "
+            f"yield {receipt['minimumYield']:.2f}; provider calls skipped "
+            f"(cooldown before this skip={receipt['cooldownRemaining']})"
+        )
+        print(json.dumps({"noveltyGate": receipt, "generated": 0, "staged": 0}, sort_keys=True))
+        return 0
+    if args.force_discovery and is_throttled(novelty_control, **novelty_settings):
+        log_warn("Novelty cooldown explicitly bypassed by --force-discovery")
 
     generated = 0
     staged    = 0
@@ -627,9 +655,11 @@ def main():
                 )
 
     # Update state totals
-    state = _load_state()
     state["totalIdeasGenerated"] = state.get("totalIdeasGenerated", 0) + generated
     state["totalCandidatesStaged"] = state.get("totalCandidatesStaged", 0) + staged
+    state["noveltyControl"] = record_result(
+        novelty_control, accepted=staged, rejected=rejected, failed=failed, **novelty_settings
+    )
     _save_state(state)
 
     log_info(
@@ -642,6 +672,7 @@ def main():
     print(f"  Prioritized : {prioritized}")
     print(f"  Rejected    : {rejected}")
     print(f"  Failed      : {failed}")
+    print(f"  Novelty gate: {json.dumps(gate_receipt(state['noveltyControl'], **novelty_settings), sort_keys=True)}")
     print(f"{'='*60}")
     print(f"  Review staged: python scripts/review-staged-ideas.py")
     print(f"  Run ranker:    python scripts/va-ranker.py")

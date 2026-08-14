@@ -1,0 +1,794 @@
+{
+  "schemaVersion": "1.0.0",
+  "contract": "phase-forward-counterfactual-v1",
+  "sourcePhaseShiftDigest": "f77fb808ee53a390c17b07bee215063792f649e627c8e03bc2f6b0ddfb732abd",
+  "marketCount": 30,
+  "completionClaim": false,
+  "counterfactuals": [
+    {
+      "counterfactualId": "phase-forward-market-cra-reporting",
+      "marketId": "market-cra-reporting",
+      "ideaRefs": [
+        "idea-401"
+      ],
+      "sourceRefs": [
+        "s83",
+        "s96",
+        "s108",
+        "s184"
+      ],
+      "currentPhase": "P4_CUTOVER",
+      "counterfactualPhase": "P5_CONFORMANCE",
+      "assumption": "The market advances from P4_CUTOVER to P5_CONFORMANCE; current READINESS, DATA_PREPARATION, INTEGRATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "AUDIT"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless EXCEPTION_HANDLING, OBSERVABILITY, AUDIT remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-consumer-repair",
+      "marketId": "market-eu-consumer-repair",
+      "ideaRefs": [
+        "idea-264",
+        "idea-295",
+        "idea-371"
+      ],
+      "sourceRefs": [
+        "s101",
+        "s185"
+      ],
+      "currentPhase": "P3_MIGRATION",
+      "counterfactualPhase": "P4_CUTOVER",
+      "assumption": "The market advances from P3_MIGRATION to P4_CUTOVER; current READINESS, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "EXCEPTION_HANDLING",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and INTEGRATION, EXCEPTION_HANDLING, VERTICAL_WORKFLOW becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-france-einvoicing",
+      "marketId": "market-france-einvoicing",
+      "ideaRefs": [
+        "idea-215"
+      ],
+      "sourceRefs": [
+        "s190",
+        "s191",
+        "s193",
+        "s194"
+      ],
+      "currentPhase": "P4_CUTOVER",
+      "counterfactualPhase": "P5_CONFORMANCE",
+      "assumption": "The market advances from P4_CUTOVER to P5_CONFORMANCE; current READINESS, MAPPING, INTEGRATION, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "SWITCHING",
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if SWITCHING, EXCEPTION_HANDLING, OBSERVABILITY exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-catch-imports",
+      "marketId": "market-eu-catch-imports",
+      "ideaRefs": [
+        "idea-376"
+      ],
+      "sourceRefs": [
+        "s192",
+        "s195"
+      ],
+      "currentPhase": "P6_OPERATIONAL_SCALE",
+      "counterfactualPhase": "P7_OPTIMIZATION",
+      "assumption": "The market advances from P6_OPERATIONAL_SCALE to P7_OPTIMIZATION; current CONFORMANCE, EXCEPTION_HANDLING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "OBSERVABILITY",
+        "ANALYTICS",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless OBSERVABILITY, ANALYTICS, VERTICAL_WORKFLOW remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-ehds-secondary-use",
+      "marketId": "market-ehds-secondary-use",
+      "ideaRefs": [
+        "idea-379"
+      ],
+      "sourceRefs": [
+        "s123",
+        "s188",
+        "s189",
+        "s196"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "DATA_QUALITY",
+        "INTEGRATION",
+        "CONFORMANCE",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and DATA_QUALITY, INTEGRATION, CONFORMANCE, VERTICAL_WORKFLOW becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-rail-telematics",
+      "marketId": "market-eu-rail-telematics",
+      "ideaRefs": [],
+      "sourceRefs": [
+        "s198"
+      ],
+      "currentPhase": "P3_MIGRATION",
+      "counterfactualPhase": "P4_CUTOVER",
+      "assumption": "The market advances from P3_MIGRATION to P4_CUTOVER; current MAPPING, MIGRATION, INTEGRATION, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "AUDIT"
+      ],
+      "survivalDecision": "SIGNAL_ONLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Do not create a candidate until EXCEPTION_HANDLING, OBSERVABILITY, AUDIT produces a concrete buyer, control point, accessible data path, and falsifiable loss event.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-us-large-load-interconnection",
+      "marketId": "market-us-large-load-interconnection",
+      "ideaRefs": [
+        "idea-273",
+        "idea-395",
+        "idea-396"
+      ],
+      "sourceRefs": [
+        "s199",
+        "s272",
+        "s278"
+      ],
+      "currentPhase": "P3_MIGRATION",
+      "counterfactualPhase": "P4_CUTOVER",
+      "assumption": "The market advances from P3_MIGRATION to P4_CUTOVER; current READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "OBSERVABILITY",
+        "AUDIT"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless INTEGRATION, OBSERVABILITY, AUDIT remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-critical-medicine-procurement",
+      "marketId": "market-eu-critical-medicine-procurement",
+      "ideaRefs": [
+        "idea-377"
+      ],
+      "sourceRefs": [
+        "s202"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current POLICY_INTERPRETATION, READINESS, DATA_PREPARATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "MAPPING",
+        "INTEGRATION",
+        "CONFORMANCE",
+        "AUDIT"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and MAPPING, INTEGRATION, CONFORMANCE, AUDIT becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-space-safety-evidence",
+      "marketId": "market-eu-space-safety-evidence",
+      "ideaRefs": [
+        "idea-383"
+      ],
+      "sourceRefs": [
+        "s204",
+        "s205",
+        "s210"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current POLICY_INTERPRETATION, READINESS, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "CONFORMANCE",
+        "CERTIFICATION",
+        "AUDIT"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and INTEGRATION, CONFORMANCE, CERTIFICATION, AUDIT becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-connected-product-data-access",
+      "marketId": "market-eu-connected-product-data-access",
+      "ideaRefs": [
+        "idea-276",
+        "idea-362"
+      ],
+      "sourceRefs": [
+        "s211",
+        "s212",
+        "s277"
+      ],
+      "currentPhase": "P5_CONFORMANCE",
+      "counterfactualPhase": "P6_OPERATIONAL_SCALE",
+      "assumption": "The market advances from P5_CONFORMANCE to P6_OPERATIONAL_SCALE; current MAPPING, INTEGRATION, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if EXCEPTION_HANDLING, OBSERVABILITY, VERTICAL_WORKFLOW exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-agentic-commerce-protocols",
+      "marketId": "market-agentic-commerce-protocols",
+      "ideaRefs": [
+        "idea-349",
+        "idea-341"
+      ],
+      "sourceRefs": [
+        "s220",
+        "s221",
+        "s222",
+        "s275"
+      ],
+      "currentPhase": "P1_SPEC_FORMING",
+      "counterfactualPhase": "P2_PREPARATION",
+      "assumption": "The market advances from P1_SPEC_FORMING to P2_PREPARATION; current MAPPING, INTEGRATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CONFORMANCE",
+        "CERTIFICATION",
+        "EXCEPTION_HANDLING",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and CONFORMANCE, CERTIFICATION, EXCEPTION_HANDLING, VERTICAL_WORKFLOW becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-research-infrastructure-access",
+      "marketId": "market-eu-research-infrastructure-access",
+      "ideaRefs": [
+        "idea-277"
+      ],
+      "sourceRefs": [
+        "s225",
+        "s226",
+        "s227",
+        "s228"
+      ],
+      "currentPhase": "P1_SPEC_FORMING",
+      "counterfactualPhase": "P2_PREPARATION",
+      "assumption": "The market advances from P1_SPEC_FORMING to P2_PREPARATION; current MAPPING, READINESS value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "CONFORMANCE",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if INTEGRATION, CONFORMANCE, VERTICAL_WORKFLOW exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-public-procurement-digital-rails",
+      "marketId": "market-eu-public-procurement-digital-rails",
+      "ideaRefs": [
+        "idea-265"
+      ],
+      "sourceRefs": [
+        "s235",
+        "s236"
+      ],
+      "currentPhase": "P6_OPERATIONAL_SCALE",
+      "counterfactualPhase": "P7_OPTIMIZATION",
+      "assumption": "The market advances from P6_OPERATIONAL_SCALE to P7_OPTIMIZATION; current EXCEPTION_HANDLING, AUDIT, VERTICAL_WORKFLOW value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "OPTIMIZATION",
+        "ANALYTICS"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if OPTIMIZATION, ANALYTICS exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-non-euro-vop",
+      "marketId": "market-eu-non-euro-vop",
+      "ideaRefs": [
+        "idea-304"
+      ],
+      "sourceRefs": [
+        "s241",
+        "s242"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, CONFORMANCE, CERTIFICATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CUTOVER",
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "AUDIT"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if CUTOVER, EXCEPTION_HANDLING, OBSERVABILITY, AUDIT exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-cloud-switching-continuity",
+      "marketId": "market-eu-cloud-switching-continuity",
+      "ideaRefs": [
+        "idea-374"
+      ],
+      "sourceRefs": [
+        "s247",
+        "s248",
+        "s249",
+        "s250"
+      ],
+      "currentPhase": "P5_CONFORMANCE",
+      "counterfactualPhase": "P6_OPERATIONAL_SCALE",
+      "assumption": "The market advances from P5_CONFORMANCE to P6_OPERATIONAL_SCALE; current MAPPING, CONFORMANCE, SWITCHING, AUDIT value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CERTIFICATION",
+        "EXCEPTION_HANDLING",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless CERTIFICATION, EXCEPTION_HANDLING, VERTICAL_WORKFLOW remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-machinery-digital-safety-change",
+      "marketId": "market-eu-machinery-digital-safety-change",
+      "ideaRefs": [
+        "idea-299",
+        "idea-361"
+      ],
+      "sourceRefs": [
+        "s91",
+        "s251",
+        "s252"
+      ],
+      "currentPhase": "P3_MIGRATION",
+      "counterfactualPhase": "P4_CUTOVER",
+      "assumption": "The market advances from P3_MIGRATION to P4_CUTOVER; current READINESS, MAPPING, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CERTIFICATION",
+        "EXCEPTION_HANDLING",
+        "AUDIT"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless CERTIFICATION, EXCEPTION_HANDLING, AUDIT remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-elv-dismantling-evidence",
+      "marketId": "market-eu-elv-dismantling-evidence",
+      "ideaRefs": [
+        "idea-382"
+      ],
+      "sourceRefs": [
+        "s255"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CONFORMANCE",
+        "EXCEPTION_HANDLING",
+        "AUDIT",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and CONFORMANCE, EXCEPTION_HANDLING, AUDIT, VERTICAL_WORKFLOW becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-reclaimed-fgas-proof",
+      "marketId": "market-eu-reclaimed-fgas-proof",
+      "ideaRefs": [
+        "idea-400"
+      ],
+      "sourceRefs": [
+        "s82",
+        "s259",
+        "s260"
+      ],
+      "currentPhase": "P6_OPERATIONAL_SCALE",
+      "counterfactualPhase": "P7_OPTIMIZATION",
+      "assumption": "The market advances from P6_OPERATIONAL_SCALE to P7_OPTIMIZATION; current CONFORMANCE, AUDIT, EXCEPTION_HANDLING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "OBSERVABILITY",
+        "ANALYTICS",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless OBSERVABILITY, ANALYTICS, VERTICAL_WORKFLOW remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-construction-product-dpp",
+      "marketId": "market-eu-construction-product-dpp",
+      "ideaRefs": [
+        "idea-175"
+      ],
+      "sourceRefs": [
+        "s261",
+        "s262"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "CONFORMANCE",
+        "EXCEPTION_HANDLING"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if INTEGRATION, CONFORMANCE, EXCEPTION_HANDLING exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-battery-second-life",
+      "marketId": "market-eu-battery-second-life",
+      "ideaRefs": [
+        "idea-270"
+      ],
+      "sourceRefs": [
+        "s140",
+        "s141",
+        "s263"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CERTIFICATION",
+        "INTEGRATION",
+        "VERTICAL_WORKFLOW",
+        "ANALYTICS"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and CERTIFICATION, INTEGRATION, VERTICAL_WORKFLOW, ANALYTICS becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-wastewater-epr",
+      "marketId": "market-eu-wastewater-epr",
+      "ideaRefs": [
+        "idea-293"
+      ],
+      "sourceRefs": [
+        "s126",
+        "s264"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current POLICY_INTERPRETATION, READINESS, DATA_PREPARATION, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "CONFORMANCE",
+        "AUDIT",
+        "EXCEPTION_HANDLING"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and INTEGRATION, CONFORMANCE, AUDIT, EXCEPTION_HANDLING becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-us-dscsa-small-dispenser",
+      "marketId": "market-us-dscsa-small-dispenser",
+      "ideaRefs": [
+        "idea-310"
+      ],
+      "sourceRefs": [
+        "s265",
+        "s266",
+        "s267"
+      ],
+      "currentPhase": "P4_CUTOVER",
+      "counterfactualPhase": "P5_CONFORMANCE",
+      "assumption": "The market advances from P4_CUTOVER to P5_CONFORMANCE; current INTEGRATION, CONFORMANCE, EXCEPTION_HANDLING, OBSERVABILITY value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "AUDIT",
+        "OPTIMIZATION",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if AUDIT, OPTIMIZATION, VERTICAL_WORKFLOW exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-drinking-water-contact-materials",
+      "marketId": "market-eu-drinking-water-contact-materials",
+      "ideaRefs": [
+        "idea-403"
+      ],
+      "sourceRefs": [
+        "s268",
+        "s269"
+      ],
+      "currentPhase": "P4_CUTOVER",
+      "counterfactualPhase": "P5_CONFORMANCE",
+      "assumption": "The market advances from P4_CUTOVER to P5_CONFORMANCE; current READINESS, DATA_PREPARATION, CONFORMANCE, CERTIFICATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "EXCEPTION_HANDLING",
+        "AUDIT"
+      ],
+      "survivalDecision": "SURVIVES_NARROWLY",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill unless INTEGRATION, EXCEPTION_HANDLING, AUDIT remains outside official or incumbent control and changes an authorized buyer decision after the phase advances.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-soho-reproductive-registry",
+      "marketId": "market-eu-soho-reproductive-registry",
+      "ideaRefs": [
+        "idea-385"
+      ],
+      "sourceRefs": [
+        "s65",
+        "s270"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current READINESS, MAPPING, DATA_PREPARATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "EXCEPTION_HANDLING",
+        "AUDIT"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and INTEGRATION, EXCEPTION_HANDLING, AUDIT becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-renewable-auction-nonprice",
+      "marketId": "market-eu-renewable-auction-nonprice",
+      "ideaRefs": [
+        "idea-373"
+      ],
+      "sourceRefs": [
+        "s271"
+      ],
+      "currentPhase": "P5_CONFORMANCE",
+      "counterfactualPhase": "P6_OPERATIONAL_SCALE",
+      "assumption": "The market advances from P5_CONFORMANCE to P6_OPERATIONAL_SCALE; current POLICY_INTERPRETATION, READINESS, CONFORMANCE, DATA_PREPARATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "AUDIT",
+        "EXCEPTION_HANDLING"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if INTEGRATION, AUDIT, EXCEPTION_HANDLING exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-content-provenance-conformance",
+      "marketId": "market-content-provenance-conformance",
+      "ideaRefs": [
+        "idea-386"
+      ],
+      "sourceRefs": [
+        "s273",
+        "s274"
+      ],
+      "currentPhase": "P6_OPERATIONAL_SCALE",
+      "counterfactualPhase": "P7_OPTIMIZATION",
+      "assumption": "The market advances from P6_OPERATIONAL_SCALE to P7_OPTIMIZATION; current CONFORMANCE, CERTIFICATION, INTEGRATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "OBSERVABILITY",
+        "EXCEPTION_HANDLING",
+        "AUDIT"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if OBSERVABILITY, EXCEPTION_HANDLING, AUDIT exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-us-nucleic-acid-screening",
+      "marketId": "market-us-nucleic-acid-screening",
+      "ideaRefs": [
+        "idea-393",
+        "idea-397"
+      ],
+      "sourceRefs": [
+        "s256",
+        "s257",
+        "s258"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current POLICY_INTERPRETATION, READINESS, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "CERTIFICATION",
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "AUDIT"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and CERTIFICATION, EXCEPTION_HANDLING, OBSERVABILITY, AUDIT becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-eu-platform-work-algorithmic-management",
+      "marketId": "market-eu-platform-work-algorithmic-management",
+      "ideaRefs": [
+        "idea-363"
+      ],
+      "sourceRefs": [
+        "s276"
+      ],
+      "currentPhase": "P2_PREPARATION",
+      "counterfactualPhase": "P3_MIGRATION",
+      "assumption": "The market advances from P2_PREPARATION to P3_MIGRATION; current POLICY_INTERPRETATION, READINESS, MAPPING value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "INTEGRATION",
+        "EXCEPTION_HANDLING",
+        "AUDIT",
+        "VERTICAL_WORKFLOW"
+      ],
+      "survivalDecision": "WAIT_FOR_TRIGGER",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Keep waiting unless the declared trigger occurs and INTEGRATION, EXCEPTION_HANDLING, AUDIT, VERTICAL_WORKFLOW becomes observable with lawful data access.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-industrial-automation-lifecycle-migration",
+      "marketId": "market-industrial-automation-lifecycle-migration",
+      "ideaRefs": [
+        "idea-166",
+        "idea-168",
+        "idea-171",
+        "idea-173"
+      ],
+      "sourceRefs": [
+        "s279",
+        "s280",
+        "s281",
+        "s282"
+      ],
+      "currentPhase": "P8_CONSOLIDATION",
+      "counterfactualPhase": "P9_COMMODITIZATION",
+      "assumption": "The market advances from P8_CONSOLIDATION to P9_COMMODITIZATION; current MAPPING, MIGRATION, INTEGRATION, CONFORMANCE value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "AUDIT",
+        "OPTIMIZATION"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if EXCEPTION_HANDLING, OBSERVABILITY, AUDIT, OPTIMIZATION exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    },
+    {
+      "counterfactualId": "phase-forward-market-software-dependency-license-compliance",
+      "marketId": "market-software-dependency-license-compliance",
+      "ideaRefs": [
+        "idea-170"
+      ],
+      "sourceRefs": [
+        "s283"
+      ],
+      "currentPhase": "P6_OPERATIONAL_SCALE",
+      "counterfactualPhase": "P7_OPTIMIZATION",
+      "assumption": "The market advances from P6_OPERATIONAL_SCALE to P7_OPTIMIZATION; current CONFORMANCE, AUDIT, INTEGRATION value is progressively absorbed.",
+      "valueThatMustSurvive": [
+        "EXCEPTION_HANDLING",
+        "OBSERVABILITY",
+        "OPTIMIZATION"
+      ],
+      "survivalDecision": "GENERIC_LAYER_ABSORBED",
+      "buyerAuthority": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "dataAccess": "UNPROVEN_UNTIL_EXTERNAL_RECEIPT",
+      "killCondition": "Kill the generic layer; re-enter only if EXCEPTION_HANDLING, OBSERVABILITY, OPTIMIZATION exposes a repeated exception that incumbents do not control.",
+      "reassessmentRequired": true,
+      "evidenceMaturity": "DESK_COUNTERFACTUAL_NOT_VALIDATION"
+    }
+  ]
+}
