@@ -12,25 +12,26 @@ Status: active
 - Explicit score-scale registry, receipt-earned ranking universes, semantic digest, and fixed-point history implemented.
 - Daemon and bounded orchestrator distinguish material change from successful no-op and suppress downstream semantic churn.
 - Strict PhaseShift, validation-funnel, and prospective preregistration schemas/validators implemented with adversarial tests.
-- Five prospectively preregistered market lanes plus a held rail signal researched against fifteen new screened sources; six market maps, three enforcement records, nine milestones, one saturation record, one preserved source conflict, and one explicitly unknown deadlock now validate.
+- Seventy-five prospectively preregistered ideas were researched across eleven bounded evidence tranches and 76 distinct purposeful query families without padding; 301 screened sources and sixteen desk-research run records now validate.
+- PhaseShift now validates 30 markets, zero inferred transitions, 11 enforcement events, one intermediary assessment, 30 milestones, six milestone edges, one preserved source conflict, and one explicitly unknown deadlock.
 - Semantic duplicate reviews are bound to candidate digest plus canonical corpus revision; rank receipts require registered method/scale and mature idea-bound research runs.
 - Remote HTTP calls now acquire the scheduler's exact eligible key; 401/403 disables that credential, 429 applies cooldown, and shared aliases inherit the same health state.
 - Worker readiness now fails while an in-process or repository-wide writer is active, validates canonical JSON/writability, and redacts task output.
 - The bounded orchestrator enforces a monotonic whole-run deadline and terminates child process trees on timeout.
 - Private cloud checkpoints are byte-semantic idempotent and keep generation-match CAS for changed queues.
 - Canonical publication now prepares a durable multi-file recovery journal before live replacement; interrupted PREPARED transactions are restored on the next publisher invocation.
-- Five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
+- Seventy-five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, incumbent substitution, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
 - A serialized semantic-review issuer now derives candidate/corpus bindings itself and accepts only an already-active configured reviewer; the empty production authority registry remains fail-closed.
-- Exact public artifact rebuilt and privacy-scanned; source-quality suite passed 93 Node and 58 Python tests at the first PhaseShift checkpoint.
+- Exact public artifact rebuilt and privacy-scanned; source-quality suite passed 95 Node and 75 Python tests, and exact commit `c30b055` independently reproduced 85 executed Node tests plus 10 intentional private-staging skips and all 75 Python tests.
 
 ## Pending
 
-- Expand evidence program toward substitute workload targets without padding; current bounded pass is not the 75-round floor.
+- Run independent blinded investigators and quantify anchoring delta; the 75-round desk-research floor is cleared but blind execution is not.
 - Repository-owner provisioning or a stronger signed reviewer authority boundary; no production reviewer is currently authorized.
 - Dedicated clean publication job and exact staged-tree semantic validation.
-- Additional PhaseShift lanes, commercial/competitor/negative evidence, decision packs, and limited validation slate.
-- Public integration, failure injection, fresh clone, and final report.
+- Execute authorized buyer interviews, WTP tests, protected-data drills, paid pilots, repeat-payment tests, and external validation; the structured funnel remains empty.
+- Repository-owner review of historical private-staging exposure and a release decision for six local commits; nothing was pushed or deployed.
 
 ## Completion boundary
 
-OMEGA XIII is not complete. No substitute workload quota, customer interview, WTP result, deployed-cloud execution, validation result, or independent review will be claimed without a concrete receipt.
+OMEGA XIII is not complete. The purposeful desk-research floor and clean-clone proof are complete, but no customer interview, WTP result, paid pilot, repeat payment, deployed-cloud execution, independent blinded run, or external validation will be claimed without a concrete receipt.
