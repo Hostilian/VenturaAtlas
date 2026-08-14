@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-168-cf1980c16712",
+  "candidateId": "idea-168",
+  "candidateContentDigest": "501577568e69cc02cee02ddf3e87993aca551bcf46698291a7f2b8f2de30fc4b",
+  "createdAt": "2026-08-14T11:20:36.617296+00:00",
+  "lockedAt": "2026-08-14T11:20:36.617296+00:00",
+  "expectations": {
+    "buyer": "PLC engineering teams, system integrators, machine builders, migration programme owners, and industrial cyber or safety reviewers",
+    "pain": "A legacy PLC project appears convertible but obsolete instructions, hardware dependencies, safety blocks, communications, and field topology fail during migration",
+    "strongestIncumbent": "OEM migration tools and compatibility guides, TIA Portal and Studio 5000 conversion workflows, integrator scripts, simulation, FAT/SAT, and manual code review",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "OEM tooling absorbs syntax conversion, proprietary projects may be inaccessible, and physical I/O, safety, timing, and process behavior cannot be proved by static lint",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "58003534994526963650ace9a63642884822f19e19f5c38e7d4b52a309cb4c25"
+}

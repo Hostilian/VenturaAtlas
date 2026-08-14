@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-173-7b7f687ae472",
+  "candidateId": "idea-173",
+  "candidateContentDigest": "ef939769dc27eb46dd8f9b1dee0a9bb78f15d7563b05dfbbb8be2424e0332cdc",
+  "createdAt": "2026-08-14T11:20:36.898294+00:00",
+  "lockedAt": "2026-08-14T11:20:36.898294+00:00",
+  "expectations": {
+    "buyer": "Maintenance engineers, field service, machine owners, safety teams, technical librarians, and OEM or distributor support",
+    "pain": "A technician uses the wrong manual, revision, service bulletin, erratum, or machine-specific option record on legacy equipment",
+    "strongestIncumbent": "OEM support portals and literature libraries, machine documentation packs, document management, distributors, service organizations, and archived local copies",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Copyright and access limits constrain aggregation, OEM serial/configuration context controls applicability, and search alone cannot authorize a maintenance action",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "c415913cb62c19dc17a32f0d832a5ed372d01c412761461cf5098514b11a9677"
+}

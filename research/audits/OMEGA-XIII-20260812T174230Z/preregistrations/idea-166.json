@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-166-1c237dcd7391",
+  "candidateId": "idea-166",
+  "candidateContentDigest": "8c0fa9df736efa00cd8bdc5c49aad2e550254379612993c28f99e019ea99e87e",
+  "createdAt": "2026-08-14T11:20:36.471225+00:00",
+  "lockedAt": "2026-08-14T11:20:36.471225+00:00",
+  "expectations": {
+    "buyer": "Industrial asset owners, automation engineering, maintenance, procurement, system integrators, and OEM lifecycle teams",
+    "pain": "A PLC, HMI, drive, or controls component reaches restricted support or end of life without a source-linked migration path, installed-base context, or replacement window",
+    "strongestIncumbent": "OEM lifecycle notices and product portals, CMMS/EAM and asset registers, distributors, integrators, MRO procurement, and obsolescence-management standards",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "OEM portals own lifecycle truth, asset owners lack clean installed-base data, substitutions require engineering validation, and integrators can bundle the work",
+    "verdict": "LIKELY_CONTINUE"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "f8fc1f7bb3286587b0d140c881955d2c33090d2389ef738385ba232bd61ff355"
+}

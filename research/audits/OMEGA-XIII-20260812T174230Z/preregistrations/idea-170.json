@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-170-41fac5f88ce6",
+  "candidateId": "idea-170",
+  "candidateContentDigest": "6983c2da15e8309aa81a277ec6ef6010c9beed1fbcc035ae9fc4b8110ed876d3",
+  "createdAt": "2026-08-14T11:20:37.038302+00:00",
+  "lockedAt": "2026-08-14T11:20:37.038302+00:00",
+  "expectations": {
+    "buyer": "Software supply-chain, legal, security, open-source programme, platform engineering, and product release teams",
+    "pain": "An upstream package or dependency tree changes license or attribution obligations and the affected shipped products or import paths are not identified before release",
+    "strongestIncumbent": "GitHub dependency review, Dependabot, SCA vendors, SBOM tools, package metadata, SPDX, legal review, and repository policy gates",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Mature SCA products already flag licenses, package metadata can be wrong, legal effect is context-specific, and import-path reachability is not distribution or derivative-work analysis",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "a6f803a2620b45a2dbda781e317518f767115ca827f8776636077245b0abd364"
+}

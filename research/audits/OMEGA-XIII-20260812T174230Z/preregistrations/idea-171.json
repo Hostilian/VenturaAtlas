@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "preregistrationId": "prereg-idea-171-356084e10f81",
+  "candidateId": "idea-171",
+  "candidateContentDigest": "e4dc61d3010c452903165b1acfd8829f53747bf9db00bc2db1ed780f2a1682b4",
+  "createdAt": "2026-08-14T11:20:36.757294+00:00",
+  "lockedAt": "2026-08-14T11:20:36.757294+00:00",
+  "expectations": {
+    "buyer": "Controls engineers, OT architects, system integrators, plant IT, distributors, and machine or line builders",
+    "pain": "A protocol gateway matches labels on paper but fails on data types, timing, security, redundancy, diagnostics, certification, or vendor-specific device behavior",
+    "strongestIncumbent": "Vendor product selectors, distributors, Kepware and OPC ecosystems, industrial-network consultants, proof-of-concept benches, and device certification lists",
+    "willingnessToPayMaturity": "ASSUMED",
+    "biggestRisk": "Selectors and distributors absorb discovery, the compatibility matrix is vendor-maintained, and a neutral resolver cannot warrant real-time or safety behavior without tests",
+    "verdict": "LIKELY_WAIT"
+  },
+  "author": {
+    "id": "codex-phaseshift",
+    "role": "research-agent"
+  },
+  "digestContract": "research-prereg-v1",
+  "digest": "b1ee7c1d7cf8465c51479fbcccf00fbb71e205d385588f850fd3621cad87f874"
+}
