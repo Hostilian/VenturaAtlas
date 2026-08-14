@@ -66,7 +66,7 @@ Seventy-five immutable preregistrations were locked before their respective sear
 
 ## 16 Blind Review
 
-The allowlisted blind-packet generator removes prior scores, rank, priority, verdict, and anchor language in both keys and values. A production CLI and fail-closed state machine now enforce PREPARED -> FINDINGS_LOCKED -> UNBLINDED, distinct preregistration author and investigator identities, content/preregistration digest binding, exact findings shape, and tamper detection. This proves that blind commercial research is operational. No independent assignment has actually run, however, and no blind-versus-informed anchoring delta exists; the separate measurement condition remains external and open.
+The allowlisted blind-packet generator removes prior scores, rank, priority, verdict, and anchor language in both keys and values. A production CLI and fail-closed state machine now enforce PREPARED -> FINDINGS_LOCKED -> UNBLINDED, distinct preregistration author and investigator identities, content/preregistration digest binding, exact findings shape, and tamper detection. A separate paired experiment runner commits a private random seed, assigns two unique independent reviewers per candidate to blind and informed arms, locks responses immutably, and prespecifies an ordinal alignment delta. This proves the execution path, not the result. No reviewer roster or real response was supplied, so anchoring remains unmeasured and external.
 
 ## 17 Confirmation-Bias Findings
 
@@ -241,7 +241,7 @@ The Commission's current implementation tracker confirms adopted negative shocks
 
 ## 34 Current Buyer Evidence
 
-No buyer interview or design-partner receipt exists. Buyer names in preregistration are hypotheses only, now also including industrial asset/PLC teams, AI engineering and release owners, product-data and retail teams, continuity/security/payment/accessibility owners, repairers and print farms, and event vendors, organizers, sponsors, and service marketplaces.
+No buyer interview or design-partner receipt exists. The current private queue contains 36 candidates satisfying the staged-priority/external-evidence/non-promotion gates, and the ignored `commercial-current-priority-20260814` campaign contains one digest-bound anchor-free packet for each. It still records zero contacts and zero interviews. Buyer names in preregistration are hypotheses only, now also including industrial asset/PLC teams, AI engineering and release owners, product-data and retail teams, continuity/security/payment/accessibility owners, repairers and print farms, and event vendors, organizers, sponsors, and service marketplaces.
 
 ## 35 Current WTP Evidence
 
@@ -253,7 +253,7 @@ Public-API consumer dependencies, accepted purchase mandates, RVM/bank test envi
 
 ## 37 Distribution
 
-No distribution channel is validated. Potential channels—manufacturers, brokers, ERP implementers, repair networks, CROs, core facilities, lab consultants, procurement portals, and logistics auditors—remain outreach hypotheses. No contact, response, conversion, or acquisition-cost event was recorded.
+No distribution channel is validated. Potential channels—manufacturers, brokers, ERP implementers, repair networks, CROs, core facilities, lab consultants, procurement portals, and logistics auditors—remain outreach hypotheses. The private campaign tooling requires digest-bound delivery evidence before it can record a contact and requires separate consented evidence before it can record an interview. Current counts remain zero contact, zero response, zero conversion, and zero acquisition-cost events.
 
 ## 38 Right-to-Repair Research
 
@@ -361,14 +361,14 @@ Exact evidence commit `90d0befc8de187acbef9a463674ae33d2ec170be` was cloned with
 
 ## 61 Remaining Unknowns
 
-The exact completion audit records 43 PROVEN, zero PARTIAL, and two MISSING_EXTERNAL conditions: measured reviewer anchoring and real commercial research for the current high-priority private candidates. Other unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accepted agent mandates, production VoP divergence, transaction-safe API remediation, independent rebuild/signing/license/hardware recovery, qualified machinery and industrial migration decisions, provider-authorized synthesis assurance, connected-product feed behavior, site-specific grid truth, platform-work review outcomes, accepted AI oracles, product-truth error rates, accessibility outcomes, repair safety and economics, event incremental revenue, all prior inaccessible corpora, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
+The exact completion audit records 43 PROVEN, zero PARTIAL, and two MISSING_EXTERNAL conditions: measured reviewer anchoring and real commercial research for the current high-priority private candidates. Both now have fail-closed operator protocols, but neither has an external participant or outcome. Other unknowns include buyer urgency, budgets, WTP, public-API consumer impact, accepted agent mandates, production VoP divergence, transaction-safe API remediation, independent rebuild/signing/license/hardware recovery, qualified machinery and industrial migration decisions, provider-authorized synthesis assurance, connected-product feed behavior, site-specific grid truth, platform-work review outcomes, accepted AI oracles, product-truth error rates, accessibility outcomes, repair safety and economics, event incremental revenue, all prior inaccessible corpora, deployment state, and all external validation outcomes. Historical Git exposure of old private staging content still requires an explicit repository-owner decision.
 
 ## 62 Next Actions
 
 1. Provision reviewer authority only through a repository-owner decision or replace it with a signed-key boundary.
-2. Use the operational blind-research state machine to run randomized independent blind and informed assignments, then measure the preregistered anchoring delta.
+2. Supply a real independent reviewer roster to the committed paired experiment, run every blind/informed assignment, and finalize the prespecified anchoring delta.
 3. Execute the seventy-five cheap falsification tests and append only real external outcomes to the validation funnel.
-4. Obtain real buyer interviews, budget/WTP evidence, paid pilots, and repeat-payment outcomes before any validated-market claim.
+4. Execute the prepared 36-candidate private campaign with real delivery receipts and consented buyer interviews; obtain budget/WTP evidence, paid pilots, and repeat-payment outcomes before any validated-market claim.
 5. Decide whether the evidence line's eight commits plus this report archive should be reviewed and pushed/deployed; no publication occurred in this run.
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 

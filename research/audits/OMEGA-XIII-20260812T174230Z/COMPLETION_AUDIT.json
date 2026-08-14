@@ -132,17 +132,17 @@
       "id": 18,
       "requirement": "reviewer anchoring is measured",
       "status": "MISSING_EXTERNAL",
-      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/OMEGA_XIII_REPORT.md"],
-      "finding": "No blind-versus-informed reviewer comparison or anchoring delta has been executed.",
-      "closureNeeded": "Randomize comparable packets across independent blinded and informed reviewers, lock findings before unblinding, and compute a prespecified delta."
+      "evidence": ["scripts/va_runtime/anchoring_experiment.py", "scripts/anchoring-experiment.py", "tests/test_anchoring_experiment.py", "research/audits/OMEGA-XIII-20260812T174230Z/EXTERNAL_EXECUTION_PROTOCOL.md"],
+      "finding": "Committed randomization, paired blind/informed packets, immutable response locks, tamper checks, and the prespecified descriptive delta are operational; no independent reviewer roster or real response has been supplied, so no measurement exists.",
+      "closureNeeded": "Supply at least two independent reviewers per candidate, execute the prespecified paired assignments, lock every real response, and finalize the committed randomization."
     },
     {
       "id": 19,
       "requirement": "current high-priority staged candidates receive real commercial research",
       "status": "MISSING_EXTERNAL",
-      "evidence": ["research/audits/OMEGA-XIII-20260812T174230Z/COMMERCIAL_DECISIONS.md", "data/validation-funnel.json"],
-      "finding": "Desk research is extensive, but there are no buyer interviews, budgets, WTP receipts, protected data, or behavioral/transactional outcomes.",
-      "closureNeeded": "With owner authorization, select the current private priority set and record real buyer, workflow, budget, access, and outcome evidence in the append-only funnel."
+      "evidence": ["scripts/va_runtime/commercial_research.py", "scripts/commercial-research-campaign.py", "tests/test_commercial_research.py", "research/audits/OMEGA-XIII-20260812T174230Z/EXTERNAL_EXECUTION_PROTOCOL.md"],
+      "finding": "All 36 current private staged priorities have digest-bound interview packets in ignored runtime state, but the campaign truthfully records zero contacts and zero interviews; planning is not commercial evidence.",
+      "closureNeeded": "An authorized operator must contact real buyers and record digest-bound delivery, consented interview, workflow, budget, access, disconfirmation, and outcome evidence for the current priority set."
     },
     {
       "id": 20,

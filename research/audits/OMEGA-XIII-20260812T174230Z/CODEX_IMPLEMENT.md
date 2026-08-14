@@ -15,6 +15,8 @@ Status: active
 - Seventy-five prospectively preregistered ideas were researched across eleven bounded evidence tranches and 76 distinct purposeful query families without padding; 301 screened sources and sixteen desk-research run records now validate.
 - PhaseShift now validates 30 markets, zero inferred transitions, 11 enforcement events, one intermediary assessment, 30 milestones, six milestone edges, one preserved source conflict, and one explicitly unknown deadlock.
 - A fail-closed blind-research CLI/state machine enforces separate investigators, digest-bound anchor-free packets, findings lock before unblinding, and tamper detection; no independent assignment or anchoring measurement is claimed.
+- A paired anchoring experiment runner commits randomization before packet issue, requires two unique independent reviewers per candidate, separates blind and informed arms, locks responses, and computes a prespecified descriptive delta only after complete real responses.
+- A private commercial campaign runner selects the current gated priority set, emits anchor-free digest-bound packets, and refuses interview records without prior delivery evidence, consent, separate evidence bytes, and exact findings. The current 36-packet campaign has zero contacts and zero interviews.
 - A bounded novelty-yield gate skips provider calls during low-yield cooldown and records an explicit decision receipt; provider failures do not depress the semantic yield denominator.
 - All 30 markets have deterministic one-phase-forward counterfactuals with survival/absorption decisions, kill conditions, and buyer/data-access fields held unproven pending external receipts.
 - The exact 45-condition completion audit reports 43 PROVEN, zero PARTIAL, and two MISSING_EXTERNAL; completion remains false.
@@ -31,10 +33,10 @@ Status: active
 
 ## Pending
 
-- Execute randomized independent blind and informed assignments through the landed workflow and quantify anchoring delta; the 75-round desk-research floor is cleared but the external experiment is not.
+- Supply an independent reviewer roster, execute the committed randomized blind/informed assignments, and quantify anchoring delta; the external experiment still has zero real responses.
 - Repository-owner provisioning or a stronger signed reviewer authority boundary; no production reviewer is currently authorized.
 - Dedicated clean publication job and exact staged-tree semantic validation.
-- Execute authorized buyer interviews, WTP tests, protected-data drills, paid pilots, repeat-payment tests, and external validation; the structured funnel remains empty.
+- Execute the prepared 36-candidate private campaign with authorized buyer contacts and interviews, then WTP tests, protected-data drills, paid pilots, repeat-payment tests, and external validation; current contact/interview counts remain zero.
 - Repository-owner review of historical private-staging exposure and a release decision for eight local commits; nothing was pushed or deployed.
 
 ## Completion boundary
