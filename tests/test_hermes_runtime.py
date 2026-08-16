@@ -64,6 +64,15 @@ class HermesRuntimeTests(unittest.TestCase):
                 [mock.call("prompt", "hermes3:latest"), mock.call("prompt", "other:latest")],
             )
 
+    def test_busy_local_slot_does_not_count_as_provider_failure(self):
+        with mock.patch.object(
+            orchestrator, "_call_hermes_with_fallback", side_effect=orchestrator.HermesBusyError("busy")
+        ), mock.patch.object(orchestrator, "_load_state", return_value={
+            "providers": {"hermes-ollama": {"failures": 0, "circuitUntil": ""}}
+        }), mock.patch.object(orchestrator, "_record_failure") as record_failure:
+            self.assertIsNone(orchestrator._call_single_provider("hermes-ollama", "prompt"))
+            record_failure.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

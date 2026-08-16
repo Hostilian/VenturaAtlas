@@ -59,6 +59,12 @@ def process_file_lock(path: str, timeout_seconds: float = 15, stale_after_second
             break
         except FileExistsError:
             _remove_stale_lock(path, stale_after_seconds)
+            # A zero-timeout caller still gets one immediate acquisition attempt
+            # after it successfully removes a stale owner. Without this retry, a
+            # watchdog restart cleans the abandoned lock and then exits as if the
+            # old process were still alive.
+            if not os.path.exists(path):
+                continue
             if time.monotonic() >= deadline:
                 raise TimeoutError(f"Timed out waiting for process lock: {path}")
             time.sleep(0.05)

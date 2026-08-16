@@ -714,6 +714,11 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
         _record_success(state, provider)
         log_success(f"[PARALLEL AI] Provider '{provider}' responded OK ({len(resp)} chars)")
         return resp, provider
+    except HermesBusyError as e:
+        # Local capacity contention is not a provider outage and must not open the
+        # Hermes circuit. This worker can safely use the deterministic fallback.
+        log_debug(f"[PARALLEL AI] Provider '{provider}' deferred: {e}")
+        return None
     except Exception as e:
         log_debug(f"[PARALLEL AI] Provider '{provider}' attempt failed: {e}")
         _record_failure(state, provider)
@@ -838,6 +843,9 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
             _record_success(state, provider)
             log_success(f"Provider {provider} responded OK ({len(resp)} chars)")
             return resp, provider
+        except HermesBusyError as e:
+            log_debug(f"Provider {provider} deferred without circuit penalty: {e}")
+            continue
         except Exception as e:
             log_warn(f"Provider {provider} failed: {e}", provider=provider)
             _record_failure(state, provider)

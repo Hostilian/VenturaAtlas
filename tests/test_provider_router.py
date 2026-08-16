@@ -2,9 +2,11 @@
 Unit tests for Venture Atlas OS Provider Router & Capability Scheduler
 """
 import unittest
+import json
 import os
 import sys
 import tempfile
+import time
 
 # Ensure scripts directory is on sys.path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,6 +84,15 @@ class TestProviderRouter(unittest.TestCase):
                 with self.assertRaises(TimeoutError):
                     with process_file_lock(lock_path, timeout_seconds=0):
                         pass
+
+    def test_zero_timeout_lock_retries_after_stale_owner_is_removed(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            lock_path = os.path.join(temp_dir, "supervisor.lock")
+            with open(lock_path, "w", encoding="utf-8") as handle:
+                json.dump({"pid": os.getpid(), "created": time.time() - 60, "token": "stale"}, handle)
+            with process_file_lock(lock_path, timeout_seconds=0, stale_after_seconds=1):
+                self.assertTrue(os.path.exists(lock_path))
+            self.assertFalse(os.path.exists(lock_path))
 
     def test_registry_contains_every_orchestrator_provider(self):
         scheduler = CapabilityProviderScheduler()
