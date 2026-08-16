@@ -18,6 +18,11 @@ test('Cloud Run job scheduler contract is authenticated and immutable', () => {
   assert.doesNotMatch(terraform, /venture-atlas-worker:2\.3\.0/);
 });
 
+test('cloud research workflow installs Python worker dependencies before quality checks', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
+  assert.match(workflow, /pip install[^\n]*cloud-control-plane\/requirements\.txt[^\n]*services\/ventureatlas-worker\/requirements\.txt/);
+});
+
 test('Terraform and job runner share exact Secret Manager IDs', () => {
   const terraform = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'terraform', 'main.tf'), 'utf8');
   const runner = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'job_runner.py'), 'utf8');
