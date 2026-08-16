@@ -184,3 +184,12 @@ Mission active and incomplete. No external research quota, buyer evidence, WTP, 
 - Exact evidence commit `bfc70e9f6296b788e0b2bb037473b757fa84fcec` passed 99 Node and 95 Python tests plus all strict source, completion, consistency, drift, constitution, privacy, task-graph, and verified-public-build gates in the source worktree.
 - A no-local clone at `C:\Users\Hostilian\AppData\Local\Temp\venture-atlas-omega13-external-bfc70e9` excluded both private staging and the live campaign, installed 157 packages, passed 89 executed Node tests plus 10 intentional private-staging skips, all 95 Python tests, every strict gate, the 5,091-file build/scanner, and four PWA tests, then ended clean at the exact SHA.
 - Final read-only fetch showed the evidence commit ten ahead and zero behind `origin/main`; no push or deploy occurred, and `VentureAtlasAutonomy` remained Disabled.
+
+## 2026-08-16 — lossless all-proposal reconciliation
+
+- Re-audited the seven latest public reconciliation tables and found 139 supplied proposal rows: 70 had been staged as distinct candidates and 69 had remained only as duplicate, module, feature, related-family, or watch decisions.
+- Broadened the audit after raw-attachment review found earlier research ledgers outside those seven summaries. The recoverable authority set is twelve rounds/ledgers: 14 OMEGA IX primary rows, 20 continuation rows, three 60-hypothesis full-reset rounds, and the seven latest rounds totaling 139 rows.
+- Preserved all 353 original rows, including rejected and raw hypotheses. Identical attachment copies are processed once per research round; repeated ideas across different rounds remain separate records.
+- Added a deterministic public catalog and website filters for round, research disposition, thematic family, and text. Family grouping is explicitly non-identifying and non-validating; supplied scores remain non-ranking-eligible.
+- Private staging is never read by the catalog generator, private candidate identifiers are redacted at the projection boundary, and canonical `data/ideas.json` remains unchanged.
+- During verification, the scheduled repository writer restarted and committed the first catalog draft plus unrelated Hermes runtime changes as `9bdd485` and `20b04d3`, then advanced `origin/main`. The writer was stopped and disabled immediately; unrelated residual worktree edits were preserved rather than overwritten.

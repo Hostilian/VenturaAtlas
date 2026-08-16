@@ -20,7 +20,31 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data" / "research-proposal-catalog.json"
 
-ROUNDS = (
+TABLE_ROUNDS = (
+    {
+        "id": "full-reset-2026-08-10",
+        "title": "Full Reset — 10 August 2026",
+        "path": "research/LEGACY_RESEARCH_PROPOSAL_RECONCILIATION.md",
+        "section": "Full Reset — 10 August 2026",
+        "expected": 60,
+        "attachmentSha256": "15EB67AEA7C2AA867C53C84E35DDE968242902E1A2B1BAD219137ECD54F1B1E1",
+    },
+    {
+        "id": "frontier-reset-2026-08-10",
+        "title": "Another Full Frontier Reset — 10 August 2026",
+        "path": "research/LEGACY_RESEARCH_PROPOSAL_RECONCILIATION.md",
+        "section": "Another Full Frontier Reset — 10 August 2026",
+        "expected": 60,
+        "attachmentSha256": "2F4D0CF7A8750A44003123240F3CA7525335B3C1B5F9BB41075029DFFB03D9CB",
+    },
+    {
+        "id": "full-reset-2026-08-11",
+        "title": "Full August 11 Reset",
+        "path": "research/LEGACY_RESEARCH_PROPOSAL_RECONCILIATION.md",
+        "section": "Full August 11 Reset",
+        "expected": 60,
+        "attachmentSha256": "D6A5AF0E0AEFCBC22D76124D921D6B18D8465BB8358278445EC3205B230C7579",
+    },
     {
         "id": "august-operational-chokepoints",
         "title": "August 2026 Operational Chokepoints",
@@ -72,6 +96,28 @@ ROUNDS = (
     },
 )
 
+JSON_ROUNDS = (
+    {
+        "id": "omega-ix-primary-ledger",
+        "title": "OMEGA IX Primary Idea Ledger",
+        "path": "research/audits/OMEGA-IX-20260810T131507Z/IDEA_LEDGER.json",
+        "expected": 14,
+        "attachmentSha256": None,
+        "nameField": "thesis",
+    },
+    {
+        "id": "omega-ix-continuation-ledger",
+        "title": "OMEGA IX Continuation Idea Ledger",
+        "path": "research/audits/OMEGA-IX-CONT-20260810T160000Z/IDEA_LEDGER.json",
+        "expected": 20,
+        "attachmentSha256": "DCF798E7564E0E32BB98A7462A7C3007F8FBF4F12F4B6AC5132776840AD156D5",
+        "nameField": "name",
+        "nameOverrides": {
+            13: "OnceOnly Replay — EU Once-Only Evidence Interop Tester",
+        },
+    },
+)
+
 PROPOSAL_HEADERS = {"candidate", "supplied concept", "supplied proposal", "proposal"}
 DECISION_HEADERS = {"repository decision", "decision", "resolution"}
 RELATIONS = {
@@ -80,25 +126,41 @@ RELATIONS = {
     "MODULE_OR_FEATURE": "Module, feature, or wedge",
     "RELATED_EXISTING_FAMILY": "Related existing family",
     "WATCH_SIGNAL": "Watch signal",
+    "RAW_HYPOTHESIS": "Raw hypothesis",
+    "REJECTED_OR_KILLED": "Rejected or killed",
 }
 
 FAMILIES = (
     ("ai-agents-oversight", "AI, agents, transparency & human oversight", r"\b(ai|agent|worker decision|provenance|prompt|mandate)\b"),
     ("cyber-software-assurance", "Cybersecurity, software assurance & cryptography", r"\b(cyber|cra |pqc|quantum|software liability|assurance|security|vulnerability)\b"),
-    ("identity-credentials-workforce", "Identity, credentials & workforce mobility", r"\b(eudi|credential|talent|worker|skills|hire-to-arrival|posted worker|soho)\b"),
+    ("identity-credentials-workforce", "Identity, credentials & workforce mobility", r"\b(eudi|credential|talent|worker|skills|hire-to-arrival|posted worker)\b"),
     ("product-passports-claims-repair", "Product passports, claims, repair & circularity", r"\b(dpp|passport|claim|repair|packag|unsold|refurbished|product release|marksurvive)\b"),
     ("customs-trade-freight-invoicing", "Customs, trade, freight & invoicing", r"\b(customs|cargo|efti|freight|invoice|cbam|shipment|border|eudr|import|export)\b"),
     ("energy-grids-flexibility", "Energy, grids & flexibility", r"\b(grid|energy|compute|data-centre|powerplot|flexibility|spectrum)\b"),
     ("carbon-climate-environment", "Carbon, climate & environmental markets", r"\b(carbon|co2|methane|biochar|crcf|nature restoration|ocean|soil|pfas|wastewater|water|refrigerant|f-gas)\b"),
     ("industrial-materials-supply", "Industrial materials, qualification & supply chains", r"\b(material|chemical|battery|machine|robot|semiconductor|chip|factory|industrial|stockpile|critical medicine|api stockpile)\b"),
-    ("health-medicines-biotech", "Health, medicines & biotechnology", r"\b(health|medicine|medical|biotech|biomanufact|pharma|soho|eudamed|ehr)\b"),
+    ("health-medicines-biotech", "Health, medicines & biotechnology", r"\b(health|medicine|medical|biotech|biomanufact|pharma|soho|eudamed|ehds|ehr)\b"),
     ("research-ip-commercialisation", "Research infrastructure, IP & commercialisation", r"\b(research|lab |laboratory|university|spinout|academic ip|ip collateral|royalty)\b"),
     ("construction-housing-built", "Construction, housing & the built environment", r"\b(construction|housing|building|renovation|brownfield|permit)\b"),
     ("transport-rail-ports-maritime", "Transport, rail, ports & maritime", r"\b(rail|port|maritime|airport|saf |esaf|fleet|freight)\b"),
     ("compute-cloud-sovereignty", "Compute, cloud & sovereignty", r"\b(cloud|compute|sovereign|data switch|refactor|exitops)\b"),
     ("procurement-crisis-resilience", "Procurement, crisis capacity & strategic resilience", r"\b(procurement|crisis|emergency|readiness|resilience|shortage|capacity|offtake|bankability|treasury)\b"),
     ("agriculture-food-contracts", "Agriculture & food contracts", r"\b(agri|food|farm|crop)\b"),
-    ("space-spectrum-communications", "Space, spectrum & communications", r"\b(space|satellite|spectrum|telecom|duct|network)\b"),
+    ("space-spectrum-communications", "Space, spectrum & communications", r"\b(space|satellite|spectrum|telecom|duct)\b"),
+)
+
+# Cross-round aliases take precedence over contextual keywords. They keep repeated
+# parent/module concepts together even when one round supplies much richer context.
+FAMILY_OVERRIDES = (
+    ("energy-grids-flexibility", r"\bchargetruth\b|\bdata ?centertruth\b|\bflexload ledger\b"),
+    ("transport-rail-ports-maritime", r"\bvinstate\b|\bportcall\b|\bcarrierdecision\b|\bupliftmirror\b|\bsaf claimmirror\b"),
+    ("carbon-climate-environment", r"\bmicrofee\b|\breclaimright\b|\bgasbank planner\b|\bpfas\b"),
+    ("procurement-crisis-resilience", r"\bbidproof\b|\bsupplier ?swap counterfactual\b|\bdelivery ?capability ledger\b"),
+    ("ai-agents-oversight", r"\bmarksurvive\b|\bprovenance transform matrix\b|\bdisclosuredrift\b"),
+    ("customs-trade-freight-invoicing", r"\binvoice ?route ?truth\b|\bdirectorydrift watch\b|\binvoice ?failover drill\b|\besap (relay|preview)\b|\boam receipt chain\b"),
+    ("identity-credentials-workforce", r"\bwalletmatrix\b|\bcrossdevice replay\b|\btrustlist drift\b"),
+    ("health-medicines-biotech", r"\bshortagegraph\b|\bnotifycascade\b|\bprocedureexposure\b|\bsubstituteready\b|\bshortagecase replay\b|\behds shadowtest\b"),
+    ("agriculture-food-contracts", r"\bsprayreality\b|\bspray record\b|\bpesticide\b|\bagronomist\b"),
 )
 
 
@@ -149,21 +211,29 @@ def extract_tables(markdown: str) -> list[tuple[list[str], list[list[str]]]]:
 
 def relation_for(decision: str) -> str:
     text = decision.casefold()
+    if "reject" in text or "too_generic" in text or "too generic" in text or "absorbed" in text:
+        return "REJECTED_OR_KILLED"
+    if "raw_hypothesis" in text or "raw hypothesis" in text:
+        return "RAW_HYPOTHESIS"
     if "watch" in text and not text.startswith("stage distinct"):
         return "WATCH_SIGNAL"
     if "exact" in text or "duplicate" in text:
         return "SAME_OR_DUPLICATE"
-    if any(term in text for term in ("module", "feature", "wedge", "primitive")):
+    if any(term in text for term in ("module", "feature", "wedge", "primitive", "expansion")):
         return "MODULE_OR_FEATURE"
-    if any(term in text for term in ("enrich", "existing", "merge", "current corpus match", "cross-cutting")):
+    if any(term in text for term in ("enrich", "existing", "merge", "current corpus match", "cross-cutting", "overlap", "prior", "platform_capture", "platform capture")):
         return "RELATED_EXISTING_FAMILY"
-    if any(term in text for term in ("stage", "high-priority", "deep validation", "staged hypothesis", "validate with")):
+    if any(term in text for term in ("stage", "promote", "validate", "validation", "research_more", "research more", "high-priority", "staged hypothesis", "service_niche", "expert_heavy", "beachhead", "core_asset", "acquisition_data_moat", "interesting_feature", "distribution_feature", "niche")):
         return "DISTINCT_PROPOSAL"
     raise ValueError(f"unclassified decision: {decision!r}")
 
 
 def family_for(name: str, decision: str, adjacency: str) -> tuple[str, str]:
     haystack = f"{name} {decision} {adjacency}".casefold()
+    for family_id, pattern in FAMILY_OVERRIDES:
+        if re.search(pattern, haystack, flags=re.I):
+            label = next(label for candidate_id, label, _ in FAMILIES if candidate_id == family_id)
+            return family_id, label
     for family_id, label, pattern in FAMILIES:
         if re.search(pattern, haystack, flags=re.I):
             return family_id, label
@@ -177,6 +247,13 @@ def referenced_ideas(text: str) -> list[str]:
 def round_records(config: dict) -> list[dict]:
     source_path = ROOT / config["path"]
     markdown = source_path.read_text(encoding="utf-8")
+    section = config.get("section")
+    if section:
+        marker = f"## {section}"
+        if marker not in markdown:
+            raise ValueError(f"{config['id']}: missing section {marker!r}")
+        markdown = markdown.split(marker, 1)[1]
+        markdown = markdown.split("\n## ", 1)[0]
     source_digest = hashlib.sha256(source_path.read_bytes()).hexdigest().upper()
     records: list[dict] = []
     ordinal = 0
@@ -224,11 +301,54 @@ def round_records(config: dict) -> list[dict]:
     return records
 
 
+def json_round_records(config: dict) -> list[dict]:
+    source_path = ROOT / config["path"]
+    payload = json.loads(source_path.read_text(encoding="utf-8"))
+    rows = payload.get("ideas")
+    if not isinstance(rows, list) or len(rows) != config["expected"]:
+        raise ValueError(f"{config['id']}: expected {config['expected']} ledger ideas")
+    source_digest = hashlib.sha256(source_path.read_bytes()).hexdigest().upper()
+    records = []
+    for ordinal, row in enumerate(rows, 1):
+        source_name = sanitize_public_text(str(row.get(config["nameField"], "")))
+        name = config.get("nameOverrides", {}).get(ordinal, source_name)
+        disposition = sanitize_public_text(str(row.get("repositoryDisposition") or row.get("disposition") or ""))
+        decision = sanitize_public_text(str(row.get("decision") or ""))
+        combined_decision = " · ".join(part for part in (decision, disposition) if part)
+        adjacency_parts = [row.get("target"), row.get("nearest"), row.get("object"), row.get("negative"), row.get("killer"), row.get("killTest")]
+        adjacency = " · ".join(sanitize_public_text(str(part)) for part in adjacency_parts if part)
+        relation = relation_for(combined_decision)
+        family_id, family_label = family_for(name, combined_decision, adjacency)
+        records.append({
+            "id": f"research-proposal-{config['id']}-{ordinal:02d}",
+            "roundId": config["id"],
+            "roundTitle": config["title"],
+            "sourceDocument": config["path"],
+            "sourceDocumentSha256": source_digest,
+            "sourceOrdinal": ordinal,
+            "suppliedRank": row.get("rank") if isinstance(row.get("rank"), int) else None,
+            "name": name,
+            "sourceRecordedName": source_name if source_name != name else None,
+            "decision": combined_decision,
+            "adjacency": adjacency or None,
+            "relation": relation,
+            "relationLabel": RELATIONS[relation],
+            "familyId": family_id,
+            "familyLabel": family_label,
+            "canonicalIdeaRefs": referenced_ideas(adjacency),
+            "provisionalAnalystScore": None,
+            "rankingEligible": False,
+            "identityClaim": False,
+        })
+    return records
+
+
 def build_catalog() -> dict:
     proposals: list[dict] = []
     round_summaries: list[dict] = []
-    for config in ROUNDS:
-        records = round_records(config)
+    configurations = [(config, json_round_records) for config in JSON_ROUNDS] + [(config, round_records) for config in TABLE_ROUNDS]
+    for config, loader in configurations:
+        records = loader(config)
         proposals.extend(records)
         round_summaries.append({
             "id": config["id"],
@@ -240,8 +360,8 @@ def build_catalog() -> dict:
     ids = [proposal["id"] for proposal in proposals]
     if len(ids) != len(set(ids)):
         raise ValueError("proposal IDs are not unique")
-    if len(proposals) != 139:
-        raise ValueError(f"expected 139 proposals across all rounds, found {len(proposals)}")
+    if len(proposals) != 353:
+        raise ValueError(f"expected 353 proposals across all recoverable rounds, found {len(proposals)}")
     relation_counts = Counter(proposal["relation"] for proposal in proposals)
     family_counts = Counter(proposal["familyId"] for proposal in proposals)
     return {
@@ -255,9 +375,9 @@ def build_catalog() -> dict:
             "navigation aids only and do not merge identities or establish market validation."
         ),
         "scoreDisclosure": "Supplied scores are provisional analyst metadata and are not ranking eligible.",
-        "sourceBoundary": "Generated only from committed public reconciliation tables; private staging data is not read or published.",
+        "sourceBoundary": "Generated only from committed reconciliation tables and idea ledgers; private staging data is not read or published.",
         "proposalCount": len(proposals),
-        "roundCount": len(ROUNDS),
+        "roundCount": len(configurations),
         "rounds": round_summaries,
         "relationCounts": dict(sorted(relation_counts.items())),
         "familyCounts": dict(sorted(family_counts.items())),
@@ -288,7 +408,7 @@ def main() -> int:
     if OUTPUT.read_text(encoding="utf-8") != content:
         print("research proposal catalog: FAIL: generated artifact is stale", file=sys.stderr)
         return 1
-    print("research proposal catalog: OK (139 proposals across 7 rounds)")
+    print("research proposal catalog: OK (353 proposals across 12 recoverable rounds)")
     return 0
 
 

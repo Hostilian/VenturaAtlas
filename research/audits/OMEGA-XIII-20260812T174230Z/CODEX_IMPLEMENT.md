@@ -30,6 +30,7 @@ Status: active
 - Seventy-five desk-commercial decision packets and an included/excluded query-family ledger preserve public-primitive absorption, incumbent substitution, stakeholder counterevidence, and explicitly unearned buyer/WTP/validation claims.
 - A serialized semantic-review issuer now derives candidate/corpus bindings itself and accepts only an already-active configured reviewer; the empty production authority registry remains fail-closed.
 - Exact public artifact rebuilt and privacy-scanned; exact commit `bfc70e9` independently reproduced 89 executed Node tests plus 10 intentional private-staging skips, all 95 Python tests, strict source/completion/privacy gates, the 5,091-file public build, and a clean final tree.
+- Post-report research reconciliation now preserves 353 proposal rows across twelve recoverable research rounds and ledgers. Raw, rejected, duplicate, module, related-family, watch, and distinct records remain separate; the public catalog groups them only by thematic proximity and never reads private staging.
 
 ## Pending
 

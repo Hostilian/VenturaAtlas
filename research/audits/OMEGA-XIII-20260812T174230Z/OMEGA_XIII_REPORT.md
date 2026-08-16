@@ -373,3 +373,7 @@ The exact completion audit records 43 PROVEN, zero PARTIAL, and two MISSING_EXTE
 6. Keep `VentureAtlasAutonomy` disabled until integration/release authority explicitly resumes it.
 
 **Final status: OMEGA XIII ACTIVE / INCOMPLETE.**
+
+### Post-report addendum — lossless proposal catalog (2026-08-16)
+
+A later user-requested reconciliation expanded the visible research ledger beyond the seven August 12 summaries. The repository now preserves 353 recoverable proposal rows across twelve rounds and machine-readable ledgers: raw hypotheses, rejected/killed ideas, duplicate mappings, related-family enrichments, modules/features, watch signals, and distinct proposals. Repeated ideas remain separate when they appeared in separate supplied rounds; thematic website families are navigation only and never identity, ranking, or validation claims. Exact duplicate attachment copies are processed once per round. The public generator does not read private staging or mutate canonical ideas.
