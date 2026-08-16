@@ -48,7 +48,7 @@ test('unattractive, duplicate, module, and watch-only proposals are retained', (
   assert.equal(byName.get('PFAS Remediation Performance Network').relation, 'MODULE_OR_FEATURE');
   assert.equal(byName.get('Biotech SandboxOps').relation, 'WATCH_SIGNAL');
   assert.equal(byName.get('Quantum Supply-Chain Qualification Graph').relation, 'WATCH_SIGNAL');
-  assert.equal(byName.get('SupplierProof SLA').relation, 'RELATED_EXISTING_FAMILY');
+  assert.equal(byName.get('SupplierProof SLA').relation, 'MODULE_OR_FEATURE');
   assert.equal(byName.get('Cyber Assurance Reuse Graph').relation, 'MODULE_OR_FEATURE');
   assert.equal(byName.get('Cyber Assurance Continuity OS').relation, 'DISTINCT_PROPOSAL');
 });

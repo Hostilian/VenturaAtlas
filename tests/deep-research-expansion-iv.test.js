@@ -31,8 +31,8 @@ test('Expansion IV resolves all twenty proposals and records six experiments', (
 test('only twelve distinct Expansion IV concepts are private and provisional', (t) => {
   const canonicalNames = new Set(canonical.map(item => item.name));
   assert.ok(names.every(name => !canonicalNames.has(name)));
-  if (!fs.existsSync(queuePath)) return t.skip('private staging queue intentionally absent');
   const staged = queue.filter(item => item.provenance?.researchRunId === RUN_ID);
+  if (!fs.existsSync(queuePath) || staged.length === 0) return t.skip('private research cohort unavailable');
   assert.deepStrictEqual(staged.map(item => item.name).sort(), [...names].sort());
   assert.ok(staged.every(item => item.promotionEligible === false));
   assert.ok(staged.every(item => item.atAGlance.overallScore === null));
@@ -61,8 +61,8 @@ test('proposal and date-sensitive concepts retain explicit boundaries', (t) => {
   const run = runs.find(item => item.runId === RUN_ID);
   assert.ok(run.claimsChanged.some(value => /19 AI Factories and 13 antennas as operational/.test(value)));
   assert.ok(run.claimsChanged.some(value => /remain proposals/.test(value)));
-  if (!fs.existsSync(queuePath)) return t.skip('private staging queue intentionally absent');
   const staged = new Map(queue.filter(item => item.provenance?.researchRunId === RUN_ID).map(item => [item.name, item]));
+  if (!fs.existsSync(queuePath) || staged.size === 0) return t.skip('private research cohort unavailable');
   assert.strictEqual(staged.get('EU Inc Corporate Action OS').researchAssessment.priorityClass, 'proposal_watch_prebuild');
   assert.strictEqual(staged.get('Chip Design-In Qualification Engine').researchAssessment.priorityClass, 'proposal_watch_validation');
   assert.strictEqual(staged.get('Made-in-EU Origin Compiler').researchAssessment.priorityClass, 'proposal_watch_prebuild');

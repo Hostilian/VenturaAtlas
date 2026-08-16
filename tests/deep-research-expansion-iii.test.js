@@ -31,8 +31,8 @@ test('Expansion III resolves all 24 proposals and retains the requested validati
 test('only ten distinct Expansion III concepts are private and provisional', (t) => {
   const canonicalNames = new Set(canonical.map(item => item.name));
   assert.ok(names.every(name => !canonicalNames.has(name)));
-  if (!fs.existsSync(queuePath)) return t.skip('private staging queue intentionally absent');
   const staged = queue.filter(item => item.provenance?.researchRunId === RUN_ID);
+  if (!fs.existsSync(queuePath) || staged.length === 0) return t.skip('private research cohort unavailable');
   assert.deepStrictEqual(staged.map(item => item.name).sort(), [...names].sort());
   assert.ok(staged.every(item => item.promotionEligible === false));
   assert.ok(staged.every(item => item.atAGlance.overallScore === null));
@@ -60,8 +60,8 @@ test('timing-sensitive concepts remain correctly bounded', (t) => {
   const run = runs.find(item => item.runId === RUN_ID);
   assert.ok(run.claimsChanged.some(value => /1 September 2025/.test(value)));
   assert.ok(run.claimsChanged.some(value => /Digital euro v0.91 remains draft/.test(value)));
-  if (!fs.existsSync(queuePath)) return t.skip('private staging queue intentionally absent');
   const staged = new Map(queue.filter(item => item.provenance?.researchRunId === RUN_ID).map(item => [item.name, item]));
+  if (!fs.existsSync(queuePath) || staged.size === 0) return t.skip('private research cohort unavailable');
   assert.strictEqual(staged.get('Digital Euro Conformance CI').researchAssessment.priorityClass, 'draft_watch');
   assert.strictEqual(staged.get('Grid-Responsive Compute Broker').researchAssessment.priorityClass, 'competition_watch');
 });

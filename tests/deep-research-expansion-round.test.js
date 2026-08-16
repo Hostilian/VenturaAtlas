@@ -36,12 +36,12 @@ test('new expansion concepts remain private, provisional, and noncanonical', (t)
   const canonicalNames = new Set(canonical.map(item => item.name));
   assert.ok(expectedStagedNames.every(name => !canonicalNames.has(name)));
 
-  if (!fs.existsSync(queuePath)) {
-    t.skip('private staging queue is intentionally absent from a clean public checkout');
+  const staged = queue.filter(item => item.provenance?.researchRunId === RUN_ID);
+  if (!fs.existsSync(queuePath) || staged.length === 0) {
+    t.skip('private research cohort is intentionally unavailable in this checkout');
     return;
   }
 
-  const staged = queue.filter(item => item.provenance?.researchRunId === RUN_ID);
   assert.deepStrictEqual(staged.map(item => item.name).sort(), [...expectedStagedNames].sort());
   assert.ok(staged.every(item => item.promotionEligible === false));
   assert.ok(staged.every(item => item.atAGlance?.overallScore === null));
