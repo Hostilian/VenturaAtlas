@@ -21,6 +21,14 @@ test('Cloud Run job scheduler contract is authenticated and immutable', () => {
 test('cloud research workflow installs Python worker dependencies before quality checks', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
   assert.match(workflow, /pip install[^\n]*cloud-control-plane\/requirements\.txt[^\n]*services\/ventureatlas-worker\/requirements\.txt/);
+  for (const requirementsPath of [
+    path.join(ROOT, 'cloud-control-plane', 'requirements.txt'),
+    path.join(ROOT, 'services', 'ventureatlas-worker', 'requirements.txt')
+  ]) {
+    const requirements = fs.readFileSync(requirementsPath, 'utf8');
+    assert.match(requirements, /google-cloud-secret-manager/);
+    assert.doesNotMatch(requirements, /google-cloud-secretmanager/);
+  }
 });
 
 test('Terraform and job runner share exact Secret Manager IDs', () => {
