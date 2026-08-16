@@ -83,6 +83,7 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
   'public-sources.json',
   'rankings.json',
   'search-index.json',
+  'research-proposal-catalog.json',
   'repository-meta.json',
   'relationships.json',
   'prompts.json',

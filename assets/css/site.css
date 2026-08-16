@@ -1339,6 +1339,45 @@ body.nav-open {
   }
 }
 
+/* ================================================================
+   LOSSLESS RESEARCH PROPOSAL CATALOG
+   ================================================================ */
+.research-catalog-main { max-width: 1180px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.research-catalog-main h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin: 0.35rem 0 0.7rem; }
+.catalog-disclosure { margin: 1.5rem 0; }
+.catalog-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin: 1.5rem 0; }
+.catalog-summary > div { display: flex; flex-direction: column; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.catalog-summary strong { font-size: 1.8rem; color: var(--accent-h); }
+.catalog-summary span { color: var(--text2); font-size: 0.82rem; }
+.catalog-controls { display: grid; grid-template-columns: minmax(220px, 1.4fr) repeat(3, minmax(160px, 1fr)) auto; gap: 0.75rem; align-items: end; margin: 1.5rem 0 0.8rem; }
+.catalog-controls label { display: grid; gap: 0.35rem; color: var(--text2); font-size: 0.78rem; font-weight: 700; }
+.catalog-controls input, .catalog-controls select { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); color: var(--text); padding: 0.7rem; }
+.catalog-status { color: var(--text2); margin-bottom: 1.2rem; }
+.catalog-status.error { color: var(--danger, #b42318); }
+.proposal-family { margin: 2rem 0; }
+.proposal-family > h2 { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 0.55rem; font-size: 1.2rem; }
+.proposal-family > h2 span { color: var(--text2); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.proposal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; margin-top: 0.9rem; }
+.proposal-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 1rem; display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+.proposal-card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.6rem; }
+.proposal-card h3 { font-size: 1rem; line-height: 1.35; flex: 1 1 180px; }
+.proposal-relation { border-radius: 999px; padding: 0.24rem 0.5rem; background: var(--bg2); color: var(--text2); font-size: 0.68rem; font-weight: 750; }
+.relation-distinct-proposal { background: var(--accent-l); color: var(--accent-h); }
+.relation-same-or-duplicate { background: #f1f2f4; color: #4b5563; }
+.relation-watch-signal { background: #fff3cd; color: #765b00; }
+.proposal-meta, .proposal-adjacency, .proposal-decision { font-size: 0.8rem; color: var(--text2); overflow-wrap: anywhere; }
+.proposal-decision { color: var(--text); }
+.proposal-foot { border-top: 1px solid var(--line); margin-top: auto; padding-top: 0.55rem; display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; font-size: 0.7rem; color: var(--text2); }
+.proposal-foot a { font-weight: 700; }
+
+@media (max-width: 900px) {
+  .catalog-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .catalog-summary, .catalog-controls { grid-template-columns: 1fr; }
+  .proposal-grid { grid-template-columns: 1fr; }
+}
+
 /* Command Palette Import */
 @import "./components/command-palette.css";
-

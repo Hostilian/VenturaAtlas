@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Research Proposals · Venture Atlas OS</title>
+  <meta name="description" content="Browse all 139 proposals supplied across seven deep-research rounds, including duplicates, modules, related families, watch signals, and distinct candidates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="research-catalog" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./rankings.html">Rankings</a>
+        <a href="./sources.html">Sources</a>
+        <a href="./research-catalog.html" aria-current="page">All proposals</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" class="research-catalog-main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="./research.html">Research</a><span class="sep">›</span><span>All proposals</span>
+    </nav>
+    <div class="eyebrow">Lossless research reconciliation</div>
+    <h1>All research proposals</h1>
+    <p class="lede">Every proposal supplied in the seven reconciled research rounds is here—including ideas judged duplicate, related, modular, weak, or watch-only.</p>
+
+    <div class="notice catalog-disclosure" role="note">
+      <strong>Grouping does not merge ideas.</strong> Families indicate thematic proximity only. Every original proposal remains a separate record with its original public decision. Provisional scores are not verified rankings, and inclusion is not validation.
+    </div>
+
+    <section class="catalog-summary" aria-label="Catalog summary">
+      <div><strong id="proposalTotal">139</strong><span>supplied proposals</span></div>
+      <div><strong id="roundTotal">7</strong><span>research rounds</span></div>
+      <div><strong id="visibleTotal">139</strong><span>currently shown</span></div>
+    </section>
+
+    <section class="catalog-controls" aria-label="Catalog filters">
+      <label>Search<input id="proposalSearch" type="search" placeholder="Name, decision, adjacency…" autocomplete="off"></label>
+      <label>Research round<select id="roundFilter"><option value="">All rounds</option></select></label>
+      <label>Relationship<select id="relationFilter"><option value="">All relationships</option></select></label>
+      <label>Similarity family<select id="familyFilter"><option value="">All families</option></select></label>
+      <button id="clearCatalogFilters" class="button ghost" type="button">Clear filters</button>
+    </section>
+
+    <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite">Loading all proposals…</p>
+    <div id="proposalFamilies" class="proposal-families"></div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>Venture Atlas OS — open research repository.</p>
+    <p><a href="./research.html">Research archive</a> · <a href="../data/research-proposal-catalog.json">Catalog data</a> · <a href="./completeness.html">Completeness audit</a></p>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/research-catalog.js"></script>
+</body>
+</html>

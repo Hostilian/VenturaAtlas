@@ -51,6 +51,9 @@ if os.path.exists(_env_path):
 OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
+OLLAMA_TIMEOUT_SECONDS = max(30, int(os.environ.get('OLLAMA_TIMEOUT_SECONDS', '180')))
+OLLAMA_NUM_PREDICT = max(64, int(os.environ.get('OLLAMA_NUM_PREDICT', '512')))
+OLLAMA_SLOT_WAIT_SECONDS = max(0.0, float(os.environ.get('OLLAMA_SLOT_WAIT_SECONDS', '1')))
 
 from va_runtime.provider_router import (
     NoEligibleProviderError,
@@ -154,6 +157,11 @@ from va_runtime.process_lock import process_file_lock
 
 import threading
 _state_lock = threading.Lock()
+_hermes_inference_slot = threading.BoundedSemaphore(value=1)
+
+
+class HermesBusyError(RuntimeError):
+    """Raised when the single laptop-local inference slot is already occupied."""
 
 def _load_state() -> dict:
     with _state_lock:
@@ -291,11 +299,55 @@ def _call_cohere_api(prompt: str) -> str:
 # ── Tier 1: Hermes via Ollama ─────────────────────────────────────────────────
 def _call_hermes(prompt: str, model: str = None) -> str:
     model = model or HERMES_MODEL
-    url = f"{OLLAMA_BASE_URL}/api/generate"
-    body = {"model": model, "prompt": prompt, "stream": False, "options": {"temperature": 0.7, "num_predict": 1200}}
-    headers = {"Content-Type": "application/json"}
-    result = _http_post(url, headers, body, timeout=90)
-    return result.get("response", "").strip()
+    acquired = _hermes_inference_slot.acquire(timeout=OLLAMA_SLOT_WAIT_SECONDS)
+    if not acquired:
+        raise HermesBusyError("Hermes local inference slot is busy")
+    try:
+        url = f"{OLLAMA_BASE_URL}/api/generate"
+        body = {
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"temperature": 0.7, "num_predict": OLLAMA_NUM_PREDICT},
+        }
+        headers = {"Content-Type": "application/json"}
+        result = _http_post(url, headers, body, timeout=OLLAMA_TIMEOUT_SECONDS)
+        return result.get("response", "").strip()
+    finally:
+        _hermes_inference_slot.release()
+
+
+def _ollama_has_model(model: str) -> bool:
+    """Return true only when the requested Ollama model is locally installed."""
+    url = f"{OLLAMA_BASE_URL}/api/tags"
+    req = urllib.request.Request(url, method='GET')
+    with urllib.request.urlopen(req, timeout=3) as response:
+        payload = json.loads(response.read().decode('utf-8'))
+    return model in {entry.get("name") for entry in payload.get("models", [])}
+
+
+def _call_hermes_with_fallback(prompt: str) -> str:
+    """Call Hermes and retry only when a distinct fallback model is installed."""
+    try:
+        return _call_hermes(prompt, HERMES_MODEL)
+    except HermesBusyError:
+        # Other parallel workers degrade immediately rather than queueing several
+        # long CPU-bound generations against one laptop-local model.
+        raise
+    except Exception as primary_error:
+        if not OLLAMA_FALLBACK or OLLAMA_FALLBACK == HERMES_MODEL:
+            raise
+        try:
+            fallback_available = _ollama_has_model(OLLAMA_FALLBACK)
+        except Exception:
+            fallback_available = False
+        if not fallback_available:
+            log_warn(
+                f"Hermes primary call failed; configured fallback model "
+                f"'{OLLAMA_FALLBACK}' is not installed"
+            )
+            raise primary_error
+        return _call_hermes(prompt, OLLAMA_FALLBACK)
 
 
 # ── Tier 2: OmniRoute → OpenRouter ────────────────────────────────────────────
@@ -598,11 +650,9 @@ def health_check() -> dict:
     results["cohere-api"] = _eligible_key_count("cohere-api") > 0
     # Hermes/Ollama
     try:
-        url = f"{OLLAMA_BASE_URL}/api/tags"
-        req = urllib.request.Request(url, method='GET')
-        with urllib.request.urlopen(req, timeout=3) as r:
-            pass
-        results["hermes-ollama"] = True
+        results["hermes-ollama"] = _ollama_has_model(HERMES_MODEL)
+        if not results["hermes-ollama"]:
+            log_warn(f"Ollama is reachable but required model '{HERMES_MODEL}' is not installed")
     except Exception as e:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
@@ -646,10 +696,7 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
         elif provider == "cohere-api":
             resp = _call_cohere_api(prompt)
         elif provider == "hermes-ollama":
-            try:
-                resp = _call_hermes(prompt, HERMES_MODEL)
-            except Exception:
-                resp = _call_hermes(prompt, OLLAMA_FALLBACK)
+            resp = _call_hermes_with_fallback(prompt)
         elif provider == "omniRoute":
             resp = _call_omniRoute(prompt)
         elif provider == "fcc-claude":
@@ -773,10 +820,7 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
             elif provider == "cohere-api":
                 resp = _call_cohere_api(prompt)
             elif provider == "hermes-ollama":
-                try:
-                    resp = _call_hermes(prompt, HERMES_MODEL)
-                except Exception:
-                    resp = _call_hermes(prompt, OLLAMA_FALLBACK)
+                resp = _call_hermes_with_fallback(prompt)
             elif provider == "omniRoute":
                 resp = _call_omniRoute(prompt)
             elif provider == "fcc-claude":
