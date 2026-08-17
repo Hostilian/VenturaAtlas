@@ -5,6 +5,7 @@ const path = require('path');
 const { validateCutoverInventoryClock } = require('../scripts/validate-cutover-inventory-clock');
 const root = path.resolve(__dirname, '..');
 const read = file => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+const queuePath = path.join(root, 'data', 'idea-staging-queue.json');
 
 test('OMEGA XV records two future cutover clocks', () => {
   const document = read('data/cutover-inventory-clocks.json');
@@ -15,7 +16,10 @@ test('OMEGA XV records two future cutover clocks', () => {
   assert.deepEqual(validateCutoverInventoryClock(document, sourcesDocument.sources || sourcesDocument), []);
 });
 
-test('OMEGA XV candidates are payment-validation hypotheses only', () => {
+test('OMEGA XV candidates are payment-validation hypotheses only', (t) => {
+  // Private staging queue is gitignored and absent on CI fresh clones.
+  // Skip rather than crash — consistent with deep-research-expansion-iii pattern.
+  if (!fs.existsSync(queuePath)) return t.skip('private staging queue unavailable in this environment');
   const queue = read('data/idea-staging-queue.json');
   const names = new Set(['attestready-amr-export-inventory-certificate-preflight', 'steellandedrisk-steel-quota-tariff-cliff-preflight', 'microifud-synthetic-polymer-product-ifu-consistency-audit']);
   const records = queue.filter(item => names.has(item.candidateSlug));
