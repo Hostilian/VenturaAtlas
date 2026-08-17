@@ -7,7 +7,14 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from fastapi import HTTPException
+try:
+    from fastapi import HTTPException
+except ImportError:
+    class HTTPException(Exception):
+        def __init__(self, status_code: int, detail: str = ""):
+            super().__init__(detail)
+            self.status_code = status_code
+            self.detail = detail
 
 
 ROOT = Path(__file__).resolve().parents[1]

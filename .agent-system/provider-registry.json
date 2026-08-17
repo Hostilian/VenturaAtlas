@@ -1,12 +1,13 @@
 {
-  "lastHealthCheck": "2026-08-09T13:59:00Z",
+  "lastHealthCheck": "2026-08-17T09:34:00Z",
+  "verificationContract": "capability-and-key-presence-v2",
   "providers": {
-    "own-orch": { "tier": 0, "healthy": true, "cost": "free", "latency": "instant", "reasoning": "rule-based" },
-    "hermes-ollama": { "tier": 1, "healthy": true, "cost": "free", "latency": "fast", "reasoning": "local-llm" },
-    "omniRoute": { "tier": 2, "healthy": true, "cost": "low", "latency": "medium", "reasoning": "openrouter-free" },
-    "fcc-claude": { "tier": 3, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "claude-haiku" },
-    "active-api": { "tier": 4, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "gemini-flash" },
-    "deepseek-api": { "tier": 5, "healthy": true, "cost": "medium", "latency": "medium", "reasoning": "deepseek-chat" },
-    "anthropic-full": { "tier": 6, "healthy": true, "cost": "high", "latency": "medium", "reasoning": "claude-sonnet" }
+    "own-orch": { "tier": 0, "healthy": true, "cost": "free", "latency": "instant", "reasoning": "rule-based", "verificationStatus": "VERIFIED_DETERMINISTIC" },
+    "hermes-ollama": { "tier": 1, "healthy": false, "cost": "free", "latency": "fast", "reasoning": "local-llm", "requiresLocalService": true, "verificationStatus": "UNVERIFIED_PENDING_OLLAMA" },
+    "omniRoute": { "tier": 2, "healthy": false, "cost": "low", "latency": "medium", "reasoning": "openrouter-free", "requiresKeys": true, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS" },
+    "fcc-claude": { "tier": 3, "healthy": false, "cost": "low", "latency": "fast", "reasoning": "claude-haiku", "requiresKeys": true, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS" },
+    "active-api": { "tier": 4, "healthy": false, "cost": "low", "latency": "fast", "reasoning": "gemini-flash", "requiresKeys": true, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS" },
+    "deepseek-api": { "tier": 5, "healthy": false, "cost": "medium", "latency": "medium", "reasoning": "deepseek-chat", "requiresKeys": true, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS" },
+    "anthropic-full": { "tier": 6, "healthy": false, "cost": "high", "latency": "medium", "reasoning": "claude-sonnet", "requiresKeys": true, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS" }
   }
 }

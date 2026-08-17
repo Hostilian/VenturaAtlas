@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/capital-clock.schema.json",
+  "title": "Venture Atlas Capital Clock",
+  "description": "Fail-closed contract for buyer timing, budget maturity, purchase events, and founder action allocation.",
+  "type": "object",
+  "required": ["schemaVersion", "records"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "nullableString": { "type": ["string", "null"] },
+    "record": {
+      "type": "object",
+      "required": ["ideaId", "recommendedAction", "buyerActivation", "budgetMaturity", "purchaseEventEvidence", "capitalIntensity", "subsidyDistortionRisk", "optionValue", "evidenceStatus"],
+      "properties": {
+        "ideaId": { "type": "string", "pattern": "^idea-\\d{3}$" },
+        "recommendedAction": { "enum": ["SELL_NOW", "VALIDATE_NOW", "RESEARCH_NOW", "WATCH_TRIGGER", "WAIT_FOR_BUDGET", "WAIT_FOR_STANDARD", "WAIT_FOR_API", "WAIT_FOR_ENFORCEMENT", "BUILD_LATER", "CAPITALIZE", "MERGE", "REJECT", "ARCHIVE"] },
+        "buyerActivation": { "enum": ["B0_UNAWARE", "B1_AWARE", "B2_INVESTIGATING", "B3_PLANNING", "B4_INTERNAL_BUDGET", "B5_MARKET_CONSULTATION", "B6_PROCUREMENT_PREP", "B7_RFP_OPEN", "B8_VENDOR_SELECTION", "B9_CONTRACTING", "B10_DEPLOYMENT", "B11_OPERATING", "B12_RENEWING", "UNKNOWN"] },
+        "budgetMaturity": { "enum": ["BM0_NO_BUDGET_EVIDENCE", "BM1_POLICY_PRIORITY", "BM2_FUNDING_PROGRAMME", "BM3_MARKET_CONSULTATION", "BM4_RFI_OR_PROCUREMENT_PLAN", "BM5_OPEN_RFP_OR_TENDER", "BM6_CONTRACT_AWARD", "BM7_DESIGN_PARTNER_BUDGET", "BM8_PAID_PILOT", "BM9_PRODUCTION_CONTRACT", "BM10_RENEWAL_OR_REPEAT_PAYMENT", "UNKNOWN"] },
+        "purchaseEventEvidence": { "enum": ["PE0_POLITICAL_STATEMENT", "PE1_FUNDING_INTENTION", "PE2_PROGRAMME_ALLOCATION", "PE3_MARKET_CONSULTATION", "PE4_RFI", "PE5_FORMAL_PROCUREMENT_NOTICE", "PE6_COMPETITIVE_TENDER_OR_RFP", "PE7_CONTRACT_AWARD", "PE8_IMPLEMENTATION", "PE9_SUCCESSFUL_ACCEPTANCE", "PE10_RENEWAL_OR_EXPANSION", "UNKNOWN"] },
+        "capitalIntensity": { "enum": ["C0_SOFTWARE_BOOTSTRAP", "C1_SERVICE_BOOTSTRAP", "C2_REVENUE_FUNDED", "C3_GRANT_LEVERAGED", "C4_SEED_VENTURE", "C5_DEEP_TECH_VENTURE", "C6_CONSORTIUM_DEPENDENT", "C7_HARDWARE_CAPITAL_INTENSIVE", "C8_INFRASTRUCTURE_SCALE", "UNKNOWN"] },
+        "subsidyDistortionRisk": { "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL", "UNKNOWN"] },
+        "optionValue": { "enum": ["IGNORE", "WATCH", "RESEARCH_OPTION", "VALIDATION_OPTION", "BUILD_OPTION", "EXERCISE_NOW", "UNKNOWN"] },
+        "evidenceStatus": { "enum": ["CURRENT", "STALE", "NEEDS_REFRESH", "UNKNOWN"] },
+        "painfulEvent": { "$ref": "#/$defs/nullableString" },
+        "budgetOwner": { "$ref": "#/$defs/nullableString" },
+        "nextTrigger": { "$ref": "#/$defs/nullableString" },
+        "killCriterion": { "$ref": "#/$defs/nullableString" },
+        "sourceIds": { "type": "array", "items": { "type": "string" } },
+        "lastCheckedAt": { "type": ["string", "null"], "format": "date-time" },
+        "nextCheckAt": { "type": ["string", "null"], "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

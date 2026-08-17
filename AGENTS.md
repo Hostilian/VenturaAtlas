@@ -12,7 +12,23 @@
 - Keep secrets out of source, prompts, logs, command arguments, Git remotes, and public artifacts.
 - Configuration, hooks, rules, validators, cloud resources, tests, and UI controls are capabilities only after their execution path is demonstrated.
 - Run proportionate tests after changes. For release claims, use the exact generated artifact for validation, privacy scanning, digesting, and browser checks.
-- Preserve the existing Antigravity agent infrastructure where useful. Codex-native configuration lives separately under `.codex/`.
+## Orchestration Layers & Single Source of Truth
+
+This repository explicitly reconciles multi-agent configuration across dedicated surfaces:
+
+1. **Runtime Task, State & Priorities Authority (`.agent-system/`)**:
+   - `.agent-system/BACKLOG.md` & `.agent-system/backlog.json`: The authoritative prioritized work backlog (TASK-001 through TASK-008).
+   - `.agent-system/MASTER_GOAL.md`: Core system directives, 12 evaluation dimensions, and non-negotiable rules.
+   - `.agent-system/state.json`: Live operational state and canonical metric tracking.
+   - `.agent-system/provider-registry.json`: Provider tier definitions and freshness-checked health status.
+
+2. **Specialist Agent Capability & Role Architecture (`.agents/`)**:
+   - `.agents/AGENTS.md`: Multi-agent orchestration rules, file ownership boundaries, and operational domains.
+   - `.agents/agents/*.md`: Specialist subagent specifications equipped with Antigravity 2.0 YAML frontmatter and workspace skill assignments.
+   - `.agents/hooks.json`, `.agents/rules/`, `.agents/skills/`, `.agents/workflows/`: Antigravity workspace extensions and lifecycle hooks.
+
+3. **Codex CLI Configuration (`.codex/`)**:
+   - Dedicated configuration for OpenAI Codex CLI (`.codex/agents/*.toml`, `.codex/hooks.json`, `.codex/rules/destructive.rules`).
 
 ## OMEGA missions
 

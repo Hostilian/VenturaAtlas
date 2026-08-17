@@ -14,7 +14,7 @@
     "typecheck": "tsc -p apps/factbounty/tsconfig.json",
     "validate": "npm run validate:source",
     "validate:source": "npm run validate:data && npm run validate:links",
-    "validate:data": "node scripts/validate-data.js --strict --check && python scripts/validate-schema.py && python scripts/build-research-proposal-catalog.py && node scripts/validate-authority-registries.js && node scripts/validate-lifecycle-receipts.js && node scripts/validate-shockgraph.js && node scripts/validate-phaseshift.js && node scripts/build-phase-forward-counterfactuals.js && node scripts/validate-validation-funnel.js",
+    "validate:data": "node scripts/validate-data.js --strict --check && python scripts/validate-schema.py && python scripts/build-research-proposal-catalog.py && node scripts/validate-authority-registries.js && node scripts/validate-lifecycle-receipts.js && node scripts/validate-shockgraph.js && node scripts/validate-phaseshift.js && node scripts/build-phase-forward-counterfactuals.js && node scripts/validate-validation-funnel.js && node scripts/validate-capital-clock.js",
     "validate:lifecycle": "node scripts/validate-lifecycle-receipts.js",
     "validate:shockgraph": "node scripts/validate-shockgraph.js",
     "validate:phaseshift": "node scripts/validate-phaseshift.js && node scripts/build-phase-forward-counterfactuals.js",

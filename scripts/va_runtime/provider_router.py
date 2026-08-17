@@ -171,6 +171,49 @@ class CapabilityProviderScheduler:
                     candidate.disabled = True
         print(f"[ERROR] Auth invalid for {key_state.alias} — key disabled", file=sys.stderr)
 
+    def check_health_freshness(self, timestamp_iso: str, max_age_hours: float = 24.0) -> Tuple[bool, str]:
+        """Verify that a recorded health check timestamp is not stale."""
+        if not timestamp_iso:
+            return False, "MISSING_TIMESTAMP"
+        try:
+            ts = datetime.datetime.fromisoformat(timestamp_iso.replace("Z", "+00:00"))
+            now = datetime.datetime.now(datetime.timezone.utc)
+            age_hours = (now - ts).total_seconds() / 3600.0
+            if age_hours > max_age_hours:
+                return False, f"STALE_{age_hours:.1f}H_OLD"
+            return True, "FRESH"
+        except Exception as e:
+            return False, f"INVALID_FORMAT_{e}"
+
+    def get_provider_health_summary(self, max_stale_hours: float = 24.0) -> Dict[str, Any]:
+        """Return comprehensive status of providers with explicit freshness flagging."""
+        self._load_config()
+        providers = self.registry.get("providers", {})
+        summary = {}
+        for p_id, p_cfg in providers.items():
+            if p_id == "own-orch":
+                summary[p_id] = {
+                    "tier": 0,
+                    "status": "HEALTHY_DETERMINISTIC",
+                    "healthy": True,
+                    "cost": "free",
+                    "reasoning": "rule-based"
+                }
+                continue
+            pool = self.key_pools.get(p_id, [])
+            active_keys = [ks for ks in pool if not ks.disabled and time.time() >= ks.cooldown_until]
+            is_configured = len(active_keys) > 0
+            summary[p_id] = {
+                "tier": p_cfg.get("tier", 99),
+                "configured": is_configured,
+                "healthy": is_configured,
+                "status": "ACTIVE_KEYS_AVAILABLE" if is_configured else "UNCONFIGURED_OR_NO_KEYS",
+                "activeKeyCount": len(active_keys),
+                "cost": p_cfg.get("cost", "variable"),
+                "reasoning": p_cfg.get("reasoning", "")
+            }
+        return summary
+
 _SCHEDULER = CapabilityProviderScheduler()
 
 def get_provider_scheduler() -> CapabilityProviderScheduler:

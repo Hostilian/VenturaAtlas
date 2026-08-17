@@ -1,5 +1,7 @@
 # Antigravity Multi-Agent Orchestration & VenturaAtlas Development Discipline
 
+> **Runtime Authority & Task Priorities**: Live execution priorities, current tasks, and operational state are maintained in [`.agent-system/BACKLOG.md`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/.agent-system/BACKLOG.md) and [`.agent-system/state.json`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/.agent-system/state.json). The files in this directory define the rich specialist subagent capabilities, skill bindings, and file ownership rules.
+
 ## 1. System Architecture & VenturaAtlas Domain Roster
 
 This repository uses a deterministic, parallel subagent orchestration architecture. Specialist agents operate in isolated Git worktrees (`feat/va-<role>`) with strict file ownership boundaries, capability-aware provider routing, and serial integration review before merging to `main`.

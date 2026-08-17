@@ -35,6 +35,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Python test requirements
+        run: pip install requests python-dotenv fastapi pydantic 2>/dev/null || true
+
       - name: Run source quality gates
         run: npm run quality:source
 
