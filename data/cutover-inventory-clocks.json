@@ -1,5 +1,85 @@
 {
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-17T13:00:00+00:00",
-  "records": []
+  "records": [
+    {
+      "cutoverId": "cutover-amr-poao-september-2026",
+      "name": "AMR export inventory-to-certificate transition",
+      "jurisdiction": "EU imports / GB export beachhead",
+      "cutoverAt": "2026-09-03T00:00:00Z",
+      "affectedObjects": [
+        "finished SKU",
+        "batch or lot",
+        "ingredient",
+        "supplier",
+        "animal or product origin",
+        "planned shipment",
+        "EHC model"
+      ],
+      "requiredEvidence": [
+        "supplier declaration",
+        "import record",
+        "production and processing record",
+        "storage record",
+        "batch traceability",
+        "ingredient specification",
+        "origin documentation",
+        "OV review"
+      ],
+      "failureModes": [
+        "EHC delayed",
+        "consignment ineligible",
+        "border refusal",
+        "re-dispatch or destruction"
+      ],
+      "halfLife": "SHORT",
+      "deadlineReliability": "HIGH",
+      "tariffCliffSeverity": null,
+      "preCertifierLeverage": "HIGH",
+      "sourceRefs": [
+        "s307",
+        "s308",
+        "s311",
+        "s312"
+      ],
+      "status": "UPCOMING"
+    },
+    {
+      "cutoverId": "cutover-steel-melt-pour-october-2026",
+      "name": "Steel quota and melt-and-pour transaction transition",
+      "jurisdiction": "EU steel imports",
+      "cutoverAt": "2026-10-01T00:00:00Z",
+      "affectedObjects": [
+        "purchase order",
+        "CN or quota line",
+        "origin",
+        "weight",
+        "customs value",
+        "ETA",
+        "clearance date",
+        "mill"
+      ],
+      "requiredEvidence": [
+        "quota state",
+        "melt-and-pour evidence",
+        "supplier or mill documentation",
+        "customs scenario inputs"
+      ],
+      "failureModes": [
+        "out-of-quota duty scenario",
+        "PO repricing",
+        "shipment delay",
+        "evidence escalation"
+      ],
+      "halfLife": "MEDIUM",
+      "deadlineReliability": "MEDIUM",
+      "tariffCliffSeverity": "50% out-of-quota cliff reported in brief; exact application must be refreshed",
+      "preCertifierLeverage": "MEDIUM",
+      "sourceRefs": [
+        "s309",
+        "s313"
+      ],
+      "status": "UPCOMING"
+    }
+  ]
 }

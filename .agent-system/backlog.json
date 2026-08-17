@@ -92,10 +92,10 @@
       "domain": "Frontend",
       "priorityScore": 91.0,
       "urgency": "P2",
-      "status": "IN_PROGRESS",
+      "status": "LANDED",
       "assignedAgent": "ventureatlas-public-site",
       "dependencies": [],
-      "verificationMethod": "npm run test:pwa",
+      "verificationMethod": "npm run test:unit; tests/ui-truth.test.js asserts score breakdown, legacy maturity, and missing component disclosure",
       "filesAffected": ["assets/js/features/rankings.js", "docs/rankings.html"]
     },
     {

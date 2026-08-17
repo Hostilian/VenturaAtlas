@@ -1,15 +1,88 @@
 {
-  "lastHealthCheck": "2026-08-17T09:42:13Z",
-  "verificationContract": "real-provider-probe-v1",
+  "lastHealthCheck": "2026-08-17T10:56:39Z",
+  "verificationContract": "cheap-reachability-probe-v1",
   "providers": {
-    "own-orch": { "tier": 0, "healthy": true, "cost": "free", "latency": "instant", "reasoning": "rule-based", "verificationStatus": "VERIFIED_DETERMINISTIC" },
-    "nvidia-nim": { "tier": 1, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "llama", "requiresKeys": true, "verificationStatus": "VERIFIED_LIVE_PROBE" },
-    "cohere-api": { "tier": 1, "healthy": true, "cost": "low", "latency": "fast", "reasoning": "command", "requiresKeys": true, "verificationStatus": "VERIFIED_LIVE_PROBE" },
-    "hermes-ollama": { "tier": 1, "healthy": true, "cost": "free", "latency": "fast", "reasoning": "local-llm", "requiresLocalService": true, "verificationStatus": "VERIFIED_LIVE_PROBE" },
-    "omniRoute": { "tier": 2, "healthy": false, "cost": "low", "latency": "medium", "reasoning": "openrouter-free", "requiresKeys": true, "verificationStatus": "LIVE_PROBE_FAILED" },
-    "fcc-claude": { "tier": 3, "healthy": false, "cost": "low", "latency": "fast", "reasoning": "claude-haiku", "requiresKeys": true, "verificationStatus": "LIVE_PROBE_FAILED" },
-    "active-api": { "tier": 4, "healthy": false, "cost": "low", "latency": "fast", "reasoning": "gemini-flash", "requiresKeys": true, "verificationStatus": "LIVE_PROBE_FAILED" },
-    "deepseek-api": { "tier": 5, "healthy": false, "cost": "medium", "latency": "medium", "reasoning": "deepseek-chat", "requiresKeys": true, "verificationStatus": "LIVE_PROBE_FAILED" },
-    "anthropic-full": { "tier": 6, "healthy": false, "cost": "high", "latency": "medium", "reasoning": "claude-sonnet", "requiresKeys": true, "verificationStatus": "NO_SUCCESSFUL_LIVE_PROBE" }
+    "own-orch": {
+      "tier": 0,
+      "healthy": true,
+      "cost": "free",
+      "latency": "instant",
+      "reasoning": "rule-based",
+      "verificationStatus": "VERIFIED_DETERMINISTIC"
+    },
+    "nvidia-nim": {
+      "tier": 1,
+      "healthy": true,
+      "cost": "low",
+      "latency": "fast",
+      "reasoning": "llama",
+      "requiresKeys": true,
+      "verificationStatus": "VERIFIED_LIVE_PROBE"
+    },
+    "cohere-api": {
+      "tier": 1,
+      "healthy": true,
+      "cost": "low",
+      "latency": "fast",
+      "reasoning": "command",
+      "requiresKeys": true,
+      "verificationStatus": "VERIFIED_LIVE_PROBE"
+    },
+    "hermes-ollama": {
+      "tier": 1,
+      "healthy": true,
+      "cost": "free",
+      "latency": "fast",
+      "reasoning": "local-llm",
+      "requiresLocalService": true,
+      "verificationStatus": "VERIFIED_REACHABLE",
+      "httpStatus": 200,
+      "durationMs": 2172
+    },
+    "omniRoute": {
+      "tier": 2,
+      "healthy": false,
+      "cost": "low",
+      "latency": "medium",
+      "reasoning": "openrouter-free",
+      "requiresKeys": true,
+      "verificationStatus": "LIVE_PROBE_FAILED"
+    },
+    "fcc-claude": {
+      "tier": 3,
+      "healthy": false,
+      "cost": "low",
+      "latency": "fast",
+      "reasoning": "claude-haiku",
+      "requiresKeys": true,
+      "verificationStatus": "LIVE_PROBE_FAILED"
+    },
+    "active-api": {
+      "tier": 4,
+      "healthy": false,
+      "cost": "low",
+      "latency": "fast",
+      "reasoning": "gemini-flash",
+      "requiresKeys": true,
+      "verificationStatus": "LIVE_PROBE_FAILED"
+    },
+    "deepseek-api": {
+      "tier": 5,
+      "healthy": false,
+      "cost": "medium",
+      "latency": "medium",
+      "reasoning": "deepseek-chat",
+      "requiresKeys": true,
+      "verificationStatus": "LIVE_PROBE_FAILED"
+    },
+    "anthropic-full": {
+      "tier": 6,
+      "healthy": false,
+      "cost": "high",
+      "latency": "medium",
+      "reasoning": "claude-sonnet",
+      "requiresKeys": true,
+      "verificationStatus": "NO_SUCCESSFUL_LIVE_PROBE"
+    }
   }
 }

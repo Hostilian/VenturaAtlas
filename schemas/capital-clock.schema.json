@@ -4,10 +4,12 @@
   "title": "Venture Atlas Capital Clock",
   "description": "Fail-closed contract for buyer timing, budget maturity, purchase events, and founder action allocation.",
   "type": "object",
-  "required": ["schemaVersion", "records"],
+  "required": ["schemaVersion", "records", "commercialEvidenceStatus", "noPurchaseEvidenceCollected"],
   "properties": {
     "schemaVersion": { "type": "string", "const": "1.0.0" },
     "generatedAt": { "type": "string", "format": "date-time" },
+    "commercialEvidenceStatus": { "type": "string", "const": "NO_PURCHASE_EVIDENCE_COLLECTED" },
+    "noPurchaseEvidenceCollected": { "type": "boolean", "const": true },
     "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
   },
   "$defs": {

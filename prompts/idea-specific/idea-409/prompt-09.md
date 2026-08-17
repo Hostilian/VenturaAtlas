@@ -1,0 +1,11 @@
+# Prompt 09 -- SubsidySignal -- Public Aid Buying-Signal Intelligence
+
+**Topic**: Corporate group legal framework (Regulation 2023/2831)
+
+**Idea**: Weekly curated alerts translating newly public EU de minimis aid events into commercially relevant buying signals for B2B suppliers -- one country, one vertical, specific declared funding purpose.
+
+---
+
+Research and validate: Corporate group legal framework (Regulation 2023/2831) for **SubsidySignal -- Public Aid Buying-Signal Intelligence**.
+
+Apply the VentureAtlas constitution: primary sources only, explicit kill conditions, payment before meaningful build, maximum EUR100 pre-revenue expenditure.

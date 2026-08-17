@@ -241,6 +241,58 @@ class CapabilityProviderScheduler:
             }
         return summary
 
+    def probe_provider_reachability(self, provider_id: str, timeout_seconds: float = 4.0) -> Dict[str, Any]:
+        """Perform one cheap authenticated reachability probe, never a completion request.
+
+        Configuration presence remains a fast pre-filter. The probe only runs for a
+        configured provider (or the local Ollama service) and returns a secret-free
+        receipt suitable for the registry writer.
+        """
+        self._load_config()
+        cfg = self.registry.get("providers", {}).get(provider_id)
+        if not cfg:
+            return {"provider": provider_id, "verificationStatus": "UNKNOWN_PROVIDER", "healthy": False}
+        if cfg.get("requiresApiKey", False) and not self.get_next_key(provider_id):
+            return {"provider": provider_id, "verificationStatus": "UNCONFIGURED_OR_NO_KEYS", "healthy": False}
+        base = os.environ.get(cfg.get("baseUrlEnv", ""), cfg.get("defaultBaseUrl", ""))
+        if not base:
+            if provider_id in {"fcc-claude", "anthropic-full"}:
+                base = "https://api.anthropic.com"
+            else:
+                return {"provider": provider_id, "verificationStatus": "NO_PROBE_ENDPOINT", "healthy": False}
+        if provider_id == "hermes-ollama":
+            endpoint = base.rstrip("/") + "/api/tags"
+        else:
+            endpoint = base.rstrip("/") + ("/models" if base.rstrip("/").endswith("/v1") else "/v1/models")
+        headers = {"User-Agent": "VentureAtlas-health-probe/1.0"}
+        key_state = self.get_next_key(provider_id)
+        if key_state:
+            if provider_id in {"fcc-claude", "anthropic-full"}:
+                headers["x-api-key"] = key_state.key
+                headers["anthropic-version"] = "2023-06-01"
+            else:
+                headers["Authorization"] = f"Bearer {key_state.key}"
+        request = urllib.request.Request(endpoint, headers=headers, method="GET")
+        started = time.monotonic()
+        try:
+            with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+                status = getattr(response, "status", response.getcode())
+                reachable = 200 <= int(status) < 500
+                return {"provider": provider_id, "verificationStatus": "VERIFIED_REACHABLE" if reachable else "VERIFIED_UNREACHABLE", "healthy": reachable, "httpStatus": int(status), "durationMs": round((time.monotonic() - started) * 1000)}
+        except urllib.error.HTTPError as exc:
+            # 401/403 prove the endpoint is reachable but credentials are not usable.
+            return {"provider": provider_id, "verificationStatus": "VERIFIED_REACHABLE_AUTH_FAILED" if exc.code in (401, 403) else "VERIFIED_UNREACHABLE", "healthy": False, "httpStatus": exc.code, "durationMs": round((time.monotonic() - started) * 1000)}
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            return {"provider": provider_id, "verificationStatus": "VERIFIED_UNREACHABLE", "healthy": False, "errorClass": type(exc).__name__, "durationMs": round((time.monotonic() - started) * 1000)}
+
+    def probe_configured_providers(self, timeout_seconds: float = 4.0) -> Dict[str, Dict[str, Any]]:
+        """Probe configured providers once; unconfigured providers are not contacted."""
+        return {
+            provider_id: self.probe_provider_reachability(provider_id, timeout_seconds)
+            for provider_id, cfg in self.registry.get("providers", {}).items()
+            if provider_id != "own-orch" and (not cfg.get("requiresApiKey", False) or self.key_pools.get(provider_id))
+        }
+
 _SCHEDULER = CapabilityProviderScheduler()
 
 def get_provider_scheduler() -> CapabilityProviderScheduler:

@@ -87,6 +87,21 @@ function initRankings() {
     const totalMatching = filteredItems.length;
     const itemsToDisplay = selectedLimit === 'all' ? filteredItems : filteredItems.slice(0, Number(selectedLimit));
     const base = window.VA?.base || '..';
+    const scoreBreakdown = (item) => {
+      const dimensions = item.topDimensions && typeof item.topDimensions === 'object'
+        ? Object.entries(item.topDimensions).filter(([, value]) => value !== null && value !== undefined)
+        : [];
+      const maturity = item.rankingMaturity || 'legacy_unverified';
+      const evidence = item.rankingEligible === true ? 'Eligibility established' : 'Eligibility unproven';
+      return `<details class="score-breakdown" style="margin-top:0.45rem">
+        <summary style="cursor:pointer;font-size:0.78rem;color:var(--text2)">View score breakdown</summary>
+        <div role="region" aria-label="Score breakdown for ${escHTML(item.name)}" style="margin-top:0.4rem;padding:0.55rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius-sm);font-size:0.76rem">
+          <div><strong>Stored score:</strong> ${escHTML(item.score ?? 'N/A')} · <strong>Maturity:</strong> ${escHTML(maturity)} · <strong>${escHTML(evidence)}</strong></div>
+          ${dimensions.length ? `<ul style="margin:0.4rem 0 0 1.1rem">${dimensions.map(([key, value]) => `<li><strong>${escHTML(key)}:</strong> ${escHTML(value)}</li>`).join('')}</ul>` : '<p style="margin:0.4rem 0 0;color:var(--text2)">No component dimensions were stored for this legacy view.</p>'}
+          <p style="margin:0.45rem 0 0;color:var(--text2)">This is a reproducible legacy heuristic, not a verified commercial recommendation.</p>
+        </div>
+      </details>`;
+    };
 
     container.innerHTML = `
       <div class="ranking-header" style="margin-bottom:1.25rem;padding:1.25rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
@@ -98,6 +113,7 @@ function initRankings() {
             </h2>
             <p style="font-size:0.9rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(view.description || '')}</p>
             <p role="note" style="font-size:0.82rem;color:var(--score-lo);margin-bottom:0.5rem"><strong>Legacy heuristic:</strong> this stored view does not enforce the current evidence, kill-criteria, coverage, or scale eligibility contract. Items remain visible for provenance and are flagged until eligibility is established.</p>
+            <p role="status" style="font-size:0.82rem;color:var(--score-lo);margin-bottom:0.5rem"><strong>Commercial boundary:</strong> no purchase evidence collected. Rankings are not commercial recommendations.</p>
             <div style="display:flex;gap:0.75rem;font-size:0.8rem;color:var(--muted);flex-wrap:wrap">
               <span><strong>Algorithm:</strong> ${escHTML(view.algorithmVersion || 'weighted-composite-v2')}</span>
               <span>•</span>
@@ -184,6 +200,7 @@ function initRankings() {
                       </div>
                     </td>
                   </tr>
+                  <tr class="score-breakdown-row"><td colspan="6">${scoreBreakdown(item)}</td></tr>
                 `;
               }).join('')}
             </tbody>
@@ -213,6 +230,7 @@ function initRankings() {
                   ${item.eligibilityIssues.length ? `<span class="chip warn sm" title="${escHTML(item.eligibilityIssues.join(', '))}">Eligibility unproven</span>` : '<span class="chip success sm">Eligible</span>'}
                   <span class="chip neutral">${Number.isFinite(Number(item.checklist)) ? Number(item.checklist) + '% checklist' : 'Not assessed'}</span>
                 </div>
+                ${scoreBreakdown(item)}
                 <div style="display:flex;gap:0.4rem">
                   <a href="${ideaUrl}" class="button primary sm" style="flex:1;text-align:center">Open Dossier</a>
                   <button class="button secondary sm btn-compare" data-id="${escHTML(ideaId)}">Compare</button>

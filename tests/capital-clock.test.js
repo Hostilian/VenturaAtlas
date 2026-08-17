@@ -4,6 +4,8 @@ const { validateCapitalClock } = require('../scripts/validate-capital-clock');
 
 const base = {
   schemaVersion: '1.0.0',
+  commercialEvidenceStatus: 'NO_PURCHASE_EVIDENCE_COLLECTED',
+  noPurchaseEvidenceCollected: true,
   records: [{
     ideaId: 'idea-001', recommendedAction: 'WATCH_TRIGGER', buyerActivation: 'UNKNOWN', budgetMaturity: 'UNKNOWN',
     purchaseEventEvidence: 'UNKNOWN', capitalIntensity: 'UNKNOWN', subsidyDistortionRisk: 'UNKNOWN', optionValue: 'WATCH', evidenceStatus: 'UNKNOWN'

@@ -6600,5 +6600,210 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s307",
+    "title": "Import controls of food and feed - Questions and Answers",
+    "publisher": "European Commission — DG SANTE",
+    "url": "https://food.ec.europa.eu/horizontal-topics/official-controls-and-enforcement/import-controls-food-and-feed-qas_en",
+    "supports": [
+      "Animal-origin imports require authorisation, traceability and official certificates",
+      "Non-compliant consignments may be refused, re-dispatched or destroyed"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s308",
+    "title": "Get an export health certificate",
+    "publisher": "GOV.UK / DEFRA / APHA",
+    "url": "https://www.gov.uk/guidance/get-an-export-health-certificate",
+    "supports": [
+      "GB animal-product exports to the EU require EHCs under current guidance",
+      "An official vet or inspector must review and certify the export"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s309",
+    "title": "EU Steel Regulation: consultation on melt and pour evidence",
+    "publisher": "European Commission — DG TRADE",
+    "url": "https://policy.trade.ec.europa.eu/news/eu-steel-regulation-commission-launches-consultation-type-evidence-be-provided-country-melt-and-pour-2026-06-04_en",
+    "supports": [
+      "The Commission consulted on evidence for country of melt and pour",
+      "The evidence object is distinct from simply displaying quota state"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s310",
+    "title": "Veterinary sector: preparing your business",
+    "publisher": "GOV.UK",
+    "url": "https://www.gov.uk/government/publications/sps-agreement-preparing-your-business/veterinary-sector-preparing-your-business",
+    "supports": [
+      "The future UK-EU SPS arrangement is a durability risk for a GB-only EHC wedge"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s311",
+    "title": "BMPA update: EU antimicrobial export rules change from 3 September",
+    "publisher": "British Meat Processors Association",
+    "url": "https://britishmeatindustry.org/update/eu-antimicrobial-export-rules-change-from-3-september/",
+    "supports": [
+      "Industry guidance reports a 3 September 2026 transition concern",
+      "This is industry implementation evidence, not legal certification authority"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "medium",
+    "sourceType": "industry_or_market",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s312",
+    "title": "New certification requirements relating to antimicrobial medicinal products in POAO",
+    "publisher": "British Frozen Food Federation",
+    "url": "https://bfff.co.uk/new-certification-requirements-relating-to-use-of-antimicrobial-medicinal-products-in-poao/",
+    "supports": [
+      "Industry guidance identifies stored products, third-country ingredients and supporting traceability evidence as practical issues"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "medium",
+    "sourceType": "industry_or_market",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s313",
+    "title": "EU Steel Quota Tracker",
+    "publisher": "Barrett Steel",
+    "url": "https://www.barrettsteel.com/eu-steel-quota-tracker/",
+    "supports": [
+      "A free tracker already exposes public quota state",
+      "A paid product must join quota state to a customer PO, clearance date and evidence"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "medium",
+    "sourceType": "industry_or_market",
+    "researchRound": "omega-xv-cutover-inventory-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s314",
+    "title": "Cyber Resilience Act - Reporting obligations",
+    "publisher": "European Commission",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+    "supports": [
+      "CRA reporting uses one official Single Reporting Platform; the platform is targeted for operation on 11 September 2026 and testing is underway"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-31",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "official_regulator",
+    "researchRound": "omega-xv-absorption-frontier-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s315",
+    "title": "EU's new Waste Shipment Regulation and DIWASS digital platform go live",
+    "publisher": "European Commission - Directorate-General for Environment",
+    "url": "https://environment.ec.europa.eu/news/new-waste-shipment-regulation-and-diwass-platform-go-live-2026-05-21_en",
+    "supports": [
+      "DIWASS launched on 21 May 2026 and digitises prior informed consent workflows; generic digital submission is therefore an absorbed layer"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-21",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "official_regulator",
+    "researchRound": "omega-xv-absorption-frontier-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s316",
+    "title": "The Digital Product Passport Registry is now live",
+    "publisher": "European Commission - Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+    "url": "https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en",
+    "supports": [
+      "The Digital Product Passport Registry and testing environment launched on 20 July 2026; generic registry access is an absorbed baseline"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-20",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "official_regulator",
+    "researchRound": "omega-xv-absorption-frontier-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

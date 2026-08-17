@@ -1,5 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-17T00:00:00Z",
+  "commercialEvidenceStatus": "NO_PURCHASE_EVIDENCE_COLLECTED",
+  "noPurchaseEvidenceCollected": true,
   "records": []
 }

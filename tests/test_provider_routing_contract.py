@@ -121,6 +121,28 @@ class ProviderRoutingContractTests(unittest.TestCase):
             os.unlink(config_path)
             os.unlink(registry_path)
 
+    def test_reachability_probe_uses_cheap_get_and_never_completion(self):
+        config = {"providers": {"remote": {"requiresApiKey": True, "legacyKeyEnv": "VA_TEST_REMOTE_KEY", "defaultBaseUrl": "https://example.test/v1"}}}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as config_handle:
+            json.dump(config, config_handle)
+            config_path = config_handle.name
+        try:
+            with mock.patch.dict(os.environ, {"VA_TEST_REMOTE_KEY": "real-test-key-123456"}):
+                scheduler = CapabilityProviderScheduler(config_path)
+            class Response:
+                status = 200
+                def __enter__(self): return self
+                def __exit__(self, *args): return False
+                def getcode(self): return self.status
+            with mock.patch("va_runtime.provider_router.urllib.request.urlopen", return_value=Response()) as opener:
+                result = scheduler.probe_provider_reachability("remote")
+            self.assertEqual(result["verificationStatus"], "VERIFIED_REACHABLE")
+            request = opener.call_args.args[0]
+            self.assertEqual(request.method, "GET")
+            self.assertEqual(request.full_url, "https://example.test/v1/models")
+        finally:
+            os.unlink(config_path)
+
 
 if __name__ == "__main__":
     unittest.main()

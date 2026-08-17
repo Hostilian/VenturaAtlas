@@ -2941,5 +2941,267 @@
     "startedAt": "2026-08-17T12:30:00+00:00",
     "endedAt": "2026-08-17T12:30:00+00:00",
     "reviewStatus": "deep_research_integrated_not_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-019-20260817-omega-xv-cutover-inventory-clock",
+    "baselineCommit": "c665bd900f3f6e68dd1fefaf1599713076266854",
+    "questions": [
+      "What already-produced inventory or open PO crosses a future state boundary?",
+      "What evidence does the certifier, customs authority or buyer need next?",
+      "Is the clock urgent enough to pay before the wedge expires?"
+    ],
+    "queries": [
+      "EU AMR animal-origin import certification September 2026",
+      "GB EHC official vet stored inventory traceability",
+      "EU steel quota melt and pour evidence October 2026",
+      "free steel quota tracker substitute",
+      "UK-EU SPS agreement durability risk"
+    ],
+    "sourceCandidates": [
+      "s307",
+      "s308",
+      "s309",
+      "s310",
+      "s311",
+      "s312",
+      "s313"
+    ],
+    "inclusions": [
+      "candidate-d237f9db-4dc5-506d-9a4a-95f1c579a6bc",
+      "candidate-d8fd661f-715d-5e90-ad33-db841a2d94c3",
+      "candidate-5b5c2c8d-5075-5bf3-8ac1-0553e17cb9d2"
+    ],
+    "exclusions": [
+      "generic EHC SaaS",
+      "generic veterinarian AI",
+      "generic steel quota tracker",
+      "generic regulatory deadline tracker",
+      "OrganicCOI as a new thesis after waiver risk"
+    ],
+    "claimsChanged": [
+      "Cutover Inventory Exposure is now represented as a separate schema and two source-linked clocks.",
+      "AttestReady and SteelLandedRisk are staged for payment validation only; MicroIFUD remains a narrow test.",
+      "The repository records the certifier/customs boundary and explicit negative evidence rather than claiming certification or quota allocation."
+    ],
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "AttestReady — AMR Export Inventory-to-Certificate Preflight",
+        "status": "VALIDATE_NOW"
+      },
+      {
+        "rank": 2,
+        "proposal": "SteelLandedRisk — Steel Quota/Tariff-Cliff Transaction Preflight",
+        "status": "VALIDATE_NOW"
+      },
+      {
+        "rank": 3,
+        "proposal": "MicroIFUD Gate — Synthetic-Polymer Product/IFU Consistency Audit",
+        "status": "NARROW_TEST"
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "proposal": "AttestReady — AMR Export Inventory-to-Certificate Preflight",
+        "offer": "manual-first paid decision artifact",
+        "acceptance": "3 paid audits from 30–50 qualified contacts; stronger signal is one real batch/source dataset followed by a repeat request"
+      },
+      {
+        "proposal": "SteelLandedRisk — Steel Quota/Tariff-Cliff Transaction Preflight",
+        "offer": "manual-first paid decision artifact",
+        "acceptance": "5 paid PO audits or one real PO with a paid repeat/monitoring request"
+      },
+      {
+        "proposal": "MicroIFUD Gate — Synthetic-Polymer Product/IFU Consistency Audit",
+        "offer": "manual-first paid decision artifact",
+        "acceptance": "One paid narrow product/IFU audit with a qualified reviewer"
+      }
+    ],
+    "methodVersion": "omega-xv-cutover-inventory-clock-v1",
+    "agent": "research-intelligence-agent",
+    "startedAt": "2026-08-17T13:00:00+00:00",
+    "endedAt": "2026-08-17T13:00:00+00:00",
+    "reviewStatus": "approved_for_payment_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-020-20260817-omega-xv-absorption-frontier",
+    "baselineCommit": "c665bd900f3f6e68dd1fefaf1599713076266854",
+    "questions": [
+      "What work remains after regulators, portals, ERPs, consultants, open source and incumbents absorb the generic workflow?",
+      "Which existing ideas retain a control point at the residual exception, reconciliation or independent evidence boundary?",
+      "What should be archive comparison, existing-idea re-underwrite, or narrow validation rather than a new candidate?"
+    ],
+    "queries": [
+      "CRA Single Reporting Platform 11 September 2026 official",
+      "DIWASS platform go live 21 May 2026 official",
+      "Digital Product Passport Registry live 20 July 2026 official",
+      "natural absorbers regulatory workflow software"
+    ],
+    "sourceCandidates": [
+      "s314",
+      "s315",
+      "s316"
+    ],
+    "inclusions": [
+      "PermitEcho",
+      "PIDRelay",
+      "MachineChange",
+      "CRA Clock"
+    ],
+    "exclusions": [
+      "generic DIWASS uploader",
+      "generic EUDAMED workflow",
+      "generic DPP registry access",
+      "generic EUDI wallet tooling",
+      "generic eFTI uploader",
+      "generic CRA reporting portal"
+    ],
+    "claimsChanged": [
+      "The governing unit is residual work after natural absorbers, not raw regulatory novelty.",
+      "PermitEcho, PIDRelay and MachineChange remain existing-idea re-underwrites; CRA machine attestation is an upgrade to CRA Clock, not a new canonical idea.",
+      "No record is promotion eligible, ranked, buyer-validated, paid, or presented as a commercial recommendation."
+    ],
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "PermitEcho vs PIDRelay vs MachineChange residual-control-point comparison",
+        "status": "RETAIN_FOR_VALIDATION"
+      },
+      {
+        "rank": 2,
+        "proposal": "CRA evidence-integrity challenger",
+        "status": "WATCH"
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "proposal": "PermitEcho",
+        "offer": "manual-first disputed permit evidence reconstruction",
+        "acceptance": "one real disputed project and a paid repeat request"
+      },
+      {
+        "proposal": "PIDRelay",
+        "offer": "manual-first supplier identity exception preflight",
+        "acceptance": "one real blocked SKU or shipment and a paid repeat request"
+      },
+      {
+        "proposal": "MachineChange",
+        "offer": "manual-first cross-system change-impact reconstruction",
+        "acceptance": "one independent assessor or operator with a live dispute"
+      }
+    ],
+    "methodVersion": "omega-xv-absorption-frontier-v1",
+    "agent": "research-intelligence-agent",
+    "startedAt": "2026-08-17T14:00:00+00:00",
+    "endedAt": "2026-08-17T14:00:00+00:00",
+    "reviewStatus": "deep_research_integrated_reunderwrite_existing_not_canonical_promotion",
+    "attachmentSha256": "88CDA9CDE7BE0558C654CF0BE09554D5F9CCC098607C6633E3DFED27C21C4A8A"
+  },
+  {
+    "runId": "run-res-omega-xvii-20260817-public-money-graph",
+    "baselineCommit": "post-omega-xv",
+    "questions": [
+      "Which new public data created in 2026 was previously invisible or fragmented?",
+      "What entity-resolution problem prevents that data from being commercially useful?",
+      "What event does the new public data reveal, and who can profit by knowing it first?",
+      "Which families from previous OMEGA rounds are genuine semantic duplicates?"
+    ],
+    "queries": [
+      "EU de minimis aid central register 2026 single undertaking",
+      "Regulation 2023/2831 reporting obligation 1 January 2026",
+      "State Aid de minimis single undertaking administrative burden EU Council",
+      "Czech de minimis register linked enterprises bulk upload August 2026",
+      "Enterprise Ireland de minimis group declaration guidance",
+      "AWEX de minimis EU register 2026 transition",
+      "EU GSP rice safeguard automatic trigger 2027",
+      "UK right-to-work contractor chain October 2026",
+      "TrustID supply chain right-to-work",
+      "grant award buying signal sales intelligence B2B Starbridge",
+      "ApiNotes API change monitoring OpenAPI diff",
+      "Changes.watch SaaS changelog deprecation"
+    ],
+    "sourceCandidates": [
+      "EU Competition Policy de minimis transparency 2026",
+      "Data Consilium single undertaking administrative burden",
+      "MZe Czech de minimis register August 2026",
+      "Enterprise Ireland de minimis group declaration",
+      "AWEX Export de minimis EU register transition",
+      "Commission SGEI de minimis 2028 guidance",
+      "EU Trade GSP reformed regulation 2027",
+      "GOV.UK right-to-work October 2026 expansion",
+      "TrustID supply chain RTW",
+      "Starbridge grant buying signals"
+    ],
+    "inclusions": [
+      "idea-407",
+      "idea-408",
+      "idea-409",
+      "idea-410",
+      "idea-411"
+    ],
+    "exclusions": [
+      {
+        "slug": "marksurvive",
+        "reason": "Existing archive entry; AI-marking August 2026 developments update that thesis, not a new startup"
+      },
+      {
+        "slug": "apichangeimpact",
+        "reason": "Category already populated: ApiNotes (OpenAPI diff), Changes.watch (SaaS changelog)"
+      },
+      {
+        "slug": "medicineshortage-signal",
+        "reason": "High-stakes buyer, medical risk, enterprise integration, existing EMA platform"
+      },
+      {
+        "slug": "pfas-utility-graph",
+        "reason": "Utilities difficult first customers; established analytics; fails EUR100 experiment"
+      },
+      {
+        "slug": "tribunalevidenceclock",
+        "reason": "Feature-tier; overlaps e-discovery incumbents; scored 5.1/10"
+      }
+    ],
+    "newMetrics": [
+      {
+        "id": "TSV",
+        "name": "Transparency Shock Value",
+        "description": "new_record_volume x commercial_relevance x entity_resolvability x update_freshness x previous_information_scarcity"
+      },
+      {
+        "id": "ASR",
+        "name": "Administrative Sunset Risk",
+        "description": "probability_official_automation_removes_task x speed x percentage_product_value_tied_to_task"
+      },
+      {
+        "id": "PDE",
+        "name": "Public Data Exhaust",
+        "description": "Does servicing the immediate problem create a normalised asset saleable for a different job later?"
+      },
+      {
+        "id": "OTS",
+        "name": "Official Tool Shadow",
+        "description": "0=fully solved by official tool, 5=official system creates the problem with no downstream tooling"
+      }
+    ],
+    "newHeuristics": [
+      {
+        "id": "government-exhaust-companies",
+        "name": "Government Exhaust Companies",
+        "description": "NEW PUBLIC DATA -> who previously paid to discover this? -> what entity-resolution work is still missing? -> what other private data makes it useful? -> what event does it reveal? -> who can make money knowing it first? -> can we sell the decision before building the database?"
+      }
+    ],
+    "claimsChanged": [
+      "AidGraph family identified as genuinely new -- not a duplicate of any previous OMEGA idea",
+      "GSP broad-cutover thesis weakened by primary-source check; narrow rice safeguard mechanism survives",
+      "RTW software rejected for generic build; multi-tier evidence gap flagged as interview test only",
+      "MarkSurvive confirmed as deduplication success -- new AI-marking evidence updates existing thesis"
+    ],
+    "agent": "research-intelligence-agent",
+    "methodVersion": "epistemic-v2",
+    "startedAt": "2026-08-17T00:00:00+00:00",
+    "endedAt": "2026-08-17T23:59:59+00:00",
+    "reviewStatus": "approved",
+    "omegaRound": "OMEGA XVII",
+    "omegaTitle": "Public Money Graph -- Hidden Subsidy State, Corporate-Group Resolution & Newly Observable Buying Signals"
   }
 ]

@@ -15,8 +15,12 @@ test('Ranking and collaboration UI do not claim missing evidence or realtime syn
   assert.ok(!rankings.includes("item.checklist ? item.checklist + '%' : 'Verified'"));
   assert.match(rankings, /Number\.isFinite\(Number\(item\.checklist\)\)/);
   assert.match(rankings, /Legacy heuristic:/);
+  assert.match(rankings, /no purchase evidence collected/);
   assert.ok((rankings.match(/Eligibility unproven/g) || []).length >= 2, 'desktop and mobile rankings must disclose eligibility');
   assert.ok(!rankings.includes('fullIdea.atAGlance?.overallScore ?? 0'));
+  assert.match(rankings, /View score breakdown/);
+  assert.match(rankings, /legacy_unverified/);
+  assert.match(rankings, /No component dimensions were stored/);
   assert.ok(!compare.includes('High (Verified)'));
   assert.ok(!compare.includes('startupCost?.midpoint ?? 500'));
   assert.ok(!compare.includes('startupCost?.midpoint ?? 50'));
