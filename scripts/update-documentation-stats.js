@@ -25,6 +25,23 @@ function synchronizeArchitecture(content, meta) {
     );
 }
 
+function synchronizeHomepage(content, meta) {
+  return content
+    .replace(
+      /(<meta\s+name="description"\s+content="Browse\s+)\d+\+/i,
+      `$1${meta.counts.canonicalIdeas}+`
+    )
+    .replace(
+      /(<meta\s+property="og:description"\s+content=")\d+\+/i,
+      `$1${meta.counts.canonicalIdeas}+`
+    )
+    .replace(/Browse &amp; search \d+\+ ideas/g, `Browse &amp; search ${meta.counts.canonicalIdeas}+ ideas`)
+    .replace(/<span data-total-ideas>\d+<\/span>/g, `<span data-total-ideas>${meta.counts.canonicalIdeas}</span>`)
+    .replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`)
+    .replace(/<span data-total-sources>\d+<\/span>/g, `<span data-total-sources>${meta.counts.sources}</span>`)
+    .replace(/<span data-total-prompts>\d+<\/span>/g, `<span data-total-prompts>${meta.counts.prompts}</span>`);
+}
+
 function main() {
   if (!fs.existsSync(META_PATH)) {
     console.error('repository-meta.json not found');
@@ -89,13 +106,7 @@ function main() {
     } else if (filePath.endsWith('SEARCH_AND_DISCOVERY_GUIDE.md')) {
       content = content.replace(/all \d+\+ ideas/g, `all ${meta.counts.canonicalIdeas}+ ideas`);
     } else if (filePath.endsWith('index.html')) {
-      content = content.replace(/content="Browse \d+\+\s+evidence-backed business ideas/gi, `content="Browse ${meta.counts.canonicalIdeas}+ heterogeneous business-idea records with public citations where available`);
-      content = content.replace(/content="\d+\+\s+evidence-backed business ideas with scores/gi, `content="${meta.counts.canonicalIdeas}+ heterogeneous business-idea records with legacy scores`);
-      content = content.replace(/Browse &amp; search \d+\+ ideas/g, `Browse &amp; search ${meta.counts.canonicalIdeas}+ ideas`);
-      content = content.replace(/<span data-total-ideas>\d+<\/span>/g, `<span data-total-ideas>${meta.counts.canonicalIdeas}</span>`);
-      content = content.replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`);
-      content = content.replace(/<span data-total-sources>\d+<\/span>/g, `<span data-total-sources>${meta.counts.sources}</span>`);
-      content = content.replace(/<span data-total-prompts>\d+<\/span>/g, `<span data-total-prompts>${meta.counts.prompts}</span>`);
+      content = synchronizeHomepage(content, meta);
     }
 
     fs.writeFileSync(filePath, content, 'utf8');
@@ -107,4 +118,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { synchronizeArchitecture };
+module.exports = { synchronizeArchitecture, synchronizeHomepage };

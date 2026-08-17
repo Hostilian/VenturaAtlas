@@ -3203,5 +3203,53 @@
     "reviewStatus": "approved",
     "omegaRound": "OMEGA XVII",
     "omegaTitle": "Public Money Graph -- Hidden Subsidy State, Corporate-Group Resolution & Newly Observable Buying Signals"
+  },
+  {
+    "runId": "run-res-omega-xviii-20260818-route-shock",
+    "omegaRound": "XVIII",
+    "title": "OMEGA XVIII — Route Shock / Physical-State Proof",
+    "date": "2026-08-18",
+    "researcherNote": "MAJOR DEEP RESET — not a stopwatch session but a genuine multi-domain investigation with source diversity, competitor audit, kill conditions, and payment tests. Treated as equivalent to Fifth Full Reset standard.",
+    "ideasAdded": [
+      "idea-412",
+      "idea-413",
+      "idea-414"
+    ],
+    "ideasUpdated": [],
+    "archiveReceipts": [
+      "AI Model License Drift Monitor — fresh Feb 2026 evidence (124,278 chain audit) strengthens thesis; NO new idea added",
+      "Publisher Rights Probe — 2026 crawler/pay-per-crawl evidence strengthens thesis; NO new idea added",
+      "Machine-payment cluster — July 2026 x402 protocol violation study; update existing ideas, NO duplicate"
+    ],
+    "graveyardBatch": [
+      "Generic UCP readiness checker — free validators / protocol-native tools / commerce platforms",
+      "Generic agentic chargeback tool — active specialist category",
+      "Generic x402 explorer — already analytics/explorer category",
+      "Generic AI licence scanner — existing AIBOM/SCA tools + archive overlap",
+      "NoticeSurvive — MERGE INTO AI Model License Drift / Commercial-Use Evidence",
+      "AI crawler compliance checker — MERGE INTO Publisher Rights Probe",
+      "Defence tender copilot — generic / consultancy / official support",
+      "Transformer sourcing AI — funded specialist entrants",
+      "Tariff refund app — broker/recovery competition",
+      "Dangerous-goods declaration SaaS — IATA DG Digital"
+    ],
+    "newMetrics": {
+      "RSE": "Route Shock Exposure — open_contract_value × route_dependency × probability_crossing_cutover × lack_of_substitutes × switching_delay",
+      "PPD": "Physical Proof Distance — how far is the digital declaration from the physical fact it claims?",
+      "ODB": "Official Digitisation Boundary — exactly where does the official tool stop? Build one layer before or after it.",
+      "DCM": "Domestic Capacity Mismatch — policy_forced_domestic_volume ÷ near_term_domestic_processing_capacity. High mismatch creates oversupply, price collapse, contract disputes.",
+      "ContractMemoryScore": "Does the product remember commitments made under the old state? High = ScrapRoute, PermitEcho. Low = BatteryFlightGate."
+    },
+    "newHeuristic": "Commercial Commitments Crossing External State Boundaries: something_physically_exists OR someone_already_signed_a_contract → external_state_changes → old_route/assumption_breaks → buyer_must_decide_BEFORE_ERP/lawyer/portal_catches_up → small_source_linked_decision_artifact → payment",
+    "crossRoundHierarchy": {
+      "mostUrgentNewOpportunity": "ScrapRoute (idea-412)",
+      "strongestPhysicalStateProof": "BatteryFlightGate (idea-413)",
+      "durableEnterpriseWorkflow": "PermitEcho",
+      "independentTechnicalVerification": "GatewayReceipt",
+      "publicDataCompoundingAsset": "AidGraph (idea-407)",
+      "shipmentExceptionSystem": "SeaClear",
+      "ecommerceTransition": "PIDRelay"
+    },
+    "omegaConceptualContribution": "OMEGA XVIII adds to the research formula: EXISTING_COMMITMENT × FUTURE_STATE_CHANGE × ROUTE_DEPENDENCY × PHYSICAL_CAPACITY. The startup question: what have companies already promised or physically produced that becomes difficult to route when the external world changes?"
   }
 ]

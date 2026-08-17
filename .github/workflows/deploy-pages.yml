@@ -41,6 +41,15 @@ jobs:
       - name: Run source quality gates
         run: npm run quality:source
 
+      - name: Upload source-quality receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-source-quality-receipt
+          path: .agent-state/quality-receipts/quality-source-latest.json
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Run runtime contract tests
         run: npm run test:runtime
 
@@ -53,8 +62,19 @@ jobs:
       - name: Run PWA contract tests
         run: npm run test:pwa
 
-      - name: Build verified public site artifact (_site)
-        run: npm run build:verified
+      - name: Build and receipt verified public site artifact (_site)
+        run: npm run quality:artifact
+
+      - name: Upload artifact-quality receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-artifact-quality-receipts
+          path: |
+            .agent-state/quality-receipts/quality-artifact-latest.json
+            .agent-state/quality-receipts/public-artifact-manifest-latest.json
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

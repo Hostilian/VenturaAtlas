@@ -100621,19 +100621,19 @@
           "confidence": "high"
         },
         "problemSeverity": {
-          "value": 98.0,
+          "value": 98,
           "confidence": "high"
         },
         "marketDemand": {
-          "value": 97.0,
+          "value": 97,
           "confidence": "high"
         },
         "willingnessToPay": {
-          "value": 96.0,
+          "value": 96,
           "confidence": "high"
         },
         "defensibility": {
-          "value": 98.0,
+          "value": 98,
           "confidence": "high"
         }
       },
@@ -100692,15 +100692,15 @@
           "confidence": "high"
         },
         "problemSeverity": {
-          "value": 96.0,
+          "value": 96,
           "confidence": "high"
         },
         "marketDemand": {
-          "value": 95.0,
+          "value": 95,
           "confidence": "high"
         },
         "willingnessToPay": {
-          "value": 95.0,
+          "value": 95,
           "confidence": "high"
         }
       },
@@ -100759,11 +100759,11 @@
           "confidence": "high"
         },
         "problemSeverity": {
-          "value": 95.0,
+          "value": 95,
           "confidence": "high"
         },
         "marketDemand": {
-          "value": 93.0,
+          "value": 93,
           "confidence": "high"
         }
       },
@@ -100971,17 +100971,17 @@
         "whatToBuild": "Serial-number-level vulnerability exposure graph and patch delivery audit ledger.",
         "howItMakesMoney": "Per-device annual subscription + CRA incident reporting module fees.",
         "whyCustomersPay": "Fulfills statutory EU Cyber Resilience Act reporting mandates and prevents non-compliance penalties.",
-        "overallScore": 81.0
+        "overallScore": 81
       },
       "scores": {
         "overallOpportunity": {
-          "value": 81.0,
+          "value": 81,
           "confidence": "medium"
         }
       },
       "compositeScores": {
-        "overallOpportunity": 81.0,
-        "compositeHeadline": 81.0
+        "overallOpportunity": 81,
+        "compositeHeadline": 81
       },
       "sourceReferences": [
         "s83"
@@ -101126,17 +101126,17 @@
         "whatToBuild": "Marketplace for transformer sourcing [DISCONFIRMED].",
         "howItMakesMoney": "Transaction take rates [N/A].",
         "whyCustomersPay": "N/A — Existing venture-funded market entrant Fluxco scaling rapidly.",
-        "overallScore": 67.0
+        "overallScore": 67
       },
       "scores": {
         "overallOpportunity": {
-          "value": 67.0,
+          "value": 67,
           "confidence": "low"
         }
       },
       "compositeScores": {
-        "overallOpportunity": 67.0,
-        "compositeHeadline": 67.0
+        "overallOpportunity": 67,
+        "compositeHeadline": 67
       },
       "sourceReferences": [
         "s72"
@@ -101320,7 +101320,7 @@
         "timeToMvp": "1 day (spreadsheet) to 8 weeks (software)",
         "timeToFirstRevenue": "1-5 days via AidHeadroom EUR99 concierge audit",
         "profitabilityCondition": "3 prepaid AidHeadroom audits before meaningful build. SubsidySignal requires 3 recurring vertical purchasers.",
-        "overallScore": 87.0,
+        "overallScore": 87,
         "confidenceScore": 8.6,
         "mainAdvantage": "Service-to-dataset-to-software path; same graph serves compliance and intelligence buyers; first-mover on newly mandatory 2026 EU transparency layer",
         "mainRisk": "Governments intend to automate group-resolution by 2029. Pure calculator has known half-life. Must grow toward durable intelligence layer.",
@@ -101340,13 +101340,13 @@
         "scorePercentage": 100
       },
       "compositeScores": {
-        "overallOpportunity": 87.0,
-        "compositeHeadline": 87.0,
-        "bootstrappedPotential": 92.0,
-        "soloFounderPotential": 90.0,
-        "fastestPathToRevenue": 88.0,
-        "differentiation": 78.0,
-        "profitPotential": 82.0
+        "overallOpportunity": 87,
+        "compositeHeadline": 87,
+        "bootstrappedPotential": 92,
+        "soloFounderPotential": 90,
+        "fastestPathToRevenue": 88,
+        "differentiation": 78,
+        "profitPotential": 82
       }
     },
     {
@@ -101410,7 +101410,7 @@
         "timeToMvp": "1 day (spreadsheet + PDF template)",
         "timeToFirstRevenue": "1-5 days",
         "profitabilityCondition": "Median case time under 60 min at EUR99 gives roughly EUR99/hr gross. If cases regularly exceed 3h, economics weaken materially.",
-        "overallScore": 87.0,
+        "overallScore": 87,
         "confidenceScore": 8.7,
         "mainAdvantage": "Effectively EUR0 startup cost; existing professional workflow; 2026 data transition creates temporary irresolvable gap; confirmed government-side friction",
         "mainRisk": "Official registers close gap by 2029; consultants may use Excel for simple clients; corporate-group data may become expensive",
@@ -101460,13 +101460,13 @@
         "scorePercentage": 100
       },
       "compositeScores": {
-        "overallOpportunity": 87.0,
-        "compositeHeadline": 87.0,
-        "bootstrappedPotential": 95.0,
-        "soloFounderPotential": 93.0,
-        "fastestPathToRevenue": 92.0,
-        "differentiation": 76.0,
-        "profitPotential": 80.0
+        "overallOpportunity": 87,
+        "compositeHeadline": 87,
+        "bootstrappedPotential": 95,
+        "soloFounderPotential": 93,
+        "fastestPathToRevenue": 92,
+        "differentiation": 76,
+        "profitPotential": 80
       }
     },
     {
@@ -101528,8 +101528,8 @@
         },
         "timeToMvp": "1 week (manual curation, one country, one vertical)",
         "timeToFirstRevenue": "3-7 days",
-        "overallScore": 81.0,
-        "confidenceScore": 8.0,
+        "overallScore": 81,
+        "confidenceScore": 8,
         "mainAdvantage": "Durable half of AidGraph as compliance wedge fades; outcome history becomes proprietary moat; Commission transparency goal is structural",
         "mainRisk": "Aid event to buyer-intent correlation may be weak; records appear too late; scheme purposes too vague; established sales-intel vendors may add feed immediately",
         "bestNextValidationStep": "Sell EUR49 founding brief to 3 industrial automation integrators covering Czech manufacturing. If 3 buyers pay and one asks for weekly recurring alerts, proceed."
@@ -101564,13 +101564,13 @@
         "scorePercentage": 100
       },
       "compositeScores": {
-        "overallOpportunity": 81.0,
-        "compositeHeadline": 81.0,
-        "bootstrappedPotential": 88.0,
-        "soloFounderPotential": 85.0,
-        "fastestPathToRevenue": 84.0,
-        "differentiation": 74.0,
-        "profitPotential": 82.0
+        "overallOpportunity": 81,
+        "compositeHeadline": 81,
+        "bootstrappedPotential": 88,
+        "soloFounderPotential": 85,
+        "fastestPathToRevenue": 84,
+        "differentiation": 74,
+        "profitPotential": 82
       }
     },
     {
@@ -101627,7 +101627,7 @@
         },
         "timeToMvp": "1-2 weeks",
         "timeToFirstRevenue": "1-2 weeks",
-        "overallScore": 69.0,
+        "overallScore": 69,
         "confidenceScore": 6.5,
         "mainAdvantage": "Concrete monetary risk; existing spending on tariff data; narrow defensible niche",
         "mainRisk": "Expert traders already understand tariffs; official customs systems may absorb; data timeliness critical; very narrow commodity scope",
@@ -101653,13 +101653,13 @@
         "scorePercentage": 75
       },
       "compositeScores": {
-        "overallOpportunity": 69.0,
-        "compositeHeadline": 69.0,
-        "bootstrappedPotential": 75.0,
-        "soloFounderPotential": 70.0,
-        "fastestPathToRevenue": 72.0,
-        "differentiation": 55.0,
-        "profitPotential": 65.0
+        "overallOpportunity": 69,
+        "compositeHeadline": 69,
+        "bootstrappedPotential": 75,
+        "soloFounderPotential": 70,
+        "fastestPathToRevenue": 72,
+        "differentiation": 55,
+        "profitPotential": 65
       }
     },
     {
@@ -101716,7 +101716,7 @@
         },
         "timeToMvp": "2-4 weeks",
         "timeToFirstRevenue": "2-4 weeks",
-        "overallScore": 66.0,
+        "overallScore": 66,
         "confidenceScore": 5.5,
         "mainAdvantage": "Expanding regulatory obligation creates new workflow need",
         "mainRisk": "TrustID and established providers already cover supply chains; defensibility 3/10 in OMEGA XVII scorecard",
@@ -101742,14 +101742,260 @@
         "scorePercentage": 75
       },
       "compositeScores": {
-        "overallOpportunity": 66.0,
-        "compositeHeadline": 66.0,
-        "bootstrappedPotential": 65.0,
-        "soloFounderPotential": 62.0,
-        "fastestPathToRevenue": 68.0,
-        "differentiation": 38.0,
-        "profitPotential": 55.0
+        "overallOpportunity": 66,
+        "compositeHeadline": 66,
+        "bootstrappedPotential": 65,
+        "soloFounderPotential": 62,
+        "fastestPathToRevenue": 68,
+        "differentiation": 38,
+        "profitPotential": 55
       }
+    },
+    {
+      "id": "idea-412",
+      "name": "ScrapRoute — Critical-Mineral Contract & Inventory Route-Shock Monitor",
+      "slug": "scraproute-critical-mineral-route-shock-monitor",
+      "omegaRound": "XVIII",
+      "researchDate": "2026-08-18",
+      "status": "priority",
+      "tags": [
+        "critical-minerals",
+        "route-shock",
+        "trade-controls",
+        "black-mass",
+        "tungsten",
+        "inventory",
+        "contracts",
+        "compliance"
+      ],
+      "atAGlance": {
+        "overallScore": 86,
+        "urgency": "extreme",
+        "durability": "medium",
+        "verdict": "VALIDATE NOW — 27 August 2026 cutover",
+        "forcingFunction": "US DPA temporary final rule effective 27 Aug 2026: 100% domestic allocation requirement for covered black-mass and tungsten scrap",
+        "paymentGate": "2 × $199 concierge audits from 25 targeted contacts",
+        "capitalRequired": "$0-$20",
+        "primaryBuyer": "US black-mass / tungsten scrap sellers, recyclers, and brokers with open foreign-buyer contracts",
+        "firstArtifact": "27-August Contract Transition Exposure Ledger",
+        "primaryRisk": "temporary 1-year rule + tiny specialist market + legal substitute (trade counsel) + confidential contracts"
+      },
+      "metrics": {
+        "rse": 9.2,
+        "contractMemoryScore": 9.5,
+        "dcm": 8.8,
+        "odb": 7,
+        "ppd": 3,
+        "tsv": 8.5,
+        "asr": 8,
+        "ots": 8
+      },
+      "productDefinition": {
+        "v1": "27-August Contract Exposure Audit — $199-$499 concierge service",
+        "inputs": [
+          "current inventory (lots, material characterization, Wh/kg)",
+          "open sales contracts",
+          "buyer country/location",
+          "intended shipment dates",
+          "basic transaction value",
+          "existing supporting documentation"
+        ],
+        "outputs": [
+          "Cutover exposure ledger: transactions before/after 27 Aug",
+          "Covered-material candidates",
+          "Domestic/foreign buyer state per lot",
+          "Contractual commitments at risk",
+          "Unresolved classification questions",
+          "Adjustment/exception-review candidates",
+          "Alternative-route assumptions",
+          "Estimated commercial exposure",
+          "Source-linked evidence"
+        ],
+        "notIncluded": "Legal interpretation — stays with qualified trade counsel/BIS",
+        "deliveryMethod": "manual concierge → structured PDF report",
+        "longerTermProduct": "RouteShock engine — detects when existing contracts, inventory and shipments cross a newly changed trade/routing state"
+      },
+      "competitorRedTeam": [
+        "Law firms — already interpreting BIS rule",
+        "Trade-compliance platforms (SAP GTS, Amber Road) — could add rule monitoring",
+        "Battery marketplaces (Metalshub, Circunomics) — know recyclers, material, pricing",
+        "Commodity intelligence (Benchmark Mineral Intelligence) — sells supply-chain intelligence",
+        "Customs brokers — already serving affected segment"
+      ],
+      "killConditions": [
+        "Zero payments: firms consistently say counsel/ERP/broker has already produced cutover ledger",
+        "Contracts are too confidential to share with a founder",
+        "Only a handful of firms meaningfully affected (market too tiny)",
+        "Rule reversed or scope dramatically narrowed before Sept 2026",
+        "Trade-compliance vendors bundle feature within 30 days"
+      ],
+      "sevenDayTest": {
+        "day1": "Create synthetic example: 12 lots, 8 open contracts, 4 foreign buyers, 3 domestic buyers, mixed shipment dates — produce one exposure report",
+        "day2": "Create short landing page",
+        "day3": "Find 20-30 actual affected businesses (black-mass recyclers, tungsten scrap dealers/processors)",
+        "days3to5": "Offer Founding 27-August Contract Exposure Audit at $199",
+        "days5to7": "Deliver manually",
+        "strongPass": "2 prepaid audits from first 25 highly qualified contacts",
+        "exceptionalPass": "Customer says: can you monitor every contract against future material-route changes?",
+        "fail": "Zero payments + firms consistently say their trade counsel/ERP/broker already handled it"
+      },
+      "longerTermThesis": "RouteShock — detects when already-existing contracts, inventory and shipments cross a newly changed trade or routing state, quantifies which commercial objects are exposed, identifies the evidence/decision owner, and shows alternative scenarios. Applicable to: critical-mineral scrap, quotas, trade safeguards, export controls, hazardous-waste routes, source-country restrictions, sanctions, preferential tariffs.",
+      "internationalExpansion": "EU restricting certain black-mass exports to non-OECD destinations — creates parallel EU route rule exposure graph",
+      "omegaXviiCrossRef": "Reinforces TransitionLot concept; Contract Memory Score upgrades that thesis",
+      "sources": [
+        "US Federal Register: DPA temporary final rule, effective 27 Aug 2026",
+        "Argus: tungsten-market concern, domestic oversupply risk",
+        "Reuters: recyclers welcome rule but warn US infrastructure insufficient",
+        "Benchmark Mineral Intelligence: black-mass supply-chain reports",
+        "Battery-industry legal analysis: US black-mass processing capacity constraints"
+      ],
+      "category": "Trade Compliance & Supply Chain",
+      "oneSentenceConcept": "A concierge contract-exposure audit and route-shock monitor that identifies which existing black-mass and tungsten-scrap lots, open sales contracts, and planned foreign-buyer shipments cross into the new US domestic-allocation requirement effective 27 August 2026."
+    },
+    {
+      "id": "idea-413",
+      "name": "BatteryFlightGate — Physical State-of-Charge Evidence Gate for Air Cargo",
+      "slug": "batteryflightgate-air-cargo-soc-evidence-gate",
+      "omegaRound": "XVIII",
+      "researchDate": "2026-08-18",
+      "status": "priority",
+      "tags": [
+        "battery",
+        "air-cargo",
+        "dangerous-goods",
+        "state-of-charge",
+        "iata",
+        "physical-proof",
+        "warehouse",
+        "evidence"
+      ],
+      "atAGlance": {
+        "overallScore": 80,
+        "urgency": "current",
+        "durability": "medium-long",
+        "verdict": "VALIDATE NARROWLY — payment first, no software before 3 paying customers",
+        "forcingFunction": "IATA 2026 edition: ≤30% SoC requirement for Li-ion batteries packed with equipment for air transport",
+        "paymentGate": "3 × $99 workflow audits from 25 targeted battery/equipment shippers",
+        "capitalRequired": "$0",
+        "primaryBuyer": "Small electronics manufacturers, battery-pack assemblers, e-bike/equipment exporters, specialist forwarders, warehouses preparing UN3481 shipments",
+        "firstArtifact": "Serial/batch-linked SoC release ledger (CSV + mobile capture + PDF evidence report)",
+        "primaryRisk": "WMS/forwarder already records this; BMS exports already exist; IATA DG Digital absorbs declaration layer; operative since January so 8 months of adaptation"
+      },
+      "metrics": {
+        "rse": 4,
+        "ppd": 9.5,
+        "odb": 9,
+        "contractMemoryScore": 2,
+        "tsv": 6.5,
+        "asr": 6,
+        "ots": 7
+      },
+      "productDefinition": {
+        "v1": "Battery Air-Shipment Release Pack — $99-$199 per first workflow setup/audit",
+        "workflow": [
+          "Product → Battery → Serial/batch",
+          "Battery chemistry + Wh rating",
+          "Packing configuration",
+          "Measured / device-reported SoC",
+          "Measurement method + operator + timestamp",
+          "Shipment linkage",
+          "DG declaration linkage",
+          "Release decision"
+        ],
+        "exampleOutput": "Shipment B-778: 42 battery packs — 42/42 SoC records present. 41 under threshold. 1 reading: 38%. Status: HOLD",
+        "notClaimed": "Does NOT certify battery safety — records authorized measurement, source, threshold, shipment linkage, and completeness only",
+        "deliveryMethod": "CSV + mobile browser capture + PDF evidence report — no AI required for v1",
+        "longerTermModel": "WMS / warehouse integration (stronger than standalone SaaS)"
+      },
+      "officialDigitisationBoundary": {
+        "iataOfficialTool": "IATA DG Digital (March 2026) — digitizes DG declaration and acceptance automation",
+        "officialToolGap": "DG Digital handles declaration; does NOT physically verify SoC at warehouse. DHL guidance requires physical measurement with battery tester before shipment.",
+        "productSits": "One layer before DG Digital — physical measurement evidence → declaration bridge"
+      },
+      "competitorRedTeam": [
+        "IATA DG Digital — March 2026 launch covers declaration/acceptance (NOT physical measurement)",
+        "WMS vendors — could add numeric SoC field + threshold rule",
+        "BMS exports — some batteries report SoC natively",
+        "Forwarder acceptance procedures — may already capture readings",
+        "DG software (Riege, Champ, CargoWise) — could absorb feature"
+      ],
+      "killConditions": [
+        "Warehouse already captures BMS readings in auditable form",
+        "Forwarder handles acceptance and creates its own record",
+        "Products have no accessible SoC measurement point",
+        "Customer won't let new system influence DG release process",
+        "WMS vendors add a numeric field + rules within 60 days",
+        "Liability exposure exceeds subscription economics"
+      ],
+      "paymentTest": {
+        "offer": "I will convert your existing battery-air-shipment SoC process into one serial/batch-linked release record and show exactly where evidence can fall out before your DG declaration",
+        "target": "25 specialist shippers/manufacturers",
+        "pass": "3 payments of approximately $99",
+        "strongerSignal": "Customer says: every shipment needs this",
+        "kill": "Consistent answer: our WMS/BMS/forwarder already records this in auditable form"
+      },
+      "omegaConceptContribution": "Physical Proof Distance (PPD) — how far is the digital declaration from the physical fact it claims?",
+      "sources": [
+        "IATA Dangerous Goods Regulations 2026 edition — ≤30% SoC packing instruction",
+        "IATA DG Digital launch announcement March 2026",
+        "DHL dangerous goods preparation guidance — verify SoC with battery tester before shipment",
+        "UN3481 packing instruction documentation"
+      ],
+      "category": "Logistics & Physical Evidence",
+      "oneSentenceConcept": "A deterministic warehouse release gate that links physical state-of-charge measurements for each battery serial or batch to the corresponding air-cargo DG declaration, bridging the gap between what IATA DG Digital records digitally and what is actually measured in the warehouse."
+    },
+    {
+      "id": "idea-414",
+      "name": "CarrierReality — Open Gateway Production Reality Grid",
+      "slug": "carrierreality-open-gateway-production-reality-grid",
+      "omegaRound": "XVIII",
+      "researchDate": "2026-08-18",
+      "status": "researched",
+      "tags": [
+        "telecom",
+        "camara",
+        "open-gateway",
+        "gsma",
+        "api-monitoring",
+        "network-api",
+        "carrier",
+        "production-testing"
+      ],
+      "atAGlance": {
+        "overallScore": 69,
+        "urgency": "emerging",
+        "durability": "long",
+        "verdict": "WATCH / DESIGN PARTNER — commercially premature for $100 constraint",
+        "forcingFunction": "CAMARA/GSMA Open Gateway scaling toward production by March 2026; operators live on fraud and QoD APIs",
+        "paymentGate": "undefined — needs commercial operator access before meaningful test",
+        "capitalRequired": "$100+ (aggregator access, real phone numbers, multi-carrier accounts)",
+        "primaryBuyer": "Enterprise developers and aggregators building production CAMARA API products",
+        "firstArtifact": "Cross-operator/country API behavioral drift report",
+        "primaryRisk": "Requires commercial API access + real SIMs + consent — terrible for $100 constraint. CAMARA explicitly improving portability/interoperability."
+      },
+      "metrics": {
+        "odb": 6,
+        "tsv": 5,
+        "contractMemoryScore": 3,
+        "asr": 4
+      },
+      "productConcept": "Synthetic monitoring for telco/CAMARA APIs — tests whether specific APIs through specific aggregators/operators/countries behave reliably in production. Checks: carrier, country, API version, aggregator, latency, availability, error semantics, supported features, real behavior.",
+      "differenceFromCertification": "Certification asks: is this implementation conformant? CarrierReality asks: does this specific API through this aggregator/country reliably behave in production at scale?",
+      "blockers": [
+        "Needs commercial operator/API access",
+        "Requires real phone numbers + multiple carriers + multiple countries",
+        "Paid aggregator accounts needed",
+        "Consent/data handling complexity",
+        "CAMARA itself improving portability — reduces long-term moat"
+      ],
+      "watchCondition": "Revisit when a design partner (aggregator or enterprise developer) offers co-development access to production CAMARA API environment",
+      "sources": [
+        "GSMA Open Gateway scaling toward production March 2026",
+        "CAMARA open-source reference implementations",
+        "GSMA certification framework for standardized deployments"
+      ],
+      "category": "Developer Infrastructure & APIs",
+      "oneSentenceConcept": "A synthetic production-reality monitoring grid that tests whether specific CAMARA/Open Gateway network APIs behave reliably across carriers, countries, aggregators, and versions — beyond what GSMA conformance certification verifies."
     }
   ]
 }

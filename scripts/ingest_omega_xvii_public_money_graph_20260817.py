@@ -475,80 +475,11 @@ Primary sources: data/research-runs.json run-res-omega-xvii-20260817-public-mone
 
 
 def ingest():
-    print("=== Ingesting OMEGA XVII -- Public Money Graph (17 August 2026) ===")
-
-    # 1. ideas.json
-    print("[1/4] Updating data/ideas.json ...")
-    with open(IDEAS_PATH, "r", encoding="utf-8") as f:
-        ideas_data = json.load(f)
-    existing = ideas_data.get("ideas", [])
-    existing_ids = {i["id"] for i in existing}
-    added = 0
-    for idea in NEW_IDEAS:
-        if idea["id"] not in existing_ids:
-            existing.append(idea)
-            added += 1
-            print(f"  [OK] {idea['id']} -- {idea['name']}")
-        else:
-            print(f"  [SKIP] {idea['id']} already exists")
-    ideas_data["ideas"] = existing
-    with open(IDEAS_PATH, "w", encoding="utf-8") as f:
-        json.dump(ideas_data, f, indent=2, ensure_ascii=False)
-    print(f"  Total: {len(existing)} ideas (+{added} new)")
-
-    # 2. research-runs.json
-    print("[2/4] Updating data/research-runs.json ...")
-    with open(RESEARCH_RUNS_PATH, "r", encoding="utf-8") as f:
-        runs = json.load(f)
-    run_ids = {r.get("runId") for r in runs}
-    if RESEARCH_RUN["runId"] not in run_ids:
-        runs.append(RESEARCH_RUN)
-        with open(RESEARCH_RUNS_PATH, "w", encoding="utf-8") as f:
-            json.dump(runs, f, indent=2, ensure_ascii=False)
-        print(f"  [OK] Appended: {RESEARCH_RUN['runId']}")
-    else:
-        print(f"  [SKIP] Run already exists")
-
-    # 3. Dossiers
-    print("[3/4] Generating dossier files ...")
-    os.makedirs(DOSSIERS_DIR, exist_ok=True)
-    for idea in NEW_IDEAS:
-        path = os.path.join(DOSSIERS_DIR, f"{idea['slug']}.md")
-        if not os.path.exists(path):
-            with open(path, "w", encoding="utf-8") as f:
-                f.write(make_dossier(idea))
-            print(f"  [OK] ideas/{idea['slug']}.md")
-        else:
-            print(f"  [SKIP] Already exists: ideas/{idea['slug']}.md")
-
-    # 4. Prompts
-    print("[4/4] Generating prompt stubs (25 per idea) ...")
-    for idea in NEW_IDEAS:
-        d = os.path.join(PROMPTS_DIR, idea["id"])
-        os.makedirs(d, exist_ok=True)
-        for idx, topic in enumerate(PROMPT_TOPICS, 1):
-            p = os.path.join(d, f"prompt-{idx:02d}.md")
-            if not os.path.exists(p):
-                with open(p, "w", encoding="utf-8") as f:
-                    f.write(
-                        f"# Prompt {idx:02d} -- {idea['name']}\n\n"
-                        f"**Topic**: {topic}\n\n"
-                        f"**Idea**: {idea['oneSentenceConcept']}\n\n"
-                        f"---\n\n"
-                        f"Research and validate: {topic} for **{idea['name']}**.\n\n"
-                        f"Apply the VentureAtlas constitution: primary sources only, "
-                        f"explicit kill conditions, payment before meaningful build, "
-                        f"maximum EUR100 pre-revenue expenditure.\n"
-                    )
-        print(f"  [OK] 25 prompts for {idea['id']}")
-
-    print("\n=== OMEGA XVII Ingest Complete ===")
-    print(f"  Added: {added}/5 ideas")
-    print(f"  Research run: {RESEARCH_RUN['runId']}")
-    print("\nNext steps:")
-    print("  1. node scripts/validate-data.js")
-    print("  2. Copy OMEGA XVII document to research/OMEGA_XVII_PUBLIC_MONEY_GRAPH_2026-08-17.md")
-    print("  3. Run payment test: 30-40 EU grant consultant outreach for AidHeadroom EUR99 audit")
+    raise SystemExit(
+        "Direct OMEGA XVII canonical ingestion is disabled. Preserve these records as "
+        "research candidates and use the authorized semantic-review and canonical-publisher "
+        "lifecycle for any future promotion."
+    )
 
 
 if __name__ == "__main__":

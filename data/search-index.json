@@ -5230,5 +5230,188 @@
       "miq"
     ],
     "normalizedText": "generic methane certification mrv commodity gas methane mrv registry platform killed upstream gas methane emissions monitoring reporting and certificate registry killed - miq xpansiv dominant methane certification and mrv dominated by incumbents upstream gas producers killed environmental certification methane-mrv emissions-registry killed-candidate disconfirmed-thesis miq"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-407",
+    "slug": "aidgraph-public-money-graph-platform",
+    "name": "AidGraph -- Public Money Graph Platform",
+    "category": "Public Sector & Regulatory Data",
+    "subcategory": "State Aid & Corporate Group Intelligence",
+    "concept": "A shared entity-resolution and public-award-history graph powering both pre-application de minimis headroom audits (AidHeadroom) and post-award B2B buying-signal intelligence (SubsidySignal) from newly mandatory 2026 EU State Aid registers.",
+    "customer": "Grant consultants, subsidy advisers, and B2B sales intelligence teams",
+    "problem": "EU de minimis aid registers create a new stream of observable company funding events, but the underlying corporate group graph is fragmented across jurisdictions.",
+    "overallScore": 87,
+    "tags": [
+      "EU State Aid",
+      "de minimis",
+      "corporate group resolution",
+      "public data",
+      "buying signals",
+      "grant compliance",
+      "OMEGA XVII",
+      "2026"
+    ],
+    "normalizedText": "aidgraph -- public money graph platform a shared entity-resolution and public-award-history graph powering both pre-application de minimis headroom audits aidheadroom and post-award b2b buying-signal intelligence subsidysignal from newly mandatory 2026 eu state aid registers eu de minimis aid registers create a new stream of observable company funding events but the underlying corporate group graph is fragmented across jurisdictions grant consultants subsidy advisers and b2b sales intelligence teams public sector regulatory data eu state aid de minimis corporate group resolution public data buying signals grant compliance omega xvii 2026 aidgraph public money graph"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-408",
+    "slug": "aidheadroom-de-minimis-group-headroom-audit",
+    "name": "AidHeadroom -- De Minimis Group Headroom Audit",
+    "category": "Regulatory Compliance & Grant Advisory",
+    "subcategory": "EU State Aid / De Minimis Compliance",
+    "concept": "For EU grant advisers and multi-company applicants, AidHeadroom resolves the corporate group counting as one undertaking, assembles de minimis awards from public registers plus legacy declarations, calculates remaining three-year headroom by Member State, and produces a source-linked review pack before the next aid application.",
+    "customer": "Independent EU grant consultants managing applications for corporate clients",
+    "problem": "The de minimis ceiling applies to the entire corporate group as one undertaking. Assembling the group perimeter, historical awards, and new 2026 register entries into a defensible evidence trail is genuinely painful.",
+    "overallScore": 87,
+    "tags": [
+      "EU de minimis",
+      "Regulation 2023/2831",
+      "single undertaking",
+      "corporate group",
+      "grant compliance",
+      "State Aid",
+      "OMEGA XVII",
+      "grant consultants",
+      "2026"
+    ],
+    "normalizedText": "aidheadroom -- de minimis group headroom audit for eu grant advisers and multi-company applicants aidheadroom resolves the corporate group counting as one undertaking assembles de minimis awards from public registers plus legacy declarations calculates remaining three-year headroom by member state and produces a source-linked review pack before the next aid application the de minimis ceiling applies to the entire corporate group as one undertaking assembling the group perimeter historical awards and new 2026 register entries into a defensible evidence trail is genuinely painful independent eu grant consultants managing applications for corporate clients regulatory compliance grant advisory eu de minimis regulation 2023 2831 single undertaking corporate group grant compliance state aid omega xvii grant consultants 2026 aidheadroom de minimis headroom audit"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-409",
+    "slug": "subsidysignal-public-aid-buying-signal-intelligence",
+    "name": "SubsidySignal -- Public Aid Buying-Signal Intelligence",
+    "category": "B2B Sales Intelligence & Market Data",
+    "subcategory": "Public Data-Derived Buying Signals",
+    "concept": "Weekly curated alerts translating newly public EU de minimis aid events into commercially relevant buying signals for B2B suppliers -- one country, one vertical, specific declared funding purpose.",
+    "customer": "B2B industrial automation integrators, ERP vendors, industrial software suppliers targeting manufacturing or capital-intensive verticals",
+    "problem": "B2B suppliers lack early signals of company investment intent before procurement events become publicly visible.",
+    "overallScore": 81,
+    "tags": [
+      "B2B intelligence",
+      "buying signals",
+      "EU State Aid",
+      "de minimis",
+      "sales enablement",
+      "public data",
+      "OMEGA XVII",
+      "2026"
+    ],
+    "normalizedText": "subsidysignal -- public aid buying-signal intelligence weekly curated alerts translating newly public eu de minimis aid events into commercially relevant buying signals for b2b suppliers -- one country one vertical specific declared funding purpose b2b suppliers lack early signals of company investment intent before procurement events become publicly visible b2b industrial automation integrators erp vendors industrial software suppliers targeting manufacturing or capital-intensive verticals b2b sales intelligence market data b2b intelligence buying signals eu state aid de minimis sales enablement public data omega xvii 2026 subsidysignal public money intelligence"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-410",
+    "slug": "riceguard-preferential-tariff-safeguard-po-risk",
+    "name": "RiceGuard -- Preferential-Tariff Safeguard PO Risk",
+    "category": "Trade Compliance & Import Operations",
+    "subcategory": "GSP Preferential Tariff Risk",
+    "concept": "Purchase-order risk monitor mapping EU GSP rice import volumes against the new automatic safeguard trigger under the reformed GSP regulation, alerting importers when preference suspension is likely before the shipment arrives.",
+    "customer": "Rice importers and commodity traders sourcing from GSP beneficiary countries",
+    "problem": "PO placed at GSP preferential rates may face MFN tariff at clearance if the automatic rice safeguard triggers during transit.",
+    "overallScore": 69,
+    "tags": [
+      "EU GSP",
+      "rice safeguard",
+      "tariff risk",
+      "preferential trade",
+      "import PO risk",
+      "OMEGA XVII",
+      "2027"
+    ],
+    "normalizedText": "riceguard -- preferential-tariff safeguard po risk purchase-order risk monitor mapping eu gsp rice import volumes against the new automatic safeguard trigger under the reformed gsp regulation alerting importers when preference suspension is likely before the shipment arrives po placed at gsp preferential rates may face mfn tariff at clearance if the automatic rice safeguard triggers during transit rice importers and commodity traders sourcing from gsp beneficiary countries trade compliance import operations eu gsp rice safeguard tariff risk preferential trade import po risk omega xvii 2027 riceguard gsp safeguard alert"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-411",
+    "slug": "workerchainreceipt-uk-contractor-rtw-evidence-chain",
+    "name": "WorkerChainReceipt -- UK Contractor RTW Evidence Chain",
+    "category": "Employment Compliance & HR Technology",
+    "subcategory": "Right-to-Work & Labour Chain Compliance",
+    "concept": "Shared right-to-work evidence graph for multi-tier UK contractor chains where checks performed at one tier need to flow to engagers across the chain under expanded October 2026 obligations.",
+    "customer": "Engagers managing long UK subcontracting chains in construction, logistics, or gig platforms",
+    "problem": "RTW check evidence performed at a lower subcontracting tier cannot easily be evidenced by the engager at tier 1 under expanded October 2026 obligations.",
+    "overallScore": 66,
+    "tags": [
+      "right-to-work",
+      "UK compliance",
+      "contractor chain",
+      "subcontracting",
+      "October 2026",
+      "OMEGA XVII",
+      "employment"
+    ],
+    "normalizedText": "workerchainreceipt -- uk contractor rtw evidence chain shared right-to-work evidence graph for multi-tier uk contractor chains where checks performed at one tier need to flow to engagers across the chain under expanded october 2026 obligations rtw check evidence performed at a lower subcontracting tier cannot easily be evidenced by the engager at tier 1 under expanded october 2026 obligations engagers managing long uk subcontracting chains in construction logistics or gig platforms employment compliance hr technology right-to-work uk compliance contractor chain subcontracting october 2026 omega xvii employment workerchainreceipt rtw chain evidence"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-412",
+    "slug": "scraproute-critical-mineral-route-shock-monitor",
+    "name": "ScrapRoute — Critical-Mineral Contract & Inventory Route-Shock Monitor",
+    "category": "Trade Compliance & Supply Chain",
+    "subcategory": "",
+    "concept": "A concierge contract-exposure audit and route-shock monitor that identifies which existing black-mass and tungsten-scrap lots, open sales contracts, and planned foreign-buyer shipments cross into the new US domestic-allocation requirement effective 27 August 2026.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 86,
+    "tags": [
+      "critical-minerals",
+      "route-shock",
+      "trade-controls",
+      "black-mass",
+      "tungsten",
+      "inventory",
+      "contracts",
+      "compliance"
+    ],
+    "normalizedText": "scraproute critical-mineral contract inventory route-shock monitor a concierge contract-exposure audit and route-shock monitor that identifies which existing black-mass and tungsten-scrap lots open sales contracts and planned foreign-buyer shipments cross into the new us domestic-allocation requirement effective 27 august 2026 trade compliance supply chain critical-minerals route-shock trade-controls black-mass tungsten inventory contracts compliance"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-413",
+    "slug": "batteryflightgate-air-cargo-soc-evidence-gate",
+    "name": "BatteryFlightGate — Physical State-of-Charge Evidence Gate for Air Cargo",
+    "category": "Logistics & Physical Evidence",
+    "subcategory": "",
+    "concept": "A deterministic warehouse release gate that links physical state-of-charge measurements for each battery serial or batch to the corresponding air-cargo DG declaration, bridging the gap between what IATA DG Digital records digitally and what is actually measured in the warehouse.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 80,
+    "tags": [
+      "battery",
+      "air-cargo",
+      "dangerous-goods",
+      "state-of-charge",
+      "iata",
+      "physical-proof",
+      "warehouse",
+      "evidence"
+    ],
+    "normalizedText": "batteryflightgate physical state-of-charge evidence gate for air cargo a deterministic warehouse release gate that links physical state-of-charge measurements for each battery serial or batch to the corresponding air-cargo dg declaration bridging the gap between what iata dg digital records digitally and what is actually measured in the warehouse logistics physical evidence battery air-cargo dangerous-goods state-of-charge iata physical-proof warehouse evidence"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-414",
+    "slug": "carrierreality-open-gateway-production-reality-grid",
+    "name": "CarrierReality — Open Gateway Production Reality Grid",
+    "category": "Developer Infrastructure & APIs",
+    "subcategory": "",
+    "concept": "A synthetic production-reality monitoring grid that tests whether specific CAMARA/Open Gateway network APIs behave reliably across carriers, countries, aggregators, and versions — beyond what GSMA conformance certification verifies.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 69,
+    "tags": [
+      "telecom",
+      "camara",
+      "open-gateway",
+      "gsma",
+      "api-monitoring",
+      "network-api",
+      "carrier",
+      "production-testing"
+    ],
+    "normalizedText": "carrierreality open gateway production reality grid a synthetic production-reality monitoring grid that tests whether specific camara open gateway network apis behave reliably across carriers countries aggregators and versions beyond what gsma conformance certification verifies developer infrastructure apis telecom camara open-gateway gsma api-monitoring network-api carrier production-testing"
   }
 ]

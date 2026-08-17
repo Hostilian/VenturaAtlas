@@ -6,14 +6,21 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const read = file => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 
-test('OMEGA XIV stages the three-way battle without canonical promotion', () => {
-  const queue = read('data/idea-staging-queue.json');
-  const slugs = new Set(['nzia-bidproof-nonprice-tender-evidence-capsule', 'safe-origintrace-component-cost-origin-evidence', 'milestone-to-cash-funding-completion-evidence']);
-  const staged = queue.filter(item => slugs.has(item.candidateSlug));
-  assert.equal(staged.length, 3);
-  assert.ok(staged.every(item => item.promotionEligible === false && item.atAGlance.overallScore === null));
-  const queueReady = queue.find(item => item.candidateSlug === 'queueready-grid-connection-readiness-os');
-  assert.equal(queueReady.researchAssessment.noveltyDistance, 'EXISTING_IDEA_REUNDERWRITE');
+test('OMEGA XIV receipt records the three-way battle without canonical promotion', () => {
+  // Private staging is intentionally absent from fresh clones and CI. Verify the
+  // committed research receipt instead of weakening that privacy boundary.
+  const runs = read('data/research-runs.json');
+  const run = runs.find(item => item.runId === 'run-res-018-20260817-omega-xiv-capital-clock');
+  assert.ok(run, 'OMEGA XIV research receipt must be committed');
+  assert.deepEqual(
+    run.validationPriorityQueue.map(item => [item.proposal, item.status]),
+    [
+      ['NZIA BidProof — Non-Price Tender Evidence Capsule', 'NEW / DEEP RESEARCH'],
+      ['SAFE OriginTrace — Component-Cost & Design-Control Evidence Graph', 'NEW / DEEP RESEARCH'],
+      ['QueueReady — Grid Connection Readiness OS', 'EXISTING / RE-UNDERWRITE'],
+    ],
+  );
+  assert.equal(run.reviewStatus, 'deep_research_integrated_not_validation_not_canonical_promotion');
 });
 
 test('OMEGA XIV uses null-first capital amounts and explicit clocks', () => {

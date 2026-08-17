@@ -63,3 +63,8 @@ Composite decision-support view; not objective truth.
 | 58 | [EU Marketplace Compliance OS](../ideas/eu-marketplace-compliance-os.md) | 4.0 | Ranked by the documented metric. |
 | 59 | [Longitudinal Research Memory](../ideas/longitudinal-research-memory.md) | 1.0 | Ranked by the documented metric. |
 | 60 | [Official Source Change Monitor](../ideas/official-source-change-monitor.md) | 0 | Ranked by the documented metric. |
+| 61 | [RiceGuard — Preferential-Tariff Safeguard PO Risk](../ideas/riceguard-preferential-tariff-safeguard-po-risk.md) | 0 | Interview 10 EU rice importers: do traders already track GSP safeguard volumes via official EU Trade portal? Payment test undefined — resolve before building. |
+| 62 | [WorkerChainReceipt — UK Contractor RTW Evidence Chain](../ideas/workerchainreceipt-uk-contractor-rtw-evidence-chain.md) | 0 | Interview 10 UK construction/logistics engagers: does TrustID solve multi-tier RTW evidence sharing, or is there a genuine gap? DO NOT build generic RTW software. |
+| 63 | [CarrierReality — Open Gateway Production Reality Grid](../ideas/carrierreality-open-gateway-production-reality-grid.md) | 0 | Watchlist item: requires commercial CAMARA API access, real SIMs, and aggregator accounts (exceeds $100 constraint). Revisit when design partner provides API environment. |
+
+
