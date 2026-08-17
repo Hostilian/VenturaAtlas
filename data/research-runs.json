@@ -2199,8 +2199,29 @@
       "EU eProcurement eForms ontology eSubmission ESPD eCertis",
       "3PL rate card activity invoice audit recovery WMS billing"
     ],
-    "sourceCandidates": ["s225", "s226", "s227", "s228", "s229", "s230", "s231", "s232", "s233", "s234", "s235", "s236", "s237", "s238"],
-    "inclusions": ["idea-277", "idea-172", "idea-174", "idea-265", "idea-327"],
+    "sourceCandidates": [
+      "s225",
+      "s226",
+      "s227",
+      "s228",
+      "s229",
+      "s230",
+      "s231",
+      "s232",
+      "s233",
+      "s234",
+      "s235",
+      "s236",
+      "s237",
+      "s238"
+    ],
+    "inclusions": [
+      "idea-277",
+      "idea-172",
+      "idea-174",
+      "idea-265",
+      "idea-327"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "LabGrid is killed as a generic marketplace; only a technique- and corridor-specific access failure may re-enter.",
@@ -2217,7 +2238,13 @@
       "prereg-idea-265-e8fb0ddcad6c",
       "prereg-idea-327-d13f22202833"
     ],
-    "ideaIds": ["idea-277", "idea-172", "idea-174", "idea-265", "idea-327"],
+    "ideaIds": [
+      "idea-277",
+      "idea-172",
+      "idea-174",
+      "idea-265",
+      "idea-327"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T15:24:00Z",
@@ -2241,8 +2268,27 @@
       "EU Data Act cloud switching charges interfaces 2027",
       "CISA free software acquisition supplier response tool"
     ],
-    "sourceCandidates": ["s239", "s240", "s241", "s242", "s243", "s244", "s245", "s246", "s247", "s248", "s249", "s250"],
-    "inclusions": ["idea-169", "idea-213", "idea-304", "idea-360", "idea-374"],
+    "sourceCandidates": [
+      "s239",
+      "s240",
+      "s241",
+      "s242",
+      "s243",
+      "s244",
+      "s245",
+      "s246",
+      "s247",
+      "s248",
+      "s249",
+      "s250"
+    ],
+    "inclusions": [
+      "idea-169",
+      "idea-213",
+      "idea-304",
+      "idea-360",
+      "idea-374"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "Public Data Contract Watch is killed as a generic catalogue/schema-quality monitor and narrowed to downstream consumer-impact evidence for specific public APIs.",
@@ -2259,7 +2305,13 @@
       "prereg-idea-360-9ed078cdb49b",
       "prereg-idea-374-13fdfc888ab6"
     ],
-    "ideaIds": ["idea-169", "idea-213", "idea-304", "idea-360", "idea-374"],
+    "ideaIds": [
+      "idea-169",
+      "idea-213",
+      "idea-304",
+      "idea-360",
+      "idea-374"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T15:50:00Z",
@@ -2281,8 +2333,25 @@
       "US nucleic-acid synthesis framework revision, IBBIS Common Mechanism, and SecureDNA",
       "EU Regulation 2024/573 reclaimed refrigerant labeling and AHRI 700 analytical purity"
     ],
-    "sourceCandidates": ["s251", "s252", "s253", "s254", "s255", "s256", "s257", "s258", "s259", "s260"],
-    "inclusions": ["idea-281", "idea-299", "idea-382", "idea-393", "idea-400"],
+    "sourceCandidates": [
+      "s251",
+      "s252",
+      "s253",
+      "s254",
+      "s255",
+      "s256",
+      "s257",
+      "s258",
+      "s259",
+      "s260"
+    ],
+    "inclusions": [
+      "idea-281",
+      "idea-299",
+      "idea-382",
+      "idea-393",
+      "idea-400"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "CalibraRisk waits because formal ILAC/OIML and NIST methods absorb a generic optimizer; re-entry requires plant-specific accredited evidence and an approved workflow.",
@@ -2299,7 +2368,13 @@
       "prereg-idea-393-68e721640b24",
       "prereg-idea-400-2b81c5d70062"
     ],
-    "ideaIds": ["idea-281", "idea-299", "idea-382", "idea-393", "idea-400"],
+    "ideaIds": [
+      "idea-281",
+      "idea-299",
+      "idea-382",
+      "idea-393",
+      "idea-400"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T15:58:00Z",
@@ -2321,8 +2396,26 @@
       "FDA small-dispenser exemption and GS1 DSCSA exception/conformance testing",
       "EU drinking-water contact positive lists and migration-water testing"
     ],
-    "sourceCandidates": ["s126", "s141", "s261", "s262", "s263", "s264", "s265", "s266", "s267", "s268", "s269"],
-    "inclusions": ["idea-175", "idea-270", "idea-293", "idea-310", "idea-403"],
+    "sourceCandidates": [
+      "s126",
+      "s141",
+      "s261",
+      "s262",
+      "s263",
+      "s264",
+      "s265",
+      "s266",
+      "s267",
+      "s268",
+      "s269"
+    ],
+    "inclusions": [
+      "idea-175",
+      "idea-270",
+      "idea-293",
+      "idea-310",
+      "idea-403"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "Construction Product Substitution Matrix waits and narrows to a cited comparison packet because intended-use equivalence and assessment authority remain with responsible professionals and designated bodies.",
@@ -2339,7 +2432,13 @@
       "prereg-idea-310-4581cc551c26",
       "prereg-idea-403-b808ef901294"
     ],
-    "ideaIds": ["idea-175", "idea-270", "idea-293", "idea-310", "idea-403"],
+    "ideaIds": [
+      "idea-175",
+      "idea-270",
+      "idea-293",
+      "idea-310",
+      "idea-403"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T16:13:00Z",
@@ -2361,8 +2460,24 @@
       "C2PA conformance program trust list and open-source SDK substitution",
       "Visa and IETF AI-agent identity delegation and transaction authorization protocols"
     ],
-    "sourceCandidates": ["s65", "s199", "s220", "s270", "s271", "s272", "s273", "s274", "s275"],
-    "inclusions": ["idea-385", "idea-373", "idea-396", "idea-386", "idea-341"],
+    "sourceCandidates": [
+      "s65",
+      "s199",
+      "s220",
+      "s270",
+      "s271",
+      "s272",
+      "s273",
+      "s274",
+      "s275"
+    ],
+    "inclusions": [
+      "idea-385",
+      "idea-373",
+      "idea-396",
+      "idea-386",
+      "idea-341"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "KinLedger waits because reproductive family limits remain national and registry/entity-controlled; the EU SoHO Platform does not grant a startup a cross-border donor identity or participation mandate.",
@@ -2379,7 +2494,13 @@
       "prereg-idea-386-e1373ed28ded",
       "prereg-idea-341-996eda733d8f"
     ],
-    "ideaIds": ["idea-385", "idea-373", "idea-396", "idea-386", "idea-341"],
+    "ideaIds": [
+      "idea-385",
+      "idea-373",
+      "idea-396",
+      "idea-386",
+      "idea-341"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T16:29:00Z",
@@ -2401,8 +2522,24 @@
       "DOE hosting-capacity-map site-specific limits and FERC large-load readiness",
       "EU Platform Work Directive human oversight explanation review and two-week response"
     ],
-    "sourceCandidates": ["s199", "s211", "s251", "s256", "s257", "s258", "s276", "s277", "s278"],
-    "inclusions": ["idea-361", "idea-397", "idea-362", "idea-273", "idea-363"],
+    "sourceCandidates": [
+      "s199",
+      "s211",
+      "s251",
+      "s256",
+      "s257",
+      "s258",
+      "s276",
+      "s277",
+      "s278"
+    ],
+    "inclusions": [
+      "idea-361",
+      "idea-397",
+      "idea-362",
+      "idea-273",
+      "idea-363"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "RegDiff waits and narrows to evidence assembly and qualified risk or conformity routing because code change alone cannot determine physical hazard, protective measures, or legal substantial modification.",
@@ -2419,7 +2556,13 @@
       "prereg-idea-273-c39f37ccb6f2",
       "prereg-idea-363-09cc7565f0d4"
     ],
-    "ideaIds": ["idea-361", "idea-397", "idea-362", "idea-273", "idea-363"],
+    "ideaIds": [
+      "idea-361",
+      "idea-397",
+      "idea-362",
+      "idea-273",
+      "idea-363"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-13T16:48:00Z",
@@ -2441,8 +2584,20 @@
       "Rockwell documentation libraries revision history and prior-version access",
       "GitHub dependency review and open-source license compliance policy enforcement"
     ],
-    "sourceCandidates": ["s279", "s280", "s281", "s282", "s283"],
-    "inclusions": ["idea-166", "idea-168", "idea-171", "idea-173", "idea-170"],
+    "sourceCandidates": [
+      "s279",
+      "s280",
+      "s281",
+      "s282",
+      "s283"
+    ],
+    "inclusions": [
+      "idea-166",
+      "idea-168",
+      "idea-171",
+      "idea-173",
+      "idea-170"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "Industrial Automation Obsolescence Graph continues only as authorized multi-OEM installed-base reconciliation because OEM portals own current lifecycle, compatibility, issue, and replacement truth.",
@@ -2459,7 +2614,13 @@
       "prereg-idea-173-7b7f687ae472",
       "prereg-idea-170-41fac5f88ce6"
     ],
-    "ideaIds": ["idea-166", "idea-168", "idea-171", "idea-173", "idea-170"],
+    "ideaIds": [
+      "idea-166",
+      "idea-168",
+      "idea-171",
+      "idea-173",
+      "idea-170"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-14T00:04:00Z",
@@ -2493,8 +2654,53 @@
       "Cvent sponsor engagement revenue and ROI reporting",
       "WeddingPro vendor lead and booking marketplace capability"
     ],
-    "sourceCandidates": ["s284", "s285", "s286", "s287", "s288", "s289", "s290", "s291", "s292", "s293", "s294", "s295", "s296", "s297", "s298", "s299", "s300", "s301"],
-    "inclusions": ["idea-001", "idea-002", "idea-004", "idea-005", "idea-006", "idea-061", "idea-062", "idea-063", "idea-064", "idea-065", "idea-206", "idea-207", "idea-208", "idea-209", "idea-210", "idea-219", "idea-220", "idea-221", "idea-222", "idea-223", "idea-082", "idea-083", "idea-084", "idea-085", "idea-086"],
+    "sourceCandidates": [
+      "s284",
+      "s285",
+      "s286",
+      "s287",
+      "s288",
+      "s289",
+      "s290",
+      "s291",
+      "s292",
+      "s293",
+      "s294",
+      "s295",
+      "s296",
+      "s297",
+      "s298",
+      "s299",
+      "s300",
+      "s301"
+    ],
+    "inclusions": [
+      "idea-001",
+      "idea-002",
+      "idea-004",
+      "idea-005",
+      "idea-006",
+      "idea-061",
+      "idea-062",
+      "idea-063",
+      "idea-064",
+      "idea-065",
+      "idea-206",
+      "idea-207",
+      "idea-208",
+      "idea-209",
+      "idea-210",
+      "idea-219",
+      "idea-220",
+      "idea-221",
+      "idea-222",
+      "idea-223",
+      "idea-082",
+      "idea-083",
+      "idea-084",
+      "idea-085",
+      "idea-086"
+    ],
     "exclusions": [],
     "claimsChanged": [
       "The five AI and evaluation concepts are reassessed down: GitHub, MLflow, CodeQL Autofix, and a documented public transparency index absorb generic registries, comparisons, rankings, and remediation. Residuals require buyer-owned cases, accepted oracles, versioned methods, human release authority, or custom-query regression evidence.",
@@ -2531,11 +2737,209 @@
       "prereg-idea-085-1bccacfb154f",
       "prereg-idea-086-3d21f0124663"
     ],
-    "ideaIds": ["idea-001", "idea-002", "idea-004", "idea-005", "idea-006", "idea-061", "idea-062", "idea-063", "idea-064", "idea-065", "idea-206", "idea-207", "idea-208", "idea-209", "idea-210", "idea-219", "idea-220", "idea-221", "idea-222", "idea-223", "idea-082", "idea-083", "idea-084", "idea-085", "idea-086"],
+    "ideaIds": [
+      "idea-001",
+      "idea-002",
+      "idea-004",
+      "idea-005",
+      "idea-006",
+      "idea-061",
+      "idea-062",
+      "idea-063",
+      "idea-064",
+      "idea-065",
+      "idea-206",
+      "idea-207",
+      "idea-208",
+      "idea-209",
+      "idea-210",
+      "idea-219",
+      "idea-220",
+      "idea-221",
+      "idea-222",
+      "idea-223",
+      "idea-082",
+      "idea-083",
+      "idea-084",
+      "idea-085",
+      "idea-086"
+    ],
     "agent": "codex-phaseshift",
     "methodVersion": "omega-xiii-preregistered-desk-commercial-v1",
     "startedAt": "2026-08-14T11:27:00Z",
     "endedAt": "2026-08-14T11:33:00Z",
     "reviewStatus": "desk_research_integrated_not_independent_not_lifecycle_eligible"
+  },
+  {
+    "runId": "run-res-017-20260817-expansion-vii-transition-failure-detectors",
+    "baselineCommit": "c665bd900f3f6e68dd1fefaf1599713076266854",
+    "questions": [
+      "Which research-approved concepts have a bounded, cheap buyer-validation experiment?",
+      "Which forcing functions are reported but still lack buyer, data, and payment evidence?",
+      "Which generic adjacent concepts should remain rejected or archived?"
+    ],
+    "queries": [
+      "EU customs product identity and supplier evidence",
+      "industrial permitting evidence reconciliation",
+      "TLS lifecycle and T+1 operational deadlines",
+      "customs and permitting competitor/negative-space review"
+    ],
+    "sourceCandidates": [],
+    "inclusions": [
+      "candidate-a51225f5-a56e-5528-98b8-14200a96a89d",
+      "candidate-f276144f-160c-5546-89fc-99e2ce04df55"
+    ],
+    "exclusions": [
+      "generic customs catalog",
+      "generic e-invoicing",
+      "generic eFTI",
+      "generic DPP",
+      "generic CRA",
+      "generic PPWR",
+      "generic right-to-repair",
+      "generic compliance dashboard"
+    ],
+    "claimsChanged": [
+      "PIDRelay and PermitEcho are staged as the only approved validation tracks from the attached report.",
+      "The report's 8.3 and 8.2 scores are analyst hypotheses and are excluded from canonical ranking.",
+      "No direct buyer interview, protected dataset, transaction, paid pilot, or validation claim was earned.",
+      "PIDRelay carries a short regulatory-half-life risk; PermitEcho is retained as a structural evidence-debt hypothesis."
+    ],
+    "deduplicationDecisions": {
+      "PIDRelay": "stage_narrow_supplier_pid_preflight",
+      "PermitEcho": "stage_narrow_permit_evidence_reconciliation",
+      "generic_compliance_concepts": "reject_or_archive"
+    },
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "PIDRelay — Supplier PID Recovery & EU Customs Catalog Preflight",
+        "analystProvisionalScore": 8.3,
+        "targetRefs": [
+          "candidate-a51225f5-a56e-5528-98b8-14200a96a89d"
+        ],
+        "nextGate": "Run a 48-hour audit experiment with 40–60 qualified sellers; pass only with 3 prepaid audits or 5 real datasets plus 2 paid follow-ups."
+      },
+      {
+        "rank": 2,
+        "proposal": "PermitEcho — Industrial Permit Evidence Reconciler",
+        "analystProvisionalScore": 8.2,
+        "targetRefs": [
+          "candidate-f276144f-160c-5546-89fc-99e2ce04df55"
+        ],
+        "nextGate": "Contact permitting consultants and development managers, replay a messy historical project, and secure a paid evidence-debt audit before building a durable product."
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "track": "A",
+        "proposal": "PIDRelay — Supplier PID Recovery & EU Customs Catalog Preflight",
+        "duration": "48h",
+        "acceptanceGate": "3 prepaid audits or 5 real datasets plus 2 paid follow-ups",
+        "killGate": "0 payments after 100 qualified targets and 15 conversations"
+      },
+      {
+        "track": "B",
+        "proposal": "PermitEcho — Industrial Permit Evidence Reconciler",
+        "duration": "manual-first",
+        "acceptanceGate": "paid evidence-debt audit on a messy historical project",
+        "killGate": "no representative data, expert rejection, or no paid audit"
+      }
+    ],
+    "attachment": {
+      "sha256": "F876330B7DB147BD1BD61DD7DB638D7EFC64D50B4EDAAC7CCBB6949F5B936555",
+      "lines": 1132,
+      "copiesProcessed": 1
+    },
+    "agent": "research-intelligence-agent",
+    "methodVersion": "deep-research-expansion-vii-transition-failure-detectors-v1",
+    "startedAt": "2026-08-17T12:00:00+00:00",
+    "endedAt": "2026-08-17T12:00:00+00:00",
+    "reviewStatus": "approved_for_private_staging_and_validation_not_canonical_promotion"
+  },
+  {
+    "runId": "run-res-018-20260817-omega-xiv-capital-clock",
+    "baselineCommit": "c665bd900f3f6e68dd1fefaf1599713076266854",
+    "questions": [
+      "Where is capital moving and what evidence controls its next state?",
+      "Which clocks are actionable for a founder and which are already too compressed?",
+      "Does the capital control point already exist in Venture Atlas?"
+    ],
+    "queries": [
+      "European grids connection queues maturity first-ready first-served",
+      "Net-Zero Industry Act non-price procurement criteria",
+      "SAFE 150 billion component origin 35 percent",
+      "EIC STEP Scale Up 2026",
+      "Public Sector Loan Facility call"
+    ],
+    "sourceCandidates": [
+      "s302",
+      "s303",
+      "s304",
+      "s305",
+      "s306"
+    ],
+    "inclusions": [
+      "candidate-515b03fb-650a-5ed4-8232-941c589dc1fb",
+      "candidate-19048401-c4da-583c-adb5-58d33698daaf",
+      "candidate-bdf94d85-7bd8-5d25-9d5a-8f9af3eb1510",
+      "queueready-grid-connection-readiness-os"
+    ],
+    "exclusions": [
+      "RRF August rescue standalone venture",
+      "IRIS2 terminal readiness as new venture",
+      "generic grant finder",
+      "generic funding dashboard",
+      "generic AI gigafactory software"
+    ],
+    "claimsChanged": [
+      "Capital Clock is now represented as programmes, gates, and clocks with null-first amounts and explicit state.",
+      "NZIA BidProof and SAFE OriginTrace are new staged hypotheses; QueueReady is re-underwritten rather than rediscovered.",
+      "RRF and IRIS2 are clock-compressed examples and are not promoted into new venture candidates.",
+      "No capital headline is treated as addressable market, disbursement, buyer demand, or validation."
+    ],
+    "validationPriorityQueue": [
+      {
+        "rank": 1,
+        "proposal": "NZIA BidProof — Non-Price Tender Evidence Capsule",
+        "status": "NEW / DEEP RESEARCH"
+      },
+      {
+        "rank": 2,
+        "proposal": "SAFE OriginTrace — Component-Cost & Design-Control Evidence Graph",
+        "status": "NEW / DEEP RESEARCH"
+      },
+      {
+        "rank": 3,
+        "proposal": "QueueReady — Grid Connection Readiness OS",
+        "status": "EXISTING / RE-UNDERWRITE"
+      }
+    ],
+    "immediateExperiments": [
+      {
+        "proposal": "NZIA BidProof — Non-Price Tender Evidence Capsule",
+        "artifact": "bid-evidence preflight",
+        "acceptance": "3 payments or 5 real bid packs plus 2 paid follow-ups"
+      },
+      {
+        "proposal": "SAFE OriginTrace — Component-Cost & Design-Control Evidence Graph",
+        "artifact": "redacted component-origin evidence map",
+        "acceptance": "one procurement or supplier-quality owner accepts usefulness and pays for follow-up"
+      },
+      {
+        "proposal": "QueueReady — Grid Connection Readiness OS",
+        "artifact": "readiness dossier audit",
+        "acceptance": "one real project, measurable time saved, and paid follow-up"
+      }
+    ],
+    "attachment": {
+      "sha256": "recorded-in-user-attachment",
+      "copiesProcessed": 1
+    },
+    "agent": "research-intelligence-agent",
+    "methodVersion": "omega-xiv-capital-clock-p0-v1",
+    "startedAt": "2026-08-17T12:30:00+00:00",
+    "endedAt": "2026-08-17T12:30:00+00:00",
+    "reviewStatus": "deep_research_integrated_not_validation_not_canonical_promotion"
   }
 ]

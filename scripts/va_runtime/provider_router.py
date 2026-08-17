@@ -21,6 +21,7 @@ from .atomic_io import atomic_write_json, read_json_safe
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CONFIG_PATH = os.path.join(ROOT, "config", "providers.json")
+AGENT_SYSTEM_PROVIDER_REGISTRY_PATH = os.path.join(ROOT, ".agent-system", "provider-registry.json")
 
 class KeyState:
     def __init__(self, key: str, provider: str, index: int):
@@ -54,8 +55,9 @@ class NoEligibleProviderError(RuntimeError):
     pass
 
 class CapabilityProviderScheduler:
-    def __init__(self, config_path: str = CONFIG_PATH):
+    def __init__(self, config_path: str = CONFIG_PATH, registry_path: str = AGENT_SYSTEM_PROVIDER_REGISTRY_PATH):
         self.config_path = config_path
+        self.registry_path = registry_path
         self.registry: Dict[str, Any] = {}
         self.key_pools: Dict[str, List[KeyState]] = {}
         self.rr_indices: Dict[str, int] = {}
@@ -185,10 +187,27 @@ class CapabilityProviderScheduler:
         except Exception as e:
             return False, f"INVALID_FORMAT_{e}"
 
+    def _registry_health(self, max_stale_hours: float) -> Dict[str, Any]:
+        """Read live health receipts and expose stale state explicitly."""
+        if not os.path.exists(self.registry_path):
+            return {"status": "MISSING_UNVERIFIED", "checkedAt": None, "ageHours": None}
+        try:
+            registry = read_json_safe(self.registry_path, default_if_missing={})
+            checked_at = registry.get("lastHealthCheck")
+            fresh, reason = self.check_health_freshness(checked_at, max_stale_hours)
+            age_hours = None
+            if checked_at:
+                ts = datetime.datetime.fromisoformat(checked_at.replace("Z", "+00:00"))
+                age_hours = round((datetime.datetime.now(datetime.timezone.utc) - ts).total_seconds() / 3600.0, 2)
+            return {"status": "FRESH" if fresh else "STALE_UNVERIFIED", "reason": reason, "checkedAt": checked_at, "ageHours": age_hours, "providers": registry.get("providers", {})}
+        except Exception as exc:
+            return {"status": "INVALID_UNVERIFIED", "reason": str(exc), "checkedAt": None, "ageHours": None, "providers": {}}
+
     def get_provider_health_summary(self, max_stale_hours: float = 24.0) -> Dict[str, Any]:
         """Return comprehensive status of providers with explicit freshness flagging."""
         self._load_config()
         providers = self.registry.get("providers", {})
+        registry_health = self._registry_health(max_stale_hours)
         summary = {}
         for p_id, p_cfg in providers.items():
             if p_id == "own-orch":
@@ -196,6 +215,7 @@ class CapabilityProviderScheduler:
                     "tier": 0,
                     "status": "HEALTHY_DETERMINISTIC",
                     "healthy": True,
+                    "healthEvidence": registry_health,
                     "cost": "free",
                     "reasoning": "rule-based"
                 }
@@ -203,12 +223,19 @@ class CapabilityProviderScheduler:
             pool = self.key_pools.get(p_id, [])
             active_keys = [ks for ks in pool if not ks.disabled and time.time() >= ks.cooldown_until]
             is_configured = len(active_keys) > 0
+            evidence = registry_health.get("providers", {}).get(p_id, {})
+            health_verified = (
+                registry_health["status"] == "FRESH"
+                and evidence.get("healthy") is True
+                and evidence.get("verificationStatus", "").startswith("VERIFIED_")
+            )
             summary[p_id] = {
                 "tier": p_cfg.get("tier", 99),
                 "configured": is_configured,
-                "healthy": is_configured,
-                "status": "ACTIVE_KEYS_AVAILABLE" if is_configured else "UNCONFIGURED_OR_NO_KEYS",
+                "healthy": is_configured and health_verified,
+                "status": ("ACTIVE_KEYS_AVAILABLE" if health_verified else evidence.get("verificationStatus", registry_health["status"])) if is_configured else "UNCONFIGURED_OR_NO_KEYS",
                 "activeKeyCount": len(active_keys),
+                "healthEvidence": registry_health,
                 "cost": p_cfg.get("cost", "variable"),
                 "reasoning": p_cfg.get("reasoning", "")
             }

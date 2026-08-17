@@ -56,7 +56,7 @@ def main():
         print(receipt["reason"])
         return 0
 
-    health = health_check()
+    health = health_check(probe_external=True)
     scheduler = get_provider_scheduler()
     eligible = scheduler.select_providers_for_task(
         required_capabilities=None,

@@ -7,7 +7,7 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 <!-- BEGIN GENERATED CURRENT INVENTORY -->
 - **294 canonical ideas** (0 staged, 294 total)
 - **122 categories**
-- **301 source inventory records**
+- **306 source inventory records**
 - **4,425 idea-specific prompts** plus master prompts
 - **382 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
 - **60/294 financial models**, **60/294 validation plans**, **60/294 technical blueprints**, and **60/294 launch plans**
@@ -27,6 +27,8 @@ Scores are decision-support tools, not guarantees. Revenue ranges are scenarios,
 ## Run locally
 
 ```bash
+npm ci
+python -m pip install --disable-pip-version-check -r services/ventureatlas-worker/requirements.txt
 python -m http.server 8000
 # open http://localhost:8000
 ```
@@ -39,6 +41,10 @@ npm run validate
 npm run check-js
 npm run check-links
 ```
+
+The Python requirements are needed for the complete `npm run quality:source`
+chain, including worker contract tests. `npm ci` alone only installs the
+Node.js dependencies.
 
 ## Deploy to GitHub Pages
 
@@ -90,7 +96,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 - Staged Ideas: 0
 - Total Ideas: 294
 - Categories: 122
-- Source References: 301
+- Source References: 306
 - Generated Prompts: 4425
 - Last Updated: 2026-08-17
 <!-- END GENERATED REPOSITORY STATS -->

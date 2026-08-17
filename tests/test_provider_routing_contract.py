@@ -103,6 +103,24 @@ class ProviderRoutingContractTests(unittest.TestCase):
         finally:
             os.unlink(config_path)
 
+    def test_stale_registry_health_is_explicitly_unverified(self):
+        config = {"providers": {"remote": {"requiresApiKey": True, "legacyKeyEnv": "VA_TEST_REMOTE_KEY", "costClass": 0, "tier": 1}}}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as config_handle, \
+             tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as registry_handle:
+            json.dump(config, config_handle)
+            json.dump({"lastHealthCheck": "2020-01-01T00:00:00Z"}, registry_handle)
+            config_path, registry_path = config_handle.name, registry_handle.name
+        try:
+            with mock.patch.dict(os.environ, {"VA_TEST_REMOTE_KEY": "real-test-key-123456"}):
+                scheduler = CapabilityProviderScheduler(config_path, registry_path)
+            summary = scheduler.get_provider_health_summary(max_stale_hours=24)
+            self.assertEqual(summary["remote"]["status"], "STALE_UNVERIFIED")
+            self.assertFalse(summary["remote"]["healthy"])
+            self.assertEqual(summary["remote"]["healthEvidence"]["status"], "STALE_UNVERIFIED")
+        finally:
+            os.unlink(config_path)
+            os.unlink(registry_path)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/cutover-inventory-clock.schema.json",
+  "title": "Venture Atlas Cutover Inventory Clock",
+  "type": "object",
+  "required": ["schemaVersion", "records"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "generatedAt": { "type": "string" },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["cutoverId", "name", "jurisdiction", "cutoverAt", "affectedObjects", "requiredEvidence", "failureModes", "halfLife", "deadlineReliability", "preCertifierLeverage", "sourceRefs", "status"],
+      "properties": {
+        "cutoverId": { "type": "string", "pattern": "^cutover-[a-z0-9-]+$" },
+        "name": { "type": "string" },
+        "jurisdiction": { "type": "string" },
+        "cutoverAt": { "type": ["string", "null"] },
+        "affectedObjects": { "type": "array", "items": { "type": "string" } },
+        "requiredEvidence": { "type": "array", "items": { "type": "string" } },
+        "failureModes": { "type": "array", "items": { "type": "string" } },
+        "halfLife": { "enum": ["SHORT", "MEDIUM", "LONG", "UNKNOWN"] },
+        "deadlineReliability": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+        "tariffCliffSeverity": { "type": ["string", "null"] },
+        "preCertifierLeverage": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } },
+        "status": { "enum": ["UPCOMING", "ACTIVE", "PROPOSED", "EXPIRED", "UNKNOWN"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

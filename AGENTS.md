@@ -14,6 +14,14 @@
 - Run proportionate tests after changes. For release claims, use the exact generated artifact for validation, privacy scanning, digesting, and browser checks.
 ## Orchestration Layers & Single Source of Truth
 
+### Reconciled multi-agent authority
+
+`.agent-system/` is the single source of truth for live priorities, backlog status,
+runtime state, and provider-health receipts. `.agents/` is the Antigravity role,
+skill, hook, and file-ownership layer; its role files must not maintain a second
+backlog or runtime-health truth. Codex-native configuration remains under
+`.codex/`.
+
 This repository explicitly reconciles multi-agent configuration across dedicated surfaces:
 
 1. **Runtime Task, State & Priorities Authority (`.agent-system/`)**:

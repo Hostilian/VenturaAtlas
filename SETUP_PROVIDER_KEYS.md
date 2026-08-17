@@ -20,6 +20,19 @@ To enable external LLM reasoning, research synthesis, or adversarial reviews, co
 cp .env.example .env
 ```
 
+The runtime also recognizes these optional provider variables, which are not
+required for the deterministic fallback:
+
+```ini
+NVIDIA_NIM_API_KEYS=...
+NVIDIA_NIM_API_KEY=...
+NVIDIA_NIM_BASE_URL=...
+NVIDIA_NIM_MODEL=...
+COHERE_API_KEYS=...
+COHERE_API_KEY=...
+COHERE_BASE_URL=...
+```
+
 ### 2.1 Tier 1: Hermes via Ollama (Local, Free)
 - **Engine**: Local Ollama instance
 - **Setup**: Install [Ollama](https://ollama.com) and pull the model:
@@ -88,7 +101,8 @@ cp .env.example .env
    - Auth invalid (HTTP 401/403): Invalid key is immediately disabled in the active pool and logged.
    - Provider circuit opens after 3 consecutive failures for 180 seconds.
 3. **Freshness Guard**:
-   - Provider health states older than 24 hours in `.agent-system/provider-registry.json` are automatically flagged as `STALE_UNVERIFIED`.
+   - Provider health states older than 24 hours in `.agent-system/provider-registry.json` are flagged as `STALE_UNVERIFIED` by the runtime summary.
+   - A configured key is not a healthy provider: `python scripts/va_orchestrator.py --test` performs a bounded real provider probe and only a successful response is verified.
 
 ---
 

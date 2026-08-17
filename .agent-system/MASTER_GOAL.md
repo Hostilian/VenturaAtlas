@@ -1,5 +1,13 @@
 # VENTURAATLAS — MASTER GOAL DIRECTIVE & CONTINUOUS OPERATING CONSTITUTION
 
+## 0. AUTHORITY BOUNDARY
+
+This directory is the live coordination authority for goals, backlog priorities,
+runtime state, and provider-health receipts. Rich Antigravity role and skill
+definitions live under `.agents/`; Codex-native configuration lives under
+`.codex/`. Those layers describe ownership and capability, but must not duplicate
+or override this directory's live task state.
+
 ## 1. VISION
 VenturaAtlas is a transparent, evidence-aware, static-first business opportunity intelligence platform and venture discovery atlas. It helps founders, builders, and investors systematically discover, validate, compare, and rank high-potential startup opportunities backed by verified market signals and AI buildability models.
 

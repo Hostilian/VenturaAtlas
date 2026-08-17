@@ -4004,7 +4004,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-401"],
+    "ideaIds": [
+      "idea-401"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4025,7 +4027,11 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-264", "idea-295", "idea-371"],
+    "ideaIds": [
+      "idea-264",
+      "idea-295",
+      "idea-371"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4046,7 +4052,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-261", "idea-376"],
+    "ideaIds": [
+      "idea-261",
+      "idea-376"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4067,7 +4076,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-261", "idea-376"],
+    "ideaIds": [
+      "idea-261",
+      "idea-376"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4088,7 +4100,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-379"],
+    "ideaIds": [
+      "idea-379"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4109,7 +4123,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-379"],
+    "ideaIds": [
+      "idea-379"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4130,7 +4146,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-215"],
+    "ideaIds": [
+      "idea-215"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4151,7 +4169,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-215"],
+    "ideaIds": [
+      "idea-215"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4172,7 +4192,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-phaseshift",
-    "ideaIds": ["idea-376"],
+    "ideaIds": [
+      "idea-376"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4193,7 +4215,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-commercial-disconfirmation",
-    "ideaIds": ["idea-215"],
+    "ideaIds": [
+      "idea-215"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4214,7 +4238,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-commercial-disconfirmation",
-    "ideaIds": ["idea-215"],
+    "ideaIds": [
+      "idea-215"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4235,7 +4261,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-commercial-disconfirmation",
-    "ideaIds": ["idea-376"],
+    "ideaIds": [
+      "idea-376"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4256,7 +4284,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-commercial-disconfirmation",
-    "ideaIds": ["idea-379"],
+    "ideaIds": [
+      "idea-379"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4277,7 +4307,11 @@
     "confidenceLabel": "medium",
     "sourceType": "stakeholder",
     "researchRound": "omega-xiii-commercial-disconfirmation",
-    "ideaIds": ["idea-264", "idea-295", "idea-371"],
+    "ideaIds": [
+      "idea-264",
+      "idea-295",
+      "idea-371"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMMUNITY",
     "evidenceEligible": false,
@@ -4319,7 +4353,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-273", "idea-395"],
+    "ideaIds": [
+      "idea-273",
+      "idea-395"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4340,7 +4377,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-398"],
+    "ideaIds": [
+      "idea-398"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4361,7 +4400,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-398"],
+    "ideaIds": [
+      "idea-398"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4382,7 +4423,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-377"],
+    "ideaIds": [
+      "idea-377"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4403,7 +4446,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-383"],
+    "ideaIds": [
+      "idea-383"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4424,7 +4469,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-383"],
+    "ideaIds": [
+      "idea-383"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4445,7 +4492,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-383"],
+    "ideaIds": [
+      "idea-383"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4466,7 +4515,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-342"],
+    "ideaIds": [
+      "idea-342"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4487,7 +4538,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-342"],
+    "ideaIds": [
+      "idea-342"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4508,7 +4561,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-342"],
+    "ideaIds": [
+      "idea-342"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4550,7 +4605,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-undercovered-opportunities",
-    "ideaIds": ["idea-383"],
+    "ideaIds": [
+      "idea-383"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4571,7 +4628,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-276", "idea-362"],
+    "ideaIds": [
+      "idea-276",
+      "idea-362"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4592,7 +4652,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-276"],
+    "ideaIds": [
+      "idea-276"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4613,7 +4675,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-262"],
+    "ideaIds": [
+      "idea-262"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4634,7 +4698,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-262"],
+    "ideaIds": [
+      "idea-262"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4655,7 +4721,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-262"],
+    "ideaIds": [
+      "idea-262"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4676,7 +4744,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-262"],
+    "ideaIds": [
+      "idea-262"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4697,7 +4767,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-268"],
+    "ideaIds": [
+      "idea-268"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4718,7 +4790,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-268"],
+    "ideaIds": [
+      "idea-268"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4739,7 +4813,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-268"],
+    "ideaIds": [
+      "idea-268"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4760,7 +4836,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-349"],
+    "ideaIds": [
+      "idea-349"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4781,7 +4859,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-349"],
+    "ideaIds": [
+      "idea-349"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4802,7 +4882,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-349"],
+    "ideaIds": [
+      "idea-349"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4823,7 +4905,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-291"],
+    "ideaIds": [
+      "idea-291"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4844,7 +4928,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-industrial-commerce",
-    "ideaIds": ["idea-291"],
+    "ideaIds": [
+      "idea-291"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4865,7 +4951,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-277"],
+    "ideaIds": [
+      "idea-277"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4886,7 +4974,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-277"],
+    "ideaIds": [
+      "idea-277"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4907,7 +4997,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-277"],
+    "ideaIds": [
+      "idea-277"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4928,7 +5020,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-277"],
+    "ideaIds": [
+      "idea-277"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -4949,7 +5043,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-174"],
+    "ideaIds": [
+      "idea-174"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4970,7 +5066,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-174"],
+    "ideaIds": [
+      "idea-174"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -4991,7 +5089,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-174"],
+    "ideaIds": [
+      "idea-174"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5012,7 +5112,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-174"],
+    "ideaIds": [
+      "idea-174"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5033,7 +5135,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-174"],
+    "ideaIds": [
+      "idea-174"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5054,7 +5158,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-172"],
+    "ideaIds": [
+      "idea-172"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5075,7 +5181,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-265"],
+    "ideaIds": [
+      "idea-265"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5096,7 +5204,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-265"],
+    "ideaIds": [
+      "idea-265"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5117,7 +5227,9 @@
     "confidenceLabel": "medium",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-327"],
+    "ideaIds": [
+      "idea-327"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5138,7 +5250,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-science-procurement",
-    "ideaIds": ["idea-327"],
+    "ideaIds": [
+      "idea-327"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5159,7 +5273,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-169"],
+    "ideaIds": [
+      "idea-169"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5180,7 +5296,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-169"],
+    "ideaIds": [
+      "idea-169"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5201,7 +5319,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-304"],
+    "ideaIds": [
+      "idea-304"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5222,7 +5342,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-304"],
+    "ideaIds": [
+      "idea-304"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5243,7 +5365,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-213"],
+    "ideaIds": [
+      "idea-213"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5264,7 +5388,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-213"],
+    "ideaIds": [
+      "idea-213"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5285,7 +5411,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-360"],
+    "ideaIds": [
+      "idea-360"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5306,7 +5434,9 @@
     "confidenceLabel": "high",
     "sourceType": "company_or_industry",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-360"],
+    "ideaIds": [
+      "idea-360"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5327,7 +5457,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary_specification",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-374"],
+    "ideaIds": [
+      "idea-374"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5348,7 +5480,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-374"],
+    "ideaIds": [
+      "idea-374"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5369,7 +5503,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-374"],
+    "ideaIds": [
+      "idea-374"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5390,7 +5526,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-public-primitive-countertrend",
-    "ideaIds": ["idea-374"],
+    "ideaIds": [
+      "idea-374"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5411,7 +5549,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-299", "idea-361"],
+    "ideaIds": [
+      "idea-299",
+      "idea-361"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5432,7 +5573,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-299"],
+    "ideaIds": [
+      "idea-299"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5453,7 +5596,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-281"],
+    "ideaIds": [
+      "idea-281"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5474,7 +5619,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-281"],
+    "ideaIds": [
+      "idea-281"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5495,7 +5642,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-382"],
+    "ideaIds": [
+      "idea-382"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5516,7 +5665,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-393", "idea-397"],
+    "ideaIds": [
+      "idea-393",
+      "idea-397"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5537,7 +5689,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-393", "idea-397"],
+    "ideaIds": [
+      "idea-393",
+      "idea-397"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5558,7 +5713,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-393", "idea-397"],
+    "ideaIds": [
+      "idea-393",
+      "idea-397"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5579,7 +5737,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-400"],
+    "ideaIds": [
+      "idea-400"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5600,7 +5760,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-physical-regulatory",
-    "ideaIds": ["idea-400"],
+    "ideaIds": [
+      "idea-400"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5621,7 +5783,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-175"],
+    "ideaIds": [
+      "idea-175"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5642,7 +5806,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-175"],
+    "ideaIds": [
+      "idea-175"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5663,7 +5829,9 @@
     "confidenceLabel": "medium",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-270"],
+    "ideaIds": [
+      "idea-270"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5684,7 +5852,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-293"],
+    "ideaIds": [
+      "idea-293"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5705,7 +5875,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-310"],
+    "ideaIds": [
+      "idea-310"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5726,7 +5898,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-310"],
+    "ideaIds": [
+      "idea-310"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5747,7 +5921,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-310"],
+    "ideaIds": [
+      "idea-310"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5768,7 +5944,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-403"],
+    "ideaIds": [
+      "idea-403"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5789,7 +5967,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-qualification-evidence",
-    "ideaIds": ["idea-403"],
+    "ideaIds": [
+      "idea-403"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5810,7 +5990,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-385"],
+    "ideaIds": [
+      "idea-385"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5831,7 +6013,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-373"],
+    "ideaIds": [
+      "idea-373"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5852,7 +6036,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-396"],
+    "ideaIds": [
+      "idea-396"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5873,7 +6059,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-386"],
+    "ideaIds": [
+      "idea-386"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5894,7 +6082,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-386"],
+    "ideaIds": [
+      "idea-386"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -5915,7 +6105,9 @@
     "confidenceLabel": "medium",
     "sourceType": "primary",
     "researchRound": "omega-xiii-cross-system-authority",
-    "ideaIds": ["idea-341"],
+    "ideaIds": [
+      "idea-341"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5936,7 +6128,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-operational-authority",
-    "ideaIds": ["idea-363"],
+    "ideaIds": [
+      "idea-363"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5957,7 +6151,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-operational-authority",
-    "ideaIds": ["idea-362"],
+    "ideaIds": [
+      "idea-362"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5978,7 +6174,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-operational-authority",
-    "ideaIds": ["idea-273"],
+    "ideaIds": [
+      "idea-273"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -5999,7 +6197,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-lifecycle",
-    "ideaIds": ["idea-166"],
+    "ideaIds": [
+      "idea-166"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6020,7 +6220,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-lifecycle",
-    "ideaIds": ["idea-168"],
+    "ideaIds": [
+      "idea-168"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6041,7 +6243,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-lifecycle",
-    "ideaIds": ["idea-173"],
+    "ideaIds": [
+      "idea-173"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6062,7 +6266,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-lifecycle",
-    "ideaIds": ["idea-171"],
+    "ideaIds": [
+      "idea-171"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6083,7 +6289,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-industrial-lifecycle",
-    "ideaIds": ["idea-170"],
+    "ideaIds": [
+      "idea-170"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6104,7 +6312,12 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-001", "idea-002", "idea-004", "idea-005"],
+    "ideaIds": [
+      "idea-001",
+      "idea-002",
+      "idea-004",
+      "idea-005"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6125,7 +6338,11 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-001", "idea-002", "idea-005"],
+    "ideaIds": [
+      "idea-001",
+      "idea-002",
+      "idea-005"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6146,7 +6363,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-002", "idea-004"],
+    "ideaIds": [
+      "idea-002",
+      "idea-004"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6167,7 +6387,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-006"],
+    "ideaIds": [
+      "idea-006"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6188,7 +6410,11 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-061", "idea-062", "idea-063"],
+    "ideaIds": [
+      "idea-061",
+      "idea-062",
+      "idea-063"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6209,7 +6435,11 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-061", "idea-064", "idea-065"],
+    "ideaIds": [
+      "idea-061",
+      "idea-064",
+      "idea-065"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6230,7 +6460,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-207"],
+    "ideaIds": [
+      "idea-207"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6251,7 +6483,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-210"],
+    "ideaIds": [
+      "idea-210"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6272,7 +6506,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-209"],
+    "ideaIds": [
+      "idea-209"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6293,7 +6529,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-208"],
+    "ideaIds": [
+      "idea-208"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6314,7 +6552,9 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-206"],
+    "ideaIds": [
+      "idea-206"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
@@ -6335,7 +6575,12 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-219", "idea-220", "idea-222", "idea-223"],
+    "ideaIds": [
+      "idea-219",
+      "idea-220",
+      "idea-222",
+      "idea-223"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6356,7 +6601,9 @@
     "confidenceLabel": "medium",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-221"],
+    "ideaIds": [
+      "idea-221"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6377,7 +6624,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-221", "idea-222"],
+    "ideaIds": [
+      "idea-221",
+      "idea-222"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6398,7 +6648,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-082", "idea-084"],
+    "ideaIds": [
+      "idea-082",
+      "idea-084"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6419,7 +6672,11 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-082", "idea-084", "idea-086"],
+    "ideaIds": [
+      "idea-082",
+      "idea-084",
+      "idea-086"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6440,7 +6697,10 @@
     "confidenceLabel": "high",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-084", "idea-085"],
+    "ideaIds": [
+      "idea-084",
+      "idea-085"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
@@ -6461,9 +6721,117 @@
     "confidenceLabel": "medium",
     "sourceType": "primary",
     "researchRound": "omega-xiii-final-coverage",
-    "ideaIds": ["idea-083", "idea-086"],
+    "ideaIds": [
+      "idea-083",
+      "idea-086"
+    ],
     "visibility": "PUBLIC",
     "sourceClass": "COMPANY_OR_INDUSTRY",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s302",
+    "title": "European grids",
+    "publisher": "European Commission — DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/infrastructure/european-grids_en",
+    "supports": [
+      "Grid connection queues are reported in at least 16 EU countries",
+      "The Commission guidance recommends maturity criteria and first-ready first-served"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s303",
+    "title": "The Net-Zero Industry Act",
+    "publisher": "European Commission — DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/industry/sustainability/net-zero-industry-act_en",
+    "supports": [
+      "NZIA creates mandatory non-price criteria in specified procurement and renewable auctions",
+      "Criteria include sustainability, resilience, cybersecurity, responsible conduct, and timely delivery"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s304",
+    "title": "SAFE — Security Action for Europe",
+    "publisher": "European Commission — DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/eu-defence-industry/safe-security-action-europe_en",
+    "supports": [
+      "SAFE provides up to 150 billion euros in long-maturity loans",
+      "Procurement contracts must keep outside-EU/EEA-EFTA/Ukraine component costs at no more than 35 percent"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s305",
+    "title": "The EIC selects new European scale-ups for STEP Scale Up investments",
+    "publisher": "European Innovation Council",
+    "url": "https://eic.ec.europa.eu/news/eic-selects-new-european-scale-ups-step-scale-investments-2026-07-28_en",
+    "supports": [
+      "The EIC reports 2026 STEP Scale Up selection and batching context",
+      "The programme is a concentrated scale-up financing channel, not broad SMB demand"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s306",
+    "title": "Second Call of the Public Sector Loan Facility",
+    "publisher": "European Climate, Infrastructure and Environment Executive Agency",
+    "url": "https://cinea.ec.europa.eu/news-events/news/second-call-proposals-under-public-sector-loan-facility-now-open-2025-10-23_en",
+    "supports": [
+      "The facility combines grant support with EIB lending",
+      "Public-sector applicant and procurement friction remains a key commercial risk"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
   }

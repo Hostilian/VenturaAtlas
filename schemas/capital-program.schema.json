@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/capital-program.schema.json",
+  "title": "Venture Atlas Capital Program",
+  "type": "object",
+  "required": ["schemaVersion", "programs"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "programs": { "type": "array", "items": { "$ref": "#/$defs/program" } }
+  },
+  "$defs": {
+    "nullableNumber": { "type": ["number", "null"] },
+    "program": {
+      "type": "object",
+      "required": ["capitalProgramId", "name", "capitalType", "status", "headlineAmount", "contestableAmount", "currentlyAvailableAmount", "currency", "eligibleActors", "sourceRefs", "checkedAt", "confidence"],
+      "properties": {
+        "capitalProgramId": { "type": "string", "pattern": "^cap-[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "jurisdiction": { "type": "string" },
+        "authority": { "type": "string" },
+        "capitalType": { "enum": ["GRANT", "LOAN", "PROCUREMENT", "AUCTION", "EQUITY", "MIXED", "INFRASTRUCTURE_CAPEX", "UNKNOWN"] },
+        "headlineAmount": { "$ref": "#/$defs/nullableNumber" },
+        "contestableAmount": { "$ref": "#/$defs/nullableNumber" },
+        "currentlyAvailableAmount": { "$ref": "#/$defs/nullableNumber" },
+        "currency": { "type": "string" },
+        "status": { "enum": ["RUMOURED", "PROPOSED", "LEGISLATED", "AUTHORIZED", "APPROPRIATED", "ALLOCATED", "CALL_PLANNED", "CALL_OPEN", "DEPLOYING", "COMPLETED", "EXPIRED", "UNKNOWN"] },
+        "announcedAt": { "type": ["string", "null"] },
+        "authorizedAt": { "type": ["string", "null"] },
+        "openedAt": { "type": ["string", "null"] },
+        "applicationDeadline": { "type": ["string", "null"] },
+        "awardExpectedAt": { "type": ["string", "null"] },
+        "contractDeadline": { "type": ["string", "null"] },
+        "completionDeadline": { "type": ["string", "null"] },
+        "paymentDeadline": { "type": ["string", "null"] },
+        "recurrence": { "type": ["string", "null"] },
+        "eligibleActors": { "type": "array", "items": { "type": "string" } },
+        "capitalRecipients": { "type": "array", "items": { "type": "string" } },
+        "coFinancingRequired": { "$ref": "#/$defs/nullableNumber" },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } },
+        "checkedAt": { "type": "string" },
+        "confidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

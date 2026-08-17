@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://venture-atlas.example/schemas/capital-clock-ledger.schema.json",
+  "title": "Venture Atlas Capital Clock Ledger",
+  "type": "object",
+  "required": ["schemaVersion", "clocks"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "clocks": { "type": "array", "items": { "$ref": "#/$defs/clock" } }
+  },
+  "$defs": {
+    "clock": {
+      "type": "object",
+      "required": ["clockId", "programId", "clockType", "startsAt", "expiresAt", "state", "requiredObjects", "failureEffect", "sourceRefs", "checkedAt", "confidence"],
+      "properties": {
+        "clockId": { "type": "string", "pattern": "^clock-[a-z0-9-]+$" },
+        "programId": { "type": "string", "pattern": "^cap-[a-z0-9-]+$" },
+        "clockType": { "enum": ["APPLICATION_CLOCK", "PROCUREMENT_CLOCK", "QUEUE_CLOCK", "ELIGIBILITY_CLOCK", "MILESTONE_CLOCK", "EVIDENCE_CLOCK", "DISBURSEMENT_CLOCK", "PAYMENT_CLOCK", "RENEWAL_CLOCK", "UNKNOWN"] },
+        "startsAt": { "type": ["string", "null"] },
+        "expiresAt": { "type": ["string", "null"] },
+        "state": { "enum": ["OPEN", "UPCOMING", "EXPIRED", "UNKNOWN", "PROPOSED"] },
+        "requiredObjects": { "type": "array", "items": { "type": "string" } },
+        "responsibleActors": { "type": "array", "items": { "type": "string" } },
+        "failureEffect": { "type": "string" },
+        "capitalAtRisk": { "type": ["number", "null"] },
+        "remediationTimeEstimate": { "type": ["string", "null"] },
+        "sourceRefs": { "type": "array", "items": { "type": "string" } },
+        "checkedAt": { "type": "string" },
+        "confidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -6495,5 +6495,110 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "id": "s302",
+    "title": "European grids",
+    "publisher": "European Commission — DG Energy",
+    "url": "https://energy.ec.europa.eu/topics/infrastructure/european-grids_en",
+    "supports": [
+      "Grid connection queues are reported in at least 16 EU countries",
+      "The Commission guidance recommends maturity criteria and first-ready first-served"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s303",
+    "title": "The Net-Zero Industry Act",
+    "publisher": "European Commission — DG GROW",
+    "url": "https://single-market-economy.ec.europa.eu/industry/sustainability/net-zero-industry-act_en",
+    "supports": [
+      "NZIA creates mandatory non-price criteria in specified procurement and renewable auctions",
+      "Criteria include sustainability, resilience, cybersecurity, responsible conduct, and timely delivery"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s304",
+    "title": "SAFE — Security Action for Europe",
+    "publisher": "European Commission — DG DEFIS",
+    "url": "https://defence-industry-space.ec.europa.eu/eu-defence-industry/safe-security-action-europe_en",
+    "supports": [
+      "SAFE provides up to 150 billion euros in long-maturity loans",
+      "Procurement contracts must keep outside-EU/EEA-EFTA/Ukraine component costs at no more than 35 percent"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s305",
+    "title": "The EIC selects new European scale-ups for STEP Scale Up investments",
+    "publisher": "European Innovation Council",
+    "url": "https://eic.ec.europa.eu/news/eic-selects-new-european-scale-ups-step-scale-investments-2026-07-28_en",
+    "supports": [
+      "The EIC reports 2026 STEP Scale Up selection and batching context",
+      "The programme is a concentrated scale-up financing channel, not broad SMB demand"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
+  },
+  {
+    "id": "s306",
+    "title": "Second Call of the Public Sector Loan Facility",
+    "publisher": "European Climate, Infrastructure and Environment Executive Agency",
+    "url": "https://cinea.ec.europa.eu/news-events/news/second-call-proposals-under-public-sector-loan-facility-now-open-2025-10-23_en",
+    "supports": [
+      "The facility combines grant support with EIB lending",
+      "Public-sector applicant and procurement friction remains a key commercial risk"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026",
+    "accessDate": "2026-08-17",
+    "confidenceLabel": "high",
+    "sourceType": "primary",
+    "researchRound": "omega-xiv-capital-clock-2026-08-17",
+    "ideaIds": [],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true
   }
 ]

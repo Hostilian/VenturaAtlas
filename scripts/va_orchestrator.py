@@ -641,13 +641,19 @@ def _call_deepseek_api(prompt: str) -> str:
 
 
 # ── Provider Health Check ──────────────────────────────────────────────────────
-def health_check() -> dict:
-    """Check which providers are available. Returns dict of provider → bool."""
+def health_check(probe_external: bool = False) -> dict:
+    """Check providers; remote providers are healthy only after a real probe."""
     results = {}
-    # NVIDIA NIM
-    results["nvidia-nim"] = _eligible_key_count("nvidia-nim") > 0
-    # Cohere API
-    results["cohere-api"] = _eligible_key_count("cohere-api") > 0
+    external_providers = ["nvidia-nim", "cohere-api", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full"]
+    for provider in external_providers:
+        configured = _eligible_key_count(provider) > 0
+        if not configured:
+            results[provider] = False
+        elif not probe_external:
+            results[provider] = False
+            log_warn(f"{provider} has eligible keys but is UNVERIFIED until a real probe is requested")
+        else:
+            results[provider] = _call_single_provider(provider, "Health probe. Reply with OK.") is not None
     # Hermes/Ollama
     try:
         results["hermes-ollama"] = _ollama_has_model(HERMES_MODEL)
@@ -656,18 +662,9 @@ def health_check() -> dict:
     except Exception as e:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
-    # OmniRoute
-    results["omniRoute"] = _eligible_key_count("omniRoute") > 0
-    # FCC Claude
-    results["fcc-claude"] = _eligible_key_count("fcc-claude") > 0
-    # Active API
-    results["active-api"] = _eligible_key_count("active-api") > 0
-    # DeepSeek API
-    results["deepseek-api"] = _eligible_key_count("deepseek-api") > 0
     # Own Orch always available
     results["own-orch"] = True
-    # Anthropic Full
-    results["anthropic-full"] = _eligible_key_count("anthropic-full") > 0
+    results["healthProbe"] = probe_external
     log_info("Provider health check complete", results=results,
              nvidia_eligible_keys=_eligible_key_count("nvidia-nim"),
              cohere_eligible_keys=_eligible_key_count("cohere-api"),
@@ -946,7 +943,7 @@ if __name__ == "__main__":
 
     if args.test:
         log_info("=== Venture Atlas Orchestrator — Provider Health Check ===")
-        results = health_check()
+        results = health_check(probe_external=True)
         print("\n── Provider Availability ──")
         for p, ok in results.items():
             status = "✅ AVAILABLE" if ok else "❌ UNAVAILABLE"

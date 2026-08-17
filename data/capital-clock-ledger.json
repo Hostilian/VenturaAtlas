@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-17T12:30:00+00:00",
+  "clocks": [
+    {
+      "clockId": "clock-nzia-recurring-bid-evidence",
+      "programId": "cap-nzia-clean-tech-procurement",
+      "clockType": "PROCUREMENT_CLOCK",
+      "startsAt": null,
+      "expiresAt": null,
+      "state": "OPEN",
+      "requiredObjects": [
+        "sustainability evidence",
+        "resilience evidence",
+        "cybersecurity evidence",
+        "timely-delivery evidence"
+      ],
+      "responsibleActors": [
+        "bid owner",
+        "supplier-quality owner",
+        "public buyer"
+      ],
+      "failureEffect": "Bid loses non-price eligibility or score; capital is not awarded.",
+      "capitalAtRisk": null,
+      "remediationTimeEstimate": null,
+      "sourceRefs": [
+        "s303"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "clockId": "clock-safe-component-origin",
+      "programId": "cap-safe-security-action-europe",
+      "clockType": "ELIGIBILITY_CLOCK",
+      "startsAt": null,
+      "expiresAt": null,
+      "state": "OPEN",
+      "requiredObjects": [
+        "costed BOM",
+        "component origin evidence",
+        "design-control rights",
+        "common-procurement eligibility"
+      ],
+      "responsibleActors": [
+        "prime contractor",
+        "supplier",
+        "Member State procurer"
+      ],
+      "failureEffect": "Contract eligibility or procurement acceptance is blocked; loan-backed procurement can slip.",
+      "capitalAtRisk": null,
+      "remediationTimeEstimate": null,
+      "sourceRefs": [
+        "s304"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "clockId": "clock-grid-project-maturity",
+      "programId": "cap-eu-grid-connections",
+      "clockType": "QUEUE_CLOCK",
+      "startsAt": null,
+      "expiresAt": null,
+      "state": "OPEN",
+      "requiredObjects": [
+        "permits",
+        "grid studies",
+        "technical design",
+        "site control",
+        "maturity milestones"
+      ],
+      "responsibleActors": [
+        "project developer",
+        "DSO or TSO",
+        "regulator"
+      ],
+      "failureEffect": "A less mature project occupies queue capacity or a project loses timely grid access.",
+      "capitalAtRisk": null,
+      "remediationTimeEstimate": null,
+      "sourceRefs": [
+        "s302"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "clockId": "clock-step-2026-batch-1",
+      "programId": "cap-eic-step-scale-up",
+      "clockType": "APPLICATION_CLOCK",
+      "startsAt": null,
+      "expiresAt": "2026-09-09T23:59:59Z",
+      "state": "UPCOMING",
+      "requiredObjects": [
+        "investment case",
+        "scale-up evidence",
+        "co-investor materials"
+      ],
+      "responsibleActors": [
+        "scale-up",
+        "EIC Fund",
+        "co-investor"
+      ],
+      "failureEffect": "Application misses the batching window; this does not prove purchase demand for software.",
+      "capitalAtRisk": null,
+      "remediationTimeEstimate": null,
+      "sourceRefs": [
+        "s305"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "clockId": "clock-public-loan-facility-call",
+      "programId": "cap-public-sector-loan-facility",
+      "clockType": "APPLICATION_CLOCK",
+      "startsAt": null,
+      "expiresAt": "2026-09-17T23:59:59Z",
+      "state": "UPCOMING",
+      "requiredObjects": [
+        "grant application",
+        "project finance case",
+        "public procurement path"
+      ],
+      "responsibleActors": [
+        "public-sector applicant",
+        "EIB",
+        "CINEA"
+      ],
+      "failureEffect": "Grant-and-loan pairing opportunity is missed; public-sector sales friction remains untested.",
+      "capitalAtRisk": null,
+      "remediationTimeEstimate": null,
+      "sourceRefs": [
+        "s306"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    }
+  ]
+}

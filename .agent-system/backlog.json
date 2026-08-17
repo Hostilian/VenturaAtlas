@@ -1,7 +1,55 @@
 {
   "schemaVersion": "2.0.0",
-  "lastUpdated": "2026-08-09T13:59:00Z",
+  "lastUpdated": "2026-08-17T09:50:00Z",
   "tasks": [
+    {
+      "id": "TASK-000A",
+      "title": "Verify Every Workflow's Recent CI Runs",
+      "domain": "DevOps / Safety",
+      "priorityScore": 100.0,
+      "urgency": "P0",
+      "status": "VERIFY_ON_NEXT_PUSH",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": [],
+      "verificationMethod": "gh run list --repo Hostilian/VenturaAtlas --branch main",
+      "filesAffected": [".github/workflows/"]
+    },
+    {
+      "id": "TASK-000B",
+      "title": "Reconcile Agent Configuration Layers",
+      "domain": "Governance",
+      "priorityScore": 99.5,
+      "urgency": "P0",
+      "status": "COMPLETE",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": [],
+      "verificationMethod": "root AGENTS.md and .agents/AGENTS.md authority boundary",
+      "filesAffected": ["AGENTS.md", ".agents/AGENTS.md", ".agent-system/MASTER_GOAL.md"]
+    },
+    {
+      "id": "TASK-000C",
+      "title": "Real Provider Probes & Stale Health",
+      "domain": "Provider Runtime",
+      "priorityScore": 99.0,
+      "urgency": "P0",
+      "status": "COMPLETE",
+      "assignedAgent": "ventureatlas-provider-runtime",
+      "dependencies": [],
+      "verificationMethod": "python scripts/va_orchestrator.py --test",
+      "filesAffected": ["scripts/va_runtime/provider_router.py", "scripts/va_orchestrator.py"]
+    },
+    {
+      "id": "TASK-000D",
+      "title": "Document Complete Python Setup",
+      "domain": "Developer Experience",
+      "priorityScore": 98.0,
+      "urgency": "P0",
+      "status": "COMPLETE",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": [],
+      "verificationMethod": "python -m pip install -r services/ventureatlas-worker/requirements.txt && npm run quality:source",
+      "filesAffected": ["README.md", "CONTRIBUTING.md", "services/ventureatlas-worker/requirements.txt"]
+    },
     {
       "id": "TASK-001",
       "title": "Atomic State Persistence & Corruption Prevention",

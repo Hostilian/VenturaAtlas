@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Install Python test requirements
-        run: pip install requests python-dotenv fastapi pydantic 2>/dev/null || true
+        run: python -m pip install --disable-pip-version-check -r services/ventureatlas-worker/requirements.txt
 
       - name: Run source quality gates
         run: npm run quality:source

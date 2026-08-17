@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-17T12:30:00+00:00",
+  "programs": [
+    {
+      "capitalProgramId": "cap-nzia-clean-tech-procurement",
+      "name": "Net-Zero Industry Act procurement and auction criteria",
+      "jurisdiction": "EU",
+      "authority": "European Union institution or programme authority",
+      "capitalType": "PROCUREMENT",
+      "headlineAmount": null,
+      "contestableAmount": null,
+      "currentlyAvailableAmount": null,
+      "currency": "EUR",
+      "status": "AUTHORIZED",
+      "announcedAt": null,
+      "authorizedAt": null,
+      "openedAt": null,
+      "applicationDeadline": null,
+      "awardExpectedAt": null,
+      "contractDeadline": null,
+      "completionDeadline": null,
+      "paymentDeadline": null,
+      "recurrence": "UNKNOWN",
+      "eligibleActors": [
+        "public authorities",
+        "clean-tech manufacturers",
+        "renewable project promoters"
+      ],
+      "capitalRecipients": [
+        "net-zero technology suppliers",
+        "auction participants"
+      ],
+      "coFinancingRequired": null,
+      "sourceRefs": [
+        "s303"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "capitalProgramId": "cap-safe-security-action-europe",
+      "name": "SAFE Security Action for Europe",
+      "jurisdiction": "EU",
+      "authority": "European Union institution or programme authority",
+      "capitalType": "LOAN",
+      "headlineAmount": 150000000000,
+      "contestableAmount": null,
+      "currentlyAvailableAmount": null,
+      "currency": "EUR",
+      "status": "DEPLOYING",
+      "announcedAt": null,
+      "authorizedAt": null,
+      "openedAt": null,
+      "applicationDeadline": null,
+      "awardExpectedAt": null,
+      "contractDeadline": null,
+      "completionDeadline": null,
+      "paymentDeadline": null,
+      "recurrence": "UNKNOWN",
+      "eligibleActors": [
+        "Member States",
+        "defence primes",
+        "qualified suppliers"
+      ],
+      "capitalRecipients": [
+        "Member State defence programmes",
+        "common-procurement contractors"
+      ],
+      "coFinancingRequired": null,
+      "sourceRefs": [
+        "s304"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "capitalProgramId": "cap-eu-grid-connections",
+      "name": "European grid connection readiness and queue transition",
+      "jurisdiction": "EU",
+      "authority": "European Union institution or programme authority",
+      "capitalType": "INFRASTRUCTURE_CAPEX",
+      "headlineAmount": 584000000000,
+      "contestableAmount": null,
+      "currentlyAvailableAmount": null,
+      "currency": "EUR",
+      "status": "ALLOCATED",
+      "announcedAt": null,
+      "authorizedAt": null,
+      "openedAt": null,
+      "applicationDeadline": null,
+      "awardExpectedAt": null,
+      "contractDeadline": null,
+      "completionDeadline": null,
+      "paymentDeadline": null,
+      "recurrence": "UNKNOWN",
+      "eligibleActors": [
+        "renewable developers",
+        "storage developers",
+        "TSOs and DSOs"
+      ],
+      "capitalRecipients": [
+        "grid-connected generation and storage projects"
+      ],
+      "coFinancingRequired": null,
+      "sourceRefs": [
+        "s302"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "capitalProgramId": "cap-eic-step-scale-up",
+      "name": "EIC STEP Scale Up",
+      "jurisdiction": "EU",
+      "authority": "European Union institution or programme authority",
+      "capitalType": "EQUITY",
+      "headlineAmount": null,
+      "contestableAmount": null,
+      "currentlyAvailableAmount": null,
+      "currency": "EUR",
+      "status": "CALL_OPEN",
+      "announcedAt": null,
+      "authorizedAt": null,
+      "openedAt": null,
+      "applicationDeadline": null,
+      "awardExpectedAt": null,
+      "contractDeadline": null,
+      "completionDeadline": null,
+      "paymentDeadline": null,
+      "recurrence": "UNKNOWN",
+      "eligibleActors": [
+        "European scale-ups",
+        "EIC Fund",
+        "co-investors"
+      ],
+      "capitalRecipients": [
+        "selected technology scale-ups"
+      ],
+      "coFinancingRequired": null,
+      "sourceRefs": [
+        "s305"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    },
+    {
+      "capitalProgramId": "cap-public-sector-loan-facility",
+      "name": "Public Sector Loan Facility",
+      "jurisdiction": "EU",
+      "authority": "European Union institution or programme authority",
+      "capitalType": "MIXED",
+      "headlineAmount": null,
+      "contestableAmount": null,
+      "currentlyAvailableAmount": null,
+      "currency": "EUR",
+      "status": "CALL_OPEN",
+      "announcedAt": null,
+      "authorizedAt": null,
+      "openedAt": null,
+      "applicationDeadline": null,
+      "awardExpectedAt": null,
+      "contractDeadline": null,
+      "completionDeadline": null,
+      "paymentDeadline": null,
+      "recurrence": "UNKNOWN",
+      "eligibleActors": [
+        "public-sector applicants",
+        "EIB",
+        "CINEA"
+      ],
+      "capitalRecipients": [
+        "public-sector climate projects"
+      ],
+      "coFinancingRequired": null,
+      "sourceRefs": [
+        "s306"
+      ],
+      "checkedAt": "2026-08-17T12:30:00+00:00",
+      "confidence": "HIGH"
+    }
+  ]
+}
