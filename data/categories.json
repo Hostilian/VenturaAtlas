@@ -326,5 +326,41 @@
       "evidence-synthesis"
     ],
     "description": "Cross-object result lineage graphs, reproducibility preflights, research artifact release manifests, and citation integrity tooling. Source: Deep Research Seventh Full Reset (2026-08-07)."
+  },
+  {
+    "id": "regulatory-handshake-markets",
+    "name": "Regulatory Handshake & Production-Failure Markets",
+    "count": 6,
+    "ideaIds": [
+      "idea-415",
+      "idea-416",
+      "idea-417",
+      "idea-418",
+      "idea-419",
+      "idea-420"
+    ],
+    "subcategories": [
+      "catch-preflight",
+      "certex-handshake",
+      "fgas-quota-gate",
+      "eprel-drift",
+      "battery-health-attestation",
+      "recall-propagation"
+    ],
+    "description": "Production-failure market opportunities where mandatory government digital systems create machine-to-machine handshake failures that block real commercial transactions. Includes preflight gates, certificate lineage engines, quota integrity checks, and cross-system reconciliation tools. Source: OMEGA XVII-B Regulatory Handshake research pass (2026-08-18)."
+  },
+  {
+    "id": "reset-zero-baseline",
+    "label": "RESET XVIII — Zero-Baseline Candidates",
+    "description": "Ideas discovered during RESET XVIII zero-baseline pass. All carry reset-zero-baseline-provisional scores and require fresh competitor/buyer/experiment validation before decision-grade ranking.",
+    "count": 4,
+    "ideaIds": [
+      "idea-421",
+      "idea-422",
+      "idea-423",
+      "idea-424"
+    ],
+    "addedAt": "2026-08-18",
+    "resetVersion": "RESET_XVIII"
   }
 ]

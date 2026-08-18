@@ -1,17 +1,56 @@
 # PROJECT STATUS
 
-- Repository version: 2.3.0
+- Repository version: 2.5.0
 - Data schema version: 2.0.0
 - Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 294 ideas and 96 source records; epistemic validation is not assessed
-- Highest assigned canonical idea ID: idea-406
-- Next ID: allocated by the canonical ID allocator; do not infer from this document
-- Canonical ideas: 302
-- Categories: 130
+- Highest assigned canonical idea ID: idea-424
+- Next ID: idea-425 — allocated by the canonical ID allocator; do not infer from this document
+- Canonical ideas: 312
+- Categories: 132
 - Validation warnings: 0
-- Last updated: 2026-08-10
+- Last updated: 2026-08-18
 
 
 ## Change Log
+
+### 2026-08-18: RESET XVIII & OMEGA XIX Integration (v2.4.0 → v2.5.0)
+- Ingested 4 new canonical ideas (idea-421 through idea-424) from RESET XVIII (Zero-Baseline):
+  - #1: Invoice Replay Cloud (idea-421, score: 88, priority)
+  - #2: ICS2 SourceData Gate (idea-422, score: 85, priority)
+  - #3: Euro 7 Vehicle Evidence Drift (idea-423, score: 79, watch)
+  - #4: EHDS EHR Chaos Lab (idea-424, score: 74, watch)
+- Added new category "RESET XVIII — Zero-Baseline Candidates" (id: reset-zero-baseline)
+- Added 8-Gate Binary Scoring System to research/scoring-methodology.md
+- Created research/RESET_XVIII_ZERO_BASELINE_2026-08-18.md research archive
+- Created data/reset-xviii-ideas-ingest.json + scripts/merge-reset-xviii-ideas.js
+- Graveyard: 4 ideas killed (generic EUDR API validator, generic e-invoice XML validator, generic KSeF/France gateway, generic ICS2 filing platform)
+- Watch: EHDS EHR Chaos Lab, DWT ReceiptDiff CI, Building Safety Levy LevyBlock
+- OMEGA XIX Truth Lattice Infrastructure:
+  - Created data/value-states.json (typed state vocabulary: KNOWN, UNKNOWN, WITHHELD, STALE, etc.)
+  - Created data/reset-status.json & froze 294 legacy ranked items under FROZEN_PENDING_REVALIDATION
+  - Created data/trigger-ledger.json (external forcing functions: KSeF, France e-invoicing, ICS2, Euro 7, EHDS)
+  - Upgraded data/claim-relations.json & created schemas/claim-relation.schema.json (v2.0.0 claim graph)
+  - Updated data/repository-meta.json (privateStaging.valueState = WITHHELD)
+  - Updated data/system-health.json (decoupled component health splits)
+  - Updated data/build-manifest.json (artifact passport fields & honest STALE tracking)
+
+### 2026-08-18: OMEGA XVII-B Integration (v2.3.0 → v2.4.0)
+- Ingested 6 new canonical ideas (idea-415 through idea-420) from OMEGA XVII-B (Regulatory Handshake / Production-Failure Markets)
+  - #1: CATCHFlow — CATCH Preflight & Certificate Lineage (idea-415, provisional score: 94, priority)
+  - #2: CertFlow / HandshakeLab — CERTEX Regulatory Handshake Lab (idea-416, provisional score: 93, priority)
+  - #3: F-Gas Shipment & Quota Integrity Gate (idea-417, provisional score: 90.5, priority)
+  - #4: EPREL Retail-State Drift Monitor (idea-418, provisional score: 84, researched)
+  - #5: Battery Health Attestation (idea-419, provisional score: 80, researched)
+  - #6: Recall Propagation Proof (idea-420, provisional score: 75, watch)
+- Added new category "Regulatory Handshake & Production-Failure Markets" (id: regulatory-handshake-markets)
+- Expanded catchlint-digital-customs-preflight-compiler.md stub — cross-referenced to idea-415
+- Appended 7 new experimental methodology dimensions to research/scoring-methodology.md (TBP, PFA, GFR, IFA, PFF, TVR, PPE + Catalyst Type E + Research Saturation Rule + Promotion Tax)
+- Created research/OMEGA_XVIIB_REGULATORY_HANDSHAKE_2026-08-18.md research archive
+- Added run record run-res-omega-xviib-20260818-regulatory-handshake to data/research-runs.json
+- Created data/omega-xviib-ideas-ingest.json + scripts/merge-omega-xviib-ideas.js
+- Graveyard: 7 ideas killed (generic seafood traceability, CATCH dashboard, generic battery validator, Safety Gate monitor, FuelEU SaaS, EUDR API test env)
+- Watch: PassportMesh/Vehicle Circularity Passport, Renewable Fuel Evidence Mesh, Digital-Euro PSP regression lab
+- New thesis: Production-Failure Markets / Regulatory CI/CD / HandshakeGraph architecture layer
 
 ### 2026-08-07: Reset 7 Integration (v2.2.0 → v2.3.0)
 - Ingested 10 new canonical ideas (idea-240 through idea-249) from Reset 7 (Scholarly Research & Lineage)
@@ -71,11 +110,11 @@
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.3.0
-- Canonical Ideas: 302
+- Repository Version: 2.5.0
+- Canonical Ideas: 312
 - Staged Ideas: 0
-- Total Ideas: 302
-- Categories: 130
+- Total Ideas: 312
+- Categories: 132
 - Source References: 316
 - Generated Prompts: 4625
 - Last Updated: 2026-08-18

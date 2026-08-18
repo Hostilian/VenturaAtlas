@@ -1,4 +1,60 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
+  "description": "Claim-relations graph for VenturaAtlas. Records the relationship between evidence sources, claims, and ideas. Supports the OMEGA XIX truth-lattice architecture.",
+  "upgradedAt": "2026-08-18",
+  "omegaVersion": "XIX",
+  "claimTypes": [
+    "REGULATORY",
+    "CUSTOMER_PAIN",
+    "WORKFLOW",
+    "MARKET",
+    "COMPETITOR",
+    "PRICING",
+    "WILLINGNESS_TO_PAY",
+    "DISTRIBUTION",
+    "TECHNICAL",
+    "IMPLEMENTATION_COST",
+    "DATA_ACCESS",
+    "INTEGRATION",
+    "TIMING",
+    "LEGAL_SCOPE",
+    "FAILURE_MODE"
+  ],
+  "relationTypes": [
+    "SUPPORTS",
+    "REFUTES",
+    "PARTIALLY_SUPPORTS",
+    "RAISES_UNCERTAINTY",
+    "SUPERSEDES",
+    "CONFLICTS_WITH"
+  ],
+  "claimStatuses": [
+    "ACTIVE",
+    "STALE",
+    "SUPERSEDED",
+    "REFUTED",
+    "UNVERIFIED"
+  ],
+  "evidenceAuthorityNote": "Source authority is claim-specific, not universal. A government regulation is excellent evidence for LEGAL_SCOPE claims and poor evidence for WILLINGNESS_TO_PAY claims. Score evidence relationships per claim type.",
+  "forbiddenPractices": [
+    "A single sourceQuality score applied to all claim types",
+    "LLM consensus used to resolve factual conflicts",
+    "UNKNOWN scores silently averaged with known scores"
+  ],
+  "schema": {
+    "claimId": "string — unique claim identifier (prefix: CLAIM-)",
+    "ideaId": "string — associated canonical idea ID",
+    "claimType": "string — from claimTypes enum",
+    "claim": "string — the claim text",
+    "sourceIds": "array of source IDs that bear on this claim",
+    "relationToSources": "array of {sourceId, relationType, authorityForThisClaimType, notes}",
+    "status": "string — from claimStatuses",
+    "lastVerifiedAt": "ISO date string",
+    "freshnessPolicyDays": "integer — days before this claim type goes STALE",
+    "confidence": "LOW | MEDIUM | HIGH | UNKNOWN",
+    "scoreImpact": "{dimension: string, direction: UP|DOWN|NEUTRAL|UNKNOWN, magnitude: LOW|MEDIUM|HIGH}",
+    "conflicts": "array of conflicting claimIds",
+    "assumptions": "array of assumption strings that must hold for this claim to be valid"
+  },
   "relations": []
 }

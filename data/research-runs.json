@@ -1413,7 +1413,7 @@
         "competition": 1.3,
         "officialCaptureRisk": 1.6,
         "legislativeUncertainty": 1.5,
-        "consultingIntensity": 1.0,
+        "consultingIntensity": 1,
         "customerConcentration": 0.8
       }
     },
@@ -3251,5 +3251,119 @@
       "ecommerceTransition": "PIDRelay"
     },
     "omegaConceptualContribution": "OMEGA XVIII adds to the research formula: EXISTING_COMMITMENT × FUTURE_STATE_CHANGE × ROUTE_DEPENDENCY × PHYSICAL_CAPACITY. The startup question: what have companies already promised or physically produced that becomes difficult to route when the external world changes?"
+  },
+  {
+    "runId": "run-res-omega-xviib-20260818-regulatory-handshake",
+    "omegaRound": "XVII-B",
+    "title": "OMEGA XVII — Regulatory Handshake / Production-Failure Markets",
+    "date": "2026-08-18",
+    "researcherNote": "Continuation from OMEGA XVI (not a recycling of OMEGA XVII-A Public Money Graph discoveries). This pass went farther into customs infrastructure, F-gases, fisheries/CATCH, batteries, EPREL, Safety Gate, EUDR, renewable-fuel registries, aviation/maritime compliance, construction passports, the brand-new End-of-Life Vehicles regulation, and emerging payment infrastructure. The major contribution is the Production-Failure Markets thesis: look for a mandatory government machine that has entered production, then find the private-company system that must successfully handshake with it.",
+    "ideasAdded": [
+      "idea-415",
+      "idea-416",
+      "idea-417",
+      "idea-418",
+      "idea-419",
+      "idea-420"
+    ],
+    "ideasUpdated": [],
+    "stubsExpanded": [
+      "catchlint-digital-customs-preflight-compiler.md → superseded by idea-415"
+    ],
+    "archiveReceipts": [
+      "Battery Passport — BatteryPass-Ready conformance ecosystem growing; generic validator KILL confirmed; health attestation module watch retained as idea-419",
+      "Safety Gate — SafeCart + scrapers confirmed; generic monitor KILL; recall propagation evidence retained as watch (idea-420)",
+      "EUDR — official test tooling commoditizes simple validator; durable opportunity is supplier evidence / cross-supplier reconciliation (existing ideas)",
+      "FuelEU / ReFuelEU — EU building integration + incumbents; KILL for new standalone idea",
+      "Vehicle Circularity Passport — Regulation (EU) 2026/1738 published Aug 2026; long-dated; WATCH",
+      "Digital-Euro PSP regression lab — specs/pilot still evolving; WATCH"
+    ],
+    "graveyardBatch": [
+      "Generic seafood traceability SaaS — osapiens, PSQR, existing vendors",
+      "AI catch-certificate generator — addresses symptom not structural problem",
+      "Generic CATCH information dashboard — wrong layer",
+      "Generic battery-passport validator — BatteryPass-Ready + DPP vendor ecosystem",
+      "Generic Safety Gate monitor — SafeCart + low-cost scrapers",
+      "Generic FuelEU / ReFuelEU reporting SaaS — incumbents + EU integration",
+      "EUDR API test environment — official tooling already supplies test machinery"
+    ],
+    "watchList": [
+      "PassportMesh / Vehicle Circularity Passport — Regulation (EU) 2026/1738, Aug 2026; obligations years away",
+      "Renewable Fuel Evidence Mesh — EU building integration + incumbents",
+      "Digital-Euro PSP Regression Lab — specs and pilot still evolving"
+    ],
+    "newMetrics": {
+      "TBP": "Transaction Blocking Power — 0-10 scale: how severely does a system failure block a real transaction?",
+      "PFA": "Preflight Advantage — how much cheaper is detecting failure before committing the transaction vs. after?",
+      "GFR": "Government Fix Risk — 10 = startup is a workaround for one missing button; 0 = cross-company coordination persists regardless of official tooling",
+      "IFA": "Interface Accessibility — 10 = public API + sandbox + docs; 0 = government-only inaccessible system",
+      "PFF": "Preflight Fidelity — how accurately does the test environment predict real production behavior?",
+      "TVR": "Transaction Value at Risk — order-of-magnitude financial value blocked by a single failure event",
+      "PPE": "Production Pain Evidence — enum: none | inferred | consultant_reports | industry_association | named_company | multiple_companies | government_acknowledged | measured_transactions | paid_remediation"
+    },
+    "newHeuristics": [
+      "Production-Failure Markets thesis: mandatory government machine enters production → find private-company system that must successfully handshake with it",
+      "Regulatory CI/CD: customer-facing pitch — catch machine-to-machine compliance failures before they reach production",
+      "Catalyst Type upgrade: A=speculative → E=observable production failure (strongest problem-reality signal)",
+      "Follow the error code: search <system> + error/rejected/validation/failed/delayed/manual entry/interoperability",
+      "Pain primary vs legal primary: one establishes obligation, other establishes pain — both required",
+      "Research Saturation Rule: if ideas>250 and experiments=0, cap new discovery at ~30% of compute",
+      "Promotion Tax: 9-item checklist required before new canonical ID is allocated",
+      "Evidence Stack: 7 layers from Legal existence to Money (payment)",
+      "Regulated Quantity Ledger: shared primitive for CERTEX/CATCH/CBAM/F-gas/EUDR quantity flows"
+    ],
+    "newArchitecturePrimitives": [
+      "HandshakeGraph: private_system ↔ government/partner_system with interface, schema, identifier mapping, quantity, reservation, failure codes",
+      "RegulatoryTransaction object model: identity, actor(s), product, quantity, jurisdiction, procedure, supportingFormalities[], regulatorySystemStates[], authorizations[], reservations[], evidence[], testScenario, predictedOutcome, actualOutcome, failureCodes[]",
+      "Production Failure Corpus: structured record of actual system failures with system, version, date, jurisdiction, workflow, input, expected, actual, error, root_cause, fix, source, confidence, commercial_impact"
+    ],
+    "crossRoundHierarchy": {
+      "mostUrgentLiveSystemOpportunity": "CATCHFlow (idea-415)",
+      "broadestPlatformThesis": "CertFlow / HandshakeLab (idea-416)",
+      "bestFirstVerticalForCertFlow": "F-Gas Shipment Gate (idea-417)",
+      "durableRetailComplianceModule": "EPREL Retail Drift (idea-418)",
+      "mostUrgentPhysicalOpportunity": "ScrapRoute (idea-412)",
+      "strongestPublicDataAsset": "AidGraph (idea-407)"
+    },
+    "methodVersion": "epistemic-v2",
+    "startedAt": "2026-08-18T00:00:00+00:00",
+    "endedAt": "2026-08-18T23:59:59+00:00",
+    "reviewStatus": "approved",
+    "omegaConceptualContribution": "OMEGA XVII-B adds the Production-Failure Markets thesis to the research formula. The shift: from 'what regulation creates compliance work?' to 'what mandatory digital transaction can fail and stop money, goods, or operations?' This produces the Regulatory CI/CD framing and the HandshakeGraph architecture layer. Key primitives: identity + quantity + state explain a large fraction of regulatory failures; AI extracts dirty inputs; deterministic code performs the actual gate."
+  },
+  {
+    "runId": "run-res-reset-xviii-20260818-zero-baseline",
+    "name": "RESET XVIII — Zero-Baseline",
+    "type": "HARD_EPISTEMIC_RESET",
+    "date": "2026-08-18",
+    "researchFocus": "Cross-country e-invoice production failures, ICS2 upstream data quality, Euro 7 evidence drift, EHDS EHR interoperability",
+    "thesis": "Production-Failure Markets + two-tournament structure (regulatory vs unconstrained); simple conformance becoming infrastructure not startup",
+    "ideasAdded": [
+      "idea-421",
+      "idea-422",
+      "idea-423",
+      "idea-424"
+    ],
+    "ideasKilled": [
+      "generic-eudr-api-validator",
+      "generic-einvoice-xml-validator",
+      "generic-ksef-france-gateway",
+      "generic-ics2-filing-platform"
+    ],
+    "ideasWatched": [
+      "ehds-ehrinterop-chaos-lab",
+      "dwt-receiptdiff-ci",
+      "building-safety-levy-levyblock"
+    ],
+    "championsReset": true,
+    "scoringMethod": "8-gate-binary-reset-xviii",
+    "newMethodologyItems": [
+      "8-gate scoring system",
+      "two-tournament structure",
+      "staging arena culture",
+      "adversarial-first research rule"
+    ],
+    "archiveFile": "research/RESET_XVIII_ZERO_BASELINE_2026-08-18.md",
+    "notes": "No new overall champion declared. All previous champion labels frozen pending revalidation via OMEGA XIX reset-status mechanism."
   }
 ]

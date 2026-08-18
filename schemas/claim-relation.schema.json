@@ -1,14 +1,61 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ventureatlas.dev/schemas/claim-relation.schema.json",
+  "title": "ClaimRelation",
+  "description": "A relation record in the VenturaAtlas claim graph. Records how a piece of evidence supports or refutes a specific claim about an idea.",
   "type": "object",
-  "required": ["relationId", "ideaId", "claimId", "sourceId", "relation", "reviewedAt"],
+  "required": ["claimId", "ideaId", "claimType", "claim", "sourceIds", "status", "confidence"],
   "properties": {
-    "relationId": { "type": "string", "pattern": "^claimrel-[a-z0-9-]+$" },
-    "ideaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
-    "claimId": { "type": "string", "pattern": "^claim-[a-f0-9]{8}$" },
-    "sourceId": { "type": "string" },
-    "relation": { "enum": ["SUPPORTS", "CONTRADICTS", "QUALIFIES"] },
-    "reviewedAt": { "type": "string", "format": "date-time" }
-  },
-  "additionalProperties": false
+    "claimId": {
+      "type": "string",
+      "pattern": "^CLAIM-",
+      "description": "Unique claim identifier. Must begin with CLAIM-"
+    },
+    "ideaId": {
+      "type": "string",
+      "pattern": "^idea-",
+      "description": "Associated canonical idea ID"
+    },
+    "claimType": {
+      "type": "string",
+      "enum": [
+        "REGULATORY", "CUSTOMER_PAIN", "WORKFLOW", "MARKET", "COMPETITOR",
+        "PRICING", "WILLINGNESS_TO_PAY", "DISTRIBUTION", "TECHNICAL",
+        "IMPLEMENTATION_COST", "DATA_ACCESS", "INTEGRATION", "TIMING",
+        "LEGAL_SCOPE", "FAILURE_MODE"
+      ]
+    },
+    "claim": {
+      "type": "string",
+      "description": "The claim text. Should be falsifiable."
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Evidence source IDs from sources.json or source-inventory.json"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "STALE", "SUPERSEDED", "REFUTED", "UNVERIFIED"]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]
+    },
+    "lastVerifiedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "freshnessPolicyDays": {
+      "type": "integer"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
 }

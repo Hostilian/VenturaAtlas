@@ -2,22 +2,42 @@
   "dataRevision": "96286c8dd30e889f",
   "buildRevision": "2.3.0-96286c8dd30e889f",
   "generatedAt": "2026-08-17T23:24:02.526Z",
+  "artifactPassport": {
+    "artifactType": "public-site",
+    "artifactStatus": "STALE",
+    "staleReason": "Canonical idea count advanced from 302 to 312 (OMEGA XVII-B +6, RESET XVIII +4) since last build. Public site still reflects 2.3.0 state.",
+    "ideaCorpusRevisionAtBuild": "96286c8dd30e889f",
+    "ideaCorpusRevisionCurrent": "NOT_YET_COMPUTED",
+    "rankingMethodRevisionAtBuild": "0cbb77464fdbaa11",
+    "generatorVersion": "2.3.0",
+    "freshnessPolicy": "Regenerate when ideaCorpusRevision changes or rankingMethodRevision changes",
+    "rebuildCommand": "npm run build",
+    "staleSince": "2026-08-18",
+    "omegaVersionIntroduced": "XIX"
+  },
   "files": {
     "ideas.json": {
       "sha256": "22954eede525b6879d1e108cc2fac550be6ec43b9b036bef48eba273c30f22f3",
-      "bytes": 4550989
+      "bytes": 4550989,
+      "statusAtBuild": "STALE",
+      "note": "File has grown since build — 10 new ideas added post-build"
     },
     "categories.json": {
       "sha256": "6945e3a804df238b33023c27710640a168a3e0ef294139393f439f5d9676398d",
-      "bytes": 6125
+      "bytes": 6125,
+      "statusAtBuild": "STALE",
+      "note": "Two new categories added post-build"
     },
     "sources.json": {
       "sha256": "a412889d960c6b2527e2fefe973134bdd8d28a5d4ab38efa003066ac2cc1e5e4",
-      "bytes": 263239
+      "bytes": 263239,
+      "statusAtBuild": "UNKNOWN"
     },
     "rankings.json": {
       "sha256": "0cbb77464fdbaa11c88b074424f4b27d93645a407658b08e98e73daafa7b7abf",
-      "bytes": 1397733
+      "bytes": 1397733,
+      "statusAtBuild": "STALE",
+      "note": "Rankings now carry FROZEN_PENDING_REVALIDATION freeze fields added post-build"
     }
   }
 }

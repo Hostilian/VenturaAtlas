@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "description": "Canonical vocabulary for representing missing, withheld, or uncertain data values in VenturaAtlas. This vocabulary prevents silent translation of UNKNOWN→0 or WITHHELD→false.",
+  "createdAt": "2026-08-18",
+  "omegaVersion": "XIX",
+  "states": {
+    "KNOWN": {
+      "description": "The value has been observed or measured and is available.",
+      "allowedInNumericFields": true
+    },
+    "UNKNOWN": {
+      "description": "The value has not been observed or measured. It is not zero.",
+      "allowedInNumericFields": false,
+      "forbiddenTranslations": ["0", "5", "false", "null-as-zero"]
+    },
+    "WITHHELD": {
+      "description": "The value exists but has been intentionally excluded from the public record (e.g. private staging data). It is not zero.",
+      "allowedInNumericFields": false,
+      "forbiddenTranslations": ["0", "false", "null-as-zero"],
+      "example": "privateStaging.count when privateStagingIncluded=false"
+    },
+    "NOT_APPLICABLE": {
+      "description": "The field does not apply to this record. Semantically distinct from zero.",
+      "allowedInNumericFields": false
+    },
+    "NOT_OBSERVED": {
+      "description": "The system has not yet attempted to observe this value.",
+      "allowedInNumericFields": false,
+      "forbiddenTranslations": ["false"]
+    },
+    "NOT_YET_MEASURED": {
+      "description": "The value is in principle measurable but has not yet been measured in this pass.",
+      "allowedInNumericFields": false
+    },
+    "STALE": {
+      "description": "A previously observed value is now past its freshness policy threshold.",
+      "requiresFields": ["observedAt", "freshnessPolicy"]
+    },
+    "CONFLICTED": {
+      "description": "Two or more sources provide incompatible values. Requires a contradiction record.",
+      "requiresFields": ["contradictionId"]
+    },
+    "UNAVAILABLE": {
+      "description": "The value cannot currently be obtained due to a technical or access constraint.",
+      "allowedInNumericFields": false
+    }
+  },
+  "rules": [
+    "Never silently translate UNKNOWN to 0 or 5",
+    "Never silently translate WITHHELD to 0",
+    "Never silently translate NOT_OBSERVED to false",
+    "A field carrying a WITHHELD state must include valueState='WITHHELD' in a companion object",
+    "A field carrying a STALE state must include observedAt and freshnessPolicy"
+  ]
+}
