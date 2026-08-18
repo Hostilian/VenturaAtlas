@@ -56,3 +56,10 @@ test('Matcher preserves missing cost and score instead of inventing neutral defa
   assert.equal(context.window.VAMatcher.computeMatchScore({ atAGlance: {}, compositeScores: {}, scores: {} }, { goal: 'confidence' }), null);
   assert.equal(context.window.VAMatcher.computeMatchScore({ atAGlance: { overallScore: 0 }, compositeScores: {}, scores: {} }, { goal: 'growth' }), 0);
 });
+
+test('Pagination button labels display Show More Ideas and Show All Remaining Ideas', () => {
+  const site = fs.readFileSync(path.join(ROOT, 'assets/js/site.js'), 'utf8');
+  assert.match(site, /btn10\.textContent = 'Show More Ideas'/);
+  assert.match(site, /btnAll\.textContent = `Show All Remaining Ideas \(\${remaining\.toLocaleString\(\)}\)`/);
+});
+

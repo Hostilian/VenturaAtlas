@@ -650,8 +650,8 @@ function initHome() {
       loadMoreWrap.innerHTML = `
         <div style="font-size:0.9rem;color:var(--text2);font-weight:500;">Load more results:</div>
         <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;align-items:center;">
-          <button id="loadMoreBtn" class="button secondary" style="min-width:190px">Show 10 More Ideas</button>
-          <button id="loadAllBtn" class="button primary" style="min-width:190px">Show All Ideas</button>
+          <button id="loadMoreBtn" class="button secondary" style="min-width:190px">Show More Ideas</button>
+          <button id="loadAllBtn" class="button primary" style="min-width:190px">Show All Remaining Ideas</button>
         </div>
       `;
       wrap.parentNode.insertBefore(loadMoreWrap, wrap.nextSibling);
@@ -676,11 +676,10 @@ function initHome() {
       if (sliced.length < totalFiltered) {
         loadMoreWrap.style.display = 'flex';
         const remaining = totalFiltered - sliced.length;
-        const count = Math.min(10, remaining);
         const btn10 = $('#loadMoreBtn');
         const btnAll = $('#loadAllBtn');
-        if (btn10) btn10.textContent = `Show ${count} More Idea${count !== 1 ? 's' : ''} (${remaining} left)`;
-        if (btnAll) btnAll.textContent = `Show All ${totalFiltered.toLocaleString()} Ideas`;
+        if (btn10) btn10.textContent = 'Show More Ideas';
+        if (btnAll) btnAll.textContent = `Show All Remaining Ideas (${remaining.toLocaleString()})`;
       } else {
         loadMoreWrap.style.display = 'none';
       }

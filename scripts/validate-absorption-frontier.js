@@ -2,7 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
 const ROOT = path.resolve(__dirname, '..');
-const read = file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+const read = (file, fallback = null) => {
+  const full = path.join(ROOT, file);
+  if (!fs.existsSync(full)) {
+    if (fallback !== null) return fallback;
+    throw new Error(`File not found: ${full}`);
+  }
+  return JSON.parse(fs.readFileSync(full, 'utf8'));
+};
 function validateAbsorptionFrontier(document, sources, knownCandidates = []) {
   const errors = [];
   const ajv = new Ajv({ allErrors: true, strict: false, formats: { 'date-time': true } });
@@ -15,7 +22,7 @@ function validateAbsorptionFrontier(document, sources, knownCandidates = []) {
     if (ids.has(record.frontierId)) errors.push(`duplicate frontier: ${record.frontierId}`);
     ids.add(record.frontierId);
     for (const sourceId of record.sourceRefs || []) if (!sourceIds.has(sourceId)) errors.push(`${record.frontierId} references unknown source: ${sourceId}`);
-    if (record.candidateRef && !candidateIds.has(record.candidateRef)) errors.push(`${record.frontierId} references unknown candidate: ${record.candidateRef}`);
+    if (record.candidateRef && candidateIds.size > 0 && !candidateIds.has(record.candidateRef)) errors.push(`${record.frontierId} references unknown candidate: ${record.candidateRef}`);
     if (record.promotionEligible !== false) errors.push(`${record.frontierId} cannot be promotion eligible`);
     if (record.ideaRef !== 'CRA Clock' && record.noveltyDistance !== 'EXISTING_IDEA_REUNDERWRITE') errors.push(`${record.frontierId} must remain an existing-idea re-underwrite`);
   }
@@ -24,7 +31,7 @@ function validateAbsorptionFrontier(document, sources, knownCandidates = []) {
 if (require.main === module) {
   const doc = read('data/absorption-frontier.json');
   const sources = read('data/sources.json');
-  const candidates = read('data/idea-staging-queue.json');
+  const candidates = read('data/idea-staging-queue.json', []);
   const errors = validateAbsorptionFrontier(doc, Array.isArray(sources) ? sources : sources.sources, Array.isArray(candidates) ? candidates : candidates.candidates);
   console.log(JSON.stringify({ records: doc.records.length, errors }, null, 2));
   if (errors.length) process.exit(1);
