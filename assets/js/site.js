@@ -642,27 +642,47 @@ function initHome() {
     wrap.innerHTML = sliced.length ? sliced.map(card).join('') : '';
     if (empty) empty.classList.toggle('hidden', totalFiltered > 0);
 
-    let loadMoreBtn = $('#loadMoreBtn');
-    if (!loadMoreBtn && wrap.parentNode) {
-      const containerDiv = document.createElement('div');
-      containerDiv.id = 'loadMoreWrap';
-      containerDiv.style.cssText = 'text-align:center;margin:1.5rem 0 2rem';
-      containerDiv.innerHTML = `<button id="loadMoreBtn" class="button secondary" style="min-width:220px"></button>`;
-      wrap.parentNode.insertBefore(containerDiv, wrap.nextSibling);
-      loadMoreBtn = $('#loadMoreBtn');
-      loadMoreBtn.addEventListener('click', () => {
-        visibleCount += 24;
-        render();
-      });
+    let loadMoreWrap = $('#loadMoreWrap');
+    if (!loadMoreWrap && wrap.parentNode) {
+      loadMoreWrap = document.createElement('div');
+      loadMoreWrap.id = 'loadMoreWrap';
+      loadMoreWrap.style.cssText = 'text-align:center;margin:1.5rem 0 2rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;padding:1.25rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);';
+      loadMoreWrap.innerHTML = `
+        <div style="font-size:0.9rem;color:var(--text2);font-weight:500;">Load more results:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;align-items:center;">
+          <button id="loadMoreBtn" class="button secondary" style="min-width:190px">Show 10 More Ideas</button>
+          <button id="loadAllBtn" class="button primary" style="min-width:190px">Show All Ideas</button>
+        </div>
+      `;
+      wrap.parentNode.insertBefore(loadMoreWrap, wrap.nextSibling);
+
+      const btn10 = $('#loadMoreBtn');
+      if (btn10) {
+        btn10.addEventListener('click', () => {
+          visibleCount += 10;
+          render();
+        });
+      }
+      const btnAll = $('#loadAllBtn');
+      if (btnAll) {
+        btnAll.addEventListener('click', () => {
+          visibleCount = totalFiltered;
+          render();
+        });
+      }
     }
 
-    if (loadMoreBtn && loadMoreBtn.parentNode) {
+    if (loadMoreWrap) {
       if (sliced.length < totalFiltered) {
-        loadMoreBtn.parentNode.style.display = 'block';
+        loadMoreWrap.style.display = 'flex';
         const remaining = totalFiltered - sliced.length;
-        loadMoreBtn.textContent = `Show More Ideas (${remaining} remaining)`;
+        const count = Math.min(10, remaining);
+        const btn10 = $('#loadMoreBtn');
+        const btnAll = $('#loadAllBtn');
+        if (btn10) btn10.textContent = `Show ${count} More Idea${count !== 1 ? 's' : ''} (${remaining} left)`;
+        if (btnAll) btnAll.textContent = `Show All ${totalFiltered.toLocaleString()} Ideas`;
       } else {
-        loadMoreBtn.parentNode.style.display = 'none';
+        loadMoreWrap.style.display = 'none';
       }
     }
 

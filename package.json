@@ -1,6 +1,6 @@
 {
   "name": "venture-atlas-os",
-  "version": "2.3.0",
+  "version": "2.5.0",
   "private": true,
   "description": "Static evidence-aware venture idea research repository and GitHub Pages site",
   "engines": {

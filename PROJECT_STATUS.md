@@ -6,7 +6,7 @@
 - Highest assigned canonical idea ID: idea-424
 - Next ID: idea-425 — allocated by the canonical ID allocator; do not infer from this document
 - Canonical ideas: 312
-- Categories: 132
+- Categories: 131
 - Validation warnings: 0
 - Last updated: 2026-08-18
 
@@ -114,7 +114,7 @@
 - Canonical Ideas: 312
 - Staged Ideas: 0
 - Total Ideas: 312
-- Categories: 132
+- Categories: 131
 - Source References: 316
 - Generated Prompts: 4625
 - Last Updated: 2026-08-18

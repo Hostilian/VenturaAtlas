@@ -351,6 +351,7 @@
   },
   {
     "id": "reset-zero-baseline",
+    "name": "RESET XVIII — Zero-Baseline Candidates",
     "label": "RESET XVIII — Zero-Baseline Candidates",
     "description": "Ideas discovered during RESET XVIII zero-baseline pass. All carry reset-zero-baseline-provisional scores and require fresh competitor/buyer/experiment validation before decision-grade ranking.",
     "count": 4,

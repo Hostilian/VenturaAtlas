@@ -202,7 +202,7 @@ The compare view shows: scores, customer types, startup costs, revenue speed, ev
 ## Working with Data Offline (JSON/CSV)
 
 ### Download options
-- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 302+ ideas
+- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 312+ ideas
 - **↓ CSV** → `data/ideas.csv` — flat spreadsheet format, all key fields
 
 ### Use cases
