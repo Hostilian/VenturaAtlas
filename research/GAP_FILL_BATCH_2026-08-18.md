@@ -34,9 +34,10 @@ Applied this proven pattern to 10 verticals that existing research did not touch
 ## Detailed Candidates
 
 ### 1. idea-425: EU AI Act Compliance Evidence Gate (91/100, priority)
-- **Concept:** Living, timestamped evidence trail proving AI system inventory, Annex III risk classification, and documentation status for SMEs.
-- **Why Now:** Enforcement began Aug 2, 2026. AI-literacy obligation has no company size floor. Moving Digital Omnibus timeline requires current-law tracking.
-- **MVP:** Intake form + LLM-assisted Annex III classification + generated versioned PDF/portal evidence pack.
+- **Concept:** Living, timestamped evidence trail & localized compliance simplifier for Czech/CEE SMEs using AI.
+- **Why Now:** Article 50 (transparency & chatbot marking) became live Aug 2, 2026. Article 4 (AI literacy) is in force. **Correction:** Regulation (EU) 2026/1744 (Digital Omnibus) deferred high-risk Annex III compliance to Dec 2, 2027.
+- **Pivot & Edge:** Narrowed to Czech/CEE localization to avoid generic competition (ComplianceAgent, Legalithm, EuroComply), mapping the 5 Czech enforcement bodies (ÚNMZ, ČTÚ, ÚOOÚ, ČNB, ČAS). See full analysis in `eu-ai-act-compliance-gate-deep-dive.md`.
+- **MVP:** Intake form + LLM-assisted classification + versioned Czech PDF compliance report.
 
 ### 2. idea-426: EAA Web Accessibility Evidence Audit (87/100, priority)
 - **Concept:** Manual-grade WCAG 2.1 AA accessibility audit producing a defensible evidence pack, bypassing discredited overlay widgets.

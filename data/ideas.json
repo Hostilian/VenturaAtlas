@@ -102700,17 +102700,17 @@
       "id": "idea-425",
       "slug": "euaiact-compliance-evidence-gate",
       "name": "EU AI Act Compliance Evidence Gate",
-      "oneSentenceConcept": "A living, timestamped evidence trail proving which AI systems a small business uses, how each is classified under the EU AI Act, and whether required documentation is current.",
-      "elevatorPitch": "For European SMEs using AI tools, EU AI Act Compliance Evidence Gate provides a structured intake and Annex III risk-classification engine that generates timestamped, versioned evidence packs — proving compliance to enterprise customers and regulators before fines occur.",
-      "detailedDescription": "National-authority enforcement began August 2, 2026. The AI-literacy obligation has no company size floor: a 3-person business using ChatGPT carries the same duty as a 300-person enterprise. Fines reach €15M or 3% global turnover. Model inventories live in spreadsheets and approvals happen over email. This system automates AI system inventorying, Annex III risk-tier classification, and evidence pack generation.",
+      "oneSentenceConcept": "A Czech/CEE-localized AI Act & Article 50 compliance simplifier generating timestamped evidence trails and mapping local enforcement bodies for SMEs.",
+      "elevatorPitch": "For Czech and CEE SMEs using AI tools, EU AI Act Compliance Evidence Gate provides a localized intake engine mapping the 5 Czech enforcement bodies (ÚNMZ, ČTÚ, ÚOOÚ, ČNB, ČAS) and generating versioned Czech-language compliance evidence packs for live Art. 50 and Art. 4 obligations.",
+      "detailedDescription": "Article 50 (transparency for chatbots and synthetic media) became live on Aug 2, 2026. Regulation (EU) 2026/1744 (Digital Omnibus on AI, in force July 27, 2026) deferred standalone high-risk Annex III compliance to Dec 2, 2027. Generic English self-serve tools exist (ComplianceAgent, Legalithm, EuroComply); this product narrows to Czech/CEE localization as a defensible moat.",
       "category": "Regulatory Handshake & Production-Failure Markets",
       "subcategory": "ai-act-compliance",
       "tags": [
         "EU-AI-Act",
         "AI-compliance",
-        "SME",
-        "governance",
-        "Annex-III",
+        "Czech-Republic",
+        "CEE",
+        "Article-50",
         "evidence-pack",
         "AI-literacy",
         "regulatory-handshake"
@@ -102722,7 +102722,7 @@
         "overallScore": 91,
         "scoreType": "gap-fill-provisional",
         "confidence": "MEDIUM-HIGH",
-        "urgency": "live — enforcement started Aug 2, 2026",
+        "urgency": "live — Art. 50 live Aug 2, 2026; Annex III deferred to Dec 2, 2027",
         "catalystType": "E",
         "productionPainEvidence": "government_acknowledged",
         "gateReality": "GREEN",
@@ -102739,11 +102739,11 @@
         "interfaceAccessibility": 8,
         "preflightFidelity": 8,
         "transactionValueAtRisk": 8,
-        "primaryBuyer": "Founders, Operations Leads, and Compliance Officers at 1–50 person European businesses",
-        "firstArtifact": "Structured Annex III questionnaire & generated versioned compliance evidence PDF",
-        "paymentGate": "€49/month or €399/year subscription",
-        "primaryRisk": "Moving Digital Omnibus timeline shifts deadlines",
-        "killCondition": "Zero interest from 20 target SME founders; enterprise buyers confirm simple self-declaration suffices"
+        "primaryBuyer": "Founders, Operations Leads, and Compliance Officers at 1–50 person Czech & CEE businesses",
+        "firstArtifact": "Czech obligation intake questionnaire & versioned Czech compliance evidence PDF",
+        "paymentGate": "€49 one-time report or €19/month continuous monitoring subscription",
+        "primaryRisk": "Ongoing regulatory maintenance burden as Czech transposition law evolves",
+        "killCondition": "Zero interest from 20 target Czech SME founders; local buyers rely exclusively on legal counsel"
       },
       "metrics": {
         "tbp": 9,
@@ -102757,7 +102757,7 @@
         "machineCheckability": 8,
         "evidenceCompounding": 9
       },
-      "productConcept": "Intake & Discovery -> LLM-Assisted Annex III Classification -> Timestamped PDF/Portal Evidence Pack Generator.",
+      "productConcept": "Czech Intake -> 5-Authority Classification (ÚNMZ/ČTÚ/ÚOOÚ/ČNB/ČAS) -> Versioned Czech PDF Compliance Report.",
       "relatedIdeaIds": [
         "idea-416",
         "idea-421"
