@@ -1,17 +1,32 @@
 # PROJECT STATUS
 
-- Repository version: 2.5.0
+- Repository version: 2.6.0
 - Data schema version: 2.0.0
-- Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 294 ideas and 96 source records; epistemic validation is not assessed
-- Highest assigned canonical idea ID: idea-424
-- Next ID: idea-425 — allocated by the canonical ID allocator; do not infer from this document
-- Canonical ideas: 312
-- Categories: 131
+- Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 319 ideas; epistemic validation is not assessed
+- Highest assigned canonical idea ID: idea-431
+- Next ID: idea-432 — allocated by the canonical ID allocator; do not infer from this document
+- Canonical ideas: 319
+- Categories: 132
 - Validation warnings: 0
 - Last updated: 2026-08-18
 
 
 ## Change Log
+
+### 2026-08-18: Gap-Fill Batch Ingestion (v2.5.0 → v2.6.0)
+- Ingested 7 new canonical ideas (idea-425 through idea-431) applying the verified evidence-layer pattern to 7 new verticals:
+  - #1: EU AI Act Compliance Evidence Gate (idea-425, score: 91, priority) — Winner
+  - #2: EAA Web Accessibility Evidence Audit (idea-426, score: 87, priority)
+  - #3: Cross-Border EU Rental Evidence Gate (idea-428, score: 86, priority) — Runner-up
+  - #4: EU Job-Posting Trust Gate (idea-429, score: 84, priority) — High-upside
+  - #5: Care-Home Evidence Freshness Gate (idea-427, score: 82, watch) — Overlooked
+  - #6: Evidence-Based Fitness Claim Checker (idea-430, score: 76, watch)
+  - #7: Continental-EU Vet Pricing Transparency Network (idea-431, score: 73, watch)
+- Added new category "Gap-Fill Batch — Evidence-Layer Expansion" (id: gap-fill-evidence-layer)
+- Created research/GAP_FILL_BATCH_2026-08-18.md research archive
+- Created data/gap-fill-ideas-ingest.json + scripts/merge-gap-fill-ideas.js
+- Updated data/trigger-ledger.json with 4 new enforcement triggers (EU AI Act enforcement Aug 2, EAA supervision, EU Pay Transparency Directive Jun 7, Italy CIN rental code)
+- Set aside / Graveyard: 4 ideas set aside (freelancer AI contract review, school-choice comparison, Czech freelancer OSVČ tax, restaurant health-inspection freshness)
 
 ### 2026-08-18: RESET XVIII & OMEGA XIX Integration (v2.4.0 → v2.5.0)
 - Ingested 4 new canonical ideas (idea-421 through idea-424) from RESET XVIII (Zero-Baseline):
@@ -110,11 +125,11 @@
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.5.0
-- Canonical Ideas: 312
+- Repository Version: 2.6.0
+- Canonical Ideas: 319
 - Staged Ideas: 0
-- Total Ideas: 312
-- Categories: 131
+- Total Ideas: 319
+- Categories: 132
 - Source References: 316
 - Generated Prompts: 4625
 - Last Updated: 2026-08-18

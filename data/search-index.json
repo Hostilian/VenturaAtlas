@@ -5655,5 +5655,156 @@
       "EU-health-regulation"
     ],
     "normalizedText": "ehds ehr chaos lab cross-vendor ehr interoperability regression cloud that tests whether health data exchanged between ehr systems continues to round-trip correctly across ehds cross-border routes after each software update regulatory handshake production-failure markets ehds ehr health-data interoperability fhir openehr cross-border eu-health-regulation"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-425",
+    "slug": "euaiact-compliance-evidence-gate",
+    "name": "EU AI Act Compliance Evidence Gate",
+    "category": "Regulatory Handshake & Production-Failure Markets",
+    "subcategory": "ai-act-compliance",
+    "concept": "A living, timestamped evidence trail proving which AI systems a small business uses, how each is classified under the EU AI Act, and whether required documentation is current.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 91,
+    "tags": [
+      "EU-AI-Act",
+      "AI-compliance",
+      "SME",
+      "governance",
+      "Annex-III",
+      "evidence-pack",
+      "AI-literacy",
+      "regulatory-handshake"
+    ],
+    "normalizedText": "eu ai act compliance evidence gate a living timestamped evidence trail proving which ai systems a small business uses how each is classified under the eu ai act and whether required documentation is current regulatory handshake production-failure markets eu-ai-act ai-compliance sme governance annex-iii evidence-pack ai-literacy regulatory-handshake"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-426",
+    "slug": "eaa-web-accessibility-evidence-audit",
+    "name": "EAA Web Accessibility Evidence Audit",
+    "category": "Regulatory Handshake & Production-Failure Markets",
+    "subcategory": "accessibility-compliance",
+    "concept": "A manual-grade WCAG 2.1 AA accessibility audit for small EU businesses producing a legally defensible evidence pack, replacing discredited overlay widgets.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 87,
+    "tags": [
+      "EAA",
+      "WCAG",
+      "accessibility",
+      "EU-compliance",
+      "e-commerce",
+      "audit-trail",
+      "evidence-pack"
+    ],
+    "normalizedText": "eaa web accessibility evidence audit a manual-grade wcag 2 1 aa accessibility audit for small eu businesses producing a legally defensible evidence pack replacing discredited overlay widgets regulatory handshake production-failure markets eaa wcag accessibility eu-compliance e-commerce audit-trail evidence-pack"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-427",
+    "slug": "carehome-evidence-freshness-gate",
+    "name": "Care-Home Evidence Freshness Gate",
+    "category": "Healthcare & SoHO Compliance",
+    "subcategory": "carehome-ratings",
+    "concept": "Surfaces the staleness of official care home inspection ratings and layers recent public signals so families selecting care homes do not rely on 7-year-old inspections.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 82,
+    "tags": [
+      "care-home",
+      "CQC",
+      "staleness",
+      "eldercare",
+      "freshness-gate",
+      "UK-healthcare",
+      "evidence-layer"
+    ],
+    "normalizedText": "care-home evidence freshness gate surfaces the staleness of official care home inspection ratings and layers recent public signals so families selecting care homes do not rely on 7-year-old inspections healthcare soho compliance care-home cqc staleness eldercare freshness-gate uk-healthcare evidence-layer"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-428",
+    "slug": "crossborder-eu-rental-evidence-gate",
+    "name": "Cross-Border EU Rental Evidence Gate",
+    "category": "Consumer & Marketplace Trust",
+    "subcategory": "rental-verification",
+    "concept": "A document and listing verification layer for cross-border EU renters checking properties against official registry data before deposits are paid.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 86,
+    "tags": [
+      "rental-fraud",
+      "Erasmus",
+      "expats",
+      "EU-rental",
+      "CIN-code",
+      "verification",
+      "trust-layer"
+    ],
+    "normalizedText": "cross-border eu rental evidence gate a document and listing verification layer for cross-border eu renters checking properties against official registry data before deposits are paid consumer marketplace trust rental-fraud erasmus expats eu-rental cin-code verification trust-layer"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-429",
+    "slug": "eujob-posting-trust-gate",
+    "name": "EU Job-Posting Trust Gate",
+    "category": "Consumer & Marketplace Trust",
+    "subcategory": "job-trust",
+    "concept": "A dual verification engine for job postings in the EU combining ghost-job detection with EU Pay Transparency Directive compliance auditing.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 84,
+    "tags": [
+      "ghost-jobs",
+      "Pay-Transparency",
+      "EU-Directive",
+      "job-postings",
+      "verification",
+      "recruitment"
+    ],
+    "normalizedText": "eu job-posting trust gate a dual verification engine for job postings in the eu combining ghost-job detection with eu pay transparency directive compliance auditing consumer marketplace trust ghost-jobs pay-transparency eu-directive job-postings verification recruitment"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-430",
+    "slug": "evidence-fitness-claim-checker",
+    "name": "Evidence-Based Fitness Claim Checker",
+    "category": "Consumer & Marketplace Trust",
+    "subcategory": "fitness-evidence",
+    "concept": "Verifies specific workout programs and exercise claims against current peer-reviewed sports-science literature.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 76,
+    "tags": [
+      "fitness",
+      "sports-science",
+      "evidence-check",
+      "PubMed",
+      "workout-myth",
+      "health"
+    ],
+    "normalizedText": "evidence-based fitness claim checker verifies specific workout programs and exercise claims against current peer-reviewed sports-science literature consumer marketplace trust fitness sports-science evidence-check pubmed workout-myth health"
+  },
+  {
+    "schemaVersion": "2.0.0",
+    "id": "idea-431",
+    "slug": "eu-vet-pricing-transparency-network",
+    "name": "Continental-EU Vet Pricing Transparency Network",
+    "category": "Consumer & Marketplace Trust",
+    "subcategory": "vet-pricing",
+    "concept": "A veterinary bill fairness checker and price comparison network for pet owners in continental Europe.",
+    "customer": "",
+    "problem": "",
+    "overallScore": 73,
+    "tags": [
+      "vet-pricing",
+      "pet-care",
+      "price-transparency",
+      "EU-market",
+      "bill-audit"
+    ],
+    "normalizedText": "continental-eu vet pricing transparency network a veterinary bill fairness checker and price comparison network for pet owners in continental europe consumer marketplace trust vet-pricing pet-care price-transparency eu-market bill-audit"
   }
 ]

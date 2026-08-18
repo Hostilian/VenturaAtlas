@@ -1,15 +1,15 @@
 {
-  "dataRevision": "3eb48c738e5ccc70",
-  "buildRevision": "2.5.0-3eb48c738e5ccc70",
-  "generatedAt": "2026-08-18T21:26:53.331Z",
+  "dataRevision": "faff7f0171b82988",
+  "buildRevision": "2.6.0-faff7f0171b82988",
+  "generatedAt": "2026-08-18T21:43:40.671Z",
   "files": {
     "ideas.json": {
-      "sha256": "865d33ee8b2db672b5b96b919931c2c76d91588892dec5599e6229d7262cb29c",
-      "bytes": 4592523
+      "sha256": "eeec6de7bb6a3363fcc713f62e0f48842bdec94646c978c73be59a6d636d92cd",
+      "bytes": 4615369
     },
     "categories.json": {
-      "sha256": "ad9cd7072f2e38d309a7f1490af0896d300f60f16c9ae19ce764f07ef535273d",
-      "bytes": 7500
+      "sha256": "ce51c2ac3fbfccf0bf6b3373fafb3d0f6e1ea91ee8b7d515d3b2651d09ea36ff",
+      "bytes": 8133
     },
     "sources.json": {
       "sha256": "a412889d960c6b2527e2fefe973134bdd8d28a5d4ab38efa003066ac2cc1e5e4",

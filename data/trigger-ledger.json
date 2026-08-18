@@ -4,24 +4,51 @@
   "createdAt": "2026-08-18",
   "omegaVersion": "XIX",
   "triggerTypes": [
-    "PORTAL_CUTOVER", "API_VERSION", "SCHEMA_CHANGE", "MANDATORY_IDENTIFIER",
-    "NEW_LEVY", "TARIFF_CHANGE", "REPORTING_FORMAT", "ENFORCEMENT_START",
-    "REGISTRY_LAUNCH", "DEPRECATION", "CERTIFICATION_CHANGE",
-    "STANDARD_TRANSITION", "SUBSIDY_OPENING", "PROCUREMENT_CHANGE"
+    "PORTAL_CUTOVER",
+    "API_VERSION",
+    "SCHEMA_CHANGE",
+    "MANDATORY_IDENTIFIER",
+    "NEW_LEVY",
+    "TARIFF_CHANGE",
+    "REPORTING_FORMAT",
+    "ENFORCEMENT_START",
+    "REGISTRY_LAUNCH",
+    "DEPRECATION",
+    "CERTIFICATION_CHANGE",
+    "STANDARD_TRANSITION",
+    "SUBSIDY_OPENING",
+    "PROCUREMENT_CHANGE"
   ],
   "regulatoryEventStates": [
-    "PROPOSED", "POLITICAL_AGREEMENT", "ADOPTED", "PUBLISHED",
-    "ENTERED_INTO_FORCE", "PARTIALLY_APPLICABLE", "APPLICABLE",
-    "ENFORCED", "DELAYED", "AMENDED", "SUPERSEDED", "REPEALED", "SUNSET"
+    "PROPOSED",
+    "POLITICAL_AGREEMENT",
+    "ADOPTED",
+    "PUBLISHED",
+    "ENTERED_INTO_FORCE",
+    "PARTIALLY_APPLICABLE",
+    "APPLICABLE",
+    "ENFORCED",
+    "DELAYED",
+    "AMENDED",
+    "SUPERSEDED",
+    "REPEALED",
+    "SUNSET"
   ],
-  "dateConfidenceValues": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"],
+  "dateConfidenceValues": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "UNKNOWN"
+  ],
   "triggers": [
     {
       "triggerId": "trigger-ksef-2026-wave1",
       "name": "Poland KSeF 2.0 — First Mandatory Wave",
       "triggerType": "ENFORCEMENT_START",
       "jurisdiction": "PL",
-      "actors": ["businesses with turnover above PLN 200M"],
+      "actors": [
+        "businesses with turnover above PLN 200M"
+      ],
       "system": "KSeF (Krajowy System e-Faktur)",
       "transaction": "B2B electronic invoice issuance and receipt",
       "effectiveAt": "2026-02-01",
@@ -29,8 +56,12 @@
       "dateConfidence": "HIGH",
       "delayHistory": [],
       "reversalRisk": "LOW",
-      "sourceIds": ["ksef-podatki-gov-pl-etapy"],
-      "candidateIdeaIds": ["idea-421"],
+      "sourceIds": [
+        "ksef-podatki-gov-pl-etapy"
+      ],
+      "candidateIdeaIds": [
+        "idea-421"
+      ],
       "lastVerifiedAt": "2026-08-18",
       "notes": "Already live. Main wave April 1, 2026."
     },
@@ -39,7 +70,9 @@
       "name": "Poland KSeF 2.0 — Main Mandatory Wave",
       "triggerType": "ENFORCEMENT_START",
       "jurisdiction": "PL",
-      "actors": ["all VAT-registered businesses"],
+      "actors": [
+        "all VAT-registered businesses"
+      ],
       "system": "KSeF",
       "transaction": "B2B electronic invoice issuance",
       "effectiveAt": "2026-04-01",
@@ -47,8 +80,12 @@
       "dateConfidence": "HIGH",
       "delayHistory": [],
       "reversalRisk": "LOW",
-      "sourceIds": ["ksef-podatki-gov-pl-etapy"],
-      "candidateIdeaIds": ["idea-421"],
+      "sourceIds": [
+        "ksef-podatki-gov-pl-etapy"
+      ],
+      "candidateIdeaIds": [
+        "idea-421"
+      ],
       "lastVerifiedAt": "2026-08-18"
     },
     {
@@ -56,19 +93,32 @@
       "name": "France — Mandatory E-Invoice Receiver Capability",
       "triggerType": "ENFORCEMENT_START",
       "jurisdiction": "FR",
-      "actors": ["all in-scope businesses"],
+      "actors": [
+        "all in-scope businesses"
+      ],
       "system": "Portail Public de Facturation / Chorus Pro + approved platforms",
       "transaction": "Receipt of mandatory electronic invoices via approved platforms",
       "effectiveAt": "2026-09-01",
       "status": "PARTIALLY_APPLICABLE",
       "dateConfidence": "HIGH",
       "delayHistory": [
-        {"originalDate": "2024-07-01", "delayedTo": "2026-09-01", "reason": "Technical readiness / platform certification delays"}
+        {
+          "originalDate": "2024-07-01",
+          "delayedTo": "2026-09-01",
+          "reason": "Technical readiness / platform certification delays"
+        }
       ],
       "reversalRisk": "LOW",
-      "implementationDependencies": ["approved platform certification", "PA routing directory population"],
-      "sourceIds": ["impots-gouv-fr-facturation-electronique"],
-      "candidateIdeaIds": ["idea-421"],
+      "implementationDependencies": [
+        "approved platform certification",
+        "PA routing directory population"
+      ],
+      "sourceIds": [
+        "impots-gouv-fr-facturation-electronique"
+      ],
+      "candidateIdeaIds": [
+        "idea-421"
+      ],
       "lastVerifiedAt": "2026-08-18",
       "notes": "France has a history of delays in this reform. Receiver capability Sep 2026; mandatory issuance for first cohorts also beginning."
     },
@@ -77,7 +127,11 @@
       "name": "ICS2 — Full Mandatory Scope All Transport Modes",
       "triggerType": "ENFORCEMENT_START",
       "jurisdiction": "EU",
-      "actors": ["all economic operators entering goods into EU", "carriers", "freight forwarders"],
+      "actors": [
+        "all economic operators entering goods into EU",
+        "carriers",
+        "freight forwarders"
+      ],
       "system": "ICS2 (Import Control System 2)",
       "transaction": "Entry Summary Declaration (ENS) for all EU-bound consignments",
       "effectiveAt": "2026-06-01",
@@ -85,8 +139,12 @@
       "dateConfidence": "HIGH",
       "delayHistory": [],
       "reversalRisk": "LOW",
-      "sourceIds": ["ec-ics2-page-2026"],
-      "candidateIdeaIds": ["idea-422"],
+      "sourceIds": [
+        "ec-ics2-page-2026"
+      ],
+      "candidateIdeaIds": [
+        "idea-422"
+      ],
       "lastVerifiedAt": "2026-08-18"
     },
     {
@@ -94,7 +152,9 @@
       "name": "ICS2 — Updated Stop-Word List",
       "triggerType": "SCHEMA_CHANGE",
       "jurisdiction": "EU",
-      "actors": ["all ICS2 filers"],
+      "actors": [
+        "all ICS2 filers"
+      ],
       "system": "ICS2",
       "transaction": "Goods description field validation in ENS",
       "effectiveAt": "2026-08-03",
@@ -102,8 +162,12 @@
       "dateConfidence": "HIGH",
       "delayHistory": [],
       "reversalRisk": "LOW",
-      "sourceIds": ["ec-ics2-page-2026"],
-      "candidateIdeaIds": ["idea-422"],
+      "sourceIds": [
+        "ec-ics2-page-2026"
+      ],
+      "candidateIdeaIds": [
+        "idea-422"
+      ],
       "lastVerifiedAt": "2026-08-18",
       "notes": "Demonstrates ongoing schema change cadence — the trigger is recurring, not a one-time event."
     },
@@ -112,7 +176,11 @@
       "name": "Euro 7 — Light-Duty Vehicle Type Application",
       "triggerType": "CERTIFICATION_CHANGE",
       "jurisdiction": "EU",
-      "actors": ["OEMs", "type-approval authorities", "Tier-1 suppliers"],
+      "actors": [
+        "OEMs",
+        "type-approval authorities",
+        "Tier-1 suppliers"
+      ],
       "system": "EU Type Approval / Environmental Vehicle Passport",
       "transaction": "Type approval for new light-duty vehicle models",
       "effectiveAt": "2026-11-29",
@@ -120,9 +188,16 @@
       "dateConfidence": "HIGH",
       "delayHistory": [],
       "reversalRisk": "LOW",
-      "implementationDependencies": ["delegated acts on EVP format", "OEM internal tooling readiness"],
-      "sourceIds": ["eur-lex-euro7-summary"],
-      "candidateIdeaIds": ["idea-423"],
+      "implementationDependencies": [
+        "delegated acts on EVP format",
+        "OEM internal tooling readiness"
+      ],
+      "sourceIds": [
+        "eur-lex-euro7-summary"
+      ],
+      "candidateIdeaIds": [
+        "idea-423"
+      ],
       "lastVerifiedAt": "2026-08-18"
     },
     {
@@ -130,7 +205,11 @@
       "name": "EHDS — Regulation Adopted",
       "triggerType": "STANDARD_TRANSITION",
       "jurisdiction": "EU",
-      "actors": ["EHR vendors", "Member State health authorities", "patients"],
+      "actors": [
+        "EHR vendors",
+        "Member State health authorities",
+        "patients"
+      ],
       "system": "European Health Data Space",
       "transaction": "Cross-border electronic health record access and secondary use",
       "effectiveAt": "UNKNOWN",
@@ -138,11 +217,119 @@
       "dateConfidence": "LOW",
       "delayHistory": [],
       "reversalRisk": "UNKNOWN",
-      "implementationDependencies": ["Member State transposition", "interoperability standards finalization", "MyHealth@EU expansion"],
-      "sourceIds": ["health-ec-europa-eu-ehds"],
-      "candidateIdeaIds": ["idea-424"],
+      "implementationDependencies": [
+        "Member State transposition",
+        "interoperability standards finalization",
+        "MyHealth@EU expansion"
+      ],
+      "sourceIds": [
+        "health-ec-europa-eu-ehds"
+      ],
+      "candidateIdeaIds": [
+        "idea-424"
+      ],
       "lastVerifiedAt": "2026-08-18",
       "notes": "Regulation adopted but Member State implementation extends years. Production cross-border infrastructure not yet accessible."
+    },
+    {
+      "triggerId": "trigger-eu-ai-act-enforcement-aug2026",
+      "name": "EU AI Act — National Authority Enforcement Begins",
+      "triggerType": "ENFORCEMENT_START",
+      "jurisdiction": "EU",
+      "actors": [
+        "all businesses operating AI systems in EU",
+        "SMEs",
+        "AI system deployers"
+      ],
+      "system": "EU AI Act Governance Framework",
+      "transaction": "AI system risk classification, inventorying, and literacy compliance",
+      "effectiveAt": "2026-08-02",
+      "status": "ENFORCED",
+      "dateConfidence": "HIGH",
+      "delayHistory": [],
+      "reversalRisk": "LOW",
+      "sourceIds": [
+        "electe-net-eu-ai-act-sme-2026"
+      ],
+      "candidateIdeaIds": [
+        "idea-425"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "notes": "Enforcement began August 2, 2026. AI-literacy obligation has no company size floor."
+    },
+    {
+      "triggerId": "trigger-eaa-supervision-2026",
+      "name": "European Accessibility Act — National Active Supervision",
+      "triggerType": "ENFORCEMENT_START",
+      "jurisdiction": "EU",
+      "actors": [
+        "e-commerce store owners",
+        "digital service providers in EU"
+      ],
+      "system": "EAA National Enforcement Authorities",
+      "transaction": "WCAG 2.1 AA digital accessibility compliance",
+      "effectiveAt": "2025-06-28",
+      "status": "ENFORCED",
+      "dateConfidence": "HIGH",
+      "delayHistory": [],
+      "reversalRisk": "LOW",
+      "sourceIds": [
+        "accessibility-works-eaa-2026"
+      ],
+      "candidateIdeaIds": [
+        "idea-426"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "notes": "2026 is the first full year of active national supervision (e.g. French court fines)."
+    },
+    {
+      "triggerId": "trigger-eu-pay-transparency-jun2026",
+      "name": "EU Pay Transparency Directive — Transposition Deadline",
+      "triggerType": "ENFORCEMENT_START",
+      "jurisdiction": "EU",
+      "actors": [
+        "EU employers",
+        "job recruiters"
+      ],
+      "system": "EU Pay Transparency Framework",
+      "transaction": "Job posting salary range disclosure & gender pay equity reporting",
+      "effectiveAt": "2026-06-07",
+      "status": "ENFORCED",
+      "dateConfidence": "HIGH",
+      "delayHistory": [],
+      "reversalRisk": "LOW",
+      "sourceIds": [
+        "synd-io-eu-pay-transparency-tracker"
+      ],
+      "candidateIdeaIds": [
+        "idea-429"
+      ],
+      "lastVerifiedAt": "2026-08-18",
+      "notes": "Deadline passed June 7, 2026. Directives bind employers regardless of local transposition."
+    },
+    {
+      "triggerId": "trigger-italy-cin-code-2026",
+      "name": "Italy — Mandatory Short-Term Rental Identification Code (CIN)",
+      "triggerType": "MANDATORY_IDENTIFIER",
+      "jurisdiction": "IT",
+      "actors": [
+        "short-term rental landlords",
+        "listing portals"
+      ],
+      "system": "BDSR (Banca Dati Strutture Ricettive)",
+      "transaction": "Rental listing CIN code display and registration",
+      "effectiveAt": "2026-01-01",
+      "status": "ENFORCED",
+      "dateConfidence": "HIGH",
+      "delayHistory": [],
+      "reversalRisk": "LOW",
+      "sourceIds": [
+        "coinquilino-app-scams-2026"
+      ],
+      "candidateIdeaIds": [
+        "idea-428"
+      ],
+      "lastVerifiedAt": "2026-08-18"
     }
   ]
 }

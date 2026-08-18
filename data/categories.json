@@ -330,14 +330,16 @@
   {
     "id": "regulatory-handshake-markets",
     "name": "Regulatory Handshake & Production-Failure Markets",
-    "count": 6,
+    "count": 8,
     "ideaIds": [
       "idea-415",
       "idea-416",
       "idea-417",
       "idea-418",
       "idea-419",
-      "idea-420"
+      "idea-420",
+      "idea-425",
+      "idea-426"
     ],
     "subcategories": [
       "catch-preflight",
@@ -363,5 +365,23 @@
     ],
     "addedAt": "2026-08-18",
     "resetVersion": "RESET_XVIII"
+  },
+  {
+    "id": "gap-fill-evidence-layer",
+    "name": "Gap-Fill Batch — Evidence-Layer Expansion",
+    "label": "Gap-Fill Batch — Evidence-Layer Expansion",
+    "description": "Candidates extending the verified evidence-gate pattern to AI Act compliance, EAA web accessibility, care home freshness, cross-border rentals, EU pay transparency, and trust networks.",
+    "count": 7,
+    "ideaIds": [
+      "idea-425",
+      "idea-426",
+      "idea-427",
+      "idea-428",
+      "idea-429",
+      "idea-430",
+      "idea-431"
+    ],
+    "addedAt": "2026-08-18",
+    "resetVersion": "GAP_FILL"
   }
 ]

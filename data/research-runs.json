@@ -3365,5 +3365,35 @@
     ],
     "archiveFile": "research/RESET_XVIII_ZERO_BASELINE_2026-08-18.md",
     "notes": "No new overall champion declared. All previous champion labels frozen pending revalidation via OMEGA XIX reset-status mechanism."
+  },
+  {
+    "runId": "run-res-gap-fill-20260818",
+    "name": "Gap-Fill Batch — Evidence-Layer Expansion",
+    "type": "GAP_FILL_RESEARCH_PASS",
+    "date": "2026-08-18",
+    "researchFocus": "EU AI Act compliance, EAA web accessibility, Care-home inspection freshness, Cross-border EU rental verification, EU job posting trust, Fitness claim verification, Continental EU vet pricing",
+    "thesis": "Apply proven evidence-gate pattern (trust/information problem + verified evidence layer) to 10 unserved verticals",
+    "ideasAdded": [
+      "idea-425",
+      "idea-426",
+      "idea-427",
+      "idea-428",
+      "idea-429",
+      "idea-430",
+      "idea-431"
+    ],
+    "ideasKilled": [
+      "freelancer-ai-contract-review",
+      "school-choice-comparison",
+      "czech-freelancer-osvc-tax",
+      "restaurant-health-inspection-freshness"
+    ],
+    "ideasWatched": [
+      "idea-427",
+      "idea-430",
+      "idea-431"
+    ],
+    "scoringMethod": "8-gate-binary-provisional",
+    "archiveFile": "research/GAP_FILL_BATCH_2026-08-18.md"
   }
 ]
