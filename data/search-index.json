@@ -5663,21 +5663,21 @@
     "name": "EU AI Act Compliance Evidence Gate",
     "category": "Regulatory Handshake & Production-Failure Markets",
     "subcategory": "ai-act-compliance",
-    "concept": "A living, timestamped evidence trail proving which AI systems a small business uses, how each is classified under the EU AI Act, and whether required documentation is current.",
+    "concept": "A Czech/CEE-localized AI Act & Article 50 compliance simplifier generating timestamped evidence trails and mapping local enforcement bodies for SMEs.",
     "customer": "",
     "problem": "",
     "overallScore": 91,
     "tags": [
       "EU-AI-Act",
       "AI-compliance",
-      "SME",
-      "governance",
-      "Annex-III",
+      "Czech-Republic",
+      "CEE",
+      "Article-50",
       "evidence-pack",
       "AI-literacy",
       "regulatory-handshake"
     ],
-    "normalizedText": "eu ai act compliance evidence gate a living timestamped evidence trail proving which ai systems a small business uses how each is classified under the eu ai act and whether required documentation is current regulatory handshake production-failure markets eu-ai-act ai-compliance sme governance annex-iii evidence-pack ai-literacy regulatory-handshake"
+    "normalizedText": "eu ai act compliance evidence gate a czech cee-localized ai act article 50 compliance simplifier generating timestamped evidence trails and mapping local enforcement bodies for smes regulatory handshake production-failure markets eu-ai-act ai-compliance czech-republic cee article-50 evidence-pack ai-literacy regulatory-handshake"
   },
   {
     "schemaVersion": "2.0.0",
