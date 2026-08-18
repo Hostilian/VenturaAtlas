@@ -21,18 +21,20 @@ test('architecture synchronization repairs comma-amplified counts and is idempot
 });
 
 test('homepage synchronization updates current description variants and is idempotent', () => {
-  const meta = { counts: { canonicalIdeas: 302, categories: 130, sources: 316, prompts: 4625 } };
+  const meta = { counts: { canonicalIdeas: 302, categories: 130, sources: 316, prompts: 4625, researchProposals: 476 } };
   const stale = [
     '<meta name="description" content="Browse 294+ business idea dossiers with heterogeneous evidence coverage.">',
     '<meta property="og:description" content="294+ business idea dossiers with legacy scores.">',
     '<span data-total-ideas>294</span>',
-    '<span data-total-categories>122</span>'
+    '<span data-total-categories>122</span>',
+    '<div>All 353 Research Proposal Rows</div>'
   ].join('\n');
   const expected = stale
     .replace('Browse 294+', 'Browse 302+')
     .replace('content="294+', 'content="302+')
     .replace('>294<', '>302<')
-    .replace('>122<', '>130<');
+    .replace('>122<', '>130<')
+    .replace('All 353 Research', 'All 476 Research');
 
   const once = synchronizeHomepage(stale, meta);
   assert.strictEqual(once, expected);

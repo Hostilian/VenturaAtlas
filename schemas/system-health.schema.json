@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VenturaAtlasSystemHealth",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "reconciledAt",
+    "sourceCommit",
+    "aggregateStatus",
+    "components"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "reconciledAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceCommit": {
+      "type": ["string", "null"]
+    },
+    "aggregateStatus": {
+      "type": "string",
+      "enum": ["PASS", "WARN", "FAIL", "DEGRADED"]
+    },
+    "components": {
+      "type": "object",
+      "required": [
+        "repositoryIntegrity",
+        "canonicalData",
+        "derivedArtifacts",
+        "agentState",
+        "ci",
+        "deployment",
+        "researchProductivity",
+        "providerCapacity",
+        "sourceFreshness",
+        "artifactCoverage",
+        "publicTruth",
+        "collaboration"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "observedAt", "reason"],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["PASS", "WARN", "FAIL", "STALE", "UNKNOWN", "DISABLED", "NOT_APPLICABLE"]
+          },
+          "observedAt": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": ["string", "null"]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "proof": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

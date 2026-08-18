@@ -3,6 +3,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const META_PATH = path.join(ROOT, 'data', 'repository-meta.json');
+const RESEARCH_CATALOG_PATH = path.join(ROOT, 'data', 'research-proposal-catalog.json');
 
 const FILES = [
   path.join(ROOT, 'README.md'),
@@ -26,7 +27,7 @@ function synchronizeArchitecture(content, meta) {
 }
 
 function synchronizeHomepage(content, meta) {
-  return content
+  let synchronized = content
     .replace(
       /(<meta\s+name="description"\s+content="Browse\s+)\d+\+/i,
       `$1${meta.counts.canonicalIdeas}+`
@@ -40,6 +41,13 @@ function synchronizeHomepage(content, meta) {
     .replace(/<span data-total-categories>\d+<\/span>/g, `<span data-total-categories>${meta.counts.categories}</span>`)
     .replace(/<span data-total-sources>\d+<\/span>/g, `<span data-total-sources>${meta.counts.sources}</span>`)
     .replace(/<span data-total-prompts>\d+<\/span>/g, `<span data-total-prompts>${meta.counts.prompts}</span>`);
+  if (Number.isInteger(meta.counts.researchProposals)) {
+    synchronized = synchronized.replace(
+      /All \d+ Research Proposal Rows/g,
+      `All ${meta.counts.researchProposals} Research Proposal Rows`,
+    );
+  }
+  return synchronized;
 }
 
 function main() {
@@ -49,6 +57,11 @@ function main() {
   }
 
   const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+  if (fs.existsSync(RESEARCH_CATALOG_PATH)) {
+    const researchCatalog = JSON.parse(fs.readFileSync(RESEARCH_CATALOG_PATH, 'utf8'));
+    meta.counts.researchProposals = researchCatalog.proposalCount;
+    meta.counts.researchRounds = researchCatalog.roundCount;
+  }
   const statsBlock = [
     '<!-- BEGIN GENERATED REPOSITORY STATS -->',
     `- Repository Version: ${meta.version}`,
@@ -67,6 +80,7 @@ function main() {
     `- **${meta.counts.canonicalIdeas} canonical ideas** (${meta.counts.stagedIdeas} staged, ${meta.counts.totalIdeas} total)`,
     `- **${meta.counts.categories} categories**`,
     `- **${meta.counts.sources} source inventory records**`,
+    `- **${meta.counts.researchProposals} research proposal rows** across **${meta.counts.researchRounds} recoverable rounds**; weak, rejected, duplicate, and related rows remain visible`,
     `- **${meta.counts.prompts.toLocaleString()} idea-specific prompts** plus master prompts`,
     `- **${meta.counts.dossiers} dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)`,
     `- **${meta.counts.financialModels}/${meta.counts.canonicalIdeas} financial models**, **${meta.counts.validationPlans}/${meta.counts.canonicalIdeas} validation plans**, **${meta.counts.technicalBlueprints}/${meta.counts.canonicalIdeas} technical blueprints**, and **${meta.counts.launchPlans}/${meta.counts.canonicalIdeas} launch plans**`,

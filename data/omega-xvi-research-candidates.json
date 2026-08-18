@@ -1,0 +1,132 @@
+{
+  "omegaRound": "OMEGA XVI",
+  "generatedAt": "2026-08-17T23:54:00Z",
+  "candidates": [
+    {
+      "candidateSlug": "unsoldproof-apparel-footwear-destruction-derogation-audit",
+      "title": "UNSOLDPROOF — Unsold Apparel & Footwear Destruction Prohibition Audit",
+      "trigger": {
+        "type": "law-applicability",
+        "jurisdiction": "EU",
+        "name": "Ecodesign for Sustainable Products Regulation (ESPR) destruction prohibition of unsold consumer products",
+        "effectiveAt": "2026-07-19T00:00:00Z",
+        "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1781"
+      },
+      "status": "VALIDATION_READY",
+      "targetBuyer": "Large fashion/footwear retailers, 3PL returns operators, reverse-logistics managers",
+      "transactionBlocked": "Disposition of returned/unsold apparel/footwear stock prior to annual public disclosure",
+      "cheapestWorkaround": "Spreadsheet logging by returns warehouse staff",
+      "killThreshold": "Incumbents (SAP/WMS/returns platforms) or free circular-economy tools make disposition evidence trivial",
+      "promotionEligible": false,
+      "deduplicationResult": "NEW"
+    },
+    {
+      "candidateSlug": "eudr-replay-dds-conformance-rejection-routing",
+      "title": "EUDR Replay — DDS API Conformance & Rejection Replay",
+      "trigger": {
+        "type": "portal-cutover",
+        "jurisdiction": "EU",
+        "name": "EU Deforestation Regulation (EUDR) TRACES Due Diligence Statement portal requirement",
+        "effectiveAt": "2025-12-30T00:00:00Z",
+        "source": "https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en"
+      },
+      "status": "DEDUPING",
+      "targetBuyer": "Timber, cocoa, coffee, soy, rubber importers & customs clearance agents",
+      "transactionBlocked": "Import release of regulated commodities at EU border when DDS payload errors occur",
+      "cheapestWorkaround": "Manual resubmission in TRACES portal",
+      "killThreshold": "Customs brokers absorb rejection replay or generic compliance tools satisfy requirements",
+      "promotionEligible": false,
+      "deduplicationResult": "ENRICH_EXISTING"
+    },
+    {
+      "candidateSlug": "ics2-ncts-p6-handoff-replay-preflight",
+      "title": "ICS2 / NCTS-P6 Handoff Replay & Exception Preflight",
+      "trigger": {
+        "type": "API-change",
+        "jurisdiction": "EU",
+        "name": "ICS2 Release 3 & NCTS Phase 6 customs messaging mandatory cutover",
+        "effectiveAt": "2026-01-21T00:00:00Z",
+        "source": "https://taxation-customs.ec.europa.eu/customs-4/customs-security/import-control-system-2-ics2_en"
+      },
+      "status": "VALIDATION_READY",
+      "targetBuyer": "Freight forwarders, air cargo carriers, maritime logistics integrators",
+      "transactionBlocked": "Entry Summary Declaration (ENS) validation & transit release across national customs boundaries",
+      "cheapestWorkaround": "Manual error correction in broker software",
+      "killThreshold": "Major customs software vendors (e.g. Descartes, WiseTech) absorb preflight replay completely",
+      "promotionEligible": false,
+      "deduplicationResult": "ADJACENT_OPPORTUNITY"
+    },
+    {
+      "candidateSlug": "ageproof-matrix-eIDAS2-wallet-interop-regression",
+      "title": "AGEPROOF MATRIX — eIDAS 2.0 / Zero-Knowledge Age Verification Interop Grid",
+      "trigger": {
+        "type": "enforcement-start",
+        "jurisdiction": "EU/UK",
+        "name": "eIDAS 2.0 EU Digital Identity Wallet rollout & UK Online Safety Act age assurance mandates",
+        "effectiveAt": "2026-09-01T00:00:00Z",
+        "source": "https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation"
+      },
+      "status": "EVIDENCE_GAP",
+      "targetBuyer": "Adult platforms, gambling operators, age-restricted e-commerce merchants",
+      "transactionBlocked": "User checkout/onboarding when wallet assertion or fallback verification fails",
+      "cheapestWorkaround": "3rd party age-verification SDK integration with high drop-off",
+      "killThreshold": "Platform SDK vendors (Yoti, Persona) provide zero-drop-off fallback automatically",
+      "promotionEligible": false,
+      "deduplicationResult": "NEW"
+    },
+    {
+      "candidateSlug": "origindelta-eu-mercosur-preference-eligibility-evidence",
+      "title": "ORIGINDELTA — EU–Mercosur Preferential Rules of Origin Evidence Delta",
+      "trigger": {
+        "type": "tariff-change",
+        "jurisdiction": "EU / Mercosur",
+        "name": "EU-Mercosur Trade Agreement tariff preference implementation window",
+        "effectiveAt": "2026-11-01T00:00:00Z",
+        "source": "https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/mercosur_en"
+      },
+      "status": "RESEARCHING",
+      "targetBuyer": "Automotive, chemical, and machinery exporters/importers",
+      "transactionBlocked": "Preferential tariff rate application due to missing multi-tier supplier origin proof",
+      "cheapestWorkaround": "Access2Markets free portal check + broker manual consultation",
+      "killThreshold": "Access2Markets free portal or incumbent GTM tools make supplier proof collection friction-free",
+      "promotionEligible": false,
+      "deduplicationResult": "NEW"
+    },
+    {
+      "candidateSlug": "uk-id-filing-blocker-companies-house-acsp-monitor",
+      "title": "UK ID Filing Blocker — Companies House Identity Verification Blocker Engine",
+      "trigger": {
+        "type": "mandatory-identifier",
+        "jurisdiction": "UK",
+        "name": "ECCTA mandatory identity verification for directors and PSCs filing with Companies House",
+        "effectiveAt": "2026-10-01T00:00:00Z",
+        "source": "https://www.gov.uk/government/organisations/companies-house"
+      },
+      "status": "VALIDATION_READY",
+      "targetBuyer": "Authorized Corporate Service Providers (ACSPs), accountancy firms, company secretarial software providers",
+      "transactionBlocked": "Annual confirmation statement and director change filings blocked by unverified personnel",
+      "cheapestWorkaround": "Chaser emails sent manually by junior company secretarial staff",
+      "killThreshold": "Single-company consumer demand only; ACSPs refuse to pay for multi-company blocker view",
+      "promotionEligible": false,
+      "deduplicationResult": "NEW"
+    },
+    {
+      "candidateSlug": "ram-feedelta-packuk-modulated-fee-design-simulator",
+      "title": "RAM FEEDELTA — PackUK Eco-Modulated Fee Packaging Design Simulator",
+      "trigger": {
+        "type": "fee-change",
+        "jurisdiction": "UK",
+        "name": "UK Extended Producer Responsibility for Packaging (pEPR) RAM eco-modulation fee implementation",
+        "effectiveAt": "2026-04-01T00:00:00Z",
+        "source": "https://www.gov.uk/guidance/extended-producer-responsibility-for-packaging-what-manufacturers-and-importers-need-to-do"
+      },
+      "status": "RESEARCHING",
+      "targetBuyer": "FMCG brand packaging managers, sustainability directors, packaging design agencies",
+      "transactionBlocked": "Packaging sign-off for new product SKUs without clear visibility into eco-modulated RAM fee penalties",
+      "cheapestWorkaround": "Annual reporting compliance scheme consultant estimate",
+      "killThreshold": "Compliance schemes or PLM tools absorb repeated design fee simulation for free",
+      "promotionEligible": false,
+      "deduplicationResult": "NEW"
+    }
+  ]
+}

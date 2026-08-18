@@ -130,12 +130,16 @@ function runQuality(options = {}) {
   const artifactPath = options.artifactPath || path.join(ROOT, '_site');
   const artifactManifestPath = options.artifactManifestPath
     || path.join(RECEIPT_DIRECTORY, 'public-artifact-manifest-latest.json');
+  const artifactBuildReceiptPath = options.artifactBuildReceiptPath
+    || path.join(RECEIPT_DIRECTORY, 'public-artifact-build-latest.json');
+  const requireArtifactBuildReceipt = options.requireArtifactBuildReceipt ?? !options.steps;
   const execute = options.execute || executeStep;
   const snapshot = options.snapshot || snapshotWorktree;
   const commit = options.sourceCommit || (() => gitOutput(['rev-parse', 'HEAD'])?.trim() || null);
   const logger = options.logger || console;
   const environment = options.environment || process.env;
   const startedAt = new Date();
+  const startingCommit = commit();
   const before = snapshot();
   const validators = [];
   const durations = {};
@@ -164,22 +168,59 @@ function runQuality(options = {}) {
     }
   }
 
+  let artifactManifest = null;
+  if (profile === 'artifact' && exitCode === 0) {
+    const stabilityStarted = process.hrtime.bigint();
+    try {
+      const firstManifest = buildArtifactManifest(artifactPath);
+      const secondManifest = buildArtifactManifest(artifactPath);
+      let buildReceipt = null;
+      if (requireArtifactBuildReceipt) {
+        buildReceipt = JSON.parse(fs.readFileSync(artifactBuildReceiptPath, 'utf8'));
+      }
+      const stable = firstManifest.treeSha256 === secondManifest.treeSha256
+        && firstManifest.fileCount === secondManifest.fileCount
+        && (!buildReceipt || (
+          buildReceipt.treeSha256 === secondManifest.treeSha256
+          && buildReceipt.fileCount === secondManifest.fileCount
+          && buildReceipt.totalBytes === secondManifest.totalBytes
+        ));
+      if (!stable) throw new Error('public artifact changed between build, validation, and receipt hashing');
+      artifactManifest = secondManifest;
+      atomicWriteJson(artifactManifestPath, artifactManifest);
+      durations['artifact-tree-stability'] = Number((Number(process.hrtime.bigint() - stabilityStarted) / 1e9).toFixed(3));
+      validators.push({ id: 'artifact-tree-stability', status: 'passed', exitCode: 0, durationSeconds: durations['artifact-tree-stability'] });
+    } catch (error) {
+      durations['artifact-tree-stability'] = Number((Number(process.hrtime.bigint() - stabilityStarted) / 1e9).toFixed(3));
+      validators.push({ id: 'artifact-tree-stability', status: 'failed', exitCode: 1, durationSeconds: durations['artifact-tree-stability'] });
+      failedPhase = 'artifact-tree-stability';
+      failedCommand = 'deterministic public artifact stability verification';
+      exitCode = 1;
+    }
+  }
+  const finishingCommit = commit();
+  if (startingCommit && finishingCommit && startingCommit !== finishingCommit) {
+    validators.push({ id: 'commit-stability', status: 'failed', exitCode: 1, durationSeconds: 0 });
+    durations['commit-stability'] = 0;
+    if (exitCode === 0) {
+      failedPhase = 'commit-stability';
+      failedCommand = 'git rev-parse HEAD remained stable for the quality run';
+      exitCode = 1;
+    }
+  }
   const after = snapshot();
   const affectedPaths = changedPaths(before, after);
   const warnings = [];
   if (affectedPaths.length > 0) warnings.push('The quality run changed worktree content; inspect affectedPaths.');
+  if (startingCommit !== finishingCommit) warnings.push('HEAD changed while the quality run was executing; the receipt is failed closed.');
   const finishedAt = new Date();
-  let artifactManifest = null;
-  if (profile === 'artifact' && exitCode === 0) {
-    artifactManifest = buildArtifactManifest(artifactPath);
-    atomicWriteJson(artifactManifestPath, artifactManifest);
-  }
   const receipt = {
     schemaVersion: 1,
     receiptKind: `${profile}-quality`,
     profile,
     status: exitCode === 0 ? 'passed' : 'failed',
-    sourceCommit: commit(),
+    sourceCommit: startingCommit,
+    finishedCommit: finishingCommit,
     startedAt: startedAt.toISOString(),
     finishedAt: finishedAt.toISOString(),
     failedPhase,

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://venture-atlas.example/schemas/proofops-research.schema.json",
+  "title": "ProofOps research candidate registry",
+  "type": "object",
+  "required": ["schemaVersion", "registryKind", "promotionEligible", "candidates"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "registryKind": {"const": "PROOFOPS_RESEARCH_CANDIDATES"},
+    "checkedAt": {"type": "string", "format": "date-time"},
+    "promotionEligible": {"const": false},
+    "candidates": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["candidateId", "name", "decision", "provisionalScore", "proofExternality", "workflowFrequency", "realityStage", "confidence", "whatWouldKill", "negativeEvidence", "sourceRefs"],
+        "properties": {
+          "candidateId": {"type": "string", "pattern": "^proofops-[a-z0-9-]+$"},
+          "name": {"type": "string", "minLength": 5},
+          "decision": {"enum": ["DISTINCT_PROPOSAL_STAGE", "MERGE_WITH_EXISTING", "MODULE_OR_FEATURE", "REUNDERWRITE_EXISTING", "RAW_HYPOTHESIS", "WATCH_SIGNAL"]},
+          "nearestIdeaIds": {"type": "array", "items": {"type": "string", "pattern": "^idea-\\d{3}$"}},
+          "provisionalScore": {"type": "number", "minimum": 0, "maximum": 100},
+          "proofExternality": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+          "workflowFrequency": {"type": "string", "minLength": 2},
+          "timeToFirstExternalTest": {"type": "string", "minLength": 2},
+          "timeToFirstRevenue": {"type": "string", "minLength": 2},
+          "realityStage": {"enum": ["DESK_RESEARCH", "INTERVIEW", "LOI", "DESIGN_PARTNER", "PILOT", "PAID_PILOT", "RECURRING_CUSTOMER"]},
+          "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+          "whatWouldKill": {"type": "string", "minLength": 10},
+          "changedSinceLastResearch": {"type": "string", "minLength": 10},
+          "negativeEvidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 5}},
+          "sourceRefs": {"type": "array", "minItems": 1, "items": {"type": "string", "format": "uri"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VenturaAtlasExperiment",
+  "type": "object",
+  "required": [
+    "experimentId",
+    "ideaId",
+    "hypothesis",
+    "method",
+    "target",
+    "successThreshold",
+    "killThreshold"
+  ],
+  "properties": {
+    "experimentId": {
+      "type": "string",
+      "pattern": "^exp-[a-z0-9-]+$"
+    },
+    "ideaId": {
+      "type": "string"
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "INTERVIEW_ANONYMIZED_FIXTURE",
+        "MANUAL_WORKFLOW_REPLAY",
+        "PREFLIGHT_FIXTURE_AUDIT",
+        "LANDING_PAGE_PREORDER",
+        "EXERTION_SIMULATION",
+        "REGISTRY_CONFORMANCE_TEST"
+      ]
+    },
+    "target": {
+      "type": "string"
+    },
+    "successThreshold": {
+      "type": "string"
+    },
+    "killThreshold": {
+      "type": "string"
+    },
+    "expectedCost": {
+      "type": ["string", "number", "null"]
+    },
+    "startedAt": {
+      "type": ["string", "null"]
+    },
+    "finishedAt": {
+      "type": ["string", "null"]
+    },
+    "result": {
+      "type": ["string", "null"],
+      "enum": [null, "PASSED", "FAILED", "INCONCLUSIVE", "DEGRADED"]
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidenceDelta": {
+      "type": ["number", "null"]
+    },
+    "decision": {
+      "type": ["string", "null"],
+      "enum": [null, "CONTINUE", "REFINE", "MERGE", "PAUSE", "KILL"]
+    }
+  }
+}

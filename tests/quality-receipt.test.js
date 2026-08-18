@@ -107,3 +107,21 @@ test('artifact quality receipt binds the validated tree digest and manifest', ()
   assert.equal(receipt.artifactFileCount, 1);
   assert.equal(manifest.files[0].path, 'index.html');
 });
+
+test('quality receipt fails closed when HEAD changes during validation', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'va-quality-commit-drift-'));
+  const commits = ['before123', 'after456'];
+  const result = runQuality({
+    steps: [{ id: 'unit', command: 'node', args: ['fixture.js'] }],
+    receiptPath: path.join(directory, 'receipt.json'),
+    execute: () => ({ status: 0 }),
+    snapshot: () => new Map(),
+    sourceCommit: () => commits.shift(),
+    environment: {},
+    logger: silentLogger,
+  });
+  assert.equal(result.exitCode, 1);
+  assert.equal(result.receipt.failedPhase, 'commit-stability');
+  assert.equal(result.receipt.sourceCommit, 'before123');
+  assert.equal(result.receipt.finishedCommit, 'after456');
+});

@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://venture-atlas.example/schemas/identity-graph.schema.json",
+  "title":"IdentityGraph subject and lineage records",
+  "type":"object",
+  "required":["schemaVersion","subjects","mappings"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "subjects":{"type":"array","items":{"type":"object","required":["subjectId","subjectType","status"],"properties":{"subjectId":{"type":"string","minLength":3},"subjectType":{"enum":["PRODUCT","COMPONENT","SHIPMENT","ORGANIZATION","DEVICE","WALLET","CHARGER","INVOICE"]},"status":{"enum":["KNOWN","AMBIGUOUS","CONFLICTED","UNKNOWN"]},"identifiers":{"type":"array","items":{"type":"object","required":["scheme","value","sourceSystem"],"properties":{"scheme":{"type":"string"},"value":{"type":"string"},"sourceSystem":{"type":"string"}},"additionalProperties":false}}},"additionalProperties":false}},
+    "mappings":{"type":"array","items":{"type":"object","required":["mappingId","fromSubjectId","toIdentifier","source","observedAt","confidence","responsibleSystem"],"properties":{"mappingId":{"type":"string"},"fromSubjectId":{"type":"string"},"toIdentifier":{"type":"string"},"source":{"type":"string"},"observedAt":{"type":"string","format":"date-time"},"confidence":{"enum":["HIGH","MEDIUM","LOW","UNKNOWN"]},"responsibleSystem":{"type":"string"}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

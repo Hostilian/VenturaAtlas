@@ -1,6 +1,7 @@
 {
-  "lastHealthCheck": "2026-08-17T10:56:39Z",
-  "verificationContract": "cheap-reachability-probe-v1",
+  "lastHealthCheck": "2026-08-17T23:53:00Z",
+  "verificationContract": "scoped-reachability-probe-v2",
+  "probeTtlSeconds": 14400,
   "providers": {
     "own-orch": {
       "tier": 0,
@@ -8,7 +9,10 @@
       "cost": "free",
       "latency": "instant",
       "reasoning": "rule-based",
-      "verificationStatus": "VERIFIED_DETERMINISTIC"
+      "verificationStatus": "VERIFIED_DETERMINISTIC",
+      "executionScope": "all",
+      "lastProbeAt": "2026-08-17T23:53:00Z",
+      "expiresAt": "2026-08-18T03:53:00Z"
     },
     "nvidia-nim": {
       "tier": 1,
@@ -17,7 +21,10 @@
       "latency": "fast",
       "reasoning": "llama",
       "requiresKeys": true,
-      "verificationStatus": "VERIFIED_LIVE_PROBE"
+      "verificationStatus": "VERIFIED_LIVE_PROBE",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "cohere-api": {
       "tier": 1,
@@ -26,7 +33,10 @@
       "latency": "fast",
       "reasoning": "command",
       "requiresKeys": true,
-      "verificationStatus": "VERIFIED_LIVE_PROBE"
+      "verificationStatus": "VERIFIED_LIVE_PROBE",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "hermes-ollama": {
       "tier": 1,
@@ -36,8 +46,11 @@
       "reasoning": "local-llm",
       "requiresLocalService": true,
       "verificationStatus": "VERIFIED_REACHABLE",
+      "executionScope": "local-windows",
       "httpStatus": 200,
-      "durationMs": 2172
+      "durationMs": 2172,
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "omniRoute": {
       "tier": 2,
@@ -46,7 +59,10 @@
       "latency": "medium",
       "reasoning": "openrouter-free",
       "requiresKeys": true,
-      "verificationStatus": "LIVE_PROBE_FAILED"
+      "verificationStatus": "LIVE_PROBE_FAILED",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "fcc-claude": {
       "tier": 3,
@@ -55,7 +71,10 @@
       "latency": "fast",
       "reasoning": "claude-haiku",
       "requiresKeys": true,
-      "verificationStatus": "LIVE_PROBE_FAILED"
+      "verificationStatus": "LIVE_PROBE_FAILED",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "active-api": {
       "tier": 4,
@@ -64,7 +83,10 @@
       "latency": "fast",
       "reasoning": "gemini-flash",
       "requiresKeys": true,
-      "verificationStatus": "LIVE_PROBE_FAILED"
+      "verificationStatus": "LIVE_PROBE_FAILED",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "deepseek-api": {
       "tier": 5,
@@ -73,7 +95,10 @@
       "latency": "medium",
       "reasoning": "deepseek-chat",
       "requiresKeys": true,
-      "verificationStatus": "LIVE_PROBE_FAILED"
+      "verificationStatus": "LIVE_PROBE_FAILED",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     },
     "anthropic-full": {
       "tier": 6,
@@ -82,7 +107,10 @@
       "latency": "medium",
       "reasoning": "claude-sonnet",
       "requiresKeys": true,
-      "verificationStatus": "NO_SUCCESSFUL_LIVE_PROBE"
+      "verificationStatus": "NO_SUCCESSFUL_LIVE_PROBE",
+      "executionScope": "local-windows",
+      "lastProbeAt": "2026-08-17T10:56:39Z",
+      "expiresAt": "2026-08-17T14:56:39Z"
     }
   }
 }

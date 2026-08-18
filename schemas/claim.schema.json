@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VenturaAtlasClaim",
+  "type": "object",
+  "required": [
+    "claimId",
+    "ideaId",
+    "claimType",
+    "text",
+    "authorityClass",
+    "lastVerifiedAt",
+    "freshnessClass",
+    "confidenceClass"
+  ],
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "pattern": "^claim-[a-z0-9-]+$"
+    },
+    "ideaId": {
+      "type": "string"
+    },
+    "claimType": {
+      "type": "string",
+      "enum": [
+        "regulatory",
+        "technical",
+        "market",
+        "customer-pain",
+        "customer-behavior",
+        "pricing",
+        "competitor",
+        "distribution",
+        "implementation-cost",
+        "buyer-budget",
+        "timing",
+        "workflow",
+        "failure-mode",
+        "legal-scope",
+        "integration"
+      ]
+    },
+    "text": {
+      "type": "string"
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "authorityClass": {
+      "type": "string",
+      "enum": ["PRIMARY_OFFICIAL", "SECONDARY_REPORT", "OPERATOR_INTERVIEW", "ASSUMPTION"]
+    },
+    "supportedAt": {
+      "type": ["string", "null"]
+    },
+    "lastVerifiedAt": {
+      "type": "string"
+    },
+    "freshnessClass": {
+      "type": "string",
+      "enum": ["VERY_SHORT", "SHORT", "MEDIUM", "LONG", "VERY_LONG"]
+    },
+    "confidenceClass": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW", "UNVERIFIED"]
+    },
+    "assumption": {
+      "type": "boolean",
+      "default": false
+    },
+    "conflictingClaimIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "affectsScoreDimensions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "affectsArtifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

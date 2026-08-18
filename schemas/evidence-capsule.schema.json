@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://venture-atlas.example/schemas/evidence-capsule.schema.json",
+  "title":"ProofOps EvidenceCapsule",
+  "type":"object",
+  "required":["capsuleId","subject","requirement","testScenario","environment","inputs","result","timestamps","provenance"],
+  "properties":{
+    "capsuleId":{"type":"string","pattern":"^capsule-[a-z0-9-]+$"},
+    "subject":{"type":"object","required":["subjectId","subjectType","version"],"properties":{"subjectId":{"type":"string"},"subjectType":{"type":"string"},"version":{"type":"string"}},"additionalProperties":false},
+    "requirement":{"type":"object","required":["requirementId","sourceRef","specVersion"],"properties":{"requirementId":{"type":"string"},"sourceRef":{"type":"string"},"specVersion":{"type":"string"}},"additionalProperties":false},
+    "testScenario":{"type":"string"},"environment":{"type":"object","additionalProperties":true},"inputs":{"type":"array","items":{"type":"object","required":["name","sha256"],"properties":{"name":{"type":"string"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}},"additionalProperties":false}},
+    "result":{"enum":["PASS","FAIL","REVIEW"]},"exceptions":{"type":"array","items":{"type":"string"}},"timestamps":{"type":"object","required":["startedAt","finishedAt"],"properties":{"startedAt":{"type":"string","format":"date-time"},"finishedAt":{"type":"string","format":"date-time"}},"additionalProperties":false},"signer":{"type":["string","null"]},"provenance":{"type":"object","required":["runner","reproducible"],"properties":{"runner":{"type":"string"},"reproducible":{"type":"boolean"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

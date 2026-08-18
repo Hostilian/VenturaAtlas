@@ -14,12 +14,15 @@ test('catalog is a deterministic lossless projection of all recoverable research
     encoding: 'utf8'
   });
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
-  assert.match(result.stdout, /OK \(353 proposals across 12 recoverable rounds\)/);
-  assert.equal(catalog.proposalCount, 353);
-  assert.equal(catalog.roundCount, 12);
+  assert.match(result.stdout, /OK \(507 proposals across 29 recoverable rounds\)/);
+  assert.equal(catalog.proposalCount, 507);
+  assert.equal(catalog.roundCount, 29);
   assert.deepEqual(
     Object.fromEntries(catalog.rounds.map((round) => [round.id, round.proposalCount])),
     {
+      'omega-xv-august-regulatory-wave': 8,
+      'omega-xv-proofops-reality-engine': 11,
+      'omega-xvi-machine-rights-regulatory-ci': 12,
       'omega-ix-primary-ledger': 14,
       'omega-ix-continuation-ledger': 20,
       'full-reset-2026-08-10': 60,
@@ -31,13 +34,27 @@ test('catalog is a deterministic lossless projection of all recoverable research
       'expansion-iii': 24,
       'expansion-iv': 20,
       'expansion-v': 25,
-      'expansion-vi': 20
+      'expansion-vi': 20,
+      'omega-xiii-science-procurement': 5,
+      'omega-xiii-public-primitive-countertrend': 5,
+      'omega-xiii-physical-regulatory': 5,
+      'omega-xiii-qualification-evidence': 5,
+      'omega-xiii-cross-system-authority': 5,
+      'omega-xiii-operational-authority': 5,
+      'omega-xiii-industrial-lifecycle': 5,
+      'omega-xiii-final-coverage': 25,
+      'expansion-vii': 10,
+      'omega-xiv-capital-clock': 9,
+      'omega-xv-cutover-inventory': 8,
+      'omega-xv-absorption-frontier': 10,
+      'omega-xvii-public-money-graph': 10,
+      'omega-xviii-route-shock': 16
     }
   );
 });
 
 test('every source row has one stable record and no proposal identity is merged', () => {
-  assert.equal(new Set(catalog.proposals.map((proposal) => proposal.id)).size, 353);
+  assert.equal(new Set(catalog.proposals.map((proposal) => proposal.id)).size, 507);
   for (const round of catalog.rounds) {
     const rows = catalog.proposals.filter((proposal) => proposal.roundId === round.id);
     assert.deepEqual(rows.map((proposal) => proposal.sourceOrdinal), Array.from({ length: round.proposalCount }, (_, index) => index + 1));
@@ -58,6 +75,11 @@ test('unattractive, duplicate, module, and watch-only proposals are retained', (
   assert.equal(find('Transformer SpecNormaliser').relation, 'REJECTED_OR_KILLED');
   assert.equal(find('Visit-ID State Auditor').relation, 'RAW_HYPOTHESIS');
   assert.equal(find('Generic agent IAM/governance control plane').relation, 'REJECTED_OR_KILLED');
+  assert.equal(find('Generic UCP readiness checker — free validators / protocol-native tools / commerce platforms').relation, 'REJECTED_OR_KILLED');
+  assert.equal(find('NoticeSurvive — MERGE INTO AI Model License Drift / Commercial-Use Evidence').relation, 'RELATED_EXISTING_FAMILY');
+  assert.equal(find('AI Transparency MarkCI — Release-to-Release Article 50 Regression').relation, 'SAME_OR_DUPLICATE');
+  assert.equal(find('Repair Platform Readiness — Repairer Registration & Service-Catalog Normalisation').relation, 'WATCH_SIGNAL');
+  assert.equal(find('PPWR PackProof — Packaging BOM & Evidence Preflight').relation, 'RAW_HYPOTHESIS');
 });
 
 test('all records are classified, grouped, non-ranked, and privacy-safe', () => {
@@ -70,8 +92,8 @@ test('all records are classified, grouped, non-ranked, and privacy-safe', () => 
   const serialized = JSON.stringify(catalog);
   assert.doesNotMatch(serialized, /candidate-[0-9a-f-]{8,}/i);
   assert.doesNotMatch(serialized, /prioritizedForValidation|promotionEligible|idea-staging-queue/i);
-  assert.equal(Object.values(catalog.relationCounts).reduce((sum, count) => sum + count, 0), 353);
-  assert.equal(Object.values(catalog.familyCounts).reduce((sum, count) => sum + count, 0), 353);
+  assert.equal(Object.values(catalog.relationCounts).reduce((sum, count) => sum + count, 0), 507);
+  assert.equal(Object.values(catalog.familyCounts).reduce((sum, count) => sum + count, 0), 507);
 });
 
 test('closely related parent and module proposals share a family but remain separate', () => {
@@ -95,10 +117,10 @@ test('cross-round aliases co-locate repeated concepts without collapsing their r
     ['ChargeTruth', 2],
     ['VINState', 2],
     ['MicroFee', 2],
-    ['BidProof', 2],
+    ['BidProof', 3],
     ['ReclaimRight', 2],
     ['ESAP Relay', 2],
-    ['MarkSurvive', 2]
+    ['MarkSurvive', 3]
   ];
   for (const [needle, expectedCount] of cases) {
     const matches = catalog.proposals.filter((proposal) => proposal.name.toLowerCase().includes(needle.toLowerCase()));
@@ -120,4 +142,6 @@ test('website exposes all-proposal browsing and explicit non-merge language', ()
   assert.match(script, /research-proposal-catalog\.json/);
   assert.match(script, /replaceChildren/);
   assert.match(publicBuilder, /research-proposal-catalog\.json/);
+  const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert.match(home, new RegExp(`All ${catalog.proposalCount} Research Proposal Rows`));
 });

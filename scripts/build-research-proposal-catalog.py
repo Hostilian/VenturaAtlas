@@ -98,6 +98,30 @@ TABLE_ROUNDS = (
 
 JSON_ROUNDS = (
     {
+        "id": "omega-xv-august-regulatory-wave",
+        "title": "OMEGA XV — August 2026 Regulatory Research Wave",
+        "path": "research/audits/OMEGA-XV-EVIDENCE-OS-20260817T230000Z/AUGUST_REGULATORY_WAVE.json",
+        "expected": 8,
+        "attachmentSha256": None,
+        "nameField": "name",
+    },
+    {
+        "id": "omega-xv-proofops-reality-engine",
+        "title": "OMEGA XV — ProofOps / Reality Engine",
+        "path": "data/proofops-research.json",
+        "expected": 11,
+        "attachmentSha256": None,
+        "nameField": "name",
+    },
+    {
+        "id": "omega-xvi-machine-rights-regulatory-ci",
+        "title": "OMEGA XVI — Machine Rights / Product Identity / Regulatory CI",
+        "path": "data/omega-xvi-machine-rights-research.json",
+        "expected": 12,
+        "attachmentSha256": None,
+        "nameField": "name",
+    },
+    {
         "id": "omega-ix-primary-ledger",
         "title": "OMEGA IX Primary Idea Ledger",
         "path": "research/audits/OMEGA-IX-20260810T131507Z/IDEA_LEDGER.json",
@@ -117,6 +141,36 @@ JSON_ROUNDS = (
         },
     },
 )
+
+RUN_ROUNDS = (
+    {"id": "omega-xiii-science-procurement", "title": "OMEGA XIII — Science & Procurement", "runId": "run-res-009-20260813-science-procurement", "expected": 5},
+    {"id": "omega-xiii-public-primitive-countertrend", "title": "OMEGA XIII — Public Primitive Countertrend", "runId": "run-res-010-20260813-public-primitive-countertrend", "expected": 5},
+    {"id": "omega-xiii-physical-regulatory", "title": "OMEGA XIII — Physical & Regulatory", "runId": "run-res-011-20260813-physical-regulatory", "expected": 5},
+    {"id": "omega-xiii-qualification-evidence", "title": "OMEGA XIII — Qualification Evidence", "runId": "run-res-012-20260813-qualification-evidence", "expected": 5},
+    {"id": "omega-xiii-cross-system-authority", "title": "OMEGA XIII — Cross-System Authority", "runId": "run-res-013-20260813-cross-system-authority", "expected": 5},
+    {"id": "omega-xiii-operational-authority", "title": "OMEGA XIII — Operational Authority", "runId": "run-res-014-20260813-operational-authority", "expected": 5},
+    {"id": "omega-xiii-industrial-lifecycle", "title": "OMEGA XIII — Industrial Lifecycle", "runId": "run-res-015-20260814-industrial-lifecycle", "expected": 5},
+    {"id": "omega-xiii-final-coverage", "title": "OMEGA XIII — Final Coverage", "runId": "run-res-016-20260814-final-coverage", "expected": 25},
+    {"id": "expansion-vii", "title": "Deep Research Expansion VII", "runId": "run-res-017-20260817-expansion-vii-transition-failure-detectors", "expected": 10},
+    {"id": "omega-xiv-capital-clock", "title": "OMEGA XIV — Capital Clock", "runId": "run-res-018-20260817-omega-xiv-capital-clock", "expected": 9},
+    {"id": "omega-xv-cutover-inventory", "title": "OMEGA XV — Cutover Inventory Clock", "runId": "run-res-019-20260817-omega-xv-cutover-inventory-clock", "expected": 8},
+    {"id": "omega-xv-absorption-frontier", "title": "OMEGA XV — Absorption Frontier", "runId": "run-res-020-20260817-omega-xv-absorption-frontier", "expected": 10},
+    {"id": "omega-xvii-public-money-graph", "title": "OMEGA XVII — Public Money Graph", "runId": "run-res-omega-xvii-20260817-public-money-graph", "expected": 10},
+    {"id": "omega-xviii-route-shock", "title": "OMEGA XVIII — Route Shock / Physical-State Proof", "runId": "run-res-omega-xviii-20260818-route-shock", "expected": 16},
+)
+
+RUN_REFERENCE_NAMES = {
+    "candidate-a51225f5-a56e-5528-98b8-14200a96a89d": "PIDRelay — Supplier PID Recovery & EU Customs Catalog Preflight",
+    "candidate-f276144f-160c-5546-89fc-99e2ce04df55": "PermitEcho — Industrial Permit Evidence Reconciler",
+    "candidate-515b03fb-650a-5ed4-8232-941c589dc1fb": "NZIA BidProof — Non-Price Tender Evidence Capsule",
+    "candidate-19048401-c4da-583c-adb5-58d33698daaf": "SAFE OriginTrace — Component-Cost & Design-Control Evidence Graph",
+    "candidate-bdf94d85-7bd8-5d25-9d5a-8f9af3eb1510": "Milestone-to-Cash — Funding Completion Evidence Graph",
+    "candidate-d237f9db-4dc5-506d-9a4a-95f1c579a6bc": "AttestReady — AMR Export Inventory-to-Certificate Preflight",
+    "candidate-d8fd661f-715d-5e90-ad33-db841a2d94c3": "SteelLandedRisk — Steel Quota/Tariff-Cliff Transaction Preflight",
+    "candidate-5b5c2c8d-5075-5bf3-8ac1-0553e17cb9d2": "MicroIFUD Gate — Synthetic-Polymer Product/IFU Consistency Audit",
+}
+
+EXPECTED_PROPOSAL_COUNT = 507
 
 PROPOSAL_HEADERS = {"candidate", "supplied concept", "supplied proposal", "proposal"}
 DECISION_HEADERS = {"repository decision", "decision", "resolution"}
@@ -304,7 +358,7 @@ def round_records(config: dict) -> list[dict]:
 def json_round_records(config: dict) -> list[dict]:
     source_path = ROOT / config["path"]
     payload = json.loads(source_path.read_text(encoding="utf-8"))
-    rows = payload.get("ideas")
+    rows = payload.get("ideas") or payload.get("candidates")
     if not isinstance(rows, list) or len(rows) != config["expected"]:
         raise ValueError(f"{config['id']}: expected {config['expected']} ledger ideas")
     source_digest = hashlib.sha256(source_path.read_bytes()).hexdigest().upper()
@@ -323,7 +377,7 @@ def json_round_records(config: dict) -> list[dict]:
             "id": f"research-proposal-{config['id']}-{ordinal:02d}",
             "roundId": config["id"],
             "roundTitle": config["title"],
-            "sourceDocument": config["path"],
+            "sourceDocument": config.get("path", "data/research-runs.json"),
             "sourceDocumentSha256": source_digest,
             "sourceOrdinal": ordinal,
             "suppliedRank": row.get("rank") if isinstance(row.get("rank"), int) else None,
@@ -343,10 +397,108 @@ def json_round_records(config: dict) -> list[dict]:
     return records
 
 
+def run_round_records(config: dict) -> list[dict]:
+    source_path = ROOT / "data" / "research-runs.json"
+    payload = json.loads(source_path.read_text(encoding="utf-8"))
+    runs = payload if isinstance(payload, list) else payload.get("runs", [])
+    run = next((item for item in runs if item.get("runId") == config["runId"]), None)
+    if run is None:
+        raise ValueError(f"{config['id']}: missing research run {config['runId']}")
+
+    ideas_payload = json.loads((ROOT / "data" / "ideas.json").read_text(encoding="utf-8"))
+    ideas = ideas_payload if isinstance(ideas_payload, list) else ideas_payload.get("ideas", [])
+    idea_names = {item.get("id"): item.get("name") for item in ideas}
+    source_digest = hashlib.sha256(source_path.read_bytes()).hexdigest().upper()
+    queue = run.get("validationPriorityQueue") or []
+
+    def name_for(value: object, ordinal: int) -> tuple[str, list[str]]:
+        if isinstance(value, dict):
+            raw_name = value.get("name") or value.get("slug") or value.get("proposal") or f"Recorded proposal {ordinal}"
+            return sanitize_public_text(str(raw_name)), []
+        raw = str(value)
+        if raw in idea_names and idea_names[raw]:
+            return sanitize_public_text(str(idea_names[raw])), [raw]
+        if raw in RUN_REFERENCE_NAMES:
+            return RUN_REFERENCE_NAMES[raw], []
+        if raw.startswith("candidate-"):
+            for item in queue:
+                if raw in (item.get("targetRefs") or []):
+                    return sanitize_public_text(str(item.get("proposal"))), []
+            return f"Private staged hypothesis {ordinal}", []
+        return sanitize_public_text(raw), []
+
+    entries: list[tuple[str, object, str | None]] = []
+    if config["id"] == "omega-xviii-route-shock":
+        entries.extend(("added", item, None) for item in run.get("ideasAdded", []))
+        entries.extend(("archive", item, None) for item in run.get("archiveReceipts", []))
+        entries.extend(("graveyard", item, None) for item in run.get("graveyardBatch", []))
+    else:
+        entries.extend(("included", item, None) for item in run.get("inclusions", []))
+        for item in run.get("exclusions", []):
+            reason = str(item.get("reason")) if isinstance(item, dict) and item.get("reason") else None
+            entries.append(("excluded", item, reason))
+
+    records = []
+    for ordinal, (entry_kind, value, reason) in enumerate(entries, 1):
+        name, canonical_refs = name_for(value, ordinal)
+        if entry_kind == "added":
+            relation = "DISTINCT_PROPOSAL"
+            decision = "ADDED TO CANONICAL CORPUS BY RESEARCH RUN; lifecycle verification remains separate"
+        elif entry_kind in {"archive"}:
+            relation = "RELATED_EXISTING_FAMILY"
+            decision = "ARCHIVE RECEIPT; existing thesis retained without creating a duplicate"
+        elif entry_kind == "graveyard":
+            relation = "RELATED_EXISTING_FAMILY" if "merge into" in name.casefold() else "REJECTED_OR_KILLED"
+            decision = "MERGED INTO EXISTING FAMILY" if relation == "RELATED_EXISTING_FAMILY" else "GRAVEYARD / REJECTED"
+        elif entry_kind == "excluded":
+            combined = f"{name} {reason or ''}".casefold()
+            related = any(term in combined for term in ("existing", "merge", "overlap", "already populated", "archive entry"))
+            relation = "RELATED_EXISTING_FAMILY" if related else "REJECTED_OR_KILLED"
+            decision = "EXCLUDED AS EXISTING OR RELATED" if related else "EXCLUDED OR REJECTED"
+        elif canonical_refs or not str(value).startswith("candidate-"):
+            relation = "RELATED_EXISTING_FAMILY"
+            decision = "INCLUDED FOR RESEARCH OR RE-UNDERWRITING; not a new identity claim"
+        else:
+            relation = "RAW_HYPOTHESIS"
+            decision = "INCLUDED AS PROVISIONAL RESEARCH HYPOTHESIS; not canonical promotion"
+
+        adjacency = sanitize_public_text(reason or str(run.get("reviewStatus") or run.get("researcherNote") or "research run receipt"))
+        family_id, family_label = family_for(name, decision, adjacency)
+        records.append({
+            "id": f"research-proposal-{config['id']}-{ordinal:02d}",
+            "roundId": config["id"],
+            "roundTitle": config["title"],
+            "sourceDocument": "data/research-runs.json",
+            "sourceDocumentSha256": source_digest,
+            "sourceRunId": config["runId"],
+            "sourceOrdinal": ordinal,
+            "suppliedRank": None,
+            "name": name,
+            "decision": decision,
+            "adjacency": adjacency or None,
+            "relation": relation,
+            "relationLabel": RELATIONS[relation],
+            "familyId": family_id,
+            "familyLabel": family_label,
+            "canonicalIdeaRefs": canonical_refs,
+            "provisionalAnalystScore": None,
+            "rankingEligible": False,
+            "identityClaim": False,
+        })
+
+    if len(records) != config["expected"]:
+        raise ValueError(f"{config['id']}: expected {config['expected']} research-run rows, found {len(records)}")
+    return records
+
+
 def build_catalog() -> dict:
     proposals: list[dict] = []
     round_summaries: list[dict] = []
-    configurations = [(config, json_round_records) for config in JSON_ROUNDS] + [(config, round_records) for config in TABLE_ROUNDS]
+    configurations = (
+        [(config, json_round_records) for config in JSON_ROUNDS]
+        + [(config, round_records) for config in TABLE_ROUNDS]
+        + [(config, run_round_records) for config in RUN_ROUNDS]
+    )
     for config, loader in configurations:
         records = loader(config)
         proposals.extend(records)
@@ -354,14 +506,14 @@ def build_catalog() -> dict:
             "id": config["id"],
             "title": config["title"],
             "proposalCount": len(records),
-            "sourceDocument": config["path"],
-            "attachmentSha256": config["attachmentSha256"],
+            "sourceDocument": config.get("path", "data/research-runs.json"),
+            "attachmentSha256": config.get("attachmentSha256"),
         })
     ids = [proposal["id"] for proposal in proposals]
     if len(ids) != len(set(ids)):
         raise ValueError("proposal IDs are not unique")
-    if len(proposals) != 353:
-        raise ValueError(f"expected 353 proposals across all recoverable rounds, found {len(proposals)}")
+    if len(proposals) != EXPECTED_PROPOSAL_COUNT:
+        raise ValueError(f"expected {EXPECTED_PROPOSAL_COUNT} proposals across all recoverable rounds, found {len(proposals)}")
     relation_counts = Counter(proposal["relation"] for proposal in proposals)
     family_counts = Counter(proposal["familyId"] for proposal in proposals)
     return {
@@ -375,7 +527,7 @@ def build_catalog() -> dict:
             "navigation aids only and do not merge identities or establish market validation."
         ),
         "scoreDisclosure": "Supplied scores are provisional analyst metadata and are not ranking eligible.",
-        "sourceBoundary": "Generated only from committed reconciliation tables and idea ledgers; private staging data is not read or published.",
+        "sourceBoundary": "Generated only from committed reconciliation tables, idea ledgers, and research-run receipts; private staging data is not read or published.",
         "proposalCount": len(proposals),
         "roundCount": len(configurations),
         "rounds": round_summaries,
@@ -408,7 +560,7 @@ def main() -> int:
     if OUTPUT.read_text(encoding="utf-8") != content:
         print("research proposal catalog: FAIL: generated artifact is stale", file=sys.stderr)
         return 1
-    print("research proposal catalog: OK (353 proposals across 12 recoverable rounds)")
+    print(f"research proposal catalog: OK ({EXPECTED_PROPOSAL_COUNT} proposals across {len(JSON_ROUNDS) + len(TABLE_ROUNDS) + len(RUN_ROUNDS)} recoverable rounds)")
     return 0
 
 

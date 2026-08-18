@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "reconciledAt": "2026-08-17T23:53:13.669Z",
+  "sourceCommit": "caed42e0299e3fdec2150a450db73a2624d826a1",
+  "aggregateStatus": "WARN",
+  "components": {
+    "repositoryIntegrity": {
+      "status": "WARN",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Working tree has uncommitted edits/untracked files",
+      "proof": [
+        "git status"
+      ]
+    },
+    "canonicalData": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "302 canonical ideas verified; revision 96286c8dd30e889f",
+      "proof": [
+        "data/repository-meta.json"
+      ]
+    },
+    "derivedArtifacts": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "_site built cleanly (2.3.0-96286c8dd30e889f)",
+      "proof": [
+        "_site/"
+      ]
+    },
+    "agentState": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Agent state metrics aligned with repository metadata",
+      "proof": [
+        ".agent-system/state.json"
+      ]
+    },
+    "ci": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Latest quality receipt passed at 2026-08-17T23:53:10.509Z",
+      "proof": [
+        ".agent-state/quality-receipts/quality-source-latest.json"
+      ]
+    },
+    "deployment": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Public site artifact build verified",
+      "proof": [
+        "data/build-manifest.json"
+      ]
+    },
+    "researchProductivity": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Latest research run run-res-omega-xviii-20260818-route-shock recorded",
+      "proof": [
+        "data/research-runs.json"
+      ]
+    },
+    "providerCapacity": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "4 healthy providers available in registry",
+      "proof": [
+        ".agent-system/provider-registry.json"
+      ]
+    },
+    "sourceFreshness": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "316 primary sources tracked in evidence graph",
+      "proof": [
+        "data/sources.json"
+      ]
+    },
+    "artifactCoverage": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Dossier coverage: 390/302 (129.1%)",
+      "proof": [
+        "data/repository-meta.json"
+      ]
+    },
+    "publicTruth": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Public claim metrics match repository-meta",
+      "proof": [
+        "index.html"
+      ]
+    },
+    "collaboration": {
+      "status": "PASS",
+      "observedAt": "2026-08-17T23:53:13.669Z",
+      "reason": "Mode: LOCAL_PRODUCTION (Git-native)",
+      "proof": [
+        "AGENTS.md"
+      ]
+    }
+  }
+}

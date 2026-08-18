@@ -1,10 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { buildReceipt: buildArtifactManifest } = require('./hash-public-artifact');
 const { deriveLifecycleForPublic } = require('./lib/lifecycle-receipts');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, '_site');
+const ARTIFACT_LOCK = path.join(ROOT, '.agent-state', 'locks', 'public-artifact.lock');
+const ARTIFACT_BUILD_RECEIPT = path.join(ROOT, '.agent-state', 'quality-receipts', 'public-artifact-build-latest.json');
+const lockSleepArray = new Int32Array(new SharedArrayBuffer(4));
 
 const ALLOW_FILES = [
   'index.html',
@@ -296,7 +300,7 @@ function copyRecursive(src, dest) {
   return count;
 }
 
-function build() {
+function buildUnlocked() {
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
 
   // Fail closed: a stale/missing public evidence projection must abort the build.
@@ -333,7 +337,7 @@ function build() {
   );
 
   if (fs.existsSync(DIST)) {
-    fs.rmSync(DIST, { recursive: true, force: true });
+    fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
   }
   fs.mkdirSync(DIST, { recursive: true });
 
@@ -364,11 +368,46 @@ function build() {
     }
   }
 
+  const artifactManifest = buildArtifactManifest(DIST);
+  if (artifactManifest.fileCount !== totalFiles) {
+    throw new Error(`Public artifact changed during build: copied ${totalFiles} files but hashed ${artifactManifest.fileCount}`);
+  }
+  fs.mkdirSync(path.dirname(ARTIFACT_BUILD_RECEIPT), { recursive: true });
+  const temporaryReceipt = `${ARTIFACT_BUILD_RECEIPT}.${process.pid}.tmp`;
+  fs.writeFileSync(temporaryReceipt, `${JSON.stringify({
+    schemaVersion: 1,
+    receiptKind: 'public-artifact-build',
+    fileCount: artifactManifest.fileCount,
+    totalBytes: artifactManifest.totalBytes,
+    treeSha256: artifactManifest.treeSha256,
+  }, null, 2)}\n`, 'utf8');
+  fs.renameSync(temporaryReceipt, ARTIFACT_BUILD_RECEIPT);
   console.log(`[OK] Staging complete! ${totalFiles} files written to: ${DIST}`);
+}
+
+function build() {
+  fs.mkdirSync(path.dirname(ARTIFACT_LOCK), { recursive: true });
+  const deadline = Date.now() + 30_000;
+  while (true) {
+    try {
+      fs.mkdirSync(ARTIFACT_LOCK);
+      break;
+    } catch (error) {
+      if (error.code !== 'EEXIST' || Date.now() >= deadline) {
+        throw new Error(`Could not acquire public-artifact writer lock: ${error.message}`);
+      }
+      Atomics.wait(lockSleepArray, 0, 0, 100);
+    }
+  }
+  try {
+    return buildUnlocked();
+  } finally {
+    fs.rmSync(ARTIFACT_LOCK, { recursive: true, force: true, maxRetries: 3, retryDelay: 50 });
+  }
 }
 
 if (require.main === module) {
   build();
 }
 
-module.exports = { build };
+module.exports = { build, buildUnlocked };
