@@ -1042,6 +1042,33 @@ The scores are subjective decision-support estimates. A high score with weak evi
 - **High Capital Available:** 86.9/100
 
 
+
+## RESET XIX Re-Underwriting (2026-08-20)
+
+> **Status:** Active / Strengthened (Provisional 2026 Research Range: 87–89 / Historical Canonical: 85.3)  
+> **Epistemic Classification:** High Problem Evidence, Crowded Developer Tooling (Competition Haircut Applied)
+
+### 2026 Empirical Evidence
+- **Cross-Agent PR Conflicts (arXiv:2607.04697):** Analysis of tens of thousands of agent-authored pull requests shows cross-agent coactivity is common; conflicting modifications occur significantly more often across distinct agents than within single-agent loops.
+- **Agent Collaboration Benchmark (arXiv:2601.13295):** AI agents perform significantly worse when forced to collaborate compared to completing tasks independently, proving coordination is a primary operational failure mode.
+- **Engineering Shift (Anthropic Research):** Engineering workflows are rapidly shifting human time toward specifications, environment definitions, and coordination loops rather than manual line editing.
+
+### Concept Evolution: Intent & Contract Reservation
+Git-level textual merge conflict resolution is too low-level. The 2026 product wedge is **Intent & Contract Reservation**:
+1. **Pre-execution Contract Reservation:** Agents declare intention on specific interfaces before altering files (e.g., Agent A reserves PaymentService.refund(), Agent B reserves Order.status state machine, Agent C reserves database migration orders.v7).
+2. **Semantic Invariant Monitoring:** The coordinator detects behavioral discrepancies before code is merged. Example: Agent A assumes 
+efund() is idempotent; Agent C removes the idempotency key. The files do not conflict textually in Git, but the system breaks semantically.
+3. **Living Behavioral Contracts:** Agents publish planned contract and invariant alterations to negotiate compatibility dynamically.
+
+### Competition & Platform Risk Assessment
+- **Nearest Funded Competitors:** CodeRabbit ( raised, .5B valuation), Entire (agent-native VCS), Augment Code.
+- **Platform Threat:** GitHub Copilot multi-agent workflows, OpenAI Codex agents.
+- **Differentiation Wedge:** Cross-agent *semantic contract coordination* rather than line-level code review or single-agent orchestration.
+
+### 7-Day Kill Experiment
+Run 5–10 parallel coding agents on a large open-source repository with deliberately overlapping architectural requirements. Measure baseline textual conflicts, semantic conflicts, and rework. Introduce Intent & Contract Reservation. If the reduction in semantic conflict rate is less than 30% -> **KILL**.
+
+
 ## Evidence, Assumptions, and Unknowns
 
 ### Evidence

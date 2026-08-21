@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://venture-atlas.example/schemas/embodiment-descriptor.schema.json",
+  "title": "EmbodimentDescriptor",
+  "description": "Structured description of a specific physical robot configuration (embodiment) against which a skill or VLA model is being tested. Used by the Robot Skill Acceptance Lab (RESET XIX, 2026-08-20).",
+  "type": "object",
+  "required": [
+    "embodimentId",
+    "robotManufacturer",
+    "robotModel"
+  ],
+  "properties": {
+    "embodimentId": {
+      "type": "string",
+      "description": "Unique identifier for this specific embodiment configuration."
+    },
+    "robotManufacturer": {
+      "type": "string",
+      "description": "Robot arm manufacturer, e.g. 'Universal Robots', 'ABB', 'Fanuc'."
+    },
+    "robotModel": {
+      "type": "string",
+      "description": "Specific model designation, e.g. 'UR20', 'IRB 2600', 'LR Mate 200iD'."
+    },
+    "controllerModel": {
+      "type": ["string", "null"],
+      "description": "Controller hardware model."
+    },
+    "controllerFirmwareVersion": {
+      "type": ["string", "null"],
+      "description": "Firmware/software version of the robot controller."
+    },
+    "joints": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "Number of degrees of freedom / joints."
+    },
+    "maxPayloadKg": {
+      "type": ["number", "null"],
+      "description": "Maximum rated payload in kilograms."
+    },
+    "reachMm": {
+      "type": ["number", "null"],
+      "description": "Maximum reach in millimetres."
+    },
+    "gripper": {
+      "type": ["string", "null"],
+      "description": "Gripper or end-effector model, e.g. 'Robotiq 2F-85', 'OnRobot RG2'."
+    },
+    "endEffectorType": {
+      "type": "string",
+      "enum": ["parallel-gripper", "suction-cup", "magnetic", "tool-changer", "custom", "none", "unknown"],
+      "description": "Functional type of end effector."
+    },
+    "sensors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Sensor hardware present, e.g. ['Intel RealSense D435', 'Robotiq FT 300']."
+    },
+    "compute": {
+      "type": ["string", "null"],
+      "description": "Onboard or edge compute platform, e.g. 'Jetson Orin NX 16GB', 'NVIDIA RTX 4090'."
+    },
+    "computeDriverVersion": {
+      "type": ["string", "null"],
+      "description": "Driver or CUDA version relevant to skill execution."
+    },
+    "safetyControllerModel": {
+      "type": ["string", "null"],
+      "description": "Safety PLC or safety controller, e.g. 'SICK flexi soft', 'Pilz PSS 4000'."
+    },
+    "safetyStandard": {
+      "type": ["string", "null"],
+      "description": "Applicable safety standard certification, e.g. 'ISO 10218', 'ISO/TS 15066 (cobot)'."
+    },
+    "speedLimitPercent": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Speed limit applied as percentage of maximum rated speed."
+    },
+    "environmentConstraints": {
+      "type": "object",
+      "description": "Relevant environmental conditions during testing.",
+      "properties": {
+        "lightingLux": {
+          "type": ["number", "null"],
+          "description": "Ambient lighting level in lux."
+        },
+        "lightingType": {
+          "type": ["string", "null"],
+          "enum": [null, "fluorescent", "LED", "daylight", "mixed", "low-light"]
+        },
+        "conveyorPresent": { "type": "boolean" },
+        "conveyorManufacturer": { "type": ["string", "null"] },
+        "conveyorSpeedMPerMin": { "type": ["number", "null"] },
+        "surfaceType": {
+          "type": ["string", "null"],
+          "description": "Surface material the task involves, e.g. 'cardboard', 'plastic-bag', 'metal-part'."
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "installationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date this embodiment configuration was assembled/calibrated for testing."
+    },
+    "labFacility": {
+      "type": ["string", "null"],
+      "description": "Name or identifier of the physical facility where this embodiment is located."
+    }
+  },
+  "additionalProperties": false
+}

@@ -26,6 +26,8 @@
     "generate": "npm run generate:search && npm run generate:status",
     "generate:search": "node scripts/build-search-index.js",
     "generate:status": "node scripts/build-repository-meta.js && node scripts/update-documentation-stats.js",
+    "generate:projections": "npm run generate:status",
+    "check:projections": "node scripts/build-repository-meta.js --check && node scripts/update-documentation-stats.js --check",
     "build": "npm run generate && npm run build:site",
     "build:search": "node scripts/build-search-index.js",
     "build:stats": "node scripts/build-repository-meta.js",

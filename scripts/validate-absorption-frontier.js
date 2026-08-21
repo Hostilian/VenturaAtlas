@@ -31,6 +31,8 @@ function validateAbsorptionFrontier(document, sources, knownCandidates = []) {
 if (require.main === module) {
   const doc = read('data/absorption-frontier.json');
   const sources = read('data/sources.json');
+  // The staging queue is intentionally gitignored/private. A fresh CI checkout
+  // must validate the public frontier without requiring private data.
   const candidates = read('data/idea-staging-queue.json', []);
   const errors = validateAbsorptionFrontier(doc, Array.isArray(sources) ? sources : sources.sources, Array.isArray(candidates) ? candidates : candidates.candidates);
   console.log(JSON.stringify({ records: doc.records.length, errors }, null, 2));

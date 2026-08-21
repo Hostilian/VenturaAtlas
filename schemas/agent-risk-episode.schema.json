@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://venture-atlas.example/schemas/agent-risk-episode.schema.json",
+  "title": "AgentRiskEpisode",
+  "description": "Structured telemetry record for one economically meaningful autonomous agent task episode, intended for AI underwriting and risk-transfer infrastructure. Defined in RESET XIX (2026-08-20).",
+  "type": "object",
+  "required": [
+    "episodeId",
+    "principal",
+    "agentModel",
+    "task",
+    "maximumValueAtRisk",
+    "recordedAt"
+  ],
+  "properties": {
+    "episodeId": {
+      "type": "string",
+      "description": "Unique identifier for this episode, e.g. a UUID or trace ID."
+    },
+    "principal": {
+      "type": "string",
+      "description": "Organisation or system that delegated authority to the agent."
+    },
+    "agentModel": {
+      "type": "string",
+      "description": "Foundation model or agent system identifier, e.g. 'gpt-4o', 'claude-3-5-sonnet'."
+    },
+    "modelVersion": {
+      "type": ["string", "null"],
+      "description": "Specific version or snapshot of the model."
+    },
+    "agentRole": {
+      "type": ["string", "null"],
+      "description": "Business role of the agent, e.g. 'procurement', 'customer-support', 'code-deploy'."
+    },
+    "task": {
+      "type": "string",
+      "description": "Natural language description of the task assigned to the agent."
+    },
+    "expectedValue": {
+      "type": ["number", "null"],
+      "description": "Expected monetary value of the task outcome in the principal's currency."
+    },
+    "maximumValueAtRisk": {
+      "type": "number",
+      "description": "Maximum monetary exposure if the agent acts incorrectly on this episode."
+    },
+    "currency": {
+      "type": "string",
+      "default": "EUR",
+      "description": "ISO 4217 currency code for monetary fields."
+    },
+    "toolsAvailable": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of tool names or MCP server capabilities available to the agent."
+    },
+    "permissions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicit permission grants in scope for this episode."
+    },
+    "dataAccess": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Data sources or systems the agent had read or write access to."
+    },
+    "financialAuthority": {
+      "type": "object",
+      "description": "Financial delegation limits for this episode.",
+      "properties": {
+        "autonomousLimitAmount": { "type": ["number", "null"] },
+        "humanApprovalThreshold": { "type": ["number", "null"] },
+        "approvedCounterparties": {
+          "type": ["array", "null"],
+          "items": { "type": "string" }
+        },
+        "paymentAccessLevel": {
+          "type": "string",
+          "enum": ["none", "read-only", "conditional", "full"]
+        }
+      }
+    },
+    "humanApprovalPolicy": {
+      "type": "string",
+      "enum": ["none", "threshold-based", "always-required", "post-hoc"],
+      "description": "Human oversight model in effect during this episode."
+    },
+    "externalCounterparties": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "Third-party organisations the agent could interact with."
+    },
+    "actionsTaken": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of discrete actions taken by the agent."
+    },
+    "irreversibleActions": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of actions that cannot be trivially undone."
+    },
+    "exceptions": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of runtime exceptions or tool errors encountered."
+    },
+    "guardrailEvents": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of times a guardrail or policy check fired."
+    },
+    "policyViolations": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of actions blocked due to policy violation."
+    },
+    "humanInterventions": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of human approval or override events during the episode."
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "failureClass": { "type": "string" },
+          "description": { "type": "string" },
+          "recoverable": { "type": "boolean" }
+        }
+      },
+      "description": "Classified failure events during the episode."
+    },
+    "nearMiss": {
+      "type": "boolean",
+      "description": "True if the episode came close to causing a material loss without actually causing one."
+    },
+    "nearMissDescription": {
+      "type": ["string", "null"],
+      "description": "Description of the near-miss event if applicable."
+    },
+    "actualLoss": {
+      "type": ["number", "null"],
+      "description": "Realised monetary loss from this episode, if any."
+    },
+    "lossCategory": {
+      "type": ["string", "null"],
+      "enum": [null, "incorrect-transaction", "data-corruption", "regulatory-breach", "reputational", "security", "other"],
+      "description": "Classification of the loss if one occurred."
+    },
+    "recovery": {
+      "type": "string",
+      "enum": ["none-needed", "automatic", "human-assisted", "not-recovered"],
+      "description": "How the agent or system recovered from failures."
+    },
+    "modelDependencies": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "Other model providers or services the agent depended on (concentration risk)."
+    },
+    "traceId": {
+      "type": ["string", "null"],
+      "description": "Distributed trace ID for linking to observability systems (e.g. OpenTelemetry)."
+    },
+    "recordedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when this episode record was created."
+    },
+    "episodeDurationSeconds": {
+      "type": ["number", "null"],
+      "description": "Wall-clock duration of the agent episode."
+    }
+  },
+  "additionalProperties": false
+}

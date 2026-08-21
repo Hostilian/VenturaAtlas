@@ -20,6 +20,7 @@ const SOURCE_STEPS = [
   ['completion-audit', npmCommand, ['run', 'validate:completion']],
   ['repository-meta-generate', process.execPath, ['scripts/build-repository-meta.js']],
   ['repository-meta-check', process.execPath, ['scripts/build-repository-meta.js', '--check']],
+  ['projection-check', npmCommand, ['run', 'check:projections']],
   ['repository-consistency', npmCommand, ['run', 'check-consistency']],
   ['task-graph', npmCommand, ['run', 'check-task-graph']],
   ['repository-drift', npmCommand, ['run', 'check:drift']],

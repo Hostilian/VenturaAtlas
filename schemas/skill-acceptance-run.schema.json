@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://venture-atlas.example/schemas/skill-acceptance-run.schema.json",
+  "title": "SkillAcceptanceRun",
+  "description": "Results record for one acceptance test run of a robot skill or VLA model against a specific embodiment. Used by the Robot Skill Acceptance Lab (RESET XIX, 2026-08-20).",
+  "type": "object",
+  "required": [
+    "runId",
+    "skillId",
+    "skillVersion",
+    "embodimentId",
+    "taskDescription",
+    "trialCount",
+    "completionRate",
+    "runDate"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "description": "Unique identifier for this acceptance run."
+    },
+    "skillId": {
+      "type": "string",
+      "description": "Identifier of the robot skill or VLA model being tested."
+    },
+    "skillVersion": {
+      "type": "string",
+      "description": "Version string of the skill, e.g. '3.2.1'."
+    },
+    "skillProvider": {
+      "type": ["string", "null"],
+      "description": "Organisation that produced or distributes the skill."
+    },
+    "trainingProvenance": {
+      "type": ["string", "null"],
+      "description": "Training data provenance note (e.g. 'real + synthetic', 'sim-only')."
+    },
+    "embodimentId": {
+      "type": "string",
+      "description": "Reference to the EmbodimentDescriptor.embodimentId used in this run."
+    },
+    "taskDescription": {
+      "type": "string",
+      "description": "Natural language description of the task tested, e.g. 'Adaptive depalletize irregular cardboard boxes'."
+    },
+    "taskCategory": {
+      "type": ["string", "null"],
+      "enum": [null, "pick-and-place", "depalletizing", "palletizing", "bin-picking", "assembly", "inspection", "welding", "painting", "packaging", "sorting", "other"]
+    },
+    "trialCount": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total number of physical trial cycles executed."
+    },
+    "completionRate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of trials completed successfully without any intervention. 1.0 = 100%."
+    },
+    "unassistedRecoveryRate": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of failures the skill recovered from autonomously."
+    },
+    "humanInterventionRate": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of trials requiring human intervention."
+    },
+    "medianCycleTimeSec": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Median cycle time across all completed trials in seconds."
+    },
+    "p95CycleTimeSec": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "95th-percentile cycle time in seconds."
+    },
+    "requiredSLOSec": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Maximum cycle time required by the customer's SLO in seconds."
+    },
+    "sloMet": {
+      "type": ["boolean", "null"],
+      "description": "Whether the p95 cycle time satisfies the required SLO."
+    },
+    "payloadTestedKg": {
+      "type": ["number", "null"],
+      "description": "Actual payload weight tested in kilograms."
+    },
+    "failureCategories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "count"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "e.g. 'occlusion', 'dark-surface', 'reflective-material', 'weight-overload', 'grasp-failure'"
+          },
+          "count": { "type": "integer", "minimum": 0 },
+          "description": { "type": ["string", "null"] }
+        }
+      },
+      "description": "Breakdown of failures by category."
+    },
+    "scenarioResults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scenario", "result"],
+        "properties": {
+          "scenario": { "type": "string" },
+          "result": {
+            "type": "string",
+            "enum": ["PASS", "FAIL", "REVIEW", "NOT_TESTED"]
+          },
+          "notes": { "type": ["string", "null"] }
+        }
+      },
+      "description": "Results for named test scenarios, e.g. dark-carton, reflective-tape, max-payload."
+    },
+    "safetyEnvelopePass": {
+      "type": ["boolean", "null"],
+      "description": "Whether the skill stayed within defined safety envelopes throughout all trials."
+    },
+    "safetyViolations": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of safety envelope violations observed."
+    },
+    "productionAcceptance": {
+      "type": "string",
+      "enum": ["ACCEPTED", "CONDITIONAL", "REJECTED", "PENDING"],
+      "description": "Overall acceptance verdict for production deployment."
+    },
+    "conditionalRequirements": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "Conditions that must be met before full acceptance (if CONDITIONAL)."
+    },
+    "simulatorCorrelation": {
+      "type": ["number", "null"],
+      "minimum": -1,
+      "maximum": 1,
+      "description": "Pearson correlation between simulator-predicted and observed completion rate, if available."
+    },
+    "baselineSimulatorScore": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1,
+      "description": "The skill provider's reported simulator success rate for comparison."
+    },
+    "conductedBy": {
+      "type": ["string", "null"],
+      "description": "Organisation or individual who conducted the acceptance test."
+    },
+    "runDate": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date when the physical acceptance run was conducted."
+    },
+    "reportUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to the full acceptance report if published."
+    }
+  },
+  "additionalProperties": false
+}

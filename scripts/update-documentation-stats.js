@@ -88,6 +88,8 @@ function main() {
     '<!-- END GENERATED CURRENT INVENTORY -->'
   ].join('\n');
 
+  const checkOnly = process.argv.includes('--check');
+  const stale = [];
   FILES.forEach(filePath => {
     if (!fs.existsSync(filePath)) return;
     let content = fs.readFileSync(filePath, 'utf8');
@@ -123,9 +125,27 @@ function main() {
       content = synchronizeHomepage(content, meta);
     }
 
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`Updated stats block and synchronized prose in ${path.basename(filePath)}`);
+    const current = fs.readFileSync(filePath, 'utf8');
+    if (checkOnly) {
+      if (current !== content) {
+        const firstDifference = [...Array(Math.max(current.length, content.length)).keys()]
+          .find(index => current[index] !== content[index]);
+        stale.push(`${path.relative(ROOT, filePath)}${firstDifference === undefined ? '' : ` (first difference at byte ${firstDifference})`}`);
+      }
+    } else {
+      fs.writeFileSync(filePath, content, 'utf8');
+      console.log(`Updated stats block and synchronized prose in ${path.basename(filePath)}`);
+    }
   });
+  if (checkOnly) {
+    if (stale.length) {
+      console.error('[ERROR] Generated documentation projections are stale:');
+      stale.forEach(file => console.error(`  - ${file}`));
+      console.error('Run: npm run generate:projections');
+      process.exit(1);
+    }
+    console.log('[OK] Generated documentation projections are current.');
+  }
 }
 
 if (require.main === module) {

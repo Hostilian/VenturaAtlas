@@ -1,18 +1,27 @@
 # Overall opportunity
 Composite decision-support view; not objective truth.
 
+> ### ⚠️ RESET XIX EPITEMIC NOTICE (2026-08-20)
+> **Historical Research Scores Only:** The scores below reflect desk-research hypotheses. No score constitutes market-validated truth until verified by external experiments.  
+> **Research Saturation Warning:** FactBounty (#1, 91.2) carries an active saturation warning due to 0 recorded live customer experiments.  
+> **Platform Absorption Freeze (⚠️ FROZEN):** Six ideas in the top 10 are flagged as frozen pending fresh competitor re-underwriting against native platform features (GitHub, OpenAI, Anthropic, Microsoft, Stripe).
+>
+> **Staged RESET XIX Hypotheses (Outside Canonical Rankings):**
+> - **Agent Risk Ledger / AI Underwriting Telemetry** (Provisional Thesis: 90 / Confidence: 55 / Market Proof: 0) — candidate-reset-xix-agent-risk-ledger
+> - **Robot Skill Acceptance Lab** (Provisional Thesis: 89 / Confidence: 50 / Market Proof: 0) — candidate-reset-xix-robot-skill-acceptance
+
 | Rank | Idea | Score | Why |
 |---:|---|---:|---|
-| 1 | [FactBounty — Buyer-Funded Product Proof Exchange](../ideas/factbounty-buyer-funded-product-proof-exchange.md) | 91.2 | fastest path to revenue; broadest evidence scope; compounding buyer-funded fact graph |
-| 2 | [Repository Autopilot](../ideas/repository-autopilot.md) | 88.6 | repository integrations and accumulated acceptance evidence |
+| 1 | 🔴 [SATURATION WARNING] [FactBounty — Buyer-Funded Product Proof Exchange](../ideas/factbounty-buyer-funded-product-proof-exchange.md) | 91.2 | fastest path to revenue; broadest evidence scope; compounding buyer-funded fact graph |
+| 2 | ⚠️ [FROZEN] [Repository Autopilot](../ideas/repository-autopilot.md) | 88.6 | repository integrations and accumulated acceptance evidence |
 | 3 | [Digital Product Passport & Repair Graph](../ideas/digital-product-passport-and-repair-graph.md) | 88.6 | device lifecycle graph and verified service network |
-| 4 | [AI Model Ranking Observatory](../ideas/ai-model-ranking-observatory.md) | 88.5 | trusted methodology, historical evidence, and proprietary evaluations |
-| 5 | [Prompt Registry & Evaluation Lab](../ideas/prompt-registry-and-evaluation-lab.md) | 88.1 | repository integrations and accumulated acceptance evidence |
+| 4 | ⚠️ [FROZEN] [AI Model Ranking Observatory](../ideas/ai-model-ranking-observatory.md) | 88.5 | trusted methodology, historical evidence, and proprietary evaluations |
+| 5 | ⚠️ [FROZEN] [Prompt Registry & Evaluation Lab](../ideas/prompt-registry-and-evaluation-lab.md) | 88.1 | repository integrations and accumulated acceptance evidence |
 | 6 | [EU Marketplace Compliance OS](../ideas/eu-marketplace-compliance-os.md) | 88.0 | regulatory workflow history and evidence integrations |
-| 7 | [Verified Agent Skill Marketplace](../ideas/verified-agent-skill-marketplace.md) | 87.8 | network relationships, trust history, and proprietary catalog data |
+| 7 | ⚠️ [FROZEN] [Verified Agent Skill Marketplace](../ideas/verified-agent-skill-marketplace.md) | 87.8 | network relationships, trust history, and proprietary catalog data |
 | 8 | [ProofRail — AI Work Acceptance Gate](../ideas/proofrail-ai-work-acceptance-gate.md) | 87.7 | cross-agent evidence history, organization policies, acceptance analytics, and release integrations |
-| 9 | [AI Agent Budget & Credit Controller](../ideas/ai-agent-budget-and-credit-controller.md) | 87.6 | routing outcomes, policy data, and workflow history |
-| 10 | [Autonomous Agent Operating System](../ideas/autonomous-agent-operating-system.md) | 87.6 | routing outcomes, policy data, and workflow history |
+| 9 | ⚠️ [FROZEN] [AI Agent Budget & Credit Controller](../ideas/ai-agent-budget-and-credit-controller.md) | 87.6 | routing outcomes, policy data, and workflow history |
+| 10 | ⚠️ [FROZEN] [Autonomous Agent Operating System](../ideas/autonomous-agent-operating-system.md) | 87.6 | routing outcomes, policy data, and workflow history |
 | 11 | [CodeQL Remediation Factory](../ideas/codeql-remediation-factory.md) | 87.3 | fix-pattern corpus and evidence history |
 | 12 | [ScrapRoute — Critical-Mineral Route-Shock Monitor](../ideas/scraproute-critical-mineral-route-shock-monitor.md) | 86.0 | 27-Aug-2026 cutover; RSE 9.2; Contract Memory 9.5; existing contracts + inventory + new domestic-allocation requirement = immediate transition asymmetry |
 | 13 | [AidGraph — Public Money Graph Platform](../ideas/aidgraph-public-money-graph-platform.md) | 87.0 | shared entity-resolution graph powering AidHeadroom and SubsidySignal; first-mover on 2026 EU de minimis transparency layer |
@@ -29,7 +38,7 @@ Composite decision-support view; not objective truth.
 | 24 | [Marketplace Trust Layer](../ideas/marketplace-trust-layer.md) | 85.5 | Ranked by the documented metric. |
 | 25 | [MeasureGraph — Exact Dimensions Evidence Network](../ideas/measuregraph-exact-dimensions-evidence-network.md) | 85.4 | most legally defensible bounty variant; objective ruler-in-frame evidence |
 | 26 | [Verified Seller Onboarding API](../ideas/verified-seller-onboarding-api.md) | 85.4 | Ranked by the documented metric. |
-| 27 | [Semantic Multi-Agent Merge Coordinator](../ideas/semantic-multi-agent-merge-coordinator.md) | 85.3 | Ranked by the documented metric. |
+| 27 | ⚡ [STRENGTHENED] [Semantic Multi-Agent Merge Coordinator](../ideas/semantic-multi-agent-merge-coordinator.md) | 85.3 | Ranked by the documented metric. |
 | 28 | [Release Evidence Ledger](../ideas/release-evidence-ledger.md) | 85.3 | Ranked by the documented metric. |
 | 29 | [EUshop — Pan-European Specialty Food Marketplace](../ideas/eushop-pan-european-specialty-food-marketplace.md) | 85.2 | Ranked by the documented metric. |
 | 30 | [Research-to-Startup Engine](../ideas/research-to-startup-engine.md) | 84.8 | Ranked by the documented metric. |

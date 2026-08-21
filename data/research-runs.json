@@ -3395,5 +3395,24 @@
     ],
     "scoringMethod": "8-gate-binary-provisional",
     "archiveFile": "research/GAP_FILL_BATCH_2026-08-18.md"
+  },
+  {
+    "runId": "run-gap-hunt-round-2-20260820",
+    "name": "Gap Hunt Round 2 — Negative Evidence",
+    "type": "GAP_HUNT_NEGATIVE_EVIDENCE",
+    "date": "2026-08-20",
+    "researchFocus": "Home renovation scams, childcare evidence, investment and crypto scams, used-car odometer fraud, international moving scams",
+    "thesis": "Test whether large consumer pain remains an unserved gap after checking incumbents, official tools, funding, jurisdiction, and cross-border fragmentation",
+    "ideasAdded": [],
+    "ideasKilled": [
+      "home-renovation-contractor-scams",
+      "childcare-quality-evidence",
+      "investment-crypto-scam-verification",
+      "used-car-odometer-fraud-generic",
+      "international-moving-company-scams"
+    ],
+    "ideasWatched": ["czech-language-used-car-evidence-explainer"],
+    "scoringMethod": "adversarial-whitespace-screen",
+    "archiveFile": "research/GAP_HUNT_ROUND_2_2026-08-20.md"
   }
 ]
