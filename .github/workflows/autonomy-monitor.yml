@@ -4,6 +4,16 @@ on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
+    inputs:
+      simulation:
+        description: 'Dispatch-only monitor proof mode'
+        required: false
+        default: live
+        type: choice
+        options:
+          - live
+          - stale
+          - healthy
 
 permissions:
   actions: read
@@ -26,7 +36,7 @@ jobs:
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python scripts/va-cloud-monitor.py
+        run: python scripts/va-cloud-monitor.py --simulation "${{ inputs.simulation || 'live' }}"
 
       - name: Open one deduplicated alert issue
         if: steps.health.outcome == 'failure'

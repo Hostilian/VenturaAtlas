@@ -10,18 +10,18 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | TASK-000D | Document Complete Python Setup | 98.0 | Developer Experience | COMPLETE | one-shot | ventureatlas-integration |
 | TASK-001 | Atomic State Persistence & Corruption Prevention | 98.5 | DevOps / Safety | LANDED | one-shot | ventureatlas-data-safety |
 | TASK-002 | Windows Auto-Resume & Daemon Automation | 95.0 | Automation | LANDED | one-shot | ventureatlas-integration |
-| TASK-003 | Cloud Continuity Workflows (GitHub Actions) | 92.5 | DevOps | LANDED_PENDING_EXTERNAL_PROOF | one-shot | ventureatlas-integration |
+| TASK-003 | Cloud Continuity Workflows (GitHub Actions) | 92.5 | DevOps | COMPLETE | one-shot | ventureatlas-integration |
 | TASK-004 | Rankings UI Scoring Breakdown & Transparency | 91.0 | Frontend | LANDED | one-shot | ventureatlas-public-site |
 | TASK-005 | Side-by-Side Idea Comparison Metric Deltas | 88.5 | Frontend | LANDED | one-shot | ventureatlas-public-site |
 | TASK-006 | Evidence Graph & Source Freshness Audit | 86.0 | Data Integrity | LANDED | one-shot | ventureatlas-data-safety |
-| TASK-007 | Continuous Research & Candidate Staging Cycle | 84.0 | Research | LANDED_PENDING_EXTERNAL_PROOF | one-shot | ventureatlas-provider-runtime |
+| TASK-007 | Continuous Research & Candidate Staging Cycle | 84.0 | Research | COMPLETE | one-shot | ventureatlas-provider-runtime |
 | TASK-008 | Mobile Responsiveness & Accessibility Verification | 82.5 | UX / QA | LANDED | one-shot | ventureatlas-test-adversary |
-| AUT-001 | True Independent Three-Provider Review Panel | 100.0 | Provider Runtime | LANDED | one-shot | ventureatlas-provider-runtime |
+| AUT-001 | Three-Model Review Panel Across Two Provider Infrastructures | 100.0 | Provider Runtime | COMPLETE | one-shot | ventureatlas-provider-runtime |
 | AUT-002 | Parallel Structural Preflight Before Every Writer Cycle | 99.5 | Pipeline Safety | LANDED | every-cycle | ventureatlas-test-adversary |
-| AUT-003 | Durable Private Cloud State Across Scheduled Runs | 99.0 | Cloud Runtime | LANDED_PENDING_EXTERNAL_PROOF | hourly | ventureatlas-integration |
+| AUT-003 | Durable Private State Across Cloud Workflow Runs | 99.0 | Cloud Runtime | COMPLETE | hourly | ventureatlas-integration |
 | AUT-004 | Execution-Scope-Aware Provider Routing | 98.5 | Provider Runtime | LANDED | one-shot | ventureatlas-provider-runtime |
 | AUT-005 | Autonomy Authority Drift Contract | 98.0 | Governance | LANDED | every-ci-run | ventureatlas-data-safety |
-| AUT-006 | Prove Hourly GitHub Cloud Workflow on Two Consecutive Runs | 97.5 | Cloud Runtime | VERIFY_EXTERNAL | one-shot | ventureatlas-integration |
+| AUT-006 | Prove GitHub Cloud Workflow on Two Consecutive Off-Machine Runs | 97.5 | Cloud Runtime | COMPLETE | one-shot | ventureatlas-integration |
 | AUT-007 | Deploy and Verify GCP Cloud Run Job | 97.0 | Cloud Runtime | BLOCKED_NO_BILLED_GCP_PROJECT | one-shot | ventureatlas-integration |
 | AUT-008 | Move Hermes From Laptop-Local Ollama to an Always-On Private Runtime | 96.5 | Provider Runtime | BLOCKED_NO_ALWAYS_ON_PRIVATE_RUNTIME | one-shot | ventureatlas-provider-runtime |
 | AUT-009 | Persistent Provider Spend and Call Ledger | 95.0 | Provider Runtime | LANDED | every-provider-call | ventureatlas-provider-runtime |

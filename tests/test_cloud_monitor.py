@@ -27,6 +27,17 @@ class CloudMonitorTests(unittest.TestCase):
         ], now)
         self.assertEqual(receipt["status"], "HEALTHY")
 
+    def test_dispatch_only_simulations_cover_stale_alert_and_recovery(self):
+        now = dt.datetime(2026, 8, 21, 12, tzinfo=dt.timezone.utc)
+        stale = MODULE.evaluate(MODULE.simulated_runs("stale", now), now)
+        healthy = MODULE.evaluate(MODULE.simulated_runs("healthy", now), now)
+        self.assertEqual(stale["status"], "ALERT")
+        self.assertEqual(
+            stale["reasons"],
+            ["LATEST_COMPLETED_RUN_STALE", "TWO_CONSECUTIVE_FAILURES"],
+        )
+        self.assertEqual(healthy["status"], "HEALTHY")
+
 
 if __name__ == "__main__":
     unittest.main()

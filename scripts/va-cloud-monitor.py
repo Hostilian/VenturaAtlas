@@ -17,6 +17,33 @@ from va_runtime.atomic_io import atomic_write_json
 DEFAULT_RECEIPT = os.path.join(ROOT, ".agent-state", "cloud-monitor.json")
 
 
+def simulated_runs(mode: str, now: dt.datetime) -> list[dict]:
+    """Return deterministic dispatch-only fixtures for end-to-end alert drills."""
+    if mode == "stale":
+        return [
+            {
+                "status": "completed",
+                "conclusion": "failure",
+                "createdAt": (now - dt.timedelta(hours=3)).isoformat(),
+                "event": "synthetic-monitor-proof",
+            },
+            {
+                "status": "completed",
+                "conclusion": "failure",
+                "createdAt": (now - dt.timedelta(hours=4)).isoformat(),
+                "event": "synthetic-monitor-proof",
+            },
+        ]
+    if mode == "healthy":
+        return [{
+            "status": "completed",
+            "conclusion": "success",
+            "createdAt": now.isoformat(),
+            "event": "synthetic-monitor-proof",
+        }]
+    return []
+
+
 def evaluate(runs: list[dict], now: dt.datetime, stale_minutes: int = 120) -> dict:
     ordered = sorted(runs, key=lambda run: str(run.get("createdAt", "")), reverse=True)
     completed = [run for run in ordered if run.get("status") == "completed"]
@@ -47,8 +74,12 @@ def main() -> int:
     parser.add_argument("--stale-minutes", type=int, default=120)
     parser.add_argument("--receipt", default=DEFAULT_RECEIPT)
     parser.add_argument("--runs-json", help="Fixture path; skips gh CLI")
+    parser.add_argument("--simulation", choices=("live", "stale", "healthy"), default="live")
     args = parser.parse_args()
-    if args.runs_json:
+    now = dt.datetime.now(dt.timezone.utc)
+    if args.simulation != "live":
+        runs = simulated_runs(args.simulation, now)
+    elif args.runs_json:
         with open(args.runs_json, "r", encoding="utf-8") as handle:
             runs = json.load(handle)
     else:
@@ -60,7 +91,8 @@ def main() -> int:
             runs = []
         else:
             runs = json.loads(result.stdout)
-    receipt = evaluate(runs, dt.datetime.now(dt.timezone.utc), args.stale_minutes)
+    receipt = evaluate(runs, now, args.stale_minutes)
+    receipt["simulation"] = args.simulation
     atomic_write_json(args.receipt, receipt)
     print(json.dumps(receipt, sort_keys=True))
     return 2 if receipt["status"] == "ALERT" else 0

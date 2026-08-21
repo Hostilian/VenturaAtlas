@@ -37,6 +37,41 @@ test('weekly resilience drill installs Python worker dependencies before full qu
   assert.ok(workflow.indexOf('pip install') < workflow.indexOf('npm run quality'));
 });
 
+test('all pull-request-only checks remain manually verifiable and main quality runs on push', () => {
+  const quality = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'quality.yml'), 'utf8');
+  const validation = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'validate-data.yml'), 'utf8');
+  const links = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'check-links.yml'), 'utf8');
+
+  assert.match(quality, /workflow_dispatch:/);
+  assert.match(quality, /branches:[\s\S]*?- main/);
+  assert.match(validation, /workflow_dispatch:/);
+  assert.match(validation, /pip install[^\n]*services\/ventureatlas-worker\/requirements\.txt/);
+  assert.ok(validation.indexOf('pip install') < validation.indexOf('npm run quality'));
+  assert.match(links, /workflow_dispatch:/);
+});
+
+test('cloud monitor exposes dispatch-only stale and recovery proof modes', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'autonomy-monitor.yml'), 'utf8');
+  assert.match(workflow, /simulation:/);
+  assert.match(workflow, /- stale/);
+  assert.match(workflow, /- healthy/);
+  assert.match(workflow, /va-cloud-monitor\.py --simulation/);
+  assert.match(workflow, /gh issue list[\s\S]*?if \[ -z "\$existing" \]/);
+  assert.match(workflow, /gh issue close/);
+});
+
+test('sanitized cloud provider proof records scope and honest panel diversity', () => {
+  const proof = JSON.parse(fs.readFileSync(path.join(ROOT, '.agent-system', 'cloud-provider-proof.json'), 'utf8'));
+  assert.equal(proof.status, 'VERIFIED_LIVE_CLOUD_EXECUTION');
+  assert.equal(proof.executionScope, 'cloud');
+  assert.equal(proof.source.runId, 32491718358);
+  assert.equal(proof.reviewPanel.modelLanes, 3);
+  assert.equal(proof.reviewPanel.infrastructureGroups, 2);
+  assert.deepEqual(new Set(proof.reviewPanel.lanes.map(lane => lane.infrastructure)), new Set(['nvidia-nim', 'cohere']));
+  assert.ok(proof.unhealthyCredentialRoutes.includes('fcc-claude'));
+  assert.ok(proof.notes.some(note => note.includes('Hermes')));
+});
+
 test('cloud image uses the declared Node major and installs quality dependencies', () => {
   const dockerfile = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'Dockerfile'), 'utf8');
   assert.match(dockerfile, /FROM node:22-bookworm-slim AS node-runtime/);

@@ -26,6 +26,7 @@ def main() -> int:
     meta = load_json("data/repository-meta.json")
     providers = load_json("config/providers.json").get("providers", {})
     health = load_json(".agent-system/provider-registry.json")
+    cloud_provider_proof = load_json(".agent-system/cloud-provider-proof.json")
     graph = load_json("data/agent-task-graph.json")
 
     tasks = backlog.get("tasks", [])
@@ -69,14 +70,30 @@ def main() -> int:
         if actual != expected:
             errors.append(f"state metric {key}={actual!r} differs from repository truth {expected!r}")
 
-    health_timestamp = health.get("lastHealthCheck")
-    try:
-        checked = datetime.datetime.fromisoformat(str(health_timestamp).replace("Z", "+00:00"))
-        age_hours = (datetime.datetime.now(datetime.timezone.utc) - checked).total_seconds() / 3600
+    health_timestamps = {
+        "local provider registry": health.get("lastHealthCheck"),
+        "cloud provider proof": cloud_provider_proof.get("checkedAt"),
+    }
+    parsed_health_timestamps = []
+    for label, raw_timestamp in health_timestamps.items():
+        try:
+            parsed_health_timestamps.append((
+                label,
+                datetime.datetime.fromisoformat(str(raw_timestamp).replace("Z", "+00:00")),
+            ))
+        except (TypeError, ValueError):
+            errors.append(f"{label} timestamp is missing or invalid")
+    if parsed_health_timestamps:
+        freshest_label, freshest_check = max(parsed_health_timestamps, key=lambda item: item[1])
+        age_hours = (datetime.datetime.now(datetime.timezone.utc) - freshest_check).total_seconds() / 3600
         if age_hours > 24:
-            warnings.append(f"provider health receipt is stale ({age_hours:.1f}h old)")
-    except (TypeError, ValueError):
-        errors.append("provider registry health timestamp is missing or invalid")
+            warnings.append(f"freshest provider health receipt ({freshest_label}) is stale ({age_hours:.1f}h old)")
+    if cloud_provider_proof.get("executionScope") != "cloud":
+        errors.append("cloud provider proof is not explicitly scoped to cloud execution")
+    if cloud_provider_proof.get("reviewPanel", {}).get("modelLanes") != 3:
+        errors.append("cloud provider proof does not record exactly three model-review lanes")
+    if cloud_provider_proof.get("reviewPanel", {}).get("infrastructureGroups", 0) < 2:
+        errors.append("cloud provider proof does not record at least two infrastructure groups")
 
     hermes_scopes = set(providers.get("hermes-ollama", {}).get("executionScopes", []))
     if "cloud" in hermes_scopes:
