@@ -7,7 +7,7 @@
     {
       "frontierId": "af-permit-echo",
       "ideaRef": "PermitEcho",
-      "candidateRef": "candidate-f276144f-160c-5546-89fc-99e2ce04df55",
+      "candidateRef": null,
       "noveltyDistance": "EXISTING_IDEA_REUNDERWRITE",
       "naturalAbsorbers": ["authority permitting portals", "permitting consultants", "developer project-control systems", "document-management suites"],
       "absorptionMechanisms": ["official digital submission", "consultant-owned reconciliation", "project-system document retention"],
@@ -25,7 +25,7 @@
     {
       "frontierId": "af-pid-relay",
       "ideaRef": "PIDRelay",
-      "candidateRef": "candidate-a51225f5-a56e-5528-98b8-14200a96a89d",
+      "candidateRef": null,
       "noveltyDistance": "EXISTING_IDEA_REUNDERWRITE",
       "naturalAbsorbers": ["customs brokers", "marketplaces and seller portals", "ERP/PIM suites", "logistics and trade-compliance platforms"],
       "absorptionMechanisms": ["catalog master-data onboarding", "broker pre-clearance service", "platform-required product identifiers"],
