@@ -151,6 +151,24 @@
       "circuitThreshold": 3,
       "cooldownSeconds": 180
     },
+    "github-models": {
+      "name": "GitHub Models (OpenAI GPT-4.1)",
+      "tier": 3,
+      "local": false,
+      "requiresApiKey": true,
+      "keyPoolEnv": "GITHUB_MODELS_TOKEN",
+      "baseUrlEnv": "GITHUB_MODELS_BASE_URL",
+      "modelEnv": "GITHUB_MODELS_MODEL",
+      "defaultBaseUrl": "https://models.github.ai/inference",
+      "defaultModel": "openai/gpt-4.1",
+      "capabilities": ["reasoning", "structured_review", "adversarial_review", "research_synthesis"],
+      "costClass": 1,
+      "latencyClass": "medium",
+      "webAccess": false,
+      "executionScopes": ["cloud"],
+      "circuitThreshold": 3,
+      "cooldownSeconds": 180
+    },
     "own-orch": {
       "name": "Own Deterministic Orchestrator",
       "tier": 0,

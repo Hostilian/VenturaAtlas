@@ -105,6 +105,8 @@ DEEPSEEK_MDL         = os.environ.get('DEEPSEEK_MODEL', 'deepseek-chat')
 NVIDIA_NIM_URL       = os.environ.get('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1')
 NVIDIA_NIM_MDL       = os.environ.get('NVIDIA_NIM_MODEL', 'meta/llama-3.1-8b-instruct')
 COHERE_URL           = os.environ.get('COHERE_BASE_URL', 'https://api.cohere.com/v1')
+GITHUB_MODELS_URL    = os.environ.get('GITHUB_MODELS_BASE_URL', 'https://models.github.ai/inference')
+GITHUB_MODELS_MDL    = os.environ.get('GITHUB_MODELS_MODEL', 'openai/gpt-4.1')
 CIRCUIT_THRESHOLD    = 3       # failures before circuit opens
 CIRCUIT_COOLDOWN     = 180     # reduced cooldown (seconds) before retry after circuit open
 
@@ -148,6 +150,7 @@ PROVIDER_DEFAULTS = {
     "deepseek-api":   {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "own-orch":       {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
     "anthropic-full": {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
+    "github-models":  {"failures": 0, "circuitUntil": "", "lastUsed": "", "totalCalls": 0, "successCalls": 0},
 }
 
 def _get_ssl_context():
@@ -389,6 +392,42 @@ def _call_omniRoute(prompt: str) -> str:
                 last_err = e
                 log_debug(f"OpenRouter key call failed on {base_url}: {e}")
     raise last_err or ValueError("All OpenRouter API keys in pool failed")
+
+
+def _call_github_models(prompt: str) -> str:
+    """Call a GitHub-hosted model using the job-scoped GITHUB_TOKEN."""
+    attempts = _eligible_key_count("github-models")
+    if not attempts:
+        raise ValueError("No GitHub Models token configured")
+    last_err = None
+    for _ in range(attempts):
+        key_state = _get_next_provider_key("github-models")
+        try:
+            result = _http_post(
+                f"{GITHUB_MODELS_URL.rstrip('/')}/chat/completions",
+                {
+                    "Accept": "application/vnd.github+json",
+                    "Authorization": f"Bearer {key_state.key}",
+                    "Content-Type": "application/json",
+                    "X-GitHub-Api-Version": "2026-03-10",
+                },
+                {
+                    "model": GITHUB_MODELS_MDL,
+                    "messages": [
+                        {"role": "system", "content": "You are an independent adversarial startup reviewer. Return the requested format exactly."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    "max_tokens": 1600,
+                    "temperature": 0.2,
+                },
+                timeout=90,
+            )
+            return result["choices"][0]["message"]["content"].strip()
+        except Exception as exc:
+            _handle_key_http_failure(key_state, exc)
+            last_err = exc
+            log_debug(f"GitHub Models call failed: {exc}")
+    raise last_err or ValueError("All GitHub Models calls failed")
 
 
 # ── Tier 3: FCC Claude (Anthropic Haiku) ──────────────────────────────────────
@@ -649,7 +688,7 @@ def _call_deepseek_api(prompt: str) -> str:
 def health_check(probe_external: bool = False) -> dict:
     """Check providers; remote providers are healthy only after a real probe."""
     results = {}
-    external_providers = ["nvidia-nim", "cohere-api", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full"]
+    external_providers = ["nvidia-nim", "cohere-api", "github-models", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full"]
     for provider in external_providers:
         configured = _eligible_key_count(provider) > 0
         if not configured:
@@ -682,7 +721,7 @@ def health_check(probe_external: bool = False) -> dict:
 
 
 # ── Core Orchestration Call ────────────────────────────────────────────────────
-DEFAULT_PROVIDER_ORDER = ["nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
+DEFAULT_PROVIDER_ORDER = ["nvidia-nim", "cohere-api", "github-models", "hermes-ollama", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full", "own-orch"]
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -702,6 +741,8 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
             resp = _call_nvidia_nim(prompt)
         elif provider == "cohere-api":
             resp = _call_cohere_api(prompt)
+        elif provider == "github-models":
+            resp = _call_github_models(prompt)
         elif provider == "hermes-ollama":
             resp = _call_hermes_with_fallback(prompt)
         elif provider == "omniRoute":
@@ -909,6 +950,8 @@ def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
                 resp = _call_nvidia_nim(prompt)
             elif provider == "cohere-api":
                 resp = _call_cohere_api(prompt)
+            elif provider == "github-models":
+                resp = _call_github_models(prompt)
             elif provider == "hermes-ollama":
                 resp = _call_hermes_with_fallback(prompt)
             elif provider == "omniRoute":

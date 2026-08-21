@@ -15,6 +15,19 @@ from va_runtime.provider_router import CapabilityProviderScheduler, NoEligiblePr
 
 
 class ProviderRoutingContractTests(unittest.TestCase):
+    def test_github_models_uses_job_token_and_versioned_inference_endpoint(self):
+        with mock.patch.dict(os.environ, {"GITHUB_MODELS_TOKEN": "unit-github-job-token-12345"}, clear=False):
+            scheduler = CapabilityProviderScheduler()
+        response = {"choices": [{"message": {"content": "review ok"}}]}
+        with mock.patch.object(orchestrator, "get_provider_scheduler", return_value=scheduler), \
+             mock.patch.object(orchestrator, "_http_post", return_value=response) as post:
+            self.assertEqual(orchestrator._call_github_models("review"), "review ok")
+        url, headers, body = post.call_args.args[:3]
+        self.assertEqual(url, "https://models.github.ai/inference/chat/completions")
+        self.assertEqual(headers["X-GitHub-Api-Version"], "2026-03-10")
+        self.assertTrue(headers["Authorization"].startswith("Bearer "))
+        self.assertEqual(body["model"], "openai/gpt-4.1")
+
     def test_http_401_disables_exact_key_and_next_call_excludes_it(self):
         env = {"NVIDIA_NIM_API_KEYS": "unit-key-invalid-12345,unit-key-valid-67890"}
         with mock.patch.dict(os.environ, env, clear=False):
