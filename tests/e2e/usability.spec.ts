@@ -14,6 +14,14 @@ const publicRoutes = [
 ];
 
 test.describe('Friend-ready usability safeguards', () => {
+  test('homepage fits a standard 1280px desktop viewport', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'Desktop Chrome');
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto('/index.html');
+    await page.locator('main#main').waitFor();
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+
   test('key public journeys do not overflow a phone viewport', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'Mobile Safari');
 

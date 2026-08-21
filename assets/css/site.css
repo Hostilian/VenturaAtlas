@@ -733,6 +733,15 @@ main {
   overflow-wrap: anywhere;
 }
 
+.category-btn {
+  white-space: normal;
+}
+
+.category-btn > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 @keyframes card-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
