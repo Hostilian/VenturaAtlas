@@ -153,7 +153,7 @@
     },
     "nvidia-nim-adversarial": {
       "name": "NVIDIA NIM Adversarial Lane (OpenAI GPT-OSS 20B)",
-      "tier": 3,
+      "tier": 2,
       "local": false,
       "requiresApiKey": true,
       "keyPoolEnv": "NVIDIA_NIM_API_KEYS",

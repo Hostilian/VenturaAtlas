@@ -101,6 +101,23 @@ class TestProviderRouter(unittest.TestCase):
                     "active-api", "deepseek-api", "anthropic-full", "nvidia-nim-adversarial", "own-orch"}
         self.assertTrue(expected.issubset(scheduler.registry["providers"]))
 
+    def test_cloud_review_order_prefers_three_intended_model_lanes(self):
+        env = {
+            "VA_EXECUTION_SCOPE": "cloud",
+            "NVIDIA_NIM_API_KEYS": "unit-nvidia-key-12345",
+            "COHERE_API_KEYS": "unit-cohere-key-12345",
+            "ANTHROPIC_API_KEYS": "unit-anthropic-key-12345",
+        }
+        with mock.patch.dict(os.environ, env, clear=False):
+            scheduler = CapabilityProviderScheduler()
+        selected = scheduler.select_providers_for_task(
+            ["reasoning", "structured_review", "adversarial_review"],
+            max_cost_class=1,
+            allow_own_orch=False,
+            match_mode="any",
+        )
+        self.assertEqual(selected[:3], ["nvidia-nim", "cohere-api", "nvidia-nim-adversarial"])
+
     def test_cloud_hermes_requires_remote_https_and_authentication(self):
         with mock.patch.dict(os.environ, {"VA_EXECUTION_SCOPE": "cloud", "OLLAMA_BASE_URL": "http://localhost:11434"}, clear=False):
             scheduler = CapabilityProviderScheduler()
