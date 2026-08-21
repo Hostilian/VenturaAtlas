@@ -54,8 +54,18 @@ test('Terraform and job runner share exact Secret Manager IDs', () => {
     assert.match(terraform, terraformMapping);
     assert.ok(runner.includes(`"${environmentName}": "${secretId}"`));
   }
-  assert.match(runner, /SECRET_IDS\.get\(secret_name, secret_name\)/);
+  assert.match(runner, /\{\*\*SECRET_IDS, \*\*AUXILIARY_SECRET_IDS\}\.get\(secret_name, secret_name\)/);
   assert.doesNotMatch(terraform, /GITHUB_TOKEN\s*=\s*["']va-github-token["']/);
+});
+
+test('cloud deployment is two-phase, digest-pinned, billed, and provider-panel guarded', () => {
+  const deploy = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'deploy.ps1'), 'utf8');
+  const runner = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'job_runner.py'), 'utf8');
+  assert.match(deploy, /billingEnabled/);
+  assert.match(deploy, /-target=google_artifact_registry_repository\.repo/);
+  assert.match(deploy, /image_summary\.digest/);
+  assert.match(deploy, /configuredSecrets -lt 3/);
+  assert.match(runner, /PANEL_SECRET_SHORTFALL/);
 });
 
 test('Cloud job prevents overlapping repository writers and bounds provider cost', () => {

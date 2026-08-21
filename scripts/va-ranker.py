@@ -359,7 +359,7 @@ def update_rankings_json(ranked: list, ideas: list = None, now: str = None):
     lowest_cost_items = [format_item(r, i + 1) for i, r in enumerate(lowest_cost_sorted)]
 
     # 7. Tournament Finalists & Reset Winners
-    finalists_raw = [r for r in ranked if r["status"] == "priority" or r["id"] in ["idea-061", "idea-062", "idea-185", "idea-186", "idea-230", "idea-231", "idea-240", "idea-241"]]
+    finalists_raw = [r for r in ranked if r["status"] == "priority" or r["id"] in ["idea-061", "idea-062", "idea-185", "idea-186", "idea-219", "idea-220", "idea-240", "idea-241"]]
     finalists_sorted = sorted(finalists_raw if finalists_raw else ranked[:25], key=lambda x: x["score"] or -1, reverse=True)
     finalists_items = [format_item(r, i + 1) for i, r in enumerate(finalists_sorted)]
 

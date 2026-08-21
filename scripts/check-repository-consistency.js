@@ -91,6 +91,32 @@ for (const idea of ideas) {
   }
 }
 
+// Normalized taxonomy is a complete browsing projection, not a replacement for
+// original source categories or an identity/deduplication authority.
+const taxonomy = readJson('data/idea-taxonomy.json');
+if (!taxonomy) {
+  errors.push('Missing data/idea-taxonomy.json');
+} else {
+  const assignments = Array.isArray(taxonomy.assignments) ? taxonomy.assignments : [];
+  const assignmentById = new Map(assignments.map(assignment => [assignment.ideaId, assignment]));
+  if (assignmentById.size !== ideas.length) {
+    errors.push(`Idea taxonomy coverage mismatch: ${assignmentById.size} assignments for ${ideas.length} ideas`);
+  }
+  for (const idea of ideas) {
+    const assignment = assignmentById.get(idea.id);
+    if (!assignment) {
+      errors.push(`Idea taxonomy missing assignment for ${idea.id}`);
+      continue;
+    }
+    if (assignment.originalCategory !== idea.category) {
+      errors.push(`Idea taxonomy original category drift for ${idea.id}`);
+    }
+    if (!assignment.familyId || !assignment.patternId || !assignment.buyerSegmentId) {
+      errors.push(`Idea taxonomy classification incomplete for ${idea.id}`);
+    }
+  }
+}
+
 // 3. Metadata count alignment (P59)
 const queuePath = path.join(ROOT, 'data', 'idea-staging-queue.json');
 const rawQueue = fs.existsSync(queuePath) ? readJson('data/idea-staging-queue.json') : [];
@@ -118,6 +144,9 @@ if (searchIndex) {
   const searchRecords = Array.isArray(searchIndex) ? searchIndex : (searchIndex.records || []);
   if (searchRecords.length !== ideas.length) {
     errors.push(`Search index count mismatch: data/search-index.json has ${searchRecords.length} records, but data/ideas.json has ${ideas.length} ideas`);
+  }
+  if (searchRecords.some(record => !record.family || !record.pattern)) {
+    errors.push('Search index is missing normalized family or pattern fields');
   }
 }
 

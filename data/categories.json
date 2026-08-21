@@ -258,31 +258,21 @@
   {
     "id": "product-verification-evidence",
     "name": "Product verification & evidence",
-    "count": 10,
+    "count": 0,
     "subcategories": [
       "consumer bounty exchange",
       "data network",
       "B2B API",
       "seller tool"
     ],
-    "description": "Buyer-funded bounty exchanges, evidence networks, and B2B APIs for verified product facts. Source: Deep Research Eighth Full Reset (2026-08-02)."
+    "description": "Buyer-funded bounty exchanges, evidence networks, and B2B APIs for verified product facts. Source: Deep Research Eighth Full Reset (2026-08-02).",
+    "ideaIds": []
   },
   {
     "id": "fit-first-repair-fabrication",
     "name": "Fit-First Repair & Fabrication",
-    "count": 10,
-    "ideaIds": [
-      "idea-230",
-      "idea-231",
-      "idea-232",
-      "idea-233",
-      "idea-234",
-      "idea-235",
-      "idea-236",
-      "idea-237",
-      "idea-238",
-      "idea-239"
-    ],
+    "count": 0,
+    "ideaIds": [],
     "subcategories": [
       "parametric-repair",
       "printer-calibration",

@@ -16,6 +16,7 @@ import time
 import datetime
 import urllib.request
 import urllib.error
+import urllib.parse
 from typing import Tuple, Dict, Any, List, Optional
 from .atomic_io import atomic_write_json, read_json_safe
 
@@ -128,6 +129,13 @@ class CapabilityProviderScheduler:
             allowed_scopes = set(p_cfg.get("executionScopes", []))
             if allowed_scopes and execution_scope not in allowed_scopes:
                 continue
+            if p_id == "hermes-ollama" and execution_scope == "cloud":
+                base = os.environ.get(p_cfg.get("baseUrlEnv", ""), p_cfg.get("defaultBaseUrl", ""))
+                parsed = urllib.parse.urlparse(base)
+                if parsed.scheme != "https" or parsed.hostname in {"localhost", "127.0.0.1", "::1"}:
+                    continue
+                if not os.environ.get("OLLAMA_AUTH_TOKEN"):
+                    continue
 
             p_caps = set(p_cfg.get("capabilities", []))
             if requires_external_evidence and not p_cfg.get("webAccess", False):
@@ -272,6 +280,8 @@ class CapabilityProviderScheduler:
         else:
             endpoint = base.rstrip("/") + ("/models" if base.rstrip("/").endswith("/v1") else "/v1/models")
         headers = {"User-Agent": "VentureAtlas-health-probe/1.0"}
+        if provider_id == "hermes-ollama" and os.environ.get("OLLAMA_AUTH_TOKEN"):
+            headers["Authorization"] = f"Bearer {os.environ['OLLAMA_AUTH_TOKEN']}"
         key_state = self.get_next_key(provider_id)
         if key_state:
             if provider_id in {"fcc-claude", "anthropic-full"}:

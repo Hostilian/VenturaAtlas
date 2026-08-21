@@ -5,7 +5,7 @@
 - Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 319 ideas; epistemic validation is not assessed
 - Highest assigned canonical idea ID: idea-431
 - Next ID: idea-432 — allocated by the canonical ID allocator; do not infer from this document
-- Canonical ideas: 319
+- Canonical ideas: 309
 - Categories: 132
 - Validation warnings: 0
 - Last updated: 2026-08-18
@@ -126,9 +126,9 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.6.0
-- Canonical Ideas: 319
+- Canonical Ideas: 309
 - Staged Ideas: 0
-- Total Ideas: 319
+- Total Ideas: 309
 - Categories: 132
 - Source References: 316
 - Generated Prompts: 4625

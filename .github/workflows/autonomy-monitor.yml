@@ -1,0 +1,63 @@
+name: Autonomous Runtime Monitor
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Evaluate cloud recurrence
+        id: health
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/va-cloud-monitor.py
+
+      - name: Open one deduplicated alert issue
+        if: steps.health.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title='[Autonomy Alert] research cycle is stale or repeatedly failing'
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file .agent-state/cloud-monitor.json
+          fi
+
+      - name: Close recovered alert
+        if: steps.health.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title='[Autonomy Alert] research cycle is stale or repeatedly failing'
+          existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GITHUB_REPOSITORY" --comment 'Automated recovery check passed.'
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cloud-monitor-${{ github.run_id }}
+          path: .agent-state/cloud-monitor.json
+          include-hidden-files: true
+          retention-days: 30
+
+      - name: Preserve alert status
+        if: steps.health.outcome == 'failure'
+        run: exit 1

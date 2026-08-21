@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Venture Atlas OS — AI Business Idea Intelligence Platform</title>
-  <meta name="description" content="Browse 319+ business idea dossiers with heterogeneous evidence coverage, legacy scoring, financial scenarios, prompts, and explicitly labeled public citations.">
+  <meta name="description" content="Browse 309+ business idea dossiers with heterogeneous evidence coverage, legacy scoring, financial scenarios, prompts, and explicitly labeled public citations.">
   <meta name="keywords" content="business ideas, startup research, AI opportunities, venture building, product ideas, entrepreneur, opportunity database">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Venture Atlas OS — AI Business Idea Intelligence Platform">
-  <meta property="og:description" content="319+ business idea dossiers with heterogeneous evidence coverage, legacy scores, financial scenarios, customer profiles, and research prompts.">
+  <meta property="og:description" content="309+ business idea dossiers with heterogeneous evidence coverage, legacy scores, financial scenarios, customer profiles, and research prompts.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#1e7a5c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -566,8 +566,14 @@
           autocomplete="off"
           spellcheck="false"
         >
-        <select id="category" aria-label="Filter by category">
-          <option value="">All categories</option>
+        <select id="family" aria-label="Filter by normalized market family">
+          <option value="">All market families</option>
+        </select>
+        <select id="pattern" aria-label="Filter by venture pattern">
+          <option value="">All idea types</option>
+        </select>
+        <select id="category" aria-label="Filter by original detailed category">
+          <option value="">All detailed categories</option>
         </select>
         <select id="status" aria-label="Filter by status">
           <option value="">All statuses</option>
@@ -583,6 +589,9 @@
           <option value="cost">Lowest startup cost</option>
           <option value="confidence">Confidence</option>
           <option value="revenue">Speed to revenue</option>
+          <option value="taxonomy">Market family &amp; idea type</option>
+          <option value="similarity">Closest idea clusters</option>
+          <option value="distinctive">Most differentiated</option>
           <option value="name">Name (A–Z)</option>
           <option value="updated">Recently updated</option>
         </select>
@@ -611,7 +620,7 @@
           <thead>
             <tr>
               <th scope="col">Idea</th>
-              <th scope="col">Category</th>
+              <th scope="col">Family &amp; type</th>
               <th scope="col">Customer</th>
               <th scope="col">Overall</th>
               <th scope="col">Confidence</th>
@@ -713,7 +722,7 @@
     ══════════════════════════════════════════════════════════ -->
     <section style="margin-top:3rem" aria-labelledby="catBrowseTitle">
       <div class="section-heading">
-        <h2 id="catBrowseTitle">📂 Browse by Category</h2>
+        <h2 id="catBrowseTitle">📂 Browse by Normalized Market Family</h2>
       </div>
       <div id="categoryBrowse" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem">
         <!-- Populated by JS -->

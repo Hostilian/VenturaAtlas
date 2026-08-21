@@ -83,6 +83,7 @@ const DENIED_PATTERNS = [
 const PUBLIC_DATA_ALLOWLIST = new Set([
   'ideas.json',
   'ideas.schema.json',
+  'idea-taxonomy.json',
   'categories.json',
   'public-sources.json',
   'rankings.json',

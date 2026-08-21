@@ -21,6 +21,7 @@ const OPTIONAL_DATA = [
   './data/repository-meta.json',
   './data/search-index.json',
   './data/ideas.json',
+  './data/idea-taxonomy.json',
   './data/categories.json',
   './data/public-sources.json',
   './data/rankings.json'

@@ -5,19 +5,19 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 ## Current inventory
 
 <!-- BEGIN GENERATED CURRENT INVENTORY -->
-- **319 canonical ideas** (0 staged, 319 total)
+- **309 canonical ideas** (0 staged, 309 total)
 - **132 categories**
 - **316 source inventory records**
 - **507 research proposal rows** across **29 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
 - **4,625 idea-specific prompts** plus master prompts
 - **417 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
-- **60/319 financial models**, **62/319 validation plans**, **60/319 technical blueprints**, and **60/319 launch plans**
+- **60/309 financial models**, **62/309 validation plans**, **60/309 technical blueprints**, and **60/309 launch plans**
 - **4,625 idea-specific prompt files**; per-idea pack completeness is not asserted
 <!-- END GENERATED CURRENT INVENTORY -->
 
 ## What the site supports
 
-Search, category/status filters, sorting, card/table/compact views, favorites, recently viewed records, comparison, ranking views, relationship map, shareable query parameters, JSON/CSV downloads, dark/light mode, print layouts, keyboard navigation, and a no-JavaScript path to Markdown/CSV.
+Search across normalized market families, venture patterns, buyers, and original categories; filter and sort by similarity or distinctiveness; inspect potential duplicates; compare positioning side by side; and use card/table/compact views, favorites, rankings, relationship maps, shareable queries, JSON/CSV downloads, dark mode, print layouts, keyboard navigation, and a no-JavaScript Markdown/CSV path.
 
 ## Evidence and limitations
 
@@ -93,9 +93,9 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.6.0
-- Canonical Ideas: 319
+- Canonical Ideas: 309
 - Staged Ideas: 0
-- Total Ideas: 319
+- Total Ideas: 309
 - Categories: 132
 - Source References: 316
 - Generated Prompts: 4625

@@ -29,7 +29,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npx http-server _site -p 8080 -s',
+    command: 'python -m http.server 8080 --directory _site',
     port: 8080,
     reuseExistingServer: !process.env.CI,
     timeout: 15000,

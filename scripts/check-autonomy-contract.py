@@ -80,7 +80,18 @@ def main() -> int:
 
     hermes_scopes = set(providers.get("hermes-ollama", {}).get("executionScopes", []))
     if "cloud" in hermes_scopes:
-        errors.append("localhost Hermes must not be eligible in cloud execution scope")
+        router_source = open(
+            os.path.join(ROOT, "scripts", "va_runtime", "provider_router.py"),
+            "r", encoding="utf-8",
+        ).read()
+        hermes_cloud_guards = [
+            'parsed.scheme != "https"',
+            'parsed.hostname in {"localhost", "127.0.0.1", "::1"}',
+            'os.environ.get("OLLAMA_AUTH_TOKEN")',
+        ]
+        for marker in hermes_cloud_guards:
+            if marker not in router_source:
+                errors.append(f"cloud Hermes routing is missing safety guard: {marker}")
     for provider_id, config in providers.items():
         if provider_id in {"hermes-ollama", "own-orch"}:
             continue

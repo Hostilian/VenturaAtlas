@@ -33,8 +33,9 @@ graph TD
 ## Core Components
 
 - **Data Store:** Single source of truth in `data/ideas.json`, governed by `data/ideas.schema.json`.
+- **Normalized Browsing Taxonomy:** `data/idea-taxonomy.json` deterministically maps every canonical record to a market family, venture pattern, buyer segment, similarity group, and nearest neighbors. It preserves original categories and cannot merge records or establish identity, ranking, or validation claims.
 - **Derived Metadata:** `data/repository-meta.json` generated deterministically.
-- **Search Engine:** Client-side in-memory index `data/search-index.json` loaded asynchronously by `assets/js/site.js`.
+- **Search Engine:** Client-side in-memory index `data/search-index.json` includes normalized family, pattern, and buyer fields and is loaded asynchronously by `assets/js/site.js`.
 - **Bounded Pipeline:** `scripts/va-massive-orchestrator.py` runs a parallel read-only preflight, provider health, bounded discovery, candidate-ID migration, independent provider cross-check, ranking, generation, and source-quality verification with dependency-aware failure propagation.
 - **Independent Model Panel:** `scripts/va-research-crosscheck.py` requires three distinct external model responses in strict cloud mode. Panel output is private review telemetry and is never promoted to primary-source evidence.
 - **Execution-Scope Routing:** cloud runs can use configured API providers and deterministic orchestration; laptop-local Hermes is excluded. Hermes requires a separately authenticated always-on runtime before it can participate while the workstation is off.

@@ -1,23 +1,27 @@
 {
-  "dataRevision": "7c02ca69047a4f29",
-  "buildRevision": "2.6.0-7c02ca69047a4f29",
-  "generatedAt": "2026-08-21T11:50:27.559Z",
+  "dataRevision": "a22923b2f173e87e",
+  "buildRevision": "2.6.0-a22923b2f173e87e",
+  "generatedAt": "2026-08-21T13:46:49.372Z",
   "files": {
     "ideas.json": {
-      "sha256": "bafb9d53034c66390495cac81ef9fd097dc6601db66fe0a5cee5aaf472c3c4d5",
-      "bytes": 4786452
+      "sha256": "f0a69d49bc8bb7fbc8d100cc77c7b709861d8978c48e23ad6a82996f8d80a085",
+      "bytes": 4736127
     },
     "categories.json": {
-      "sha256": "ce51c2ac3fbfccf0bf6b3373fafb3d0f6e1ea91ee8b7d515d3b2651d09ea36ff",
-      "bytes": 8133
+      "sha256": "6cc3d94ac2e57b5d5a6a1a8ce6477fb8bf86e19e300655d9eccd779f00b20246",
+      "bytes": 7966
+    },
+    "idea-taxonomy.json": {
+      "sha256": "b9137f0381bfd61e36f4744bf5735dbe06ae568d02a885551c21b621a316ecae",
+      "bytes": 1279818
     },
     "sources.json": {
       "sha256": "a412889d960c6b2527e2fefe973134bdd8d28a5d4ab38efa003066ac2cc1e5e4",
       "bytes": 263239
     },
     "rankings.json": {
-      "sha256": "3f962181a7691cfbc0927d5441f84b70ef1c46db8e2041dcc3b7923dc293b0e0",
-      "bytes": 1393260
+      "sha256": "6dc3dbcf86f4e51b3a71ee12806b60f1181640514af884bef1df87bd02dd2b2f",
+      "bytes": 1350597
     }
   }
 }

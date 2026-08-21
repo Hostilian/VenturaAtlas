@@ -15,7 +15,7 @@
 6. [Venture Matcher Wizard](#venture-matcher-wizard)
 7. [View Modes](#view-modes)
 8. [Idea Spotlight & Random](#idea-spotlight--random)
-9. [Browsing by Category](#browsing-by-category)
+9. [Browsing by Market Family](#browsing-by-market-family)
 10. [Comparing Ideas](#comparing-ideas)
 11. [Working with Data Offline (JSON/CSV)](#working-with-data-offline-jsoncsv)
 12. [Using the Prompt Library](#using-the-prompt-library)
@@ -47,7 +47,8 @@ The search bar (`/` keyboard shortcut to focus) searches across:
 - **Problem statement** — what pain the idea solves
 - **Customer description** — who the target user is
 - **Tags** — e.g. `ai`, `eu`, `saas`, `marketplace`
-- **Category** — e.g. `AI Tools`, `Food & Beverage`
+- **Normalized market family and idea type** — e.g. `Healthcare & Life Sciences`, `Compliance Gate & Preflight`
+- **Detailed source category** — the original category retained for provenance
 
 ### Search Examples
 
@@ -64,7 +65,7 @@ The search bar (`/` keyboard shortcut to focus) searches across:
 
 ### Tips
 
-- Use **multiple words** — results are ANDed (all words must appear)
+- Search for a phrase or distinctive term; normalized family, idea type, buyer, category, tags, customer, and problem text are all indexed
 - Search is **case-insensitive**
 - Combine search with a **category filter** for narrower results
 - Press **Esc** to clear the search bar
@@ -73,14 +74,10 @@ The search bar (`/` keyboard shortcut to focus) searches across:
 
 ## Filter Strategies
 
-### By Category
-Use the **Category** dropdown to browse a specific sector:
-- `AI / Autonomous Agents` — pure AI/ML product businesses
-- `EU Compliance & Regulation` — EU-law based services
-- `Food & Beverage` — food tech, knowledge graphs, evidence registries
-- `Developer Tools` — APIs, SDKs, CLI tools
-- `Marketplace` — two-sided markets, trust layers, seller tools
-- `Education` — language learning, Erasmus tools, course matching
+### By Market Family and Idea Type
+Use **Market family** for the broad sector and **Idea type** for the business mechanic. For example, selecting `Healthcare & Life Sciences` plus `Compliance Gate & Preflight` keeps related health-compliance ideas together. Use **Detailed category** only when you need the original, more granular source label.
+
+The two dimensions are independent: two compliance gates can share an idea type while serving different markets, and two healthcare ideas can share a market family while using different product mechanics.
 
 ### By Status
 - **Priority** — top-ranked ideas from research sessions; most complete data
@@ -89,7 +86,7 @@ Use the **Category** dropdown to browse a specific sector:
 - **Archived** — ideas deprioritized but preserved for reference
 
 ### Combining Filters
-Filters stack. Example: `Category = AI Tools` + `Status = Priority` + `Sort = Lowest Cost` gives you the cheapest high-priority AI ideas.
+Filters stack. Example: `Market family = Software, AI & Developer Systems` + `Status = Priority` + `Sort = Lowest Cost` gives you the cheapest high-priority software ideas.
 
 ---
 
@@ -127,6 +124,9 @@ Choose your sort based on your primary objective:
 | Spend as little as possible to start | **Lowest startup cost** |
 | Get to revenue fast | **Speed to revenue** |
 | Use the most research-backed ideas | **Confidence** |
+| Scan related ideas together | **Market family & idea type** |
+| Put the tightest similarity groups together | **Closest idea clusters** |
+| Find ideas least similar to anything else in the portfolio | **Most differentiated** |
 | Browse alphabetically | **Name (A–Z)** |
 | See what was added most recently | **Recently updated** |
 
@@ -157,7 +157,7 @@ The Matcher produces a filtered, ranked list tuned to your profile.
 Three views are available via the viewbar buttons:
 
 ### Cards (Default)
-Visual cards with name, category, customer, scores, tags, and action buttons. Best for discovery and browsing.
+Visual cards with market family, idea type, detailed category, customer, scores, and nearest-neighbor distinctions. Exact normalized-name matches receive a potential-duplicate warning.
 
 ### Table
 Spreadsheet-style comparison across key dimensions. Best for data-driven selection and exporting to a spreadsheet for further analysis.
@@ -177,11 +177,11 @@ The **Random** button in the viewbar opens a randomly selected idea directly. Us
 
 ---
 
-## Browsing by Category
+## Browsing by Market Family
 
-The **📂 Browse by Category** section at the bottom of the homepage shows every category with idea counts. Click any category card to filter the directory instantly.
+The **📂 Browse by Normalized Market Family** section shows the stable cross-round market families with idea counts. Click a family to filter the directory instantly.
 
-Deep-dive into a category at `categories/` — each category folder contains a dedicated index with all ideas in that space.
+The original detailed category remains visible on every card and detail page. This preserves source terminology without forcing users to browse more than one hundred overlapping labels.
 
 ---
 
@@ -195,14 +195,14 @@ Deep-dive into a category at `categories/` — each category folder contains a d
 ### Direct comparison
 Navigate to `docs/compare.html` and use the dropdowns to pick any ideas manually.
 
-The compare view shows: scores, customer types, startup costs, revenue speed, evidence labels, tags, and links to full dossiers.
+The compare view shows market family, idea type, detailed category, buyer segment, target customer, problem, core deliverable, closest alternative, economics, risk, and validation step.
 
 ---
 
 ## Working with Data Offline (JSON/CSV)
 
 ### Download options
-- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 319+ ideas
+- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 309+ ideas
 - **↓ CSV** → `data/ideas.csv` — flat spreadsheet format, all key fields
 
 ### Use cases
@@ -220,6 +220,7 @@ The compare view shows: scores, customer types, startup costs, revenue speed, ev
 | `data/prompts.json` | All 25-per-idea prompts |
 | `data/sources.json` | All citations and source records |
 | `data/categories.json` | Category definitions |
+| `data/idea-taxonomy.json` | Normalized families, venture patterns, positioning fields, similarity groups, and nearest neighbors |
 | `data/tags.json` | All tags with descriptions |
 | `data/relationships.json` | Idea-to-idea relationship graph |
 | `data/sensitivity-analysis.json` | Score sensitivity to input changes |

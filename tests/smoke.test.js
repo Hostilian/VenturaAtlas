@@ -18,6 +18,7 @@ test('Smoke Test — Required Files Existence', () => {
     'assets/js/site.js',
     'assets/js/home.js',
     'data/ideas.json',
+    'data/idea-taxonomy.json',
     'data/repository-meta.json',
     'data/categories.json',
     'data/sources.json',

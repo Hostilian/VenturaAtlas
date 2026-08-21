@@ -21,6 +21,8 @@ const VA = {
   sources: [],
   categories: [],
   relationships: [],
+  taxonomy: { families: [], patterns: [], groups: [], assignments: [] },
+  taxonomyByIdea: new Map(),
   dataErrors: {},
   base: ''
 };
@@ -48,6 +50,11 @@ function getIdeaScore(idea, dimension) {
 
   if (val === null || val === undefined || isNaN(val)) return null;
   return Math.min(100, Math.max(0, Number(val)));
+}
+
+function getIdeaTaxonomy(ideaOrId) {
+  const ideaId = typeof ideaOrId === 'string' ? ideaOrId : ideaOrId?.id;
+  return VA.taxonomyByIdea?.get(ideaId) || null;
 }
 
 function formatCompositeScore(val) {
@@ -80,7 +87,8 @@ window.VentureAtlas = {
   getIdeaScore,
   formatCompositeScore,
   formatDimensionScore,
-  formatConfidenceScore
+  formatConfidenceScore,
+  getIdeaTaxonomy
 };
 
 // Backward compatibility bridge
@@ -131,24 +139,26 @@ function normalizeDataset(name, raw) {
       return Array.isArray(raw) ? raw : (raw.relationships || []);
     case 'prompts':
       return Array.isArray(raw) ? raw : (raw.prompts || []);
+    case 'taxonomy':
+      return raw && typeof raw === 'object' ? raw : { families: [], patterns: [], groups: [], assignments: [] };
     default:
       return Array.isArray(raw) ? raw : [];
   }
 }
 
 const PAGE_DATA_REQUIREMENTS = {
-  home: ['ideas', 'categories'],
-  idea: ['ideas', 'sources', 'relationships'],
-  compare: ['ideas'],
-  rankings: ['ideas', 'rankings'],
+  home: ['ideas', 'categories', 'taxonomy'],
+  idea: ['ideas', 'sources', 'relationships', 'taxonomy'],
+  compare: ['ideas', 'taxonomy'],
+  rankings: ['ideas', 'rankings', 'taxonomy'],
   prompts: ['prompts', 'ideas'],
   sources: ['sources'],
   relationships: ['ideas', 'relationships'],
-  categories: ['categories', 'ideas']
+  categories: ['categories', 'ideas', 'taxonomy']
 };
 
 async function fetchDataset(root, file) {
-  const targetFile = file === 'sources' ? 'public-sources' : file;
+  const targetFile = file === 'sources' ? 'public-sources' : file === 'taxonomy' ? 'idea-taxonomy' : file;
   const url = `${root}/data/${targetFile}.json`;
   if (fetchCache.has(url)) {
     return fetchCache.get(url);
@@ -187,6 +197,8 @@ async function loadData() {
   await Promise.all(requiredFiles.map(async f => {
     VA[f] = await fetchDataset(root, f);
   }));
+
+  VA.taxonomyByIdea = new Map((VA.taxonomy?.assignments || []).map(assignment => [assignment.ideaId, assignment]));
 
   // Staging is intentionally private and is never fetched by the public client.
   VA.stagedIdeas = [];
@@ -449,6 +461,10 @@ function params() {
    CARD RENDERER & EVENT DELEGATION
    ================================================================ */
 function card(x) {
+  const taxonomy = getIdeaTaxonomy(x);
+  const closest = taxonomy?.closestIdeas?.[0] || null;
+  const showClosest = closest && closest.score >= 40;
+  const duplicateWarning = closest?.band === 'potential-duplicate';
   const overallVal = getIdeaScore(x, 'overall');
   const profitVal  = getIdeaScore(x, 'profit');
   const confVal    = getIdeaScore(x, 'confidence');
@@ -467,8 +483,14 @@ function card(x) {
 
   return `
 <article class="card" role="listitem" data-id="${esc(x.id)}">
-  <div class="eyebrow">${esc(x.category)}</div>
+  <div class="eyebrow">${esc(taxonomy?.familyLabel || x.category)}</div>
   <h3><a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(x.id)}">${esc(x.name)}</a></h3>
+  <div class="chips" style="margin-bottom:0.55rem">
+    ${taxonomy ? `<span class="chip status">${esc(taxonomy.patternLabel)}</span>` : ''}
+    <span class="chip">${esc(x.category)}</span>
+    ${taxonomy?.classification?.reviewRequired ? '<span class="chip warn">Taxonomy review</span>' : ''}
+    ${duplicateWarning ? '<span class="chip danger">Potential duplicate</span>' : ''}
+  </div>
   <p>${esc(x.oneSentenceConcept || '')}</p>
   <div class="customer-line">
     <strong>Customer:</strong> ${esc(x.atAGlance?.targetCustomer || '—')}
@@ -488,6 +510,12 @@ function card(x) {
     </div>
   </div>
   <div class="chips">${tags}</div>
+  ${showClosest ? `<div class="customer-line" style="margin-top:0.65rem">
+    <strong>${duplicateWarning ? 'Same-name record' : 'Closest idea'}:</strong>
+    <a href="${VA.base}/docs/idea.html?id=${encodeURIComponent(closest.ideaId)}">${esc(closest.name)}</a>
+    <span class="muted">(${closest.score}% similar)</span><br>
+    <span class="muted">${esc(closest.difference)}</span>
+  </div>` : ''}
   <div class="card-footer">
     <span class="risk">
       <strong>Risk:</strong> ${esc((x.atAGlance?.mainRisk || '').slice(0, 70))}${(x.atAGlance?.mainRisk || '').length > 70 ? '…' : ''}
@@ -537,6 +565,8 @@ document.addEventListener('click', e => {
    ================================================================ */
 function initHome() {
   const q      = $('#search');
+  const family = $('#family');
+  const pattern = $('#pattern');
   const cat    = $('#category');
   const status = $('#status');
   const sort   = $('#sort');
@@ -546,26 +576,68 @@ function initHome() {
 
   if (!q || !wrap) return;
 
+  if (family && family.children.length <= 1) {
+    (VA.taxonomy?.families || []).slice().sort((a, b) => a.label.localeCompare(b.label)).forEach(item => {
+      family.insertAdjacentHTML('beforeend', `<option value="${esc(item.id)}">${esc(item.label)} (${item.count})</option>`);
+    });
+  }
+
+  if (pattern && pattern.children.length <= 1) {
+    (VA.taxonomy?.patterns || []).slice().sort((a, b) => a.label.localeCompare(b.label)).forEach(item => {
+      pattern.insertAdjacentHTML('beforeend', `<option value="${esc(item.id)}">${esc(item.label)} (${item.count})</option>`);
+    });
+  }
+
   if (cat && cat.children.length <= 1) {
-    VA.categories.forEach(c => {
+    const detailedCategories = [...new Set((VA.ideas || []).map(idea => idea.category).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+    detailedCategories.forEach(categoryName => {
+      const count = VA.ideas.filter(idea => idea.category === categoryName).length;
       cat.insertAdjacentHTML('beforeend',
-        `<option value="${esc(c.name)}">${esc(c.name)} (${c.count || 0})</option>`
+        `<option value="${esc(categoryName)}">${esc(categoryName)} (${count})</option>`
       );
     });
   }
 
   const u = params();
   q.value      = u.get('q')        || '';
+  family.value = u.get('family')   || '';
+  pattern.value = u.get('pattern') || '';
   cat.value    = u.get('category') || '';
   status.value = u.get('status')   || '';
   sort.value   = u.get('sort')     || 'overall';
 
+  const compareKnownDescending = (left, right) => {
+    const leftNumber = left === null || left === undefined || left === '' ? NaN : Number(left);
+    const rightNumber = right === null || right === undefined || right === '' ? NaN : Number(right);
+    const leftKnown = Number.isFinite(leftNumber);
+    const rightKnown = Number.isFinite(rightNumber);
+    if (leftKnown !== rightKnown) return leftKnown ? -1 : 1;
+    return leftKnown ? rightNumber - leftNumber : 0;
+  };
+  const taxonomyGroupSort = (a, b) => {
+    const left = getIdeaTaxonomy(a);
+    const right = getIdeaTaxonomy(b);
+    return (left?.familyLabel || '').localeCompare(right?.familyLabel || '')
+      || (left?.patternLabel || '').localeCompare(right?.patternLabel || '');
+  };
+  const taxonomySort = (a, b) => taxonomyGroupSort(a, b) || a.name.localeCompare(b.name);
+  const stableName = (comparator) => (a, b) => comparator(a, b) || a.name.localeCompare(b.name);
   const sorters = {
-    overall:   (a, b) => (b.atAGlance?.overallScore ?? 0) - (a.atAGlance?.overallScore ?? 0),
-    profit:    (a, b) => (b.compositeScores?.highestProfitPotential ?? 0) - (a.compositeScores?.highestProfitPotential ?? 0),
-    cost:      (a, b) => (a.atAGlance?.startupCost?.midpoint ?? 999) - (b.atAGlance?.startupCost?.midpoint ?? 999),
-    confidence:(a, b) => (b.scores?.overallConfidence?.value ?? 0) - (a.scores?.overallConfidence?.value ?? 0),
-    revenue:   (a, b) => parseDurationDays(a.atAGlance?.timeToFirstRevenue) - parseDurationDays(b.atAGlance?.timeToFirstRevenue),
+    overall: stableName((a, b) => compareKnownDescending(getIdeaScore(a, 'overall'), getIdeaScore(b, 'overall'))),
+    profit: stableName((a, b) => compareKnownDescending(a.compositeScores?.highestProfitPotential, b.compositeScores?.highestProfitPotential)),
+    cost: stableName((a, b) => {
+      const leftRaw = a.atAGlance?.startupCost?.midpoint;
+      const rightRaw = b.atAGlance?.startupCost?.midpoint;
+      const left = leftRaw === null || leftRaw === undefined || leftRaw === '' ? NaN : Number(leftRaw);
+      const right = rightRaw === null || rightRaw === undefined || rightRaw === '' ? NaN : Number(rightRaw);
+      if (Number.isFinite(left) !== Number.isFinite(right)) return Number.isFinite(left) ? -1 : 1;
+      return Number.isFinite(left) ? left - right : 0;
+    }),
+    confidence: stableName((a, b) => compareKnownDescending(a.scores?.overallConfidence?.value, b.scores?.overallConfidence?.value)),
+    revenue: stableName((a, b) => parseDurationDays(a.atAGlance?.timeToFirstRevenue) - parseDurationDays(b.atAGlance?.timeToFirstRevenue)),
+    taxonomy: taxonomySort,
+    similarity: stableName((a, b) => taxonomyGroupSort(a, b) || compareKnownDescending(getIdeaTaxonomy(a)?.closestSimilarity, getIdeaTaxonomy(b)?.closestSimilarity)),
+    distinctive: stableName((a, b) => compareKnownDescending(getIdeaTaxonomy(a)?.distinctivenessScore, getIdeaTaxonomy(b)?.distinctivenessScore)),
     name:      (a, b) => a.name.localeCompare(b.name),
     updated:   (a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')
   };
@@ -587,6 +659,9 @@ function initHome() {
       xs = xs.filter(x => {
         const hay = [
           x.name, x.oneSentenceConcept, x.category,
+          getIdeaTaxonomy(x)?.familyLabel,
+          getIdeaTaxonomy(x)?.patternLabel,
+          getIdeaTaxonomy(x)?.buyerSegmentLabel,
           x.atAGlance?.targetCustomer,
           x.atAGlance?.problemSolved,
           (x.tags || []).join(' ')
@@ -595,6 +670,8 @@ function initHome() {
       });
     }
 
+    if (family.value) xs = xs.filter(x => getIdeaTaxonomy(x)?.familyId === family.value);
+    if (pattern.value) xs = xs.filter(x => getIdeaTaxonomy(x)?.patternId === pattern.value);
     if (cat.value)    xs = xs.filter(x => x.category === cat.value);
     if (status.value) xs = xs.filter(x => x.status   === status.value);
 
@@ -692,6 +769,8 @@ function initHome() {
 
     const usp = new URLSearchParams();
     if (q.value)                  usp.set('q', q.value);
+    if (family.value)             usp.set('family', family.value);
+    if (pattern.value)            usp.set('pattern', pattern.value);
     if (cat.value)                usp.set('category', cat.value);
     if (status.value)             usp.set('status', status.value);
     if (sort.value !== 'overall') usp.set('sort', sort.value);
@@ -706,7 +785,7 @@ function initHome() {
       return `
 <tr>
   <td><a href="${VA.base}/docs/idea.html?id=${x.id}">${esc(x.name)}</a></td>
-  <td>${esc(x.category)}</td>
+  <td><strong>${esc(getIdeaTaxonomy(x)?.familyLabel || x.category)}</strong><br><span class="muted">${esc(getIdeaTaxonomy(x)?.patternLabel || x.subcategory || '—')}</span></td>
   <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.atAGlance?.targetCustomer || '—')}</td>
   <td><span class="score-box ${sc}" style="display:inline-block;padding:0.2rem 0.4rem;border-radius:6px;font-size:0.82rem;font-weight:700">${x.atAGlance?.overallScore ?? '—'}</span></td>
   <td>${x.scores?.overallConfidence?.value ?? '—'}/10</td>
@@ -718,7 +797,7 @@ function initHome() {
   }
 
   q.addEventListener('input', render);
-  [cat, status, sort, $('#wizBudget'), $('#wizSpeed'), $('#wizSkill')].forEach(el => el && el.addEventListener('change', render));
+  [family, pattern, cat, status, sort, $('#wizBudget'), $('#wizSpeed'), $('#wizSkill')].forEach(el => el && el.addEventListener('change', render));
 
   $$('.scope-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -735,7 +814,7 @@ function initHome() {
   });
 
   const resetFn = () => {
-    q.value = ''; cat.value = ''; status.value = ''; sort.value = 'overall';
+    q.value = ''; family.value = ''; pattern.value = ''; cat.value = ''; status.value = ''; sort.value = 'overall';
     const wb = $('#wizBudget'); if (wb) wb.value = '';
     const ws = $('#wizSpeed');  if (ws) ws.value = '';
     const wk = $('#wizSkill');  if (wk) wk.value = '';
@@ -870,6 +949,7 @@ function initIdea() {
     return;
   }
 
+  const taxonomy = getIdeaTaxonomy(x);
   remember(x.id);
   document.title = `${x.name} — Venture Atlas OS`;
 
@@ -879,7 +959,7 @@ function initIdea() {
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <a href="${VA.base}/index.html">Ideas</a>
   <span class="sep">›</span>
-  <span>${esc(x.category)}</span>
+  <span>${esc(taxonomy?.familyLabel || x.category)}</span>
   <span class="sep">›</span>
   <span>${esc(x.id)}</span>
 </nav>`;
@@ -958,6 +1038,18 @@ function initIdea() {
     return y ? `<li><a href="idea.html?id=${rid}"><strong>${esc(y.name)}</strong></a> <span class="chip status">${esc(y.category)}</span> — <span class="score-badge sm">${yScore != null ? yScore : '—'}</span></li>` : '';
   }).join('');
 
+  const closestIdeasHtml = (taxonomy?.closestIdeas || []).map(neighbor => {
+    const warning = neighbor.band === 'potential-duplicate'
+      ? '<span class="chip danger sm">Potential duplicate</span>'
+      : `<span class="chip neutral sm">${neighbor.score}% similar</span>`;
+    return `<li style="padding:0.85rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius-sm)">
+      <div><a href="idea.html?id=${encodeURIComponent(neighbor.ideaId)}"><strong>${esc(neighbor.name)}</strong></a> ${warning}</div>
+      <div class="muted" style="margin-top:0.35rem">${esc(neighbor.reasons.join(' · '))}</div>
+      <div style="margin-top:0.35rem"><strong>Difference:</strong> ${esc(neighbor.difference)}</div>
+      <a class="button ghost sm" style="margin-top:0.55rem" href="compare.html?ids=${encodeURIComponent(x.id)},${encodeURIComponent(neighbor.ideaId)}">Compare these two</a>
+    </li>`;
+  }).join('');
+
   const sourceMap = new Map((VA.sources || []).map(source => [source.id, source]));
   const sourceReferencesHtml = Array.from(citedSourceIds).map(sourceId => {
     const source = sourceMap.get(sourceId);
@@ -973,7 +1065,7 @@ function initIdea() {
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
     <div>
-      <div class="eyebrow">${esc(x.category)} &nbsp;·&nbsp; ${esc(x.id)} &nbsp;·&nbsp; <span class="chip ${validationProven && valStatus === 'validated' ? 'success' : 'warn'}">${esc(validationDisplay)}</span></div>
+      <div class="eyebrow">${esc(taxonomy?.familyLabel || x.category)} &nbsp;·&nbsp; ${esc(x.id)} &nbsp;·&nbsp; <span class="chip ${validationProven && valStatus === 'validated' ? 'success' : 'warn'}">${esc(validationDisplay)}</span></div>
       <h1 style="font-size:clamp(1.5rem,4vw,2.5rem);margin:0.4rem 0 0.6rem">${esc(x.name)}</h1>
       <p class="lede" style="margin-bottom:1rem;color:var(--text2);font-size:1.05rem">${esc(x.oneSentenceConcept || '')}</p>
       <div class="chips" style="margin-bottom:1rem">
@@ -998,6 +1090,22 @@ function initIdea() {
     <a class="button ghost sm" href="${VA.base}/docs/calculator.html">🧮 Calculator</a>
   </div>
 </section>
+
+${taxonomy ? `<!-- Normalized Positioning -->
+<section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
+  <h2 style="font-size:1.2rem;margin-top:0">Positioning &amp; Similarity</h2>
+  <p class="muted">The normalized family groups adjacent ideas without erasing the original category. Similarity is a browsing aid, not a duplicate or market-validity decision.</p>
+  <div class="glance-grid" style="margin-top:1rem">
+    <div class="glance-item"><div class="label">Market family</div><div class="value">${esc(taxonomy.familyLabel)}</div></div>
+    <div class="glance-item"><div class="label">Idea type</div><div class="value">${esc(taxonomy.patternLabel)}</div></div>
+    <div class="glance-item"><div class="label">Detailed category</div><div class="value">${esc(taxonomy.originalCategory)}</div></div>
+    <div class="glance-item"><div class="label">Buyer segment</div><div class="value">${esc(taxonomy.buyerSegmentLabel)}</div></div>
+    <div class="glance-item"><div class="label">Taxonomy confidence</div><div class="value">${taxonomy.classification.reviewRequired ? 'Needs semantic review' : 'Deterministic assignment unambiguous'}</div></div>
+    <div class="glance-item"><div class="label">Primary buyer</div><div class="value">${esc(taxonomy.positioning.primaryBuyer)}</div></div>
+    <div class="glance-item"><div class="label">Core deliverable</div><div class="value">${esc(taxonomy.positioning.deliverable)}</div></div>
+  </div>
+  ${closestIdeasHtml ? `<h3 style="font-size:1rem;margin-top:1.25rem">Closest portfolio alternatives</h3><ul style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.75rem;padding:0;list-style:none">${closestIdeasHtml}</ul>` : ''}
+</section>` : ''}
 
 <!-- AI Validation Panel -->
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
@@ -1308,21 +1416,22 @@ function initCategories() {
   const container = $('#categoryGrid');
   if (!container) return;
 
-  container.innerHTML = VA.categories.map(c => `
-<div class="card" style="cursor:pointer" data-action="open-category" data-category="${esc(c.name)}">
-  <div class="eyebrow">${esc(c.name)}</div>
-  <h3 style="font-size:1rem;margin:0.25rem 0">${esc(c.name)}</h3>
-  <p style="font-size:0.82rem">${esc(c.description || '')}</p>
-  <div style="margin-top:auto;font-weight:700;color:var(--accent);font-size:1.1rem">${c.count || 0}</div>
-  <div style="font-size:0.78rem;color:var(--muted)">idea${(c.count || 0) !== 1 ? 's' : ''}</div>
+  const families = (VA.taxonomy?.families || []).slice().sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  container.innerHTML = families.map(family => `
+<div class="card" style="cursor:pointer" data-action="open-family" data-family="${esc(family.id)}">
+  <div class="eyebrow">Normalized market family</div>
+  <h3 style="font-size:1rem;margin:0.25rem 0">${esc(family.label)}</h3>
+  <p style="font-size:0.82rem">${esc(family.description || '')}</p>
+  <div style="margin-top:auto;font-weight:700;color:var(--accent);font-size:1.1rem">${family.count || 0}</div>
+  <div style="font-size:0.78rem;color:var(--muted)">idea${(family.count || 0) !== 1 ? 's' : ''}</div>
 </div>`).join('');
 
   container.addEventListener('click', e => {
-    const cardEl = e.target.closest('[data-action="open-category"]');
+    const cardEl = e.target.closest('[data-action="open-family"]');
     if (!cardEl) return;
-    const catName = cardEl.getAttribute('data-category');
-    if (catName) {
-      location.href = `${VA.base}/index.html?category=${encodeURIComponent(catName)}`;
+    const familyId = cardEl.getAttribute('data-family');
+    if (familyId) {
+      location.href = `${VA.base}/index.html?family=${encodeURIComponent(familyId)}`;
     }
   });
 }

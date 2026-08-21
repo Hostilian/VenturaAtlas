@@ -5,7 +5,10 @@ function initCompare() {
   if (!container) return;
 
   const ideasData = window.VA?.ideas || [];
+  const taxonomyByIdea = window.VA?.taxonomyByIdea || new Map();
   const base = window.VA?.base || '..';
+
+  const taxonomyFor = idea => taxonomyByIdea.get(idea?.id) || null;
 
   // Read URL query params e.g. ?ids=idea-001,idea-061
   const urlParams = new URLSearchParams(window.location.search);
@@ -28,8 +31,19 @@ function initCompare() {
 
   // Populate selects
   selects.forEach((sel, idx) => {
+    const orderedIdeas = [...ideasData].sort((left, right) => {
+      const leftTaxonomy = taxonomyFor(left);
+      const rightTaxonomy = taxonomyFor(right);
+      return (leftTaxonomy?.familyLabel || left.category || '').localeCompare(rightTaxonomy?.familyLabel || right.category || '')
+        || (leftTaxonomy?.patternLabel || '').localeCompare(rightTaxonomy?.patternLabel || '')
+        || left.name.localeCompare(right.name);
+    });
     sel.innerHTML = `<option value="">Choose idea ${idx + 1}...</option>` +
-      ideasData.map(i => `<option value="${i.id}" ${initialIds[idx] === i.id ? 'selected' : ''}>${escHTML(i.name)} (${i.id})</option>`).join('');
+      orderedIdeas.map(i => {
+        const taxonomy = taxonomyFor(i);
+        const prefix = taxonomy ? `${taxonomy.familyLabel} › ${taxonomy.patternLabel} — ` : '';
+        return `<option value="${i.id}" ${initialIds[idx] === i.id ? 'selected' : ''}>${escHTML(prefix + i.name)} (${i.id})</option>`;
+      }).join('');
 
     sel.addEventListener('change', () => {
       updateUrlAndRender();
@@ -74,6 +88,20 @@ function initCompare() {
     const highestScore = knownScores.length ? Math.max(...knownScores) : null;
     const lowestCost = knownCosts.length ? Math.min(...knownCosts) : null;
 
+    function numericScore(idea, key) {
+      const value = idea.compositeScores?.[key];
+      return Number.isFinite(Number(value)) ? Number(value) : null;
+    }
+
+    function scoreDelta(idea, key) {
+      const values = chosenIdeas.map(item => numericScore(item, key)).filter(Number.isFinite);
+      const value = numericScore(idea, key);
+      if (value == null || values.length < 2) return value == null ? 'Not scored' : String(value);
+      const best = Math.max(...values);
+      const delta = value - best;
+      return `${value.toFixed(1)} <span class="chip ${delta === 0 ? 'success' : 'neutral'} sm">Δ ${delta > 0 ? '+' : ''}${delta.toFixed(1)} vs best</span>`;
+    }
+
     const rows = [
       { 
         label: 'Overall Score', 
@@ -92,6 +120,12 @@ function initCompare() {
           return s != null ? `${s} (legacy score; scale unspecified)` : 'Not scored';
         }
       },
+      { label: 'Problem Severity Δ', getVal: i => scoreDelta(i, 'problemSeverity') },
+      { label: 'Willingness to Pay Δ', getVal: i => scoreDelta(i, 'willingnessToPay') },
+      { label: 'Market Demand Δ', getVal: i => scoreDelta(i, 'marketDemand') },
+      { label: 'Speed to Revenue Δ', getVal: i => scoreDelta(i, 'speedToFirstRevenue') },
+      { label: 'Differentiation Δ', getVal: i => scoreDelta(i, 'differentiation') },
+      { label: 'Technical Feasibility Δ', getVal: i => scoreDelta(i, 'technicalFeasibility') },
       { 
         label: 'Solo Founder Fit', 
         getVal: i => i.compositeScores?.soloFounderPotential != null
@@ -102,9 +136,22 @@ function initCompare() {
         label: 'Evidence Confidence', 
         getVal: i => `<span class="chip neutral">${Array.isArray(i.sourceReferences) ? i.sourceReferences.length : 0} public source reference(s); confidence not assessed</span>`
       },
-      { label: 'Category', getVal: i => `<span class="chip status">${escHTML(i.category || 'N/A')}</span>` },
+      { label: 'Market Family', getVal: i => `<span class="chip status">${escHTML(taxonomyFor(i)?.familyLabel || i.category || 'N/A')}</span>` },
+      { label: 'Idea Type', getVal: i => escHTML(taxonomyFor(i)?.patternLabel || i.subcategory || 'Unclassified') },
+      { label: 'Detailed Category', getVal: i => escHTML(i.category || 'N/A') },
+      { label: 'Buyer Segment', getVal: i => escHTML(taxonomyFor(i)?.buyerSegmentLabel || 'Unclassified') },
       { label: 'Target Customer', getVal: i => escHTML(i.atAGlance?.targetCustomer || i.targetCustomer || 'N/A') },
       { label: 'Problem Solved', getVal: i => escHTML(i.atAGlance?.problemSolved || i.problemSolved || 'N/A') },
+      { label: 'Core Deliverable', getVal: i => escHTML(taxonomyFor(i)?.positioning?.deliverable || i.atAGlance?.whatToBuild || 'N/A') },
+      {
+        label: 'Closest Portfolio Alternative',
+        getVal: i => {
+          const closest = taxonomyFor(i)?.closestIdeas?.[0];
+          if (!closest) return 'Not calculated';
+          const warning = closest.band === 'potential-duplicate' ? 'Potential duplicate' : `${closest.score}% similar`;
+          return `<strong>${escHTML(closest.name)}</strong><br><span class="chip ${closest.band === 'potential-duplicate' ? 'danger' : 'neutral'} sm">${escHTML(warning)}</span><br><span class="muted">${escHTML(closest.difference)}</span>`;
+        }
+      },
       { label: 'Revenue Model', getVal: i => escHTML(i.atAGlance?.howItMakesMoney || i.howItMakesMoney || 'N/A') },
       { 
         label: 'Startup Capital', 
@@ -171,7 +218,8 @@ function initCompare() {
           <div class="card" style="padding:1.25rem">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem">
               <div>
-                <span class="chip status">${escHTML(i.category || '')}</span>
+                <span class="chip status">${escHTML(taxonomyFor(i)?.familyLabel || i.category || '')}</span>
+                ${taxonomyFor(i) ? `<span class="chip">${escHTML(taxonomyFor(i).patternLabel)}</span>` : ''}
                 <h3 style="font-size:1.1rem;margin:0.25rem 0"><a href="${base}/docs/idea.html?id=${encodeURIComponent(i.id)}">${escHTML(i.name)}</a></h3>
               </div>
               <button class="button secondary sm remove-idea-btn" data-id="${escHTML(i.id)}">✕ Remove</button>
@@ -182,6 +230,13 @@ function initCompare() {
               <div><strong>Capital:</strong> ${i.atAGlance?.startupCost?.midpoint != null ? '$' + i.atAGlance.startupCost.midpoint.toLocaleString() : 'Unspecified'}</div>
               <div><strong>Time to MVP:</strong> ${escHTML(i.atAGlance?.timeToMvp || 'Unspecified')}</div>
               <div><strong>Revenue Speed:</strong> ${escHTML(i.atAGlance?.timeToFirstRevenue || 'Unspecified')}</div>
+            </div>
+            <div style="font-size:0.8rem;background:var(--panel2);padding:0.75rem;border-radius:var(--radius-sm);margin-bottom:0.75rem;display:grid;gap:0.45rem">
+              <div><strong>Market Family:</strong> ${escHTML(taxonomyFor(i)?.familyLabel || i.category || 'Unclassified')}</div>
+              <div><strong>Idea Type:</strong> ${escHTML(taxonomyFor(i)?.patternLabel || i.subcategory || 'Unclassified')}</div>
+              <div><strong>Buyer Segment:</strong> ${escHTML(taxonomyFor(i)?.buyerSegmentLabel || 'Unclassified')}</div>
+              <div><strong>Core Deliverable:</strong> ${escHTML(taxonomyFor(i)?.positioning?.deliverable || i.atAGlance?.whatToBuild || 'Not recorded')}</div>
+              <div><strong>Closest Portfolio Alternative:</strong> ${escHTML(taxonomyFor(i)?.closestIdeas?.[0]?.name || 'Not calculated')} ${taxonomyFor(i)?.closestIdeas?.[0] ? `(${taxonomyFor(i).closestIdeas[0].score}% similar)` : ''}</div>
             </div>
             <a href="${base}/docs/idea.html?id=${encodeURIComponent(i.id)}" class="button primary sm" style="width:100%;text-align:center">Open Full Dossier</a>
           </div>

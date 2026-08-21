@@ -171,21 +171,12 @@
     setTimeout(pickSpotlight, 1000);
   }
 
-  // Category Browse Grid (Event Delegation instead of inline onclick)
+  // Normalized market-family browser. Raw category labels remain available in the
+  // detailed filter, but are too fragmented to be useful as the primary browse view.
   function renderCategoryBrowse() {
-    const rawCats = (window.VA && window.VA.categories) ? window.VA.categories : [];
-    const cats = Array.isArray(rawCats) ? rawCats : (rawCats.categories || []);
-    const rawIdeas = (window.VA && window.VA.ideas) ? window.VA.ideas : [];
-    const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas.ideas || []);
+    const families = window.VA?.taxonomy?.families || [];
     const container = document.getElementById('categoryBrowse');
-    if (!container || !cats.length) return;
-
-    const catCount = {};
-    ideas.forEach(i => {
-      if (i.category && i.status !== 'staged' && !(i.id && i.id.startsWith('candidate-'))) {
-        catCount[i.category] = (catCount[i.category] || 0) + 1;
-      }
-    });
+    if (!container || !families.length) return;
 
     const emojis = {
       'ai': '🤖', 'data': '📊', 'marketplace': '🏪', 'saas': '☁️', 'food': '🍽️',
@@ -200,21 +191,19 @@
     };
 
     container.innerHTML = '';
-    cats.slice(0, 30).forEach(cat => {
-      const catName = cat.name || cat.id || cat;
-      const count = catCount[catName] || 0;
-      const emoji = getEmoji(catName);
+    families.slice().sort((a, b) => b.count - a.count || a.label.localeCompare(b.label)).forEach(family => {
+      const emoji = getEmoji(family.label);
 
       const btn = document.createElement('button');
       btn.className = 'panel category-btn';
-      btn.setAttribute('data-action', 'filter-category');
-      btn.setAttribute('data-category', catName);
+      btn.setAttribute('data-action', 'filter-family');
+      btn.setAttribute('data-family', family.id);
       btn.style.cssText = 'padding:1rem;text-align:left;cursor:pointer;border:none;transition:all 0.18s ease;display:flex;align-items:center;gap:0.75rem';
-      btn.title = `Filter by ${catName}`;
+      btn.title = `Filter by ${family.label}`;
       btn.innerHTML = `<span style="font-size:1.4rem">${emoji}</span>
         <div>
-          <div style="font-size:0.825rem;font-weight:600">${catName}</div>
-          <div style="font-size:0.72rem;color:var(--muted)">${count} idea${count !== 1 ? 's' : ''}</div>
+          <div style="font-size:0.825rem;font-weight:600">${family.label}</div>
+          <div style="font-size:0.72rem;color:var(--muted)">${family.count} idea${family.count !== 1 ? 's' : ''}</div>
         </div>`;
 
       container.appendChild(btn);
@@ -225,13 +214,13 @@
     const container = document.getElementById('categoryBrowse');
     if (container) {
       container.addEventListener('click', e => {
-        const btn = e.target.closest('[data-action="filter-category"]');
+        const btn = e.target.closest('[data-action="filter-family"]');
         if (!btn) return;
-        const catName = btn.getAttribute('data-category');
-        const catSelect = document.getElementById('category');
-        if (catSelect) {
-          catSelect.value = catName;
-          catSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        const familyId = btn.getAttribute('data-family');
+        const familySelect = document.getElementById('family');
+        if (familySelect) {
+          familySelect.value = familyId;
+          familySelect.dispatchEvent(new Event('change', { bubbles: true }));
         }
         const dir = document.getElementById('directory');
         if (dir) dir.scrollIntoView({ behavior: 'smooth' });

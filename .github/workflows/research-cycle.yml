@@ -24,6 +24,9 @@ jobs:
       VA_DISCOVERY_MAX_CONCURRENCY: '2'
       VA_PROVIDER_FANOUT: '3'
       VA_MAX_COST_CLASS: '1'
+      VA_DISPATCH_ID: github-${{ github.run_id }}-${{ github.run_attempt }}
+      VA_DAILY_BUDGET_USD: '10'
+      VA_MONTHLY_BUDGET_USD: '100'
       NVIDIA_NIM_API_KEYS: ${{ secrets.NVIDIA_NIM_API_KEYS }}
       COHERE_API_KEYS: ${{ secrets.COHERE_API_KEYS }}
       OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }}
@@ -53,6 +56,10 @@ jobs:
             data/idea-staging-queue.json
             .agent-state/crosschecks
             .agent-state/provider-state.json
+            .agent-state/provider-call-ledger.json
+            .agent-state/dispatch-runtime.json
+            .agent-state/source-acquisition
+            .agent-state/task-schedule.json
           key: private-research-state-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
             private-research-state-${{ github.ref_name }}-
@@ -74,6 +81,10 @@ jobs:
           --panel-limit 2
           --strict-panel
 
+      - name: Build starvation-resistant recurring task schedule
+        if: always()
+        run: python scripts/va-priority-aging.py
+
       - name: Validate private state before persistence
         id: private-state-valid
         if: always()
@@ -91,6 +102,10 @@ jobs:
             data/idea-staging-queue.json
             .agent-state/crosschecks
             .agent-state/provider-state.json
+            .agent-state/provider-call-ledger.json
+            .agent-state/dispatch-runtime.json
+            .agent-state/source-acquisition
+            .agent-state/task-schedule.json
           key: private-research-state-${{ github.ref_name }}-${{ github.run_id }}
 
       - name: Upload unattended execution receipts
@@ -103,6 +118,11 @@ jobs:
             .agent-state/pipeline-preflight
             .agent-state/crosschecks
             .agent-state/provider-state.json
+            .agent-state/provider-call-ledger.json
+            .agent-state/dispatch-runtime.json
+            .agent-state/source-acquisition
+            .agent-state/task-schedule.json
             data/idea-staging-queue.json
           if-no-files-found: warn
+          include-hidden-files: true
           retention-days: 30

@@ -49,6 +49,7 @@ if os.path.exists(_env_path):
 
 # ── Provider Defaults (from env or fallbacks) ──────────────────────────────────
 OLLAMA_BASE_URL    = os.environ.get('OLLAMA_BASE_URL', 'http://localhost:11434')
+OLLAMA_AUTH_TOKEN  = os.environ.get('OLLAMA_AUTH_TOKEN', '')
 HERMES_MODEL       = os.environ.get('HERMES_MODEL', 'hermes3:latest')
 OLLAMA_FALLBACK    = os.environ.get('OLLAMA_FALLBACK_MODEL', 'llama3.1:latest')
 OLLAMA_TIMEOUT_SECONDS = max(30, int(os.environ.get('OLLAMA_TIMEOUT_SECONDS', '180')))
@@ -59,6 +60,7 @@ from va_runtime.provider_router import (
     NoEligibleProviderError,
     get_provider_scheduler,
 )
+from va_runtime.budget import BudgetExceededError, get_budget_manager
 
 def _eligible_key_count(provider_id: str) -> int:
     """Return call-path eligible keys, not merely configured keys."""
@@ -311,6 +313,8 @@ def _call_hermes(prompt: str, model: str = None) -> str:
             "options": {"temperature": 0.7, "num_predict": OLLAMA_NUM_PREDICT},
         }
         headers = {"Content-Type": "application/json"}
+        if OLLAMA_AUTH_TOKEN:
+            headers["Authorization"] = f"Bearer {OLLAMA_AUTH_TOKEN}"
         result = _http_post(url, headers, body, timeout=OLLAMA_TIMEOUT_SECONDS)
         return result.get("response", "").strip()
     finally:
@@ -320,7 +324,8 @@ def _call_hermes(prompt: str, model: str = None) -> str:
 def _ollama_has_model(model: str) -> bool:
     """Return true only when the requested Ollama model is locally installed."""
     url = f"{OLLAMA_BASE_URL}/api/tags"
-    req = urllib.request.Request(url, method='GET')
+    headers = {"Authorization": f"Bearer {OLLAMA_AUTH_TOKEN}"} if OLLAMA_AUTH_TOKEN else {}
+    req = urllib.request.Request(url, headers=headers, method='GET')
     with urllib.request.urlopen(req, timeout=3) as response:
         payload = json.loads(response.read().decode('utf-8'))
     return model in {entry.get("name") for entry in payload.get("models", [])}
@@ -687,7 +692,12 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
     ps = state["providers"].get(provider, {})
     if _is_circuit_open(ps):
         return None
+    call_id = None
     try:
+        call_id = get_budget_manager().start_call(
+            provider,
+            operation_digest=hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        )
         if provider == "nvidia-nim":
             resp = _call_nvidia_nim(prompt)
         elif provider == "cohere-api":
@@ -707,16 +717,25 @@ def _call_single_provider(provider: str, prompt: str, domain_hint: dict = None) 
         elif provider == "own-orch":
             resp = _call_own_orchestrator(prompt, domain_hint)
         else:
+            get_budget_manager().finish_call(call_id, "CANCELLED")
             return None
+        get_budget_manager().finish_call(call_id, "SUCCEEDED")
         _record_success(state, provider)
         log_success(f"[PARALLEL AI] Provider '{provider}' responded OK ({len(resp)} chars)")
         return resp, provider
     except HermesBusyError as e:
         # Local capacity contention is not a provider outage and must not open the
         # Hermes circuit. This worker can safely use the deterministic fallback.
+        if call_id:
+            get_budget_manager().finish_call(call_id, "CANCELLED", error_class=type(e).__name__)
         log_debug(f"[PARALLEL AI] Provider '{provider}' deferred: {e}")
         return None
+    except BudgetExceededError as e:
+        log_warn(f"[PARALLEL AI] Provider '{provider}' skipped by persistent budget: {e}")
+        return None
     except Exception as e:
+        if call_id:
+            get_budget_manager().finish_call(call_id, "FAILED", error_class=type(e).__name__)
         log_debug(f"[PARALLEL AI] Provider '{provider}' attempt failed: {e}")
         _record_failure(state, provider)
         return None

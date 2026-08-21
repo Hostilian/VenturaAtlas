@@ -33,6 +33,7 @@ SECRET_IDS = {
     "NVIDIA_NIM_API_KEYS": "va-nvidia-nim-01",
     "COHERE_API_KEYS": "va-cohere-01",
 }
+AUXILIARY_SECRET_IDS = {"OLLAMA_AUTH_TOKEN": "va-ollama-auth-token"}
 
 
 def log_event(level: str, message: str, extra: dict | None = None) -> None:
@@ -55,7 +56,7 @@ def fetch_gcp_secret(secret_name: str, default: str = "") -> str:
         from google.cloud import secretmanager
         client = secretmanager.SecretManagerServiceClient()
         project_id = os.environ.get("GCP_PROJECT_ID", "venture-atlas-os")
-        secret_id = SECRET_IDS.get(secret_name, secret_name)
+        secret_id = {**SECRET_IDS, **AUXILIARY_SECRET_IDS}.get(secret_name, secret_name)
         name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
         response = client.access_secret_version(request={"name": name})
         return response.payload.data.decode("UTF-8").strip()
@@ -93,11 +94,22 @@ def git_environment(github_token: str = "") -> dict:
 
 
 def configure_environment() -> None:
+    configured = []
     for pool_name in SECRET_IDS:
         legacy_name = pool_name.removesuffix("S")
         value = fetch_gcp_secret(pool_name, os.environ.get(legacy_name, ""))
         if value:
             os.environ[pool_name] = value
+            configured.append(pool_name)
+    ollama_auth = fetch_gcp_secret("OLLAMA_AUTH_TOKEN")
+    if ollama_auth:
+        os.environ["OLLAMA_AUTH_TOKEN"] = ollama_auth
+    minimum = int(os.environ.get("VA_REVIEW_PANEL_SIZE", "3"))
+    strict = os.environ.get("VA_STRICT_REVIEW_PANEL", "1").lower() not in {"0", "false", "no"}
+    if strict and len(configured) < minimum:
+        raise RuntimeError(
+            f"PANEL_SECRET_SHORTFALL: need {minimum} configured provider pools, found {len(configured)}"
+        )
 
 
 def prepare_checkout() -> str:

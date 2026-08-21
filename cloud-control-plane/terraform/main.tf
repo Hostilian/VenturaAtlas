@@ -64,6 +64,16 @@ variable "private_staging_bucket_name" {
   description = "Globally unique private GCS bucket used for unreviewed discovery state"
 }
 
+variable "hermes_base_url" {
+  type        = string
+  description = "Optional authenticated HTTPS Ollama-compatible endpoint; empty excludes Hermes from cloud routing"
+  default     = ""
+  validation {
+    condition     = var.hermes_base_url == "" || can(regex("^https://", var.hermes_base_url))
+    error_message = "hermes_base_url must be empty or an HTTPS URL."
+  }
+}
+
 provider "google" {
   project = var.gcp_project_id
   region  = var.gcp_region
@@ -77,7 +87,9 @@ resource "google_project_service" "apis" {
     "firestore.googleapis.com",
     "secretmanager.googleapis.com",
     "artifactregistry.googleapis.com",
+    "cloudbuild.googleapis.com",
     "cloudscheduler.googleapis.com",
+    "iam.googleapis.com",
     "storage.googleapis.com"
   ])
   service            = each.key
@@ -127,6 +139,7 @@ locals {
     DEEPSEEK_API_KEYS   = "va-deepseek-01"
     NVIDIA_NIM_API_KEYS = "va-nvidia-nim-01"
     COHERE_API_KEYS     = "va-cohere-01"
+    OLLAMA_AUTH_TOKEN   = "va-ollama-auth-token"
   }
 }
 
@@ -263,6 +276,13 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
           name  = "VA_PRIVATE_STAGING_BUCKET"
           value = google_storage_bucket.private_staging.name
         }
+        dynamic "env" {
+          for_each = var.hermes_base_url == "" ? [] : [var.hermes_base_url]
+          content {
+            name  = "OLLAMA_BASE_URL"
+            value = env.value
+          }
+        }
       }
     }
   }
@@ -296,4 +316,20 @@ resource "google_cloud_scheduler_job" "discovery_trigger" {
   }
 
   depends_on = [google_cloud_run_v2_job_iam_member.scheduler_invoker]
+}
+
+output "worker_job_name" {
+  value = google_cloud_run_v2_job.venture_atlas_worker.name
+}
+
+output "worker_image" {
+  value = var.worker_image
+}
+
+output "scheduler_job_name" {
+  value = google_cloud_scheduler_job.discovery_trigger.name
+}
+
+output "private_staging_bucket" {
+  value = google_storage_bucket.private_staging.name
 }

@@ -3,6 +3,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const IDEAS_PATH = path.join(ROOT, 'data', 'ideas.json');
+const TAXONOMY_PATH = path.join(ROOT, 'data', 'idea-taxonomy.json');
 const INDEX_PATH = path.join(ROOT, 'data', 'search-index.json');
 
 function normalizeText(...strings) {
@@ -17,8 +18,9 @@ function normalizeText(...strings) {
     .trim();
 }
 
-function buildIndex(ideas) {
+function buildIndex(ideas, taxonomyByIdea = new Map()) {
   return ideas.map(idea => {
+    const taxonomy = taxonomyByIdea.get(idea.id) || {};
     const name = idea.name || '';
     const concept = idea.oneSentenceConcept || idea.elevatorPitch || '';
     const problem = idea.atAGlance?.problemSolved || idea.problemStatement || '';
@@ -27,7 +29,10 @@ function buildIndex(ideas) {
     const tags = Array.isArray(idea.tags) ? idea.tags.join(' ') : '';
     const altNames = Array.isArray(idea.alternativeNames) ? idea.alternativeNames.join(' ') : '';
 
-    const normalizedText = normalizeText(name, concept, problem, customer, category, tags, altNames);
+    const normalizedText = normalizeText(
+      name, concept, problem, customer, category, tags, altNames,
+      taxonomy.familyLabel, taxonomy.patternLabel, taxonomy.buyerSegmentLabel
+    );
 
     return {
       schemaVersion: '2.0.0',
@@ -36,6 +41,9 @@ function buildIndex(ideas) {
       name: idea.name,
       category: idea.category || '',
       subcategory: idea.subcategory || '',
+      family: taxonomy.familyLabel || '',
+      pattern: taxonomy.patternLabel || '',
+      buyerSegment: taxonomy.buyerSegmentLabel || '',
       concept: idea.oneSentenceConcept || '',
       customer: customer,
       problem: problem,
@@ -75,7 +83,9 @@ function main() {
     process.exit(1);
   }
 
-  const newIndex = buildIndex(canonicalIdeas);
+  const taxonomy = fs.existsSync(TAXONOMY_PATH) ? JSON.parse(fs.readFileSync(TAXONOMY_PATH, 'utf8')) : { assignments: [] };
+  const taxonomyByIdea = new Map((taxonomy.assignments || []).map(assignment => [assignment.ideaId, assignment]));
+  const newIndex = buildIndex(canonicalIdeas, taxonomyByIdea);
 
   if (isCheckMode) {
     if (!fs.existsSync(INDEX_PATH)) {

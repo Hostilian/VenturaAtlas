@@ -8,6 +8,7 @@ function initRankings() {
   const rankingViews = Array.isArray(rawRankings) ? rawRankings : (rawRankings.rankings || []);
   const ideasData = window.VA?.ideas || [];
   const ideasMap = new Map(ideasData.map(i => [i.id, i]));
+  const taxonomyByIdea = window.VA?.taxonomyByIdea || new Map();
 
   if (!rankingViews || rankingViews.length === 0) {
     container.innerHTML = `
@@ -41,7 +42,7 @@ function initRankings() {
 
   // Filter & Search states
   let searchQuery = '';
-  let selectedCategory = 'all';
+  let selectedFamily = 'all';
   let selectedLimit = 50;
 
   function renderActiveView() {
@@ -51,6 +52,7 @@ function initRankings() {
     // Filter items
     let filteredItems = (view.items || []).map(item => {
       const fullIdea = ideasMap.get(item.ideaId || item.id) || {};
+      const taxonomy = taxonomyByIdea.get(fullIdea.id) || null;
       const eligibilityIssues = [];
       if (['candidate', 'staged'].includes(String(fullIdea.status || item.status || '').toLowerCase())) eligibilityIssues.push('candidate/staged');
       if (item.killFlagged || fullIdea.killCriteria?.killFlagged) eligibilityIssues.push('kill flagged');
@@ -60,6 +62,8 @@ function initRankings() {
         ...item,
         fullIdea,
         category: item.category || fullIdea.category || 'Uncategorized',
+        family: taxonomy?.familyLabel || item.category || fullIdea.category || 'Uncategorized',
+        pattern: taxonomy?.patternLabel || fullIdea.subcategory || 'Unclassified',
         name: item.name || fullIdea.name || item.ideaId,
         score: item.score ?? fullIdea.atAGlance?.overallScore ?? null,
         concept: fullIdea.oneSentenceConcept || '',
@@ -67,21 +71,23 @@ function initRankings() {
       };
     });
 
-    // Unique categories for filter
-    const categories = Array.from(new Set(filteredItems.map(i => i.category))).filter(Boolean).sort();
+    // Normalized families replace the fragmented raw category list as the primary filter.
+    const families = Array.from(new Set(filteredItems.map(i => i.family))).filter(Boolean).sort();
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
       filteredItems = filteredItems.filter(i => 
         i.name.toLowerCase().includes(q) || 
         i.category.toLowerCase().includes(q) ||
+        i.family.toLowerCase().includes(q) ||
+        i.pattern.toLowerCase().includes(q) ||
         i.concept.toLowerCase().includes(q) ||
         (i.ideaId && i.ideaId.toLowerCase().includes(q))
       );
     }
 
-    if (selectedCategory !== 'all') {
-      filteredItems = filteredItems.filter(i => i.category === selectedCategory);
+    if (selectedFamily !== 'all') {
+      filteredItems = filteredItems.filter(i => i.family === selectedFamily);
     }
 
     const totalMatching = filteredItems.length;
@@ -134,9 +140,9 @@ function initRankings() {
 
         <div class="ranking-filters" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:0.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)">
           <input type="text" id="rankingSearchInput" placeholder="Search ideas or categories..." value="${escHTML(searchQuery)}" aria-label="Search rankings" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
-          <select id="rankingCategoryFilter" aria-label="Filter by category" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
-            <option value="all">All Categories (${categories.length})</option>
-            ${categories.map(c => `<option value="${escHTML(c)}" ${c === selectedCategory ? 'selected' : ''}>${escHTML(c)}</option>`).join('')}
+          <select id="rankingCategoryFilter" aria-label="Filter by normalized market family" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
+            <option value="all">All Market Families (${families.length})</option>
+            ${families.map(family => `<option value="${escHTML(family)}" ${family === selectedFamily ? 'selected' : ''}>${escHTML(family)}</option>`).join('')}
           </select>
           <select id="rankingLimitSelect" aria-label="Items per view" style="padding:0.4rem 0.6rem;font-size:0.85rem;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg)">
             <option value="25" ${selectedLimit == 25 ? 'selected' : ''}>Show Top 25</option>
@@ -164,7 +170,7 @@ function initRankings() {
               <tr>
                 <th style="width:60px">Rank</th>
                 <th>Idea &amp; Concept</th>
-                <th>Category</th>
+                <th>Family &amp; Type</th>
                 <th style="width:100px">Score</th>
                 <th style="width:100px">Evidence</th>
                 <th style="width:200px;text-align:right">Actions</th>
@@ -188,7 +194,7 @@ function initRankings() {
                       </div>
                       ${item.concept ? `<div style="font-size:0.8rem;color:var(--text2);margin-top:0.15rem">${escHTML(item.concept)}</div>` : ''}
                     </td>
-                    <td><span class="chip status">${escHTML(item.category)}</span></td>
+                    <td><span class="chip status">${escHTML(item.family)}</span><br><span class="muted">${escHTML(item.pattern)}</span></td>
                     <td><span class="score-badge ${getScoreClass(item.score)}" title="Click to view score breakdown">${scoreVal}</span></td>
                     <td><span class="chip neutral">${Number.isFinite(Number(item.checklist)) ? Number(item.checklist) + '% checklist' : 'Not assessed'}</span></td>
                     <td style="text-align:right">
@@ -225,7 +231,8 @@ function initRankings() {
                 </h3>
                 <div style="font-size:0.8rem;color:var(--text2);margin-bottom:0.5rem">${escHTML(item.concept)}</div>
                 <div style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem">
-                  <span class="chip status">${escHTML(item.category)}</span>
+                  <span class="chip status">${escHTML(item.family)}</span>
+                  <span class="chip">${escHTML(item.pattern)}</span>
                   ${item.killFlagged ? '<span class="chip danger sm">⚠ Kill Flagged</span>' : ''}
                   ${item.eligibilityIssues.length ? `<span class="chip warn sm" title="${escHTML(item.eligibilityIssues.join(', '))}">Eligibility unproven</span>` : '<span class="chip success sm">Eligible</span>'}
                   <span class="chip neutral">${Number.isFinite(Number(item.checklist)) ? Number(item.checklist) + '% checklist' : 'Not assessed'}</span>
@@ -258,7 +265,7 @@ function initRankings() {
     const catFilter = document.getElementById('rankingCategoryFilter');
     if (catFilter) {
       catFilter.addEventListener('change', (e) => {
-        selectedCategory = e.target.value;
+        selectedFamily = e.target.value;
         renderActiveView();
       });
     }

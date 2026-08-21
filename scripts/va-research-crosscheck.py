@@ -29,6 +29,7 @@ from va_runtime.redaction import redact_secrets
 QUEUE_PATH = os.path.join(ROOT, "data", "idea-staging-queue.json")
 IDEAS_PATH = os.path.join(ROOT, "data", "ideas.json")
 DEFAULT_RECEIPT_DIR = os.path.join(ROOT, ".agent-state", "crosschecks")
+REVIEW_INDEX_NAME = "review-index.json"
 
 
 def _idea_list(payload) -> list[dict]:
@@ -82,6 +83,58 @@ def _receipt_path(receipt_dir: str, run_id: str) -> str:
     return os.path.join(receipt_dir, f"{run_id}.json")
 
 
+def _candidate_digest(candidate: dict) -> str:
+    stable = {key: value for key, value in candidate.items() if key not in {"createdAt", "updatedAt"}}
+    return hashlib.sha256(json.dumps(stable, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def _parse_review(content: str) -> dict:
+    text = content.strip()
+    if text.startswith("```"):
+        text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+        if text.startswith("json"):
+            text = text[4:].lstrip()
+    try:
+        parsed = json.loads(text)
+        return parsed if isinstance(parsed, dict) else {}
+    except json.JSONDecodeError:
+        return {}
+
+
+def extract_panel_summary(responses: list[dict]) -> dict:
+    """Expose only exact normalized agreement while retaining every dissent."""
+    parsed = [{"provider": item["provider"], "review": _parse_review(item["content"])} for item in responses]
+    verdicts = [
+        {"provider": item["provider"], "verdict": str(item["review"].get("verdict", "UNPARSEABLE"))}
+        for item in parsed
+    ]
+    agreement = {}
+    for field in ("fatalErrors", "unsupportedClaims", "missingCrossChecks"):
+        supporters = {}
+        display = {}
+        for item in parsed:
+            values = item["review"].get(field, [])
+            if not isinstance(values, list):
+                continue
+            for value in values:
+                normalized = " ".join(str(value).casefold().split())
+                if normalized:
+                    supporters.setdefault(normalized, []).append(item["provider"])
+                    display.setdefault(normalized, str(value))
+        agreement[field] = [
+            {"finding": display[key], "providers": providers}
+            for key, providers in sorted(supporters.items()) if len(set(providers)) >= 2
+        ]
+    return {
+        "method": "EXACT_NORMALIZED_TEXT_ONLY",
+        "verdicts": verdicts,
+        "agreement": agreement,
+        "hasVerdictDissent": len({item["verdict"].casefold() for item in verdicts}) > 1,
+        "unparseableProviders": [item["provider"] for item in parsed if not item["review"]],
+        "evidenceStatus": "MODEL_REVIEW_ONLY_NOT_EXTERNAL_EVIDENCE",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run an independent provider cross-check panel")
     parser.add_argument("--limit", type=int, default=2, help="Most recent staged candidates to review")
@@ -97,6 +150,9 @@ def main() -> int:
     queue = _idea_list(read_json_safe(QUEUE_PATH, default_if_missing=[]))
     canonical = _idea_list(read_json_safe(IDEAS_PATH, default_if_missing={"ideas": []}))
     selected = queue[-max(0, args.limit):] if args.limit > 0 else []
+    index_path = os.path.join(args.receipt_dir, REVIEW_INDEX_NAME)
+    review_index = read_json_safe(index_path, default_if_missing={"schemaVersion": "1.0.0", "digests": {}})
+    known_digests = review_index.setdefault("digests", {})
 
     receipt = {
         "schemaVersion": "1.0.0",
@@ -112,11 +168,21 @@ def main() -> int:
             "strict": args.strict,
         },
         "reviews": [],
+        "deduplicated": [],
         "failures": [],
     }
 
     for candidate in selected:
         candidate_id = str(candidate.get("id", "unknown"))
+        candidate_digest = _candidate_digest(candidate)
+        if candidate_digest in known_digests:
+            receipt["deduplicated"].append({
+                "candidateId": candidate_id,
+                "candidateDigest": candidate_digest,
+                "priorRunId": known_digests[candidate_digest].get("runId"),
+                "outcome": "NO_OP_ALREADY_REVIEWED",
+            })
+            continue
         nearest = _nearest_names(str(candidate.get("name", "")), canonical)
         prompt = _candidate_prompt(candidate, nearest)
         try:
@@ -148,11 +214,24 @@ def main() -> int:
             "nearestInternalNames": nearest,
             "distinctProviders": [item["provider"] for item in safe_responses],
             "responses": safe_responses,
+            "panelSummary": extract_panel_summary(safe_responses),
         })
+        known_digests[candidate_digest] = {
+            "candidateId": candidate_id,
+            "runId": run_id,
+            "reviewedAt": started_at,
+        }
 
     if selected:
-        receipt["status"] = "SUCCEEDED" if len(receipt["reviews"]) == len(selected) else "DEGRADED"
+        accounted = len(receipt["reviews"]) + len(receipt["deduplicated"])
+        receipt["status"] = (
+            "SUCCEEDED_NO_OP" if not receipt["reviews"] and accounted == len(selected)
+            else "SUCCEEDED" if accounted == len(selected)
+            else "DEGRADED"
+        )
     receipt["endedAt"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    review_index["updatedAt"] = receipt["endedAt"]
+    atomic_write_json(index_path, review_index)
     atomic_write_json(_receipt_path(args.receipt_dir, run_id), receipt)
     atomic_write_json(os.path.join(args.receipt_dir, "latest.json"), receipt)
     print(json.dumps({

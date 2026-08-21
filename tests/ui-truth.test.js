@@ -57,9 +57,16 @@ test('Matcher preserves missing cost and score instead of inventing neutral defa
   assert.equal(context.window.VAMatcher.computeMatchScore({ atAGlance: { overallScore: 0 }, compositeScores: {}, scores: {} }, { goal: 'growth' }), 0);
 });
 
+test('Compare exposes explicit selected-set metric deltas', () => {
+  const compare = fs.readFileSync(path.join(ROOT, 'assets/js/features/compare.js'), 'utf8');
+  assert.match(compare, /Problem Severity Δ/);
+  assert.match(compare, /Willingness to Pay Δ/);
+  assert.match(compare, /Δ \$\{delta > 0/);
+  assert.match(compare, /vs best/);
+});
+
 test('Pagination button labels display Show More Ideas and Show All Remaining Ideas', () => {
   const site = fs.readFileSync(path.join(ROOT, 'assets/js/site.js'), 'utf8');
   assert.match(site, /btn10\.textContent = 'Show More Ideas'/);
   assert.match(site, /btnAll\.textContent = `Show All Remaining Ideas \(\${remaining\.toLocaleString\(\)}\)`/);
 });
-

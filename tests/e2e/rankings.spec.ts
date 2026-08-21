@@ -26,7 +26,7 @@ test.describe('VentureAtlas Rankings E2E Verification', () => {
       await expect(page.locator('.ranking-header')).toBeVisible();
 
       // Verify idea links resolve to docs/idea.html?id=...
-      const firstLink = page.locator('a.ranking-idea-link').first();
+      const firstLink = page.locator('a.ranking-idea-link:visible, .mobile-ranking-cards h3 a:visible').first();
       await expect(firstLink).toBeVisible();
       const href = await firstLink.getAttribute('href');
       expect(href).toContain('/docs/idea.html?id=');

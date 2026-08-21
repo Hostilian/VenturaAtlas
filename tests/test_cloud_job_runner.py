@@ -98,6 +98,12 @@ class CloudJobRunnerTests(unittest.TestCase):
         finally:
             runner.BASE_DIR = old_base
 
+    def test_strict_panel_fails_fast_when_secret_pools_are_missing(self):
+        with mock.patch.object(runner, "fetch_gcp_secret", return_value=""), \
+             mock.patch.dict(os.environ, {"VA_REVIEW_PANEL_SIZE": "3", "VA_STRICT_REVIEW_PANEL": "1"}, clear=True):
+            with self.assertRaisesRegex(RuntimeError, "PANEL_SECRET_SHORTFALL"):
+                runner.configure_environment()
+
     def test_unchanged_private_checkpoint_does_not_upload(self):
         queue_path = self.repo / "data" / "idea-staging-queue.json"
         queue_path.write_text("[]\n", encoding="utf-8")

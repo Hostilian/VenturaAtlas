@@ -6,6 +6,7 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const IDEAS_PATH = path.join(ROOT, 'data', 'ideas.json');
 const QUEUE_PATH = path.join(ROOT, 'data', 'idea-staging-queue.json');
 const CATEGORIES_PATH = path.join(ROOT, 'data', 'categories.json');
+const IDEA_TAXONOMY_PATH = path.join(ROOT, 'data', 'idea-taxonomy.json');
 const SOURCES_PATH = path.join(ROOT, 'data', 'sources.json');
 const RANKINGS_PATH = path.join(ROOT, 'data', 'rankings.json');
 const PROMPTS_DIR = path.join(ROOT, 'prompts', 'idea-specific');
@@ -56,6 +57,26 @@ function getRepositoryTruth(options = {}) {
     const raw = JSON.parse(fs.readFileSync(CATEGORIES_PATH, 'utf8'));
     const list = Array.isArray(raw) ? raw : (raw.categories || []);
     taxonomyCategoryCount = list.length;
+  }
+
+  let normalizedFamilyCount = 0;
+  let venturePatternCount = 0;
+  let similarityGroupCount = 0;
+  let potentialDuplicatePairCount = 0;
+  let taxonomyReviewQueueCount = 0;
+  if (fs.existsSync(IDEA_TAXONOMY_PATH)) {
+    const taxonomy = JSON.parse(fs.readFileSync(IDEA_TAXONOMY_PATH, 'utf8'));
+    normalizedFamilyCount = Number(taxonomy.familyCount) || 0;
+    venturePatternCount = Number(taxonomy.patternCount) || 0;
+    similarityGroupCount = Number(taxonomy.groupCount) || 0;
+    taxonomyReviewQueueCount = Number(taxonomy.reviewQueueCount) || 0;
+    const pairs = new Set();
+    for (const assignment of taxonomy.assignments || []) {
+      for (const neighbor of assignment.closestIdeas || []) {
+        if (neighbor.band === 'potential-duplicate') pairs.add([assignment.ideaId, neighbor.ideaId].sort().join('|'));
+      }
+    }
+    potentialDuplicatePairCount = pairs.size;
   }
 
   let sourceRecordCount = 0;
@@ -116,12 +137,13 @@ function getRepositoryTruth(options = {}) {
   const canonicalRevision = computeFileHash(IDEAS_PATH).sha256?.substring(0, 16) || 'none';
   const stagingRevision = includePrivateStaging ? (computeFileHash(QUEUE_PATH).sha256?.substring(0, 16) || 'none') : 'private-withheld';
   const taxonomyRevision = computeFileHash(CATEGORIES_PATH).sha256?.substring(0, 16) || 'none';
+  const normalizedTaxonomyRevision = computeFileHash(IDEA_TAXONOMY_PATH).sha256?.substring(0, 16) || 'none';
   const sourcesRevision = computeFileHash(SOURCES_PATH).sha256?.substring(0, 16) || 'none';
   const rankingsRevision = computeFileHash(RANKINGS_PATH).sha256?.substring(0, 16) || 'none';
 
   // Master Data Revision (Canonical Data)
   const masterHasher = crypto.createHash('sha256');
-  [IDEAS_PATH, CATEGORIES_PATH, SOURCES_PATH, RANKINGS_PATH].forEach(fp => {
+  [IDEAS_PATH, CATEGORIES_PATH, IDEA_TAXONOMY_PATH, SOURCES_PATH, RANKINGS_PATH].forEach(fp => {
     if (fs.existsSync(fp)) {
       masterHasher.update(normalizedFileBytes(fp));
     }
@@ -132,6 +154,7 @@ function getRepositoryTruth(options = {}) {
   const manifestFiles = [
     'data/ideas.json',
     'data/categories.json',
+    'data/idea-taxonomy.json',
     'data/sources.json',
     'data/rankings.json'
   ];
@@ -154,6 +177,7 @@ function getRepositoryTruth(options = {}) {
       canonicalRevision,
       stagingRevision,
       taxonomyRevision,
+      normalizedTaxonomyRevision,
       sourcesRevision,
       rankingsRevision,
       canonicalDataRevision
@@ -166,6 +190,11 @@ function getRepositoryTruth(options = {}) {
       categories: canonicalCategoryLabels.size,
       canonicalCategoryLabels: canonicalCategoryLabels.size,
       taxonomyCategories: taxonomyCategoryCount,
+      normalizedFamilies: normalizedFamilyCount,
+      venturePatterns: venturePatternCount,
+      similarityGroups: similarityGroupCount,
+      potentialDuplicatePairs: potentialDuplicatePairCount,
+      taxonomyReviewQueue: taxonomyReviewQueueCount,
       sources: sourceRecordCount,
       rankingViews: rankingViewCount,
       rankingEntries: rankingEntryCount,

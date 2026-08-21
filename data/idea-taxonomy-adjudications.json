@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "adjudicatedAt": "2026-08-21T13:44:23.885837+00:00",
+  "method": "MANUAL_EXACT_RECORD_REVIEW_WITH_FAIL_CLOSED_MIGRATION",
+  "decision": "REMOVE_IDENTITY_ONLY_DUPLICATES_KEEP_LOWER_EXISTING_ID",
+  "nonIdentityFieldsRequiredEqual": true,
+  "pairs": [
+    {
+      "canonicalId": "idea-219",
+      "removedDuplicateId": "idea-230"
+    },
+    {
+      "canonicalId": "idea-220",
+      "removedDuplicateId": "idea-231"
+    },
+    {
+      "canonicalId": "idea-221",
+      "removedDuplicateId": "idea-232"
+    },
+    {
+      "canonicalId": "idea-222",
+      "removedDuplicateId": "idea-233"
+    },
+    {
+      "canonicalId": "idea-223",
+      "removedDuplicateId": "idea-234"
+    },
+    {
+      "canonicalId": "idea-224",
+      "removedDuplicateId": "idea-235"
+    },
+    {
+      "canonicalId": "idea-225",
+      "removedDuplicateId": "idea-236"
+    },
+    {
+      "canonicalId": "idea-226",
+      "removedDuplicateId": "idea-237"
+    },
+    {
+      "canonicalId": "idea-227",
+      "removedDuplicateId": "idea-238"
+    },
+    {
+      "canonicalId": "idea-228",
+      "removedDuplicateId": "idea-239"
+    }
+  ],
+  "removedCount": 10
+}

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-12T15:56:11.665659+00:00",
-  "totalIdeas": 294,
+  "generatedAt": "2026-08-21T13:44:23.782304+00:00",
+  "totalIdeas": 309,
   "rankingViewsCount": 7,
   "algorithm": "weighted-composite-v3-explicit-scale",
   "scoreScaleVersion": "va-score-scales-v1",
-  "rankingSemanticDigest": "8e6508b31f39dd63867fd2602fa9ada56bd734809294800eecf60728479851fb",
+  "rankingSemanticDigest": "fd7deb5c579f25f9a61a6fc58a1f580698b1aacadcd0e932ebcced046b337a27",
   "weights": {
     "overallOpportunity": 0.25,
     "bootstrappedPotential": 0.15,
@@ -1542,28 +1542,6 @@
           }
         },
         {
-          "rank": 70,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 86.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 71,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -2158,28 +2136,6 @@
           }
         },
         {
-          "rank": 98,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 85.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 99,
           "ideaId": "idea-242",
           "id": "idea-242",
@@ -2510,28 +2466,6 @@
           }
         },
         {
-          "rank": 114,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 84.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 115,
           "ideaId": "idea-015",
           "id": "idea-015",
@@ -2818,28 +2752,6 @@
           }
         },
         {
-          "rank": 128,
-          "ideaId": "idea-233",
-          "id": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 129,
           "ideaId": "idea-256",
           "id": "idea-256",
@@ -3041,28 +2953,6 @@
           "rank": 138,
           "ideaId": "idea-223",
           "id": "idea-223",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.6,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 139,
-          "ideaId": "idea-234",
-          "id": "idea-234",
           "name": "Furniture Foot and End-Cap Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 83.6,
@@ -3305,28 +3195,6 @@
           "rank": 150,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.1,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 151,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 83.1,
@@ -3896,28 +3764,6 @@
           }
         },
         {
-          "rank": 177,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 82.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 178,
           "ideaId": "idea-249",
           "id": "idea-249",
@@ -4075,28 +3921,6 @@
           "rank": 185,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 81.7,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 186,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 81.7,
@@ -4490,28 +4314,6 @@
           }
         },
         {
-          "rank": 204,
-          "ideaId": "idea-238",
-          "id": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 205,
           "ideaId": "idea-196",
           "id": "idea-196",
@@ -4691,28 +4493,6 @@
           "rank": 213,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.3,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 214,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 80.3,
@@ -8986,28 +8766,6 @@
           }
         },
         {
-          "rank": 114,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 115,
           "ideaId": "idea-187",
           "id": "idea-187",
@@ -9184,28 +8942,6 @@
           }
         },
         {
-          "rank": 123,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 124,
           "ideaId": "idea-177",
           "id": "idea-177",
@@ -9338,28 +9074,6 @@
           }
         },
         {
-          "rank": 130,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 131,
           "ideaId": "idea-170",
           "id": "idea-170",
@@ -9451,28 +9165,6 @@
           "rank": 135,
           "ideaId": "idea-222",
           "id": "idea-222",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 136,
-          "ideaId": "idea-233",
-          "id": "idea-233",
           "name": "Appliance Control-Knob Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 70,
@@ -9624,28 +9316,6 @@
           }
         },
         {
-          "rank": 143,
-          "ideaId": "idea-234",
-          "id": "idea-234",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 144,
           "ideaId": "idea-192",
           "id": "idea-192",
@@ -9693,28 +9363,6 @@
           "rank": 146,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 147,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 70,
@@ -9954,28 +9602,6 @@
           }
         },
         {
-          "rank": 158,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 159,
           "ideaId": "idea-175",
           "id": "idea-175",
@@ -10001,28 +9627,6 @@
           "rank": 160,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 161,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 70,
@@ -10089,28 +9693,6 @@
           "rank": 164,
           "ideaId": "idea-227",
           "id": "idea-227",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 165,
-          "ideaId": "idea-238",
-          "id": "idea-238",
           "name": "Heatwave Window-Insert Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 70,
@@ -10199,28 +9781,6 @@
           "rank": 169,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 70,
-          "scoreMetric": "opportunityAttractiveness",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 170,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 70,
@@ -15946,28 +15506,6 @@
           }
         },
         {
-          "rank": 136,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 137,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -16408,28 +15946,6 @@
           }
         },
         {
-          "rank": 157,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 158,
           "ideaId": "idea-242",
           "id": "idea-242",
@@ -16694,28 +16210,6 @@
           }
         },
         {
-          "rank": 170,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 171,
           "ideaId": "idea-310",
           "id": "idea-310",
@@ -16958,28 +16452,6 @@
           }
         },
         {
-          "rank": 182,
-          "ideaId": "idea-233",
-          "id": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 183,
           "ideaId": "idea-256",
           "id": "idea-256",
@@ -17156,28 +16628,6 @@
           }
         },
         {
-          "rank": 191,
-          "ideaId": "idea-234",
-          "id": "idea-234",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 192,
           "ideaId": "idea-257",
           "id": "idea-257",
@@ -17335,28 +16785,6 @@
           "rank": 199,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 200,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -17750,28 +17178,6 @@
           }
         },
         {
-          "rank": 218,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 219,
           "ideaId": "idea-249",
           "id": "idea-249",
@@ -17885,28 +17291,6 @@
           "rank": 224,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 225,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -18102,28 +17486,6 @@
           }
         },
         {
-          "rank": 234,
-          "ideaId": "idea-238",
-          "id": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 235,
           "ideaId": "idea-196",
           "id": "idea-196",
@@ -18259,28 +17621,6 @@
           "rank": 241,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "founderFit",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 242,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -20970,28 +20310,6 @@
           }
         },
         {
-          "rank": 70,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 71,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -21586,28 +20904,6 @@
           }
         },
         {
-          "rank": 98,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 99,
           "ideaId": "idea-242",
           "id": "idea-242",
@@ -21938,28 +21234,6 @@
           }
         },
         {
-          "rank": 114,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 115,
           "ideaId": "idea-015",
           "id": "idea-015",
@@ -22246,28 +21520,6 @@
           }
         },
         {
-          "rank": 128,
-          "ideaId": "idea-233",
-          "id": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 129,
           "ideaId": "idea-256",
           "id": "idea-256",
@@ -22469,28 +21721,6 @@
           "rank": 138,
           "ideaId": "idea-223",
           "id": "idea-223",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 139,
-          "ideaId": "idea-234",
-          "id": "idea-234",
           "name": "Furniture Foot and End-Cap Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -22733,28 +21963,6 @@
           "rank": 150,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 151,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -23324,28 +22532,6 @@
           }
         },
         {
-          "rank": 177,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 178,
           "ideaId": "idea-249",
           "id": "idea-249",
@@ -23503,28 +22689,6 @@
           "rank": 185,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 186,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -23918,28 +23082,6 @@
           }
         },
         {
-          "rank": 204,
-          "ideaId": "idea-238",
-          "id": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 205,
           "ideaId": "idea-196",
           "id": "idea-196",
@@ -24119,28 +23261,6 @@
           "rank": 213,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 0,
-          "scoreMetric": "evidenceConfidence",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 214,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 0,
@@ -28898,28 +28018,6 @@
           }
         },
         {
-          "rank": 136,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 86.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 137,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -29360,28 +28458,6 @@
           }
         },
         {
-          "rank": 157,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 85.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 158,
           "ideaId": "idea-242",
           "id": "idea-242",
@@ -29646,28 +28722,6 @@
           }
         },
         {
-          "rank": 170,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 84.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 171,
           "ideaId": "idea-310",
           "id": "idea-310",
@@ -29910,28 +28964,6 @@
           }
         },
         {
-          "rank": 182,
-          "ideaId": "idea-233",
-          "id": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 183,
           "ideaId": "idea-256",
           "id": "idea-256",
@@ -30108,28 +29140,6 @@
           }
         },
         {
-          "rank": 191,
-          "ideaId": "idea-234",
-          "id": "idea-234",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.6,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 192,
           "ideaId": "idea-257",
           "id": "idea-257",
@@ -30287,28 +29297,6 @@
           "rank": 199,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.1,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 200,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 83.1,
@@ -30702,28 +29690,6 @@
           }
         },
         {
-          "rank": 218,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 82.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 219,
           "ideaId": "idea-249",
           "id": "idea-249",
@@ -30837,28 +29803,6 @@
           "rank": 224,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 81.7,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 225,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 81.7,
@@ -31054,28 +29998,6 @@
           }
         },
         {
-          "rank": 234,
-          "ideaId": "idea-238",
-          "id": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 235,
           "ideaId": "idea-196",
           "id": "idea-196",
@@ -31211,28 +30133,6 @@
           "rank": 241,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.3,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 242,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 80.3,
@@ -35374,28 +34274,6 @@
           }
         },
         {
-          "rank": 136,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 86.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 137,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -35836,28 +34714,6 @@
           }
         },
         {
-          "rank": 157,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 85.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 158,
           "ideaId": "idea-242",
           "id": "idea-242",
@@ -36122,28 +34978,6 @@
           }
         },
         {
-          "rank": 170,
-          "ideaId": "idea-232",
-          "id": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 84.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 79.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 171,
           "ideaId": "idea-310",
           "id": "idea-310",
@@ -36386,28 +35220,6 @@
           }
         },
         {
-          "rank": 182,
-          "ideaId": "idea-233",
-          "id": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 77.6,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 183,
           "ideaId": "idea-256",
           "id": "idea-256",
@@ -36584,28 +35396,6 @@
           }
         },
         {
-          "rank": 191,
-          "ideaId": "idea-234",
-          "id": "idea-234",
-          "name": "Furniture Foot and End-Cap Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.6,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 76.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 192,
           "ideaId": "idea-257",
           "id": "idea-257",
@@ -36763,28 +35553,6 @@
           "rank": 199,
           "ideaId": "idea-224",
           "id": "idea-224",
-          "name": "Print-Shop Measurement Intake Portal",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 83.1,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 75.4,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 200,
-          "ideaId": "idea-235",
-          "id": "idea-235",
           "name": "Print-Shop Measurement Intake Portal",
           "category": "Fit-First Repair & Fabrication",
           "score": 83.1,
@@ -37178,28 +35946,6 @@
           }
         },
         {
-          "rank": 218,
-          "ideaId": "idea-236",
-          "id": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 82.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 73.1,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 219,
           "ideaId": "idea-249",
           "id": "idea-249",
@@ -37313,28 +36059,6 @@
           "rank": 224,
           "ideaId": "idea-226",
           "id": "idea-226",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 81.7,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 71.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 225,
-          "ideaId": "idea-237",
-          "id": "idea-237",
           "name": "Damage-Shaped Mending Pattern Studio",
           "category": "Fit-First Repair & Fabrication",
           "score": 81.7,
@@ -37530,28 +36254,6 @@
           }
         },
         {
-          "rank": 234,
-          "ideaId": "idea-238",
-          "id": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.9,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 69.7,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 235,
           "ideaId": "idea-196",
           "id": "idea-196",
@@ -37687,28 +36389,6 @@
           "rank": 241,
           "ideaId": "idea-228",
           "id": "idea-228",
-          "name": "Board-Game Insert Generator",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 80.3,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 68.3,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
-          "rank": 242,
-          "ideaId": "idea-239",
-          "id": "idea-239",
           "name": "Board-Game Insert Generator",
           "category": "Fit-First Repair & Fabrication",
           "score": 80.3,
@@ -39474,28 +38154,6 @@
           }
         },
         {
-          "rank": 28,
-          "ideaId": "idea-230",
-          "id": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 86.5,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 84.2,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
-          }
-        },
-        {
           "rank": 29,
           "ideaId": "idea-308",
           "id": "idea-308",
@@ -39625,28 +38283,6 @@
             "soloFounderPotential": 90,
             "differentiation": 78,
             "profitPotential": 84
-          }
-        },
-        {
-          "rank": 35,
-          "ideaId": "idea-231",
-          "id": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "category": "Fit-First Repair & Fabrication",
-          "score": 85.2,
-          "scoreMetric": "score",
-          "rankingEligible": false,
-          "rankingMaturity": "legacy_unverified",
-          "checklist": 0,
-          "killFlagged": false,
-          "provider": "legacy",
-          "status": "canonical",
-          "topDimensions": {
-            "overallOpportunity": 80.8,
-            "bootstrappedPotential": 85,
-            "soloFounderPotential": 88,
-            "differentiation": null,
-            "profitPotential": null
           }
         },
         {
@@ -39821,6 +38457,8 @@
         "idea-083",
         "idea-389",
         "idea-084",
+        "idea-407",
+        "idea-408",
         "idea-379",
         "idea-346",
         "idea-331",
@@ -39845,6 +38483,7 @@
         "idea-351",
         "idea-370",
         "idea-401",
+        "idea-409",
         "idea-334",
         "idea-323",
         "idea-383",
@@ -39878,7 +38517,9 @@
         "idea-329",
         "idea-403",
         "idea-330",
+        "idea-410",
         "idea-404",
+        "idea-411",
         "idea-405",
         "idea-406",
         "idea-001",
@@ -40001,16 +38642,6 @@
         "idea-226",
         "idea-227",
         "idea-228",
-        "idea-230",
-        "idea-231",
-        "idea-232",
-        "idea-233",
-        "idea-234",
-        "idea-235",
-        "idea-236",
-        "idea-237",
-        "idea-238",
-        "idea-239",
         "idea-240",
         "idea-241",
         "idea-242",
@@ -40081,7 +38712,27 @@
         "idea-315",
         "idea-316",
         "idea-317",
-        "idea-318"
+        "idea-318",
+        "idea-412",
+        "idea-413",
+        "idea-414",
+        "idea-415",
+        "idea-416",
+        "idea-417",
+        "idea-418",
+        "idea-419",
+        "idea-420",
+        "idea-421",
+        "idea-422",
+        "idea-423",
+        "idea-424",
+        "idea-425",
+        "idea-426",
+        "idea-427",
+        "idea-428",
+        "idea-429",
+        "idea-430",
+        "idea-431"
       ]
     },
     "HYPOTHESIS": {
@@ -40253,6 +38904,16 @@
           "rankingEligible": false
         },
         {
+          "ideaId": "idea-407",
+          "name": "AidGraph -- Public Money Graph Platform",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-408",
+          "name": "AidHeadroom -- De Minimis Group Headroom Audit",
+          "rankingEligible": false
+        },
+        {
           "ideaId": "idea-379",
           "name": "CohortPreflight Europe — EHDS Secondary Data Cohort & Feasibility Preflight",
           "rankingEligible": false
@@ -40370,6 +39031,11 @@
         {
           "ideaId": "idea-401",
           "name": "CRA ReachLedger — Firmware Vulnerability Exposure & Patch Deployment Reachability Graph",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-409",
+          "name": "SubsidySignal -- Public Aid Buying-Signal Intelligence",
           "rankingEligible": false
         },
         {
@@ -40538,8 +39204,18 @@
           "rankingEligible": false
         },
         {
+          "ideaId": "idea-410",
+          "name": "RiceGuard -- Preferential-Tariff Safeguard PO Risk",
+          "rankingEligible": false
+        },
+        {
           "ideaId": "idea-404",
           "name": "Transformer Procurement Marketplace — AI Transformer Sourcing & Lead-Time Marketplace [KILLED]",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-411",
+          "name": "WorkerChainReceipt -- UK Contractor RTW Evidence Chain",
           "rankingEligible": false
         },
         {
@@ -41153,56 +39829,6 @@
           "rankingEligible": false
         },
         {
-          "ideaId": "idea-230",
-          "name": "Fit-First Parametric Repair Studio",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-231",
-          "name": "Printer-Specific Fit Profile",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-232",
-          "name": "Repair Café Parametric Intake System",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-233",
-          "name": "Appliance Control-Knob Generator",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-234",
-          "name": "Furniture Foot and End-Cap Generator",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-235",
-          "name": "Print-Shop Measurement Intake Portal",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-236",
-          "name": "Custom Drill-Alignment Guide",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-237",
-          "name": "Damage-Shaped Mending Pattern Studio",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-238",
-          "name": "Heatwave Window-Insert Pattern Studio",
-          "rankingEligible": false
-        },
-        {
-          "ideaId": "idea-239",
-          "name": "Board-Game Insert Generator",
-          "rankingEligible": false
-        },
-        {
           "ideaId": "idea-240",
           "name": "Result Lineage Release Gate",
           "rankingEligible": false
@@ -41556,6 +40182,106 @@
           "ideaId": "idea-318",
           "name": "ETIAS Carrier Preflight — Travel Authorization Pre-Boarding Exception Checker",
           "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-412",
+          "name": "ScrapRoute — Critical-Mineral Contract & Inventory Route-Shock Monitor",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-413",
+          "name": "BatteryFlightGate — Physical State-of-Charge Evidence Gate for Air Cargo",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-414",
+          "name": "CarrierReality — Open Gateway Production Reality Grid",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-415",
+          "name": "CATCHFlow — CATCH Preflight & Certificate Lineage",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-416",
+          "name": "CertFlow / HandshakeLab — CERTEX Regulatory Handshake Lab",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-417",
+          "name": "F-Gas Shipment & Quota Integrity Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-418",
+          "name": "EPREL Retail-State Drift Monitor",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-419",
+          "name": "Battery Health Attestation",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-420",
+          "name": "Recall Propagation Proof",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-421",
+          "name": "Invoice Replay Cloud",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-422",
+          "name": "ICS2 SourceData Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-423",
+          "name": "Euro 7 Vehicle Evidence Drift",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-424",
+          "name": "EHDS EHR Chaos Lab",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-425",
+          "name": "EU AI Act Compliance Evidence Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-426",
+          "name": "EAA Web Accessibility Evidence Audit",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-427",
+          "name": "Care-Home Evidence Freshness Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-428",
+          "name": "Cross-Border EU Rental Evidence Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-429",
+          "name": "EU Job-Posting Trust Gate",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-430",
+          "name": "Evidence-Based Fitness Claim Checker",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-431",
+          "name": "Continental-EU Vet Pricing Transparency Network",
+          "rankingEligible": false
         }
       ]
     },
@@ -41573,66 +40299,6 @@
     }
   },
   "history": [
-    {
-      "snapshotAt": "2026-08-12T14:51:58.235765+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
-    {
-      "snapshotAt": "2026-08-12T14:55:35.801464+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
     {
       "snapshotAt": "2026-08-12T14:57:38.398232+00:00",
       "top5": [
@@ -41875,13 +40541,68 @@
           "score": 95.7
         }
       ]
+    },
+    {
+      "snapshotAt": "2026-08-21T13:43:47.795250+00:00",
+      "rankingSemanticDigest": "d6aaacde58b7c083bcf4cc542b26fbfcabce5acc8f80cb3349b45fa96cbaa8f7",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-21T13:44:23.782304+00:00",
+      "rankingSemanticDigest": "fd7deb5c579f25f9a61a6fc58a1f580698b1aacadcd0e932ebcced046b337a27",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
     }
-  ],
-  "resetStatus": "FROZEN_PENDING_REVALIDATION",
-  "resetActivatedAt": "2026-08-18",
-  "resetVersion": "RESET_XVIII",
-  "resetReason": "RESET XVIII zero-baseline: all 294 legacy scores are MODEL_PRIOR hypotheses pending fresh competitor/evidence/buyer/experiment validation.",
-  "displayLabel": "Historical Hypothesis Leaderboard",
-  "displayNote": "All items carry rankingMaturity=legacy_unverified. Scores represent research hypotheses, not decision-grade evaluations. No item currently has rankingEligible=true.",
-  "eligibilityPolicy": "An item advances to rankingEligible=true only when it reaches DESK_RESEARCHED_CURRENT maturity with a passed falsifiable experiment."
+  ]
 }

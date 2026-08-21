@@ -7,6 +7,7 @@ import os
 import sys
 import tempfile
 import time
+from unittest import mock
 
 # Ensure scripts directory is on sys.path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -99,6 +100,17 @@ class TestProviderRouter(unittest.TestCase):
         expected = {"nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude",
                     "active-api", "deepseek-api", "anthropic-full", "own-orch"}
         self.assertTrue(expected.issubset(scheduler.registry["providers"]))
+
+    def test_cloud_hermes_requires_remote_https_and_authentication(self):
+        with mock.patch.dict(os.environ, {"VA_EXECUTION_SCOPE": "cloud", "OLLAMA_BASE_URL": "http://localhost:11434"}, clear=False):
+            scheduler = CapabilityProviderScheduler()
+            self.assertNotIn("hermes-ollama", scheduler.select_providers_for_task(["reasoning"], match_mode="any"))
+        with mock.patch.dict(os.environ, {
+            "VA_EXECUTION_SCOPE": "cloud", "OLLAMA_BASE_URL": "https://hermes.example.test",
+            "OLLAMA_AUTH_TOKEN": "unit-test-token-not-secret",
+        }, clear=False):
+            scheduler = CapabilityProviderScheduler()
+            self.assertIn("hermes-ollama", scheduler.select_providers_for_task(["reasoning"], match_mode="any"))
 
 if __name__ == "__main__":
     unittest.main()

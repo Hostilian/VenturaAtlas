@@ -56,7 +56,7 @@
       "costClass": 0,
       "latencyClass": "fast",
       "webAccess": false,
-      "executionScopes": ["local-windows", "self-hosted"],
+      "executionScopes": ["local-windows", "self-hosted", "cloud"],
       "circuitThreshold": 3,
       "cooldownSeconds": 180
     },

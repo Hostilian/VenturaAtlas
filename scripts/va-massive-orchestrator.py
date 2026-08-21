@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'scripts'))
 
 from va_runtime.atomic_io import atomic_write_json, read_json_safe
+from va_runtime.orchestration.reliability import DispatchRuntime
 from va_runtime.publisher import process_file_lock
 from va_runtime.semantic_utility import semantic_digest
 
@@ -235,9 +236,19 @@ def main() -> int:
         atomic_write_json(receipt_path, _receipt(run_id, 0, now, now, [spec], [result], "FAILED"))
         log(f"[FAILED] Runtime budget exhausted before required work. Receipt: {receipt_path}")
         return 1
+    dispatch_runtime = DispatchRuntime()
+    dispatch_key = os.environ.get("VA_DISPATCH_ID") or os.environ.get("GITHUB_RUN_ID") or run_id
+    lease_status = dispatch_runtime.acquire(dispatch_key, run_id, ttl_seconds=max_runtime_sec + 900)
+    if lease_status == "ALREADY_COMPLETED":
+        log(f"[NO-OP] Dispatch {dispatch_key} already completed; idempotency receipt preserved.")
+        return 0
+    if lease_status == "LEASE_HELD":
+        log(f"[NO-OP] Dispatch {dispatch_key} already has a live owner; duplicate invocation suppressed.")
+        return 0
     with process_file_lock(LOCK_PATH):
         iteration = 0
         while iteration < max_iterations:
+            dispatch_runtime.heartbeat(dispatch_key, run_id, ttl_seconds=max_runtime_sec + 900)
             iteration += 1
             elapsed = time.monotonic() - start_time
             if elapsed >= max_runtime_sec:
@@ -262,7 +273,8 @@ def main() -> int:
                 StepSpec("provider-health", [sys.executable, "scripts/va_orchestrator.py", "--test"], "DEGRADED_ALLOWED", ("preflight",), timeout),
                 StepSpec("discovery", [sys.executable, "scripts/autonomous-idea-generator.py", "--max-concurrency", max_concurrency, "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1")], "REQUIRED", ("preflight",), timeout),
                 StepSpec("migration", [sys.executable, "scripts/migrations/migrate-staging-candidate-ids.py"], "REQUIRED", ("discovery",), timeout),
-                StepSpec("crosscheck", crosscheck_cmd, "REQUIRED", ("migration",), timeout),
+                StepSpec("source-acquisition", [sys.executable, "scripts/va-source-acquisition.py", "--candidate-limit", str(max(0, args.panel_limit))], "REQUIRED", ("migration",), timeout),
+                StepSpec("crosscheck", crosscheck_cmd, "REQUIRED", ("migration", "source-acquisition"), timeout),
                 StepSpec("ranking", [sys.executable, "scripts/va-ranker.py"], "REQUIRED", ("migration", "crosscheck"), timeout),
                 StepSpec("generate", npm_cmd, "REQUIRED", ("ranking",), timeout),
                 StepSpec("quality:source", npm_q_cmd, "REQUIRED", ("generate",), timeout),
@@ -276,6 +288,7 @@ def main() -> int:
             receipt = _receipt(run_id, iteration, iteration_started, iteration_ended, specs, results, final_status, utility)
             receipt_path = os.path.join(args.receipt_dir, f"{run_id}-iteration-{iteration:03d}.json")
             atomic_write_json(receipt_path, receipt)
+            dispatch_runtime.heartbeat(dispatch_key, run_id, ttl_seconds=max_runtime_sec + 900)
 
             # State Telemetry Summary
             queue_path = os.path.join(BASE_DIR, "data", "idea-staging-queue.json")
@@ -300,6 +313,14 @@ def main() -> int:
                 log(f"Sleeping {args.sleep_seconds}s before iteration #{iteration + 1}...")
                 time.sleep(args.sleep_seconds)
 
+    if overall_exit:
+        dispatch_runtime.fail(dispatch_key, run_id, "RequiredStageFailure")
+    else:
+        dispatch_runtime.complete(dispatch_key, run_id, {
+            "runId": run_id,
+            "iterations": iteration,
+            "dryRun": args.dry_run,
+        })
     final_label = "FAILED" if overall_exit else ("DRY_RUN" if args.dry_run else "SUCCEEDED")
     log(f"=== Venture Atlas Bounded Orchestrator Final Status: {final_label} ===")
     return overall_exit
