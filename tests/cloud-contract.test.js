@@ -31,6 +31,12 @@ test('cloud research workflow installs Python worker dependencies before quality
   }
 });
 
+test('weekly resilience drill installs Python worker dependencies before full quality', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'weekly-resilience-drill.yml'), 'utf8');
+  assert.match(workflow, /pip install[^\n]*cloud-control-plane\/requirements\.txt[^\n]*services\/ventureatlas-worker\/requirements\.txt/);
+  assert.ok(workflow.indexOf('pip install') < workflow.indexOf('npm run quality'));
+});
+
 test('cloud image uses the declared Node major and installs quality dependencies', () => {
   const dockerfile = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'Dockerfile'), 'utf8');
   assert.match(dockerfile, /FROM node:22-bookworm-slim AS node-runtime/);

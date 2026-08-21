@@ -25,7 +25,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install reproducible dependencies
-        run: npm ci
+        run: |
+          npm ci
+          python -m pip install --disable-pip-version-check -r cloud-control-plane/requirements.txt -r services/ventureatlas-worker/requirements.txt
 
       - name: Full source and artifact quality gate
         run: npm run quality
