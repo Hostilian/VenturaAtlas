@@ -2,7 +2,7 @@
 
 - Repository: Venture Atlas Collaborative
 - Current phase: collaborative-system foundation complete; source-corpus recovery remains incomplete
-- Last completed action: Audited the CRA Article 14 thesis and current portfolio exposure; corrected SaaS scope and reporting-stage errors, falsified the claimed cheap-tier gap, and merged the surviving timed evidence drill into the existing `idea-401` CRA family (2026-08-21)
+- Last completed action: Hardened autonomy pipelines with parallel preflight checks, a strict three-provider review panel, execution-scope-aware routing, durable hourly private cloud state, forward-only GCP checkpoint migration, and one 30-task authoritative backlog (2026-08-21)
 - Research Saturation Warning: **ACTIVE** — 319 canonical ideas, 0 active experiments. Unconstrained new idea generation is capped at 5% effort until live external validation experiments are active.
 - Latest reset round: **RESET XX (2026-08-21), audited and rejected as a fresh-opportunity ranking**
 - Canonical ideas: 319
@@ -22,8 +22,8 @@
 - Active external experiments: none; no external results or paid evidence recorded
 - Open conflicts: earliest complete Deep Research contract unavailable
 - Open privacy issues: future raw chat exports require redaction before public release
-- Next recommended action: If any paid or installable EU release is planned, complete the CRA pre-release classification record and two-trigger timed tabletop before 11 September 2026; otherwise run the merged `idea-309` AgeGate feasibility gate against two authorised implementations
-- Last successful validation: 2026-08-21 — CRA audit JSON, structural/referential data, schema, links, consistency, generated projections, drift, whitespace, and all 135 unit tests passed; no external experiment has run
+- Next recommended action: Push and observe two consecutive hourly cloud workflow runs with three distinct provider receipts and restored private-state continuity; then decide where to host an authenticated always-on Hermes runtime
+- Last successful validation: 2026-08-21 — full source and public-artifact quality profiles passed, including type checking, 137 Node tests, 105 Python tests, schema/data/link/task/autonomy/drift/constitution checks, privacy scanning, deterministic build, PWA checks, and public secret scanning; cloud deployment and live provider overlap remain unproven
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->

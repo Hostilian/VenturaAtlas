@@ -1,24 +1,29 @@
-name: Cloud Research & Staging Verification Cycle
+name: Cloud Research, Cross-Check & Staging Cycle
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Run automatically every 6 hours in the cloud (laptop OFF)
+    - cron: '17 * * * *' # Hourly cloud recurrence; GitHub may delay scheduled starts.
   workflow_dispatch:
 
+concurrency:
+  group: venture-atlas-cloud-research
+  cancel-in-progress: false
+
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   research-check:
-    name: Autonomous Discovery & Quality Verification
+    name: Bounded Autonomous Research & Triple Review
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
+      VA_EXECUTION_SCOPE: cloud
       PARALLEL_AI_ORCHESTRATION: '1'
-      IDEAS_PER_ITERATION: '6'
-      VA_PROVIDER_FANOUT: '2'
-      VA_MAX_COST_CLASS: '0'
-      VA_CREDIT_SAFE_MODE: '1'
+      IDEAS_PER_ITERATION: '2'
+      VA_DISCOVERY_MAX_CONCURRENCY: '2'
+      VA_PROVIDER_FANOUT: '3'
+      VA_MAX_COST_CLASS: '1'
       NVIDIA_NIM_API_KEYS: ${{ secrets.NVIDIA_NIM_API_KEYS }}
       COHERE_API_KEYS: ${{ secrets.COHERE_API_KEYS }}
       OPENROUTER_API_KEYS: ${{ secrets.OPENROUTER_API_KEYS }}
@@ -38,31 +43,55 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
+          cache: npm
+
+      - name: Restore private autonomous state
+        id: restore-private-state
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/idea-staging-queue.json
+            .agent-state/crosschecks
+            .agent-state/provider-state.json
+          key: private-research-state-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            private-research-state-${{ github.ref_name }}-
 
       - name: Install dependencies
         run: |
           npm ci
           python -m pip install --disable-pip-version-check -r cloud-control-plane/requirements.txt -r services/ventureatlas-worker/requirements.txt
 
-      - name: Run provider health check
-        run: python scripts/va_orchestrator.py --test
+      - name: Run bounded comprehensive pipeline
+        id: comprehensive-pipeline
+        run: >-
+          python scripts/va-massive-orchestrator.py
+          --once
+          --max-iterations 1
+          --max-runtime-minutes 24
+          --step-timeout-seconds 600
+          --panel-size 3
+          --panel-limit 2
+          --strict-panel
 
-      - name: Prove live external provider overlap
-        id: live-proof
-        continue-on-error: true
-        run: python scripts/live-provider-proof.py --minimum-external 2 --fanout 2 --max-cost 1
+      - name: Validate private state before persistence
+        id: private-state-valid
+        if: always()
+        run: >-
+          python -c "import json, pathlib;
+          p=pathlib.Path('data/idea-staging-queue.json');
+          data=json.loads(p.read_text(encoding='utf-8')) if p.exists() else [];
+          assert isinstance(data,list) and all(isinstance(x,dict) and str(x.get('id','')).startswith('candidate-') for x in data)"
 
-      - name: Run autonomous discovery generator
-        run: python scripts/autonomous-idea-generator.py
-
-      - name: Refresh derived repository truth
-        run: |
-          npm run generate
-          node scripts/validate-data.js
-
-      - name: Run data validation & quality suite
-        run: npm run quality:source
+      - name: Save private autonomous state
+        if: always() && steps.private-state-valid.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/idea-staging-queue.json
+            .agent-state/crosschecks
+            .agent-state/provider-state.json
+          key: private-research-state-${{ github.ref_name }}-${{ github.run_id }}
 
       - name: Upload unattended execution receipts
         if: always()
@@ -70,18 +99,10 @@ jobs:
         with:
           name: venture-atlas-unattended-receipts-${{ github.run_id }}
           path: |
-            .agent-state/live-provider-proof.json
-            .agent-state/autonomy-heartbeat.json
+            .agent-state/orchestrator-runs
+            .agent-state/pipeline-preflight
+            .agent-state/crosschecks
+            .agent-state/provider-state.json
             data/idea-staging-queue.json
-            data/rankings.json
-            data/repository-meta.json
-            data/build-manifest.json
-            data/validation-summary.json
           if-no-files-found: warn
           retention-days: 30
-
-      - name: Enforce live-provider proof after graceful work completion
-        if: steps.live-proof.outcome != 'success'
-        run: |
-          echo "Live two-provider overlap was not proven; workflow completed fallback work but is DEGRADED."
-          exit 1

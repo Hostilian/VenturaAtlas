@@ -31,6 +31,13 @@ test('cloud research workflow installs Python worker dependencies before quality
   }
 });
 
+test('cloud image uses the declared Node major and installs quality dependencies', () => {
+  const dockerfile = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'Dockerfile'), 'utf8');
+  assert.match(dockerfile, /FROM node:22-bookworm-slim AS node-runtime/);
+  assert.match(dockerfile, /RUN npm ci\s*$/m);
+  assert.doesNotMatch(dockerfile, /npm ci --only=production/);
+});
+
 test('Terraform and job runner share exact Secret Manager IDs', () => {
   const terraform = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'terraform', 'main.tf'), 'utf8');
   const runner = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'job_runner.py'), 'utf8');
@@ -56,8 +63,10 @@ test('Cloud job prevents overlapping repository writers and bounds provider cost
   assert.match(terraform, /task_count\s*=\s*1/);
   assert.match(terraform, /parallelism\s*=\s*1/);
   assert.match(terraform, /max_retries\s*=\s*1/);
-  assert.match(terraform, /name\s*=\s*"VA_PROVIDER_FANOUT"[\s\S]*?value\s*=\s*"2"/);
+  assert.match(terraform, /name\s*=\s*"VA_PROVIDER_FANOUT"[\s\S]*?value\s*=\s*"3"/);
   assert.match(terraform, /name\s*=\s*"VA_MAX_COST_CLASS"[\s\S]*?value\s*=\s*"1"/);
+  assert.match(terraform, /name\s*=\s*"VA_EXECUTION_SCOPE"[\s\S]*?value\s*=\s*"cloud"/);
+  assert.match(terraform, /name\s*=\s*"VA_REVIEW_PANEL_SIZE"[\s\S]*?value\s*=\s*"3"/);
 });
 
 test('Orchestrator never disables TLS certificate verification', () => {
@@ -80,6 +89,8 @@ test('Cloud publication freezes a checkout and enforces an exact diff manifest',
   const runner = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'job_runner.py'), 'utf8');
   const terraform = fs.readFileSync(path.join(ROOT, 'cloud-control-plane', 'terraform', 'main.tf'), 'utf8');
   assert.match(runner, /VA_BASELINE_SHA/);
+  assert.match(runner, /VA_BASELINE_REF/);
+  assert.match(runner, /merge-base", "--is-ancestor/);
   assert.match(runner, /VA_EXPECTED_DIFF_MANIFEST/);
   assert.match(runner, /unexpected autonomous diff paths/);
   assert.match(runner, /missing expected autonomous diff paths/);
@@ -91,4 +102,14 @@ test('Cloud publication freezes a checkout and enforces an exact diff manifest',
   assert.match(terraform, /name\s*=\s*"VA_PUBLICATION_EXPECTED"[\s\S]*?value\s*=\s*"0"/);
   assert.match(runner, /if_generation_match=precondition/);
   assert.match(runner, /private paths cannot be published to Git/);
+});
+
+test('scheduled research restores private state and requires a three-provider panel', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
+  assert.match(workflow, /actions\/cache\/restore@v4/);
+  assert.match(workflow, /actions\/cache\/save@v4/);
+  assert.match(workflow, /va-massive-orchestrator\.py/);
+  assert.match(workflow, /--panel-size 3/);
+  assert.match(workflow, /--strict-panel/);
+  assert.doesNotMatch(workflow, /VA_CREDIT_SAFE_MODE:\s*['"]?1/);
 });

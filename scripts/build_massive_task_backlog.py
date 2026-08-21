@@ -408,11 +408,20 @@ dependency_map = {
 }
 
 for task in tasks:
-    task["dependencies"] = dependency_map.get(task["id"], [])
+    original_id = task["id"]
+    task["id"] = original_id.replace("TASK-", "CAP-", 1)
+    task["dependencies"] = [
+        dependency.replace("TASK-", "CAP-", 1)
+        for dependency in dependency_map.get(original_id, [])
+    ]
 
 graph_data = {
     "graph_version": "2.4.0",
     "generated_at": now,
+    "authoritative": False,
+    "authority": ".agent-system/backlog.json",
+    "purpose": "non-authoritative capability and dependency plan",
+    "task_id_namespace": "CAP-",
     "total_tasks": len(tasks),
     "runtime_private_paths": ["data/idea-staging-queue.json"],
     "tasks": tasks

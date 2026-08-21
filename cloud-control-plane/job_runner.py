@@ -103,8 +103,11 @@ def configure_environment() -> None:
 def prepare_checkout() -> str:
     global BASE_DIR
     baseline_sha = os.environ.get("VA_BASELINE_SHA", "").strip()
-    if not re.fullmatch(r"[a-f0-9]{40}", baseline_sha):
-        raise RuntimeError("VA_BASELINE_SHA must be an explicit 40-character commit SHA")
+    baseline_ref = os.environ.get("VA_BASELINE_REF", "main").strip()
+    if baseline_sha and not re.fullmatch(r"[a-f0-9]{40}", baseline_sha):
+        raise RuntimeError("VA_BASELINE_SHA must be empty or an explicit 40-character commit SHA")
+    if not re.fullmatch(r"[A-Za-z0-9._/-]{1,120}", baseline_ref) or ".." in baseline_ref:
+        raise RuntimeError("VA_BASELINE_REF contains unsafe characters")
     token = fetch_gcp_secret("GITHUB_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
     if os.path.isdir(os.path.join(IMAGE_ROOT, ".git")):
         checkout = IMAGE_ROOT
@@ -115,6 +118,13 @@ def prepare_checkout() -> str:
         checkout = tempfile.mkdtemp(prefix="venture-atlas-cloud-checkout-")
         run_checked(["git", "clone", "--no-checkout", repository_url, checkout], cwd=os.path.dirname(checkout), env=git_environment(token))
     run_checked(["git", "fetch", "--prune", "origin"], cwd=checkout, env=git_environment(token))
+    if not baseline_sha:
+        baseline_sha = run_checked(
+            ["git", "rev-parse", f"refs/remotes/origin/{baseline_ref}"], cwd=checkout
+        ).stdout.strip()
+        if not re.fullmatch(r"[a-f0-9]{40}", baseline_sha):
+            raise RuntimeError(f"VA_BASELINE_REF did not resolve to an immutable commit: {baseline_ref}")
+        os.environ["VA_BASELINE_SHA"] = baseline_sha
     run_checked(["git", "checkout", "--detach", baseline_sha], cwd=checkout)
     head = run_checked(["git", "rev-parse", "HEAD"], cwd=checkout).stdout.strip()
     if head != baseline_sha:
@@ -159,8 +169,24 @@ def hydrate_private_staging() -> dict | None:
     if envelope.get("queueDigest") != expected_digest:
         raise RuntimeError("private staging checkpoint digest mismatch")
     baseline = os.environ.get("VA_BASELINE_SHA", "")
-    if envelope.get("baselineSha") != baseline and envelope.get("baselineSha") != os.environ.get("VA_STAGING_MIGRATION_FROM_SHA", ""):
-        raise RuntimeError("private staging checkpoint baseline mismatch; explicit migration is required")
+    previous_baseline = str(envelope.get("baselineSha", ""))
+    explicit_migration = os.environ.get("VA_STAGING_MIGRATION_FROM_SHA", "")
+    if previous_baseline != baseline and previous_baseline != explicit_migration:
+        if not re.fullmatch(r"[a-f0-9]{40}", previous_baseline):
+            raise RuntimeError("private staging checkpoint has an invalid baseline")
+        ancestry = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", previous_baseline, baseline],
+            cwd=BASE_DIR, capture_output=True, text=True, timeout=30,
+        )
+        if ancestry.returncode != 0:
+            raise RuntimeError(
+                "private staging checkpoint baseline is not an ancestor of the current baseline; "
+                "explicit migration is required"
+            )
+        log_event("NOTICE", "Forward-migrating private staging checkpoint", {
+            "fromBaseline": previous_baseline,
+            "toBaseline": baseline,
+        })
     parsed = envelope["queue"]
     if len(parsed) > 5000 or any(not isinstance(item, dict) or not str(item.get("id", "")).startswith("candidate-") for item in parsed):
         raise RuntimeError("private staging checkpoint contains invalid candidates")
@@ -221,16 +247,20 @@ def run_command(command: list[str], label: str) -> None:
     log_event("INFO", f"{label} completed", {"output_tail": result.stdout[-300:]})
 
 
-def execute_discovery() -> None:
-    run_command([
-        sys.executable, os.path.join(BASE_DIR, "scripts", "autonomous-idea-generator.py"),
-        "--max-concurrency", os.environ.get("VA_MAX_CONCURRENCY", "3"),
-        "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1"),
-    ], "Autonomous discovery")
-
-
-def rebuild_metadata_and_site() -> None:
-    run_command(["npm", "run", "quality"], "Fail-closed quality and build pipeline")
+def execute_comprehensive_pipeline() -> None:
+    command = [
+        sys.executable,
+        os.path.join(BASE_DIR, "scripts", "va-massive-orchestrator.py"),
+        "--once",
+        "--max-iterations", "1",
+        "--max-runtime-minutes", os.environ.get("VA_CLOUD_PIPELINE_RUNTIME_MINUTES", "45"),
+        "--step-timeout-seconds", os.environ.get("VA_CLOUD_COMMAND_TIMEOUT_SECONDS", "900"),
+        "--panel-size", os.environ.get("VA_REVIEW_PANEL_SIZE", "3"),
+        "--panel-limit", os.environ.get("VA_REVIEW_PANEL_LIMIT", "2"),
+    ]
+    if os.environ.get("VA_STRICT_REVIEW_PANEL", "1").lower() not in {"0", "false", "no"}:
+        command.append("--strict-panel")
+    run_command(command, "Comprehensive autonomous research pipeline")
 
 
 def changed_paths(cwd: str) -> set[str]:
@@ -331,8 +361,7 @@ def main() -> int:
     checkout = prepare_checkout()
     log_event("INFO", "Prepared immutable checkout", {"checkout": checkout, "baseline": os.environ.get("VA_BASELINE_SHA")})
     checkpoint_generation = hydrate_private_staging()
-    execute_discovery()
-    rebuild_metadata_and_site()
+    execute_comprehensive_pipeline()
     publication = push_updates_to_github()
     checkpoint = persist_private_staging(checkpoint_generation)
     log_event("INFO", "Cloud run finished", {"privateCheckpoint": checkpoint, "publication": publication})

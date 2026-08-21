@@ -55,7 +55,7 @@ class MassiveOrchestratorFailureTests(unittest.TestCase):
             return orchestrator.StepResult(name, "succeeded", 0, 1, "generated=0 staged=0", "")
         results, final_status, utility = orchestrator.execute_iteration(self.specs(), runner=runner, content_probe=lambda: snapshot)
         self.assertEqual(final_status, "SUCCEEDED_NO_OP")
-        self.assertEqual([result.status for result in results], ["succeeded", "skipped", "skipped", "skipped"])
+        self.assertEqual([result.status for result in results], ["succeeded", "succeeded", "skipped", "skipped"])
         self.assertEqual(utility["outcome"], "NO_OP")
 
     def test_receipt_text_redacts_token_shapes(self):

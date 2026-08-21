@@ -39,11 +39,23 @@ variable "repository_url" {
 
 variable "baseline_commit" {
   type        = string
-  description = "Exact immutable 40-character commit SHA used as the autonomous job baseline"
+  description = "Optional exact commit SHA. Leave empty to resolve baseline_ref once at the start of each run."
+  default     = ""
 
   validation {
-    condition     = can(regex("^[0-9a-f]{40}$", var.baseline_commit))
-    error_message = "baseline_commit must be an exact lowercase 40-character Git commit SHA."
+    condition     = var.baseline_commit == "" || can(regex("^[0-9a-f]{40}$", var.baseline_commit))
+    error_message = "baseline_commit must be empty or an exact lowercase 40-character Git commit SHA."
+  }
+}
+
+variable "baseline_ref" {
+  type        = string
+  description = "Remote branch resolved to an immutable SHA at job start when baseline_commit is empty"
+  default     = "main"
+
+  validation {
+    condition     = can(regex("^[A-Za-z0-9._/-]{1,120}$", var.baseline_ref)) && !strcontains(var.baseline_ref, "..")
+    error_message = "baseline_ref must be a safe remote branch name."
   }
 }
 
@@ -204,11 +216,27 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
           value = "1"
         }
         env {
+          name  = "VA_EXECUTION_SCOPE"
+          value = "cloud"
+        }
+        env {
           name  = "VA_PROVIDER_FANOUT"
-          value = "2"
+          value = "3"
         }
         env {
           name  = "VA_MAX_COST_CLASS"
+          value = "1"
+        }
+        env {
+          name  = "VA_REVIEW_PANEL_SIZE"
+          value = "3"
+        }
+        env {
+          name  = "VA_REVIEW_PANEL_LIMIT"
+          value = "2"
+        }
+        env {
+          name  = "VA_STRICT_REVIEW_PANEL"
           value = "1"
         }
         env {
@@ -218,6 +246,10 @@ resource "google_cloud_run_v2_job" "venture_atlas_worker" {
         env {
           name  = "VA_BASELINE_SHA"
           value = var.baseline_commit
+        }
+        env {
+          name  = "VA_BASELINE_REF"
+          value = var.baseline_ref
         }
         env {
           name  = "VA_EXPECTED_DIFF_MANIFEST"

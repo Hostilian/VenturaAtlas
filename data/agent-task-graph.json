@@ -1,14 +1,17 @@
 {
   "graph_version": "2.4.0",
-  "generated_at": "2026-08-09T11:42:30.790541+00:00",
+  "generated_at": "2026-08-21T12:13:34.239974+00:00",
+  "authoritative": false,
+  "authority": ".agent-system/backlog.json",
+  "purpose": "non-authoritative capability and dependency plan",
+  "task_id_namespace": "CAP-",
   "total_tasks": 30,
   "runtime_private_paths": [
     "data/idea-staging-queue.json"
   ],
   "tasks": [
     {
-      "id": "TASK-001",
-      "dependencies": [],
+      "id": "CAP-001",
       "title": "Establish Canonical Provider Registry & Eliminate Configuration Drift",
       "goal": "Maintain non-secret config/providers.json defining provider capabilities, cost classes, local status, and env variable mappings.",
       "workstream": "Foundation & Data Integrity",
@@ -23,13 +26,13 @@
       "status": "completed",
       "receipt": {
         "commit": "0c8ecb1",
-        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "completedAt": "2026-08-21T12:13:34.239974+00:00",
         "verifier": "integration-release-agent"
-      }
+      },
+      "dependencies": []
     },
     {
-      "id": "TASK-002",
-      "dependencies": [],
+      "id": "CAP-002",
       "title": "Refactor VenturaAtlas Agent Roster & File Ownership Rules",
       "goal": "Update .agents/AGENTS.md and maintain specialist role manifests for VenturaAtlas domain agents.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -44,13 +47,13 @@
       "status": "completed",
       "receipt": {
         "commit": "0c8ecb1",
-        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "completedAt": "2026-08-21T12:13:34.239974+00:00",
         "verifier": "integration-release-agent"
-      }
+      },
+      "dependencies": []
     },
     {
-      "id": "TASK-003",
-      "dependencies": ["TASK-001", "TASK-002"],
+      "id": "CAP-003",
       "title": "Build Capability-Aware Provider Scheduler & Health Monitor",
       "goal": "Maintain scripts/va_orchestrator.py to select providers based on task capabilities, health, cost, and latency.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -65,13 +68,16 @@
       "status": "completed",
       "receipt": {
         "commit": "0c8ecb1",
-        "completedAt": "2026-08-09T11:42:30.790541+00:00",
+        "completedAt": "2026-08-21T12:13:34.239974+00:00",
         "verifier": "integration-release-agent"
-      }
+      },
+      "dependencies": [
+        "CAP-001",
+        "CAP-002"
+      ]
     },
     {
-      "id": "TASK-004",
-      "dependencies": ["TASK-003"],
+      "id": "CAP-004",
       "title": "Autonomous Idea Generation & Candidate Screening",
       "goal": "Discover frontier business opportunities under EU regulations and emerging tech paradigms.",
       "workstream": "Autonomous Discovery & Research",
@@ -83,11 +89,13 @@
         "scripts/autonomous-idea-generator.py"
       ],
       "preferred_agent": "research-intelligence-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003"
+      ]
     },
     {
-      "id": "TASK-005",
-      "dependencies": ["TASK-004"],
+      "id": "CAP-005",
       "title": "Evidence Verification & Claim-to-Source Mapping",
       "goal": "Extract primary regulatory and market sources and map supporting citations to canonical opportunities.",
       "workstream": "Evidence & Provenance",
@@ -100,11 +108,13 @@
         "scripts/build_public_sources.py"
       ],
       "preferred_agent": "evidence-provenance-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-004"
+      ]
     },
     {
-      "id": "TASK-006",
-      "dependencies": ["TASK-005"],
+      "id": "CAP-006",
       "title": "Multi-Lens Opportunity Ranking & Sensitivity Analysis",
       "goal": "Recompute composite scores and ranking views across 282 canonical ideas and output leaderboard.",
       "workstream": "Decision Science & Ranking",
@@ -116,11 +126,13 @@
         "scripts/va-ranker.py"
       ],
       "preferred_agent": "ranking-and-fit-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-007",
-      "dependencies": ["TASK-005"],
+      "id": "CAP-007",
       "title": "Financial Model Scenarios & Gross Margin Audit",
       "goal": "Validate unit economics, CAC/LTV bounds, and zero-dollar MVP expenditure templates.",
       "workstream": "Opportunity Economics",
@@ -132,11 +144,13 @@
         "assets/js/site.js"
       ],
       "preferred_agent": "opportunity-economics-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-008",
-      "dependencies": ["TASK-005", "TASK-006", "TASK-007"],
+      "id": "CAP-008",
       "title": "Disconfirming Red-Team Pass — 'Why This Might Fail'",
       "goal": "Execute adversarial pass over high-ranked opportunities to identify unevidenced assumptions and kill criteria.",
       "workstream": "Adversarial Review",
@@ -148,11 +162,15 @@
         "scripts/va_runtime/adversarial_pass.py"
       ],
       "preferred_agent": "red-team-critic-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-005",
+        "CAP-006",
+        "CAP-007"
+      ]
     },
     {
-      "id": "TASK-009",
-      "dependencies": ["TASK-004"],
+      "id": "CAP-009",
       "title": "Client-Side Search Index & Global Command Palette",
       "goal": "Rebuild compact search-index.json and optimize client-side search latency under 50ms.",
       "workstream": "Search & UX",
@@ -164,11 +182,13 @@
         "scripts/build-search-index.js"
       ],
       "preferred_agent": "search-discovery-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-004"
+      ]
     },
     {
-      "id": "TASK-010",
-      "dependencies": ["TASK-009"],
+      "id": "CAP-010",
       "title": "PWA Offline Caching & Service Worker Contract Audit",
       "goal": "Verify sw.js offline precaching, manifest icons, and sitemap resolution.",
       "workstream": "PWA Platform",
@@ -181,11 +201,13 @@
         "tests/pwa-contract.test.js"
       ],
       "preferred_agent": "test-quality-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-009"
+      ]
     },
     {
-      "id": "TASK-011",
-      "dependencies": ["TASK-001"],
+      "id": "CAP-011",
       "title": "Security & Secret Redaction Scanner",
       "goal": "Run check_privacy.py and check-public-artifact.js to guarantee zero API keys or private room data leak into _site/.",
       "workstream": "Security & Privacy",
@@ -197,11 +219,13 @@
         "scripts/check-public-artifact.js"
       ],
       "preferred_agent": "security-privacy-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-001"
+      ]
     },
     {
-      "id": "TASK-012",
-      "dependencies": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011"],
+      "id": "CAP-012",
       "title": "Repository Metadata & Documentation Stats Sync",
       "goal": "Generate repository-meta.json and synchronize prose counts across README, status, and index.html.",
       "workstream": "Build & Release",
@@ -213,11 +237,17 @@
         "scripts/build-repository-meta.js"
       ],
       "preferred_agent": "data-integrity-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-005",
+        "CAP-006",
+        "CAP-009",
+        "CAP-010",
+        "CAP-011"
+      ]
     },
     {
-      "id": "TASK-013",
-      "dependencies": ["TASK-009", "TASK-010"],
+      "id": "CAP-013",
       "title": "Deep Frontend Audit & DOM Event Inspection",
       "goal": "Verify zero inline event handlers, 100% accessible keyboard navigation, and zero console errors.",
       "workstream": "Frontend UX",
@@ -229,11 +259,14 @@
         "assets/js/site.js"
       ],
       "preferred_agent": "product-ux-architect",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-009",
+        "CAP-010"
+      ]
     },
     {
-      "id": "TASK-014",
-      "dependencies": ["TASK-004", "TASK-005"],
+      "id": "CAP-014",
       "title": "Prospective Research Run Provenance Logging",
       "goal": "Record research queries, candidate sources, inclusions/exclusions, and claims changed in research-runs.json.",
       "workstream": "Evidence & Provenance",
@@ -245,11 +278,14 @@
         "scripts/record_research_run.py"
       ],
       "preferred_agent": "evidence-provenance-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-015",
-      "dependencies": ["TASK-001", "TASK-003", "TASK-011"],
+      "id": "CAP-015",
       "title": "Cloud Run Job & Control Plane Fail-Closed Auth Audit",
       "goal": "Verify cloud-control-plane/job_runner.py and worker service fail-closed authentication and execution receipts.",
       "workstream": "Cloud Runtime",
@@ -261,11 +297,15 @@
         "services/ventureatlas-worker/"
       ],
       "preferred_agent": "autonomous-orchestration-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-001",
+        "CAP-003",
+        "CAP-011"
+      ]
     },
     {
-      "id": "TASK-016",
-      "dependencies": ["TASK-005", "TASK-006", "TASK-009", "TASK-010", "TASK-011", "TASK-012", "TASK-013", "TASK-015"],
+      "id": "CAP-016",
       "title": "Static Artifact Compilation & GitHub Pages Release Build",
       "goal": "Execute npm run quality to produce 5,500+ static files in _site/ with 100% test pass.",
       "workstream": "Release Gate",
@@ -277,11 +317,20 @@
         "scripts/build-public-artifact.js"
       ],
       "preferred_agent": "integration-release-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-005",
+        "CAP-006",
+        "CAP-009",
+        "CAP-010",
+        "CAP-011",
+        "CAP-012",
+        "CAP-013",
+        "CAP-015"
+      ]
     },
     {
-      "id": "TASK-017",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-017",
       "title": "EU SoHO Regulation 2024/1938 Gamete Ledger Surveillance",
       "goal": "Continuously update donor conception family-limit ledger parameters and cross-institution coordination schemas.",
       "workstream": "Autonomous Discovery & Research",
@@ -292,11 +341,15 @@
         "ideas/kinledger-donorrecall-network.md"
       ],
       "preferred_agent": "research-intelligence-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-018",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-018",
       "title": "AI Content Provenance C2PA & SynthID Chaos Test Expansion",
       "goal": "Expand test cases for MarkCI automated chaos testing harness for AI content provenance under EU AI Act Art. 50.",
       "workstream": "Adversarial Review",
@@ -307,11 +360,15 @@
         "ideas/provenancechaos-markci.md"
       ],
       "preferred_agent": "test-quality-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-019",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-019",
       "title": "Open AI Model SCA License Meter & Telemetry Mapping",
       "goal": "Update ModelRights Compiler mappings for open AI model licenses linked to real-time business telemetry.",
       "workstream": "Opportunity Economics",
@@ -322,11 +379,15 @@
         "ideas/licensemeter-modelrights-compiler.md"
       ],
       "preferred_agent": "opportunity-economics-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-020",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-020",
       "title": "EU CRCF 2026 Permanent Carbon Removal Reversal Ledger Audit",
       "goal": "Refine asset-liability management formulas for certified carbon removals under EU CRCF 2026 methodology.",
       "workstream": "Evidence & Provenance",
@@ -337,11 +398,15 @@
         "ideas/permanencedesk-carbon-liability-ledger.md"
       ],
       "preferred_agent": "evidence-provenance-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-021",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-021",
       "title": "Data Centre Sustainability Rating Pre-Observation Twin Simulator",
       "goal": "Update competitive benchmarking formulas for EU data centre sustainability labels.",
       "workstream": "Opportunity Economics",
@@ -352,11 +417,15 @@
         "ideas/datacentre-labeltwin.md"
       ],
       "preferred_agent": "opportunity-economics-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-022",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-022",
       "title": "EU Forced Labour Ban SKU Blast-Radius Investigation Engine",
       "goal": "Update supply chain allegation incident response rules under EU Forced Labour Regulation (EU) 2024/1390.",
       "workstream": "Autonomous Discovery & Research",
@@ -367,11 +436,15 @@
         "ideas/forcedlabor-casegraph.md"
       ],
       "preferred_agent": "research-intelligence-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-023",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-023",
       "title": "Post-Donation Genomic Surveillance & Variant Re-interpretation",
       "goal": "Update historical screening context engine for gamete cryobanks under BASG 2026 safety notices.",
       "workstream": "Evidence & Provenance",
@@ -382,11 +455,15 @@
         "ideas/donor-variantwatch.md"
       ],
       "preferred_agent": "evidence-provenance-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-024",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-024",
       "title": "Peer-to-Peer Energy Sharing Allocation & Billing Ledger Audit",
       "goal": "Update peer-to-peer energy sharing audit formulas under EU electricity market reform.",
       "workstream": "Opportunity Economics",
@@ -397,11 +474,15 @@
         "ideas/energyshare-auditor.md"
       ],
       "preferred_agent": "opportunity-economics-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-025",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-025",
       "title": "DNA Synthesis Provider Biosecurity Screening Benchmark",
       "goal": "Update customer verification rules under Global Nucleic Acid Synthesis Screening Standards (GDM 2026).",
       "workstream": "Security & Privacy",
@@ -412,11 +493,15 @@
         "ideas/bioscreen-bench.md"
       ],
       "preferred_agent": "security-privacy-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-026",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-005"],
+      "id": "CAP-026",
       "title": "EU EPBD Building Passport Embodied Carbon Drift Auditor",
       "goal": "Update as-built vs as-designed embodied carbon divergence audit formulas for EU EPBD building passports.",
       "workstream": "Decision Science & Ranking",
@@ -427,11 +512,15 @@
         "ideas/as-built-carbon-drift.md"
       ],
       "preferred_agent": "ranking-and-fit-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-005"
+      ]
     },
     {
-      "id": "TASK-027",
-      "dependencies": ["TASK-009", "TASK-010", "TASK-013"],
+      "id": "CAP-027",
       "title": "Offline Local Room Collaboration Export Packet Validation",
       "goal": "Audit JSON import/export decision packet validation in docs/room.html and assets/js/features/collaboration.js.",
       "workstream": "Frontend UX",
@@ -443,11 +532,15 @@
         "docs/room.html"
       ],
       "preferred_agent": "frontend-platform-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-009",
+        "CAP-010",
+        "CAP-013"
+      ]
     },
     {
-      "id": "TASK-028",
-      "dependencies": ["TASK-002", "TASK-003", "TASK-011"],
+      "id": "CAP-028",
       "title": "Antigravity Reusable Workflow Integrity Verification",
       "goal": "Verify all 7 native workflows in .agents/workflows/ against current CLI scripts.",
       "workstream": "Agent Roster & Orchestration Engine",
@@ -458,11 +551,15 @@
         ".agents/workflows/"
       ],
       "preferred_agent": "autonomous-orchestration-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-002",
+        "CAP-003",
+        "CAP-011"
+      ]
     },
     {
-      "id": "TASK-029",
-      "dependencies": ["TASK-003", "TASK-004", "TASK-011", "TASK-015"],
+      "id": "CAP-029",
       "title": "Continuous Unattended Daemon Loop Health Monitor",
       "goal": "Run va-daemon-runner.py in background mode and monitor .agent-state/logs/unattended-runner.log.",
       "workstream": "Autonomous Discovery & Research",
@@ -474,11 +571,16 @@
         ".agent-state/logs/"
       ],
       "preferred_agent": "autonomous-orchestration-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-011",
+        "CAP-015"
+      ]
     },
     {
-      "id": "TASK-030",
-      "dependencies": ["TASK-016", "TASK-027", "TASK-028", "TASK-029"],
+      "id": "CAP-030",
       "title": "Full Static Site Re-build & Verification Gate",
       "goal": "Execute full static build and ensure 5,400+ HTML files and search indexes are up to date.",
       "workstream": "Release Gate",
@@ -489,7 +591,13 @@
         "_site/"
       ],
       "preferred_agent": "integration-release-agent",
-      "status": "pending"
+      "status": "pending",
+      "dependencies": [
+        "CAP-016",
+        "CAP-027",
+        "CAP-028",
+        "CAP-029"
+      ]
     }
   ]
 }

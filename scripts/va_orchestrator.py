@@ -783,6 +783,75 @@ def call_llm_parallel(prompt: str, domain_hint: dict = None, allow_own_orch: boo
     _record_success(state, "own-orch")
     return resp, "own-orch"
 
+
+def call_llm_panel(prompt: str, domain_hint: dict = None, *, panel_size: int = 3,
+                   minimum_responses: int = 3, required_capabilities: list[str] = None,
+                   max_cost_class: int = 1, match_mode: str = "any",
+                   include_own_orch: bool = False) -> list[dict]:
+    """Run a real independent provider panel and wait for every selected reviewer.
+
+    This is deliberately different from ``call_llm_parallel``. The normal parallel
+    path races providers and returns the first valid answer for latency. A panel is
+    a cross-check contract: it keeps distinct provider responses, records failures,
+    and fails closed when fewer than ``minimum_responses`` reviewers answer.
+
+    Panel responses are model opinions, not external evidence. Callers must not
+    promote them into verified source claims without separate source capture.
+    """
+    panel_size = max(1, int(panel_size))
+    minimum_responses = max(1, int(minimum_responses))
+    if minimum_responses > panel_size:
+        raise ValueError("minimum_responses cannot exceed panel_size")
+    if os.environ.get("VA_CREDIT_SAFE_MODE", "0").lower() in ("1", "true", "yes"):
+        max_cost_class = 0
+
+    state = _load_state()
+    scheduler = get_provider_scheduler()
+    selected = scheduler.select_providers_for_task(
+        required_capabilities=required_capabilities,
+        max_cost_class=max_cost_class,
+        allow_own_orch=include_own_orch,
+        match_mode=match_mode,
+        requires_external_evidence=False,
+    )
+    selected = [
+        provider for provider in selected
+        if (include_own_orch or provider != "own-orch")
+        and not _is_circuit_open(state["providers"].get(provider, {}))
+    ][:panel_size]
+    if len(selected) < minimum_responses:
+        raise NoEligibleProviderError(
+            f"PANEL_CAPACITY_SHORTFALL: need {minimum_responses} distinct providers, "
+            f"only {len(selected)} eligible ({', '.join(selected) or 'none'})"
+        )
+
+    log_info(f"[INDEPENDENT AI PANEL] Launching reviewers: {', '.join(selected)}")
+    responses: list[dict] = []
+    with ThreadPoolExecutor(max_workers=len(selected)) as executor:
+        futures = {
+            executor.submit(_call_single_provider, provider, prompt, domain_hint): provider
+            for provider in selected
+        }
+        for future in as_completed(futures):
+            provider = futures[future]
+            try:
+                result = future.result()
+            except Exception as exc:
+                log_warn(f"Panel reviewer {provider} failed: {type(exc).__name__}")
+                continue
+            if result:
+                content, provider_id = result
+                responses.append({"provider": provider_id, "content": content})
+
+    responses.sort(key=lambda item: selected.index(item["provider"]))
+    if len(responses) < minimum_responses:
+        succeeded = ", ".join(item["provider"] for item in responses) or "none"
+        raise NoEligibleProviderError(
+            f"PANEL_RESPONSE_SHORTFALL: need {minimum_responses}, received "
+            f"{len(responses)} from {succeeded}"
+        )
+    return responses
+
 def call_llm(prompt: str, domain_hint: dict = None, allow_own_orch: bool = True,
              required_capabilities: list[str] = None, max_cost_class: int = 3,
              match_mode: str = "all", requires_external_evidence: bool = False) -> tuple[str, str]:

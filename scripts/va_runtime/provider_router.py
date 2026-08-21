@@ -107,6 +107,10 @@ class CapabilityProviderScheduler:
         providers = self.registry.get("providers", {})
         candidates = []
         req_caps = set(required_capabilities or [])
+        execution_scope = os.environ.get(
+            "VA_EXECUTION_SCOPE",
+            "local-windows" if os.name == "nt" else "self-hosted",
+        ).strip()
 
         for p_id, p_cfg in providers.items():
             if p_id == "own-orch" and (not allow_own_orch or requires_external_evidence):
@@ -120,6 +124,9 @@ class CapabilityProviderScheduler:
                     continue
             p_cost = p_cfg.get("costClass", 0)
             if p_cost > max_cost_class:
+                continue
+            allowed_scopes = set(p_cfg.get("executionScopes", []))
+            if allowed_scopes and execution_scope not in allowed_scopes:
                 continue
 
             p_caps = set(p_cfg.get("capabilities", []))

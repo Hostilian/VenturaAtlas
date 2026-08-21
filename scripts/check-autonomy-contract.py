@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+"""Fail-closed checks for autonomy authority, cloud recurrence, and provider scope."""
+
+from __future__ import annotations
+
+import datetime
+import json
+import os
+import re
+import sys
+
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def load_json(relative: str):
+    with open(os.path.join(ROOT, relative), "r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def main() -> int:
+    errors: list[str] = []
+    warnings: list[str] = []
+    backlog = load_json(".agent-system/backlog.json")
+    state = load_json(".agent-system/state.json")
+    meta = load_json("data/repository-meta.json")
+    providers = load_json("config/providers.json").get("providers", {})
+    health = load_json(".agent-system/provider-registry.json")
+    graph = load_json("data/agent-task-graph.json")
+
+    tasks = backlog.get("tasks", [])
+    task_ids = [str(task.get("id", "")) for task in tasks]
+    if not task_ids or any(not task_id for task_id in task_ids):
+        errors.append("authoritative backlog contains a missing task ID")
+    if len(task_ids) != len(set(task_ids)):
+        errors.append("authoritative backlog contains duplicate task IDs")
+    known = set(task_ids)
+    for task in tasks:
+        for dependency in task.get("dependencies", []):
+            if dependency not in known:
+                errors.append(f"{task.get('id')} has unknown dependency {dependency}")
+
+    active = set(state.get("activeTasks", []))
+    completed = set(state.get("completedTasks", []))
+    if active & completed:
+        errors.append(f"tasks are both active and completed: {sorted(active & completed)}")
+    for task_id in sorted((active | completed) - known):
+        errors.append(f"runtime state references unknown authoritative task {task_id}")
+
+    markdown = open(os.path.join(ROOT, ".agent-system", "BACKLOG.md"), "r", encoding="utf-8").read()
+    markdown_ids = set(re.findall(r"^\|\s+([A-Z]+-[0-9A-Z]+)\s+\|", markdown, re.M))
+    if markdown_ids != known:
+        errors.append(
+            "BACKLOG.md is not a lossless projection of backlog.json: "
+            f"missing={sorted(known - markdown_ids)} extra={sorted(markdown_ids - known)}"
+        )
+
+    counts = meta.get("counts", {})
+    expected_metrics = {
+        "canonicalIdeas": counts.get("canonicalIdeas"),
+        "stagedIdeas": counts.get("stagedIdeas"),
+        "totalIdeas": counts.get("totalIdeas"),
+        "categories": counts.get("categories"),
+        "sources": counts.get("sources"),
+        "prompts": counts.get("prompts"),
+    }
+    for key, expected in expected_metrics.items():
+        actual = state.get("metrics", {}).get(key)
+        if actual != expected:
+            errors.append(f"state metric {key}={actual!r} differs from repository truth {expected!r}")
+
+    health_timestamp = health.get("lastHealthCheck")
+    try:
+        checked = datetime.datetime.fromisoformat(str(health_timestamp).replace("Z", "+00:00"))
+        age_hours = (datetime.datetime.now(datetime.timezone.utc) - checked).total_seconds() / 3600
+        if age_hours > 24:
+            warnings.append(f"provider health receipt is stale ({age_hours:.1f}h old)")
+    except (TypeError, ValueError):
+        errors.append("provider registry health timestamp is missing or invalid")
+
+    hermes_scopes = set(providers.get("hermes-ollama", {}).get("executionScopes", []))
+    if "cloud" in hermes_scopes:
+        errors.append("localhost Hermes must not be eligible in cloud execution scope")
+    for provider_id, config in providers.items():
+        if provider_id in {"hermes-ollama", "own-orch"}:
+            continue
+        if config.get("requiresApiKey") and "cloud" not in config.get("executionScopes", []):
+            errors.append(f"API provider {provider_id} is missing cloud execution scope")
+
+    if graph.get("authoritative") is not False or graph.get("authority") != ".agent-system/backlog.json":
+        errors.append("data/agent-task-graph.json is not explicitly marked as a non-authoritative capability plan")
+    if any(not str(task.get("id", "")).startswith("CAP-") for task in graph.get("tasks", [])):
+        errors.append("capability-plan task IDs must use CAP- namespace and cannot collide with live backlog IDs")
+
+    workflow = open(os.path.join(ROOT, ".github", "workflows", "research-cycle.yml"), "r", encoding="utf-8").read()
+    required_workflow_markers = [
+        "va-massive-orchestrator.py",
+        "--strict-panel",
+        "actions/cache/restore@v4",
+        "actions/cache/save@v4",
+        "VA_EXECUTION_SCOPE: cloud",
+    ]
+    for marker in required_workflow_markers:
+        if marker not in workflow:
+            errors.append(f"cloud research workflow is missing required marker: {marker}")
+    if re.search(r"VA_CREDIT_SAFE_MODE:\s*['\"]?1", workflow):
+        errors.append("cloud research workflow silently disables external reviewers through credit-safe mode")
+
+    clean_checkout_tests = [
+        "tests/absorption-frontier.test.js",
+        "tests/cutover-inventory-clock.test.js",
+        "tests/test_deepresearch_expansion_vii.py",
+    ]
+    for relative in clean_checkout_tests:
+        source = open(os.path.join(ROOT, relative), "r", encoding="utf-8").read()
+        if "idea-staging-queue" in source:
+            errors.append(f"cloud-critical test depends on ignored private queue state: {relative}")
+
+    print(json.dumps({
+        "status": "FAILED" if errors else "PASSED_WITH_WARNINGS" if warnings else "PASSED",
+        "authoritativeTasks": len(tasks),
+        "errors": errors,
+        "warnings": warnings,
+    }, indent=2))
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

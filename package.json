@@ -51,6 +51,7 @@
     "check:generated": "npm run check:drift",
     "check:secrets": "node scripts/check-public-artifact.js",
     "check-task-graph": "node scripts/check-task-graph.js",
+    "check:autonomy": "python scripts/check-autonomy-contract.py",
     "quality:source": "node scripts/run-quality.js source",
     "quality:artifact": "node scripts/run-quality.js artifact",
     "quality": "npm run quality:source && npm run quality:artifact",

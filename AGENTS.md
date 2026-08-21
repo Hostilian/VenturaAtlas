@@ -25,7 +25,7 @@ backlog or runtime-health truth. Codex-native configuration remains under
 This repository explicitly reconciles multi-agent configuration across dedicated surfaces:
 
 1. **Runtime Task, State & Priorities Authority (`.agent-system/`)**:
-   - `.agent-system/BACKLOG.md` & `.agent-system/backlog.json`: The authoritative prioritized work backlog (TASK-001 through TASK-008).
+   - `.agent-system/backlog.json`: The authoritative prioritized work backlog, including recurring and externally blocked work. `.agent-system/BACKLOG.md` is its generated review projection.
    - `.agent-system/MASTER_GOAL.md`: Core system directives, 12 evaluation dimensions, and non-negotiable rules.
    - `.agent-system/state.json`: Live operational state and canonical metric tracking.
    - `.agent-system/provider-registry.json`: Provider tier definitions and freshness-checked health status.

@@ -42,3 +42,6 @@ jobs:
 
       - name: Run repository drift check
         run: npm run check:drift
+
+      - name: Run autonomy authority and cloud-continuity contract
+        run: npm run check:autonomy

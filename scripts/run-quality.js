@@ -23,6 +23,7 @@ const SOURCE_STEPS = [
   ['projection-check', npmCommand, ['run', 'check:projections']],
   ['repository-consistency', npmCommand, ['run', 'check-consistency']],
   ['task-graph', npmCommand, ['run', 'check-task-graph']],
+  ['autonomy-contract', npmCommand, ['run', 'check:autonomy']],
   ['repository-drift', npmCommand, ['run', 'check:drift']],
   ['constitution-integrity', pythonCommand, ['scripts/verify_constitution.py']],
   ['privacy-scan', pythonCommand, ['scripts/check_privacy.py']],

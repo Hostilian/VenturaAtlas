@@ -123,7 +123,7 @@ def execute_iteration(step_specs: list[StepSpec], dry_run: bool = False,
             ]
             if blocking:
                 result = StepResult(spec.name, "skipped", None, 0, "", f"blocked by dependencies: {', '.join(blocking)}")
-            elif discovery_no_op and spec.name in {"migration", "ranking", "generate", "quality:source"}:
+            elif discovery_no_op and spec.name in {"ranking", "generate", "quality:source"}:
                 result = StepResult(spec.name, "skipped", None, 0, "", "NO_OP: no semantic content delta")
             else:
                 remaining = None if deadline_monotonic is None else deadline_monotonic - time.monotonic()
@@ -206,6 +206,9 @@ def main() -> int:
     parser.add_argument("--sleep-seconds", type=int, default=20, help="Sleep duration between iterations in continuous mode")
     parser.add_argument("--dry-run", action="store_true", help="Log steps without executing sub-commands")
     parser.add_argument("--step-timeout-seconds", type=int, default=900, help="Per-child hard timeout")
+    parser.add_argument("--panel-size", type=int, default=3, help="Distinct AI reviewers per staged candidate")
+    parser.add_argument("--panel-limit", type=int, default=2, help="Most recent staged candidates cross-checked per iteration")
+    parser.add_argument("--strict-panel", action="store_true", help="Fail when the requested independent panel cannot be assembled")
     parser.add_argument("--receipt-dir", default=os.path.join(BASE_DIR, ".agent-state", "orchestrator-runs"))
     args = parser.parse_args()
 
@@ -244,10 +247,23 @@ def main() -> int:
             npm_cmd = ["npm.cmd", "run", "generate"] if os.name == "nt" else ["npm", "run", "generate"]
             npm_q_cmd = ["npm.cmd", "run", "quality:source"] if os.name == "nt" else ["npm", "run", "quality:source"]
             timeout = max(1, args.step_timeout_seconds)
+            crosscheck_cmd = [
+                sys.executable,
+                "scripts/va-research-crosscheck.py",
+                "--limit", str(max(0, args.panel_limit)),
+                "--panel-size", str(max(1, args.panel_size)),
+                "--minimum-responses", str(max(1, args.panel_size)),
+                "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1"),
+            ]
+            if args.strict_panel:
+                crosscheck_cmd.append("--strict")
             specs = [
-                StepSpec("discovery", [sys.executable, "scripts/autonomous-idea-generator.py", "--max-concurrency", max_concurrency], "REQUIRED", (), timeout),
+                StepSpec("preflight", [sys.executable, "scripts/va-pipeline-preflight.py", "--timeout-seconds", str(timeout)], "REQUIRED", (), timeout),
+                StepSpec("provider-health", [sys.executable, "scripts/va_orchestrator.py", "--test"], "DEGRADED_ALLOWED", ("preflight",), timeout),
+                StepSpec("discovery", [sys.executable, "scripts/autonomous-idea-generator.py", "--max-concurrency", max_concurrency, "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1")], "REQUIRED", ("preflight",), timeout),
                 StepSpec("migration", [sys.executable, "scripts/migrations/migrate-staging-candidate-ids.py"], "REQUIRED", ("discovery",), timeout),
-                StepSpec("ranking", [sys.executable, "scripts/va-ranker.py"], "REQUIRED", ("migration",), timeout),
+                StepSpec("crosscheck", crosscheck_cmd, "REQUIRED", ("migration",), timeout),
+                StepSpec("ranking", [sys.executable, "scripts/va-ranker.py"], "REQUIRED", ("migration", "crosscheck"), timeout),
                 StepSpec("generate", npm_cmd, "REQUIRED", ("ranking",), timeout),
                 StepSpec("quality:source", npm_q_cmd, "REQUIRED", ("generate",), timeout),
             ]
