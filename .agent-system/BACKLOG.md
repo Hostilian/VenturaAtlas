@@ -4,7 +4,7 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 
 | ID | Title | Priority | Domain | Status | Recurrence | Worker |
 |---|---|---:|---|---|---|---|
-| TASK-000A | Verify Every Workflow's Recent CI Runs | 100.0 | DevOps / Safety | VERIFY_ON_NEXT_PUSH | one-shot | ventureatlas-integration |
+| TASK-000A | Verify Every Workflow's Recent CI Runs | 100.0 | DevOps / Safety | COMPLETE | one-shot | ventureatlas-integration |
 | TASK-000B | Reconcile Agent Configuration Layers | 99.5 | Governance | COMPLETE | one-shot | ventureatlas-integration |
 | TASK-000C | Real Provider Probes & Stale Health | 99.0 | Provider Runtime | COMPLETE | one-shot | ventureatlas-provider-runtime |
 | TASK-000D | Document Complete Python Setup | 98.0 | Developer Experience | COMPLETE | one-shot | ventureatlas-integration |
@@ -29,7 +29,7 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | AUT-011 | Deterministic Panel Disagreement and Consensus Extractor | 94.0 | Decision Science | LANDED | one-shot | ventureatlas-data-safety |
 | AUT-012 | Recurring Task Leases, Idempotency Keys, and Retry Dead Letters | 93.5 | Orchestration | LANDED | every-scheduler-dispatch | ventureatlas-integration |
 | AUT-013 | Backlog Priority Aging and Starvation Prevention | 93.0 | Orchestration | LANDED | daily | ventureatlas-integration |
-| AUT-014 | Failure Alerting for Stale Heartbeats and Repeated Degradation | 92.5 | Observability | LANDED_PENDING_EXTERNAL_PROOF | every-15-minutes | ventureatlas-integration |
+| AUT-014 | Failure Alerting for Stale Heartbeats and Repeated Degradation | 92.5 | Observability | COMPLETE | every-15-minutes | ventureatlas-integration |
 | AUT-015 | Cross-Run Research Deduplication by Semantic and Source Digest | 92.0 | Research | LANDED | every-research-run | ventureatlas-data-safety |
 | AUT-016 | Time-Sensitive Legal Claim Revalidation Queue | 91.5 | Evidence | LANDED | daily | ventureatlas-data-safety |
 | AUT-017 | Run External Buyer and Payment Falsification Experiments | 91.0 | Validation | REQUIRES_HUMAN_OR_EXTERNAL_AUTHORITY | one-shot | ventureatlas-integration |

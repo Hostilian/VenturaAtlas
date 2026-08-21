@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0.0",
   "status": "VERIFIED_LIVE_CLOUD_EXECUTION",
-  "checkedAt": "2026-08-21T14:23:42Z",
+  "checkedAt": "2026-08-21T14:40:43Z",
   "executionScope": "cloud",
   "source": {
     "provider": "github-actions",
     "repository": "Hostilian/VenturaAtlas",
     "workflow": "research-cycle.yml",
-    "runId": 32491718358,
-    "runUrl": "https://github.com/Hostilian/VenturaAtlas/actions/runs/32491718358",
-    "headSha": "3369588ccf0c085ab4d16ee06e7ca1f775862a2b",
-    "artifact": "venture-atlas-unattended-receipts-32491718358"
+    "runId": 32493259557,
+    "runUrl": "https://github.com/Hostilian/VenturaAtlas/actions/runs/32493259557",
+    "headSha": "ff4e759ebaeadfbe0ffaab6d43cf84185ff8bc1a",
+    "artifact": "venture-atlas-unattended-receipts-32493259557"
   },
   "reviewPanel": {
     "modelLanes": 3,
@@ -19,23 +19,23 @@
       {
         "id": "nvidia-nim",
         "infrastructure": "nvidia-nim",
-        "cumulativeRestoredStateCalls": 29,
-        "cumulativeRestoredStateSuccesses": 29,
-        "lastUsed": "2026-08-21T14:23:37.054217+00:00"
+        "cumulativeRestoredStateCalls": 33,
+        "cumulativeRestoredStateSuccesses": 33,
+        "lastUsed": "2026-08-21T14:40:40.218282+00:00"
       },
       {
         "id": "nvidia-nim-adversarial",
         "infrastructure": "nvidia-nim",
-        "cumulativeRestoredStateCalls": 32,
-        "cumulativeRestoredStateSuccesses": 29,
-        "lastUsed": "2026-08-21T14:23:39.771975+00:00"
+        "cumulativeRestoredStateCalls": 38,
+        "cumulativeRestoredStateSuccesses": 35,
+        "lastUsed": "2026-08-21T14:40:42.688063+00:00"
       },
       {
         "id": "cohere-api",
         "infrastructure": "cohere",
-        "cumulativeRestoredStateCalls": 46,
-        "cumulativeRestoredStateSuccesses": 46,
-        "lastUsed": "2026-08-21T14:23:41.278174+00:00"
+        "cumulativeRestoredStateCalls": 52,
+        "cumulativeRestoredStateSuccesses": 52,
+        "lastUsed": "2026-08-21T14:40:42.931877+00:00"
       }
     ]
   },

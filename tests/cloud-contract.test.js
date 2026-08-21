@@ -64,12 +64,28 @@ test('sanitized cloud provider proof records scope and honest panel diversity', 
   const proof = JSON.parse(fs.readFileSync(path.join(ROOT, '.agent-system', 'cloud-provider-proof.json'), 'utf8'));
   assert.equal(proof.status, 'VERIFIED_LIVE_CLOUD_EXECUTION');
   assert.equal(proof.executionScope, 'cloud');
-  assert.equal(proof.source.runId, 32491718358);
+  assert.equal(proof.source.runId, 32493259557);
   assert.equal(proof.reviewPanel.modelLanes, 3);
   assert.equal(proof.reviewPanel.infrastructureGroups, 2);
   assert.deepEqual(new Set(proof.reviewPanel.lanes.map(lane => lane.infrastructure)), new Set(['nvidia-nim', 'cohere']));
   assert.ok(proof.unhealthyCredentialRoutes.includes('fcc-claude'));
   assert.ok(proof.notes.some(note => note.includes('Hermes')));
+});
+
+test('CI proof covers every active workflow and preserves expected alert failures separately', () => {
+  const proof = JSON.parse(fs.readFileSync(path.join(ROOT, '.agent-system', 'ci-proof.json'), 'utf8'));
+  const workflowDirectory = path.join(ROOT, '.github', 'workflows');
+  const workflowNames = fs.readdirSync(workflowDirectory)
+    .filter(name => name.endsWith('.yml'))
+    .map(name => fs.readFileSync(path.join(workflowDirectory, name), 'utf8').match(/^name:\s*(.+)$/m)?.[1])
+    .filter(Boolean);
+  assert.equal(proof.status, 'ALL_WORKFLOWS_VERIFIED');
+  assert.equal(proof.workflows.length, workflowNames.length);
+  assert.deepEqual(new Set(proof.workflows.map(item => item.name)), new Set(workflowNames));
+  assert.ok(proof.workflows.every(item => item.conclusion === 'success'));
+  assert.equal(proof.alertDrill.openIssueCountAfterSecondStaleRun, 1);
+  assert.equal(proof.alertDrill.issue.finalState, 'CLOSED');
+  assert.deepEqual(proof.continuityProof.consecutiveConclusions, ['success', 'success']);
 });
 
 test('cloud image uses the declared Node major and installs quality dependencies', () => {

@@ -8,10 +8,10 @@
       "domain": "DevOps / Safety",
       "priorityScore": 100.0,
       "urgency": "P0",
-      "status": "VERIFY_ON_NEXT_PUSH",
+      "status": "COMPLETE",
       "assignedAgent": "ventureatlas-integration",
       "dependencies": [],
-      "verificationMethod": "gh run list --repo Hostilian/VenturaAtlas --branch main",
+      "verificationMethod": ".agent-system/ci-proof.json records a successful run for all 10 active workflows at tested commit ff4e759",
       "filesAffected": [".github/workflows/"]
     },
     {
@@ -83,7 +83,7 @@
       "status": "COMPLETE",
       "assignedAgent": "ventureatlas-integration",
       "dependencies": [],
-      "verificationMethod": "Successful GitHub-hosted research runs 32491514252 and 32491718358 plus resilience drill 32492058714",
+      "verificationMethod": "Successful GitHub-hosted research run 32493259557 and resilience drill 32493262512 on tested commit ff4e759",
       "filesAffected": [".github/workflows/continuous-audit.yml", ".github/workflows/research-cycle.yml"]
     },
     {
@@ -131,7 +131,7 @@
       "status": "COMPLETE",
       "assignedAgent": "ventureatlas-provider-runtime",
       "dependencies": ["TASK-003", "TASK-006"],
-      "verificationMethod": "GitHub-hosted run 32491718358 staged candidates with three live model-review lanes and uploaded private receipts",
+      "verificationMethod": "GitHub-hosted run 32493259557 staged candidates with three live model-review lanes and uploaded private receipts",
       "filesAffected": ["scripts/va-massive-orchestrator.py", "data/idea-staging-queue.json"]
     },
     {
@@ -315,11 +315,11 @@
       "domain": "Observability",
       "priorityScore": 92.5,
       "urgency": "P1",
-      "status": "LANDED_PENDING_EXTERNAL_PROOF",
+      "status": "COMPLETE",
       "assignedAgent": "ventureatlas-integration",
       "dependencies": ["AUT-006", "AUT-007"],
       "recurrence": "every-15-minutes",
-      "verificationMethod": "Synthetic stale heartbeat creates exactly one deduplicated alert",
+      "verificationMethod": "Stale runs 32493265336 and 32493314564 created exactly one issue; healthy run 32493348395 closed it automatically",
       "filesAffected": [".github/workflows/", "cloud-control-plane/"]
     },
     {
@@ -370,7 +370,7 @@
       "assignedAgent": "ventureatlas-test-adversary",
       "dependencies": ["AUT-006"],
       "recurrence": "weekly",
-      "verificationMethod": "GitHub-hosted run 32492058714 passed full quality, Python failure injection, desktop/mobile E2E, production audit, and clean-checkout recovery",
+      "verificationMethod": "GitHub-hosted run 32493262512 passed full quality, Python failure injection, desktop/mobile E2E, production audit, and clean-checkout recovery",
       "filesAffected": [".github/workflows/continuous-audit.yml", "tests/"]
     },
     {

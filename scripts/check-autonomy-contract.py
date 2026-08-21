@@ -27,6 +27,7 @@ def main() -> int:
     providers = load_json("config/providers.json").get("providers", {})
     health = load_json(".agent-system/provider-registry.json")
     cloud_provider_proof = load_json(".agent-system/cloud-provider-proof.json")
+    ci_proof = load_json(".agent-system/ci-proof.json")
     graph = load_json("data/agent-task-graph.json")
 
     tasks = backlog.get("tasks", [])
@@ -94,6 +95,31 @@ def main() -> int:
         errors.append("cloud provider proof does not record exactly three model-review lanes")
     if cloud_provider_proof.get("reviewPanel", {}).get("infrastructureGroups", 0) < 2:
         errors.append("cloud provider proof does not record at least two infrastructure groups")
+
+    workflow_directory = os.path.join(ROOT, ".github", "workflows")
+    workflow_names = set()
+    for filename in os.listdir(workflow_directory):
+        if not filename.endswith((".yml", ".yaml")):
+            continue
+        source = open(os.path.join(workflow_directory, filename), "r", encoding="utf-8").read()
+        match = re.search(r"^name:\s*(.+)$", source, re.M)
+        if match:
+            workflow_names.add(match.group(1).strip())
+    ci_workflows = ci_proof.get("workflows", [])
+    proven_workflow_names = {str(item.get("name", "")) for item in ci_workflows}
+    if proven_workflow_names != workflow_names:
+        errors.append(
+            "CI proof does not cover the exact active workflow set: "
+            f"missing={sorted(workflow_names - proven_workflow_names)} "
+            f"extra={sorted(proven_workflow_names - workflow_names)}"
+        )
+    if any(item.get("conclusion") != "success" for item in ci_workflows):
+        errors.append("CI proof includes a non-success workflow outside the explicit alert drill")
+    alert_drill = ci_proof.get("alertDrill", {})
+    if alert_drill.get("openIssueCountAfterSecondStaleRun") != 1:
+        errors.append("CI proof does not demonstrate exactly one deduplicated stale-run issue")
+    if alert_drill.get("issue", {}).get("finalState") != "CLOSED":
+        errors.append("CI proof does not demonstrate alert recovery closure")
 
     hermes_scopes = set(providers.get("hermes-ollama", {}).get("executionScopes", []))
     if "cloud" in hermes_scopes:
