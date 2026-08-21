@@ -366,7 +366,7 @@
       "domain": "Release Assurance",
       "priorityScore": 90.5,
       "urgency": "P1",
-      "status": "LANDED_PENDING_EXTERNAL_PROOF",
+      "status": "COMPLETE",
       "assignedAgent": "ventureatlas-test-adversary",
       "dependencies": ["AUT-006"],
       "recurrence": "weekly",

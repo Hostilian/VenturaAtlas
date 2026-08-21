@@ -48,6 +48,19 @@ def main() -> int:
         errors.append(f"tasks are both active and completed: {sorted(active & completed)}")
     for task_id in sorted((active | completed) - known):
         errors.append(f"runtime state references unknown authoritative task {task_id}")
+    task_statuses = {str(task.get("id", "")): str(task.get("status", "")) for task in tasks}
+    completion_statuses = {"COMPLETE", "LANDED"}
+    for task_id in sorted(completed):
+        if task_statuses.get(task_id) not in completion_statuses:
+            errors.append(
+                f"runtime state marks {task_id} completed but backlog status is "
+                f"{task_statuses.get(task_id)!r}"
+            )
+    for task_id, status in sorted(task_statuses.items()):
+        if status in completion_statuses and task_id not in completed:
+            errors.append(f"backlog marks {task_id} {status} but runtime state does not mark it completed")
+        if status in {"LANDED_PENDING_EXTERNAL_PROOF", "VERIFY_EXTERNAL", "VERIFY_ON_NEXT_PUSH"} and task_id not in active:
+            errors.append(f"backlog leaves {task_id} active at {status} but runtime state does not track it as active")
 
     markdown = open(os.path.join(ROOT, ".agent-system", "BACKLOG.md"), "r", encoding="utf-8").read()
     markdown_ids = set(re.findall(r"^\|\s+([A-Z]+-[0-9A-Z]+)\s+\|", markdown, re.M))

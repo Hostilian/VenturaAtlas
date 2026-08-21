@@ -33,7 +33,7 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | AUT-015 | Cross-Run Research Deduplication by Semantic and Source Digest | 92.0 | Research | LANDED | every-research-run | ventureatlas-data-safety |
 | AUT-016 | Time-Sensitive Legal Claim Revalidation Queue | 91.5 | Evidence | LANDED | daily | ventureatlas-data-safety |
 | AUT-017 | Run External Buyer and Payment Falsification Experiments | 91.0 | Validation | REQUIRES_HUMAN_OR_EXTERNAL_AUTHORITY | one-shot | ventureatlas-integration |
-| AUT-018 | Weekly Full Artifact, Security, Accessibility, and Recovery Drill | 90.5 | Release Assurance | LANDED_PENDING_EXTERNAL_PROOF | weekly | ventureatlas-test-adversary |
+| AUT-018 | Weekly Full Artifact, Security, Accessibility, and Recovery Drill | 90.5 | Release Assurance | COMPLETE | weekly | ventureatlas-test-adversary |
 | AUT-019 | Normalized Idea Families, Venture Patterns, and Similarity-Aware Browsing | 90.0 | Portfolio Information Architecture | LANDED | every-canonical-corpus-change | ventureatlas-data-safety |
 | AUT-020 | Semantic Review of Ambiguous Taxonomy Assignments and Potential Duplicate Pairs | 89.5 | Portfolio Information Architecture | LANDED | every-canonical-corpus-change | ventureatlas-data-safety |
 
