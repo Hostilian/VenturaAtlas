@@ -50,6 +50,24 @@ test('all pull-request-only checks remain manually verifiable and main quality r
   assert.match(links, /workflow_dispatch:/);
 });
 
+test('active workflows avoid retired Node 20 action runtimes', () => {
+  const workflowDirectory = path.join(ROOT, '.github', 'workflows');
+  const workflows = fs.readdirSync(workflowDirectory)
+    .filter(name => name.endsWith('.yml'))
+    .map(name => fs.readFileSync(path.join(workflowDirectory, name), 'utf8'))
+    .join('\n');
+  const generator = fs.readFileSync(path.join(ROOT, 'scripts', 'generate_repository.py'), 'utf8');
+  const combined = `${workflows}\n${generator}`;
+
+  assert.doesNotMatch(combined, /actions\/checkout@v4/);
+  assert.doesNotMatch(combined, /actions\/setup-node@v4/);
+  assert.doesNotMatch(combined, /actions\/setup-python@v5/);
+  assert.doesNotMatch(combined, /actions\/upload-artifact@v4/);
+  assert.match(workflows, /actions\/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1/);
+  assert.match(workflows, /actions\/setup-node@820762786026740c76f36085b0efc47a31fe5020/);
+  assert.match(workflows, /actions\/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97/);
+});
+
 test('cloud monitor exposes dispatch-only stale and recovery proof modes', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'autonomy-monitor.yml'), 'utf8');
   assert.match(workflow, /simulation:/);
