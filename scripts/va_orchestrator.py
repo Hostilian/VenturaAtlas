@@ -303,7 +303,11 @@ def _call_nvidia_nim_adversarial(prompt: str) -> str:
                 },
                 timeout=90,
             )
-            return result["choices"][0]["message"]["content"].strip()
+            message = result["choices"][0]["message"]
+            content = message.get("content") or message.get("reasoning_content")
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError("NVIDIA adversarial response contained no text content")
+            return content.strip()
         except Exception as exc:
             _handle_key_http_failure(key_state, exc)
             last_err = exc
@@ -897,6 +901,28 @@ def call_llm_panel(prompt: str, domain_hint: dict = None, *, panel_size: int = 3
             if result:
                 content, provider_id = result
                 responses.append({"provider": provider_id, "content": content})
+
+    retry_limit = max(0, min(2, int(os.environ.get("VA_PANEL_RETRIES", "1"))))
+    for retry_number in range(1, retry_limit + 1):
+        succeeded_ids = {item["provider"] for item in responses}
+        missing = [provider for provider in selected if provider not in succeeded_ids]
+        if not missing:
+            break
+        log_warn(f"Panel retry {retry_number}/{retry_limit} for missing lanes: {', '.join(missing)}")
+        with ThreadPoolExecutor(max_workers=len(missing)) as executor:
+            futures = {
+                executor.submit(_call_single_provider, provider, prompt, domain_hint): provider
+                for provider in missing
+            }
+            for future in as_completed(futures):
+                try:
+                    result = future.result()
+                except Exception as exc:
+                    log_warn(f"Panel retry for {futures[future]} failed: {type(exc).__name__}")
+                    continue
+                if result:
+                    content, provider_id = result
+                    responses.append({"provider": provider_id, "content": content})
 
     responses.sort(key=lambda item: selected.index(item["provider"]))
     if len(responses) < minimum_responses:

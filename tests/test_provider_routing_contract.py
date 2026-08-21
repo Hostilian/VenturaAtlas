@@ -27,6 +27,14 @@ class ProviderRoutingContractTests(unittest.TestCase):
         self.assertTrue(headers["Authorization"].startswith("Bearer "))
         self.assertEqual(body["model"], "openai/gpt-oss-20b")
 
+    def test_nvidia_adversarial_lane_accepts_reasoning_content_fallback(self):
+        with mock.patch.dict(os.environ, {"NVIDIA_NIM_API_KEYS": "unit-nvidia-key-12345"}, clear=False):
+            scheduler = CapabilityProviderScheduler()
+        response = {"choices": [{"message": {"content": None, "reasoning_content": "review fallback"}}]}
+        with mock.patch.object(orchestrator, "get_provider_scheduler", return_value=scheduler), \
+             mock.patch.object(orchestrator, "_http_post", return_value=response):
+            self.assertEqual(orchestrator._call_nvidia_nim_adversarial("review"), "review fallback")
+
     def test_http_401_disables_exact_key_and_next_call_excludes_it(self):
         env = {"NVIDIA_NIM_API_KEYS": "unit-key-invalid-12345,unit-key-valid-67890"}
         with mock.patch.dict(os.environ, env, clear=False):

@@ -23,6 +23,7 @@ jobs:
       IDEAS_PER_ITERATION: '2'
       VA_DISCOVERY_MAX_CONCURRENCY: '2'
       VA_PROVIDER_FANOUT: '3'
+      VA_PANEL_RETRIES: '1'
       VA_MAX_COST_CLASS: '1'
       VA_DISPATCH_ID: github-${{ github.run_id }}-${{ github.run_attempt }}
       VA_DAILY_BUDGET_USD: '10'

@@ -22,6 +22,25 @@ class _PanelScheduler:
 
 
 class ProviderPanelTests(unittest.TestCase):
+    def test_panel_retries_only_a_missing_reviewer_lane(self):
+        providers = ["reviewer-a", "reviewer-b", "reviewer-c"]
+        attempts = {provider: 0 for provider in providers}
+
+        def reviewer(provider, *_args):
+            attempts[provider] += 1
+            if provider == "reviewer-c" and attempts[provider] == 1:
+                return None
+            return f"review from {provider}", provider
+
+        with mock.patch.dict(os.environ, {"VA_PANEL_RETRIES": "1"}, clear=False), \
+             mock.patch.object(va_orchestrator, "get_provider_scheduler", return_value=_PanelScheduler(providers)), \
+             mock.patch.object(va_orchestrator, "_load_state", return_value={"providers": {}}), \
+             mock.patch.object(va_orchestrator, "_call_single_provider", side_effect=reviewer):
+            responses = va_orchestrator.call_llm_panel("review", panel_size=3, minimum_responses=3)
+
+        self.assertEqual([response["provider"] for response in responses], providers)
+        self.assertEqual(attempts, {"reviewer-a": 1, "reviewer-b": 1, "reviewer-c": 2})
+
     def test_panel_waits_for_distinct_provider_responses(self):
         providers = ["reviewer-a", "reviewer-b", "reviewer-c"]
         with mock.patch.object(va_orchestrator, "get_provider_scheduler", return_value=_PanelScheduler(providers)), mock.patch.object(
