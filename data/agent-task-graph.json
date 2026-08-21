@@ -9,6 +9,10 @@
   "runtime_private_paths": [
     "data/idea-staging-queue.json"
   ],
+  "runtime_generated_paths": [
+    "_site/",
+    ".agent-state/logs/"
+  ],
   "tasks": [
     {
       "id": "CAP-001",

@@ -31,6 +31,7 @@ function validateTaskGraph() {
   const errors = [];
   const warnings = [];
   const runtimePrivatePaths = new Set(graphData.runtime_private_paths || []);
+  const runtimeGeneratedPaths = new Set(graphData.runtime_generated_paths || []);
 
   // Read AGENTS.md to extract valid agent names
   const agentsContent = fs.existsSync(AGENTS_PATH) ? fs.readFileSync(AGENTS_PATH, 'utf-8') : '';
@@ -59,7 +60,7 @@ function validateTaskGraph() {
       const resolved = path.resolve(ROOT, ownedPath);
       if (resolved !== ROOT && !resolved.startsWith(`${ROOT}${path.sep}`)) {
         errors.push(`Task ${task.id} owned_path escapes repository root: ${ownedPath}`);
-      } else if (!fs.existsSync(resolved) && !runtimePrivatePaths.has(ownedPath)) {
+      } else if (!fs.existsSync(resolved) && !runtimePrivatePaths.has(ownedPath) && !runtimeGeneratedPaths.has(ownedPath)) {
         errors.push(`Task ${task.id} owned_path does not exist: ${ownedPath}`);
       }
     }
