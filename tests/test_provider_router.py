@@ -98,7 +98,7 @@ class TestProviderRouter(unittest.TestCase):
     def test_registry_contains_every_orchestrator_provider(self):
         scheduler = CapabilityProviderScheduler()
         expected = {"nvidia-nim", "cohere-api", "hermes-ollama", "omniRoute", "fcc-claude",
-                    "active-api", "deepseek-api", "anthropic-full", "github-models", "own-orch"}
+                    "active-api", "deepseek-api", "anthropic-full", "nvidia-nim-adversarial", "own-orch"}
         self.assertTrue(expected.issubset(scheduler.registry["providers"]))
 
     def test_cloud_hermes_requires_remote_https_and_authentication(self):

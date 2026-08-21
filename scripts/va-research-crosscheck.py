@@ -30,6 +30,13 @@ QUEUE_PATH = os.path.join(ROOT, "data", "idea-staging-queue.json")
 IDEAS_PATH = os.path.join(ROOT, "data", "ideas.json")
 DEFAULT_RECEIPT_DIR = os.path.join(ROOT, ".agent-state", "crosschecks")
 REVIEW_INDEX_NAME = "review-index.json"
+PROVIDER_CONFIG_PATH = os.path.join(ROOT, "config", "providers.json")
+
+
+def _infrastructure_group(provider_id: str) -> str:
+    config = read_json_safe(PROVIDER_CONFIG_PATH, default_if_missing={})
+    provider = config.get("providers", {}).get(provider_id, {})
+    return str(provider.get("infrastructureGroup") or provider_id)
 
 
 def _idea_list(payload) -> list[dict]:
@@ -162,7 +169,8 @@ def main() -> int:
         "status": "NO_OP" if not selected else "RUNNING",
         "evidenceStatus": "MODEL_REVIEW_ONLY_NOT_EXTERNAL_EVIDENCE",
         "panelContract": {
-            "requestedDistinctProviders": args.panel_size,
+            "requestedDistinctReviewerLanes": args.panel_size,
+            "minimumInfrastructureGroups": 2,
             "minimumResponses": args.minimum_responses,
             "maxCostClass": args.max_cost,
             "strict": args.strict,
@@ -208,11 +216,19 @@ def main() -> int:
                 "contentSha256": hashlib.sha256(content.encode("utf-8")).hexdigest(),
                 "content": content,
             })
+        infrastructure_groups = sorted({_infrastructure_group(item["provider"]) for item in safe_responses})
+        if len(infrastructure_groups) < 2:
+            receipt["failures"].append({
+                "candidateId": candidate_id,
+                "error": "PANEL_INFRASTRUCTURE_SHORTFALL: three reviews require at least two independent provider infrastructures",
+            })
+            continue
         receipt["reviews"].append({
             "candidateId": candidate_id,
             "candidateName": candidate.get("name"),
             "nearestInternalNames": nearest,
-            "distinctProviders": [item["provider"] for item in safe_responses],
+            "distinctReviewerLanes": [item["provider"] for item in safe_responses],
+            "distinctInfrastructureGroups": infrastructure_groups,
             "responses": safe_responses,
             "panelSummary": extract_panel_summary(safe_responses),
         })

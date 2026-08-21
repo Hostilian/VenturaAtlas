@@ -20,8 +20,6 @@ test('Cloud Run job scheduler contract is authenticated and immutable', () => {
 
 test('cloud research workflow installs Python worker dependencies before quality checks', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
-  assert.match(workflow, /models:\s*read/);
-  assert.match(workflow, /GITHUB_MODELS_TOKEN:\s*\$\{\{ github\.token \}\}/);
   assert.match(workflow, /pip install[^\n]*cloud-control-plane\/requirements\.txt[^\n]*services\/ventureatlas-worker\/requirements\.txt/);
   for (const requirementsPath of [
     path.join(ROOT, 'cloud-control-plane', 'requirements.txt'),
@@ -116,7 +114,7 @@ test('Cloud publication freezes a checkout and enforces an exact diff manifest',
   assert.match(runner, /private paths cannot be published to Git/);
 });
 
-test('scheduled research restores private state and requires a three-provider panel', () => {
+test('scheduled research restores private state and requires three model-review lanes', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
   assert.match(workflow, /actions\/cache\/restore@v4/);
   assert.match(workflow, /actions\/cache\/save@v4/);
