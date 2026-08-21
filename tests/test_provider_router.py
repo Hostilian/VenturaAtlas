@@ -107,15 +107,17 @@ class TestProviderRouter(unittest.TestCase):
             "NVIDIA_NIM_API_KEYS": "unit-nvidia-key-12345",
             "COHERE_API_KEYS": "unit-cohere-key-12345",
             "ANTHROPIC_API_KEYS": "unit-anthropic-key-12345",
+            "OLLAMA_BASE_URL": "http://localhost:11434",
+            "OLLAMA_AUTH_TOKEN": "",
         }
         with mock.patch.dict(os.environ, env, clear=False):
             scheduler = CapabilityProviderScheduler()
-        selected = scheduler.select_providers_for_task(
-            ["reasoning", "structured_review", "adversarial_review"],
-            max_cost_class=1,
-            allow_own_orch=False,
-            match_mode="any",
-        )
+            selected = scheduler.select_providers_for_task(
+                ["reasoning", "structured_review", "adversarial_review"],
+                max_cost_class=1,
+                allow_own_orch=False,
+                match_mode="any",
+            )
         self.assertEqual(selected[:3], ["nvidia-nim", "cohere-api", "nvidia-nim-adversarial"])
 
     def test_cloud_hermes_requires_remote_https_and_authentication(self):
