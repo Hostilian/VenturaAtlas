@@ -8,7 +8,7 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 - **309 canonical ideas** (0 staged, 309 total)
 - **132 categories**
 - **316 source inventory records**
-- **507 research proposal rows** across **29 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
+- **555 research proposal rows** across **30 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
 - **4,625 idea-specific prompts** plus master prompts
 - **417 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
 - **60/309 financial models**, **62/309 validation plans**, **60/309 technical blueprints**, and **60/309 launch plans**
@@ -92,7 +92,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
-- Repository Version: 2.6.0
+- Repository Version: 2.7.0
 - Canonical Ideas: 309
 - Staged Ideas: 0
 - Total Ideas: 309

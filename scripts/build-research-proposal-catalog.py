@@ -94,6 +94,13 @@ TABLE_ROUNDS = (
         "expected": 20,
         "attachmentSha256": "B2B0F57F817EE550A8492E72A68697AE4BE3A1443B39C26750E289623895F951",
     },
+    {
+        "id": "everyday-problem-hypotheses-2026-08-21",
+        "title": "Everyday Problem Hypotheses — 21 August 2026",
+        "path": "research/EVERYDAY_PROBLEM_HYPOTHESES_2026-08-21.md",
+        "expected": 48,
+        "attachmentSha256": None,
+    },
 )
 
 JSON_ROUNDS = (
@@ -170,7 +177,7 @@ RUN_REFERENCE_NAMES = {
     "candidate-5b5c2c8d-5075-5bf3-8ac1-0553e17cb9d2": "MicroIFUD Gate — Synthetic-Polymer Product/IFU Consistency Audit",
 }
 
-EXPECTED_PROPOSAL_COUNT = 507
+EXPECTED_PROPOSAL_COUNT = 555
 
 PROPOSAL_HEADERS = {"candidate", "supplied concept", "supplied proposal", "proposal"}
 DECISION_HEADERS = {"repository decision", "decision", "resolution"}
@@ -185,36 +192,49 @@ RELATIONS = {
 }
 
 FAMILIES = (
-    ("ai-agents-oversight", "AI, agents, transparency & human oversight", r"\b(ai|agent|worker decision|provenance|prompt|mandate)\b"),
-    ("cyber-software-assurance", "Cybersecurity, software assurance & cryptography", r"\b(cyber|cra |pqc|quantum|software liability|assurance|security|vulnerability)\b"),
-    ("identity-credentials-workforce", "Identity, credentials & workforce mobility", r"\b(eudi|credential|talent|worker|skills|hire-to-arrival|posted worker)\b"),
-    ("product-passports-claims-repair", "Product passports, claims, repair & circularity", r"\b(dpp|passport|claim|repair|packag|unsold|refurbished|product release|marksurvive)\b"),
-    ("customs-trade-freight-invoicing", "Customs, trade, freight & invoicing", r"\b(customs|cargo|efti|freight|invoice|cbam|shipment|border|eudr|import|export)\b"),
-    ("energy-grids-flexibility", "Energy, grids & flexibility", r"\b(grid|energy|compute|data-centre|powerplot|flexibility|spectrum)\b"),
-    ("carbon-climate-environment", "Carbon, climate & environmental markets", r"\b(carbon|co2|methane|biochar|crcf|nature restoration|ocean|soil|pfas|wastewater|water|refrigerant|f-gas)\b"),
-    ("industrial-materials-supply", "Industrial materials, qualification & supply chains", r"\b(material|chemical|battery|machine|robot|semiconductor|chip|factory|industrial|stockpile|critical medicine|api stockpile)\b"),
-    ("health-medicines-biotech", "Health, medicines & biotechnology", r"\b(health|medicine|medical|biotech|biomanufact|pharma|soho|eudamed|ehds|ehr)\b"),
-    ("research-ip-commercialisation", "Research infrastructure, IP & commercialisation", r"\b(research|lab |laboratory|university|spinout|academic ip|ip collateral|royalty)\b"),
-    ("construction-housing-built", "Construction, housing & the built environment", r"\b(construction|housing|building|renovation|brownfield|permit)\b"),
-    ("transport-rail-ports-maritime", "Transport, rail, ports & maritime", r"\b(rail|port|maritime|airport|saf |esaf|fleet|freight)\b"),
-    ("compute-cloud-sovereignty", "Compute, cloud & sovereignty", r"\b(cloud|compute|sovereign|data switch|refactor|exitops)\b"),
-    ("procurement-crisis-resilience", "Procurement, crisis capacity & strategic resilience", r"\b(procurement|crisis|emergency|readiness|resilience|shortage|capacity|offtake|bankability|treasury)\b"),
-    ("agriculture-food-contracts", "Agriculture & food contracts", r"\b(agri|food|farm|crop)\b"),
-    ("space-spectrum-communications", "Space, spectrum & communications", r"\b(space|satellite|spectrum|telecom|duct)\b"),
+    ("cyber-identity-trust", "Cybersecurity, Identity & Trust", r"\b(cyber|security|vulnerability|identity|credential|eudi|pqc|quantum|fraud|trustlist|right-to-work)\b"),
+    ("finance-audit-governance", "Finance, Audit & Governance", r"\b(finance|payment|invoice|billing|audit|insurance|underwrit|treasury|tax|grant|funding|royalty|estate|probate|expense)\b"),
+    ("health-life-sciences", "Healthcare & Life Sciences", r"\b(health|caregiver|clinic|patient|medicine|medical|medication|biotech|biomanufact|pharma|soho|eudamed|ehds|ehr|hospital|veterinar)\b"),
+    ("food-agriculture", "Food & Agriculture", r"\b(agri|food|farm|crop|allergen|pesticide|spray record|restaurant|menu)\b"),
+    ("climate-energy-environment", "Climate, Energy & Environment", r"\b(carbon|climate|co2|methane|biochar|crcf|nature restoration|ocean|soil|pfas|wastewater|water|refrigerant|f-gas|grid|energy|heat ?pump|solar|flexibility)\b"),
+    ("construction-property-repair", "Construction, Property & Repair", r"\b(construction|housing|building|property|renovation|brownfield|repair|renter|landlord|permit|homeadapt)\b"),
+    ("industrial-supply-logistics", "Industrial, Supply Chain & Logistics", r"\b(customs|cargo|efti|freight|cbam|shipment|border|eudr|import|export|material|chemical|battery|machine|robot|semiconductor|factory|industrial|stockpile|supplier|supply chain)\b"),
+    ("travel-mobility-events", "Travel, Mobility & Events", r"\b(travel|rail|port|maritime|airport|fleet|mobility|vehicle|carrier|trip|journey|hotel|event access)\b"),
+    ("research-education-knowledge", "Research, Education & Knowledge", r"\b(research|lab |laboratory|university|spinout|academic|education|course|student|school|training|skills evidence|mentor|apprentice)\b"),
+    ("media-creator-games", "Media, Creator Economy & Games", r"\b(creator|media|content|game|sponsor|wedding|music|video|podcast|publishing)\b"),
+    ("public-regulatory-procurement", "Public Sector, Regulation & Procurement", r"\b(procurement|public sector|government|regulatory|regulation|authority|tender|crisis|emergency|resilience|shortage|capacity|offtake|aidheadroom|benefit evidence)\b"),
+    ("commerce-marketplaces-consumer", "Commerce, Marketplaces & Consumer", r"\b(marketplace|commerce|consumer|seller|shopping|subscription|pet|household|tool library|retail|product passport|dpp|packag|unsold|refurbished)\b"),
+    ("software-ai-developer", "Software, AI & Developer Systems", r"\b(ai|agent|software|api|cloud|compute|data switch|refactor|exitops|prompt|saas|developer|code|digital)\b"),
+    ("business-operations-services", "Business Operations & Services", r"\b(business|workforce|worker|contractor|workflow|operations|service|appointment|quote|freelancer|enterprise)\b"),
 )
 
 # Cross-round aliases take precedence over contextual keywords. They keep repeated
 # parent/module concepts together even when one round supplies much richer context.
 FAMILY_OVERRIDES = (
-    ("energy-grids-flexibility", r"\bchargetruth\b|\bdata ?centertruth\b|\bflexload ledger\b"),
-    ("transport-rail-ports-maritime", r"\bvinstate\b|\bportcall\b|\bcarrierdecision\b|\bupliftmirror\b|\bsaf claimmirror\b"),
-    ("carbon-climate-environment", r"\bmicrofee\b|\breclaimright\b|\bgasbank planner\b|\bpfas\b"),
-    ("procurement-crisis-resilience", r"\bbidproof\b|\bsupplier ?swap counterfactual\b|\bdelivery ?capability ledger\b"),
-    ("ai-agents-oversight", r"\bmarksurvive\b|\bprovenance transform matrix\b|\bdisclosuredrift\b"),
-    ("customs-trade-freight-invoicing", r"\binvoice ?route ?truth\b|\bdirectorydrift watch\b|\binvoice ?failover drill\b|\besap (relay|preview)\b|\boam receipt chain\b"),
-    ("identity-credentials-workforce", r"\bwalletmatrix\b|\bcrossdevice replay\b|\btrustlist drift\b"),
-    ("health-medicines-biotech", r"\bshortagegraph\b|\bnotifycascade\b|\bprocedureexposure\b|\bsubstituteready\b|\bshortagecase replay\b|\behds shadowtest\b"),
-    ("agriculture-food-contracts", r"\bsprayreality\b|\bspray record\b|\bpesticide\b|\bagronomist\b"),
+    ("travel-mobility-events", r"\besaf\b|\bsaf airport\b|\bsaf claimmirror\b"),
+    ("climate-energy-environment", r"\bchargetruth\b|\bdata ?centertruth\b|\bflexload ledger\b|\bmicrofee\b|\breclaimright\b|\bgasbank planner\b|\bpfas\b"),
+    ("travel-mobility-events", r"\bvinstate\b|\bportcall\b|\bcarrierdecision\b|\bupliftmirror\b"),
+    ("public-regulatory-procurement", r"\bbidproof\b|\bsupplier ?swap counterfactual\b|\bdelivery ?capability ledger\b"),
+    ("software-ai-developer", r"\bmarksurvive\b|\bprovenance transform matrix\b|\bdisclosuredrift\b"),
+    ("finance-audit-governance", r"\binvoice ?route ?truth\b|\bdirectorydrift watch\b|\binvoice ?failover drill\b|\besap (relay|preview)\b|\boam receipt chain\b"),
+    ("cyber-identity-trust", r"\bwalletmatrix\b|\bcrossdevice replay\b|\btrustlist drift\b"),
+    ("health-life-sciences", r"\bshortagegraph\b|\bnotifycascade\b|\bprocedureexposure\b|\bsubstituteready\b|\bshortagecase replay\b|\behds shadowtest\b"),
+    ("food-agriculture", r"\bsprayreality\b|\bspray record\b|\bpesticide\b|\bagronomist\b"),
+)
+
+PATTERNS = (
+    ("compliance-gate", "Compliance Gate & Preflight", r"\b(compliance|preflight|readiness|gate|eligibility|conform|regulatory|duty map)\b"),
+    ("evidence-verification", "Evidence, Verification & Reconciliation", r"\b(evidence|verify|verification|reconcil|proof|ledger|receipt|passport|timeline|binder|record checker|diff)\b"),
+    ("monitoring-intelligence", "Monitoring & Decision Intelligence", r"\b(monitor|observatory|radar|watch|alert|intelligence|rehearsal|reality map)\b"),
+    ("marketplace-network", "Marketplace, Exchange & Network", r"\b(marketplace|exchange|network|pool|slot|matchmaking|router)\b"),
+    ("routing-optimization", "Routing, Allocation & Optimization", r"\b(route|routing|allocation|optim|schedule|queue)\b"),
+    ("infrastructure-api", "Infrastructure, API & Integration", r"\b(api|infrastructure|gateway|interoper|integration|switchboard|graph platform|relay)\b"),
+    ("financial-risk", "Financial, Risk & Underwriting", r"\b(financial|risk|underwrit|insurance|credit|capital|price|cost|quote)\b"),
+    ("advisory-service", "Advisory, Audit & Productized Service", r"\b(advisory|audit|concierge|service pack|coach|late-payment packet)\b"),
+    ("physical-repair-service", "Physical Service, Repair & Fabrication", r"\b(physical|repair service|fabricat|remediation|installation|maintenance)\b"),
+    ("consumer-utility", "Consumer Utility & Discovery", r"\b(consumer|discovery|comparator|assistant|planner|guide|translator|checklist)\b"),
+    ("content-creator-tool", "Content, Creator & Media Tool", r"\b(content|creator|media|video|publishing|portfolio|meeting pack)\b"),
+    ("workflow-automation", "Workflow Automation & Operations", r"\b(workflow|automation|operations|handoff|control list|action loop|closeout|response packet|offboarding)\b"),
 )
 
 
@@ -291,7 +311,23 @@ def family_for(name: str, decision: str, adjacency: str) -> tuple[str, str]:
     for family_id, label, pattern in FAMILIES:
         if re.search(pattern, haystack, flags=re.I):
             return family_id, label
-    return "cross-sector-execution", "Other cross-sector execution"
+    return "business-operations-services", "Business Operations & Services"
+
+
+def explicit_taxon(value: str, options: tuple[tuple[str, str, str], ...]) -> tuple[str, str] | None:
+    normalized = plain_text(value).casefold()
+    for taxon_id, label, _ in options:
+        if normalized in {taxon_id.casefold(), label.casefold()}:
+            return taxon_id, label
+    return None
+
+
+def pattern_for(name: str, decision: str, adjacency: str) -> tuple[str, str]:
+    haystack = f"{name} {decision} {adjacency}".casefold()
+    for pattern_id, label, pattern in PATTERNS:
+        if re.search(pattern, haystack, flags=re.I):
+            return pattern_id, label
+    return "workflow-automation", "Workflow Automation & Operations"
 
 
 def referenced_ideas(text: str) -> list[str]:
@@ -319,7 +355,9 @@ def round_records(config: dict) -> list[dict]:
             continue
         rank_idx = normalized.index("rank") if "rank" in normalized else None
         score_idx = normalized.index("provisional analyst score") if "provisional analyst score" in normalized else None
-        context_indices = [i for i in range(len(headers)) if i not in {proposal_idx, decision_idx, rank_idx, score_idx}]
+        family_idx = normalized.index("market family") if "market family" in normalized else None
+        pattern_idx = normalized.index("venture pattern") if "venture pattern" in normalized else None
+        context_indices = [i for i in range(len(headers)) if i not in {proposal_idx, decision_idx, rank_idx, score_idx, family_idx, pattern_idx}]
         for row in rows:
             ordinal += 1
             name = sanitize_public_text(row[proposal_idx])
@@ -327,7 +365,10 @@ def round_records(config: dict) -> list[dict]:
             context_parts = [sanitize_public_text(row[i]) for i in context_indices if sanitize_public_text(row[i])]
             adjacency = " · ".join(context_parts)
             relation = relation_for(decision)
-            family_id, family_label = family_for(name, decision, adjacency)
+            explicit_family = explicit_taxon(row[family_idx], FAMILIES) if family_idx is not None else None
+            explicit_pattern = explicit_taxon(row[pattern_idx], PATTERNS) if pattern_idx is not None else None
+            family_id, family_label = explicit_family or family_for(name, decision, adjacency)
+            pattern_id, pattern_label = explicit_pattern or pattern_for(name, decision, adjacency)
             rank = plain_text(row[rank_idx]) if rank_idx is not None else None
             score = plain_text(row[score_idx]) if score_idx is not None else None
             records.append({
@@ -345,6 +386,8 @@ def round_records(config: dict) -> list[dict]:
                 "relationLabel": RELATIONS[relation],
                 "familyId": family_id,
                 "familyLabel": family_label,
+                "patternId": pattern_id,
+                "patternLabel": pattern_label,
                 "canonicalIdeaRefs": referenced_ideas(f"{decision} {adjacency}"),
                 "provisionalAnalystScore": score or None,
                 "rankingEligible": False,
@@ -373,6 +416,7 @@ def json_round_records(config: dict) -> list[dict]:
         adjacency = " · ".join(sanitize_public_text(str(part)) for part in adjacency_parts if part)
         relation = relation_for(combined_decision)
         family_id, family_label = family_for(name, combined_decision, adjacency)
+        pattern_id, pattern_label = pattern_for(name, combined_decision, adjacency)
         records.append({
             "id": f"research-proposal-{config['id']}-{ordinal:02d}",
             "roundId": config["id"],
@@ -389,6 +433,8 @@ def json_round_records(config: dict) -> list[dict]:
             "relationLabel": RELATIONS[relation],
             "familyId": family_id,
             "familyLabel": family_label,
+            "patternId": pattern_id,
+            "patternLabel": pattern_label,
             "canonicalIdeaRefs": referenced_ideas(adjacency),
             "provisionalAnalystScore": None,
             "rankingEligible": False,
@@ -464,6 +510,7 @@ def run_round_records(config: dict) -> list[dict]:
 
         adjacency = sanitize_public_text(reason or str(run.get("reviewStatus") or run.get("researcherNote") or "research run receipt"))
         family_id, family_label = family_for(name, decision, adjacency)
+        pattern_id, pattern_label = pattern_for(name, decision, adjacency)
         records.append({
             "id": f"research-proposal-{config['id']}-{ordinal:02d}",
             "roundId": config["id"],
@@ -480,6 +527,8 @@ def run_round_records(config: dict) -> list[dict]:
             "relationLabel": RELATIONS[relation],
             "familyId": family_id,
             "familyLabel": family_label,
+            "patternId": pattern_id,
+            "patternLabel": pattern_label,
             "canonicalIdeaRefs": canonical_refs,
             "provisionalAnalystScore": None,
             "rankingEligible": False,
@@ -516,6 +565,7 @@ def build_catalog() -> dict:
         raise ValueError(f"expected {EXPECTED_PROPOSAL_COUNT} proposals across all recoverable rounds, found {len(proposals)}")
     relation_counts = Counter(proposal["relation"] for proposal in proposals)
     family_counts = Counter(proposal["familyId"] for proposal in proposals)
+    pattern_counts = Counter(proposal["patternId"] for proposal in proposals)
     return {
         "schemaVersion": "1.0.0",
         "catalogKind": "LOSSLESS_RESEARCH_PROPOSAL_RECONCILIATION",
@@ -533,6 +583,7 @@ def build_catalog() -> dict:
         "rounds": round_summaries,
         "relationCounts": dict(sorted(relation_counts.items())),
         "familyCounts": dict(sorted(family_counts.items())),
+        "patternCounts": dict(sorted(pattern_counts.items())),
         "proposals": proposals,
     }
 

@@ -5,13 +5,6 @@
 (function() {
   'use strict';
 
-  // Mobile nav toggle (handled centrally in site.js)
-  function initMobileNav() {
-    if (typeof window.initMobileNav === 'function') {
-      window.initMobileNav();
-    }
-  }
-
   // Quick-filter chips
   let activeChips = {};
 
@@ -43,12 +36,16 @@
     const chipRow = document.getElementById('chipRow');
     const clearChips = document.getElementById('clearChips');
 
+    document.querySelectorAll('.chip[data-chip-tag], .chip[data-chip-cost], .chip[data-chip-speed], .chip[data-chip-status]')
+      .forEach(chip => chip.setAttribute('aria-pressed', String(chip.classList.contains('active'))));
+
     if (chipRow) {
       chipRow.addEventListener('click', e => {
         const chip = e.target.closest('.chip[data-chip-tag], .chip[data-chip-cost], .chip[data-chip-speed], .chip[data-chip-status]');
         if (!chip) return;
         const wasActive = chip.classList.contains('active');
         chip.classList.toggle('active', !wasActive);
+        chip.setAttribute('aria-pressed', String(!wasActive));
 
         const key = chip.dataset.chipTag || chip.dataset.chipCost || chip.dataset.chipSpeed || chip.dataset.chipStatus;
         const type = chip.dataset.chipTag ? 'tag' : chip.dataset.chipCost ? 'cost' : chip.dataset.chipSpeed ? 'speed' : 'status';
@@ -59,7 +56,10 @@
 
     if (clearChips) {
       clearChips.addEventListener('click', () => {
-        document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.chip.active').forEach(c => {
+          c.classList.remove('active');
+          c.setAttribute('aria-pressed', 'false');
+        });
         activeChips = {};
         const s = document.getElementById('search');
         const st = document.getElementById('status');
@@ -231,7 +231,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    initMobileNav();
     initChips();
     initSpotlight();
     initCategoryBrowse();

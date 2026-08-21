@@ -14,9 +14,9 @@ test('catalog is a deterministic lossless projection of all recoverable research
     encoding: 'utf8'
   });
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
-  assert.match(result.stdout, /OK \(507 proposals across 29 recoverable rounds\)/);
-  assert.equal(catalog.proposalCount, 507);
-  assert.equal(catalog.roundCount, 29);
+  assert.match(result.stdout, /OK \(555 proposals across 30 recoverable rounds\)/);
+  assert.equal(catalog.proposalCount, 555);
+  assert.equal(catalog.roundCount, 30);
   assert.deepEqual(
     Object.fromEntries(catalog.rounds.map((round) => [round.id, round.proposalCount])),
     {
@@ -35,6 +35,7 @@ test('catalog is a deterministic lossless projection of all recoverable research
       'expansion-iv': 20,
       'expansion-v': 25,
       'expansion-vi': 20,
+      'everyday-problem-hypotheses-2026-08-21': 48,
       'omega-xiii-science-procurement': 5,
       'omega-xiii-public-primitive-countertrend': 5,
       'omega-xiii-physical-regulatory': 5,
@@ -54,7 +55,7 @@ test('catalog is a deterministic lossless projection of all recoverable research
 });
 
 test('every source row has one stable record and no proposal identity is merged', () => {
-  assert.equal(new Set(catalog.proposals.map((proposal) => proposal.id)).size, 507);
+  assert.equal(new Set(catalog.proposals.map((proposal) => proposal.id)).size, 555);
   for (const round of catalog.rounds) {
     const rows = catalog.proposals.filter((proposal) => proposal.roundId === round.id);
     assert.deepEqual(rows.map((proposal) => proposal.sourceOrdinal), Array.from({ length: round.proposalCount }, (_, index) => index + 1));
@@ -92,8 +93,10 @@ test('all records are classified, grouped, non-ranked, and privacy-safe', () => 
   const serialized = JSON.stringify(catalog);
   assert.doesNotMatch(serialized, /candidate-[0-9a-f-]{8,}/i);
   assert.doesNotMatch(serialized, /prioritizedForValidation|promotionEligible|idea-staging-queue/i);
-  assert.equal(Object.values(catalog.relationCounts).reduce((sum, count) => sum + count, 0), 507);
-  assert.equal(Object.values(catalog.familyCounts).reduce((sum, count) => sum + count, 0), 507);
+  assert.equal(Object.values(catalog.relationCounts).reduce((sum, count) => sum + count, 0), 555);
+  assert.equal(Object.values(catalog.familyCounts).reduce((sum, count) => sum + count, 0), 555);
+  assert.equal(Object.values(catalog.patternCounts).reduce((sum, count) => sum + count, 0), 555);
+  assert.ok(catalog.proposals.every((proposal) => proposal.patternId && proposal.patternLabel));
 });
 
 test('closely related parent and module proposals share a family but remain separate', () => {
@@ -139,6 +142,7 @@ test('website exposes all-proposal browsing and explicit non-merge language', ()
   assert.match(page, /proposalSearch/);
   assert.match(page, /relationFilter/);
   assert.match(page, /familyFilter/);
+  assert.match(page, /patternFilter/);
   assert.match(script, /research-proposal-catalog\.json/);
   assert.match(script, /replaceChildren/);
   assert.match(publicBuilder, /research-proposal-catalog\.json/);

@@ -6,7 +6,7 @@
   <title>Idea Dossiers — Venture Atlas OS</title>
   <meta name="description" content="Full dossier library for 272 canonical business ideas. Each dossier contains a complete deep-analysis document with customer profiles, financial models, validation plans, and 25 prompts.">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.0">
   <link rel="manifest" href="../manifest.webmanifest">
   <style>
     .dossier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; margin-top: 1.5rem; }
@@ -21,6 +21,14 @@
     .controls-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.5rem; }
     #dossierSearch { flex: 1; min-width: 200px; }
     .score-badge { display: inline-block; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 800; text-align: center; line-height: 2rem; flex-shrink: 0; }
+    @media (max-width: 600px) {
+      .controls-bar { align-items: stretch; }
+      .controls-bar > input, .controls-bar > select { width: 100%; min-width: 0; }
+      .dossier-row { align-items: flex-start; flex-wrap: wrap; }
+      .dossier-row .name { min-width: 0; flex: 1 1 calc(100% - 3rem); overflow-wrap: anywhere; }
+      .dossier-row .meta { margin-left: 2.75rem; }
+      .dossier-actions { width: 100%; margin-left: 2.75rem; flex-wrap: wrap; }
+    }
   </style>
 </head>
 <body data-page="dossiers" data-root="..">
@@ -55,7 +63,7 @@
       <div id="dossierList"></div>
     </section>
   </main>
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=2.7.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function init() {

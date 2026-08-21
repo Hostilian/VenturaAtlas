@@ -7,7 +7,7 @@
   <meta name="description" content="Interactive unit economics and financial scenario calculator for startup ideas — adjust transaction volume, bounty pricing, take rates, and hosting costs in real-time.">
   <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.0">
   <link rel="manifest" href="../manifest.webmanifest">
   <style>
     .calc-grid {
@@ -21,6 +21,7 @@
       border-radius: var(--radius);
       padding: 1.5rem;
       box-shadow: var(--shadow);
+      min-width: 0;
     }
     .calc-field {
       margin-bottom: 1.2rem;
@@ -70,8 +71,13 @@
       color: var(--muted);
       margin-top: 0.35rem;
     }
+    .stat-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0.75rem; }
     @media (max-width: 768px) {
-      .calc-grid { grid-template-columns: 1fr; }
+      .calc-grid { grid-template-columns: minmax(0, 1fr); }
+      .calc-card { padding: 1rem; }
+      .calc-field label { align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; }
+      .calc-field select { min-width: 0; max-width: 100%; }
+      .stat-grid { grid-template-columns:minmax(0, 1fr); }
     }
   </style>
 </head>
@@ -143,7 +149,7 @@
       <div class="calc-card">
         <h2 style="font-size:1.1rem;margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Projections & Unit Economics</h2>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem">
+        <div class="stat-grid" style="margin-bottom:1rem">
           <div class="stat-hero">
             <div class="num" id="outGrossRev">$4,000</div>
             <div class="lbl">Gross Volume (GMV)</div>
@@ -154,7 +160,7 @@
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.2rem">
+        <div class="stat-grid" style="margin-bottom:1.2rem">
           <div class="stat-hero">
             <div class="num" id="outNetProfit" style="color:var(--score-hi)">$635</div>
             <div class="lbl">Monthly Gross Profit</div>
@@ -175,7 +181,7 @@
     </div>
   </main>
 
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=2.7.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       // Wait for VA data to load
@@ -257,6 +263,6 @@
       recalculate();
     });
   </script>
-  <script src="../assets/js/features/command-palette.js"></script>
+  <script src="../assets/js/features/command-palette.js?v=2.7.0"></script>
 </body>
 </html>

@@ -37,11 +37,11 @@ function getIdeaScore(idea, dimension) {
   if (dimension === 'overall') {
     val = gl.overallScore ?? cs.overallOpportunity ?? cs.compositeHeadline;
   } else if (dimension === 'market') {
-    val = sc.marketDemand?.value ?? cs.marketDemand;
+    val = sc.marketDemand?.value ?? sc.marketSize?.value ?? cs.marketDemand;
   } else if (dimension === 'confidence') {
-    val = sc.confidence?.value ?? cs.confidence;
+    val = sc.overallConfidence?.value ?? sc.confidence?.value ?? cs.confidence;
   } else if (dimension === 'profit') {
-    val = sc.profitPotential?.value ?? cs.profitPotential;
+    val = sc.profitPotential?.value ?? sc.highestProfitPotential?.value ?? cs.highestProfitPotential ?? cs.profitPotential;
   } else if (cs[dimension] !== undefined) {
     val = cs[dimension];
   } else if (sc[dimension] !== undefined) {
@@ -49,7 +49,9 @@ function getIdeaScore(idea, dimension) {
   }
 
   if (val === null || val === undefined || isNaN(val)) return null;
-  return Math.min(100, Math.max(0, Number(val)));
+  const numeric = Number(val);
+  const normalized = dimension !== 'overall' && numeric >= 0 && numeric <= 10 ? numeric * 10 : numeric;
+  return Math.min(100, Math.max(0, normalized));
 }
 
 function getIdeaTaxonomy(ideaOrId) {
@@ -70,7 +72,8 @@ function formatDimensionScore(val, maxScale = null) {
 
 function formatConfidenceScore(val) {
   if (val === null || val === undefined || isNaN(val)) return 'Unverified';
-  const num = Number(val);
+  const raw = Number(val);
+  const num = raw >= 0 && raw <= 10 ? raw * 10 : raw;
   if (num >= 70) return `High (${num.toFixed(0)}%)`;
   if (num >= 40) return `Medium (${num.toFixed(0)}%)`;
   if (num > 0) return `Low (${num.toFixed(0)}%)`;
@@ -275,39 +278,6 @@ function initKeyboard() {
 }
 
 /* ================================================================
-   MOBILE NAVIGATION
-   ================================================================ */
-function initMobileNav() {
-  const toggle = document.getElementById('navToggle') || $('.nav-toggle');
-  const links = document.getElementById('navlinks') || $('.navlinks');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? '✕' : '☰';
-  });
-
-  document.addEventListener('click', (e) => {
-    if (links.classList.contains('open') && !links.contains(e.target) && e.target !== toggle) {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.textContent = '☰';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && links.classList.contains('open')) {
-      links.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.textContent = '☰';
-      toggle.focus();
-    }
-  });
-}
-
-/* ================================================================
    HELPERS & SANITIZATION
    ================================================================ */
 function money(r) {
@@ -385,47 +355,6 @@ function countUp(el, target, duration = 800) {
     if (progress < 1) requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
-}
-
-function getIdeaScore(idea, dimension) {
-  if (!idea) return null;
-  const d = String(dimension || 'overall').toLowerCase();
-
-  if (d === 'overall') {
-    const v = idea.atAGlance?.overallScore ?? idea.compositeScores?.compositeHeadline ?? idea.scores?.overallOpportunity?.value;
-    return typeof v === 'number' && !isNaN(v) ? v : null;
-  }
-  if (d === 'profit') {
-    const v = idea.scores?.profitPotential?.value ?? idea.compositeScores?.profitPotential ?? idea.scores?.highestProfitPotential?.value;
-    return typeof v === 'number' && !isNaN(v) ? v : null;
-  }
-  if (d === 'confidence') {
-    const v = idea.scores?.confidence?.value ?? idea.compositeScores?.confidence ?? idea.scores?.overallConfidence?.value;
-    return typeof v === 'number' && !isNaN(v) ? v : null;
-  }
-  if (d === 'market') {
-    const v = idea.scores?.marketDemand?.value ?? idea.compositeScores?.marketDemand ?? idea.scores?.marketSize?.value;
-    return typeof v === 'number' && !isNaN(v) ? v : null;
-  }
-
-  const generic = idea.scores?.[dimension]?.value ?? idea.compositeScores?.[dimension];
-  return typeof generic === 'number' && !isNaN(generic) ? generic : null;
-}
-
-window.VentureAtlas.getIdeaScore = getIdeaScore;
-
-function fillMetrics() {
-  const counts = VA.meta?.counts || {};
-  const map = {
-    '[data-total-ideas]':      counts.canonicalIdeas ?? (VA.dataErrors.ideas ? null : VA.ideas.length),
-    '[data-total-prompts]':    counts.prompts ?? null,
-    '[data-total-sources]':    counts.sources ?? (VA.dataErrors.sources ? null : VA.sources.length),
-    '[data-total-categories]': counts.categories ?? (VA.dataErrors.categories ? null : VA.categories.length)
-  };
-  Object.entries(map).forEach(([sel, val]) => {
-    if (val === null || val === undefined) return;
-    $$(sel).forEach(el => countUp(el, val));
-  });
 }
 
 /* ================================================================
@@ -717,6 +646,7 @@ function initHome() {
     const sliced = xs.slice(0, visibleCount);
 
     wrap.innerHTML = sliced.length ? sliced.map(card).join('') : '';
+    updateCompareButton();
     if (empty) empty.classList.toggle('hidden', totalFiltered > 0);
 
     let loadMoreWrap = $('#loadMoreWrap');
@@ -827,6 +757,21 @@ function initHome() {
   $('#random')?.addEventListener('click', () => {
     const x = VA.ideas[Math.floor(Math.random() * VA.ideas.length)];
     if (x) location.href = `${VA.base}/docs/idea.html?id=${x.id}`;
+  });
+
+  function updateCompareButton() {
+    const button = $('#compareSelected');
+    if (!button) return;
+    const count = $$('.compareCheck:checked').length;
+    button.disabled = count < 2;
+    button.textContent = `Compare (${Math.min(count, 4)})`;
+    button.setAttribute('aria-label', count < 2
+      ? `Select ${2 - count} more idea${count === 1 ? '' : 's'} to compare`
+      : `Compare ${Math.min(count, 4)} selected ideas`);
+  }
+
+  wrap.addEventListener('change', e => {
+    if (e.target.matches('.compareCheck')) updateCompareButton();
   });
 
   $('#compareSelected')?.addEventListener('click', () => {
@@ -1440,26 +1385,30 @@ function initMobileNav() {
   const toggle = document.getElementById('mobileNavToggle') || document.getElementById('navToggle');
   const drawer = document.getElementById('mobileNavDrawer') || document.getElementById('navlinks');
   if (!toggle || !drawer) return;
+  if (toggle.dataset.initialized === 'true') return;
+  toggle.dataset.initialized = 'true';
 
   function closeMenu() {
     drawer.classList.remove('open');
-    drawer.style.display = '';
+    drawer.hidden = true;
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
     toggle.textContent = toggle.id === 'mobileNavToggle' ? '☰ Menu' : '☰';
     document.body.classList.remove('nav-open');
   }
 
   function openMenu() {
     drawer.classList.add('open');
-    drawer.style.display = 'block';
+    drawer.hidden = false;
     toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation');
     toggle.textContent = toggle.id === 'mobileNavToggle' ? '✕ Close' : '✕';
     document.body.classList.add('nav-open');
   }
 
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = drawer.classList.contains('open') || (drawer.style.display && drawer.style.display !== 'none');
+    const isOpen = drawer.classList.contains('open');
     if (isOpen) {
       closeMenu();
     } else {
@@ -1480,7 +1429,19 @@ function initMobileNav() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+
+  document.querySelectorAll('.nav-more').forEach(menu => {
+    menu.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        menu.removeAttribute('open');
+        menu.querySelector('summary')?.focus();
+      }
+    });
   });
 }
 window.initMobileNav = initMobileNav;
@@ -1494,7 +1455,11 @@ function fillMetrics() {
     '[data-metric="total"]': c.totalIdeas ?? null,
     '[data-metric="categories"]': c.categories ?? null,
     '[data-metric="sources"]': c.sources ?? null,
-    '[data-metric="prompts"]': c.prompts ?? null
+    '[data-metric="prompts"]': c.prompts ?? null,
+    '[data-total-ideas]': c.canonicalIdeas ?? c.ideas ?? null,
+    '[data-total-categories]': c.categories ?? null,
+    '[data-total-sources]': c.sources ?? null,
+    '[data-total-prompts]': c.prompts ?? null
   };
   for (const [selector, val] of Object.entries(els)) {
     if (val === null || val === undefined) continue;
@@ -1504,10 +1469,111 @@ function fillMetrics() {
   }
 }
 
+function renderSiteShell() {
+  const root = document.body.dataset.root || '.';
+  VA.base = root;
+  const page = document.body.dataset.page || 'home';
+  const currentPath = location.pathname.toLowerCase();
+  const isActive = (key, path) => page === key || currentPath.endsWith(path);
+  const navLink = (key, href, label) =>
+    `<a href="${root}/${href}"${isActive(key, href.split('#')[0]) ? ' aria-current="page"' : ''}>${label}</a>`;
+
+  if (!document.querySelector('.skip')) {
+    document.body.insertAdjacentHTML('afterbegin', '<a href="#main" class="skip">Skip to content</a>');
+  }
+
+  const header = `
+<header class="site-header" role="banner">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="${root}/index.html" aria-label="Venture Atlas home">Venture Atlas</a>
+    <div class="navlinks desktop-navlinks">
+      ${navLink('home', 'index.html#directory', 'Ideas')}
+      ${navLink('matcher', 'docs/matcher.html', 'Match me')}
+      ${navLink('rankings', 'docs/rankings.html', 'Rankings')}
+      ${navLink('compare', 'docs/compare.html', 'Compare')}
+      ${navLink('research', 'docs/research-catalog.html', 'Fresh ideas')}
+      ${navLink('sources', 'docs/sources.html', 'Sources')}
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-menu">
+          <div class="nav-menu-group"><strong>Explore</strong>
+            ${navLink('getting-started', 'docs/getting-started.html', 'Getting started')}
+            ${navLink('categories', 'docs/categories.html', 'Markets &amp; idea types')}
+            ${navLink('tags', 'docs/tags.html', 'Tags')}
+            ${navLink('timeline', 'docs/timeline.html', 'Research timeline')}
+          </div>
+          <div class="nav-menu-group"><strong>Evaluate &amp; build</strong>
+            ${navLink('calculator', 'docs/calculator.html', 'Financial calculator')}
+            ${navLink('dossiers', 'docs/dossiers.html', 'Dossiers')}
+            ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
+            ${navLink('room', 'docs/room.html', 'Decision workspace')}
+            ${navLink('decisions', 'docs/decisions.html', 'Decision log')}
+            ${navLink('export', 'docs/export.html', 'Export')}
+          </div>
+          <div class="nav-menu-group"><strong>Trust</strong>
+            ${navLink('methodology', 'docs/methodology.html', 'Methodology')}
+            ${navLink('completeness', 'docs/completeness.html', 'Completeness audit')}
+            ${navLink('about', 'docs/about.html', 'About')}
+          </div>
+        </div>
+      </details>
+    </div>
+    <div class="nav-actions">
+      <button id="themeBtn" aria-label="Toggle color theme" title="Switch color theme">☾</button>
+      <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNavDrawer">☰ Menu</button>
+    </div>
+  </nav>
+  <div id="mobileNavDrawer" class="mobile-nav-drawer" hidden>
+    <div class="mobile-nav-content">
+      <section><h2>Discover</h2>
+        ${navLink('home', 'index.html#directory', 'Ideas')}
+        ${navLink('matcher', 'docs/matcher.html', 'Match me to ideas')}
+        ${navLink('rankings', 'docs/rankings.html', 'Rankings')}
+        ${navLink('compare', 'docs/compare.html', 'Compare')}
+        ${navLink('research', 'docs/research-catalog.html', 'Fresh ideas lab')}
+      </section>
+      <section><h2>Evaluate &amp; build</h2>
+        ${navLink('calculator', 'docs/calculator.html', 'Financial calculator')}
+        ${navLink('dossiers', 'docs/dossiers.html', 'Dossiers')}
+        ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
+        ${navLink('room', 'docs/room.html', 'Decision workspace')}
+        ${navLink('export', 'docs/export.html', 'Export')}
+      </section>
+      <section><h2>Research &amp; trust</h2>
+        ${navLink('getting-started', 'docs/getting-started.html', 'Getting started')}
+        ${navLink('sources', 'docs/sources.html', 'Sources')}
+        ${navLink('categories', 'docs/categories.html', 'Markets &amp; idea types')}
+        ${navLink('methodology', 'docs/methodology.html', 'Methodology')}
+        ${navLink('completeness', 'docs/completeness.html', 'Completeness audit')}
+        ${navLink('about', 'docs/about.html', 'About')}
+      </section>
+    </div>
+  </div>
+</header>`;
+  const existingHeader = document.querySelector('.site-header');
+  if (existingHeader) existingHeader.outerHTML = header;
+  else document.querySelector('.skip')?.insertAdjacentHTML('afterend', header);
+
+  const footer = `
+<footer class="footer" role="contentinfo">
+  <p><strong>Venture Atlas</strong> helps people compare business hypotheses; it does not promise outcomes.</p>
+  <p><a href="${root}/docs/getting-started.html">Start here</a> · <a href="${root}/docs/methodology.html">Methodology</a> · <a href="${root}/docs/completeness.html">Completeness audit</a> · <a href="https://github.com/Hostilian/VenturaAtlas" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  <p class="footer-note">Scores are decision aids, not investment advice. Financial ranges are scenarios, not forecasts.</p>
+</footer>`;
+  const existingFooter = document.querySelector('.footer');
+  if (existingFooter) existingFooter.outerHTML = footer;
+  else document.body.insertAdjacentHTML('beforeend', footer);
+}
+
 /* ================================================================
    ENTRY POINT & REUSABLE ERROR HANDLING
    ================================================================ */
 document.addEventListener('DOMContentLoaded', async () => {
+  renderSiteShell();
+  themeInit();
+  initKeyboard();
+  initMobileNav();
+
   try {
     await loadData();
   } catch (err) {
@@ -1516,80 +1582,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 <div class="notice" style="margin:2rem;background:var(--score-lo-bg);border:1px solid var(--score-lo);padding:1.5rem;border-radius:8px">
   <h3>⚠ Data Loading Failure</h3>
   <p>Venture Atlas OS encountered an error loading dataset resources: ${esc(err.message)}</p>
-  <button onclick="location.reload()" class="button sm" style="margin-top:0.5rem">Retry Loading</button>
+  <button id="retryDataLoad" class="button sm" style="margin-top:0.5rem">Retry loading</button>
 </div>`);
+    document.getElementById('retryDataLoad')?.addEventListener('click', () => location.reload());
   }
-
-  themeInit();
-  initKeyboard();
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(`${VA.base}/sw.js`).catch(() => {});
   }
 
   const page = document.body.dataset.page;
-  const hasHeader = document.querySelector('.site-header');
-  if (!hasHeader) {
-    document.body.insertAdjacentHTML('afterbegin', `
-<a href="#main" class="skip">Skip to content</a>
-<header class="site-header" role="banner">
-  <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href="${VA.base}/index.html">Venture Atlas OS</a>
-    <div class="navlinks desktop-navlinks">
-      <a href="${VA.base}/index.html">Ideas</a>
-      <a href="${VA.base}/docs/rankings.html">Rankings</a>
-      <a href="${VA.base}/docs/compare.html">Compare</a>
-      <a href="${VA.base}/docs/matcher.html">Matcher</a>
-      <a href="${VA.base}/docs/categories.html">Categories</a>
-      <a href="${VA.base}/docs/dossiers.html">Dossiers</a>
-      <a href="${VA.base}/docs/research.html">Research</a>
-      <a href="${VA.base}/docs/sources.html">Sources</a>
-      <a href="${VA.base}/docs/prompts.html">Prompts</a>
-      <a href="${VA.base}/docs/timeline.html">Timeline</a>
-      <a href="${VA.base}/docs/decisions.html">Decisions</a>
-      <a href="${VA.base}/docs/room.html" style="color:var(--accent);font-weight:700">Rooms</a>
-      <a href="${VA.base}/docs/methodology.html">Methodology</a>
-      <a href="${VA.base}/docs/about.html">About</a>
-    </div>
-    <div style="display:flex;align-items:center;gap:0.4rem;margin-left:auto">
-      <button id="themeBtn" aria-label="Toggle dark mode">☾</button>
-      <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">☰ Menu</button>
-    </div>
-  </nav>
-  <div id="mobileNavDrawer" class="mobile-nav-drawer" style="display:none">
-    <div class="mobile-nav-content">
-      <a href="${VA.base}/index.html">💡 Ideas Directory</a>
-      <a href="${VA.base}/docs/rankings.html">🏆 Decision Rankings</a>
-      <a href="${VA.base}/docs/compare.html">⚖️ Compare Ideas</a>
-      <a href="${VA.base}/docs/matcher.html">🎯 Idea Matcher</a>
-      <a href="${VA.base}/docs/categories.html">📂 Categories</a>
-      <a href="${VA.base}/docs/dossiers.html">📄 Dossiers</a>
-      <a href="${VA.base}/docs/research.html">🔬 Continuous Research</a>
-      <a href="${VA.base}/docs/sources.html">📚 Sources &amp; Evidence</a>
-      <a href="${VA.base}/docs/prompts.html">🤖 AI Research Prompts</a>
-      <a href="${VA.base}/docs/timeline.html">📅 Research Timeline</a>
-      <a href="${VA.base}/docs/decisions.html">🏛️ Decision Log</a>
-      <a href="${VA.base}/docs/room.html">👥 Collaboration Rooms</a>
-      <a href="${VA.base}/docs/methodology.html">📖 Research Constitution</a>
-      <a href="${VA.base}/docs/about.html">ℹ️ About Venture Atlas</a>
-    </div>
-  </div>
-</header>`);
-    themeInit();
-  }
-
-  if (!document.querySelector('.footer')) {
-    document.body.insertAdjacentHTML('beforeend', `
-<footer class="footer" role="contentinfo">
-  Decision support, not financial advice. Scores and scenarios are not guarantees. &nbsp;
-  <a href="${VA.base}/research/completeness-audit.md">Completeness audit</a> · 
-  <a href="${VA.base}/docs/methodology.html">Methodology</a> · 
-  <a href="${VA.base}/docs/about.html">About</a>
-</footer>`);
-  }
 
   fillMetrics();
-  initMobileNav();
 
   if (page === 'home')          initHome();
   if (page === 'idea')          initIdea();

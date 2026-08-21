@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting started — Venture Atlas</title>
+  <meta name="description" content="A plain-language guide to finding, comparing, and testing business ideas with Venture Atlas.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.0">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <style>
+    .start-hero { max-width: 780px; padding: 2rem 0 1rem; }
+    .start-hero p { font-size: 1.08rem; line-height: 1.7; }
+    .path-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.5rem 0 2.5rem; }
+    .path-card { display:flex; flex-direction:column; align-items:flex-start; gap:0.65rem; padding:1.35rem; }
+    .path-card h2 { font-size:1.08rem; margin:0; }
+    .path-card p { margin:0; flex:1; }
+    .plain-steps { counter-reset:steps; display:grid; gap:1rem; margin-top:1rem; }
+    .plain-step { counter-increment:steps; display:grid; grid-template-columns:2.5rem 1fr; gap:0.85rem; align-items:start; }
+    .plain-step::before { content:counter(steps); display:grid; place-items:center; width:2.25rem; height:2.25rem; border-radius:50%; background:var(--accent-l); color:var(--accent-h); font-weight:800; }
+    .plain-step h3 { margin:0 0 0.25rem; font-size:1rem; }
+    .plain-step p { margin:0; }
+    @media (max-width:760px) { .path-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body data-page="getting-started" data-root="..">
+  <main id="main">
+    <section class="start-hero" aria-labelledby="pageTitle">
+      <div class="eyebrow">Start here</div>
+      <h1 id="pageTitle">Use Venture Atlas without getting lost in the data</h1>
+      <p>Venture Atlas is a decision aid, not a list of guaranteed winners. Start with your real constraints, shortlist a few hypotheses, then look for evidence that could prove each one wrong.</p>
+    </section>
+
+    <section aria-labelledby="choosePath">
+      <h2 id="choosePath">Choose what you need today</h2>
+      <div class="path-grid">
+        <article class="panel path-card">
+          <div class="eyebrow">I need an idea</div>
+          <h2>Match ideas to my situation</h2>
+          <p>Use your budget, time, skills, and risk tolerance to narrow hundreds of records to a manageable shortlist.</p>
+          <a class="button primary" href="./matcher.html">Start the matcher</a>
+        </article>
+        <article class="panel path-card">
+          <div class="eyebrow">I have candidates</div>
+          <h2>Compare them honestly</h2>
+          <p>Put up to four ideas side by side. Treat missing evidence as uncertainty, not as a neutral or positive signal.</p>
+          <a class="button primary" href="../index.html#directory">Build a shortlist</a>
+        </article>
+        <article class="panel path-card">
+          <div class="eyebrow">We are deciding together</div>
+          <h2>Create a local decision packet</h2>
+          <p>Vote privately on one device, record reasoning, and export a packet to share. The workspace is local, not live-synchronized.</p>
+          <a class="button primary" href="./room.html">Open decision workspace</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="test" aria-labelledby="testTitle">
+      <h2 id="testTitle">A safer way to choose an idea</h2>
+      <div class="plain-steps">
+        <div class="plain-step"><div><h3>Write down your constraints</h3><p>Decide what you can spend, how quickly you need revenue, what you can build or sell, and which risks you will not accept.</p></div></div>
+        <div class="plain-step"><div><h3>Shortlist three to five ideas</h3><p>Use the directory's Market and Product or business type filters. Similar ideas are grouped so near-duplicates are easier to spot.</p></div></div>
+        <div class="plain-step"><div><h3>Read the evidence labels</h3><p>A score is only useful when its inputs are comparable. Check sources, confidence, update dates, and known gaps in the dossier.</p></div></div>
+        <div class="plain-step"><div><h3>Run the cheapest disconfirming test</h3><p>Interview buyers, test a concrete offer, or measure a workflow before building a full product. Define what result would make you stop.</p></div></div>
+        <div class="plain-step"><div><h3>Record the decision</h3><p>Keep the result, reasoning, and next review date. A rejected idea with strong evidence is useful progress.</p></div></div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:1.5rem" aria-labelledby="labelsTitle">
+      <h2 id="labelsTitle">What the labels mean</h2>
+      <div class="kv">
+        <div><strong>Published idea</strong></div><div>A structured hypothesis in the main directory. It can still contain gaps.</div>
+        <div><strong>Fresh idea</strong></div><div>An early proposal in the research catalog. It has not earned a score or recommendation.</div>
+        <div><strong>Legacy score</strong></div><div>An older heuristic retained for provenance. Do not compare it blindly across records.</div>
+        <div><strong>Evidence confidence</strong></div><div>How well the important claims are supported—not the chance that the business will succeed.</div>
+      </div>
+      <div class="hero-actions" style="margin-top:1.25rem">
+        <a class="button" href="./methodology.html">Read the methodology</a>
+        <a class="button" href="./sources.html">Inspect public sources</a>
+        <a class="button" href="./completeness.html">See known gaps</a>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/js/site.js?v=2.7.0"></script>
+  <script src="../assets/js/features/command-palette.js?v=2.7.0"></script>
+</body>
+</html>

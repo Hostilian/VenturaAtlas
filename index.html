@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Venture Atlas OS — AI Business Idea Intelligence Platform</title>
-  <meta name="description" content="Browse 309+ business idea dossiers with heterogeneous evidence coverage, legacy scoring, financial scenarios, prompts, and explicitly labeled public citations.">
+  <title>Venture Atlas OS — Find and test business ideas</title>
+  <meta name="description" content="Find business ideas that fit your budget, skills, and timeline. Compare researched hypotheses, inspect the evidence, and plan a small validation test.">
   <meta name="keywords" content="business ideas, startup research, AI opportunities, venture building, product ideas, entrepreneur, opportunity database">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Venture Atlas OS — AI Business Idea Intelligence Platform">
-  <meta property="og:description" content="309+ business idea dossiers with heterogeneous evidence coverage, legacy scores, financial scenarios, customer profiles, and research prompts.">
+  <meta property="og:title" content="Venture Atlas — Find and test business ideas">
+  <meta property="og:description" content="Match, compare, and test hundreds of business hypotheses with transparent evidence labels.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#1e7a5c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="./assets/css/site.css">
+  <link rel="stylesheet" href="./assets/css/site.css?v=2.7.0">
   <link rel="manifest" href="./manifest.webmanifest">
   <style>
     /* ── Index-specific enhancements ── */
@@ -335,21 +335,19 @@
     ══════════════════════════════════════════════════════════ -->
     <section class="hero" aria-labelledby="heroTitle">
       <div class="hero-main">
-        <div class="eyebrow">Opportunity database · research library · venture studio OS</div>
+        <div class="eyebrow"><span data-metric="ideas">—</span> business hypotheses · evidence shown openly</div>
         <h1 id="heroTitle">
-          Ideas you can <span class="hero-gradient-title">inspect,</span><br>
-          challenge, compare,<br>
-          and <span class="hero-gradient-title">build.</span>
+          Find a business idea<br>
+          you can <span class="hero-gradient-title">actually test.</span>
         </h1>
         <p class="lede">
-          A transparent repository of canonical business ideas sourced from deep-research tournament rounds.
-          Every idea includes a customer profile, problem statement, financial scenarios, validation plan,
-          scoring breakdown, evidence labels, and 25 prompts — with public citations where available.
+          Tell us your constraints, build a shortlist, and inspect the assumptions before spending money.
+          Every published idea includes a customer, problem, validation path, financial scenario, and evidence labels.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#directory" id="browseBtn">Browse all ideas</a>
-          <a class="button ghost" href="./docs/matcher.html">Find my idea →</a>
-          <a class="button ghost" href="./docs/rankings.html">View rankings</a>
+          <a class="button primary" href="./docs/matcher.html">Find ideas for me</a>
+          <a class="button ghost" href="#directory" id="browseBtn">Browse all ideas</a>
+          <a class="button ghost" href="./docs/getting-started.html">How it works</a>
         </div>
         <div class="notice" role="note">
           <strong>Disclaimer:</strong> Scores are decision-support tools, not investment advice.
@@ -365,7 +363,7 @@
           <div class="metrics-grid">
             <div class="metric">
               <strong data-total-ideas id="metricIdeas" data-metric="ideas">—</strong>
-              <span>canonical ideas</span>
+              <span>published ideas</span>
             </div>
             <div class="metric">
               <strong data-total-categories id="metricCats" data-metric="categories">—</strong>
@@ -382,11 +380,11 @@
           </div>
         </div>
 
-        <!-- Top opportunities -->
-        <div class="top-ideas-panel" aria-label="Top opportunities by score">
-          <h2 class="eyebrow">Top opportunities</h2>
-          <p class="muted" data-ranking-maturity="legacy-unverified">Legacy heuristic order only; eligibility, evidence coverage, and score-scale comparability are not established.</p>
-          <ol id="topIdeas" aria-label="Top 7 ideas by overall score">
+        <!-- Starting points -->
+        <div class="top-ideas-panel" aria-label="Starting points from the legacy score order">
+          <h2 class="eyebrow">Starting points</h2>
+          <p class="muted" data-ranking-maturity="legacy-unverified"><strong>Legacy heuristic order only:</strong> this is a starting point, not a verdict. Eligibility, evidence coverage, and score-scale comparability are not established, so inspect each dossier before deciding.</p>
+          <ol id="topIdeas" aria-label="Seven ideas from the legacy score order">
             <!-- Populated by site.js -->
           </ol>
         </div>
@@ -398,8 +396,8 @@
     ══════════════════════════════════════════════════════════ -->
     <section class="panel" style="margin-bottom:2.5rem;padding:2rem" aria-labelledby="journeyTitle">
       <div class="section-heading">
-        <h2 id="journeyTitle">🗺️ The Venture Idea Journey</h2>
-        <span class="section-badge">5 stages</span>
+        <h2 id="journeyTitle">A practical path from idea to evidence</h2>
+        <span class="section-badge">5 steps</span>
       </div>
       <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1.75rem">
         From raw idea to a testable business hypothesis — every step has tools, prompts, and data in this repository.
@@ -434,7 +432,7 @@
           </a>
         </div>
         <div class="journey-step">
-          <a href="./SEARCH_AND_DISCOVERY_GUIDE.md">
+          <a href="./docs/getting-started.html#test">
             <div class="journey-step-num" title="Launch">🚀</div>
             <div class="journey-step-title">5. Launch</div>
             <div class="journey-step-desc">Launch plans, GTM strategy, and first-customer playbooks</div>
@@ -449,12 +447,12 @@
     <section class="panel" style="margin-bottom:2.5rem;background:linear-gradient(135deg,var(--panel),var(--bg2));border:1px solid var(--accent)" aria-labelledby="wizTitle">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">
         <div>
-          <h2 id="wizTitle" style="font-size:1.25rem;margin-bottom:0.25rem">⚡ Venture Matcher — Find Your Ideal Opportunity</h2>
-          <p style="font-size:0.875rem;color:var(--text2)">Answer 3 questions to instantly filter ideas by your founder profile.</p>
+          <h2 id="wizTitle" style="font-size:1.25rem;margin-bottom:0.25rem">Quick match</h2>
+          <p style="font-size:0.875rem;color:var(--text2)">Answer three questions to narrow the directory to ideas that fit you.</p>
         </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
           <button id="wizResetBtn" class="button ghost sm" style="display:none">Reset Matcher</button>
-          <a href="./docs/matcher.html" class="button ghost sm">Full Matcher →</a>
+          <a href="./docs/matcher.html" class="button ghost sm">Detailed matcher →</a>
         </div>
       </div>
 
@@ -516,7 +514,7 @@
               </div>
             </div>
             <div style="min-width:160px">
-              <div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.04em">Score breakdown</div>
+              <div style="font-size:0.72rem;color:var(--muted);font-weight:600;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.04em">Legacy score snapshot</div>
               <div id="spotlightScores" style="display:grid;gap:0.4rem"></div>
             </div>
           </div>
@@ -530,9 +528,12 @@
     ══════════════════════════════════════════════════════════ -->
     <section id="directory" aria-labelledby="dirTitle">
       <div class="directory-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-        <h2 id="dirTitle">Idea directory</h2>
+        <div>
+          <h2 id="dirTitle">Browse published ideas</h2>
+          <p class="muted" style="margin:0.25rem 0 0">Filter by market and product type first; open More filters only when you need the original research labels.</p>
+        </div>
         <div class="scope-tabs" aria-label="Published idea scope" style="display:flex;gap:0.4rem;flex-wrap:wrap">
-          <button class="button primary sm scope-tab active" data-scope="canonical">💡 Published Portfolio (<span data-metric="ideas">—</span>)</button>
+          <button class="button primary sm scope-tab active" data-scope="canonical">Published ideas (<span data-metric="ideas">—</span>)</button>
         </div>
       </div>
 
@@ -557,44 +558,54 @@
       </div>
 
       <!-- Toolbar -->
-      <div class="toolbar" role="search">
-        <input
-          id="search"
-          type="search"
-          placeholder="Search ideas, customers, problems, tags…"
-          aria-label="Search ideas"
-          autocomplete="off"
-          spellcheck="false"
-        >
-        <select id="family" aria-label="Filter by normalized market family">
-          <option value="">All market families</option>
-        </select>
-        <select id="pattern" aria-label="Filter by venture pattern">
-          <option value="">All idea types</option>
-        </select>
-        <select id="category" aria-label="Filter by original detailed category">
-          <option value="">All detailed categories</option>
-        </select>
-        <select id="status" aria-label="Filter by status">
-          <option value="">All statuses</option>
-          <option value="priority">Priority</option>
-          <option value="researched">Researched</option>
-          <option value="staged">Staged</option>
-          <option value="explore">Explore</option>
-          <option value="archived">Archived</option>
-        </select>
-        <select id="sort" aria-label="Sort ideas by">
-          <option value="overall">Overall score</option>
-          <option value="profit">Profit potential</option>
-          <option value="cost">Lowest startup cost</option>
-          <option value="confidence">Confidence</option>
-          <option value="revenue">Speed to revenue</option>
-          <option value="taxonomy">Market family &amp; idea type</option>
-          <option value="similarity">Closest idea clusters</option>
-          <option value="distinctive">Most differentiated</option>
-          <option value="name">Name (A–Z)</option>
-          <option value="updated">Recently updated</option>
-        </select>
+      <div class="toolbar directory-toolbar" role="search">
+        <div class="filter-field search-field">
+          <label for="search">Search</label>
+          <input id="search" type="search" placeholder="Customer, problem, keyword…" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="filter-field">
+          <label for="family">Market</label>
+          <select id="family"><option value="">All markets</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="pattern">Product or business type</label>
+          <select id="pattern"><option value="">All types</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="overall">Legacy overall score</option>
+            <option value="profit">Profit potential</option>
+            <option value="cost">Lowest startup cost</option>
+            <option value="confidence">Evidence confidence</option>
+            <option value="revenue">Speed to first revenue</option>
+            <option value="taxonomy">Market and business type</option>
+            <option value="similarity">Closest idea clusters</option>
+            <option value="distinctive">Most differentiated</option>
+            <option value="name">Name (A–Z)</option>
+            <option value="updated">Recently updated</option>
+          </select>
+        </div>
+        <details class="advanced-filters">
+          <summary>More filters</summary>
+          <div class="advanced-filter-grid">
+            <div class="filter-field">
+              <label for="category">Original detailed category</label>
+              <select id="category"><option value="">All detailed categories</option></select>
+            </div>
+            <div class="filter-field">
+              <label for="status">Research status</label>
+              <select id="status">
+                <option value="">All statuses</option>
+                <option value="priority">Priority</option>
+                <option value="researched">Researched</option>
+                <option value="staged">Staged</option>
+                <option value="explore">Explore</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+          </div>
+        </details>
       </div>
 
       <!-- View controls -->
@@ -605,7 +616,7 @@
         <button id="compactView" aria-pressed="false" title="Compact view">Compact</button>
         <button id="reset"       class="ghost sm"     title="Reset all filters">Reset</button>
         <button id="random"      class="ghost sm"     title="Open a random idea" aria-label="Open random idea">Random</button>
-        <button id="compareSelected" class="primary sm" aria-label="Compare selected ideas">Compare selected</button>
+        <button id="compareSelected" class="primary sm" aria-label="Compare selected ideas" disabled>Compare (0)</button>
         <a class="button ghost sm" download href="./data/ideas.json" aria-label="Download ideas JSON">↓ JSON</a>
       </div>
 
@@ -681,20 +692,20 @@
       <div class="intel-grid">
         <a class="intel-card" href="./docs/research-catalog.html">
           <div class="intel-card-icon">🗂️</div>
-          <div class="intel-card-title">All 507 Research Proposal Rows</div>
-          <div class="intel-card-desc">Every recoverable supplied proposal—including raw, rejected, duplicate, modular, related, and watch ideas—grouped without being merged.</div>
+          <div class="intel-card-title">All 555 Research Proposal Rows</div>
+          <div class="intel-card-desc">Every proposal—including raw, rejected, duplicate, modular, related, and watch ideas—grouped by market and business type without being silently merged.</div>
         </a>
-        <a class="intel-card" href="./SEARCH_AND_DISCOVERY_GUIDE.md">
+        <a class="intel-card" href="./docs/getting-started.html">
           <div class="intel-card-icon">🔭</div>
           <div class="intel-card-title">Search &amp; Discovery Guide</div>
           <div class="intel-card-desc">How to find, filter, and evaluate ideas. Search strategies, sorting tips, matcher guide.</div>
         </a>
-        <a class="intel-card" href="./prompts/IDEA_LIFECYCLE_PROMPTS.md">
+        <a class="intel-card" href="./docs/prompts.html">
           <div class="intel-card-icon">💡</div>
           <div class="intel-card-title">Idea Lifecycle Prompts</div>
           <div class="intel-card-desc">Prompts for discovery, validation, financial modeling, launch planning, and iteration.</div>
         </a>
-        <a class="intel-card" href="./prompts/MASTER_SEARCH_PROMPT.md">
+        <a class="intel-card" href="./docs/prompts.html">
           <div class="intel-card-icon">🎯</div>
           <div class="intel-card-title">Master Search Prompt</div>
           <div class="intel-card-desc">One mega-prompt for AI assistants to find and evaluate new ventures using the Atlas framework.</div>
@@ -722,7 +733,7 @@
     ══════════════════════════════════════════════════════════ -->
     <section style="margin-top:3rem" aria-labelledby="catBrowseTitle">
       <div class="section-heading">
-        <h2 id="catBrowseTitle">📂 Browse by Normalized Market Family</h2>
+        <h2 id="catBrowseTitle">Browse by market</h2>
       </div>
       <div id="categoryBrowse" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem">
         <!-- Populated by JS -->
@@ -763,8 +774,8 @@
     </main>
   </noscript>
 
-  <script src="./assets/js/site.js"></script>
-  <script src="./assets/js/home.js"></script>
-  <script src="./assets/js/features/command-palette.js"></script>
+  <script src="./assets/js/site.js?v=2.7.0"></script>
+  <script src="./assets/js/home.js?v=2.7.0"></script>
+  <script src="./assets/js/features/command-palette.js?v=2.7.0"></script>
 </body>
 </html>

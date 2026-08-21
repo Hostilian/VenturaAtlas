@@ -7,7 +7,7 @@
   <meta name="description" content="Explore canonical decision-support ranking views across overall score, speed to revenue, lowest startup cost, solo founder fit, evidence confidence, and tournament finalists.">
   <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.0">
   <link rel="manifest" href="../manifest.webmanifest">
 </head>
 <body data-page="rankings" data-root="..">
@@ -24,7 +24,13 @@
       </p>
       <div class="toolbar" style="grid-template-columns:1fr">
         <select id="rankingSelect" aria-label="Select ranking view">
-          <!-- Populated by site.js initRankings() -->
+          <option value="overall-top-opportunities">🏆 Overall Top Opportunities</option>
+          <option value="attractiveness">💡 High Opportunity Attractiveness</option>
+          <option value="founder-fit">🎯 Best Solo Founder Fit</option>
+          <option value="highest-confidence">🛡️ Highest Evidence Confidence</option>
+          <option value="fastest-first-revenue">⚡ Fastest Path to Revenue</option>
+          <option value="lowest-startup-cost">💸 Lowest Startup Capital</option>
+          <option value="reset-finalists">🏁 Reset Tournament Finalists</option>
         </select>
       </div>
     </section>
@@ -33,8 +39,8 @@
       <!-- Populated by site.js initRankings() -->
     </div>
   </main>
-  <script src="../assets/js/site.js"></script>
-  <script src="../assets/js/features/rankings.js"></script>
-  <script src="../assets/js/features/command-palette.js"></script>
+  <script src="../assets/js/site.js?v=2.7.0"></script>
+  <script src="../assets/js/features/rankings.js?v=2.7.0"></script>
+  <script src="../assets/js/features/command-palette.js?v=2.7.0"></script>
 </body>
 </html>

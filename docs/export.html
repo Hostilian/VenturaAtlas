@@ -6,10 +6,10 @@
   <title>Bulk Export — Venture Atlas OS</title>
   <meta name="description" content="Export Venture Atlas OS data in multiple formats — full JSON, filtered CSV, markdown dossier packs, and prompt sets.">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.0">
   <link rel="manifest" href="../manifest.webmanifest">
   <style>
-    .export-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .export-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin: 1.5rem 0; }
     .export-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; background: var(--surface); display: flex; flex-direction: column; gap: 0.75rem; }
     .export-card:hover { border-color: var(--accent); }
     .export-icon { font-size: 2rem; }
@@ -31,6 +31,12 @@
     .stat-item { text-align: center; }
     .stat-item strong { display: block; font-size: 1.6rem; color: var(--accent); }
     .stat-item span { font-size: 0.8rem; color: var(--text-muted); }
+    @media (max-width: 600px) {
+      .filter-export-panel { padding: 1rem; }
+      .filter-row { align-items: stretch; }
+      .filter-row label, .filter-row select, .filter-row input { width: 100%; min-width: 0; max-width: 100%; }
+      .format-tabs { max-width: 100%; overflow-x: auto; }
+    }
   </style>
 </head>
 <body data-page="export" data-root="..">
@@ -172,7 +178,7 @@
 
     </section>
   </main>
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=2.7.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       function init() {

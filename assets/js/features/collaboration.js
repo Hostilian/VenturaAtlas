@@ -28,7 +28,7 @@ function initCollaborationRoom() {
       // Render Create Room Form
       container.innerHTML = `
         <div class="card" style="max-width:560px;margin:2rem auto;padding:2rem">
-          <h2 style="margin-bottom:0.5rem">👥 Create a Local Decision Workspace</h2>
+          <h1 style="font-size:clamp(1.5rem,4vw,2.1rem);margin-bottom:0.5rem">Create a Local Decision Workspace</h1>
           <p style="color:var(--text2);margin-bottom:1.5rem">Evaluate ideas on this device, then export a decision packet for asynchronous sharing. This workspace does not synchronize.</p>
           ${unavailableRoomId ? `<p role="note" style="color:var(--warn)">Workspace ${escHTML(unavailableRoomId)} is not stored in this browser. A URL cannot transfer local room state; ask for an exported decision packet instead.</p>` : ''}
 

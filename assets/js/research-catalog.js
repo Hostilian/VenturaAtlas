@@ -6,6 +6,7 @@
     round: document.getElementById('roundFilter'),
     relation: document.getElementById('relationFilter'),
     family: document.getElementById('familyFilter'),
+    pattern: document.getElementById('patternFilter'),
     clear: document.getElementById('clearCatalogFilters'),
     list: document.getElementById('proposalFamilies'),
     status: document.getElementById('catalogStatus'),
@@ -40,7 +41,7 @@
 
     const meta = document.createElement('p');
     meta.className = 'proposal-meta';
-    meta.textContent = `${proposal.roundTitle} · source row ${proposal.sourceOrdinal}`;
+    meta.textContent = `${proposal.roundTitle} · ${proposal.familyLabel} · ${proposal.patternLabel} · source row ${proposal.sourceOrdinal}`;
 
     const decision = document.createElement('p');
     decision.className = 'proposal-decision';
@@ -85,11 +86,12 @@
     if (!catalog) return;
     const query = nodes.search.value.trim().toLocaleLowerCase();
     const filtered = catalog.proposals.filter((proposal) => {
-      const searchable = [proposal.name, proposal.decision, proposal.adjacency, proposal.roundTitle, proposal.familyLabel].filter(Boolean).join(' ').toLocaleLowerCase();
+      const searchable = [proposal.name, proposal.decision, proposal.adjacency, proposal.roundTitle, proposal.familyLabel, proposal.patternLabel].filter(Boolean).join(' ').toLocaleLowerCase();
       return (!query || searchable.includes(query)) &&
         (!nodes.round.value || proposal.roundId === nodes.round.value) &&
         (!nodes.relation.value || proposal.relation === nodes.relation.value) &&
-        (!nodes.family.value || proposal.familyId === nodes.family.value);
+        (!nodes.family.value || proposal.familyId === nodes.family.value) &&
+        (!nodes.pattern.value || proposal.patternId === nodes.pattern.value);
     });
 
     nodes.list.replaceChildren();
@@ -137,12 +139,16 @@
       const families = [...new Map(catalog.proposals.map((proposal) => [proposal.familyId, proposal.familyLabel])).entries()]
         .sort((a, b) => a[1].localeCompare(b[1]));
       families.forEach(([id, label]) => addOption(nodes.family, id, `${label} (${catalog.familyCounts[id]})`));
-      [nodes.search, nodes.round, nodes.relation, nodes.family].forEach((node) => node.addEventListener('input', render));
+      const patterns = [...new Map(catalog.proposals.map((proposal) => [proposal.patternId, proposal.patternLabel])).entries()]
+        .sort((a, b) => a[1].localeCompare(b[1]));
+      patterns.forEach(([id, label]) => addOption(nodes.pattern, id, `${label} (${catalog.patternCounts[id]})`));
+      [nodes.search, nodes.round, nodes.relation, nodes.family, nodes.pattern].forEach((node) => node.addEventListener('input', render));
       nodes.clear.addEventListener('click', () => {
         nodes.search.value = '';
         nodes.round.value = '';
         nodes.relation.value = '';
         nodes.family.value = '';
+        nodes.pattern.value = '';
         render();
         nodes.search.focus();
       });
