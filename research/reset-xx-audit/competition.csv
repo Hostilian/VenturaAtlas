@@ -1,0 +1,13 @@
+concept,substitute,layer,verified_capability,impact,source
+AgeGate Replay,EU Age Verification hosted services,official test infrastructure,"Reference wallets issuers verifier services demos and end-to-end partner testing",Strong substitute for basic implementation testing; production-journey gap remains a hypothesis,https://docs.ageverification.dev/
+AgeGate Replay,EUDI FCAF,formal conformance,"Reusable tool-agnostic functional conformance test specifications",Do not position as certification or generic conformance,https://conformance.eudi.dev/latest/fcaf/introduction/
+SmallSoft Gate,Replit private deployments,application deployment,"Workspace-only invite-only and password-protected access",Direct substitute for safely sharing small apps,https://docs.replit.com/cloud-services/deployments/private-deployments
+SmallSoft Gate,Vercel Sandbox,isolated compute,"Runs untrusted or user-generated code for agents and generated applications",Strong runtime primitive; wrapper differentiation must be proven,https://vercel.com/docs/vercel-sandbox
+SmallSoft Gate,Cloudflare Sandbox SDK,isolated compute,"Executes untrusted code in container-backed isolated environments and exposes services",Strong runtime primitive; product would compose existing infrastructure,https://developers.cloudflare.com/sandbox/
+SmallSoft Gate,Modal Sandboxes,isolated compute,"Secure containers for arbitrary untrusted user or agent code",Strong runtime primitive,https://modal.com/docs/guide/sandbox
+NonFirm Replay,Modo Energy,forecasting,"Accepts uploaded time-varying curtailment profiles and applies limits to dispatch forecasts",Direct substitute for the modelling core,https://docs.modoenergy.com/pages/jul-2026/uk-europe/germany/flexible-connection-agreements/
+CashCliff,Float,cash forecasting,"Weekly 13-week and monthly views plus scenario modelling and invoice/bill timing",Direct substitute for cash runway/scenario core,https://www.floatapp.com/
+CashCliff,Dryrun,cash forecasting,"Cash-flow forecasting management and scenario modelling",Direct horizontal substitute,https://www.dryrun.com/
+CashCliff,Cash Flow Frog,cash forecasting,"Rolling forecasts and conversational scenario changes",Direct horizontal substitute,https://cashflowfrog.com/
+CashCliff,Siteline,construction finance,"Subcontractor billing collections payment-date prediction backlog and cash-flow forecasting",Direct vertical adjacency,https://www.siteline.com/
+

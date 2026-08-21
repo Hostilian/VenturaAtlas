@@ -1,0 +1,12 @@
+product_archetype,dpp,eudr,cbam,ppwr,cra,customs,forced_labour,scope_note
+coffee_beans,PRODUCT_GROUP_DEPENDENT,LIKELY_DIRECT,NO,PACKAGING,NO,YES,POSSIBLE,"commodity/origin and packaging dominate"
+chocolate_bar,PRODUCT_GROUP_DEPENDENT,DIRECT_OR_DERIVED,NO,PACKAGING,NO,YES,POSSIBLE,"cocoa lineage plus finished-product identity"
+wooden_furniture,PRODUCT_GROUP_DEPENDENT,DIRECT_OR_DERIVED,NO,PACKAGING,NO,YES,POSSIBLE,"wood geolocation and product identity"
+industrial_battery,BATTERY_PASSPORT,NO,INPUT_DEPENDENT,PACKAGING,CONDITIONAL_IF_DIGITAL,YES,POSSIBLE,"battery/material/facility evidence"
+laptop,PRODUCT_GROUP_DEPENDENT,DERIVED_INPUT_POSSIBLE,INPUT_DEPENDENT,PACKAGING,DIRECT,YES,POSSIBLE,"software and product security add separate graph"
+solar_inverter,PRODUCT_GROUP_DEPENDENT,DERIVED_INPUT_POSSIBLE,INPUT_DEPENDENT,PACKAGING,DIRECT,YES,POSSIBLE,"connected product plus materials"
+steel_beam,PRODUCT_GROUP_DEPENDENT,NO,DIRECT,PACKAGING,NO,YES,POSSIBLE,"facility emissions and customs code"
+textile_shirt,PRODUCT_GROUP_DEPENDENT,NO,NO,PACKAGING,NO,YES,POSSIBLE,"supplier/material identity; future product rules"
+rubber_tyre,PRODUCT_GROUP_DEPENDENT,SCOPE_VERSION_DEPENDENT,NO,PACKAGING,CONDITIONAL_IF_DIGITAL,YES,POSSIBLE,"July 2026 EUDR product-scope changes require exact CN-code check"
+connected_industrial_pump,PRODUCT_GROUP_DEPENDENT,DERIVED_INPUT_POSSIBLE,INPUT_DEPENDENT,PACKAGING,DIRECT,YES,POSSIBLE,"security and product/service evidence"
+

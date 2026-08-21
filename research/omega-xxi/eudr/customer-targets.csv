@@ -1,0 +1,11 @@
+organisation,segment,classification,evidence_status,next_question,contact_status
+SAP,ERP,PARTNER_OR_COMPETITOR,public-company,"Who owns EUDR API failures and schema updates?",not_contacted
+Oracle,ERP,PARTNER_OR_COMPETITOR,public-company,"Is submission native or delegated to partners?",not_contacted
+Microsoft Dynamics,ERP,PARTNER_OR_COMPETITOR,public-company,"Which failure/reconciliation workflows are supported?",not_contacted
+Prewave,supply-chain-platform,COMPETITOR_OR_PARTNER,public-product-claim,"Can customers replay failed submissions and diff versions?",not_contacted
+IntegrityNext,supplier-platform,COMPETITOR_OR_PARTNER,public-product-claim,"Does the product submit directly to the Information System?",not_contacted
+Achilles,supplier-risk,COMPETITOR_OR_PARTNER,public-product-claim,"What production API responsibility is owned?",not_contacted
+Large commodity importer,operator,CUSTOMER,hypothesis,"Provide one redacted ACCEPTANCE failure and maintenance-hours estimate",not_contacted
+Customs broker,representative,CUSTOMER_OR_PARTNER,hypothesis,"How are delegated credentials and uncertain commits handled?",not_contacted
+Traceability software vendor,software,CUSTOMER_OR_PARTNER,hypothesis,"Would you pay to avoid maintaining the government adapter?",not_contacted
+

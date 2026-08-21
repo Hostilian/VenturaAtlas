@@ -1,0 +1,29 @@
+name,segment,website,evidence_status,contact_status
+SAP,ERP,https://sap.com,target hypothesis,not contacted
+Oracle,ERP,https://oracle.com,target hypothesis,not contacted
+Microsoft Dynamics,ERP,https://microsoft.com,target hypothesis,not contacted
+Descartes,TMS/logistics,https://descartes.com,target hypothesis,not contacted
+project44,visibility,https://project44.com,target hypothesis,not contacted
+Transporeon,transport platform,https://transporeon.com,target hypothesis,not contacted
+nShift,shipping software,https://nshift.com,target hypothesis,not contacted
+Alpega,TMS,https://alpegagroup.com,target hypothesis,not contacted
+TIMOCOM,freight platform,https://timocom.com,target hypothesis,not contacted
+PTV Group,transport software,https://ptvgroup.com,target hypothesis,not contacted
+Trimble,transport software,https://trimble.com,target hypothesis,not contacted
+Manhattan Associates,supply chain,https://manh.com,target hypothesis,not contacted
+Blue Yonder,supply chain,https://blueyonder.com,target hypothesis,not contacted
+E2open,supply chain,https://e2open.com,target hypothesis,not contacted
+CargoON,freight platform,https://cargoon.eu,target hypothesis,not contacted
+Trans.eu,freight platform,https://trans.eu,target hypothesis,not contacted
+Samsara,fleet platform,https://samsara.com,target hypothesis,not contacted
+Motive,fleet platform,https://gomotive.com,target hypothesis,not contacted
+Webfleet,fleet platform,https://webfleet.com,target hypothesis,not contacted
+Geotab,fleet platform,https://geotab.com,target hypothesis,not contacted
+AddSecure,telematics,https://addsecure.com,target hypothesis,not contacted
+FourKites,visibility,https://fourkites.com,target hypothesis,not contacted
+Uber Freight,freight platform,https://uberfreight.com,target hypothesis,not contacted
+Shippeo,visibility,https://shippeo.com,target hypothesis,not contacted
+Everysens,visibility,https://everysens.com,target hypothesis,not contacted
+Transporeon,transport platform,https://transporeon.com,target hypothesis,not contacted
+Edisoft,eFTI platform,https://edisoft.eu,public product claim,not contacted
+Ybil,logistics compliance,https://ybil.com,public product claim,not contacted

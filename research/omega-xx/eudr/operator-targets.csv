@@ -1,0 +1,31 @@
+name,sector,website,evidence_status,contact_status
+Nestle,food,https://nestle.com,target hypothesis,not contacted
+JDE Peet's,coffee,https://jdepeets.com,target hypothesis,not contacted
+Lavazza,coffee,https://lavazza.com,target hypothesis,not contacted
+illycaffe,coffee,https://illy.com,target hypothesis,not contacted
+Olam Food Ingredients,agri-trading,https://ofi.com,target hypothesis,not contacted
+Barry Callebaut,cocoa,https://barry-callebaut.com,target hypothesis,not contacted
+Mars,food,https://mars.com,target hypothesis,not contacted
+Mondelez,food,https://mondelezinternational.com,target hypothesis,not contacted
+Unilever,consumer goods,https://unilever.com,target hypothesis,not contacted
+Procter & Gamble,consumer goods,https://pg.com,target hypothesis,not contacted
+Lenzing,wood/textiles,https://lenzing.com,target hypothesis,not contacted
+IKEA,furniture,https://ikea.com,target hypothesis,not contacted
+Kingfisher,home improvement,https://kingfisher.com,target hypothesis,not contacted
+H&M,textiles,https://hmgroup.com,target hypothesis,not contacted
+Inditex,textiles,https://inditex.com,target hypothesis,not contacted
+Decathlon,retail,https://decathlon-united.com,target hypothesis,not contacted
+Carrefour,retail,https://carrefour.com,target hypothesis,not contacted
+Tesco,retail,https://tesco.com,target hypothesis,not contacted
+ALDI,retail,https://aldi.com,target hypothesis,not contacted
+Lidl,retail,https://lidl.com,target hypothesis,not contacted
+Kraft Heinz,food,https://kraftheinzcompany.com,target hypothesis,not contacted
+McCormick,spices,https://mccormickcorporation.com,target hypothesis,not contacted
+Barry Callebaut,cocoa,https://barry-callebaut.com,target hypothesis,not contacted
+Louis Dreyfus Company,agri-trading,https://ldc.com,target hypothesis,not contacted
+ADM,agri-trading,https://adm.com,target hypothesis,not contacted
+Cargill,agri-trading,https://cargill.com,target hypothesis,not contacted
+Wilmar,agri-trading,https://wilmar-international.com,target hypothesis,not contacted
+Mitsui,commodity trading,https://mitsui.com,target hypothesis,not contacted
+Carlsberg,beverages,https://carlsberggroup.com,target hypothesis,not contacted
+Heineken,beverages,https://heineken.com,target hypothesis,not contacted

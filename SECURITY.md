@@ -19,3 +19,17 @@ The build script (`scripts/build-public-artifact.js`) and security scanner (`scr
 - Private RSA/EC PEM key blocks
 - OpenRouter / Anthropic / GitHub secret key patterns (`sk-or-`, `sk-ant-`, `ghp_`)
 - Forbidden internal state files (`idea-staging-queue.json`, `.agent-state/`)
+
+## 5. CRA Pre-Release Gate
+
+Before any software, client, extension, package, firmware, or connected product is distributed commercially in the EU, the release owner must record:
+
+- the product boundary and whether any remote data processing is necessary for a product function;
+- the distribution mode, data connection, commercial-activity basis, and applicable exclusion analysis;
+- the economic-operator role and Article 14(7) reporting endpoint;
+- the responsible vulnerability-intake and legal-decision owners;
+- the evidence source for awareness time, affected products and versions, exploitation status, mitigation, and affected-user notice;
+- readiness for the 24-hour early warning, 72-hour notification, and applicable final report; and
+- one timed tabletop exercise using a synthetic actively exploited vulnerability and a separate severe-incident scenario.
+
+The current public static site, public source repository, and local FactBounty prototype have not been classified as in-scope CRA products. That preliminary repository screen is not a legal opinion and must be repeated if distribution or monetisation changes.

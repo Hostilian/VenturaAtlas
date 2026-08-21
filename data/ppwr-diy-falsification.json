@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "ppwr-diy-falsification-2026-08-21",
+  "status": "planned-not-active",
+  "canonicalPromotion": false,
+  "relation": {
+    "decision": "merge-research-into-existing-staged-family",
+    "targets": [
+      "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c",
+      "PPWR PackProof"
+    ]
+  },
+  "hypothesis": "A country-routing and evidence-preflight layer catches blocking packaging EPR mistakes that official guidance and cheap self-service tools do not.",
+  "sample": {
+    "sellers": 10,
+    "countriesPerSeller": 3,
+    "requiredSubstitutes": [
+      "official national guidance",
+      "PPWR Toolkit",
+      "Repax",
+      "PPWR Copilot or Pack Declare"
+    ]
+  },
+  "pass": [
+    "five sellers encounter a blocking or materially incorrect routing result",
+    "three provide the failed artifact",
+    "two pay for remediation or ongoing monitoring",
+    "at least one failure class repeats"
+  ],
+  "kill": [
+    "cheap tools and official guidance resolve the workflow without material error",
+    "failures are one-off consultancy questions",
+    "no seller pays",
+    "harmonised registers remove the proposed recurring value"
+  ],
+  "externalResults": []
+}

@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"OMEGA XX runtime mandate fields",
+  "type":"object",
+  "properties":{
+    "runtime_mandate_score":{"type":"integer","minimum":0,"maximum":5},
+    "conformance_tax_score":{"type":"integer","minimum":0,"maximum":5},
+    "duplicate_human_work_score":{"type":"integer","minimum":0,"maximum":5},
+    "multi_regulation_collision_score":{"type":"integer","minimum":0,"maximum":5},
+    "api_mandate":{"type":"boolean"},"registry_mandate":{"type":"boolean"},"certification_mandate":{"type":"boolean"},"identity_mandate":{"type":"boolean"},
+    "hard_deadline":{"type":["string","null"]},"deadline_days":{"type":["integer","null"],"minimum":0},
+    "existing_official_api":{"type":"boolean"},"official_sandbox":{"type":"boolean"},"official_test_environment":{"type":"boolean"},"integration_partner_opportunity":{"type":"boolean"},
+    "llm_replacement_risk":{"type":"integer","minimum":0,"maximum":5},"incumbent_bundle_risk":{"type":"integer","minimum":0,"maximum":5},"paid_validation_count":{"type":"integer","minimum":0},"kill_evidence":{"type":["string","null"]}
+  },
+  "additionalProperties":true
+}

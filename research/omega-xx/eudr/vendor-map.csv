@@ -1,0 +1,13 @@
+name,role,website,evidence_status,next_action
+SAP,ERP,https://sap.com,target hypothesis,ask EUDR API roadmap owner
+Oracle,ERP,https://oracle.com,target hypothesis,ask EUDR API roadmap owner
+Microsoft Dynamics,ERP,https://microsoft.com,target hypothesis,ask EUDR API roadmap owner
+Sourcemap,traceability,https://sourcemap.com,public product claim,verify official API integration
+TrusTrace,traceability,https://trustrace.com,public product claim,verify DDS workflow
+osapiens,supply-chain compliance,https://osapiens.com,public product claim,verify API boundary
+Prewave,supply-chain risk,https://prewave.com,public product claim,verify EUDR submission
+IntegrityNext,supplier platform,https://integritynext.com,public product claim,verify EUDR submission
+Achilles,supplier risk,https://achilles.com,public product claim,verify EUDR scope
+Sphera,supply-chain software,https://sphera.com,target hypothesis,ask API owner
+EcoVadis,supplier assessment,https://ecovadis.com,target hypothesis,ask EUDR integration owner
+LRQA,assurance,https://lrqa.com,target hypothesis,ask operator channel owner

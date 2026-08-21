@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "omega-xx-2026-08-20",
+  "method": "runtime-mandate extension; scores are hypotheses until customer evidence exists",
+  "opportunities": [
+    {"rank":1,"slug":"efti-conformance-gateway","score":93,"runtime_mandate_score":5,"conformance_tax_score":5,"duplicate_human_work_score":4,"multi_regulation_collision_score":5,"api_mandate":true,"registry_mandate":false,"certification_mandate":true,"identity_mandate":true,"hard_deadline":"2027-07-09","deadline_days":322,"existing_official_api":false,"official_sandbox":false,"official_test_environment":false,"integration_partner_opportunity":true,"llm_replacement_risk":1,"incumbent_bundle_risk":4,"paid_validation_count":0,"kill_evidence":null},
+    {"rank":2,"slug":"eudr-api-conformance-bridge","score":91,"runtime_mandate_score":5,"conformance_tax_score":5,"duplicate_human_work_score":5,"multi_regulation_collision_score":4,"api_mandate":true,"registry_mandate":true,"certification_mandate":true,"identity_mandate":true,"hard_deadline":"2026-12-30","deadline_days":131,"existing_official_api":true,"official_sandbox":true,"official_test_environment":true,"integration_partner_opportunity":true,"llm_replacement_risk":1,"incumbent_bundle_risk":4,"paid_validation_count":0,"kill_evidence":null},
+    {"rank":3,"slug":"dpp-registry-runtime","score":88,"runtime_mandate_score":5,"conformance_tax_score":4,"duplicate_human_work_score":4,"multi_regulation_collision_score":5,"api_mandate":true,"registry_mandate":true,"certification_mandate":false,"identity_mandate":true,"hard_deadline":"2027-02-18","deadline_days":181,"existing_official_api":true,"official_sandbox":true,"official_test_environment":true,"integration_partner_opportunity":true,"llm_replacement_risk":2,"incumbent_bundle_risk":5,"paid_validation_count":0,"kill_evidence":null}
+  ]
+}

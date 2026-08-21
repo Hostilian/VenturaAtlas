@@ -98887,8 +98887,8 @@
       "slug": "live-claim-provenance-gate-greenwashing-compliance",
       "name": "Live Claim Provenance Gate — Commercial Environmental Claim Lineage & Expiry",
       "oneSentenceConcept": "Commercial claim lineage graph that maps environmental, durability, and origin claims to underlying evidence and flags expired or scope-drifted statements across channels.",
-      "elevatorPitch": "Applying from 27 September 2026, EU Directive 2024/825 strictly prohibits unverified green claims ('eco-friendly', 'climate neutral', offset claims). Live Claim Provenance Gate builds a living evidence graph connecting supplier certificates to SKUs and marketing channels, ensuring claims automatically flag when supplier materials change or certificates expire.",
-      "detailedDescription": "Applying from 27 September 2026, EU Directive 2024/825 strictly prohibits unverified green claims ('eco-friendly', 'climate neutral', offset claims). Live Claim Provenance Gate builds a living evidence graph connecting supplier certificates to SKUs and marketing channels, ensuring claims automatically flag when supplier materials change or certificates expire.",
+      "elevatorPitch": "Applying through Member State measures from 27 September 2026, Directive (EU) 2024/825 prohibits specified greenwashing practices, including unsupported generic environmental claims, whole-product scope overstatement, and offset-based neutral/reduced/positive product-impact claims. Live Claim Provenance Gate links supplier evidence to SKUs and marketing channels so claims can be flagged when evidence expires or scope drifts.",
+      "detailedDescription": "Directive (EU) 2024/825 adds specific environmental-claim and sustainability-label practices to EU consumer-protection rules from 27 September 2026. Live Claim Provenance Gate proposes a living evidence graph connecting supplier certificates to SKUs and marketing channels, with expiry and scope-drift alerts. The separate proposed Green Claims Directive remains stalled and does not currently impose an operative third-party pre-verification duty.",
       "category": "Commercial Governance & ESG",
       "subcategory": "greenwashing compliance",
       "tags": [
@@ -98898,7 +98898,7 @@
         "ESG",
         "provenance"
       ],
-      "status": "priority",
+      "status": "frozen",
       "sourceReferences": [
         "s01",
         "s02"
@@ -98946,21 +98946,21 @@
         "confidenceClass": "HIGH",
         "migratedAt": "2026-08-09T14:00:00Z"
       },
-      "freezeStatus": "active",
-      "freezeReason": null,
+      "freezeStatus": "frozen",
+      "freezeReason": "Fresh 2026 competition audit found substantial overlap from EcoClaim, EcoAppraise, ContentBeak, and Provenance; preserve historical score but require paid evidence for the narrower claim-lineage wedge.",
       "evidenceConfidence": null,
       "marketProof": 0,
       "researchSaturationWarning": false,
-      "competitionFreshnessDate": null,
-      "platformCaptureRisk": null,
+      "competitionFreshnessDate": "2026-08-21",
+      "platformCaptureRisk": 7,
       "independentVerifierAdvantage": null,
       "lossDataFlywheel": null,
       "physicalRealityDepth": null,
       "riskTransferability": null,
-      "nearestFundedStartup": null,
-      "nearestPlatformFeature": null,
-      "strongestOSSSubstitute": null,
-      "killExperiment": null
+      "nearestFundedStartup": "Provenance",
+      "nearestPlatformFeature": "EcoAppraise and ContentBeak evidence-aware green-claims scanning and monitoring",
+      "strongestOSSSubstitute": "Free EcoClaim URL scanner plus manual evidence register",
+      "killExperiment": "Offer paid cross-channel claim-to-evidence lineage monitoring to 20 brands while disclosing free/low-cost scanner alternatives; kill if fewer than 3 prepay."
     },
     {
       "schemaVersion": "2.0.0",

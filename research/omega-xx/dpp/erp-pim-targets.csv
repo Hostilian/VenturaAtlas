@@ -1,0 +1,31 @@
+name,segment,website,evidence_status,contact_status
+SAP,ERP,https://sap.com,target hypothesis,not contacted
+Oracle,ERP,https://oracle.com,target hypothesis,not contacted
+Microsoft Dynamics,ERP,https://microsoft.com,target hypothesis,not contacted
+Infor,ERP,https://infor.com,target hypothesis,not contacted
+Sage,ERP,https://sage.com,target hypothesis,not contacted
+Odoo,ERP,https://odoo.com,target hypothesis,not contacted
+Epicor,ERP,https://epicor.com,target hypothesis,not contacted
+IFS,ERP,https://ifs.com,target hypothesis,not contacted
+PIMcore,PIM,https://pimcore.com,target hypothesis,not contacted
+Akeneo,PIM,https://akeneo.com,target hypothesis,not contacted
+Salsify,PIM,https://salsify.com,target hypothesis,not contacted
+inriver,PIM,https://inriver.com,target hypothesis,not contacted
+Contentserv,PIM,https://contentserv.com,target hypothesis,not contacted
+Syndigo,PIM,https://syndigo.com,target hypothesis,not contacted
+Plytix,PIM,https://plytix.com,target hypothesis,not contacted
+Stibo Systems,PIM,https://stibosystems.com,target hypothesis,not contacted
+Contentful,content platform,https://contentful.com,target hypothesis,not contacted
+commercetools,commerce platform,https://commercetools.com,target hypothesis,not contacted
+Shopify,commerce platform,https://shopify.com,target hypothesis,not contacted
+Adobe Commerce,commerce platform,https://business.adobe.com/products/magento/magento-commerce.html,target hypothesis,not contacted
+Salesforce Commerce Cloud,commerce platform,https://salesforce.com,target hypothesis,not contacted
+SAP PLM,PLM,https://sap.com,target hypothesis,not contacted
+Siemens Teamcenter,PLM,https://siemens.com,target hypothesis,not contacted
+Dassault Systemes,PLM,https://3ds.com,target hypothesis,not contacted
+PTC Windchill,PLM,https://ptc.com,target hypothesis,not contacted
+Autodesk,design/PLM,https://autodesk.com,target hypothesis,not contacted
+Aras,PLM,https://aras.com,target hypothesis,not contacted
+Centric Software,PLM,https://centricsoftware.com,target hypothesis,not contacted
+Lectra,PLM,https://lectra.com,target hypothesis,not contacted
+Gerber Technology,PLM,https://gerbertechnology.com,target hypothesis,not contacted

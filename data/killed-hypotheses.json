@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "records": [
+    {
+      "slug": "anti-sycophancy-ai-idea-validator",
+      "name": "AI Idea Validation Without Sycophancy",
+      "decision": "killed",
+      "decisionDate": "2026-08-21",
+      "reason": "Verified direct competition, close general-model and open-source substitutes, and one negative public paid-signal example.",
+      "nearestCompetitors": ["ValidatorAI", "Preuve AI", "Brutally.ai", "Franks"],
+      "unverifiedPromptClaims": ["ThriveFinity Pro", "Pulse anti-sycophancy gate", "RCushmaniii/ai-idea-validator", "Flame My Idea", "The Sycophancy Trap six-point methodology"],
+      "openSourceSubstitute": "contradiction-detection and anti-sycophancy prompt/spec implementations",
+      "buyerCanDoNothing": "Ask a frontier model for a skeptical critique and manually verify a few sources.",
+      "salvagedCapability": "Use as an internal research-governance protocol; do not create a canonical idea ID.",
+      "evidence": [
+        {"claim":"OpenAI rolled back an overly flattering GPT-4o update","status":"verified-primary","url":"https://openai.com/index/sycophancy-in-gpt-4o/"},
+        {"claim":"ValidatorAI reports 300,000+ founder interactions","status":"verified-vendor-claim","url":"https://validatorai.com/faq"},
+        {"claim":"Preuve describes ten agents, 60+ sources and a $29 report","status":"verified-vendor-claim","url":"https://preuve.ai/pricing"},
+        {"claim":"Brutally.ai offers no-sycophancy idea evaluation","status":"verified-vendor-claim","url":"https://brutally.ai/"},
+        {"claim":"Franks had 21 users in seven countries and zero paid users six days after enabling a €19 price","status":"verified-founder-postmortem","url":"https://www.indiehackers.com/post/i-built-a-business-idea-validator-now-im-scared-mine-is-the-bad-idea-21b3b3cc3c"},
+        {"claim":"The supplied 88% statistic describes preference-induced agreement","status":"unverified","url":null}
+      ]
+    },
+    {
+      "slug": "generic-eu-green-claims-scanner",
+      "name": "Generic EU Green Claims / Greenwashing Scanner",
+      "decision": "killed-as-new-candidate-existing-idea-frozen",
+      "canonicalRelation": "idea-300",
+      "decisionDate": "2026-08-21",
+      "reason": "The concept is not new to the corpus and the scanner/substantiation market is already crowded with free and low-cost products.",
+      "nearestCompetitors": ["EcoClaim", "EcoAppraise", "ContentBeak", "Provenance"],
+      "buyerCanDoNothing": "Use a free URL scanner, existing ESG/legal workflow, and a manual evidence register.",
+      "salvagedCapability": "Keep idea-300's narrower cross-channel evidence-lineage hypothesis frozen; reopen only on paid differentiation evidence.",
+      "evidence": [
+        {"claim":"Directive (EU) 2024/825 applies through Member State measures from 27 September 2026","status":"verified-primary","url":"https://eur-lex.europa.eu/eli/dir/2024/825/oj/eng"},
+        {"claim":"The separate Green Claims proposal is at a standstill and no agreement is expected in 2026","status":"verified-official","url":"https://data.consilium.europa.eu/doc/document/ST-10212-2026-INIT/en/pdf"},
+        {"claim":"EcoClaim provides a free scanner and advertises 82 banned/high-risk terms","status":"verified-vendor-claim","url":"https://www.ecoclaim.eu/tools/website-scanner"},
+        {"claim":"EcoAppraise markets evidence-aware green-claims assessment","status":"verified-vendor-claim","url":"https://www.ecoappraise.com/"},
+        {"claim":"ContentBeak provides free scanning, monitoring, and cross-lingual analysis","status":"verified-vendor-claim","url":"https://www.contentbeak.com/"}
+      ]
+    },
+    {
+      "slug": "cross-border-eu-succession-advice-tool",
+      "name": "Cross-Border EU Succession / Inheritance Advice Tool",
+      "decision": "killed",
+      "decisionDate": "2026-08-21",
+      "reason": "Bespoke, high-liability professional advice problem with strong official information and lawyer-backed substitutes.",
+      "nearestCompetitors": ["cross-border succession law firms", "wealth advisers", "notaries"],
+      "officialSubstitute": "Your Europe inheritance guidance, European e-Justice country pages, European Certificate of Succession forms, and free Your Europe Advice",
+      "buyerCanDoNothing": "Use official EU guidance and retain a qualified cross-border succession professional before changing a will or estate plan.",
+      "salvagedCapability": "None within personalized legal advice. A neutral professional-referral or document-routing product would be a separate hypothesis.",
+      "evidence": [
+        {"claim":"Last habitual residence generally determines the authority/law, with an explicit nationality-law choice available","status":"verified-official","url":"https://europa.eu/youreurope/citizens/family/inheritances/planning-inheritance/index_en.htm"},
+        {"claim":"Denmark and Ireland do not participate in Regulation 650/2012","status":"verified-official","url":"https://e-justice.europa.eu/topics/family-matters-inheritance/inheritance/succession_en"},
+        {"claim":"Spanish common law reserves two thirds for children/descendants and Spain has multiple succession-law systems","status":"verified-official","url":"https://e-justice.europa.eu/topics/family-matters-inheritance/inheritance/succession/es_en?SPAIN=&member=1"}
+      ]
+    },
+    {
+      "slug": "ppwr-diy-registration-guide",
+      "name": "PPWR DIY Registration Guide / Winner Replacement",
+      "decision": "killed-as-new-winner-merge-existing-staged-family",
+      "canonicalRelation": "candidate-19eaa002-a32e-546c-80b3-1eafb6faa24c PackGate; PPWR PackProof",
+      "decisionDate": "2026-08-21",
+      "reason": "The forcing function is real, but the same-day pan-EU marketplace-delisting claim is overstated, the penalty and authorised-representative claims contain material errors, the cheap self-service tier is occupied, the Czech English-guidance gap is false, and the corpus already contains the PackGate/PackProof family.",
+      "nearestCompetitors": ["PPWR Toolkit", "Repax", "PPWR Copilot", "Pack Declare", "ecosistant", "Staxxer", "Lappa", "AVASK"],
+      "officialSubstitute": "National registers and producer-responsibility organisations, Commission guidance, marketplace EPR workflows, and EKO-KOM's English onboarding materials",
+      "buyerCanDoNothing": "Use official guidance and a low-cost self-service product, or narrow sales to registered markets until registration is complete.",
+      "salvagedCapability": "Test country routing and packaging-evidence preflight inside the existing PackGate/PackProof staged family.",
+      "evidence": [
+        {"claim":"Regulation (EU) 2025/40 generally applies from 12 August 2026","status":"verified-primary","url":"https://eur-lex.europa.eu/eli/reg/2025/40/oj"},
+        {"claim":"Article 44 requires per-Member-State producer registration but phases in the new harmonised national registers after an implementing act","status":"verified-primary","url":"https://eur-lex.europa.eu/eli/reg/2025/40/oj"},
+        {"claim":"Online platforms must obtain registration information and self-certification before permitting covered producers to use their services","status":"verified-primary","url":"https://eur-lex.europa.eu/eli/reg/2025/40/oj"},
+        {"claim":"An Amazon-commissioned study found 64 unique registration fields across ten Member States","status":"verified-commissioned-study","url":"https://assets.aboutamazon.com/4a/4f/533903e94ec3befeb991ab514a03/fragmentation-in-epr-packaging-registration-and-opportunities-to-harmonize-march-2026.pdf"},
+        {"claim":"Germany's Packaging Act provides distribution prohibitions and administrative fines up to EUR 200,000 for specified violations","status":"verified-primary","url":"https://www.gesetze-im-internet.de/verpackg/__36.html"},
+        {"claim":"EKO-KOM provides English onboarding, forms, reporting information, downloads, and a public client list","status":"verified-official","url":"https://www.ekokom.cz/en/clients/how-to-join-the-system/"}
+      ]
+    },
+    {
+      "slug": "cra-article-14-cheap-reporting-readiness-guide",
+      "name": "CRA Article 14 Cheap Reporting Readiness Guide",
+      "decision": "killed-as-new-candidate-merge-existing-cra-family",
+      "canonicalRelation": "idea-401 CRA ReachLedger; CRA Clock; CRA Incident Compiler",
+      "decisionDate": "2026-08-21",
+      "reason": "The September reporting obligation is real, but the prompt materially overstates SaaS scope, misses the final-report stage, treats SBOM work as part of the immediate 2026 reporting duty, overlooks direct cheap and free workflow competitors, and duplicates the portfolio's existing CRA family.",
+      "nearestCompetitors": ["Vexwatch", "CRA Report", "CVD Portal", "Venvera", "Acuna", "Aikido", "Cloudsmith"],
+      "officialSubstitute": "Commission CRA guidance and FAQs, ENISA SRP guidance, the official Single Reporting Platform, and coordinating CSIRTs",
+      "buyerCanDoNothing": "Use the Commission and ENISA material plus a free template builder and an existing incident-response process; obtain counsel for edge-case scope decisions.",
+      "salvagedCapability": "Merge a timed incident-evidence rehearsal into idea-401 / CRA Clock / CRA Incident Compiler, covering awareness, trigger classification, affected-product reach, mitigation, user notice, and all reporting stages.",
+      "evidence": [
+        {"claim":"Article 14 applies from 11 September 2026, with 24-hour, 72-hour, and later final-report stages","status":"verified-primary","url":"https://eur-lex.europa.eu/eli/reg/2024/2847/oj"},
+        {"claim":"Standalone SaaS is not automatically a product with digital elements; qualifying remote data processing can be within a product boundary","status":"verified-official-guidance","url":"https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation"},
+        {"claim":"ENISA says the SRP will be operational by 11 September 2026 and has published user guidance","status":"verified-official","url":"https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp"},
+        {"claim":"Vexwatch advertises a EUR 49 small-team CRA document pack including a reporting runbook and scope memo","status":"verified-vendor-claim","url":"https://vexwatch.com/"},
+        {"claim":"CRA Report offers browser-local deadline calculation, missing-field checks, and staged SRP content","status":"verified-vendor-claim","url":"https://crareport.eu/"},
+        {"claim":"CVD Portal offers a free Article 14 notification template builder","status":"verified-vendor-claim","url":"https://cvdportal.com/tools/notification-template-builder"},
+        {"claim":"Acuna explicitly offers Article 14 fields, reporting clocks, ownership, evidence trail, and manual SRP preparation","status":"verified-vendor-claim","url":"https://acunagrc.com/en/solutions/cyber-resilience-act"}
+      ]
+    }
+  ]
+}

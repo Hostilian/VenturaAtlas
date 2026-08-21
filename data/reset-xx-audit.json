@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "reset-xx-audit-2026-08-21",
+  "researchRunId": "run-res-reset-xx-20260821-public-infrastructure-edge",
+  "decision": "reject-freshness-merge-experiments",
+  "canonicalPromotion": false,
+  "newStagedCandidates": 0,
+  "scoresRankingEligible": false,
+  "dispositions": [
+    {
+      "name": "AgeGate Replay",
+      "decision": "duplicate-merge",
+      "targets": ["idea-309", "AgeProof Lab — Age-Verification Adversarial Test Network", "AgeProof / EUDI Real-World Regression Cloud"],
+      "survivingDelta": "EU blueprint protocol and trust-state regression matrix"
+    },
+    {
+      "name": "SmallSoft Gate",
+      "decision": "duplicate-reunderwrite",
+      "targets": ["idea-359"],
+      "survivingDelta": "auth secret-isolation network-policy and TTL wrapper experiment"
+    },
+    {
+      "name": "MandateMesh",
+      "decision": "duplicate-merge",
+      "targets": ["idea-341", "idea-344"]
+    },
+    {
+      "name": "NonFirm Replay",
+      "decision": "duplicate-narrow-experiment",
+      "targets": ["candidate-de3b16ca-9fde-4e84-8272-ecaca201276e", "CurtailmentCost Replay"],
+      "survivingDelta": "independent pre-signature review of actual connection-agreement constraints"
+    },
+    {
+      "name": "TrustList Sentry",
+      "decision": "duplicate-feature",
+      "targets": ["TrustList Drift", "idea-309", "idea-341"]
+    },
+    {
+      "name": "FieldHandoff",
+      "decision": "adjacent-feature-research-only",
+      "targets": ["idea-279", "candidate-reset-xix-robot-skill-acceptance"]
+    },
+    {
+      "name": "CashCliff",
+      "decision": "research-only-crowded",
+      "targets": [],
+      "survivingDelta": "probabilistic job-acceptance cash feasibility for one contractor niche"
+    }
+  ],
+  "materialCorrections": [
+    "No official end-2026 full-EU age-verification rollout commitment was found.",
+    "The 90 percent localhost statistic is unsupported.",
+    "The EUDR 15 October 2026 date concerns attribution of due-diligence statements, not contingency identifiers.",
+    "The AgeGate dossier called its matrix 14 scenarios while listing only nine.",
+    "CashCliff must output probabilistic scenarios rather than an exact zero-cash date."
+  ]
+}
+

@@ -1,0 +1,1 @@
+{"episode_id":"ep-001","model_provider":"provider-a","maximum_value_at_risk":50000,"tools_available":["erp_read","erp_po_create"],"data_access":["supplier_catalog"],"financial_authority":{"autonomous_limit":10000},"actions_taken":100,"irreversible_actions":3,"policy_violations":1,"human_interventions":2,"near_miss":true}

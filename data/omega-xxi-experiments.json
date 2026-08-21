@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "omega-xxi-experiments-2026-08-21",
+  "status": "planned",
+  "externalResultsRecorded": 0,
+  "experiments": [
+    {
+      "experimentId": "exp-omega-xxi-eudr-certainty",
+      "hypothesis": "Software vendors will pay repeatedly to avoid owning EUDR submission and reconciliation failures.",
+      "method": "Interview 10 integration owners, run 5 ACCEPTANCE fixtures, request a paid design-partner commitment.",
+      "pass": "At least 1 paid partner or 2 written procurement-intent commitments plus a real failing fixture.",
+      "kill": "Direct API maintenance is consistently reported as trivial and no buyer will provide a fixture or budget.",
+      "result": null
+    },
+    {
+      "experimentId": "exp-omega-xxi-efti-conformance",
+      "hypothesis": "eFTI platform/TMS vendors need independent pre-certification regression tests.",
+      "method": "10 technical interviews, 3 prototype runs, request one sample schema and one paid/prepaid pilot.",
+      "pass": "Three run the prototype, one contributes a sample, and one pays or prepays.",
+      "kill": "Certification bodies or official tooling provide a complete free suite and vendors report no independent need.",
+      "result": null
+    },
+    {
+      "experimentId": "exp-omega-xxi-dpp-continuity",
+      "hypothesis": "Economic operators need vendor-neutral DPP backup independent of their primary provider.",
+      "method": "Audit 15 DPP providers and interview 8 operator/PIM owners using a portability-and-failover demo.",
+      "pass": "Two operators expose an unsolved continuity requirement and one funds a design pilot.",
+      "kill": "Major providers already offer independently hosted, portable, multi-vendor, verifiable continuity at acceptable cost.",
+      "result": null
+    },
+    {
+      "experimentId": "exp-omega-xxi-provenance-router",
+      "hypothesis": "Provider fragmentation creates paid demand beyond C2PA conformance and open-source verification.",
+      "method": "Run an authorised multi-provider transformation corpus through real publishing pipelines and interview five publishers.",
+      "pass": "Three publishers show repeated undetected mark loss and one pays for cross-provider routing or survival assurance.",
+      "kill": "Official/vendor detectors plus C2PA tooling cover the workflow or buyers do not control downstream transformations.",
+      "result": null
+    }
+  ]
+}

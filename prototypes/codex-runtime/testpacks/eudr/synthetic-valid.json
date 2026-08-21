@@ -1,0 +1,9 @@
+{
+  "fixtureStatus": "synthetic-not-official",
+  "commodity": "coffee",
+  "geolocation": {
+    "type": "Point",
+    "coordinates": [14.42, 50.08]
+  }
+}
+

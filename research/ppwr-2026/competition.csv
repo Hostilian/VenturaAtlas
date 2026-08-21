@@ -1,0 +1,12 @@
+provider,positioning,public_entry_price,self_service,registration,reporting,ppwr_documentation,important_boundary,source
+PPWR Toolkit,DIY software,"EUR19/month",YES,GUIDED_OR_UNCLEAR,YES,YES,"explicitly no advice or expert review",https://www.ppwrtoolkit.com/pricing.html
+Repax Core,EPR data warehouse,"EUR0/month",YES,NO,YES,NO,"registration/PRO management is separate Comply product and was coming in 2026",https://www.repax.io/pricing
+Repax Declare,PPWR declarations,"EUR0 then EUR29/month",YES,NO,NO,YES,"DoC signer retains liability",https://www.repax.io/product/declare/pricing
+PPWR Copilot,documentation dossier,"GBP49/month",YES,NO,COUNTRY_GUIDANCE,YES,"guidance only not legal advice",https://ppwrcopilot.com/
+Pack Declare,ecommerce EPR/PPWR workflow,"free up to 500 SKUs; EUR199/month growth",YES,DIAGNOSTIC_OR_UNCLEAR,YES,YES,"assisted onboarding EUR499",https://www.packdeclare.com/
+ecosistant,EPR registration service,"from EUR24.90/country (vendor-comparison claim)",PARTIAL,YES,YES,NO,"price needs direct confirmation",https://www.repax.io/blog/best-ppwr-compliance-software
+Staxxer,full-service ecommerce EPR,"packaging registration EUR99-EUR269+ by country",NO,YES,YES,NO,"public multi-country registration/filing menu",https://staxxer.com/pricing/
+Lappa,EPR reporting software,"EUR190/year tier",YES,QUOTE,YES,NO,"registration explicitly excluded from subscription",https://lappa.org/epr-pricing/
+AVASK,full-service cross-border compliance,SALES_LED,PARTIAL,YES,YES,PARTIAL,"broad VAT/EPR/customs platform and AR service",https://avask.com/platform/
+EKO-KOM,Czech authorised packaging company,"CZK1600 annual/admin stated",PARTIAL,YES,YES,COUNTRY_GUIDANCE,"official collective-compliance route with English resources",https://www.ekokom.cz/en/clients/how-to-join-the-system/
+

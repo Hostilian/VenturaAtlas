@@ -1,0 +1,31 @@
+requirement_id,legal_source,article,technical_requirement,testability,test_case,certification_relevance,implementation_status
+EFTI-ARCH-001,EU_2025_2243,2,"Platform architecture components comply with the Regulation",PARTIAL,architecture_evidence_review,HIGH,NOT_IMPLEMENTED
+EFTI-GATE-001,EU_2025_2243,3(1),"Authority access only by secure machine-to-machine connection through an eFTI Gate; connect to at least one Gate",YES,gate_only_authority_access,HIGH,NOT_IMPLEMENTED
+EFTI-GATE-002,EU_2025_2243,3(2)(a),"Validate Gate access/follow-up requests using Gate security key",YES,reject_invalid_gate_key,HIGH,NOT_IMPLEMENTED
+EFTI-GATE-003,EU_2025_2243,3(2)(b),"Resolve CMDS UUID and authority access-right subset identifiers",YES,resolve_uuid_and_subsets,HIGH,NOT_IMPLEMENTED
+EFTI-GATE-004,EU_2025_2243,3(2)(g),"Retain audit trail for follow-up communication including request ID and receipt timestamp",YES,audit_follow_up,HIGH,PROTOTYPE_ONLY
+EFTI-BIZ-001,EU_2025_2243,4(1),"Permit business access by human interface and/or secure tributary-system M2M",YES,business_access_modes,HIGH,NOT_IMPLEMENTED
+EFTI-BIZ-002,EU_2025_2243,4(2),"Identify authenticate and authorise onboarded and temporary non-onboarded users",YES,user_auth_matrix,HIGH,NOT_IMPLEMENTED
+EFTI-BIZ-003,EU_2025_2243,4(6),"Repeat identification authentication and authorisation for each session before processing",YES,session_reauthentication,HIGH,NOT_IMPLEMENTED
+EFTI-AUTH-001,EU_2025_2243,5(1),"Use authorisation registry and/or temporary-rights mechanism",YES,authorisation_mechanism,HIGH,NOT_IMPLEMENTED
+EFTI-AUTH-002,EU_2025_2243,5(2),"Maintain authorisation registries as a separate secure component internal or external to platform",YES,registry_component_boundary,HIGH,NOT_IMPLEMENTED
+EFTI-AUTH-003,EU_2025_2243,5(3),"Uniquely identify user profiles and scope operation time and data-element rights",YES,least_privilege_profile,HIGH,PROTOTYPE_ONLY
+EFTI-AUTH-004,EU_2025_2243,5(6),"Retain authorisation records for at least the applicable CMDS availability period",YES,retention_alignment,HIGH,NOT_IMPLEMENTED
+EFTI-AUTH-005,EU_2025_2243,5(7),"Delete personal data within reasonable time after retention period",PARTIAL,retention_expiry_deletion,HIGH,NOT_IMPLEMENTED
+EFTI-DIWASS-001,EU_2025_2243,6(1),"Establish secure DIWASS or eligible Member State local-system connection for covered waste information",INTEGRATION,diwass_connection_contract,CONDITIONAL,NOT_IMPLEMENTED
+EFTI-TRANSP-001,EU_2025_2243,7(1),"Provide authorised notifications/reports on authority access follow-up and business processing",YES,notification_scope,HIGH,NOT_IMPLEMENTED
+EFTI-OPS-001,EU_2025_2243,9(1),"Authorised users can create edit read download sign stamp and archive CMDS as applicable",YES,operation_rights_matrix,HIGH,PROTOTYPE_ONLY
+EFTI-OPS-002,EU_2025_2243,9(2),"Support applicable waste-document download and carrier confirmations",INTEGRATION,waste_operations,HIGH,NOT_IMPLEMENTED
+EFTI-HUMAN-001,EU_2025_2243,10,"Provide authorised human-readable copies for inspection",YES,human_readable_export,HIGH,NOT_IMPLEMENTED
+EFTI-HUMAN-002,EU_2025_2243,10(2),"Copy includes machine-readable certification mark reference and download timestamp",YES,copy_mark_and_timestamp,HIGH,NOT_IMPLEMENTED
+EFTI-HUMAN-003,EU_2025_2243,10(3),"Human interface protects against unattended or uncontrolled-device access",YES,session_access_protection,HIGH,NOT_IMPLEMENTED
+EFTI-AVAIL-001,EU_2025_2243,11,"Remain available to authorities while CMDS is active and where applicable inactive",YES,availability_by_state,HIGH,NOT_IMPLEMENTED
+EFTI-SEC-001,EU_2025_2243,12(1),"Maintain compliant eDelivery/equivalent Gate access point and validate Gate keys/certificates",INTEGRATION,edelivery_security,HIGH,NOT_IMPLEMENTED
+EFTI-SEC-002,EU_2025_2243,12(2),"Use Member-State-issued security certificate tied to platform compliance certificate",INTEGRATION,certificate_chain,HIGH,NOT_IMPLEMENTED
+EFTI-SEC-003,EU_2025_2243,12(3),"Gate exchanges comply with 2024/1942 message specifications",INTEGRATION,message_contract,HIGH,NOT_IMPLEMENTED
+EFTI-SEC-004,EU_2025_2243,12(4),"Secure keys/certificates for tributary and external ICT systems",YES,tributary_system_security,HIGH,NOT_IMPLEMENTED
+EFTI-SEC-005,EU_2025_2243,12(5),"Secure DIWASS access points and consignee-signature receiving API where applicable",INTEGRATION,diwass_signature_api,CONDITIONAL,NOT_IMPLEMENTED
+EFTI-STORE-001,EU_2025_2243,13(a),"Physical storage has capacity backup physical protection recovery and vulnerability management",PARTIAL,storage_control_evidence,HIGH,NOT_IMPLEMENTED
+EFTI-STORE-002,EU_2025_2243,13(b),"Cloud providers follow major security and personal-data practices",PARTIAL,cloud_supplier_evidence,HIGH,NOT_IMPLEMENTED
+EFTI-STORE-003,EU_2025_2243,13(c),"Store eFTI data within the Union or EU/Member State jurisdiction",YES,data_residency,HIGH,NOT_IMPLEMENTED
+

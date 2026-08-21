@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "reset-xix-2026-08-20",
+  "experiments": [
+    {"id":"exp-agent-risk-001","candidate":"candidate-reset-xix-agent-risk-ledger","status":"planned","kill_trigger":"fewer than 3 of 10 risk-transfer buyers say telemetry changes limits, pricing, or insurability","external_evidence_required":["broker interview","MGA interview","paid pilot"]},
+    {"id":"exp-robot-acceptance-001","candidate":"candidate-reset-xix-robot-skill-acceptance","status":"planned","kill_trigger":"fewer than 3 of 15 integrators/buyers would pay for independent acceptance","external_evidence_required":["physical trials","integrator interview","paid test"]},
+    {"id":"exp-semantic-merge-001","candidate":"idea-017","status":"planned","kill_trigger":"contract reservation does not reduce semantic conflicts or rework versus textual merge baseline","external_evidence_required":["open-source benchmark","agent run logs","maintainer review"]}
+  ]
+}

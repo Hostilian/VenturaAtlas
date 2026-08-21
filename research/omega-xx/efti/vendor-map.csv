@@ -1,0 +1,21 @@
+name,role,website,evidence_status,next_action
+ABONA,prospective eFTI platform,https://abona.de,publicly named by eFTI4ALL,interview platform CTO
+GBK,prospective eFTI platform,https://gbk.eu,publicly named by eFTI4ALL,interview platform CTO
+PIONIRA,prospective eFTI platform,https://pionira.com,publicly named by eFTI4ALL,interview platform CTO
+VEDIA,prospective eFTI platform,https://vedia.eu,publicly named by eFTI4ALL,interview platform CTO
+Edisoft,eFTI platform/integration,https://edisoft.eu,public product claim,verify conformance boundary
+Ybil,logistics compliance layer,https://ybil.com,public product claim,verify eFTI scope
+SAP,ERP,https://sap.com,target hypothesis,ask roadmap owner
+Oracle,ERP,https://oracle.com,target hypothesis,ask logistics product owner
+Microsoft,Dynamics ERP,https://microsoft.com,target hypothesis,ask compliance integration owner
+Descartes,logistics software,https://descartes.com,target hypothesis,ask eFTI roadmap owner
+project44,visibility platform,https://project44.com,target hypothesis,ask regulatory data owner
+Transporeon,transport platform,https://transporeon.com,target hypothesis,ask eFTI roadmap owner
+nShift,shipping software,https://nshift.com,target hypothesis,ask eFTI roadmap owner
+Alpega,TMS,https://alpegagroup.com,target hypothesis,ask eFTI roadmap owner
+TIMOCOM,freight platform,https://timocom.com,target hypothesis,ask eFTI roadmap owner
+PTV Group,transport software,https://ptvgroup.com,target hypothesis,ask eFTI roadmap owner
+Trimble,transport software,https://trimble.com,target hypothesis,ask eFTI roadmap owner
+Manhattan Associates,supply chain software,https://manh.com,target hypothesis,ask eFTI roadmap owner
+Blue Yonder,supply chain software,https://blueyonder.com,target hypothesis,ask eFTI roadmap owner
+E2open,supply chain software,https://e2open.com,target hypothesis,ask eFTI roadmap owner

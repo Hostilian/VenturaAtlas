@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "reset-xx-experiments-2026-08-21",
+  "status": "planned-not-active",
+  "experiments": [
+    {
+      "id": "reset-xx-exp-agegate-idea-309",
+      "relation": "existing-canonical-idea-update",
+      "target": "idea-309",
+      "hypothesis": "Authorized EU age-verification implementers will pay for production-journey regression testing not covered by their identity provider or official conformance tools.",
+      "feasibilityGate": "Demonstrate at least 10 of 14 scenarios against two authorized implementations using non-production test credentials.",
+      "offer": "EUR 149 founding staging audit",
+      "sample": "30 qualified implementers or integrators",
+      "pass": ["three paid audits", "one repeat-release request", "one material reproducible defect missed by existing tools"],
+      "kill": ["test access cannot be obtained", "official or vendor tooling already covers the matrix", "no paid audit after 30 qualified offers"]
+    },
+    {
+      "id": "reset-xx-exp-smallsoft-idea-359",
+      "relation": "existing-canonical-idea-reunderwriting",
+      "target": "idea-359",
+      "hypothesis": "Builders will pay for a policy-wrapped private deployment after trying incumbent private deployment and sandbox products.",
+      "offer": "EUR 29 concierge deployment using existing infrastructure",
+      "sample": "30 builders with at least one customer-provided local tool",
+      "requiredComparators": ["Replit private deployment", "Vercel Sandbox", "Cloudflare Sandbox SDK", "Modal Sandbox"],
+      "pass": ["five paid deployments from three builders", "two repeat deployments", "three buyers identify a control absent from their cheapest substitute"],
+      "kill": ["generic private deployment solves the workflow", "buyers will not provide an app", "no paid deployment after 30 qualified offers"]
+    }
+  ],
+  "externalResults": []
+}
+

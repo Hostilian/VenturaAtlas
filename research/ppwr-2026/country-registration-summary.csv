@@ -1,0 +1,12 @@
+country,total_fields,mandatory,conditional,optional,fields_aligned_ppwr_draft,excess_fields,study_completion_caveat
+Sweden,21,14,7,0,7,14,"eID; transporter flag; transport company name; transport company organisation number; transport method; transport frequency; hazardous waste type; EWC code; estimated annual waste; storage method; storage location; data-veracity confirmation; summary step; submission date",partial_due_to_eID
+Belgium,11,11,0,0,7,4,"offline initiation; company identification sheet; signed contract; initial packaging declaration",partial_offline_process
+Ireland,18,15,2,1,7,11,"billing address; contact title; contact job title; turnover range; invoice email; invoice delivery method; bank details; packaging estimates; compliance declaration; signature; business activity",completed_in_study
+Poland,15,14,1,0,7,8,"eID; REGON; business activity; distance seller flag; activity start; registration type; attachments; Marshal Office selection",partial_due_to_eID
+Netherlands,16,15,0,1,9,7,"contact job title; billing address; RSIN; legal form; activity start; invoice email; data-veracity confirmation",completed_in_study
+France,17,14,0,3,9,8,"affiliation/forecast year; contact title; contact job title; activity description; main product CN code; packaging estimates; billing company; terms acceptance",completed_in_study
+Germany,17,15,1,1,11,6,"language preference; prior registration numbers; activity areas; primary sales channels; takeback confirmation; data-veracity confirmation/third-party confirmation grouped by study",completed_in_study
+Italy,17,17,0,0,10,7,"eID; legal form; producer role; distance seller flag; activity start; membership fee; terms acceptance",completed_with_credentials
+Spain,11,10,1,0,8,3,"digital-certificate login; producer role; activity start",partial_due_to_eID
+Portugal,14,12,2,0,9,5,"password setup; language preference; producer role; packaging estimates; activity start",completed_in_study
+

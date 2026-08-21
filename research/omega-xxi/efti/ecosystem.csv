@@ -1,0 +1,19 @@
+name,segment,classification,evidence_status,key_uncertainty
+European Commission,policy-and-specification,REGULATOR,official,evolving remaining acts and guidance
+Member State eFTI Gates,national infrastructure,INFRASTRUCTURE,official,implementation and equivalent-message variation
+Accredited conformity assessment bodies,certification,REGULATOR_OR_PARTNER,official-category,named bodies and assessment rules pending
+eFTI4ALL,EU-funded implementation project,INFRASTRUCTURE,public-project,lasting production role
+eFTI4EU,EU-funded implementation project,INFRASTRUCTURE,public-project,lasting production role
+Open Logistics Foundation,open-source logistics,INFRASTRUCTURE_OR_COMPETITOR,public-project,coverage against final specifications
+ABONA,prospective platform,COMPETITOR_OR_CUSTOMER,publicly named by eFTI4ALL,certification roadmap
+GBK,prospective platform,COMPETITOR_OR_CUSTOMER,publicly named by eFTI4ALL,certification roadmap
+PIONIRA,prospective platform,COMPETITOR_OR_CUSTOMER,publicly named by eFTI4ALL,certification roadmap
+VEDIA,prospective platform,COMPETITOR_OR_CUSTOMER,publicly named by eFTI4ALL,certification roadmap
+Edisoft,eFTI integration/platform,COMPETITOR_OR_PARTNER,public-product-claim,exact conformance boundary
+Ybil,logistics compliance layer,COMPETITOR_OR_PARTNER,public-product-claim,exact eFTI scope
+SAP,ERP/TMS ecosystem,CUSTOMER_OR_PARTNER,hypothesis,native certified-platform strategy
+Descartes,logistics software,CUSTOMER_OR_PARTNER,hypothesis,platform-vs-integration strategy
+Transporeon,transport platform,CUSTOMER_OR_PARTNER,hypothesis,platform-vs-integration strategy
+National road-control authorities,authority users,REGULATOR,official,Gate readiness by Member State
+DIWASS,waste shipment central system,INFRASTRUCTURE,official,interface and operational readiness
+

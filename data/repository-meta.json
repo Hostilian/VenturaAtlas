@@ -3,9 +3,9 @@
   "version": "2.6.0",
   "schemaVersion": "2.0.0",
   "privateStagingIncluded": false,
-  "dataRevision": "ee3224dc7dacecae",
-  "buildRevision": "2.6.0-ee3224dc7dacecae",
-  "generatedAt": "2026-08-18T22:04:32.138Z",
+  "dataRevision": "7c02ca69047a4f29",
+  "buildRevision": "2.6.0-7c02ca69047a4f29",
+  "generatedAt": "2026-08-21T11:50:27.557Z",
   "counts": {
     "ideas": 319,
     "canonicalIdeas": 319,
@@ -18,18 +18,18 @@
     "rankingViews": 7,
     "rankingEntries": 294,
     "prompts": 4625,
-    "dossiers": 407,
+    "dossiers": 417,
     "financialModels": 60,
-    "validationPlans": 60,
+    "validationPlans": 62,
     "technicalBlueprints": 60,
     "launchPlans": 60
   },
   "revisions": {
-    "canonicalRevision": "831ef68d46869b75",
+    "canonicalRevision": "bafb9d53034c6639",
     "stagingRevision": "private-withheld",
     "taxonomyRevision": "ce51c2ac3fbfccf0",
     "sourcesRevision": "a412889d960c6b25",
     "rankingsRevision": "3f962181a7691cfb",
-    "canonicalDataRevision": "ee3224dc7dacecae"
+    "canonicalDataRevision": "7c02ca69047a4f29"
   }
 }
