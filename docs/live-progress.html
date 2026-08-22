@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Progress — Venture Atlas OS</title>
+  <meta name="description" content="Live background AI loop status and progress for Venture Atlas OS.">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
+  <style>
+    .dash-shell {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    .dash-hero {
+      background: linear-gradient(135deg, var(--panel), var(--bg2));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .dash-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .dash-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-l);
+      color: var(--accent-h);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.7rem;
+    }
+    .dash-progress {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+    .dash-progress > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), hsl(215 70% 45%));
+      transition: width 0.4s ease;
+    }
+    .dash-mono {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      white-space: pre-wrap;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem;
+      min-height: 140px;
+    }
+  </style>
+</head>
+<body data-page="home" data-root="..">
+  <main class="dash-shell">
+    <section class="dash-hero">
+      <div class="eyebrow">Live worker dashboard</div>
+      <h1 style="margin:0.4rem 0 0.7rem">Background AI loop</h1>
+      <p class="lede" style="margin:0 0 1rem">This page follows the same progress feed used by the homepage and the demo apps. It shows the latest loop heartbeat, task state, and the most recent output tail from the worker.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
+        <a class="button primary" href="../">Back to home</a>
+        <a class="button secondary" href="../PROJECT_STATUS.md">Read project status</a>
+      </div>
+    </section>
+
+    <section class="dash-grid">
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:0.85rem">
+          <strong>Current loop</strong>
+          <span id="dashStatus" class="dash-label">starting</span>
+        </div>
+        <div class="dash-progress" aria-hidden="true"><div id="dashProgress"></div></div>
+        <div style="display:grid;gap:0.5rem;margin-top:0.9rem;font-size:0.9rem">
+          <div>Run: <strong id="dashRunId">idle</strong></div>
+          <div>Updated: <strong id="dashUpdatedAt">--</strong></div>
+          <div>Task: <strong id="dashTask">idle</strong></div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <strong style="display:block;margin-bottom:0.75rem">Latest message</strong>
+        <div id="dashMessage" class="dash-mono">Waiting for first heartbeat...</div>
+      </div>
+      <div class="dash-card" style="grid-column:1 / -1">
+        <strong style="display:block;margin-bottom:0.75rem">Output tail</strong>
+        <div id="dashTail" class="dash-mono">No output yet.</div>
+      </div>
+    </section>
+  </main>
+  <script>
+    async function pollProgress() {
+      const status = document.getElementById('dashStatus');
+      const progress = document.getElementById('dashProgress');
+      const runId = document.getElementById('dashRunId');
+      const updatedAt = document.getElementById('dashUpdatedAt');
+      const task = document.getElementById('dashTask');
+      const message = document.getElementById('dashMessage');
+      const tail = document.getElementById('dashTail');
+      try {
+        const res = await fetch('../progress', { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const pct = Math.max(0, Math.min(100, Number(data.progress ?? 0)));
+        if (status) status.textContent = data.status || 'unknown';
+        if (progress) progress.style.width = `${pct}%`;
+        if (runId) runId.textContent = data.runId || 'idle';
+        if (updatedAt) updatedAt.textContent = data.updatedAt ? new Date(data.updatedAt).toLocaleString() : '--';
+        if (task) task.textContent = data.task || 'idle';
+        if (message) message.textContent = data.message || 'No message';
+        if (tail) tail.textContent = data.outputTail || 'No output tail yet.';
+      } catch (err) {
+        if (status) status.textContent = 'offline';
+        if (message) message.textContent = `Progress endpoint unavailable: ${err.message}`;
+        if (tail) tail.textContent = '';
+      }
+    }
+    pollProgress();
+    setInterval(pollProgress, 10000);
+  </script>
+</body>
+</html>

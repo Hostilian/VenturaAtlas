@@ -4,6 +4,7 @@
 
 let activeBountyId = null;
 let activeChallengeCode = null;
+let factProgressTimer = null;
 
 function showTab(tabName) {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -213,5 +214,41 @@ async function reviewSubmission(evidenceId, decision) {
   }
 }
 
+function renderFactProgress(snapshot) {
+  const pill = document.getElementById('factProgressPill');
+  const bar = document.getElementById('factProgressBar');
+  const label = document.getElementById('factProgressLabel');
+  const runId = document.getElementById('factRunId');
+  const updatedAt = document.getElementById('factUpdatedAt');
+  if (!snapshot) return;
+  const pct = Math.max(0, Math.min(100, Number(snapshot.progress ?? 0)));
+  if (pill) pill.textContent = snapshot.status || 'unknown';
+  if (bar) bar.style.width = `${pct}%`;
+  if (label) label.textContent = snapshot.message || 'Background loop is running.';
+  if (runId) runId.textContent = snapshot.runId || 'idle';
+  if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleTimeString() : '--';
+}
+
+async function pollFactProgress() {
+  try {
+    const res = await fetch('/progress', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    renderFactProgress(await res.json());
+  } catch (err) {
+    renderFactProgress({
+      status: 'offline',
+      progress: 0,
+      message: 'Progress endpoint unavailable right now.',
+      runId: 'offline',
+      updatedAt: new Date().toISOString()
+    });
+  }
+}
+
 // Initial load
 loadBuyerBounties();
+loadResponderRequests();
+loadModeratorQueue();
+pollFactProgress();
+if (factProgressTimer) clearInterval(factProgressTimer);
+factProgressTimer = setInterval(pollFactProgress, 15000);

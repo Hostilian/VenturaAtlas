@@ -51,6 +51,9 @@
     
     .challenge-display { background: #0284c7; color: #fff; font-size: 2rem; font-family: monospace; font-weight: bold; text-align: center; padding: 16px; border-radius: 8px; letter-spacing: 4px; margin: 16px 0; }
     .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; font-style: italic; background: rgba(255,255,255,0.03); padding: 8px; border-radius: 4px; }
+    .live-status { display: grid; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 16px; }
+    .live-status__row { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: 0.88rem; }
+    .live-status__pill { display: inline-flex; padding: 3px 8px; border-radius: 999px; background: rgba(56, 189, 248, 0.16); color: #7dd3fc; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
   </style>
 </head>
 <body>
@@ -63,6 +66,25 @@
         <button class="tab-btn" onclick="showTab('moderator')">Moderator Portal</button>
       </div>
     </header>
+
+    <div class="live-status" aria-live="polite">
+      <div class="live-status__row">
+        <strong>Background AI loop</strong>
+        <span id="factProgressPill" class="live-status__pill">starting</span>
+      </div>
+      <div class="live-status__row">
+        <div style="flex:1; height:6px; background: var(--border); border-radius: 999px; overflow: hidden;">
+          <div id="factProgressBar" style="height:100%; width:0%; background: linear-gradient(90deg, var(--accent), #22c55e);"></div>
+        </div>
+      </div>
+      <div class="live-status__row">
+        <span id="factProgressLabel">Waiting for worker heartbeat...</span>
+      </div>
+      <div class="live-status__row">
+        <span>Run: <strong id="factRunId">idle</strong></span>
+        <span>Updated: <strong id="factUpdatedAt">--</strong></span>
+      </div>
+    </div>
 
     <!-- BUYER PANEL -->
     <div id="buyer-panel" class="panel active">

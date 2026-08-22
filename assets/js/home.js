@@ -7,6 +7,7 @@
 
   // Quick-filter chips
   let activeChips = {};
+  let workerPollTimer = null;
 
   function applyChipFilters() {
     const search = document.getElementById('search');
@@ -230,9 +231,48 @@
     setTimeout(renderCategoryBrowse, 1500);
   }
 
+  function renderWorkerProgress(snapshot) {
+    const statusPill = document.getElementById('workerStatusPill');
+    const progressBar = document.getElementById('workerProgressBar');
+    const progressLabel = document.getElementById('workerProgressLabel');
+    const runId = document.getElementById('workerRunId');
+    const updatedAt = document.getElementById('workerUpdatedAt');
+    if (!snapshot) return;
+
+    const progress = Number(snapshot.progress ?? 0);
+    if (statusPill) statusPill.textContent = snapshot.status || 'unknown';
+    if (progressBar) progressBar.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+    if (progressLabel) progressLabel.textContent = snapshot.message || 'Background AI loop is running.';
+    if (runId) runId.textContent = snapshot.runId || 'idle';
+    if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleTimeString() : '--';
+  }
+
+  async function pollWorkerProgress() {
+    try {
+      const res = await fetch('./progress', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      renderWorkerProgress(await res.json());
+    } catch (err) {
+      renderWorkerProgress({
+        status: 'offline',
+        progress: 0,
+        message: 'Progress endpoint unavailable right now.',
+        runId: 'offline',
+        updatedAt: new Date().toISOString()
+      });
+    }
+  }
+
+  function initWorkerProgress() {
+    pollWorkerProgress();
+    if (workerPollTimer) clearInterval(workerPollTimer);
+    workerPollTimer = setInterval(pollWorkerProgress, 15000);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initChips();
     initSpotlight();
     initCategoryBrowse();
+    initWorkerProgress();
   });
 })();
