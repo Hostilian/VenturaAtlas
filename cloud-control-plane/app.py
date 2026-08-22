@@ -6,7 +6,7 @@ import subprocess
 import shutil
 import threading
 import time
-from typing import Any
+from typing import Any, Optional
 from fastapi import FastAPI, Depends, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 import config
@@ -265,7 +265,7 @@ TASK_CMD_MAP = {
 }
 
 @app.post("/tasks/{task_name}", dependencies=[Depends(verify_worker_auth)])
-def execute_task(task_name: str, background_tasks: BackgroundTasks):
+def execute_task(task_name: str, background_tasks: BackgroundTasks = BackgroundTasks()):
     if task_name not in TASK_CMD_MAP:
         raise HTTPException(status_code=404, detail=f"Task '{task_name}' not found. Available: {list(TASK_CMD_MAP.keys())}")
 
