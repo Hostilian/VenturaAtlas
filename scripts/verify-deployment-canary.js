@@ -59,7 +59,7 @@ async function verifyCanary() {
         url: targetUrl,
         verifiedAt: new Date().toISOString(),
         statusCode: res.statusCode,
-        digest: meta.canonicalDataRevision || 'unknown',
+        digest: meta?.revisions?.canonicalDataRevision || meta?.dataRevision || 'unknown',
         status: 'success',
         observationMethod: 'HTTP_CANARY_GET'
       };
