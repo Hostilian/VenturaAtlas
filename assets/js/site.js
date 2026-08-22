@@ -1517,6 +1517,7 @@ function renderSiteShell() {
       ${navLink('compare', 'docs/compare.html', 'Compare')}
       ${navLink('research', 'docs/research-catalog.html', 'Fresh ideas')}
       ${navLink('sources', 'docs/sources.html', 'Sources')}
+      ${navLink('live-progress', 'docs/live-progress.html', 'Live progress')}
       <details class="nav-more">
         <summary>More</summary>
         <div class="nav-menu">
@@ -1567,6 +1568,7 @@ function renderSiteShell() {
         ${navLink('getting-started', 'docs/getting-started.html', 'Getting started')}
         ${navLink('sources', 'docs/sources.html', 'Sources')}
         ${navLink('categories', 'docs/categories.html', 'Markets &amp; idea types')}
+        ${navLink('live-progress', 'docs/live-progress.html', 'Live progress')}
         ${navLink('methodology', 'docs/methodology.html', 'Methodology')}
         ${navLink('completeness', 'docs/completeness.html', 'Completeness audit')}
         ${navLink('about', 'docs/about.html', 'About')}
@@ -1577,6 +1579,78 @@ function renderSiteShell() {
   const existingHeader = document.querySelector('.site-header');
   if (existingHeader) existingHeader.outerHTML = header;
   else document.querySelector('.skip')?.insertAdjacentHTML('afterend', header);
+
+  if (!document.getElementById('globalLiveProgressBadge')) {
+    const badge = document.createElement('a');
+    badge.id = 'globalLiveProgressBadge';
+    badge.href = `${root}/docs/live-progress.html`;
+    badge.className = 'worker-live-badge';
+    badge.setAttribute('aria-label', 'Open live progress dashboard');
+    badge.innerHTML = '<span class="worker-live-badge__dot"></span><span class="worker-live-badge__text">Live progress</span><span class="worker-live-badge__value">…</span>';
+    document.body.appendChild(badge);
+  }
+  if (!document.getElementById('workerLiveBadgeStyle')) {
+    const style = document.createElement('style');
+    style.id = 'workerLiveBadgeStyle';
+    style.textContent = `
+      .worker-live-badge {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 1200;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--panel) 94%, transparent);
+        color: var(--text);
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        font-size: 0.78rem;
+        backdrop-filter: blur(10px);
+      }
+      .worker-live-badge:hover { border-color: var(--accent); }
+      .worker-live-badge__dot {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+      }
+      .worker-live-badge__value {
+        font-weight: 700;
+        color: var(--accent-h);
+      }
+      @media (max-width: 700px) {
+        .worker-live-badge {
+          right: 0.75rem;
+          left: 0.75rem;
+          justify-content: center;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  async function refreshLiveBadge() {
+    const badge = document.getElementById('globalLiveProgressBadge');
+    const value = badge?.querySelector('.worker-live-badge__value');
+    if (!badge) return;
+    try {
+      const res = await fetch(`${root}/progress`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      if (value) value.textContent = `${Math.max(0, Math.min(100, Number(data.progress ?? 0)))}%`;
+      badge.title = `${data.status || 'unknown'} · ${data.message || 'No message'}`;
+    } catch (err) {
+      if (value) value.textContent = 'off';
+      badge.title = `Progress unavailable: ${err.message}`;
+    }
+  }
+  refreshLiveBadge();
+  setInterval(refreshLiveBadge, 15000);
 
   const footer = `
 <footer class="footer" role="contentinfo">

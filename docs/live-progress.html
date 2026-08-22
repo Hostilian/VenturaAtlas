@@ -65,6 +65,36 @@
       padding: 0.9rem;
       min-height: 140px;
     }
+    .floating-progress {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      font-size: 0.8rem;
+      backdrop-filter: blur(8px);
+    }
+    .floating-progress:hover { border-color: var(--accent); }
+    .floating-progress__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+    .floating-progress__value { font-weight: 700; color: var(--accent-h); }
+    @media (max-width: 700px) {
+      .floating-progress { left: 16px; justify-content: center; }
+    }
   </style>
 </head>
 <body data-page="home" data-root="..">
@@ -102,7 +132,13 @@
       </div>
     </section>
   </main>
+  <a class="floating-progress" href="../" aria-label="Return to Venture Atlas home">
+    <span class="floating-progress__dot"></span>
+    <span>Live progress</span>
+    <span id="dashFloatingValue" class="floating-progress__value">…</span>
+  </a>
   <script>
+    let failureStreak = 0;
     async function pollProgress() {
       const status = document.getElementById('dashStatus');
       const progress = document.getElementById('dashProgress');
@@ -115,7 +151,9 @@
         const res = await fetch('../progress', { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
+        failureStreak = 0;
         const pct = Math.max(0, Math.min(100, Number(data.progress ?? 0)));
+        const floating = document.getElementById('dashFloatingValue');
         if (status) status.textContent = data.status || 'unknown';
         if (progress) progress.style.width = `${pct}%`;
         if (runId) runId.textContent = data.runId || 'idle';
@@ -123,10 +161,17 @@
         if (task) task.textContent = data.task || 'idle';
         if (message) message.textContent = data.message || 'No message';
         if (tail) tail.textContent = data.outputTail || 'No output tail yet.';
+        if (floating) floating.textContent = `${pct}%`;
       } catch (err) {
+        failureStreak += 1;
         if (status) status.textContent = 'offline';
         if (message) message.textContent = `Progress endpoint unavailable: ${err.message}`;
         if (tail) tail.textContent = '';
+        const floating = document.getElementById('dashFloatingValue');
+        if (floating) floating.textContent = 'off';
+        if (failureStreak >= 3) {
+          setTimeout(() => location.reload(), 5000);
+        }
       }
     }
     pollProgress();

@@ -220,6 +220,7 @@ function renderFactProgress(snapshot) {
   const label = document.getElementById('factProgressLabel');
   const runId = document.getElementById('factRunId');
   const updatedAt = document.getElementById('factUpdatedAt');
+  const floating = document.getElementById('factFloatingProgressValue');
   if (!snapshot) return;
   const pct = Math.max(0, Math.min(100, Number(snapshot.progress ?? 0)));
   if (pill) pill.textContent = snapshot.status || 'unknown';
@@ -227,6 +228,7 @@ function renderFactProgress(snapshot) {
   if (label) label.textContent = snapshot.message || 'Background loop is running.';
   if (runId) runId.textContent = snapshot.runId || 'idle';
   if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleTimeString() : '--';
+  if (floating) floating.textContent = `${pct}%`;
 }
 
 async function pollFactProgress() {

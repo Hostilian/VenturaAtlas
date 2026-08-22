@@ -54,6 +54,11 @@
     .live-status { display: grid; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 16px; }
     .live-status__row { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: 0.88rem; }
     .live-status__pill { display: inline-flex; padding: 3px 8px; border-radius: 999px; background: rgba(56, 189, 248, 0.16); color: #7dd3fc; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .floating-progress { position: fixed; right: 16px; bottom: 16px; z-index: 1000; display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 999px; background: rgba(9, 13, 22, 0.92); color: var(--text); box-shadow: 0 16px 40px rgba(0,0,0,0.25); text-decoration: none; font-size: 0.8rem; backdrop-filter: blur(8px); }
+    .floating-progress:hover { border-color: var(--accent); }
+    .floating-progress__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.16); }
+    .floating-progress__value { font-weight: 700; color: #7dd3fc; }
+    @media (max-width: 700px) { .floating-progress { left: 16px; justify-content: center; } }
   </style>
 </head>
 <body>
@@ -85,6 +90,12 @@
         <span>Updated: <strong id="factUpdatedAt">--</strong></span>
       </div>
     </div>
+
+    <a id="factFloatingProgress" class="floating-progress" href="../../docs/live-progress.html" aria-label="Open live progress dashboard">
+      <span class="floating-progress__dot"></span>
+      <span>Live progress</span>
+      <span id="factFloatingProgressValue" class="floating-progress__value">…</span>
+    </a>
 
     <!-- BUYER PANEL -->
     <div id="buyer-panel" class="panel active">
