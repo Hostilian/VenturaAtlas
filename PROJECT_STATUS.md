@@ -2,9 +2,9 @@
 
 - Repository version: 2.7.1
 - Data schema version: 2.0.0
-- Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 319 ideas; epistemic validation is not assessed
-- Highest assigned canonical idea ID: idea-436
-- Next ID: idea-437 — allocated by the canonical ID allocator; do not infer from this document
+- Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 324 ideas; epistemic validation is not assessed
+- Highest assigned canonical idea ID: idea-446
+- Next ID: idea-447 — allocated by the canonical ID allocator; do not infer from this document
 - Canonical ideas: 324
 - Categories: 144
 - Validation warnings: 0

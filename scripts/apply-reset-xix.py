@@ -4,7 +4,7 @@ RESET XIX — Data Transformation Script
 2026-08-20
 
 Performs:
-1. Null-fill all 319 canonical ideas with new epistemic/competitive fields
+1. Null-fill every canonical idea with new epistemic/competitive fields
 2. Apply targeted freeze flags to 6 top-10 ideas + FactBounty + ProofRail + idea-017
 3. Bump ideas.json schemaVersion to 2.1.0
 4. Append 2 new staged candidates to idea-staging-queue.json

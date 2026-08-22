@@ -1,6 +1,6 @@
 # Idea Library
 
-60 canonical idea dossiers. Each dossier includes customer, product, future-AI build specification, economics, validation, GTM, operations, risks, actions, scoring, evidence, assumptions, and unknowns.
+432 idea dossier artifacts are present. The canonical catalog is authoritative in `data/ideas.json` and currently contains 324 records; dossier coverage includes canonical records plus historical and research-only artifacts.
 
 - [idea-001 — ProofRail — AI Work Acceptance Gate](proofrail-ai-work-acceptance-gate.md)
 - [idea-002 — AI Model Ranking Observatory](ai-model-ranking-observatory.md)

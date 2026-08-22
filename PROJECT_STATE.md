@@ -3,7 +3,7 @@
 - Repository: Venture Atlas Collaborative
 - Current phase: collaborative-system foundation complete; source-corpus recovery remains incomplete
 - Last completed action: Ingested the August 22, 2026 reset promotion and added five canonical idea records plus paired validation and technical blueprint artifacts
-- Research Saturation Warning: **ACTIVE** — 319 canonical ideas, 0 active experiments. Unconstrained new idea generation is capped at 5% effort until live external validation experiments are active.
+- Research Saturation Warning: **ACTIVE** — 324 canonical ideas, 0 active experiments. Unconstrained new idea generation is capped at 5% effort until live external validation experiments are active.
 - Latest reset round: **OMEGA XIX reset promotion (2026-08-22)**
 - Canonical ideas: 324
 - Staged reset hypotheses: 2 (`candidate-reset-xix-agent-risk-ledger`, `candidate-reset-xix-robot-skill-acceptance`); RESET XX added 0 after deduplication
