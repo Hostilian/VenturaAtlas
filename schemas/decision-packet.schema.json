@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VenturaAtlas Decision Packet",
+  "description": "Schema for exportable and importable collaborative decision studio state",
+  "type": "object",
+  "required": ["schemaVersion", "exportedAt", "workspace"],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": ["3.0.0", "2.0.0"]
+    },
+    "exportedAt": {
+      "type": "string"
+    },
+    "workspace": {
+      "type": "object",
+      "required": ["id", "name", "members", "shortlist"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "votingMode": { "type": "string" },
+        "resultsVisibility": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["uid", "displayName"],
+            "properties": {
+              "uid": { "type": "string" },
+              "displayName": { "type": "string" },
+              "role": { "type": "string" },
+              "joinedAt": { "type": "string" },
+              "color": { "type": "string" }
+            }
+          }
+        },
+        "shortlist": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ideaId"],
+            "properties": {
+              "ideaId": { "type": "string" },
+              "stage": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "addedBy": { "type": "string" },
+              "addedAt": { "type": "string" },
+              "rankOrder": { "type": "number" }
+            }
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "ideaId", "content"],
+            "properties": {
+              "id": { "type": "string" },
+              "ideaId": { "type": "string" },
+              "authorUid": { "type": "string" },
+              "authorName": { "type": "string" },
+              "type": { "type": "string" },
+              "content": { "type": "string" },
+              "createdAt": { "type": "string" },
+              "updatedAt": { "type": "string" },
+              "isShared": { "type": "boolean" }
+            }
+          }
+        },
+        "scorecards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "ideaId", "uid", "scores"],
+            "properties": {
+              "id": { "type": "string" },
+              "ideaId": { "type": "string" },
+              "uid": { "type": "string" },
+              "voterName": { "type": "string" },
+              "scores": { "type": "object" },
+              "dimensionNotes": { "type": "object" },
+              "updatedAt": { "type": "string" }
+            }
+          }
+        },
+        "pairwise": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "ideaA", "ideaB", "winnerId"],
+            "properties": {
+              "id": { "type": "string" },
+              "ideaA": { "type": "string" },
+              "ideaB": { "type": "string" },
+              "winnerId": { "type": "string" },
+              "uid": { "type": "string" },
+              "voterName": { "type": "string" },
+              "rationale": { "type": "string" },
+              "timestamp": { "type": "string" }
+            }
+          }
+        },
+        "reactionVotes": {
+          "type": "object"
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "parentIdeaId", "title"],
+            "properties": {
+              "id": { "type": "string" },
+              "parentIdeaId": { "type": "string" },
+              "parentVariantId": { "type": ["string", "null"] },
+              "title": { "type": "string" },
+              "creatorUid": { "type": "string" },
+              "creatorName": { "type": "string" },
+              "createdAt": { "type": "string" },
+              "updatedAt": { "type": "string" },
+              "changes": { "type": "object" },
+              "stage": { "type": "string" }
+            }
+          }
+        },
+        "decision": {
+          "type": ["object", "null"],
+          "properties": {
+            "id": { "type": "string" },
+            "selectedId": { "type": "string" },
+            "selectedTitle": { "type": "string" },
+            "isVariant": { "type": "boolean" },
+            "decidedAt": { "type": "string" },
+            "participants": { "type": "array", "items": { "type": "string" } },
+            "rationale": { "type": "string" },
+            "decisiveAssumptions": { "type": "array", "items": { "type": "string" } },
+            "dissentObjections": { "type": "array", "items": { "type": "string" } },
+            "confidenceLevel": { "type": "string" },
+            "nextExperiment": { "type": "string" },
+            "reconsiderationTriggers": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "experiments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "ideaId", "hypothesis"],
+            "properties": {
+              "id": { "type": "string" },
+              "ideaId": { "type": "string" },
+              "hypothesis": { "type": "string" },
+              "testDesign": { "type": "string" },
+              "targetMetric": { "type": "string" },
+              "costBudget": { "type": "string" },
+              "status": { "type": "string" },
+              "outcomeSummary": { "type": "string" },
+              "decisionImpact": { "type": "string" },
+              "createdAt": { "type": "string" },
+              "updatedAt": { "type": "string" }
+            }
+          }
+        },
+        "activity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "timestamp", "action"],
+            "properties": {
+              "id": { "type": "string" },
+              "timestamp": { "type": "string" },
+              "actorName": { "type": "string" },
+              "action": { "type": "string" },
+              "details": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

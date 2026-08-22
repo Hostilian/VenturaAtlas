@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Collaboration Room · Venture Atlas OS</title>
-  <meta name="description" content="How to collaborate on Venture Atlas OS — local browser drafts, GitHub-native workflows, vote packets, and evaluation templates.">
+  <title>Collaboration &amp; Decision Studio · Venture Atlas OS</title>
+  <meta name="description" content="How to collaborate on Venture Atlas OS — offline-first decision studio, structured 10-D scorecards, pairwise tournaments, idea variants, and Git-native governance.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
@@ -29,7 +29,7 @@
         <a href="./sources.html">Sources</a>
         <a href="./timeline.html">Timeline</a>
         <a href="./decisions.html">Decisions</a>
-        <a href="./collaboration.html" aria-current="page">Collaboration</a>
+        <a href="./room.html">Decision Studio</a>
         <a href="./research.html">Research</a>
         <a href="./about.html">About</a>
       </div>
@@ -37,137 +37,154 @@
     </nav>
   </header>
 
-  <main id="main" style="max-width:900px;margin:0 auto;padding:2rem 1.5rem">
+  <main id="main" style="max-width:960px;margin:0 auto;padding:2rem 1.5rem">
 
     <div class="eyebrow" style="margin-bottom:0.5rem">Collaboration &amp; Governance</div>
-    <h1 style="font-size:2rem;margin-bottom:0.5rem">Collaboration Room</h1>
+    <h1 style="font-size:2.2rem;margin-bottom:0.5rem">Collaborative Decision Studio</h1>
     <p style="color:var(--text2);margin-bottom:1.5rem;font-size:1.05rem">
-      Venture Atlas OS supports browser-local decision workspaces, exportable vote packets, and GitHub-native collaboration. Browser rooms do not synchronize between devices.
+      Venture Atlas OS provides an offline-first Decision Studio to discover, shortlist, evaluate, fork, and decide on startup opportunities with co-founders. Browser-local decision rooms do not synchronize state across devices unless connected to a configured Firebase room.
     </p>
 
-    <!-- Local Room CTA Banner -->
-    <div style="background:var(--accent-l);border:1px solid var(--accent);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <!-- Studio CTA Banner -->
+    <div style="background:var(--accent-l);border:1px solid var(--accent);border-radius:var(--radius);padding:1.5rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
       <div>
-        <h2 style="font-size:1.15rem;margin:0 0 0.25rem;color:var(--accent-h)">👥 Local Decision Rooms</h2>
-        <p style="font-size:0.88rem;color:var(--text2);margin:0">Evaluate, vote, discuss, and shortlist on this device, then export a decision packet to share. Opening the same URL on another device does not synchronize state.</p>
+        <h2 style="font-size:1.25rem;margin:0 0 0.35rem;color:var(--accent-h)">🚀 Launch Decision Studio</h2>
+        <p style="font-size:0.9rem;color:var(--text2);margin:0">Create a collaborative workspace, score candidates on 10 dimensions, run head-to-head tournaments, design idea variants, and declare provisional winners.</p>
       </div>
-      <a href="./room.html" class="button primary">🚀 Explore Together / Launch Room</a>
+      <a href="./room.html" class="button primary">Open Decision Studio →</a>
     </div>
 
-    <!-- Mode Cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:2.5rem">
+    <!-- Capabilities Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:2.5rem">
 
       <div class="panel" style="padding:1.5rem;border-top:3px solid var(--accent)">
-        <div style="font-size:1.75rem;margin-bottom:0.75rem">🖥️</div>
-        <h2 style="font-size:1.05rem;margin-bottom:0.5rem">Local / Private</h2>
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">📋</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Pipeline Kanban &amp; Stages</h2>
         <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
-          Browser-based drafts, favorites, comparisons, and vote packets. Nothing leaves your device unless you choose.
+          Organize candidates across 7 structured stages: Inbox, Interesting, Researching, Finalist, Testing, Winner, and Parked.
         </p>
-        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.8">
-          <li>Favorites saved in localStorage</li>
-          <li>Recently viewed ideas tracked locally</li>
-          <li>Comparison view for up to 4 ideas</li>
-          <li>Export vote packets as JSON</li>
-          <li>Download the public idea projection as JSON</li>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>1-click shortlist addition from search or dossiers</li>
+          <li>Structured stages prevent prematurely locking decisions</li>
+          <li>Tagged ideas and custom sorting</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(270,70%,60%)">
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">📊</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">10-D Scorecards &amp; Disagreement</h2>
+        <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+          Multi-criteria scoring covering Pain Severity, WTP, Distribution, Founder Fit, Speed to MVP, Capital Efficiency, and AI leverage.
+        </p>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>Automated Team Consensus &amp; Disagreement alerts</li>
+          <li>Identifies high-variance dimensions among co-founders</li>
+          <li>Subjective scores never pollute canonical research</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(38,95%,50%)">
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">⚔️</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Pairwise Tournaments</h2>
+        <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+          Head-to-head comparison matchups forcing explicit tradeoffs ("If you could only build one, which?").
+        </p>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>Automated combination generation</li>
+          <li>Leaderboard with win rates and match statistics</li>
+          <li>Rationale capture for qualitative context</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(180,80%,45%)">
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">💡</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Idea Variants Lab</h2>
+        <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+          Fork canonical ideas into tailored versions with specific buyer wedges, pricing tweaks, or narrower MVP scopes.
+        </p>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>Branch lineage tree: Idea → Variant A → Variant B</li>
+          <li>Compare customized variants directly against parent</li>
+          <li>Preserves canonical evidence provenance</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(145,75%,45%)">
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">🏆</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Provisional Winner &amp; Rationale</h2>
+        <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
+          Record formal team decisions with decisive assumptions, dissent capture, and review triggers.
+        </p>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>Documents why an idea won over other finalists</li>
+          <li>Explicitly preserves minority objections</li>
+          <li>Defined reconsideration triggers for reopening</li>
         </ul>
       </div>
 
       <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(215,70%,45%)">
-        <div style="font-size:1.75rem;margin-bottom:0.75rem">🐙</div>
-        <h2 style="font-size:1.05rem;margin-bottom:0.5rem">Git-Native</h2>
+        <div style="font-size:1.75rem;margin-bottom:0.75rem">🧪</div>
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Validation Experiments Loop</h2>
         <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
-          The canonical collaboration layer. Issues, PRs, evidence submissions, objections, and decisions — all versioned.
+          Design fast, cheap falsification tests before investing months into product engineering.
         </p>
-        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.8">
-          <li>Open a GitHub Issue to report a factual error</li>
-          <li>Submit a PR to add a new idea or source</li>
-          <li>Use issue forms for structured objections</li>
-          <li>Pairwise vote packets committed as JSON</li>
-          <li>All decisions versioned in <code>data/decisions.json</code></li>
+        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.7">
+          <li>Track hypothesis, test design, target metrics, and budget</li>
+          <li>Log real-world outcomes and pivot decisions</li>
+          <li>Closes the venture-learning loop</li>
         </ul>
       </div>
 
-      <div class="panel" style="padding:1.5rem;border-top:3px solid hsl(270,50%,50%);opacity:0.8">
-        <div style="font-size:1.75rem;margin-bottom:0.75rem">⚙️</div>
-        <h2 style="font-size:1.05rem;margin-bottom:0.5rem">Optional Backend</h2>
-        <p style="font-size:0.875rem;color:var(--text2);margin-bottom:1rem">
-          A backend adapter interface is defined but disabled by default. The static site is fully functional without it.
-        </p>
-        <ul style="font-size:0.875rem;color:var(--text2);padding-left:1.2rem;line-height:1.8">
-          <li>See <code>collaboration/BACKEND_ADAPTER.md</code></li>
-          <li>Plug in any API that accepts the vote-packet schema</li>
-          <li>No hosted backend required for core features</li>
-        </ul>
-      </div>
     </div>
 
-    <!-- Governance Section -->
-    <section style="margin-bottom:2.5rem" aria-labelledby="govTitle">
-      <h2 id="govTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Governance &amp; Decision Process</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem">
-
+    <!-- Storage & Sync Model -->
+    <section style="margin-bottom:2.5rem">
+      <h2 style="font-size:1.3rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Storage &amp; Synchronization Architecture</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem">
         <div class="panel" style="padding:1.25rem">
-          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)">Voting Rules</h3>
-          <p style="font-size:0.825rem;color:var(--text2);line-height:1.6">
-            Rankings are determined by pairwise votes. Each participant submits a vote packet JSON, which is validated and committed. Consensus is calculated from all committed votes.
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem">Local-First Storage</h3>
+          <p style="font-size:0.85rem;color:var(--text2);line-height:1.6">
+            All workspaces, shortlists, notes, scorecards, variants, and decisions are stored locally in your browser. Fully functional offline with zero cloud dependency.
           </p>
-          <a href="../collaboration/VOTING_RULES.md" class="button ghost sm" style="margin-top:0.75rem;display:inline-block">View Voting Rules</a>
         </div>
 
         <div class="panel" style="padding:1.25rem">
-          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)">Decision Process</h3>
-          <p style="font-size:0.825rem;color:var(--text2);line-height:1.6">
-            Formal decisions require evidence submissions and a documented objection window. Historical research-run winners are immutable snapshots and are not equivalent to a current group decision.
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem">Cloud Firestore Sync (Optional)</h3>
+          <p style="font-size:0.85rem;color:var(--text2);line-height:1.6">
+            When configured in <code>assets/js/config.js</code>, VenturaAtlas connects to Firebase Anonymous Auth and Cloud Firestore for real-time multiplayer room synchronization.
           </p>
-          <a href="../collaboration/DECISION_PROCESS.md" class="button ghost sm" style="margin-top:0.75rem;display:inline-block">Decision Process</a>
         </div>
 
         <div class="panel" style="padding:1.25rem">
-          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)">Evaluation Template</h3>
-          <p style="font-size:0.825rem;color:var(--text2);line-height:1.6">
-            Each participant evaluates ideas against defined criteria: market size, founder fit, technical feasibility, evidence quality, and strategic alignment.
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--accent);margin-bottom:0.4rem">Decision Packets (.json)</h3>
+          <p style="font-size:0.85rem;color:var(--text2);line-height:1.6">
+            Export a complete, self-contained decision packet as JSON. Share asynchronously with co-founders or import into another browser context anytime.
           </p>
-          <a href="../collaboration/EVALUATION_TEMPLATE.json" class="button ghost sm" style="margin-top:0.75rem;display:inline-block">Evaluation Template</a>
         </div>
       </div>
-    </section>
-
-    <!-- How to Contribute -->
-    <section style="margin-bottom:2.5rem" aria-labelledby="contribTitle">
-      <h2 id="contribTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">How to Contribute</h2>
-      <ol style="padding-left:1.5rem;line-height:2;color:var(--text2);font-size:0.9rem">
-        <li><strong style="color:var(--text)">Fork the repository</strong> and create a branch for your changes.</li>
-        <li><strong style="color:var(--text)">Add or update data</strong> in <code>data/ideas.json</code> following the schema in <code>data/ideas.schema.json</code>.</li>
-        <li><strong style="color:var(--text)">Include provenance</strong> — every new claim must reference a source in <code>data/sources.json</code>.</li>
-        <li><strong style="color:var(--text)">Run validation</strong>: <code>npm test &amp;&amp; npm run validate</code> must pass.</li>
-        <li><strong style="color:var(--text)">Open a pull request</strong> with a clear description of evidence and scope.</li>
-        <li><strong style="color:var(--text)">Address review feedback</strong> — factual objections require source evidence to resolve.</li>
-      </ol>
     </section>
 
     <!-- Templates & Downloads -->
     <section aria-labelledby="templatesTitle">
       <h2 id="templatesTitle" style="font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line)">Templates &amp; Resources</h2>
       <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
-        <a href="../collaboration/VOTE_PACKET_TEMPLATE.json" class="button ghost sm">Vote Packet Template</a>
-        <a href="../collaboration/EVALUATION_TEMPLATE.json" class="button ghost sm">Evaluation Template</a>
-        <a href="../collaboration/FRIEND_PROFILE_TEMPLATE.json" class="button ghost sm">Friend Profile Template</a>
-        <a href="../collaboration/MEETING_TEMPLATE.md" class="button ghost sm">Meeting Template</a>
-        <a href="../collaboration/GOVERNANCE.md" class="button ghost sm">Governance</a>
-        <a href="../data/decisions.json" class="button ghost sm">Decisions Data</a>
-        <a href="../data/pairwise-votes.json" class="button ghost sm">Pairwise Votes</a>
-        <a href="../CONTRIBUTING.md" class="button primary sm">Contributing Guide</a>
+        <a href="./room.html" class="button primary sm">Open Decision Studio</a>
+        <a href="../schemas/decision-packet.schema.json" class="button ghost sm">Decision Packet Schema (.json)</a>
+        <a href="../collaboration/VOTING_RULES.md" class="button ghost sm">Voting Rules</a>
+        <a href="../collaboration/DECISION_PROCESS.md" class="button ghost sm">Decision Process</a>
+        <a href="../data/decisions.json" class="button ghost sm">Historical Decisions Data</a>
+        <a href="../CONTRIBUTING.md" class="button ghost sm">Contributing Guide</a>
       </div>
     </section>
 
   </main>
 
   <footer class="footer" role="contentinfo">
-    <p>Venture Atlas OS &mdash; open research repository.</p>
+    <p>Venture Atlas OS &mdash; open research repository &amp; venture decision studio.</p>
     <p style="margin-top:0.4rem">
       <a href="./about.html">About</a> ·
       <a href="./decisions.html">Decision history</a> ·
-      <a href="./research.html">Research archive</a> ·
+      <a href="./room.html">Decision Studio</a> ·
       <a href="../CONTRIBUTING.md">Contributing</a>
     </p>
   </footer>

@@ -57,6 +57,51 @@ service cloud.firestore {
         allow read: if isMember(roomId);
         allow write: if isMember(roomId);
       }
+
+      // Structured Notes subcollection
+      match /notes/{noteId} {
+        allow read: if isMember(roomId);
+        allow create, update: if isMember(roomId) && 
+          request.resource.data.authorUid == request.auth.uid &&
+          validString(request.resource.data.content, 5000);
+        allow delete: if isMember(roomId) && (resource.data.authorUid == request.auth.uid || isOwner(roomId));
+      }
+
+      // Scorecards subcollection
+      match /scorecards/{scorecardId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && request.resource.data.uid == request.auth.uid;
+      }
+
+      // Pairwise comparisons subcollection
+      match /pairwise/{pairwiseId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && request.resource.data.uid == request.auth.uid;
+      }
+
+      // Variants subcollection
+      match /variants/{variantId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && validString(request.resource.data.title, 100);
+      }
+
+      // Decisions subcollection
+      match /decisions/{decisionId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && validString(request.resource.data.rationale, 5000);
+      }
+
+      // Experiments subcollection
+      match /experiments/{expId} {
+        allow read: if isMember(roomId);
+        allow write: if isMember(roomId) && validString(request.resource.data.hypothesis, 1000);
+      }
+
+      // Activity timeline subcollection
+      match /activity/{actId} {
+        allow read: if isMember(roomId);
+        allow create: if isMember(roomId);
+      }
     }
 
     // Public Aggregates (server-side managed, client read-only)

@@ -1,111 +1,105 @@
 {
-  "schemaVersion": "2.0.0",
-  "reconciledAt": "2026-08-18T14:36:29.409Z",
-  "sourceCommit": "4cdb53f (+ RESET XVIII uncommitted edits)",
-  "omegaVersion": "XIX",
-  "note": "Aggregate status removed per OMEGA XIX. Each component is evaluated independently. Combine components with policy logic, not boolean AND.",
+  "schemaVersion": "1.0.0",
+  "reconciledAt": "2026-08-22T10:11:03.164Z",
+  "sourceCommit": "2b34d73e7f338fa613d21fa0ea9c58ef31af2a1c",
+  "aggregateStatus": "WARN",
   "components": {
     "repositoryIntegrity": {
       "status": "WARN",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Working tree has uncommitted edits — OMEGA XVII-B and RESET XVIII files staged but not committed",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Working tree has uncommitted edits/untracked files",
       "proof": [
         "git status"
       ]
     },
     "canonicalData": {
       "status": "PASS",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "312 canonical ideas verified (308 OMEGA XVII-B + 4 RESET XVIII); revision updated",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "302 canonical ideas verified; revision a22923b2f173e87e",
       "proof": [
-        "data/repository-meta.json",
-        "data/ideas.json"
+        "data/repository-meta.json"
       ]
     },
-    "projectionIntegrity": {
-      "status": "STALE",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "repository-meta.json manually updated; build-manifest.json and search-index.json not yet regenerated after RESET XVIII additions",
+    "derivedArtifacts": {
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "_site built cleanly (2.7.1-a22923b2f173e87e)",
       "proof": [
-        "data/repository-meta.json (manually updated)"
-      ],
-      "staleSince": "2026-08-17",
-      "action": "Run npm run build:meta and npm run build:search after committing"
-    },
-    "rankingIntegrity": {
-      "status": "FROZEN_PENDING_REVALIDATION",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "All 294 ranked items carry rankingMaturity=legacy_unverified and rankingEligible=false. Reset XVIII frozen all legacy scores. No decision-grade rankings currently exist.",
-      "proof": [
-        "data/rankings.json (resetStatus field)",
-        "data/reset-status.json"
+        "_site/"
       ]
     },
     "agentState": {
-      "status": "STALE",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Agent state.json metrics show 302 canonical ideas; actual count is now 312",
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Agent state metrics aligned with repository metadata",
       "proof": [
         ".agent-system/state.json"
-      ],
-      "staleSince": "2026-08-18",
-      "action": "Update .agent-system/state.json after commit"
-    },
-    "researchMaturity": {
-      "status": "ZERO_EXPERIMENTS_RECORDED",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Zero active experiments recorded in data/lifecycle-receipts.json. Research runs exist but no executed experiments with pre-registered kill criteria. This is NOT equivalent to PASS.",
-      "proof": [
-        "data/lifecycle-receipts.json (empty)",
-        "data/validation-funnel.json (empty)"
-      ],
-      "valueState": "NOT_YET_MEASURED"
-    },
-    "evidenceFreshness": {
-      "status": "NOT_YET_MEASURED",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "No freshness policy has been applied to existing sources. RESET XVIII adds trigger-ledger.json as the start of temporal source tracking. Source-level freshness assessment not yet executed.",
-      "proof": [
-        "data/trigger-ledger.json (new)"
-      ],
-      "valueState": "NOT_YET_MEASURED"
+      ]
     },
     "ci": {
-      "status": "UNKNOWN",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Latest CI run status not re-checked in this pass. Last known: PASS at 2026-08-17T23:53:10Z. Uncommitted edits mean CI has not run on current state.",
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Latest quality receipt passed at 2026-08-21T14:44:53.766Z",
       "proof": [
-        "Last CI receipt: 2026-08-17T23:53:10Z"
-      ],
-      "valueState": "STALE"
+        ".agent-state/quality-receipts/quality-source-latest.json"
+      ]
     },
     "deployment": {
-      "status": "STALE",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Public site artifact build at v2.3.0; canonical data now at v2.5.0 (312 ideas). Rebuild required after commit.",
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Public site artifact build verified",
       "proof": [
         "data/build-manifest.json"
-      ],
-      "staleSince": "2026-08-18"
+      ]
+    },
+    "researchProductivity": {
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Latest research run run-gap-hunt-round-2-20260820 recorded",
+      "proof": [
+        "data/research-runs.json"
+      ]
     },
     "providerCapacity": {
-      "status": "NOT_OBSERVED",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Provider health not re-probed in this pass.",
-      "valueState": "NOT_OBSERVED"
+      "status": "WARN",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "provider receipts expired or missing; raw healthy flags are not current",
+      "proof": [
+        ".agent-system/provider-registry.json"
+      ],
+      "freshness": "EXPIRED"
+    },
+    "sourceFreshness": {
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "316 primary sources tracked in evidence graph",
+      "proof": [
+        "data/sources.json"
+      ]
+    },
+    "artifactCoverage": {
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Dossier coverage: 417/309 (135.0%)",
+      "proof": [
+        "data/repository-meta.json"
+      ]
     },
     "publicTruth": {
-      "status": "STALE",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Public site claims 302 ideas (v2.3.0 build). Actual canonical count is 312. Public site does not yet reflect OMEGA XVII-B or RESET XVIII ideas.",
-      "staleSince": "2026-08-18"
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Public claim metrics match repository-meta",
+      "proof": [
+        "index.html"
+      ]
     },
-    "privateStaging": {
-      "status": "WITHHELD",
-      "observedAt": "2026-08-18T14:36:29.409Z",
-      "reason": "Private staging data is excluded from the public inventory. Count is WITHHELD, not zero.",
-      "valueState": "WITHHELD",
-      "note": "See data/repository-meta.json privateStaging.valueState"
+    "collaboration": {
+      "status": "PASS",
+      "observedAt": "2026-08-22T10:11:03.164Z",
+      "reason": "Mode: LOCAL_PRODUCTION (Git-native)",
+      "proof": [
+        "AGENTS.md"
+      ]
     }
   }
 }

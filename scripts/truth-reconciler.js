@@ -25,6 +25,12 @@ function readJsonSafe(filePath) {
   }
 }
 
+function parseIsoTime(value) {
+  if (!value) return null;
+  const parsed = new Date(String(value));
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 function getGitCommit() {
   try {
     const res = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8', windowsHide: true });
@@ -100,9 +106,19 @@ function reconcileTruth() {
 
   // 8. providerCapacity
   const providerRegistry = readJsonSafe('.agent-system/provider-registry.json');
-  const healthyCount = Object.values(providerRegistry?.providers || {}).filter(p => p.healthy).length;
-  let providerStatus = healthyCount >= 2 ? 'PASS' : 'WARN';
-  let providerReason = `${healthyCount} healthy providers available in registry`;
+  const registryCheckedAt = parseIsoTime(providerRegistry?.lastHealthCheck);
+  const ttlSeconds = Number(providerRegistry?.probeTtlSeconds || 0);
+  const registryFresh = registryCheckedAt && ttlSeconds > 0
+    ? ((new Date(now).getTime() - registryCheckedAt.getTime()) / 1000) <= ttlSeconds
+    : false;
+  const freshHealthyCount = Object.values(providerRegistry?.providers || {}).filter(p => {
+    if (!registryFresh) return false;
+    return p.healthy === true;
+  }).length;
+  let providerStatus = freshHealthyCount >= 2 ? 'PASS' : 'WARN';
+  let providerReason = registryFresh
+    ? `${freshHealthyCount} currently healthy providers available in registry`
+    : `provider receipts expired or missing; raw healthy flags are not current`;
 
   // 9. sourceFreshness
   const sourcesData = readJsonSafe('data/sources.json');
@@ -136,7 +152,13 @@ function reconcileTruth() {
     ci: { status: ciStatus, observedAt: now, reason: ciReason, proof: ['.agent-state/quality-receipts/quality-source-latest.json'] },
     deployment: { status: deployStatus, observedAt: now, reason: deployReason, proof: ['data/build-manifest.json'] },
     researchProductivity: { status: researchStatus, observedAt: now, reason: researchReason, proof: ['data/research-runs.json'] },
-    providerCapacity: { status: providerStatus, observedAt: now, reason: providerReason, proof: ['.agent-system/provider-registry.json'] },
+    providerCapacity: {
+      status: providerStatus,
+      observedAt: now,
+      reason: providerReason,
+      proof: ['.agent-system/provider-registry.json'],
+      freshness: registryFresh ? 'FRESH' : 'EXPIRED'
+    },
     sourceFreshness: { status: freshnessStatus, observedAt: now, reason: freshnessReason, proof: ['data/sources.json'] },
     artifactCoverage: { status: coverageStatus, observedAt: now, reason: coverageReason, proof: ['data/repository-meta.json'] },
     publicTruth: { status: publicStatus, observedAt: now, reason: publicReason, proof: ['index.html'] },

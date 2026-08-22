@@ -1519,5 +1519,84 @@ body.nav-open {
   .proposal-grid { grid-template-columns: 1fr; }
 }
 
+/* ================================================================
+   DECISION STUDIO STYLES (v3.0.0)
+   ================================================================ */
+.studio-tab-btn {
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text2);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.studio-tab-btn:hover {
+  color: var(--text);
+  background: var(--panel2);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.studio-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  color: var(--text2);
+}
+
+.sync-badge.live {
+  background: hsl(142, 60%, 92%);
+  border-color: hsl(142, 60%, 75%);
+  color: hsl(142, 80%, 25%);
+}
+
+[data-theme="dark"] .sync-badge.live {
+  background: hsl(142, 40%, 18%);
+  border-color: hsl(142, 50%, 30%);
+  color: hsl(142, 60%, 70%);
+}
+
+.kanban-column {
+  min-height: 480px;
+}
+
+.contender-box {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.contender-box:hover {
+  border-color: var(--accent);
+}
+
+.contender-box.chosen {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+[data-theme="dark"] .winner-banner {
+  background: hsl(145, 30%, 14%) !important;
+  border-color: hsl(145, 40%, 28%) !important;
+}
+
+[data-theme="dark"] .winner-banner div {
+  color: hsl(145, 60%, 75%) !important;
+}
+
 /* Command Palette Import */
 @import "./components/command-palette.css";
