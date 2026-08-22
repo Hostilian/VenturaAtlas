@@ -7,30 +7,30 @@
     "similarity": "Weighted lexical overlap plus family, pattern, buyer-segment, and explicit-relationship signals.",
     "caution": "Similarity is a browsing aid. It does not prove duplication, market validity, or ranking eligibility."
   },
-  "sourceDigest": "159891a624c862efac6374c7f988ca8a2371fbfffb430b376ec46ba08a8d4ee8",
-  "ideaCount": 309,
+  "sourceDigest": "5352d74b78383e69e4d275c6fe2ab455077c8a85f32b22692fb3cf8f068f2a45",
+  "ideaCount": 324,
   "familyCount": 14,
   "patternCount": 12,
-  "groupCount": 86,
+  "groupCount": 91,
   "reviewQueueCount": 0,
   "families": [
     {
       "id": "software-ai-developer",
       "label": "Software, AI & Developer Systems",
       "description": "AI products, developer tooling, cloud software, APIs, automation, and data infrastructure.",
-      "count": 60
+      "count": 61
     },
     {
       "id": "cyber-identity-trust",
       "label": "Cybersecurity, Identity & Trust",
       "description": "Security, resilience, identity, credentials, fraud prevention, and online trust.",
-      "count": 14
+      "count": 15
     },
     {
       "id": "finance-audit-governance",
       "label": "Finance, Audit & Governance",
       "description": "Financial operations, audit, payments, insurance, underwriting, corporate governance, and succession.",
-      "count": 29
+      "count": 30
     },
     {
       "id": "commerce-marketplaces-consumer",
@@ -42,13 +42,13 @@
       "id": "industrial-supply-logistics",
       "label": "Industrial, Supply Chain & Logistics",
       "description": "Industrial operations, manufacturing, materials, trade, customs, logistics, hardware, and supply chains.",
-      "count": 32
+      "count": 35
     },
     {
       "id": "climate-energy-environment",
       "label": "Climate, Energy & Environment",
       "description": "Energy systems, grids, climate resilience, carbon, environmental compliance, water, and circularity.",
-      "count": 16
+      "count": 21
     },
     {
       "id": "health-life-sciences",
@@ -60,7 +60,7 @@
       "id": "construction-property-repair",
       "label": "Construction, Property & Repair",
       "description": "Construction, buildings, property, fabrication, maintenance, repair, and physical adaptation.",
-      "count": 17
+      "count": 18
     },
     {
       "id": "research-education-knowledge",
@@ -78,13 +78,13 @@
       "id": "travel-mobility-events",
       "label": "Travel, Mobility & Events",
       "description": "Travel, transport, aviation, maritime operations, pedestrian mobility, lodging, and events.",
-      "count": 13
+      "count": 14
     },
     {
       "id": "public-regulatory-procurement",
       "label": "Public Sector, Regulation & Procurement",
       "description": "Public services, regulatory operations, accessibility, government procurement, and legal compliance.",
-      "count": 28
+      "count": 29
     },
     {
       "id": "food-agriculture",
@@ -96,7 +96,7 @@
       "id": "business-operations-services",
       "label": "Business Operations & Services",
       "description": "Cross-sector business workflows, scheduling, sales intelligence, operational continuity, and professional services.",
-      "count": 8
+      "count": 9
     }
   ],
   "patterns": [
@@ -110,7 +110,7 @@
       "id": "evidence-verification",
       "label": "Evidence, Verification & Reconciliation",
       "description": "Creates, verifies, reconciles, or preserves proof and provenance.",
-      "count": 58
+      "count": 62
     },
     {
       "id": "monitoring-intelligence",
@@ -122,13 +122,13 @@
       "id": "workflow-automation",
       "label": "Workflow Automation & Operations",
       "description": "Coordinates recurring work, cases, approvals, records, or operational handoffs.",
-      "count": 16
+      "count": 20
     },
     {
       "id": "marketplace-network",
       "label": "Marketplace, Exchange & Network",
       "description": "Matches participants, aggregates supply or demand, or compounds network data.",
-      "count": 20
+      "count": 21
     },
     {
       "id": "routing-optimization",
@@ -140,13 +140,13 @@
       "id": "infrastructure-api",
       "label": "Infrastructure, API & Integration",
       "description": "Provides reusable technical infrastructure, integrations, APIs, SDKs, gateways, or compilers.",
-      "count": 42
+      "count": 46
     },
     {
       "id": "financial-risk",
       "label": "Financial, Risk & Underwriting",
       "description": "Prices risk, recovers money, finances activity, or controls financial exposure.",
-      "count": 15
+      "count": 16
     },
     {
       "id": "advisory-service",
@@ -158,7 +158,7 @@
       "id": "physical-repair-service",
       "label": "Physical Service, Repair & Fabrication",
       "description": "Acts on physical assets through repair, inspection, fabrication, maintenance, or field service.",
-      "count": 18
+      "count": 19
     },
     {
       "id": "consumer-utility",
@@ -217,9 +217,10 @@
       "familyLabel": "Business Operations & Services",
       "patternId": "workflow-automation",
       "patternLabel": "Workflow Automation & Operations",
-      "count": 1,
+      "count": 2,
       "ideaIds": [
-        "idea-279"
+        "idea-279",
+        "idea-436"
       ]
     },
     {
@@ -239,11 +240,12 @@
       "familyLabel": "Climate, Energy & Environment",
       "patternId": "evidence-verification",
       "patternLabel": "Evidence, Verification & Reconciliation",
-      "count": 3,
+      "count": 4,
       "ideaIds": [
         "idea-369",
         "idea-399",
-        "idea-400"
+        "idea-400",
+        "idea-433"
       ]
     },
     {
@@ -264,11 +266,14 @@
       "familyLabel": "Climate, Energy & Environment",
       "patternId": "infrastructure-api",
       "patternLabel": "Infrastructure, API & Integration",
-      "count": 3,
+      "count": 6,
       "ideaIds": [
         "idea-289",
         "idea-396",
-        "idea-406"
+        "idea-406",
+        "idea-432",
+        "idea-435",
+        "idea-443"
       ]
     },
     {
@@ -312,10 +317,11 @@
       "familyLabel": "Climate, Energy & Environment",
       "patternId": "workflow-automation",
       "patternLabel": "Workflow Automation & Operations",
-      "count": 2,
+      "count": 3,
       "ideaIds": [
         "idea-282",
-        "idea-388"
+        "idea-388",
+        "idea-438"
       ]
     },
     {
@@ -448,6 +454,17 @@
       ]
     },
     {
+      "id": "construction-property-repair--evidence-verification",
+      "familyId": "construction-property-repair",
+      "familyLabel": "Construction, Property & Repair",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "count": 1,
+      "ideaIds": [
+        "idea-439"
+      ]
+    },
+    {
       "id": "construction-property-repair--financial-risk",
       "familyId": "construction-property-repair",
       "familyLabel": "Construction, Property & Repair",
@@ -554,6 +571,17 @@
       ]
     },
     {
+      "id": "cyber-identity-trust--marketplace-network",
+      "familyId": "cyber-identity-trust",
+      "familyLabel": "Cybersecurity, Identity & Trust",
+      "patternId": "marketplace-network",
+      "patternLabel": "Marketplace, Exchange & Network",
+      "count": 1,
+      "ideaIds": [
+        "idea-445"
+      ]
+    },
+    {
       "id": "cyber-identity-trust--workflow-automation",
       "familyId": "cyber-identity-trust",
       "familyLabel": "Cybersecurity, Identity & Trust",
@@ -620,6 +648,17 @@
         "idea-311",
         "idea-320",
         "idea-339"
+      ]
+    },
+    {
+      "id": "finance-audit-governance--infrastructure-api",
+      "familyId": "finance-audit-governance",
+      "familyLabel": "Finance, Audit & Governance",
+      "patternId": "infrastructure-api",
+      "patternLabel": "Infrastructure, API & Integration",
+      "count": 1,
+      "ideaIds": [
+        "idea-446"
       ]
     },
     {
@@ -832,12 +871,25 @@
       "familyLabel": "Industrial, Supply Chain & Logistics",
       "patternId": "physical-repair-service",
       "patternLabel": "Physical Service, Repair & Fabrication",
-      "count": 4,
+      "count": 5,
       "ideaIds": [
         "idea-275",
         "idea-292",
         "idea-296",
-        "idea-335"
+        "idea-335",
+        "idea-444"
+      ]
+    },
+    {
+      "id": "industrial-supply-logistics--workflow-automation",
+      "familyId": "industrial-supply-logistics",
+      "familyLabel": "Industrial, Supply Chain & Logistics",
+      "patternId": "workflow-automation",
+      "patternLabel": "Workflow Automation & Operations",
+      "count": 2,
+      "ideaIds": [
+        "idea-434",
+        "idea-442"
       ]
     },
     {
@@ -935,14 +987,15 @@
       "familyLabel": "Public Sector, Regulation & Procurement",
       "patternId": "evidence-verification",
       "patternLabel": "Evidence, Verification & Reconciliation",
-      "count": 6,
+      "count": 7,
       "ideaIds": [
         "idea-210",
         "idea-263",
         "idea-300",
         "idea-334",
         "idea-421",
-        "idea-423"
+        "idea-423",
+        "idea-437"
       ]
     },
     {
@@ -1136,9 +1189,10 @@
       "familyLabel": "Software, AI & Developer Systems",
       "patternId": "financial-risk",
       "patternLabel": "Financial, Risk & Underwriting",
-      "count": 1,
+      "count": 2,
       "ideaIds": [
-        "idea-288"
+        "idea-288",
+        "idea-441"
       ]
     },
     {
@@ -1275,6 +1329,17 @@
         "idea-251",
         "idea-252",
         "idea-256"
+      ]
+    },
+    {
+      "id": "travel-mobility-events--evidence-verification",
+      "familyId": "travel-mobility-events",
+      "familyLabel": "Travel, Mobility & Events",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "count": 1,
+      "ideaIds": [
+        "idea-440"
       ]
     },
     {
@@ -3443,6 +3508,16 @@
           "difference": "Different detailed category: Information service vs Information infrastructure"
         },
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 22,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Workflow Automation & Operations"
+        },
+        {
           "ideaId": "idea-084",
           "name": "Cancellation Revenue Recovery",
           "score": 22,
@@ -3452,16 +3527,6 @@
             "shared terms: late"
           ],
           "difference": "Different idea type: Monitoring & Decision Intelligence vs Financial, Risk & Underwriting"
-        },
-        {
-          "ideaId": "idea-214",
-          "name": "Older-Adult Tech Support Interpreter",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Business Operations & Services"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Consumer Utility & Discovery"
         }
       ],
       "closestSimilarity": 62,
@@ -3524,6 +3589,16 @@
           "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
         },
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 22,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Workflow Automation & Operations"
+        },
+        {
           "ideaId": "idea-084",
           "name": "Cancellation Revenue Recovery",
           "score": 22,
@@ -3543,16 +3618,6 @@
             "same family: Business Operations & Services"
           ],
           "difference": "Different idea type: Monitoring & Decision Intelligence vs Consumer Utility & Discovery"
-        },
-        {
-          "ideaId": "idea-268",
-          "name": "PayMe — Autonomous B2B Receivables Recovery Network",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Business Operations & Services"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Financial, Risk & Underwriting"
         }
       ],
       "closestSimilarity": 62,
@@ -5935,6 +6000,16 @@
           "difference": "Different idea type: Consumer Utility & Discovery vs Workflow Automation & Operations"
         },
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 22,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services"
+          ],
+          "difference": "Different idea type: Consumer Utility & Discovery vs Workflow Automation & Operations"
+        },
+        {
           "ideaId": "idea-023",
           "name": "Applications Closing Soon",
           "score": 22,
@@ -5943,17 +6018,6 @@
             "same family: Business Operations & Services"
           ],
           "difference": "Different idea type: Consumer Utility & Discovery vs Monitoring & Decision Intelligence"
-        },
-        {
-          "ideaId": "idea-035",
-          "name": "Local-First Personal AI / Jarvis",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same idea type: Consumer Utility & Discovery",
-            "shared terms: local, first, users"
-          ],
-          "difference": "Different detailed category: Utilities vs AI application"
         }
       ],
       "closestSimilarity": 40,
@@ -8344,6 +8408,17 @@
           "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
         },
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "shared terms: 2026"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Workflow Automation & Operations"
+        },
+        {
           "ideaId": "idea-279",
           "name": "RobotOps — Teleoperated Human-in-the-Loop Robot Operations",
           "score": 23,
@@ -8373,17 +8448,6 @@
           "reasons": [
             "same family: Business Operations & Services",
             "shared terms: 2026, automation"
-          ],
-          "difference": "Different idea type: Financial, Risk & Underwriting vs Monitoring & Decision Intelligence"
-        },
-        {
-          "ideaId": "idea-023",
-          "name": "Applications Closing Soon",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Business Operations & Services",
-            "shared terms: late"
           ],
           "difference": "Different idea type: Financial, Risk & Underwriting vs Monitoring & Decision Intelligence"
         }
@@ -12048,6 +12112,28 @@
           "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
         },
         {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: energy, operations"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Workflow Automation & Operations"
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: energy"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Infrastructure, API & Integration"
+        },
+        {
           "ideaId": "idea-274",
           "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
           "score": 24,
@@ -12057,28 +12143,6 @@
             "shared terms: energy"
           ],
           "difference": "Different idea type: Monitoring & Decision Intelligence vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: energy, electricity, real"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-282",
-          "name": "HeatExpert Cloud — Remote Expert Supervision for Heat Pump Technicians",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: energy, operations"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Workflow Automation & Operations"
         }
       ],
       "closestSimilarity": 40,
@@ -12237,6 +12301,17 @@
           "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
         },
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "shared terms: tech, operations"
+          ],
+          "difference": "Different idea type: Consumer Utility & Discovery vs Workflow Automation & Operations"
+        },
+        {
           "ideaId": "idea-023",
           "name": "Applications Closing Soon",
           "score": 22,
@@ -12253,17 +12328,6 @@
           "band": "adjacent",
           "reasons": [
             "same family: Business Operations & Services"
-          ],
-          "difference": "Different idea type: Consumer Utility & Discovery vs Financial, Risk & Underwriting"
-        },
-        {
-          "ideaId": "idea-268",
-          "name": "PayMe — Autonomous B2B Receivables Recovery Network",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Business Operations & Services",
-            "shared terms: operations"
           ],
           "difference": "Different idea type: Consumer Utility & Discovery vs Financial, Risk & Underwriting"
         }
@@ -15531,6 +15595,18 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-437",
+          "name": "TradeScope -- Job-Level Legal Capability for Skilled Workers",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation",
+            "shared terms: skilled, qualification, legal, recognition"
+          ],
+          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
+        },
+        {
           "ideaId": "idea-210",
           "name": "Accessible Checkout Replay",
           "score": 41,
@@ -15577,21 +15653,10 @@
             "shared terms: compliance"
           ],
           "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Commerce & marketplace operators"
-        },
-        {
-          "ideaId": "idea-334",
-          "name": "PublicTech Impact Ledger",
-          "score": 40,
-          "band": "related",
-          "reasons": [
-            "same family: Public Sector, Regulation & Procurement",
-            "same idea type: Evidence, Verification & Reconciliation"
-          ],
-          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Government & public-sector buyers"
         }
       ],
-      "closestSimilarity": 41,
-      "distinctivenessScore": 59
+      "closestSimilarity": 44,
+      "distinctivenessScore": 56
     },
     {
       "ideaId": "idea-264",
@@ -16066,14 +16131,15 @@
           "difference": "Different detailed category: B2B Receivables & Cash Flow vs Climate Resilience & Insurance Tech"
         },
         {
-          "ideaId": "idea-023",
-          "name": "Applications Closing Soon",
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
           "score": 22,
           "band": "adjacent",
           "reasons": [
-            "same family: Business Operations & Services"
+            "same family: Business Operations & Services",
+            "shared terms: operations"
           ],
-          "difference": "Different idea type: Financial, Risk & Underwriting vs Monitoring & Decision Intelligence"
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Workflow Automation & Operations"
         }
       ],
       "closestSimilarity": 43,
@@ -16531,6 +16597,18 @@
           "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
         },
         {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "score": 42,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment"
+          ],
+          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
+        },
+        {
           "ideaId": "idea-296",
           "name": "Grid Equipment Cancellation Exchange — Secondary Transformer & Switchgear Allocation",
           "score": 42,
@@ -16551,18 +16629,6 @@
             "same family: Industrial, Supply Chain & Logistics",
             "same buyer segment: Manufacturers & supply-chain operators",
             "shared terms: industrial, equipment, capacity, reset"
-          ],
-          "difference": "Different idea type: Physical Service, Repair & Fabrication vs Compliance Gate & Preflight"
-        },
-        {
-          "ideaId": "idea-299",
-          "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
-          "score": 35,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Industrial, Supply Chain & Logistics",
-            "same buyer segment: Manufacturers & supply-chain operators",
-            "shared terms: industrial, machinery, factory, operators"
           ],
           "difference": "Different idea type: Physical Service, Repair & Fabrication vs Compliance Gate & Preflight"
         }
@@ -16894,6 +16960,18 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: operations"
+          ],
+          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
+        },
+        {
           "ideaId": "idea-282",
           "name": "HeatExpert Cloud — Remote Expert Supervision for Heat Pump Technicians",
           "score": 33,
@@ -16940,21 +17018,10 @@
             "shared terms: operations, reset, autonomous"
           ],
           "difference": "Different detailed category: Robotics & Automation Operations vs Public Procurement & Government Sales"
-        },
-        {
-          "ideaId": "idea-084",
-          "name": "Cancellation Revenue Recovery",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Business Operations & Services",
-            "shared terms: automation, reset"
-          ],
-          "difference": "Different idea type: Workflow Automation & Operations vs Financial, Risk & Underwriting"
         }
       ],
-      "closestSimilarity": 33,
-      "distinctivenessScore": 67
+      "closestSimilarity": 41,
+      "distinctivenessScore": 59
     },
     {
       "ideaId": "idea-280",
@@ -17188,6 +17255,18 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: energy, heat, operations"
+          ],
+          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
+        },
+        {
           "ideaId": "idea-388",
           "name": "PermanenceDesk — Certified Carbon Removal Asset-Liability Management Ledger",
           "score": 40,
@@ -17234,22 +17313,10 @@
             "shared terms: capacity, reset, tenth, unlock"
           ],
           "difference": "Different idea type: Workflow Automation & Operations vs Financial, Risk & Underwriting"
-        },
-        {
-          "ideaId": "idea-279",
-          "name": "RobotOps — Teleoperated Human-in-the-Loop Robot Operations",
-          "score": 33,
-          "band": "adjacent",
-          "reasons": [
-            "same idea type: Workflow Automation & Operations",
-            "same buyer segment: Manufacturers & supply-chain operators",
-            "shared terms: operations, capacity, reset, tenth"
-          ],
-          "difference": "Different detailed category: Clean Energy & HVAC Operations vs Robotics & Automation Operations"
         }
       ],
-      "closestSimilarity": 40,
-      "distinctivenessScore": 60
+      "closestSimilarity": 44,
+      "distinctivenessScore": 56
     },
     {
       "ideaId": "idea-287",
@@ -17384,6 +17451,17 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-441",
+          "name": "ComputeBasis -- Compute Delivery/Hedge Reconciliation",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "same idea type: Financial, Risk & Underwriting"
+          ],
+          "difference": "Different detailed category: AI Insurance & Risk Underwriting vs Cloud Finance & Infrastructure"
+        },
+        {
           "ideaId": "idea-013",
           "name": "Autonomous Agent Operating System",
           "score": 25,
@@ -17426,21 +17504,10 @@
             "shared terms: agent, agents"
           ],
           "difference": "Different idea type: Financial, Risk & Underwriting vs Compliance Gate & Preflight"
-        },
-        {
-          "ideaId": "idea-003",
-          "name": "AI Agent Budget & Credit Controller",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Software, AI & Developer Systems",
-            "shared terms: agent, agents"
-          ],
-          "difference": "Different idea type: Financial, Risk & Underwriting vs Infrastructure, API & Integration"
         }
       ],
-      "closestSimilarity": 25,
-      "distinctivenessScore": 75
+      "closestSimilarity": 40,
+      "distinctivenessScore": 60
     },
     {
       "ideaId": "idea-289",
@@ -17488,6 +17555,42 @@
           "difference": "Different detailed category: Energy Grid & Infrastructure Finance vs Energy Grid & Electrical Infrastructure"
         },
         {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: grid, energy, infrastructure"
+          ],
+          "difference": "Different detailed category: Energy Grid & Infrastructure Finance vs Energy & Mobility Infrastructure"
+        },
+        {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Energy Grid & Infrastructure Finance vs Water Infrastructure"
+        },
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Energy Grid & Infrastructure Finance vs Water Infrastructure"
+        },
+        {
           "ideaId": "idea-406",
           "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
           "score": 40,
@@ -17497,39 +17600,6 @@
             "same idea type: Infrastructure, API & Integration"
           ],
           "difference": "Different detailed category: Energy Grid & Infrastructure Finance vs Environmental Certification"
-        },
-        {
-          "ideaId": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 29,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: grid, infrastructure, energy, connection"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Routing, Allocation & Optimization"
-        },
-        {
-          "ideaId": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 28,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: grid, data, energy, infrastructure"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: energy, grid, developers"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Marketplace, Exchange & Network"
         }
       ],
       "closestSimilarity": 46,
@@ -17797,6 +17867,18 @@
           "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
         },
         {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: uptime"
+          ],
+          "difference": "Different buyer segment: Manufacturers & supply-chain operators vs Cross-sector or unspecified buyer"
+        },
+        {
           "ideaId": "idea-299",
           "name": "Machine Safety State Drift Gate — Machinery Regulation 2027 Revalidation Engine",
           "score": 33,
@@ -17807,18 +17889,6 @@
             "shared terms: industrial, plc, cross, factory"
           ],
           "difference": "Different idea type: Physical Service, Repair & Fabrication vs Compliance Gate & Preflight"
-        },
-        {
-          "ideaId": "idea-332",
-          "name": "RobotWork Neutral Meter",
-          "score": 33,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Industrial, Supply Chain & Logistics",
-            "same buyer segment: Manufacturers & supply-chain operators",
-            "shared terms: industrial, maintenance, time"
-          ],
-          "difference": "Different idea type: Physical Service, Repair & Fabrication vs Monitoring & Decision Intelligence"
         }
       ],
       "closestSimilarity": 54,
@@ -18150,6 +18220,18 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment"
+          ],
+          "difference": "Different detailed category: Power Equipment & Energy Supply Chain vs Robotics & Equipment"
+        },
+        {
           "ideaId": "idea-275",
           "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
           "score": 42,
@@ -18195,21 +18277,10 @@
             "shared terms: transformer, equipment, grid, power"
           ],
           "difference": "Different idea type: Physical Service, Repair & Fabrication vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-327",
-          "name": "3PL Activity-to-Invoice Grid",
-          "score": 25,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Industrial, Supply Chain & Logistics",
-            "shared terms: chain, supply, grid"
-          ],
-          "difference": "Different idea type: Physical Service, Repair & Fabrication vs Evidence, Verification & Reconciliation"
         }
       ],
-      "closestSimilarity": 42,
-      "distinctivenessScore": 58
+      "closestSimilarity": 43,
+      "distinctivenessScore": 57
     },
     {
       "ideaId": "idea-298",
@@ -20776,6 +20847,17 @@
           "difference": "Different idea type: Financial, Risk & Underwriting vs Workflow Automation & Operations"
         },
         {
+          "ideaId": "idea-440",
+          "name": "OrbitSettlement -- Cost/Responsibility Evidence for Orbital Maneuvers",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: settlement"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Evidence, Verification & Reconciliation"
+        },
+        {
           "ideaId": "idea-257",
           "name": "Assistance Confirmation Receipt",
           "score": 23,
@@ -20785,16 +20867,6 @@
             "shared terms: airline"
           ],
           "difference": "Different idea type: Financial, Risk & Underwriting vs Physical Service, Repair & Fabrication"
-        },
-        {
-          "ideaId": "idea-254",
-          "name": "Elevator Outage Journey Assurance",
-          "score": 22,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Travel, Mobility & Events"
-          ],
-          "difference": "Different idea type: Financial, Risk & Underwriting vs Monitoring & Decision Intelligence"
         }
       ],
       "closestSimilarity": 30,
@@ -21817,6 +21889,18 @@
           "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
         },
         {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment, settlement, availability"
+          ],
+          "difference": "Different detailed category: Industrial Automation & Maintenance vs Robotics & Equipment"
+        },
+        {
           "ideaId": "idea-296",
           "name": "Grid Equipment Cancellation Exchange — Secondary Transformer & Switchgear Allocation",
           "score": 42,
@@ -21836,17 +21920,6 @@
           "reasons": [
             "same family: Industrial, Supply Chain & Logistics",
             "shared terms: automation, industrial, maintenance, settlement"
-          ],
-          "difference": "Different idea type: Physical Service, Repair & Fabrication vs Monitoring & Decision Intelligence"
-        },
-        {
-          "ideaId": "idea-166",
-          "name": "Industrial Automation Obsolescence Graph",
-          "score": 26,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Industrial, Supply Chain & Logistics",
-            "shared terms: industrial, automation"
           ],
           "difference": "Different idea type: Physical Service, Repair & Fabrication vs Monitoring & Decision Intelligence"
         }
@@ -25115,6 +25188,17 @@
           "difference": "Different detailed category: EU Marketplace & Compliance vs Circular Economy & F-Gas Compliance"
         },
         {
+          "ideaId": "idea-433",
+          "name": "HeatProof -- Retrofit Outcome Clearinghouse",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: EU Marketplace & Compliance vs Building Performance & Energy"
+        },
+        {
           "ideaId": "idea-370",
           "name": "MethaneMismatch — Methane Certification vs Satellite Observation Engine",
           "score": 25,
@@ -25135,17 +25219,6 @@
             "shared terms: evidence, compliance, dossiers, verification"
           ],
           "difference": "Different detailed category: EU Marketplace & Compliance vs B2B SaaS"
-        },
-        {
-          "ideaId": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: compliance, verification"
-          ],
-          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
         }
       ],
       "closestSimilarity": 42,
@@ -26939,6 +27012,17 @@
           "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
         },
         {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Workflow Automation & Operations"
+          ],
+          "difference": "Different detailed category: Climate Resilience & Insurance Tech vs Industrial Energy & Operations"
+        },
+        {
           "ideaId": "idea-280",
           "name": "Fireproof — Climate Resilience & Property Risk Passports",
           "score": 27,
@@ -26970,17 +27054,6 @@
             "shared terms: climate, liability, mrv, buyers"
           ],
           "difference": "Different idea type: Workflow Automation & Operations vs Evidence, Verification & Reconciliation"
-        },
-        {
-          "ideaId": "idea-406",
-          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: mrv, certification"
-          ],
-          "difference": "Different idea type: Workflow Automation & Operations vs Infrastructure, API & Integration"
         }
       ],
       "closestSimilarity": 40,
@@ -27542,6 +27615,17 @@
           "difference": "Different idea type: Compliance Gate & Preflight vs Financial, Risk & Underwriting"
         },
         {
+          "ideaId": "idea-439",
+          "name": "ReuseRating -- Underwriting Layer for Reclaimed Structural Components",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: construction, building"
+          ],
+          "difference": "Different idea type: Compliance Gate & Preflight vs Evidence, Verification & Reconciliation"
+        },
+        {
           "ideaId": "idea-331",
           "name": "BaselineLock — Counterfactual Contract Engine",
           "score": 23,
@@ -27551,17 +27635,6 @@
             "shared terms: engine, audit, financial, forensics"
           ],
           "difference": "Different buyer segment: Property & construction operators vs Government & public-sector buyers"
-        },
-        {
-          "ideaId": "idea-378",
-          "name": "MicroFee / PolluterLedger — Urban Wastewater EPR Fee Scenario & Audit Engine",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same idea type: Compliance Gate & Preflight",
-            "shared terms: audit, engine, financial, forensics"
-          ],
-          "difference": "Different buyer segment: Property & construction operators vs Finance, audit & risk teams"
         }
       ],
       "closestSimilarity": 49,
@@ -27646,15 +27719,15 @@
           "difference": "Different idea type: Marketplace, Exchange & Network vs Infrastructure, API & Integration"
         },
         {
-          "ideaId": "idea-212",
-          "name": "Dynamic Tariff Counterfactual Simulator",
-          "score": 24,
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 25,
           "band": "adjacent",
           "reasons": [
             "same family: Climate, Energy & Environment",
-            "shared terms: energy, electricity, real"
+            "shared terms: grid, energy, infrastructure, neutral"
           ],
-          "difference": "Different idea type: Marketplace, Exchange & Network vs Monitoring & Decision Intelligence"
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Infrastructure, API & Integration"
         }
       ],
       "closestSimilarity": 43,
@@ -27706,6 +27779,42 @@
           "difference": "Different detailed category: Energy Grid & Electrical Infrastructure vs Energy Grid & Infrastructure Finance"
         },
         {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: grid, energy, infrastructure, envelope"
+          ],
+          "difference": "Different detailed category: Energy Grid & Electrical Infrastructure vs Energy & Mobility Infrastructure"
+        },
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 42,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure, utility, reliability"
+          ],
+          "difference": "Different detailed category: Energy Grid & Electrical Infrastructure vs Water Infrastructure"
+        },
+        {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Energy Grid & Electrical Infrastructure vs Water Infrastructure"
+        },
+        {
           "ideaId": "idea-406",
           "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
           "score": 40,
@@ -27715,39 +27824,6 @@
             "same idea type: Infrastructure, API & Integration"
           ],
           "difference": "Different detailed category: Energy Grid & Electrical Infrastructure vs Environmental Certification"
-        },
-        {
-          "ideaId": "idea-273",
-          "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
-          "score": 29,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: grid, electrical, energy, infrastructure"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Routing, Allocation & Optimization"
-        },
-        {
-          "ideaId": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 28,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: grid, load, data, electrical"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-274",
-          "name": "ColdBattery — Virtual Thermal Refrigeration Battery Network",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: energy, grid, operators"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Marketplace, Exchange & Network"
         }
       ],
       "closestSimilarity": 46,
@@ -27891,6 +27967,17 @@
           "difference": "Different buyer segment: Developers & technical teams vs Cross-sector or unspecified buyer"
         },
         {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: water, utility"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Infrastructure, API & Integration"
+        },
+        {
           "ideaId": "idea-273",
           "name": "PowerPlot — Electrical Grid Capacity Intelligence & Site Exchange",
           "score": 24,
@@ -27902,6 +27989,17 @@
           "difference": "Different idea type: Monitoring & Decision Intelligence vs Routing, Allocation & Optimization"
         },
         {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: water"
+          ],
+          "difference": "Different idea type: Monitoring & Decision Intelligence vs Infrastructure, API & Integration"
+        },
+        {
           "ideaId": "idea-395",
           "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
           "score": 23,
@@ -27911,28 +28009,6 @@
             "shared terms: network, neutral, utilities"
           ],
           "difference": "Different idea type: Monitoring & Decision Intelligence vs Marketplace, Exchange & Network"
-        },
-        {
-          "ideaId": "idea-406",
-          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: environmental"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Infrastructure, API & Integration"
-        },
-        {
-          "ideaId": "idea-399",
-          "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: environmental"
-          ],
-          "difference": "Different idea type: Monitoring & Decision Intelligence vs Evidence, Verification & Reconciliation"
         }
       ],
       "closestSimilarity": 40,
@@ -27982,6 +28058,18 @@
           "difference": "Different detailed category: Climate & Energy Commodity Contracts vs EU Marketplace & Compliance"
         },
         {
+          "ideaId": "idea-433",
+          "name": "HeatProof -- Retrofit Outcome Clearinghouse",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation",
+            "shared terms: energy, independent"
+          ],
+          "difference": "Different detailed category: Climate & Energy Commodity Contracts vs Building Performance & Energy"
+        },
+        {
           "ideaId": "idea-400",
           "name": "ReclaimProof — Physical & Mass-Balance Provenance Assurance for Reclaimed Refrigerants",
           "score": 40,
@@ -28012,17 +28100,6 @@
           "reasons": [
             "same family: Climate, Energy & Environment",
             "shared terms: methane, commodity, environmental, emissions"
-          ],
-          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
-        },
-        {
-          "ideaId": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 24,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: energy, contract, discrepancy"
           ],
           "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
         }
@@ -28077,6 +28154,17 @@
           "difference": "Different detailed category: Circular Economy & F-Gas Compliance vs EU Marketplace & Compliance"
         },
         {
+          "ideaId": "idea-433",
+          "name": "HeatProof -- Retrofit Outcome Clearinghouse",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: Circular Economy & F-Gas Compliance vs Building Performance & Energy"
+        },
+        {
           "ideaId": "idea-399",
           "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
           "score": 40,
@@ -28107,17 +28195,6 @@
           "reasons": [
             "same family: Climate, Energy & Environment",
             "shared terms: assurance, compliance, verification"
-          ],
-          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
-        },
-        {
-          "ideaId": "idea-406",
-          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: gas"
           ],
           "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
         }
@@ -28636,6 +28713,17 @@
       },
       "closestIdeas": [
         {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration"
+          ],
+          "difference": "Different detailed category: Environmental Certification vs Energy & Mobility Infrastructure"
+        },
+        {
           "ideaId": "idea-396",
           "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
           "score": 40,
@@ -28658,37 +28746,26 @@
           "difference": "Different detailed category: Environmental Certification vs Energy Grid & Infrastructure Finance"
         },
         {
-          "ideaId": "idea-399",
-          "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
-          "score": 28,
-          "band": "adjacent",
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 40,
+          "band": "related",
           "reasons": [
             "same family: Climate, Energy & Environment",
-            "shared terms: methane, commodity, environmental, emissions"
+            "same idea type: Infrastructure, API & Integration"
           ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Evidence, Verification & Reconciliation"
+          "difference": "Different detailed category: Environmental Certification vs Water Infrastructure"
         },
         {
-          "ideaId": "idea-370",
-          "name": "MethaneMismatch — Methane Certification vs Satellite Observation Engine",
-          "score": 24,
-          "band": "adjacent",
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 40,
+          "band": "related",
           "reasons": [
             "same family: Climate, Energy & Environment",
-            "shared terms: methane, certification"
+            "same idea type: Infrastructure, API & Integration"
           ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Financial, Risk & Underwriting"
-        },
-        {
-          "ideaId": "idea-417",
-          "name": "F-Gas Shipment & Quota Integrity Gate",
-          "score": 23,
-          "band": "adjacent",
-          "reasons": [
-            "same family: Climate, Energy & Environment",
-            "shared terms: gas"
-          ],
-          "difference": "Different idea type: Infrastructure, API & Integration vs Compliance Gate & Preflight"
+          "difference": "Different detailed category: Environmental Certification vs Water Infrastructure"
         }
       ],
       "closestSimilarity": 40,
@@ -29060,15 +29137,15 @@
           "difference": "Different idea type: Financial, Risk & Underwriting vs Marketplace, Exchange & Network"
         },
         {
-          "ideaId": "idea-270",
-          "name": "Battery Afterlife Exchange",
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
           "score": 23,
           "band": "adjacent",
           "reasons": [
             "same family: Industrial, Supply Chain & Logistics",
-            "shared terms: importers, operations, trade"
+            "shared terms: omega, when"
           ],
-          "difference": "Different idea type: Financial, Risk & Underwriting vs Infrastructure, API & Integration"
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Physical Service, Repair & Fabrication"
         }
       ],
       "closestSimilarity": 24,
@@ -31103,6 +31180,1398 @@
       ],
       "closestSimilarity": 43,
       "distinctivenessScore": 57
+    },
+    {
+      "ideaId": "idea-432",
+      "familyId": "climate-energy-environment",
+      "familyLabel": "Climate, Energy & Environment",
+      "patternId": "infrastructure-api",
+      "patternLabel": "Infrastructure, API & Integration",
+      "secondaryPatternIds": [
+        "routing-optimization",
+        "content-creator-tool"
+      ],
+      "groupId": "climate-energy-environment--infrastructure-api",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Energy & Mobility Infrastructure",
+      "originalSubcategory": "vehicle-to-grid settlement",
+      "normalizedName": "batteryduty v2g battery rights wear clearinghouse",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A neutral settlement layer for vehicle-to-grid battery use that records who used which battery, under what operating envelope, and what wear or compensation consequences follow.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 26,
+        "familyMargin": 11,
+        "patternScore": 9,
+        "patternMargin": 4,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 46,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: settlement, infrastructure, 2026, omega"
+          ],
+          "difference": "Different detailed category: Energy & Mobility Infrastructure vs Water Infrastructure"
+        },
+        {
+          "ideaId": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: grid, energy, infrastructure, envelope"
+          ],
+          "difference": "Different detailed category: Energy & Mobility Infrastructure vs Energy Grid & Electrical Infrastructure"
+        },
+        {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure, 2026, omega, settlement"
+          ],
+          "difference": "Different detailed category: Energy & Mobility Infrastructure vs Water Infrastructure"
+        },
+        {
+          "ideaId": "idea-289",
+          "name": "QueueSure — Data Centre Grid Commitment Surety Underwriting",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: grid, energy, infrastructure"
+          ],
+          "difference": "Different detailed category: Energy & Mobility Infrastructure vs Energy Grid & Infrastructure Finance"
+        },
+        {
+          "ideaId": "idea-406",
+          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration"
+          ],
+          "difference": "Different detailed category: Energy & Mobility Infrastructure vs Environmental Certification"
+        }
+      ],
+      "closestSimilarity": 46,
+      "distinctivenessScore": 54
+    },
+    {
+      "ideaId": "idea-433",
+      "familyId": "climate-energy-environment",
+      "familyLabel": "Climate, Energy & Environment",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "secondaryPatternIds": [
+        "routing-optimization"
+      ],
+      "groupId": "climate-energy-environment--evidence-verification",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Building Performance & Energy",
+      "originalSubcategory": "retrofit guarantees",
+      "normalizedName": "heatproof retrofit outcome clearinghouse",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "An independent performance guarantee layer for heat-pump retrofits that compares promised efficiency against measured weather-normalized outcomes.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "MANUAL_SEMANTIC_OVERRIDE",
+        "reviewNote": "HeatProof is a retrofit outcome verification and settlement clearinghouse.",
+        "familyScore": 9,
+        "familyMargin": 0,
+        "patternScore": 5,
+        "patternMargin": 5,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-399",
+          "name": "MethaneTrueUp / ContractOracle — Environmental Observation & Methane Contract Reconciliation Engine",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation",
+            "shared terms: energy, independent"
+          ],
+          "difference": "Different detailed category: Building Performance & Energy vs Climate & Energy Commodity Contracts"
+        },
+        {
+          "ideaId": "idea-369",
+          "name": "DeforestAppeal — Satellite Deforestation False Positive Counter-Evidence",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: Building Performance & Energy vs EU Marketplace & Compliance"
+        },
+        {
+          "ideaId": "idea-400",
+          "name": "ReclaimProof — Physical & Mass-Balance Provenance Assurance for Reclaimed Refrigerants",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: Building Performance & Energy vs Circular Economy & F-Gas Compliance"
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 28,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: energy, clearinghouse, 2026, omega"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Infrastructure, API & Integration"
+        },
+        {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "score": 28,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: heat, energy, 2026, omega"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Workflow Automation & Operations"
+        }
+      ],
+      "closestSimilarity": 41,
+      "distinctivenessScore": 59
+    },
+    {
+      "ideaId": "idea-434",
+      "familyId": "industrial-supply-logistics",
+      "familyLabel": "Industrial, Supply Chain & Logistics",
+      "patternId": "workflow-automation",
+      "patternLabel": "Workflow Automation & Operations",
+      "secondaryPatternIds": [
+        "routing-optimization",
+        "evidence-verification"
+      ],
+      "groupId": "industrial-supply-logistics--workflow-automation",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Industrial Energy & Operations",
+      "originalSubcategory": "flexibility settlement",
+      "normalizedName": "flexcovenant industrial flexibility performance contract",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A contract and evidence system for factories that promise load reduction or shiftable demand as a bankable flexibility asset.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 18,
+        "familyMargin": 5,
+        "patternScore": 13,
+        "patternMargin": 9,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-442",
+          "name": "Industrial Spare Qualification Receipt",
+          "score": 47,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: industrial, operations, 2026, omega"
+          ],
+          "difference": "Different detailed category: Industrial Energy & Operations vs Industrial Operations"
+        },
+        {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "score": 28,
+          "band": "adjacent",
+          "reasons": [
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: industrial, energy, settlement, operations"
+          ],
+          "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
+        },
+        {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "score": 26,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: 2026, omega, settlement, xix"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 26,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial, capacity, demand"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-335",
+          "name": "RaaS SLA Settlement Grid",
+          "score": 26,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial, settlement"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Physical Service, Repair & Fabrication"
+        }
+      ],
+      "closestSimilarity": 47,
+      "distinctivenessScore": 53
+    },
+    {
+      "ideaId": "idea-435",
+      "familyId": "climate-energy-environment",
+      "familyLabel": "Climate, Energy & Environment",
+      "patternId": "infrastructure-api",
+      "patternLabel": "Infrastructure, API & Integration",
+      "secondaryPatternIds": [
+        "financial-risk"
+      ],
+      "groupId": "climate-energy-environment--infrastructure-api",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Water Infrastructure",
+      "originalSubcategory": "reclaimed water settlement",
+      "normalizedName": "waterspec quality adjusted reclaimed water settlement",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A settlement and quality-specification layer for reclaimed water that prices quantity, reliability, and exact delivered quality separately.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 31,
+        "familyMargin": 27,
+        "patternScore": 9,
+        "patternMargin": 5,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "score": 50,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: water, infrastructure, 2026, omega"
+          ],
+          "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 46,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: settlement, infrastructure, 2026, omega"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy & Mobility Infrastructure"
+        },
+        {
+          "ideaId": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 42,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure, utility, reliability"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy Grid & Electrical Infrastructure"
+        },
+        {
+          "ideaId": "idea-289",
+          "name": "QueueSure — Data Centre Grid Commitment Surety Underwriting",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy Grid & Infrastructure Finance"
+        },
+        {
+          "ideaId": "idea-406",
+          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Environmental Certification"
+        }
+      ],
+      "closestSimilarity": 50,
+      "distinctivenessScore": 50
+    },
+    {
+      "ideaId": "idea-436",
+      "familyId": "business-operations-services",
+      "familyLabel": "Business Operations & Services",
+      "patternId": "workflow-automation",
+      "patternLabel": "Workflow Automation & Operations",
+      "secondaryPatternIds": [],
+      "groupId": "business-operations-services--workflow-automation",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Life Sciences Operations",
+      "originalSubcategory": "manufacturing continuity",
+      "normalizedName": "altline drill pharmaceutical manufacturing escape route",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A repeatable transfer-and-readiness system proving a qualified backup route exists for pharmaceutical manufacturing when a primary line fails.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 9,
+        "familyMargin": 5,
+        "patternScore": 19,
+        "patternMargin": 19,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-279",
+          "name": "RobotOps — Teleoperated Human-in-the-Loop Robot Operations",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: operations"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
+        },
+        {
+          "ideaId": "idea-442",
+          "name": "Industrial Spare Qualification Receipt",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: operations, 2026, omega, qualification"
+          ],
+          "difference": "Different detailed category: Life Sciences Operations vs Industrial Operations"
+        },
+        {
+          "ideaId": "idea-084",
+          "name": "Cancellation Revenue Recovery",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "shared terms: 2026"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Financial, Risk & Underwriting"
+        },
+        {
+          "ideaId": "idea-214",
+          "name": "Older-Adult Tech Support Interpreter",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "shared terms: tech, operations"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Consumer Utility & Discovery"
+        },
+        {
+          "ideaId": "idea-409",
+          "name": "SubsidySignal -- Public Aid Buying-Signal Intelligence",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Business Operations & Services",
+            "shared terms: 2026, omega, manufacturing"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Monitoring & Decision Intelligence"
+        }
+      ],
+      "closestSimilarity": 41,
+      "distinctivenessScore": 59
+    },
+    {
+      "ideaId": "idea-437",
+      "familyId": "public-regulatory-procurement",
+      "familyLabel": "Public Sector, Regulation & Procurement",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "secondaryPatternIds": [],
+      "groupId": "public-regulatory-procurement--evidence-verification",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Workforce & Mobility",
+      "originalSubcategory": "regulated trades mobility",
+      "normalizedName": "tradescope job level legal capability skilled workers",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A job-level legal capability layer that shows whether a skilled worker is currently entitled to do a specific regulated job in a specific place.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "MANUAL_SEMANTIC_OVERRIDE",
+        "reviewNote": "Job-level credential entitlement is a verification object for regulated work.",
+        "familyScore": 19,
+        "familyMargin": 19,
+        "patternScore": 0,
+        "patternMargin": 0,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-263",
+          "name": "TradePassport — Cross-Border Skilled Worker Infrastructure",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation",
+            "shared terms: skilled, qualification, legal, recognition"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
+        },
+        {
+          "ideaId": "idea-210",
+          "name": "Accessible Checkout Replay",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: Workforce & Mobility vs Independence & Operational Trust"
+        },
+        {
+          "ideaId": "idea-423",
+          "name": "Euro 7 Vehicle Evidence Drift",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation",
+            "shared terms: whether"
+          ],
+          "difference": "Different detailed category: Workforce & Mobility vs Regulatory Handshake & Production-Failure Markets"
+        },
+        {
+          "ideaId": "idea-421",
+          "name": "Invoice Replay Cloud",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different detailed category: Workforce & Mobility vs Regulatory Handshake & Production-Failure Markets"
+        },
+        {
+          "ideaId": "idea-300",
+          "name": "Live Claim Provenance Gate — Commercial Environmental Claim Lineage & Expiry",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Public Sector, Regulation & Procurement",
+            "same idea type: Evidence, Verification & Reconciliation"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Commerce & marketplace operators"
+        }
+      ],
+      "closestSimilarity": 44,
+      "distinctivenessScore": 56
+    },
+    {
+      "ideaId": "idea-438",
+      "familyId": "climate-energy-environment",
+      "familyLabel": "Climate, Energy & Environment",
+      "patternId": "workflow-automation",
+      "patternLabel": "Workflow Automation & Operations",
+      "secondaryPatternIds": [],
+      "groupId": "climate-energy-environment--workflow-automation",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Industrial Energy & Operations",
+      "originalSubcategory": "waste-heat settlement",
+      "normalizedName": "heatsla waste heat thermal energy settlement",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A settlement layer for industrial waste heat and thermal energy delivery that makes thermal promises measurable and payable.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 43,
+        "familyMargin": 27,
+        "patternScore": 9,
+        "patternMargin": 9,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-282",
+          "name": "HeatExpert Cloud — Remote Expert Supervision for Heat Pump Technicians",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: energy, heat, operations"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
+        },
+        {
+          "ideaId": "idea-388",
+          "name": "PermanenceDesk — Certified Carbon Removal Asset-Liability Management Ledger",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Workflow Automation & Operations"
+          ],
+          "difference": "Different detailed category: Industrial Energy & Operations vs Climate Resilience & Insurance Tech"
+        },
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 29,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: settlement, 2026, industrial, omega"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Infrastructure, API & Integration"
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 28,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "shared terms: settlement, energy, 2026, omega"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Infrastructure, API & Integration"
+        },
+        {
+          "ideaId": "idea-434",
+          "name": "FlexCovenant -- Industrial Flexibility Performance Contract OS",
+          "score": 28,
+          "band": "adjacent",
+          "reasons": [
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: industrial, energy, settlement, operations"
+          ],
+          "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
+        }
+      ],
+      "closestSimilarity": 44,
+      "distinctivenessScore": 56
+    },
+    {
+      "ideaId": "idea-439",
+      "familyId": "construction-property-repair",
+      "familyLabel": "Construction, Property & Repair",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "secondaryPatternIds": [
+        "physical-repair-service"
+      ],
+      "groupId": "construction-property-repair--evidence-verification",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Construction & Materials",
+      "originalSubcategory": "reclaimed components underwriting",
+      "normalizedName": "reuserating underwriting layer reclaimed structural components",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "An underwriting and evidence layer for reused building components that prices condition, provenance, and remaining useful life.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 16,
+        "familyMargin": 16,
+        "patternScore": 6,
+        "patternMargin": 2,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-394",
+          "name": "As-Built Carbon Drift — Building Passport Embodied Carbon Audit Engine",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: construction, building"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Compliance Gate & Preflight"
+        },
+        {
+          "ideaId": "idea-225",
+          "name": "Custom Drill-Alignment Guide",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: materials"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-223",
+          "name": "Furniture Foot and End-Cap Generator",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: structural"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-220",
+          "name": "Printer-Specific Fit Profile",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: materials"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-045",
+          "name": "Repair Decision Assistant",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Construction, Property & Repair",
+            "shared terms: evidence"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Consumer Utility & Discovery"
+        }
+      ],
+      "closestSimilarity": 24,
+      "distinctivenessScore": 76
+    },
+    {
+      "ideaId": "idea-440",
+      "familyId": "travel-mobility-events",
+      "familyLabel": "Travel, Mobility & Events",
+      "patternId": "evidence-verification",
+      "patternLabel": "Evidence, Verification & Reconciliation",
+      "secondaryPatternIds": [
+        "infrastructure-api"
+      ],
+      "groupId": "travel-mobility-events--evidence-verification",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Space Infrastructure",
+      "originalSubcategory": "orbital evidence and settlement",
+      "normalizedName": "orbitsettlement cost responsibility evidence orbital maneuvers",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A responsibility and cost evidence layer for orbital maneuvers so operators can settle who did what, when, and at what risk.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "MANUAL_SEMANTIC_OVERRIDE",
+        "reviewNote": "Orbital maneuver responsibility is a travel-and-mobility evidence object with settlement implications.",
+        "familyScore": 0,
+        "familyMargin": 0,
+        "patternScore": 14,
+        "patternMargin": 5,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-324",
+          "name": "Airline Order Settlement RealityGrid",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: settlement"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Financial, Risk & Underwriting"
+        },
+        {
+          "ideaId": "idea-250",
+          "name": "ExactRoom Access Confirmation",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: what, when, who, operators"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Consumer Utility & Discovery"
+        },
+        {
+          "ideaId": "idea-085",
+          "name": "Event Sponsor Proof Pack",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: 2026"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Advisory, Audit & Productized Service"
+        },
+        {
+          "ideaId": "idea-251",
+          "name": "Measured Accessible Room Specification",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: evidence, space, operators"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Consumer Utility & Discovery"
+        },
+        {
+          "ideaId": "idea-082",
+          "name": "Vendor Slot Rescue",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Travel, Mobility & Events",
+            "shared terms: 2026"
+          ],
+          "difference": "Different idea type: Evidence, Verification & Reconciliation vs Workflow Automation & Operations"
+        }
+      ],
+      "closestSimilarity": 24,
+      "distinctivenessScore": 76
+    },
+    {
+      "ideaId": "idea-441",
+      "familyId": "software-ai-developer",
+      "familyLabel": "Software, AI & Developer Systems",
+      "patternId": "financial-risk",
+      "patternLabel": "Financial, Risk & Underwriting",
+      "secondaryPatternIds": [
+        "infrastructure-api"
+      ],
+      "groupId": "software-ai-developer--financial-risk",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Cloud Finance & Infrastructure",
+      "originalSubcategory": "compute settlement",
+      "normalizedName": "computebasis compute delivery hedge reconciliation",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A reconciliation layer for compute delivery, reservations, and hedges that turns promised compute into auditable fulfillment.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "MANUAL_SEMANTIC_OVERRIDE",
+        "reviewNote": "Compute delivery and hedge reconciliation is a cloud finance and settlement object.",
+        "familyScore": 13,
+        "familyMargin": 4,
+        "patternScore": 9,
+        "patternMargin": 0,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-288",
+          "name": "Agent Loss Exchange — Autonomous Agent Claims & Loss Data Utility",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "same idea type: Financial, Risk & Underwriting"
+          ],
+          "difference": "Different detailed category: Cloud Finance & Infrastructure vs AI Insurance & Risk Underwriting"
+        },
+        {
+          "ideaId": "idea-329",
+          "name": "Cloud Marketplace Revenue Share Grid",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "shared terms: cloud, reconciliation"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Marketplace, Exchange & Network"
+        },
+        {
+          "ideaId": "idea-372",
+          "name": "CloudExit Drill — Continuous Cloud Portability & Data Act Exit Testing",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "shared terms: cloud, infrastructure"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Infrastructure, API & Integration"
+        },
+        {
+          "ideaId": "idea-359",
+          "name": "Small-Software Deployment Cloud",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "shared terms: infrastructure, cloud"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Infrastructure, API & Integration"
+        },
+        {
+          "ideaId": "idea-330",
+          "name": "Telecom Roaming Settlement RealityGrid",
+          "score": 25,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Software, AI & Developer Systems",
+            "shared terms: settlement, infrastructure"
+          ],
+          "difference": "Different idea type: Financial, Risk & Underwriting vs Infrastructure, API & Integration"
+        }
+      ],
+      "closestSimilarity": 40,
+      "distinctivenessScore": 60
+    },
+    {
+      "ideaId": "idea-442",
+      "familyId": "industrial-supply-logistics",
+      "familyLabel": "Industrial, Supply Chain & Logistics",
+      "patternId": "workflow-automation",
+      "patternLabel": "Workflow Automation & Operations",
+      "secondaryPatternIds": [
+        "physical-repair-service"
+      ],
+      "groupId": "industrial-supply-logistics--workflow-automation",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Industrial Operations",
+      "originalSubcategory": "spare qualification",
+      "normalizedName": "industrial spare qualification receipt",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A receipt proving an industrial spare part or replacement component is qualified for a given machine and use case.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 24,
+        "familyMargin": 15,
+        "patternScore": 13,
+        "patternMargin": 10,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-434",
+          "name": "FlexCovenant -- Industrial Flexibility Performance Contract OS",
+          "score": 47,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Workflow Automation & Operations",
+            "shared terms: industrial, operations, 2026, omega"
+          ],
+          "difference": "Different detailed category: Industrial Operations vs Industrial Energy & Operations"
+        },
+        {
+          "ideaId": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 27,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial, component, part, replacement"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-173",
+          "name": "Industrial Manual Revision Resolver",
+          "score": 27,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Evidence, Verification & Reconciliation"
+        },
+        {
+          "ideaId": "idea-292",
+          "name": "Uptime Mutual — Obsolete Controls Spare Pooling & SLA Guarantee Network",
+          "score": 27,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial, spare, parts"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Physical Service, Repair & Fabrication"
+        },
+        {
+          "ideaId": "idea-166",
+          "name": "Industrial Automation Obsolescence Graph",
+          "score": 26,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: industrial"
+          ],
+          "difference": "Different idea type: Workflow Automation & Operations vs Monitoring & Decision Intelligence"
+        }
+      ],
+      "closestSimilarity": 47,
+      "distinctivenessScore": 53
+    },
+    {
+      "ideaId": "idea-443",
+      "familyId": "climate-energy-environment",
+      "familyLabel": "Climate, Energy & Environment",
+      "patternId": "infrastructure-api",
+      "patternLabel": "Infrastructure, API & Integration",
+      "secondaryPatternIds": [],
+      "groupId": "climate-energy-environment--infrastructure-api",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Water Infrastructure",
+      "originalSubcategory": "interruption option",
+      "normalizedName": "water interruption option",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A financial option around temporary water interruption that lets industrial buyers price and insure outage risk.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 21,
+        "familyMargin": 17,
+        "patternScore": 9,
+        "patternMargin": 9,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "score": 50,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: water, infrastructure, 2026, omega"
+          ],
+          "difference": "Very similar positioning; inspect problem, deliverable, and validation wedge side by side"
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "score": 44,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure, 2026, omega, settlement"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy & Mobility Infrastructure"
+        },
+        {
+          "ideaId": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy Grid & Electrical Infrastructure"
+        },
+        {
+          "ideaId": "idea-289",
+          "name": "QueueSure — Data Centre Grid Commitment Surety Underwriting",
+          "score": 41,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Energy Grid & Infrastructure Finance"
+        },
+        {
+          "ideaId": "idea-406",
+          "name": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Climate, Energy & Environment",
+            "same idea type: Infrastructure, API & Integration"
+          ],
+          "difference": "Different detailed category: Water Infrastructure vs Environmental Certification"
+        }
+      ],
+      "closestSimilarity": 50,
+      "distinctivenessScore": 50
+    },
+    {
+      "ideaId": "idea-444",
+      "familyId": "industrial-supply-logistics",
+      "familyLabel": "Industrial, Supply Chain & Logistics",
+      "patternId": "physical-repair-service",
+      "patternLabel": "Physical Service, Repair & Fabrication",
+      "secondaryPatternIds": [],
+      "groupId": "industrial-supply-logistics--physical-repair-service",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Robotics & Equipment",
+      "originalSubcategory": "availability bond",
+      "normalizedName": "autonomous equipment availability bond",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A bond-like contract for autonomous equipment availability that compensates buyers when uptime obligations are missed.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 21,
+        "familyMargin": 21,
+        "patternScore": 21,
+        "patternMargin": 21,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-296",
+          "name": "Grid Equipment Cancellation Exchange — Secondary Transformer & Switchgear Allocation",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment"
+          ],
+          "difference": "Different detailed category: Robotics & Equipment vs Power Equipment & Energy Supply Chain"
+        },
+        {
+          "ideaId": "idea-335",
+          "name": "RaaS SLA Settlement Grid",
+          "score": 43,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment, settlement, availability"
+          ],
+          "difference": "Different detailed category: Robotics & Equipment vs Industrial Automation & Maintenance"
+        },
+        {
+          "ideaId": "idea-275",
+          "name": "DeadPart — Obsolete Industrial Component Reproduction Network",
+          "score": 42,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: equipment"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
+        },
+        {
+          "ideaId": "idea-292",
+          "name": "Uptime Mutual — Obsolete Controls Spare Pooling & SLA Guarantee Network",
+          "score": 40,
+          "band": "related",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "same idea type: Physical Service, Repair & Fabrication",
+            "shared terms: uptime"
+          ],
+          "difference": "Different buyer segment: Cross-sector or unspecified buyer vs Manufacturers & supply-chain operators"
+        },
+        {
+          "ideaId": "idea-434",
+          "name": "FlexCovenant -- Industrial Flexibility Performance Contract OS",
+          "score": 26,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Industrial, Supply Chain & Logistics",
+            "shared terms: 2026, omega, settlement, xix"
+          ],
+          "difference": "Different idea type: Physical Service, Repair & Fabrication vs Workflow Automation & Operations"
+        }
+      ],
+      "closestSimilarity": 43,
+      "distinctivenessScore": 57
+    },
+    {
+      "ideaId": "idea-445",
+      "familyId": "cyber-identity-trust",
+      "familyLabel": "Cybersecurity, Identity & Trust",
+      "patternId": "marketplace-network",
+      "patternLabel": "Marketplace, Exchange & Network",
+      "secondaryPatternIds": [],
+      "groupId": "cyber-identity-trust--marketplace-network",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "Workforce & Mobility",
+      "originalSubcategory": "credential gap market",
+      "normalizedName": "mobile workforce credential gap market",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "A marketplace for temporary credential gaps and bridging requirements faced by mobile workers moving across jurisdictions.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 14,
+        "familyMargin": 1,
+        "patternScore": 7,
+        "patternMargin": 7,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-346",
+          "name": "DisclosureFirewall — Minimum-Disclosure Layer for EU Digital Identity",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Cybersecurity, Identity & Trust",
+            "shared terms: marketplace, credential"
+          ],
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Compliance Gate & Preflight"
+        },
+        {
+          "ideaId": "idea-207",
+          "name": "Credential Request Firewall",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Cybersecurity, Identity & Trust",
+            "shared terms: credential"
+          ],
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Consumer Utility & Discovery"
+        },
+        {
+          "ideaId": "idea-356",
+          "name": "EUDI Relying-Party Readiness Cloud",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Cybersecurity, Identity & Trust",
+            "shared terms: marketplace"
+          ],
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Compliance Gate & Preflight"
+        },
+        {
+          "ideaId": "idea-026",
+          "name": "Marketplace Trust Layer",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Cybersecurity, Identity & Trust",
+            "shared terms: marketplace"
+          ],
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Evidence, Verification & Reconciliation"
+        },
+        {
+          "ideaId": "idea-309",
+          "name": "AgeGate Chaos Lab — Adversarial Age Assurance Fail-Safe & Integration Red Team",
+          "score": 22,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Cybersecurity, Identity & Trust"
+          ],
+          "difference": "Different idea type: Marketplace, Exchange & Network vs Infrastructure, API & Integration"
+        }
+      ],
+      "closestSimilarity": 24,
+      "distinctivenessScore": 76
+    },
+    {
+      "ideaId": "idea-446",
+      "familyId": "finance-audit-governance",
+      "familyLabel": "Finance, Audit & Governance",
+      "patternId": "infrastructure-api",
+      "patternLabel": "Infrastructure, API & Integration",
+      "secondaryPatternIds": [
+        "financial-risk"
+      ],
+      "groupId": "finance-audit-governance--infrastructure-api",
+      "buyerSegmentId": "cross-sector-buyer",
+      "buyerSegmentLabel": "Cross-sector or unspecified buyer",
+      "originalCategory": "AI Infrastructure & Finance",
+      "originalSubcategory": "hardware residual value",
+      "normalizedName": "gpu residual value infrastructure",
+      "positioning": {
+        "primaryBuyer": "Unspecified",
+        "problem": "Unspecified",
+        "deliverable": "Infrastructure for tracking GPU residual value, reuse, and depreciation as a financeable asset history.",
+        "revenueModel": "Unspecified"
+      },
+      "classification": {
+        "method": "WEIGHTED_TERM_CLASSIFIER",
+        "reviewNote": null,
+        "familyScore": 13,
+        "familyMargin": 3,
+        "patternScore": 17,
+        "patternMargin": 4,
+        "familyReviewRequired": false,
+        "patternReviewRequired": false,
+        "reviewRequired": false
+      },
+      "closestIdeas": [
+        {
+          "ideaId": "idea-364",
+          "name": "ProductTimeMachine — Historical Product State & Defect Evidence Ledger",
+          "score": 24,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Finance, Audit & Governance",
+            "shared terms: hardware, tracking"
+          ],
+          "difference": "Different idea type: Infrastructure, API & Integration vs Evidence, Verification & Reconciliation"
+        },
+        {
+          "ideaId": "idea-350",
+          "name": "AgentWarranty — Warranty & Insurance Infrastructure for Autonomous Work",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Finance, Audit & Governance",
+            "shared terms: infrastructure"
+          ],
+          "difference": "Different idea type: Infrastructure, API & Integration vs Compliance Gate & Preflight"
+        },
+        {
+          "ideaId": "idea-331",
+          "name": "BaselineLock — Counterfactual Contract Engine",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Finance, Audit & Governance",
+            "shared terms: settlement"
+          ],
+          "difference": "Different idea type: Infrastructure, API & Integration vs Compliance Gate & Preflight"
+        },
+        {
+          "ideaId": "idea-194",
+          "name": "Collectible Insurance Schedule Builder",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Finance, Audit & Governance",
+            "shared terms: value"
+          ],
+          "difference": "Different idea type: Infrastructure, API & Integration vs Evidence, Verification & Reconciliation"
+        },
+        {
+          "ideaId": "idea-311",
+          "name": "Finance Control Red Team — Synthetic Transaction Fraud & ERP Separation Tester",
+          "score": 23,
+          "band": "adjacent",
+          "reasons": [
+            "same family: Finance, Audit & Governance",
+            "shared terms: finance"
+          ],
+          "difference": "Different idea type: Infrastructure, API & Integration vs Financial, Risk & Underwriting"
+        }
+      ],
+      "closestSimilarity": 24,
+      "distinctivenessScore": 76
     }
   ]
 }

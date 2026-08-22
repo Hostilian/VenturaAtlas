@@ -57,6 +57,10 @@
     {"ideaId":"idea-410","familyId":"industrial-supply-logistics","patternId":"financial-risk","reviewNote":"Preferential-tariff safeguard purchase-order risk."},
     {"ideaId":"idea-427","familyId":"health-life-sciences","patternId":"evidence-verification","reviewNote":"Care-home evidence freshness verification gate."},
     {"ideaId":"idea-428","familyId":"commerce-marketplaces-consumer","patternId":"evidence-verification","reviewNote":"Cross-border rental evidence verification."},
-    {"ideaId":"idea-429","familyId":"commerce-marketplaces-consumer","patternId":"evidence-verification","reviewNote":"Job-posting trust and evidence verification."}
+    {"ideaId":"idea-429","familyId":"commerce-marketplaces-consumer","patternId":"evidence-verification","reviewNote":"Job-posting trust and evidence verification."},
+    {"ideaId":"idea-433","familyId":"climate-energy-environment","patternId":"evidence-verification","reviewNote":"HeatProof is a retrofit outcome verification and settlement clearinghouse."},
+    {"ideaId":"idea-437","familyId":"public-regulatory-procurement","patternId":"evidence-verification","reviewNote":"Job-level credential entitlement is a verification object for regulated work."},
+    {"ideaId":"idea-440","familyId":"travel-mobility-events","patternId":"evidence-verification","reviewNote":"Orbital maneuver responsibility is a travel-and-mobility evidence object with settlement implications."},
+    {"ideaId":"idea-441","familyId":"software-ai-developer","patternId":"financial-risk","reviewNote":"Compute delivery and hedge reconciliation is a cloud finance and settlement object."}
   ]
 }

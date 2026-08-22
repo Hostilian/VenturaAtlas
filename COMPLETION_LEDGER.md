@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > **Historical Snapshot**: This document reflects historical completion milestones.
-> For current authoritative repository counts and status, see [`data/repository-meta.json`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/data/repository-meta.json) and [`PROJECT_STATE.md`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/PROJECT_STATE.md).
+> For current authoritative repository counts and status, see [`data/repository-meta.json`](data/repository-meta.json) and [`PROJECT_STATE.md`](PROJECT_STATE.md).
 
 
 - [x] Source inventory

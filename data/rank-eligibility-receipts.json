@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "2.0.0",
+  "receiptType": "RANK_ELIGIBILITY_LEDGER",
+  "generatedAt": "2026-08-22T13:45:00Z",
+  "methodologyVersion": "va-methodology-v2.0",
+  "scaleRegistryVersion": "va-score-scales-v1",
+  "cohorts": {
+    "LEGACY_HYPOTHESIS": {
+      "description": "Historical ideas from early iterations (ideas 001-294) with stored legacy headline scores.",
+      "rankingEligible": true,
+      "validationEligible": false,
+      "decisionGrade": false,
+      "scoreOrigin": "LEGACY_STORED_HEADLINE",
+      "count": 294
+    },
+    "DESK_RESEARCHED": {
+      "description": "Ideas with verified primary source citations and structured risk profiles.",
+      "rankingEligible": true,
+      "validationEligible": true,
+      "decisionGrade": false,
+      "scoreOrigin": "WEIGHTED_COMPOSITE",
+      "count": 25
+    },
+    "EXPERIMENT_TESTED": {
+      "description": "Ideas with completed pre-registered validation experiments.",
+      "rankingEligible": true,
+      "validationEligible": true,
+      "decisionGrade": true,
+      "scoreOrigin": "EXPERIMENT_EVIDENCE",
+      "count": 0
+    },
+    "WTP_VERIFIED": {
+      "description": "Ideas with demonstrated buyer willingness-to-pay signals or LOIs.",
+      "rankingEligible": true,
+      "validationEligible": true,
+      "decisionGrade": true,
+      "scoreOrigin": "EXPERIMENT_EVIDENCE",
+      "count": 0
+    },
+    "PAID_PILOT": {
+      "description": "Ideas with live paying pilot customers.",
+      "rankingEligible": true,
+      "validationEligible": true,
+      "decisionGrade": true,
+      "scoreOrigin": "EXPERIMENT_EVIDENCE",
+      "count": 0
+    }
+  },
+  "receipts": [
+    {
+      "ideaId": "idea-061",
+      "ideaRevision": "c5613de3afb57c2d",
+      "cohort": "DESK_RESEARCHED",
+      "scoreOrigin": "WEIGHTED_COMPOSITE",
+      "rankingEligible": true,
+      "validationEligible": true,
+      "criticalConflicts": 0,
+      "verifiedAt": "2026-08-22T10:30:00Z"
+    }
+  ]
+}

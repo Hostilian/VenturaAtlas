@@ -62,8 +62,8 @@ test('adjudicated identity-only duplicates are removed with a permanent receipt'
 test('every classifier ambiguity has a signed semantic override note', () => {
   const overrides = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'idea-taxonomy-overrides.json'), 'utf8'));
   assert.equal(taxonomy.reviewQueueCount, 0);
-  assert.equal(overrides.overrides.length, 54);
-  assert.equal(taxonomy.assignments.filter(item => item.classification.method === 'MANUAL_SEMANTIC_OVERRIDE').length, 54);
+  assert.equal(overrides.overrides.length, 58);
+  assert.equal(taxonomy.assignments.filter(item => item.classification.method === 'MANUAL_SEMANTIC_OVERRIDE').length, 58);
   assert.ok(overrides.overrides.every(item => item.reviewNote && item.familyId && item.patternId));
 });
 

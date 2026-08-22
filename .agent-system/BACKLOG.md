@@ -16,6 +16,13 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | TASK-006 | Evidence Graph & Source Freshness Audit | 86.0 | Data Integrity | LANDED | one-shot | ventureatlas-data-safety |
 | TASK-007 | Continuous Research & Candidate Staging Cycle | 84.0 | Research | COMPLETE | one-shot | ventureatlas-provider-runtime |
 | TASK-008 | Mobile Responsiveness & Accessibility Verification | 82.5 | UX / QA | LANDED | one-shot | ventureatlas-test-adversary |
+| TASK-009 | Fix Voting-Mode Selector (Scorecard and Pairwise in Collaboration Room) | 97.0 | Frontend / Decision Studio | LANDED | one-shot | ventureatlas-public-site |
+| TASK-010 | Structured Per-Idea Notes and Evaluation Capture | 96.5 | Frontend / Collaboration | LANDED | one-shot | ventureatlas-public-site |
+| TASK-011 | No-Code Decision Packet Comparison Page (docs/room-compare.html) | 96.0 | Frontend / Decision Studio | LANDED | one-shot | ventureatlas-public-site |
+| TASK-012 | Remove Hardcoded Shortlist and Implement Interactive Empty State | 95.5 | UX / Collaboration | LANDED | one-shot | ventureatlas-public-site |
+| TASK-013 | Dogfood and Commit End-to-End Decision Example (DEC-0001) | 95.0 | Governance / Dogfooding | LANDED | one-shot | ventureatlas-integration |
+| TASK-014 | First-Visit Clarity & Friend Onboarding Pass on Homepage and Navigation | 94.5 | UX / Product | LANDED | one-shot | ventureatlas-public-site |
+| TASK-015 | Mobile, Dark Mode, and Accessibility Verification with Real Artifacts | 94.0 | UX / QA | LANDED | one-shot | ventureatlas-test-adversary |
 | AUT-001 | Three-Model Review Panel Across Two Provider Infrastructures | 100.0 | Provider Runtime | COMPLETE | one-shot | ventureatlas-provider-runtime |
 | AUT-002 | Parallel Structural Preflight Before Every Writer Cycle | 99.5 | Pipeline Safety | LANDED | every-cycle | ventureatlas-test-adversary |
 | AUT-003 | Durable Private State Across Cloud Workflow Runs | 99.0 | Cloud Runtime | COMPLETE | hourly | ventureatlas-integration |
@@ -36,5 +43,11 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | AUT-018 | Weekly Full Artifact, Security, Accessibility, and Recovery Drill | 90.5 | Release Assurance | COMPLETE | weekly | ventureatlas-test-adversary |
 | AUT-019 | Normalized Idea Families, Venture Patterns, and Similarity-Aware Browsing | 90.0 | Portfolio Information Architecture | LANDED | every-canonical-corpus-change | ventureatlas-data-safety |
 | AUT-020 | Semantic Review of Ambiguous Taxonomy Assignments and Potential Duplicate Pairs | 89.5 | Portfolio Information Architecture | LANDED | every-canonical-corpus-change | ventureatlas-data-safety |
+| OMG-001 | OMEGA XX Audit Revision Lock & Contradiction Matrix | 99.0 | Epistemic Governance | LANDED | one-shot | ventureatlas-data-safety |
+| OMG-002 | Fail-Closed Proof-Predicate Reconciler & 4 Clocks Engine | 98.5 | Truth Kernel | LANDED | one-shot | ventureatlas-integration |
+| OMG-003 | Cloud Staging Isolation & Sanitized Artifact Privacy Protocol | 98.0 | Security & Privacy | LANDED | one-shot | ventureatlas-data-safety |
+| OMG-004 | Optimistic Concurrency Control (CAS) & State Hash Chaining | 97.5 | Cloud Runtime | LANDED | one-shot | ventureatlas-provider-runtime |
+| OMG-005 | Fail-Closed Ranking Engine & Score Origin Ledger | 97.0 | Ranking & Epistemics | LANDED | one-shot | ventureatlas-data-safety |
+| OMG-006 | Validation Conveyor (WIP=3), Market Killer & Refutation Framework | 96.5 | Validation & Falsification | LANDED | one-shot | ventureatlas-integration |
 
-Total authoritative tasks: **32**
+Total authoritative tasks: **45**

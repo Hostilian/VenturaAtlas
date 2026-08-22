@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare Decision Packets — Venture Atlas OS</title>
+  <meta name="description" content="Synthesize decision packets from your team: compare friend votes, calculate mean/median scores, surface polarization, and view per-idea notes side-by-side.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="room-compare" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./rankings.html">Rankings</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./matcher.html">Matcher</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./tags.html">Tags</a>
+        <a href="./dossiers.html">Dossiers</a>
+        <a href="./prompts.html">Prompts</a>
+        <a href="./sources.html">Sources</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./room.html">Decision Studio</a>
+        <a href="./room-compare.html" aria-current="page">Compare Packets</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" style="max-width:1200px;margin:0 auto;padding:1.5rem">
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:1rem">
+      <a href="../index.html">Ideas</a>
+      <span class="sep">›</span>
+      <a href="./room.html">Decision Studio</a>
+      <span class="sep">›</span>
+      <span>Compare Packets</span>
+    </nav>
+
+    <div class="eyebrow" style="margin-bottom:0.35rem">Decision Synthesis &amp; Consensus</div>
+    <h1 style="font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:0.5rem">Compare Friend Decision Packets</h1>
+    <p style="color:var(--text2);margin-bottom:1.5rem;font-size:1rem;max-width:800px">
+      Merge multiple exported <code>vote-packet-*.json</code> files to review team reactions, compare multi-criteria scorecards, inspect qualitative notes, calculate group consensus, and flag polarized debates.
+    </p>
+
+    <div id="compareApp">
+      <div class="skeleton" style="height:200px;border-radius:var(--radius)"></div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p>Venture Atlas OS &mdash; open research repository &amp; venture decision studio.</p>
+    <p style="margin-top:0.4rem">
+      <a href="./about.html">About</a> ·
+      <a href="./decisions.html">Decision history</a> ·
+      <a href="./room.html">Decision Studio</a> ·
+      <a href="./room-compare.html">Compare Packets</a> ·
+      <a href="../CONTRIBUTING.md">Contributing</a>
+    </p>
+  </footer>
+
+  <script src="../assets/js/site.js?v=2.7.1"></script>
+  <script src="../assets/js/features/room-compare.js?v=2.7.1"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initRoomCompare === 'function') {
+        initRoomCompare();
+      }
+    });
+  </script>
+</body>
+</html>

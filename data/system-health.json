@@ -1,104 +1,223 @@
 {
-  "schemaVersion": "1.0.0",
-  "reconciledAt": "2026-08-22T10:11:03.164Z",
-  "sourceCommit": "2b34d73e7f338fa613d21fa0ea9c58ef31af2a1c",
+  "schemaVersion": "2.0.0",
+  "reconciledAt": "2026-08-22T12:21:06.496Z",
+  "sourceCommit": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
   "aggregateStatus": "WARN",
+  "clocks": {
+    "repositoryClock": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+    "projectionClock": "5b109b0ac5a08168",
+    "executionClock": "2026-08-22T12:21:06.496Z",
+    "worldClock": "2026-08-22"
+  },
   "components": {
     "repositoryIntegrity": {
+      "property": "repositoryIntegrity",
+      "subject": "gitWorkingTree",
       "status": "WARN",
-      "observedAt": "2026-08-22T10:11:03.164Z",
       "reason": "Working tree has uncommitted edits/untracked files",
+      "requiredEvidence": [
+        "git status --porcelain"
+      ],
+      "observationMethod": "SPAWN_GIT_STATUS",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "IMMEDIATE_ON_CHANGE",
       "proof": [
-        "git status"
+        "git status: dirty (101 files)"
       ]
     },
     "canonicalData": {
+      "property": "canonicalData",
+      "subject": "data/ideas.json",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "302 canonical ideas verified; revision a22923b2f173e87e",
+      "reason": "324 canonical ideas structurally verified (data revision: 5b109b0ac5a08168)",
+      "requiredEvidence": [
+        "data/ideas.json",
+        "data/repository-meta.json",
+        "data/validation-summary.json"
+      ],
+      "observationMethod": "SCHEMA_AND_COUNT_VERIFICATION",
+      "revisionBinding": "5b109b0ac5a08168",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "BOUND_TO_DATA_REVISION",
+      "canonicalCount": 324,
       "proof": [
-        "data/repository-meta.json"
+        "data/ideas.json: 324 records",
+        "data/repository-meta.json: revision 5b109b0ac5a08168"
       ]
     },
     "derivedArtifacts": {
+      "property": "derivedArtifacts",
+      "subject": "_site/ and generated projections",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "_site built cleanly (2.7.1-a22923b2f173e87e)",
+      "reason": "_site built cleanly (build revision: 2.7.1-5b109b0ac5a08168)",
+      "requiredEvidence": [
+        "_site/",
+        "data/build-manifest.json"
+      ],
+      "observationMethod": "FILESYSTEM_AND_MANIFEST_CHECK",
+      "revisionBinding": "2.7.1-5b109b0ac5a08168",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "BOUND_TO_PROJECTION_REVISION",
       "proof": [
-        "_site/"
+        "_site present (2.7.1-5b109b0ac5a08168)"
       ]
     },
     "agentState": {
+      "property": "agentState",
+      "subject": ".agent-system/state.json",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Agent state metrics aligned with repository metadata",
+      "reason": "Agent runtime state aligned with repository metadata (324 ideas)",
+      "requiredEvidence": [
+        ".agent-system/state.json",
+        "data/ideas.json"
+      ],
+      "observationMethod": "STATE_METRIC_RECONCILIATION",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "ON_TASK_STATE_TRANSITION",
       "proof": [
-        ".agent-system/state.json"
+        ".agent-system/state.json",
+        ".agent-system/backlog.json"
       ]
     },
     "ci": {
-      "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Latest quality receipt passed at 2026-08-21T14:44:53.766Z",
-      "proof": [
+      "property": "ci",
+      "subject": "Continuous Integration & Quality Gates",
+      "scope": "LOCAL_QUALITY",
+      "status": "WARN",
+      "reason": "No passing local quality or CI receipt found",
+      "requiredEvidence": [
         ".agent-state/quality-receipts/quality-source-latest.json"
+      ],
+      "observationMethod": "RECEIPT_COMMIT_AND_TTL_VERIFICATION",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:20:09.230Z",
+      "expiryPolicy": "24_HOUR_TTL_AND_COMMIT_MATCH",
+      "proof": [
+        ".agent-state/quality-receipts/quality-source-latest.json (commit: 7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816)"
       ]
     },
     "deployment": {
+      "property": "deployment",
+      "subject": "GitHub Pages Live Production",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Public site artifact build verified",
+      "reason": "Live deployment verified at http://localhost:8000/ (digest: unknown)",
+      "requiredEvidence": [
+        ".agent-state/deployment-proof.json",
+        "Live HTTP Canary"
+      ],
+      "observationMethod": "REMOTE_CANARY_VERIFICATION",
+      "revisionBinding": "unknown",
+      "timeBinding": "2026-08-22T12:16:18.152Z",
+      "expiryPolicy": "48_HOUR_TTL",
       "proof": [
-        "data/build-manifest.json"
+        "http://localhost:8000/"
       ]
     },
     "researchProductivity": {
+      "property": "researchProductivity",
+      "subject": "Autonomous Research Run Ledger",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Latest research run run-gap-hunt-round-2-20260820 recorded",
+      "reason": "Latest research run run-gap-hunt-round-2-20260820 recorded with 0 decisions",
+      "requiredEvidence": [
+        "data/research-runs.json"
+      ],
+      "observationMethod": "RESEARCH_RUN_LEDGER_CHECK",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "BOUND_TO_RESEARCH_LEDGER",
       "proof": [
         "data/research-runs.json"
       ]
     },
     "providerCapacity": {
+      "property": "providerCapacity",
+      "subject": "Multi-Provider Inference Network",
       "status": "WARN",
-      "observedAt": "2026-08-22T10:11:03.164Z",
       "reason": "provider receipts expired or missing; raw healthy flags are not current",
-      "proof": [
+      "requiredEvidence": [
         ".agent-system/provider-registry.json"
       ],
-      "freshness": "EXPIRED"
+      "observationMethod": "PROBE_RECEIPT_TTL_CHECK",
+      "revisionBinding": null,
+      "timeBinding": "2026-08-17T23:53:00Z",
+      "expiryPolicy": "14400s_PROBE_TTL",
+      "freshness": "EXPIRED",
+      "proof": [
+        ".agent-system/provider-registry.json"
+      ]
     },
     "sourceFreshness": {
-      "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "316 primary sources tracked in evidence graph",
+      "property": "sourceFreshness",
+      "subject": "data/sources.json & data/claim-relations.json",
+      "status": "WARN",
+      "reason": "316 sources tracked; claim-level temporal freshness audit pending (classified: NOT_YET_MEASURED)",
+      "requiredEvidence": [
+        "data/sources.json",
+        "data/claim-relations.json"
+      ],
+      "observationMethod": "CLAIM_TEMPORAL_AUDIT",
+      "revisionBinding": "a412889d960c6b25",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "CLAIM_FRESHNESS_POLICY_DAYS",
       "proof": [
-        "data/sources.json"
+        "data/sources.json: 316 sources"
       ]
     },
     "artifactCoverage": {
-      "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Dossier coverage: 417/309 (135.0%)",
+      "property": "artifactCoverage",
+      "subject": "Canonical Dossiers & Deep Research Blueprints",
+      "status": "WARN",
+      "reason": "Canonical dossier ownership coverage: 193/324 (60%) [432 total files on disk, 239 legacy/unmapped]",
+      "requiredEvidence": [
+        "ideas/*.md",
+        "data/ideas.json"
+      ],
+      "observationMethod": "EXACT_CANONICAL_ID_JOIN",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "BOUND_TO_CANONICAL_REVISION",
       "proof": [
-        "data/repository-meta.json"
+        "Unique mapped canonical ideas: 193/324"
       ]
     },
     "publicTruth": {
+      "property": "publicTruth",
+      "subject": "Public Claims & Documentation Projections",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Public claim metrics match repository-meta",
+      "reason": "Public claim metrics match repository truth",
+      "requiredEvidence": [
+        "PROJECT_STATUS.md",
+        "package.json",
+        "index.html"
+      ],
+      "observationMethod": "CROSS_DOCUMENT_CLAIM_LINTER",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "ON_DOCUMENTATION_UPDATE",
       "proof": [
+        "PROJECT_STATUS.md",
+        "package.json",
         "index.html"
       ]
     },
     "collaboration": {
+      "property": "collaboration",
+      "subject": "Collaboration Room & Multi-Persona Decision Engine",
       "status": "PASS",
-      "observedAt": "2026-08-22T10:11:03.164Z",
-      "reason": "Mode: LOCAL_PRODUCTION (Git-native)",
+      "reason": "Mode: LOCAL_PRODUCTION (Git-native & browser-local offline decision packets; no realtime cloud synchronization claimed)",
+      "requiredEvidence": [
+        "AGENTS.md",
+        "tests/collaboration-room-contract.test.js"
+      ],
+      "observationMethod": "CONTRACT_DISCLOSURE_VALIDATION",
+      "revisionBinding": "7b3ac3e430a1a8fe4ce95aa6ec4f3b671d91a816",
+      "timeBinding": "2026-08-22T12:21:06.496Z",
+      "expiryPolicy": "PER_RELEASE_CONTRACT",
       "proof": [
-        "AGENTS.md"
+        "AGENTS.md",
+        "docs/room.html"
       ]
     }
   }

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "2.0.0",
+  "queueType": "INFORMATION_VALUE_QUEUE",
+  "generatedAt": "2026-08-22T13:45:00Z",
+  "rankingCriteria": "decisionImpact * uncertainty * resolvability / (cost + 1)",
+  "questions": [
+    {
+      "questionId": "Q-2026-001",
+      "ideaId": "idea-061",
+      "target": "Can enterprise buyers obtain multi-tenant SOC2 export schemas directly from existing Vanta/Drata API modules?",
+      "stopCondition": "Official API documentation review of top 3 compliance vendors confirmed.",
+      "decisionImpact": "HIGH",
+      "uncertainty": "MEDIUM",
+      "resolvability": "HIGH",
+      "costUSD": 0,
+      "priorityScore": 9.2
+    },
+    {
+      "questionId": "Q-2026-002",
+      "ideaId": "idea-432",
+      "target": "Does the EU Battery Passport delegated act mandate manufacturer warranty voidance on bi-directional V2G discharge?",
+      "stopCondition": "Delegated act legal text clause identification completed.",
+      "decisionImpact": "HIGH",
+      "uncertainty": "HIGH",
+      "resolvability": "HIGH",
+      "costUSD": 0,
+      "priorityScore": 8.8
+    },
+    {
+      "questionId": "Q-2026-003",
+      "ideaId": "idea-436",
+      "target": "What proportion of EMA secondary supplier filings are rejected due to manufacturing batch parameter drift?",
+      "stopCondition": "EMA public assessment report statistic extracted.",
+      "decisionImpact": "HIGH",
+      "uncertainty": "MEDIUM",
+      "resolvability": "MEDIUM",
+      "costUSD": 0,
+      "priorityScore": 8.1
+    }
+  ]
+}

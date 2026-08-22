@@ -1,14 +1,14 @@
 # PROJECT STATUS
 
-- Repository version: 2.6.0
+- Repository version: 2.7.1
 - Data schema version: 2.0.0
 - Validation status: **STRUCTURAL/REFERENTIAL PASSED** — 0 errors across 319 ideas; epistemic validation is not assessed
-- Highest assigned canonical idea ID: idea-431
-- Next ID: idea-432 — allocated by the canonical ID allocator; do not infer from this document
-- Canonical ideas: 309
-- Categories: 132
+- Highest assigned canonical idea ID: idea-436
+- Next ID: idea-437 — allocated by the canonical ID allocator; do not infer from this document
+- Canonical ideas: 324
+- Categories: 144
 - Validation warnings: 0
-- Last updated: 2026-08-18
+- Last updated: 2026-08-22
 
 
 ## Change Log
@@ -38,6 +38,14 @@
 - Added 8-Gate Binary Scoring System to research/scoring-methodology.md
 - Created research/RESET_XVIII_ZERO_BASELINE_2026-08-18.md research archive
 - Created data/reset-xviii-ideas-ingest.json + scripts/merge-reset-xviii-ideas.js
+
+### 2026-08-22: OMEGA XIX Reset Promotion Ingestion
+- Ingested 5 new canonical ideas (idea-432 through idea-436) from the August 22, 2026 reset promotion:
+  - #1: BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse (idea-432, score: 91, watch)
+  - #2: HeatProof -- Retrofit Outcome Clearinghouse (idea-433, score: 93, priority)
+  - #3: FlexCovenant -- Industrial Flexibility Performance Contract OS (idea-434, score: 94, watch)
+  - #4: WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement (idea-435, score: 91, watch)
+  - #5: AltLine Drill -- Pharmaceutical Manufacturing Escape Route (idea-436, score: 91, priority)
 - Graveyard: 4 ideas killed (generic EUDR API validator, generic e-invoice XML validator, generic KSeF/France gateway, generic ICS2 filing platform)
 - Watch: EHDS EHR Chaos Lab, DWT ReceiptDiff CI, Building Safety Levy LevyBlock
 - OMEGA XIX Truth Lattice Infrastructure:
@@ -126,11 +134,11 @@
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.7.1
-- Canonical Ideas: 309
+- Canonical Ideas: 324
 - Staged Ideas: 0
-- Total Ideas: 309
-- Categories: 132
+- Total Ideas: 324
+- Categories: 144
 - Source References: 316
 - Generated Prompts: 4625
-- Last Updated: 2026-08-21
+- Last Updated: 2026-08-22
 <!-- END GENERATED REPOSITORY STATS -->

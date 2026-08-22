@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "2.0.0",
+  "wipLimit": 3,
+  "saturationStatus": "RESEARCH_SATURATION",
+  "resourceAllocationPolicy": {
+    "novelCandidateDiscoveryPercent": 10,
+    "evidenceRefreshAndConflictsPercent": 20,
+    "dedupeAndConsolidationPercent": 20,
+    "validationAndFalsificationPercent": 40,
+    "infrastructureAndReliabilityPercent": 10
+  },
+  "maturityLadder": [
+    "V0_MODEL_HYPOTHESIS",
+    "V1_DESK_EVIDENCE",
+    "V2_PROBLEM_CORROBORATED",
+    "V3_HUMAN_EVIDENCE",
+    "V4_REAL_WORKFLOW_DATA",
+    "V5_BEHAVIORAL_TEST",
+    "V6_WTP_VERIFIED",
+    "V7_PAID_PILOT",
+    "V8_REPEATED_VALUE"
+  ],
+  "experiments": [
+    {
+      "experimentId": "EXP-2026-001",
+      "ideaId": "idea-061",
+      "ideaName": "FactBounty — Buyer-Funded Product Proof Exchange",
+      "status": "ACTIVE",
+      "maturityStage": "V3_HUMAN_EVIDENCE",
+      "externalRealityObserved": false,
+      "hypothesis": "High-intent online shoppers purchasing fit-sensitive electronics/furniture are willing to post a €3–€5 micro-bounty to receive verified photo/video proof of exact physical dimensions from an existing owner before purchasing.",
+      "method": "Conduct 5 structured interviews with active e-commerce shoppers who recently returned an item due to physical specification mismatches, presenting the interactive FactBounty mockup.",
+      "successThreshold": ">= 3/5 participants state they would have posted a €3-€5 bounty rather than making the unverified purchase and return",
+      "killThreshold": "<= 1/5 participants willing to pay €3-€5, citing willingness to risk free retailer returns instead",
+      "maxBudgetUSD": 0,
+      "maxDurationDays": 14,
+      "preRegisteredAt": "2026-08-22T10:30:00Z",
+      "deadlineDate": "2026-09-05",
+      "decisionMapping": {
+        "onSuccess": "PROMOTE_TO_V4_MANUAL_CONCIERGE_PILOT",
+        "onKill": "NARROW_TO_COMMERCIAL_B2B_RETURNS"
+      }
+    },
+    {
+      "experimentId": "EXP-2026-002",
+      "ideaId": "idea-432",
+      "ideaName": "BatteryDuty — V2G Battery-Use Rights & Wear Clearinghouse",
+      "status": "ACTIVE",
+      "maturityStage": "V2_PROBLEM_CORROBORATED",
+      "externalRealityObserved": false,
+      "hypothesis": "Commercial fleet operators participating in Vehicle-to-Grid (V2G) grid-balancing lack contractual warranty-safe degradation clearing and demand certified cycle-wear receipts.",
+      "method": "Analyze 3 public European V2G pilot trial reports (e.g. UK Electric Nation / Renault Utrecht) and interview 2 commercial EV fleet managers on battery warranty dispute risk.",
+      "successThreshold": "Evidence that OEM warranty disputes regarding bidirectional cycling are a documented barrier in >= 2 fleet trials",
+      "killThreshold": "OEM warranties explicitly cover unlimited bidirectional cycling with no telematics degradation logging required",
+      "maxBudgetUSD": 0,
+      "maxDurationDays": 14,
+      "preRegisteredAt": "2026-08-22T13:00:00Z",
+      "deadlineDate": "2026-09-05",
+      "decisionMapping": {
+        "onSuccess": "ADVANCE_TO_V3_FLEET_INTERVIEWS",
+        "onKill": "MERGE_INTO_GENERIC_BATTERY_PASSPORT"
+      }
+    },
+    {
+      "experimentId": "EXP-2026-003",
+      "ideaId": "idea-435",
+      "ideaName": "WaterSpec — Quality-Adjusted Reclaimed-Water Settlement",
+      "status": "ACTIVE",
+      "maturityStage": "V2_PROBLEM_CORROBORATED",
+      "externalRealityObserved": false,
+      "hypothesis": "Industrial recycled-water buyers dispute invoice settlement values due to uncalibrated real-time sensor variance against contracted water quality tiers.",
+      "method": "Review public water-utility tariff dispute filings and interview 2 municipal industrial water plant engineers on billing reconciliation workflows.",
+      "successThreshold": "Documented presence of contractual price-adjustment clauses tied to chemical oxygen demand (COD) or total dissolved solids (TDS)",
+      "killThreshold": "Industrial reclaimed water is billed exclusively on flat volumetric rates with zero quality adjustment mechanisms",
+      "maxBudgetUSD": 0,
+      "maxDurationDays": 14,
+      "preRegisteredAt": "2026-08-22T13:00:00Z",
+      "deadlineDate": "2026-09-05",
+      "decisionMapping": {
+        "onSuccess": "ADVANCE_TO_V3_UTILITY_INTERVIEWS",
+        "onKill": "KILL_RECLAIMED_WATER_SPEC"
+      }
+    }
+  ]
+}

@@ -202,7 +202,7 @@ The compare view shows market family, idea type, detailed category, buyer segmen
 ## Working with Data Offline (JSON/CSV)
 
 ### Download options
-- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 309+ ideas
+- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 324+ ideas
 - **↓ CSV** → `data/ideas.csv` — flat spreadsheet format, all key fields
 
 ### Use cases

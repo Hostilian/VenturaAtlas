@@ -5,13 +5,13 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 ## Current inventory
 
 <!-- BEGIN GENERATED CURRENT INVENTORY -->
-- **309 canonical ideas** (0 staged, 309 total)
-- **132 categories**
+- **324 canonical ideas** (0 staged, 324 total)
+- **144 categories**
 - **316 source inventory records**
 - **555 research proposal rows** across **30 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
 - **4,625 idea-specific prompts** plus master prompts
-- **417 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
-- **60/309 financial models**, **62/309 validation plans**, **60/309 technical blueprints**, and **60/309 launch plans**
+- **432 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
+- **60/324 financial models**, **78/324 validation plans**, **75/324 technical blueprints**, and **60/324 launch plans**
 - **4,625 idea-specific prompt files**; per-idea pack completeness is not asserted
 <!-- END GENERATED CURRENT INVENTORY -->
 
@@ -93,11 +93,11 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT
 
 <!-- BEGIN GENERATED REPOSITORY STATS -->
 - Repository Version: 2.7.1
-- Canonical Ideas: 309
+- Canonical Ideas: 324
 - Staged Ideas: 0
-- Total Ideas: 309
-- Categories: 132
+- Total Ideas: 324
+- Categories: 144
 - Source References: 316
 - Generated Prompts: 4625
-- Last Updated: 2026-08-21
+- Last Updated: 2026-08-22
 <!-- END GENERATED REPOSITORY STATS -->

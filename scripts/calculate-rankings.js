@@ -5,10 +5,19 @@ const { execSync } = require('child_process');
 const ROOT = path.resolve(__dirname, '..');
 const IDEAS_PATH = path.join(ROOT, 'data', 'ideas.json');
 const RANKINGS_PATH = path.join(ROOT, 'data', 'rankings.json');
+const DIAGNOSTICS_DIR = path.join(ROOT, 'diagnostics');
+const FALLBACK_PATH = path.join(DIAGNOSTICS_DIR, 'ranking-fallback.json');
 
+/**
+ * VenturaAtlas Ranking Calculation Orchestrator (Fail-Closed)
+ *
+ * Authoritative rankings are produced exclusively by scripts/va-ranker.py.
+ * If va-ranker.py fails, this script exits FAIL-CLOSED and outputs a diagnostic
+ * record rather than silently overwriting data/rankings.json with degraded JS math.
+ */
 function main() {
   if (!fs.existsSync(IDEAS_PATH)) {
-    console.error('ideas.json not found');
+    console.error('[ERROR] ideas.json not found');
     process.exit(1);
   }
 
@@ -23,81 +32,32 @@ function main() {
     }
     return;
   } catch (err) {
-    console.warn('[WARN] va-ranker.py execution failed, falling back to JS multi-view calculation:', err.message);
-  }
-
-  const rawIdeas = JSON.parse(fs.readFileSync(IDEAS_PATH, 'utf8'));
-  const ideas = Array.isArray(rawIdeas) ? rawIdeas : (rawIdeas.ideas || []);
-
-  const getScore = (idea, dim) => {
-    if (!idea) return 0;
-    const cs = idea.compositeScores || {};
-    const sc = idea.scores || {};
-    const gl = idea.atAGlance || {};
-    if (dim === 'overall') return Number(gl.overallScore ?? cs.overallOpportunity ?? cs.compositeHeadline ?? 0);
-    if (dim === 'attractiveness') return Number(cs.overallOpportunity ?? cs.attractiveness ?? gl.overallScore ?? 0);
-    if (dim === 'fit') return Number(cs.soloFounderPotential ?? cs.founderFit ?? 0);
-    if (dim === 'confidence') return Number(sc.confidence?.value ?? (idea.sourceReferences?.length ? idea.sourceReferences.length * 20 : 10));
-    if (dim === 'speed') return Number(sc.speedToFirstRevenue?.value ?? cs.fastestPathToRevenue ?? 0);
-    if (dim === 'cost') return Number(sc.lowStartupCost?.value ?? cs.lowStartupCost ?? 0);
-    return 0;
-  };
-
-  const formatItem = (idea, rank) => ({
-    rank,
-    ideaId: idea.id,
-    id: idea.id,
-    name: idea.name,
-    category: idea.category || '',
-    score: getScore(idea, 'overall'),
-    checklist: idea.validationChecklist?.scorePercentage || 0,
-    killFlagged: !!idea.killCriteria?.killFlagged,
-    provider: idea.provenance?.provider || 'legacy',
-    status: idea.status || 'canonical',
-    topDimensions: {
-      overallOpportunity: getScore(idea, 'overall'),
-      bootstrappedPotential: getScore(idea, 'fit'),
-      soloFounderPotential: getScore(idea, 'fit'),
-      differentiation: null,
-      profitPotential: null
+    console.error('[FAIL-CLOSED] Authoritative va-ranker.py execution failed:', err.message);
+    
+    // Write non-authoritative diagnostic fallback record
+    try {
+      if (!fs.existsSync(DIAGNOSTICS_DIR)) fs.mkdirSync(DIAGNOSTICS_DIR, { recursive: true });
+      const diagnosticRecord = {
+        schemaVersion: '2.0.0',
+        generatedAt: new Date().toISOString(),
+        decisionGrade: false,
+        fallback: true,
+        authoritativeRankingsModified: false,
+        reason: err.message,
+        sourceScript: 'scripts/va-ranker.py'
+      };
+      fs.writeFileSync(FALLBACK_PATH, JSON.stringify(diagnosticRecord, null, 2) + '\n', 'utf8');
+      console.error(`[FAIL-CLOSED] Wrote diagnostic record to diagnostics/ranking-fallback.json. Authoritative rankings untouched.`);
+    } catch (diagErr) {
+      console.error('[FAIL-CLOSED] Could not write diagnostic record:', diagErr.message);
     }
-  });
 
-  const overallSorted = [...ideas].sort((a, b) => getScore(b, 'overall') - getScore(a, 'overall'));
-  const attrSorted = [...ideas].sort((a, b) => getScore(b, 'attractiveness') - getScore(a, 'attractiveness'));
-  const fitSorted = [...ideas].sort((a, b) => getScore(b, 'fit') - getScore(a, 'fit'));
-  const confSorted = [...ideas].sort((a, b) => getScore(b, 'confidence') - getScore(a, 'confidence'));
-  const speedSorted = [...ideas].sort((a, b) => getScore(b, 'speed') - getScore(a, 'speed'));
-  const costSorted = [...ideas].sort((a, b) => getScore(b, 'cost') - getScore(a, 'cost'));
-  const finalistsSorted = [...ideas].filter(i => i.status === 'priority' || ['idea-061','idea-062','idea-185','idea-240'].includes(i.id)).sort((a, b) => getScore(b, 'overall') - getScore(a, 'overall'));
-
-  const views = [
-    { id: 'overall-top-opportunities', title: '🏆 Overall Top Opportunities', description: 'Rankings sorted by weighted composite headline score across all evidence dimensions', algorithmVersion: 'weighted-composite-v2', items: overallSorted.map(formatItem) },
-    { id: 'attractiveness', title: '💡 High Opportunity Attractiveness', description: 'Ranked by problem severity, demand, and overall market revenue potential', algorithmVersion: 'attractiveness-v1', items: attrSorted.map(formatItem) },
-    { id: 'founder-fit', title: '🎯 Best Solo Founder Fit', description: 'Ranked by speed to revenue, low startup cost, and ease of building MVP', algorithmVersion: 'founder-fit-v1', items: fitSorted.map(formatItem) },
-    { id: 'highest-confidence', title: '🛡️ Highest Evidence Confidence', description: 'Ranked by source quality, citations, and completed disconfirming red-team passes', algorithmVersion: 'evidence-confidence-v1', items: confSorted.map(formatItem) },
-    { id: 'fastest-first-revenue', title: '⚡ Fastest Path to Revenue', description: 'Ranked by minimal time-to-first-dollar and low distribution friction', algorithmVersion: 'speed-revenue-v1', items: speedSorted.map(formatItem) },
-    { id: 'lowest-startup-cost', title: '💸 Lowest Startup Capital', description: 'Ranked by minimal initial financial requirement ($0–$100)', algorithmVersion: 'low-cost-v1', items: costSorted.map(formatItem) },
-    { id: 'reset-finalists', title: '🏁 Reset Tournament Finalists', description: 'Highest-scoring winners and finalists across research reset tournaments', algorithmVersion: 'tournament-finalists-v1', items: finalistsSorted.map(formatItem) }
-  ];
-
-  if (isCheckMode) {
-    console.log(`[OK] Ranking calculation check complete (${ideas.length} ideas evaluated)`);
-    process.exit(0);
+    process.exit(1);
   }
-
-  const out = {
-    schemaVersion: '2.0.0',
-    generatedAt: new Date().toISOString(),
-    totalIdeas: ideas.length,
-    rankingViewsCount: views.length,
-    algorithm: 'weighted-composite-v2',
-    rankings: views
-  };
-
-  fs.writeFileSync(RANKINGS_PATH, JSON.stringify(out, null, 2) + '\n', 'utf8');
-  console.log(`[OK] Deterministically recalculated ${views.length} ranking views for ${ideas.length} ideas.`);
 }
 
-main();
+if (require.main === module) {
+  main();
+}
 
+module.exports = { main };

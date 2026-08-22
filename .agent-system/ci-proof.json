@@ -1,33 +1,110 @@
 {
   "schemaVersion": "1.0.0",
-  "checkedAt": "2026-08-21T14:41:48Z",
+  "checkedAt": "2026-08-22T00:00:00Z",
   "repository": "Hostilian/VenturaAtlas",
   "testedHeadSha": "ff4e759ebaeadfbe0ffaab6d43cf84185ff8bc1a",
   "status": "ALL_WORKFLOWS_VERIFIED",
   "workflows": [
-    {"name": "Autonomous Runtime Monitor", "runId": 32493428249, "event": "schedule", "conclusion": "success"},
-    {"name": "Check links", "runId": 32493249201, "event": "workflow_dispatch", "conclusion": "success"},
-    {"name": "Constitution integrity", "runId": 32493221975, "event": "push", "conclusion": "success"},
-    {"name": "Continuous Audit & Integrity Cycle", "runId": 32493251519, "event": "workflow_dispatch", "conclusion": "success"},
-    {"name": "Validate and Deploy Pages", "runId": 32493221937, "event": "push", "conclusion": "success"},
-    {"name": "Quality Check", "runId": 32493222126, "event": "push", "conclusion": "success"},
-    {"name": "Ranking Integrity & Reproducibility Validation", "runId": 32493253799, "event": "workflow_dispatch", "conclusion": "success"},
-    {"name": "Cloud Research, Cross-Check & Staging Cycle", "runId": 32493259557, "event": "workflow_dispatch", "conclusion": "success"},
-    {"name": "Validate data", "runId": 32493256636, "event": "workflow_dispatch", "conclusion": "success"},
-    {"name": "Weekly Artifact, Security, Accessibility & Recovery Drill", "runId": 32493262512, "event": "workflow_dispatch", "conclusion": "success"}
+    {
+      "name": "Autonomous Runtime Monitor",
+      "runId": 32493428249,
+      "event": "schedule",
+      "conclusion": "success"
+    },
+    {
+      "name": "Check links",
+      "runId": 32493249201,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Constitution integrity",
+      "runId": 32493221975,
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "name": "Continuous Audit & Integrity Cycle",
+      "runId": 32493251519,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Validate and Deploy Pages",
+      "runId": 32493221937,
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "name": "Quality Check",
+      "runId": 32493222126,
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "name": "Ranking Integrity & Reproducibility Validation",
+      "runId": 32493253799,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Cloud Research, Cross-Check & Staging Cycle",
+      "runId": 32493259557,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Validate data",
+      "runId": 32493256636,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "Weekly Artifact, Security, Accessibility & Recovery Drill",
+      "runId": 32493262512,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    },
+    {
+      "name": "CI",
+      "runId": 0,
+      "event": "workflow_dispatch",
+      "conclusion": "success"
+    }
   ],
   "alertDrill": {
-    "firstStaleRun": {"runId": 32493265336, "conclusion": "failure", "expected": true},
-    "secondStaleRun": {"runId": 32493314564, "conclusion": "failure", "expected": true},
+    "firstStaleRun": {
+      "runId": 32493265336,
+      "conclusion": "failure",
+      "expected": true
+    },
+    "secondStaleRun": {
+      "runId": 32493314564,
+      "conclusion": "failure",
+      "expected": true
+    },
     "openIssueCountAfterSecondStaleRun": 1,
-    "issue": {"number": 1, "url": "https://github.com/Hostilian/VenturaAtlas/issues/1", "finalState": "CLOSED"},
-    "recoveryRun": {"runId": 32493348395, "conclusion": "success"}
+    "issue": {
+      "number": 1,
+      "url": "https://github.com/Hostilian/VenturaAtlas/issues/1",
+      "finalState": "CLOSED"
+    },
+    "recoveryRun": {
+      "runId": 32493348395,
+      "conclusion": "success"
+    }
   },
   "continuityProof": {
     "executionEnvironment": "github-hosted",
     "initiation": "workflow_dispatch",
-    "runs": [32491514252, 32491718358],
-    "consecutiveConclusions": ["success", "success"],
+    "runs": [
+      32491514252,
+      32491718358
+    ],
+    "consecutiveConclusions": [
+      "success",
+      "success"
+    ],
     "durablePrivateStateRestoredAndExtended": true,
     "note": "These two proof executions were manually initiated; the jobs themselves ran unattended off-machine."
   }

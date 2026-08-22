@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-08-21T13:44:24.289Z",
-  "validationRevision": "2cdb7da32af1fd1c37e504c69c9c1f1b58e4c8b048d5d5546854bc64350b3d6a",
+  "checkedAt": "2026-08-22T12:18:17.988Z",
+  "validationRevision": "92ff6f6f5a5a116634090a2a2de59d0730aa97c7aec3061b0e12e17895454098",
   "status": "passed",
-  "canonicalCount": 309,
+  "canonicalCount": 324,
   "errorCount": 0,
   "warningCount": 0,
   "errors": [],

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "3.0.0",
+  "id": "DEC-0001",
+  "decisionType": "PROVISIONAL_WINNER",
+  "decidedAt": "2026-08-22T10:30:00Z",
+  "roomId": "room-founder-shortlist-2026",
+  "constitutionVersion": "0.1-partial",
+  "constitutionChecksum": "f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d",
+  "participants": [
+    "Alex (Tech Lead)",
+    "Jordan (Commercial Lead)",
+    "Taylor (Product Lead)"
+  ],
+  "selectedIdeaId": "idea-061",
+  "selectedIdeaName": "Multi-Tenant B2B Compliance Engine",
+  "category": "Enterprise Software",
+  "candidates": [
+    { "id": "idea-061", "name": "Multi-Tenant B2B Compliance Engine", "meanScore": 8.78, "reactions": { "interested": 3, "unsure": 0, "pass": 0 }, "pairwiseWinRate": 100 },
+    { "id": "idea-088", "name": "Embedded Environmental Compliance Auditor", "meanScore": 6.33, "reactions": { "interested": 1, "unsure": 1, "pass": 1 }, "pairwiseWinRate": 50 },
+    { "id": "idea-273", "name": "Local Service Workflow OS", "meanScore": 6.00, "reactions": { "interested": 1, "unsure": 1, "pass": 1 }, "pairwiseWinRate": 0 }
+  ],
+  "consensusMetrics": {
+    "teamMeanScore": 8.78,
+    "teamMedianScore": 8.75,
+    "scoreStandardDeviation": 0.28,
+    "polarizationFlag": false
+  },
+  "rationale": "Multi-tenant compliance reporting is backed by non-discretionary enterprise regulatory budgets, high willingness to pay ($5k-$25k ARR), and an exceptionally fast 4-week path to initial schema validation MVP with strong founder-idea fit.",
+  "decisiveAssumptions": [
+    "B2B SaaS engineering teams spend >15 hours/month compiling manual audit evidence for buyers.",
+    "Heads of Security/Compliance possess discretionary signing authority for developer-first compliance tools under $1,000/mo.",
+    "Existing horizontal platforms (Vanta/Drata) leave developer-first multi-tenant API integrations underserved."
+  ],
+  "dissentObjections": [
+    "Enterprise sales cycles could stretch beyond 6 months if prospective buyers demand pre-existing SOC 2 Type II certificates from vendors.",
+    "Horizontal platform giants could bundle basic compliance logs into core dashboards.",
+    "Audit evidence storage requires immutable cryptographic verification from v1."
+  ],
+  "validationPlan": {
+    "experimentName": "Mock Audit Export Schema Interview Sprint",
+    "testDesign": "5 structured 30-minute buyer discovery interviews with Heads of Security using interactive mock export report.",
+    "targetMetric": ">= 2 verbal pilot commitments or design partnership LOIs within 14 days",
+    "budgetDollars": 0,
+    "deadlineDate": "2026-09-05"
+  },
+  "status": "active_provisional"
+}

@@ -147,6 +147,90 @@
       "filesAffected": ["docs/", "assets/", "tests/"]
     },
     {
+      "id": "TASK-009",
+      "title": "Fix Voting-Mode Selector (Scorecard and Pairwise in Collaboration Room)",
+      "domain": "Frontend / Decision Studio",
+      "priorityScore": 97.0,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": [],
+      "verificationMethod": "Browser subagent test; verify reaction, scorecard, and pairwise voting modes render and persist",
+      "filesAffected": ["assets/js/features/collaboration.js", "docs/room.html"]
+    },
+    {
+      "id": "TASK-010",
+      "title": "Structured Per-Idea Notes and Evaluation Capture",
+      "domain": "Frontend / Collaboration",
+      "priorityScore": 96.5,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": ["TASK-009"],
+      "verificationMethod": "Per-idea notes expand, persist in roomState, and export in JSON decision packet",
+      "filesAffected": ["assets/js/features/collaboration.js", "collaboration/EVALUATION_TEMPLATE.json"]
+    },
+    {
+      "id": "TASK-011",
+      "title": "No-Code Decision Packet Comparison Page (docs/room-compare.html)",
+      "domain": "Frontend / Decision Studio",
+      "priorityScore": 96.0,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": ["TASK-010"],
+      "verificationMethod": "Drag/upload 2+ exported packets to compare votes, per-idea notes, team averages, and polarization flags",
+      "filesAffected": ["docs/room-compare.html", "assets/js/features/room-compare.js", "docs/room.html"]
+    },
+    {
+      "id": "TASK-012",
+      "title": "Remove Hardcoded Shortlist and Implement Interactive Empty State",
+      "domain": "UX / Collaboration",
+      "priorityScore": 95.5,
+      "urgency": "P1",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": ["TASK-009"],
+      "verificationMethod": "Empty shortlist prompts browsing and 1-click additions without pre-filling unselected ideas",
+      "filesAffected": ["assets/js/features/collaboration.js"]
+    },
+    {
+      "id": "TASK-013",
+      "title": "Dogfood and Commit End-to-End Decision Example (DEC-0001)",
+      "domain": "Governance / Dogfooding",
+      "priorityScore": 95.0,
+      "urgency": "P1",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": ["TASK-009", "TASK-010", "TASK-011"],
+      "verificationMethod": "Full decision workflow executed across 3 personas and recorded as DEC-0001 under decisions/",
+      "filesAffected": ["decisions/DEC-0001.json", "decisions/DEC-0001.md", "decisions/README.md"]
+    },
+    {
+      "id": "TASK-014",
+      "title": "First-Visit Clarity & Friend Onboarding Pass on Homepage and Navigation",
+      "domain": "UX / Product",
+      "priorityScore": 94.5,
+      "urgency": "P1",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-public-site",
+      "dependencies": [],
+      "verificationMethod": "Browser subagent cold-load audit confirms immediate friend-ready onboarding on index.html",
+      "filesAffected": ["index.html", "assets/css/site.css"]
+    },
+    {
+      "id": "TASK-015",
+      "title": "Mobile, Dark Mode, and Accessibility Verification with Real Artifacts",
+      "domain": "UX / QA",
+      "priorityScore": 94.0,
+      "urgency": "P1",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-test-adversary",
+      "dependencies": ["TASK-009", "TASK-010", "TASK-011", "TASK-014"],
+      "verificationMethod": "Mobile viewport, dark mode, keyboard navigation, and WCAG 2.2 AA verified with artifact evidence",
+      "filesAffected": ["tests/ui-truth.test.js", "assets/css/site.css"]
+    },
+    {
       "id": "AUT-001",
       "title": "Three-Model Review Panel Across Two Provider Infrastructures",
       "domain": "Provider Runtime",
@@ -398,6 +482,78 @@
       "recurrence": "every-canonical-corpus-change",
       "verificationMethod": "Review queue reaches zero or every retained ambiguity has a signed distinction note; no automated merge is permitted",
       "filesAffected": ["data/idea-taxonomy.json", "data/ideas.json", "data/relationships.json"]
+    },
+    {
+      "id": "OMG-001",
+      "title": "OMEGA XX Audit Revision Lock & Contradiction Matrix",
+      "domain": "Epistemic Governance",
+      "priorityScore": 99.0,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": [],
+      "verificationMethod": "Audit lock anchor in docs/audit/OMEGA_XX_AUDIT_LOCK.md and cross-document version synchronization",
+      "filesAffected": ["docs/audit/OMEGA_XX_AUDIT_LOCK.md", "PROJECT_STATUS.md"]
+    },
+    {
+      "id": "OMG-002",
+      "title": "Fail-Closed Proof-Predicate Reconciler & 4 Clocks Engine",
+      "domain": "Truth Kernel",
+      "priorityScore": 98.5,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": ["OMG-001"],
+      "verificationMethod": "node scripts/truth-reconciler.js --check; node --test tests/omega-xx-chaos-and-predicates.test.js",
+      "filesAffected": ["scripts/lib/proof-predicates.js", "scripts/truth-reconciler.js", "data/system-health.json"]
+    },
+    {
+      "id": "OMG-003",
+      "title": "Cloud Staging Isolation & Sanitized Artifact Privacy Protocol",
+      "domain": "Security & Privacy",
+      "priorityScore": 98.0,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": [],
+      "verificationMethod": "node --test tests/artifact-privacy-allowlist.test.js",
+      "filesAffected": [".github/workflows/research-cycle.yml", "tests/artifact-privacy-allowlist.test.js"]
+    },
+    {
+      "id": "OMG-004",
+      "title": "Optimistic Concurrency Control (CAS) & State Hash Chaining",
+      "domain": "Cloud Runtime",
+      "priorityScore": 97.5,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-provider-runtime",
+      "dependencies": [],
+      "verificationMethod": "Concurrent collision tests prove atomic CAS and hash continuity",
+      "filesAffected": ["scripts/lib/durable-state.js", "scripts/lib/durable_state.py"]
+    },
+    {
+      "id": "OMG-005",
+      "title": "Fail-Closed Ranking Engine & Score Origin Ledger",
+      "domain": "Ranking & Epistemics",
+      "priorityScore": 97.0,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": ["OMG-002"],
+      "verificationMethod": "Non-authoritative diagnostic fallback on ranker failure; explicit score origins",
+      "filesAffected": ["scripts/calculate-rankings.js", "data/rank-eligibility-receipts.json"]
+    },
+    {
+      "id": "OMG-006",
+      "title": "Validation Conveyor (WIP=3), Market Killer & Refutation Framework",
+      "domain": "Validation & Falsification",
+      "priorityScore": 96.5,
+      "urgency": "P0",
+      "status": "LANDED",
+      "assignedAgent": "ventureatlas-integration",
+      "dependencies": ["OMG-001"],
+      "verificationMethod": "Pre-registered falsification experiments with kill thresholds and Why-Not-X evaluation",
+      "filesAffected": ["data/validation-experiments.json", "data/information-value-queue.json", "scripts/market-killer.py"]
     }
   ]
 }

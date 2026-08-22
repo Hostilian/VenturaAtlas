@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "DEC-0001",
+    "decisionType": "PROVISIONAL_WINNER",
+    "decidedAt": "2026-08-22T10:30:00Z",
+    "selectedIdeaId": "idea-061",
+    "selectedIdeaName": "Multi-Tenant B2B Compliance Engine",
+    "category": "Enterprise Software",
+    "teamMeanScore": 8.78,
+    "constitutionVersion": "0.1-partial",
+    "constitutionChecksum": "f03ca076bbe9dbee0d5b9c0fc9439cf25e287974b6c2f0bbe8bbb34920ecff8d",
+    "status": "active_provisional",
+    "recordPath": "decisions/DEC-0001.md"
+  }
+]

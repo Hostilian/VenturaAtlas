@@ -24,9 +24,16 @@ function initMatcher() {
     return score;
   }
 
+  function shortlistMatches(ideaIds) {
+    if (window.VAStudio?.store && Array.isArray(ideaIds)) {
+      ideaIds.forEach(id => window.VAStudio.store.addToShortlist(id, 'interesting'));
+    }
+  }
+
   window.VAMatcher = {
     budgetMatches,
-    computeMatchScore
+    computeMatchScore,
+    shortlistMatches
   };
 }
 

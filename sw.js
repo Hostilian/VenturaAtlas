@@ -1,19 +1,31 @@
 /**
  * Service Worker — Venture Atlas OS PWA (v2.7.1)
- * Multi-cache architecture with resilient offline support.
+ * Multi-cache dual-clock architecture:
+ * - CACHE_VERSION (Repository clock): static-v2.7.1
+ * - DATA_REVISION (Projection clock): data-c1e9860655f01c32
  */
 
 const CACHE_VERSION = '2.7.1';
-const STATIC_CACHE = `ventura-static-${CACHE_VERSION}`;
-const DATA_CACHE = `ventura-data-${CACHE_VERSION}`;
-const PAGE_CACHE = `ventura-pages-${CACHE_VERSION}`;
+const DATA_REVISION = '5b109b0ac5a08168';
+
+const STATIC_CACHE = `ventura-static-v${CACHE_VERSION}`;
+const DATA_CACHE = `ventura-data-${DATA_REVISION}`;
+const PAGE_CACHE = `ventura-pages-v${CACHE_VERSION}`;
 
 const REQUIRED_SHELL = [
   './index.html',
   './offline.html',
+  './docs/room.html',
+  './docs/room-compare.html',
   './assets/css/site.css',
   './assets/css/home.css',
   './assets/js/site.js',
+  './assets/js/config.js',
+  './assets/js/core/studio-store.js',
+  './assets/js/core/firebase-adapter.js',
+  './assets/js/features/studio.js',
+  './assets/js/features/collaboration.js',
+  './assets/js/features/room-compare.js',
   './manifest.webmanifest'
 ];
 

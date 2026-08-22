@@ -410,6 +410,8 @@ function card(x) {
     .map(t => `<span class="chip">${esc(t)}</span>`)
     .join('');
 
+  const isShortlisted = (id) => (window.VAStudio?.store ? window.VAStudio.store.isInShortlist(id) : isFav(id));
+
   return `
 <article class="card" role="listitem" data-id="${esc(x.id)}">
   <div class="eyebrow">${esc(taxonomy?.familyLabel || x.category)}</div>
@@ -451,9 +453,12 @@ function card(x) {
     </span>
     ${statusBadge(x.status || 'explore')}
   </div>
-  <div class="card-footer" style="border-top:none;padding-top:0.4rem">
+  <div class="card-footer" style="border-top:none;padding-top:0.4rem;gap:0.35rem;flex-wrap:wrap">
     <button class="button ghost sm" data-action="toggle-fav" data-id="${esc(x.id)}" aria-label="${isFav(x.id) ? 'Remove from' : 'Add to'} favorites">
       ${isFav(x.id) ? '★' : '☆'}
+    </button>
+    <button class="button ghost sm" data-action="toggle-shortlist" data-id="${esc(x.id)}" title="${isShortlisted(x.id) ? 'In Decision Studio Shortlist' : 'Add to Decision Studio'}" aria-label="${isShortlisted(x.id) ? 'Remove from Shortlist' : 'Add to Shortlist'}">
+      ${isShortlisted(x.id) ? '📋 In Studio' : '📋 +Shortlist'}
     </button>
     <label style="font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.3rem">
       <input type="checkbox" class="compareCheck" value="${esc(x.id)}" aria-label="Select ${esc(x.name)} for comparison">
@@ -480,12 +485,28 @@ function miniCard(x) {
 </article>`.trim();
 }
 
-/* Global event delegation for favorites */
+/* Global event delegation for favorites and shortlist */
 document.addEventListener('click', e => {
   const favBtn = e.target.closest('[data-action="toggle-fav"]');
   if (favBtn) {
     const id = favBtn.getAttribute('data-id');
     if (id) toggleFav(id, favBtn);
+  }
+
+  const shortlistBtn = e.target.closest('[data-action="toggle-shortlist"]');
+  if (shortlistBtn) {
+    const id = shortlistBtn.getAttribute('data-id');
+    if (id && window.VAStudio?.store) {
+      if (window.VAStudio.store.isInShortlist(id)) {
+        window.VAStudio.store.removeFromShortlist(id);
+        shortlistBtn.textContent = '📋 +Shortlist';
+        shortlistBtn.title = 'Add to Decision Studio';
+      } else {
+        window.VAStudio.store.addToShortlist(id, 'inbox');
+        shortlistBtn.textContent = '📋 In Studio';
+        shortlistBtn.title = 'In Decision Studio Shortlist';
+      }
+    }
   }
 });
 
@@ -1029,7 +1050,7 @@ function initIdea() {
       ${isFav(x.id) ? '★ Favorited' : '☆ Favorite'}
     </button>
     <button class="button secondary sm" id="addCompareBtn">⚖️ Compare</button>
-    <button class="button secondary sm" id="addRoomBtn">👥 Add to Room</button>
+    <button class="button secondary sm" id="addRoomBtn">👥 Decision Studio</button>
     <button class="button secondary sm" id="copyLink">🔗 Share</button>
     <a class="button ghost sm" href="${VA.base}/ideas/${esc(x.slug || x.id)}.md" download>↓ Dossier (.md)</a>
     <a class="button ghost sm" href="${VA.base}/docs/calculator.html">🧮 Calculator</a>
@@ -1159,10 +1180,13 @@ ${taxonomy ? `<!-- Normalized Positioning -->
   });
 
   $('#addRoomBtn')?.addEventListener('click', () => {
+    if (window.VAStudio?.store) {
+      window.VAStudio.store.addToShortlist(x.id, 'inbox');
+    }
     let roomList = window.VentureAtlas?.readJsonStorage('va-room-shortlist', []) || [];
     if (!roomList.includes(x.id)) roomList.push(x.id);
     window.VentureAtlas?.writeJsonStorage('va-room-shortlist', roomList);
-    window.location.href = `${VA.base}/docs/room.html`;
+    window.location.href = `${VA.base}/docs/room.html?tab=kanban`;
   });
 
   $('#copyLink')?.addEventListener('click', () => {
