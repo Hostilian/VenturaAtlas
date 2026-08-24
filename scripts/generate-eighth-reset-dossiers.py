@@ -401,6 +401,17 @@ def generate_dossier(idea, all_ideas_map):
         else:
             related_section += f'- [{rid}]({rid}.md)\n'
 
+    alternative_gaps = cust.get('alternativeGaps')
+    if isinstance(alternative_gaps, str):
+        alternative_gaps_str = alternative_gaps
+    elif isinstance(alternative_gaps, list):
+        alternative_gaps_str = ', '.join(alternative_gaps)
+    else:
+        alternative_gaps_str = (
+            "Alternatives may be fragmented, generic, difficult to verify, or "
+            "disconnected from the customer's exact workflow."
+        )
+
     # Find related idea slugs/names from the JSON — passed via all_ideas_map in caller
     # We'll fill this in the caller
 
@@ -465,7 +476,7 @@ def generate_dossier(idea, all_ideas_map):
 
 ### Current Alternatives
 {fmt_list(cust.get('currentAlternatives', ['manual research', 'forum searches', 'retailer Q&A']))}
-- **Alternative Gaps:** {cust.get('alternativeGaps', ['Alternatives may be fragmented, generic, difficult to verify, or disconnected from the customer\'s exact workflow.']) if isinstance(cust.get('alternativeGaps'), str) else ', '.join(cust.get('alternativeGaps', ['Alternatives may be fragmented, generic, or unverified.']))}
+- **Alternative Gaps:** {alternative_gaps_str}
 
 ### Jobs To Be Done
 
