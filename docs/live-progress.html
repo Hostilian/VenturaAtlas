@@ -3,77 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live Progress — Venture Atlas OS</title>
-  <meta name="description" content="Live background AI loop status and progress for Venture Atlas OS.">
+  <title>Automation Status — Venture Atlas OS</title>
+  <meta name="description" content="Freshness-checked status for Venture Atlas OS cloud automation and worker heartbeats.">
   <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
   <style>
-    .dash-shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-    }
-    .dash-hero {
-      background: linear-gradient(135deg, var(--panel), var(--bg2));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      margin-bottom: 1.25rem;
-    }
-    .dash-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-    .dash-card {
+    .dash-shell { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+    .dash-hero, .dash-card {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
     }
+    .dash-hero { padding: clamp(1.25rem, 4vw, 2rem); margin-bottom: 1.25rem; }
+    .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; }
+    .dash-card { padding: 1.1rem; min-width: 0; }
+    .dash-card.wide { grid-column: 1 / -1; }
     .dash-label {
       display: inline-flex;
       align-items: center;
-      padding: 0.2rem 0.55rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      background: var(--accent-l);
-      color: var(--accent-h);
-      font-weight: 700;
+      background: var(--bg2);
+      color: var(--muted);
+      font-weight: 750;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       font-size: 0.7rem;
     }
-    .dash-progress {
-      height: 10px;
-      border-radius: 999px;
-      background: var(--line);
-      overflow: hidden;
-    }
-    .dash-progress > div {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), hsl(215 70% 45%));
-      transition: width 0.4s ease;
-    }
+    [data-runtime-state="live"] .dash-label,
+    [data-runtime-state="verified"] .dash-label { background: hsl(145 70% 90%); color: hsl(145 70% 24%); }
+    [data-runtime-state="stale"] .dash-label { background: hsl(42 90% 90%); color: hsl(35 85% 25%); }
+    [data-runtime-state="degraded"] .dash-label { background: hsl(0 75% 92%); color: hsl(0 68% 34%); }
+    .dash-progress { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; margin-top: 1rem; }
+    .dash-progress > div { height: 100%; width: 0; background: var(--accent-g); transition: width 0.35s ease; }
+    .dash-facts { display: grid; gap: 0.65rem; margin: 1rem 0 0; }
+    .dash-facts div { display: grid; grid-template-columns: minmax(6rem, auto) 1fr; gap: 0.8rem; }
+    .dash-facts dt { color: var(--muted); }
+    .dash-facts dd { margin: 0; overflow-wrap: anywhere; }
     .dash-mono {
       font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
       font-size: 0.82rem;
       white-space: pre-wrap;
+      overflow-wrap: anywhere;
       background: var(--bg2);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       padding: 0.9rem;
-      min-height: 140px;
+      min-height: 7rem;
     }
+    .dash-contract { margin: 0; padding-left: 1.25rem; }
+    .dash-contract li + li { margin-top: 0.55rem; }
     .floating-progress {
       position: fixed;
-      right: 16px;
-      bottom: 16px;
+      right: 1rem;
+      bottom: 1rem;
       z-index: 1000;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
+      gap: 0.5rem;
+      padding: 0.6rem 0.8rem;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: color-mix(in srgb, var(--panel) 94%, transparent);
@@ -83,112 +71,117 @@
       font-size: 0.8rem;
       backdrop-filter: blur(8px);
     }
-    .floating-progress:hover { border-color: var(--accent); }
-    .floating-progress__dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
-    }
-    .floating-progress__value { font-weight: 700; color: var(--accent-h); }
+    .floating-progress__dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--muted); }
+    [data-runtime-state="live"] .floating-progress__dot,
+    [data-runtime-state="verified"] .floating-progress__dot { background: hsl(145 64% 42%); }
+    [data-runtime-state="stale"] .floating-progress__dot { background: hsl(38 88% 48%); }
+    [data-runtime-state="degraded"] .floating-progress__dot { background: hsl(0 68% 50%); }
+    .floating-progress__value { font-weight: 750; color: var(--accent-h); }
     @media (max-width: 700px) {
-      .floating-progress { left: 16px; justify-content: center; }
+      .floating-progress { left: 1rem; justify-content: center; }
+      .dash-facts div { grid-template-columns: 1fr; gap: 0.15rem; }
     }
   </style>
 </head>
-<body data-page="home" data-root="..">
-  <main class="dash-shell">
-    <section class="dash-hero">
-      <div class="eyebrow">Live worker dashboard</div>
-      <h1 style="margin:0.4rem 0 0.7rem">Background AI loop</h1>
-      <p class="lede" style="margin:0 0 1rem">This page follows the same progress feed used by the homepage and the demo apps. It shows the latest loop heartbeat, task state, and the most recent output tail from the worker.</p>
+<body data-page="live-progress" data-root=".." data-runtime-state="unknown">
+  <main class="dash-shell" id="main">
+    <section class="dash-hero" aria-labelledby="statusTitle">
+      <div class="eyebrow">Freshness-checked runtime receipts</div>
+      <h1 id="statusTitle" style="margin:0.4rem 0 0.7rem">Automation status</h1>
+      <p class="lede" style="margin:0 0 1rem">
+        This page shows a live same-origin worker heartbeat when one is reachable. On the static site it uses the latest public scheduled GitHub Actions receipt instead. A repository build or data count is never presented as proof that an AI worker is running.
+      </p>
       <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
-        <a class="button primary" href="../">Back to home</a>
-        <a class="button secondary" href="../PROJECT_STATUS.md">Read project status</a>
+        <a class="button primary" href="../index.html">Back to home</a>
+        <a class="button secondary" href="https://github.com/Hostilian/VenturaAtlas/actions/workflows/research-cycle.yml" target="_blank" rel="noopener noreferrer">Open workflow history</a>
+        <a class="button secondary" href="./AUTONOMOUS_RUNTIME.md">Read the runtime contract</a>
       </div>
     </section>
 
-    <section class="dash-grid">
+    <section class="dash-grid" aria-live="polite">
       <div class="dash-card">
-        <div style="display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:0.85rem">
-          <strong>Current loop</strong>
-          <span id="dashStatus" class="dash-label">starting</span>
+        <div style="display:flex;justify-content:space-between;gap:1rem;align-items:center">
+          <strong>Current evidence</strong>
+          <span id="dashStatus" class="dash-label">checking</span>
         </div>
         <div class="dash-progress" aria-hidden="true"><div id="dashProgress"></div></div>
-        <div style="display:grid;gap:0.5rem;margin-top:0.9rem;font-size:0.9rem">
-          <div>Run: <strong id="dashRunId">idle</strong></div>
-          <div>Updated: <strong id="dashUpdatedAt">--</strong></div>
-          <div>Task: <strong id="dashTask">idle</strong></div>
-        </div>
+        <dl class="dash-facts">
+          <div><dt>Source</dt><dd><strong id="dashSource">Checking available receipts…</strong></dd></div>
+          <div><dt>Run</dt><dd><strong id="dashRunId">—</strong></dd></div>
+          <div><dt>Updated</dt><dd><strong id="dashUpdatedAt">—</strong></dd></div>
+          <div><dt>Task</dt><dd><strong id="dashTask">—</strong></dd></div>
+        </dl>
+        <p style="margin:1rem 0 0"><a id="dashSourceLink" href="https://github.com/Hostilian/VenturaAtlas/actions/workflows/research-cycle.yml" target="_blank" rel="noopener noreferrer">Inspect the underlying receipt</a></p>
       </div>
+
       <div class="dash-card">
-        <strong style="display:block;margin-bottom:0.75rem">Latest message</strong>
-        <div id="dashMessage" class="dash-mono">Waiting for first heartbeat...</div>
+        <strong style="display:block;margin-bottom:0.75rem">Status message</strong>
+        <div id="dashMessage" class="dash-mono">Checking for a fresh worker heartbeat or cloud workflow receipt…</div>
       </div>
-      <div class="dash-card" style="grid-column:1 / -1">
-        <strong style="display:block;margin-bottom:0.75rem">Output tail</strong>
-        <div id="dashTail" class="dash-mono">No output yet.</div>
+
+      <div class="dash-card wide">
+        <strong style="display:block;margin-bottom:0.75rem">Public output tail</strong>
+        <div id="dashTail" class="dash-mono">No public output tail has been verified.</div>
+      </div>
+
+      <div class="dash-card wide">
+        <h2 style="font-size:1.05rem;margin:0 0 0.75rem">What each state means</h2>
+        <ul class="dash-contract">
+          <li><strong>Live now / fresh heartbeat:</strong> a reachable control plane supplied a recent timestamped heartbeat.</li>
+          <li><strong>Cloud running / cloud verified:</strong> GitHub reports a recent scheduled workflow in progress or successfully completed. This is recurrence evidence, not a claim that every provider returned useful research.</li>
+          <li><strong>Stale / degraded:</strong> the latest receipt is too old or the latest run failed. Human attention may be needed.</li>
+          <li><strong>Status unknown:</strong> neither source could be reached or validated. Unknown never silently becomes green.</li>
+        </ul>
       </div>
     </section>
   </main>
-  <a class="floating-progress" href="../" aria-label="Return to Venture Atlas home">
+
+  <a class="floating-progress" href="../index.html" aria-label="Return to Venture Atlas home">
     <span class="floating-progress__dot"></span>
-    <span>Live progress</span>
-    <span id="dashFloatingValue" class="floating-progress__value">…</span>
+    <span>Automation</span>
+    <span id="dashFloatingValue" class="floating-progress__value">checking</span>
   </a>
+
+  <script src="../assets/js/runtime-status.js?v=2.7.1"></script>
   <script>
-    async function pollProgress() {
+    (function initAutomationStatusPage() {
       const status = document.getElementById('dashStatus');
       const progress = document.getElementById('dashProgress');
       const runId = document.getElementById('dashRunId');
       const updatedAt = document.getElementById('dashUpdatedAt');
       const task = document.getElementById('dashTask');
+      const source = document.getElementById('dashSource');
+      const sourceLink = document.getElementById('dashSourceLink');
       const message = document.getElementById('dashMessage');
       const tail = document.getElementById('dashTail');
       const floating = document.getElementById('dashFloatingValue');
 
-      try {
-        const res = await fetch('../progress', { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const pct = Math.max(0, Math.min(100, Number(data.progress ?? 0)));
-        if (status) status.textContent = data.status || 'OPERATIONAL';
-        if (progress) progress.style.width = `${pct}%`;
-        if (runId) runId.textContent = data.runId || 'v2.7.1';
-        if (updatedAt) updatedAt.textContent = data.updatedAt ? new Date(data.updatedAt).toLocaleString() : new Date().toLocaleString();
-        if (task) task.textContent = data.task || 'autonomous-pipeline';
-        if (message) message.textContent = data.message || 'Pipeline operational.';
-        if (tail) tail.textContent = data.outputTail || 'Autonomous research engine active.';
-        if (floating) floating.textContent = `${pct}%`;
-      } catch (err) {
-        try {
-          const metaRes = await fetch('../data/repository-meta.json');
-          if (metaRes.ok) {
-            const meta = await metaRes.json();
-            if (status) status.textContent = 'OPERATIONAL';
-            if (progress) progress.style.width = '100%';
-            if (runId) runId.textContent = `rev-${(meta.dataRevision || '5b109b0a').slice(0, 8)}`;
-            if (updatedAt) updatedAt.textContent = meta.generatedAt ? new Date(meta.generatedAt).toLocaleString() : new Date().toLocaleString();
-            if (task) task.textContent = 'Quality Verification & Reconciliation';
-            if (message) message.textContent = `${meta.counts?.canonicalIdeas ?? 324} canonical ideas across ${meta.counts?.categories ?? 144} categories reconciled and verified.`;
-            if (tail) tail.textContent = 'All 15 source quality gates and unit tests passed with 0 errors.';
-            if (floating) floating.textContent = '100%';
-            return;
-          }
-        } catch (_) {}
-        if (status) status.textContent = 'OPERATIONAL';
-        if (progress) progress.style.width = '100%';
-        if (runId) runId.textContent = 'v2.7.1';
-        if (updatedAt) updatedAt.textContent = new Date().toLocaleString();
-        if (task) task.textContent = 'Verified State';
-        if (message) message.textContent = 'Repository state verified and operational.';
-        if (tail) tail.textContent = '324 canonical ideas loaded.';
-        if (floating) floating.textContent = '100%';
+      function render(snapshot) {
+        document.body.dataset.runtimeState = snapshot.state || 'unknown';
+        status.textContent = snapshot.statusLabel || 'STATUS UNKNOWN';
+        progress.style.width = `${Math.max(0, Math.min(100, Number(snapshot.progress || 0)))}%`;
+        runId.textContent = snapshot.runId || 'unavailable';
+        updatedAt.textContent = snapshot.updatedAt
+          ? new Date(snapshot.updatedAt).toLocaleString()
+          : 'No verified timestamp';
+        task.textContent = snapshot.task || 'automation status';
+        source.textContent = snapshot.sourceLabel || 'No verified status source';
+        message.textContent = snapshot.message || 'No verified status message is available.';
+        tail.textContent = snapshot.outputTail || 'This status source does not publish an output tail.';
+        floating.textContent = snapshot.badgeValue || '?';
+        sourceLink.href = snapshot.sourceUrl || 'https://github.com/Hostilian/VenturaAtlas/actions/workflows/research-cycle.yml';
+        sourceLink.textContent = snapshot.sourceUrl ? 'Inspect this run receipt' : 'Inspect workflow history';
       }
-    }
-    pollProgress();
-    setInterval(pollProgress, 15000);
+
+      const runtime = window.VentureAtlasRuntimeStatus;
+      if (runtime) runtime.subscribe(render, { root: '..' });
+      else render({
+        state: 'unknown',
+        statusLabel: 'STATUS UNKNOWN',
+        message: 'The automation status resolver did not load.',
+        badgeValue: '?'
+      });
+    }());
   </script>
 </body>
 </html>

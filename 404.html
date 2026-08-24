@@ -1,1 +1,69 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Browse 60 evidence-aware business ideas, rankings, prompt packs, financial scenarios, and build plans."><title>Not Found — Venture Atlas OS</title><link rel="stylesheet" href="./assets/css/site.css?v=2.7.1"><link rel="manifest" href="./manifest.webmanifest"></head><body data-page="home" data-root="."><main id="main"><section class="hero"><div><div class="eyebrow">Opportunity database · research library · AI venture studio OS</div><h1>Ideas you can inspect, challenge, compare, and build.</h1><p class="lede">A transparent repository of canonical ideas, preserved variants, customer problems, profitability conditions, validation plans, scores, evidence labels, and 25 prompts for every idea.</p><p><a class="button primary" href="#directory">Browse all ideas</a> <a class="button" href="./docs/methodology.html">Read methodology</a></p><div class="notice">Scores are decision-support tools. Revenue ranges are scenarios, not promises. The completeness audit openly lists inaccessible material.</div></div><div><h2>Repository coverage</h2><div class="metrics"><div class="metric"><strong data-total-ideas>—</strong>canonical ideas</div><div class="metric"><strong data-total-categories>—</strong>categories</div><div class="metric"><strong data-total-prompts>—</strong>prompts</div><div class="metric"><strong data-total-sources>—</strong>source records</div></div><h3>Top opportunities</h3><ol id="topIdeas"></ol></div></section><section id="directory"><h2>Idea directory</h2><div class="toolbar"><input id="search" type="search" placeholder="Search ideas, customers, problems, technology, prompts…" aria-label="Search ideas"><select id="category" aria-label="Filter by category"><option value="">All categories</option></select><select id="status" aria-label="Filter by status"><option value="">All statuses</option></select><select id="sort" aria-label="Sort ideas"><option value="overall">Overall score</option><option value="profit">Profit potential</option><option value="cost">Lowest startup cost</option><option value="confidence">Confidence</option><option value="name">Name</option><option value="updated">Recently updated</option></select></div><div class="viewbar"><strong id="resultCount"></strong><button id="cardsView">Cards</button><button id="tableView">Table</button><button id="compactView">Compact</button><button id="reset">Reset filters</button><button id="random">Random idea</button><button id="compareSelected" class="primary">Compare selected</button><a class="button" download href="./data/ideas.csv">CSV</a><a class="button" download href="./data/ideas.json">JSON</a></div><div id="cards" class="cards"></div><div id="ideaTable" class="table-wrap hidden"><table><thead><tr><th>Idea</th><th>Category</th><th>Customer</th><th>Overall</th><th>Profit</th><th>MVP</th><th>Startup</th><th>Confidence</th></tr></thead><tbody id="tbody"></tbody></table></div></section></main><noscript><main><div class="notice">JavaScript is disabled. Browse the Markdown idea library at <a href="./ideas/README.md">ideas/README.md</a> or download <a href="./data/ideas.csv">ideas.csv</a>.</div></main></noscript><script src="./assets/js/site.js?v=2.7.1"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="The requested Venture Atlas page could not be found.">
+  <title>Page Not Found — Venture Atlas OS</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      background: Canvas;
+      color: CanvasText;
+    }
+    main {
+      width: min(680px, 100%);
+      padding: clamp(1.5rem, 5vw, 3rem);
+      border: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+      border-radius: 1rem;
+      box-shadow: 0 1rem 3rem color-mix(in srgb, CanvasText 12%, transparent);
+    }
+    .code { color: #21825f; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+    h1 { margin: 0.4rem 0 0.75rem; font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.05; }
+    p { line-height: 1.65; color: color-mix(in srgb, CanvasText 72%, transparent); }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid color-mix(in srgb, CanvasText 22%, transparent);
+      border-radius: 0.65rem;
+      color: inherit;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    a.primary { background: #17664a; border-color: #17664a; color: white; }
+    a:hover, a:focus-visible { outline: 3px solid color-mix(in srgb, #21825f 45%, transparent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="code">404 · Page not found</div>
+    <h1>This path is not in the Atlas.</h1>
+    <p>The link may be old, incomplete, or mistyped. Your browser is online; this is a missing-page response, not an offline warning.</p>
+    <div class="actions">
+      <a class="primary" data-app-path="index.html" href="./index.html">Return home</a>
+      <a data-app-path="index.html#directory" href="./index.html#directory">Browse ideas</a>
+      <a data-app-path="docs/getting-started.html" href="./docs/getting-started.html">Getting started</a>
+      <a data-app-path="docs/live-progress.html" href="./docs/live-progress.html">Automation status</a>
+    </div>
+  </main>
+  <script>
+    (function repairLocalLinks() {
+      const githubProjectRoot = '/VenturaAtlas/';
+      const appRoot = location.hostname.endsWith('.github.io') ? githubProjectRoot : '/';
+      document.querySelectorAll('[data-app-path]').forEach(link => {
+        link.href = `${appRoot}${link.dataset.appPath}`;
+      });
+    }());
+  </script>
+</body>
+</html>

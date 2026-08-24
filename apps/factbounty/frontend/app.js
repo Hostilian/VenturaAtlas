@@ -4,7 +4,6 @@
 
 let activeBountyId = null;
 let activeChallengeCode = null;
-let factProgressTimer = null;
 
 function showTab(tabName) {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -223,48 +222,28 @@ function renderFactProgress(snapshot) {
   const floating = document.getElementById('factFloatingProgressValue');
   if (!snapshot) return;
   const pct = Math.max(0, Math.min(100, Number(snapshot.progress ?? 0)));
-  if (pill) pill.textContent = snapshot.status || 'unknown';
+  if (pill) pill.textContent = snapshot.statusLabel || 'STATUS UNKNOWN';
   if (bar) bar.style.width = `${pct}%`;
-  if (label) label.textContent = snapshot.message || 'Background loop is running.';
-  if (runId) runId.textContent = snapshot.runId || 'idle';
-  if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleTimeString() : '--';
-  if (floating) floating.textContent = `${pct}%`;
-}
-
-async function pollFactProgress() {
-  try {
-    const res = await fetch('/progress', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    renderFactProgress(await res.json());
-  } catch (err) {
-    try {
-      const metaRes = await fetch('../../../data/repository-meta.json');
-      if (metaRes.ok) {
-        const meta = await metaRes.json();
-        renderFactProgress({
-          status: 'OPERATIONAL',
-          progress: 100,
-          message: 'FactBounty schema verified against canonical repository.',
-          runId: `rev-${(meta.dataRevision || '5b109b0a').slice(0, 8)}`,
-          updatedAt: meta.generatedAt || new Date().toISOString()
-        });
-        return;
-      }
-    } catch (_) {}
-    renderFactProgress({
-      status: 'OPERATIONAL',
-      progress: 100,
-      message: 'FactBounty schema verified.',
-      runId: 'v2.7.1',
-      updatedAt: new Date().toISOString()
-    });
-  }
+  if (label) label.textContent = snapshot.message || 'No verified automation status is available.';
+  if (runId) runId.textContent = snapshot.runId || 'unavailable';
+  if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleString() : 'No verified timestamp';
+  if (floating) floating.textContent = snapshot.badgeValue || '?';
 }
 
 // Initial load
 loadBuyerBounties();
 loadResponderRequests();
 loadModeratorQueue();
-pollFactProgress();
-if (factProgressTimer) clearInterval(factProgressTimer);
-factProgressTimer = setInterval(pollFactProgress, 15000);
+if (window.VentureAtlasRuntimeStatus) {
+  window.VentureAtlasRuntimeStatus.subscribe(renderFactProgress, { root: '../../..' });
+} else {
+  renderFactProgress({
+    state: 'unknown',
+    statusLabel: 'STATUS UNKNOWN',
+    progress: 0,
+    message: 'The automation status resolver did not load.',
+    runId: 'unavailable',
+    updatedAt: null,
+    badgeValue: '?'
+  });
+}

@@ -147,7 +147,7 @@
     matches.forEach((item, idx) => {
       const title = item.name;
       const sub = `${item.category || 'Idea'} · Score: ${item.score || '—'}`;
-      const url = `${rootPath}/ideas/${item.slug || item.id}.html`;
+      const url = `${rootPath}/docs/idea.html?id=${encodeURIComponent(item.id)}`;
       resultsEl.appendChild(createItemEl(title, sub, url, idx === 0));
     });
   }

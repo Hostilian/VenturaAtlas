@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
   <link rel="manifest" href="../manifest.webmanifest">
+  <style>
+    #compareApp, #compareApp * { min-width: 0; }
+    @media (max-width: 600px) {
+      #main { padding: 1rem !important; }
+      #compareApp .button { max-width: 100%; white-space: normal; text-align: center; }
+    }
+  </style>
 </head>
 <body data-page="room-compare" data-root="..">
   <a href="#main" class="skip">Skip to content</a>

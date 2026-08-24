@@ -74,8 +74,8 @@
 
     <div class="live-status" aria-live="polite">
       <div class="live-status__row">
-        <strong>Background AI loop</strong>
-        <span id="factProgressPill" class="live-status__pill">starting</span>
+        <strong>Atlas cloud automation</strong>
+        <span id="factProgressPill" class="live-status__pill">checking</span>
       </div>
       <div class="live-status__row">
         <div style="flex:1; height:6px; background: var(--border); border-radius: 999px; overflow: hidden;">
@@ -83,18 +83,18 @@
         </div>
       </div>
       <div class="live-status__row">
-        <span id="factProgressLabel">Waiting for worker heartbeat...</span>
+        <span id="factProgressLabel">Checking for a fresh runtime receipt…</span>
       </div>
       <div class="live-status__row">
-        <span>Run: <strong id="factRunId">idle</strong></span>
-        <span>Updated: <strong id="factUpdatedAt">--</strong></span>
+        <span>Run: <strong id="factRunId">—</strong></span>
+        <span>Updated: <strong id="factUpdatedAt">—</strong></span>
       </div>
     </div>
 
-    <a id="factFloatingProgress" class="floating-progress" href="../../../docs/live-progress.html" aria-label="Open live progress dashboard">
+    <a id="factFloatingProgress" class="floating-progress" href="../../../docs/live-progress.html" aria-label="Open automation status dashboard">
       <span class="floating-progress__dot"></span>
-      <span>Live progress</span>
-      <span id="factFloatingProgressValue" class="floating-progress__value">…</span>
+      <span>Automation</span>
+      <span id="factFloatingProgressValue" class="floating-progress__value">checking</span>
     </a>
 
     <!-- BUYER PANEL -->
@@ -157,6 +157,7 @@
     </div>
   </div>
 
+  <script src="../../../assets/js/runtime-status.js?v=2.7.1"></script>
   <script src="app.js"></script>
 </body>
 </html>

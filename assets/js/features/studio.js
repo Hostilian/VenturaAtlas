@@ -24,6 +24,7 @@ function initDecisionStudio() {
   const urlParams = new URLSearchParams(window.location.search);
   const requestedRoomId = urlParams.get('r') || urlParams.get('room');
   let activeTab = urlParams.get('tab') || 'kanban';
+  let requestedLocalRoomUnavailable = false;
 
   // Check if room ID is provided in URL
   if (requestedRoomId && store.getWorkspace()?.id !== requestedRoomId) {
@@ -34,6 +35,8 @@ function initDecisionStudio() {
     } else if (firebaseAdapter && firebaseAdapter.isConfigured()) {
       // Connect to remote room
       firebaseAdapter.connectRoom(requestedRoomId, store);
+    } else {
+      requestedLocalRoomUnavailable = true;
     }
   } else if (requestedRoomId && firebaseAdapter && firebaseAdapter.isConfigured()) {
     firebaseAdapter.connectRoom(requestedRoomId, store);
@@ -47,6 +50,8 @@ function initDecisionStudio() {
     const ws = store.getWorkspace();
     const user = store.getUser();
     const syncInfo = firebaseAdapter ? firebaseAdapter.getStatus() : { message: 'Local-First Studio', status: 'LOCAL_ONLY' };
+    const hasSharedBackend = Boolean(syncInfo.isConfigured && firebaseAdapter?.activeRoomId);
+    const isLiveRoom = syncInfo.status === 'SYNCED' && syncInfo.isLiveRoom;
     const shortlist = store.getShortlist();
     const variants = store.getVariants();
     const decision = store.getDecision();
@@ -97,8 +102,8 @@ function initDecisionStudio() {
             <div class="eyebrow" style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
               <span>Decision Studio v3.0</span>
               <span>·</span>
-              <span class="sync-badge ${syncInfo.status === 'SYNCED' ? 'live' : 'local'}">
-                ${syncInfo.status === 'SYNCED' ? '🟢 Live Cloud Room' : '🟢 Local-First Store'}
+              <span class="sync-badge ${isLiveRoom ? 'live' : 'local'}">
+                ${isLiveRoom ? '🟢 Live Cloud Room' : hasSharedBackend ? `🟠 Cloud Room · ${esc(syncInfo.status)}` : '🔒 Private Browser Store'}
               </span>
               <span>·</span>
               <code>${esc(ws.id)}</code>
@@ -106,20 +111,32 @@ function initDecisionStudio() {
             <h1 style="font-size:clamp(1.4rem,3.5vw,2rem);margin:0.2rem 0" id="wsTitle">${esc(ws.name)}</h1>
             <p style="color:var(--text2);font-size:0.88rem;margin:0">
               Active User: <strong><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${esc(user.color)};margin-right:4px"></span>${esc(user.displayName)}</strong> · 
-              Members: <strong>${ws.members.length}</strong> · 
+              ${hasSharedBackend ? 'Members' : 'Local profiles'}: <strong>${ws.members.length}</strong> · 
               Shortlist: <strong>${shortlist.length} ideas</strong>
               ${decision ? ` · <span class="chip success sm">Winner Declared: ${esc(decision.selectedTitle)}</span>` : ''}
             </p>
           </div>
 
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <button class="button secondary sm" id="btnShareInvite">🔗 Invite Friends / Share Link</button>
-            <button class="button secondary sm" id="btnExportPacket">📥 Export Packet (.json)</button>
+            ${hasSharedBackend ? '<button class="button secondary sm" id="btnShareInvite">🔗 Copy Cloud Room Link</button>' : ''}
+            <button class="button secondary sm" id="btnExportPacket">📥 ${hasSharedBackend ? 'Export Backup' : 'Share by Exporting Packet'} (.json)</button>
             <button class="button secondary sm" id="btnImportPacket">📤 Import Packet</button>
             <button class="button ghost sm" id="btnEditUser">👤 Profile</button>
             <button class="button primary sm" id="btnNewWorkspace">+ New Room</button>
           </div>
         </div>
+
+        ${!hasSharedBackend ? `
+          <div class="notice" role="note" style="margin-top:1rem">
+            <strong>Private to this browser:</strong> a room URL cannot transfer this workspace to a friend. Export a packet and send the file; friends can import it here or combine packets in <a href="${base}/docs/room-compare.html">Compare Packets</a>.
+          </div>
+        ` : ''}
+
+        ${requestedLocalRoomUnavailable ? `
+          <div class="notice" role="alert" style="margin-top:1rem;border-color:var(--warn)">
+            <strong>This shared-room link is not available in this browser.</strong> Cloud sync is not configured and room <code>${esc(requestedRoomId)}</code> is not stored locally. Ask the sender for an exported decision packet, then use <strong>Import Packet</strong>.
+          </div>
+        ` : ''}
 
         ${decision ? `
           <div class="winner-banner" style="margin-top:1.25rem;padding:1rem 1.25rem;background:hsl(145, 80%, 96%);border:1px solid hsl(145, 60%, 75%);border-radius:var(--radius-sm);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
@@ -806,8 +823,8 @@ function initDecisionStudio() {
         const url = new URL(window.location.href);
         url.searchParams.set('r', ws.id);
         navigator.clipboard.writeText(url.toString()).then(() => {
-          btnShare.textContent = '✓ Copied Invite Link!';
-          setTimeout(() => { btnShare.textContent = '🔗 Invite Friends / Share Link'; }, 2500);
+          btnShare.textContent = '✓ Cloud Room Link Copied';
+          setTimeout(() => { btnShare.textContent = '🔗 Copy Cloud Room Link'; }, 2500);
         }).catch(() => {
           prompt('Copy this room URL to share with co-founders:', url.toString());
         });
@@ -1129,6 +1146,10 @@ function initDecisionStudio() {
       render();
     }
   });
+
+  if (firebaseAdapter) {
+    firebaseAdapter.onStatusChange(() => render());
+  }
 
   render();
 }

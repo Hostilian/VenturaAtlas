@@ -67,7 +67,7 @@ function initRoomCompare() {
           <p style="color:var(--text2);max-width:520px;margin:0 auto 1.5rem">
             Once everyone has completed their evaluation in a Decision Room, export the packets and drop them here to synthesize consensus, surface disagreement, and choose a provisional winner.
           </p>
-          <div style="display:flex;justify-content:center;gap:0.75rem">
+          <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap">
             <button class="button primary sm" id="btnLoadDemoEmpty">✨ Load 3-Founder Demo Packets</button>
             <a href="${base}/docs/room.html" class="button secondary sm">Open Decision Room →</a>
           </div>

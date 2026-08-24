@@ -7,7 +7,6 @@
 
   // Quick-filter chips
   let activeChips = {};
-  let workerPollTimer = null;
 
   function applyChipFilters() {
     const search = document.getElementById('search');
@@ -232,6 +231,7 @@
   }
 
   function renderWorkerProgress(snapshot) {
+    const panel = document.querySelector('.worker-progress');
     const statusPill = document.getElementById('workerStatusPill');
     const progressBar = document.getElementById('workerProgressBar');
     const progressLabel = document.getElementById('workerProgressLabel');
@@ -240,47 +240,35 @@
     if (!snapshot) return;
 
     const progress = Number(snapshot.progress ?? 0);
-    if (statusPill) statusPill.textContent = snapshot.status || 'unknown';
+    if (panel) panel.dataset.runtimeState = snapshot.state || 'unknown';
+    if (statusPill) statusPill.textContent = snapshot.statusLabel || 'STATUS UNKNOWN';
     if (progressBar) progressBar.style.width = `${Math.max(0, Math.min(100, progress))}%`;
-    if (progressLabel) progressLabel.textContent = snapshot.message || 'Background AI loop is running.';
-    if (runId) runId.textContent = snapshot.runId || 'idle';
-    if (updatedAt) updatedAt.textContent = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleTimeString() : '--';
-  }
-
-  async function pollWorkerProgress() {
-    try {
-      const res = await fetch('./progress', { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      renderWorkerProgress(await res.json());
-    } catch (err) {
-      try {
-        const metaRes = await fetch('./data/repository-meta.json');
-        if (metaRes.ok) {
-          const meta = await metaRes.json();
-          renderWorkerProgress({
-            status: 'OPERATIONAL',
-            progress: 100,
-            message: `${meta.counts?.canonicalIdeas ?? 324} canonical ideas across ${meta.counts?.categories ?? 144} categories verified.`,
-            runId: `rev-${(meta.dataRevision || '5b109b0a').slice(0, 8)}`,
-            updatedAt: meta.generatedAt || new Date().toISOString()
-          });
-          return;
-        }
-      } catch (_) {}
-      renderWorkerProgress({
-        status: 'OPERATIONAL',
-        progress: 100,
-        message: '324 canonical ideas across 144 categories verified.',
-        runId: 'v2.7.1',
-        updatedAt: new Date().toISOString()
-      });
+    if (progressLabel) progressLabel.textContent = snapshot.message || 'No verified automation status is available.';
+    if (runId) {
+      runId.textContent = snapshot.runId || 'unavailable';
+      runId.title = snapshot.sourceLabel || 'No verified status source';
+    }
+    if (updatedAt) {
+      updatedAt.textContent = snapshot.updatedAt
+        ? new Date(snapshot.updatedAt).toLocaleString()
+        : 'No verified timestamp';
     }
   }
 
   function initWorkerProgress() {
-    pollWorkerProgress();
-    if (workerPollTimer) clearInterval(workerPollTimer);
-    workerPollTimer = setInterval(pollWorkerProgress, 15000);
+    const runtimeStatus = window.VentureAtlasRuntimeStatus;
+    if (!runtimeStatus) {
+      renderWorkerProgress({
+        state: 'unknown',
+        statusLabel: 'STATUS UNKNOWN',
+        progress: 0,
+        message: 'The automation status resolver did not load.',
+        runId: 'unavailable',
+        updatedAt: null
+      });
+      return;
+    }
+    runtimeStatus.subscribe(renderWorkerProgress, { root: '.' });
   }
 
   document.addEventListener('DOMContentLoaded', () => {

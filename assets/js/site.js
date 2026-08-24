@@ -1052,7 +1052,6 @@ function initIdea() {
     <button class="button secondary sm" id="addCompareBtn">⚖️ Compare</button>
     <button class="button secondary sm" id="addRoomBtn">👥 Decision Studio</button>
     <button class="button secondary sm" id="copyLink">🔗 Share</button>
-    <a class="button ghost sm" href="${VA.base}/ideas/${esc(x.slug || x.id)}.md" download>↓ Dossier (.md)</a>
     <a class="button ghost sm" href="${VA.base}/docs/calculator.html">🧮 Calculator</a>
   </div>
 </section>
@@ -1493,6 +1492,24 @@ function fillMetrics() {
   }
 }
 
+let runtimeStatusScriptPromise = null;
+function loadRuntimeStatus(root) {
+  if (window.VentureAtlasRuntimeStatus) return Promise.resolve(window.VentureAtlasRuntimeStatus);
+  if (runtimeStatusScriptPromise) return runtimeStatusScriptPromise;
+  runtimeStatusScriptPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `${root}/assets/js/runtime-status.js?v=2.7.1`;
+    script.async = true;
+    script.addEventListener('load', () => {
+      if (window.VentureAtlasRuntimeStatus) resolve(window.VentureAtlasRuntimeStatus);
+      else reject(new Error('runtime status resolver did not initialize'));
+    }, { once: true });
+    script.addEventListener('error', () => reject(new Error('runtime status resolver failed to load')), { once: true });
+    document.head.appendChild(script);
+  });
+  return runtimeStatusScriptPromise;
+}
+
 function renderSiteShell() {
   const root = document.body.dataset.root || '.';
   VA.base = root;
@@ -1517,7 +1534,7 @@ function renderSiteShell() {
       ${navLink('compare', 'docs/compare.html', 'Compare')}
       ${navLink('research', 'docs/research-catalog.html', 'Fresh ideas')}
       ${navLink('sources', 'docs/sources.html', 'Sources')}
-      ${navLink('live-progress', 'docs/live-progress.html', 'Live progress')}
+      ${navLink('live-progress', 'docs/live-progress.html', 'Automation status')}
       <details class="nav-more">
         <summary>More</summary>
         <div class="nav-menu">
@@ -1568,7 +1585,7 @@ function renderSiteShell() {
         ${navLink('getting-started', 'docs/getting-started.html', 'Getting started')}
         ${navLink('sources', 'docs/sources.html', 'Sources')}
         ${navLink('categories', 'docs/categories.html', 'Markets &amp; idea types')}
-        ${navLink('live-progress', 'docs/live-progress.html', 'Live progress')}
+        ${navLink('live-progress', 'docs/live-progress.html', 'Automation status')}
         ${navLink('methodology', 'docs/methodology.html', 'Methodology')}
         ${navLink('completeness', 'docs/completeness.html', 'Completeness audit')}
         ${navLink('about', 'docs/about.html', 'About')}
@@ -1585,8 +1602,9 @@ function renderSiteShell() {
     badge.id = 'globalLiveProgressBadge';
     badge.href = `${root}/docs/live-progress.html`;
     badge.className = 'worker-live-badge';
-    badge.setAttribute('aria-label', 'Open live progress dashboard');
-    badge.innerHTML = '<span class="worker-live-badge__dot"></span><span class="worker-live-badge__text">Live progress</span><span class="worker-live-badge__value">…</span>';
+    badge.setAttribute('aria-label', 'Open automation status dashboard');
+    badge.dataset.runtimeState = 'unknown';
+    badge.innerHTML = '<span class="worker-live-badge__dot"></span><span class="worker-live-badge__text">Automation</span><span class="worker-live-badge__value">checking</span>';
     document.body.appendChild(badge);
   }
   if (!document.getElementById('workerLiveBadgeStyle')) {
@@ -1616,12 +1634,25 @@ function renderSiteShell() {
         width: 0.55rem;
         height: 0.55rem;
         border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+        background: var(--muted);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--muted) 18%, transparent);
       }
       .worker-live-badge__value {
         font-weight: 700;
         color: var(--accent-h);
+      }
+      .worker-live-badge[data-runtime-state="live"] .worker-live-badge__dot,
+      .worker-live-badge[data-runtime-state="verified"] .worker-live-badge__dot {
+        background: hsl(145 64% 42%);
+        box-shadow: 0 0 0 4px hsl(145 64% 42% / 0.18);
+      }
+      .worker-live-badge[data-runtime-state="stale"] .worker-live-badge__dot {
+        background: hsl(38 88% 48%);
+        box-shadow: 0 0 0 4px hsl(38 88% 48% / 0.18);
+      }
+      .worker-live-badge[data-runtime-state="degraded"] .worker-live-badge__dot {
+        background: hsl(0 68% 50%);
+        box-shadow: 0 0 0 4px hsl(0 68% 50% / 0.18);
       }
       @media (max-width: 700px) {
         .worker-live-badge {
@@ -1634,23 +1665,22 @@ function renderSiteShell() {
     document.head.appendChild(style);
   }
 
-  async function refreshLiveBadge() {
+  function renderLiveBadge(snapshot) {
     const badge = document.getElementById('globalLiveProgressBadge');
     const value = badge?.querySelector('.worker-live-badge__value');
     if (!badge) return;
-    try {
-      const res = await fetch(`${root}/progress`, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (value) value.textContent = `${Math.max(0, Math.min(100, Number(data.progress ?? 0)))}%`;
-      badge.title = `${data.status || 'unknown'} · ${data.message || 'No message'}`;
-    } catch (err) {
-      if (value) value.textContent = 'off';
-      badge.title = `Progress unavailable: ${err.message}`;
-    }
+    badge.dataset.runtimeState = snapshot.state || 'unknown';
+    if (value) value.textContent = snapshot.badgeValue || '?';
+    badge.title = `${snapshot.statusLabel || 'STATUS UNKNOWN'} · ${snapshot.message || 'No verified status message'}`;
   }
-  refreshLiveBadge();
-  setInterval(refreshLiveBadge, 15000);
+  loadRuntimeStatus(root)
+    .then(runtime => runtime.subscribe(renderLiveBadge, { root }))
+    .catch(error => renderLiveBadge({
+      state: 'unknown',
+      badgeValue: '?',
+      statusLabel: 'STATUS UNKNOWN',
+      message: error.message
+    }));
 
   const footer = `
 <footer class="footer" role="contentinfo">

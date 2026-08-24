@@ -15,11 +15,13 @@ const PAGE_CACHE = `ventura-pages-v${CACHE_VERSION}`;
 const REQUIRED_SHELL = [
   './index.html',
   './offline.html',
+  './docs/live-progress.html',
   './docs/room.html',
   './docs/room-compare.html',
   './assets/css/site.css',
   './assets/css/home.css',
   './assets/js/site.js',
+  './assets/js/runtime-status.js',
   './assets/js/config.js',
   './assets/js/core/studio-store.js',
   './assets/js/core/firebase-adapter.js',
@@ -88,8 +90,10 @@ self.addEventListener('fetch', event => {
           if (networkResponse.ok) {
             const cache = await caches.open(PAGE_CACHE);
             cache.put(request, networkResponse.clone());
-            return networkResponse;
           }
+          // An online 404/500 is still a real server response. Returning it keeps
+          // missing routes distinct from genuine network loss.
+          return networkResponse;
         } catch (_) {
           // Network failed
         }
