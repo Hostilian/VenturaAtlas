@@ -25,6 +25,15 @@ test('public idea routes never target excluded Markdown dossier paths', () => {
   assert.doesNotMatch(site, /ideas\/.*\.md/);
 });
 
+test('idea recovery states use a page heading and distinguish incomplete links', () => {
+  const site = read('assets/js/site.js');
+
+  assert.match(site, /const emptyTitle = idParam \? 'Idea not found' : 'Idea link incomplete'/);
+  assert.match(site, /<h1 id="idea-empty-title">\$\{emptyTitle\}<\/h1>/);
+  assert.match(site, /This link does not include an idea ID/);
+  assert.match(site, /That idea ID is not in the published catalog/);
+});
+
 test('first-run decision workspace does not invent a person or preselect ideas', () => {
   const store = read('assets/js/core/studio-store.js');
   const studio = read('assets/js/features/studio.js');

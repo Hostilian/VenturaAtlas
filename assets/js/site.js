@@ -911,7 +911,16 @@ function initIdea() {
   if (!container) return;
 
   if (!x) {
-    container.innerHTML = `<div class="empty"><strong>Idea not found.</strong> <a href="${VA.base}/index.html">Browse all ideas</a></div>`;
+    const emptyTitle = idParam ? 'Idea not found' : 'Idea link incomplete';
+    const emptyMessage = idParam
+      ? 'That idea ID is not in the published catalog.'
+      : 'This link does not include an idea ID.';
+    document.title = `${emptyTitle} — Venture Atlas OS`;
+    container.innerHTML = `<section class="empty" aria-labelledby="idea-empty-title">
+      <h1 id="idea-empty-title">${emptyTitle}</h1>
+      <p>${emptyMessage}</p>
+      <a class="btn primary" href="${VA.base}/index.html#directory">Browse all ideas</a>
+    </section>`;
     return;
   }
 
