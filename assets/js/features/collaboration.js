@@ -160,7 +160,7 @@ function initCollaborationRoom() {
               <div style="font-size:2.5rem;margin-bottom:0.75rem">💡</div>
               <h3 style="font-size:1.2rem;margin-bottom:0.4rem">Your Shortlist is Empty</h3>
               <p style="color:var(--text2);max-width:480px;margin:0 auto 1.25rem">
-                Explore ${ideasData.length} published business hypotheses or add a starter set to begin scoring.
+                Explore the published business hypotheses or add a starter set to begin scoring.
               </p>
               <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap">
                 <button class="button primary sm" id="btnAddCuratedStarter">+ Add 3 Starter Ideas</button>

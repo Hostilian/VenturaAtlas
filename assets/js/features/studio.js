@@ -223,7 +223,7 @@ function initDecisionStudio() {
           <h2 style="font-size:1.25rem;margin:0">Pipeline Stages</h2>
           <p style="font-size:0.85rem;color:var(--text2);margin:0">Advance ideas as you investigate, score, and test them with your team.</p>
         </div>
-        <div style="display:flex;gap:0.5rem">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
           <a href="${base}/index.html" class="button secondary sm">+ Browse &amp; Add More Ideas</a>
           <a href="${base}/docs/compare.html?ids=${encodeURIComponent(items.map(i => i.ideaId).slice(0, 4).join(','))}" class="button secondary sm">⚖️ Compare Candidates</a>
         </div>
@@ -233,7 +233,7 @@ function initDecisionStudio() {
         <div class="panel empty" style="text-align:center;padding:3rem 1.5rem">
           <div style="font-size:2.5rem;margin-bottom:0.75rem">💡</div>
           <h3 style="font-size:1.2rem;margin-bottom:0.4rem">Your Shortlist is Empty</h3>
-          <p style="color:var(--text2);max-width:480px;margin:0 auto 1.25rem">Explore ${ideas.length} published business hypotheses or create custom variants to evaluate.</p>
+          <p style="color:var(--text2);max-width:480px;margin:0 auto 1.25rem">Explore the published business hypotheses or create custom variants to evaluate.</p>
           <a href="${base}/index.html" class="button primary">Browse Ideas Catalog</a>
         </div>
       ` : `

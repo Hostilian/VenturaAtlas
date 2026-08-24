@@ -3,13 +3,12 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { buildReceipt: buildArtifactManifest } = require('./hash-public-artifact');
 const { deriveLifecycleForPublic } = require('./lib/lifecycle-receipts');
+const { withPublicArtifactLock } = require('./lib/public-artifact-lock');
 
 const ROOT = path.resolve(__dirname, '..');
 const ROOT_REAL = fs.realpathSync(ROOT);
 const DIST = path.join(ROOT, '_site');
-const ARTIFACT_LOCK = path.join(ROOT, '.agent-state', 'locks', 'public-artifact.lock');
 const ARTIFACT_BUILD_RECEIPT = path.join(ROOT, '.agent-state', 'quality-receipts', 'public-artifact-build-latest.json');
-const lockSleepArray = new Int32Array(new SharedArrayBuffer(4));
 
 const ALLOW_FILES = [
   'index.html',
@@ -404,24 +403,7 @@ function buildUnlocked() {
 }
 
 function build() {
-  fs.mkdirSync(path.dirname(ARTIFACT_LOCK), { recursive: true });
-  const deadline = Date.now() + 30_000;
-  while (true) {
-    try {
-      fs.mkdirSync(ARTIFACT_LOCK);
-      break;
-    } catch (error) {
-      if (error.code !== 'EEXIST' || Date.now() >= deadline) {
-        throw new Error(`Could not acquire public-artifact writer lock: ${error.message}`);
-      }
-      Atomics.wait(lockSleepArray, 0, 0, 100);
-    }
-  }
-  try {
-    return buildUnlocked();
-  } finally {
-    fs.rmSync(ARTIFACT_LOCK, { recursive: true, force: true, maxRetries: 3, retryDelay: 50 });
-  }
+  return withPublicArtifactLock(buildUnlocked);
 }
 
 if (require.main === module) {

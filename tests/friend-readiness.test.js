@@ -27,10 +27,14 @@ test('public idea routes never target excluded Markdown dossier paths', () => {
 
 test('first-run decision workspace does not invent a person or preselect ideas', () => {
   const store = read('assets/js/core/studio-store.js');
+  const studio = read('assets/js/features/studio.js');
+  const collaboration = read('assets/js/features/collaboration.js');
   assert.match(store, /displayName: 'Local user'/);
   assert.doesNotMatch(store, /Founder ' \+ Math\.floor/);
   assert.match(store, /const defaultShortlist = initialIdeas\.map/);
   assert.doesNotMatch(store, /\['idea-061', 'idea-273'\]/);
+  assert.doesNotMatch(studio, /vetted opportunities|library of \d+ business ideas/i);
+  assert.doesNotMatch(collaboration, /vetted opportunities|library of \d+ business ideas/i);
 });
 
 test('comparison reports unknown query IDs instead of silently dropping them', () => {

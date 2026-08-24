@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { withPublicArtifactLock } = require('./lib/public-artifact-lock');
 
 const ROOT = path.resolve(__dirname, '..');
 const GENERATED_DIRECTORIES = ['_site', 'dist', 'coverage', 'playwright-report', 'test-results'];
@@ -24,8 +25,10 @@ function cleanDirectory(relativePath, options = {}) {
 }
 
 function main() {
-  for (const directory of GENERATED_DIRECTORIES) cleanDirectory(directory);
-  console.log(`[CLEAN] removed generated directories: ${GENERATED_DIRECTORIES.join(', ')}`);
+  withPublicArtifactLock(() => {
+    for (const directory of GENERATED_DIRECTORIES) cleanDirectory(directory);
+    console.log(`[CLEAN] removed generated directories: ${GENERATED_DIRECTORIES.join(', ')}`);
+  });
 }
 
 if (require.main === module) main();

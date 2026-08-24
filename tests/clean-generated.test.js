@@ -19,3 +19,11 @@ test('generated cleanup rejects paths outside the allowlist', () => {
   assert.throws(() => cleanDirectory('data'), /Refusing to clean non-generated path/);
   assert.throws(() => cleanDirectory('../_site'), /Refusing to clean non-generated path/);
 });
+
+test('public artifact build and cleanup use the same writer lock', () => {
+  const cleanSource = fs.readFileSync(path.join(__dirname, '..', 'scripts', 'clean-generated.js'), 'utf8');
+  const buildSource = fs.readFileSync(path.join(__dirname, '..', 'scripts', 'build-public-artifact.js'), 'utf8');
+  assert.match(cleanSource, /withPublicArtifactLock/);
+  assert.match(buildSource, /withPublicArtifactLock/);
+  assert.doesNotMatch(buildSource, /const ARTIFACT_LOCK/);
+});

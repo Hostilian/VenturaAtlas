@@ -11,8 +11,8 @@ We enforce zero-trust public distribution: internal state, raw provider response
 
 ## 3. Reporting Vulnerabilities
 If you discover a potential security vulnerability, please report it via private disclosure:
-- Email: security@ventureatlas.os (or open a GitHub Security Advisory)
-- Please do not disclose vulnerabilities publicly until they have been remediated.
+- Open a private security advisory via GitHub Security Advisories: https://github.com/Hostilian/VenturaAtlas/security/advisories/new
+- Please do not disclose vulnerabilities publicly in public issues or discussions until they have been remediated.
 
 ## 4. Public Data Allowlist Enforcement
 The build script (`scripts/build-public-artifact.js`) and security scanner (`scripts/check-public-artifact.js`) automatically inspect all files in `_site` for:

@@ -36,7 +36,7 @@
     "build:site": "node scripts/build-public-artifact.js",
     "build:verified": "npm run clean && npm run generate && npm run build:site && npm run validate:public && npm run test:pwa",
     "test": "npm run test:unit",
-    "test:unit": "node --test tests/*.test.js",
+    "test:unit": "node --test --test-concurrency=1 tests/*.test.js",
     "test:python": "python -m unittest discover -s tests -p \"test_*.py\"",
     "test:race": "node --test tests/id-allocator-race.test.js",
     "test:providers": "python scripts/test_providers_mock.py",

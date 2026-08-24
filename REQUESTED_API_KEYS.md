@@ -63,10 +63,10 @@
 1. Go to https://console.anthropic.com/settings/keys and create a new key
 2. Go to https://openrouter.ai/keys and create a new key
 3. Open `.env` file in the repo root
-4. Add the lines:
+4. Add the lines (replace with your actual secret values):
    ```
-   ANTHROPIC_API_KEY=sk-ant-YOUR_KEY_HERE
-   OPENROUTER_API_KEY=sk-or-YOUR_KEY_HERE
+   ANTHROPIC_API_KEY=<your-anthropic-key>
+   OPENROUTER_API_KEY=<your-openrouter-key>
    ```
 5. **DO NOT commit `.env` to Git** — it is in `.gitignore` and must stay private
 6. After adding keys, run: `python scripts/va_orchestrator.py --test`
