@@ -32,6 +32,19 @@ test('PWA Contract — Offline Page Validation', () => {
   assert(offlineHtml.toLowerCase().includes('offline'), 'offline.html must contain offline messaging');
 });
 
+test('PWA Contract — online assets refresh before the queryless offline fallback', () => {
+  const swContent = fs.readFileSync(path.join(root, 'sw.js'), 'utf8');
+  assert.match(swContent, /ventura-static-v\$\{CACHE_VERSION\}-\$\{DATA_REVISION\}/);
+  assert.match(swContent, /caches\.match\(request, \{ ignoreSearch: true \}\)/);
+  assert.match(swContent, /An online 404\/500 is still a real server response/);
+
+  const staticBlock = swContent.slice(swContent.indexOf('// Static Assets -> Network-first'));
+  const networkFetch = staticBlock.indexOf('await fetch(request)');
+  const offlineFallback = staticBlock.indexOf('await caches.match(request, { ignoreSearch: true })');
+  assert(networkFetch >= 0, 'static assets must attempt the network');
+  assert(offlineFallback > networkFetch, 'static cache lookup must remain an offline fallback');
+});
+
 test('PWA Contract — Sitemap URLs Resolution', () => {
   const sitemapXml = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   assert(!sitemapXml.includes('USERNAME') && !sitemapXml.includes('REPOSITORY'), 'sitemap.xml must not contain USERNAME or REPOSITORY placeholders');

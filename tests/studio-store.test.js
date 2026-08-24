@@ -19,8 +19,11 @@ test('StudioStore — Initialization and User Profile', () => {
   
   const user = store.getUser();
   assert.ok(user.uid.startsWith('usr_'), 'User UID must have prefix usr_');
-  assert.ok(user.displayName.startsWith('Founder'), 'Default display name should start with Founder');
+  assert.equal(user.displayName, 'Local user', 'Default display name must not invent a founder persona');
   assert.ok(user.color, 'User should have a display color');
+
+  const defaultWorkspace = store.getWorkspace();
+  assert.equal(defaultWorkspace.shortlist.length, 0, 'First-run workspace must not preselect ideas');
 
   store.setUser({ displayName: 'Alex Rivera', color: 'hsl(210, 80%, 50%)' });
   const updatedUser = store.getUser();

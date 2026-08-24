@@ -1,14 +1,15 @@
 import assert from 'assert';
-import { FactBountyEngine } from '../backend/factbounty-engine';
 import { ChallengeCodeEngine } from '../capture/challenge-engine';
 import { LocalPaymentSimulator } from '../simulators/payment-simulator';
+import { createIsolatedTestEngine } from './test-store';
 
 async function runTests() {
   console.log('=== Running FactBounty Unit & Integration Test Suite ===\n');
 
   // Test 1: Bounty Creation Validation
   console.log('Test 1: Valid & invalid bounty creation');
-  const engine = new FactBountyEngine();
+  const { engine, cleanup } = createIsolatedTestEngine('factbounty-engine');
+  process.once('exit', cleanup);
   
   assert.throws(() => {
     engine.createBounty('buyer_1', 'invalid-url', 'Question?', [], 500);

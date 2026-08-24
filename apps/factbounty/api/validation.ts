@@ -16,9 +16,7 @@ export const CreateBountySchema = z.object({
   productTitle: z.string().max(200).optional()
 });
 
-export const CheckoutBountySchema = z.object({
-  useStripe: z.boolean().optional()
-});
+export const CheckoutBountySchema = z.object({}).strict();
 
 export const AcceptBountySchema = z.object({});
 

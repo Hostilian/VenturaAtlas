@@ -3,6 +3,19 @@ import csv, json, math, os, re, shutil, textwrap, hashlib
 from pathlib import Path
 from datetime import datetime, timezone
 
+# Historical one-time generator retained for provenance only. It deletes and
+# reconstructs a fixed /mnt/data target, so ordinary runs must fail before any
+# filesystem mutation. Current builds use `npm run generate` and
+# `npm run build:site`.
+LEGACY_CONFIRMATION = 'REBUILD_ARCHIVED_2026_REPOSITORY'
+if __name__ != '__main__':
+    raise RuntimeError('scripts/generate_repository.py is an archived, non-importable one-time generator')
+if os.environ.get('VA_LEGACY_GENERATOR_CONFIRM') != LEGACY_CONFIRMATION:
+    raise SystemExit(
+        'Refusing archived destructive generator. Use npm run generate and npm run build:site. '
+        f'For forensic reproduction only, set VA_LEGACY_GENERATOR_CONFIRM={LEGACY_CONFIRMATION}.'
+    )
+
 ROOT=Path('/mnt/data/venture-atlas-os-v2')
 OLD=Path('/mnt/data/venture-atlas-os')
 if ROOT.exists(): shutil.rmtree(ROOT)

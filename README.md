@@ -11,7 +11,7 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 - **555 research proposal rows** across **30 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
 - **4,625 idea-specific prompts** plus master prompts
 - **432 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
-- **60/324 financial models**, **78/324 validation plans**, **75/324 technical blueprints**, and **60/324 launch plans**
+- **63/324 financial models**, **78/324 validation plans**, **75/324 technical blueprints**, and **60/324 launch plans**
 - **4,625 idea-specific prompt files**; per-idea pack completeness is not asserted
 <!-- END GENERATED CURRENT INVENTORY -->
 
@@ -71,15 +71,15 @@ The workflow validates data, JavaScript, links, and smoke tests before deploymen
 ```text
 assets/                 CSS and JavaScript
 data/                   canonical JSON, CSV, schema, rankings, sources, prompts, relationships
-ideas/                  one full dossier per canonical idea
+ideas/                  legacy and supporting Markdown dossiers; coverage is not one-to-one
 categories/             category indexes
 rankings/               30 reproducible ranking views
-prompts/                master and 25-per-idea prompt library
+prompts/                master prompts and partially covered idea-specific prompt packs
 research/               methodology, source log, assumptions, completeness audit, archive gaps
-financial-models/       compact financial model per idea
-validation-plans/       validation plan per idea
-technical-blueprints/   future-AI implementation blueprint per idea
-launch-plans/           GTM and action plan per idea
+financial-models/       compact financial models for a subset of ideas
+validation-plans/       validation plans for a subset of ideas
+technical-blueprints/   implementation blueprints for a subset of ideas
+launch-plans/           GTM and action plans for a subset of ideas
 docs/                   visitor-facing static pages and maintenance documentation
 scripts/                generator, validation, search, ranking and link scripts
 tests/                  smoke tests

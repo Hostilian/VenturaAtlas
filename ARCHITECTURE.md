@@ -5,7 +5,7 @@
 Venture Atlas OS is an autonomous venture research platform and static business intelligence atlas. It operates as a decoupled two-plane system:
 
 1. **Static Presentation Plane (GitHub Pages / PWA / Edge CDN):**
-   - High-performance static site serving 324 canonical ideas, 432 dossiers, 4,625 prompt records, and interactive analysis tools.
+   - High-performance static site serving canonical idea projections, available supporting artifacts, and interactive analysis tools. Current counts come from `data/repository-meta.json`.
    - PWA Service Worker (`sw.js`) providing offline capability with versioned cache invalidation.
 
 2. **Configured Cloud Control Plane (GCP Cloud Run Jobs / Cloud Scheduler / Secret Manager / Firestore):**

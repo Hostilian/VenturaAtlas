@@ -10,14 +10,12 @@ test('Workflow Artifact Privacy — research-cycle.yml does not upload private s
   assert.ok(fs.existsSync(workflowPath), 'research-cycle.yml must exist');
 
   const content = fs.readFileSync(workflowPath, 'utf8');
-  // Check upload-artifact paths block
-  const uploadMatch = content.match(/uses:\s*actions\/upload-artifact@[\s\S]*?path:\s*\|([\s\S]*?)(?:if-no-files-found|\n\s*\w+:)/);
-  assert.ok(uploadMatch, 'upload-artifact step must exist');
-
-  const uploadedPaths = uploadMatch[1];
-  assert.ok(!uploadedPaths.includes('data/idea-staging-queue.json'), 'data/idea-staging-queue.json must NOT be in upload-artifact path');
-  assert.ok(!uploadedPaths.includes('.env'), '.env must NOT be in upload-artifact path');
-  assert.ok(uploadedPaths.includes('sanitized-execution-receipt.json'), 'sanitized-execution-receipt.json must be in upload-artifact path');
+  const uploadStart = content.indexOf('uses: actions/upload-artifact@');
+  assert.ok(uploadStart >= 0, 'upload-artifact step must exist and be commit-pinned');
+  const uploadStep = content.slice(uploadStart);
+  assert.ok(!uploadStep.includes('data/idea-staging-queue.json'), 'data/idea-staging-queue.json must NOT be in upload-artifact path');
+  assert.ok(!uploadStep.includes('.env'), '.env must NOT be in upload-artifact path');
+  assert.match(uploadStep, /path:\s*\.agent-state\/sanitized-execution-receipt\.json/);
 });
 
 test('Public Site Privacy — _site does not contain private staging or credentials', () => {

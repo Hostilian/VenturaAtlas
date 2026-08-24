@@ -68,11 +68,17 @@
     document.addEventListener('DOMContentLoaded', () => {
       function init() {
         if (!window.VA || !VA.ideas.length) { setTimeout(init, 100); return; }
+        const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[character]);
+        const scoreNumber = value => value !== null && value !== undefined && Number.isFinite(Number(value))
+          ? Number(value)
+          : null;
 
         // Populate category filter
         const catSel = document.getElementById('dossierCategory');
-        [...new Set(VA.ideas.map(x => x.category))].sort().forEach(c => {
-          catSel.insertAdjacentHTML('beforeend', `<option value="${c}">${c}</option>`);
+        [...new Set(VA.ideas.map(x => x.category || 'Unclassified'))].sort().forEach(c => {
+          catSel.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`);
         });
 
         function render() {
@@ -81,11 +87,13 @@
           const sort = document.getElementById('dossierSort').value;
 
           let ideas = [...VA.ideas];
-          if (q) ideas = ideas.filter(x => (x.name + x.oneSentenceConcept + x.tags.join(' ')).toLowerCase().includes(q));
+          if (q) ideas = ideas.filter(x => (
+            `${x.name || ''} ${x.oneSentenceConcept || ''} ${(Array.isArray(x.tags) ? x.tags : []).join(' ')}`
+          ).toLowerCase().includes(q));
           if (cat) ideas = ideas.filter(x => x.category === cat);
 
           const sorters = {
-            overall: (a,b) => (b.atAGlance?.overallScore||0) - (a.atAGlance?.overallScore||0),
+            overall: (a,b) => (scoreNumber(b.atAGlance?.overallScore) ?? -1) - (scoreNumber(a.atAGlance?.overallScore) ?? -1),
             name: (a,b) => a.name.localeCompare(b.name),
             profit: (a,b) => (b.compositeScores?.highestProfitPotential||0) - (a.compositeScores?.highestProfitPotential||0),
             id: (a,b) => a.id.localeCompare(b.id)
@@ -96,30 +104,35 @@
 
           // Group by category
           const byCat = {};
-          ideas.forEach(x => { (byCat[x.category] = byCat[x.category] || []).push(x); });
+          ideas.forEach(x => {
+            const category = x.category || 'Unclassified';
+            (byCat[category] = byCat[category] || []).push(x);
+          });
 
           const list = document.getElementById('dossierList');
           if (!ideas.length) {
-            list.innerHTML = '<div class="empty">No dossiers match this filter.</div>';
+            list.innerHTML = '<div class="empty">No canonical records match this filter.</div>';
             return;
           }
 
           list.innerHTML = Object.entries(byCat).map(([cat, catIdeas]) => `
             <div class="dossier-section-header">
-              <h2>${cat}</h2>
+              <h2>${escapeHtml(cat)}</h2>
               <span class="dossier-count">${catIdeas.length}</span>
             </div>
             ${catIdeas.map(x => {
-              const scoreVal = x.atAGlance?.overallScore || 0;
-              const bg = scoreVal >= 80 ? 'var(--score-hi)' : scoreVal >= 60 ? 'var(--score-md)' : 'var(--score-lo)';
+              const rawScore = scoreNumber(x.atAGlance?.overallScore);
+              const hasScore = rawScore !== null;
+              const scoreVal = hasScore ? rawScore : '—';
+              const bg = !hasScore ? 'var(--muted)' : rawScore >= 80 ? 'var(--score-hi)' : rawScore >= 60 ? 'var(--score-md)' : 'var(--score-lo)';
               return `
               <div class="dossier-row">
                 <div class="score-badge" style="background:${bg}">${scoreVal}</div>
                 <div class="name">
-                  <div>${x.name}</div>
-                  <div style="font-weight:400;font-size:0.78rem;color:var(--text-muted);margin-top:0.1rem">${(x.oneSentenceConcept||'').slice(0,80)}${(x.oneSentenceConcept||'').length>80?'…':''}</div>
+                  <div>${escapeHtml(x.name)}</div>
+                  <div style="font-weight:400;font-size:0.78rem;color:var(--text-muted);margin-top:0.1rem">${escapeHtml((x.oneSentenceConcept||'').slice(0,80))}${(x.oneSentenceConcept||'').length>80?'…':''}</div>
                 </div>
-                <div class="meta">${x.id}</div>
+                <div class="meta">${escapeHtml(x.id)}</div>
                 <div class="dossier-actions">
                   <a class="button" href="idea.html?id=${encodeURIComponent(x.id)}" style="padding:0.3rem 0.65rem;font-size:0.8rem">View</a>
                   <a class="button ghost" href="prompts.html?id=${encodeURIComponent(x.id)}" style="padding:0.3rem 0.65rem;font-size:0.8rem">Available prompts</a>

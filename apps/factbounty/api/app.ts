@@ -42,8 +42,8 @@ export function createApp(dependencies: AppDependencies): Express {
   const localSim = new LocalPaymentSimulator();
   const stripeAdapter = new StripePaymentAdapter(config.STRIPE_SECRET_KEY || 'sk_test_placeholder');
 
-  function getPaymentProvider(useStripe?: boolean) {
-    return useStripe && config.STRIPE_SECRET_KEY ? stripeAdapter : localSim;
+  function getPaymentProvider() {
+    return config.PAYMENT_PROVIDER === 'stripe' ? stripeAdapter : localSim;
   }
 
   // ── Buyer Routes ─────────────────────────────────────────────────────────────
@@ -67,7 +67,9 @@ export function createApp(dependencies: AppDependencies): Express {
         return res.status(403).json({ success: false, error: 'Forbidden: Not bounty owner' });
       }
 
-      const provider = getPaymentProvider(req.body.useStripe);
+      // Provider selection is server-owned. A buyer request cannot switch to
+      // the simulator or bypass the configured payment path.
+      const provider = getPaymentProvider();
       const checkout = await provider.createCheckout({
         bountyId,
         buyerId: bounty.buyerId,
@@ -189,8 +191,9 @@ export function createApp(dependencies: AppDependencies): Express {
     res.json({
       success: true,
       suggestedChecklist: suggested,
-      model: 'factbounty-precheck-v1',
-      confidence: 0.92,
+      method: 'static-demo-checklist',
+      confidence: null,
+      note: 'No AI model was invoked for this demo response.',
       humanReviewStatus: 'required'
     });
   });

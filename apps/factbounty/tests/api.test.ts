@@ -1,9 +1,9 @@
 import assert from 'assert';
 import request from 'supertest';
 import { createApp } from '../api/app';
-import { FactBountyEngine } from '../backend/factbounty-engine';
 import { loadConfig } from '../config';
 import { generateDemoToken } from '../api/auth';
+import { createIsolatedTestEngine } from './test-store';
 
 async function testApi() {
   console.log('=== Running FactBounty Express HTTP API & Auth Test Suite ===\n');
@@ -12,7 +12,8 @@ async function testApi() {
     FACTBOUNTY_DEMO_MODE: 'false',
     FACTBOUNTY_JWT_SECRET: 'super_secret_test_key_32bytes_min'
   });
-  const engine = new FactBountyEngine();
+  const { engine, cleanup } = createIsolatedTestEngine('factbounty-api');
+  process.once('exit', cleanup);
   const app = createApp({ engine, config });
 
   const buyerToken = await generateDemoToken('buyer_user_1', ['buyer'], config.FACTBOUNTY_JWT_SECRET);
@@ -61,7 +62,7 @@ async function testApi() {
   const res4 = await request(app)
     .post(`/api/bounties/${bountyId}/checkout`)
     .set('Authorization', `Bearer ${buyerToken}`)
-    .send({ useStripe: false });
+    .send({});
   assert.strictEqual(res4.status, 200);
   assert.strictEqual(res4.body.bounty.state, 'matching');
   console.log('  ✅ Checkout & funding passed');

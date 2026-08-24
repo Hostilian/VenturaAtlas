@@ -233,7 +233,7 @@ function initDecisionStudio() {
         <div class="panel empty" style="text-align:center;padding:3rem 1.5rem">
           <div style="font-size:2.5rem;margin-bottom:0.75rem">💡</div>
           <h3 style="font-size:1.2rem;margin-bottom:0.4rem">Your Shortlist is Empty</h3>
-          <p style="color:var(--text2);max-width:480px;margin:0 auto 1.25rem">Discover vetted opportunities from our library of 309 business ideas or create custom variants to evaluate.</p>
+          <p style="color:var(--text2);max-width:480px;margin:0 auto 1.25rem">Explore ${ideas.length} published business hypotheses or create custom variants to evaluate.</p>
           <a href="${base}/index.html" class="button primary">Browse Ideas Catalog</a>
         </div>
       ` : `

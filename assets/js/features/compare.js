@@ -17,7 +17,7 @@ function initCompare() {
   // Also check stored compare IDs from localStorage if no URL query
   let initialIds = [];
   if (idsQuery) {
-    initialIds = idsQuery.split(',').map(s => s.trim()).filter(Boolean);
+    initialIds = [...new Set(idsQuery.split(',').map(s => s.trim()).filter(Boolean))].slice(0, 4);
   } else {
     initialIds = window.VentureAtlas?.readJsonStorage('va-compare-ids', []) || [];
   }
@@ -51,7 +51,7 @@ function initCompare() {
   });
 
   function updateUrlAndRender() {
-    const chosenIds = Array.from(selects).map(s => s.value).filter(Boolean);
+    const chosenIds = [...new Set(Array.from(selects).map(s => s.value).filter(Boolean))];
     window.VentureAtlas?.writeJsonStorage('va-compare-ids', chosenIds);
 
     const url = new URL(window.location);
@@ -67,9 +67,14 @@ function initCompare() {
 
   function renderMatrix(chosenIds) {
     const chosenIdeas = chosenIds.map(id => ideasData.find(i => i.id === id)).filter(Boolean);
+    const missingIds = chosenIds.filter(id => !ideasData.some(idea => idea.id === id));
+    const missingNotice = missingIds.length
+      ? `<div class="notice" role="status" style="margin-bottom:1rem"><strong>Unavailable idea ID${missingIds.length === 1 ? '' : 's'}:</strong> ${missingIds.map(escHTML).join(', ')}. Remove or replace ${missingIds.length === 1 ? 'it' : 'them'} to continue.</div>`
+      : '';
 
     if (chosenIdeas.length < 2) {
       container.innerHTML = `
+        ${missingNotice}
         <div class="empty" style="padding:2.5rem;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)">
           <h3 style="margin-bottom:0.5rem">Select two to four ideas to generate a comparison matrix</h3>
           <p style="margin-bottom:1.5rem;color:var(--text2)">Compare problem severity, economics, sales/technical complexity, risks, and recommended first experiments side-by-side.</p>
@@ -171,6 +176,7 @@ function initCompare() {
     ];
 
     container.innerHTML = `
+      ${missingNotice}
       <div style="margin-bottom:1.25rem;padding:1rem 1.25rem;background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem">
         <div>
           <strong style="color:var(--brand)">💡 Side-by-Side Comparison:</strong> Comparing ${chosenIdeas.length} venture opportunities.
@@ -238,7 +244,7 @@ function initCompare() {
               <div><strong>Core Deliverable:</strong> ${escHTML(taxonomyFor(i)?.positioning?.deliverable || i.atAGlance?.whatToBuild || 'Not recorded')}</div>
               <div><strong>Closest Portfolio Alternative:</strong> ${escHTML(taxonomyFor(i)?.closestIdeas?.[0]?.name || 'Not calculated')} ${taxonomyFor(i)?.closestIdeas?.[0] ? `(${taxonomyFor(i).closestIdeas[0].score}% similar)` : ''}</div>
             </div>
-            <a href="${base}/docs/idea.html?id=${encodeURIComponent(i.id)}" class="button primary sm" style="width:100%;text-align:center">Open Full Dossier</a>
+            <a href="${base}/docs/idea.html?id=${encodeURIComponent(i.id)}" class="button primary sm" style="width:100%;text-align:center">Open Idea Details</a>
           </div>
         `).join('')}
       </div>

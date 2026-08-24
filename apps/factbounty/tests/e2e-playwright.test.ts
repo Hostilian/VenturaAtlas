@@ -1,16 +1,17 @@
 /**
- * Playwright End-to-End Mobile Journey & Visual Snapshot Test Suite
+ * In-process mobile-domain scenario test. This does not launch Playwright or a browser.
  */
 import assert from 'assert';
-import { FactBountyEngine } from '../backend/factbounty-engine';
 import { LocalPaymentSimulator } from '../simulators/payment-simulator';
 import { ChallengeCodeEngine } from '../capture/challenge-engine';
 import { S3StorageAdapter } from '../media/s3-adapter';
+import { createIsolatedTestEngine } from './test-store';
 
 async function runMobileE2ETest() {
-  console.log('=== Running Playwright Mobile Viewport E2E Journey (iPhone 14 Viewport: 390x844) ===\n');
+  console.log('=== Running FactBounty In-Process Mobile Domain Scenario ===\n');
 
-  const engine = new FactBountyEngine();
+  const { engine, cleanup } = createIsolatedTestEngine('factbounty-mobile-scenario');
+  process.once('exit', cleanup);
   const simulator = new LocalPaymentSimulator();
   const s3 = new S3StorageAdapter();
 
@@ -74,11 +75,11 @@ async function runMobileE2ETest() {
   assert.strictEqual(finalState.state, 'paid');
 
   console.log('\n===============================================================');
-  console.log('🎉 PLAYWRIGHT MOBILE E2E JOURNEY COMPLETED & VERIFIED SUCCESSFULLY');
+  console.log('FACTBOUNTY IN-PROCESS MOBILE DOMAIN SCENARIO PASSED');
   console.log('===============================================================\n');
 }
 
 runMobileE2ETest().catch(err => {
-  console.error('❌ Mobile E2E Test Failed:', err);
+  console.error('Mobile domain scenario failed:', err);
   process.exit(1);
 });

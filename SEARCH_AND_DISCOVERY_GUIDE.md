@@ -199,11 +199,12 @@ The compare view shows market family, idea type, detailed category, buyer segmen
 
 ---
 
-## Working with Data Offline (JSON/CSV)
+## Working with Public Data Offline (JSON)
 
 ### Download options
-- **↓ JSON** → `data/ideas.json` — full structured data, all fields, all 324+ ideas
-- **↓ CSV** → `data/ideas.csv` — flat spreadsheet format, all key fields
+- **↓ JSON** → `data/ideas.json` — sanitized canonical idea projection used by the public site
+
+The source repository may contain additional internal fields and files that are deliberately excluded from the public artifact.
 
 ### Use cases
 - Import into Google Sheets or Excel for custom analysis
@@ -214,25 +215,21 @@ The compare view shows market family, idea type, detailed category, buyer segmen
 ### Key data files
 | File | Contents |
 |------|----------|
-| `data/ideas.json` | Full canonical idea dataset (all fields) |
-| `data/ideas.csv` | Flat CSV of all ideas |
-| `data/rankings.json` | 30 ranking views with scoring |
-| `data/prompts.json` | All 25-per-idea prompts |
-| `data/sources.json` | All citations and source records |
+| `data/ideas.json` | Sanitized canonical idea projection used by the site |
+| `data/rankings.json` | Published ranking projections with maturity labels |
+| `data/prompts.json` | Published prompt records; idea coverage is partial |
+| `data/public-sources.json` | Sanitized public citation records |
 | `data/categories.json` | Category definitions |
 | `data/idea-taxonomy.json` | Normalized families, venture patterns, positioning fields, similarity groups, and nearest neighbors |
-| `data/tags.json` | All tags with descriptions |
 | `data/relationships.json` | Idea-to-idea relationship graph |
-| `data/sensitivity-analysis.json` | Score sensitivity to input changes |
-| `data/research-runs.json` | Research session history |
-| `data/decisions.json` | Formal collaborative decisions |
-| `data/pairwise-votes.json` | Pairwise voting data |
+| `data/repository-meta.json` | Current public inventory counts and projection metadata |
+| `data/validation-summary.json` | Sanitized validation-eligibility summary |
 
 ---
 
 ## Using the Prompt Library
 
-Every canonical idea has **25 prompts** organized by use case:
+The public prompt projection covers a subset of canonical ideas. Available records are organized by use case:
 - Research & validation prompts
 - Customer discovery prompts
 - Financial modeling prompts

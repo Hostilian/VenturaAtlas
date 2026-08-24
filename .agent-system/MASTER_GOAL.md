@@ -36,3 +36,7 @@ Every opportunity evaluated in VenturaAtlas is scored across multi-dimensional c
 - **Independent Review Is Not Evidence**: Parallel model agreement is preserved as review telemetry only; primary sources and external buyer receipts remain separate gates.
 - **Cloud Truthfulness**: Configuration is not deployment. Off-machine operation may be claimed only from fresh cloud-run receipts, durable state continuity, and verified provider reachability in the cloud execution scope.
 - **One Live Backlog Authority**: `.agent-system/backlog.json` is authoritative. Other task graphs use separate ID namespaces and are non-authoritative capability plans.
+
+## 4. COMPREHENSIVE READINESS RUNS
+
+Use `prompts/MASTER_READINESS_AND_AUTONOMY_PROMPT.md` as the execution contract for broad readiness passes. It is subordinate to this constitution and `AGENTS.md`, and it never grants deployment, payment, external-contact, destructive, or canonical-publication authority by itself.

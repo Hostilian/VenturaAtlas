@@ -24,10 +24,11 @@ WORKDIR /app
 
 # Copy dependency specifications first for layer caching
 COPY package.json package-lock.json ./
+COPY cloud-control-plane/requirements.txt ./cloud-control-plane/requirements.txt
 RUN npm ci
 
-# Copy python requirements if any, or install standard dependencies
-RUN pip install --no-cache-dir requests urllib3 google-cloud-firestore google-cloud-secretmanager google-cloud-storage
+# Install the reviewed, reproducible Python dependency set.
+RUN pip install --no-cache-dir --requirement cloud-control-plane/requirements.txt
 
 # Copy full application codebase
 COPY . .

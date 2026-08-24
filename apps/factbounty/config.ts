@@ -28,5 +28,11 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     console.error('Invalid FactBounty Environment Configuration:', parsed.error.format());
     throw new Error('FactBounty startup failed: Invalid environment configuration.');
   }
-  return parsed.data;
+  const config = parsed.data;
+  if (config.NODE_ENV === 'production') {
+    throw new Error(
+      'FactBounty production startup is intentionally blocked: real payment, signed webhook, payout, and persistent-store gates are not yet implemented.'
+    );
+  }
+  return config;
 }

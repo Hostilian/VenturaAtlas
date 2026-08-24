@@ -127,15 +127,11 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Static Assets -> Cache-first
+  // Static Assets -> Network-first with offline cache fallback. This avoids
+  // pinning users to an older JavaScript/CSS bundle when application code
+  // changes without a package-version or data-revision bump.
   event.respondWith(
     (async () => {
-      // Asset URLs are cache-busted in HTML, while the required shell is
-      // precached without query strings. Ignore only the query component so
-      // an offline load can reuse the exact same-path shell asset.
-      const cachedResponse = await caches.match(request, { ignoreSearch: true });
-      if (cachedResponse) return cachedResponse;
-
       try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
@@ -144,7 +140,11 @@ self.addEventListener('fetch', event => {
         }
         return networkResponse;
       } catch (err) {
-        return new Response('Asset unavailable', { status: 404 });
+        // Asset URLs are cache-busted in HTML, while the required shell is
+        // precached without query strings. Ignore only the query component so
+        // an offline load can reuse the exact same-path shell asset.
+        const cachedResponse = await caches.match(request, { ignoreSearch: true });
+        return cachedResponse || new Response('Asset unavailable', { status: 404 });
       }
     })()
   );
