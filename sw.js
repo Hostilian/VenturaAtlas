@@ -8,7 +8,7 @@
 const CACHE_VERSION = '2.7.1';
 const DATA_REVISION = '5b109b0ac5a08168';
 
-const STATIC_CACHE = `ventura-static-v${CACHE_VERSION}`;
+const STATIC_CACHE = `ventura-static-v${CACHE_VERSION}-${DATA_REVISION}`;
 const DATA_CACHE = `ventura-data-${DATA_REVISION}`;
 const PAGE_CACHE = `ventura-pages-v${CACHE_VERSION}`;
 
@@ -130,7 +130,10 @@ self.addEventListener('fetch', event => {
   // Static Assets -> Cache-first
   event.respondWith(
     (async () => {
-      const cachedResponse = await caches.match(request);
+      // Asset URLs are cache-busted in HTML, while the required shell is
+      // precached without query strings. Ignore only the query component so
+      // an offline load can reuse the exact same-path shell asset.
+      const cachedResponse = await caches.match(request, { ignoreSearch: true });
       if (cachedResponse) return cachedResponse;
 
       try {

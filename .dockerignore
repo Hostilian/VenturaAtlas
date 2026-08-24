@@ -19,6 +19,10 @@ research/audits
 research/original-chat
 meeting-packets
 archive
+data/idea-staging-queue.json
+data/*staging*.json
+data/*private*.json
+*.local.json
 
 # Dependencies and generated outputs
 node_modules
@@ -34,3 +38,4 @@ __pycache__
 # Local application state
 apps/factbounty/data/*.db
 apps/factbounty/data/*.db-*
+apps/factbounty/data/*.json

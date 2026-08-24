@@ -57,6 +57,12 @@ function main() {
   }
 
   const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+  const generatedDate = String(meta.generatedAt || meta.updatedAt || '')
+    .match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  if (!generatedDate) {
+    console.error('repository-meta.json must provide a stable generatedAt or updatedAt date');
+    process.exit(1);
+  }
   if (fs.existsSync(RESEARCH_CATALOG_PATH)) {
     const researchCatalog = JSON.parse(fs.readFileSync(RESEARCH_CATALOG_PATH, 'utf8'));
     meta.counts.researchProposals = researchCatalog.proposalCount;
@@ -71,7 +77,7 @@ function main() {
     `- Categories: ${meta.counts.categories}`,
     `- Source References: ${meta.counts.sources}`,
     `- Generated Prompts: ${meta.counts.prompts}`,
-    `- Last Updated: ${new Date().toISOString().split('T')[0]}`,
+    `- Last Updated: ${generatedDate}`,
     '<!-- END GENERATED REPOSITORY STATS -->'
   ].join('\n');
 

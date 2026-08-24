@@ -126,7 +126,7 @@
       if (!u || !u.uid) {
         u = {
           uid: generateId('usr'),
-          displayName: 'Founder ' + Math.floor(100 + Math.random() * 900),
+          displayName: 'Local user',
           color: getRandomColor()
         };
         storage.set(STORAGE_KEY_USER, u);
@@ -190,7 +190,7 @@
         ...legacyFavs
       ])).slice(0, 8);
 
-      const defaultShortlist = (initialIdeas.length > 0 ? initialIdeas : ['idea-061', 'idea-273']).map((id, idx) => ({
+      const defaultShortlist = initialIdeas.map((id, idx) => ({
         ideaId: id,
         stage: idx < 2 ? 'interesting' : 'inbox',
         tags: [],

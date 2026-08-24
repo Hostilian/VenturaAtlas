@@ -1076,9 +1076,9 @@ ${taxonomy ? `<!-- Normalized Positioning -->
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
     <h2 style="font-size:1.2rem;margin:0;display:inline-flex;align-items:center;gap:0.4rem">
-      🤖 Continuous AI Validation Panel
+      Evidence &amp; Validation Snapshot
     </h2>
-    <span style="font-size:0.8rem;color:var(--muted)">Last Refreshed: ${esc(lastValidated)}</span>
+    <span style="font-size:0.8rem;color:var(--muted)">Last recorded: ${esc(lastValidated)}</span>
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:0.75rem;margin-bottom:1rem">
@@ -1107,8 +1107,9 @@ ${taxonomy ? `<!-- Normalized Positioning -->
 
   <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
     <button class="button secondary sm" id="challengeClaimBtn">🚩 Challenge Claim</button>
-    <button class="button primary sm" id="requestValidationBtn">⚡ Request Deeper Validation</button>
+    <button class="button primary sm" id="requestValidationBtn">Save a Validation Request</button>
   </div>
+  <p style="font-size:0.82rem;color:var(--muted);margin:0.75rem 0 0">This static page stores requests in this browser only. It does not launch an AI or background job.</p>
   <div id="userFeedbackOutput" style="margin-top:0.75rem"></div>
 </section>
 
@@ -1221,10 +1222,10 @@ ${taxonomy ? `<!-- Normalized Positioning -->
     if (!out) return;
     const reqs = window.VentureAtlas?.readJsonStorage('va-validation-requests', []) || [];
     if (!reqs.some(r => r.ideaId === x.id)) {
-      reqs.push({ ideaId: x.id, ideaName: x.name, requestedAt: new Date().toISOString(), status: 'queued_local' });
+      reqs.push({ ideaId: x.id, ideaName: x.name, requestedAt: new Date().toISOString(), status: 'saved_local' });
       window.VentureAtlas?.writeJsonStorage('va-validation-requests', reqs);
     }
-    out.innerHTML = `<div style="color:var(--accent);font-size:0.9rem;padding:0.5rem 0">⚡ Validation request logged locally for <strong>${esc(x.name)}</strong> (${reqs.length} queued in local session).</div>`;
+    out.innerHTML = `<div style="color:var(--accent);font-size:0.9rem;padding:0.5rem 0">Saved in this browser for <strong>${esc(x.name)}</strong> (${reqs.length} local request${reqs.length === 1 ? '' : 's'}). No AI or background job was started; export a decision packet to share it.</div>`;
   });
 }
 
