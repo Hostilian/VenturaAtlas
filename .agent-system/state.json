@@ -1,7 +1,7 @@
 {
-  "iteration": 143,
-  "lastCheckpoint": "2026-08-22T14:10:00Z",
-  "status": "ALL_GITHUB_WORKFLOWS_AND_AUTONOMY_PROOFS_GREEN_GCP_AND_HERMES_EXTERNALLY_BLOCKED",
+  "iteration": 144,
+  "lastCheckpoint": "2026-08-24T14:48:00Z",
+  "status": "ALL_GITHUB_WORKFLOWS_AND_AUTONOMY_PROOFS_GREEN_GCP_AND_HERMES_EXTERNALLY_BLOCKED_FINANCIAL_MODELS_EXPANDED",
   "activeTasks": [],
   "completedTasks": [
     "TASK-000A", "TASK-000B", "TASK-000C", "TASK-000D",
@@ -20,6 +20,9 @@
     "sources": 316,
     "prompts": 4625,
     "unitTestsPassed": 176,
-    "validationErrors": 0
+    "validationErrors": 0,
+    "financialModels": 63,
+    "daemonHeartbeatLastSeen": "2026-08-16T20:15:09Z",
+    "daemonStatus": "STALE_NOT_RUNNING"
   }
 }

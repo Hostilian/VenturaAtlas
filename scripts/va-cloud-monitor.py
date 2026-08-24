@@ -67,6 +67,11 @@ def evaluate(runs: list[dict], now: dt.datetime, stale_minutes: int = 120) -> di
     }
 
 
+def scheduled_runs(runs: list[dict]) -> list[dict]:
+    """Exclude manual dispatches so they cannot mask a broken scheduler."""
+    return [run for run in runs if run.get("event") == "schedule"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", "Hostilian/VenturaAtlas"))
@@ -81,7 +86,7 @@ def main() -> int:
         runs = simulated_runs(args.simulation, now)
     elif args.runs_json:
         with open(args.runs_json, "r", encoding="utf-8") as handle:
-            runs = json.load(handle)
+            runs = scheduled_runs(json.load(handle))
     else:
         result = subprocess.run([
             "gh", "run", "list", "--repo", args.repo, "--workflow", args.workflow,
@@ -90,7 +95,7 @@ def main() -> int:
         if result.returncode:
             runs = []
         else:
-            runs = json.loads(result.stdout)
+            runs = scheduled_runs(json.loads(result.stdout))
     receipt = evaluate(runs, now, args.stale_minutes)
     receipt["simulation"] = args.simulation
     atomic_write_json(args.receipt, receipt)

@@ -5,6 +5,7 @@ const { buildReceipt: buildArtifactManifest } = require('./hash-public-artifact'
 const { deriveLifecycleForPublic } = require('./lib/lifecycle-receipts');
 
 const ROOT = path.resolve(__dirname, '..');
+const ROOT_REAL = fs.realpathSync(ROOT);
 const DIST = path.join(ROOT, '_site');
 const ARTIFACT_LOCK = path.join(ROOT, '.agent-state', 'locks', 'public-artifact.lock');
 const ARTIFACT_BUILD_RECEIPT = path.join(ROOT, '.agent-state', 'quality-receipts', 'public-artifact-build-latest.json');
@@ -119,12 +120,26 @@ function redactInternalSourceIds(text) {
 }
 
 function copyPublicFile(src, dest) {
+  assertSafeSourcePath(src);
   if (PROJECTED_TEXT_EXTENSIONS.has(path.extname(src).toLowerCase())) {
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.writeFileSync(dest, redactInternalSourceIds(fs.readFileSync(src, 'utf8')), 'utf8');
   } else {
     fs.copyFileSync(src, dest);
   }
+}
+
+function assertSafeSourcePath(src) {
+  const stat = fs.lstatSync(src);
+  if (stat.isSymbolicLink()) {
+    throw new Error(`Refusing symbolic link in public artifact source: ${path.relative(ROOT, src)}`);
+  }
+  const realPath = fs.realpathSync(src);
+  const relativeRealPath = path.relative(ROOT_REAL, realPath);
+  if (relativeRealPath.startsWith(`..${path.sep}`) || path.isAbsolute(relativeRealPath)) {
+    throw new Error(`Public artifact source escapes repository root: ${src}`);
+  }
+  return stat;
 }
 
 function writeJson(dest, value) {
@@ -267,7 +282,7 @@ function isDenied(relativePath) {
 }
 
 function copyRecursive(src, dest) {
-  const stat = fs.statSync(src);
+  const stat = assertSafeSourcePath(src);
   let count = 0;
 
   if (stat.isDirectory()) {
@@ -411,4 +426,4 @@ if (require.main === module) {
   build();
 }
 
-module.exports = { build, buildUnlocked };
+module.exports = { assertSafeSourcePath, build, buildUnlocked };

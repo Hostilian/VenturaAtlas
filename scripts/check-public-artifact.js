@@ -43,6 +43,10 @@ const SECRET_CONTENT_PATTERNS = [
   { name: 'Anthropic Secret API Key', regex: /sk-ant-[a-zA-Z0-9_-]{20,}/ },
   { name: 'Google AI API Key', regex: /AIzaSy[a-zA-Z0-9_-]{33}/ },
   { name: 'GitHub Personal Token', regex: /gh[pousr]_[a-zA-Z0-9]{36,}/ },
+  { name: 'Stripe Live Secret Key', regex: /sk_live_[a-zA-Z0-9]{16,}/ },
+  { name: 'Stripe Webhook Secret', regex: /whsec_[a-zA-Z0-9]{16,}/ },
+  { name: 'AWS Access Key ID', regex: /AKIA[0-9A-Z]{16}/ },
+  { name: 'JSON Web Token', regex: /eyJ[a-zA-Z0-9_-]{10,}\.[a-zA-Z0-9_-]{10,}\.[a-zA-Z0-9_-]{10,}/ },
   { name: 'RSA/EC Private Key Header', regex: /-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----/ },
   { name: 'Hardcoded Authorization Header', regex: /Authorization:\s*Bearer\s+[a-zA-Z0-9._-]{20,}/i },
   { name: 'Local Windows User Path Exposure', regex: /(?:[a-zA-Z]:\\Users\\[a-zA-Z0-9_.-]+|file:\/{3}[a-zA-Z]:\/Users\/[a-zA-Z0-9_.-]+)/i }

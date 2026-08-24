@@ -27,6 +27,25 @@ class CloudMonitorTests(unittest.TestCase):
         ], now)
         self.assertEqual(receipt["status"], "HEALTHY")
 
+    def test_manual_dispatch_cannot_mask_missing_scheduled_runs(self):
+        runs = [
+            {
+                "event": "workflow_dispatch",
+                "status": "completed",
+                "conclusion": "success",
+                "createdAt": "2026-08-21T11:59:00Z",
+            },
+            {
+                "event": "schedule",
+                "status": "completed",
+                "conclusion": "failure",
+                "createdAt": "2026-08-21T10:00:00Z",
+            },
+        ]
+        filtered = MODULE.scheduled_runs(runs)
+        self.assertEqual(len(filtered), 1)
+        self.assertEqual(filtered[0]["event"], "schedule")
+
     def test_dispatch_only_simulations_cover_stale_alert_and_recovery(self):
         now = dt.datetime(2026, 8, 21, 12, tzinfo=dt.timezone.utc)
         stale = MODULE.evaluate(MODULE.simulated_runs("stale", now), now)

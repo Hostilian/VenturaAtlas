@@ -27,7 +27,10 @@ test('Container context excludes secrets and private operator state', () => {
     '_site',
     'research/audits',
     'research/original-chat',
-    'meeting-packets'
+    'meeting-packets',
+    'data/idea-staging-queue.json',
+    'data/*staging*.json',
+    'data/*private*.json'
   ]) {
     assert.ok(entries.has(required), `.dockerignore must exclude ${required}`);
   }
@@ -37,6 +40,10 @@ test('Public secret scanner recognizes provider-specific token formats', () => {
   const probes = [
     'sk-or-v1-FAKE0123456789abcdefghijklmnop',
     'sk-ant-FAKE0123456789abcdefghijklmnopqr',
+    'sk_live_FAKE0123456789abcdefgh',
+    'whsec_FAKE0123456789abcdefgh',
+    'AKIAIOSFODNN7EXAMPLE',
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.abcdefghijklmnop',
     'file:///C:/Users/example/private/repository'
   ];
   for (const probe of probes) {

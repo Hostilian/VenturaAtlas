@@ -147,7 +147,7 @@
       status: rawStatus,
       statusLabel: active ? 'LIVE NOW' : 'FRESH HEARTBEAT',
       badgeValue: active ? `${base.progress}%` : 'fresh',
-      isLive: true,
+      isLive: active,
       isVerified: true,
       isFresh: true
     };
@@ -299,7 +299,9 @@
       );
       const runs = Array.isArray(payload?.workflow_runs) ? payload.workflow_runs : [];
       const latest = runs
-        .filter(run => run && (run.event === undefined || run.event === 'schedule'))
+        .filter(run => run
+          && (run.event === undefined || run.event === 'schedule')
+          && timestampMs(run.updated_at || run.created_at) !== null)
         .sort((a, b) => timestampMs(b.updated_at || b.created_at) - timestampMs(a.updated_at || a.created_at))[0];
       const githubSnapshot = classifyGithubRun(latest, {
         nowMs,

@@ -39,20 +39,113 @@ def candidate(spec):
  return {'schemaVersion':'2.0.0','id':ident,'candidateId':ident,'candidateSlug':slug,'slug':f'{slug}-{ident}','name':name,'oneSentenceConcept':f'{control} for {customer}.','elevatorPitch':f'{control}; {risk}','detailedDescription':f'{control} for {customer}.','category':'Cutover Inventory Exposure','subcategory':'transaction preflight','tags':['omega-xv','cutover-inventory-clock','payment-validation','customer-evidence-unproven'],'status':'staged','evidenceStatus':'forcing_function_verified_payment_unproven','promotionEligible':False,'requiresExternalEvidence':True,'sourceReferences':[],'provenance':{'sourceType':'OMEGA XV Cutover Inventory Clock - source-backed research','researchRunId':RUN_ID,'notes':'The proposed price and verdict are hypotheses; no payment, buyer interview, or customer data is claimed.'},'atAGlance':{'targetCustomer':customer,'problemSolved':control,'whatToBuild':'Manual-first source-linked decision artifact; do not issue a certificate, guarantee quota, or replace the certifier/customs authority.','howItMakesMoney':'Paid audit/preflight is a pricing hypothesis.','whyCustomersPay':None,'estimatedEarningPotential':None,'startupCost':None,'overallScore':None,'confidenceScore':None,'mainAdvantage':'Joins authoritative external state to a customer transaction crossing a deadline.','mainRisk':risk,'bestNextValidationStep':gate},'researchAssessment':{'analystProvisionalOpportunityScore':score,'scoreScale':'0-10','scoreStatus':'provisional_not_ranking_eligible','capitalClockStatus':status,'controlPoint':control,'cutoverExposureMetric':'inventory_or_po_value × crossing_probability × evidence_deficiency × failure_severity','deadlineReliability': 'HIGH' if 'Attest' in name else 'MEDIUM','preCertifierLeverage':'HIGH' if 'Attest' in name else 'MEDIUM','noveltyDistance':'GENUINELY_NEW'},'validationChecklist':{'gateStatus':'approved_for_payment_validation_not_validated','passed':False,'passedCount':3,'failedCount':0,'unknownCount':5,'totalCriteria':8,'scorePercentage':37.5,'details':{'Forcing function verified':'pass','Named transaction control point':'pass','Negative evidence reviewed':'pass','Representative workflow confirmed':'unknown','Representative data obtained':'unknown','Paid willingness to pay':'unknown','Incumbent gap tested':'unknown','Repeat need tested':'unknown'}},'killCriteria':{'killFlagged':False,'killCount':0,'killConditions':{'No paid artifact at threshold':False,'Professional or official workflow already solves it':False,'Required upstream evidence inaccessible':False},'killFlags':[]},'createdAt':NOW,'updatedAt':NOW,'prioritizedForValidation':True,'reviewPriority':'urgent','priority':None}
 
 def main():
- sources=read_json_safe(SOURCES_PATH,default_if_missing=[]); ids={x.get('id') for x in sources}
- for sid,title,pub,url,supports in SOURCES:
- if sid not in ids: sources.append({'id':sid,'title':title,'publisher':pub,'url':url,'supports':supports,'type':'official_or_primary_evidence','date':'2026','accessDate':'2026-08-17','confidenceLabel':'high' if sid in {'s307','s308','s309','s310'} else 'medium','sourceType':'primary' if sid not in {'s311','s312','s313'} else 'industry_or_market','researchRound':'omega-xv-cutover-inventory-2026-08-17','ideaIds':[],'visibility':'PUBLIC','sourceClass':'PRIMARY_OR_OFFICIAL' if sid in {'s307','s308','s309','s310'} else 'COMPANY_OR_INDUSTRY','evidenceEligible':True,'provenanceEligible':True})
- clocks=[]
- for c in CUTOVERS: clocks.append({'cutoverId':c['id'],'name':c['name'],'jurisdiction':c['jurisdiction'],'cutoverAt':c['at'],'affectedObjects':c['objects'],'requiredEvidence':c['evidence'],'failureModes':c['failures'],'halfLife':c['half'],'deadlineReliability':c['drp'],'tariffCliffSeverity':c.get('tcs'),'preCertifierLeverage':c['pcl'],'sourceRefs':c['sources'],'status':'UPCOMING'})
- queue=read_json_safe(QUEUE_PATH,default_if_missing=[]); by={x.get('candidateSlug'):i for i,x in enumerate(queue)}
- for spec in THESIS:
-  x=candidate(spec)
-  if spec[0] in by: queue[by[spec[0]]] = x
-  else: queue.append(x); by[spec[0]]=len(queue)-1
- run={'runId':RUN_ID,'baselineCommit':'c665bd900f3f6e68dd1fefaf1599713076266854','questions':['What already-produced inventory or open PO crosses a future state boundary?','What evidence does the certifier, customs authority or buyer need next?','Is the clock urgent enough to pay before the wedge expires?'],'queries':['EU AMR animal-origin import certification September 2026','GB EHC official vet stored inventory traceability','EU steel quota melt and pour evidence October 2026','free steel quota tracker substitute','UK-EU SPS agreement durability risk'],'sourceCandidates':[x[0] for x in SOURCES],'inclusions':[cid(x[0]) for x in THESIS],'exclusions':['generic EHC SaaS','generic veterinarian AI','generic steel quota tracker','generic regulatory deadline tracker','OrganicCOI as a new thesis after waiver risk'],'claimsChanged':['Cutover Inventory Exposure is now represented as a separate schema and two source-linked clocks.','AttestReady and SteelLandedRisk are staged for payment validation only; MicroIFUD remains a narrow test.','The repository records the certifier/customs boundary and explicit negative evidence rather than claiming certification or quota allocation.'],'validationPriorityQueue':[{'rank':i+1,'proposal':x[1],'status':x[3]} for i,x in enumerate(THESIS)],'immediateExperiments':[{'proposal':x[1],'offer':'manual-first paid decision artifact','acceptance':x[6]} for x in THESIS],'methodVersion':'omega-xv-cutover-inventory-clock-v1','agent':'research-intelligence-agent','startedAt':NOW,'endedAt':NOW,'reviewStatus':'approved_for_payment_validation_not_canonical_promotion'}
- runs=read_json_safe(RUNS_PATH,default_if_missing=[]); idx=next((i for i,x in enumerate(runs) if x.get('runId')==RUN_ID),None)
- if idx is None:runs.append(run)
- else:runs[idx]=run
- atomic_write_json(SOURCES_PATH,sources); atomic_write_json(CLOCKS_PATH,{'schemaVersion':'1.0.0','generatedAt':NOW,'records':clocks}); atomic_write_json(QUEUE_PATH,queue); atomic_write_json(RUNS_PATH,runs)
- print('[OK] Recorded 2 cutover clocks, 3 payment-validation hypotheses, and negative evidence boundaries.')
-if __name__=='__main__': main()
+    sources = read_json_safe(SOURCES_PATH, default_if_missing=[])
+    ids = {item.get('id') for item in sources}
+    for sid, title, publisher, url, supports in SOURCES:
+        if sid not in ids:
+            sources.append({
+                'id': sid,
+                'title': title,
+                'publisher': publisher,
+                'url': url,
+                'supports': supports,
+                'type': 'official_or_primary_evidence',
+                'date': '2026',
+                'accessDate': '2026-08-17',
+                'confidenceLabel': 'high' if sid in {'s307', 's308', 's309', 's310'} else 'medium',
+                'sourceType': 'primary' if sid not in {'s311', 's312', 's313'} else 'industry_or_market',
+                'researchRound': 'omega-xv-cutover-inventory-2026-08-17',
+                'ideaIds': [],
+                'visibility': 'PUBLIC',
+                'sourceClass': 'PRIMARY_OR_OFFICIAL' if sid in {'s307', 's308', 's309', 's310'} else 'COMPANY_OR_INDUSTRY',
+                'evidenceEligible': True,
+                'provenanceEligible': True,
+            })
+
+    clocks = []
+    for cutover in CUTOVERS:
+        clocks.append({
+            'cutoverId': cutover['id'],
+            'name': cutover['name'],
+            'jurisdiction': cutover['jurisdiction'],
+            'cutoverAt': cutover['at'],
+            'affectedObjects': cutover['objects'],
+            'requiredEvidence': cutover['evidence'],
+            'failureModes': cutover['failures'],
+            'halfLife': cutover['half'],
+            'deadlineReliability': cutover['drp'],
+            'tariffCliffSeverity': cutover.get('tcs'),
+            'preCertifierLeverage': cutover['pcl'],
+            'sourceRefs': cutover['sources'],
+            'status': 'UPCOMING',
+        })
+
+    queue = read_json_safe(QUEUE_PATH, default_if_missing=[])
+    by_slug = {item.get('candidateSlug'): index for index, item in enumerate(queue)}
+    for spec in THESIS:
+        item = candidate(spec)
+        if spec[0] in by_slug:
+            queue[by_slug[spec[0]]] = item
+        else:
+            queue.append(item)
+            by_slug[spec[0]] = len(queue) - 1
+
+    run = {
+        'runId': RUN_ID,
+        'baselineCommit': 'c665bd900f3f6e68dd1fefaf1599713076266854',
+        'questions': [
+            'What already-produced inventory or open PO crosses a future state boundary?',
+            'What evidence does the certifier, customs authority or buyer need next?',
+            'Is the clock urgent enough to pay before the wedge expires?',
+        ],
+        'queries': [
+            'EU AMR animal-origin import certification September 2026',
+            'GB EHC official vet stored inventory traceability',
+            'EU steel quota melt and pour evidence October 2026',
+            'free steel quota tracker substitute',
+            'UK-EU SPS agreement durability risk',
+        ],
+        'sourceCandidates': [source[0] for source in SOURCES],
+        'inclusions': [cid(spec[0]) for spec in THESIS],
+        'exclusions': [
+            'generic EHC SaaS',
+            'generic veterinarian AI',
+            'generic steel quota tracker',
+            'generic regulatory deadline tracker',
+            'OrganicCOI as a new thesis after waiver risk',
+        ],
+        'claimsChanged': [
+            'Cutover Inventory Exposure is now represented as a separate schema and two source-linked clocks.',
+            'AttestReady and SteelLandedRisk are staged for payment validation only; MicroIFUD remains a narrow test.',
+            'The repository records the certifier/customs boundary and explicit negative evidence rather than claiming certification or quota allocation.',
+        ],
+        'validationPriorityQueue': [
+            {'rank': index + 1, 'proposal': spec[1], 'status': spec[3]}
+            for index, spec in enumerate(THESIS)
+        ],
+        'immediateExperiments': [
+            {'proposal': spec[1], 'offer': 'manual-first paid decision artifact', 'acceptance': spec[6]}
+            for spec in THESIS
+        ],
+        'methodVersion': 'omega-xv-cutover-inventory-clock-v1',
+        'agent': 'research-intelligence-agent',
+        'startedAt': NOW,
+        'endedAt': NOW,
+        'reviewStatus': 'approved_for_payment_validation_not_canonical_promotion',
+    }
+    runs = read_json_safe(RUNS_PATH, default_if_missing=[])
+    run_index = next((index for index, item in enumerate(runs) if item.get('runId') == RUN_ID), None)
+    if run_index is None:
+        runs.append(run)
+    else:
+        runs[run_index] = run
+
+    atomic_write_json(SOURCES_PATH, sources)
+    atomic_write_json(CLOCKS_PATH, {'schemaVersion': '1.0.0', 'generatedAt': NOW, 'records': clocks})
+    atomic_write_json(QUEUE_PATH, queue)
+    atomic_write_json(RUNS_PATH, runs)
+    print('[OK] Recorded 2 cutover clocks, 3 payment-validation hypotheses, and negative evidence boundaries.')
+
+
+if __name__ == '__main__':
+    main()
