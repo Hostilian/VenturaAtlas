@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-meeting-packet.schema.json",
+  "title": "Constellation Meeting Intelligence & Commitment Packet Specification",
+  "description": "Structured operational meeting record capturing why a meeting exists, pre-meeting inputs, decisions produced, and durable commitments. Discourages meeting bloat.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "meetingId",
+    "title",
+    "meetingType",
+    "purpose",
+    "durationMinutes",
+    "participantPersonIds",
+    "decisionsProduced",
+    "commitmentsCreated",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "meetingId": { "type": "string", "pattern": "^meet-[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "meetingType": {
+      "type": "string",
+      "enum": [
+        "DECISION_COUNCIL",
+        "WEEKLY_OPERATING_REVIEW",
+        "CUSTOMER_LEARNING_SYNC",
+        "ARCHITECTURE_REVIEW",
+        "MONTHLY_STRATEGY_RETRO",
+        "INCIDENT_POSTMORTEM"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Defined purpose: DECIDE, COORDINATE, REVIEW, LEARN, or PLAN. (Status reads should be async)."
+    },
+    "durationMinutes": { "type": "number", "minimum": 5, "maximum": 240 },
+    "participantPersonIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "preMeetingInputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "decisionsProduced": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["decisionClassId", "summary", "decidedByRoleId", "rationale"],
+        "properties": {
+          "decisionClassId": { "type": "string" },
+          "summary": { "type": "string" },
+          "decidedByRoleId": { "type": "string" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "commitmentsCreated": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["commitmentId", "title", "ownerPersonId", "outcomeTarget", "dueCondition", "status"],
+        "properties": {
+          "commitmentId": { "type": "string" },
+          "title": { "type": "string" },
+          "ownerPersonId": { "type": "string" },
+          "outcomeTarget": { "type": "string" },
+          "dueCondition": { "type": "string" },
+          "evidenceOfCompletion": { "type": ["string", "null"] },
+          "status": {
+            "type": "string",
+            "enum": ["OPEN", "IN_PROGRESS", "FULFILLED", "BLOCKED", "CANCELLED", "SUPERSEDED"]
+          }
+        }
+      }
+    },
+    "unresolvedQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["SCHEDULED", "COMPLETED_WITH_OUTPUT", "COMPLETED_ZERO_OUTPUT_WARNING", "CANCELLED_ASYNC_CONVERTED"]
+    },
+    "heldAt": { "type": "string" }
+  }
+}

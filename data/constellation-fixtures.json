@@ -1,0 +1,281 @@
+{
+  "fixtures": [
+    {
+      "id": "fix-solo-founder",
+      "name": "Fixture 1 — Solo Founder Mode",
+      "description": "One founder with strong technical capability but commercial discovery gap. Verifies system avoids corporate bureaucracy and focuses on lean founder leverage.",
+      "companyStage": "SOLO_FOUNDER",
+      "people": [
+        {
+          "personId": "p-solo-01",
+          "displayName": "Solo Founder",
+          "relationship": "FOUNDER",
+          "assignedRoleIds": ["r-tech-arch", "r-product-lead"],
+          "capabilitiesPossessed": ["cap-sw-eng-architecture", "cap-prod-design"],
+          "totalWeeklyCapacityHours": 40,
+          "roleAllocationsPercent": [
+            { "roleId": "r-tech-arch", "allocationPercent": 60 },
+            { "roleId": "r-product-lead", "allocationPercent": 40 }
+          ]
+        }
+      ],
+      "roles": [
+        {
+          "roleId": "r-tech-arch",
+          "title": "Technical Architect",
+          "purpose": "Build core MVP engine",
+          "accountableOutcomes": ["Deliver core algorithm"],
+          "recurringResponsibilities": [
+            { "responsibilityId": "resp-code", "title": "Core coding", "cadence": "DAILY", "isDelegatable": false }
+          ],
+          "decisionRights": ["dec-arch"],
+          "requiredCapabilities": ["cap-sw-eng-architecture"],
+          "weeklyHoursCapacityRequired": 24,
+          "currentOwnerId": "p-solo-01",
+          "status": "ACTIVE_OWNED"
+        },
+        {
+          "roleId": "r-product-lead",
+          "title": "Product Lead",
+          "purpose": "Define roadmap",
+          "accountableOutcomes": ["Prioritize user backlog"],
+          "recurringResponsibilities": [
+            { "responsibilityId": "resp-backlog", "title": "Roadmap prioritization", "cadence": "WEEKLY", "isDelegatable": false }
+          ],
+          "decisionRights": ["dec-scope"],
+          "requiredCapabilities": ["cap-prod-design"],
+          "weeklyHoursCapacityRequired": 16,
+          "currentOwnerId": "p-solo-01",
+          "status": "ACTIVE_OWNED"
+        }
+      ],
+      "decisionRights": [
+        { "decisionClassId": "dec-arch", "title": "Architecture", "scope": "SECURITY_ARCHITECTURE", "deciderRoleId": "r-tech-arch", "isReversible": true, "autonomyBand": "FULL_AUTONOMOUS_OWNERSHIP", "escalationTriggers": [] },
+        { "decisionClassId": "dec-scope", "title": "Scope", "scope": "PRODUCT_SCOPE_ROADMAP", "deciderRoleId": "r-product-lead", "isReversible": true, "autonomyBand": "FULL_AUTONOMOUS_OWNERSHIP", "escalationTriggers": [] }
+      ],
+      "requiredCapabilities": ["cap-sw-eng-architecture", "cap-prod-design", "cap-customer-discovery"],
+      "expectedDiagnostic": {
+        "missingCapabilitiesCount": 1,
+        "missingCapabilityId": "cap-customer-discovery",
+        "hasDecisionCollision": false
+      }
+    },
+    {
+      "id": "fix-two-founders-gap",
+      "name": "Fixture 2 — Two Founders with Commercial Gap",
+      "description": "Two technical co-founders with overlapping engineering skills but neither owning commercial sales.",
+      "companyStage": "TWO_FOUNDERS",
+      "people": [
+        { "personId": "p-f1", "displayName": "Founder A (Tech)", "relationship": "FOUNDER", "assignedRoleIds": ["r-tech-f1"], "capabilitiesPossessed": ["cap-sw-eng-architecture"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-tech-f1", "allocationPercent": 100 }] },
+        { "personId": "p-f2", "displayName": "Founder B (Tech/Product)", "relationship": "CO_FOUNDER", "assignedRoleIds": ["r-prod-f2"], "capabilitiesPossessed": ["cap-sw-eng-architecture", "cap-prod-design"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-prod-f2", "allocationPercent": 100 }] }
+      ],
+      "roles": [
+        { "roleId": "r-tech-f1", "title": "Backend Lead", "purpose": "Core infrastructure", "accountableOutcomes": ["99.9% uptime"], "recurringResponsibilities": [{ "responsibilityId": "resp-be", "title": "Backend dev", "cadence": "DAILY", "isDelegatable": false }], "decisionRights": ["dec-be"], "requiredCapabilities": ["cap-sw-eng-architecture"], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-f1", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-prod-f2", "title": "Frontend Lead", "purpose": "User interfaces", "accountableOutcomes": ["Clean UX"], "recurringResponsibilities": [{ "responsibilityId": "resp-fe", "title": "Frontend dev", "cadence": "DAILY", "isDelegatable": false }], "decisionRights": ["dec-fe"], "requiredCapabilities": ["cap-prod-design"], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-f2", "status": "ACTIVE_OWNED" }
+      ],
+      "decisionRights": [
+        { "decisionClassId": "dec-be", "title": "Backend", "scope": "SECURITY_ARCHITECTURE", "deciderRoleId": "r-tech-f1", "isReversible": true, "autonomyBand": "DECIDE_AND_INFORM", "escalationTriggers": [] },
+        { "decisionClassId": "dec-fe", "title": "Frontend", "scope": "PRODUCT_SCOPE_ROADMAP", "deciderRoleId": "r-prod-f2", "isReversible": true, "autonomyBand": "DECIDE_AND_INFORM", "escalationTriggers": [] }
+      ],
+      "requiredCapabilities": ["cap-sw-eng-architecture", "cap-prod-design", "cap-customer-discovery", "cap-growth-demand-gen"],
+      "expectedDiagnostic": {
+        "missingCapabilitiesCount": 2,
+        "unownedCommercial": true
+      }
+    },
+    {
+      "id": "fix-small-team",
+      "name": "Fixture 3 — Small Team (Founder + Engineer + Contractor)",
+      "description": "Founder leading product & commercial with full-time engineer and part-time design contractor.",
+      "companyStage": "SMALL_CORE_TEAM",
+      "people": [
+        { "personId": "p-founder", "displayName": "Founder", "relationship": "FOUNDER", "assignedRoleIds": ["r-founder-prod"], "capabilitiesPossessed": ["cap-customer-discovery", "cap-fin-modeling"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-founder-prod", "allocationPercent": 100 }] },
+        { "personId": "p-eng", "displayName": "Lead Engineer", "relationship": "EMPLOYEE", "assignedRoleIds": ["r-eng-lead"], "capabilitiesPossessed": ["cap-sw-eng-architecture"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-eng-lead", "allocationPercent": 100 }] },
+        { "personId": "p-contractor", "displayName": "UI Contractor", "relationship": "CONTRACTOR", "assignedRoleIds": ["r-ui-design"], "capabilitiesPossessed": ["cap-prod-design"], "totalWeeklyCapacityHours": 15, "roleAllocationsPercent": [{ "roleId": "r-ui-design", "allocationPercent": 100 }] }
+      ],
+      "roles": [
+        { "roleId": "r-founder-prod", "title": "Product & Growth Lead", "purpose": "Customer discovery & growth", "accountableOutcomes": ["Revenue"], "recurringResponsibilities": [], "decisionRights": ["dec-strat"], "requiredCapabilities": ["cap-customer-discovery"], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-founder", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-eng-lead", "title": "Lead Engineer", "purpose": "Architecture & delivery", "accountableOutcomes": ["Platform"], "recurringResponsibilities": [], "decisionRights": ["dec-eng"], "requiredCapabilities": ["cap-sw-eng-architecture"], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-eng", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-ui-design", "title": "UI Designer", "purpose": "Design system & mockups", "accountableOutcomes": ["Assets"], "recurringResponsibilities": [], "decisionRights": [], "requiredCapabilities": ["cap-prod-design"], "weeklyHoursCapacityRequired": 15, "currentOwnerId": "p-contractor", "status": "ACTIVE_OWNED" }
+      ],
+      "decisionRights": [
+        { "decisionClassId": "dec-strat", "title": "Strategy", "scope": "COMPANY_STRATEGY_PIVOT", "deciderRoleId": "r-founder-prod", "isReversible": false, "autonomyBand": "FULL_AUTONOMOUS_OWNERSHIP", "escalationTriggers": [] },
+        { "decisionClassId": "dec-eng", "title": "Technical", "scope": "SECURITY_ARCHITECTURE", "deciderRoleId": "r-eng-lead", "isReversible": true, "autonomyBand": "DECIDE_AND_INFORM", "escalationTriggers": [] }
+      ],
+      "expectedDiagnostic": {
+        "teamSize": 3,
+        "hasContractor": true
+      }
+    },
+    {
+      "id": "fix-overloaded-founder",
+      "name": "Fixture 4 — Overloaded Founder",
+      "description": "Founder holding 6 distinct roles with total weekly demanded hours >65 hrs (160% allocated).",
+      "companyStage": "SOLO_FOUNDER",
+      "people": [
+        {
+          "personId": "p-overloaded-01",
+          "displayName": "Overloaded Founder",
+          "relationship": "FOUNDER",
+          "assignedRoleIds": ["r-1", "r-2", "r-3", "r-4", "r-5", "r-6"],
+          "capabilitiesPossessed": ["cap-sw-eng-architecture", "cap-prod-design", "cap-fin-modeling"],
+          "totalWeeklyCapacityHours": 40,
+          "roleAllocationsPercent": [
+            { "roleId": "r-1", "allocationPercent": 40 },
+            { "roleId": "r-2", "allocationPercent": 30 },
+            { "roleId": "r-3", "allocationPercent": 30 },
+            { "roleId": "r-4", "allocationPercent": 25 },
+            { "roleId": "r-5", "allocationPercent": 20 },
+            { "roleId": "r-6", "allocationPercent": 15 }
+          ]
+        }
+      ],
+      "roles": [
+        { "roleId": "r-1", "title": "Engineering Lead", "purpose": "Engineering", "accountableOutcomes": ["Code"], "recurringResponsibilities": [{ "responsibilityId": "resp-r1", "title": "Dev", "cadence": "DAILY", "isDelegatable": false }], "decisionRights": [], "requiredCapabilities": ["cap-sw-eng-architecture"], "weeklyHoursCapacityRequired": 20, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-2", "title": "Product Lead", "purpose": "Roadmap", "accountableOutcomes": ["Spec"], "recurringResponsibilities": [{ "responsibilityId": "resp-r2", "title": "Roadmap", "cadence": "WEEKLY", "isDelegatable": false }], "decisionRights": [], "requiredCapabilities": ["cap-prod-design"], "weeklyHoursCapacityRequired": 15, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-3", "title": "Customer Discovery", "purpose": "Interviews", "accountableOutcomes": ["Calls"], "recurringResponsibilities": [{ "responsibilityId": "resp-r3", "title": "Calls", "cadence": "WEEKLY", "isDelegatable": false }], "decisionRights": [], "requiredCapabilities": ["cap-customer-discovery"], "weeklyHoursCapacityRequired": 12, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-4", "title": "Marketing & Content", "purpose": "Posts", "accountableOutcomes": ["Traffic"], "recurringResponsibilities": [{ "responsibilityId": "resp-r4", "title": "Writing posts", "cadence": "WEEKLY", "isDelegatable": true, "delegationDifficulty": "LOW" }], "decisionRights": [], "requiredCapabilities": ["cap-growth-demand-gen"], "weeklyHoursCapacityRequired": 8, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-5", "title": "Customer Support", "purpose": "Answering tickets", "accountableOutcomes": ["Tickets"], "recurringResponsibilities": [{ "responsibilityId": "resp-r5", "title": "Ticket triage", "cadence": "DAILY", "isDelegatable": true, "delegationDifficulty": "LOW" }], "decisionRights": [], "requiredCapabilities": ["cap-doc-generation"], "weeklyHoursCapacityRequired": 6, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-6", "title": "Finance & Invoicing", "purpose": "Billing", "accountableOutcomes": ["Invoices"], "recurringResponsibilities": [{ "responsibilityId": "resp-r6", "title": "Bookkeeping", "cadence": "MONTHLY", "isDelegatable": true, "delegationDifficulty": "LOW" }], "decisionRights": [], "requiredCapabilities": ["cap-fin-modeling"], "weeklyHoursCapacityRequired": 5, "currentOwnerId": "p-overloaded-01", "status": "ACTIVE_OWNED" }
+      ],
+      "decisionRights": [],
+      "expectedDiagnostic": {
+        "isOverallocated": true,
+        "totalAllocatedPercent": 160,
+        "highDelegationPotential": true
+      }
+    },
+    {
+      "id": "fix-unowned-critical-function",
+      "name": "Fixture 5 — Unowned Critical Function",
+      "description": "Active commercial customers exist but the Customer Support / Account Management role is vacant (owner = null).",
+      "companyStage": "SMALL_CORE_TEAM",
+      "people": [
+        { "personId": "p-dev-1", "displayName": "Developer A", "relationship": "EMPLOYEE", "assignedRoleIds": ["r-dev-core"], "capabilitiesPossessed": ["cap-sw-eng-architecture"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-dev-core", "allocationPercent": 100 }] }
+      ],
+      "roles": [
+        { "roleId": "r-dev-core", "title": "Core Developer", "purpose": "Ship code", "accountableOutcomes": ["Feature delivery"], "recurringResponsibilities": [], "decisionRights": [], "requiredCapabilities": ["cap-sw-eng-architecture"], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-dev-1", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-customer-support-critical", "title": "Customer Support & Incident Escalation", "purpose": "Resolve customer tickets within 2 hours", "accountableOutcomes": ["Zero SLA breaches"], "recurringResponsibilities": [], "decisionRights": [], "requiredCapabilities": ["cap-doc-generation"], "weeklyHoursCapacityRequired": 20, "currentOwnerId": null, "status": "ACTIVE_VACANT" }
+      ],
+      "decisionRights": [],
+      "expectedDiagnostic": {
+        "unownedRolesCount": 1,
+        "unownedRoleTitle": "Customer Support & Incident Escalation"
+      }
+    },
+    {
+      "id": "fix-decision-collision",
+      "name": "Fixture 6 — Decision Authority Collision",
+      "description": "Two roles (Sales Lead and Product Lead) both claim exclusive decision rights on CUSTOMER_PRICING_TERMS.",
+      "companyStage": "SMALL_CORE_TEAM",
+      "people": [
+        { "personId": "p-sales", "displayName": "Sales Person", "relationship": "EMPLOYEE", "assignedRoleIds": ["r-sales"], "capabilitiesPossessed": ["cap-customer-discovery"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-sales", "allocationPercent": 100 }] },
+        { "personId": "p-prod", "displayName": "Product Person", "relationship": "EMPLOYEE", "assignedRoleIds": ["r-prod"], "capabilitiesPossessed": ["cap-prod-design"], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [{ "roleId": "r-prod", "allocationPercent": 100 }] }
+      ],
+      "roles": [
+        { "roleId": "r-sales", "title": "Sales Lead", "purpose": "Sales", "accountableOutcomes": [], "recurringResponsibilities": [], "decisionRights": ["dec-pricing-sales"], "requiredCapabilities": [], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-sales", "status": "ACTIVE_OWNED" },
+        { "roleId": "r-prod", "title": "Product Lead", "purpose": "Product", "accountableOutcomes": [], "recurringResponsibilities": [], "decisionRights": ["dec-pricing-prod"], "requiredCapabilities": [], "weeklyHoursCapacityRequired": 40, "currentOwnerId": "p-prod", "status": "ACTIVE_OWNED" }
+      ],
+      "decisionRights": [
+        { "decisionClassId": "dec-pricing-sales", "title": "Sales Pricing Authority", "scope": "CUSTOMER_PRICING_TERMS", "deciderRoleId": "r-sales", "isReversible": true, "autonomyBand": "FULL_AUTONOMOUS_OWNERSHIP", "escalationTriggers": [] },
+        { "decisionClassId": "dec-pricing-prod", "title": "Product Pricing Authority", "scope": "CUSTOMER_PRICING_TERMS", "deciderRoleId": "r-prod", "isReversible": true, "autonomyBand": "FULL_AUTONOMOUS_OWNERSHIP", "escalationTriggers": [] }
+      ],
+      "expectedDiagnostic": {
+        "hasDecisionCollision": true,
+        "collisionScope": "CUSTOMER_PRICING_TERMS"
+      }
+    },
+    {
+      "id": "fix-bus-factor-one",
+      "name": "Fixture 7 — Bus Factor 1 Knowledge Risk",
+      "description": "Production database deployment is understood exclusively by Developer A with no backup owner and no documented runbook.",
+      "companyStage": "SMALL_CORE_TEAM",
+      "people": [
+        { "personId": "p-dev-sole", "displayName": "Developer A", "relationship": "EMPLOYEE", "assignedRoleIds": [], "capabilitiesPossessed": [], "totalWeeklyCapacityHours": 40, "roleAllocationsPercent": [] }
+      ],
+      "knowledgeDomains": [
+        {
+          "domainId": "kdom-prod-db",
+          "name": "Production Database Cluster Deployment & Secret Recovery",
+          "criticality": "CRITICAL",
+          "primaryOwnerPersonId": "p-dev-sole",
+          "backupOwnerPersonId": null,
+          "hasVerifiedRunbook": false,
+          "runbookArtifactRef": null
+        }
+      ],
+      "expectedDiagnostic": {
+        "criticalVulnerabilitiesCount": 1,
+        "continuityGrade": "CRITICAL_BUS_FACTOR"
+      }
+    },
+    {
+      "id": "fix-meeting-bloat",
+      "name": "Fixture 8 — Meeting Bloat with Zero Output",
+      "description": "4 recurring weekly meetings consuming 12 person-hours per week that consistently produce 0 decisions and 0 durable commitments.",
+      "companyStage": "SMALL_CORE_TEAM",
+      "meetings": [
+        { "meetingId": "m-1", "title": "Monday General Catchup", "durationMinutes": 60, "participantPersonIds": ["p1", "p2", "p3"], "decisionsProduced": [], "commitmentsCreated": [], "status": "COMPLETED_WITH_OUTPUT" },
+        { "meetingId": "m-2", "title": "Wednesday Status Standup", "durationMinutes": 45, "participantPersonIds": ["p1", "p2", "p3"], "decisionsProduced": [], "commitmentsCreated": [], "status": "COMPLETED_WITH_OUTPUT" },
+        { "meetingId": "m-3", "title": "Thursday Alignment Sync", "durationMinutes": 45, "participantPersonIds": ["p1", "p2"], "decisionsProduced": [], "commitmentsCreated": [], "status": "COMPLETED_WITH_OUTPUT" },
+        { "meetingId": "m-4", "title": "Friday Wrap-Up", "durationMinutes": 60, "participantPersonIds": ["p1", "p2", "p3"], "decisionsProduced": [], "commitmentsCreated": [], "status": "COMPLETED_WITH_OUTPUT" }
+      ],
+      "expectedDiagnostic": {
+        "zeroOutputMeetingsCount": 4,
+        "meetingBloatAlert": "HIGH_MEETING_BLOAT_DETECTED"
+      }
+    },
+    {
+      "id": "fix-premature-hiring",
+      "name": "Fixture 9 — Premature Sales Hiring Case",
+      "description": "Founder proposes hiring VP Sales before proving customer willingness to pay or discovering a repeatable sales process.",
+      "companyStage": "SOLO_FOUNDER",
+      "ventureContext": {
+        "hasRepeatableSalesProcess": false,
+        "hasObservedPaidCustomers": false,
+        "teamSize": 1
+      },
+      "hiringCase": {
+        "caseId": "hcase-vp-sales",
+        "proposedRoleTitle": "VP of Enterprise Sales",
+        "bottleneckProblemSolved": "Founder feels uncomfortable selling to enterprise customers.",
+        "evidenceOfBottleneck": "Zero enterprise outbound calls made in last 60 days.",
+        "evaluatedAlternatives": [
+          { "alternativeType": "FULL_TIME_HIRE", "feasibility": "PREFERRED", "rationale": "Hire experienced VP to build sales playbook." }
+        ],
+        "recommendedForm": "EMPLOYEE",
+        "scorecardOutcomes": ["Close 10 enterprise deals"],
+        "mustHaveCapabilities": ["cap-customer-discovery", "cap-growth-demand-gen"],
+        "triggerConditionsToHire": ["Immediate"],
+        "status": "EVALUATING"
+      },
+      "expectedDiagnostic": {
+        "verdict": "CHALLENGE_ASSUMPTION_PREMATURE",
+        "hasPrematureSalesFlag": true
+      }
+    },
+    {
+      "id": "fix-ai-automation",
+      "name": "Fixture 10 — AI Automation Handoff",
+      "description": "Repeatable literature scan delegated to an autonomous subagent with structured human review gate.",
+      "companyStage": "SOLO_FOUNDER",
+      "delegation": {
+        "delegationId": "del-ai-scan",
+        "title": "Automated Patent & Regulatory Search",
+        "delegatorRoleId": "role-founder",
+        "delegateeRoleId": "role-ai-assistant",
+        "intendedOutcome": "Structured weekly dossier of new EU patent filings.",
+        "operationalContext": "Offload 6 hours/week of manual web searches to AI subagent.",
+        "decisionAuthorityGranted": "PROPOSE_AND_APPROVE",
+        "operatingConstraints": ["Include official source URLs only", "No unverified claims"],
+        "inputsRequired": ["Keyword query list"],
+        "successCriteria": ["100% verified source citations"],
+        "status": "ACTIVE_DELEGATED"
+      },
+      "expectedDiagnostic": {
+        "isAiDelegated": true,
+        "requiresHumanApproval": true
+      }
+    }
+  ]
+}

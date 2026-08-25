@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/capital-need.schema.json",
+  "title": "Venture Capital Need and Milestone Specification",
+  "description": "Defines a concrete capital requirement linked to a measurable strategic milestone. Capital is not a goal; it is useful only when it buys a strategically valuable milestone.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "needId",
+    "ventureId",
+    "purpose",
+    "milestone",
+    "targetState",
+    "amountRange",
+    "timeHorizonMonths",
+    "status",
+    "evidenceRequired"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "needId": { "type": "string", "pattern": "^need-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "BUILD_MVP",
+        "CUSTOMER_ACQUISITION",
+        "REGULATORY_CERTIFICATION",
+        "INVENTORY_HARDWARE",
+        "KEY_HIRES",
+        "WORKING_CAPITAL",
+        "DEEP_RESEARCH",
+        "EXPANSION"
+      ]
+    },
+    "description": { "type": "string" },
+    "milestone": {
+      "type": "string",
+      "description": "Specific measurable state that becomes true after spending this capital (e.g. 10 paid enterprise pilots, CE mark certification)."
+    },
+    "targetState": {
+      "type": "string",
+      "description": "Operational and empirical state unlocked upon milestone achievement."
+    },
+    "amountRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "minimumViable", "comfortable", "maximumUseful"],
+      "properties": {
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "minimumViable": { "type": "number", "minimum": 0 },
+        "comfortable": { "type": "number", "minimum": 0 },
+        "maximumUseful": { "type": "number", "minimum": 0 }
+      }
+    },
+    "timeHorizonMonths": { "type": "number", "minimum": 1, "maximum": 60 },
+    "useOfFunds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "percentage", "amount", "operationalRationale"],
+        "properties": {
+          "category": { "type": "string" },
+          "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+          "amount": { "type": "number", "minimum": 0 },
+          "operationalRationale": { "type": "string" }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["IDENTIFIED", "EVALUATING_SOURCES", "PREPARING", "ACTIVE_FUNDRAISE", "FUNDED", "SUPERSEDED", "ABANDONED"]
+    },
+    "canAchieveWithoutOutsideCapital": { "type": "boolean" },
+    "nonDilutiveAlternative": { "type": "string" },
+    "underfundingRisk": { "type": "string" },
+    "overfundingRisk": { "type": "string" },
+    "evidenceRequired": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}

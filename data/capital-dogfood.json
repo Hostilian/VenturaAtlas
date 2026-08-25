@@ -1,0 +1,97 @@
+{
+  "dogfoodVentures": [
+    {
+      "ventureId": "idea-061",
+      "ventureName": "FactBounty — Buyer-Funded Product Proof Exchange",
+      "stage": "COMMERCIAL_EXPERIMENTATION",
+      "currentMilestone": "Prove 3 buyer-funded bounties with verified video proofs",
+      "capitalNeed": {
+        "needId": "need-fb-001",
+        "purpose": "CUSTOMER_ACQUISITION",
+        "description": "Seed initial buyer bounty rewards and mobile video capture verification infrastructure.",
+        "amountRange": {
+          "currency": "EUR",
+          "minimumViable": 1500,
+          "comfortable": 5000,
+          "maximumUseful": 15000
+        },
+        "timeHorizonMonths": 3,
+        "milestone": "Reach 15 funded consumer bounties and 1 paying merchant subscription",
+        "targetState": "Repeat organic fact requests and positive unit economics on unlock fees."
+      },
+      "capitalAnalysis": {
+        "outsideEquityNeededNow": false,
+        "recommendedPath": "CUSTOMER_PREPAY + BOOTSTRAPPED",
+        "rationale": "Bounties are paid directly by buyers before verification payout. Outside VC at this stage creates unnecessary 15-20% dilution before demand density is proven. Lean customer-funded validation via Mercury is optimal.",
+        "alternativeNonDilutive": "Regional micro-grant for consumer digital protection (up to €10k) if legal entity is incorporated."
+      },
+      "dilutionComparison": {
+        "bootstrapOwnership": 100.0,
+        "leanAngelSafeOwnership": 92.5,
+        "seedVcOwnership": 78.0
+      }
+    },
+    {
+      "ventureId": "idea-001",
+      "ventureName": "ProofRail — AI Work Acceptance Gate",
+      "stage": "PROTOTYPE_VALIDATION",
+      "currentMilestone": "10 automated enterprise regression benchmarks and SOC2 certification preflight",
+      "capitalNeed": {
+        "needId": "need-pr-001",
+        "purpose": "REGULATORY_CERTIFICATION",
+        "description": "Fund enterprise security compliance, multi-model evaluation harness compute, and pilot integrations.",
+        "amountRange": {
+          "currency": "EUR",
+          "minimumViable": 35000,
+          "comfortable": 120000,
+          "maximumUseful": 250000
+        },
+        "timeHorizonMonths": 6,
+        "milestone": "5 enterprise design partners running acceptance gates in CI/CD pipeline",
+        "targetState": "Validated €2,500/mo ARR contract value per design partner."
+      },
+      "capitalAnalysis": {
+        "outsideEquityNeededNow": true,
+        "recommendedPath": "ANGEL_SAFE + EUROSTARS_GRANT",
+        "rationale": "Enterprise acceptance gates require formal security credentials and reliable cross-provider compute. A €150k Post-Money SAFE paired with a Eurostars R&D grant provides 12 months runway without aggressive VC board loss.",
+        "alternativeNonDilutive": "Eurostars-3 Innovation Call (€250k grant with 50% co-funding)."
+      },
+      "dilutionComparison": {
+        "bootstrapOwnership": 100.0,
+        "leanAngelSafeOwnership": 88.0,
+        "seedVcOwnership": 75.0
+      }
+    },
+    {
+      "ventureId": "idea-082",
+      "ventureName": "Vendor Slot Rescue",
+      "stage": "VALIDATION_PILOT",
+      "currentMilestone": "20 event organizer partnerships and 50 standby vendor registrations",
+      "capitalNeed": {
+        "needId": "need-vsr-001",
+        "purpose": "BUILD_MVP",
+        "description": "WhatsApp broadcast API setup, localized landing page, and organizer pilot materials.",
+        "amountRange": {
+          "currency": "EUR",
+          "minimumViable": 100,
+          "comfortable": 500,
+          "maximumUseful": 2000
+        },
+        "timeHorizonMonths": 2,
+        "milestone": "Fill 10 last-minute cancelled vendor slots and collect €250 in success fees",
+        "targetState": "Self-sustaining two-sided standby directory with positive word-of-mouth."
+      },
+      "capitalAnalysis": {
+        "outsideEquityNeededNow": false,
+        "recommendedPath": "BOOTSTRAPPED",
+        "rationale": "Zero upfront capital required. Software overhead is near €20/month. Raising equity for a local performance fee network creates governance overhead without operational benefit.",
+        "alternativeNonDilutive": "None needed."
+      },
+      "dilutionComparison": {
+        "bootstrapOwnership": 100.0,
+        "leanAngelSafeOwnership": 95.0,
+        "seedVcOwnership": 80.0
+      }
+    }
+  ]
+}

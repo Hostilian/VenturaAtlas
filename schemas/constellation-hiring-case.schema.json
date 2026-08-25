@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-hiring-case.schema.json",
+  "title": "Constellation Evidence-Based Hiring Business Case Specification",
+  "description": "Disciplined hiring business case justifying a new role based on demonstrated bottleneck evidence, evaluating alternatives (automate, contract, eliminate) before recruiting.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "proposedRoleTitle",
+    "bottleneckProblemSolved",
+    "evidenceOfBottleneck",
+    "evaluatedAlternatives",
+    "recommendedForm",
+    "scorecardOutcomes",
+    "mustHaveCapabilities",
+    "estimatedMonthlyCostRange",
+    "triggerConditionsToHire",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "caseId": { "type": "string", "pattern": "^hcase-[a-z0-9-]+$" },
+    "proposedRoleTitle": { "type": "string" },
+    "bottleneckProblemSolved": { "type": "string" },
+    "evidenceOfBottleneck": { "type": "string" },
+    "evaluatedAlternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["alternativeType", "feasibility", "rationale"],
+        "properties": {
+          "alternativeType": {
+            "type": "string",
+            "enum": ["ELIMINATE_WORK", "STANDARDIZE_SOP", "AI_AUTOMATION", "CONTRACTOR", "AGENCY", "FRACTIONAL_EXECUTIVE", "FULL_TIME_HIRE", "CO_FOUNDER"]
+          },
+          "feasibility": { "type": "string", "enum": ["PREFERRED", "VIABLE", "INSUFFICIENT", "EXCESSIVE_OVERHEAD"] },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "recommendedForm": {
+      "type": "string",
+      "enum": ["EMPLOYEE", "CONTRACTOR", "AGENCY", "ADVISOR", "AI_AUTOMATION", "DO_NOT_HIRE"]
+    },
+    "scorecardOutcomes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mustHaveCapabilities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "workSampleDescription": { "type": "string" },
+    "estimatedMonthlyCostRange": {
+      "type": "object",
+      "properties": {
+        "currency": { "type": "string" },
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+    "triggerConditionsToHire": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["EVALUATING", "APPROVED_TRIGGER_PENDING", "ACTIVE_SOURCING", "FILLED", "REJECTED_ALTERNATIVE_CHOSEN"]
+    }
+  }
+}

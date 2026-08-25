@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/funding-source.schema.json",
+  "title": "Funding Source Archetype and Terms Specification",
+  "description": "Taxonomy of funding sources including dilutive, repayable, grant, and customer-financed instruments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "sourceType",
+    "name",
+    "category",
+    "dilutionProfile",
+    "repaymentProfile",
+    "typicalTimelineWeeks",
+    "prerequisites",
+    "governanceImpact"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "sourceId": { "type": "string" },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "BOOTSTRAPPED",
+        "CUSTOMER_PREPAY",
+        "FOUNDER_CAPITAL",
+        "FRIENDS_FAMILY",
+        "GRANT_NON_DILUTIVE",
+        "PRIZE_AWARD",
+        "ACCELERATOR",
+        "ANGEL_INVESTOR",
+        "SAFE_CONVERTIBLE",
+        "PRICED_EQUITY",
+        "VENTURE_CAPITAL",
+        "STRATEGIC_INVESTOR",
+        "BANK_DEBT",
+        "VENTURE_DEBT",
+        "REVENUE_BASED_FINANCING",
+        "CROWDFUNDING_REWARDS",
+        "CROWDFUNDING_EQUITY"
+      ]
+    },
+    "name": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": ["NON_DILUTIVE", "CUSTOMER_FINANCED", "FOUNDER_FINANCED", "EARLY_EQUITY", "INSTITUTIONAL_EQUITY", "DEBT_CREDIT", "ALTERNATIVE"]
+    },
+    "description": { "type": "string" },
+    "dilutionProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["isDilutive", "typicalEquityRangePercent"],
+      "properties": {
+        "isDilutive": { "type": "boolean" },
+        "typicalEquityRangePercent": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number", "minimum": 0, "maximum": 100 },
+            "max": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        }
+      }
+    },
+    "repaymentProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["isRepayable"],
+      "properties": {
+        "isRepayable": { "type": "boolean" },
+        "repaymentMechanism": { "type": "string" },
+        "securityRequired": { "type": "boolean" },
+        "personalGuaranteeRequired": { "type": "boolean" }
+      }
+    },
+    "typicalTimelineWeeks": {
+      "type": "object",
+      "properties": {
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+    "typicalCheckRange": {
+      "type": "object",
+      "properties": {
+        "currency": { "type": "string" },
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "governanceImpact": {
+      "type": "string",
+      "enum": ["NONE", "INFORMAL_ADVICE", "OBSERVER_RIGHTS", "BOARD_SEAT", "INVESTOR_CONSENT_RIGHTS", "FULL_COVENANTS"]
+    },
+    "advantages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "disadvantages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "bestFitWhen": { "type": "string" },
+    "avoidWhen": { "type": "string" }
+  }
+}

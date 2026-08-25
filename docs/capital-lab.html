@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capital Lab · CAPITAL · Venture Atlas OS</title>
+  <meta name="description" content="Capital Formation, Funding Strategy, Dilution Modeling, Non-Dilutive Grant Engine, and Investor Readiness OS.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.8.0">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="capital-lab" data-root="..">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="site-branding">
+        <a href="../index.html" class="site-logo">
+          <span class="logo-text">VenturaAtlas</span>
+          <span class="logo-badge">CAPITAL</span>
+        </a>
+      </div>
+      <nav class="site-nav">
+        <a href="../index.html" class="nav-link">Directory</a>
+        <a href="rankings.html" class="nav-link">Rankings</a>
+        <a href="matcher.html" class="nav-link">Matcher</a>
+        <a href="compare.html" class="nav-link">Compare</a>
+        <a href="room.html" class="nav-link">Decisions</a>
+        <a href="portfolio-lab.html" class="nav-link">Portfolio Lab</a>
+        <a href="capital-lab.html" class="nav-link active">Capital Lab</a>
+        <a href="org-lab.html" class="nav-link">Org Lab</a>
+        <a href="live-progress.html" class="nav-link">Autonomy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="lab-header">
+        <div class="lab-title-area">
+          <div class="lab-tag">FINANCING &amp; DILUTION STRATEGY</div>
+          <h1 class="lab-title">Capital Lab</h1>
+          <p class="lab-subtitle">
+            Capital is not a goal; it is useful only when it buys a strategically valuable milestone.
+            Model capital needs, non-dilutive grants, cap-table dilution, and investor readiness.
+          </p>
+        </div>
+        <div class="lab-actions">
+          <label class="venture-picker-label">
+            <span>Select Active Venture:</span>
+            <select id="capitalVentureSelect" class="form-select">
+              <option value="idea-061" selected>FactBounty (idea-061) — Customer Funded</option>
+              <option value="idea-001">ProofRail (idea-001) — Seed/Grant Path</option>
+              <option value="idea-082">Vendor Slot Rescue (idea-082) — Bootstrapped</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-nav" role="tablist">
+        <button class="tab-btn active" data-tab="tab-need" role="tab">1. Capital Need &amp; Milestone</button>
+        <button class="tab-btn" data-tab="tab-sources" role="tab">2. Funding Source Fit</button>
+        <button class="tab-btn" data-tab="tab-grants" role="tab">3. Non-Dilutive Grant Engine</button>
+        <button class="tab-btn" data-tab="tab-dilution" role="tab">4. Cap Table &amp; Dilution</button>
+        <button class="tab-btn" data-tab="tab-readiness" role="tab">5. Investor Readiness &amp; Data Room</button>
+        <button class="tab-btn" data-tab="tab-pipeline" role="tab">6. Pipeline &amp; Term Sheets</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="tab-content" id="capitalLabContainer">
+        <!-- Dynamically rendered by capital-lab.js -->
+        <div class="loading-state">Loading Capital Lab workspace...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-note">
+        <strong>Privacy &amp; Boundary Notice:</strong> Cap table scenarios, investor pipeline notes, and data room audits are stored strictly in local browser storage. VenturaAtlas does not provide legal, tax, or investment advice.
+      </div>
+      <div class="footer-links">
+        <a href="portfolio-lab.html">Portfolio Lab (ORBIT)</a>
+        <a href="room.html">Decision Studio</a>
+        <a href="live-progress.html">Runtime Autonomy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/features/capital-engine.js"></script>
+  <script src="../assets/js/core/capital-store.js"></script>
+  <script src="../assets/js/features/capital-lab.js"></script>
+</body>
+</html>

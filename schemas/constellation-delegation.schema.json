@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-delegation.schema.json",
+  "title": "Constellation Delegation Packet Specification",
+  "description": "Structured operational delegation packet transferring ownership of recurring or initiative outcomes with explicit authority, constraints, and success criteria.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "delegationId",
+    "title",
+    "delegatorRoleId",
+    "delegateeRoleId",
+    "intendedOutcome",
+    "operationalContext",
+    "decisionAuthorityGranted",
+    "operatingConstraints",
+    "successCriteria",
+    "escalationRule",
+    "checkInCadence",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "delegationId": { "type": "string", "pattern": "^del-[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "delegatorRoleId": { "type": "string" },
+    "delegateeRoleId": { "type": "string" },
+    "intendedOutcome": { "type": "string" },
+    "operationalContext": { "type": "string" },
+    "decisionAuthorityGranted": { "type": "string" },
+    "operatingConstraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "inputsRequired": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "successCriteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sopRef": { "type": ["string", "null"] },
+    "escalationRule": { "type": "string" },
+    "checkInCadence": { "type": "string", "enum": ["DAILY_ASYNC", "WEEKLY_REVIEW", "BIWEEKLY", "MILESTONE_TRIGGERED"] },
+    "status": {
+      "type": "string",
+      "enum": ["PROPOSED", "ACTIVE_DELEGATED", "VALIDATED_AUTONOMOUS", "RECALLED_TO_FOUNDER", "ARCHIVED"]
+    },
+    "createdAt": { "type": "string" },
+    "updatedAt": { "type": "string" }
+  }
+}

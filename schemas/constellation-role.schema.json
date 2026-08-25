@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-role.schema.json",
+  "title": "Constellation Operational Role Specification",
+  "description": "Defines an operational role structured around outcomes, recurring responsibilities, decision rights, and capability requirements. Person != Role.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "roleId",
+    "title",
+    "purpose",
+    "accountableOutcomes",
+    "recurringResponsibilities",
+    "decisionRights",
+    "requiredCapabilities",
+    "weeklyHoursCapacityRequired",
+    "currentOwnerId",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "roleId": { "type": "string", "pattern": "^role-[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "purpose": {
+      "type": "string",
+      "description": "Concrete explanation of why this role exists (e.g., 'Own qualified demand generation for target engineering buyers')."
+    },
+    "accountableOutcomes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recurringResponsibilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["responsibilityId", "title", "cadence", "isDelegatable"],
+        "properties": {
+          "responsibilityId": { "type": "string" },
+          "title": { "type": "string" },
+          "cadence": { "type": "string", "enum": ["DAILY", "WEEKLY", "BIWEEKLY", "MONTHLY", "AS_NEEDED"] },
+          "isDelegatable": { "type": "boolean" },
+          "delegationDifficulty": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "FOUNDER_ONLY"] },
+          "sopRef": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "decisionRights": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "requiredCapabilities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sourceOrDestinationRole", "direction", "artifactOrSignal"],
+        "properties": {
+          "sourceOrDestinationRole": { "type": "string" },
+          "direction": { "type": "string", "enum": ["RECEIVES_FROM", "PRODUCES_TO"] },
+          "artifactOrSignal": { "type": "string" },
+          "acceptanceCriteria": { "type": "string" }
+        }
+      }
+    },
+    "weeklyHoursCapacityRequired": { "type": "number", "minimum": 0, "maximum": 80 },
+    "currentOwnerId": { "type": ["string", "null"] },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE_OWNED", "ACTIVE_VACANT", "PROPOSED_NEXT_HIRE", "DEPRECATED"]
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

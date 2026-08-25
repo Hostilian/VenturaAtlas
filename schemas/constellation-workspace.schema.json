@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-workspace.schema.json",
+  "title": "Constellation Organizational Workspace Specification",
+  "description": "Private, root organizational workspace state indexing people, roles, capabilities, decision rights, delegation packets, meetings, and knowledge domains.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workspaceId",
+    "ventureId",
+    "companyStage",
+    "people",
+    "roles",
+    "decisionRights",
+    "delegations",
+    "meetings",
+    "hiringCases",
+    "knowledgeDomains"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "workspaceId": { "type": "string", "pattern": "^orgws-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "companyStage": {
+      "type": "string",
+      "enum": ["SOLO_FOUNDER", "TWO_FOUNDERS", "SMALL_CORE_TEAM", "SCALING_FUNCTIONAL"]
+    },
+    "people": {
+      "type": "array",
+      "items": { "$ref": "constellation-person.schema.json" }
+    },
+    "roles": {
+      "type": "array",
+      "items": { "$ref": "constellation-role.schema.json" }
+    },
+    "decisionRights": {
+      "type": "array",
+      "items": { "$ref": "constellation-decision-right.schema.json" }
+    },
+    "delegations": {
+      "type": "array",
+      "items": { "$ref": "constellation-delegation.schema.json" }
+    },
+    "meetings": {
+      "type": "array",
+      "items": { "$ref": "constellation-meeting-packet.schema.json" }
+    },
+    "hiringCases": {
+      "type": "array",
+      "items": { "$ref": "constellation-hiring-case.schema.json" }
+    },
+    "knowledgeDomains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domainId", "name", "criticality", "primaryOwnerPersonId", "backupOwnerPersonId", "hasVerifiedRunbook"],
+        "properties": {
+          "domainId": { "type": "string" },
+          "name": { "type": "string" },
+          "criticality": { "type": "string", "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"] },
+          "primaryOwnerPersonId": { "type": "string" },
+          "backupOwnerPersonId": { "type": ["string", "null"] },
+          "hasVerifiedRunbook": { "type": "boolean" },
+          "runbookArtifactRef": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

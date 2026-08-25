@@ -1849,3 +1849,103 @@ body.nav-open {
   .pl-hm-label { width: 120px; font-size: 0.7rem; }
   .pl-metrics-row { grid-template-columns: 1fr 1fr; }
 }
+
+/* ================================================================
+   CAPITAL LAB — Capital Formation & Dilution Design System
+   ================================================================ */
+.lab-header { margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+.lab-tag { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
+.lab-title { font-size: 2.2rem; font-weight: 800; margin: 0 0 0.5rem; }
+.lab-subtitle { color: var(--text2); max-width: 720px; font-size: 1.05rem; margin: 0; line-height: 1.5; }
+.venture-picker-label { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--text2); }
+
+.tab-nav { display: flex; gap: 0.4rem; border-bottom: 2px solid var(--line); margin-bottom: 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tab-btn { font: inherit; font-size: 0.88rem; font-weight: 600; padding: 0.7rem 1.1rem; background: transparent; border: none; border-bottom: 3px solid transparent; color: var(--text2); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; margin-bottom: -2px; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.tab-btn:hover { color: var(--text); background: var(--panel2); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--panel); }
+
+.grid-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 900px) { .grid-panel { grid-template-columns: 1fr; } }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+.card-header h3 { margin: 0; font-size: 1.2rem; font-weight: 700; }
+.card-subtitle { color: var(--text2); font-size: 0.9rem; margin: 0.25rem 0 0; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-group.span-2 { grid-column: span 2; }
+.form-control, .form-select { font: inherit; font-size: 0.9rem; padding: 0.6rem 0.8rem; border: 1px solid var(--line2); border-radius: var(--radius-sm); background: var(--bg2); color: var(--text); }
+.form-hint { font-size: 0.78rem; color: var(--text2); margin-top: 0.2rem; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; font: inherit; font-size: 0.88rem; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: background 0.15s ease; text-decoration: none; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-h); }
+.btn-secondary { background: var(--bg2); color: var(--text); border: 1px solid var(--line2); }
+.btn-danger { background: var(--score-lo); color: #fff; }
+
+.badge { display: inline-flex; align-items: center; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+.badge-success { background: var(--score-hi-bg); color: var(--score-hi); }
+.badge-warning { background: var(--warn-bg); color: var(--warn); }
+.badge-danger { background: var(--score-lo-bg); color: var(--score-lo); }
+.badge-info { background: var(--accent-l); color: var(--accent); }
+
+.diagnostic-box { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.diag-item strong { display: block; font-size: 0.82rem; color: var(--text2); margin-bottom: 0.2rem; }
+.diag-desc { margin: 0; font-size: 0.88rem; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.data-table th { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--line); color: var(--text2); font-size: 0.8rem; font-weight: 700; }
+.data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--line); }
+
+.sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+.source-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.source-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.source-card-header h4 { margin: 0; font-size: 1.05rem; }
+.source-desc { font-size: 0.85rem; color: var(--text2); margin: 0; line-height: 1.4; }
+.source-meta { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: var(--text); border-top: 1px solid var(--line); padding-top: 0.5rem; }
+.source-fit-reasons { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; margin-top: 0.35rem; }
+.fit-pro { color: var(--score-hi); }
+.fit-con { color: var(--warn); }
+
+.grants-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.grant-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.25rem; }
+.grant-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.grant-header h4 { margin: 0 0 0.2rem; font-size: 1.1rem; }
+.grant-authority { font-size: 0.8rem; color: var(--text2); }
+.grant-metrics { display: flex; gap: 1.5rem; flex-wrap: wrap; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 0.75rem; font-size: 0.85rem; }
+.grant-criteria-box h5 { margin: 0 0 0.4rem; font-size: 0.85rem; }
+.criteria-list { list-style: none; padding: 0; margin: 0; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.criterion-status { font-weight: bold; margin-right: 0.35rem; }
+.grant-footer { margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 0.5rem; }
+
+.pillars-list { display: flex; flex-direction: column; gap: 1rem; }
+.pillar-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.pillar-header { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 600; }
+.progress-bar { width: 100%; height: 8px; background: var(--bg2); border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.3s ease; }
+.pillar-detail { font-size: 0.78rem; color: var(--text2); }
+
+.dataroom-cat { margin-bottom: 1.25rem; }
+.dataroom-cat h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+
+/* ================================================================
+   CONSTELLATION ORG LAB — Organizational & Execution Design System
+   ================================================================ */
+.people-list, .roles-list { display: flex; flex-direction: column; gap: 1rem; }
+.person-card, .role-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem; }
+.person-head, .role-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.person-head h4, .role-head h4 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.role-purpose { font-size: 0.85rem; color: var(--text2); margin: 0.2rem 0 0.5rem; }
+.capacity-total { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.assigned-roles-chips { font-size: 0.82rem; color: var(--text2); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--panel); border: 1px solid var(--line2); font-size: 0.78rem; font-weight: 600; }
+.clean-list { list-style: none; padding: 0; margin: 0.35rem 0 0; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.delegation-packet-card, .hiring-case-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem; margin-bottom: 1rem; }
+.packet-meta, .hcase-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 0.5rem; }
+.cadence-box { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.88rem; }
+.alert { padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; }
+.alert-danger { background: var(--score-lo-bg); color: var(--score-lo); border: 1px solid hsl(355, 60%, 80%); }
+.bg-danger { background: var(--score-lo) !important; }
+
+
