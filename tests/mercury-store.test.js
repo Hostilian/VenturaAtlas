@@ -35,6 +35,43 @@ function segment(store) {
   });
 }
 
+function organization(store, s, name, recordClass = 'REAL') {
+  return store.addOrganization({
+    name,
+    segmentId: s.segmentId,
+    recordClass,
+    reachabilityBasis: recordClass === 'REAL' ? 'Public company channel observed.' : 'Synthetic fixture only.',
+    evidenceRef: recordClass === 'REAL' ? `private-org-ref-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}` : 'synthetic-fixture',
+  });
+}
+
+function progressToOffer(store, s, org, opportunity) {
+  const channel = store.getWorkspace().channels.find(item => item.segmentId === s.segmentId)
+    || store.addChannel({ segmentId: s.segmentId, name: 'Permission-respecting test channel' });
+  store.recordInteraction({
+    organizationId: org.organizationId,
+    segmentId: s.segmentId,
+    channelId: channel.channelId,
+    interactionType: 'CONTACT_ATTEMPT',
+    outcome: 'REPLIED',
+    facts: ['A permission-respecting contact attempt received a reply.'],
+    evidenceRef: `contact-${opportunity.opportunityId}`,
+  });
+  store.advanceOpportunity(opportunity.opportunityId, 'CONTACTED', `contact-${opportunity.opportunityId}`);
+  store.recordInteraction({
+    organizationId: org.organizationId,
+    segmentId: s.segmentId,
+    channelId: channel.channelId,
+    interactionType: 'CONVERSATION',
+    outcome: 'QUALIFIED',
+    facts: ['A human recorded a qualified commercial conversation.'],
+    evidenceRef: `conversation-${opportunity.opportunityId}`,
+  });
+  store.advanceOpportunity(opportunity.opportunityId, 'CONVERSATION', `conversation-${opportunity.opportunityId}`);
+  store.advanceOpportunity(opportunity.opportunityId, 'QUALIFIED', `qualification-${opportunity.opportunityId}`);
+  store.advanceOpportunity(opportunity.opportunityId, 'OFFERED', `proposal-${opportunity.opportunityId}`);
+}
+
 test('fresh Mercury workspace is empty and commercially C0', () => {
   const { store } = harness();
   const summary = store.getSummary();
@@ -48,16 +85,46 @@ test('fresh Mercury workspace is empty and commercially C0', () => {
 test('synthetic fixtures never become commercial evidence', () => {
   const { store } = harness();
   const s = segment(store);
-  store.addOrganization({ name: 'Synthetic Co', segmentId: s.segmentId, recordClass: 'SYNTHETIC' });
+  const synthetic = organization(store, s, 'Synthetic Co', 'SYNTHETIC');
+  const opportunity = store.addOpportunity({ organizationId: synthetic.organizationId, segmentId: s.segmentId, evidenceRef: 'fixture-only' });
+  progressToOffer(store, s, synthetic, opportunity);
+  store.advanceOpportunity(opportunity.opportunityId, 'PILOT', 'synthetic-pilot-only');
   assert.equal(store.getSummary().evidence.code, 'C0');
   assert.equal(store.getSummary().identifiedOrganizations, 0);
+  assert.equal(store.getSummary().pilots, 0);
+});
+
+test('objection and loss analytics are derived from real records by segment', () => {
+  const { store } = harness();
+  const s = segment(store);
+  const org = organization(store, s, 'Observed Buyer');
+  const channel = store.addChannel({ segmentId: s.segmentId, name: 'Observed channel' });
+  const opportunity = store.addOpportunity({ organizationId: org.organizationId, segmentId: s.segmentId, evidenceRef: 'identified-loss-001' });
+  store.recordInteraction({
+    organizationId: org.organizationId,
+    segmentId: s.segmentId,
+    channelId: channel.channelId,
+    interactionType: 'CONVERSATION',
+    outcome: 'NO_INTEREST',
+    facts: ['Buyer said the deadline was not funded.'],
+    objections: ['No approved budget this quarter.'],
+    objectionCategories: ['BUDGET', 'TIMING'],
+    evidenceRef: 'private-note-loss-001',
+  });
+  store.advanceOpportunity(opportunity.opportunityId, 'LOST', 'private-note-loss-001', 'No approved budget this quarter');
+
+  const summary = store.getSummary();
+  assert.deepEqual(summary.objectionCounts, { BUDGET: 1, TIMING: 1 });
+  assert.deepEqual(summary.lossReasonCounts, { 'No approved budget this quarter': 1 });
+  assert.equal(summary.segmentPerformance[0].conversations, 1);
+  assert.equal(summary.segmentPerformance[0].lost, 1);
 });
 
 test('interaction signals advance only their explicit evidence rung', () => {
   const { store } = harness();
   const s = segment(store);
   const channel = store.addChannel({ segmentId: s.segmentId, name: 'Warm referral' });
-  const org = store.addOrganization({ name: 'Example Buyer Ltd', segmentId: s.segmentId, recordClass: 'REAL' });
+  const org = organization(store, s, 'Example Buyer Ltd');
   assert.equal(store.getSummary().evidence.code, 'C1');
 
   store.recordInteraction({
@@ -80,9 +147,9 @@ test('invoice is not revenue and payment/value/renewal are separately derived', 
   const { store } = harness();
   const s = segment(store);
   const offer = store.addOffer({ segmentId: s.segmentId, name: 'Paid pilot', deliverable: 'One bounded evidence review', amount: 500, currency: 'EUR' });
-  const org = store.addOrganization({ name: 'Buyer GmbH', segmentId: s.segmentId, recordClass: 'REAL' });
-  const opportunity = store.addOpportunity({ organizationId: org.organizationId, segmentId: s.segmentId, offerId: offer.offerId });
-  store.advanceOpportunity(opportunity.opportunityId, 'OFFERED', 'proposal-001');
+  const org = organization(store, s, 'Buyer GmbH');
+  const opportunity = store.addOpportunity({ organizationId: org.organizationId, segmentId: s.segmentId, offerId: offer.offerId, evidenceRef: 'identified-001' });
+  progressToOffer(store, s, org, opportunity);
 
   store.recordCommercialEvent({ organizationId: org.organizationId, opportunityId: opportunity.opportunityId, eventType: 'INVOICE_ISSUED', evidenceRef: 'invoice-001' });
   assert.equal(store.getSummary().evidence.code, 'C1');
@@ -105,10 +172,10 @@ test('cross-organization events and out-of-sequence maturity claims fail closed'
   const { store } = harness();
   const s = segment(store);
   const offer = store.addOffer({ segmentId: s.segmentId, name: 'Pilot', deliverable: 'Review', amount: 100, currency: 'EUR' });
-  const orgA = store.addOrganization({ name: 'Buyer A', segmentId: s.segmentId, recordClass: 'REAL' });
-  const orgB = store.addOrganization({ name: 'Buyer B', segmentId: s.segmentId, recordClass: 'REAL' });
-  const opportunityB = store.addOpportunity({ organizationId: orgB.organizationId, segmentId: s.segmentId, offerId: offer.offerId });
-  store.advanceOpportunity(opportunityB.opportunityId, 'OFFERED', 'proposal-b');
+  const orgA = organization(store, s, 'Buyer A');
+  const orgB = organization(store, s, 'Buyer B');
+  const opportunityB = store.addOpportunity({ organizationId: orgB.organizationId, segmentId: s.segmentId, offerId: offer.offerId, evidenceRef: 'identified-b' });
+  progressToOffer(store, s, orgB, opportunityB);
 
   assert.throws(() => store.recordCommercialEvent({
     organizationId: orgA.organizationId,
@@ -122,9 +189,37 @@ test('cross-organization events and out-of-sequence maturity claims fail closed'
     organizationId: orgA.organizationId,
     eventType: 'REFERRED',
     evidenceRef: 'standalone-referral',
-  }), /prior value achievement/);
+  }), /requires an opportunity/);
   assert.equal(store.getSummary().evidence.code, 'C1');
   assert.equal(store.getSummary().payingOrganizations, 0);
+});
+
+test('payment, value, refunds, and maturity remain scoped to one opportunity and currency', () => {
+  const { store } = harness();
+  const s = segment(store);
+  const offer = store.addOffer({ segmentId: s.segmentId, name: 'Pilot', deliverable: 'Review', amount: 100, currency: 'EUR' });
+  const org = organization(store, s, 'Buyer A');
+  const first = store.addOpportunity({ organizationId: org.organizationId, segmentId: s.segmentId, offerId: offer.offerId, evidenceRef: 'identified-first' });
+  const second = store.addOpportunity({ organizationId: org.organizationId, segmentId: s.segmentId, offerId: offer.offerId, evidenceRef: 'identified-second' });
+  progressToOffer(store, s, org, first);
+  progressToOffer(store, s, org, second);
+  store.recordCommercialEvent({ organizationId: org.organizationId, opportunityId: first.opportunityId, eventType: 'PAYMENT_COLLECTED', amount: 100, currency: 'EUR', evidenceRef: 'payment-first' });
+
+  assert.throws(() => store.recordCommercialEvent({
+    organizationId: org.organizationId,
+    opportunityId: second.opportunityId,
+    eventType: 'VALUE_ACHIEVED',
+    evidenceRef: 'value-second-without-payment',
+  }), /this opportunity/);
+  assert.throws(() => store.recordCommercialEvent({
+    organizationId: org.organizationId,
+    opportunityId: first.opportunityId,
+    eventType: 'REFUND',
+    amount: 100,
+    currency: 'USD',
+    evidenceRef: 'wrong-currency-refund',
+  }), /exceeds prior collected payment/);
+  assert.equal(store.getSummary().evidence.code, 'C8');
 });
 
 test('import rejects broken references and unearned paid pricing claims', () => {

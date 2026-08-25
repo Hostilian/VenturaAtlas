@@ -1,10 +1,10 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "workspaceMode": "UNVERIFIED_DRAFT",
   "workspaceId": "mercury-idea-061-hypothesis",
   "privacyScope": "LOCAL_BROWSER_ONLY",
   "canonicalIdeaId": "idea-061",
-  "canonicalIdeaRevision": "7aec9e7c874f40f778c8f48108da5c52d6c24944",
+  "canonicalIdeaRevision": "934fffd425b1fce6",
   "ventureName": "FactBounty — Buyer-Funded Product Proof Exchange",
   "createdAt": "2026-08-25T00:00:00Z",
   "updatedAt": "2026-08-25T00:00:00Z",

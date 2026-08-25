@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
+const { validateMercuryDocument } = require('../scripts/validate-mercury');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -41,5 +42,28 @@ test('service worker includes the Mercury shell for offline use', () => {
 test('Decision Studio warns that packet exports include private Mercury data', () => {
   const studio = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'features', 'studio.js'), 'utf8');
   assert.match(studio, /Mercury data included/);
-  assert.match(studio, /unencrypted packet/);
+  assert.match(studio, /every JSON export/);
+  assert.match(studio, /unencrypted/);
+});
+
+test('Mercury commercial brief is bound to the canonical idea name and data revision', () => {
+  const repositoryMeta = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'repository-meta.json'), 'utf8'));
+  const example = JSON.parse(fs.readFileSync(path.join(ROOT, 'research', 'mercury', 'idea-061-commercial-hypothesis.json'), 'utf8'));
+  assert.equal(example.canonicalIdeaRevision, repositoryMeta.revisions.canonicalRevision);
+  assert.deepEqual(validateMercuryDocument(example), []);
+
+  const stale = structuredClone(example);
+  stale.canonicalIdeaRevision = '0000000000000000000000000000000000000000';
+  stale.ventureName = 'Invented canonical title';
+  const errors = validateMercuryDocument(stale);
+  assert.ok(errors.some(error => error.includes('canonicalIdeaRevision is stale')));
+  assert.ok(errors.some(error => error.includes('ventureName does not match')));
+});
+
+test('Mercury UI exposes the end-to-end loss, objection, and segment-learning flows', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'assets', 'js', 'features', 'mercury.js'), 'utf8');
+  assert.match(source, /id="stageForm"/);
+  assert.match(source, /Objection categories observed/);
+  assert.match(source, /Segment, objection, and loss learning/);
+  assert.match(source, /Highest-value next human action/);
 });

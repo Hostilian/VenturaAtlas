@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('path');
+const { mercuryWorkspace, MercuryStore } = require('../assets/js/core/mercury-store.js');
 
 // Mock localStorage for Node.js test environment
 const mockStorage = new Map();
@@ -34,16 +35,13 @@ test('StudioStore — Initialization and User Profile', () => {
 test('StudioStore — Mercury state round-trips inside the existing decision packet', () => {
   mockStorage.clear();
   const store = new StudioStore();
-  const mercury = {
-    schemaVersion: '1.0.0',
-    workspaceMode: 'UNVERIFIED_DRAFT',
+  const mercury = mercuryWorkspace({
+    now: '2026-08-25T10:00:00Z',
     workspaceId: 'mercury-test',
-    privacyScope: 'LOCAL_BROWSER_ONLY',
     canonicalIdeaId: 'idea-061',
-    ventureName: 'FactBounty',
-    segments: [], triggers: [], offers: [], channels: [], organizations: [],
-    interactions: [], opportunities: [], commercialEvents: [], hypothesisHistory: []
-  };
+    canonicalIdeaRevision: '934fffd425b1fce6',
+    ventureName: 'FactBounty — Buyer-Funded Product Proof Exchange',
+  });
   assert.equal(store.setMercuryWorkspace(mercury), true);
   const packet = store.exportDecisionPacket();
   mockStorage.clear();
@@ -51,6 +49,37 @@ test('StudioStore — Mercury state round-trips inside the existing decision pac
   const result = imported.importDecisionPacket(packet);
   assert.equal(result.success, true);
   assert.equal(imported.getMercuryWorkspace().workspaceId, 'mercury-test');
+});
+
+test('StudioStore — invalid or unpersistable Mercury state fails closed', () => {
+  mockStorage.clear();
+  const studio = new StudioStore();
+  const invalid = mercuryWorkspace({ now: '2026-08-25T10:00:00Z', workspaceId: 'mercury-invalid' });
+  invalid.unexpected = 'private-data-smuggling';
+  assert.equal(studio.setMercuryWorkspace(invalid), false);
+  assert.equal(studio.getMercuryWorkspace(), null);
+
+  const originalSetItem = global.localStorage.setItem;
+  global.localStorage.setItem = () => { throw new Error('quota denied'); };
+  const mercuryStore = new MercuryStore({
+    studioStore: studio,
+    clock: () => '2026-08-25T10:00:00Z',
+    idFactory: prefix => `${prefix}-quota-test`,
+  });
+  assert.throws(() => mercuryStore.addSegment({
+    name: 'Should roll back',
+    description: 'This record must not remain in memory after persistence failure.',
+  }), /was not saved/);
+  assert.equal(mercuryStore.getWorkspace().segments.length, 0);
+  assert.equal(studio.getMercuryWorkspace(), null);
+  global.localStorage.setItem = originalSetItem;
+
+  assert.equal(studio.setMercuryWorkspace(mercuryWorkspace({ now: '2026-08-25T10:00:00Z', workspaceId: 'mercury-delete-test' })), true);
+  const deleteStore = new MercuryStore({ studioStore: studio });
+  global.localStorage.setItem = () => { throw new Error('storage disabled'); };
+  assert.throws(() => deleteStore.reset(), /was not deleted/);
+  assert.notEqual(studio.getMercuryWorkspace(), null);
+  global.localStorage.setItem = originalSetItem;
 });
 
 test('StudioStore — Workspace Creation and Normalization', () => {

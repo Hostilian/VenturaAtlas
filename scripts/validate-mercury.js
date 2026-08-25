@@ -12,7 +12,11 @@ const EXAMPLE_PATH = path.join(ROOT, 'research', 'mercury', 'idea-061-commercial
 
 function validateMercuryDocument(document, options = {}) {
   const schema = options.schema || JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf8'));
-  const ideasRaw = options.ideas || JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ideas.json'), 'utf8'));
+  const ideasPath = path.join(ROOT, 'data', 'ideas.json');
+  const ideasBuffer = fs.readFileSync(ideasPath);
+  const ideasRaw = options.ideas || JSON.parse(ideasBuffer.toString('utf8'));
+  const repositoryMeta = options.repositoryMeta || JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'repository-meta.json'), 'utf8'));
+  const canonicalRevision = options.canonicalRevision || repositoryMeta.revisions?.canonicalRevision;
   const ideas = Array.isArray(ideasRaw) ? ideasRaw : ideasRaw.ideas;
   const ajv = new Ajv2020({ allErrors: true, strict: false });
   addFormats(ajv);
@@ -22,8 +26,16 @@ function validateMercuryDocument(document, options = {}) {
     for (const error of validate.errors || []) errors.push(`${error.instancePath || '<root>'} ${error.message}`);
   }
   errors.push(...validateMercuryWorkspace(document));
-  if (document.canonicalIdeaId && !ideas.some(idea => idea.id === document.canonicalIdeaId)) {
-    errors.push(`unknown canonicalIdeaId: ${document.canonicalIdeaId}`);
+  if (document.canonicalIdeaId) {
+    const canonicalIdea = ideas.find(idea => idea.id === document.canonicalIdeaId);
+    if (!canonicalIdea) {
+      errors.push(`unknown canonicalIdeaId: ${document.canonicalIdeaId}`);
+    } else if (document.ventureName !== canonicalIdea.name) {
+      errors.push(`ventureName does not match canonical idea ${document.canonicalIdeaId}`);
+    }
+    if (document.canonicalIdeaRevision !== canonicalRevision) {
+      errors.push(`canonicalIdeaRevision is stale; expected ${canonicalRevision}`);
+    }
   }
   return [...new Set(errors)];
 }

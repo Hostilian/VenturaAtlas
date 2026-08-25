@@ -17,6 +17,20 @@ function initMercuryLab() {
     ? Object.entries(values).map(([currency, amount]) => `${currency} ${amount.toFixed(2)}`).join(' · ')
     : 'None recorded';
 
+  function nextHumanAction(ws, summary) {
+    if (!ws.canonicalIdeaId) return 'Choose one canonical venture. This creates no commercial evidence.';
+    if (!ws.segments.length) return 'Define one narrow segment, its budget owner, current alternative, and observable buying trigger.';
+    if (!summary.identifiedOrganizations) return 'Identify one real reachable buyer organization through a lawful, permission-respecting path; do not store personal contact data here.';
+    if (!summary.conversations) return 'A human should conduct one consented problem conversation and retain the source privately; Mercury will not contact anyone.';
+    if (!summary.qualified) return 'Review the observed facts and either qualify the opportunity with an evidence reference or record the loss reason.';
+    if (!summary.netPayingOrganizations) return summary.payingOrganizations
+      ? 'A historical payment is fully refunded. A human should diagnose the outcome before seeking another retained payment.'
+      : 'A human should present one concrete paid offer and record acceptance, rejection, or collected payment without treating an invoice as revenue.';
+    if (!summary.activatedOrganizations) return 'Run a human value review and record VALUE ACHIEVED only when the promised outcome is observed.';
+    if (!summary.renewedOrganizations) return 'Ask the buyer to make a real renewal decision after value delivery; a first payment is not retention.';
+    return 'Test the same segment, offer, and channel with an independent buyer before calling the motion repeatable.';
+  }
+
   let notice = store.getRecoveryWarning();
 
   function optionRows(items, idKey, labelKey, includeBlank = true) {
@@ -37,7 +51,10 @@ function initMercuryLab() {
     const channelOptions = optionRows(ws.channels, 'channelId', 'name');
     const organizationOptions = optionRows(ws.organizations, 'organizationId', 'name');
     const offerOptions = optionRows(ws.offers, 'offerId', 'name');
-    const opportunityOptions = optionRows(ws.opportunities, 'opportunityId', 'opportunityId');
+    const opportunityOptions = `<option value="">— Select —</option>${ws.opportunities.map(item => {
+      const org = ws.organizations.find(candidate => candidate.organizationId === item.organizationId);
+      return `<option value="${esc(item.opportunityId)}">${esc(org?.name || item.organizationId)} — ${esc(item.stage)}</option>`;
+    }).join('')}`;
 
     root.innerHTML = `
       <section class="panel" style="padding:1.25rem;margin-bottom:1rem;border-left:4px solid var(--accent)">
@@ -45,7 +62,7 @@ function initMercuryLab() {
           <div>
             <div class="eyebrow">Mercury · local commercial workspace</div>
             <h1 style="margin:.25rem 0">${esc(ws.ventureName || 'Choose a venture to take to market')}</h1>
-            <p style="margin:.25rem 0;color:var(--text2)">Commercial evidence: <strong>${esc(summary.evidence.code)} — ${esc(summary.evidence.label)}</strong><br><span style="font-size:.78rem">${esc(summary.evidence.verification.replaceAll('_', ' '))}</span></p>
+            <p style="margin:.25rem 0;color:var(--text2)">Highest operator-attested signal: <strong>${esc(summary.evidence.code)} — ${esc(summary.evidence.label)}</strong><br><span style="font-size:.78rem">${esc(summary.evidence.verification.replaceAll('_', ' '))}. This is a venture-wide maximum, not a contiguous funnel or independent verification.</span></p>
           </div>
           <span class="chip">🔒 Browser-local only</span>
         </div>
@@ -58,14 +75,18 @@ function initMercuryLab() {
       <section aria-labelledby="commercial-scoreboard" style="margin-bottom:1.5rem">
         <h2 id="commercial-scoreboard">Observed commercial scoreboard</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.75rem">
-          ${summaryCard('Identified', summary.identifiedOrganizations, 'Real organizations only')}
+          ${summaryCard('Buyer/account records', summary.identifiedOrganizations, 'Real records; no synthetic fixtures')}
+          ${summaryCard('Reachable, attested', summary.reachableOrganizations, 'Operator-attested; not independent proof')}
           ${summaryCard('Contact attempts', summary.contactAttempts)}
           ${summaryCard('Conversations', summary.conversations)}
           ${summaryCard('Qualified', summary.qualified)}
           ${summaryCard('Pilots', summary.pilots)}
-          ${summaryCard('Paying buyers', summary.payingOrganizations)}
+          ${summaryCard('Ever paid', summary.payingOrganizations, 'Historical gross payment event')}
+          ${summaryCard('Net-paying now', summary.netPayingOrganizations, 'Collected less recorded refunds')}
+          ${summaryCard('Refunded', summary.refundedOrganizations)}
           ${summaryCard('Activated', summary.activatedOrganizations)}
           ${summaryCard('Renewed', summary.renewedOrganizations)}
+          ${summaryCard('Lost', summary.lostOpportunities, 'Reason required')}
           ${summaryCard('Collected revenue', money(summary.revenueCollected), 'Invoices are excluded')}
         </div>
       </section>
@@ -83,6 +104,8 @@ function initMercuryLab() {
             <label>Operational description<textarea name="description" required placeholder="Geography, size, workflow, and observable condition"></textarea></label>
             <label>Economic buyer roles<input name="buyerRoles" placeholder="Comma-separated; UNKNOWN is allowed"></label>
             <label>End-user roles<input name="userRoles" placeholder="Comma-separated"></label>
+            <label>Budget owner<input name="budgetOwner" placeholder="Role authorized to spend, or UNKNOWN"></label>
+            <label>Budget source<input name="budgetSource" placeholder="Department/category/project budget, or UNKNOWN"></label>
             <label>Why buy now?<textarea name="whyNow" placeholder="Trigger and consequence of delay; use UNKNOWN when unproven"></textarea></label>
             <label>Current alternatives<input name="alternatives" placeholder="Spreadsheet, consultant, internal build, do nothing"></label>
             <label>Reachability<select name="reachability"><option>UNKNOWN</option><option>VERY_HIGH</option><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select></label>
@@ -125,9 +148,12 @@ function initMercuryLab() {
           <h2>3. Reachable organization and pipeline</h2>
           ${ws.segments.length ? `
           <form id="organizationForm" class="mercury-form">
-            <label>Organization name<input name="name" required autocomplete="off"></label>
+            <label>Buyer/account label<input name="name" required autocomplete="off" placeholder="Non-identifying account label or business name"></label>
+            <label>Buyer type<select name="actorType"><option value="ORGANIZATION">Organization</option><option value="INDIVIDUAL_ACCOUNT">Individual account (non-identifying)</option><option value="HOUSEHOLD">Household (non-identifying)</option><option value="MARKETPLACE_PARTICIPANT">Marketplace participant</option></select></label>
             <label>Segment<select name="segmentId" required>${segmentOptions}</select></label>
             <label>Record class<select name="recordClass"><option value="REAL">Real organization</option><option value="SYNTHETIC">Synthetic test fixture</option></select></label>
+            <label>Reachability basis<textarea name="reachabilityBasis" required placeholder="How this organization can lawfully be reached; record an observed path, not an assumption"></textarea></label>
+            <label>Private evidence reference<input name="evidenceRef" required placeholder="Reference to the approved private source"></label>
             <p class="small">Do not enter personal email, phone, or sensitive notes here.</p>
             <button class="button" type="submit">Add identified organization</button>
           </form>` : '<p class="empty">Add a segment first.</p>'}
@@ -135,9 +161,9 @@ function initMercuryLab() {
           <hr>
           <form id="opportunityForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
-            <label>Offer<select name="offerId">${offerOptions}</select></label>
-            <label>Observed current stage<select name="stage"><option>IDENTIFIED</option><option>CONTACTED</option><option>CONVERSATION</option><option>QUALIFIED</option><option>OFFERED</option><option>PILOT</option></select></label>
-            <label>Private stage evidence reference<input name="evidenceRef" required value="initial record"></label>
+            <label>Offer<select name="offerId" required>${offerOptions}</select></label>
+            <p class="small">New opportunities start at IDENTIFIED. Record each observed transition below; paid/active/renewed states are event-derived.</p>
+            <label>Private identification evidence reference<input name="evidenceRef" required></label>
             <button class="button secondary" type="submit">Create opportunity</button>
           </form>` : ''}
           <div style="margin-top:1rem">
@@ -147,22 +173,34 @@ function initMercuryLab() {
               return `<li><strong>${esc(org?.name || item.organizationId)}</strong> — ${esc(item.stage)}</li>`;
             }).join('')}</ol>` : '<p class="empty">No opportunities recorded.</p>'}
           </div>
+          ${ws.opportunities.length ? `
+          <hr>
+          <form id="stageForm" class="mercury-form">
+            <h3>Record a pipeline transition</h3>
+            <label>Opportunity<select name="opportunityId" required>${opportunityOptions}</select></label>
+            <label>Observed stage<select name="stage" required><option>CONTACTED</option><option>CONVERSATION</option><option>QUALIFIED</option><option>OFFERED</option><option>PILOT</option><option>LOST</option></select></label>
+            <label>Private evidence reference<input name="evidenceRef" required></label>
+            <label>Loss reason<textarea name="lossReason" placeholder="Required only for LOST; record an observed reason, not psychological speculation"></textarea></label>
+            <button class="button secondary" type="submit">Record stage transition</button>
+          </form>` : ''}
         </section>
 
         <section class="panel" style="padding:1.25rem">
           <h2>4. Observed interaction</h2>
-          ${ws.organizations.length ? `
+          ${ws.organizations.length && ws.channels.length ? `
           <form id="interactionForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
-            <label>Channel<select name="channelId">${channelOptions}</select></label>
+            <label>Channel<select name="channelId" required>${channelOptions}</select></label>
             <label>Interaction type<select name="interactionType"><option>CONTACT_ATTEMPT</option><option>CONVERSATION</option><option>FOLLOW_UP</option><option>PILOT_REVIEW</option><option>LOSS_REVIEW</option></select></label>
             <label>Outcome<select name="outcome"><option>UNKNOWN</option><option>NO_REPLY</option><option>REPLIED</option><option>QUALIFIED</option><option>DISQUALIFIED</option><option>NEXT_STEP</option><option>NO_INTEREST</option></select></label>
             <label>Observed facts<textarea name="facts" required placeholder="One fact per line. Record what happened, not what you hoped."></textarea></label>
+            <fieldset><legend>Objection categories observed</legend>${api.MERCURY_OBJECTION_CATEGORIES.map(category => `<label style="display:block"><input type="checkbox" name="objectionCategories" value="${category}"> ${category.replaceAll('_', ' ')}</label>`).join('')}</fieldset>
+            <label>Objection notes<textarea name="objections" placeholder="One observed objection per line; do not infer private motives"></textarea></label>
             <fieldset><legend>Signals supported by this evidence</legend>${api.MERCURY_SIGNALS.map(signal => `<label style="display:block"><input type="checkbox" name="signals" value="${signal}"> ${signal.replaceAll('_', ' ')}</label>`).join('')}</fieldset>
             <label>Private evidence reference<input name="evidenceRef" required placeholder="e.g. private-note-2026-08-25-01"></label>
             <p class="small">A reference is not proof by itself; keep the consented source in your approved private evidence store.</p>
             <button class="button" type="submit">Record interaction</button>
-          </form>` : '<p class="empty">No organization exists yet. No interaction is implied.</p>'}
+          </form>` : '<p class="empty">Add a buyer/account record and an explicit channel before recording an interaction. Use an UNKNOWN channel record when attribution is genuinely unknown.</p>'}
         </section>
 
         <section class="panel" style="padding:1.25rem">
@@ -170,7 +208,7 @@ function initMercuryLab() {
           ${ws.organizations.length ? `
           <form id="eventForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
-            <label>Opportunity<select name="opportunityId">${opportunityOptions}</select></label>
+            <label>Opportunity<select name="opportunityId" required>${opportunityOptions}</select></label>
             <label>Observed event<select name="eventType"><option>INVOICE_ISSUED</option><option>PAYMENT_COLLECTED</option><option>REFUND</option><option>VALUE_ACHIEVED</option><option>RENEWED</option><option>EXPANDED</option><option>REFERRED</option></select></label>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><label>Amount<input type="number" min="0" step="0.01" name="amount"></label><label>Currency<input name="currency" value="EUR" pattern="[A-Z]{3}"></label></div>
             <label>Private evidence reference<input name="evidenceRef" required></label>
@@ -185,15 +223,33 @@ function initMercuryLab() {
             <article style="border-top:1px solid var(--line);padding:.8rem 0">
               <h3>${esc(segment.name)} <span class="chip sm">${esc(segment.status)}</span></h3>
               <dl>
-                <dt>Who pays?</dt><dd>${esc(segment.buyerRoles.join(', ') || 'UNKNOWN')}</dd>
+                <dt>Budget owner</dt><dd>${esc(segment.budgetOwner || 'UNKNOWN')}</dd>
+                <dt>Budget source</dt><dd>${esc(segment.budgetSource || 'UNKNOWN')}</dd>
+                <dt>Buyer / user roles</dt><dd>${esc(`${segment.buyerRoles.join(', ') || 'UNKNOWN'} / ${segment.userRoles.join(', ') || 'UNKNOWN'}`)}</dd>
                 <dt>Why now?</dt><dd>${esc(segment.whyNow)}</dd>
                 <dt>Current alternative</dt><dd>${esc(segment.currentAlternatives.join(', ') || 'UNKNOWN')}</dd>
                 <dt>Reachability</dt><dd>${esc(segment.reachability)}</dd>
+                <dt>Trigger hypotheses</dt><dd>${esc(ws.triggers.filter(item => item.segmentId === segment.segmentId).map(item => item.description).join('; ') || 'UNKNOWN')}</dd>
+                <dt>Offer / price hypotheses</dt><dd>${esc(ws.offers.filter(item => item.segmentId === segment.segmentId).map(item => `${item.name}: ${item.price.amount == null ? 'UNKNOWN' : `${item.price.currency} ${item.price.amount}`} ${item.price.basis} [${item.price.evidenceStatus}]`).join('; ') || 'UNKNOWN')}</dd>
+                <dt>Channels</dt><dd>${esc(ws.channels.filter(item => item.segmentId === segment.segmentId).map(item => `${item.name} [${item.status}]`).join('; ') || 'UNKNOWN')}</dd>
+                <dt>Observed outcomes</dt><dd>${(() => { const item = summary.segmentPerformance.find(candidate => candidate.segmentId === segment.segmentId); return item ? `${item.conversations} conversations · ${item.qualified} ever qualified · ${item.offered} ever offered · ${item.paying} ever paid · ${item.activated} value · ${item.renewed} renewed · ${item.lost} lost` : 'NONE'; })()}</dd>
+                <dt>Scale / repeatability</dt><dd>UNKNOWN — counts do not establish a repeatable channel.</dd>
               </dl>
             </article>`).join('') : '<p class="empty">Commercially untested: no segment hypothesis recorded.</p>'}
-          <p><strong>Biggest known boundary:</strong> ${summary.payingOrganizations ? 'Payment exists, but repeatability still requires independent buyers and renewals.' : 'No collected payment evidence is recorded.'}</p>
+          <p><strong>Biggest known boundary:</strong> ${summary.netPayingOrganizations ? 'A retained payment exists, but repeatability still requires independent buyers and renewals.' : summary.payingOrganizations ? 'A historical payment is fully refunded; there is no net-paying buyer.' : 'No collected payment evidence is recorded.'}</p>
+          <p><strong>Highest-value next human action:</strong> ${esc(nextHumanAction(ws, summary))}</p>
         </section>
       </div>
+
+      <section class="panel" style="padding:1.25rem;margin-top:1rem" aria-labelledby="segment-learning-title">
+        <h2 id="segment-learning-title">Segment, objection, and loss learning</h2>
+        <p>Counts are shown without conversion percentages while samples are small. Synthetic fixtures are excluded. “Paid” means a historical gross payment event; net collected revenue and refunds are shown separately above.</p>
+        ${summary.segmentPerformance.length ? `<div class="table-wrap"><table><thead><tr><th>Segment</th><th>Orgs</th><th>Attempts</th><th>Conversations</th><th>Qualified</th><th>Offered</th><th>Pilots</th><th>Paid</th><th>Value</th><th>Renewed</th><th>Lost</th></tr></thead><tbody>${summary.segmentPerformance.map(item => `<tr><th scope="row">${esc(item.name)}</th><td>${item.organizations}</td><td>${item.contactAttempts}</td><td>${item.conversations}</td><td>${item.qualified}</td><td>${item.offered}</td><td>${item.pilots}</td><td>${item.paying}</td><td>${item.activated}</td><td>${item.renewed}</td><td>${item.lost}</td></tr>`).join('')}</tbody></table></div>` : '<p class="empty">No segment data exists.</p>'}
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem">
+          <div><h3>Observed objection categories</h3>${Object.keys(summary.objectionCounts).length ? `<ul>${Object.entries(summary.objectionCounts).map(([key, value]) => `<li>${esc(key.replaceAll('_', ' '))}: ${value}</li>`).join('')}</ul>` : '<p class="empty">None recorded.</p>'}</div>
+          <div><h3>Observed loss reasons</h3>${Object.keys(summary.lossReasonCounts).length ? `<ul>${Object.entries(summary.lossReasonCounts).map(([key, value]) => `<li>${esc(key)}: ${value}</li>`).join('')}</ul>` : '<p class="empty">None recorded.</p>'}</div>
+        </div>
+      </section>
 
       <section class="panel" style="padding:1.25rem;margin-top:1rem">
         <h2>Private data portability</h2>
@@ -229,7 +285,8 @@ function initMercuryLab() {
     document.getElementById('ventureForm')?.addEventListener('submit', event => {
       event.preventDefault();
       const idea = ideas.find(item => item.id === new FormData(event.currentTarget).get('ideaId'));
-      execute(() => store.configureVenture({ canonicalIdeaId: idea.id, ventureName: idea.name }), 'Active venture updated. No commercial evidence was created.');
+      const canonicalIdeaRevision = window.VA?.meta?.canonicalSourceRevision || window.VA?.meta?.revisions?.canonicalRevision || null;
+      execute(() => store.configureVenture({ canonicalIdeaId: idea.id, canonicalIdeaRevision, ventureName: idea.name }), 'Active venture updated and bound to the loaded canonical source revision. No commercial evidence was created.');
     });
     document.getElementById('segmentForm')?.addEventListener('submit', event => {
       event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
@@ -255,7 +312,11 @@ function initMercuryLab() {
     document.getElementById('interactionForm')?.addEventListener('submit', event => {
       event.preventDefault(); const form = new FormData(event.currentTarget); const data = Object.fromEntries(form);
       const org = ws.organizations.find(item => item.organizationId === data.organizationId);
-      execute(() => store.recordInteraction({ ...data, segmentId: org.segmentId, facts: list(data.facts), signals: form.getAll('signals') }), 'Observed interaction recorded.');
+      execute(() => store.recordInteraction({ ...data, segmentId: org.segmentId, facts: list(data.facts), objections: list(data.objections), objectionCategories: form.getAll('objectionCategories'), signals: form.getAll('signals') }), 'Observed interaction recorded.');
+    });
+    document.getElementById('stageForm')?.addEventListener('submit', event => {
+      event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
+      execute(() => store.advanceOpportunity(data.opportunityId, data.stage, data.evidenceRef, data.lossReason), `Opportunity moved to ${data.stage}.`);
     });
     document.getElementById('eventForm')?.addEventListener('submit', event => {
       event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));

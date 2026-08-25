@@ -234,6 +234,7 @@ function projectRepositoryMetaForPublic(src, dest) {
   const publicPrompts = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'prompts.json'), 'utf8'));
   counts.prompts = Array.isArray(publicPrompts) ? publicPrompts.length : 0;
   const projected = { ...raw, contract: 'public-projection', counts };
+  projected.canonicalSourceRevision = raw.revisions?.canonicalRevision || null;
   delete projected.dataRevision;
   delete projected.buildRevision;
   delete projected.gitCommit;
