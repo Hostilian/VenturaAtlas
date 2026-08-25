@@ -11,3 +11,11 @@
 5. Fixed test concurrency race condition by adding --test-concurrency=1 to 	est:unit in package.json.
 6. Resolved false-positive secret scanner match in REQUESTED_API_KEYS.md.
 7. Verified 189/189 unit tests pass, 121/121 Python tests pass, typecheck passes, and full quality suite passes.
+
+## OMEGA ∞ continuation — 2026-08-25
+
+- **Believed:** source quality might repair stale projections before checking them.
+- **Observed:** `run-quality.js` executed `build-repository-meta.js` in the source profile before its check phase.
+- **Changed:** source quality now uses the generator's non-mutating `--check` mode; any source-profile worktree mutation fails closed as `worktree-purity`.
+- **Proof:** `node --test tests/quality-receipt.test.js` passed 7/7, including a deliberate mutation counterexample; `npm run check:projections` passed; `node scripts/truth-reconciler.js --check` returned `WARN` rather than false `PASS`.
+- **Uncertain:** cloud provider proof remains historical/stale; external customer evidence, GCP execution, and live payment/webhook persistence remain unverified or blocked by external authority.
