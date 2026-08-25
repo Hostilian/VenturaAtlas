@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/forecast.schema.json",
+  "title": "VentureAtlasForecast",
+  "description": "A resolvable forecast question with timestamped submissions. Immutable history — revisions create new entries, not silent overwrites. Brier scoring applied after resolution.",
+  "type": "object",
+  "required": ["forecastId", "schemaVersion", "question", "resolutionType", "deadline", "resolutionCriteria", "createdAt"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "forecastId": { "type": "string", "pattern": "^fcast-[a-z0-9-]+$" },
+
+    "question": {
+      "type": "string",
+      "description": "A resolvable question. Good: 'Will at least 2 of 5 targeted buyers request a pilot by 2026-10-01?' Bad: 'Will this startup be good?'"
+    },
+
+    "resolutionType": {
+      "type": "string",
+      "enum": ["binary", "numeric", "categorical", "ordinal"],
+      "description": "Binary supports Brier scoring. Start simple."
+    },
+
+    "resolutionCriteria": {
+      "type": "string",
+      "description": "Objective criteria defined BEFORE resolution. Ambiguous hindsight resolution is a protocol violation."
+    },
+
+    "deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "No updates accepted after outcome is known. Closed at deadline."
+    },
+
+    "questionClass": {
+      "type": "string",
+      "description": "Used for domain-specific calibration tracking.",
+      "enum": [
+        "customer_interest",
+        "conversion",
+        "technical_completion",
+        "cost",
+        "timeline",
+        "regulatory_event",
+        "competitor_event",
+        "distribution",
+        "retention",
+        "portfolio_level",
+        "conditional",
+        "other"
+      ]
+    },
+
+    "linkedIdeaIds":    { "type": "array", "items": { "type": "string" } },
+    "linkedBetIds":     { "type": "array", "items": { "type": "string" } },
+    "linkedPortfolioId":{ "type": ["string", "null"] },
+
+    "conditionalOn": {
+      "type": ["string", "null"],
+      "description": "If this is a conditional forecast, state the condition clearly. Conditional and unconditional forecasts must never be merged accidentally."
+    },
+
+    "referenceClass": {
+      "type": ["string", "null"],
+      "description": "Known base rate for similar events, if any. A 90% forecast where base rate is 10% requires strong evidence."
+    },
+
+    "submissions": {
+      "type": "array",
+      "description": "Ordered forecast submissions. Each new estimate creates a new entry — do not rewrite history.",
+      "items": {
+        "type": "object",
+        "required": ["submissionId", "forecaster", "forecasterId", "submittedAt", "probability"],
+        "properties": {
+          "submissionId":    { "type": "string" },
+          "forecaster":      { "type": "string", "description": "Display name (human or AI agent)." },
+          "forecasterId":    { "type": "string", "description": "Stable identifier for calibration tracking." },
+          "forecasterType":  { "type": "string", "enum": ["human", "ai_agent", "ensemble"] },
+          "submittedAt":     { "type": "string", "format": "date-time" },
+          "probability":     { "type": "number", "minimum": 0, "maximum": 1 },
+          "reasoning":       { "type": "string" },
+          "informationAvailable": { "type": "string", "description": "Context known at submission time — prevents hindsight bias." },
+          "isRevision":      { "type": "boolean", "default": false },
+          "revisesSubmissionId": { "type": ["string", "null"] }
+        }
+      }
+    },
+
+    "resolution": {
+      "type": ["object", "null"],
+      "description": "Set only after outcome is objectively known. Requires source/receipt.",
+      "properties": {
+        "outcome":     { "type": ["boolean", "number", "string", "null"] },
+        "resolvedAt":  { "type": "string", "format": "date-time" },
+        "resolvedBy":  { "type": "string" },
+        "source":      { "type": "string", "description": "Evidence or receipt for resolution." },
+        "notes":       { "type": "string" }
+      }
+    },
+
+    "scoring": {
+      "type": ["object", "null"],
+      "description": "Computed after resolution. Policy: latest pre-resolution probability per forecaster.",
+      "properties": {
+        "method":    { "type": "string", "default": "brier_latest" },
+        "scores":    {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "forecasterId": { "type": "string" },
+              "probability":  { "type": "number" },
+              "brierScore":   { "type": "number", "description": "(probability - outcome)^2. Lower is better." }
+            }
+          }
+        },
+        "ensembleScore":   { "type": ["number", "null"] },
+        "naiveBaselineScore": { "type": ["number", "null"], "description": "Brier score of 50% naive forecast for comparison." },
+        "computedAt":      { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "status": {
+      "type": "string",
+      "enum": ["OPEN", "CLOSED_PENDING_RESOLUTION", "RESOLVED", "VOID"]
+    },
+
+    "sampleSizeWarning": {
+      "type": "string",
+      "description": "Auto-set when calibration view has < 10 resolved forecasts in a probability bin.",
+      "default": "Calibration requires ≥10 resolved forecasts per bin before curves are meaningful."
+    },
+
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

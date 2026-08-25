@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/strategic-asset.schema.json",
+  "title": "VentureAtlasStrategicAsset",
+  "description": "A reusable strategic asset created by one or more venture bets. Assets compound or decay — represent the difference. Do not conflate with code modules alone.",
+  "type": "object",
+  "required": ["assetId", "schemaVersion", "type", "description", "reusability", "createdAt"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "assetId":   { "type": "string", "pattern": "^asset-[a-z0-9-]+$" },
+    "name":      { "type": "string" },
+    "description": { "type": "string" },
+
+    "type": {
+      "type": "string",
+      "description": "Class of strategic asset. Determines compounding behavior and redeployability.",
+      "enum": [
+        "code_module",
+        "data_dataset",
+        "api_integration",
+        "industry_expertise",
+        "brand",
+        "audience",
+        "newsletter",
+        "seo_authority",
+        "customer_relationships",
+        "sales_scripts",
+        "case_studies",
+        "distribution",
+        "partner_relationships",
+        "integration_relationships",
+        "regulatory_knowledge",
+        "workflow_dataset",
+        "benchmarks",
+        "community",
+        "trust",
+        "supplier_relationships",
+        "operational_playbooks",
+        "proprietary_data",
+        "other"
+      ]
+    },
+
+    "sourceBetId":  { "type": ["string", "null"], "description": "Bet ID that primarily created this asset." },
+    "sourceBetIds": { "type": "array", "items": { "type": "string" }, "description": "Additional bets that contributed." },
+
+    "reusability": {
+      "type": "string",
+      "description": "How broadly this asset can be redeployed. Narrow assets bind you to one path.",
+      "enum": ["single_venture", "portfolio_wide", "market_wide", "general"]
+    },
+
+    "redeployability": {
+      "type": "string",
+      "description": "How easily this asset can be redirected to a different purpose.",
+      "enum": ["easily_redeployed", "moderate_effort", "narrow_specialized", "locked_in"]
+    },
+
+    "compoundsOverTime": {
+      "type": "boolean",
+      "description": "True if asset grows in value with use/time (audience, data, trust). False if it decays (API arbitrage, trend-dependent)."
+    },
+
+    "decayRate": {
+      "type": "string",
+      "description": "Qualitative decay description. Some assets lose value quickly; others are durable.",
+      "enum": ["durable", "slow_decay", "medium_decay", "fast_decay", "ephemeral", "UNKNOWN"]
+    },
+
+    "linkedIdeaIds": {
+      "type": "array",
+      "description": "Canonical idea IDs that benefit from this asset. Enables reverse pathfinding: given asset, which ideas become attractive?",
+      "items": { "type": "string" }
+    },
+
+    "reducesEntryBarrierFor": {
+      "type": "array",
+      "description": "Bet IDs where this asset materially reduces cost or time.",
+      "items": { "type": "string" }
+    },
+
+    "strategicValue": {
+      "type": "string",
+      "enum": ["very_low", "low", "medium", "high", "very_high", "UNKNOWN"],
+      "description": "Qualitative strategic value. Avoid fake precision."
+    },
+
+    "currentStatus": {
+      "type": "string",
+      "enum": ["HYPOTHETICAL", "IN_CREATION", "AVAILABLE", "DEGRADED", "LOST"]
+    },
+
+    "notes": { "type": "string" },
+
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

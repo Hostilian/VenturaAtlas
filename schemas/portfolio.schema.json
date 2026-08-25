@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/portfolio.schema.json",
+  "title": "VentureAtlasPortfolio",
+  "description": "A bounded portfolio of venture bets with resource constraints, objectives, and strategic reasoning. Does not mutate canonical idea records.",
+  "type": "object",
+  "required": ["portfolioId", "schemaVersion", "name", "createdAt", "resourceEnvelope", "bets"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "portfolioId":   { "type": "string", "pattern": "^port-[a-z0-9-]+$" },
+    "name":          { "type": "string" },
+    "description":   { "type": "string" },
+
+    "objectiveProfile": {
+      "type": "string",
+      "description": "Primary strategic objective for this portfolio. No single objective is universally correct.",
+      "enum": [
+        "maximize_first_revenue",
+        "maximize_long_term_equity",
+        "maximize_learning_per_dollar",
+        "maximize_reusable_assets",
+        "maximize_strategic_optionality",
+        "minimize_downside",
+        "minimize_capital_requirement",
+        "maximize_cashflow_plus_moonshot",
+        "maximize_skill_development"
+      ]
+    },
+
+    "strategicRegime": {
+      "type": "string",
+      "enum": ["SURVIVAL", "CASHFLOW", "EXPLORATION", "GROWTH", "SCALE"],
+      "description": "Current operating regime — changes portfolio construction priorities."
+    },
+
+    "horizon": {
+      "type": "string",
+      "description": "Primary time horizon for this portfolio.",
+      "enum": ["weeks", "months", "1year", "multiyear"]
+    },
+
+    "resourceEnvelope": {
+      "type": "object",
+      "description": "Constraints this portfolio must respect. Never assume infinite founder attention.",
+      "properties": {
+        "availableCash":            { "type": ["number", "null"] },
+        "cashCurrency":             { "type": "string", "default": "EUR" },
+        "monthlyBurnCeiling":       { "type": ["number", "null"] },
+        "hoursPerWeek":             { "type": ["number", "null"] },
+        "maxActiveBets":            { "type": ["integer", "null"], "minimum": 1, "maximum": 20 },
+        "maxIrreversibleCapital":   { "type": ["number", "null"] },
+        "explorationLossBudget":    { "type": ["number", "null"], "description": "Planned failure budget — cheap failure is a portfolio property." },
+        "moonShotBudgetFraction":   { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "reserveFraction":          { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Fraction held uncommitted for new information." },
+        "technicalCapacity":        { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "salesCapacity":            { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "researchCapacity":         { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "designCapacity":           { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "operationalCapacity":      { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "attentionCapacity":        { "type": "string", "enum": ["low", "medium", "high"], "description": "Distinct from hours — models cognitive fragmentation cost." }
+      }
+    },
+
+    "bets": {
+      "type": "array",
+      "description": "Active venture bets in this portfolio. Each references a canonical idea but adds portfolio-specific commitment context.",
+      "items": { "$ref": "#/$defs/portfolioBetRef" }
+    },
+
+    "portfolioThesis": {
+      "type": ["object", "null"],
+      "description": "Optional higher-level thesis linking multiple bets.",
+      "properties": {
+        "statement":        { "type": "string" },
+        "supportingEvidence": { "type": "array", "items": { "type": "string" } },
+        "antiThesis":       { "type": "string", "description": "What world would make this thesis wrong?" },
+        "killSwitch":       { "type": "string", "description": "Condition under which the entire thesis should be reconsidered." }
+      }
+    },
+
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scenarioId", "description"],
+        "properties": {
+          "scenarioId":          { "type": "string" },
+          "description":         { "type": "string" },
+          "assumptions":         { "type": "array", "items": { "type": "string" } },
+          "affectedRiskFactors": { "type": "array", "items": { "type": "string" } },
+          "likelihoodBand":      { "type": "string", "enum": ["low", "medium", "high", "UNKNOWN"] },
+          "portfolioImpact":     { "type": "string" },
+          "portfolioResponse":   { "type": "string" }
+        }
+      }
+    },
+
+    "constraints": {
+      "type": "array",
+      "description": "Portfolio policies / WIP rules / mutual exclusions.",
+      "items": {
+        "type": "object",
+        "required": ["constraintId", "type", "description"],
+        "properties": {
+          "constraintId": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["wip_limit", "budget_cap", "mutual_exclusion", "dependency", "capability_requirement", "kill_criterion"]
+          },
+          "description":  { "type": "string" },
+          "betIds":       { "type": "array", "items": { "type": "string" } },
+          "value":        {}
+        }
+      }
+    },
+
+    "allocation": {
+      "type": "object",
+      "description": "Suggested time/capital allocation bands. Not scientifically exact — use ranges.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "hoursPerWeekLow":  { "type": "number" },
+          "hoursPerWeekHigh": { "type": "number" },
+          "capitalLow":       { "type": "number" },
+          "capitalHigh":      { "type": "number" },
+          "rationale":        { "type": "string" }
+        }
+      }
+    },
+
+    "antiPortfolio": {
+      "type": "array",
+      "description": "Attractive ideas consciously NOT in this portfolio — with recorded reasons for later regret review.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ideaId":        { "type": "string" },
+          "reason":        { "type": "string", "enum": ["insufficient_capital", "wrong_timing", "capability_gap", "high_correlation", "opportunity_cost", "attention_limit", "weak_strategic_fit", "other"] },
+          "revivedWhen":   { "type": "string", "description": "What would need to change for revival?" },
+          "recordedAt":    { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+
+    "snapshots": {
+      "type": "array",
+      "description": "Timestamped portfolio state snapshots for honest retrospective review.",
+      "items": {
+        "type": "object",
+        "required": ["snapshotId", "takenAt"],
+        "properties": {
+          "snapshotId":    { "type": "string" },
+          "takenAt":       { "type": "string", "format": "date-time" },
+          "trigger":       { "type": "string", "description": "Why this snapshot was taken." },
+          "betIds":        { "type": "array", "items": { "type": "string" } },
+          "allocationSummary": { "type": "string" },
+          "forecastIds":   { "type": "array", "items": { "type": "string" } },
+          "notes":         { "type": "string" }
+        }
+      }
+    },
+
+    "createdAt":  { "type": "string", "format": "date-time" },
+    "updatedAt":  { "type": "string", "format": "date-time" },
+    "createdBy":  { "type": "string" }
+  },
+
+  "$defs": {
+    "portfolioBetRef": {
+      "type": "object",
+      "required": ["betId", "ideaId", "commitmentLevel", "reversibility"],
+      "description": "Reference to a venture bet within a portfolio. betId links to venture-bets collection.",
+      "properties": {
+        "betId":              { "type": "string", "pattern": "^bet-[a-z0-9-]+$" },
+        "ideaId":             { "type": "string" },
+        "portfolioRole":      { "type": "string", "enum": ["ACTIVE", "RESERVED", "WATCH", "PARKED"] },
+        "commitmentLevel":    { "type": "integer", "minimum": 0, "maximum": 8, "description": "0=WATCH … 8=SCALE" },
+        "reversibility":      { "type": "string", "enum": ["HIGHLY_REVERSIBLE", "REVERSIBLE", "PARTIALLY_REVERSIBLE", "EXPENSIVE_TO_REVERSE", "IRREVERSIBLE"] },
+        "sequenceOrder":      { "type": ["integer", "null"] },
+        "dependsOnBetIds":    { "type": "array", "items": { "type": "string" } },
+        "unlocksAfterSuccess": { "type": "array", "items": { "type": "string" }, "description": "Bet IDs that become attractive if this bet succeeds." }
+      }
+    }
+  }
+}

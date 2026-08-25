@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "1.0.0",
+  "_comment": "Seed portfolios built from real canonical idea IDs. These are planning constructs, not outcomes. All bets are HYPOTHETICAL — no resources have been committed. DO NOT interpret as investment advice.",
+  "portfolios": [
+    {
+      "portfolioId": "port-bootstrap-eu-compliance",
+      "schemaVersion": "1.0.0",
+      "name": "Bootstrap EU Compliance Probe Sequence",
+      "description": "A low-capital, highly reversible sequence designed to learn whether EU SMEs will pay for compliance evidence tooling before committing significant resources. Each bet creates assets reusable by the next. Correlated EU regulation risk is known and accepted; the thesis depends on EU enforcement proceeding.",
+      "objectiveProfile": "maximize_learning_per_dollar",
+      "strategicRegime": "EXPLORATION",
+      "horizon": "months",
+      "resourceEnvelope": {
+        "availableCash": 500,
+        "cashCurrency": "EUR",
+        "monthlyBurnCeiling": 150,
+        "hoursPerWeek": 15,
+        "maxActiveBets": 3,
+        "maxIrreversibleCapital": 100,
+        "explorationLossBudget": 300,
+        "moonShotBudgetFraction": 0.1,
+        "reserveFraction": 0.2,
+        "technicalCapacity": "medium",
+        "salesCapacity": "low",
+        "researchCapacity": "high",
+        "designCapacity": "low",
+        "operationalCapacity": "low",
+        "attentionCapacity": "medium"
+      },
+      "bets": [
+        {
+          "betId": "bet-eu-compliance-interviews",
+          "ideaId": "idea-425",
+          "portfolioRole": "ACTIVE",
+          "commitmentLevel": 1,
+          "reversibility": "HIGHLY_REVERSIBLE",
+          "sequenceOrder": 1,
+          "dependsOnBetIds": [],
+          "unlocksAfterSuccess": ["bet-eu-compliance-manual-service", "bet-eaa-audit-pilot"]
+        },
+        {
+          "betId": "bet-eu-compliance-manual-service",
+          "ideaId": "idea-425",
+          "portfolioRole": "RESERVED",
+          "commitmentLevel": 2,
+          "reversibility": "REVERSIBLE",
+          "sequenceOrder": 2,
+          "dependsOnBetIds": ["bet-eu-compliance-interviews"],
+          "unlocksAfterSuccess": ["bet-eu-compliance-saas-mvp"]
+        },
+        {
+          "betId": "bet-eaa-audit-pilot",
+          "ideaId": "idea-426",
+          "portfolioRole": "RESERVED",
+          "commitmentLevel": 2,
+          "reversibility": "REVERSIBLE",
+          "sequenceOrder": 2,
+          "dependsOnBetIds": ["bet-eu-compliance-interviews"],
+          "unlocksAfterSuccess": []
+        }
+      ],
+      "portfolioThesis": {
+        "statement": "EU regulation is creating fragmented compliance obligations that small firms cannot operationalize cheaply. There is a window before incumbents build adequate tooling. Early manual service work will reveal whether the problem is acute enough to pay for software.",
+        "supportingEvidence": [
+          "EU AI Act enforcement began August 2026",
+          "EAA web accessibility supervision started",
+          "High idea scores (91, 87) from research panel",
+          "Zero identified EU-native SME compliance SaaS tools at sub-€200/month price point"
+        ],
+        "antiThesis": "EU enforcement remains weak for 2+ years, large consultancies solve the problem with AI add-ons at enterprise prices, or SMEs learn to self-certify using free EU Commission tooling.",
+        "killSwitch": "If the top 3 enforcement agencies publicly state enforcement will be delayed 18+ months, or if a dominant incumbent (KPMG, Deloitte) launches an AI compliance tool at SME-accessible pricing."
+      },
+      "scenarios": [
+        {
+          "scenarioId": "sc-enforcement-delayed",
+          "description": "EU enforcement significantly delayed — 18+ months slip",
+          "assumptions": ["Political pressure weakens enforcement posture", "Member states delay transposition"],
+          "affectedRiskFactors": ["rf-eu-regulation-timing"],
+          "likelihoodBand": "low",
+          "portfolioImpact": "Reduces urgency from buyers. Manual service revenue still possible but SaaS transition harder.",
+          "portfolioResponse": "Pivot bet-2 to serving buyers who have internal compliance deadlines independent of enforcement. Kill bet-3 if pilot signal weak."
+        },
+        {
+          "scenarioId": "sc-incumbent-bundles",
+          "description": "Major incumbent (DocuSign, SAP, Workday) bundles EU compliance feature free",
+          "assumptions": ["Large incumbent recognizes compliance tooling as retention lever"],
+          "affectedRiskFactors": ["rf-open-source-commoditization", "rf-enterprise-procurement"],
+          "likelihoodBand": "medium",
+          "portfolioImpact": "Enterprise segment blocked. SME segment may remain open if incumbent tool is too complex.",
+          "portfolioResponse": "Reposition to complexity layer / interpretation gap. Narrow focus to one regulation with highest SME friction."
+        }
+      ],
+      "constraints": [
+        {
+          "constraintId": "con-max-active-bets",
+          "type": "wip_limit",
+          "description": "No more than 3 active high-attention bets simultaneously.",
+          "betIds": [],
+          "value": 3
+        },
+        {
+          "constraintId": "con-kill-after-weak-interview",
+          "type": "kill_criterion",
+          "description": "Kill manual service bet if fewer than 2 of 10 buyer interviews produce explicit interest in paying. Do not continue on hope.",
+          "betIds": ["bet-eu-compliance-manual-service"],
+          "value": null
+        }
+      ],
+      "allocation": {
+        "bet-eu-compliance-interviews": {
+          "hoursPerWeekLow": 5,
+          "hoursPerWeekHigh": 8,
+          "capitalLow": 0,
+          "capitalHigh": 50,
+          "rationale": "Interview phase is nearly free. Time cost is the real constraint. High information value per hour."
+        },
+        "bet-eaa-audit-pilot": {
+          "hoursPerWeekLow": 3,
+          "hoursPerWeekHigh": 5,
+          "capitalLow": 0,
+          "capitalHigh": 30,
+          "rationale": "Parallel EAA probe reuses interview learning at near-zero marginal cost. Low attention load if kept separate."
+        },
+        "reserve": {
+          "hoursPerWeekLow": 2,
+          "hoursPerWeekHigh": 3,
+          "capitalLow": 100,
+          "capitalHigh": 150,
+          "rationale": "20% reserve allows response to unexpected buyer interest or new evidence without rebalancing."
+        }
+      },
+      "antiPortfolio": [
+        {
+          "ideaId": "idea-433",
+          "reason": "insufficient_capital",
+          "revivedWhen": "If first revenue from manual service exceeds €1000, or if technical co-founder joins with retrofit industry contacts.",
+          "recordedAt": "2026-08-25T00:00:00Z"
+        },
+        {
+          "ideaId": "idea-434",
+          "reason": "capability_gap",
+          "revivedWhen": "If industrial flexibility sales capability is acquired (co-founder, advisor, or partnership).",
+          "recordedAt": "2026-08-25T00:00:00Z"
+        }
+      ],
+      "snapshots": [],
+      "createdAt": "2026-08-25T00:00:00Z",
+      "updatedAt": "2026-08-25T00:00:00Z",
+      "createdBy": "system-seed"
+    },
+    {
+      "portfolioId": "port-technical-learning-sequence",
+      "schemaVersion": "1.0.0",
+      "name": "Technical Learning & Asset-Building Sequence",
+      "description": "A sequence designed to build reusable developer-tooling assets and AI-agent workflow knowledge before committing to a full SaaS. Primary objective is capability accumulation and option creation rather than immediate revenue. Three bets share LLM and developer-tooling risk but create compounding technical assets.",
+      "objectiveProfile": "maximize_reusable_assets",
+      "strategicRegime": "EXPLORATION",
+      "horizon": "months",
+      "resourceEnvelope": {
+        "availableCash": 1000,
+        "cashCurrency": "EUR",
+        "monthlyBurnCeiling": 200,
+        "hoursPerWeek": 20,
+        "maxActiveBets": 3,
+        "maxIrreversibleCapital": 200,
+        "explorationLossBudget": 500,
+        "moonShotBudgetFraction": 0.15,
+        "reserveFraction": 0.2,
+        "technicalCapacity": "high",
+        "salesCapacity": "low",
+        "researchCapacity": "medium",
+        "designCapacity": "low",
+        "operationalCapacity": "low",
+        "attentionCapacity": "high"
+      },
+      "bets": [
+        {
+          "betId": "bet-proofrail-probe",
+          "ideaId": "idea-001",
+          "portfolioRole": "ACTIVE",
+          "commitmentLevel": 3,
+          "reversibility": "REVERSIBLE",
+          "sequenceOrder": 1,
+          "dependsOnBetIds": [],
+          "unlocksAfterSuccess": ["bet-factbounty-evidence-api", "bet-proofrail-hosted"]
+        },
+        {
+          "betId": "bet-factbounty-evidence-api",
+          "ideaId": "idea-061",
+          "portfolioRole": "RESERVED",
+          "commitmentLevel": 2,
+          "reversibility": "REVERSIBLE",
+          "sequenceOrder": 2,
+          "dependsOnBetIds": ["bet-proofrail-probe"],
+          "unlocksAfterSuccess": ["bet-product-evidence-api"]
+        },
+        {
+          "betId": "bet-product-evidence-api",
+          "ideaId": "idea-068",
+          "portfolioRole": "WATCH",
+          "commitmentLevel": 1,
+          "reversibility": "HIGHLY_REVERSIBLE",
+          "sequenceOrder": 3,
+          "dependsOnBetIds": ["bet-factbounty-evidence-api"],
+          "unlocksAfterSuccess": []
+        }
+      ],
+      "portfolioThesis": {
+        "statement": "The intersection of AI agent governance and product evidence creates a reusable data + workflow primitive that multiple ventures can share. Building ProofRail creates the agent-governance workflow; building FactBounty creates the evidence database. Together they enable a Product Evidence API that several ideas need.",
+        "supportingEvidence": [
+          "idea-001 (score 87.7) and idea-061 (score 91.2) both rated priority",
+          "Multiple downstream ideas (062, 063, 064, 068, 069) depend on evidence infrastructure",
+          "Developer tooling market growing with AI agent adoption"
+        ],
+        "antiThesis": "LLM API economics shift dramatically, making AI agent governance a solved problem via open-source. Or product evidence market fails to develop a clear paying segment.",
+        "killSwitch": "If OpenAI, GitHub, or GitLab ships native AI work acceptance built into their core product within 12 months."
+      },
+      "scenarios": [
+        {
+          "scenarioId": "sc-llm-commoditization",
+          "description": "LLM inference cost falls 90% — core AI governance feature becomes trivial to replicate",
+          "assumptions": ["OpenAI releases cheap o4 variants", "Open-source models reach GPT-4 capability"],
+          "affectedRiskFactors": ["rf-llm-api-economics", "rf-open-source-commoditization"],
+          "likelihoodBand": "medium",
+          "portfolioImpact": "Technical moat reduces. Workflow lock-in and evidence data become primary defensibility.",
+          "portfolioResponse": "Accelerate FactBounty evidence database to create data moat before commoditization completes. Shift positioning from AI governance to evidence integrity."
+        }
+      ],
+      "constraints": [
+        {
+          "constraintId": "con-no-enterprise-sales-yet",
+          "type": "capability_requirement",
+          "description": "Do not target enterprise procurement in first two bets — no sales capability available. Focus on self-serve developer adoption.",
+          "betIds": ["bet-proofrail-probe", "bet-factbounty-evidence-api"],
+          "value": null
+        }
+      ],
+      "allocation": {
+        "bet-proofrail-probe": {
+          "hoursPerWeekLow": 10,
+          "hoursPerWeekHigh": 15,
+          "capitalLow": 0,
+          "capitalHigh": 100,
+          "rationale": "Primary active bet. Technical build — needs focused coding time. Low cash cost if self-hosted."
+        },
+        "bet-product-evidence-api": {
+          "hoursPerWeekLow": 2,
+          "hoursPerWeekHigh": 3,
+          "capitalLow": 0,
+          "capitalHigh": 20,
+          "rationale": "Watch mode — research and architecture only. No build until bet-1 creates needed primitives."
+        },
+        "reserve": {
+          "hoursPerWeekLow": 3,
+          "hoursPerWeekHigh": 5,
+          "capitalLow": 200,
+          "capitalHigh": 300,
+          "rationale": "Reserve for responding to unexpected developer traction or a partnership opportunity."
+        }
+      },
+      "antiPortfolio": [
+        {
+          "ideaId": "idea-425",
+          "reason": "capability_gap",
+          "revivedWhen": "If enterprise sales capability is acquired or regulatory knowledge deepens through EU compliance research.",
+          "recordedAt": "2026-08-25T00:00:00Z"
+        }
+      ],
+      "snapshots": [],
+      "createdAt": "2026-08-25T00:00:00Z",
+      "updatedAt": "2026-08-25T00:00:00Z",
+      "createdBy": "system-seed"
+    }
+  ]
+}

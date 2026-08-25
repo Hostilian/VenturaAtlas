@@ -1,0 +1,5 @@
+{
+  "schemaVersion": "1.0.0",
+  "_comment": "Forecast registry. Questions must be resolvable with objective criteria defined before resolution. Immutable history — revisions create new submission entries. Brier scoring applied after resolution. Do not render calibration curves with fewer than 10 resolved forecasts per probability bin.",
+  "forecasts": []
+}

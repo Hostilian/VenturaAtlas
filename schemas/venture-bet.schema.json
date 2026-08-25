@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/venture-bet.schema.json",
+  "title": "VentureAtlasVentureBet",
+  "description": "A bounded commitment to learn or create value from a canonical idea. One idea can generate multiple bets with radically different cost, time, reversibility, and information value.",
+  "type": "object",
+  "required": ["betId", "schemaVersion", "ideaId", "title", "action", "commitmentLevel", "reversibility", "createdAt"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "betId":   { "type": "string", "pattern": "^bet-[a-z0-9-]+$" },
+    "ideaId":  { "type": "string", "description": "References canonical idea — read-only, never mutated." },
+    "title":   { "type": "string" },
+    "description": { "type": "string" },
+
+    "action": {
+      "type": "string",
+      "description": "Strategic action type for this bet.",
+      "enum": ["OBSERVE", "PROBE", "RESERVE", "START", "EXPAND", "PAUSE", "PIVOT", "COMBINE", "SPIN_OUT", "ABANDON", "REVIVE"]
+    },
+
+    "commitmentLevel": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 8,
+      "description": "0=WATCH, 1=RESEARCH_PROBE, 2=MANUAL_TEST, 3=MICRO_PROTOTYPE, 4=CUSTOMER_PILOT, 5=REPEATABLE_VALIDATION, 6=MVP, 7=COMMERCIAL_LAUNCH, 8=SCALE"
+    },
+
+    "commitmentLevelLabel": {
+      "type": "string",
+      "enum": ["WATCH", "RESEARCH_PROBE", "MANUAL_TEST", "MICRO_PROTOTYPE", "CUSTOMER_PILOT", "REPEATABLE_VALIDATION", "MVP", "COMMERCIAL_LAUNCH", "SCALE"]
+    },
+
+    "reversibility": {
+      "type": "string",
+      "enum": ["HIGHLY_REVERSIBLE", "REVERSIBLE", "PARTIALLY_REVERSIBLE", "EXPENSIVE_TO_REVERSE", "IRREVERSIBLE"]
+    },
+
+    "strategicRole": {
+      "type": "string",
+      "description": "Strategic function of this bet in the portfolio. A bet with a low standalone score can be a superb stepping-stone.",
+      "enum": ["TERMINAL", "STEPPING_STONE", "BEACHHEAD", "CAPABILITY_BUILDER", "DISTRIBUTION_BUILDER", "DATA_BUILDER", "CASHFLOW_BRIDGE", "MOONSHOT", "PLATFORM_SEED"]
+    },
+
+    "cost": {
+      "type": "object",
+      "description": "Separate cost tiers — cheap MVP does not imply cheap company.",
+      "properties": {
+        "currency":     { "type": "string", "default": "EUR" },
+        "toTest":       { "type": ["number", "null"] },
+        "toLaunch":     { "type": ["number", "null"] },
+        "toOperateMonthly": { "type": ["number", "null"] },
+        "toScale":      { "type": ["number", "null"] },
+        "minimumToLearn": { "type": ["number", "null"], "description": "Minimum cost needed to answer the most important question — not the MVP cost." },
+        "committed":    { "type": ["number", "null"] },
+        "spent":        { "type": ["number", "null"] },
+        "recoverable":  { "type": ["number", "null"] }
+      }
+    },
+
+    "time": {
+      "type": "object",
+      "properties": {
+        "hoursPerWeek":      { "type": ["number", "null"] },
+        "weeksToFirstSignal": { "type": ["number", "null"], "description": "Time to reduce key uncertainty — often more important than time-to-MVP." },
+        "weeksToMVP":        { "type": ["number", "null"] },
+        "attentionLoad": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Cognitive load distinct from hours. Three unrelated 10-hour projects impose greater burden than one 30-hour project."
+        }
+      }
+    },
+
+    "informationValue": {
+      "type": "object",
+      "description": "How valuable is the uncertainty this bet resolves? Bounded EVSI reasoning — use bands, not fake precision.",
+      "properties": {
+        "primaryQuestion":      { "type": "string" },
+        "valueBand":            { "type": "string", "enum": ["very_low", "low", "medium", "high", "very_high", "UNKNOWN"] },
+        "crossPortfolioReach":  { "type": "integer", "description": "How many other portfolio bets does this information update?" },
+        "informationReusability": { "type": "string", "enum": ["single_bet", "portfolio_wide", "atlas_wide"] }
+      }
+    },
+
+    "optionValue": {
+      "type": "object",
+      "description": "This bet may be attractive because it creates rights to make better future commitments.",
+      "properties": {
+        "optionsUnlocked":   { "type": "array", "items": { "type": "string" }, "description": "Descriptions of future options this bet creates." },
+        "expiryRisk":        { "type": "string", "description": "What might expire if we wait?" },
+        "waitValue":         { "type": "string", "description": "Is there value in waiting? Specify conditions." },
+        "timingRecommendation": { "type": "string", "enum": ["ACT_NOW", "PROBE_NOW", "WAIT", "WATCH", "ABANDON", "UNKNOWN"] }
+      }
+    },
+
+    "assetsCreated": {
+      "type": "array",
+      "description": "Strategic assets this bet is expected to create. Asset IDs link to strategic-assets.json.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assetId":          { "type": "string" },
+          "assetType":        { "type": "string" },
+          "description":      { "type": "string" },
+          "compoundsOverTime": { "type": "boolean" }
+        }
+      }
+    },
+
+    "capabilityRequirements": {
+      "type": "object",
+      "description": "Required capability levels. Gap = requirement minus available.",
+      "properties": {
+        "technical":      { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "enterpriseSales":{ "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "regulatory":     { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "design":         { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "domainExpert":   { "type": "string", "enum": ["none", "low", "medium", "high"] }
+      }
+    },
+
+    "capabilityLearned": {
+      "type": "array",
+      "description": "A bet can be attractive because it teaches a strategically important capability that unlocks future opportunities.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capability":    { "type": "string" },
+          "unlocksIdeaIds":{ "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "riskExposures": {
+      "type": "array",
+      "description": "Shared risk factors this bet is exposed to. Used for portfolio concentration analysis.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "riskFactorId":  { "type": "string" },
+          "exposureLevel": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+
+    "killCriteria": {
+      "type": "array",
+      "description": "Pre-defined kill criteria. Required before commitments above MICRO_PROTOTYPE level.",
+      "items": { "type": "string" }
+    },
+
+    "revivalCriteria": {
+      "type": "string",
+      "description": "What would need to change to make this bet attractive again after killing?"
+    },
+
+    "preMortem": {
+      "type": "string",
+      "description": "Imagine it is 12 months later and this bet failed. Why? Pre-committed failure causes."
+    },
+
+    "preParade": {
+      "type": "string",
+      "description": "Imagine it unexpectedly succeeded. What probably went right? Reveals necessary success conditions."
+    },
+
+    "bottleneckAssumption": {
+      "type": "string",
+      "description": "The one uncertain assumption that dominates feasibility. Out of 15 uncertainties, find the bottleneck."
+    },
+
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "PAUSED", "KILLED", "COMPLETED", "WATCH", "RESERVED"]
+    },
+
+    "resolution": {
+      "type": ["object", "null"],
+      "description": "How this bet resolved — preserved for honest retrospective.",
+      "properties": {
+        "outcome":     { "type": "string", "enum": ["SUCCESS", "FAILURE", "PIVOT", "ABANDONED", "INCONCLUSIVE"] },
+        "resolvedAt":  { "type": "string", "format": "date-time" },
+        "summary":     { "type": "string" },
+        "surprises":   { "type": "array", "items": { "type": "string" } },
+        "assetsActuallyCreated": { "type": "array", "items": { "type": "string" } },
+        "wastedCapital": { "type": ["number", "null"] },
+        "failureQuality": { "type": "string", "enum": ["high", "medium", "low"], "description": "A failed bet can be high quality if it was cheap, resolved important uncertainty, and created reusable learning." }
+      }
+    },
+
+    "linkedForecastIds": { "type": "array", "items": { "type": "string" } },
+    "linkedDecisionPacketId": { "type": ["string", "null"] },
+
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "createdBy": { "type": "string" }
+  }
+}

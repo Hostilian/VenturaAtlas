@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "1.0.0",
+  "_comment": "Strategic risk factors derived from shockgraph.json and idea analysis. Each factor links to ideas exposed to it. Used for portfolio concentration analysis — two ideas sharing a factor are not independent bets.",
+  "riskFactors": [
+    {
+      "riskFactorId": "rf-eu-regulation-timing",
+      "name": "EU Regulatory Timing Risk",
+      "description": "Business depends on EU regulation being enacted, enforced, or interpreted as expected. Delays, softer enforcement, or political reversal would reduce urgency.",
+      "category": "REGULATORY",
+      "examples": ["enforcement date slips", "member state implementation varies", "Commission guidance softens"],
+      "exposedIdeaIds": [
+        "idea-425", "idea-426", "idea-427", "idea-428", "idea-429", "idea-430", "idea-431",
+        "idea-415", "idea-416", "idea-417", "idea-418", "idea-419", "idea-420",
+        "idea-421", "idea-422", "idea-423", "idea-424",
+        "idea-432", "idea-433", "idea-434", "idea-435", "idea-436",
+        "idea-401"
+      ],
+      "syntheticNote": "Ideas sharing this factor look diversified by topic but may all weaken simultaneously if EU enforcement posture softens. Portfolio concentration across 20+ ideas.",
+      "portfolioImplication": "HIGH_CONCENTRATION — a single macro shift (enforcement delay, political reversal) would weaken most of the EU compliance cluster simultaneously."
+    },
+    {
+      "riskFactorId": "rf-llm-api-economics",
+      "name": "LLM API Cost & Availability Risk",
+      "description": "Business depends on LLM APIs remaining available at current cost and capability level. Vendor lock-in, price changes, or capability commoditization could undermine moat or change cost structure.",
+      "category": "TECHNOLOGY",
+      "examples": ["OpenAI pricing change", "API deprecation", "LLM capability built into competitor product for free"],
+      "exposedIdeaIds": [
+        "idea-001", "idea-010", "idea-019", "idea-020", "idea-031", "idea-049", "idea-054",
+        "idea-061", "idea-062", "idea-063", "idea-064"
+      ],
+      "portfolioImplication": "MEDIUM_CONCENTRATION — AI-native developer tools cluster. Monitor LLM commoditization."
+    },
+    {
+      "riskFactorId": "rf-sme-adoption-friction",
+      "name": "SME Workflow Adoption Friction",
+      "description": "Business depends on small and medium enterprises changing their compliance, reporting, or operational workflows. SME adoption is slow, budget-constrained, and often blocked by the absence of a dedicated IT buyer.",
+      "category": "MARKET",
+      "examples": ["no dedicated buyer", "switch cost exceeds perceived benefit", "owner does not trust AI-generated output for regulatory use"],
+      "exposedIdeaIds": [
+        "idea-425", "idea-426", "idea-427", "idea-428", "idea-429", "idea-430", "idea-431",
+        "idea-185", "idea-186", "idea-187", "idea-188", "idea-189", "idea-190",
+        "idea-194"
+      ],
+      "portfolioImplication": "HIGH_CONCENTRATION — large SME compliance cluster. Shared adoption assumption: 'SMEs will pay €50–€150/month for a new compliance workflow tool.'"
+    },
+    {
+      "riskFactorId": "rf-enterprise-procurement",
+      "name": "Enterprise Procurement Cycle Risk",
+      "description": "Business depends on winning enterprise procurement. Long sales cycles (6–18 months), legal review, security audits, and procurement rules can delay or prevent revenue.",
+      "category": "GO_TO_MARKET",
+      "examples": ["InfoSec questionnaire blocks pilot", "procurement requires ISO 27001", "budget approved then frozen"],
+      "exposedIdeaIds": [
+        "idea-001", "idea-010", "idea-019", "idea-054",
+        "idea-415", "idea-416", "idea-434"
+      ],
+      "portfolioImplication": "MEDIUM_CONCENTRATION — developer tools + regulatory handshake cluster. B2B enterprise sales may compete for the same limited sales bandwidth."
+    },
+    {
+      "riskFactorId": "rf-open-source-commoditization",
+      "name": "Open-Source / Free Alternative Risk",
+      "description": "A key feature or primitive could be open-sourced or offered free by a well-funded competitor, collapsing the pricing power of the core product.",
+      "category": "COMPETITIVE",
+      "examples": ["major incumbent bundles feature free", "OSS alternative reaches feature parity", "GitHub / GitLab ships native equivalent"],
+      "exposedIdeaIds": [
+        "idea-001", "idea-019", "idea-020", "idea-054",
+        "idea-240", "idea-241", "idea-242", "idea-243", "idea-244"
+      ],
+      "portfolioImplication": "MEDIUM_CONCENTRATION — developer / research tooling cluster. Early moat depends on workflow lock-in before commoditization."
+    },
+    {
+      "riskFactorId": "rf-data-access-dependency",
+      "name": "Third-Party Data Access Risk",
+      "description": "Business depends on accessing data from a third-party source (registry, API, exchange, or public database) that could restrict or monetize access.",
+      "category": "TECHNOLOGY",
+      "examples": ["EU registry API adds rate limits or paywalls", "data provider changes terms", "GDPR restriction on automated scraping"],
+      "exposedIdeaIds": [
+        "idea-421", "idea-422", "idea-418", "idea-432", "idea-433", "idea-435",
+        "idea-062", "idea-065", "idea-066", "idea-069"
+      ],
+      "portfolioImplication": "MEDIUM_CONCENTRATION — evidence/verification cluster. A single data access policy change could block several bets simultaneously."
+    },
+    {
+      "riskFactorId": "rf-single-geography",
+      "name": "EU/European Geography Concentration",
+      "description": "Entire portfolio is optimized for EU market. A political shift in EU regulatory posture, a major economic downturn, or Brexit-style fragmentation would reduce total addressable market.",
+      "category": "MARKET",
+      "examples": ["EU regulatory reform reduces compliance burden", "EU market recession", "target country opts out of directive"],
+      "exposedIdeaIds": [
+        "idea-425", "idea-426", "idea-427", "idea-428", "idea-429", "idea-430", "idea-431",
+        "idea-415", "idea-416", "idea-417", "idea-418", "idea-421", "idea-422", "idea-423"
+      ],
+      "portfolioImplication": "HIGH_CONCENTRATION — virtually all regulatory ideas are EU-geography-specific. Diversification across geographies has near-zero representation."
+    },
+    {
+      "riskFactorId": "rf-founder-time-shock",
+      "name": "Founder/Solo Time Availability Shock",
+      "description": "All bets compete for the same limited founder time. A personal event, parallel obligation, or health issue could immediately degrade multiple simultaneous bets.",
+      "category": "OPERATIONAL",
+      "examples": ["founder takes full-time employment", "health event reduces available hours by 50%", "co-founder departure"],
+      "exposedIdeaIds": [],
+      "portfolioImplication": "UNIVERSAL — affects every bet. WIP limits, reversibility preference, and reserve capacity are the primary mitigations. Cannot be diversified away without co-founder or team."
+    }
+  ],
+  "_meta": {
+    "generatedFrom": ["data/shockgraph.json", "data/ideas.json"],
+    "generatedAt": "2026-08-25",
+    "note": "Exposure lists are representative, not exhaustive. Portfolios should re-assess when adding new bets."
+  }
+}

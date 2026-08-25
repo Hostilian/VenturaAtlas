@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "_comment": "Seed strategic asset inventory derived from analysis of top-priority canonical ideas. Assets represent reusable value created by venture bets — not raw idea scores. IDs reference no fabricated outcomes.",
+  "assets": [
+    {
+      "assetId": "asset-eu-compliance-buyer-relationship",
+      "name": "EU SME Compliance Buyer Relationships",
+      "description": "Direct relationships with compliance leads, legal ops managers, and sustainability coordinators inside EU-regulated small and medium businesses. Created by manual service, interview campaigns, or pilot work. Dramatically reduces cold-outreach cost for subsequent compliance products.",
+      "type": "customer_relationships",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "moderate_effort",
+      "compoundsOverTime": true,
+      "decayRate": "slow_decay",
+      "linkedIdeaIds": [
+        "idea-425", "idea-426", "idea-427", "idea-428", "idea-429", "idea-430", "idea-431",
+        "idea-415", "idea-416", "idea-417"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "high",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "One successful manual compliance audit pilot creates buyer access reusable across the entire EU evidence-layer cluster."
+    },
+    {
+      "assetId": "asset-audit-evidence-schema",
+      "name": "Structured Audit Evidence Schema",
+      "description": "A validated data schema for structured compliance evidence: document type, regulation reference, timestamp, issuer, status, expiry. Reusable across multiple EU compliance verticals.",
+      "type": "code_module",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "easily_redeployed",
+      "compoundsOverTime": false,
+      "decayRate": "slow_decay",
+      "linkedIdeaIds": [
+        "idea-425", "idea-426", "idea-415", "idea-416", "idea-421", "idea-422"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "high",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "Building this once for idea-425 (EU AI Act Compliance Evidence Gate) creates reusable primitive for at least 5 other regulatory ideas."
+    },
+    {
+      "assetId": "asset-regulatory-knowledge-eu",
+      "name": "EU Regulatory Landscape Domain Knowledge",
+      "description": "Deep practitioner-level understanding of EU compliance obligations across AI Act, EAA, EPREL, ICS2, EHDS. Includes knowing which parts are enforced vs. aspirational, where buyers are confused, and which obligations create audit exposure.",
+      "type": "regulatory_knowledge",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "moderate_effort",
+      "compoundsOverTime": true,
+      "decayRate": "medium_decay",
+      "linkedIdeaIds": [
+        "idea-425", "idea-426", "idea-428", "idea-429", "idea-415", "idea-416",
+        "idea-417", "idea-421", "idea-422", "idea-423"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "high",
+      "currentStatus": "IN_CREATION",
+      "notes": "Already partially created through research. Each regulatory interview or audit pilot deepens this asset."
+    },
+    {
+      "assetId": "asset-ai-agent-proof-workflow",
+      "name": "AI Agent Work-Acceptance Workflow",
+      "description": "A structured workflow and associated tooling for accepting, auditing, and validating outputs from AI coding agents. Includes evidence templates, test harness patterns, and policy primitives.",
+      "type": "workflow_dataset",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "moderate_effort",
+      "compoundsOverTime": false,
+      "decayRate": "medium_decay",
+      "linkedIdeaIds": [
+        "idea-001", "idea-010", "idea-019", "idea-020", "idea-031", "idea-049", "idea-054"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "medium",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "Building ProofRail (idea-001) creates workflow primitives reusable by at least 5 related developer-tooling ideas."
+    },
+    {
+      "assetId": "asset-verified-product-evidence-db",
+      "name": "Verified Product Evidence Database",
+      "description": "A curated, structured database of product claims with associated evidence (test results, lab reports, regulatory filings). Becomes more valuable as it grows — data flywheel. Reusable across product verification cluster.",
+      "type": "proprietary_data",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "narrow_specialized",
+      "compoundsOverTime": true,
+      "decayRate": "slow_decay",
+      "linkedIdeaIds": [
+        "idea-061", "idea-062", "idea-063", "idea-064", "idea-065", "idea-066",
+        "idea-067", "idea-068", "idea-069", "idea-070"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "very_high",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "FactBounty (idea-061) creates the database. MeasureGraph (idea-062), Product Evidence API (idea-068), and others immediately benefit. Classic data flywheel."
+    },
+    {
+      "assetId": "asset-buyer-interview-knowledge",
+      "name": "Direct Buyer Interview Corpus",
+      "description": "A collection of structured buyer interviews with decision-maker insights: pain level, budget ownership, current workaround, willingness-to-pay signals, blocking objections. Reduces uncertainty across many ideas simultaneously.",
+      "type": "industry_expertise",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "easily_redeployed",
+      "compoundsOverTime": true,
+      "decayRate": "medium_decay",
+      "linkedIdeaIds": [],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "high",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "A single buyer interview on EU compliance budget can resolve assumptions shared by 15+ ideas. High cross-portfolio information value."
+    },
+    {
+      "assetId": "asset-distribution-compliance-newsletter",
+      "name": "EU Compliance Practitioner Newsletter/Audience",
+      "description": "A subscription audience of EU compliance managers, legal ops leads, and sustainability coordinators interested in practical regulatory guidance. Built through content. Creates owned distribution for all products in the EU compliance cluster.",
+      "type": "newsletter",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "easily_redeployed",
+      "compoundsOverTime": true,
+      "decayRate": "slow_decay",
+      "linkedIdeaIds": [
+        "idea-425", "idea-426", "idea-428", "idea-429", "idea-431"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "high",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "Content-to-audience-to-customer pipeline. Low upfront cost if produced as byproduct of research. Creates distribution without paid acquisition."
+    },
+    {
+      "assetId": "asset-pdf-ingestion-module",
+      "name": "PDF / Document Ingestion Module",
+      "description": "A reusable technical module for reliable extraction, parsing, and structured processing of compliance PDFs, regulatory filings, and audit documents. Shared primitive across document-heavy verticals.",
+      "type": "code_module",
+      "sourceBetId": null,
+      "sourceBetIds": [],
+      "reusability": "portfolio_wide",
+      "redeployability": "easily_redeployed",
+      "compoundsOverTime": false,
+      "decayRate": "slow_decay",
+      "linkedIdeaIds": [
+        "idea-425", "idea-415", "idea-416", "idea-421", "idea-422", "idea-061", "idea-240", "idea-241"
+      ],
+      "reducesEntryBarrierFor": [],
+      "strategicValue": "medium",
+      "currentStatus": "HYPOTHETICAL",
+      "notes": "If 5+ planned bets need PDF ingestion, building it well once reduces cost of all subsequent bets. Require concrete downstream reuse before abstracting."
+    }
+  ],
+  "_meta": {
+    "generatedAt": "2026-08-25",
+    "note": "All assets are HYPOTHETICAL until a bet actually creates them. IDs are not outcomes — they are planning constructs."
+  }
+}
