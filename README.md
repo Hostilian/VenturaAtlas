@@ -17,7 +17,7 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 
 ## What the site supports
 
-Search across normalized market families, venture patterns, buyers, and original categories; filter and sort by similarity or distinctiveness; inspect potential duplicates; compare positioning side by side; and use card/table/compact views, favorites, rankings, relationship maps, shareable queries, JSON/CSV downloads, dark mode, print layouts, keyboard navigation, a live background-progress dashboard, and a no-JavaScript Markdown/CSV path.
+Search across normalized market families, venture patterns, buyers, and original categories; filter and sort by similarity or distinctiveness; inspect potential duplicates; compare positioning side by side; compose bounded venture portfolios and calibrated forecasts in the Portfolio Lab; and use card/table/compact views, favorites, rankings, relationship maps, shareable queries, JSON/CSV downloads, dark mode, print layouts, keyboard navigation, a live background-progress dashboard, and a no-JavaScript Markdown/CSV path.
 
 ## Evidence and limitations
 
