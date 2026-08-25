@@ -1,6 +1,6 @@
 # CRA Single Reporting Platform live watch
 
-As-of: **2026-08-21**
+As-of: **2026-08-24**
 
 ## Current official state
 
@@ -12,7 +12,9 @@ As-of: **2026-08-21**
 - Article 14 also applies to in-scope products placed on the market before the general 11 December 2027 application date.
 - ENISA says functional and security testing is under way.
 - ENISA has published Assigned Representative registration guidance, notification/update guidance (3 August 2026), and interface-function guidance (14 August 2026).
-- The inspected official pages describe an online tool. They do **not establish a public machine-to-machine API**.
+- ENISA's FAQ now publishes the staged reporting field matrix: common fields plus separate vulnerability and incident fields, marked as obligatory, copied/updated, optional, conditionally obligatory, or automated across the 24-hour, 72-hour, and final stages.
+- The FAQ explicitly says organisations may automate internal workflows, but **no Application Programming Interfaces will be provided at this stage**. Submission therefore remains an official web-platform handoff rather than a public machine-to-machine integration point.
+- The public URL and the list of designated national CSIRT coordinators had not yet been published; ENISA says the latter will be provided later.
 
 ## Opportunity correction
 
@@ -29,7 +31,7 @@ As-of: **2026-08-21**
 | notification/update workflow | guidance published |
 | public API | not established |
 | sandbox/test account | not established |
-| machine-readable field schema | not captured |
+| field matrix/schema | official stage matrix captured in ENISA FAQ; no machine-readable API schema |
 | manufacturer feedback | none captured |
 | outage/failure reports | none captured pre-launch |
 | vendor integrations | not yet audited |
@@ -43,12 +45,14 @@ As-of: **2026-08-21**
 - launch outage or missed-deadline failure is documented;
 - a cybersecurity vendor announces a working integration;
 - ENISA materially changes timing or reporting flow.
+- ENISA publishes the SRP URL, coordinator list, or a revised field matrix.
 
 Sources:
 
 - https://digital-strategy.ec.europa.eu/en/policies/cra-reporting
 - https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation
 - https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp
+- https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions
 - https://vexwatch.com/
 - https://crareport.eu/
 - https://cvdportal.com/tools/notification-template-builder

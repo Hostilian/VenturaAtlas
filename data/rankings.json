@@ -1,11 +1,11 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-08-21T13:44:23.782304+00:00",
-  "totalIdeas": 309,
+  "generatedAt": "2026-08-25T01:17:20.359557+00:00",
+  "totalIdeas": 324,
   "rankingViewsCount": 7,
   "algorithm": "weighted-composite-v3-explicit-scale",
   "scoreScaleVersion": "va-score-scales-v1",
-  "rankingSemanticDigest": "fd7deb5c579f25f9a61a6fc58a1f580698b1aacadcd0e932ebcced046b337a27",
+  "rankingSemanticDigest": "0f6cbbf45a08a297f829a08a91d9618b970bbcfa8ff63b4ee213ad67404a5f0f",
   "weights": {
     "overallOpportunity": 0.25,
     "bootstrappedPotential": 0.15,
@@ -38732,7 +38732,22 @@
         "idea-428",
         "idea-429",
         "idea-430",
-        "idea-431"
+        "idea-431",
+        "idea-432",
+        "idea-433",
+        "idea-434",
+        "idea-435",
+        "idea-436",
+        "idea-437",
+        "idea-438",
+        "idea-439",
+        "idea-440",
+        "idea-441",
+        "idea-442",
+        "idea-443",
+        "idea-444",
+        "idea-445",
+        "idea-446"
       ]
     },
     "HYPOTHESIS": {
@@ -40282,6 +40297,81 @@
           "ideaId": "idea-431",
           "name": "Continental-EU Vet Pricing Transparency Network",
           "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-432",
+          "name": "BatteryDuty -- V2G Battery-Use Rights & Wear Clearinghouse",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-433",
+          "name": "HeatProof -- Retrofit Outcome Clearinghouse",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-434",
+          "name": "FlexCovenant -- Industrial Flexibility Performance Contract OS",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-435",
+          "name": "WaterSpec -- Quality-Adjusted Reclaimed-Water Settlement",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-436",
+          "name": "AltLine Drill -- Pharmaceutical Manufacturing Escape Route",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-437",
+          "name": "TradeScope -- Job-Level Legal Capability for Skilled Workers",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-438",
+          "name": "HeatSLA -- Waste-Heat / Thermal-Energy Settlement",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-439",
+          "name": "ReuseRating -- Underwriting Layer for Reclaimed Structural Components",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-440",
+          "name": "OrbitSettlement -- Cost/Responsibility Evidence for Orbital Maneuvers",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-441",
+          "name": "ComputeBasis -- Compute Delivery/Hedge Reconciliation",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-442",
+          "name": "Industrial Spare Qualification Receipt",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-443",
+          "name": "Water Interruption Option",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-444",
+          "name": "Autonomous Equipment Availability Bond",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-445",
+          "name": "Mobile Workforce Credential Gap Market",
+          "rankingEligible": false
+        },
+        {
+          "ideaId": "idea-446",
+          "name": "GPU Residual-Value Infrastructure",
+          "rankingEligible": false
         }
       ]
     },
@@ -40299,36 +40389,6 @@
     }
   },
   "history": [
-    {
-      "snapshotAt": "2026-08-12T14:57:38.398232+00:00",
-      "top5": [
-        {
-          "id": "idea-385",
-          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
-          "score": 97.6
-        },
-        {
-          "id": "idea-395",
-          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
-          "score": 97.2
-        },
-        {
-          "id": "idea-373",
-          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
-          "score": 96.1
-        },
-        {
-          "id": "idea-396",
-          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
-          "score": 95.9
-        },
-        {
-          "id": "idea-374",
-          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
-          "score": 95.7
-        }
-      ]
-    },
     {
       "snapshotAt": "2026-08-12T15:01:15.358603+00:00",
       "top5": [
@@ -40576,6 +40636,37 @@
     {
       "snapshotAt": "2026-08-21T13:44:23.782304+00:00",
       "rankingSemanticDigest": "fd7deb5c579f25f9a61a6fc58a1f580698b1aacadcd0e932ebcced046b337a27",
+      "top5": [
+        {
+          "id": "idea-385",
+          "name": "KinLedger / DonorRecall — Privacy-Preserving Gamete Donor Coordination Ledger",
+          "score": 97.6
+        },
+        {
+          "id": "idea-395",
+          "name": "DemandProof / LoadLedger — Electricity Load Project Identity & Readiness Network",
+          "score": 97.2
+        },
+        {
+          "id": "idea-373",
+          "name": "BidTwin / AuctionProof — Bid-to-Built Resilience Assurance System",
+          "score": 96.1
+        },
+        {
+          "id": "idea-396",
+          "name": "LoadEnvelope CI / GridEnvelope — Continuous Electrical Behavior & Grid Contract Assurance",
+          "score": 95.9
+        },
+        {
+          "id": "idea-374",
+          "name": "FreedomToModify / Sovereignty CI — Continuous Technological Control Test Engine",
+          "score": 95.7
+        }
+      ]
+    },
+    {
+      "snapshotAt": "2026-08-25T01:17:20.359557+00:00",
+      "rankingSemanticDigest": "0f6cbbf45a08a297f829a08a91d9618b970bbcfa8ff63b4ee213ad67404a5f0f",
       "top5": [
         {
           "id": "idea-385",
