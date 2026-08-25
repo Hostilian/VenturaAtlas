@@ -1,0 +1,992 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/chessboard-workspace.schema.json",
+  "title": "VenturaAtlas CHESSBOARD market-structure workspace",
+  "description": "A private-first, evidence-linked market structure snapshot. This contract represents mechanisms and uncertainty; it does not define or mutate global scores or rankings.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "workspaceMode",
+    "privacyScope",
+    "workspaceId",
+    "selectionAuthority",
+    "canonicalIdeaId",
+    "canonicalIdeaRevision",
+    "ventureName",
+    "snapshot",
+    "marketDefinitions",
+    "actors",
+    "valueChainLayers",
+    "controlPoints",
+    "dependencies",
+    "ecosystemEdges",
+    "responses",
+    "strategicClaims",
+    "moatMechanisms",
+    "antiMoats",
+    "commoditizationRisks",
+    "events",
+    "stressScenarios",
+    "positions",
+    "researchGaps",
+    "handoffs",
+    "sourceRecords",
+    "legacyScoreAudit"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": "1.0.0" },
+    "workspaceMode": {
+      "enum": ["PRIVATE_STRATEGY", "PUBLIC_SANITIZED", "UNVERIFIED_DRAFT"]
+    },
+    "privacyScope": {
+      "enum": ["PRIVATE_REPOSITORY_ONLY", "LOCAL_BROWSER_ONLY", "PUBLIC_SANITIZED"]
+    },
+    "workspaceId": { "type": "string", "pattern": "^chessboard-[a-z0-9-]+$" },
+    "selectionAuthority": { "$ref": "#/$defs/selectionAuthority" },
+    "canonicalIdeaId": { "$ref": "#/$defs/ideaId" },
+    "canonicalIdeaRevision": { "$ref": "#/$defs/sha256" },
+    "ventureName": { "type": "string", "minLength": 1 },
+    "snapshot": { "$ref": "#/$defs/snapshot" },
+    "marketDefinitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/marketDefinition" }
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/actor" }
+    },
+    "valueChainLayers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/valueChainLayer" }
+    },
+    "controlPoints": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/controlPoint" }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/dependency" }
+    },
+    "ecosystemEdges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ecosystemEdge" }
+    },
+    "responses": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/response" }
+    },
+    "strategicClaims": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/strategicClaim" }
+    },
+    "moatMechanisms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/moatMechanism" }
+    },
+    "antiMoats": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/antiMoat" }
+    },
+    "commoditizationRisks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/commoditizationRisk" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/marketEvent" }
+    },
+    "stressScenarios": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/stressScenario" }
+    },
+    "positions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/position" }
+    },
+    "researchGaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/researchGap" }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/handoff" }
+    },
+    "sourceRecords": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sourceRecord" }
+    },
+    "legacyScoreAudit": { "$ref": "#/$defs/legacyScoreAudit" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ideaId": { "type": "string", "pattern": "^idea-[0-9]{3}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "dateTime": { "type": "string", "format": "date-time" },
+    "nullableDateTime": {
+      "oneOf": [
+        { "$ref": "#/$defs/dateTime" },
+        { "type": "null" }
+      ]
+    },
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" }
+    },
+    "epistemicState": {
+      "enum": [
+        "OBSERVED_FACT",
+        "SOURCE_SUPPORTED_INFERENCE",
+        "MODEL_HYPOTHESIS",
+        "SCENARIO",
+        "USER_ASSUMPTION",
+        "UNKNOWN"
+      ]
+    },
+    "confidence": { "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+    "qualitativeLevel": { "enum": ["VERY_LOW", "LOW", "MEDIUM", "HIGH", "VERY_HIGH", "UNKNOWN"] },
+    "timeHorizon": { "enum": ["IMMEDIATE", "WEEKS", "MONTHS", "YEARS", "LONG_TERM", "UNKNOWN"] },
+    "selectionAuthority": {
+      "type": "object",
+      "required": [
+        "state",
+        "authorityPath",
+        "activeVentureId",
+        "analysisTargetBasis",
+        "evaluatedAt",
+        "discrepancies",
+        "rationale"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "AUTHORITATIVE_ACTIVE_VENTURE",
+            "NO_AUTHORITATIVE_ACTIVE_VENTURE",
+            "DISCREPANCY_REQUIRES_RESOLUTION"
+          ]
+        },
+        "authorityPath": { "const": ".agent-system/state.json" },
+        "activeVentureId": {
+          "oneOf": [
+            { "$ref": "#/$defs/ideaId" },
+            { "type": "null" }
+          ]
+        },
+        "analysisTargetBasis": {
+          "enum": [
+            "AUTHORITATIVE_SELECTION",
+            "CURRENT_CANONICAL_PRIORITY_RECORD",
+            "RECENT_DOMAIN_DOGFOOD",
+            "USER_ASSUMPTION",
+            "EXPLICIT_NON_AUTHORITATIVE_DOGFOOD"
+          ]
+        },
+        "evaluatedAt": { "$ref": "#/$defs/dateTime" },
+        "discrepancies": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/selectionDiscrepancy" }
+        },
+        "rationale": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "selectionDiscrepancy": {
+      "type": "object",
+      "required": [
+        "discrepancyId",
+        "sourcePath",
+        "sourceIdeaId",
+        "field",
+        "sourceValue",
+        "canonicalValue",
+        "status"
+      ],
+      "properties": {
+        "discrepancyId": { "type": "string", "pattern": "^selection-discrepancy-[a-z0-9-]+$" },
+        "sourcePath": { "type": "string", "minLength": 1 },
+        "sourceIdeaId": { "$ref": "#/$defs/ideaId" },
+        "field": { "enum": ["selectedIdeaId", "selectedIdeaName", "selectionStatus"] },
+        "sourceValue": { "type": ["string", "null"] },
+        "canonicalValue": { "type": ["string", "null"] },
+        "status": { "enum": ["OPEN", "PRESERVED", "RESOLVED", "SUPERSEDED"] }
+      },
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "required": ["snapshotId", "asOf", "status", "priorSnapshotRef", "researchCutoff", "notes"],
+      "properties": {
+        "snapshotId": { "type": "string", "pattern": "^snapshot-[a-z0-9-]+$" },
+        "asOf": { "$ref": "#/$defs/dateTime" },
+        "status": { "enum": ["DRAFT", "CURRENT", "SUPERSEDED"] },
+        "priorSnapshotRef": { "type": ["string", "null"] },
+        "researchCutoff": { "$ref": "#/$defs/dateTime" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "marketDefinition": {
+      "type": "object",
+      "required": [
+        "marketId",
+        "name",
+        "jobs",
+        "buyerActorRefs",
+        "budget",
+        "includedAlternativeActorRefs",
+        "excludedAlternativeActorRefs",
+        "reason",
+        "confidence",
+        "epistemicState",
+        "sourceRefs"
+      ],
+      "properties": {
+        "marketId": { "type": "string", "pattern": "^market-[a-z0-9-]+$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "jobs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "buyerActorRefs": { "$ref": "#/$defs/stringArray" },
+        "budget": { "$ref": "#/$defs/nonEmptyString" },
+        "includedAlternativeActorRefs": { "$ref": "#/$defs/stringArray" },
+        "excludedAlternativeActorRefs": { "$ref": "#/$defs/stringArray" },
+        "reason": { "$ref": "#/$defs/nonEmptyString" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "phaseShiftMarketRef": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "actorId",
+        "name",
+        "type",
+        "marketRefs",
+        "assets",
+        "dependencyRefs",
+        "controlPointRefs",
+        "incentives",
+        "observedMoveRefs",
+        "epistemicState",
+        "sourceRefs"
+      ],
+      "properties": {
+        "actorId": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "type": {
+          "enum": [
+            "VENTURE",
+            "CUSTOMER",
+            "END_USER",
+            "ECONOMIC_BUYER",
+            "DIRECT_COMPETITOR",
+            "INDIRECT_COMPETITOR",
+            "SUBSTITUTE",
+            "STATUS_QUO",
+            "OPEN_SOURCE_PROJECT",
+            "UPSTREAM_SUPPLIER",
+            "DOWNSTREAM_DISTRIBUTOR",
+            "PLATFORM",
+            "GATEKEEPER",
+            "COMPLEMENTOR",
+            "INTEGRATOR",
+            "CHANNEL",
+            "STANDARD_BODY",
+            "REGULATOR",
+            "DATA_PROVIDER",
+            "MODEL_PROVIDER",
+            "CLOUD_PROVIDER",
+            "MARKETPLACE",
+            "SYSTEM_OF_RECORD",
+            "INTERNAL_BUILD_TEAM",
+            "ADJACENT_INCUMBENT",
+            "NEW_ENTRANT"
+          ]
+        },
+        "marketRefs": { "$ref": "#/$defs/stringArray" },
+        "assets": { "$ref": "#/$defs/stringArray" },
+        "dependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "controlPointRefs": { "$ref": "#/$defs/stringArray" },
+        "incentives": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "observedMoveRefs": { "$ref": "#/$defs/stringArray" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "valueChainLayer": {
+      "type": "object",
+      "required": [
+        "layerId",
+        "name",
+        "sequence",
+        "actorRefs",
+        "inputs",
+        "outputs",
+        "economics",
+        "switching",
+        "concentration",
+        "commodityState",
+        "controlPointRefs",
+        "epistemicState",
+        "sourceRefs"
+      ],
+      "properties": {
+        "layerId": { "type": "string", "pattern": "^layer-[a-z0-9-]+$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "sequence": { "type": "integer", "minimum": 0 },
+        "actorRefs": { "$ref": "#/$defs/stringArray" },
+        "inputs": { "$ref": "#/$defs/stringArray" },
+        "outputs": { "$ref": "#/$defs/stringArray" },
+        "economics": { "$ref": "#/$defs/nonEmptyString" },
+        "switching": { "$ref": "#/$defs/nonEmptyString" },
+        "concentration": { "$ref": "#/$defs/qualitativeLevel" },
+        "commodityState": { "enum": ["SCARCE", "CONTESTED", "COMMODITIZING", "COMMODITY_LIKE", "UNKNOWN"] },
+        "controlPointRefs": { "$ref": "#/$defs/stringArray" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "controlPoint": {
+      "type": "object",
+      "required": [
+        "controlPointId",
+        "layerRef",
+        "controllerActorRef",
+        "controlledResource",
+        "dependentActorRefs",
+        "mechanism",
+        "switchability",
+        "alternativeActorRefs",
+        "epistemicState",
+        "sourceRefs",
+        "counterEvidenceRefs"
+      ],
+      "properties": {
+        "controlPointId": { "type": "string", "pattern": "^control-[a-z0-9-]+$" },
+        "layerRef": { "type": "string" },
+        "controllerActorRef": { "type": "string" },
+        "controlledResource": { "$ref": "#/$defs/nonEmptyString" },
+        "dependentActorRefs": { "$ref": "#/$defs/stringArray" },
+        "mechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "switchability": { "$ref": "#/$defs/qualitativeLevel" },
+        "alternativeActorRefs": { "$ref": "#/$defs/stringArray" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "dependency": {
+      "type": "object",
+      "required": [
+        "dependencyId",
+        "dependentActorRefs",
+        "providerActorRef",
+        "resource",
+        "criticality",
+        "switchingCost",
+        "alternativeActorRefs",
+        "alternativeDescriptions",
+        "contractualConstraints",
+        "technicalConstraints",
+        "providerEntryRisk",
+        "priceExposure",
+        "accessExposure",
+        "controlPointRef",
+        "shockgraphDependencyRef",
+        "epistemicState",
+        "sourceRefs",
+        "counterEvidenceRefs"
+      ],
+      "properties": {
+        "dependencyId": { "type": "string", "pattern": "^dependency-[a-z0-9-]+$" },
+        "dependentActorRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "providerActorRef": { "type": "string" },
+        "resource": { "$ref": "#/$defs/nonEmptyString" },
+        "criticality": { "$ref": "#/$defs/qualitativeLevel" },
+        "switchingCost": { "$ref": "#/$defs/qualitativeLevel" },
+        "alternativeActorRefs": { "$ref": "#/$defs/stringArray" },
+        "alternativeDescriptions": { "$ref": "#/$defs/stringArray" },
+        "contractualConstraints": { "$ref": "#/$defs/stringArray" },
+        "technicalConstraints": { "$ref": "#/$defs/stringArray" },
+        "providerEntryRisk": { "$ref": "#/$defs/qualitativeLevel" },
+        "priceExposure": { "$ref": "#/$defs/qualitativeLevel" },
+        "accessExposure": { "$ref": "#/$defs/qualitativeLevel" },
+        "controlPointRef": { "type": ["string", "null"] },
+        "shockgraphDependencyRef": { "type": ["string", "null"] },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "ecosystemEdge": {
+      "type": "object",
+      "required": ["edgeId", "fromActorRef", "toActorRef", "type", "marketRefs", "mechanism", "epistemicState", "sourceRefs"],
+      "properties": {
+        "edgeId": { "type": "string", "pattern": "^edge-[a-z0-9-]+$" },
+        "fromActorRef": { "type": "string" },
+        "toActorRef": { "type": "string" },
+        "type": {
+          "enum": [
+            "BUYS_FROM",
+            "SELLS_TO",
+            "DEPENDS_ON",
+            "COMPETES_WITH",
+            "COMPLEMENTS",
+            "BUNDLES",
+            "DISTRIBUTES",
+            "SUPPLIES",
+            "CONTROLS_ACCESS_TO",
+            "INTEROPERATES_WITH",
+            "SUBSTITUTES",
+            "REGULATES",
+            "SETS_STANDARD_FOR",
+            "INTEGRATES_WITH"
+          ]
+        },
+        "marketRefs": { "$ref": "#/$defs/stringArray" },
+        "mechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "response": {
+      "type": "object",
+      "required": [
+        "responseId",
+        "actorRef",
+        "targetActorRefs",
+        "trigger",
+        "triggerEventRefs",
+        "possibleAction",
+        "ability",
+        "abilityMechanism",
+        "incentive",
+        "incentiveMechanism",
+        "timeToExecute",
+        "likelyImpact",
+        "constraints",
+        "countermoves",
+        "epistemicState",
+        "sourceRefs",
+        "counterEvidenceRefs",
+        "falsifier"
+      ],
+      "properties": {
+        "responseId": { "type": "string", "pattern": "^response-[a-z0-9-]+$" },
+        "actorRef": { "type": "string" },
+        "targetActorRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "trigger": { "$ref": "#/$defs/nonEmptyString" },
+        "triggerEventRefs": { "$ref": "#/$defs/stringArray" },
+        "possibleAction": {
+          "enum": [
+            "IGNORE",
+            "COPY_FEATURE",
+            "LOWER_PRICE",
+            "MAKE_FEATURE_FREE",
+            "BUNDLE",
+            "ACQUIRE",
+            "PARTNER",
+            "BLOCK_ACCESS",
+            "CHANGE_API",
+            "RAISE_API_PRICE",
+            "SELF_PREFERENCE",
+            "ENTER_ADJACENT_MARKET",
+            "OPEN_SOURCE",
+            "CLOSE_SOURCE",
+            "INCREASE_INTEGRATION",
+            "SIGN_EXCLUSIVITY",
+            "INCREASE_MARKETING",
+            "LEVERAGE_SALES_FORCE",
+            "SEEK_STANDARD",
+            "INTEROPERATE",
+            "DISINTERMEDIATE",
+            "UNKNOWN"
+          ]
+        },
+        "ability": { "$ref": "#/$defs/qualitativeLevel" },
+        "abilityMechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "incentive": { "$ref": "#/$defs/qualitativeLevel" },
+        "incentiveMechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "timeToExecute": { "$ref": "#/$defs/timeHorizon" },
+        "likelyImpact": { "$ref": "#/$defs/nonEmptyString" },
+        "constraints": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "countermoves": { "$ref": "#/$defs/stringArray" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "strategicClaim": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "subject",
+        "claim",
+        "epistemicState",
+        "mechanism",
+        "actorRef",
+        "controlPointRef",
+        "asset",
+        "beneficiaries",
+        "disadvantaged",
+        "conditions",
+        "evidenceRefs",
+        "counterEvidenceRefs",
+        "timeHorizon",
+        "falsifier",
+        "asOf",
+        "confidence",
+        "status",
+        "contradictionStatus",
+        "resolution"
+      ],
+      "properties": {
+        "claimId": { "type": "string", "pattern": "^STR-[A-Z0-9-]+$" },
+        "subject": { "$ref": "#/$defs/nonEmptyString" },
+        "claim": { "$ref": "#/$defs/nonEmptyString" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "mechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "actorRef": { "type": "string" },
+        "controlPointRef": { "type": ["string", "null"] },
+        "asset": { "$ref": "#/$defs/nonEmptyString" },
+        "beneficiaries": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "disadvantaged": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "conditions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "timeHorizon": { "$ref": "#/$defs/timeHorizon" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" },
+        "asOf": { "$ref": "#/$defs/dateTime" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "status": { "enum": ["ACTIVE", "STALE", "SUPERSEDED", "REFUTED", "UNKNOWN"] },
+        "contradictionStatus": { "enum": ["NONE", "OPEN", "RESOLVED"] },
+        "resolution": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "powerMechanism": {
+      "enum": [
+        "NETWORK_EFFECT",
+        "ECONOMIES_OF_SCALE",
+        "ECONOMIES_OF_SCOPE",
+        "SWITCHING_COST",
+        "MULTI_HOMING_FRICTION",
+        "DATA_FEEDBACK",
+        "LEARNING_CURVE",
+        "CAPITAL_INTENSITY",
+        "DISTRIBUTION_CONTROL",
+        "DEFAULT_POSITION",
+        "BUNDLING",
+        "TYING",
+        "VERTICAL_INTEGRATION",
+        "EXCLUSIVE_ACCESS",
+        "STANDARD_CONTROL",
+        "INTEROPERABILITY_CONTROL",
+        "SUPPLY_BOTTLENECK",
+        "BRAND_TRUST",
+        "CUSTOMER_WORKFLOW_EMBEDDING",
+        "SYSTEM_OF_RECORD_POSITION",
+        "REGULATORY_LICENSE",
+        "CERTIFICATION",
+        "LONG_CONTRACT",
+        "COMMUNITY",
+        "OPEN_SOURCE_ADOPTION",
+        "PROPRIETARY_DATA",
+        "RELATIONSHIP_DEPENDENCE",
+        "UNKNOWN"
+      ]
+    },
+    "moatMechanism": {
+      "type": "object",
+      "required": [
+        "moatId",
+        "mechanism",
+        "ownerActorRef",
+        "asset",
+        "accumulationProcess",
+        "customerEffect",
+        "attackerActorRefs",
+        "attackerCost",
+        "timeToReplicate",
+        "conditions",
+        "dependencyRefs",
+        "decayRisks",
+        "halfLife",
+        "evidenceRefs",
+        "counterEvidenceRefs",
+        "relatedClaimRefs",
+        "falsifier",
+        "status",
+        "epistemicState"
+      ],
+      "properties": {
+        "moatId": { "type": "string", "pattern": "^moat-[a-z0-9-]+$" },
+        "mechanism": { "$ref": "#/$defs/powerMechanism" },
+        "ownerActorRef": { "type": "string" },
+        "asset": { "$ref": "#/$defs/nonEmptyString" },
+        "accumulationProcess": { "$ref": "#/$defs/nonEmptyString" },
+        "customerEffect": { "$ref": "#/$defs/nonEmptyString" },
+        "attackerActorRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "attackerCost": { "$ref": "#/$defs/nonEmptyString" },
+        "timeToReplicate": { "$ref": "#/$defs/timeHorizon" },
+        "conditions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "dependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "decayRisks": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "halfLife": { "enum": ["VERY_SHORT", "SHORT", "MEDIUM", "LONG", "UNKNOWN"] },
+        "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "relatedClaimRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" },
+        "status": { "enum": ["HYPOTHESIS", "CONDITIONAL", "OBSERVED_TEMPORARY", "REJECTED", "UNKNOWN"] },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" }
+      },
+      "additionalProperties": false
+    },
+    "antiMoat": {
+      "type": "object",
+      "required": [
+        "antiMoatId",
+        "mechanism",
+        "actorRef",
+        "growthTrigger",
+        "negativeEffect",
+        "scalingBehavior",
+        "possibleMitigations",
+        "evidenceRefs",
+        "counterEvidenceRefs",
+        "relatedClaimRefs",
+        "epistemicState",
+        "falsifier"
+      ],
+      "properties": {
+        "antiMoatId": { "type": "string", "pattern": "^anti-moat-[a-z0-9-]+$" },
+        "mechanism": { "$ref": "#/$defs/nonEmptyString" },
+        "actorRef": { "type": "string" },
+        "growthTrigger": { "$ref": "#/$defs/nonEmptyString" },
+        "negativeEffect": { "$ref": "#/$defs/nonEmptyString" },
+        "scalingBehavior": { "$ref": "#/$defs/nonEmptyString" },
+        "possibleMitigations": { "$ref": "#/$defs/stringArray" },
+        "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "relatedClaimRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "commoditizationRisk": {
+      "type": "object",
+      "required": [
+        "riskId",
+        "capability",
+        "currentDifferentiation",
+        "drivers",
+        "replacementSources",
+        "costTrend",
+        "availabilityTrend",
+        "timeHorizon",
+        "ventureImpact",
+        "dependencyRefs",
+        "eventRefs",
+        "evidenceRefs",
+        "counterEvidenceRefs",
+        "epistemicState",
+        "falsifier"
+      ],
+      "properties": {
+        "riskId": { "type": "string", "pattern": "^commoditization-[a-z0-9-]+$" },
+        "capability": { "$ref": "#/$defs/nonEmptyString" },
+        "currentDifferentiation": { "$ref": "#/$defs/nonEmptyString" },
+        "drivers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "OPEN_SOURCE",
+              "FOUNDATION_MODEL_PROGRESS",
+              "STANDARDIZATION",
+              "API_AVAILABILITY",
+              "CLOUD_SERVICES",
+              "REGULATION_INTEROPERABILITY",
+              "HARDWARE_COST_DECLINE",
+              "NEW_ENTRANTS",
+              "BUNDLING",
+              "UNKNOWN"
+            ]
+          }
+        },
+        "replacementSources": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "costTrend": { "enum": ["RISING", "STABLE", "FALLING", "UNKNOWN"] },
+        "availabilityTrend": { "enum": ["CONTRACTING", "STABLE", "EXPANDING", "UNKNOWN"] },
+        "timeHorizon": { "$ref": "#/$defs/timeHorizon" },
+        "ventureImpact": { "$ref": "#/$defs/nonEmptyString" },
+        "dependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "eventRefs": { "$ref": "#/$defs/stringArray" },
+        "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "marketEvent": {
+      "type": "object",
+      "required": [
+        "eventId",
+        "eventDate",
+        "observedAt",
+        "actorRefs",
+        "eventType",
+        "description",
+        "affectedLayerRefs",
+        "affectedControlPointRefs",
+        "affectedDependencyRefs",
+        "sourceRefs",
+        "strategicImplication",
+        "implicationState"
+      ],
+      "properties": {
+        "eventId": { "type": "string", "pattern": "^event-[a-z0-9-]+$" },
+        "eventDate": { "$ref": "#/$defs/dateTime" },
+        "observedAt": { "$ref": "#/$defs/dateTime" },
+        "actorRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "eventType": {
+          "enum": [
+            "PRODUCT_LAUNCH",
+            "FEATURE_LAUNCH",
+            "PRICE_CHANGE",
+            "BUNDLE",
+            "ACQUISITION",
+            "PARTNERSHIP",
+            "API_CHANGE",
+            "STANDARD_CHANGE",
+            "OPEN_SOURCE_RELEASE",
+            "REGULATORY_CHANGE",
+            "INTEROPERABILITY_CHANGE",
+            "NEW_ENTRANT",
+            "PROVIDER_ENTRY",
+            "EXIT",
+            "FUNDING_EVENT",
+            "DISTRIBUTION_CHANGE"
+          ]
+        },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "affectedLayerRefs": { "$ref": "#/$defs/stringArray" },
+        "affectedControlPointRefs": { "$ref": "#/$defs/stringArray" },
+        "affectedDependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "strategicImplication": { "$ref": "#/$defs/nonEmptyString" },
+        "implicationState": { "$ref": "#/$defs/epistemicState" },
+        "shockgraphShockRef": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "stressScenario": {
+      "type": "object",
+      "required": [
+        "scenarioId",
+        "name",
+        "threatActorRef",
+        "eventRefs",
+        "trigger",
+        "assumptions",
+        "affectedDependencyRefs",
+        "affectedMoatRefs",
+        "affectedPositionRefs",
+        "impact",
+        "countermoves",
+        "survivalCondition",
+        "falsifier",
+        "epistemicState",
+        "sourceRefs"
+      ],
+      "properties": {
+        "scenarioId": { "type": "string", "pattern": "^scenario-[a-z0-9-]+$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "threatActorRef": { "type": "string" },
+        "eventRefs": { "$ref": "#/$defs/stringArray" },
+        "trigger": { "$ref": "#/$defs/nonEmptyString" },
+        "assumptions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "affectedDependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "affectedMoatRefs": { "$ref": "#/$defs/stringArray" },
+        "affectedPositionRefs": { "$ref": "#/$defs/stringArray" },
+        "impact": { "$ref": "#/$defs/nonEmptyString" },
+        "countermoves": { "$ref": "#/$defs/stringArray" },
+        "survivalCondition": { "$ref": "#/$defs/nonEmptyString" },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" },
+        "epistemicState": { "enum": ["MODEL_HYPOTHESIS", "SCENARIO", "USER_ASSUMPTION", "UNKNOWN"] },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "position": {
+      "type": "object",
+      "required": [
+        "positionId",
+        "positionType",
+        "targetLayerRef",
+        "actorRef",
+        "customerValue",
+        "dependencyRefs",
+        "controlPointRefs",
+        "controlledAssets",
+        "vulnerabilities",
+        "responseRefs",
+        "evidenceRefs",
+        "counterEvidenceRefs",
+        "epistemicState",
+        "status",
+        "falsifier"
+      ],
+      "properties": {
+        "positionId": { "type": "string", "pattern": "^position-[a-z0-9-]+$" },
+        "positionType": {
+          "enum": [
+            "VERTICAL_SPECIALIST",
+            "NEUTRAL_CROSS_PLATFORM_LAYER",
+            "SYSTEM_OF_RECORD",
+            "SYSTEM_OF_VERIFICATION",
+            "ORCHESTRATION_LAYER",
+            "DATA_NETWORK",
+            "MARKETPLACE",
+            "COMPLEMENT",
+            "INFRASTRUCTURE",
+            "MANAGED_SERVICE",
+            "WORKFLOW_OWNER",
+            "STANDARD_PROTOCOL_LAYER",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "targetLayerRef": { "type": "string" },
+        "actorRef": { "type": "string" },
+        "customerValue": { "$ref": "#/$defs/nonEmptyString" },
+        "dependencyRefs": { "$ref": "#/$defs/stringArray" },
+        "controlPointRefs": { "$ref": "#/$defs/stringArray" },
+        "controlledAssets": { "$ref": "#/$defs/stringArray" },
+        "vulnerabilities": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "responseRefs": { "$ref": "#/$defs/stringArray" },
+        "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "status": { "enum": ["CANDIDATE", "ROBUST_CONDITIONAL", "FRAGILE", "REJECTED", "UNKNOWN"] },
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "researchGap": {
+      "type": "object",
+      "required": ["gapId", "question", "decisionRelevance", "relatedClaimRefs", "whatChanges", "requiredEvidence", "nextAction", "status"],
+      "properties": {
+        "gapId": { "type": "string", "pattern": "^gap-[a-z0-9-]+$" },
+        "question": { "$ref": "#/$defs/nonEmptyString" },
+        "decisionRelevance": { "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"] },
+        "relatedClaimRefs": { "$ref": "#/$defs/stringArray" },
+        "whatChanges": { "$ref": "#/$defs/nonEmptyString" },
+        "requiredEvidence": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "nextAction": { "$ref": "#/$defs/nonEmptyString" },
+        "status": { "enum": ["OPEN", "IN_PROGRESS", "ANSWERED", "BLOCKED"] }
+      },
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "required": ["handoffId", "targetSystem", "relatedClaimRefs", "trigger", "structuredQuestion", "boundary", "privacy"],
+      "properties": {
+        "handoffId": { "type": "string", "pattern": "^handoff-[a-z0-9-]+$" },
+        "targetSystem": { "enum": ["OMEGA", "ORBIT", "MERCURY", "FORGE", "JURIS", "CAPITAL", "CONSTELLATION", "RELAY"] },
+        "relatedClaimRefs": { "$ref": "#/$defs/stringArray" },
+        "trigger": { "$ref": "#/$defs/nonEmptyString" },
+        "structuredQuestion": { "$ref": "#/$defs/nonEmptyString" },
+        "boundary": { "$ref": "#/$defs/nonEmptyString" },
+        "privacy": { "enum": ["PUBLIC", "INTERNAL", "PRIVATE"] }
+      },
+      "additionalProperties": false
+    },
+    "sourceRecord": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "title",
+        "url",
+        "visibility",
+        "sourceClass",
+        "evidenceEligible",
+        "provenanceEligible",
+        "publishedAt",
+        "retrievedAt",
+        "lastVerifiedAt",
+        "freshnessPolicyDays",
+        "status",
+        "supersedesSourceRefs",
+        "supportsClaimRefs",
+        "refutesClaimRefs"
+      ],
+      "properties": {
+        "sourceId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "url": { "type": ["string", "null"], "format": "uri" },
+        "visibility": { "enum": ["PUBLIC", "INTERNAL", "PRIVATE"] },
+        "sourceClass": {
+          "enum": [
+            "PRIMARY_OR_OFFICIAL",
+            "RESEARCH_PUBLICATION",
+            "COMPANY_OR_INDUSTRY",
+            "COMMUNITY",
+            "INTERNAL_PROVENANCE_ARTIFACT"
+          ]
+        },
+        "evidenceEligible": { "type": "boolean" },
+        "provenanceEligible": { "type": "boolean" },
+        "publishedAt": { "$ref": "#/$defs/nullableDateTime" },
+        "retrievedAt": { "$ref": "#/$defs/dateTime" },
+        "lastVerifiedAt": { "$ref": "#/$defs/dateTime" },
+        "freshnessPolicyDays": { "type": "integer", "minimum": 1 },
+        "status": { "enum": ["ACTIVE", "STALE", "SUPERSEDED", "CONFLICTING"] },
+        "supersedesSourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "supportsClaimRefs": { "$ref": "#/$defs/stringArray" },
+        "refutesClaimRefs": { "$ref": "#/$defs/stringArray" }
+      },
+      "additionalProperties": false
+    },
+    "legacyScoreAudit": {
+      "type": "object",
+      "required": ["status", "dimensionsReviewed", "mechanismCoverage", "mutationAuthorized", "methodologyChange", "notes"],
+      "properties": {
+        "status": { "const": "PRESERVED_NOT_MODIFIED" },
+        "dimensionsReviewed": { "$ref": "#/$defs/stringArray" },
+        "mechanismCoverage": { "enum": ["NOT_ASSESSED", "PARTIAL", "COMPLETE_FOR_DOGFOOD"] },
+        "mutationAuthorized": { "const": false },
+        "methodologyChange": { "const": false },
+        "notes": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -72,6 +72,7 @@ const DENIED_PATTERNS = [
   /package(-lock)?\.json$/i,
   /tsconfig.*\.json$/i,
   /^research\/(audits|original-chat|constitution)(\/|$)/i,
+  /^research\/chessboard(\/|$)/i,
   /^meeting-packets(\/|$)/i,
   /^prompts\/original(?:\/|-|$)/i,
   /^prompts\/reconstructed-repository-build-prompt\.md$/i,

@@ -60,6 +60,7 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   assert.ok(fs.existsSync(path.join(distPath, 'data', 'public-sources.json')), 'sanitized public source projection must exist');
   assert.ok(!fs.existsSync(path.join(distPath, 'data', 'build-manifest.json')), 'internal build manifest must not expose staging digests');
   assert.ok(!fs.existsSync(path.join(distPath, 'research', 'audits')), 'private audit runs must not be public');
+  assert.ok(!fs.existsSync(path.join(distPath, 'research', 'chessboard')), 'private CHESSBOARD workspaces must not be public');
   assert.ok(!fs.existsSync(path.join(distPath, 'research', 'original-chat')), 'private original-chat research must not be public');
   assert.ok(!fs.existsSync(path.join(distPath, 'meeting-packets')), 'meeting packets require explicit publication and must not be public by default');
   assert.ok(!fs.existsSync(path.join(distPath, 'assets', 'AGENTS.override.md')), 'nested agent instructions must not be public');
@@ -138,6 +139,12 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
     privateMercury.triggers[0].triggerId,
     privateMercury.offers[0].offerId,
   ];
+  const privateChessboard = JSON.parse(fs.readFileSync(path.join(ROOT, 'research', 'chessboard', 'idea-061-market-structure.json'), 'utf8'));
+  const privateChessboardTerms = [
+    privateChessboard.workspaceId,
+    privateChessboard.responses[0].responseId,
+    privateChessboard.positions[0].positionId,
+  ];
   const pending = [distPath];
   while (pending.length) {
     const current = pending.pop();
@@ -151,6 +158,9 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
         }
         for (const term of privateMercuryTerms) {
           assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes private Mercury value ${term}`);
+        }
+        for (const term of privateChessboardTerms) {
+          assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes private CHESSBOARD value ${term}`);
         }
       }
     }

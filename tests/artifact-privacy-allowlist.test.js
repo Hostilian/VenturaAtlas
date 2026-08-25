@@ -24,6 +24,7 @@ test('Public Site Privacy — _site does not contain private staging or credenti
     '.env',
     '.agent-state/provider-state.json',
     '.agent-state/provider-call-ledger.json',
+    'research/chessboard/idea-061-market-structure.json',
     'config/private-keys.json'
   ];
 

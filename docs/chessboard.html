@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chessboard Market Structure Lab — Venture Atlas OS</title>
+  <meta name="description" content="A private, browser-local lab for traceable market structure, ecosystem, competitive-response, moat, anti-moat, and commoditization analysis.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
+  <link rel="stylesheet" href="../assets/css/chessboard.css?v=1.0.0">
+</head>
+<body data-page="chessboard" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./room.html">Decision Studio</a>
+        <a href="./mercury.html">Customer Lab</a>
+        <a href="./research.html">Research</a>
+        <a href="./chessboard.html" aria-current="page">Market Structure Lab</a>
+      </div>
+      <button id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" class="chessboard-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Ideas</a><span class="sep">›</span>
+      <span>Chessboard Market Structure Lab</span>
+    </nav>
+
+    <noscript>
+      <div class="panel chessboard-noscript">
+        <h1>Chessboard requires JavaScript</h1>
+        <p>This local lab cannot import, trace, or save a private workspace without JavaScript. No strategy data has been sent anywhere.</p>
+      </div>
+    </noscript>
+
+    <div class="notice chessboard-boundary">
+      <strong>Local-private boundary.</strong> Chessboard reads only a file you explicitly import and stores the validated workspace in this browser. It does not fetch private JSON, publish strategy, contact competitors, or generate countermoves. Exports are unencrypted private JSON.
+    </div>
+
+    <div id="chessboardApp" aria-busy="true">
+      <p role="status">Opening the empty local Market Structure Lab…</p>
+    </div>
+  </main>
+
+  <script src="../assets/js/config.js?v=2.7.1"></script>
+  <script src="../assets/js/core/chessboard-store.js?v=1.0.0"></script>
+  <script src="../assets/js/features/chessboard-engine.js?v=1.0.0"></script>
+  <script src="../assets/js/site.js?v=2.7.1"></script>
+  <script src="../assets/js/features/chessboard-lab.js?v=1.0.0"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const app = document.getElementById('chessboardApp');
+      if (app) app.removeAttribute('aria-busy');
+      if (typeof window.initChessboardLab === 'function') window.initChessboardLab();
+    }, { once: true });
+  </script>
+</body>
+</html>

@@ -1562,6 +1562,7 @@ function renderSiteShell() {
             ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
             ${navLink('room', 'docs/room.html', 'Decision workspace')}
             ${navLink('mercury', 'docs/mercury.html', 'Customer Reality Lab')}
+            ${navLink('chessboard', 'docs/chessboard.html', 'Market Structure Lab')}
             ${navLink('decisions', 'docs/decisions.html', 'Decision log')}
             ${navLink('export', 'docs/export.html', 'Export')}
           </div>
@@ -1593,6 +1594,7 @@ function renderSiteShell() {
         ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
         ${navLink('room', 'docs/room.html', 'Decision workspace')}
         ${navLink('mercury', 'docs/mercury.html', 'Customer Reality Lab')}
+        ${navLink('chessboard', 'docs/chessboard.html', 'Market Structure Lab')}
         ${navLink('export', 'docs/export.html', 'Export')}
       </section>
       <section><h2>Research &amp; trust</h2>
