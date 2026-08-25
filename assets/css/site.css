@@ -1929,3 +1929,23 @@ body.nav-open {
 .dataroom-cat { margin-bottom: 1.25rem; }
 .dataroom-cat h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
 
+/* ================================================================
+   CONSTELLATION ORG LAB — Organizational & Execution Design System
+   ================================================================ */
+.people-list, .roles-list { display: flex; flex-direction: column; gap: 1rem; }
+.person-card, .role-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem; }
+.person-head, .role-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.person-head h4, .role-head h4 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.role-purpose { font-size: 0.85rem; color: var(--text2); margin: 0.2rem 0 0.5rem; }
+.capacity-total { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.assigned-roles-chips { font-size: 0.82rem; color: var(--text2); display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--panel); border: 1px solid var(--line2); font-size: 0.78rem; font-weight: 600; }
+.clean-list { list-style: none; padding: 0; margin: 0.35rem 0 0; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.delegation-packet-card, .hiring-case-card { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem; margin-bottom: 1rem; }
+.packet-meta, .hcase-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 0.5rem; }
+.cadence-box { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.88rem; }
+.alert { padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; }
+.alert-danger { background: var(--score-lo-bg); color: var(--score-lo); border: 1px solid hsl(355, 60%, 80%); }
+.bg-danger { background: var(--score-lo) !important; }
+
+

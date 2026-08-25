@@ -1,0 +1,74 @@
+[
+  {
+    "capabilityId": "cap-sw-eng-architecture",
+    "name": "Software Engineering & Architecture",
+    "domain": "ENGINEERING_ARCHITECTURE",
+    "description": "Architecting, testing, and shipping robust scalable software systems with zero regression.",
+    "evidenceOfMastery": "100% automated test coverage and clean zero-downtime deployment pipelines.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": false
+  },
+  {
+    "capabilityId": "cap-prod-design",
+    "name": "Product Design & UX",
+    "domain": "PRODUCT_DESIGN_UX",
+    "description": "Crafting intuitive workflows, user interaction mechanics, and high-fidelity interfaces.",
+    "evidenceOfMastery": "Observed high task completion rate with zero user confusion during usability tests.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": false
+  },
+  {
+    "capabilityId": "cap-customer-discovery",
+    "name": "Customer Discovery & WTP Validation",
+    "domain": "COMMERCIAL_DISCOVERY_SALES",
+    "description": "Conducting structured, un-biased buyer interviews to uncover latent pain and extract Willingness-to-Pay proof.",
+    "evidenceOfMastery": "Prepaid pilots and binding letters of intent documented in Mercury.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": false
+  },
+  {
+    "capabilityId": "cap-growth-demand-gen",
+    "name": "Outbound & Inbound Demand Generation",
+    "domain": "GROWTH_DEMAND_GEN",
+    "description": "Building repeatable channels to reach and qualify high-intent prospective buyers.",
+    "evidenceOfMastery": "Consistent weekly pipeline of qualified target conversations.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": true
+  },
+  {
+    "capabilityId": "cap-fin-modeling",
+    "name": "Financial Modeling & Unit Economics",
+    "domain": "FINANCE_CAPITAL",
+    "description": "Developing scenario P&Ls, cash conversion cycles, and cap-table dilution schedules.",
+    "evidenceOfMastery": "Conservative vs Base scenario models aligned with observed ledger data.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": true
+  },
+  {
+    "capabilityId": "cap-legal-compliance",
+    "name": "Legal, Entity & Regulatory Compliance",
+    "domain": "LEGAL_COMPLIANCE",
+    "description": "Managing corporate entity compliance, IP assignments, terms of service, and regulatory filings.",
+    "evidenceOfMastery": "Clean corporate data room with no IP or entity ambiguities.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": false
+  },
+  {
+    "capabilityId": "cap-deep-research-synthesis",
+    "name": "Deep Research & Evidence Synthesis",
+    "domain": "AI_EVALUATION_SYSTEMS",
+    "description": "Synthesizing academic literature, patent databases, and official market filings without hallucination.",
+    "evidenceOfMastery": "Fully verified primary source citation lists with zero broken links.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": true
+  },
+  {
+    "capabilityId": "cap-doc-generation",
+    "name": "Documentation & Runbook Engineering",
+    "domain": "OPERATIONS_SUPPORT",
+    "description": "Writing clear, unambiguous Standard Operating Procedures and operational runbooks.",
+    "evidenceOfMastery": "Another team member or subagent can execute the runbook independently.",
+    "isSopDocumentable": true,
+    "isAiAutomatable": true
+  }
+]

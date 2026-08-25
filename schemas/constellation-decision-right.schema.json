@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/constellation-decision-right.schema.json",
+  "title": "Constellation Decision Rights & Authority Specification",
+  "description": "Defines explicit organizational decision classes, decider roles, veto rights, required consultation, and escalation boundaries.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "decisionClassId",
+    "title",
+    "scope",
+    "deciderRoleId",
+    "isReversible",
+    "escalationTriggers",
+    "autonomyBand"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "decisionClassId": { "type": "string", "pattern": "^dec-[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "COMPANY_STRATEGY_PIVOT",
+        "PRODUCT_SCOPE_ROADMAP",
+        "CUSTOMER_PRICING_TERMS",
+        "SALES_COMMITMENT_CONTRACTS",
+        "HIRING_TERMINATION",
+        "CAPITAL_EXPENDITURE",
+        "LEGAL_REGULATORY_COMPLIANCE",
+        "SECURITY_ARCHITECTURE",
+        "PRODUCTION_RELEASE_DEPLOY",
+        "PARTNERSHIP_INTEGRATION"
+      ]
+    },
+    "description": { "type": "string" },
+    "deciderRoleId": { "type": "string" },
+    "vetoRoleIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "consultedRoleIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "informedRoleIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "isReversible": { "type": "boolean" },
+    "autonomyBand": {
+      "type": "string",
+      "enum": [
+        "EXECUTE_EXACT_RULES",
+        "PROPOSE_AND_APPROVE",
+        "DECIDE_AND_INFORM",
+        "FULL_AUTONOMOUS_OWNERSHIP"
+      ]
+    },
+    "escalationTriggers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
