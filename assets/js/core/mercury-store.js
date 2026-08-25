@@ -720,6 +720,36 @@ class MercuryStore {
     return structuredClone(organization);
   }
 
+  attestOrganizationReachability(organizationId, reachabilityBasis, evidenceRef) {
+    const organization = this.workspace.organizations.find(item => item.organizationId === organizationId);
+    if (!organization) throw new Error('unknown organizationId');
+    organization.reachabilityBasis = requireText(reachabilityBasis, 'reachabilityBasis');
+    organization.evidenceRef = requireText(evidenceRef, 'evidenceRef');
+    organization.evidenceClass = 'OPERATOR_ATTESTED';
+    this._save();
+    return structuredClone(organization);
+  }
+
+  getOrganizationDeletionImpact(organizationId) {
+    if (!this.workspace.organizations.some(item => item.organizationId === organizationId)) throw new Error('unknown organizationId');
+    return {
+      organizations: 1,
+      interactions: this.workspace.interactions.filter(item => item.organizationId === organizationId).length,
+      opportunities: this.workspace.opportunities.filter(item => item.organizationId === organizationId).length,
+      commercialEvents: this.workspace.commercialEvents.filter(item => item.organizationId === organizationId).length
+    };
+  }
+
+  deleteOrganization(organizationId) {
+    const impact = this.getOrganizationDeletionImpact(organizationId);
+    this.workspace.organizations = this.workspace.organizations.filter(item => item.organizationId !== organizationId);
+    this.workspace.interactions = this.workspace.interactions.filter(item => item.organizationId !== organizationId);
+    this.workspace.opportunities = this.workspace.opportunities.filter(item => item.organizationId !== organizationId);
+    this.workspace.commercialEvents = this.workspace.commercialEvents.filter(item => item.organizationId !== organizationId);
+    this._save();
+    return impact;
+  }
+
   addOpportunity(input) {
     this._requireReference('organizations', 'organizationId', input.organizationId, 'organizationId');
     this._requireReference('segments', 'segmentId', input.segmentId, 'segmentId');
@@ -926,6 +956,7 @@ class MercuryStore {
 
 const MercuryAPI = {
   MercuryStore,
+  migrateMercuryWorkspace,
   validateMercuryWorkspace,
   summarizeMercury,
   derivedEvidence,

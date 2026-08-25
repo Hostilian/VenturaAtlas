@@ -53,8 +53,9 @@ function initMercuryLab() {
     const offerOptions = optionRows(ws.offers, 'offerId', 'name');
     const opportunityOptions = `<option value="">— Select —</option>${ws.opportunities.map(item => {
       const org = ws.organizations.find(candidate => candidate.organizationId === item.organizationId);
-      return `<option value="${esc(item.opportunityId)}">${esc(org?.name || item.organizationId)} — ${esc(item.stage)}</option>`;
+      return `<option value="${esc(item.opportunityId)}" data-stage="${esc(item.stage)}">${esc(org?.name || item.organizationId)} — ${esc(item.stage)}</option>`;
     }).join('')}`;
+    const legacyOrganizations = ws.organizations.filter(item => item.evidenceClass === 'UNVERIFIED_LEGACY');
 
     root.innerHTML = `
       <section class="panel" style="padding:1.25rem;margin-bottom:1rem;border-left:4px solid var(--accent)">
@@ -69,7 +70,7 @@ function initMercuryLab() {
         <p style="margin:.8rem 0 0"><strong>Privacy boundary:</strong> records stay in this browser. They are not synchronized, emailed, committed, or published. Store only minimal business context; use non-identifying participant references and keep transcripts/contact details in an approved private system.</p>
       </section>
 
-      ${notice ? `<div class="notice" role="alert" style="margin-bottom:1rem">${esc(notice)}</div>` : ''}
+      ${notice ? `<div class="notice" id="mercuryNotice" role="alert" tabindex="-1" style="margin-bottom:1rem">${esc(notice)}</div>` : ''}
       <div id="mercuryStatus" role="status" aria-live="polite" class="sr-only"></div>
 
       <section aria-labelledby="commercial-scoreboard" style="margin-bottom:1.5rem">
@@ -157,7 +158,17 @@ function initMercuryLab() {
             <p class="small">Do not enter personal email, phone, or sensitive notes here.</p>
             <button class="button" type="submit">Add identified organization</button>
           </form>` : '<p class="empty">Add a segment first.</p>'}
-          ${ws.organizations.length ? `
+          ${ws.organizations.length ? `<div style="margin-top:1rem"><h3>Buyer/account records</h3><ul>${ws.organizations.map(item => `<li><strong>${esc(item.name)}</strong> — ${esc(item.actorType.replaceAll('_', ' '))} · ${esc(item.commercialStage)} · ${esc(item.evidenceClass.replaceAll('_', ' '))} <button class="button danger sm" type="button" data-delete-organization="${esc(item.organizationId)}">Delete private record</button></li>`).join('')}</ul></div>` : ''}
+          ${legacyOrganizations.length ? `
+          <form id="legacyReviewForm" class="mercury-form">
+            <h3>Review migrated reachability</h3>
+            <p class="small">Legacy records do not earn C1 until a human supplies a current basis and private evidence reference.</p>
+            <label>Legacy record<select name="organizationId" required>${optionRows(legacyOrganizations, 'organizationId', 'name')}</select></label>
+            <label>Reachability basis<textarea name="reachabilityBasis" required></textarea></label>
+            <label>Private evidence reference<input name="evidenceRef" required></label>
+            <button class="button secondary" type="submit">Attest reviewed reachability</button>
+          </form>` : ''}
+          ${ws.organizations.length && ws.offers.length ? `
           <hr>
           <form id="opportunityForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
@@ -165,7 +176,7 @@ function initMercuryLab() {
             <p class="small">New opportunities start at IDENTIFIED. Record each observed transition below; paid/active/renewed states are event-derived.</p>
             <label>Private identification evidence reference<input name="evidenceRef" required></label>
             <button class="button secondary" type="submit">Create opportunity</button>
-          </form>` : ''}
+          </form>` : ws.organizations.length ? '<p class="empty">Add a concrete offer before creating an opportunity.</p>' : ''}
           <div style="margin-top:1rem">
             <h3>Pipeline</h3>
             ${ws.opportunities.length ? `<ol>${ws.opportunities.map(item => {
@@ -178,7 +189,7 @@ function initMercuryLab() {
           <form id="stageForm" class="mercury-form">
             <h3>Record a pipeline transition</h3>
             <label>Opportunity<select name="opportunityId" required>${opportunityOptions}</select></label>
-            <label>Observed stage<select name="stage" required><option>CONTACTED</option><option>CONVERSATION</option><option>QUALIFIED</option><option>OFFERED</option><option>PILOT</option><option>LOST</option></select></label>
+            <label>Observed stage<select name="stage" required><option value="">— Select an opportunity first —</option></select></label>
             <label>Private evidence reference<input name="evidenceRef" required></label>
             <label>Loss reason<textarea name="lossReason" placeholder="Required only for LOST; record an observed reason, not psychological speculation"></textarea></label>
             <button class="button secondary" type="submit">Record stage transition</button>
@@ -205,7 +216,7 @@ function initMercuryLab() {
 
         <section class="panel" style="padding:1.25rem">
           <h2>5. Payment, value, and retention evidence</h2>
-          ${ws.organizations.length ? `
+          ${ws.organizations.length && ws.opportunities.length ? `
           <form id="eventForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
             <label>Opportunity<select name="opportunityId" required>${opportunityOptions}</select></label>
@@ -214,7 +225,7 @@ function initMercuryLab() {
             <label>Private evidence reference<input name="evidenceRef" required></label>
             <label style="display:block"><input type="checkbox" name="confirmObserved" required> I confirm this event happened and is not a forecast, signed-but-unpaid claim, or synthetic example.</label>
             <button class="button" type="submit">Record observed event</button>
-          </form>` : '<p class="empty">No downstream commercial evidence exists.</p>'}
+          </form>` : '<p class="empty">Create an offer-linked opportunity before recording downstream commercial evidence.</p>'}
         </section>
 
         <section class="panel" style="padding:1.25rem">
@@ -251,6 +262,34 @@ function initMercuryLab() {
         </div>
       </section>
 
+      <section class="panel" style="padding:1.25rem;margin-top:1rem" aria-labelledby="account-history-title">
+        <h2 id="account-history-title">Private buyer/account history</h2>
+        <p>Human-readable local audit trail. Evidence references point to approved private sources; they are not independent proof.</p>
+        ${ws.organizations.length ? ws.organizations.map(org => {
+          const interactions = ws.interactions.filter(item => item.organizationId === org.organizationId);
+          const opportunities = ws.opportunities.filter(item => item.organizationId === org.organizationId);
+          const events = ws.commercialEvents.filter(item => item.organizationId === org.organizationId);
+          return `<details><summary><strong>${esc(org.name)}</strong> — ${esc(org.commercialStage)}</summary>
+            <p>${esc(org.actorType.replaceAll('_', ' '))} · reachability: ${esc(org.reachabilityBasis)} · ref: <code>${esc(org.evidenceRef)}</code></p>
+            <h3>Interactions</h3>${interactions.length ? `<ol>${interactions.map(item => `<li>${esc(item.occurredAt)} — ${esc(item.interactionType)} / ${esc(item.outcome)} · ${esc(item.facts.join('; '))}${item.objections.length ? ` · objections: ${esc(item.objections.join('; '))}` : ''} · ref <code>${esc(item.evidenceRef)}</code></li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
+            <h3>Opportunities</h3>${opportunities.length ? `<ol>${opportunities.map(item => `<li>${esc(item.opportunityId)} — current ${esc(item.stage)}<ul>${item.stageHistory.map(stage => `<li>${esc(stage.recordedAt)} · ${esc(stage.stage)} · ref <code>${esc(stage.evidenceRef)}</code></li>`).join('')}</ul>${item.lossReason ? `Loss: ${esc(item.lossReason)}` : ''}</li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
+            <h3>Commercial events</h3>${events.length ? `<ol>${events.map(item => `<li>${esc(item.occurredAt)} — ${esc(item.eventType)}${item.amount == null ? '' : ` · ${esc(item.currency)} ${esc(item.amount)}`} · ref <code>${esc(item.evidenceRef)}</code></li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
+          </details>`;
+        }).join('') : '<p class="empty">No private buyer/account history exists.</p>'}
+      </section>
+
+      <section class="panel" style="padding:1.25rem;margin-top:1rem">
+        <h2>Commercial learning journal</h2>
+        <form id="hypothesisChangeForm" class="mercury-form">
+          <label>Subject<input name="subject" required placeholder="Segment, trigger, offer, price, channel, objection…"></label>
+          <label>Before<textarea name="before" required></textarea></label>
+          <label>After<textarea name="after" required></textarea></label>
+          <label>Evidence references<input name="evidenceRefs" placeholder="Comma-separated private references"></label>
+          <button class="button secondary" type="submit">Record evidence-linked change</button>
+        </form>
+        ${ws.hypothesisHistory.length ? `<ol>${ws.hypothesisHistory.map(item => `<li><strong>${esc(item.subject)}</strong> — ${esc(item.before)} → ${esc(item.after)} · ${esc(item.recordedAt)} · refs: ${esc(item.evidenceRefs.join(', ') || 'NONE')}</li>`).join('')}</ol>` : '<p class="empty">No change-of-mind history recorded.</p>'}
+      </section>
+
       <section class="panel" style="padding:1.25rem;margin-top:1rem">
         <h2>Private data portability</h2>
         <p>Export is schema-versioned and may contain private business context. Share it only through an approved private channel. Import validates structure and references before replacing local state.</p>
@@ -273,11 +312,13 @@ function initMercuryLab() {
   function execute(action, success) {
     try {
       action();
-      report(success);
+      notice = success;
       render();
+      document.getElementById('mercuryNotice')?.focus({ preventScroll: true });
     } catch (error) {
-      report(error.message, true);
+      notice = `Error: ${error.message}`;
       render();
+      document.getElementById('mercuryNotice')?.focus({ preventScroll: true });
     }
   }
 
@@ -302,8 +343,20 @@ function initMercuryLab() {
       event.preventDefault(); execute(() => store.addOffer(Object.fromEntries(new FormData(event.currentTarget))), 'Offer hypothesis added.');
     });
     document.getElementById('organizationForm')?.addEventListener('submit', event => {
-      event.preventDefault(); execute(() => store.addOrganization(Object.fromEntries(new FormData(event.currentTarget))), 'Organization recorded. It is not a customer unless payment is evidenced.');
+      event.preventDefault(); execute(() => store.addOrganization(Object.fromEntries(new FormData(event.currentTarget))), 'Buyer/account record added. It is not a customer unless payment is evidenced.');
     });
+    document.getElementById('legacyReviewForm')?.addEventListener('submit', event => {
+      event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
+      execute(() => store.attestOrganizationReachability(data.organizationId, data.reachabilityBasis, data.evidenceRef), 'Legacy reachability reviewed and operator-attested.');
+    });
+    document.querySelectorAll('[data-delete-organization]').forEach(button => button.addEventListener('click', () => {
+      const organizationId = button.dataset.deleteOrganization;
+      const organization = ws.organizations.find(item => item.organizationId === organizationId);
+      const impact = store.getOrganizationDeletionImpact(organizationId);
+      const message = `Delete private record “${organization?.name || organizationId}” and cascade ${impact.interactions} interactions, ${impact.opportunities} opportunities, and ${impact.commercialEvents} commercial events? This cannot be undone.`;
+      if (!window.confirm(message)) return;
+      execute(() => store.deleteOrganization(organizationId), 'Private buyer/account record and dependent commercial history deleted.');
+    }));
     document.getElementById('opportunityForm')?.addEventListener('submit', event => {
       event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
       const org = ws.organizations.find(item => item.organizationId === data.organizationId);
@@ -318,9 +371,33 @@ function initMercuryLab() {
       event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
       execute(() => store.advanceOpportunity(data.opportunityId, data.stage, data.evidenceRef, data.lossReason), `Opportunity moved to ${data.stage}.`);
     });
+    const stageOpportunity = document.querySelector('#stageForm [name="opportunityId"]');
+    const stageSelect = document.querySelector('#stageForm [name="stage"]');
+    const manualTransitions = {
+      IDENTIFIED: ['CONTACTED', 'CONVERSATION', 'LOST'],
+      CONTACTED: ['CONVERSATION', 'LOST'],
+      CONVERSATION: ['QUALIFIED', 'LOST'],
+      QUALIFIED: ['OFFERED', 'LOST'],
+      OFFERED: ['PILOT', 'LOST'],
+      PILOT: ['LOST']
+    };
+    const syncStageChoices = () => {
+      if (!stageOpportunity || !stageSelect) return;
+      const current = stageOpportunity.selectedOptions[0]?.dataset.stage;
+      const choices = manualTransitions[current] || [];
+      stageSelect.innerHTML = choices.length
+        ? `<option value="">— Select —</option>${choices.map(stage => `<option>${stage}</option>`).join('')}`
+        : '<option value="">No manual transition available</option>';
+    };
+    stageOpportunity?.addEventListener('change', syncStageChoices);
+    syncStageChoices();
     document.getElementById('eventForm')?.addEventListener('submit', event => {
       event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
       execute(() => store.recordCommercialEvent(data), 'Observed commercial event recorded and scoreboard recomputed.');
+    });
+    document.getElementById('hypothesisChangeForm')?.addEventListener('submit', event => {
+      event.preventDefault(); const data = Object.fromEntries(new FormData(event.currentTarget));
+      execute(() => store.recordHypothesisChange({ ...data, evidenceRefs: list(data.evidenceRefs) }), 'Commercial hypothesis change recorded.');
     });
     document.getElementById('exportMercury')?.addEventListener('click', () => {
       const blob = new Blob([store.exportJson()], { type: 'application/json' });
@@ -335,7 +412,7 @@ function initMercuryLab() {
     });
     document.getElementById('resetMercury')?.addEventListener('click', () => {
       if (!window.confirm('Delete the Mercury workspace stored in this browser? Export first if you need a backup.')) return;
-      store.reset(); report('Local Mercury workspace reset.'); render();
+      execute(() => store.reset(), 'Local Mercury workspace reset.');
     });
   }
 
