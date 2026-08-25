@@ -18,7 +18,9 @@ const SOURCE_STEPS = [
   ['python-tests', npmCommand, ['run', 'test:python']],
   ['source-validation', npmCommand, ['run', 'validate:source']],
   ['completion-audit', npmCommand, ['run', 'validate:completion']],
-  ['repository-meta-generate', process.execPath, ['scripts/build-repository-meta.js']],
+  // Verification must not repair repository state before checking it. Use the
+  // generator's non-mutating mode here; reconciliation belongs to an explicit
+  // generate/reconcile command outside the quality gate.
   ['repository-meta-check', process.execPath, ['scripts/build-repository-meta.js', '--check']],
   ['projection-check', npmCommand, ['run', 'check:projections']],
   ['repository-consistency', npmCommand, ['run', 'check-consistency']],
@@ -213,7 +215,16 @@ function runQuality(options = {}) {
   const after = snapshot();
   const affectedPaths = changedPaths(before, after);
   const warnings = [];
-  if (affectedPaths.length > 0) warnings.push('The quality run changed worktree content; inspect affectedPaths.');
+  if (affectedPaths.length > 0) {
+    warnings.push('The quality run changed worktree content; inspect affectedPaths.');
+    // Source verification is pure by contract. A mutation means the checker
+    // (or one of its validators) repaired or altered the subject under test.
+    if (profile === 'source' && exitCode === 0) {
+      failedPhase = 'worktree-purity';
+      failedCommand = 'source quality verification must not mutate the worktree';
+      exitCode = 1;
+    }
+  }
   if (startingCommit !== finishingCommit) warnings.push('HEAD changed while the quality run was executing; the receipt is failed closed.');
   const finishedAt = new Date();
   const receipt = {

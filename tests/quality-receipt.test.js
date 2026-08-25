@@ -125,3 +125,23 @@ test('quality receipt fails closed when HEAD changes during validation', () => {
   assert.equal(result.receipt.sourceCommit, 'before123');
   assert.equal(result.receipt.finishedCommit, 'after456');
 });
+
+test('source quality fails closed when a verifier mutates the worktree', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'va-quality-mutation-'));
+  const snapshots = [new Map(), new Map([['README.md', 'changed']])];
+  const result = runQuality({
+    profile: 'source',
+    steps: [{ id: 'pure-check', command: 'node', args: ['fixture.js'] }],
+    receiptPath: path.join(directory, 'receipt.json'),
+    execute: () => ({ status: 0 }),
+    snapshot: () => snapshots.shift(),
+    sourceCommit: () => 'stable123',
+    environment: {},
+    logger: silentLogger,
+  });
+
+  assert.equal(result.exitCode, 1);
+  assert.equal(result.receipt.status, 'failed');
+  assert.equal(result.receipt.failedPhase, 'worktree-purity');
+  assert.deepEqual(result.receipt.affectedPaths, ['README.md']);
+});
