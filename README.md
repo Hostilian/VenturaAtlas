@@ -11,7 +11,7 @@ A static, dependency-light GitHub Pages repository that turns fragmented researc
 - **555 research proposal rows** across **30 recoverable rounds**; weak, rejected, duplicate, and related rows remain visible
 - **4,625 idea-specific prompts** plus master prompts
 - **432 dossier files** (includes orphan/legacy records; not a one-to-one completeness claim)
-- **63/324 financial models**, **78/324 validation plans**, **75/324 technical blueprints**, and **60/324 launch plans**
+- **324/324 financial models**, **326/324 validation plans**, **324/324 technical blueprints**, and **324/324 launch plans**
 - **4,625 idea-specific prompt files**; per-idea pack completeness is not asserted
 <!-- END GENERATED CURRENT INVENTORY -->
 
