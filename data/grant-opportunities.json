@@ -1,0 +1,195 @@
+[
+  {
+    "grantId": "grant-eic-accelerator-2026",
+    "programName": "EIC Accelerator — Horizon Europe",
+    "issuingAuthority": "European Innovation Council / European Commission",
+    "jurisdiction": "EU / Horizon Europe Associated Countries",
+    "fundingType": "DIRECT_GRANT",
+    "fundingRange": {
+      "currency": "EUR",
+      "minAmount": 500000,
+      "maxAmount": 2500000,
+      "coFundingRatePercent": 70
+    },
+    "applicationEffortHours": 180,
+    "typicalSuccessRatePercent": 6.5,
+    "applicationDeadlines": ["2026-10-07T17:00:00Z", "2027-01-14T17:00:00Z"],
+    "eligibleSectors": ["Deep Tech", "AI & Quantum", "CleanTech", "HealthTech", "Digital Sovereignty"],
+    "allowedCostTypes": ["Direct personnel costs", "Subcontracting", "Equipment depreciation", "Travel & Dissemination"],
+    "eligibilityCriteria": [
+      {
+        "criterionId": "eic-sme-status",
+        "title": "EU SME Definition Compliance",
+        "description": "Applicant must be an independent for-profit SME (<250 employees, <€50M turnover) registered in an EU Member State or Horizon Associated Country.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "eic-trl-level",
+        "title": "Technology Readiness Level TRL 5-6",
+        "description": "Core technology must be validated in relevant environment (TRL 5/6) aiming for full system demonstration and commercial deployment (TRL 8/9).",
+        "mandatory": true
+      },
+      {
+        "criterionId": "eic-breakthrough-novelty",
+        "title": "High-Risk Breakthrough Innovation",
+        "description": "Project must present game-changing innovation with high market impact that private investors deem too high-risk without blended public support.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "eic-co-funding-capacity",
+        "title": "30% Co-Funding Cash Availability",
+        "description": "Company must demonstrate financial ability to cover the 30% non-reimbursable project share through equity or operational reserves.",
+        "mandatory": true
+      }
+    ],
+    "sourceUrl": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
+    "verifiedAt": "2026-08-25",
+    "notes": "Grant component up to €2.5M paired optionally with up to €15M in EIC Fund direct equity injection."
+  },
+  {
+    "grantId": "grant-eurostars-3-2026",
+    "programName": "Eurostars-3 Innovation Call",
+    "issuingAuthority": "Eureka Network & European Commission",
+    "jurisdiction": "37 Eureka Member Countries (EU + UK, CH, CA, SG, KR)",
+    "fundingType": "CO_FUNDED_RESEARCH",
+    "fundingRange": {
+      "currency": "EUR",
+      "minAmount": 100000,
+      "maxAmount": 500000,
+      "coFundingRatePercent": 50
+    },
+    "applicationEffortHours": 90,
+    "typicalSuccessRatePercent": 28.0,
+    "applicationDeadlines": ["2026-09-12T14:00:00Z", "2027-03-18T14:00:00Z"],
+    "eligibleSectors": ["All civilian technology and commercial application domains"],
+    "allowedCostTypes": ["R&D personnel salaries", "Materials & testing", "Project-specific direct overheads"],
+    "eligibilityCriteria": [
+      {
+        "criterionId": "eurostars-consortium",
+        "title": "International Collaborative Consortium",
+        "description": "Project consortium must include at least two independent entities from two different Eureka member countries, led by an R&D-performing SME.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "eurostars-sme-leadership",
+        "title": "R&D SME Budget Majority",
+        "description": "The innovative SME partners must contribute at least 50% of total project costs.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "eurostars-market-horizon",
+        "title": "Market Introduction within 24 Months",
+        "description": "Commercial product or service must be ready for market entry within 2 years of project completion.",
+        "mandatory": true
+      }
+    ],
+    "sourceUrl": "https://www.eurekanetwork.org/programmes/eurostars",
+    "verifiedAt": "2026-08-25",
+    "notes": "Fastest international collaborative R&D approval process in Europe with decentralized national funding agencies."
+  },
+  {
+    "grantId": "grant-eic-pathfinder-2026",
+    "programName": "EIC Pathfinder Open",
+    "issuingAuthority": "European Innovation Council",
+    "jurisdiction": "EU / Horizon Europe Associated Countries",
+    "fundingType": "DIRECT_GRANT",
+    "fundingRange": {
+      "currency": "EUR",
+      "minAmount": 500000,
+      "maxAmount": 3000000,
+      "coFundingRatePercent": 100
+    },
+    "applicationEffortHours": 140,
+    "typicalSuccessRatePercent": 11.0,
+    "applicationDeadlines": ["2026-11-04T17:00:00Z"],
+    "eligibleSectors": ["Early-stage science & technology breakthroughs", "Novel computing", "Biotech"],
+    "allowedCostTypes": ["100% direct eligible costs + 25% flat indirect overheads"],
+    "eligibilityCriteria": [
+      {
+        "criterionId": "pathfinder-consortium",
+        "title": "Minimum 3 Legal Entities from 3 Countries",
+        "description": "Consortium of at least 3 distinct entities from 3 different EU/Associated countries (academic, research institute, deep tech startup).",
+        "mandatory": true
+      },
+      {
+        "criterionId": "pathfinder-trl-entry",
+        "title": "Early Stage Scientific Proof of Principle (TRL 1-4)",
+        "description": "Must aim to advance from basic principles (TRL 1/2) to laboratory proof of concept (TRL 3/4).",
+        "mandatory": true
+      }
+    ],
+    "sourceUrl": "https://eic.ec.europa.eu/eic-funding-opportunities/eic-pathfinder_en",
+    "verifiedAt": "2026-08-25",
+    "notes": "100% grant rate with zero co-funding required for radical visionary scientific ideas."
+  },
+  {
+    "grantId": "grant-tacr-trend-czechia",
+    "programName": "TAČR TREND — Technology Agency of the Czech Republic",
+    "issuingAuthority": "Technologická agentura České republiky (TAČR)",
+    "jurisdiction": "Czech Republic",
+    "fundingType": "CO_FUNDED_RESEARCH",
+    "fundingRange": {
+      "currency": "CZK",
+      "minAmount": 1000000,
+      "maxAmount": 25000000,
+      "coFundingRatePercent": 70
+    },
+    "applicationEffortHours": 60,
+    "typicalSuccessRatePercent": 24.0,
+    "applicationDeadlines": ["2026-10-22T16:30:00Z"],
+    "eligibleSectors": ["Industrial automation", "Software & Cybersecurity", "Micro-electronics", "Smart Energy"],
+    "allowedCostTypes": ["Direct researcher salaries", "Contracted scientific testing", "Consumables"],
+    "eligibilityCriteria": [
+      {
+        "criterionId": "tacr-czech-incorporation",
+        "title": "Czech Registered Commercial Entity",
+        "description": "Applicant must have active Czech business entity with proven accounting integrity.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "tacr-commercial-outcome",
+        "title": "Binding Commercial Output (Software/Prototype)",
+        "description": "Project must commit to verifiable prototype (Gfunk), certified software (R), or utility model within grant lifecycle.",
+        "mandatory": true
+      }
+    ],
+    "sourceUrl": "https://www.tacr.cz/program/program-trend/",
+    "verifiedAt": "2026-08-25",
+    "notes": "Highly established national R&D grant for Czech entities and Prague/Brno tech founders."
+  },
+  {
+    "grantId": "grant-innovate-uk-smart-2026",
+    "programName": "Innovate UK Smart Grants",
+    "issuingAuthority": "UK Research and Innovation (UKRI)",
+    "jurisdiction": "United Kingdom",
+    "fundingType": "DIRECT_GRANT",
+    "fundingRange": {
+      "currency": "GBP",
+      "minAmount": 100000,
+      "maxAmount": 500000,
+      "coFundingRatePercent": 70
+    },
+    "applicationEffortHours": 75,
+    "typicalSuccessRatePercent": 14.0,
+    "applicationDeadlines": ["2026-10-15T11:00:00Z"],
+    "eligibleSectors": ["Commercial disruptive technology", "Clean tech", "AI", "Manufacturing"],
+    "allowedCostTypes": ["Staff costs", "Materials", "Subcontractors", "Patent filing costs"],
+    "eligibilityCriteria": [
+      {
+        "criterionId": "ukri-uk-business",
+        "title": "UK Registered Business Entity",
+        "description": "Lead applicant must be a UK registered business carrying out all grant activity in the UK.",
+        "mandatory": true
+      },
+      {
+        "criterionId": "ukri-commercial-impact",
+        "title": "Substantial UK Economic Impact",
+        "description": "Clear exploitation plan demonstrating domestic job creation, export growth, or industrial productivity improvement.",
+        "mandatory": true
+      }
+    ],
+    "sourceUrl": "https://www.ukri.org/councils/innovate-uk/",
+    "verifiedAt": "2026-08-25",
+    "notes": "Premier UK open innovation grant mechanism with quarterly rolling evaluation windows."
+  }
+]

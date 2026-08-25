@@ -1,0 +1,227 @@
+[
+  {
+    "sourceId": "src-bootstrapped",
+    "sourceType": "BOOTSTRAPPED",
+    "name": "Bootstrapped / Founder Cashflow",
+    "category": "FOUNDER_FINANCED",
+    "description": "Funding company growth exclusively from founder savings, early operating profits, and re-invested cashflow.",
+    "dilutionProfile": {
+      "isDilutive": false,
+      "typicalEquityRangePercent": { "min": 0, "max": 0 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "None",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 0, "max": 2 },
+    "typicalCheckRange": { "currency": "EUR", "min": 0, "max": 25000 },
+    "prerequisites": ["Low burn rate", "Fast time to initial cashflow (<30 days)", "High gross margin (>70%)"],
+    "governanceImpact": "NONE",
+    "advantages": ["100% founder ownership & control retained", "Maximum operational freedom", "Eliminates fundraising distraction"],
+    "disadvantages": ["Growth rate capped by cash generation", "Personal financial risk for founders", "Slower hiring"],
+    "bestFitWhen": "High margin software/services with rapid customer payment cycles and minimal upfront capital.",
+    "avoidWhen": "Capital-intensive hardware, clinical trials, or winner-take-all markets requiring rapid land-grab."
+  },
+  {
+    "sourceId": "src-customer-prepay",
+    "sourceType": "CUSTOMER_PREPAY",
+    "name": "Customer Prepayment / Paid Pilots",
+    "category": "CUSTOMER_FINANCED",
+    "description": "Financing product build directly from customer pilot deposits, annual up-front subscriptions, or custom integration fees.",
+    "dilutionProfile": {
+      "isDilutive": false,
+      "typicalEquityRangePercent": { "min": 0, "max": 0 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "Service / deliverable completion",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 1, "max": 6 },
+    "typicalCheckRange": { "currency": "EUR", "min": 1000, "max": 50000 },
+    "prerequisites": ["High customer problem severity", "Clear scope of delivery", "Commercial agreement via Mercury"],
+    "governanceImpact": "NONE",
+    "advantages": ["Ultimate validation of Willingness-to-Pay", "Zero equity cost", "Direct feedback loop"],
+    "disadvantages": ["Risk of becoming a custom consulting shop", "Delivery obligations before code is mature"],
+    "bestFitWhen": "B2B niche software or workflow tools solving immediate high-pain compliance or operational problems.",
+    "avoidWhen": "Consumer mass-market products where individuals expect instant self-serve."
+  },
+  {
+    "sourceId": "src-grant-non-dilutive",
+    "sourceType": "GRANT_NON_DILUTIVE",
+    "name": "Government / Horizon Innovation Grants",
+    "category": "NON_DILUTIVE",
+    "description": "Public research grants, innovation vouchers, and technology development awards from regional or EU programs.",
+    "dilutionProfile": {
+      "isDilutive": false,
+      "typicalEquityRangePercent": { "min": 0, "max": 0 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "Grant audit / verified eligible costs",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 8, "max": 32 },
+    "typicalCheckRange": { "currency": "EUR", "min": 25000, "max": 2500000 },
+    "prerequisites": ["Incorporated legal entity", "High technical novelty or strategic sovereignty", "Co-funding capacity (typically 20-30%)"],
+    "governanceImpact": "NONE",
+    "advantages": ["Zero equity dilution", "Validation from expert panels", "Subsidizes deep R&D and specialized equipment"],
+    "disadvantages": ["Significant application effort (50-200 hours)", "Slow review cycles", "Strict cost reporting and audit requirements"],
+    "bestFitWhen": "Deep tech, green transition, sovereign AI infrastructure, or medical diagnostics with long R&D horizons.",
+    "avoidWhen": "Standard SaaS needing rapid marketing money or startups with <3 months of runway."
+  },
+  {
+    "sourceId": "src-accelerator",
+    "sourceType": "ACCELERATOR",
+    "name": "Top-Tier Startup Accelerator",
+    "category": "EARLY_EQUITY",
+    "description": "Intensive 3-month cohort program providing seed capital, mentor network, customer introductions, and demo day exposure.",
+    "dilutionProfile": {
+      "isDilutive": true,
+      "typicalEquityRangePercent": { "min": 6, "max": 8 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "None",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 4, "max": 12 },
+    "typicalCheckRange": { "currency": "USD", "min": 100000, "max": 500000 },
+    "prerequisites": ["Full-time dedicated team", "Venture-scale potential", "Early MVP or validated customer insight"],
+    "governanceImpact": "INFORMAL_ADVICE",
+    "advantages": ["Instant credibility and fundraising momentum", "Unrivaled peer & alumni network", "Demystifies seed rounds"],
+    "disadvantages": ["Fixed dilution regardless of prior traction", "Intense time commitment", "Cohort peer pressure"],
+    "bestFitWhen": "First-time founders or teams targeting global VC rounds needing rapid network acceleration.",
+    "avoidWhen": "Bootstrapped regional businesses or teams already with deep investor access."
+  },
+  {
+    "sourceId": "src-angel-investor",
+    "sourceType": "ANGEL_INVESTOR",
+    "name": "Domain Angel Investors / Operators",
+    "category": "EARLY_EQUITY",
+    "description": "High-net-worth operators, domain executives, and serial founders investing personal capital via SAFE or convertible note.",
+    "dilutionProfile": {
+      "isDilutive": true,
+      "typicalEquityRangePercent": { "min": 5, "max": 15 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "Conversion to equity",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 2, "max": 8 },
+    "typicalCheckRange": { "currency": "EUR", "min": 10000, "max": 150000 },
+    "prerequisites": ["Compelling founder narrative", "Clear problem proof", "Clean initial legal structure"],
+    "governanceImpact": "INFORMAL_ADVICE",
+    "advantages": ["Fast decision-making", "Value-add industry domain intros", "Flexible lightweight instruments (SAFE)"],
+    "disadvantages": ["Small individual check sizes requiring multiple syndications", "Variable investor engagement"],
+    "bestFitWhen": "Pre-seed phase where specialized industry credibility, customer intros, and fast bridge capital unlock the next milestone.",
+    "avoidWhen": "Founders seeking large institutional lead commitments or passive checks without domain value."
+  },
+  {
+    "sourceId": "src-safe-convertible",
+    "sourceType": "SAFE_CONVERTIBLE",
+    "name": "Pre-Seed SAFE / Convertible Note",
+    "category": "EARLY_EQUITY",
+    "description": "Simple Agreement for Future Equity (Post-Money SAFE or Convertible Note) deferring formal valuation until priced round.",
+    "dilutionProfile": {
+      "isDilutive": true,
+      "typicalEquityRangePercent": { "min": 10, "max": 20 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "Equity conversion upon qualified priced round",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 2, "max": 6 },
+    "typicalCheckRange": { "currency": "EUR", "min": 100000, "max": 750000 },
+    "prerequisites": ["Post-money valuation cap consensus", "Early product/market signal", "Standard open-source SAFE legal docs"],
+    "governanceImpact": "NONE",
+    "advantages": ["Low legal cost (€1k-€3k vs €15k+ for priced round)", "Rapid closing with rolling investor checks", "No board seats"],
+    "disadvantages": ["Cap-table overhang if stacking multiple uncoordinated SAFEs with different caps", "Uncertain dilution until conversion"],
+    "bestFitWhen": "Early stage rounds up to €1M to fund product validation before establishing formal corporate share classes.",
+    "avoidWhen": "Later-stage rounds or in jurisdictions where tax laws penalize non-share equity instruments."
+  },
+  {
+    "sourceId": "src-venture-capital",
+    "sourceType": "VENTURE_CAPITAL",
+    "name": "Institutional Seed / Series A VC",
+    "category": "INSTITUTIONAL_EQUITY",
+    "description": "Institutional fund lead taking 15–25% equity in a priced equity financing round to accelerate rapid hypergrowth.",
+    "dilutionProfile": {
+      "isDilutive": true,
+      "typicalEquityRangePercent": { "min": 15, "max": 25 }
+    },
+    "repaymentProfile": {
+      "isRepayable": false,
+      "repaymentMechanism": "None",
+      "securityRequired": false,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 8, "max": 16 },
+    "typicalCheckRange": { "currency": "EUR", "min": 1000000, "max": 5000000 },
+    "prerequisites": ["Proven PMF / strong early repeatable growth", "Large TAM (>€1B)", "High defensibility and moat", "Clean corporate data room"],
+    "governanceImpact": "BOARD_SEAT",
+    "advantages": ["Substantial growth capital to hire senior talent", "Strong institutional signaling", "Follow-on reserve capacity"],
+    "disadvantages": ["Significant equity dilution", "Loss of unilateral control (board & protective provisions)", "Pressure for 10x-100x liquidity outcome"],
+    "bestFitWhen": "High-growth software or market network with proven unit economics ready to scale customer acquisition aggressively.",
+    "avoidWhen": "Lifestyle businesses, niche consulting, or startups where founder priority is maintaining 100% control."
+  },
+  {
+    "sourceId": "src-revenue-based-finance",
+    "sourceType": "REVENUE_BASED_FINANCING",
+    "name": "Revenue-Based Financing (RBF)",
+    "category": "DEBT_CREDIT",
+    "description": "Upfront capital repaid via a fixed percentage of monthly gross revenue (e.g. 5-10%) until a capped multiple (1.3x-1.8x) is reached.",
+    "dilutionProfile": {
+      "isDilutive": false,
+      "typicalEquityRangePercent": { "min": 0, "max": 0 }
+    },
+    "repaymentProfile": {
+      "isRepayable": true,
+      "repaymentMechanism": "Percentage of monthly revenue until return cap",
+      "securityRequired": true,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 1, "max": 3 },
+    "typicalCheckRange": { "currency": "EUR", "min": 25000, "max": 500000 },
+    "prerequisites": ["Consistent MRR (>€10k/mo)", ">6 months operating history", "Healthy gross margins (>60%)"],
+    "governanceImpact": "NONE",
+    "advantages": ["Zero equity dilution", "Payments flex down during slow months", "Fast algorithmic approval"],
+    "disadvantages": ["Direct drag on monthly operating cashflow", "Requires existing proven recurring revenue"],
+    "bestFitWhen": "Profitable SaaS or eCommerce businesses with predictable customer acquisition economics needing growth capital.",
+    "avoidWhen": "Pre-revenue or erratic seasonal businesses."
+  },
+  {
+    "sourceId": "src-venture-debt",
+    "sourceType": "VENTURE_DEBT",
+    "name": "Venture Debt & Growth Credit",
+    "category": "DEBT_CREDIT",
+    "description": "Senior term loan paired with minimal equity warrants, typically provided to VC-backed startups to extend runway between rounds.",
+    "dilutionProfile": {
+      "isDilutive": true,
+      "typicalEquityRangePercent": { "min": 1, "max": 3 }
+    },
+    "repaymentProfile": {
+      "isRepayable": true,
+      "repaymentMechanism": "Principal + interest amortized over 24-36 months",
+      "securityRequired": true,
+      "personalGuaranteeRequired": false
+    },
+    "typicalTimelineWeeks": { "min": 4, "max": 8 },
+    "typicalCheckRange": { "currency": "EUR", "min": 500000, "max": 3000000 },
+    "prerequisites": ["Institutional VC backing", "Predictable runway", "Corporate entity with enterprise asset base"],
+    "governanceImpact": "FULL_COVENANTS",
+    "advantages": ["Extends runway by 4-6 months with minimal dilution (<2%)", "Leverages existing equity round"],
+    "disadvantages": ["Debt service obligations regardless of performance", "Negative covenants on cash reserves and IP liens"],
+    "bestFitWhen": "Post-Seed or Series A companies with proven runway looking to defer next equity raise to achieve higher valuation.",
+    "avoidWhen": "Pre-revenue companies without strong VC sponsorship."
+  }
+]

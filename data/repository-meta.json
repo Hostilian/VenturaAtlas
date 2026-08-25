@@ -24,10 +24,10 @@
     "rankingEntries": 284,
     "prompts": 4625,
     "dossiers": 432,
-    "financialModels": 63,
-    "validationPlans": 78,
-    "technicalBlueprints": 75,
-    "launchPlans": 60
+    "financialModels": 324,
+    "validationPlans": 326,
+    "technicalBlueprints": 324,
+    "launchPlans": 324
   },
   "revisions": {
     "canonicalRevision": "934fffd425b1fce6",

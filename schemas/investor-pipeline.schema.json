@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/investor-pipeline.schema.json",
+  "title": "Private Investor Pipeline and CRM Specification",
+  "description": "Private, local tracking of potential funders/investors across fundraising stages with explicit pass reason capture.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "pipelineId",
+    "ventureId",
+    "targetRaiseAmount",
+    "entries"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "pipelineId": { "type": "string", "pattern": "^pipeline-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "targetRaiseAmount": {
+      "type": "object",
+      "properties": {
+        "currency": { "type": "string" },
+        "amount": { "type": "number" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "investorId",
+          "firmOrName",
+          "investorType",
+          "stage",
+          "relationshipStage",
+          "checkSizeRange",
+          "lastContactDate"
+        ],
+        "properties": {
+          "investorId": { "type": "string" },
+          "firmOrName": { "type": "string" },
+          "investorType": {
+            "type": "string",
+            "enum": ["ANGEL", "PRE_SEED_FUND", "SEED_VC", "SERIES_A_VC", "FAMILY_OFFICE", "CORPORATE_VC", "GOV_FUND"]
+          },
+          "stage": { "type": "string" },
+          "relationshipStage": {
+            "type": "string",
+            "enum": [
+              "RESEARCH_TARGET",
+              "WARM_INTRO_PENDING",
+              "INTRO_MADE",
+              "INITIAL_MEETING",
+              "FOLLOW_UP_CALL",
+              "PARTNER_PITCH",
+              "DILIGENCE",
+              "TERM_SHEET_OFFERED",
+              "COMMITTED_CLOSED",
+              "PASSED"
+            ]
+          },
+          "checkSizeRange": {
+            "type": "object",
+            "properties": {
+              "currency": { "type": "string" },
+              "min": { "type": "number" },
+              "max": { "type": "number" }
+            }
+          },
+          "sectorFitScore": { "type": "number", "minimum": 0, "maximum": 10 },
+          "stageFitScore": { "type": "number", "minimum": 0, "maximum": 10 },
+          "thesisAlignment": { "type": "string" },
+          "potentialConflicts": { "type": "string" },
+          "lastContactDate": { "type": "string" },
+          "notes": { "type": "string" },
+          "passReason": {
+            "type": "string",
+            "enum": [
+              "STAGE_TOO_EARLY",
+              "TRACTION_INSUFFICIENT",
+              "MARKET_SIZE_CONCERN",
+              "PORTFOLIO_CONFLICT",
+              "OUTSIDE_GEOGRAPHIC_MANDATE",
+              "OUTSIDE_SECTOR_MANDATE",
+              "VALUATION_MISMATCH",
+              "UNIT_ECONOMICS_CONCERN",
+              "FOUNDER_FIT",
+              "NO_REASON_GIVEN",
+              "OTHER"
+            ]
+          },
+          "feedbackSummary": { "type": "string" }
+        }
+      }
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

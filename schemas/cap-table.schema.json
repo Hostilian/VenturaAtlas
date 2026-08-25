@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/cap-table.schema.json",
+  "title": "Private Cap Table and Multi-Round Dilution Specification",
+  "description": "Private, local cap table state representing share classes, options pool, SAFE/convertibles, and hypothetical investment round modeling.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "capTableId",
+    "ventureName",
+    "totalAuthorizedShares",
+    "stakeholders",
+    "optionPool",
+    "convertibles",
+    "roundsHistory"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "capTableId": { "type": "string", "pattern": "^captable-[a-z0-9-]+$" },
+    "ventureName": { "type": "string" },
+    "currency": { "type": "string", "default": "EUR" },
+    "totalAuthorizedShares": { "type": "number", "minimum": 1 },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stakeholderId", "name", "role", "shareClass", "sharesCount", "ownershipPercent"],
+        "properties": {
+          "stakeholderId": { "type": "string" },
+          "name": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["FOUNDER", "CO_FOUNDER", "EARLY_EMPLOYEE", "ADVISOR", "ANGEL", "SEED_INVESTOR", "SERIES_A_INVESTOR", "OPTION_POOL"]
+          },
+          "shareClass": {
+            "type": "string",
+            "enum": ["COMMON", "PREFERRED_SEED", "PREFERRED_SERIES_A", "OPTIONS"]
+          },
+          "sharesCount": { "type": "number", "minimum": 0 },
+          "ownershipPercent": { "type": "number", "minimum": 0, "maximum": 100 },
+          "vestingMonths": { "type": "number" },
+          "cliffMonths": { "type": "number" }
+        }
+      }
+    },
+    "optionPool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalPoolShares", "allocatedShares", "unallocatedShares", "poolPercentOfFullyDiluted"],
+      "properties": {
+        "totalPoolShares": { "type": "number", "minimum": 0 },
+        "allocatedShares": { "type": "number", "minimum": 0 },
+        "unallocatedShares": { "type": "number", "minimum": 0 },
+        "poolPercentOfFullyDiluted": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "convertibles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["instrumentId", "investorName", "instrumentType", "principalAmount", "valuationCap", "discountRatePercent"],
+        "properties": {
+          "instrumentId": { "type": "string" },
+          "investorName": { "type": "string" },
+          "instrumentType": {
+            "type": "string",
+            "enum": ["POST_MONEY_SAFE", "PRE_MONEY_SAFE", "CONVERTIBLE_NOTE", "KISS"]
+          },
+          "principalAmount": { "type": "number", "minimum": 0 },
+          "valuationCap": { "type": "number", "minimum": 0 },
+          "discountRatePercent": { "type": "number", "minimum": 0, "maximum": 100 },
+          "interestRatePercent": { "type": "number", "minimum": 0 },
+          "maturityDate": { "type": "string" }
+        }
+      }
+    },
+    "roundsHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["roundName", "date", "preMoneyValuation", "amountRaised", "postMoneyValuation", "pricePerShare"],
+        "properties": {
+          "roundName": { "type": "string" },
+          "date": { "type": "string" },
+          "preMoneyValuation": { "type": "number", "minimum": 0 },
+          "amountRaised": { "type": "number", "minimum": 0 },
+          "postMoneyValuation": { "type": "number", "minimum": 0 },
+          "pricePerShare": { "type": "number", "minimum": 0 },
+          "newOptionPoolCreatedPercent": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/data-room.schema.json",
+  "title": "Data Room Index and Diligence Readiness Specification",
+  "description": "Structured checklist and readiness audit indexing existing authoritative artifacts across legal, commercial, technical, and corporate domains.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "dataRoomId",
+    "ventureId",
+    "categories",
+    "readinessScorePercent",
+    "missingCriticalCount"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "dataRoomId": { "type": "string", "pattern": "^dataroom-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "readinessScorePercent": { "type": "number", "minimum": 0, "maximum": 100 },
+    "missingCriticalCount": { "type": "number", "minimum": 0 },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["categoryId", "categoryName", "items"],
+        "properties": {
+          "categoryId": { "type": "string" },
+          "categoryName": { "type": "string" },
+          "description": { "type": "string" },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["itemId", "documentTitle", "requiredStage", "isMandatory", "status"],
+              "properties": {
+                "itemId": { "type": "string" },
+                "documentTitle": { "type": "string" },
+                "requiredStage": { "type": "string", "enum": ["PRE_SEED", "SEED", "SERIES_A", "ANY"] },
+                "isMandatory": { "type": "boolean" },
+                "status": { "type": "string", "enum": ["READY", "DRAFT", "MISSING", "NOT_APPLICABLE"] },
+                "artifactPath": { "type": "string" },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "diligenceRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["requestId", "investorName", "topic", "requestedAt", "status"],
+        "properties": {
+          "requestId": { "type": "string" },
+          "investorName": { "type": "string" },
+          "topic": { "type": "string" },
+          "requestedAt": { "type": "string" },
+          "status": { "type": "string", "enum": ["OPEN", "SHARED", "CLARIFIED", "DECLINED"] },
+          "responseArtifactRef": { "type": "string" }
+        }
+      }
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

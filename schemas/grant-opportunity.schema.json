@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/grant-opportunity.schema.json",
+  "title": "Non-Dilutive Grant and Public Innovation Program Specification",
+  "description": "Structured schema for public grants, research programs, and innovation prizes with 5-state eligibility mapping.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "grantId",
+    "programName",
+    "issuingAuthority",
+    "jurisdiction",
+    "fundingType",
+    "fundingRange",
+    "applicationEffortHours",
+    "eligibilityCriteria",
+    "sourceUrl",
+    "verifiedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "grantId": { "type": "string", "pattern": "^grant-[a-z0-9-]+$" },
+    "programName": { "type": "string" },
+    "issuingAuthority": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "fundingType": {
+      "type": "string",
+      "enum": ["DIRECT_GRANT", "INNOVATION_VOUCHER", "CO_FUNDED_RESEARCH", "PRIZE_COMPETITION", "TAX_CREDIT", "SUBSIDIZED_LOAN"]
+    },
+    "fundingRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "minAmount", "maxAmount", "coFundingRatePercent"],
+      "properties": {
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "minAmount": { "type": "number", "minimum": 0 },
+        "maxAmount": { "type": "number", "minimum": 0 },
+        "coFundingRatePercent": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "applicationEffortHours": { "type": "number", "minimum": 1 },
+    "typicalSuccessRatePercent": { "type": "number", "minimum": 0, "maximum": 100 },
+    "applicationDeadlines": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "eligibleSectors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowedCostTypes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "eligibilityCriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterionId", "title", "description", "mandatory"],
+        "properties": {
+          "criterionId": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "mandatory": { "type": "boolean" }
+        }
+      }
+    },
+    "sourceUrl": { "type": "string" },
+    "verifiedAt": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}
