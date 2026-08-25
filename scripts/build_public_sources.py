@@ -10,6 +10,7 @@ import json
 import os
 import pathlib
 import tempfile
+import argparse
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -40,7 +41,7 @@ def atomic_json_write(path: pathlib.Path, value: object) -> None:
     os.replace(temporary, path)
 
 
-def main() -> int:
+def main(output_path: pathlib.Path = PUBLIC_SOURCES_FILE) -> int:
     raw = json.loads(SOURCES_FILE.read_text(encoding="utf-8"))
     sources = raw if isinstance(raw, list) else raw.get("sources", [])
     if not isinstance(sources, list):
@@ -79,13 +80,22 @@ def main() -> int:
         print("[ERROR] Public source projection is empty; existing output was not replaced.")
         return 1
 
-    atomic_json_write(PUBLIC_SOURCES_FILE, public_sources)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    atomic_json_write(output_path, public_sources)
     print(
-        "[OK] Generated data/public-sources.json "
+        f"[OK] Generated {output_path} "
         f"({len(public_sources)} explicitly PUBLIC evidence sources from {len(sources)} total)."
     )
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description="Build the public evidence-source projection")
+    parser.add_argument(
+        "--output",
+        type=pathlib.Path,
+        default=PUBLIC_SOURCES_FILE,
+        help="Projection target (defaults to the tracked data/public-sources.json)",
+    )
+    arguments = parser.parse_args()
+    raise SystemExit(main(arguments.output.resolve()))

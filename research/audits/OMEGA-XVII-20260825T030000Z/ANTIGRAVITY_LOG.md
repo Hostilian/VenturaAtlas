@@ -1,5 +1,7 @@
 # OMEGA-XVII Track B Execution Log & Audit Findings
 
+> **Post-audit correction (2026-08-25):** the 324/324 counts below establish file-presence coverage only. They do not prove substantive completeness, uniqueness, correctness, or strict adherence to `MASTER_GOAL.md`. A later MERCURY audit found only four launch-plan structural skeletons and a ten-file cohort (`idea-061`–`idea-070`) with systematically damaged labels; those labels were corrected. No customer contact, interview, payment, retention, continuous-background-runtime, or current deployment claim follows from the content counts.
+
 ## 1. Runtime Truth Investigation
 
 ### A. Current Reality
@@ -37,12 +39,12 @@ Until these two human actions occur, VenturaAtlas truthfully degrades to local d
 | **Validation Plans** (`validation-plans/`) | 78 | **324** | **100.0%** (+246 files) |
 | **Technical Blueprints** (`technical-blueprints/`) | 75 | **324** | **100.0%** (+249 files) |
 | **Launch Plans** (`launch-plans/`) | 60 | **324** | **100.0%** (+264 files) |
-| **Total Artifact Files Added** | — | **+1,020** | **Fully Synchronized** |
+| **Total Artifact Files Added** | — | **+1,020** | **File-presence coverage only** |
 
 ### Evidence Standards Applied
-- All files strictly adhere to `MASTER_GOAL.md`.
-- Scenarios are explicitly marked as decision-support models, not guarantees.
-- Pre-registration kill criteria and demand thresholds are defined across all validation plans.
+- Files were generated against the `MASTER_GOAL.md` template, but the run did not independently prove strict semantic adherence or boilerplate absence.
+- Scenarios are intended as decision-support models, not guarantees; current source and artifact checks determine whether that boundary remains true at a named revision.
+- Validation-plan presence does not establish that any experiment, customer contact, payment, or kill criterion has actually occurred.
 
 ---
 

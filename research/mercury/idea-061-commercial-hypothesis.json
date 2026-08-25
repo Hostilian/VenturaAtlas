@@ -45,9 +45,9 @@
       "deliverable": "One checklist-bound visual proof response for one objective product question.",
       "scope": "One request, one evidence checklist, no product-quality guarantee.",
       "price": {
-        "amount": 4,
+        "amount": 5,
         "currency": "EUR",
-        "basis": "per completed proof request",
+        "basis": "per completed proof request; proposed platform-fee split remains unverified",
         "evidenceStatus": "HYPOTHESIS"
       },
       "timeToValue": "UNKNOWN",

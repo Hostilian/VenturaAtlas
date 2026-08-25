@@ -14,6 +14,37 @@ global.localStorage = {
 
 const { StudioStore, STAGES, NOTE_TYPES, SCORE_DIMENSIONS } = require('../assets/js/core/studio-store.js');
 
+function legacyMercuryFixture() {
+  let sequence = 0;
+  const memory = new Map();
+  const store = new MercuryStore({
+    storage: {
+      getItem: key => memory.get(key) || null,
+      setItem: (key, value) => memory.set(key, String(value)),
+      removeItem: key => memory.delete(key),
+    },
+    clock: () => '2026-08-25T10:00:00Z',
+    idFactory: prefix => `${prefix}-studio-legacy-${++sequence}`,
+  });
+  const segment = store.addSegment({ name: 'Legacy segment', description: 'A pre-1.1 buyer segment.' });
+  store.addOrganization({
+    name: 'Legacy buyer record',
+    segmentId: segment.segmentId,
+    reachabilityBasis: 'Legacy basis that must be reviewed',
+    evidenceRef: 'legacy-private-ref',
+  });
+  const legacy = store.getWorkspace();
+  legacy.schemaVersion = '1.0.0';
+  delete legacy.segments[0].parentSegmentId;
+  delete legacy.segments[0].budgetOwner;
+  delete legacy.segments[0].budgetSource;
+  delete legacy.organizations[0].actorType;
+  delete legacy.organizations[0].reachabilityBasis;
+  delete legacy.organizations[0].evidenceRef;
+  delete legacy.organizations[0].evidenceClass;
+  return legacy;
+}
+
 test('StudioStore — Initialization and User Profile', () => {
   mockStorage.clear();
   const store = new StudioStore();
@@ -49,6 +80,27 @@ test('StudioStore — Mercury state round-trips inside the existing decision pac
   const result = imported.importDecisionPacket(packet);
   assert.equal(result.success, true);
   assert.equal(imported.getMercuryWorkspace().workspaceId, 'mercury-test');
+});
+
+test('StudioStore — legacy Mercury migrates at packet-import and persisted-storage boundaries', () => {
+  mockStorage.clear();
+  const source = new StudioStore();
+  const legacy = legacyMercuryFixture();
+  const packet = { schemaVersion: '3.0.0', workspace: { ...source.getWorkspace(), mercury: legacy } };
+
+  mockStorage.clear();
+  const imported = new StudioStore();
+  const result = imported.importDecisionPacket(packet);
+  assert.equal(result.success, true);
+  assert.equal(imported.getMercuryWorkspace().schemaVersion, '1.1.0');
+  assert.equal(imported.getMercuryWorkspace().organizations[0].evidenceClass, 'UNVERIFIED_LEGACY');
+
+  mockStorage.clear();
+  mockStorage.set('va_workspace_v3', JSON.stringify({ ...source.getWorkspace(), mercury: legacy }));
+  const loaded = new StudioStore();
+  assert.equal(loaded.getMercuryWorkspace().schemaVersion, '1.1.0');
+  assert.equal(loaded.getMercuryWorkspace().organizations[0].evidenceClass, 'UNVERIFIED_LEGACY');
+  assert.equal(JSON.parse(mockStorage.get('va_workspace_v3')).mercury.schemaVersion, '1.1.0');
 });
 
 test('StudioStore — invalid or unpersistable Mercury state fails closed', () => {

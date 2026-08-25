@@ -32,9 +32,9 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 # ── Path Config ────────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATE_PATH = os.path.join(BASE_DIR, '.agent-state', 'provider-state.json')
-STATE_LOCK_PATH = os.path.join(BASE_DIR, '.agent-state', 'locks', 'provider-state.lock')
-LOG_PATH = os.path.join(BASE_DIR, '.agent-state', 'logs', 'unattended-runner.log')
+STATE_PATH = os.environ.get('VA_ORCHESTRATOR_STATE_PATH', os.path.join(BASE_DIR, '.agent-state', 'provider-state.json'))
+STATE_LOCK_PATH = os.environ.get('VA_ORCHESTRATOR_STATE_LOCK_PATH', os.path.join(BASE_DIR, '.agent-state', 'locks', 'provider-state.lock'))
+LOG_PATH = os.environ.get('VA_ORCHESTRATOR_LOG_PATH', os.path.join(BASE_DIR, '.agent-state', 'logs', 'unattended-runner.log'))
 
 # ── Load .env if present ───────────────────────────────────────────────────────
 _env_path = os.path.join(BASE_DIR, '.env')
@@ -684,7 +684,7 @@ def _call_deepseek_api(prompt: str) -> str:
 
 
 # ── Provider Health Check ──────────────────────────────────────────────────────
-def health_check(probe_external: bool = False) -> dict:
+def health_check(probe_external: bool = False, probe_local: bool = True) -> dict:
     """Check providers; remote providers are healthy only after a real probe."""
     results = {}
     external_providers = ["nvidia-nim", "nvidia-nim-adversarial", "cohere-api", "omniRoute", "fcc-claude", "active-api", "deepseek-api", "anthropic-full"]
@@ -699,9 +699,11 @@ def health_check(probe_external: bool = False) -> dict:
             results[provider] = _call_single_provider(provider, "Health probe. Reply with OK.") is not None
     # Hermes/Ollama
     try:
-        results["hermes-ollama"] = _ollama_has_model(HERMES_MODEL)
-        if not results["hermes-ollama"]:
+        results["hermes-ollama"] = _ollama_has_model(HERMES_MODEL) if probe_local else False
+        if probe_local and not results["hermes-ollama"]:
             log_warn(f"Ollama is reachable but required model '{HERMES_MODEL}' is not installed")
+        elif not probe_local:
+            log_info("Local provider probe disabled for deterministic offline health check")
     except Exception as e:
         results["hermes-ollama"] = False
         log_warn(f"Ollama not available: {e}")
@@ -1090,12 +1092,14 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Venture Atlas Multi-Provider Orchestrator')
     parser.add_argument('--test', action='store_true', help='Run provider health check')
+    parser.add_argument('--offline', action='store_true', help='Disable remote and local provider probes; intended for deterministic contract tests')
     parser.add_argument('--provider', help='Force a specific provider for testing')
     args = parser.parse_args()
 
     if args.test:
         log_info("=== Venture Atlas Orchestrator — Provider Health Check ===")
-        results = health_check(probe_external=True)
+        results = health_check(probe_external=not args.offline, probe_local=not args.offline)
+        print(f"External probes: {'DISABLED' if args.offline else 'ENABLED'}")
         print("\n── Provider Availability ──")
         for p, ok in results.items():
             status = "✅ AVAILABLE" if ok else "❌ UNAVAILABLE"

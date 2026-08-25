@@ -61,3 +61,25 @@ test('Public source projection publishes only explicitly eligible public records
   const projected = JSON.parse(fs.readFileSync(path.join(dataDir, 'public-sources.json'), 'utf8'));
   assert.deepEqual(projected.map(source => source.id), ['external-1']);
 });
+
+test('Public source projection can target an isolated artifact path without replacing the tracked default', t => {
+  const root = fixtureRoot();
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const dataDir = path.join(root, 'data');
+  const defaultOutput = path.join(dataDir, 'public-sources.json');
+  const isolatedOutput = path.join(root, 'artifact-input', 'public-sources.json');
+  fs.writeFileSync(defaultOutput, '[{"sentinel":true}]\n');
+  fs.writeFileSync(path.join(dataDir, 'sources.json'), JSON.stringify([{
+    id: 'external-isolated',
+    title: 'Official isolated source',
+    url: 'https://example.com/isolated',
+    visibility: 'PUBLIC',
+    sourceClass: 'PRIMARY_OR_OFFICIAL',
+    evidenceEligible: true,
+    provenanceEligible: true,
+  }]));
+
+  execFileSync('python', [path.join(root, 'scripts', 'build_public_sources.py'), '--output', isolatedOutput], { encoding: 'utf8' });
+  assert.equal(fs.readFileSync(defaultOutput, 'utf8'), '[{"sentinel":true}]\n');
+  assert.deepEqual(JSON.parse(fs.readFileSync(isolatedOutput, 'utf8')).map(source => source.id), ['external-isolated']);
+});

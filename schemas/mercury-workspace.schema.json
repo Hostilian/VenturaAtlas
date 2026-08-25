@@ -131,6 +131,7 @@
       "properties": {
         "interactionId": { "type": "string", "pattern": "^interaction-[a-z0-9-]+$" },
         "organizationId": { "type": "string" },
+        "opportunityId": { "type": ["string", "null"] },
         "segmentId": { "type": "string" },
         "channelId": { "type": "string" },
         "interactionType": { "enum": ["CONTACT_ATTEMPT", "CONVERSATION", "PILOT_REVIEW", "FOLLOW_UP", "LOSS_REVIEW"] },
@@ -151,7 +152,19 @@
         "evidenceRef": { "type": "string", "minLength": 1 },
         "evidenceClass": { "const": "OPERATOR_ATTESTED" },
         "claimsNotEarned": { "type": "array", "items": { "type": "string" } }
-      }
+      },
+      "allOf": [{
+        "if": {
+          "properties": {
+            "signals": { "contains": { "enum": ["OFFER_ACCEPTED", "COMMITMENT_MADE"] } }
+          },
+          "required": ["signals"]
+        },
+        "then": {
+          "required": ["opportunityId"],
+          "properties": { "opportunityId": { "type": "string", "minLength": 1 } }
+        }
+      }]
     },
     "opportunity": {
       "type": "object",

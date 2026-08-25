@@ -126,12 +126,12 @@ test('quality receipt fails closed when HEAD changes during validation', () => {
   assert.equal(result.receipt.finishedCommit, 'after456');
 });
 
-test('source quality fails closed when a verifier mutates the worktree', () => {
+test('source quality fails closed when Git-visible net worktree state changes', () => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'va-quality-mutation-'));
   const snapshots = [new Map(), new Map([['README.md', 'changed']])];
   const result = runQuality({
     profile: 'source',
-    steps: [{ id: 'pure-check', command: 'node', args: ['fixture.js'] }],
+    steps: [{ id: 'stability-check', command: 'node', args: ['fixture.js'] }],
     receiptPath: path.join(directory, 'receipt.json'),
     execute: () => ({ status: 0 }),
     snapshot: () => snapshots.shift(),
@@ -142,7 +142,8 @@ test('source quality fails closed when a verifier mutates the worktree', () => {
 
   assert.equal(result.exitCode, 1);
   assert.equal(result.receipt.status, 'failed');
-  assert.equal(result.receipt.failedPhase, 'worktree-purity');
+  assert.equal(result.receipt.failedPhase, 'git-visible-worktree-stability');
+  assert.equal(result.receipt.worktreeStabilityScope, 'GIT_VISIBLE_NET_STATE');
   assert.deepEqual(result.receipt.affectedPaths, ['README.md']);
 });
 

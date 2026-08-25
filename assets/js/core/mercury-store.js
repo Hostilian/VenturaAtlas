@@ -50,7 +50,7 @@ const MERCURY_ENTITY_KEYS = {
   price: ['amount', 'currency', 'basis', 'evidenceStatus'],
   channel: ['channelId', 'segmentId', 'name', 'motion', 'accessPath', 'status'],
   organization: ['organizationId', 'name', 'actorType', 'segmentId', 'recordClass', 'commercialStage', 'reachabilityBasis', 'evidenceRef', 'evidenceClass', 'createdAt'],
-  interaction: ['interactionId', 'organizationId', 'segmentId', 'channelId', 'interactionType', 'occurredAt', 'outcome', 'facts', 'objections', 'objectionCategories', 'signals', 'evidenceRef', 'evidenceClass', 'claimsNotEarned'],
+  interaction: ['interactionId', 'organizationId', 'opportunityId', 'segmentId', 'channelId', 'interactionType', 'occurredAt', 'outcome', 'facts', 'objections', 'objectionCategories', 'signals', 'evidenceRef', 'evidenceClass', 'claimsNotEarned'],
   opportunity: ['opportunityId', 'organizationId', 'segmentId', 'offerId', 'stage', 'stageHistory', 'lossReason', 'createdAt'],
   stageHistory: ['stage', 'recordedAt', 'evidenceRef'],
   commercialEvent: ['eventId', 'organizationId', 'opportunityId', 'eventType', 'occurredAt', 'amount', 'currency', 'evidenceRef', 'evidenceClass'],
@@ -148,7 +148,7 @@ function checkEnum(value, allowed, label, errors) {
   if (!allowed.includes(value)) errors.push(`${label} has invalid value ${String(value)}`);
 }
 
-function interactionSignalErrors(interaction) {
+function interactionSignalErrors(interaction, workspace = null) {
   const errors = [];
   const signals = interaction.signals || [];
   if (signals.length && (interaction.interactionType === 'CONTACT_ATTEMPT' || interaction.outcome === 'NO_REPLY')) {
@@ -157,6 +157,24 @@ function interactionSignalErrors(interaction) {
   const commitmentSignals = ['EVALUATION_ACCEPTED', 'OFFER_ACCEPTED', 'COMMITMENT_MADE'];
   if (signals.some(signal => commitmentSignals.includes(signal)) && !['QUALIFIED', 'NEXT_STEP'].includes(interaction.outcome)) {
     errors.push('evaluation, offer, and commitment signals require a QUALIFIED or NEXT_STEP outcome');
+  }
+  const offerSignals = ['OFFER_ACCEPTED', 'COMMITMENT_MADE'];
+  if (signals.some(signal => offerSignals.includes(signal))) {
+    if (!interaction.opportunityId) {
+      errors.push('offer acceptance and commitment signals require an offer-linked opportunity');
+    } else if (workspace) {
+      const opportunity = workspace.opportunities?.find(item => item.opportunityId === interaction.opportunityId);
+      if (!opportunity) {
+        errors.push('offer acceptance and commitment signals reference an unknown opportunity');
+      } else {
+        if (opportunity.organizationId !== interaction.organizationId || opportunity.segmentId !== interaction.segmentId) {
+          errors.push('offer acceptance and commitment signals must reference the same buyer and segment');
+        }
+        if (!opportunity.offerId || !opportunityReached(opportunity, 'OFFERED')) {
+          errors.push('offer acceptance and commitment signals require a concrete offer that was recorded as offered');
+        }
+      }
+    }
   }
   return errors;
 }
@@ -339,6 +357,7 @@ function validateMercuryWorkspace(workspace) {
   for (const interaction of workspace.interactions) {
     rejectUnexpectedProperties(interaction, MERCURY_ENTITY_KEYS.interaction, interaction.interactionId || 'interaction', errors);
     if (!organizationIds.has(interaction.organizationId)) errors.push(`${interaction.interactionId} has unknown organizationId`);
+    if (interaction.opportunityId && !opportunityIds.has(interaction.opportunityId)) errors.push(`${interaction.interactionId} has unknown opportunityId`);
     if (!/^interaction-[a-z0-9-]+$/.test(interaction.interactionId || '')) errors.push(`${interaction.interactionId || 'interaction'} has invalid interactionId`);
     if (!segmentIds.has(interaction.segmentId)) errors.push(`${interaction.interactionId} has unknown segmentId`);
     if (!interaction.channelId || !channelIds.has(interaction.channelId)) errors.push(`${interaction.interactionId} has unknown channelId`);
@@ -360,7 +379,7 @@ function validateMercuryWorkspace(workspace) {
     for (const category of interaction.objectionCategories || []) {
       if (!MERCURY_OBJECTION_CATEGORIES.includes(category)) errors.push(`${interaction.interactionId} has invalid objection category ${category}`);
     }
-    for (const signalError of interactionSignalErrors(interaction)) errors.push(`${interaction.interactionId}: ${signalError}`);
+    for (const signalError of interactionSignalErrors(interaction, workspace)) errors.push(`${interaction.interactionId}: ${signalError}`);
   }
   for (const opportunity of workspace.opportunities) {
     rejectUnexpectedProperties(opportunity, MERCURY_ENTITY_KEYS.opportunity, opportunity.opportunityId || 'opportunity', errors);
@@ -775,6 +794,7 @@ class MercuryStore {
     const facts = (input.facts || []).map(String).map(item => item.trim()).filter(Boolean);
     if (!facts.length) throw new Error('at least one observed fact is required');
     this._requireReference('organizations', 'organizationId', input.organizationId, 'organizationId');
+    if (input.opportunityId) this._requireReference('opportunities', 'opportunityId', input.opportunityId, 'opportunityId');
     this._requireReference('segments', 'segmentId', input.segmentId, 'segmentId');
     this._requireReference('channels', 'channelId', input.channelId, 'channelId');
     for (const signal of input.signals || []) {
@@ -783,11 +803,12 @@ class MercuryStore {
     for (const category of input.objectionCategories || []) {
       if (!MERCURY_OBJECTION_CATEGORIES.includes(category)) throw new Error(`unsupported objection category: ${category}`);
     }
-    const semanticErrors = interactionSignalErrors(input);
+    const semanticErrors = interactionSignalErrors(input, this.workspace);
     if (semanticErrors.length) throw new Error(semanticErrors.join('; '));
     const interaction = {
       interactionId: this.idFactory('interaction'),
       organizationId: requireText(input.organizationId, 'organizationId'),
+      opportunityId: input.opportunityId || null,
       segmentId: requireText(input.segmentId, 'segmentId'),
       channelId: requireText(input.channelId, 'channelId'),
       interactionType: input.interactionType || 'CONVERSATION',

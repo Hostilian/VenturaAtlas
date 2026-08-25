@@ -249,12 +249,12 @@ function runQuality(options = {}) {
   const affectedPaths = changedPaths(before, after);
   const warnings = [];
   if (affectedPaths.length > 0) {
-    warnings.push('The worktree changed during the quality run; inspect affectedPaths.');
-    // Source verification is pure by contract. A mutation means the checker
-    // (or one of its validators) repaired or altered the subject under test.
+    warnings.push('Git-visible net worktree state changed during the quality run; inspect affectedPaths.');
+    // This compares the Git-visible net state before and after the run. It does
+    // not claim filesystem-call purity or observe ignored receipt/log paths.
     if (profile === 'source' && exitCode === 0) {
-      failedPhase = 'worktree-purity';
-      failedCommand = 'source quality verification must not mutate the worktree';
+      failedPhase = 'git-visible-worktree-stability';
+      failedCommand = 'source quality verification must preserve Git-visible net worktree state';
       exitCode = 1;
     }
   }
@@ -274,6 +274,7 @@ function runQuality(options = {}) {
     exitCode,
     durations,
     validators,
+    worktreeStabilityScope: 'GIT_VISIBLE_NET_STATE',
     generatedMutationDetected: affectedPaths.length > 0,
     affectedPaths,
     preexistingDirtyPaths: [...before.keys()].sort(),

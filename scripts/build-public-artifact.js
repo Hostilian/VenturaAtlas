@@ -1,6 +1,7 @@
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const { buildReceipt: buildArtifactManifest } = require('./hash-public-artifact');
 const { deriveLifecycleForPublic } = require('./lib/lifecycle-receipts');
 const { withPublicArtifactLock } = require('./lib/public-artifact-lock');
@@ -96,6 +97,7 @@ const PUBLIC_DATA_ALLOWLIST = new Set([
 ]);
 
 let publicSourceIds = new Set();
+let publicSourceProjection = [];
 let internalSourceIds = new Set();
 let internalSourceTerms = new Set();
 let lifecycleReceipts = { schemaVersion: '1.0.0', receipts: [] };
@@ -309,6 +311,8 @@ function copyRecursive(src, dest) {
         projectRankingsForPublic(src, dest);
       } else if (normalized === 'data/validation-summary.json') {
         projectValidationSummaryForPublic(src, dest);
+      } else if (normalized === 'data/public-sources.json') {
+        writeJson(dest, publicSourceProjection);
       } else {
         copyPublicFile(src, dest);
       }
@@ -324,13 +328,17 @@ function buildUnlocked(options = {}) {
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
 
   // Fail closed: a stale/missing public evidence projection must abort the build.
-  console.log('[BUILD] Generating public sources projection (data/public-sources.json)...');
-  execSync('python scripts/build_public_sources.py', { cwd: ROOT, stdio: 'inherit' });
-  execSync('node scripts/validate-lifecycle-receipts.js', { cwd: ROOT, stdio: 'inherit' });
-  const projectedSources = JSON.parse(
-    fs.readFileSync(path.join(ROOT, 'data', 'public-sources.json'), 'utf8')
-  );
-  publicSourceIds = new Set(projectedSources.map(source => source.id));
+  console.log('[BUILD] Generating an isolated public sources projection...');
+  const projectionRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'va-public-sources-build-'));
+  const projectionPath = path.join(projectionRoot, 'public-sources.json');
+  try {
+    execFileSync(process.env.PYTHON || 'python', [path.join(ROOT, 'scripts', 'build_public_sources.py'), '--output', projectionPath], { cwd: ROOT, stdio: 'inherit' });
+    publicSourceProjection = JSON.parse(fs.readFileSync(projectionPath, 'utf8'));
+  } finally {
+    fs.rmSync(projectionRoot, { recursive: true, force: true });
+  }
+  execFileSync(process.execPath, [path.join(ROOT, 'scripts', 'validate-lifecycle-receipts.js')], { cwd: ROOT, stdio: 'inherit' });
+  publicSourceIds = new Set(publicSourceProjection.map(source => source.id));
   const allSources = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'sources.json'), 'utf8'));
   lifecycleReceipts = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'lifecycle-receipts.json'), 'utf8'));
   const researchRuns = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'research-runs.json'), 'utf8'));

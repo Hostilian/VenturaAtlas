@@ -2,7 +2,7 @@
 
 ## Go-to-Market
 
-- **Initial iche:** High-consideration physical product buyers (audio gear, PC parts, furniture, specialized tools)
+- **Initial Niche:** High-consideration physical product buyers (audio gear, PC parts, furniture, specialized tools)
 
 - **Icp:** Online shopper buying a $100+ physical product with unverified physical dimensions or specs
 
@@ -10,17 +10,17 @@
 
 - **Positioning:** The only buyer-funded, challenge-verified product proof service
 
-- **Value roposition:** Get 100% verified visual proof of any physical product spec from a real owner before you buy.
+- **Value Proposition:** Get 100% verified visual proof of any physical product spec from a real owner before you buy.
 
 - **Messaging:** Don’t guess. Don’t trust fake reviews. Pay a $5 bounty for exact visual proof.
 
 - **Offer:** First proof request 100% money-back guaranteed if unfulfilled in 24 hours.
 
-- **Pricing aunch:** €5 bounty flat rate (€1 platform fee)
+- **Pricing Launch:** €5 bounty flat rate (€1 platform fee)
 
-- **First10 ustomers:** Direct manual outreach to shoppers posting unanswered product questions in forums.
+- **First 10 Customers:** Direct manual outreach to shoppers posting unanswered product questions in forums.
 
-- **First100 ustomers:** SEO programmatic pages for "Is [Product] [Attribute]?" queries.
+- **First 100 Customers:** SEO programmatic pages for "Is [Product] [Attribute]?" queries.
 
 - **Outbound:** Direct messaging to question askers on Reddit, Twitter, and niche forums.
 
@@ -30,23 +30,23 @@
 
 - **Partnerships:** Niche review blogs, price comparison sites, AI shopping agent developers.
 
-- **Product ed rowth:** Publicly viewable verified proof pages indexed by Google and AI crawlers.
+- **Product Led Growth:** Publicly viewable verified proof pages indexed by Google and AI crawlers.
 
-- **Marketplace istribution:** Open API for AI shopping agents (Google UCP / AP2 integrations)
+- **Marketplace Distribution:** Open API for AI shopping agents (Google UCP / AP2 integrations)
 
-- **App tore:** Web app first; PWA for mobile responders
+- **App Store:** Web app first; PWA for mobile responders
 
 - **Seo:** Programmatic SEO on product model numbers + physical attributes
 
 - **Content:** Product proof teardowns and dimension comparison guides
 
-- **Paid cquisition:** $0 initial (unnecessary until product-market fit)
+- **Paid Acquisition:** $0 initial (unnecessary until product-market fit)
 
-- **Referral oop:** Give $2 bounty credit for every friend who requests a proof
+- **Referral Loop:** Give $2 bounty credit for every friend who requests a proof
 
-- **Sales ycle:** B2C: Minutes to hours; B2B API: 2-4 weeks
+- **Sales Cycle:** B2C: Minutes to hours; B2B API: 2-4 weeks
 
-- **Sales ssets:** Sample proof video, comparison table, API documentation
+- **Sales Assets:** Sample proof video, comparison table, API documentation
 
 - **Onboarding:** 1-click Google auth / email login + instant Stripe payment
 
@@ -56,21 +56,21 @@
 
 ## Actions
 
-- **First ction:** Find 5 unanswered "what is the internal width of [bag X]?" questions on Reddit r/onebag or r/ultralight
+- **First Action:** Find 5 unanswered "what is the internal width of [bag X]?" questions on Reddit r/onebag or r/ultralight
 
-- **First ustomer onversation:** Ask Reddit user with unanswered question if they will pay €5 for video proof.
+- **First Customer Conversation:** Ask Reddit user with unanswered question if they will pay €5 for video proof.
 
-- **First rototype:** Simple HTML form with Stripe Checkout integration.
+- **First Prototype:** Simple HTML form with Stripe Checkout integration.
 
-- **First ales ffer:** €5 flat rate bounty request with 100% money-back guarantee.
+- **First Sales Offer:** €5 flat rate bounty request with 100% money-back guarantee.
 
-- **First istribution hannel:** Manual direct messaging on Reddit/forums.
+- **First Distribution Channel:** Manual direct messaging on Reddit/forums.
 
-- **First easurement:** Count of paid bounties submitted in week 1.
+- **First Measurement:** Count of paid bounties submitted in week 1.
 
-- **First iring eed:** None (solo founder operation).
+- **First Hiring Need:** None (solo founder operation).
 
-- **First ntegration:** Stripe Connect checkout.
+- **First Integration:** Stripe Connect checkout.
 
 ### Plan7 ays
 - Days 1–2: Contact 20 askers, offer €4 measurement

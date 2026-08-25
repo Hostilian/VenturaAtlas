@@ -1,8 +1,10 @@
 # Launch Plan — FactBounty — Buyer-Funded Product Proof Exchange
 
+> **Truth boundary (2026-08-25):** this is an unverified hypothesis snapshot, not evidence of outreach, customers, payment, retention, or a repeatable channel. The active browser-local workspace is [Mercury Customer Reality Lab](../docs/mercury.html?idea=idea-061); it starts at C0 and advances only from operator-recorded evidence. Automated outreach is not enabled.
+
 ## Go-to-Market
 
-- **Initial iche:** High-consideration physical product buyers (audio gear, PC parts, furniture, specialized tools)
+- **Initial Niche:** High-consideration physical product buyers (audio gear, PC parts, furniture, specialized tools)
 
 - **Icp:** Online shopper buying a $100+ physical product with unverified physical dimensions or specs
 
@@ -10,19 +12,19 @@
 
 - **Positioning:** The only buyer-funded, challenge-verified product proof service
 
-- **Value roposition:** Get 100% verified visual proof of any physical product spec from a real owner before you buy.
+- **Value Proposition:** Get 100% verified visual proof of any physical product spec from a real owner before you buy.
 
 - **Messaging:** Don’t guess. Don’t trust fake reviews. Pay a $5 bounty for exact visual proof.
 
 - **Offer:** First proof request 100% money-back guaranteed if unfulfilled in 24 hours.
 
-- **Pricing aunch:** €5 bounty flat rate (€1 platform fee)
+- **Pricing Launch:** €5 bounty flat rate (€1 platform fee)
 
-- **First10 ustomers:** Direct manual outreach to shoppers posting unanswered product questions in forums.
+- **First 10 Customers:** Moderator-approved or opt-in invitations to shoppers already asking unanswered product questions; no scraping or automated direct messages.
 
-- **First100 ustomers:** SEO programmatic pages for "Is [Product] [Attribute]?" queries.
+- **First 100 Customers:** SEO programmatic pages for "Is [Product] [Attribute]?" queries.
 
-- **Outbound:** Direct messaging to question askers on Reddit, Twitter, and niche forums.
+- **Outbound:** Permission-respecting public replies or opt-in invitations where community rules allow; no unsolicited automation or repeated contact.
 
 - **Inbound:** SEO articles answering high-intent product comparison and clearance questions.
 
@@ -30,23 +32,23 @@
 
 - **Partnerships:** Niche review blogs, price comparison sites, AI shopping agent developers.
 
-- **Product ed rowth:** Every evidence card displayed publicly (with consent) shows the FactBounty format to future searchers and attracts both buyers and potential responders.
+- **Product Led Growth:** Every evidence card displayed publicly (with consent) shows the FactBounty format to future searchers and attracts both buyers and potential responders.
 
-- **Marketplace istribution:** Open API for AI shopping agents (Google UCP / AP2 integrations)
+- **Marketplace Distribution:** Open API for AI shopping agents (Google UCP / AP2 integrations)
 
-- **App tore:** Web app first; PWA for mobile responders
+- **App Store:** Web app first; PWA for mobile responders
 
 - **Seo:** Programmatic SEO on product model numbers + physical attributes
 
 - **Content:** Product proof teardowns and dimension comparison guides
 
-- **Paid cquisition:** $0 initial (unnecessary until product-market fit)
+- **Paid Acquisition:** $0 initial (unnecessary until product-market fit)
 
-- **Referral oop:** Responders who earn money from providing evidence become advocates. Satisfied buyers share specific evidence cards when helping others in forums.
+- **Referral Loop:** Responders who earn money from providing evidence become advocates. Satisfied buyers share specific evidence cards when helping others in forums.
 
-- **Sales ycle:** B2C: Minutes to hours; B2B API: 2-4 weeks
+- **Sales Cycle:** B2C: Minutes to hours; B2B API: 2-4 weeks
 
-- **Sales ssets:** Sample proof video, comparison table, API documentation
+- **Sales Assets:** Sample proof video, comparison table, API documentation
 
 - **Onboarding:** 1-click Google auth / email login + instant Stripe payment
 
@@ -56,24 +58,24 @@
 
 ## Actions
 
-- **First ction:** Find 5 unanswered "Will it fit?" questions posted in the last 7 days on Reddit (/r/PCMasterRace, /r/ultralight, /r/MechanicalKeyboards) and contact the askers.
+- **First Action:** Find 5 recent unanswered “Will it fit?” questions, obtain moderator permission where required, and invite a conversation only through a channel the asker has permitted.
 
-- **First ustomer onversation:** Ask Reddit user with unanswered question if they will pay €5 for video proof.
+- **First Customer Conversation:** With consent, ask a shopper about the last unresolved fit question, current workaround, consequence of a wrong purchase, and whether a concrete €5 proof offer is worth evaluating.
 
-- **First rototype:** Simple HTML form with Stripe Checkout integration.
+- **First Prototype:** Simple HTML form with Stripe Checkout integration.
 
-- **First ales ffer:** €5 flat rate bounty request with 100% money-back guarantee.
+- **First Sales Offer:** €5 flat rate bounty request with 100% money-back guarantee.
 
-- **First istribution hannel:** Manual direct messaging on Reddit/forums.
+- **First Distribution Channel:** Manual direct messaging on Reddit/forums.
 
-- **First easurement:** Count of paid bounties submitted in week 1.
+- **First Measurement:** Count of paid bounties submitted in week 1.
 
-- **First iring eed:** None (solo founder operation).
+- **First Hiring Need:** None (solo founder operation).
 
-- **First ntegration:** Stripe Connect checkout.
+- **First Integration:** Stripe Connect checkout.
 
 ### Plan7 ays
-- Day 1: Contact 10 askers of unanswered product questions
+- Day 1: Invite up to 10 askers only through permitted, non-repetitive channels; record refusals and stop-contact requests
 - Day 2: Build Carrd form + Stripe Checkout (one product category only)
 - Day 3: Run first 3 manual evidence requests (founder as matchmaker)
 - Day 4–5: Deliver evidence, collect buyer feedback

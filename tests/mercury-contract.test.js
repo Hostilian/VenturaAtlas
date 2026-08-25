@@ -67,3 +67,19 @@ test('Mercury UI exposes the end-to-end loss, objection, and segment-learning fl
   assert.match(source, /Segment, objection, and loss learning/);
   assert.match(source, /Highest-value next human action/);
 });
+
+test('active launch hypothesis is truth-bounded and the damaged-label cohort stays repaired', () => {
+  const activePlan = fs.readFileSync(path.join(ROOT, 'launch-plans', 'idea-061.md'), 'utf8');
+  assert.match(activePlan, /unverified hypothesis snapshot/i);
+  assert.match(activePlan, /no scraping or automated direct messages/i);
+  assert.match(activePlan, /Mercury Customer Reality Lab/);
+
+  const damagedLabels = [
+    'Initial iche', 'Value roposition', 'Pricing aunch', 'First10 ustomers',
+    'Product ed rowth', 'Marketplace istribution', 'Sales ssets', 'First ntegration',
+  ];
+  for (let ideaNumber = 61; ideaNumber <= 70; ideaNumber += 1) {
+    const plan = fs.readFileSync(path.join(ROOT, 'launch-plans', `idea-${String(ideaNumber).padStart(3, '0')}.md`), 'utf8');
+    for (const label of damagedLabels) assert.ok(!plan.includes(label), `idea-${ideaNumber} still contains damaged label ${label}`);
+  }
+});

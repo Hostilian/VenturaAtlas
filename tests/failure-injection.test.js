@@ -8,7 +8,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const { buildUnlocked } = require('../scripts/build-public-artifact');
 const { checkDirectory } = require('../scripts/check-public-artifact');
 
@@ -16,9 +16,24 @@ const ROOT = path.resolve(__dirname, '..');
 const ORCH_PATH = path.join(ROOT, 'scripts', 'va_orchestrator.py');
 
 test('Provider Health Contract — status and no-eligible-provider gate execute', () => {
-  const result = execSync(`python "${ORCH_PATH}" --test`, { cwd: ROOT, encoding: 'utf-8' });
-  assert.ok(result.includes('Provider Health Check'), 'Health check output must execute cleanly');
-  assert.ok(result.includes('Circuit Breaker Status'), 'Circuit breaker status must be present');
+  const isolatedRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'va-provider-contract-'));
+  try {
+    const result = execFileSync(process.env.PYTHON || 'python', [ORCH_PATH, '--test', '--offline'], {
+      cwd: ROOT,
+      encoding: 'utf-8',
+      env: {
+        ...process.env,
+        VA_ORCHESTRATOR_STATE_PATH: path.join(isolatedRoot, 'provider-state.json'),
+        VA_ORCHESTRATOR_STATE_LOCK_PATH: path.join(isolatedRoot, 'provider-state.lock'),
+        VA_ORCHESTRATOR_LOG_PATH: path.join(isolatedRoot, 'provider-health.log'),
+      },
+    });
+    assert.ok(result.includes('Provider Health Check'), 'Health check output must execute cleanly');
+    assert.ok(result.includes('External probes: DISABLED'), 'unit contract must never probe configured providers');
+    assert.ok(result.includes('Circuit Breaker Status'), 'Circuit breaker status must be present');
+  } finally {
+    fs.rmSync(isolatedRoot, { recursive: true, force: true });
+  }
 });
 
 test('Metadata Contract — portfolio arithmetic is internally consistent', () => {
@@ -34,7 +49,12 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   const isolatedRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'va-public-contract-'));
   const distPath = path.join(isolatedRoot, '_site');
   const receiptPath = path.join(isolatedRoot, 'public-artifact-build.json');
+  const trackedProjectionPath = path.join(ROOT, 'data', 'public-sources.json');
+  const projectionBefore = fs.statSync(trackedProjectionPath);
   buildUnlocked({ distPath, receiptPath });
+  const projectionAfter = fs.statSync(trackedProjectionPath);
+  assert.equal(projectionAfter.mtimeMs, projectionBefore.mtimeMs, 'artifact projection must not rewrite the tracked public-sources file');
+  assert.equal(projectionAfter.ctimeMs, projectionBefore.ctimeMs, 'artifact projection must not replace the tracked public-sources file');
   assert.deepEqual(checkDirectory(distPath), [], 'Public artifact security check must pass');
   assert.ok(!fs.existsSync(path.join(distPath, 'data', 'sources.json')), 'raw source registry must not be public');
   assert.ok(fs.existsSync(path.join(distPath, 'data', 'public-sources.json')), 'sanitized public source projection must exist');
@@ -80,6 +100,7 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
   assert.equal(publicMeta.revisions, undefined, 'public metadata must not expose revisions derived from private inputs');
   assert.equal(publicMeta.dataRevision, undefined, 'public metadata must not mislabel private input hashes as public revisions');
   assert.equal(publicMeta.generatedAt, undefined, 'public metadata must not expose a volatile private build timestamp');
+  assert.match(publicMeta.canonicalSourceRevision, /^[a-f0-9]{16}$/, 'Mercury must bind to a stable public canonical-source revision without exposing private revision fields');
   assert.equal(publicMeta.counts.sources, publicSources.length, 'public source count must describe the public projection');
   const publicRankings = JSON.parse(fs.readFileSync(path.join(distPath, 'data', 'rankings.json'), 'utf8'));
   assert.equal(publicRankings.generatedAt, undefined, 'public rankings must not expose volatile daemon timestamps');
@@ -110,6 +131,13 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
     }
   }
   const textExtensions = new Set(['.html', '.js', '.json', '.css', '.md', '.txt', '.xml', '.csv']);
+  const privateMercury = JSON.parse(fs.readFileSync(path.join(ROOT, 'research', 'mercury', 'idea-061-commercial-hypothesis.json'), 'utf8'));
+  const privateMercuryTerms = [
+    privateMercury.workspaceId,
+    privateMercury.segments[0].segmentId,
+    privateMercury.triggers[0].triggerId,
+    privateMercury.offers[0].offerId,
+  ];
   const pending = [distPath];
   while (pending.length) {
     const current = pending.pop();
@@ -120,6 +148,9 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
         const content = fs.readFileSync(absolute, 'utf8');
         for (const term of internalTerms) {
           assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes internal source metadata ${term}`);
+        }
+        for (const term of privateMercuryTerms) {
+          assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes private Mercury value ${term}`);
         }
       }
     }

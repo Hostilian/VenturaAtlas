@@ -201,6 +201,7 @@ function initMercuryLab() {
           ${ws.organizations.length && ws.channels.length ? `
           <form id="interactionForm" class="mercury-form">
             <label>Organization<select name="organizationId" required>${organizationOptions}</select></label>
+            <label>Related opportunity<select name="opportunityId"><option value="">— General buyer interaction —</option>${ws.opportunities.map(item => { const org = ws.organizations.find(candidate => candidate.organizationId === item.organizationId); return `<option value="${esc(item.opportunityId)}">${esc(org?.name || item.organizationId)} — ${esc(item.stage)}</option>`; }).join('')}</select></label>
             <label>Channel<select name="channelId" required>${channelOptions}</select></label>
             <label>Interaction type<select name="interactionType"><option>CONTACT_ATTEMPT</option><option>CONVERSATION</option><option>FOLLOW_UP</option><option>PILOT_REVIEW</option><option>LOSS_REVIEW</option></select></label>
             <label>Outcome<select name="outcome"><option>UNKNOWN</option><option>NO_REPLY</option><option>REPLIED</option><option>QUALIFIED</option><option>DISQUALIFIED</option><option>NEXT_STEP</option><option>NO_INTEREST</option></select></label>
@@ -208,6 +209,7 @@ function initMercuryLab() {
             <fieldset><legend>Objection categories observed</legend>${api.MERCURY_OBJECTION_CATEGORIES.map(category => `<label style="display:block"><input type="checkbox" name="objectionCategories" value="${category}"> ${category.replaceAll('_', ' ')}</label>`).join('')}</fieldset>
             <label>Objection notes<textarea name="objections" placeholder="One observed objection per line; do not infer private motives"></textarea></label>
             <fieldset><legend>Signals supported by this evidence</legend>${api.MERCURY_SIGNALS.map(signal => `<label style="display:block"><input type="checkbox" name="signals" value="${signal}"> ${signal.replaceAll('_', ' ')}</label>`).join('')}</fieldset>
+            <p class="small">Offer-accepted and commitment signals require the related opportunity to have a concrete offer already recorded as OFFERED.</p>
             <label>Private evidence reference<input name="evidenceRef" required placeholder="e.g. private-note-2026-08-25-01"></label>
             <p class="small">A reference is not proof by itself; keep the consented source in your approved private evidence store.</p>
             <button class="button" type="submit">Record interaction</button>
@@ -271,7 +273,7 @@ function initMercuryLab() {
           const events = ws.commercialEvents.filter(item => item.organizationId === org.organizationId);
           return `<details><summary><strong>${esc(org.name)}</strong> — ${esc(org.commercialStage)}</summary>
             <p>${esc(org.actorType.replaceAll('_', ' '))} · reachability: ${esc(org.reachabilityBasis)} · ref: <code>${esc(org.evidenceRef)}</code></p>
-            <h3>Interactions</h3>${interactions.length ? `<ol>${interactions.map(item => `<li>${esc(item.occurredAt)} — ${esc(item.interactionType)} / ${esc(item.outcome)} · ${esc(item.facts.join('; '))}${item.objections.length ? ` · objections: ${esc(item.objections.join('; '))}` : ''} · ref <code>${esc(item.evidenceRef)}</code></li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
+            <h3>Interactions</h3>${interactions.length ? `<ol>${interactions.map(item => `<li>${esc(item.occurredAt)} — ${esc(item.interactionType)} / ${esc(item.outcome)}${item.opportunityId ? ` · opportunity <code>${esc(item.opportunityId)}</code>` : ''} · ${esc(item.facts.join('; '))}${item.objections.length ? ` · objections: ${esc(item.objections.join('; '))}` : ''} · ref <code>${esc(item.evidenceRef)}</code></li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
             <h3>Opportunities</h3>${opportunities.length ? `<ol>${opportunities.map(item => `<li>${esc(item.opportunityId)} — current ${esc(item.stage)}<ul>${item.stageHistory.map(stage => `<li>${esc(stage.recordedAt)} · ${esc(stage.stage)} · ref <code>${esc(stage.evidenceRef)}</code></li>`).join('')}</ul>${item.lossReason ? `Loss: ${esc(item.lossReason)}` : ''}</li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
             <h3>Commercial events</h3>${events.length ? `<ol>${events.map(item => `<li>${esc(item.occurredAt)} — ${esc(item.eventType)}${item.amount == null ? '' : ` · ${esc(item.currency)} ${esc(item.amount)}`} · ref <code>${esc(item.evidenceRef)}</code></li>`).join('')}</ol>` : '<p class="empty">None.</p>'}
           </details>`;
