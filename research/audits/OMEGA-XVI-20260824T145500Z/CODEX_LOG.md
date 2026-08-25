@@ -16,6 +16,7 @@
 
 - **Believed:** source quality might repair stale projections before checking them.
 - **Observed:** `run-quality.js` executed `build-repository-meta.js` in the source profile before its check phase.
-- **Changed:** source quality now uses the generator's non-mutating `--check` mode; any source-profile worktree mutation fails closed as `worktree-purity`.
-- **Proof:** `node --test tests/quality-receipt.test.js` passed 7/7, including a deliberate mutation counterexample; `npm run check:projections` passed; `node scripts/truth-reconciler.js --check` returned `WARN` rather than false `PASS`.
+- **Changed:** source quality now uses the generator's non-mutating `--check` mode. A Git-visible worktree change makes an otherwise successful source run fail as `worktree-purity`; an existing validator failure remains the primary failure while mutation is separately recorded.
+- **Adversarial correction:** the first continuation still allowed a unit test to rebuild ignored `_site` and a private receipt. That build now targets an isolated temporary directory. Missing Git revision/status evidence also fails closed.
+- **Proof:** `node --test tests/quality-receipt.test.js` passed 9/9, including deliberate mutation and missing-Git counterexamples; `npm run check:projections` passed; `node scripts/truth-reconciler.js --check` returned `WARN`, not readiness PASS.
 - **Uncertain:** cloud provider proof remains historical/stale; external customer evidence, GCP execution, and live payment/webhook persistence remain unverified or blocked by external authority.

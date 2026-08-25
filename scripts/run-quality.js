@@ -70,7 +70,9 @@ function parseStatusPaths(raw) {
 }
 
 function statusPaths() {
-  return parseStatusPaths(gitOutput(['status', '--porcelain=v1', '-z', '--untracked-files=all']));
+  const raw = gitOutput(['status', '--porcelain=v1', '-z', '--untracked-files=all']);
+  if (raw === null) throw new Error('unable to establish Git worktree status');
+  return parseStatusPaths(raw);
 }
 
 function snapshotWorktree() {
@@ -144,7 +146,15 @@ function runQuality(options = {}) {
   const environment = options.environment || process.env;
   const startedAt = new Date();
   const startingCommit = commit();
-  const before = snapshot();
+  let gitSnapshotAvailable = true;
+  let before;
+  try {
+    before = snapshot();
+  } catch (error) {
+    gitSnapshotAvailable = false;
+    before = new Map();
+    logger.error?.(`[QUALITY] ${error.message}`);
+  }
   const validators = [];
   const durations = {};
   let failedPhase = null;
@@ -203,7 +213,15 @@ function runQuality(options = {}) {
     }
   }
   const finishingCommit = commit();
-  if (startingCommit && finishingCommit && startingCommit !== finishingCommit) {
+  if (!startingCommit || !finishingCommit || !gitSnapshotAvailable) {
+    validators.push({ id: 'git-evidence', status: 'failed', exitCode: 1, durationSeconds: 0 });
+    durations['git-evidence'] = 0;
+    if (exitCode === 0) {
+      failedPhase = 'git-evidence';
+      failedCommand = 'Git revision and worktree evidence must be available';
+      exitCode = 1;
+    }
+  } else if (startingCommit !== finishingCommit) {
     validators.push({ id: 'commit-stability', status: 'failed', exitCode: 1, durationSeconds: 0 });
     durations['commit-stability'] = 0;
     if (exitCode === 0) {
@@ -212,11 +230,26 @@ function runQuality(options = {}) {
       exitCode = 1;
     }
   }
-  const after = snapshot();
+  let after;
+  try {
+    after = snapshot();
+  } catch (error) {
+    gitSnapshotAvailable = false;
+    after = new Map(before);
+    if (!validators.some(item => item.id === 'git-evidence')) {
+      validators.push({ id: 'git-evidence', status: 'failed', exitCode: 1, durationSeconds: 0 });
+      durations['git-evidence'] = 0;
+    }
+    if (exitCode === 0) {
+      failedPhase = 'git-evidence';
+      failedCommand = 'Git revision and worktree evidence must be available';
+      exitCode = 1;
+    }
+  }
   const affectedPaths = changedPaths(before, after);
   const warnings = [];
   if (affectedPaths.length > 0) {
-    warnings.push('The quality run changed worktree content; inspect affectedPaths.');
+    warnings.push('The worktree changed during the quality run; inspect affectedPaths.');
     // Source verification is pure by contract. A mutation means the checker
     // (or one of its validators) repaired or altered the subject under test.
     if (profile === 'source' && exitCode === 0) {

@@ -157,7 +157,8 @@ const PAGE_DATA_REQUIREMENTS = {
   prompts: ['prompts', 'ideas'],
   sources: ['sources'],
   relationships: ['ideas', 'relationships'],
-  categories: ['categories', 'ideas', 'taxonomy']
+  categories: ['categories', 'ideas', 'taxonomy'],
+  mercury: ['ideas']
 };
 
 async function fetchDataset(root, file) {
@@ -1117,6 +1118,7 @@ ${taxonomy ? `<!-- Normalized Positioning -->
   <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
     <button class="button secondary sm" id="challengeClaimBtn">🚩 Challenge Claim</button>
     <button class="button primary sm" id="requestValidationBtn">Save a Validation Request</button>
+    <a class="button primary sm" href="${VA.base}/docs/mercury.html?idea=${encodeURIComponent(x.id)}">Plan customer evidence in Mercury</a>
   </div>
   <p style="font-size:0.82rem;color:var(--muted);margin:0.75rem 0 0">This static page stores requests in this browser only. It does not launch an AI or background job.</p>
   <div id="userFeedbackOutput" style="margin-top:0.75rem"></div>
@@ -1559,6 +1561,7 @@ function renderSiteShell() {
             ${navLink('dossiers', 'docs/dossiers.html', 'Dossiers')}
             ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
             ${navLink('room', 'docs/room.html', 'Decision workspace')}
+            ${navLink('mercury', 'docs/mercury.html', 'Customer Reality Lab')}
             ${navLink('decisions', 'docs/decisions.html', 'Decision log')}
             ${navLink('export', 'docs/export.html', 'Export')}
           </div>
@@ -1589,6 +1592,7 @@ function renderSiteShell() {
         ${navLink('dossiers', 'docs/dossiers.html', 'Dossiers')}
         ${navLink('prompts', 'docs/prompts.html', 'Research prompts')}
         ${navLink('room', 'docs/room.html', 'Decision workspace')}
+        ${navLink('mercury', 'docs/mercury.html', 'Customer Reality Lab')}
         ${navLink('export', 'docs/export.html', 'Export')}
       </section>
       <section><h2>Research &amp; trust</h2>

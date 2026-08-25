@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercury Customer Reality Lab — Venture Atlas OS</title>
+  <meta name="description" content="A private, browser-local notebook for commercial hypotheses, buyer conversations, offers, pipeline, payment evidence, activation, and retention.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="mercury" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./room.html">Decision Studio</a>
+        <a href="./mercury.html" aria-current="page">Customer Lab</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <main id="main" style="max-width:1240px;margin:0 auto;padding:1.5rem">
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:1rem">
+      <a href="../index.html">Ideas</a><span class="sep">›</span>
+      <a href="./room.html">Decision Studio</a><span class="sep">›</span>
+      <span>Mercury Customer Reality Lab</span>
+    </nav>
+    <noscript><div class="panel" style="padding:1.5rem"><h1>Mercury requires JavaScript</h1><p>This local browser notebook cannot read or save its private workspace without JavaScript. No commercial data has been sent anywhere.</p></div></noscript>
+    <div class="notice" style="margin-bottom:1rem">Mercury does not contact prospects, send messages, record or transcribe calls, run AI, or start background jobs. Exports are unencrypted JSON and must be handled as private data.</div>
+    <div id="mercuryApp" aria-busy="true">
+      <p role="status">Loading the private Customer Reality Lab…</p>
+    </div>
+  </main>
+
+  <script src="../assets/js/config.js?v=2.7.1"></script>
+  <script src="../assets/js/core/studio-store.js?v=2.7.1"></script>
+  <script src="../assets/js/core/mercury-store.js?v=2.7.1"></script>
+  <script src="../assets/js/site.js?v=2.7.1"></script>
+  <script src="../assets/js/features/mercury.js?v=2.7.1"></script>
+  <script>
+    window.addEventListener('va:ready', () => {
+      const app = document.getElementById('mercuryApp');
+      if (app) app.removeAttribute('aria-busy');
+      if (typeof initMercuryLab === 'function') initMercuryLab();
+    }, { once: true });
+  </script>
+</body>
+</html>

@@ -4,7 +4,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const { parseStatusPaths, runQuality, shouldUseShell } = require('../scripts/run-quality');
+const { PROFILES, parseStatusPaths, runQuality, shouldUseShell } = require('../scripts/run-quality');
 
 const silentLogger = { log() {} };
 
@@ -144,4 +144,27 @@ test('source quality fails closed when a verifier mutates the worktree', () => {
   assert.equal(result.receipt.status, 'failed');
   assert.equal(result.receipt.failedPhase, 'worktree-purity');
   assert.deepEqual(result.receipt.affectedPaths, ['README.md']);
+});
+
+test('real source profile checks repository metadata without regenerating it', () => {
+  const metadataSteps = PROFILES.source.filter(step => step[0].startsWith('repository-meta'));
+  assert.deepEqual(metadataSteps, [
+    ['repository-meta-check', process.execPath, ['scripts/build-repository-meta.js', '--check']],
+  ]);
+});
+
+test('quality fails closed when Git revision evidence is unavailable', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'va-quality-no-git-'));
+  const result = runQuality({
+    steps: [{ id: 'unit', command: 'node', args: ['fixture.js'] }],
+    receiptPath: path.join(directory, 'receipt.json'),
+    execute: () => ({ status: 0 }),
+    snapshot: () => new Map(),
+    sourceCommit: () => null,
+    environment: {},
+    logger: silentLogger,
+  });
+  assert.equal(result.exitCode, 1);
+  assert.equal(result.receipt.failedPhase, 'git-evidence');
+  assert.equal(result.receipt.status, 'failed');
 });

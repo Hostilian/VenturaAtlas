@@ -6,8 +6,11 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const { execSync } = require('child_process');
+const { buildUnlocked } = require('../scripts/build-public-artifact');
+const { checkDirectory } = require('../scripts/check-public-artifact');
 
 const ROOT = path.resolve(__dirname, '..');
 const ORCH_PATH = path.join(ROOT, 'scripts', 'va_orchestrator.py');
@@ -28,11 +31,11 @@ test('Metadata Contract — portfolio arithmetic is internally consistent', () =
 });
 
 test('Public Artifact Contract — rebuild and enforce private-path projection', () => {
-  const distPath = path.join(ROOT, '_site');
-  execSync(`node "${path.join(ROOT, 'scripts', 'build-public-artifact.js')}"`, { cwd: ROOT, encoding: 'utf-8' });
-  const checkPath = path.join(ROOT, 'scripts', 'check-public-artifact.js');
-  const result = execSync(`node "${checkPath}"`, { cwd: ROOT, encoding: 'utf-8' });
-  assert.ok(result.includes('passed cleanly'), 'Public artifact security check must pass');
+  const isolatedRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'va-public-contract-'));
+  const distPath = path.join(isolatedRoot, '_site');
+  const receiptPath = path.join(isolatedRoot, 'public-artifact-build.json');
+  buildUnlocked({ distPath, receiptPath });
+  assert.deepEqual(checkDirectory(distPath), [], 'Public artifact security check must pass');
   assert.ok(!fs.existsSync(path.join(distPath, 'data', 'sources.json')), 'raw source registry must not be public');
   assert.ok(fs.existsSync(path.join(distPath, 'data', 'public-sources.json')), 'sanitized public source projection must exist');
   assert.ok(!fs.existsSync(path.join(distPath, 'data', 'build-manifest.json')), 'internal build manifest must not expose staging digests');

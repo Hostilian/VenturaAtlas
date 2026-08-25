@@ -317,7 +317,9 @@ function copyRecursive(src, dest) {
   return count;
 }
 
-function buildUnlocked() {
+function buildUnlocked(options = {}) {
+  const distPath = options.distPath || DIST;
+  const receiptPath = options.receiptPath || ARTIFACT_BUILD_RECEIPT;
   console.log('=== Building Public GitHub Pages Staging Directory (_site) ===\n');
 
   // Fail closed: a stale/missing public evidence projection must abort the build.
@@ -353,17 +355,17 @@ function buildUnlocked() {
       .flatMap(source => [source.id, source.title].filter(Boolean))
   );
 
-  if (fs.existsSync(DIST)) {
-    fs.rmSync(DIST, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+  if (fs.existsSync(distPath)) {
+    fs.rmSync(distPath, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
   }
-  fs.mkdirSync(DIST, { recursive: true });
+  fs.mkdirSync(distPath, { recursive: true });
 
   let totalFiles = 0;
 
   for (const f of ALLOW_FILES) {
     const srcPath = path.join(ROOT, f);
     if (fs.existsSync(srcPath) && !isDenied(f)) {
-      copyPublicFile(srcPath, path.join(DIST, f));
+      copyPublicFile(srcPath, path.join(distPath, f));
       totalFiles++;
     }
   }
@@ -371,26 +373,26 @@ function buildUnlocked() {
   for (const d of ALLOW_DIRS) {
     const srcDir = path.join(ROOT, d);
     if (fs.existsSync(srcDir) && !isDenied(d)) {
-      totalFiles += copyRecursive(srcDir, path.join(DIST, d));
+      totalFiles += copyRecursive(srcDir, path.join(distPath, d));
     }
   }
 
   for (const relativePath of ALLOW_PATHS) {
     const srcPath = path.join(ROOT, relativePath);
     if (fs.existsSync(srcPath) && !isDenied(relativePath)) {
-      const destPath = path.join(DIST, relativePath);
+      const destPath = path.join(distPath, relativePath);
       fs.mkdirSync(path.dirname(destPath), { recursive: true });
       copyPublicFile(srcPath, destPath);
       totalFiles++;
     }
   }
 
-  const artifactManifest = buildArtifactManifest(DIST);
+  const artifactManifest = buildArtifactManifest(distPath);
   if (artifactManifest.fileCount !== totalFiles) {
     throw new Error(`Public artifact changed during build: copied ${totalFiles} files but hashed ${artifactManifest.fileCount}`);
   }
-  fs.mkdirSync(path.dirname(ARTIFACT_BUILD_RECEIPT), { recursive: true });
-  const temporaryReceipt = `${ARTIFACT_BUILD_RECEIPT}.${process.pid}.tmp`;
+  fs.mkdirSync(path.dirname(receiptPath), { recursive: true });
+  const temporaryReceipt = `${receiptPath}.${process.pid}.tmp`;
   fs.writeFileSync(temporaryReceipt, `${JSON.stringify({
     schemaVersion: 1,
     receiptKind: 'public-artifact-build',
@@ -398,12 +400,12 @@ function buildUnlocked() {
     totalBytes: artifactManifest.totalBytes,
     treeSha256: artifactManifest.treeSha256,
   }, null, 2)}\n`, 'utf8');
-  fs.renameSync(temporaryReceipt, ARTIFACT_BUILD_RECEIPT);
-  console.log(`[OK] Staging complete! ${totalFiles} files written to: ${DIST}`);
+  fs.renameSync(temporaryReceipt, receiptPath);
+  console.log(`[OK] Staging complete! ${totalFiles} files written to: ${distPath}`);
 }
 
-function build() {
-  return withPublicArtifactLock(buildUnlocked);
+function build(options = {}) {
+  return withPublicArtifactLock(() => buildUnlocked(options));
 }
 
 if (require.main === module) {

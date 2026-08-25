@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0.0",
+  "workspaceMode": "UNVERIFIED_DRAFT",
+  "workspaceId": "mercury-idea-061-hypothesis",
+  "privacyScope": "LOCAL_BROWSER_ONLY",
+  "canonicalIdeaId": "idea-061",
+  "canonicalIdeaRevision": "7aec9e7c874f40f778c8f48108da5c52d6c24944",
+  "ventureName": "FactBounty — Buyer-Funded Product Proof Exchange",
+  "createdAt": "2026-08-25T00:00:00Z",
+  "updatedAt": "2026-08-25T00:00:00Z",
+  "segments": [
+    {
+      "segmentId": "segment-fit-sensitive-online-shoppers",
+      "parentSegmentId": null,
+      "name": "Online shoppers facing a current fit-sensitive purchase decision",
+      "description": "Hypothesis: shoppers considering an item where one missing physical fact could cause a costly return and where retailer documentation does not resolve the question.",
+      "buyerRoles": ["individual purchaser"],
+      "userRoles": ["individual purchaser"],
+      "budgetOwner": "individual purchaser",
+      "budgetSource": "discretionary purchase budget — unverified",
+      "whyNow": "A purchase decision is pending and the missing fact blocks confidence; frequency and urgency remain UNKNOWN.",
+      "currentAlternatives": ["ask seller", "search reviews", "accept return risk", "do not purchase"],
+      "reachability": "UNKNOWN",
+      "status": "HYPOTHESIS"
+    }
+  ],
+  "triggers": [
+    {
+      "triggerId": "trigger-unanswered-fit-question",
+      "segmentId": "segment-fit-sensitive-online-shoppers",
+      "type": "PURCHASE_BLOCKER",
+      "description": "A shopper has a specific, objective product question that available listings and reviews do not answer.",
+      "detectability": "PRIVATE",
+      "urgencyWindow": "Before the intended purchase; actual duration UNKNOWN",
+      "messageImplication": "Resolve one objective purchase blocker with guided evidence.",
+      "status": "HYPOTHESIS"
+    }
+  ],
+  "offers": [
+    {
+      "offerId": "offer-single-proof-bounty",
+      "segmentId": "segment-fit-sensitive-online-shoppers",
+      "name": "Single guided proof request",
+      "motion": "MARKETPLACE",
+      "deliverable": "One checklist-bound visual proof response for one objective product question.",
+      "scope": "One request, one evidence checklist, no product-quality guarantee.",
+      "price": {
+        "amount": 4,
+        "currency": "EUR",
+        "basis": "per completed proof request",
+        "evidenceStatus": "HYPOTHESIS"
+      },
+      "timeToValue": "UNKNOWN",
+      "pilotType": "PAID",
+      "status": "HYPOTHESIS"
+    }
+  ],
+  "channels": [
+    {
+      "channelId": "channel-contextual-shopping-community",
+      "segmentId": "segment-fit-sensitive-online-shoppers",
+      "name": "Contextual shopping communities",
+      "motion": "COMMUNITY_LED",
+      "accessPath": "Only permission-respecting communities where product questions are already asked; no automated outreach.",
+      "status": "HYPOTHESIS"
+    }
+  ],
+  "organizations": [],
+  "interactions": [],
+  "opportunities": [],
+  "commercialEvents": [],
+  "hypothesisHistory": []
+}

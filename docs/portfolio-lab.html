@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Lab · ORBIT · Venture Atlas OS</title>
+  <meta name="description" content="ORBIT — Venture Portfolio Operating System. Compose bounded bets, analyze correlated risks, generate venture sequences, and track forecast calibration across your idea universe.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.8.0">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="portfolio-lab" data-root="..">
+
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- ── Header ── -->
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks" role="list">
+        <a href="../#directory" role="listitem">Ideas</a>
+        <a href="./rankings.html" role="listitem">Rankings</a>
+        <a href="./compare.html" role="listitem">Compare</a>
+        <a href="./matcher.html" role="listitem">Matcher</a>
+        <a href="./calculator.html" role="listitem">Calculator</a>
+        <a href="./tags.html" role="listitem">Tags</a>
+        <a href="./dossiers.html" role="listitem">Dossiers</a>
+        <a href="./prompts.html" role="listitem">Prompts</a>
+        <a href="./sources.html" role="listitem">Sources</a>
+        <a href="./timeline.html" role="listitem">Timeline</a>
+        <a href="./export.html" role="listitem">Export</a>
+        <a href="./decisions.html" role="listitem">Decisions</a>
+        <a href="./room.html" role="listitem">Decision Studio</a>
+        <a href="./room-compare.html" role="listitem">Compare Packets</a>
+        <a href="./portfolio-lab.html" role="listitem" aria-current="page">🔬 Portfolio Lab</a>
+        <a href="./collaboration.html" role="listitem">Collaboration</a>
+        <a href="./research.html" role="listitem">Research</a>
+        <a href="./methodology.html" role="listitem">Methodology</a>
+        <a href="./completeness.html" role="listitem">Audit</a>
+        <a href="./about.html" role="listitem">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <!-- ── Main ── -->
+  <main id="main">
+    <div class="pl-page">
+
+      <!-- ── Page Header ── -->
+      <div class="pl-header">
+        <div class="eyebrow">ORBIT — Venture Portfolio Operating System</div>
+        <h1>Portfolio Lab</h1>
+        <p>
+          Compose bounded bets from your idea universe. Analyze correlated risks, shared assets, and recommended sequences.
+          Track forecast calibration over time. The question is no longer <em>which idea scores highest</em> — it is
+          <em>what portfolio of small bets, in what sequence, maximizes strategic learning with scarce resources.</em>
+        </p>
+        <div class="notice" role="note">
+          <strong>Decision-support tool only.</strong> Portfolio allocations are recommendations derived from declared constraints and available data.
+          They are never investment advice. False precision is worse than an honest range — all values use bands where appropriate.
+        </div>
+      </div>
+
+      <!-- ── Portfolio Selector ── -->
+      <div class="pl-selector-bar" role="toolbar" aria-label="Portfolio management">
+        <label for="portfolioSelect">Active portfolio:</label>
+        <select id="portfolioSelect" aria-label="Select portfolio"></select>
+        <button class="button secondary" id="createPortfolioBtn" aria-controls="newPortfolioModal">+ New portfolio</button>
+      </div>
+
+      <!-- ── New Portfolio Modal ── -->
+      <div id="newPortfolioModal" hidden role="dialog" aria-modal="true" aria-labelledby="newPortfolioTitle">
+        <div class="pl-modal-overlay">
+          <div class="pl-modal">
+            <h3 id="newPortfolioTitle">Create New Portfolio</h3>
+            <p class="pl-note">Give it a descriptive name — e.g. "Bootstrap EU Compliance Probe" or "Technical Learning Q4 2026".</p>
+            <label class="pl-field" for="newPortfolioName">
+              <span class="pl-field-label">Portfolio name</span>
+              <input class="pl-input" id="newPortfolioName" type="text" placeholder="e.g. Bootstrap EU Compliance Probe" autocomplete="off">
+            </label>
+            <div class="pl-modal-actions">
+              <button class="button ghost" id="cancelPortfolioBtn">Cancel</button>
+              <button class="button primary" id="confirmCreatePortfolioBtn">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Tabs ── -->
+      <div class="pl-tabs" role="tablist" aria-label="Portfolio Lab sections">
+        <button class="pl-tab-btn" data-tab-btn="tab-build" role="tab" aria-selected="true" aria-controls="tab-build-panel" id="tab-build-btn">
+          🏗 Build Portfolio
+        </button>
+        <button class="pl-tab-btn" data-tab-btn="tab-analyze" role="tab" aria-selected="false" aria-controls="tab-analyze-panel" id="tab-analyze-btn">
+          📊 Analyze
+        </button>
+        <button class="pl-tab-btn" data-tab-btn="tab-forecasts" role="tab" aria-selected="false" aria-controls="tab-forecasts-panel" id="tab-forecasts-btn">
+          🎯 Forecasts
+        </button>
+        <button class="pl-tab-btn" data-tab-btn="tab-snapshot" role="tab" aria-selected="false" aria-controls="tab-snapshot-panel" id="tab-snapshot-btn">
+          📸 Snapshot
+        </button>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════
+           TAB 1: BUILD PORTFOLIO
+      ══════════════════════════════════════════════════════════ -->
+      <section id="tab-build-panel" data-tab-panel="tab-build" role="tabpanel" aria-labelledby="tab-build-btn">
+
+        <!-- Resource Envelope -->
+        <div class="pl-card">
+          <h2 class="pl-card-title">Resource Envelope &amp; Strategic Context</h2>
+          <p class="pl-note">Define your constraints. The system never assumes infinite founder attention. A portfolio that exhausts all capacity before learning anything is a bad portfolio.</p>
+          <div id="envelopePanel">
+            <!-- Rendered by portfolio-lab.js -->
+            <div class="pl-empty">Loading…</div>
+          </div>
+        </div>
+
+        <!-- Active Bets -->
+        <div class="pl-card">
+          <h2 class="pl-card-title">Venture Bets</h2>
+          <p class="pl-note">
+            A <strong>venture bet</strong> is a bounded commitment to learn or create value from an idea. One idea can produce multiple bets with radically different cost, time, and reversibility.
+            Prefer reversible bets when uncertainty is high. Require stronger evidence before irreversible commitments.
+          </p>
+          <div id="betsPanel">
+            <!-- Rendered by portfolio-lab.js -->
+            <div class="pl-empty">Loading…</div>
+          </div>
+        </div>
+
+        <!-- Idea Search -->
+        <div class="pl-card pl-search-wrap">
+          <h2 class="pl-card-title">Add Ideas as Bets</h2>
+          <p class="pl-note">Search your idea universe. A bet in the portfolio is distinct from the canonical idea — it adds a bounded commitment context.</p>
+          <div class="pl-search-row">
+            <input class="pl-input" id="ideaSearch" type="search" placeholder="Search by name, category, or buyer…" aria-label="Search ideas" autocomplete="off">
+          </div>
+          <div id="ideaSearchResults" role="list" aria-label="Idea search results"></div>
+        </div>
+
+        <!-- About Commitment Levels -->
+        <details class="pl-card pl-details">
+          <summary>Commitment level reference (0–8)</summary>
+          <table class="pl-table" style="margin-top:0.75rem">
+            <thead><tr><th>Level</th><th>Label</th><th>Typical action</th><th>Cost</th><th>Reversibility</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>WATCH</td><td>Monitor externally — no active commitment</td><td>Zero</td><td>Fully reversible</td></tr>
+              <tr><td>1</td><td>RESEARCH PROBE</td><td>Desk research, buyer interviews (5–15)</td><td>Time only</td><td>Highly reversible</td></tr>
+              <tr><td>2</td><td>MANUAL TEST</td><td>Offer manually before building</td><td>€0–€50</td><td>Reversible</td></tr>
+              <tr><td>3</td><td>MICRO-PROTOTYPE</td><td>Functional proof-of-concept for 1 buyer</td><td>€50–€300</td><td>Reversible</td></tr>
+              <tr><td>4</td><td>CUSTOMER PILOT</td><td>Real buyer, real workflow, paid or unpaid</td><td>€100–€500</td><td>Partially reversible</td></tr>
+              <tr><td>5</td><td>REPEATABLE VALIDATION</td><td>3+ paying customers, documented</td><td>€300–€2k</td><td>Partially reversible</td></tr>
+              <tr><td>6</td><td>MVP</td><td>Polished product, self-serve onboarding</td><td>€1k–€10k</td><td>Expensive to reverse</td></tr>
+              <tr><td>7</td><td>COMMERCIAL LAUNCH</td><td>Marketing, sales motion, support</td><td>€5k+</td><td>Expensive to reverse</td></tr>
+              <tr><td>8</td><td>SCALE</td><td>Hiring, paid acquisition, infrastructure</td><td>€20k+</td><td>Largely irreversible</td></tr>
+            </tbody>
+          </table>
+          <p class="pl-note-small">Do not force all ventures through identical stages. Venture-specific variants are valid — what matters is preserving: commitment, cost, reversibility, information gained, and next option unlocked.</p>
+        </details>
+
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           TAB 2: ANALYZE
+      ══════════════════════════════════════════════════════════ -->
+      <section id="tab-analyze-panel" data-tab-panel="tab-analyze" role="tabpanel" aria-labelledby="tab-analyze-btn" hidden>
+        <div id="analyzeContent">
+          <div class="pl-empty">Select the Analyze tab to run portfolio analysis.</div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           TAB 3: FORECASTS
+      ══════════════════════════════════════════════════════════ -->
+      <section id="tab-forecasts-panel" data-tab-panel="tab-forecasts" role="tabpanel" aria-labelledby="tab-forecasts-btn" hidden>
+
+        <div class="pl-card" style="background:var(--accent-l); border-color:var(--accent);">
+          <h2 class="pl-card-title" style="color:var(--accent)">Forecast Registry</h2>
+          <p class="pl-note">
+            A probability is not trustworthy because it came from a confident source or has two decimal places.
+            Performance must be measured after outcomes resolve. A forecast is a public commitment — preserved immutably so hindsight does not rewrite history.
+            Calibration requires many resolved forecasts. Do not draw conclusions from small samples.
+          </p>
+          <p class="pl-note"><strong>Brier score:</strong> (probability − outcome)². Lower is better. A naive 50% baseline scores 0.25 always.</p>
+        </div>
+
+        <div id="forecastsContent">
+          <div class="pl-empty">Loading forecasts…</div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           TAB 4: SNAPSHOT
+      ══════════════════════════════════════════════════════════ -->
+      <section id="tab-snapshot-panel" data-tab-panel="tab-snapshot" role="tabpanel" aria-labelledby="tab-snapshot-btn" hidden>
+
+        <div class="pl-card" style="background:var(--panel2);">
+          <h2 class="pl-card-title">Strategic Memory</h2>
+          <p class="pl-note">
+            A snapshot preserves: selected bets, allocations, active forecasts, constraints, and assumptions — all at a specific moment.
+            Later review can ask honestly: <em>Did we reject this for the right reason? Did our forecasts reflect what we actually knew?
+            Which assumptions failed? Which signals were noise?</em>
+          </p>
+          <p class="pl-note">Do not optimize for looking right in hindsight. Optimize for making better future decisions.</p>
+        </div>
+
+        <div id="snapshotContent">
+          <div class="pl-empty">Loading snapshots…</div>
+        </div>
+      </section>
+
+      <!-- ── ORBIT Principles Footer ── -->
+      <details class="pl-card pl-details" style="margin-top:2rem">
+        <summary>ORBIT Design Principles</summary>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin-top:1rem">
+          <div>
+            <strong>Portfolio value ≠ sum of idea scores</strong>
+            <p class="pl-note">A mediocre standalone venture can be a superb stepping stone. Two strong ideas can form a weak portfolio if their risks are identical.</p>
+          </div>
+          <div>
+            <strong>Prefer reversible actions under uncertainty</strong>
+            <p class="pl-note">The point of an inexpensive early action may not be immediate profit. It buys the right — but not obligation — to make a larger commitment after uncertainty falls.</p>
+          </div>
+          <div>
+            <strong>Attention is a resource</strong>
+            <p class="pl-note">Three unrelated 10-hour projects may impose greater cognitive burden than one 30-hour project. Model it.</p>
+          </div>
+          <div>
+            <strong>Reserve capacity has value</strong>
+            <p class="pl-note">Allocating 100% of time/capital automatically is a mistake. Uncommitted reserve responds to new information.</p>
+          </div>
+          <div>
+            <strong>A failed bet can have high quality</strong>
+            <p class="pl-note">A failure is high-quality if it was cheap, resolved important uncertainty, prevented larger loss, and created reusable learning.</p>
+          </div>
+          <div>
+            <strong>Calibration must face reality</strong>
+            <p class="pl-note">A probability is not useful because it sounds intelligent. Its predictions must resolve. Brier scores accumulate over many questions — sample size matters.</p>
+          </div>
+        </div>
+      </details>
+
+    </div><!-- /.pl-page -->
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <span>Venture Atlas OS · ORBIT Portfolio Lab</span>
+      <nav aria-label="Footer navigation">
+        <a href="../">Home</a>
+        <a href="./matcher.html">Matcher</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./methodology.html">Methodology</a>
+        <a href="./about.html">About</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ── -->
+  <script src="../assets/js/features/portfolio-engine.js"></script>
+  <script src="../assets/js/features/portfolio-lab.js"></script>
+  <script>
+    // Nav toggle (reuse existing pattern)
+    const navToggle = document.getElementById('navToggle');
+    const navlinks  = document.getElementById('navlinks');
+    if (navToggle && navlinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!open));
+        navlinks.classList.toggle('open', !open);
+      });
+    }
+    // Modal cancel
+    document.getElementById('cancelPortfolioBtn')?.addEventListener('click', () => {
+      document.getElementById('newPortfolioModal').hidden = true;
+    });
+  </script>
+
+</body>
+</html>

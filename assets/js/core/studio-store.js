@@ -238,6 +238,7 @@
         variants: [],
         decision: null,
         experiments: [],
+        mercury: null,
         activity: [{
           id: generateId('act'),
           timestamp: new Date().toISOString(),
@@ -289,6 +290,7 @@
         variants: Array.isArray(raw.variants) ? raw.variants : [],
         decision: raw.decision && typeof raw.decision === 'object' ? raw.decision : null,
         experiments: Array.isArray(raw.experiments) ? raw.experiments : [],
+        mercury: raw.mercury && typeof raw.mercury === 'object' ? raw.mercury : null,
         activity: Array.isArray(raw.activity) ? raw.activity : []
       };
 
@@ -914,6 +916,28 @@
         return true;
       }
       return false;
+    }
+
+    /* ================================================================
+       MERCURY COMMERCIAL REALITY ADAPTER
+       ================================================================ */
+    getMercuryWorkspace() {
+      return this.workspace?.mercury
+        ? JSON.parse(JSON.stringify(this.workspace.mercury))
+        : null;
+    }
+
+    setMercuryWorkspace(mercuryWorkspace) {
+      if (!this.workspace) return false;
+      if (mercuryWorkspace !== null && (!mercuryWorkspace || typeof mercuryWorkspace !== 'object')) {
+        return false;
+      }
+      this.workspace.mercury = mercuryWorkspace
+        ? JSON.parse(JSON.stringify(mercuryWorkspace))
+        : null;
+      this.save();
+      this.emit('mercuryChanged', this.workspace.mercury);
+      return true;
     }
 
     /* ================================================================

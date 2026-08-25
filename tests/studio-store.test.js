@@ -31,6 +31,28 @@ test('StudioStore — Initialization and User Profile', () => {
   assert.equal(updatedUser.color, 'hsl(210, 80%, 50%)');
 });
 
+test('StudioStore — Mercury state round-trips inside the existing decision packet', () => {
+  mockStorage.clear();
+  const store = new StudioStore();
+  const mercury = {
+    schemaVersion: '1.0.0',
+    workspaceMode: 'UNVERIFIED_DRAFT',
+    workspaceId: 'mercury-test',
+    privacyScope: 'LOCAL_BROWSER_ONLY',
+    canonicalIdeaId: 'idea-061',
+    ventureName: 'FactBounty',
+    segments: [], triggers: [], offers: [], channels: [], organizations: [],
+    interactions: [], opportunities: [], commercialEvents: [], hypothesisHistory: []
+  };
+  assert.equal(store.setMercuryWorkspace(mercury), true);
+  const packet = store.exportDecisionPacket();
+  mockStorage.clear();
+  const imported = new StudioStore();
+  const result = imported.importDecisionPacket(packet);
+  assert.equal(result.success, true);
+  assert.equal(imported.getMercuryWorkspace().workspaceId, 'mercury-test');
+});
+
 test('StudioStore — Workspace Creation and Normalization', () => {
   mockStorage.clear();
   const store = new StudioStore();

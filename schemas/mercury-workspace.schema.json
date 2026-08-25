@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/mercury-workspace.schema.json",
+  "title": "VenturaAtlas Mercury commercial workspace",
+  "description": "Local/private commercial hypotheses and observed commercial events. Canonical ideas remain authoritative elsewhere.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "workspaceMode", "workspaceId", "privacyScope", "canonicalIdeaId",
+    "ventureName", "createdAt", "updatedAt", "segments", "triggers",
+    "offers", "channels", "organizations", "interactions", "opportunities",
+    "commercialEvents", "hypothesisHistory"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "workspaceMode": { "const": "UNVERIFIED_DRAFT" },
+    "workspaceId": { "type": "string", "pattern": "^mercury-[a-z0-9-]+$" },
+    "privacyScope": { "const": "LOCAL_BROWSER_ONLY" },
+    "canonicalIdeaId": { "type": ["string", "null"], "pattern": "^idea-[0-9]+$" },
+    "canonicalIdeaRevision": { "type": ["string", "null"] },
+    "ventureName": { "type": "string", "maxLength": 200 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "segments": { "type": "array", "items": { "$ref": "#/$defs/segment" } },
+    "triggers": { "type": "array", "items": { "$ref": "#/$defs/trigger" } },
+    "offers": { "type": "array", "items": { "$ref": "#/$defs/offer" } },
+    "channels": { "type": "array", "items": { "$ref": "#/$defs/channel" } },
+    "organizations": { "type": "array", "items": { "$ref": "#/$defs/organization" } },
+    "interactions": { "type": "array", "items": { "$ref": "#/$defs/interaction" } },
+    "opportunities": { "type": "array", "items": { "$ref": "#/$defs/opportunity" } },
+    "commercialEvents": { "type": "array", "items": { "$ref": "#/$defs/commercialEvent" } },
+    "hypothesisHistory": { "type": "array", "items": { "$ref": "#/$defs/hypothesisChange" } }
+  },
+  "$defs": {
+    "status": { "enum": ["HYPOTHESIS", "OBSERVED", "UNKNOWN", "REJECTED"] },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segmentId", "name", "description", "buyerRoles", "userRoles", "whyNow", "currentAlternatives", "reachability", "status"],
+      "properties": {
+        "segmentId": { "type": "string", "pattern": "^segment-[a-z0-9-]+$" },
+        "parentSegmentId": { "type": ["string", "null"] },
+        "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "description": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "buyerRoles": { "type": "array", "items": { "type": "string" } },
+        "userRoles": { "type": "array", "items": { "type": "string" } },
+        "budgetOwner": { "type": "string" },
+        "budgetSource": { "type": "string" },
+        "whyNow": { "type": "string" },
+        "currentAlternatives": { "type": "array", "items": { "type": "string" } },
+        "reachability": { "enum": ["VERY_HIGH", "HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+        "status": { "$ref": "#/$defs/status" }
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggerId", "segmentId", "type", "description", "detectability", "urgencyWindow", "status"],
+      "properties": {
+        "triggerId": { "type": "string", "pattern": "^trigger-[a-z0-9-]+$" },
+        "segmentId": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "detectability": { "enum": ["PUBLIC", "PRIVATE", "UNKNOWN"] },
+        "urgencyWindow": { "type": "string" },
+        "messageImplication": { "type": "string" },
+        "status": { "$ref": "#/$defs/status" }
+      }
+    },
+    "offer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offerId", "segmentId", "name", "motion", "deliverable", "scope", "price", "timeToValue", "status"],
+      "properties": {
+        "offerId": { "type": "string", "pattern": "^offer-[a-z0-9-]+$" },
+        "segmentId": { "type": "string" },
+        "name": { "type": "string" },
+        "motion": { "enum": ["SELF_SERVE", "FOUNDER_LED", "SERVICE_FIRST", "CHANNEL_LED", "MARKETPLACE", "DEVELOPER_LED", "OTHER"] },
+        "deliverable": { "type": "string" },
+        "scope": { "type": "string" },
+        "price": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amount", "currency", "basis", "evidenceStatus"],
+          "properties": {
+            "amount": { "type": ["number", "null"], "minimum": 0 },
+            "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+            "basis": { "type": "string" },
+            "evidenceStatus": { "enum": ["HYPOTHESIS", "VERBAL_RANGE", "PROPOSAL_ACCEPTED", "PAID", "UNKNOWN"] }
+          }
+        },
+        "timeToValue": { "type": "string" },
+        "pilotType": { "enum": ["NONE", "FREE", "PAID", "UNKNOWN"] },
+        "status": { "$ref": "#/$defs/status" }
+      }
+    },
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["channelId", "segmentId", "name", "motion", "status"],
+      "properties": {
+        "channelId": { "type": "string", "pattern": "^channel-[a-z0-9-]+$" },
+        "segmentId": { "type": "string" },
+        "name": { "type": "string" },
+        "motion": { "type": "string" },
+        "accessPath": { "type": "string" },
+        "status": { "$ref": "#/$defs/status" }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organizationId", "name", "segmentId", "recordClass", "commercialStage", "createdAt"],
+      "properties": {
+        "organizationId": { "type": "string", "pattern": "^org-[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "segmentId": { "type": "string" },
+        "recordClass": { "enum": ["REAL", "SYNTHETIC"] },
+        "commercialStage": { "enum": ["IDENTIFIED", "CONTACTED", "CONVERSATION", "QUALIFIED", "OFFERED", "PILOT", "PAID", "ACTIVE", "RENEWED", "LOST"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interactionId", "organizationId", "segmentId", "channelId", "interactionType", "occurredAt", "outcome", "facts", "signals", "evidenceRef", "evidenceClass", "claimsNotEarned"],
+      "properties": {
+        "interactionId": { "type": "string", "pattern": "^interaction-[a-z0-9-]+$" },
+        "organizationId": { "type": "string" },
+        "segmentId": { "type": "string" },
+        "channelId": { "type": ["string", "null"] },
+        "interactionType": { "enum": ["CONTACT_ATTEMPT", "CONVERSATION", "PILOT_REVIEW", "FOLLOW_UP", "LOSS_REVIEW"] },
+        "occurredAt": { "type": "string", "format": "date-time" },
+        "outcome": { "enum": ["NO_REPLY", "REPLIED", "QUALIFIED", "DISQUALIFIED", "NEXT_STEP", "NO_INTEREST", "UNKNOWN"] },
+        "facts": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "objections": { "type": "array", "items": { "type": "string" } },
+        "signals": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["PROBLEM_CONFIRMED", "WORKAROUND_CONFIRMED", "URGENCY_CONFIRMED", "EVALUATION_ACCEPTED", "OFFER_ACCEPTED", "COMMITMENT_MADE"] }
+        },
+        "evidenceRef": { "type": "string", "minLength": 1 },
+        "evidenceClass": { "const": "OPERATOR_ATTESTED" },
+        "claimsNotEarned": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opportunityId", "organizationId", "segmentId", "offerId", "stage", "stageHistory", "createdAt"],
+      "properties": {
+        "opportunityId": { "type": "string", "pattern": "^opportunity-[a-z0-9-]+$" },
+        "organizationId": { "type": "string" },
+        "segmentId": { "type": "string" },
+        "offerId": { "type": ["string", "null"] },
+        "stage": { "enum": ["IDENTIFIED", "CONTACTED", "CONVERSATION", "QUALIFIED", "OFFERED", "PILOT", "PAID", "ACTIVE", "RENEWED", "LOST"] },
+        "stageHistory": { "type": "array", "items": { "type": "object" } },
+        "lossReason": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "commercialEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eventId", "organizationId", "opportunityId", "eventType", "occurredAt", "evidenceRef", "evidenceClass"],
+      "properties": {
+        "eventId": { "type": "string", "pattern": "^event-[a-z0-9-]+$" },
+        "organizationId": { "type": "string" },
+        "opportunityId": { "type": ["string", "null"] },
+        "eventType": { "enum": ["INVOICE_ISSUED", "PAYMENT_COLLECTED", "REFUND", "VALUE_ACHIEVED", "RENEWED", "EXPANDED", "REFERRED"] },
+        "occurredAt": { "type": "string", "format": "date-time" },
+        "amount": { "type": ["number", "null"] },
+        "currency": { "type": ["string", "null"] },
+        "evidenceRef": { "type": "string", "minLength": 1 },
+        "evidenceClass": { "const": "OPERATOR_ATTESTED" }
+      }
+    },
+    "hypothesisChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["changeId", "recordedAt", "subject", "before", "after", "evidenceRefs"],
+      "properties": {
+        "changeId": { "type": "string", "pattern": "^change-[a-z0-9-]+$" },
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "subject": { "type": "string" },
+        "before": { "type": "string" },
+        "after": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

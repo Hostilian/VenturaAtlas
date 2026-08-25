@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const EXCLUDE_DIRS = new Set(['.git', 'node_modules', '_site', '.agent-state']);
+const EXCLUDE_DIRS = new Set([
+  '.git', 'node_modules', '_site', '.agent-state', '.pytest_cache',
+  '.snapshots', 'tmp', 'coverage', 'playwright-report', 'test-results'
+]);
 const TARGET_EXTENSIONS = new Set(['.md', '.html']);
 
 const errors = [];

@@ -129,6 +129,7 @@ function initDecisionStudio() {
         ${!hasSharedBackend ? `
           <div class="notice" role="note" style="margin-top:1rem">
             <strong>Private to this browser:</strong> a room URL cannot transfer this workspace to a friend. Export a packet and send the file; friends can import it here or combine packets in <a href="${base}/docs/room-compare.html">Compare Packets</a>.
+            ${ws.mercury ? '<br><strong>Mercury data included:</strong> this unencrypted packet also contains the local Customer Reality Lab workspace. Review it for private business context before sharing.' : ''}
           </div>
         ` : ''}
 
