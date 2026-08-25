@@ -117,7 +117,7 @@ function initChessboardLab() {
           <h1>No strategy workspace loaded</h1>
           <p>This is a valid empty local state, not a loading failure and not evidence that the market has no actors or threats. Import an explicitly selected, schema-versioned private JSON file to begin.</p>
           <label class="button primary chessboard-file-label" for="importChessboard">Import private Chessboard JSON</label>
-          <p class="small">Nothing is fetched automatically. Workspace <code>${esc(ws.workspaceId)}</code> exists only in this browser.</p>
+          <p class="small">No private workspace is fetched automatically. Public shell/status assets may load; workspace <code>${esc(ws.workspaceId)}</code> exists only in this browser.</p>
         </div>
       </section>
       ${toolbar(ws, summary)}`;
