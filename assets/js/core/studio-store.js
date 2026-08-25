@@ -83,14 +83,17 @@
       .replace(/'/g, '&#39;');
   }
 
-  function validateMercuryBoundary(value) {
-    if (value === null) return [];
-    let validator = globalThis.VAMercury?.validateMercuryWorkspace;
-    if (!validator && typeof require === 'function') {
-      try { validator = require('./mercury-store').validateMercuryWorkspace; } catch (_) {}
+  function normalizeMercuryBoundary(value) {
+    if (value === null) return { value: null, errors: [] };
+    let api = globalThis.VAMercury;
+    if (!api && typeof require === 'function') {
+      try { api = require('./mercury-store'); } catch (_) {}
     }
-    if (typeof validator !== 'function') return null;
-    return validator(value);
+    if (typeof api?.validateMercuryWorkspace !== 'function') return null;
+    const normalized = api.migrateMercuryWorkspace
+      ? api.migrateMercuryWorkspace(JSON.parse(JSON.stringify(value)))
+      : JSON.parse(JSON.stringify(value));
+    return { value: normalized, errors: api.validateMercuryWorkspace(normalized) };
   }
 
   // Safe storage adapter
@@ -266,7 +269,7 @@
     _normalizeWorkspace(raw) {
       if (!raw || typeof raw !== 'object') return this._migrateOrInit();
       const rawMercury = raw.mercury && typeof raw.mercury === 'object' ? raw.mercury : null;
-      const mercuryErrors = rawMercury ? validateMercuryBoundary(rawMercury) : [];
+      const mercuryBoundary = rawMercury ? normalizeMercuryBoundary(rawMercury) : { value: null, errors: [] };
 
       const ws = {
         schemaVersion: SCHEMA_VERSION,
@@ -306,7 +309,9 @@
         variants: Array.isArray(raw.variants) ? raw.variants : [],
         decision: raw.decision && typeof raw.decision === 'object' ? raw.decision : null,
         experiments: Array.isArray(raw.experiments) ? raw.experiments : [],
-        mercury: rawMercury && (mercuryErrors === null || mercuryErrors.length === 0) ? rawMercury : null,
+        mercury: rawMercury && (mercuryBoundary === null || mercuryBoundary.errors.length === 0)
+          ? (mercuryBoundary?.value || rawMercury)
+          : null,
         activity: Array.isArray(raw.activity) ? raw.activity : []
       };
 
@@ -951,8 +956,9 @@
         return false;
       }
       if (mercuryWorkspace !== null) {
-        const mercuryErrors = validateMercuryBoundary(mercuryWorkspace);
-        if (mercuryErrors === null || mercuryErrors.length) return false;
+        const mercuryBoundary = normalizeMercuryBoundary(mercuryWorkspace);
+        if (mercuryBoundary === null || mercuryBoundary.errors.length) return false;
+        mercuryWorkspace = mercuryBoundary.value;
       }
       const previous = this.workspace.mercury ? JSON.parse(JSON.stringify(this.workspace.mercury)) : null;
       this.workspace.mercury = mercuryWorkspace
@@ -1015,9 +1021,10 @@
           return { success: false, error: 'Invalid Decision Packet: missing workspace id or name' };
         }
         if (ws.mercury) {
-          const mercuryErrors = validateMercuryBoundary(ws.mercury);
-          if (mercuryErrors === null) return { success: false, error: 'Mercury validator is unavailable' };
-          if (mercuryErrors.length) return { success: false, error: `Invalid Mercury workspace: ${mercuryErrors.join('; ')}` };
+          const mercuryBoundary = normalizeMercuryBoundary(ws.mercury);
+          if (mercuryBoundary === null) return { success: false, error: 'Mercury validator is unavailable' };
+          if (mercuryBoundary.errors.length) return { success: false, error: `Invalid Mercury workspace: ${mercuryBoundary.errors.join('; ')}` };
+          ws.mercury = mercuryBoundary.value;
         }
 
         this.workspace = this._normalizeWorkspace(ws);

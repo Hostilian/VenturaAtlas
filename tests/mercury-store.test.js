@@ -86,7 +86,8 @@ test('synthetic fixtures never become commercial evidence', () => {
   const { store } = harness();
   const s = segment(store);
   const synthetic = organization(store, s, 'Synthetic Co', 'SYNTHETIC');
-  const opportunity = store.addOpportunity({ organizationId: synthetic.organizationId, segmentId: s.segmentId, evidenceRef: 'fixture-only' });
+  const offer = store.addOffer({ segmentId: s.segmentId, name: 'Synthetic offer', deliverable: 'Fixture only' });
+  const opportunity = store.addOpportunity({ organizationId: synthetic.organizationId, segmentId: s.segmentId, offerId: offer.offerId, evidenceRef: 'fixture-only' });
   progressToOffer(store, s, synthetic, opportunity);
   store.advanceOpportunity(opportunity.opportunityId, 'PILOT', 'synthetic-pilot-only');
   assert.equal(store.getSummary().evidence.code, 'C0');
