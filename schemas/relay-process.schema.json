@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-process.schema.json",
+  "title": "Relay Operational Process Specification",
+  "description": "Definition of an operational business process, its trigger, inputs, stages, controls, outputs, flow units, and failure modes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "processId",
+    "ventureId",
+    "name",
+    "purpose",
+    "trigger",
+    "flowUnit",
+    "stages",
+    "controls",
+    "automationStatus",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "processId": { "type": "string", "pattern": "^proc-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "name": { "type": "string", "minLength": 3 },
+    "purpose": { "type": "string", "description": "What customer or business outcome this process exists to produce" },
+    "trigger": { "type": "string", "description": "Customer or internal event initiating the process" },
+    "flowUnit": {
+      "type": "string",
+      "description": "The atomic unit flowing through this process (e.g. order, audit, API job, case)"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stageId", "name", "sequenceOrder", "standardTouchTimeMinutes", "standardWaitTimeMinutes"],
+        "properties": {
+          "stageId": { "type": "string" },
+          "name": { "type": "string" },
+          "sequenceOrder": { "type": "integer", "minimum": 1 },
+          "description": { "type": "string" },
+          "ownerRoleId": { "type": "string" },
+          "standardTouchTimeMinutes": { "type": "number", "minimum": 0 },
+          "standardWaitTimeMinutes": { "type": "number", "minimum": 0 },
+          "isBottleneckRisk": { "type": "boolean" },
+          "automationLevel": {
+            "type": "string",
+            "enum": ["MANUAL", "HUMAN_IN_THE_LOOP", "AUTOMATED_WITH_REVIEW", "STRAIGHT_THROUGH_AUTOMATED"]
+          }
+        }
+      }
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["controlId", "stageId", "name", "type", "acceptanceCriteria"],
+        "properties": {
+          "controlId": { "type": "string" },
+          "stageId": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["PREVENTION", "DETECTION", "RECOVERY"] },
+          "acceptanceCriteria": { "type": "string" },
+          "inspectionCostPerUnit": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["inputId", "name", "sourceType"],
+        "properties": {
+          "inputId": { "type": "string" },
+          "name": { "type": "string" },
+          "sourceType": { "type": "string", "enum": ["CUSTOMER", "INTERNAL", "SUPPLIER"] },
+          "isRequired": { "type": "boolean" }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["outputId", "name", "recipientType"],
+        "properties": {
+          "outputId": { "type": "string" },
+          "name": { "type": "string" },
+          "recipientType": { "type": "string", "enum": ["CUSTOMER", "INTERNAL_DOWNSTREAM", "REGULATOR"] }
+        }
+      }
+    },
+    "failureModes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["failureModeId", "stageId", "description", "severity", "preventionControlId"],
+        "properties": {
+          "failureModeId": { "type": "string" },
+          "stageId": { "type": "string" },
+          "description": { "type": "string" },
+          "severity": { "type": "string", "enum": ["MINOR", "MAJOR", "CRITICAL"] },
+          "potentialCause": { "type": "string" },
+          "preventionControlId": { "type": "string" }
+        }
+      }
+    },
+    "automationStatus": {
+      "type": "string",
+      "enum": [
+        "DISCOVERING",
+        "MANUAL_STABLE",
+        "AUTOMATION_CANDIDATE",
+        "PARTIALLY_AUTOMATED",
+        "AUTOMATED_WITH_REVIEW",
+        "AUTOMATED"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["DRAFT", "ACTIVE", "DEPRECATED"]
+    }
+  }
+}

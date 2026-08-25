@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-cost-to-serve.schema.json",
+  "title": "Relay Cost to Serve Specification",
+  "description": "Granular unit economics and operational variable costs per delivered flow unit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "costModelId",
+    "ventureId",
+    "flowUnit",
+    "currency",
+    "baseDeliveryCost",
+    "exceptionOverheadCost",
+    "supportCostPerUnit",
+    "totalCostToServePerUnit"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "costModelId": { "type": "string", "pattern": "^cts-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "flowUnit": { "type": "string" },
+    "currency": { "type": "string" },
+    "baseDeliveryCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directLabor", "computeOrApi", "supplierGoods", "subtotal"],
+      "properties": {
+        "directLabor": { "type": "number", "minimum": 0 },
+        "computeOrApi": { "type": "number", "minimum": 0 },
+        "supplierGoods": { "type": "number", "minimum": 0 },
+        "inspection": { "type": "number", "minimum": 0 },
+        "shipping": { "type": "number", "minimum": 0 },
+        "subtotal": { "type": "number", "minimum": 0 }
+      }
+    },
+    "exceptionOverheadCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expectedReworkPerUnit", "expectedRefundLossPerUnit", "subtotal"],
+      "properties": {
+        "expectedReworkPerUnit": { "type": "number", "minimum": 0 },
+        "expectedRefundLossPerUnit": { "type": "number", "minimum": 0 },
+        "subtotal": { "type": "number", "minimum": 0 }
+      }
+    },
+    "supportCostPerUnit": { "type": "number", "minimum": 0 },
+    "totalCostToServePerUnit": { "type": "number", "minimum": 0 },
+    "grossMarginImpactPercent": { "type": "number" }
+  }
+}

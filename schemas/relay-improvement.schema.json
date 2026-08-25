@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-improvement.schema.json",
+  "title": "Relay Continuous Process Improvement (PDCA) Specification",
+  "description": "Structured operational learning cycle connecting defect patterns and bottlenecks to tested process changes and standard work updates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "improvementId",
+    "ventureId",
+    "processId",
+    "title",
+    "problemStatement",
+    "baselineMetric",
+    "interventionDescription",
+    "status",
+    "verifiedResult"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "improvementId": { "type": "string", "pattern": "^imp-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "processId": { "type": "string" },
+    "title": { "type": "string" },
+    "problemStatement": { "type": "string" },
+    "baselineMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metricName", "value", "unit"],
+      "properties": {
+        "metricName": { "type": "string" },
+        "value": { "type": "number" },
+        "unit": { "type": "string" }
+      }
+    },
+    "interventionDescription": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["PLAN", "DO_TESTING", "CHECK_MEASURING", "ACT_STANDARDIZED", "ABANDONED"]
+    },
+    "verifiedResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measuredValue", "deltaPercent", "isStandardWorkAdopted"],
+      "properties": {
+        "measuredValue": { "type": "number" },
+        "deltaPercent": { "type": "number" },
+        "isStandardWorkAdopted": { "type": "boolean" },
+        "runbookRef": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

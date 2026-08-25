@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-capacity-model.schema.json",
+  "title": "Relay Operational Capacity Model Specification",
+  "description": "Capacity planning, demonstrated throughput, bottleneck stage identification, queue aging, and demand cliff limits.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "capacityModelId",
+    "ventureId",
+    "processId",
+    "flowUnit",
+    "theoreticalMaxUnitsPerWeek",
+    "demonstratedUnitsPerWeek",
+    "currentDemandUnitsPerWeek",
+    "bottleneckStageId",
+    "utilizationRate",
+    "demandCliffUnitsPerWeek"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "capacityModelId": { "type": "string", "pattern": "^cap-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "processId": { "type": "string" },
+    "flowUnit": { "type": "string" },
+    "theoreticalMaxUnitsPerWeek": { "type": "number", "minimum": 0 },
+    "demonstratedUnitsPerWeek": { "type": "number", "minimum": 0 },
+    "currentDemandUnitsPerWeek": { "type": "number", "minimum": 0 },
+    "bottleneckStageId": { "type": "string" },
+    "bottleneckReason": { "type": "string" },
+    "utilizationRate": { "type": "number", "minimum": 0 },
+    "demandCliffUnitsPerWeek": { "type": "number", "minimum": 0, "description": "The volume at which the current operational model collapses into unacceptable wait queues or defect explosion" },
+    "requiredInterventionAtCliff": { "type": "string" },
+    "queueAgeP50Hours": { "type": "number", "minimum": 0 },
+    "queueAgeP90Hours": { "type": "number", "minimum": 0 },
+    "queueAgeP95Hours": { "type": "number", "minimum": 0 }
+  }
+}

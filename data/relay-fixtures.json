@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "1.0.0",
+  "_comment": "Synthetic fixtures for testing and dogfooding Relay operations. All records marked SYNTHETIC_DEMO.",
+  "fixtures": [
+    {
+      "fixtureId": "fix-managed-service-happy-path",
+      "name": "EU AI Act Audit — Clean Delivery Flow",
+      "archetype": "MANAGED_SERVICE",
+      "ventureId": "idea-425",
+      "ventureName": "EU AI Act Compliance Auditor",
+      "process": {
+        "processId": "proc-eu-ai-audit",
+        "ventureId": "idea-425",
+        "name": "Standard EU AI Act Compliance Audit",
+        "purpose": "Deliver an audit report and gap remediation roadmap for high-risk AI systems.",
+        "trigger": "Commercial contract signed and technical questionnaire submitted.",
+        "flowUnit": "audit_dossier",
+        "stages": [
+          { "stageId": "stg-intake", "name": "Technical Intake", "sequenceOrder": 1, "standardTouchTimeMinutes": 30, "standardWaitTimeMinutes": 120, "isBottleneckRisk": false, "automationLevel": "HUMAN_IN_THE_LOOP" },
+          { "stageId": "stg-scan", "name": "Automated Rule Scan", "sequenceOrder": 2, "standardTouchTimeMinutes": 10, "standardWaitTimeMinutes": 20, "isBottleneckRisk": false, "automationLevel": "AUTOMATED" },
+          { "stageId": "stg-analysis", "name": "Auditor Synthesis", "sequenceOrder": 3, "standardTouchTimeMinutes": 180, "standardWaitTimeMinutes": 240, "isBottleneckRisk": true, "automationLevel": "MANUAL" },
+          { "stageId": "stg-qc", "name": "Senior QC Review", "sequenceOrder": 4, "standardTouchTimeMinutes": 45, "standardWaitTimeMinutes": 60, "isBottleneckRisk": false, "automationLevel": "MANUAL" },
+          { "stageId": "stg-delivery", "name": "Client Delivery", "sequenceOrder": 5, "standardTouchTimeMinutes": 30, "standardWaitTimeMinutes": 0, "isBottleneckRisk": false, "automationLevel": "MANUAL" }
+        ],
+        "controls": [
+          { "controlId": "ctrl-legal-cite", "stageId": "stg-qc", "name": "Article 10/14 Citation Verification", "type": "DETECTION", "acceptanceCriteria": "Every finding links to exact EU AI Act regulatory articles", "inspectionCostPerUnit": 40 }
+        ],
+        "inputs": [{ "inputId": "inp-model-card", "name": "Model Architecture & Training Logs", "sourceType": "CUSTOMER", "isRequired": true }],
+        "outputs": [{ "outputId": "out-dossier", "name": "EU AI Act Compliance Dossier PDF", "recipientType": "CUSTOMER" }],
+        "failureModes": [{ "failureModeId": "fm-missing-eval", "stageId": "stg-intake", "description": "Customer omitted bias evaluation test datasets", "severity": "MAJOR", "potentialCause": "Unclear intake questionnaire", "preventionControlId": "ctrl-intake-validator" }],
+        "automationStatus": "MANUAL_STABLE",
+        "status": "ACTIVE"
+      },
+      "fulfillments": [
+        {
+          "fulfillmentId": "ful-audit-101",
+          "ventureId": "idea-425",
+          "processId": "proc-eu-ai-audit",
+          "customerRef": "cust-fintech-berlin",
+          "offerRef": "offer-audit-standard",
+          "state": "CLOSED",
+          "createdAt": "2026-08-20T08:00:00Z",
+          "promisedDeliveryAt": "2026-08-24T18:00:00Z",
+          "deliveredAt": "2026-08-23T16:30:00Z",
+          "acceptedAt": "2026-08-24T09:00:00Z",
+          "stateHistory": [
+            { "state": "REQUESTED", "timestamp": "2026-08-20T08:00:00Z", "reason": "Signed contract webhook" },
+            { "state": "ACCEPTED", "timestamp": "2026-08-20T08:15:00Z", "reason": "Capacity confirmed" },
+            { "state": "IN_PROGRESS", "timestamp": "2026-08-20T10:00:00Z", "reason": "Auditor started analysis" },
+            { "state": "QUALITY_CHECK", "timestamp": "2026-08-23T14:00:00Z", "reason": "Draft complete" },
+            { "state": "DELIVERED", "timestamp": "2026-08-23T16:30:00Z", "reason": "Dossier sent to client" },
+            { "state": "ACCEPTED_BY_CUSTOMER", "timestamp": "2026-08-24T09:00:00Z", "reason": "Client signoff received" },
+            { "state": "CLOSED", "timestamp": "2026-08-24T09:30:00Z", "reason": "Archived" }
+          ],
+          "touchTimeMinutes": 295,
+          "waitTimeMinutes": 440,
+          "reworkCount": 0,
+          "qualityPassed": true,
+          "costToServe": {
+            "currency": "EUR",
+            "directLaborCost": 350,
+            "computeOrApiCost": 15,
+            "supplierCost": 0,
+            "reworkCost": 0,
+            "inspectionCost": 40,
+            "shippingCost": 0,
+            "supportOverheadCost": 20,
+            "totalCost": 425
+          },
+          "exceptionNote": null
+        }
+      ],
+      "defects": [],
+      "capacityModels": [
+        {
+          "capacityModelId": "cap-audit-team",
+          "ventureId": "idea-425",
+          "processId": "proc-eu-ai-audit",
+          "flowUnit": "audit_dossier",
+          "theoreticalMaxUnitsPerWeek": 8,
+          "demonstratedUnitsPerWeek": 5,
+          "currentDemandUnitsPerWeek": 4,
+          "bottleneckStageId": "stg-analysis",
+          "bottleneckReason": "Qualified human auditor review time (3h touch per dossier)",
+          "utilizationRate": 0.80,
+          "demandCliffUnitsPerWeek": 6,
+          "requiredInterventionAtCliff": "Hire 2nd certified auditor or introduce automated draft synthesis agent",
+          "queueAgeP50Hours": 18,
+          "queueAgeP90Hours": 42,
+          "queueAgeP95Hours": 54
+        }
+      ],
+      "suppliers": [
+        {
+          "supplierId": "sup-eurlex-api",
+          "ventureId": "idea-425",
+          "name": "EU Official Journal API & Vector Index",
+          "category": "API_INFRASTRUCTURE",
+          "supplies": ["Primary EU regulatory legal text updates"],
+          "criticality": "HIGH",
+          "standardLeadTimeDays": 0.01,
+          "leadTimeVarianceDays": 0.05,
+          "isSingleSource": false,
+          "alternativeSupplierName": "Direct EUR-Lex XML mirror",
+          "alternativeSwitchTimeDays": 0.5,
+          "continuityPlan": "Cached local SQLite legal database covers 100% of enacted regulations",
+          "observedReliabilityScore": 99.5
+        }
+      ],
+      "supportCases": [],
+      "costModels": [
+        {
+          "costModelId": "cts-audit-std",
+          "ventureId": "idea-425",
+          "flowUnit": "audit_dossier",
+          "currency": "EUR",
+          "baseDeliveryCost": { "directLabor": 350, "computeOrApi": 15, "supplierGoods": 0, "inspection": 40, "shipping": 0, "subtotal": 405 },
+          "exceptionOverheadCost": { "expectedReworkPerUnit": 15, "expectedRefundLossPerUnit": 0, "subtotal": 15 },
+          "supportCostPerUnit": 20,
+          "totalCostToServePerUnit": 440,
+          "grossMarginImpactPercent": 70.6
+        }
+      ],
+      "improvements": []
+    },
+    {
+      "fixtureId": "fix-qc-failure-and-rework",
+      "name": "Quality Inspection Failure & 5-Whys Rework Cycle",
+      "archetype": "MANAGED_SERVICE",
+      "ventureId": "idea-425",
+      "ventureName": "EU AI Act Compliance Auditor",
+      "process": {
+        "processId": "proc-eu-ai-audit",
+        "ventureId": "idea-425",
+        "name": "Standard EU AI Act Compliance Audit",
+        "purpose": "Deliver high-fidelity audit reports.",
+        "trigger": "Signed contract",
+        "flowUnit": "audit_dossier",
+        "stages": [
+          { "stageId": "stg-analysis", "name": "Auditor Synthesis", "sequenceOrder": 1, "standardTouchTimeMinutes": 180, "standardWaitTimeMinutes": 120, "isBottleneckRisk": true, "automationLevel": "MANUAL" },
+          { "stageId": "stg-qc", "name": "Senior QC Review", "sequenceOrder": 2, "standardTouchTimeMinutes": 45, "standardWaitTimeMinutes": 60, "isBottleneckRisk": false, "automationLevel": "MANUAL" }
+        ],
+        "controls": [
+          { "controlId": "ctrl-legal-cite", "stageId": "stg-qc", "name": "Citation Rigor Check", "type": "DETECTION", "acceptanceCriteria": "Strict article mapping", "inspectionCostPerUnit": 40 }
+        ],
+        "inputs": [],
+        "outputs": [],
+        "failureModes": [],
+        "automationStatus": "MANUAL_STABLE",
+        "status": "ACTIVE"
+      },
+      "fulfillments": [
+        {
+          "fulfillmentId": "ful-audit-102",
+          "ventureId": "idea-425",
+          "processId": "proc-eu-ai-audit",
+          "customerRef": "cust-health-ai-paris",
+          "offerRef": "offer-audit-standard",
+          "state": "REWORK",
+          "createdAt": "2026-08-21T09:00:00Z",
+          "promisedDeliveryAt": "2026-08-26T18:00:00Z",
+          "deliveredAt": null,
+          "acceptedAt": null,
+          "stateHistory": [
+            { "state": "REQUESTED", "timestamp": "2026-08-21T09:00:00Z", "reason": "Intake completed" },
+            { "state": "IN_PROGRESS", "timestamp": "2026-08-21T10:00:00Z", "reason": "Junior analyst started draft" },
+            { "state": "QUALITY_CHECK", "timestamp": "2026-08-23T11:00:00Z", "reason": "Draft submitted to QC" },
+            { "state": "FAILED", "timestamp": "2026-08-23T12:30:00Z", "reason": "QC failed: Article 14 human oversight requirements misclassified" },
+            { "state": "REWORK", "timestamp": "2026-08-23T13:00:00Z", "reason": "Senior auditor re-drafting section 4" }
+          ],
+          "touchTimeMinutes": 320,
+          "waitTimeMinutes": 280,
+          "reworkCount": 1,
+          "qualityPassed": false,
+          "costToServe": {
+            "currency": "EUR",
+            "directLaborCost": 350,
+            "computeOrApiCost": 15,
+            "supplierCost": 0,
+            "reworkCost": 160,
+            "inspectionCost": 80,
+            "shippingCost": 0,
+            "supportOverheadCost": 30,
+            "totalCost": 635
+          },
+          "exceptionNote": "Misclassification caught internally before customer delivery."
+        }
+      ],
+      "defects": [
+        {
+          "defectId": "def-2026-0823",
+          "ventureId": "idea-425",
+          "fulfillmentId": "ful-audit-102",
+          "processId": "proc-eu-ai-audit",
+          "stageId": "stg-qc",
+          "category": "FORMAT_SPEC_BREACH",
+          "severity": "MAJOR",
+          "isEscape": false,
+          "detectedAt": "2026-08-23T12:30:00Z",
+          "detectedBy": "Lead Compliance Officer",
+          "description": "Junior analyst used outdated June 2026 draft guidance instead of finalized August 2026 implementing regulation for Article 14.",
+          "status": "CORRECTIVE_ACTION_APPLIED",
+          "rootCauseAnalysis": {
+            "primaryCategory": "TRAINING_OR_SOP",
+            "fiveWhys": [
+              "Why was Article 14 misclassified? Junior analyst applied June draft guidelines.",
+              "Why did they use June guidelines? The internal template library contained outdated prompt files.",
+              "Why was the prompt file outdated? No automated synchronization between EUR-Lex updates and prompt templates.",
+              "Why was there no automated sync? Regulatory tracking was treated as manual desk research.",
+              "Root cause: Lack of version-controlled prompt templates pinned to official OJ publication digests."
+            ],
+            "identifiedRootCause": "Template library contained unversioned prompt files not pinned to authoritative EU Official Journal releases."
+          },
+          "correctiveAction": {
+            "actionType": "AUTOMATED_PREVENTION_CHECK",
+            "description": "Implemented pre-commit digest check verifying all prompt templates reference latest EU Official Journal hash.",
+            "assignedRoleId": "role-tech-lead",
+            "targetCompletionDate": "2026-08-25T00:00:00Z",
+            "isVerifiedEffective": true,
+            "verificationNotes": "Subsequent 10 audits correctly pulled August 2026 implementing act."
+          },
+          "reworkCost": 160
+        }
+      ],
+      "capacityModels": [],
+      "suppliers": [],
+      "supportCases": [],
+      "costModels": [],
+      "improvements": [
+        {
+          "improvementId": "imp-digest-pinned-templates",
+          "ventureId": "idea-425",
+          "processId": "proc-eu-ai-audit",
+          "title": "Version-Pinned Regulatory Prompt Templates",
+          "problemStatement": "Rework rate reached 20% due to analysts referencing stale draft regulations.",
+          "baselineMetric": { "metricName": "QC Rejection Rate", "value": 20.0, "unit": "%" },
+          "interventionDescription": "Pin all auditor AI synthesis templates to EUR-Lex official digests with automated CI check.",
+          "status": "ACT_STANDARDIZED",
+          "verifiedResult": {
+            "measuredValue": 2.5,
+            "deltaPercent": -87.5,
+            "isStandardWorkAdopted": true,
+            "runbookRef": "docs/runbooks/regulatory-prompt-sync.md"
+          }
+        }
+      ]
+    },
+    {
+      "fixtureId": "fix-capacity-saturation-cliff",
+      "name": "Capacity Saturation & Demand Cliff (WIP Overload)",
+      "archetype": "MANAGED_SERVICE",
+      "ventureId": "idea-425",
+      "ventureName": "EU AI Act Compliance Auditor",
+      "process": {
+        "processId": "proc-eu-ai-audit",
+        "ventureId": "idea-425",
+        "name": "Standard EU AI Act Compliance Audit",
+        "purpose": "Deliver audit reports.",
+        "trigger": "Order",
+        "flowUnit": "audit_dossier",
+        "stages": [
+          { "stageId": "stg-analysis", "name": "Auditor Synthesis", "sequenceOrder": 1, "standardTouchTimeMinutes": 180, "standardWaitTimeMinutes": 240, "isBottleneckRisk": true, "automationLevel": "MANUAL" }
+        ],
+        "controls": [],
+        "inputs": [],
+        "outputs": [],
+        "failureModes": [],
+        "automationStatus": "MANUAL_STABLE",
+        "status": "ACTIVE"
+      },
+      "fulfillments": [
+        { "fulfillmentId": "ful-wip-1", "ventureId": "idea-425", "processId": "proc-eu-ai-audit", "customerRef": "cust-a", "offerRef": "std", "state": "IN_PROGRESS", "createdAt": "2026-08-22T08:00:00Z", "promisedDeliveryAt": "2026-08-25T18:00:00Z", "deliveredAt": null, "acceptedAt": null, "stateHistory": [], "touchTimeMinutes": 100, "waitTimeMinutes": 480, "reworkCount": 0, "qualityPassed": true, "costToServe": { "currency": "EUR", "directLaborCost": 350, "computeOrApiCost": 10, "supplierCost": 0, "reworkCost": 0, "inspectionCost": 40, "shippingCost": 0, "supportOverheadCost": 10, "totalCost": 410 }, "exceptionNote": null },
+        { "fulfillmentId": "ful-wip-2", "ventureId": "idea-425", "processId": "proc-eu-ai-audit", "customerRef": "cust-b", "offerRef": "std", "state": "IN_PROGRESS", "createdAt": "2026-08-22T09:00:00Z", "promisedDeliveryAt": "2026-08-25T18:00:00Z", "deliveredAt": null, "acceptedAt": null, "stateHistory": [], "touchTimeMinutes": 60, "waitTimeMinutes": 420, "reworkCount": 0, "qualityPassed": true, "costToServe": { "currency": "EUR", "directLaborCost": 350, "computeOrApiCost": 10, "supplierCost": 0, "reworkCost": 0, "inspectionCost": 40, "shippingCost": 0, "supportOverheadCost": 10, "totalCost": 410 }, "exceptionNote": null },
+        { "fulfillmentId": "ful-wip-3", "ventureId": "idea-425", "processId": "proc-eu-ai-audit", "customerRef": "cust-c", "offerRef": "std", "state": "WAITING_INPUT", "createdAt": "2026-08-23T08:00:00Z", "promisedDeliveryAt": "2026-08-26T18:00:00Z", "deliveredAt": null, "acceptedAt": null, "stateHistory": [], "touchTimeMinutes": 20, "waitTimeMinutes": 600, "reworkCount": 0, "qualityPassed": true, "costToServe": { "currency": "EUR", "directLaborCost": 350, "computeOrApiCost": 10, "supplierCost": 0, "reworkCost": 0, "inspectionCost": 40, "shippingCost": 0, "supportOverheadCost": 10, "totalCost": 410 }, "exceptionNote": null },
+        { "fulfillmentId": "ful-wip-4", "ventureId": "idea-425", "processId": "proc-eu-ai-audit", "customerRef": "cust-d", "offerRef": "std", "state": "READY", "createdAt": "2026-08-24T08:00:00Z", "promisedDeliveryAt": "2026-08-27T18:00:00Z", "deliveredAt": null, "acceptedAt": null, "stateHistory": [], "touchTimeMinutes": 0, "waitTimeMinutes": 720, "reworkCount": 0, "qualityPassed": true, "costToServe": { "currency": "EUR", "directLaborCost": 350, "computeOrApiCost": 10, "supplierCost": 0, "reworkCost": 0, "inspectionCost": 40, "shippingCost": 0, "supportOverheadCost": 10, "totalCost": 410 }, "exceptionNote": null }
+      ],
+      "defects": [],
+      "capacityModels": [
+        {
+          "capacityModelId": "cap-audit-cliff",
+          "ventureId": "idea-425",
+          "processId": "proc-eu-ai-audit",
+          "flowUnit": "audit_dossier",
+          "theoreticalMaxUnitsPerWeek": 5,
+          "demonstratedUnitsPerWeek": 4,
+          "currentDemandUnitsPerWeek": 9,
+          "bottleneckStageId": "stg-analysis",
+          "bottleneckReason": "Demand (9 dossiers/wk) exceeds capacity (4 dossiers/wk) by 225%. Queue accumulation triggers exponential lead-time delay.",
+          "utilizationRate": 1.80,
+          "demandCliffUnitsPerWeek": 5,
+          "requiredInterventionAtCliff": "Immediately cap incoming sales or sub-contract certified auditors to avoid SLA breach penalties.",
+          "queueAgeP50Hours": 48,
+          "queueAgeP90Hours": 110,
+          "queueAgeP95Hours": 144
+        }
+      ],
+      "suppliers": [],
+      "supportCases": [],
+      "costModels": [],
+      "improvements": []
+    }
+  ]
+}

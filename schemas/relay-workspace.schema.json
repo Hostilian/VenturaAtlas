@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-workspace.schema.json",
+  "title": "Relay Operations Workspace Specification",
+  "description": "Root private workspace state indexing venture operational processes, fulfillments, quality defects, capacity models, suppliers, support cases, and improvements.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workspaceId",
+    "ventureId",
+    "archetype",
+    "processes",
+    "fulfillments",
+    "defects",
+    "capacityModels",
+    "suppliers",
+    "supportCases",
+    "costModels",
+    "improvements",
+    "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "workspaceId": { "type": "string", "pattern": "^opsws-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "archetype": {
+      "type": "string",
+      "enum": [
+        "DIGITAL_SELF_SERVE",
+        "MANAGED_SERVICE",
+        "HARDWARE_LAB",
+        "PERFORMANCE_BROKER",
+        "DEVELOPER_API",
+        "PHYSICAL_LOGISTICS",
+        "HYBRID_SOFTWARE_SERVICE"
+      ]
+    },
+    "processes": {
+      "type": "array",
+      "items": { "$ref": "relay-process.schema.json" }
+    },
+    "fulfillments": {
+      "type": "array",
+      "items": { "$ref": "relay-fulfillment.schema.json" }
+    },
+    "defects": {
+      "type": "array",
+      "items": { "$ref": "relay-quality-defect.schema.json" }
+    },
+    "capacityModels": {
+      "type": "array",
+      "items": { "$ref": "relay-capacity-model.schema.json" }
+    },
+    "suppliers": {
+      "type": "array",
+      "items": { "$ref": "relay-supplier.schema.json" }
+    },
+    "supportCases": {
+      "type": "array",
+      "items": { "$ref": "relay-support-case.schema.json" }
+    },
+    "costModels": {
+      "type": "array",
+      "items": { "$ref": "relay-cost-to-serve.schema.json" }
+    },
+    "improvements": {
+      "type": "array",
+      "items": { "$ref": "relay-improvement.schema.json" }
+    },
+    "updatedAt": { "type": "string" }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-quality-defect.schema.json",
+  "title": "Relay Quality Defect & Nonconformity Specification",
+  "description": "Quality defect tracking, severity, internal vs escaped detection, root-cause 5 Whys, containment, and CAPA corrective actions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "defectId",
+    "ventureId",
+    "fulfillmentId",
+    "processId",
+    "stageId",
+    "category",
+    "severity",
+    "isEscape",
+    "detectedAt",
+    "status",
+    "rootCauseAnalysis",
+    "correctiveAction"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "defectId": { "type": "string", "pattern": "^def-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "fulfillmentId": { "type": "string" },
+    "processId": { "type": "string" },
+    "stageId": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "ACCURACY_ERROR",
+        "INCOMPLETE_DELIVERABLE",
+        "FORMAT_SPEC_BREACH",
+        "SUPPLIER_DEFECT",
+        "CUSTOMER_INPUT_MISMATCH",
+        "LATE_DELIVERY",
+        "DATA_CORRUPTION",
+        "LOGISTICS_DAMAGE"
+      ]
+    },
+    "severity": { "type": "string", "enum": ["MINOR", "MAJOR", "CRITICAL"] },
+    "isEscape": { "type": "boolean", "description": "True if caught by customer after delivery; False if caught internally at QC" },
+    "detectedAt": { "type": "string" },
+    "detectedBy": { "type": "string" },
+    "description": { "type": "string" },
+    "status": { "type": "string", "enum": ["OPEN", "CONTAINED", "ROOT_CAUSE_IDENTIFIED", "CORRECTIVE_ACTION_APPLIED", "VERIFIED_CLOSED"] },
+    "rootCauseAnalysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryCategory", "fiveWhys", "identifiedRootCause"],
+      "properties": {
+        "primaryCategory": {
+          "type": "string",
+          "enum": ["PROCESS_DESIGN", "TRAINING_OR_SOP", "TOOLING_OR_SYSTEM", "SUPPLIER_VARIATION", "CUSTOMER_INPUT"]
+        },
+        "fiveWhys": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "identifiedRootCause": { "type": "string" }
+      }
+    },
+    "correctiveAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actionType", "description", "targetCompletionDate", "isVerifiedEffective"],
+      "properties": {
+        "actionType": {
+          "type": "string",
+          "enum": ["SOP_UPDATE", "AUTOMATED_PREVENTION_CHECK", "SUPPLIER_REPLACEMENT", "STAGE_RESEQUENCE", "TOOL_IMPROVEMENT"]
+        },
+        "description": { "type": "string" },
+        "assignedRoleId": { "type": "string" },
+        "targetCompletionDate": { "type": "string" },
+        "isVerifiedEffective": { "type": "boolean" },
+        "verificationNotes": { "type": ["string", "null"] }
+      }
+    },
+    "reworkCost": { "type": "number", "minimum": 0 }
+  }
+}

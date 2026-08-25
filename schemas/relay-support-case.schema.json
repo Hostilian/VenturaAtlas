@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-support-case.schema.json",
+  "title": "Relay Customer Support Case Specification",
+  "description": "Operational customer issue resolution, triage, response/resolution times, deflection, and defect linkage.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "ventureId",
+    "customerRef",
+    "category",
+    "severity",
+    "openedAt",
+    "state",
+    "responseMinutes",
+    "resolutionMinutes"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "caseId": { "type": "string", "pattern": "^case-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "customerRef": { "type": "string" },
+    "linkedFulfillmentId": { "type": ["string", "null"] },
+    "category": {
+      "type": "string",
+      "enum": ["ONBOARDING_ASSISTANCE", "DELIVERY_DEFECT", "FEATURE_CONFUSION", "BILLING_DISPUTE", "INTEGRATION_FAILURE"]
+    },
+    "severity": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "URGENT"] },
+    "openedAt": { "type": "string" },
+    "closedAt": { "type": ["string", "null"] },
+    "state": { "type": "string", "enum": ["NEW", "TRIAGED", "WAITING_CUSTOMER", "IN_PROGRESS", "RESOLVED", "CLOSED"] },
+    "responseMinutes": { "type": "number", "minimum": 0 },
+    "resolutionMinutes": { "type": "number", "minimum": 0 },
+    "wasDeflectedSelfService": { "type": "boolean" },
+    "linkedDefectId": { "type": ["string", "null"] },
+    "resolutionSummary": { "type": ["string", "null"] }
+  }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ops Lab · RELAY · Venture Atlas OS</title>
+  <meta name="description" content="Venture Operations, Fulfillment, Service Delivery, Quality Control, Capacity, Cost-to-Serve, Suppliers, and Continuous Improvement Intelligence OS.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.8.0">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="ops-lab" data-root="..">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="site-branding">
+        <a href="../index.html" class="site-logo">
+          <span class="logo-text">VenturaAtlas</span>
+          <span class="logo-badge">RELAY</span>
+        </a>
+      </div>
+      <nav class="site-nav">
+        <a href="../index.html" class="nav-link">Directory</a>
+        <a href="rankings.html" class="nav-link">Rankings</a>
+        <a href="matcher.html" class="nav-link">Matcher</a>
+        <a href="compare.html" class="nav-link">Compare</a>
+        <a href="room.html" class="nav-link">Decisions</a>
+        <a href="portfolio-lab.html" class="nav-link">Portfolio Lab</a>
+        <a href="capital-lab.html" class="nav-link">Capital Lab</a>
+        <a href="org-lab.html" class="nav-link">Org Lab</a>
+        <a href="ops-lab.html" class="nav-link active">Ops Lab</a>
+        <a href="live-progress.html" class="nav-link">Autonomy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="lab-header">
+        <div class="lab-title-area">
+          <div class="lab-tag">VENTURE OPERATIONS &amp; EXECUTION INTELLIGENCE</div>
+          <h1 class="lab-title">Ops Lab</h1>
+          <p class="lab-subtitle">
+            Can the venture repeatedly deliver its promise at acceptable quality and cost without founder heroics?
+            Map fulfillment flows, quality controls, capacity bottlenecks, true cost-to-serve, supplier dependencies, and continuous improvement cycles.
+          </p>
+        </div>
+        <div class="lab-actions">
+          <label class="venture-picker-label">
+            <span>Operational Mode / Fixture:</span>
+            <select id="relayFixtureSelect" class="form-select">
+              <option value="default" selected>Live Venture: FactBounty Hardware Rig (Hardware Lab)</option>
+              <option value="fix-managed-service-happy-path">EU AI Act Audit: Clean Flow (Managed Service)</option>
+              <option value="fix-qc-failure-and-rework">Quality Failure &amp; 5-Whys Rework Cycle</option>
+              <option value="fix-capacity-saturation-cliff">Demand Spike &amp; Capacity Saturation Cliff</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="tab-nav" role="tablist">
+        <button class="tab-btn active" data-tab="tab-flow" role="tab">1. Fulfillment &amp; Flow</button>
+        <button class="tab-btn" data-tab="tab-quality" role="tab">2. Quality &amp; Defect Radar</button>
+        <button class="tab-btn" data-tab="tab-capacity" role="tab">3. Capacity &amp; Bottlenecks</button>
+        <button class="tab-btn" data-tab="tab-cost" role="tab">4. Cost-to-Serve Analyzer</button>
+        <button class="tab-btn" data-tab="tab-suppliers" role="tab">5. Supplier Resilience</button>
+        <button class="tab-btn" data-tab="tab-improvement" role="tab">6. Support &amp; Continuous Improvement</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="tab-content" id="relayLabContainer">
+        <div class="loading-state">Loading Ops Lab workspace...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-note">
+        <strong>Privacy &amp; Operational Truth Boundary:</strong> All fulfillment records, supplier details, and defect analyses remain strictly private in local browser storage. VenturaAtlas does not expose customer data or commercial vendor terms.
+      </div>
+      <div class="footer-links">
+        <a href="org-lab.html">Org Lab (CONSTELLATION)</a>
+        <a href="capital-lab.html">Capital Lab</a>
+        <a href="portfolio-lab.html">Portfolio Lab (ORBIT)</a>
+        <a href="room.html">Decision Studio</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/features/relay-engine.js"></script>
+  <script src="../assets/js/core/relay-store.js"></script>
+  <script src="../assets/js/features/ops-lab.js"></script>
+</body>
+</html>

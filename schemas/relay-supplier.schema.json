@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-supplier.schema.json",
+  "title": "Relay Supplier & Vendor Operational Specification",
+  "description": "Operational vendor dependencies, supply criticality, lead times, single-source risk, and continuity contingencies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "supplierId",
+    "ventureId",
+    "name",
+    "category",
+    "supplies",
+    "criticality",
+    "standardLeadTimeDays",
+    "leadTimeVarianceDays",
+    "isSingleSource",
+    "continuityPlan"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "supplierId": { "type": "string", "pattern": "^sup-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "name": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": ["API_INFRASTRUCTURE", "SPECIALIZED_HARDWARE", "MANUAL_CONTRACTOR", "LOGISTICS_CARRIER", "REGULATORY_BODY", "RAW_MATERIALS"]
+    },
+    "supplies": { "type": "array", "items": { "type": "string" } },
+    "criticality": {
+      "type": "string",
+      "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"],
+      "description": "CRITICAL = If this supplier fails tomorrow, delivery halts completely"
+    },
+    "standardLeadTimeDays": { "type": "number", "minimum": 0 },
+    "leadTimeVarianceDays": { "type": "number", "minimum": 0 },
+    "isSingleSource": { "type": "boolean" },
+    "alternativeSupplierName": { "type": ["string", "null"] },
+    "alternativeSwitchTimeDays": { "type": ["number", "null"] },
+    "continuityPlan": { "type": "string" },
+    "observedReliabilityScore": { "type": "number", "minimum": 0, "maximum": 100 }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/relay-fulfillment.schema.json",
+  "title": "Relay Fulfillment Work Order Specification",
+  "description": "Lifecycle state and execution record for turning a customer commitment into a delivered outcome.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "fulfillmentId",
+    "ventureId",
+    "processId",
+    "customerRef",
+    "offerRef",
+    "state",
+    "createdAt",
+    "stateHistory",
+    "touchTimeMinutes",
+    "waitTimeMinutes",
+    "costToServe",
+    "qualityPassed"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "fulfillmentId": { "type": "string", "pattern": "^ful-[a-z0-9-]+$" },
+    "ventureId": { "type": "string" },
+    "processId": { "type": "string" },
+    "customerRef": { "type": "string" },
+    "offerRef": { "type": "string" },
+    "state": {
+      "type": "string",
+      "enum": [
+        "REQUESTED",
+        "ACCEPTED",
+        "WAITING_INPUT",
+        "READY",
+        "IN_PROGRESS",
+        "QUALITY_CHECK",
+        "READY_TO_DELIVER",
+        "DELIVERED",
+        "ACCEPTED_BY_CUSTOMER",
+        "CLOSED",
+        "BLOCKED",
+        "FAILED",
+        "REWORK",
+        "CANCELLED",
+        "ON_HOLD",
+        "SUPPLIER_DELAY"
+      ]
+    },
+    "createdAt": { "type": "string" },
+    "promisedDeliveryAt": { "type": ["string", "null"] },
+    "deliveredAt": { "type": ["string", "null"] },
+    "acceptedAt": { "type": ["string", "null"] },
+    "stateHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["state", "timestamp", "reason"],
+        "properties": {
+          "state": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "reason": { "type": "string" },
+          "actor": { "type": "string" }
+        }
+      }
+    },
+    "touchTimeMinutes": { "type": "number", "minimum": 0 },
+    "waitTimeMinutes": { "type": "number", "minimum": 0 },
+    "reworkCount": { "type": "integer", "minimum": 0 },
+    "qualityPassed": { "type": "boolean" },
+    "costToServe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "directLaborCost", "computeOrApiCost", "supplierCost", "reworkCost", "totalCost"],
+      "properties": {
+        "currency": { "type": "string" },
+        "directLaborCost": { "type": "number", "minimum": 0 },
+        "computeOrApiCost": { "type": "number", "minimum": 0 },
+        "supplierCost": { "type": "number", "minimum": 0 },
+        "reworkCost": { "type": "number", "minimum": 0 },
+        "inspectionCost": { "type": "number", "minimum": 0 },
+        "shippingCost": { "type": "number", "minimum": 0 },
+        "supportOverheadCost": { "type": "number", "minimum": 0 },
+        "totalCost": { "type": "number", "minimum": 0 }
+      }
+    },
+    "exceptionNote": { "type": ["string", "null"] }
+  }
+}

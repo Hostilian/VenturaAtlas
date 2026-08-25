@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "archetypes": [
+    {
+      "archetypeId": "DIGITAL_SELF_SERVE",
+      "name": "Digital Self-Serve SaaS",
+      "exampleIdea": "idea-001",
+      "exampleName": "ProofRail — AI Work Acceptance Gate",
+      "defaultFlowUnit": "active_tenant_account",
+      "primaryBottleneckRisk": "customer_onboarding_integration",
+      "description": "Fully automated software delivery where operations primarily monitors uptime, API quotas, telemetry anomalies, and self-serve onboarding friction.",
+      "defaultStages": [
+        { "stageId": "stg-account-provisioning", "name": "Automated Tenant Provisioning", "sequenceOrder": 1, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 2 },
+        { "stageId": "stg-self-serve-onboarding", "name": "SDK & Policy Config", "sequenceOrder": 2, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 60 },
+        { "stageId": "stg-continuous-verification", "name": "Automated Gate Execution", "sequenceOrder": 3, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 5 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-schema-validation", "stageId": "stg-account-provisioning", "name": "Policy Schema Validator", "type": "PREVENTION", "acceptanceCriteria": "Strict adherence to admission control policies" }
+      ]
+    },
+    {
+      "archetypeId": "MANAGED_SERVICE",
+      "name": "Managed Service / Human-in-the-Loop",
+      "exampleIdea": "idea-425",
+      "exampleName": "EU AI Act Compliance Auditor",
+      "defaultFlowUnit": "compliance_audit_dossier",
+      "primaryBottleneckRisk": "expert_regulatory_review_time",
+      "description": "High-trust workflow combining automated heuristic scanning with qualified human auditor verification and sign-off.",
+      "defaultStages": [
+        { "stageId": "stg-client-intake", "name": "Document & Architecture Intake", "sequenceOrder": 1, "standardTouchTimeMinutes": 30, "standardWaitTimeMinutes": 240 },
+        { "stageId": "stg-automated-gap-scan", "name": "Automated Rule & Evidence Scan", "sequenceOrder": 2, "standardTouchTimeMinutes": 15, "standardWaitTimeMinutes": 30 },
+        { "stageId": "stg-expert-synthesis", "name": "Qualified Auditor Review & Drafting", "sequenceOrder": 3, "standardTouchTimeMinutes": 180, "standardWaitTimeMinutes": 480 },
+        { "stageId": "stg-peer-quality-check", "name": "Senior Auditor QC Signoff", "sequenceOrder": 4, "standardTouchTimeMinutes": 45, "standardWaitTimeMinutes": 120 },
+        { "stageId": "stg-client-delivery", "name": "Executive Dossier Presentation", "sequenceOrder": 5, "standardTouchTimeMinutes": 60, "standardWaitTimeMinutes": 0 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-citation-check", "stageId": "stg-peer-quality-check", "name": "100% Primary Regulation Citation Check", "type": "DETECTION", "acceptanceCriteria": "All claims backed by official EU Official Journal article citations" }
+      ]
+    },
+    {
+      "archetypeId": "HARDWARE_LAB",
+      "name": "Hardware / Verification Lab",
+      "exampleIdea": "idea-061",
+      "exampleName": "FactBounty Hardware Trust Verifier",
+      "defaultFlowUnit": "hardware_sample_test_batch",
+      "primaryBottleneckRisk": "physical_testbench_availability",
+      "description": "Physical specimen reception, testbench harness execution, sensor signal analysis, and tamper-proof verification issuance.",
+      "defaultStages": [
+        { "stageId": "stg-specimen-intake", "name": "Secure Sample Receiving & Barcoding", "sequenceOrder": 1, "standardTouchTimeMinutes": 20, "standardWaitTimeMinutes": 60 },
+        { "stageId": "stg-bench-test-execution", "name": "Automated Signal & Stress Rig", "sequenceOrder": 2, "standardTouchTimeMinutes": 15, "standardWaitTimeMinutes": 360 },
+        { "stageId": "stg-data-integrity-qc", "name": "Cryptographic Hash & Receipt Verification", "sequenceOrder": 3, "standardTouchTimeMinutes": 15, "standardWaitTimeMinutes": 15 },
+        { "stageId": "stg-certificate-publish", "name": "On-Chain / Registry Certificate Publish", "sequenceOrder": 4, "standardTouchTimeMinutes": 5, "standardWaitTimeMinutes": 5 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-calibration-check", "stageId": "stg-bench-test-execution", "name": "Daily Sensor Rig Calibration Check", "type": "PREVENTION", "acceptanceCriteria": "Drift less than 0.05% against reference standard" }
+      ]
+    },
+    {
+      "archetypeId": "PERFORMANCE_BROKER",
+      "name": "Performance Broker / Marketplace",
+      "exampleIdea": "idea-082",
+      "exampleName": "Vendor Slot Rescue",
+      "defaultFlowUnit": "reassigned_vendor_slot",
+      "primaryBottleneckRisk": "buyer_seller_liquidity_matching_time",
+      "description": "High-urgency matching of distressed or cancelled conference slots with ready waitlist buyers under contractual transfer rules.",
+      "defaultStages": [
+        { "stageId": "stg-distress-intake", "name": "Distressed Slot Verification", "sequenceOrder": 1, "standardTouchTimeMinutes": 15, "standardWaitTimeMinutes": 30 },
+        { "stageId": "stg-buyer-matching", "name": "Waitlist Priority Outreach", "sequenceOrder": 2, "standardTouchTimeMinutes": 20, "standardWaitTimeMinutes": 120 },
+        { "stageId": "stg-contract-reassignment", "name": "Organizer Reassignment & Escrow", "sequenceOrder": 3, "standardTouchTimeMinutes": 30, "standardWaitTimeMinutes": 180 },
+        { "stageId": "stg-settlement", "name": "Success Fee Settlement", "sequenceOrder": 4, "standardTouchTimeMinutes": 10, "standardWaitTimeMinutes": 15 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-organizer-transfer-clause", "stageId": "stg-contract-reassignment", "name": "Contractual Transferability Verification", "type": "PREVENTION", "acceptanceCriteria": "Organizer written policy or explicit transfer consent on file" }
+      ]
+    },
+    {
+      "archetypeId": "DEVELOPER_API",
+      "name": "High-Throughput Developer API",
+      "exampleIdea": "idea-068",
+      "exampleName": "Product Evidence Verification API",
+      "defaultFlowUnit": "api_verification_call",
+      "primaryBottleneckRisk": "upstream_llm_or_database_latency",
+      "description": "Sub-second digital transaction processing, rate limiting, token economics, and low-latency cache management.",
+      "defaultStages": [
+        { "stageId": "stg-auth-rate-limit", "name": "Authentication & Quota Check", "sequenceOrder": 1, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 0.001 },
+        { "stageId": "stg-query-processing", "name": "Vector & Evidence Query Execution", "sequenceOrder": 2, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 0.05 },
+        { "stageId": "stg-response-metering", "name": "Usage Metering & Webhook Dispatch", "sequenceOrder": 3, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 0.002 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-rate-limiter", "stageId": "stg-auth-rate-limit", "name": "Token Bucket Rate Limiter", "type": "PREVENTION", "acceptanceCriteria": "Reject requests exceeding tier limits with HTTP 429" }
+      ]
+    },
+    {
+      "archetypeId": "PHYSICAL_LOGISTICS",
+      "name": "Physical Goods / Direct Logistics",
+      "exampleIdea": "idea-112",
+      "exampleName": "Precision Calibration Target Cards",
+      "defaultFlowUnit": "shipped_physical_package",
+      "primaryBottleneckRisk": "carrier_transit_and_inventory_stockouts",
+      "description": "Physical inventory pick-pack-ship, carrier integration, tracking, and returns/RMA handling.",
+      "defaultStages": [
+        { "stageId": "stg-pick-pack", "name": "Inventory Pick & Protective Packing", "sequenceOrder": 1, "standardTouchTimeMinutes": 10, "standardWaitTimeMinutes": 30 },
+        { "stageId": "stg-carrier-dispatch", "name": "Carrier Manifest & Labeling", "sequenceOrder": 2, "standardTouchTimeMinutes": 5, "standardWaitTimeMinutes": 120 },
+        { "stageId": "stg-in-transit-tracking", "name": "Carrier Transit & Delivery Confirmation", "sequenceOrder": 3, "standardTouchTimeMinutes": 0, "standardWaitTimeMinutes": 2880 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-barcode-scan", "stageId": "stg-pick-pack", "name": "Double Scan Verification", "type": "DETECTION", "acceptanceCriteria": "Item barcode matches pick sheet 100%" }
+      ]
+    },
+    {
+      "archetypeId": "HYBRID_SOFTWARE_SERVICE",
+      "name": "Hybrid Software + Service",
+      "exampleIdea": "idea-426",
+      "exampleName": "EAA Web Accessibility Fixer",
+      "defaultFlowUnit": "remediated_web_portal",
+      "primaryBottleneckRisk": "complex_custom_codebase_remediation",
+      "description": "Automated code fixes for European Accessibility Act combined with manual screen reader verification by specialized accessibility engineers.",
+      "defaultStages": [
+        { "stageId": "stg-crawl-and-ast-fix", "name": "Automated AST Code Patching", "sequenceOrder": 1, "standardTouchTimeMinutes": 5, "standardWaitTimeMinutes": 30 },
+        { "stageId": "stg-screen-reader-audit", "name": "Manual Assistive Technology Test", "sequenceOrder": 2, "standardTouchTimeMinutes": 60, "standardWaitTimeMinutes": 120 },
+        { "stageId": "stg-pr-generation", "name": "GitHub Pull Request & Test Evidence", "sequenceOrder": 3, "standardTouchTimeMinutes": 15, "standardWaitTimeMinutes": 15 }
+      ],
+      "defaultControls": [
+        { "controlId": "ctrl-wcag-axe-core", "stageId": "stg-crawl-and-ast-fix", "name": "Automated Axe-Core Automated Validation", "type": "DETECTION", "acceptanceCriteria": "Zero WCAG 2.1 AA critical violations on generated code" }
+      ]
+    }
+  ]
+}
