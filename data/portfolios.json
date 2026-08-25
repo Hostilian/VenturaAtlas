@@ -270,6 +270,105 @@
       "createdAt": "2026-08-25T00:00:00Z",
       "updatedAt": "2026-08-25T00:00:00Z",
       "createdBy": "system-seed"
+    },
+    {
+      "portfolioId": "port-low-capital-cashflow-bridge",
+      "schemaVersion": "1.0.0",
+      "name": "Low-Capital Fast Cashflow Bridge Sequence",
+      "description": "Zero external capital sequence targeting rapid cash conversion via performance-fee broker services and prepaid bounty deposits before self-funding vertical software builds.",
+      "objectiveProfile": "maximize_probability_of_first_revenue",
+      "strategicRegime": "CASHFLOW",
+      "horizon": "days/weeks",
+      "resourceEnvelope": {
+        "availableCash": 200,
+        "cashCurrency": "EUR",
+        "monthlyBurnCeiling": 50,
+        "hoursPerWeek": 12,
+        "maxActiveBets": 2,
+        "maxIrreversibleCapital": 50,
+        "explorationLossBudget": 100,
+        "moonShotBudgetFraction": 0.05,
+        "reserveFraction": 0.25,
+        "technicalCapacity": "medium",
+        "salesCapacity": "medium",
+        "researchCapacity": "high",
+        "designCapacity": "low",
+        "operationalCapacity": "medium",
+        "attentionCapacity": "medium"
+      },
+      "bets": [
+        {
+          "betId": "bet-vendor-slot-manual-matching",
+          "ideaId": "idea-082",
+          "portfolioRole": "ACTIVE",
+          "commitmentLevel": 2,
+          "reversibility": "HIGHLY_REVERSIBLE",
+          "sequenceOrder": 1,
+          "dependsOnBetIds": [],
+          "unlocksAfterSuccess": ["bet-factbounty-prepaid-pilots"]
+        },
+        {
+          "betId": "bet-factbounty-prepaid-pilots",
+          "ideaId": "idea-061",
+          "portfolioRole": "RESERVED",
+          "commitmentLevel": 3,
+          "reversibility": "REVERSIBLE",
+          "sequenceOrder": 2,
+          "dependsOnBetIds": ["bet-vendor-slot-manual-matching"],
+          "unlocksAfterSuccess": []
+        }
+      ],
+      "portfolioThesis": {
+        "statement": "Manual brokerage of distressed trade show and conference vendor slots generates immediate performance-fee cashflow without software overhead. Cash proceeds directly fund FactBounty verification hardware testing.",
+        "supportingEvidence": [
+          "idea-082 requires zero software development to validate",
+          "Commercial trade show cancellations occur with predictable seasonality",
+          "Performance fees require no upfront capital expenditure"
+        ],
+        "antiThesis": "Event organizers ban secondary slot reassignments or enforce non-transferability clauses.",
+        "killSwitch": "If event organizers refuse 3 consecutive transfers."
+      },
+      "scenarios": [
+        {
+          "scenarioId": "sc-organizer-block",
+          "description": "Organizers strictly prohibit slot reassignment",
+          "assumptions": ["Contractual transfer ban enforced"],
+          "affectedRiskFactors": ["rf-enterprise-procurement"],
+          "likelihoodBand": "medium",
+          "portfolioImpact": "Kills secondary slot model; pivots to lead referral service.",
+          "portfolioResponse": "Stop secondary matching and transition immediately to FactBounty direct buyer discovery."
+        }
+      ],
+      "constraints": [
+        {
+          "constraintId": "con-wip-2",
+          "type": "wip_limit",
+          "description": "Never run >2 active bets.",
+          "betIds": [],
+          "value": 2
+        }
+      ],
+      "allocation": {
+        "bet-vendor-slot-manual-matching": {
+          "hoursPerWeekLow": 6,
+          "hoursPerWeekHigh": 8,
+          "capitalLow": 0,
+          "capitalHigh": 20,
+          "rationale": "High outbound hustle, zero coding required."
+        },
+        "reserve": {
+          "hoursPerWeekLow": 2,
+          "hoursPerWeekHigh": 4,
+          "capitalLow": 50,
+          "capitalHigh": 100,
+          "rationale": "Liquidity buffer."
+        }
+      },
+      "antiPortfolio": [],
+      "snapshots": [],
+      "createdAt": "2026-08-25T00:00:00Z",
+      "updatedAt": "2026-08-25T00:00:00Z",
+      "createdBy": "system-seed"
     }
   ]
 }

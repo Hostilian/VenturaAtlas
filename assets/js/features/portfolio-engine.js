@@ -403,12 +403,23 @@ function generateSequence(bets) {
 function computeParetoFrontier(portfolios, axis1, axis2) {
   if (!portfolios || portfolios.length === 0) return [];
 
+  const getVal = (p, ax) => {
+    if (!ax) return 0;
+    if (p.metrics && p.metrics[ax] !== undefined) return p.metrics[ax];
+    if (p[ax] !== undefined) return p[ax];
+    return 0;
+  };
+
   return portfolios.map((p, i) => {
     const dominated = portfolios.some((q, j) => {
       if (i === j) return false;
-      const a1 = q.metrics[axis1] >= p.metrics[axis1];
-      const a2 = q.metrics[axis2] >= p.metrics[axis2];
-      const strictlyBetter = q.metrics[axis1] > p.metrics[axis1] || q.metrics[axis2] > p.metrics[axis2];
+      const vq1 = getVal(q, axis1);
+      const vp1 = getVal(p, axis1);
+      const vq2 = getVal(q, axis2);
+      const vp2 = getVal(p, axis2);
+      const a1 = vq1 >= vp1;
+      const a2 = vq2 >= vp2;
+      const strictlyBetter = vq1 > vp1 || vq2 > vp2;
       return a1 && a2 && strictlyBetter;
     });
     return { ...p, dominated, paretoFrontier: !dominated };
@@ -575,8 +586,12 @@ function assessFragility(portfolio, riskFactors, ideas) {
  * Uses latest pre-resolution submission per forecaster.
  * Lower Brier score is better. Naive 50% baseline = 0.25.
  */
-function computeBrierScore(forecast) {
-  if (!forecast.resolution || forecast.resolution.outcome === null || forecast.resolution.outcome === undefined) {
+function computeBrierScore(forecast, directOutcome) {
+  if (typeof forecast === 'number') {
+    const outcome = directOutcome === true || directOutcome === 1 ? 1 : 0;
+    return Math.round(Math.pow(forecast - outcome, 2) * 1000) / 1000;
+  }
+  if (!forecast || !forecast.resolution || forecast.resolution.outcome === null || forecast.resolution.outcome === undefined) {
     return null;
   }
   if (forecast.resolutionType !== 'binary') return null;
@@ -687,8 +702,8 @@ function summarizeCalibration(forecasts) {
  * High disagreement (range > 40pp) is itself a signal — surfaces for investigation.
  */
 function detectForecasterDisagreement(forecast) {
-  const subs = forecast.submissions || [];
-  if (subs.length < 2) return { level: 'insufficient', range: 0 };
+  const subs = Array.isArray(forecast) ? forecast : (forecast?.submissions || []);
+  if (subs.length < 2) return { level: 'insufficient', range: 0, hasHighDisagreement: false };
 
   const probs = subs.map(s => s.probability);
   const min = Math.min(...probs);
@@ -696,13 +711,17 @@ function detectForecasterDisagreement(forecast) {
   const range = max - min;
 
   const level = range > 0.4 ? 'high' : range > 0.2 ? 'moderate' : 'low';
+  const hasHighDisagreement = range >= 0.4;
+  const mean = probs.reduce((s, p) => s + p, 0) / probs.length;
 
   return {
     level,
-    range:    Math.round(range * 100),
-    min:      Math.round(min * 100),
-    max:      Math.round(max * 100),
-    mean:     Math.round(probs.reduce((s, p) => s + p, 0) / probs.length * 100),
+    hasHighDisagreement,
+    range:    Math.round(range * 100) / 100,
+    min:      Math.round(min * 100) / 100,
+    max:      Math.round(max * 100) / 100,
+    mean:     Math.round(mean * 100) / 100,
+    ensembleProbability: mean,
     note:     level === 'high'
       ? `High disagreement (${Math.round(range * 100)}pp spread). Disagreement may be the signal — identify the crux assumption causing it.`
       : null
