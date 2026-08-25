@@ -18,6 +18,10 @@ const MERCURY_SIGNALS = [
   'PROBLEM_CONFIRMED', 'WORKAROUND_CONFIRMED', 'URGENCY_CONFIRMED',
   'EVALUATION_ACCEPTED', 'OFFER_ACCEPTED', 'COMMITMENT_MADE'
 ];
+const MERCURY_OBJECTION_CATEGORIES = [
+  'BUDGET', 'PRICE', 'URGENCY', 'AUTHORITY', 'TRUST', 'FIT',
+  'PROCUREMENT', 'TIMING', 'COMPETITOR', 'STATUS_QUO', 'OTHER', 'UNKNOWN'
+];
 const MERCURY_EVENT_TYPES = [
   'INVOICE_ISSUED', 'PAYMENT_COLLECTED', 'REFUND', 'VALUE_ACHIEVED',
   'RENEWED', 'EXPANDED', 'REFERRED'
@@ -175,17 +179,34 @@ function validateMercuryWorkspace(workspace) {
     if (!interaction.evidenceRef?.trim()) errors.push(`${interaction.interactionId} lacks evidenceRef`);
     if (interaction.evidenceClass !== 'OPERATOR_ATTESTED') errors.push(`${interaction.interactionId} has unsupported evidenceClass`);
     if (!Array.isArray(interaction.facts) || interaction.facts.length === 0) errors.push(`${interaction.interactionId} needs at least one observed fact`);
+    if (!Array.isArray(interaction.objections)) errors.push(`${interaction.interactionId} objections must be an array`);
+    if (!Array.isArray(interaction.objectionCategories)) errors.push(`${interaction.interactionId} objectionCategories must be an array`);
     const organization = workspace.organizations.find(item => item.organizationId === interaction.organizationId);
     const channel = interaction.channelId ? workspace.channels.find(item => item.channelId === interaction.channelId) : null;
     if (organization && organization.segmentId !== interaction.segmentId) errors.push(`${interaction.interactionId} segment does not match organization`);
     if (channel && channel.segmentId !== interaction.segmentId) errors.push(`${interaction.interactionId} channel belongs to another segment`);
     for (const signal of interaction.signals || []) if (!MERCURY_SIGNALS.includes(signal)) errors.push(`${interaction.interactionId} has invalid signal ${signal}`);
+    for (const category of interaction.objectionCategories || []) {
+      if (!MERCURY_OBJECTION_CATEGORIES.includes(category)) errors.push(`${interaction.interactionId} has invalid objection category ${category}`);
+    }
   }
   for (const opportunity of workspace.opportunities) {
     if (!organizationIds.has(opportunity.organizationId)) errors.push(`${opportunity.opportunityId} has unknown organizationId`);
     if (!segmentIds.has(opportunity.segmentId)) errors.push(`${opportunity.opportunityId} has unknown segmentId`);
     if (opportunity.offerId && !offerIds.has(opportunity.offerId)) errors.push(`${opportunity.opportunityId} has unknown offerId`);
     if (!MERCURY_STAGES.includes(opportunity.stage)) errors.push(`${opportunity.opportunityId} has invalid stage`);
+    if (!Number.isFinite(Date.parse(opportunity.createdAt))) errors.push(`${opportunity.opportunityId} has invalid createdAt`);
+    if (!Array.isArray(opportunity.stageHistory) || opportunity.stageHistory.length === 0) {
+      errors.push(`${opportunity.opportunityId} needs stageHistory`);
+    } else {
+      for (const entry of opportunity.stageHistory) {
+        if (!MERCURY_STAGES.includes(entry?.stage)) errors.push(`${opportunity.opportunityId} has invalid stage history entry`);
+        if (!Number.isFinite(Date.parse(entry?.recordedAt))) errors.push(`${opportunity.opportunityId} has invalid stage history timestamp`);
+        if (!entry?.evidenceRef?.trim()) errors.push(`${opportunity.opportunityId} has stage history without evidenceRef`);
+      }
+      if (opportunity.stageHistory.at(-1)?.stage !== opportunity.stage) errors.push(`${opportunity.opportunityId} current stage does not match stageHistory`);
+    }
+    if (opportunity.stage === 'LOST' && !opportunity.lossReason?.trim()) errors.push(`${opportunity.opportunityId} needs a lossReason`);
     const organization = workspace.organizations.find(item => item.organizationId === opportunity.organizationId);
     const offer = opportunity.offerId ? workspace.offers.find(item => item.offerId === opportunity.offerId) : null;
     if (organization && organization.segmentId !== opportunity.segmentId) errors.push(`${opportunity.opportunityId} segment does not match organization`);
@@ -195,22 +216,38 @@ function validateMercuryWorkspace(workspace) {
     if (!organizationIds.has(event.organizationId)) errors.push(`${event.eventId} has unknown organizationId`);
     if (event.opportunityId && !opportunityIds.has(event.opportunityId)) errors.push(`${event.eventId} has unknown opportunityId`);
     if (!MERCURY_EVENT_TYPES.includes(event.eventType)) errors.push(`${event.eventId} has invalid eventType`);
+    if (!Number.isFinite(Date.parse(event.occurredAt))) errors.push(`${event.eventId} has invalid occurredAt`);
     if (!event.evidenceRef?.trim()) errors.push(`${event.eventId} lacks evidenceRef`);
     if (event.evidenceClass !== 'OPERATOR_ATTESTED') errors.push(`${event.eventId} has unsupported evidenceClass`);
     const opportunity = event.opportunityId ? workspace.opportunities.find(item => item.opportunityId === event.opportunityId) : null;
     if (opportunity && opportunity.organizationId !== event.organizationId) errors.push(`${event.eventId} opportunity belongs to another organization`);
-    const prior = workspace.commercialEvents.slice(0, eventIndex).filter(item => item.organizationId === event.organizationId);
-    const paymentTotal = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED').reduce((sum, item) => sum + Number(item.amount || 0), 0);
-    const refundTotal = prior.filter(item => item.eventType === 'REFUND').reduce((sum, item) => sum + Number(item.amount || 0), 0);
-    if (['INVOICE_ISSUED', 'PAYMENT_COLLECTED', 'REFUND', 'RENEWED', 'EXPANDED'].includes(event.eventType) && !opportunity) {
+    const prior = workspace.commercialEvents.slice(0, eventIndex).filter(item => (
+      item.organizationId === event.organizationId && item.opportunityId === event.opportunityId
+    ));
+    const laterThanPrior = prior.every(item => Date.parse(item.occurredAt) <= Date.parse(event.occurredAt));
+    if (!laterThanPrior) errors.push(`${event.eventId} is out of chronological order for its opportunity`);
+    const paymentTotal = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED' && item.currency === event.currency)
+      .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+    const refundTotal = prior.filter(item => item.eventType === 'REFUND' && item.currency === event.currency)
+      .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+    const netPaymentExists = [...new Set(prior.map(item => item.currency).filter(Boolean))].some(currency => {
+      const collected = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED' && item.currency === currency)
+        .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+      const refunded = prior.filter(item => item.eventType === 'REFUND' && item.currency === currency)
+        .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+      return collected > refunded;
+    });
+    if (!opportunity) {
       errors.push(`${event.eventId} requires an opportunity for this organization`);
     }
     if (event.eventType === 'PAYMENT_COLLECTED' && opportunity) {
-      const offered = (opportunity.stageHistory || []).some(item => ['OFFERED', 'PILOT'].includes(item.stage));
+      const offered = (opportunity.stageHistory || []).some(item => (
+        ['OFFERED', 'PILOT'].includes(item.stage) && Date.parse(item.recordedAt) <= Date.parse(event.occurredAt)
+      ));
       if (!offered) errors.push(`${event.eventId} lacks a prior offered or pilot stage`);
     }
     if (event.eventType === 'REFUND' && refundTotal + Number(event.amount || 0) > paymentTotal) errors.push(`${event.eventId} exceeds prior collected payment`);
-    if (event.eventType === 'VALUE_ACHIEVED' && paymentTotal <= refundTotal) errors.push(`${event.eventId} lacks net collected payment`);
+    if (event.eventType === 'VALUE_ACHIEVED' && !netPaymentExists) errors.push(`${event.eventId} lacks net collected payment for this opportunity`);
     if (event.eventType === 'RENEWED' && !prior.some(item => item.eventType === 'VALUE_ACHIEVED')) errors.push(`${event.eventId} lacks prior value achievement`);
     if (event.eventType === 'EXPANDED' && !prior.some(item => item.eventType === 'VALUE_ACHIEVED')) errors.push(`${event.eventId} lacks prior value achievement`);
     if (event.eventType === 'REFERRED' && !prior.some(item => item.eventType === 'VALUE_ACHIEVED')) errors.push(`${event.eventId} lacks prior value achievement`);
@@ -261,17 +298,50 @@ function summarizeMercury(workspace) {
   const revenueByCurrency = {};
   for (const event of paid) revenueByCurrency[event.currency] = (revenueByCurrency[event.currency] || 0) + Number(event.amount);
   for (const event of refunds) revenueByCurrency[event.currency] = (revenueByCurrency[event.currency] || 0) - Number(event.amount);
+  const realOpportunities = workspace.opportunities.filter(item => realIds.has(item.organizationId));
+  const objectionCounts = {};
+  for (const category of interactions.flatMap(item => item.objectionCategories || [])) {
+    objectionCounts[category] = (objectionCounts[category] || 0) + 1;
+  }
+  const lossReasonCounts = {};
+  for (const item of realOpportunities.filter(item => item.stage === 'LOST')) {
+    lossReasonCounts[item.lossReason] = (lossReasonCounts[item.lossReason] || 0) + 1;
+  }
+  const segmentPerformance = workspace.segments.map(segment => {
+    const organizationIds = new Set(realOrganizations.filter(item => item.segmentId === segment.segmentId).map(item => item.organizationId));
+    const segmentInteractions = interactions.filter(item => organizationIds.has(item.organizationId));
+    const segmentOpportunities = realOpportunities.filter(item => item.segmentId === segment.segmentId);
+    const segmentEvents = events.filter(item => organizationIds.has(item.organizationId));
+    return {
+      segmentId: segment.segmentId,
+      name: segment.name,
+      organizations: organizationIds.size,
+      contactAttempts: segmentInteractions.filter(item => item.interactionType === 'CONTACT_ATTEMPT').length,
+      conversations: segmentInteractions.filter(item => item.interactionType === 'CONVERSATION').length,
+      qualified: new Set(segmentOpportunities.filter(item => ['QUALIFIED', 'OFFERED', 'PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
+      offered: new Set(segmentOpportunities.filter(item => ['OFFERED', 'PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
+      pilots: new Set(segmentOpportunities.filter(item => ['PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
+      paying: new Set(segmentEvents.filter(item => item.eventType === 'PAYMENT_COLLECTED').map(item => item.organizationId)).size,
+      activated: new Set(segmentEvents.filter(item => item.eventType === 'VALUE_ACHIEVED').map(item => item.organizationId)).size,
+      renewed: new Set(segmentEvents.filter(item => item.eventType === 'RENEWED').map(item => item.organizationId)).size,
+      lost: segmentOpportunities.filter(item => item.stage === 'LOST').length
+    };
+  });
   return {
     evidence: derivedEvidence(workspace),
     segments: workspace.segments.length,
     identifiedOrganizations: realOrganizations.length,
     contactAttempts: interactions.filter(item => item.interactionType === 'CONTACT_ATTEMPT').length,
     conversations: interactions.filter(item => item.interactionType === 'CONVERSATION').length,
-    qualified: new Set(workspace.opportunities.filter(item => ['QUALIFIED', 'OFFERED', 'PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
-    pilots: new Set(workspace.opportunities.filter(item => ['PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
+    qualified: new Set(realOpportunities.filter(item => ['QUALIFIED', 'OFFERED', 'PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
+    pilots: new Set(realOpportunities.filter(item => ['PILOT', 'PAID', 'ACTIVE', 'RENEWED'].includes(item.stage)).map(item => item.organizationId)).size,
     payingOrganizations: new Set(paid.map(item => item.organizationId)).size,
     activatedOrganizations: new Set(events.filter(item => item.eventType === 'VALUE_ACHIEVED').map(item => item.organizationId)).size,
     renewedOrganizations: new Set(events.filter(item => item.eventType === 'RENEWED').map(item => item.organizationId)).size,
+    lostOpportunities: realOpportunities.filter(item => item.stage === 'LOST').length,
+    objectionCounts,
+    lossReasonCounts,
+    segmentPerformance,
     revenueCollected: revenueByCurrency
   };
 }
@@ -454,6 +524,9 @@ class MercuryStore {
     for (const signal of input.signals || []) {
       if (!MERCURY_SIGNALS.includes(signal)) throw new Error(`unsupported commercial signal: ${signal}`);
     }
+    for (const category of input.objectionCategories || []) {
+      if (!MERCURY_OBJECTION_CATEGORIES.includes(category)) throw new Error(`unsupported objection category: ${category}`);
+    }
     const interaction = {
       interactionId: this.idFactory('interaction'),
       organizationId: requireText(input.organizationId, 'organizationId'),
@@ -464,6 +537,7 @@ class MercuryStore {
       outcome: input.outcome || 'UNKNOWN',
       facts,
       objections: (input.objections || []).map(String).map(item => item.trim()).filter(Boolean),
+      objectionCategories: [...new Set(input.objectionCategories || [])],
       signals: [...new Set(input.signals || [])],
       evidenceRef: requireText(input.evidenceRef, 'evidenceRef'),
       evidenceClass: 'OPERATOR_ATTESTED',
@@ -510,15 +584,30 @@ class MercuryStore {
     if (['INVOICE_ISSUED', 'PAYMENT_COLLECTED', 'REFUND', 'RENEWED', 'EXPANDED'].includes(input.eventType) && !opportunity) {
       throw new Error(`${input.eventType} requires an opportunity`);
     }
-    const prior = this.workspace.commercialEvents.filter(item => item.organizationId === input.organizationId);
-    const paymentTotal = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED').reduce((sum, item) => sum + Number(item.amount || 0), 0);
-    const refundTotal = prior.filter(item => item.eventType === 'REFUND').reduce((sum, item) => sum + Number(item.amount || 0), 0);
-    if (input.eventType === 'PAYMENT_COLLECTED' && !(opportunity.stageHistory || []).some(item => ['OFFERED', 'PILOT'].includes(item.stage))) {
+    const occurredAt = input.occurredAt || this.clock();
+    const prior = this.workspace.commercialEvents.filter(item => (
+      item.organizationId === input.organizationId && (!input.opportunityId || item.opportunityId === input.opportunityId)
+    ));
+    if (prior.some(item => Date.parse(item.occurredAt) > Date.parse(occurredAt))) throw new Error('commercial event is out of chronological order');
+    const paymentTotal = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED' && item.currency === input.currency)
+      .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+    const refundTotal = prior.filter(item => item.eventType === 'REFUND' && item.currency === input.currency)
+      .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+    const netPaymentExists = [...new Set(prior.map(item => item.currency).filter(Boolean))].some(currency => {
+      const collected = prior.filter(item => item.eventType === 'PAYMENT_COLLECTED' && item.currency === currency)
+        .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+      const refunded = prior.filter(item => item.eventType === 'REFUND' && item.currency === currency)
+        .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+      return collected > refunded;
+    });
+    if (input.eventType === 'PAYMENT_COLLECTED' && !(opportunity?.stageHistory || []).some(item => (
+      ['OFFERED', 'PILOT'].includes(item.stage) && Date.parse(item.recordedAt) <= Date.parse(occurredAt)
+    ))) {
       throw new Error('payment requires a prior offered or pilot stage');
     }
     if (input.eventType === 'REFUND' && refundTotal + amount > paymentTotal) throw new Error('refund exceeds prior collected payment');
-    if (input.eventType === 'VALUE_ACHIEVED' && paymentTotal <= refundTotal) throw new Error('value achievement requires net collected payment');
-    if (['RENEWED', 'EXPANDED', 'REFERRED'].includes(input.eventType) && !prior.some(item => item.eventType === 'VALUE_ACHIEVED')) {
+    if (input.eventType === 'VALUE_ACHIEVED' && !netPaymentExists) throw new Error('value achievement requires net collected payment for this opportunity');
+    if (['RENEWED', 'EXPANDED', 'REFERRED'].includes(input.eventType) && !this.workspace.commercialEvents.some(item => item.organizationId === input.organizationId && item.eventType === 'VALUE_ACHIEVED')) {
       throw new Error(`${input.eventType} requires prior value achievement`);
     }
     const event = {
@@ -526,7 +615,7 @@ class MercuryStore {
       organizationId: requireText(input.organizationId, 'organizationId'),
       opportunityId: input.opportunityId || null,
       eventType: input.eventType,
-      occurredAt: input.occurredAt || this.clock(),
+      occurredAt,
       amount,
       currency: requiresAmount ? (input.currency || 'EUR') : null,
       evidenceRef: requireText(input.evidenceRef, 'evidenceRef'),
@@ -587,6 +676,7 @@ const MercuryAPI = {
   EVIDENCE_LADDER,
   MERCURY_STAGES,
   MERCURY_SIGNALS,
+  MERCURY_OBJECTION_CATEGORIES,
   MERCURY_EVENT_TYPES,
   MERCURY_STORAGE_KEY,
   studioStorageAdapter
