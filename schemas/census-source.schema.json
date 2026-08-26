@@ -1,25 +1,47 @@
-﻿{
-  "$schema": "http://json-schema.org/draft-07/schema#",
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "census-source.schema.json",
   "title": "CensusSource",
-  "description": "Official statistical source registry entry. Distinct from data/sources.json (evidence provenance). Documents what a dataset actually measures, its coverage, exclusions, and limitations. See CENSUS §101-135.",
+  "description": "Official statistical source registry entry. Distinct from data/sources.json (evidence provenance). Documents what a dataset actually measures, its coverage, exclusions, and limitations. See CENSUS \u00a7101-135.",
   "type": "object",
-  "required": ["censusSourceId","publisher","dataset","sourceType","unit","geography","referencePeriod","limitations"],
+  "required": [
+    "censusSourceId",
+    "publisher",
+    "dataset",
+    "sourceType",
+    "unit",
+    "geography",
+    "referencePeriod",
+    "limitations"
+  ],
   "additionalProperties": false,
   "properties": {
     "censusSourceId": {
       "type": "string",
       "pattern": "^csrc-[a-z0-9-]+$"
     },
-    "publisher": { "type": "string" },
-    "dataset": { "type": "string" },
+    "publisher": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "string"
+    },
     "sourceType": {
       "type": "string",
       "enum": [
-        "OFFICIAL_CENSUS","ADMINISTRATIVE_REGISTER","OFFICIAL_SURVEY",
-        "INDUSTRY_ASSOCIATION","REGULATORY_DATA","COMPANY_FILINGS",
-        "PUBLIC_API","COMMERCIAL_DATABASE","ACADEMIC_DATASET",
-        "WITNESS_SURVEY","WITNESS_QUALITATIVE","WEB_PROXY","ANALYST_ASSUMPTION"
+        "OFFICIAL_CENSUS",
+        "ADMINISTRATIVE_REGISTER",
+        "OFFICIAL_SURVEY",
+        "INDUSTRY_ASSOCIATION",
+        "REGULATORY_DATA",
+        "COMPANY_FILINGS",
+        "PUBLIC_API",
+        "COMMERCIAL_DATABASE",
+        "ACADEMIC_DATASET",
+        "WITNESS_SURVEY",
+        "WITNESS_QUALITATIVE",
+        "WEB_PROXY",
+        "ANALYST_ASSUMPTION"
       ]
     },
     "unit": {
@@ -28,13 +50,23 @@
     },
     "coverage": {
       "type": "object",
-      "required": ["included","excluded"],
+      "required": [
+        "included",
+        "excluded"
+      ],
       "properties": {
-        "included": { "type": "array", "items": { "type": "string" } },
+        "included": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "excluded": {
           "type": "array",
-          "items": { "type": "string" },
-          "description": "What is explicitly NOT counted. e.g. nonemployers, agriculture, public administration, self-employed. See §106-112."
+          "items": {
+            "type": "string"
+          },
+          "description": "What is explicitly NOT counted. e.g. nonemployers, agriculture, public administration, self-employed. See \u00a7106-112."
         }
       },
       "additionalProperties": false
@@ -42,54 +74,175 @@
     "classification": {
       "type": "object",
       "properties": {
-        "system": { "type": "string", "enum": ["NACE","NAICS","ISIC","SIC","CPA","CUSTOM","NONE"] },
-        "version": { "type": "string" },
-        "codes": { "type": "array", "items": { "type": "string" } }
+        "system": {
+          "type": "string",
+          "enum": [
+            "NACE",
+            "NAICS",
+            "ISIC",
+            "SIC",
+            "CPA",
+            "CUSTOM",
+            "NONE"
+          ]
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": false
     },
     "geography": {
       "type": "object",
-      "required": ["level","codes"],
+      "required": [
+        "level",
+        "codes"
+      ],
       "properties": {
-        "level": { "type": "string" },
-        "codes": { "type": "array", "items": { "type": "string" } }
+        "level": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": false
     },
     "referencePeriod": {
       "type": "string",
-      "description": "The period the data describes. NOT the publication date. e.g. '2022', '2023-Q4'. See §216-217."
+      "description": "The period the data describes. NOT the publication date. e.g. '2022', '2023-Q4'. See \u00a7216-217."
     },
-    "releaseDate": { "type": ["string", "null"] },
+    "releaseDate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "revisionStatus": {
       "type": "string",
-      "enum": ["PROVISIONAL","REVISED","FINAL","UNKNOWN"]
+      "enum": [
+        "PROVISIONAL",
+        "REVISED",
+        "FINAL",
+        "UNKNOWN"
+      ]
     },
     "limitations": {
       "type": "array",
-      "items": { "type": "string" },
-      "description": "Known quality limitations. e.g. lag, suppression, sampling error, definitional changes. See §114-134."
+      "items": {
+        "type": "string"
+      },
+      "description": "Known quality limitations. e.g. lag, suppression, sampling error, definitional changes. See \u00a7114-134."
     },
     "quality": {
       "type": "object",
       "properties": {
-        "relevance": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "accuracy": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "timeliness": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "coherence": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "comparability": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "coverage": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] },
-        "granularity": { "type": "string", "enum": ["HIGH","MEDIUM","LOW","UNKNOWN"] }
+        "relevance": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "accuracy": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "timeliness": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "coherence": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "comparability": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "coverage": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "granularity": {
+          "type": "string",
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        }
       },
       "additionalProperties": false
     },
     "access": {
       "type": "string",
-      "enum": ["PUBLIC_FREE","PUBLIC_API","LICENSED","SUBSCRIPTION","RESTRICTED","UNAVAILABLE"]
+      "enum": [
+        "PUBLIC_FREE",
+        "PUBLIC_API",
+        "LICENSED",
+        "SUBSCRIPTION",
+        "RESTRICTED",
+        "UNAVAILABLE"
+      ]
     },
-    "url": { "type": ["string", "null"] },
-    "citation": { "type": ["string", "null"] },
-    "notes": { "type": ["string", "null"] }
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "citation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }

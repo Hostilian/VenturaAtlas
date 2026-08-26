@@ -1,10 +1,22 @@
-﻿{
-  "$schema": "http://json-schema.org/draft-07/schema#",
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "census-estimate.schema.json",
   "title": "CensusEstimate",
-  "description": "A first-class market measurement estimate. Every estimate requires: unit, population, geography, period, method, lower bound, upper bound. A precise number from weak assumptions is forbidden. See CENSUS §191-209.",
+  "description": "A first-class market measurement estimate. Every estimate requires: unit, population, geography, period, method, lower bound, upper bound. A precise number from weak assumptions is forbidden. See CENSUS \u00a7191-209.",
   "type": "object",
-  "required": ["estimateId","metric","unitId","populationId","geography","period","method","valueState","sources","assumptions","asOf"],
+  "required": [
+    "estimateId",
+    "metric",
+    "unitId",
+    "populationId",
+    "geography",
+    "period",
+    "method",
+    "valueState",
+    "sources",
+    "assumptions",
+    "asOf"
+  ],
   "additionalProperties": false,
   "properties": {
     "estimateId": {
@@ -21,45 +33,81 @@
     },
     "unitId": {
       "type": "string",
-      "description": "References census-statistical-unit unitId. Required — no estimate without unit."
+      "description": "References census-statistical-unit unitId. Required \u2014 no estimate without unit."
     },
     "populationId": {
       "type": "string",
-      "description": "References census-population populationId. Required — no estimate without population."
+      "description": "References census-population populationId. Required \u2014 no estimate without population."
     },
     "geography": {
       "type": "object",
-      "required": ["level","codes"],
+      "required": [
+        "level",
+        "codes"
+      ],
       "properties": {
-        "level": { "type": "string" },
-        "codes": { "type": "array", "items": { "type": "string" } }
+        "level": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": false
     },
     "period": {
       "type": "object",
-      "required": ["referenceYear"],
+      "required": [
+        "referenceYear"
+      ],
       "properties": {
-        "referenceYear": { "type": "integer" },
-        "notes": { "type": ["string", "null"] }
+        "referenceYear": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": false
     },
     "valueState": {
       "type": "string",
-      "enum": ["KNOWN","UNKNOWN","NOT_YET_MEASURED","STALE","CONFLICTED","UNAVAILABLE","WITHHELD"],
+      "enum": [
+        "KNOWN",
+        "UNKNOWN",
+        "NOT_YET_MEASURED",
+        "STALE",
+        "CONFLICTED",
+        "UNAVAILABLE",
+        "WITHHELD"
+      ],
       "description": "UNKNOWN is not zero. NOT_YET_MEASURED = in-principle measurable. See data/value-states.json."
     },
     "value": {
-      "type": ["number", "null"],
+      "type": [
+        "number",
+        "null"
+      ],
       "description": "Point estimate. null when valueState is not KNOWN. Do not impute. Do not use when only range exists."
     },
     "lower": {
-      "type": ["number", "null"],
+      "type": [
+        "number",
+        "null"
+      ],
       "description": "Lower bound. null when unknown. lower <= value <= upper must hold when all present."
     },
     "upper": {
-      "type": ["number", "null"],
+      "type": [
+        "number",
+        "null"
+      ],
       "description": "Upper bound. null when unknown. A wide honest range is better than a precise fiction."
     },
     "unitOfMeasure": {
@@ -67,33 +115,68 @@
       "description": "e.g. 'count', 'EUR_per_year', 'events_per_year', 'fraction', 'rate_per_unit_year'. Required. Never export a number without unit."
     },
     "currency": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "ISO 4217. Required when unitOfMeasure involves money. EUR and USD cannot be silently added."
     },
     "nominalYear": {
-      "type": ["integer", "null"],
+      "type": [
+        "integer",
+        "null"
+      ],
       "description": "Year prices are expressed in. Required for monetary estimates."
     },
     "method": {
       "type": "string",
       "enum": [
-        "DIRECT_COUNT","CENSUS_DATA","ADMINISTRATIVE_COUNT",
-        "PROBABILITY_SAMPLE","NONPROBABILITY_SAMPLE_MODEL",
-        "RATIO_ESTIMATE","BENCHMARK_RATE_APPLICATION","PROXY_ESTIMATE",
-        "ANALOGY_ESTIMATE","BOTTOM_UP_DECOMPOSITION","TOP_DOWN_FILTERING",
-        "BOUNDING","FERMI_DECOMPOSITION","TRIANGULATION","SCENARIO"
+        "DIRECT_COUNT",
+        "CENSUS_DATA",
+        "ADMINISTRATIVE_COUNT",
+        "PROBABILITY_SAMPLE",
+        "NONPROBABILITY_SAMPLE_MODEL",
+        "RATIO_ESTIMATE",
+        "BENCHMARK_RATE_APPLICATION",
+        "PROXY_ESTIMATE",
+        "ANALOGY_ESTIMATE",
+        "BOTTOM_UP_DECOMPOSITION",
+        "TOP_DOWN_FILTERING",
+        "BOUNDING",
+        "FERMI_DECOMPOSITION",
+        "TRIANGULATION",
+        "SCENARIO"
       ],
-      "description": "Estimation method. SCENARIO must be labelled as such — it cannot become observed fact."
+      "description": "Estimation method. SCENARIO must be labelled as such \u2014 it cannot become observed fact."
     },
-    "methodNotes": { "type": ["string", "null"] },
+    "methodNotes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "sources": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["censusSourceId","role"],
+        "required": [
+          "censusSourceId",
+          "role"
+        ],
         "properties": {
-          "censusSourceId": { "type": "string" },
-          "role": { "type": "string", "enum": ["PRIMARY","SECONDARY","COUNTER_ESTIMATE","BENCHMARK","CROSSWALK"] }
+          "censusSourceId": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "PRIMARY",
+              "SECONDARY",
+              "COUNTER_ESTIMATE",
+              "BENCHMARK",
+              "CROSSWALK"
+            ]
+          }
         },
         "additionalProperties": false
       },
@@ -103,73 +186,133 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["assumption","sensitivity"],
+        "required": [
+          "assumption",
+          "sensitivity"
+        ],
         "properties": {
-          "assumption": { "type": "string" },
-          "sensitivity": { "type": "string", "enum": ["HIGH","MEDIUM","LOW"] }
+          "assumption": {
+            "type": "string"
+          },
+          "sensitivity": {
+            "type": "string",
+            "enum": [
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ]
+          }
         },
         "additionalProperties": false
       }
     },
     "lineageIds": {
       "type": "array",
-      "items": { "type": "string" },
-      "description": "estimateIds this estimate is derived from. Enables staleness propagation. See §195-200."
+      "items": {
+        "type": "string"
+      },
+      "description": "estimateIds this estimate is derived from. Enables staleness propagation. See \u00a7195-200."
     },
     "counterEstimateId": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "An independent estimate of the same metric using a different method. Required for high-impact estimates."
     },
     "conflictIds": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "estimateIds that conflict with this one. Trigger valueState=CONFLICTED. Never silently average."
     },
     "precedenceRule": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "When conflicted, which estimate takes precedence and why."
     },
     "witnessInferenceGuard": {
       "type": "object",
-      "required": ["qualitativeSampleSize","probabilitySample","populationInferencePermitted"],
+      "required": [
+        "qualitativeSampleSize",
+        "probabilitySample",
+        "populationInferencePermitted"
+      ],
       "properties": {
         "qualitativeSampleSize": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "description": "Number of WITNESS qualitative interviews underlying any prevalence claim. null if WITNESS not consulted."
         },
         "probabilitySample": {
           "type": "boolean",
-          "description": "Was the sample a probability sample? If false, no margin of error may be stated. See §269-271."
+          "description": "Was the sample a probability sample? If false, no margin of error may be stated. See \u00a7269-271."
         },
         "populationInferencePermitted": {
           "type": "boolean",
           "description": "May this sample be used for population prevalence inference? false for all convenience/qualitative samples."
         },
-        "reason": { "type": ["string", "null"] }
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": false,
-      "description": "Guards against WITNESS overgeneralization error. See CENSUS §445, §651, Fixture 3."
+      "description": "Guards against WITNESS overgeneralization error. See CENSUS \u00a7445, \u00a7651, Fixture 3."
     },
     "revenueEstimateGuard": {
-      "type": ["object", "null"],
-      "required": ["priceState","priceSource"],
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "priceState",
+        "priceSource"
+      ],
       "properties": {
         "priceState": {
           "type": "string",
-          "enum": ["MERCURY_VALIDATED","SCENARIO","UNKNOWN"],
+          "enum": [
+            "MERCURY_VALIDATED",
+            "SCENARIO",
+            "UNKNOWN"
+          ],
           "description": "MERCURY_VALIDATED = real buying behaviour confirms price. SCENARIO = hypothetical, must be labelled. UNKNOWN = revenue TAM cannot be computed."
         },
-        "priceSource": { "type": ["string", "null"] }
+        "priceSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": false,
       "description": "Required on revenue/TAM estimates. Prevents price invention. Mercury owns price validation."
     },
     "status": {
       "type": "string",
-      "enum": ["PROVISIONAL","REVISED","FINAL_SOURCE","MODEL_BOUND","WITHDRAWN"],
+      "enum": [
+        "PROVISIONAL",
+        "REVISED",
+        "FINAL_SOURCE",
+        "MODEL_BOUND",
+        "WITHDRAWN"
+      ],
       "description": "WITHDRAWN = concept or method invalid. Preserve withdrawal history."
     },
-    "withdrawalReason": { "type": ["string", "null"] },
+    "withdrawalReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "asOf": {
       "type": "string",
       "format": "date",
@@ -179,16 +322,30 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["date","oldValue","newValue","reason"],
+        "required": [
+          "date",
+          "oldValue",
+          "newValue",
+          "reason"
+        ],
         "properties": {
-          "date": { "type": "string" },
-          "oldValue": { },
-          "newValue": { },
-          "reason": { "type": "string" }
+          "date": {
+            "type": "string"
+          },
+          "oldValue": {},
+          "newValue": {},
+          "reason": {
+            "type": "string"
+          }
         },
         "additionalProperties": false
       }
     },
-    "notes": { "type": ["string", "null"] }
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }

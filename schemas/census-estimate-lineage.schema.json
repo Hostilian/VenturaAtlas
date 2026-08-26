@@ -1,20 +1,30 @@
-﻿{
-  "$schema": "http://json-schema.org/draft-07/schema#",
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "census-estimate-lineage.schema.json",
   "title": "CensusEstimateLineage",
-  "description": "Directed acyclic graph of estimate dependencies. When an upstream source is revised, all downstream estimates become STALE. No cycles permitted. See CENSUS §195-201.",
+  "description": "Directed acyclic graph of estimate dependencies. When an upstream source is revised, all downstream estimates become STALE. No cycles permitted. See CENSUS \u00a7195-201.",
   "type": "object",
-  "required": ["lineageId","derivedEstimateId","inputEstimateIds","transformations"],
+  "required": [
+    "lineageId",
+    "derivedEstimateId",
+    "inputEstimateIds",
+    "transformations"
+  ],
   "additionalProperties": false,
   "properties": {
-    "lineageId": { "type": "string", "pattern": "^lin-[a-z0-9-]+$" },
+    "lineageId": {
+      "type": "string",
+      "pattern": "^lin-[a-z0-9-]+$"
+    },
     "derivedEstimateId": {
       "type": "string",
       "description": "The estimate produced by this transformation."
     },
     "inputEstimateIds": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1,
       "description": "Parent estimates this derives from. Cannot be empty. No derived number without traceable inputs."
     },
@@ -22,52 +32,107 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["operation","description"],
+        "required": [
+          "operation",
+          "description"
+        ],
         "properties": {
           "operation": {
             "type": "string",
-            "enum": ["FILTER","MULTIPLY","DIVIDE","ADD","SUBTRACT","RATIO","BENCHMARK_APPLICATION","EXTRAPOLATE","CURRENCY_CONVERSION","AGGREGATION","DEDUP","JOIN","IMPUTATION"]
+            "enum": [
+              "FILTER",
+              "MULTIPLY",
+              "DIVIDE",
+              "ADD",
+              "SUBTRACT",
+              "RATIO",
+              "BENCHMARK_APPLICATION",
+              "EXTRAPOLATE",
+              "CURRENCY_CONVERSION",
+              "AGGREGATION",
+              "DEDUP",
+              "JOIN",
+              "IMPUTATION"
+            ]
           },
-          "description": { "type": "string" },
-          "parameters": { "type": "object" },
-          "reason": { "type": ["string", "null"] }
+          "description": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
         },
         "additionalProperties": false
       },
       "description": "Each step must be explicit. No hidden spreadsheet magic."
     },
     "formula": {
-      "type": ["string", "null"],
-      "description": "Human-readable formula. e.g. 'est-epc-eligible × filter_exposed_pct = est-epc-exposed'"
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Human-readable formula. e.g. 'est-epc-eligible \u00d7 filter_exposed_pct = est-epc-exposed'"
     },
     "unitCompatibilityCheck": {
       "type": "object",
-      "required": ["passed","notes"],
+      "required": [
+        "passed",
+        "notes"
+      ],
       "properties": {
-        "passed": { "type": "boolean" },
-        "notes": { "type": "string" }
+        "passed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
       },
       "additionalProperties": false,
       "description": "Was the unit mismatch test performed? Required. See Fixture 1."
     },
     "periodCompatibilityCheck": {
       "type": "object",
-      "required": ["passed","notes"],
+      "required": [
+        "passed",
+        "notes"
+      ],
       "properties": {
-        "passed": { "type": "boolean" },
-        "notes": { "type": "string" }
+        "passed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     },
     "currencyCompatibilityCheck": {
       "type": "object",
-      "required": ["passed","notes"],
+      "required": [
+        "passed",
+        "notes"
+      ],
       "properties": {
-        "passed": { "type": "boolean" },
-        "notes": { "type": "string" }
+        "passed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     },
-    "notes": { "type": ["string", "null"] }
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }

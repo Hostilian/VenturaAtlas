@@ -1,10 +1,16 @@
-﻿{
-  "$schema": "http://json-schema.org/draft-07/schema#",
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "census-statistical-unit.schema.json",
   "title": "CensusStatisticalUnit",
-  "description": "A statistical unit declaration. Every estimate must declare exactly one unit. Units cannot be mixed silently. See CENSUS §46-56.",
+  "description": "A statistical unit declaration. Every estimate must declare exactly one unit. Units cannot be mixed silently. See CENSUS \u00a746-56.",
   "type": "object",
-  "required": ["unitId", "unitType", "label", "definition", "dimensionType"],
+  "required": [
+    "unitId",
+    "unitType",
+    "label",
+    "definition",
+    "dimensionType"
+  ],
   "additionalProperties": false,
   "properties": {
     "unitId": {
@@ -15,40 +21,91 @@
     "unitType": {
       "type": "string",
       "enum": [
-        "ENTERPRISE","ESTABLISHMENT","LEGAL_ENTITY","LOCAL_UNIT","LOCATION",
-        "EMPLOYEE","ROLE_HOLDER","HOUSEHOLD","INDIVIDUAL","ACTIVE_USER",
-        "ASSET","VEHICLE","DEVICE","FACILITY",
-        "TRANSACTION","ORDER","CONTRACT","SHIPMENT","CLAIM","AUDIT",
-        "APPLICATION","FILING","CASE","DOCUMENT","WORKFLOW_RUN","PROBLEM_EVENT",
-        "FLEXIBILITY_SITE","FLEXIBILITY_EVENT","EPC_ENGAGEMENT","PROCUREMENT_DECISION_EVENT"
+        "ENTERPRISE",
+        "ESTABLISHMENT",
+        "LEGAL_ENTITY",
+        "LOCAL_UNIT",
+        "LOCATION",
+        "EMPLOYEE",
+        "ROLE_HOLDER",
+        "HOUSEHOLD",
+        "INDIVIDUAL",
+        "ACTIVE_USER",
+        "ASSET",
+        "VEHICLE",
+        "DEVICE",
+        "FACILITY",
+        "TRANSACTION",
+        "ORDER",
+        "CONTRACT",
+        "SHIPMENT",
+        "CLAIM",
+        "AUDIT",
+        "APPLICATION",
+        "FILING",
+        "CASE",
+        "DOCUMENT",
+        "WORKFLOW_RUN",
+        "PROBLEM_EVENT",
+        "FLEXIBILITY_SITE",
+        "FLEXIBILITY_EVENT",
+        "EPC_ENGAGEMENT",
+        "PROCUREMENT_DECISION_EVENT"
       ],
       "description": "Canonical unit type. Must not be mixed with other types without explicit conversion."
     },
-    "label": { "type": "string" },
-    "definition": { "type": "string" },
+    "label": {
+      "type": "string"
+    },
+    "definition": {
+      "type": "string"
+    },
     "dimensionType": {
       "type": "string",
-      "enum": ["STOCK", "FLOW"],
+      "enum": [
+        "STOCK",
+        "FLOW"
+      ],
       "description": "STOCK = counted at a point/period. FLOW = events through time. NEVER mix without explicit model."
     },
     "flowPeriod": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Required when FLOW. e.g. 'per_year'. null when STOCK."
     },
     "parentUnitId": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "If this unit is contained by another (ESTABLISHMENT parent=ENTERPRISE). Prevents 1 enterprise = 1 establishment assumption."
     },
     "aggregationRules": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "incompatibleWith": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Unit IDs that cannot be arithmetically combined without explicit conversion."
     },
-    "sourceDefinition": { "type": ["string", "null"] },
-    "notes": { "type": ["string", "null"] }
+    "sourceDefinition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }

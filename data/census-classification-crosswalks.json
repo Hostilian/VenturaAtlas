@@ -1,4 +1,4 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
   "note": "Industry classification crosswalk table for CENSUS. NACE Rev.2 to NAICS 2022 correspondences for dogfood sectors. Needed for combining EU (NACE) and US/North American (NAICS) data sources without silent mixing. Always use source classification system natively when possible.",

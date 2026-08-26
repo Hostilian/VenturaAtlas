@@ -1,17 +1,24 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
-  "note": "Population funnel records for three CENSUS dogfoods. Each level must reference a parent. Subset count cannot exceed parent count. Filters require explicit epistemic basis. WITNESS has NOT LANDED — all affected-level populations marked NOT_YET_MEASURED.",
+  "note": "Population funnel records for three CENSUS dogfoods. Each level must reference a parent. Subset count cannot exceed parent count. Filters require explicit epistemic basis. WITNESS has NOT LANDED \u2014 all affected-level populations marked NOT_YET_MEASURED.",
   "populations": [
-
     {
       "populationId": "pop-a01-epc-universe",
       "name": "All EU-27 commercial and public-sector buildings",
       "unitId": "unit-epc-engagement",
       "parentPopulationId": null,
       "funnelLevel": "UNIVERSE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
-      "timePeriod": { "referenceYear": 2024, "notes": "Approximate; no annual registry" },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024,
+        "notes": "Approximate; no annual registry"
+      },
       "inclusionCriteria": [
         {
           "criterion": "Commercial or public-sector building (non-residential)",
@@ -20,27 +27,37 @@
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Residential buildings (~75% of stock)", "basis": "Eurostat building stock estimates", "basisType": "MODEL_ESTIMATE" }
+        {
+          "criterion": "Residential buildings (~75% of stock)",
+          "basis": "Eurostat building stock estimates",
+          "basisType": "MODEL_ESTIMATE"
+        }
       ],
       "countEstimateId": "est-a01-universe-count",
       "valueState": "KNOWN",
       "witnessStatus": "NOT_APPLICABLE",
       "notes": "Extremely broad universe. Most units are not under EPC at all."
     },
-
     {
       "populationId": "pop-a02-epc-eligible",
       "name": "Active Energy Performance Contracts in EU-27",
       "unitId": "unit-epc-engagement",
       "parentPopulationId": "pop-a01-epc-universe",
       "funnelLevel": "ELIGIBLE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "Contract is performance-based (ESCO or contractor guaranteed energy savings)",
-          "basis": "EUROACE ESCO market revenue EUR 3-5B/year; average project EUR 500K-5M implies 600-10,000 active contracts. BPIE cumulative 35,000+ projects / 5-year avg duration ≈ 7,000 active. See est-a02-eligible-count.",
-          "basisType": "INDUSTRY_ASSOCIATION"
+          "basis": "EUROACE ESCO market revenue EUR 3-5B/year; average project EUR 500K-5M implies 600-10,000 active contracts. BPIE cumulative 35,000+ projects / 5-year avg duration \u2248 7,000 active. See est-a02-eligible-count.",
+          "basisType": "MODEL_ESTIMATE"
         },
         {
           "criterion": "Contract currently in its M&V measurement period",
@@ -49,23 +66,37 @@
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Simple installation contracts without performance guarantee", "basis": "Definition of EPC/ESCO model", "basisType": "OBSERVED" },
-        { "criterion": "Contracts in warranty-only or maintenance phase (post-M&V)", "basis": "M&V period definition", "basisType": "ASSUMPTION" }
+        {
+          "criterion": "Simple installation contracts without performance guarantee",
+          "basis": "Definition of EPC/ESCO model",
+          "basisType": "OBSERVED"
+        },
+        {
+          "criterion": "Contracts in warranty-only or maintenance phase (post-M&V)",
+          "basis": "M&V period definition",
+          "basisType": "ASSUMPTION"
+        }
       ],
       "countEstimateId": "est-a02-eligible-count",
       "valueState": "KNOWN",
       "witnessStatus": "NO_EVIDENCE",
       "notes": "This is a DERIVED estimate with high uncertainty. Lower bound ~600 (conservative revenue/large-project assumption), upper bound ~10,000 (BPIE cumulative / short duration). Central range 2,000-7,000."
     },
-
     {
       "populationId": "pop-a03-epc-exposed",
       "name": "EU-27 active EPCs exposed to M&V settlement obligation",
       "unitId": "unit-epc-engagement",
       "parentPopulationId": "pop-a02-epc-eligible",
       "funnelLevel": "EXPOSED",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "Contract contains a measurement and verification obligation (by definition of EPC)",
@@ -79,19 +110,25 @@
       "witnessStatus": "NO_EVIDENCE",
       "notes": "Exposure = eligible. Every active EPC is exposed to M&V settlement by contractual definition."
     },
-
     {
       "populationId": "pop-a04-epc-affected",
       "name": "EU-27 active EPCs experiencing M&V settlement dispute",
       "unitId": "unit-epc-engagement",
       "parentPopulationId": "pop-a03-epc-exposed",
       "funnelLevel": "AFFECTED",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "Settlement calculation produces contested result requiring third-party resolution or extended negotiation",
-          "basis": "TERRAIN research gap — no public dispute rate exists. WITNESS has not landed.",
+          "basis": "TERRAIN research gap \u2014 no public dispute rate exists. WITNESS has not landed.",
           "basisType": "UNKNOWN"
         }
       ],
@@ -101,15 +138,23 @@
       "witnessStatus": "NO_EVIDENCE",
       "notes": "PROBLEM PREVALENCE: NOT FIELD-ESTABLISHED. WITNESS has not landed. Cannot infer dispute rate from AI_HYPOTHESIS terrain. This is the highest-value unknown for DOGFOOD A."
     },
-
     {
       "populationId": "pop-b01-b2b-buyer-universe",
       "name": "All EU-27+UK enterprises with 10+ employees (business economy)",
       "unitId": "unit-b2b-buyer-enterprise",
       "parentPopulationId": null,
       "funnelLevel": "UNIVERSE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2022, "notes": "Eurostat SBS reference year 2022" },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2022,
+        "notes": "Eurostat SBS reference year 2022"
+      },
       "inclusionCriteria": [
         {
           "criterion": "Employer enterprise with 10+ employees in business economy (NACE B-N excl K)",
@@ -118,23 +163,38 @@
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Non-employer enterprises (no employees)", "basis": "Eurostat SBS coverage definition", "basisType": "OFFICIAL_STATISTIC" },
-        { "criterion": "Public administration (NACE O), agriculture (NACE A), financial sector (NACE K)", "basis": "SBS coverage", "basisType": "OFFICIAL_STATISTIC" }
+        {
+          "criterion": "Non-employer enterprises (no employees)",
+          "basis": "Eurostat SBS coverage definition",
+          "basisType": "OFFICIAL_STATISTIC"
+        },
+        {
+          "criterion": "Public administration (NACE O), agriculture (NACE A), financial sector (NACE K)",
+          "basis": "SBS coverage",
+          "basisType": "OFFICIAL_STATISTIC"
+        }
       ],
       "countEstimateId": "est-b01-universe-count",
       "valueState": "KNOWN",
       "witnessStatus": "NOT_APPLICABLE",
       "notes": "DOGFOOD B universe. Very broad. Unit here is enterprise-stock, not procurement-event-flow. Unit conversion required before revenue calculation."
     },
-
     {
       "populationId": "pop-b02-b2b-buyer-eligible",
       "name": "EU-27+UK manufacturing + regulated-sector enterprises 50+ employees",
       "unitId": "unit-b2b-buyer-enterprise",
       "parentPopulationId": "pop-b01-b2b-buyer-universe",
       "funnelLevel": "ELIGIBLE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2022 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2022
+      },
       "inclusionCriteria": [
         {
           "criterion": "NACE C (manufacturing) 50+ employees",
@@ -143,52 +203,79 @@
         },
         {
           "criterion": "NACE J (ICT), M (professional services) 50+ employees where high-value B2B software purchases occur",
-          "basis": "Eurostat SBS: NACE J+M 50+ employees approximately 150,000 EU-27. But most software decisions in this sector are covered by review platforms (G2 etc) — partial exclusion needed.",
+          "basis": "Eurostat SBS: NACE J+M 50+ employees approximately 150,000 EU-27. But most software decisions in this sector are covered by review platforms (G2 etc) \u2014 partial exclusion needed.",
           "basisType": "SURVEY_ESTIMATE"
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Enterprises <50 employees — less likely to make qualifying EUR 50K+ procurement decisions as structured events", "basis": "ASSUMPTION — threshold is not observed", "basisType": "ASSUMPTION" },
-        { "criterion": "Consumer-facing enterprises where procurement of capital equipment is not primary activity", "basis": "ASSUMPTION", "basisType": "ASSUMPTION" }
+        {
+          "criterion": "Enterprises <50 employees \u2014 less likely to make qualifying EUR 50K+ procurement decisions as structured events",
+          "basis": "ASSUMPTION \u2014 threshold is not observed",
+          "basisType": "ASSUMPTION"
+        },
+        {
+          "criterion": "Consumer-facing enterprises where procurement of capital equipment is not primary activity",
+          "basis": "ASSUMPTION",
+          "basisType": "ASSUMPTION"
+        }
       ],
       "countEstimateId": "est-b02-eligible-count",
       "valueState": "KNOWN",
       "witnessStatus": "NO_EVIDENCE",
       "notes": "CRITICAL: the billing unit is procurement-event-flow, not enterprise-stock. A stock count of 50,000 manufacturing enterprises is NOT the TAM. Events/enterprise/year assumption required for flow calculation."
     },
-
     {
       "populationId": "pop-b03-b2b-events-eligible",
       "name": "Annual high-stakes B2B procurement events in EU-27+UK manufacturing+regulated sectors",
       "unitId": "unit-procurement-decision-event",
       "parentPopulationId": null,
       "funnelLevel": "ELIGIBLE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2024, "notes": "Derived estimate; no direct source" },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024,
+        "notes": "Derived estimate; no direct source"
+      },
       "inclusionCriteria": [
         {
           "criterion": "Purchase decision >EUR 50K for capital equipment, regulated material, or complex B2B software",
-          "basis": "Derived: pop-b02 enterprise count × assumed 2-10 qualifying events/enterprise/year. Assumption has HIGH sensitivity.",
+          "basis": "Derived: pop-b02 enterprise count \u00d7 assumed 2-10 qualifying events/enterprise/year. Assumption has HIGH sensitivity.",
           "basisType": "MODEL_ESTIMATE"
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Repeat/renewal purchases of standard consumables without performance evaluation", "basis": "Definition of qualifying event", "basisType": "ASSUMPTION" }
+        {
+          "criterion": "Repeat/renewal purchases of standard consumables without performance evaluation",
+          "basis": "Definition of qualifying event",
+          "basisType": "ASSUMPTION"
+        }
       ],
       "countEstimateId": "est-b03-events-eligible",
       "valueState": "KNOWN",
       "witnessStatus": "NO_EVIDENCE",
       "notes": "UNIT CONVERSION from stock to flow. The 2-10 events/enterprise/year assumption is the dominant sensitivity factor. No public source counts qualifying procurement events directly."
     },
-
     {
       "populationId": "pop-b04-b2b-events-affected",
       "name": "Annual events where evidence asymmetry causes material procurement friction",
       "unitId": "unit-procurement-decision-event",
       "parentPopulationId": "pop-b03-b2b-events-eligible",
       "funnelLevel": "AFFECTED",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "No adequate independent evidence available for the specific product configuration and use case",
@@ -200,17 +287,24 @@
       "countEstimateId": null,
       "valueState": "NOT_YET_MEASURED",
       "witnessStatus": "NO_EVIDENCE",
-      "notes": "PROBLEM PREVALENCE: NOT FIELD-ESTABLISHED. Cannot infer from AI_HYPOTHESIS. Counter-evidence in TERRAIN notes that G2/Gartner partially cover SaaS — meaning a material fraction of eligible events may already be served. Upper bound = entire eligible population. True affected fraction = UNKNOWN."
+      "notes": "PROBLEM PREVALENCE: NOT FIELD-ESTABLISHED. Cannot infer from AI_HYPOTHESIS. Counter-evidence in TERRAIN notes that G2/Gartner partially cover SaaS \u2014 meaning a material fraction of eligible events may already be served. Upper bound = entire eligible population. True affected fraction = UNKNOWN."
     },
-
     {
       "populationId": "pop-c01-flex-universe",
       "name": "All EU-27+UK energy-intensive industrial enterprises 250+ employees",
       "unitId": "unit-flexibility-site",
       "parentPopulationId": null,
       "funnelLevel": "UNIVERSE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2022 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2022
+      },
       "inclusionCriteria": [
         {
           "criterion": "Energy-intensive industry NACE B (mining), C20-C24 (chemicals, metals, plastics), D35 (energy utilities), 250+ employees",
@@ -219,52 +313,78 @@
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "Enterprises <250 employees — less likely to have 1MW+ flexible load capacity", "basis": "ASSUMPTION on load size correlation with employee count", "basisType": "ASSUMPTION" }
+        {
+          "criterion": "Enterprises <250 employees \u2014 less likely to have 1MW+ flexible load capacity",
+          "basis": "ASSUMPTION on load size correlation with employee count",
+          "basisType": "ASSUMPTION"
+        }
       ],
       "countEstimateId": "est-c01-universe-count",
       "valueState": "KNOWN",
       "witnessStatus": "NOT_APPLICABLE",
-      "notes": "DOGFOOD C universe. Enterprise count (stock) — not the same as flexibility site count. One enterprise may operate multiple sites."
+      "notes": "DOGFOOD C universe. Enterprise count (stock) \u2014 not the same as flexibility site count. One enterprise may operate multiple sites."
     },
-
     {
       "populationId": "pop-c02-flex-eligible-sites",
       "name": "EU-27+UK registered grid flexibility sites (1MW+ enrolled)",
       "unitId": "unit-flexibility-site",
       "parentPopulationId": null,
       "funnelLevel": "ELIGIBLE",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "Site formally registered with TSO or aggregator for balancing/DR market participation with minimum 1MW flexible load",
-          "basis": "ENTSO-E capacity approach: FCR contracted capacity ~3,000 MW EU-wide / assumed 1-5 MW average site → 600-3,000 sites (lower bound, TSO markets only).",
-          "basisType": "BENCHMARK_RATE_APPLICATION"
+          "basis": "ENTSO-E capacity approach: FCR contracted capacity ~3,000 MW EU-wide / assumed 1-5 MW average site \u2192 600-3,000 sites (lower bound, TSO markets only).",
+          "basisType": "MODEL_ESTIMATE"
         },
         {
-          "criterion": "Counter-estimate via aggregator count: ACER/TERRAIN 200+ aggregators × 10-50 sites/aggregator → 2,000-10,000 sites",
+          "criterion": "Counter-estimate via aggregator count: ACER/TERRAIN 200+ aggregators \u00d7 10-50 sites/aggregator \u2192 2,000-10,000 sites",
           "basis": "ACER MMR 2024 + TERRAIN importanceSignals",
           "basisType": "FIELD_ESTIMATE"
         }
       ],
       "exclusionCriteria": [
-        { "criterion": "DSO-managed local flexibility markets (not captured in ENTSO-E data)", "basis": "ENTSO-E coverage", "basisType": "OFFICIAL_STATISTIC" },
-        { "criterion": "Sites <1MW that aggregate via virtual battery systems", "basis": "Definition of eligible load threshold", "basisType": "ASSUMPTION" }
+        {
+          "criterion": "DSO-managed local flexibility markets (not captured in ENTSO-E data)",
+          "basis": "ENTSO-E coverage",
+          "basisType": "OFFICIAL_STATISTIC"
+        },
+        {
+          "criterion": "Sites <1MW that aggregate via virtual battery systems",
+          "basis": "Definition of eligible load threshold",
+          "basisType": "ASSUMPTION"
+        }
       ],
       "countEstimateId": "est-c02-eligible-sites",
       "valueState": "KNOWN",
       "witnessStatus": "NO_EVIDENCE",
       "notes": "Two independent methods produce consistent ranges. Lower bound 600 (ENTSO-E capacity approach, TSO markets only). Upper bound 10,000 (aggregator-based, includes DSO estimates). Preferred range 2,000-5,000 pending ENTSO-E BSP register download."
     },
-
     {
       "populationId": "pop-c03-flex-affected",
       "name": "Flexibility sites experiencing identifier-mismatch settlement disputes",
       "unitId": "unit-flexibility-site",
       "parentPopulationId": "pop-c02-flex-eligible-sites",
       "funnelLevel": "AFFECTED",
-      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
-      "timePeriod": { "referenceYear": 2024 },
+      "geography": {
+        "level": "COUNTRY_GROUP",
+        "codes": [
+          "EU27",
+          "UK"
+        ]
+      },
+      "timePeriod": {
+        "referenceYear": 2024
+      },
       "inclusionCriteria": [
         {
           "criterion": "Site uses legacy SCADA with site-internal meter IDs incompatible with MPRN/MPAN scheme",

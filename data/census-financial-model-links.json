@@ -1,4 +1,4 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
   "note": "Maps canonical idea IDs to CENSUS estimate IDs providing their addressable population context. Non-destructive: does not modify financial model .md files. The financial model customer counts (10/45/150) are correctly labelled hypothetical and remain valid as scenario explorers. CENSUS provides the measured population context that the financial models cannot contain.",

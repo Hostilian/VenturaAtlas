@@ -87,6 +87,24 @@
         "docs/mercury.html",
         "research/mercury/"
       ]
+    },
+    {
+      "role": "market-measurement-agent",
+      "scope": [
+        "data/census-*.json",
+        "schemas/census-*.schema.json",
+        "assets/js/features/census-engine.js",
+        "docs/census-lab.html"
+      ]
+    },
+    {
+      "role": "terrain-modeling-agent",
+      "scope": [
+        "data/terrain-*.json",
+        "schemas/terrain-*.schema.json",
+        "assets/js/terrain.js",
+        "docs/terrain.html"
+      ]
     }
   ]
 }

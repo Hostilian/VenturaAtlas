@@ -1,4 +1,4 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
   "note": "Canonical statistical unit vocabulary for CENSUS. Every estimate must declare exactly one unit. Arithmetic between incompatible units is prohibited without explicit conversion. See CENSUS §46-56.",

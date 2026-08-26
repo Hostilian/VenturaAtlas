@@ -1,4 +1,4 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
   "note": "CENSUS measurement questions. These are the specific statistical unknowns that must be resolved to move affected-population and revenue estimates from NOT_YET_MEASURED to a defensible range. Ordered by information value (decision impact).",

@@ -1,38 +1,67 @@
-﻿{
-  "$schema": "http://json-schema.org/draft-07/schema#",
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "census-measurement-question.schema.json",
   "title": "CensusMeasurementQuestion",
-  "description": "A precise statistical measurement question. Stronger form of information-value-queue. Defines what population, unit, precision, and method are needed. See CENSUS §311-315.",
+  "description": "A precise statistical measurement question. Stronger form of information-value-queue. Defines what population, unit, precision, and method are needed. See CENSUS \u00a7311-315.",
   "type": "object",
-  "required": ["questionId","metric","targetPopulationId","unitId","neededFor","precisionNeeded","status","asOf"],
+  "required": [
+    "questionId",
+    "metric",
+    "targetPopulationId",
+    "unitId",
+    "neededFor",
+    "precisionNeeded",
+    "status",
+    "asOf"
+  ],
   "additionalProperties": false,
   "properties": {
-    "questionId": { "type": "string", "pattern": "^cmq-[a-z0-9-]+$" },
+    "questionId": {
+      "type": "string",
+      "pattern": "^cmq-[a-z0-9-]+$"
+    },
     "metric": {
       "type": "string",
       "description": "Precisely what is to be measured. e.g. 'What fraction of active EPC engagements in EU-27 result in M&V dispute requiring third-party resolution?'"
     },
-    "targetPopulationId": { "type": "string" },
-    "unitId": { "type": "string" },
+    "targetPopulationId": {
+      "type": "string"
+    },
+    "unitId": {
+      "type": "string"
+    },
     "neededFor": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Which estimates or decisions this measurement enables."
     },
     "ivqRef": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "References existing information-value-queue questionId if overlap exists."
     },
     "problemId": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "References terrain-problem problemId."
     },
     "ideaId": {
-      "type": ["string", "null"]
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "availableSources": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "method": {
       "type": "string",
@@ -40,31 +69,79 @@
     },
     "precisionNeeded": {
       "type": "string",
-      "enum": ["ORDER_OF_MAGNITUDE","FACTOR_OF_TWO","WITHIN_50PCT","WITHIN_20PCT","WITHIN_10PCT","WITHIN_5PCT"],
-      "description": "Decision-relevant precision. Do not over-measure. See §314-315."
+      "enum": [
+        "ORDER_OF_MAGNITUDE",
+        "FACTOR_OF_TWO",
+        "WITHIN_50PCT",
+        "WITHIN_20PCT",
+        "WITHIN_10PCT",
+        "WITHIN_5PCT"
+      ],
+      "description": "Decision-relevant precision. Do not over-measure. See \u00a7314-315."
     },
     "decisionBoundary": {
-      "type": ["string", "null"],
-      "description": "At what value would the strategic decision change? This guides when to stop measuring. See §505-508."
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "At what value would the strategic decision change? This guides when to stop measuring. See \u00a7505-508."
     },
     "witnessHandoff": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "description": "If a WITNESS survey is needed, this specifies the sample design requirements.",
       "properties": {
-        "targetPopulationDescription": { "type": "string" },
-        "sampleDesign": { "type": "string" },
-        "precisionTarget": { "type": "string" },
-        "strataNeeded": { "type": "array", "items": { "type": "string" } }
+        "targetPopulationDescription": {
+          "type": "string"
+        },
+        "sampleDesign": {
+          "type": "string"
+        },
+        "precisionTarget": {
+          "type": "string"
+        },
+        "strataNeeded": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "additionalProperties": false
     },
     "status": {
       "type": "string",
-      "enum": ["OPEN","IN_PROGRESS","RESOLVED","DEFERRED","CANCELLED"]
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS",
+        "RESOLVED",
+        "DEFERRED",
+        "CANCELLED"
+      ]
     },
-    "resolvedByEstimateId": { "type": ["string", "null"] },
-    "priorityScore": { "type": ["number", "null"] },
-    "asOf": { "type": "string", "format": "date" },
-    "notes": { "type": ["string", "null"] }
+    "resolvedByEstimateId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priorityScore": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "asOf": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }

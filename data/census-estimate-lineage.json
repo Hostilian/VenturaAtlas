@@ -1,4 +1,4 @@
-﻿{
+{
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-26",
   "note": "Estimate derivation graph. Every derived estimate must trace to source estimates. Prevents untraceable numbers. Cycles are invalid.",
