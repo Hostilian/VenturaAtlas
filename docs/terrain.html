@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problem Atlas (Terrain) — Venture Atlas OS</title>
+  <meta name="description" content="Explore real-world problem workflows, customer actors, jobs-to-be-done, friction archetypes, and evidence-aware venture opportunity zones.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
+  <link rel="manifest" href="../manifest.webmanifest">
+</head>
+<body data-page="terrain" data-root="..">
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- ── Header ── -->
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
+      <div class="navlinks" id="navlinks">
+        <a href="../#directory">Ideas</a>
+        <a href="./terrain.html" aria-current="page">🗺️ Problem Atlas</a>
+        <a href="./rankings.html">Rankings</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./matcher.html">Matcher</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./tags.html">Tags</a>
+        <a href="./dossiers.html">Dossiers</a>
+        <a href="./prompts.html">Prompts</a>
+        <a href="./sources.html">Sources</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./room.html">Decision Studio</a>
+        <a href="./portfolio-lab.html">🔬 Portfolio Lab</a>
+        <a href="./research.html">Research</a>
+        <a href="./about.html">About</a>
+      </div>
+      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
+    </nav>
+  </header>
+
+  <!-- ── Main Content ── -->
+  <main id="main" style="max-width:1240px;margin:0 auto;padding:1.5rem">
+    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:1rem">
+      <a href="../index.html">Ideas</a><span class="sep">›</span>
+      <span>Problem Atlas (Terrain)</span>
+    </nav>
+
+    <!-- ── Page Title & Mission Statement ── -->
+    <header style="margin-bottom:1.5rem">
+      <div class="eyebrow" style="margin-bottom:0.25rem">Upstream Problem World Model</div>
+      <h1 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;margin-bottom:0.5rem">
+        Problem Atlas
+      </h1>
+      <p class="lede" style="color:var(--text2);font-size:1.05rem;line-height:1.6;max-width:900px">
+        Problem first. Solution second. Explore the observable real-world landscape: customer workflow performers, solution-neutral jobs-to-be-done, operational frictions, current workarounds, and how candidate venture ideas map to real work.
+      </p>
+    </header>
+
+    <noscript>
+      <div class="panel" style="padding:1.5rem;border-left:4px solid var(--score-md);margin-bottom:1rem">
+        <h2>JavaScript is recommended</h2>
+        <p>The Problem Atlas uses client-side indexing for real-time search, multi-facet filtering, and workflow inspection. All underlying data files are openly available in the <a href="../data/terrain-index.json">data/ directory</a>.</p>
+      </div>
+    </noscript>
+
+    <!-- ── Terrain App Mount ── -->
+    <div id="terrainApp" aria-busy="true">
+      <p role="status" class="muted">Loading Problem Atlas &amp; workflow indices…</p>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo" style="margin-top:4rem;border-top:1px solid var(--line);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:0.85rem">
+    <p>Venture Atlas OS — Problem-First Research Architecture · <a href="./about.html">About</a> · <a href="./methodology.html">Methodology</a> · <a href="../data/terrain-index.json">terrain-index.json</a></p>
+  </footer>
+
+  <script src="../assets/js/site.js?v=2.7.1"></script>
+  <script src="../assets/js/terrain.js?v=2.7.1"></script>
+</body>
+</html>

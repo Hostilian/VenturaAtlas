@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENSUS Lab | VenturaAtlas Market Measurement</title>
+  <meta name="description" content="Market measurement lab: denominator discipline, statistical unit clarity, honest uncertainty ranges.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0c10;--surface:#111318;--surface2:#181c24;--border:#262c3a;--border2:#2d3448;--text:#e2e8f0;--text-muted:#8896b0;--text-dim:#4a5568;--accent:#6366f1;--accent-light:#818cf8;--accent-glow:rgba(99,102,241,0.15);--green:#10b981;--green-dim:rgba(16,185,129,0.12);--amber:#f59e0b;--amber-dim:rgba(245,158,11,0.12);--red:#ef4444;--red-dim:rgba(239,68,68,0.12);--blue:#3b82f6;--blue-dim:rgba(59,130,246,0.12);--purple:#a855f7;--purple-dim:rgba(168,85,247,0.12);--r:8px;--rl:12px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;min-height:100vh;}
+    .hdr{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;background:rgba(10,12,16,0.95);backdrop-filter:blur(8px);}
+    .hdr-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.08em;padding:3px 8px;border-radius:4px;}
+    .hdr-title{font-size:16px;font-weight:600;}
+    .hdr-sub{font-size:12px;color:var(--text-muted);margin-left:auto;}
+    .layout{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 57px);}
+    .sidebar{border-right:1px solid var(--border);overflow-y:auto;padding:16px 0;}
+    .sb-lbl{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--text-dim);text-transform:uppercase;padding:8px 16px 4px;}
+    .sb-item{display:flex;align-items:center;gap:8px;padding:8px 16px;cursor:pointer;color:var(--text-muted);font-size:13px;transition:all 0.15s;border-left:2px solid transparent;}
+    .sb-item:hover{background:var(--surface);color:var(--text);}
+    .sb-item.active{background:var(--accent-glow);color:var(--accent-light);border-left-color:var(--accent);}
+    .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .main{overflow-y:auto;padding:24px;}
+    .panel{display:none;}.panel.active{display:block;}
+    .sec-title{font-size:20px;font-weight:600;margin-bottom:4px;}
+    .sec-desc{font-size:13px;color:var(--text-muted);max-width:700px;margin-bottom:20px;}
+    .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+    .dir-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+    .dir-num{font-size:10px;font-weight:700;color:var(--accent-light);letter-spacing:0.06em;margin-bottom:6px;}
+    .dir-txt{color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px;}
+    .funnel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:16px;}
+    .f-step{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);}
+    .f-step:last-child{border-bottom:none;}
+    .f-lvl{width:120px;flex-shrink:0;}
+    .ltag{font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;border-radius:3px;display:inline-block;}
+    .lUNIVERSE{background:var(--blue-dim);color:var(--blue);}
+    .lELIGIBLE{background:var(--purple-dim);color:var(--purple);}
+    .lEXPOSED{background:var(--accent-glow);color:var(--accent-light);}
+    .lAFFECTED{background:var(--amber-dim);color:var(--amber);}
+    .f-name{font-size:13px;font-weight:500;flex:1;line-height:1.4;}
+    .f-cnt{text-align:right;flex-shrink:0;min-width:180px;}
+    .cnt-rng{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;}
+    .cnt-unit{font-size:10px;color:var(--text-muted);margin-top:2px;}
+    .cnt-unk{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--amber);padding:3px 8px;background:var(--amber-dim);border-radius:4px;display:inline-block;}
+    .wb{font-size:9px;padding:1px 5px;border-radius:3px;font-weight:600;margin-top:4px;display:inline-block;}
+    .wNO_EVIDENCE{background:var(--red-dim);color:var(--red);}
+    .wNOT_APPLICABLE{background:var(--surface2);color:var(--text-dim);}
+    .q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;}
+    .q-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;}
+    .q-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-light);}
+    .pchip{font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;flex-shrink:0;}
+    .pH{background:var(--red-dim);color:var(--red);}
+    .pM{background:var(--amber-dim);color:var(--amber);}
+    .q-metric{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:8px;}
+    .src-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;}
+    .src-pub{font-size:12px;font-weight:600;color:var(--accent-light);margin-bottom:4px;}
+    .src-ds{font-size:13px;font-weight:500;margin-bottom:6px;}
+    .lim-item{font-size:11px;color:var(--amber);margin-bottom:3px;padding-left:12px;position:relative;}
+    .lim-item::before{content:"!";position:absolute;left:0;font-weight:700;}
+    .lint-sum{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+    .lint-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;min-width:140px;}
+    .lint-val{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:4px;}
+    .lint-lbl{font-size:11px;color:var(--text-muted);}
+    .f-card{background:var(--surface);border-radius:var(--r);padding:10px 14px;font-size:12px;display:flex;gap:10px;align-items:flex-start;margin-bottom:6px;}
+    .fERROR{border-left:3px solid var(--red);}
+    .fWARNING{border-left:3px solid var(--amber);}
+    .f-rule{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;width:36px;}
+    .fERROR .f-rule{color:var(--red);}
+    .fWARNING .f-rule{color:var(--amber);}
+    .f-msg{color:var(--text-muted);line-height:1.4;}
+    .banner{background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(168,85,247,0.06));border:1px solid var(--border2);border-radius:var(--rl);padding:16px 20px;margin-bottom:20px;display:flex;gap:16px;align-items:flex-start;}
+    .cg3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+    @media(max-width:900px){.cg3{grid-template-columns:1fr;}}
+    .vc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:16px;}
+    .vc-tag{font-size:10px;color:var(--text-dim);letter-spacing:0.08em;font-weight:700;margin-bottom:8px;}
+    .vc-lbl{font-size:12px;color:var(--text-muted);margin-bottom:4px;}
+    .vc-rng{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;}
+    .vc-unit{font-size:10px;color:var(--text-dim);}
+    .sc{font-size:11px;padding:5px 8px;border-radius:4px;display:block;margin-top:4px;}
+    .scNYM{background:var(--amber-dim);color:var(--amber);}
+    .na-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;margin-bottom:6px;}
+    ::-webkit-scrollbar{width:6px;}
+    ::-webkit-scrollbar-track{background:var(--surface);}
+    ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <span class="hdr-badge">CENSUS</span>
+  <span class="hdr-title">Market Measurement Lab</span>
+  <span class="hdr-sub">VenturaAtlas &bull; Anti-TAM-Theater Enforcement Active</span>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sb-lbl">Foundation</div>
+    <div class="sb-item active" onclick="nav('overview')" id="nav-overview"><span class="dot" style="background:var(--accent)"></span>Overview &amp; State</div>
+    <div class="sb-item" onclick="nav('directives')" id="nav-directives"><span class="dot" style="background:var(--purple)"></span>Prime Directives</div>
+    <div class="sb-lbl" style="margin-top:8px;">Dogfood A &mdash; HeatProof</div>
+    <div class="sb-item" onclick="nav('fa')" id="nav-fa"><span class="dot" style="background:var(--green)"></span>Population Funnel</div>
+    <div class="sb-lbl" style="margin-top:8px;">Dogfood B &mdash; FactBounty</div>
+    <div class="sb-item" onclick="nav('fb')" id="nav-fb"><span class="dot" style="background:var(--blue)"></span>Population Funnel</div>
+    <div class="sb-lbl" style="margin-top:8px;">Dogfood C &mdash; FlexCovenant</div>
+    <div class="sb-item" onclick="nav('fc')" id="nav-fc"><span class="dot" style="background:var(--amber)"></span>Population Funnel</div>
+    <div class="sb-lbl" style="margin-top:8px;">Measurement</div>
+    <div class="sb-item" onclick="nav('questions')" id="nav-questions"><span class="dot" style="background:var(--red)"></span>Open Questions</div>
+    <div class="sb-item" onclick="nav('sources')" id="nav-sources"><span class="dot" style="background:var(--text-dim)"></span>Source Registry</div>
+    <div class="sb-lbl" style="margin-top:8px;">Quality</div>
+    <div class="sb-item" onclick="nav('linter')" id="nav-linter"><span class="dot" style="background:var(--accent-light)"></span>Anti-Theater Linter</div>
+  </nav>
+
+  <main class="main">
+
+    <div class="panel active" id="panel-overview">
+      <div class="sec-title">CENSUS State</div>
+      <div class="sec-desc">Current measurement state across three dogfood ventures. Revenue TAMs are NOT YET EVIDENCE-SUPPORTED &mdash; this is the correct and honest state per Prime Directive &sect;11.</div>
+      <div class="banner">
+        <div style="font-size:20px;flex-shrink:0;">&#x1F4CB;</div>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">WITNESS has not landed</div>
+          <div style="font-size:12px;color:var(--text-muted);">Zero qualitative field interviews conducted. All affected-population prevalence fields are NOT_YET_MEASURED. No revenue TAM can be produced until: (1) dispute/prevalence rates are measured by WITNESS, and (2) prices are validated by Mercury prepayment experiments. These are correct and honest states, not failures.</div>
+        </div>
+      </div>
+      <div class="cg3">
+        <div class="vc">
+          <div class="vc-tag">HEATPROOF &bull; IDEA-433</div>
+          <div class="vc-lbl">Active EPC denominator</div>
+          <div class="vc-rng">2,000 &ndash; 10,000</div>
+          <div class="vc-unit">EPC engagements, EU-27</div>
+          <div style="border-top:1px solid var(--border);margin:10px 0;"></div>
+          <span class="sc scNYM">Dispute rate: NOT_YET_MEASURED</span>
+          <span class="sc scNYM">Revenue TAM: NOT_YET_MEASURED</span>
+        </div>
+        <div class="vc">
+          <div class="vc-tag">FACTBOUNTY &bull; IDEA-061</div>
+          <div class="vc-lbl">Eligible procurement events/year</div>
+          <div class="vc-rng">100K &ndash; 500K</div>
+          <div class="vc-unit">Events/year, EU-27 (exploratory, 5&times; width)</div>
+          <div style="border-top:1px solid var(--border);margin:10px 0;"></div>
+          <span class="sc scNYM">Prevalence: NOT_YET_MEASURED</span>
+          <span class="sc scNYM">Revenue TAM: NOT_YET_MEASURED</span>
+        </div>
+        <div class="vc">
+          <div class="vc-tag">FLEXCOVENANT &bull; IDEA-434</div>
+          <div class="vc-lbl">Enrolled flexibility sites</div>
+          <div class="vc-rng">600 &ndash; 10,000</div>
+          <div class="vc-unit">Registered sites, EU-27+UK (16&times; width)</div>
+          <div style="border-top:1px solid var(--border);margin:10px 0;"></div>
+          <span class="sc scNYM">Dispute rate: NOT_YET_MEASURED</span>
+          <span class="sc scNYM">Revenue TAM: NOT_YET_MEASURED</span>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;">
+        <div style="font-size:12px;font-weight:600;margin-bottom:10px;">Next measurement actions (ordered by information value)</div>
+        <div class="na-row"><span style="color:var(--green);font-weight:700;">1.</span><span><b>Download ENTSO-E BSP register</b> <span style="color:var(--text-muted);">(~2 hours, zero cost) &mdash; narrows FlexCovenant from 16&times; to ~2&times; uncertainty.</span></span></div>
+        <div class="na-row"><span style="color:var(--amber);font-weight:700;">2.</span><span><b>EUROACE outreach: M&amp;V dispute rate</b> <span style="color:var(--text-muted);">(~2 days, WITNESS) &mdash; resolves critical unknown for HeatProof beachhead.</span></span></div>
+        <div class="na-row"><span style="color:var(--blue);font-weight:700;">3.</span><span><b>WITNESS: 20+ procurement manager interviews</b> <span style="color:var(--text-muted);">(~2-3 weeks) &mdash; measures events/enterprise/year and evidence-gap prevalence for FactBounty.</span></span></div>
+        <div class="na-row"><span style="color:var(--purple);font-weight:700;">4.</span><span><b>Mercury: HeatProof prepayment experiment</b> <span style="color:var(--text-muted);">(~1 week, 5+ ESCO managers) &mdash; validates price from SCENARIO to MERCURY_VALIDATED.</span></span></div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-directives">
+      <div class="sec-title">CENSUS Prime Directives</div>
+      <div class="sec-desc">Non-negotiable measurement rules enforced by the linter and all data schemas.</div>
+      <div class="dir-grid" id="dir-grid"></div>
+    </div>
+
+    <div class="panel" id="panel-fa">
+      <div class="sec-title">HeatProof &mdash; Population Funnel</div>
+      <div class="sec-desc">Unit: Active EPC Engagement. Billing unit: M&amp;V Settlement Event. WITNESS status: NO_EVIDENCE on all levels below UNIVERSE.</div>
+      <div id="fa-content"></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--text-muted);margin-top:12px;">
+        <b style="color:var(--text);">DECISION BOUNDARY:</b> At 10% dispute rate &rarr; 200&ndash;1,000 dispute events/year. At 30% &rarr; 600&ndash;3,000/year. Order-of-magnitude precision sufficient for initial investment decision.
+      </div>
+    </div>
+
+    <div class="panel" id="panel-fb">
+      <div class="sec-title">FactBounty &mdash; Population Funnel</div>
+      <div class="sec-desc">Unit: High-stakes B2B Procurement Decision Event (stock&rarr;flow conversion). Billing unit: Bounty Transaction. WITNESS status: NO_EVIDENCE.</div>
+      <div id="fb-content"></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--text-muted);margin-top:12px;">
+        <b style="color:var(--text);">UNIT CONVERSION:</b> Enterprise stock (50,000) is NOT the market. Billing unit is procurement-decision-event (flow). The 2&ndash;10 events/enterprise/year multiplier dominates the 5&times; range uncertainty. Financial model customer counts cannot be interpreted as affected population estimates.
+      </div>
+    </div>
+
+    <div class="panel" id="panel-fc">
+      <div class="sec-title">FlexCovenant &mdash; Population Funnel</div>
+      <div class="sec-desc">Unit: Registered Flexibility Site. Billing unit: TBD (site vs. aggregator, Mercury must confirm). WITNESS status: NO_EVIDENCE.</div>
+      <div id="fc-content"></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--text-muted);margin-top:12px;">
+        <b style="color:var(--text);">NEXT STEP:</b> Download ENTSO-E BSP register (free, public, ~2 hours). Narrows site count from 16&times; range to ~2&times;. Zero cost, high information value.
+      </div>
+    </div>
+
+    <div class="panel" id="panel-questions">
+      <div class="sec-title">Open Measurement Questions</div>
+      <div class="sec-desc">Ranked by information value. These are the WITNESS and Mercury handoffs.</div>
+      <div id="q-content"></div>
+    </div>
+
+    <div class="panel" id="panel-sources">
+      <div class="sec-title">Official Source Registry</div>
+      <div class="sec-desc">Statistical datasets used for denominator construction. Read methodology before extracting numbers.</div>
+      <div id="src-content"></div>
+    </div>
+
+    <div class="panel" id="panel-linter">
+      <div class="sec-title">Anti-TAM-Theater Linter</div>
+      <div class="sec-desc">Automated enforcement of Prime Directives. Errors block promotion to FINAL status.</div>
+      <div id="lint-content"></div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+'use strict';
+function nav(id){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  var p=document.getElementById('panel-'+id);var n=document.getElementById('nav-'+id);
+  if(p)p.classList.add('active');if(n)n.classList.add('active');
+}
+var DIRS=['NO MARKET NUMBER WITHOUT A DENOMINATOR MODEL','NO DENOMINATOR WITHOUT A STATISTICAL UNIT','NO STATISTICAL UNIT WITHOUT AN EXPLICIT DEFINITION','UNKNOWN IS NOT ZERO','A RANGE WITH HONEST UNCERTAINTY IS BETTER THAN A PRECISE FICTION','CITE THE SOURCE OR LABEL IT ASSUMPTION','DISTINGUISH STOCK FROM FLOW','DISTINGUISH ENTERPRISES FROM ESTABLISHMENTS','DISTINGUISH PEOPLE FROM ORGANIZATIONS','DISTINGUISH EXPOSURE FROM PREVALENCE FROM INCIDENCE','NO TAM WITHOUT ADDRESSABLE POPULATION + UNIT PRICE + WTP','WITNESS QUALITATIVE SAMPLE CANNOT PRODUCE POPULATION PREVALENCE CI','PROBABILITY SAMPLE REQUIRED FOR MARGIN OF ERROR','SCENARIO IS NOT EVIDENCE','SUPPRESSED DATA IS NOT ZERO','NEVER SILENTLY AVERAGE CONFLICTING ESTIMATES','EVERY ESTIMATE REQUIRES AN AS-OF DATE','PRICE IS MERCURY'S JOB','1% OF THE MARKET IS NOT A MARKET SIZING METHOD','DOUBLE-COUNTING IS AN ERROR NOT A ROUNDING ISSUE','COUNTER-ESTIMATE REQUIRED FOR HIGH-IMPACT CLAIMS','UNIT MISMATCH IN ARITHMETIC IS AN ERROR','NEVER PROMOTE SCENARIO TO EVIDENCE','DOCUMENT ALL ASSUMPTIONS ESPECIALLY HIGH-SENSITIVITY ONES','PREFER DECISION BOUNDARY OVER EXHAUSTIVE PRECISION'];
+(function(){var g=document.getElementById('dir-grid');DIRS.forEach(function(d,i){var c=document.createElement('div');c.className='dir-card';c.innerHTML='<div class="dir-num">&sect;'+(i+1)+'</div><div class="dir-txt">'+d+'</div>';g.appendChild(c);});})();
+var FD={fa:[{l:'UNIVERSE',n:'All EU-27 commercial &amp; public-sector buildings',lo:45e6,hi:65e6,u:'buildings',w:'NOT_APPLICABLE',note:'~25% of 220M total EU-27 buildings. Eurostat building stock.'},
+{l:'ELIGIBLE',n:'Active Energy Performance Contracts (M&amp;V in force)',lo:2000,hi:10000,u:'EPC engagements',w:'NO_EVIDENCE',note:'Triangulated: EUROACE revenue + BPIE cumulative. 5x range reflects average project value uncertainty.'},
+{l:'EXPOSED',n:'EPCs with annual M&amp;V settlement obligation',lo:2000,hi:10000,u:'EPC engagements',w:'NO_EVIDENCE',note:'Exposure = 100% of eligible by IPMVP contractual definition.'},
+{l:'AFFECTED',n:'EPCs experiencing M&amp;V settlement dispute',lo:null,hi:null,u:'events/year',w:'NO_EVIDENCE',note:'DISPUTE RATE: NOT YET MEASURED. No public statistic exists. EUROACE outreach required.'}],
+fb:[{l:'UNIVERSE',n:'EU-27 employer enterprises 10+ employees',lo:1.2e6,hi:1.4e6,u:'enterprises',w:'NOT_APPLICABLE',note:'Eurostat SBS ref 2022, NACE B-N excl K.'},
+{l:'ELIGIBLE',n:'Manufacturing + regulated sector enterprises 50+ employees',lo:40000,hi:65000,u:'enterprises (STOCK)',w:'NO_EVIDENCE',note:'NACE C + partial J/M, 50+ employees. CAUTION: this is enterprise stock, NOT procurement event count.'},
+{l:'EXPOSED',n:'Annual qualifying procurement events (>EUR 50K)',lo:100000,hi:500000,u:'events/year (FLOW)',w:'NO_EVIDENCE',note:'UNIT CONVERSION: 50K enterprises x 2-10 events/enterprise/year. Multiplier is completely unobserved.'},
+{l:'AFFECTED',n:'Events with material evidence asymmetry friction',lo:null,hi:null,u:'events/year',w:'NO_EVIDENCE',note:'PREVALENCE: NOT YET MEASURED. Counter-evidence: G2/Gartner partially cover SaaS purchases.'}],
+fc:[{l:'UNIVERSE',n:'EU-27 energy-intensive industrial enterprises 250+',lo:15000,hi:20000,u:'enterprises',w:'NOT_APPLICABLE',note:'Eurostat SBS NACE B+C20-C24+D35, 250+ employees. Enterprise != site.'},
+{l:'ELIGIBLE',n:'Registered grid flexibility sites (1MW+ enrolled)',lo:600,hi:10000,u:'sites',w:'NO_EVIDENCE',note:'Method A (ENTSO-E capacity/avg site): 600-3,000. Method B (aggregators x sites): 2,000-10,000. Preferred: 2,000-5,000.'},
+{l:'AFFECTED',n:'Sites with SCADA/MPRN identifier mismatch disputes',lo:null,hi:null,u:'sites',w:'NO_EVIDENCE',note:'DISPUTE RATE: NOT YET MEASURED. ENTSO-E BSP register download (cmq-c01) is highest-value next step.'}]};
+function fc(lo,hi,u){if(lo===null&&hi===null)return '<span class="cnt-unk">NOT_YET_MEASURED</span>';var f=function(n){if(n>=1e6)return (n/1e6).toFixed(1)+'M';if(n>=1000)return Math.round(n/1000)+'K';return n.toLocaleString();};return '<div class="cnt-rng">'+f(lo)+' &ndash; '+f(hi)+'</div><div class="cnt-unit">'+u+'</div>';}
+function renderFunnel(key,cid){var c=document.getElementById(cid);if(!c)return;var steps=FD[key];var card=document.createElement('div');card.className='funnel-card';card.innerHTML=steps.map(function(s){return '<div class="f-step"><div class="f-lvl"><span class="ltag l'+s.l+'">'+s.l+'</span></div><div class="f-name">'+s.n+'<div style="font-size:11px;color:var(--text-dim);margin-top:3px;">'+s.note+'</div><span class="wb w'+s.w+'">'+s.w+'</span></div><div class="f-cnt">'+fc(s.lo,s.hi,s.u)+'</div></div>';}).join('');c.appendChild(card);}
+renderFunnel('fa','fa-content');renderFunnel('fb','fb-content');renderFunnel('fc','fc-content');
+var QS=[{id:'cmq-a01',p:9.5,l:'H',idea:'HeatProof',metric:'What fraction of active EU-27 EPCs result in M&V settlement disputes requiring third-party resolution per annual settlement cycle?',method:'WITNESS: 15-25 ESCO project managers + EUROACE survey outreach',prec:'ORDER_OF_MAGNITUDE',bound:'If >5%: 100-500 dispute events/yr &mdash; commercially viable. If <1%: too thin for standalone.'},
+{id:'cmq-c01',p:9.0,l:'H',idea:'FlexCovenant',metric:'How many Balancing Service Providers are registered in ENTSO-E EU-27 markets, and what is the average number of flexibility sites per BSP?',method:'Download ENTSO-E BSP register (PUBLIC FREE, ~2 hours)',prec:'WITHIN_50PCT',bound:'Sites <500: too thin standalone. 2,000+: sufficient density.'},
+{id:'cmq-b01',p:8.0,l:'M',idea:'FactBounty',metric:'How many qualifying high-stakes B2B procurement decisions (>EUR 50K) does a typical EU manufacturing enterprise with 50+ employees make per year?',method:'WITNESS qualitative: 20+ procurement managers, 4+ NACE C subsectors',prec:'FACTOR_OF_TWO',bound:'Narrows 100K-500K eligible-event range by 2-5x.'},
+{id:'cmq-b02',p:7.5,l:'M',idea:'FactBounty',metric:'What fraction of qualifying B2B procurement events have inadequate independent evidence, causing material friction?',method:'Piggyback on cmq-b01 WITNESS protocol. Add evidence-gap question.',prec:'ORDER_OF_MAGNITUDE',bound:'If <10%: niche. If >30%: structural problem.'},
+{id:'cmq-a02',p:7.0,l:'M',idea:'HeatProof (Mercury)',metric:'What is maximum WTP per M&V settlement event for an ESCO project manager using HeatProof?',method:'MERCURY prepayment experiment: 5+ ESCO managers, specific price options, observe actual payment behavior.',prec:'WITHIN_20PCT',bound:'Financial model EUR 89/month midpoint must be Mercury-validated or revised.'}];
+(function(){var c=document.getElementById('q-content');QS.sort(function(a,b){return b.p-a.p;});QS.forEach(function(q){var pc=q.l==='H'?'pH':'pM';var d=document.createElement('div');d.className='q-card';d.innerHTML='<div class="q-hdr"><span class="q-id">'+q.id+'</span><span class="pchip '+pc+'">PRIORITY '+q.p.toFixed(1)+'</span></div><div class="q-metric">'+q.metric+'</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">&#127919; '+q.idea+' &bull; &#128202; '+q.prec+'</div><div style="font-size:11px;color:var(--text-muted);background:var(--surface2);border-radius:4px;padding:8px;margin-bottom:4px;"><b>Method:</b> '+q.method+'</div><div style="font-size:11px;color:var(--text-muted);background:var(--surface2);border-radius:4px;padding:8px;"><b>Decision boundary:</b> '+q.bound+'</div>';c.appendChild(d);});})();
+var SRCS=[{pub:'EUROACE',ds:'European ESCO Market Report 2023',type:'INDUSTRY_ASSOCIATION',unit:'ESCO market revenue (EUR); implied contract count',lims:['Revenue / project value = contract count (10x uncertainty in avg project value)','Coverage biased toward member firms','No official EPC register exists in any EU member state']},
+{pub:'BPIE',ds:'State of Building Stock / ESCO Project Database',type:'INDUSTRY_ASSOCIATION',unit:'Cumulative completed ESCO projects EU since 2000',lims:['Cumulative count NOT active stock','Active stock requires project duration assumption (3-7 year range dominates uncertainty)','Uniform start rate since 2000 is unrealistic (growth accelerating post-2015)']},
+{pub:'Eurostat',ds:'Structural Business Statistics (sbs_sc_ovw)',type:'OFFICIAL_SURVEY',unit:'Employer enterprises by NACE rev.2 x size class',lims:['Employer enterprises only &mdash; nonemployers excluded','NACE primary activity only &mdash; conglomerates may be misclassified','Some cells suppressed for confidentiality']},
+{pub:'ENTSO-E',ds:'Transparency Platform &mdash; BSP Registrations + Balancing Energy',type:'ADMINISTRATIVE_REGISTER',unit:'BSP registrations; Activated balancing energy (MWh)',lims:['Volume (MWh) published, not site count directly','DSO flexibility markets excluded','Average site capacity (1-5 MW) creates 5x site-count uncertainty']},
+{pub:'ACER',ds:'Market Monitoring Report 2024',type:'REGULATORY_DATA',unit:'Aggregator counts; flexibility volumes by country',lims:['Aggregator count approximate &mdash; no binding EU registry','Country-level granularity varies','DSO flexibility not comprehensively reported']}];
+(function(){var c=document.getElementById('src-content');SRCS.forEach(function(s){var d=document.createElement('div');d.className='src-card';var lims=s.lims.map(function(l){return '<div class="lim-item">'+l+'</div>';}).join('');d.innerHTML='<div class="src-pub">'+s.pub+'</div><div class="src-ds">'+s.ds+'</div><div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Measures: <b>'+s.unit+'</b></div><div style="font-size:10px;color:var(--text-dim);background:var(--surface2);border-radius:3px;padding:2px 6px;display:inline-block;margin-bottom:8px;">'+s.type+'</div><div>'+lims+'</div>';c.appendChild(d);});})();
+(function(){
+  var c=document.getElementById('lint-content');
+  var ests=[{id:'est-a02',subject:'Active EPC engagements EU-27',vs:'KNOWN',method:'TRIANGULATION',assumptions:['1'],unitId:'u1',popId:'p1',wg:{ps:false,ip:false},rg:null,uom:'count',val:null,cur:null},
+  {id:'est-a03',subject:'EPC M&V dispute events/yr',vs:'NOT_YET_MEASURED',method:'BOUNDING',assumptions:['1'],unitId:'u2',popId:'p2',wg:{ps:false,ip:false},rg:null,uom:'events_per_year',val:null,cur:null},
+  {id:'est-a04',subject:'HeatProof revenue TAM',vs:'NOT_YET_MEASURED',method:'SCENARIO',assumptions:['1'],unitId:'u2',popId:'p1',wg:{ps:false,ip:false},rg:{priceState:'SCENARIO'},uom:'EUR_per_year',val:null,cur:'EUR'},
+  {id:'est-b03',subject:'Annual procurement events EU-27',vs:'KNOWN',method:'BOTTOM_UP_DECOMPOSITION',assumptions:['1'],unitId:'u3',popId:'p3',wg:{ps:false,ip:false},rg:null,uom:'events_per_year',val:null,cur:null},
+  {id:'est-c02',subject:'Flexibility sites EU-27+UK',vs:'KNOWN',method:'TRIANGULATION',assumptions:['1'],unitId:'u4',popId:'p4',wg:{ps:false,ip:false},rg:null,uom:'count',val:null,cur:null}];
+  var findings=[];
+  ests.forEach(function(e){
+    if(!e.unitId)findings.push({r:'L01',s:'ERROR',m:e.id+': no unitId'});
+    if(!e.popId)findings.push({r:'L02',s:'ERROR',m:e.id+': no populationId'});
+    if(['UNKNOWN','NOT_YET_MEASURED','WITHHELD'].indexOf(e.vs)!==-1&&e.val===0)findings.push({r:'L03',s:'ERROR',m:e.id+': '+e.vs+' but value=0'});
+    if(e.uom&&e.uom.indexOf('EUR')!==-1&&!e.rg)findings.push({r:'L04',s:'WARNING',m:e.id+': monetary but no revenueEstimateGuard'});
+    if(e.method==='SCENARIO'&&e.rg&&e.rg.priceState==='MERCURY_VALIDATED')findings.push({r:'L05',s:'ERROR',m:e.id+': SCENARIO+MERCURY_VALIDATED contradiction'});
+    if(e.wg&&!e.wg.ps&&e.wg.ip)findings.push({r:'L09',s:'ERROR',m:e.id+': nonprobability+inference=true'});
+  });
+  var errs=findings.filter(function(f){return f.s==='ERROR';});
+  var warns=findings.filter(function(f){return f.s==='WARNING';});
+  var ec=errs.length>0?'var(--red)':'var(--green)';
+  var wc=warns.length>0?'var(--amber)':'var(--green)';
+  var sum=document.createElement('div');sum.className='lint-sum';
+  sum.innerHTML='<div class="lint-stat"><div class="lint-val" style="color:var(--text)">'+ests.length+'</div><div class="lint-lbl">Estimates reviewed</div></div><div class="lint-stat"><div class="lint-val" style="color:'+ec+'">'+errs.length+'</div><div class="lint-lbl">Errors (anti-theater)</div></div><div class="lint-stat"><div class="lint-val" style="color:'+wc+'">'+warns.length+'</div><div class="lint-lbl">Warnings</div></div><div class="lint-stat"><div class="lint-val" style="color:var(--green)">'+(ests.length-errs.length)+'</div><div class="lint-lbl">Pass (no error)</div></div>';
+  c.appendChild(sum);
+  if(findings.length===0){c.innerHTML+='<div style="color:var(--green);font-size:14px;padding:12px;">All estimates pass anti-theater checks.</div>';return;}
+  findings.forEach(function(f){var d=document.createElement('div');d.className='f-card f'+f.s;d.innerHTML='<div class="f-rule">'+f.r+'</div><div class="f-msg">'+f.m+'</div>';c.appendChild(d);});
+})();
+</script>
+</body>
+</html>

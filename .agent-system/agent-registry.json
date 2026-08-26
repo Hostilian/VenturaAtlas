@@ -1,10 +1,92 @@
 {
   "agents": [
-    { "role": "ventureatlas-integration", "scope": [".github/workflows/", "scripts/automation/", "package.json"] },
-    { "role": "ventureatlas-provider-runtime", "scope": ["config/providers.json", "scripts/va_runtime/"] },
-    { "role": "ventureatlas-public-site", "scope": ["index.html", "docs/", "assets/"] },
-    { "role": "ventureatlas-data-safety", "scope": ["schemas/", "data/", "scripts/validate-data.js"] },
-    { "role": "ventureatlas-security", "scope": ["scripts/check_privacy.py", "firestore.rules"] },
-    { "role": "ventureatlas-test-adversary", "scope": ["tests/"] }
+    {
+      "role": "ventureatlas-integration",
+      "scope": [
+        ".github/workflows/",
+        "scripts/automation/",
+        "package.json"
+      ]
+    },
+    {
+      "role": "ventureatlas-provider-runtime",
+      "scope": [
+        "config/providers.json",
+        "scripts/va_runtime/"
+      ]
+    },
+    {
+      "role": "ventureatlas-public-site",
+      "scope": [
+        "index.html",
+        "docs/",
+        "assets/"
+      ]
+    },
+    {
+      "role": "ventureatlas-data-safety",
+      "scope": [
+        "schemas/",
+        "data/",
+        "scripts/validate-data.js"
+      ]
+    },
+    {
+      "role": "ventureatlas-security",
+      "scope": [
+        "scripts/check_privacy.py",
+        "firestore.rules"
+      ]
+    },
+    {
+      "role": "ventureatlas-test-adversary",
+      "scope": [
+        "tests/"
+      ]
+    },
+    {
+      "role": "venture-ops-agent",
+      "scope": [
+        "data/relay-*.json",
+        "schemas/relay-*.schema.json",
+        "assets/js/features/relay-engine.js",
+        "docs/ops-lab.html"
+      ]
+    },
+    {
+      "role": "portfolio-strategy-agent",
+      "scope": [
+        "data/portfolios.json",
+        "assets/js/features/portfolio-engine.js",
+        "docs/portfolio-lab.html"
+      ]
+    },
+    {
+      "role": "organization-governance-agent",
+      "scope": [
+        "data/constellation-*.json",
+        "schemas/constellation-*.schema.json",
+        "assets/js/features/constellation-engine.js",
+        "docs/org-lab.html"
+      ]
+    },
+    {
+      "role": "capital-strategy-agent",
+      "scope": [
+        "data/capital-*.json",
+        "schemas/capital-*.schema.json",
+        "assets/js/features/capital-engine.js",
+        "docs/capital-lab.html"
+      ]
+    },
+    {
+      "role": "commercial-discovery-agent",
+      "scope": [
+        "schemas/mercury-*.schema.json",
+        "assets/js/features/mercury.js",
+        "docs/mercury.html",
+        "research/mercury/"
+      ]
+    }
   ]
 }

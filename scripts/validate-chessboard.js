@@ -8,7 +8,7 @@ const addFormats = require('ajv-formats');
 const { computeFileHash } = require('./lib/repository-truth');
 
 const ROOT = path.resolve(__dirname, '..');
-const DEFAULT_ARTIFACT_PATH = path.join(ROOT, 'research', 'chessboard', 'idea-061-market-structure.json');
+const DEFAULT_ARTIFACT_PATH = path.join(ROOT, '.agent-state', 'chessboard', 'idea-061-market-structure.json');
 const DEFAULT_SCHEMA_PATH = path.join(ROOT, 'schemas', 'chessboard-workspace.schema.json');
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -615,6 +615,10 @@ function parseArtifactArgument(argv = process.argv.slice(2)) {
   return positional ? path.resolve(process.cwd(), positional) : DEFAULT_ARTIFACT_PATH;
 }
 
+function hasExplicitArtifactArgument(argv = process.argv.slice(2)) {
+  return argv.includes('--file') || argv.some(argument => !argument.startsWith('-'));
+}
+
 function main() {
   let artifactPath;
   try {
@@ -625,8 +629,26 @@ function main() {
     return;
   }
   if (!fs.existsSync(artifactPath)) {
-    console.error(`[ERROR] CHESSBOARD artifact does not exist: ${artifactPath}`);
-    process.exitCode = 1;
+    if (hasExplicitArtifactArgument()) {
+      console.error(`[ERROR] CHESSBOARD artifact does not exist: ${artifactPath}`);
+      process.exitCode = 1;
+      return;
+    }
+    try {
+      compileSchema(readJson(DEFAULT_SCHEMA_PATH));
+    } catch (error) {
+      console.error(`[ERROR] CHESSBOARD schema is invalid: ${error.message}`);
+      process.exitCode = 1;
+      return;
+    }
+    console.log(JSON.stringify({
+      artifact: normalizedRelative(artifactPath),
+      status: 'NO_PRIVATE_CHESSBOARD_WORKSPACE',
+      workspacePresent: false,
+      warnings: ['Private CHESSBOARD dogfood is intentionally absent from this checkout.'],
+      errors: []
+    }, null, 2));
+    console.log('[OK] CHESSBOARD schema is valid; no private workspace is present in this checkout.');
     return;
   }
   let document;
@@ -659,6 +681,7 @@ module.exports = {
   computeExpectedContext,
   discoverSelectionDiscrepancies,
   findForbiddenFieldPaths,
+  hasExplicitArtifactArgument,
   parseArtifactArgument,
   resolveAuthoritativeSelection,
   validateChessboardArtifact,

@@ -1,0 +1,189 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "CENSUS official source registry. Distinct from data/sources.json (evidence provenance for ideas). These are statistical and regulatory datasets used for denominator construction. Source methodology must be read before extracting numbers.",
+  "sources": [
+    {
+      "censusSourceId": "csrc-euroace-esco-market-report-2023",
+      "publisher": "EUROACE (European Alliance of Companies for Energy Efficiency in Buildings)",
+      "dataset": "European ESCO Market Report 2023",
+      "sourceType": "INDUSTRY_ASSOCIATION",
+      "unit": "ESCO market revenue (EUR), active projects (estimated), member firm count",
+      "coverage": {
+        "included": ["EU-27 ESCO enterprises", "UK ESCO enterprises (partial)", "performance-based EPC activity"],
+        "excluded": ["Simple energy supply contracts without performance guarantee", "non-member ESCOs may be undercounted", "public sector internal energy management teams"]
+      },
+      "classification": { "system": "NACE", "version": "Rev.2", "codes": ["D35.1", "M71.12"] },
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27", "UK"] },
+      "referencePeriod": "2022-2023",
+      "releaseDate": "2023",
+      "revisionStatus": "FINAL",
+      "limitations": [
+        "Industry association data: coverage biased toward member firms, may undercount smaller ESCOs",
+        "Revenue figures, not contract count; contract count requires average project value assumption",
+        "Average project value range is wide (EUR 500K-5M) creating 10× uncertainty in implied contract count"
+      ],
+      "quality": {
+        "relevance": "HIGH",
+        "accuracy": "MEDIUM",
+        "timeliness": "MEDIUM",
+        "coherence": "MEDIUM",
+        "comparability": "MEDIUM",
+        "coverage": "MEDIUM",
+        "granularity": "LOW"
+      },
+      "access": "PUBLIC_FREE",
+      "url": "https://www.euroace.org/esco-market-report",
+      "citation": "EUROACE (2023). European ESCO Market Report.",
+      "notes": "Primary source for DOGFOOD A eligible population. Revenue implies contract count but average project value is the binding uncertainty."
+    },
+    {
+      "censusSourceId": "csrc-bpie-esco-projects",
+      "publisher": "Buildings Performance Institute Europe (BPIE)",
+      "dataset": "State of the Building Stock / ESCO Project Database",
+      "sourceType": "INDUSTRY_ASSOCIATION",
+      "unit": "Completed ESCO projects since 2000 (cumulative count, EU)",
+      "coverage": {
+        "included": ["ESCO projects in EU member states", "public and commercial sector EPCs"],
+        "excluded": ["Projects below reporting threshold", "purely equipment-sale contracts without performance guarantee"]
+      },
+      "classification": { "system": "CUSTOM", "version": null, "codes": [] },
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "referencePeriod": "2000-2023",
+      "releaseDate": "2023",
+      "revisionStatus": "UNKNOWN",
+      "limitations": [
+        "Cumulative count (stock since 2000), not active stock at reference date",
+        "Must apply assumed project duration (3-7 years) to derive active stock",
+        "Duration assumption creates significant uncertainty in active stock estimate"
+      ],
+      "quality": {
+        "relevance": "HIGH",
+        "accuracy": "LOW",
+        "timeliness": "MEDIUM",
+        "coherence": "LOW",
+        "comparability": "LOW",
+        "coverage": "MEDIUM",
+        "granularity": "LOW"
+      },
+      "access": "PUBLIC_FREE",
+      "url": "https://www.bpie.eu",
+      "citation": "BPIE (2023). State of the EU Building Stock.",
+      "notes": "COUNTER-ESTIMATE source for DOGFOOD A. 35,000+ cumulative projects / assumed 5-year duration ≈ 7,000 active. Consistent with EUROACE bottom-up range."
+    },
+    {
+      "censusSourceId": "csrc-eurostat-sbs-enterprise",
+      "publisher": "Eurostat",
+      "dataset": "Structural Business Statistics (SBS) — table sbs_sc_ovw",
+      "sourceType": "OFFICIAL_SURVEY",
+      "unit": "Employer enterprises by NACE activity and size class (number of employees)",
+      "coverage": {
+        "included": ["Employer enterprises with at least one paid employee", "EU-27 member states", "Market economy (Business Economy)"],
+        "excluded": [
+          "Non-employer enterprises (self-employed sole traders with no employees)",
+          "Public administration (NACE O)",
+          "Agriculture, forestry and fishing (NACE A) — handled separately",
+          "Financial services (NACE K) — separate FINREP/SHS statistics",
+          "Household employers"
+        ]
+      },
+      "classification": { "system": "NACE", "version": "Rev.2", "codes": ["B","C","D","E","F","G","H","I","J","K","L","M","N"] },
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "referencePeriod": "2022",
+      "releaseDate": "2024",
+      "revisionStatus": "REVISED",
+      "limitations": [
+        "Employer enterprises only — nonemployers excluded; if sole-trader ESCOs exist, they are missed",
+        "Size class by employee count, not revenue — some ESCOs may be small in employees but large in revenue",
+        "NACE primary activity classification: diversified conglomerates may be misclassified",
+        "Some small-country cells suppressed for confidentiality"
+      ],
+      "quality": {
+        "relevance": "HIGH",
+        "accuracy": "HIGH",
+        "timeliness": "MEDIUM",
+        "coherence": "HIGH",
+        "comparability": "HIGH",
+        "coverage": "HIGH",
+        "granularity": "HIGH"
+      },
+      "access": "PUBLIC_FREE",
+      "url": "https://ec.europa.eu/eurostat/web/structural-business-statistics",
+      "citation": "Eurostat (2024). Structural Business Statistics, table sbs_sc_ovw, reference year 2022.",
+      "notes": "Primary denominator source for DOGFOOD B (manufacturing enterprises by size) and DOGFOOD C (energy-intensive industry enterprises). WARNING: counts employer enterprises, not EPC engagements, not procurement events. Unit conversion required."
+    },
+    {
+      "censusSourceId": "csrc-entso-e-transparency",
+      "publisher": "ENTSO-E (European Network of Transmission System Operators for Electricity)",
+      "dataset": "ENTSO-E Transparency Platform — Balancing energy activated",
+      "sourceType": "ADMINISTRATIVE_REGISTER",
+      "unit": "Activated balancing energy volumes (MWh) by product, country, period; Balancing Service Provider (BSP) registrations",
+      "coverage": {
+        "included": ["All EU-27 TSO-managed balancing markets", "FCR, aFRR, mFRR products", "Published in near-real-time"],
+        "excluded": [
+          "DSO-managed local flexibility markets (separate, not consolidated here)",
+          "Intraday market flexibility (XBID)",
+          "UK (post-Brexit; separate Ofgem BM data)"
+        ]
+      },
+      "classification": { "system": "CUSTOM", "version": null, "codes": ["FCR","aFRR","mFRR","imFRR"] },
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "referencePeriod": "2024",
+      "releaseDate": "2025",
+      "revisionStatus": "FINAL",
+      "limitations": [
+        "Volume data (MWh) published, not site count — must apply assumed average site capacity to derive site count",
+        "BSP registration data available but aggregated — individual site count requires download and processing",
+        "DSO flexibility markets excluded — likely significant and growing but not captured here",
+        "Average site capacity assumption (1-5 MW) creates 5× uncertainty in site count"
+      ],
+      "quality": {
+        "relevance": "HIGH",
+        "accuracy": "HIGH",
+        "timeliness": "HIGH",
+        "coherence": "HIGH",
+        "comparability": "MEDIUM",
+        "coverage": "MEDIUM",
+        "granularity": "MEDIUM"
+      },
+      "access": "PUBLIC_FREE",
+      "url": "https://transparency.entsoe.eu",
+      "citation": "ENTSO-E (2025). Transparency Platform, Balancing Energy Activated, 2024.",
+      "notes": "Primary source for DOGFOOD C site count and event volume. Download BSP registration table directly. Volume / assumed site capacity = lower bound on enrolled sites."
+    },
+    {
+      "censusSourceId": "csrc-acer-mmr-2024",
+      "publisher": "ACER (Agency for the Cooperation of Energy Regulators)",
+      "dataset": "ACER Market Monitoring Report 2024 — Wholesale electricity and gas markets",
+      "sourceType": "REGULATORY_DATA",
+      "unit": "Market structure: aggregator counts, flexibility volumes, capacity market participation",
+      "coverage": {
+        "included": ["EU-27 electricity wholesale markets", "Balancing markets", "Flexibility service providers"],
+        "excluded": ["UK", "non-EU EEA countries (Norway, Iceland, Liechtenstein) unless noted"]
+      },
+      "classification": { "system": "CUSTOM", "version": null, "codes": [] },
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "referencePeriod": "2023-2024",
+      "releaseDate": "2024",
+      "revisionStatus": "FINAL",
+      "limitations": [
+        "Aggregator count is approximate — no binding EU-wide registry",
+        "Country-level granularity varies; some markets (Germany FCR) better documented than others (some Eastern EU states)",
+        "DSO flexibility not comprehensively reported"
+      ],
+      "quality": {
+        "relevance": "HIGH",
+        "accuracy": "MEDIUM",
+        "timeliness": "HIGH",
+        "coherence": "MEDIUM",
+        "comparability": "MEDIUM",
+        "coverage": "MEDIUM",
+        "granularity": "LOW"
+      },
+      "access": "PUBLIC_FREE",
+      "url": "https://www.acer.europa.eu/market-monitoring-report",
+      "citation": "ACER (2024). Market Monitoring Report 2024.",
+      "notes": "COUNTER-ESTIMATE source for DOGFOOD C. Provides aggregator count (~200+) which cross-validates ENTSO-E site count via sites/aggregator assumption."
+    }
+  ]
+}

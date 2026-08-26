@@ -1,0 +1,59 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "Maps canonical idea IDs to CENSUS estimate IDs providing their addressable population context. Non-destructive: does not modify financial model .md files. The financial model customer counts (10/45/150) are correctly labelled hypothetical and remain valid as scenario explorers. CENSUS provides the measured population context that the financial models cannot contain.",
+  "links": [
+    {
+      "ideaId": "idea-433",
+      "ideaName": "HeatProof",
+      "billingUnitId": "unit-mv-settlement-event",
+      "addressablePopulationEstimateId": "est-a03-affected-count",
+      "addressablePopulationValueState": "NOT_YET_MEASURED",
+      "denominatorEstimateId": "est-a02-eligible-count",
+      "denominatorRange": { "lower": 2000, "upper": 10000, "unit": "active EPC engagements" },
+      "revenueTAMEstimateId": "est-a04-revenue-tam",
+      "revenueTAMValueState": "NOT_YET_MEASURED",
+      "openMeasurementQuestionIds": ["cmq-a01-mv-dispute-rate", "cmq-a02-heatproof-price"],
+      "notes": "Financial model scenario: EUR 89/month midpoint, 10/45/150 customers. These remain valid as scenario parameters. CENSUS adds: the active EPC denominator is 2,000-10,000 EU-27. Dispute rate unknown. Price unvalidated."
+    },
+    {
+      "ideaId": "idea-061",
+      "ideaName": "FactBounty",
+      "billingUnitId": "unit-bounty-transaction",
+      "addressablePopulationEstimateId": null,
+      "addressablePopulationValueState": "NOT_YET_MEASURED",
+      "denominatorEstimateId": "est-b03-events-eligible",
+      "denominatorRange": { "lower": 100000, "upper": 500000, "unit": "qualifying procurement events/year EU-27" },
+      "revenueTAMEstimateId": null,
+      "revenueTAMValueState": "NOT_YET_MEASURED",
+      "openMeasurementQuestionIds": ["cmq-b01-events-per-enterprise", "cmq-b02-evidence-gap-prevalence"],
+      "notes": "Financial model uses enterprise-count proxy. CENSUS provides: eligible event population 100K-500K/year (exploratory). Affected fraction unknown. Bounty transaction conversion rate unknown (Mercury). Revenue TAM cannot be computed."
+    },
+    {
+      "ideaId": "idea-434",
+      "ideaName": "FlexCovenant",
+      "billingUnitId": "unit-flexibility-aggregator-enterprise",
+      "addressablePopulationEstimateId": null,
+      "addressablePopulationValueState": "NOT_YET_MEASURED",
+      "denominatorEstimateId": "est-c02-eligible-sites",
+      "denominatorRange": { "lower": 600, "upper": 10000, "unit": "registered flexibility sites EU-27+UK" },
+      "revenueTAMEstimateId": null,
+      "revenueTAMValueState": "NOT_YET_MEASURED",
+      "openMeasurementQuestionIds": ["cmq-c01-entso-bsp-count"],
+      "notes": "Commercial account unit uncertain: 200-500 aggregator enterprises OR 2,000-10,000 sites. Mercury must confirm. Site count 600-10,000 (5× width, ENTSO-E BSP download would narrow to 2×). Dispute rate unknown. Revenue TAM cannot be computed."
+    },
+    {
+      "ideaId": "idea-432",
+      "ideaName": "BatteryDuty",
+      "billingUnitId": "unit-flexibility-site",
+      "addressablePopulationEstimateId": null,
+      "addressablePopulationValueState": "NOT_YET_MEASURED",
+      "denominatorEstimateId": "est-c02-eligible-sites",
+      "denominatorRange": { "lower": 600, "upper": 10000, "unit": "registered flexibility sites EU-27+UK" },
+      "revenueTAMEstimateId": null,
+      "revenueTAMValueState": "NOT_YET_MEASURED",
+      "openMeasurementQuestionIds": ["cmq-c01-entso-bsp-count"],
+      "notes": "Shares denominator with FlexCovenant. Battery V2G rights clearing is a different mechanism but same enrolled-site universe. Combined, ideas 432 and 434 share the same population — they must not be double-counted in any portfolio-level TAM."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "census-population.schema.json",
+  "title": "CensusPopulation",
+  "description": "A population definition at one level of the funnel. Every filter must have an epistemic basis. See CENSUS §62-77.",
+  "type": "object",
+  "required": ["populationId", "name", "unitId", "geography", "timePeriod", "funnelLevel", "inclusionCriteria"],
+  "additionalProperties": false,
+  "properties": {
+    "populationId": {
+      "type": "string",
+      "pattern": "^pop-[a-z0-9-]+$"
+    },
+    "name": { "type": "string" },
+    "unitId": {
+      "type": "string",
+      "description": "References a census-statistical-unit unitId. The population is a set of these units."
+    },
+    "parentPopulationId": {
+      "type": ["string", "null"],
+      "description": "The immediately broader population this is filtered from. Enables subset validation: child count cannot exceed parent."
+    },
+    "funnelLevel": {
+      "type": "string",
+      "enum": ["UNIVERSE", "ELIGIBLE", "EXPOSED", "AFFECTED", "SEVERE_AFFECTED", "SERVICEABLE", "COMMERCIALLY_REACHABLE", "CURRENTLY_OBTAINABLE"],
+      "description": "Position in the population funnel. Owner: CENSUS owns UNIVERSE through SERVICEABLE. MERCURY owns COMMERCIALLY_REACHABLE. Combined owns CURRENTLY_OBTAINABLE."
+    },
+    "geography": {
+      "type": "object",
+      "required": ["level", "codes"],
+      "properties": {
+        "level": { "type": "string", "enum": ["GLOBAL","COUNTRY_GROUP","COUNTRY","REGION","STATE","CITY","POSTAL","CUSTOM"] },
+        "codes": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "timePeriod": {
+      "type": "object",
+      "required": ["referenceYear"],
+      "properties": {
+        "referenceYear": { "type": "integer" },
+        "referenceDate": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "inclusionCriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "basis", "basisType"],
+        "properties": {
+          "criterion": { "type": "string" },
+          "basis": { "type": "string", "description": "Source or reasoning for this filter." },
+          "basisType": {
+            "type": "string",
+            "enum": ["OBSERVED","OFFICIAL_STATISTIC","SURVEY_ESTIMATE","FIELD_ESTIMATE","MODEL_ESTIMATE","ASSUMPTION","UNKNOWN"],
+            "description": "No filter may silently be ASSUMPTION. Must be declared."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "exclusionCriteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "basis", "basisType"],
+        "properties": {
+          "criterion": { "type": "string" },
+          "basis": { "type": "string" },
+          "basisType": {
+            "type": "string",
+            "enum": ["OBSERVED","OFFICIAL_STATISTIC","SURVEY_ESTIMATE","FIELD_ESTIMATE","MODEL_ESTIMATE","ASSUMPTION","UNKNOWN"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "countEstimateId": {
+      "type": ["string", "null"],
+      "description": "References a census-estimate estimateId giving the count of this population."
+    },
+    "valueState": {
+      "type": "string",
+      "enum": ["KNOWN","UNKNOWN","NOT_YET_MEASURED","STALE","CONFLICTED","UNAVAILABLE","WITHHELD"],
+      "description": "State of the count estimate. Reuses data/value-states.json vocabulary. UNKNOWN is not zero."
+    },
+    "witnessStatus": {
+      "type": "string",
+      "enum": ["NOT_APPLICABLE","NO_EVIDENCE","QUALITATIVE_ONLY","SURVEY_NONPROBABILITY","SURVEY_PROBABILITY"],
+      "description": "What WITNESS evidence supports prevalence at this level. QUALITATIVE_ONLY cannot produce population prevalence estimate."
+    },
+    "notes": { "type": ["string", "null"] }
+  }
+}

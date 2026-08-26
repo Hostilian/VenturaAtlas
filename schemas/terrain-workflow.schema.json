@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/terrain-workflow.schema.json",
+  "title": "TerrainWorkflow",
+  "description": "A current-state-only workflow map describing how work is actually done TODAY — not how our product could do it. Captures steps, artifacts, systems, handoffs, frictions, and workarounds.",
+  "type": "object",
+  "required": ["workflowId", "schemaVersion", "name", "actorIds", "trigger", "goal", "steps", "asOf"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "workflowId": {
+      "type": "string",
+      "pattern": "^wf-[a-z0-9-]+$",
+      "description": "Stable unique identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable workflow name."
+    },
+    "actorIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+      "minItems": 1
+    },
+    "trigger": {
+      "type": "string",
+      "description": "What initiates this workflow. e.g. 'customer places order', 'grid operator calls flexibility event'."
+    },
+    "goal": {
+      "type": "string",
+      "description": "What successful completion looks like."
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["stepId", "order", "actor", "action"],
+        "properties": {
+          "stepId": { "type": "string" },
+          "order": { "type": "integer", "minimum": 1 },
+          "actor": { "type": "string" },
+          "action": { "type": "string", "description": "What the actor does." },
+          "input": { "type": "string" },
+          "output": { "type": "string" },
+          "system": { "type": "string", "description": "Tool/system used. e.g. 'SAP', 'Excel', 'email', 'paper form'." },
+          "artifact": { "type": "string" },
+          "duration": { "type": "string", "description": "Estimated time if evidence exists." },
+          "wait": { "type": "string", "description": "Queue or wait time if evidence exists." },
+          "isDecision": { "type": "boolean" },
+          "isHandoff": { "type": "boolean" },
+          "frictionNotes": { "type": "string", "description": "Observed friction at this step." },
+          "isShadowSystem": { "type": "boolean", "description": "True if the system used is unofficial/compensating." }
+        },
+        "additionalProperties": false
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "format"],
+        "properties": {
+          "name": { "type": "string" },
+          "format": { "type": "string", "description": "e.g. 'PDF', 'Excel', 'API response', 'email'." },
+          "createdAtStep": { "type": "string" },
+          "usedAtSteps": { "type": "array", "items": { "type": "string" } },
+          "manualTransformations": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "systems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["SYSTEM_OF_RECORD", "SYSTEM_OF_ENGAGEMENT", "CALCULATION", "STORAGE", "WORKFLOW", "COMMUNICATION", "SHADOW", "UNKNOWN"]
+          },
+          "officialOrShadow": { "type": "string", "enum": ["OFFICIAL", "SHADOW", "UNKNOWN"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fromStepId", "toStepId"],
+        "properties": {
+          "fromStepId": { "type": "string" },
+          "toStepId": { "type": "string" },
+          "fromActor": { "type": "string" },
+          "toActor": { "type": "string" },
+          "channel": { "type": "string" },
+          "delay": { "type": "string" },
+          "isCrossOrganization": { "boolean": true, "type": "boolean" },
+          "frictionNotes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "frictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["TIME", "WAITING", "MANUAL_EFFORT", "ERROR", "REWORK", "UNCERTAINTY", "COORDINATION", "SEARCH", "DATA_ENTRY", "FORMAT_TRANSFORMATION", "APPROVAL", "ACCESS", "TRUST", "RISK", "COST", "INTERRUPTION", "CONTEXT_SWITCH", "DUPLICATION", "INTEGRATION", "EXCEPTION", "TRAINING", "MEMORY"]
+          },
+          "description": { "type": "string" },
+          "atStepId": { "type": "string" },
+          "severity": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"] },
+          "frequency": { "type": "string", "enum": ["PER_TRANSACTION", "DAILY", "WEEKLY", "MONTHLY", "RARE", "UNKNOWN"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "workarounds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "atStepId"],
+        "properties": {
+          "description": { "type": "string" },
+          "atStepId": { "type": "string" },
+          "method": { "type": "string" },
+          "cost": { "type": "string" },
+          "limitations": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "endState": {
+      "type": "string",
+      "description": "How the performer knows the job is done."
+    },
+    "asOf": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this workflow map was authored. Workflows decay; preserve temporal context."
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["epistemic"],
+        "properties": {
+          "epistemic": {
+            "type": "string",
+            "enum": ["OBSERVED", "DIRECTLY_REPORTED", "DOCUMENTED", "SOURCE_SUPPORTED_INFERENCE", "ANALYST_INFERENCE", "AI_HYPOTHESIS", "USER_HYPOTHESIS", "UNKNOWN"]
+          },
+          "summary": { "type": "string" },
+          "sourceId": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "contextNotes": {
+      "type": "string",
+      "description": "Contextual conditions: geography, org size, volume, tech stack."
+    }
+  }
+}

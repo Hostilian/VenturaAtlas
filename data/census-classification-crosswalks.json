@@ -1,0 +1,43 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "Industry classification crosswalk table for CENSUS. NACE Rev.2 to NAICS 2022 correspondences for dogfood sectors. Needed for combining EU (NACE) and US/North American (NAICS) data sources without silent mixing. Always use source classification system natively when possible.",
+  "crosswalks": [
+    {
+      "crosswalkId": "cw-nace-c20-to-naics",
+      "sourceSystem": "NACE", "sourceVersion": "Rev.2", "sourceCode": "C20",
+      "sourceName": "Manufacture of chemicals and chemical products",
+      "targetSystem": "NAICS", "targetVersion": "2022", "targetCodes": ["325"],
+      "targetName": "Chemical Manufacturing",
+      "correspondenceType": "APPROXIMATE",
+      "notes": "NACE C20 includes products covered in NAICS 325 (Chemical Mfg) but NAICS 324 (Petroleum/Coal Products) is split differently. Direct comparison requires care."
+    },
+    {
+      "crosswalkId": "cw-nace-c24-to-naics",
+      "sourceSystem": "NACE", "sourceVersion": "Rev.2", "sourceCode": "C24",
+      "sourceName": "Manufacture of basic metals",
+      "targetSystem": "NAICS", "targetVersion": "2022", "targetCodes": ["331"],
+      "targetName": "Primary Metal Manufacturing",
+      "correspondenceType": "CLOSE",
+      "notes": "Close correspondence. EU NACE C24 ≈ NAICS 331."
+    },
+    {
+      "crosswalkId": "cw-nace-d35-to-naics",
+      "sourceSystem": "NACE", "sourceVersion": "Rev.2", "sourceCode": "D35",
+      "sourceName": "Electricity, gas, steam and air conditioning supply",
+      "targetSystem": "NAICS", "targetVersion": "2022", "targetCodes": ["2211","2212"],
+      "targetName": "Electric Power and Natural Gas Distribution",
+      "correspondenceType": "APPROXIMATE",
+      "notes": "Flexibility aggregators operate mainly in D35.1 (electricity generation/transmission). NAICS 2211 includes utilities and IPPs."
+    },
+    {
+      "crosswalkId": "cw-nace-c-to-naics-mfg",
+      "sourceSystem": "NACE", "sourceVersion": "Rev.2", "sourceCode": "C",
+      "sourceName": "Manufacturing (all subsections)",
+      "targetSystem": "NAICS", "targetVersion": "2022", "targetCodes": ["31","32","33"],
+      "targetName": "Manufacturing",
+      "correspondenceType": "CLOSE",
+      "notes": "Top-level manufacturing broad correspondence. Use specific NACE/NAICS codes when possible. Do not apply US manufacturing size distributions to EU without adjustment."
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25",
+  "note": "Solution-independent job statements. Each statement must pass the solution-neutral test: 5 different technologies or business models could plausibly address it.",
+  "jobs": [
+    {
+      "schemaVersion": "1.0.0",
+      "jobId": "job-verify-retrofit-performance",
+      "actorIds": ["actor-energy-retrofit-building-owner"],
+      "statement": "Verify that an installed energy retrofit delivered the contractually agreed performance outcome before releasing final payment.",
+      "jobType": "FUNCTIONAL",
+      "frequency": "EVENT_DRIVEN",
+      "contexts": [
+        "Post-retrofit M&V period (typically 1–3 years after installation)",
+        "Annual performance review under Energy Performance Contract",
+        "Payment milestone trigger date"
+      ],
+      "triggers": [
+        "Contractor submits performance claim for payment milestone",
+        "M&V reporting period ends",
+        "Contract review date reached"
+      ],
+      "desiredOutcomes": [
+        "Know with confidence whether the contractually defined energy savings target was met",
+        "Minimize time and cost required to resolve disputes about baseline or savings methodology",
+        "Have tamper-evident, auditable record of performance data accepted by both parties"
+      ],
+      "relatedJobIds": ["job-reconcile-flexibility-performance"],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Derived from HeatProof idea-433 dossier in this repository. The idea explicitly targets the M&V verification problem in energy performance contracts.",
+          "sourceId": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "jobId": "job-demonstrate-retrofit-savings",
+      "actorIds": ["actor-energy-retrofit-contractor"],
+      "statement": "Demonstrate to a building owner that the installed retrofit measures delivered the contractually defined energy savings, using meter data adjusted for occupancy and weather.",
+      "jobType": "FUNCTIONAL",
+      "frequency": "MONTHLY",
+      "contexts": [
+        "Performance-based payment period under EPC or similar contract",
+        "Year-end settlement",
+        "Dispute resolution"
+      ],
+      "triggers": [
+        "Performance reporting deadline",
+        "Building owner questions savings claim",
+        "Contract milestone reached"
+      ],
+      "desiredOutcomes": [
+        "Produce a performance report both parties accept without additional negotiation",
+        "Minimize cost and delay of producing an accepted M&V report"
+      ],
+      "relatedJobIds": ["job-verify-retrofit-performance"],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Derived from HeatProof idea-433 dossier. Contractor-side job is the mirror of the building owner verification job.",
+          "sourceId": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "jobId": "job-reconcile-flexibility-performance",
+      "actorIds": ["actor-industrial-flexibility-operator"],
+      "statement": "Prove the actual megawatt-hour flexibility response delivered during a grid flexibility event matches what the aggregator will use for settlement payment.",
+      "jobType": "FUNCTIONAL",
+      "frequency": "EVENT_DRIVEN",
+      "contexts": [
+        "Post-flexibility-event settlement window (D+1 to D+30)",
+        "Monthly or quarterly aggregator reconciliation",
+        "Dispute about delivered MW response"
+      ],
+      "triggers": [
+        "Grid operator calls flexibility event",
+        "Settlement statement received from aggregator",
+        "Discrepancy discovered between SCADA log and operator data"
+      ],
+      "desiredOutcomes": [
+        "Know immediately after an event whether site SCADA data matches operator settlement data",
+        "Minimize manual effort to reconcile site meter data against grid operator timestamps",
+        "Prevent payment haircuts caused by data format or identifier mismatch, not under-performance"
+      ],
+      "relatedJobIds": ["job-verify-retrofit-performance"],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Derived from FlexCovenant idea-434 dossier. The idea targets settlement data reconciliation between industrial sites and flexibility aggregators.",
+          "sourceId": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "jobId": "job-settle-flexibility-payment",
+      "actorIds": ["actor-flexibility-aggregator"],
+      "statement": "Distribute performance-based payments accurately across enrolled flexibility participants after reconciling each site's delivered response against grid operator settlement data.",
+      "jobType": "FUNCTIONAL",
+      "frequency": "MONTHLY",
+      "contexts": [
+        "Post-event monthly settlement",
+        "Annual capacity market settlement",
+        "Dispute from participant"
+      ],
+      "triggers": [
+        "Grid operator issues settlement statement",
+        "Participant disputes payment haircut",
+        "Regulatory reporting deadline"
+      ],
+      "desiredOutcomes": [
+        "Issue accurate settlement payments within contracted timeframe",
+        "Minimize dispute rate from participants"
+      ],
+      "relatedJobIds": ["job-reconcile-flexibility-performance"],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Derived from FlexCovenant idea-434 dossier. Aggregator-side settlement job.",
+          "sourceId": null
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "jobId": "job-verify-vendor-product-claims",
+      "actorIds": ["actor-b2b-procurement-buyer"],
+      "statement": "Independently verify that a vendor's product or service performs as claimed before committing to a purchase or contract.",
+      "jobType": "FUNCTIONAL",
+      "frequency": "EVENT_DRIVEN",
+      "contexts": [
+        "Vendor shortlisting and evaluation",
+        "Contract compliance review post-purchase",
+        "High-value or regulated product category"
+      ],
+      "triggers": [
+        "New vendor being evaluated",
+        "Vendor makes a performance or certification claim",
+        "Post-purchase discrepancy discovered",
+        "Tender or RFP process begins"
+      ],
+      "desiredOutcomes": [
+        "Have independent evidence of vendor product performance specific to buyer's configuration",
+        "Minimize time and cost of producing comparable vendor evidence",
+        "Reduce post-contract discovery of gaps between claimed and actual performance"
+      ],
+      "relatedJobIds": [],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Derived from FactBounty idea-061 dossier. The idea targets the buyer's job of independently verifying vendor claims.",
+          "sourceId": null
+        }
+      ]
+    }
+  ]
+}

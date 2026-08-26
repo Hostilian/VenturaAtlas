@@ -1,0 +1,426 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "CENSUS estimate records for three dogfoods. Each estimate has: unit, population, period, method, lower, upper, assumptions, witnessInferenceGuard, revenueEstimateGuard. UNKNOWN remains UNKNOWN. Revenue TAMs are NOT YET EVIDENCE-SUPPORTED because prices are SCENARIO (unvalidated) and prevalence rates are NOT_YET_MEASURED. See CENSUS §192 and prime directives.",
+  "estimates": [
+
+    {
+      "estimateId": "est-a01-universe-count",
+      "metric": "count_commercial_public_buildings_eu27",
+      "subject": "Total commercial and public-sector buildings, EU-27, approx 2024",
+      "unitId": "unit-epc-engagement",
+      "populationId": "pop-a01-epc-universe",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024, "notes": "No annual registry; modelled from building stock estimates" },
+      "valueState": "KNOWN",
+      "value": 55000000,
+      "lower": 45000000,
+      "upper": 65000000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "BENCHMARK_RATE_APPLICATION",
+      "methodNotes": "Eurostat estimates ~220M total EU-27 buildings. Share non-residential ~25% (varies by source 20-30%). 220M × 0.25 = 55M. Range reflects 20-30% non-residential share uncertainty.",
+      "sources": [
+        { "censusSourceId": "csrc-eurostat-sbs-enterprise", "role": "BENCHMARK" }
+      ],
+      "assumptions": [
+        { "assumption": "Non-residential share of building stock is 20-30%", "sensitivity": "MEDIUM" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "No WITNESS evidence. This is a top-down universe count from official building stock data."
+      },
+      "revenueEstimateGuard": null,
+      "status": "MODEL_BOUND",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "Useful only as universe denominator. The critical filter is EPC adoption rate, not total building count."
+    },
+
+    {
+      "estimateId": "est-a02-eligible-count",
+      "metric": "count_active_epc_engagements_eu27",
+      "subject": "Active Energy Performance Contracts in EU-27, approximately 2024",
+      "unitId": "unit-epc-engagement",
+      "populationId": "pop-a02-epc-eligible",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024, "notes": "No official register. Derived." },
+      "valueState": "KNOWN",
+      "value": null,
+      "lower": 2000,
+      "upper": 10000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "TRIANGULATION",
+      "methodNotes": "Two independent methods: (A) EUROACE revenue bottom-up: EUR 3-5B market revenue / EUR 500K-5M average project value = 600-10,000 active contracts. (B) BPIE cumulative top-down: 35,000+ cumulative projects / assumed 5-year average active duration ≈ 7,000 active. Methods agree on central tendency ~2,000-7,000. Lower bound 2,000 conservative (large projects, short active window). Upper bound 10,000 (smaller projects, longer active window). No point estimate offered — range is the honest output.",
+      "sources": [
+        { "censusSourceId": "csrc-euroace-esco-market-report-2023", "role": "PRIMARY" },
+        { "censusSourceId": "csrc-bpie-esco-projects", "role": "COUNTER_ESTIMATE" }
+      ],
+      "assumptions": [
+        { "assumption": "Average EPC project value: EUR 500K-5M (10x range — dominant sensitivity)", "sensitivity": "HIGH" },
+        { "assumption": "Average EPC active M&V period: 3-7 years (IPMVP standard)", "sensitivity": "HIGH" },
+        { "assumption": "EUROACE revenue coverage: 70-90% of actual EU ESCO market", "sensitivity": "MEDIUM" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": "est-a02-bpie-counter",
+      "conflictIds": [],
+      "precedenceRule": "Both methods consistent. Triangulated range preferred. If methods diverged >3×, investigate definitions.",
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "No WITNESS evidence. Estimate derived from industry association revenue data."
+      },
+      "revenueEstimateGuard": null,
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "This is the key denominator for DOGFOOD A. Average project value assumption dominates. Decision boundary: even the lower bound (2,000 EPCs) is a tractable beachhead for early-stage product without requiring high market share."
+    },
+
+    {
+      "estimateId": "est-a02-bpie-counter",
+      "metric": "count_active_epc_engagements_eu27_bpie_method",
+      "subject": "Active EPC engagements EU-27 (BPIE cumulative method counter-estimate)",
+      "unitId": "unit-epc-engagement",
+      "populationId": "pop-a02-epc-eligible",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024 },
+      "valueState": "KNOWN",
+      "value": 7000,
+      "lower": 5000,
+      "upper": 12000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "TOP_DOWN_FILTERING",
+      "methodNotes": "BPIE: 35,000+ cumulative ESCO projects EU since 2000. 26-year period. Steady-state assumption: ~1,350/year new projects. At 5-year average active M&V period → 6,750 active. Range: 3-7 year duration → 4,050-9,450.",
+      "sources": [
+        { "censusSourceId": "csrc-bpie-esco-projects", "role": "PRIMARY" }
+      ],
+      "assumptions": [
+        { "assumption": "Uniform project start rate since 2000 (not realistic — growth accelerating post-2015)", "sensitivity": "MEDIUM" },
+        { "assumption": "Average active M&V period 3-7 years", "sensitivity": "HIGH" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": "est-a02-eligible-count",
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "No WITNESS evidence."
+      },
+      "revenueEstimateGuard": null,
+      "status": "MODEL_BOUND",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "Counter-estimate to est-a02-eligible-count. Used in triangulation. Both methods consistent."
+    },
+
+    {
+      "estimateId": "est-a03-affected-count",
+      "metric": "count_epc_mv_disputes_eu27_annual",
+      "subject": "Annual EPC M&V settlement disputes in EU-27",
+      "unitId": "unit-mv-settlement-event",
+      "populationId": "pop-a04-epc-affected",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024 },
+      "valueState": "NOT_YET_MEASURED",
+      "value": null,
+      "lower": null,
+      "upper": null,
+      "unitOfMeasure": "events_per_year",
+      "currency": null,
+      "nominalYear": null,
+      "method": "BOUNDING",
+      "methodNotes": "Dispute rate is completely unknown. No public statistic exists. IPMVP body does not publish dispute rate. Upper bound on annual dispute events = active EPCs (est-a02) × 1 settlement/year = 2,000-10,000. But this assumes 100% dispute rate — implausible. True rate unknown. Lower bound = 0 (implausible given existence of M&V verifier market at EUR 5K-50K/engagement). Decision boundary: at 10% rate → 200-1,000 dispute events/year. At 30% → 600-3,000/year. Strategic decision does not require knowing exact rate if even the low scenario is commercially viable.",
+      "sources": [],
+      "assumptions": [
+        { "assumption": "Dispute rate unknown — placeholder only", "sensitivity": "HIGH" }
+      ],
+      "lineageIds": ["est-a02-eligible-count"],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": 0,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "Zero WITNESS evidence. TERRAIN status = HYPOTHESIS. Dispute rate cannot be inferred from AI_HYPOTHESIS alone. This is the most important unknown for DOGFOOD A."
+      },
+      "revenueEstimateGuard": null,
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "HIGHEST-VALUE UNKNOWN for DOGFOOD A. Next measurement: EUROACE member survey on M&V dispute rate OR extract from EED national reports."
+    },
+
+    {
+      "estimateId": "est-a04-revenue-tam",
+      "metric": "annual_revenue_opportunity_heatproof_eu27",
+      "subject": "Annual revenue opportunity — HeatProof (idea-433) EU-27",
+      "unitId": "unit-epc-engagement",
+      "populationId": "pop-a02-epc-eligible",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024 },
+      "valueState": "NOT_YET_MEASURED",
+      "value": null,
+      "lower": null,
+      "upper": null,
+      "unitOfMeasure": "EUR_per_year",
+      "currency": "EUR",
+      "nominalYear": 2024,
+      "method": "SCENARIO",
+      "methodNotes": "Cannot compute. Two required inputs are unknown: (1) dispute rate (est-a03 = NOT_YET_MEASURED) and (2) per-engagement price (Mercury state = SCENARIO, unvalidated). Revenue TAM = dispute events/year × price/event. Both unknowns prevent meaningful calculation. Scenario calculator in financial model (idea-433) remains valid as scenario. Do not promote to measured estimate.",
+      "sources": [],
+      "assumptions": [
+        { "assumption": "Dispute rate: NOT_YET_MEASURED", "sensitivity": "HIGH" },
+        { "assumption": "Price per engagement: SCENARIO (unvalidated by Mercury)", "sensitivity": "HIGH" }
+      ],
+      "lineageIds": ["est-a03-affected-count"],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": 0,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "Zero WITNESS evidence."
+      },
+      "revenueEstimateGuard": {
+        "priceState": "SCENARIO",
+        "priceSource": "financial-models/idea-433.md scenario only"
+      },
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "TAM IS NOT YET EVIDENCE-SUPPORTED. This is the correct and honest state. The financial model scenarios (10/45/150 customers, EUR 89/month midpoint) are valid as scenarios but cannot be interpreted as measured addressable population."
+    },
+
+    {
+      "estimateId": "est-b01-universe-count",
+      "metric": "count_enterprises_10plus_employees_eu27",
+      "subject": "EU-27 employer enterprises with 10+ employees, business economy",
+      "unitId": "unit-b2b-buyer-enterprise",
+      "populationId": "pop-b01-b2b-buyer-universe",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2022 },
+      "valueState": "KNOWN",
+      "value": 1300000,
+      "lower": 1200000,
+      "upper": 1400000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "OFFICIAL_SURVEY",
+      "methodNotes": "Eurostat SBS sbs_sc_ovw, reference year 2022. Employer enterprises 10+ employees, NACE B-N excluding K, EU-27 aggregate. Precise figure requires download — approximate from published summaries.",
+      "sources": [
+        { "censusSourceId": "csrc-eurostat-sbs-enterprise", "role": "PRIMARY" }
+      ],
+      "assumptions": [
+        { "assumption": "EU-27 aggregate. UK excluded from EU27 figure (separate post-Brexit).", "sensitivity": "LOW" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": true,
+        "populationInferencePermitted": true,
+        "reason": "Official EU statistical survey with design-based inference."
+      },
+      "revenueEstimateGuard": null,
+      "status": "FINAL_SOURCE",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "DOGFOOD B universe. Very broad — most enterprises do not make qualifying high-value procurement decisions frequently. This count must be filtered significantly."
+    },
+
+    {
+      "estimateId": "est-b02-eligible-count",
+      "metric": "count_enterprises_50plus_manufacturing_regulated_eu27",
+      "subject": "EU-27 manufacturing + regulated sector enterprises, 50+ employees",
+      "unitId": "unit-b2b-buyer-enterprise",
+      "populationId": "pop-b02-b2b-buyer-eligible",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2022 },
+      "valueState": "KNOWN",
+      "value": 50000,
+      "lower": 40000,
+      "upper": 65000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "OFFICIAL_SURVEY",
+      "methodNotes": "Eurostat SBS: NACE C (manufacturing) 50-249 employees ~35,000 + 250+ ~13,000 = ~48,000. Plus NACE J+M portion making non-SaaS high-value hardware/regulated material procurement. Approximate — precise NACE × size download needed. Central: 50,000. IMPORTANT: this is a STOCK of enterprises, NOT a count of procurement events.",
+      "sources": [
+        { "censusSourceId": "csrc-eurostat-sbs-enterprise", "role": "PRIMARY" }
+      ],
+      "assumptions": [
+        { "assumption": "NACE C covers most relevant manufacturing. Regulated sectors (pharma C21, chemicals C20, metals C24) included.", "sensitivity": "MEDIUM" },
+        { "assumption": "50-employee threshold approximates ability to make EUR 50K+ structured procurement events", "sensitivity": "HIGH" }
+      ],
+      "lineageIds": ["est-b01-universe-count"],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": true,
+        "populationInferencePermitted": true,
+        "reason": "Derived from official EU statistical survey."
+      },
+      "revenueEstimateGuard": null,
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "UNIT NOTE: This is enterprise-stock. The FactBounty billing unit is bounty-transaction (flow). Unit conversion via events/enterprise/year × bounty-conversion-rate required before revenue calculation."
+    },
+
+    {
+      "estimateId": "est-b03-events-eligible",
+      "metric": "annual_qualifying_procurement_events_eu27",
+      "subject": "Annual high-stakes B2B procurement decision events, EU-27 manufacturing+regulated",
+      "unitId": "unit-procurement-decision-event",
+      "populationId": "pop-b03-b2b-events-eligible",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2024 },
+      "valueState": "KNOWN",
+      "value": null,
+      "lower": 100000,
+      "upper": 500000,
+      "unitOfMeasure": "events_per_year",
+      "currency": null,
+      "nominalYear": null,
+      "method": "BOTTOM_UP_DECOMPOSITION",
+      "methodNotes": "est-b02 (50,000 enterprises) × assumed 2-10 qualifying events/enterprise/year. Lower: 50,000 × 2 = 100,000. Upper: 50,000 × 10 = 500,000. The events/enterprise/year assumption has HIGH sensitivity and no public source. This is an EXPLORATORY range. Including NACE J+M partial contribution would expand upper bound to ~650,000 but also increases overlap risk with SaaS review platforms.",
+      "sources": [
+        { "censusSourceId": "csrc-eurostat-sbs-enterprise", "role": "PRIMARY" }
+      ],
+      "assumptions": [
+        { "assumption": "2-10 qualifying procurement events/enterprise/year (dominant sensitivity, unobserved)", "sensitivity": "HIGH" },
+        { "assumption": "EUR 50K threshold defines qualifying event (unobserved threshold)", "sensitivity": "HIGH" }
+      ],
+      "lineageIds": ["est-b02-eligible-count"],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": 0,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "Zero WITNESS evidence. Events/enterprise/year assumption is completely unobserved."
+      },
+      "revenueEstimateGuard": null,
+      "status": "MODEL_BOUND",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "Exploratory range only. The 5x width (100K-500K) reflects the events/enterprise assumption uncertainty. Decision: even if true value is 50K events/year, it is a large enough addressable population to justify next commercial experiment."
+    },
+
+    {
+      "estimateId": "est-c01-universe-count",
+      "metric": "count_energy_intensive_enterprises_250plus_eu27",
+      "subject": "EU-27 energy-intensive industrial enterprises, 250+ employees",
+      "unitId": "unit-flexibility-site",
+      "populationId": "pop-c01-flex-universe",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27"] },
+      "period": { "referenceYear": 2022 },
+      "valueState": "KNOWN",
+      "value": 17500,
+      "lower": 15000,
+      "upper": 20000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "OFFICIAL_SURVEY",
+      "methodNotes": "Eurostat SBS: NACE B+C20-C24+D35, 250+ employees. Approximate — precise download needed. Note: unit is enterprise, not site. One enterprise may operate multiple flexibility sites.",
+      "sources": [
+        { "censusSourceId": "csrc-eurostat-sbs-enterprise", "role": "PRIMARY" }
+      ],
+      "assumptions": [
+        { "assumption": "NACE B+C20-C24+D35 covers energy-intensive sectors. C25+ metals/machinery excluded — may be relevant.", "sensitivity": "MEDIUM" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": null,
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": true,
+        "populationInferencePermitted": true,
+        "reason": "Derived from official EU statistical survey."
+      },
+      "revenueEstimateGuard": null,
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "DOGFOOD C universe (enterprise count). NOT the same as flexibility site count. Enterprise/site ratio unknown — must not be assumed 1:1."
+    },
+
+    {
+      "estimateId": "est-c02-eligible-sites",
+      "metric": "count_registered_flexibility_sites_eu27",
+      "subject": "Registered grid flexibility sites EU-27+UK, ~2024",
+      "unitId": "unit-flexibility-site",
+      "populationId": "pop-c02-flex-eligible-sites",
+      "geography": { "level": "COUNTRY_GROUP", "codes": ["EU27","UK"] },
+      "period": { "referenceYear": 2024 },
+      "valueState": "KNOWN",
+      "value": null,
+      "lower": 600,
+      "upper": 10000,
+      "unitOfMeasure": "count",
+      "currency": null,
+      "nominalYear": null,
+      "method": "TRIANGULATION",
+      "methodNotes": "Method A (ENTSO-E capacity): FCR ~3,000 MW EU contracted / average site 1-5 MW → 600-3,000 (TSO markets only, lower bound). Method B (aggregator-based): ACER 200+ aggregators × 10-50 sites/aggregator → 2,000-10,000 (includes DSO estimate). Methods overlap in 2,000-3,000 range. Lower bound 600 is minimum observable from TSO data alone. Upper bound 10,000 includes DSO flexibility not captured in ENTSO-E. Preferred pre-download range: 2,000-5,000.",
+      "sources": [
+        { "censusSourceId": "csrc-entso-e-transparency", "role": "PRIMARY" },
+        { "censusSourceId": "csrc-acer-mmr-2024", "role": "COUNTER_ESTIMATE" }
+      ],
+      "assumptions": [
+        { "assumption": "Average flexibility site capacity: 1-5 MW (dominant sensitivity for Method A, unobserved)", "sensitivity": "HIGH" },
+        { "assumption": "Average sites per aggregator: 10-50 (dominant sensitivity for Method B, unobserved)", "sensitivity": "HIGH" },
+        { "assumption": "ENTSO-E FCR data is representative of TSO-managed flexibility sites", "sensitivity": "MEDIUM" }
+      ],
+      "lineageIds": [],
+      "counterEstimateId": null,
+      "conflictIds": [],
+      "precedenceRule": "Both methods consistent in central range 2,000-5,000. Discrepancy at extremes due to DSO coverage gap in ENTSO-E. Method B preferred as upper bound.",
+      "witnessInferenceGuard": {
+        "qualitativeSampleSize": null,
+        "probabilitySample": false,
+        "populationInferencePermitted": false,
+        "reason": "No WITNESS evidence. Estimate derived from capacity data and aggregator count proxy."
+      },
+      "revenueEstimateGuard": null,
+      "status": "PROVISIONAL",
+      "withdrawalReason": null,
+      "asOf": "2026-08-26",
+      "revisionHistory": [],
+      "notes": "NEXT MEASUREMENT: Download ENTSO-E BSP register to count registered Balancing Service Providers. This would narrow the range from 5× to likely 2×. High information value, zero cost, available now."
+    }
+  ]
+}

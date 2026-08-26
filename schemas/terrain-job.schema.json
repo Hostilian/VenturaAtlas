@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/terrain-job.schema.json",
+  "title": "TerrainJob",
+  "description": "A solution-independent job statement — what a performer is trying to accomplish. Based on JTBD principles. Must be solvable by at least 5 different technologies or business models (solution-neutral test §21).",
+  "type": "object",
+  "required": ["jobId", "schemaVersion", "actorIds", "statement"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "jobId": {
+      "type": "string",
+      "pattern": "^job-[a-z0-9-]+$",
+      "description": "Stable unique identifier."
+    },
+    "actorIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+      "minItems": 1,
+      "description": "Which actors perform this job."
+    },
+    "statement": {
+      "type": "string",
+      "description": "Solution-neutral job statement. Format: verb + object + context. Example: 'Reconcile chargeable warehouse activity before issuing a customer invoice.' NOT: 'Use software to reconcile warehouse activity.'"
+    },
+    "jobType": {
+      "type": "string",
+      "enum": ["FUNCTIONAL", "EMOTIONAL", "SOCIAL"],
+      "description": "FUNCTIONAL = the work to accomplish. EMOTIONAL/SOCIAL = only where evidence supports."
+    },
+    "frequency": {
+      "type": "string",
+      "enum": ["PER_TRANSACTION", "DAILY", "WEEKLY", "MONTHLY", "QUARTERLY", "ANNUAL", "EVENT_DRIVEN", "RARE", "UNKNOWN"],
+      "description": "How often this job occurs."
+    },
+    "contexts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Circumstances where this job is performed. e.g. 'month-end close', 'post-retrofit settlement'."
+    },
+    "triggers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What initiates this job. e.g. 'customer places order', 'audit date approaches', 'flexibility event called'."
+    },
+    "desiredOutcomes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What does done look like? Solution-neutral metric-style statements. e.g. 'Minimize time to verify all mandatory evidence is collected before submission.'"
+    },
+    "relatedJobIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^job-[a-z0-9-]+$" },
+      "description": "Parent, sibling, or supporting jobs."
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["epistemic"],
+        "properties": {
+          "epistemic": {
+            "type": "string",
+            "enum": ["OBSERVED", "DIRECTLY_REPORTED", "DOCUMENTED", "SOURCE_SUPPORTED_INFERENCE", "ANALYST_INFERENCE", "AI_HYPOTHESIS", "USER_HYPOTHESIS", "UNKNOWN"]
+          },
+          "summary": { "type": "string" },
+          "sourceId": { "type": "string" }
+        }
+      },
+      "description": "Evidence that this job is real. Every item must have an epistemic label."
+    }
+  }
+}

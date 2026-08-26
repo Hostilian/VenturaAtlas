@@ -1,0 +1,88 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "Estimate derivation graph. Every derived estimate must trace to source estimates. Prevents untraceable numbers. Cycles are invalid.",
+  "lineages": [
+    {
+      "lineageId": "lin-b02-from-b01",
+      "derivedEstimateId": "est-b02-eligible-count",
+      "inputEstimateIds": ["est-b01-universe-count"],
+      "transformations": [
+        {
+          "operation": "FILTER",
+          "description": "Filter EU-27 employer enterprises 10+ to manufacturing + regulated sectors 50+ employees. Apply NACE C, J (partial), M (partial) and size class 50+.",
+          "parameters": { "naceFilter": ["C","J_partial","M_partial"], "minEmployees": 50 },
+          "reason": "FactBounty target segment: enterprises making high-stakes B2B procurement decisions requiring independent evidence."
+        }
+      ],
+      "formula": "est-b01-universe-count × sector_share_filter × size_filter = est-b02-eligible-count",
+      "unitCompatibilityCheck": { "passed": true, "notes": "Both estimates use unit-b2b-buyer-enterprise (STOCK). Filter does not change unit type." },
+      "periodCompatibilityCheck": { "passed": true, "notes": "Both reference year 2022 Eurostat SBS." },
+      "currencyCompatibilityCheck": { "passed": true, "notes": "No monetary values involved." },
+      "notes": null
+    },
+    {
+      "lineageId": "lin-b03-from-b02",
+      "derivedEstimateId": "est-b03-events-eligible",
+      "inputEstimateIds": ["est-b02-eligible-count"],
+      "transformations": [
+        {
+          "operation": "MULTIPLY",
+          "description": "Multiply enterprise stock by assumed annual events per enterprise to derive annual event flow. UNIT CONVERSION: STOCK (enterprises) → FLOW (events/year). This is the critical conversion.",
+          "parameters": { "eventsPerEnterprisePerYear_low": 2, "eventsPerEnterprisePerYear_high": 10 },
+          "reason": "FactBounty billing unit is procurement-decision-event (FLOW), not enterprise (STOCK). Stock must be converted to flow via frequency assumption."
+        }
+      ],
+      "formula": "est-b02-eligible-count × [2-10 events/enterprise/year] = est-b03-events-eligible",
+      "unitCompatibilityCheck": {
+        "passed": true,
+        "notes": "INPUT unit: unit-b2b-buyer-enterprise (STOCK). OUTPUT unit: unit-procurement-decision-event (FLOW per_year). Explicit unit conversion performed — not a silent mix. Frequency assumption labelled HIGH sensitivity."
+      },
+      "periodCompatibilityCheck": { "passed": true, "notes": "Enterprise stock 2022; events assumed 2024. Small period mismatch; enterprise count relatively stable." },
+      "currencyCompatibilityCheck": { "passed": true, "notes": "No monetary values." },
+      "notes": "This lineage records the unit conversion from enterprise-stock to event-flow. The multiplier (2-10) is unobserved and dominates uncertainty. A WITNESS survey asking 'how many qualifying procurement decisions did your organization make last year?' would directly measure this factor."
+    },
+    {
+      "lineageId": "lin-a03-from-a02",
+      "derivedEstimateId": "est-a03-affected-count",
+      "inputEstimateIds": ["est-a02-eligible-count"],
+      "transformations": [
+        {
+          "operation": "MULTIPLY",
+          "description": "Multiply active EPC count by dispute prevalence rate to get annual dispute events. PREVALENCE RATE IS UNKNOWN.",
+          "parameters": { "disputeRate": "NOT_YET_MEASURED" },
+          "reason": "Affected = Eligible × dispute_rate. Rate is the binding unknown."
+        }
+      ],
+      "formula": "est-a02-eligible-count × [unknown_dispute_rate] = est-a03-affected-count (= NOT_YET_MEASURED)",
+      "unitCompatibilityCheck": {
+        "passed": true,
+        "notes": "INPUT: unit-epc-engagement (STOCK). OUTPUT: unit-mv-settlement-event (FLOW per_year, at rate 1 settlement/EPC/year). Explicit unit conversion. Dispute rate is the filter making AFFECTED a flow subset."
+      },
+      "periodCompatibilityCheck": { "passed": true, "notes": "Both reference 2024." },
+      "currencyCompatibilityCheck": { "passed": true, "notes": "No monetary values." },
+      "notes": "Derivation cannot complete because input factor (dispute rate) is NOT_YET_MEASURED. Output correctly carries NOT_YET_MEASURED state. This is not a failure — it is the honest result."
+    },
+    {
+      "lineageId": "lin-a04-from-a03",
+      "derivedEstimateId": "est-a04-revenue-tam",
+      "inputEstimateIds": ["est-a03-affected-count"],
+      "transformations": [
+        {
+          "operation": "MULTIPLY",
+          "description": "Multiply annual dispute events by price per engagement to get annual revenue opportunity.",
+          "parameters": { "pricePerEngagement": "SCENARIO_UNVALIDATED" },
+          "reason": "TAM = events × price. Both inputs are currently unknown/scenario."
+        }
+      ],
+      "formula": "est-a03-affected-count [NOT_YET_MEASURED] × price [SCENARIO] = est-a04-revenue-tam [NOT_YET_MEASURED]",
+      "unitCompatibilityCheck": {
+        "passed": true,
+        "notes": "INPUT: events_per_year × EUR/event = EUR_per_year. Correct unit arithmetic."
+      },
+      "periodCompatibilityCheck": { "passed": true, "notes": "Both 2024." },
+      "currencyCompatibilityCheck": { "passed": true, "notes": "EUR throughout. No mixed currency." },
+      "notes": "Revenue TAM cannot be computed because both dispute rate and price are unknown/scenario. This lineage documents WHY the TAM is NOT_YET_MEASURED rather than providing a false number."
+    }
+  ]
+}

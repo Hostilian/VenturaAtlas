@@ -1,0 +1,314 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25",
+  "updatedAt": "2026-08-26",
+  "note": "Problem records with explicit epistemic labelling. All items are AI_HYPOTHESIS — derived from existing idea dossiers in this repository, NOT direct user interviews. Status must remain HYPOTHESIS until real evidence is collected. Counterevidence included per TERRAIN §32 (must not be discarded). CENSUS integration 2026-08-26: censusLinks added to each problem pointing to CENSUS measurement questions.",
+  "problems": [
+    {
+      "schemaVersion": "1.0.0",
+      "problemId": "problem-retrofit-baseline-dispute",
+      "title": "Energy retrofit contractors and building owners cannot independently verify savings calculations, causing payment disputes",
+      "description": "After an energy retrofit is installed under a performance-based contract, the contractor and building owner must agree on the actual energy savings delivered. Both parties typically perform their own calculations using the same meter data but different baseline models, weather normalization methods, and data sources. Because no shared tamper-evident baseline exists and no standard machine-readable format is agreed at contract start, the calculations frequently diverge. Resolving the dispute requires either protracted negotiation or engaging an expensive third-party M&V verifier, delaying final payment by weeks to months.",
+      "actorIds": ["actor-energy-retrofit-building-owner", "actor-energy-retrofit-contractor"],
+      "jobIds": ["job-verify-retrofit-performance", "job-demonstrate-retrofit-savings"],
+      "workflowId": "wf-energy-retrofit-mv-settlement",
+      "workflowStepIds": ["step-mv-02", "step-mv-03", "step-mv-05", "step-mv-06"],
+      "contexts": [
+        "Energy Performance Contracts (EPCs) with performance-based payment obligations",
+        "Post-retrofit M&V period, typically 1–3 years after installation",
+        "Buildings with variable occupancy or processes (hospitals, factories, retail) where baseline adjustment is most contested"
+      ],
+      "triggers": [
+        "Contractor submits performance-based payment claim",
+        "M&V reporting period ends",
+        "Building owner receives contractor performance report and cannot verify it independently"
+      ],
+      "frictions": [
+        { "type": "UNCERTAINTY", "description": "No standard tamper-evident mechanism for the pre-retrofit baseline; both parties may have valid but diverging calculations." },
+        { "type": "FORMAT_TRANSFORMATION", "description": "Baseline and measurement data exists in Excel and PDF formats requiring manual re-entry to verify." },
+        { "type": "COORDINATION", "description": "Different weather data sources and normalization methods produce diverging results." },
+        { "type": "WAITING", "description": "Engaging an M&V verifier takes 4–12 weeks and EUR 5,000–50,000+." }
+      ],
+      "consequences": [
+        "Payment delayed weeks to months pending dispute resolution",
+        "Contractor cash flow disrupted",
+        "Building owner bears M&V verification cost on top of retrofit cost",
+        "M&V dispute cost reduces effective ROI of retrofit for both parties",
+        "Disputes deter smaller ESCOs from offering performance-based contracts"
+      ],
+      "currentWorkarounds": [
+        "Hire independent M&V verifier (IPMVP-certified engineer) — costs EUR 5,000–50,000 and 4–12 weeks",
+        "Use deemed savings tables (kWh per installed unit) — simpler but inaccurate for complex retrofits",
+        "Bilateral negotiation with manual Excel models from both parties"
+      ],
+      "currentAlternatives": [
+        {
+          "description": "Hire independent M&V verifier per engagement",
+          "alternativeType": "CONSULTANT",
+          "limitations": "Expensive and slow. Does not prevent the dispute from arising. Many SMEs cannot afford it.",
+          "satisfactionLevel": "LOW"
+        },
+        {
+          "description": "Deemed savings approach (simplified fixed kWh/unit tables)",
+          "alternativeType": "MANUAL_LABOR",
+          "limitations": "Inaccurate for complex retrofits. Contested by purists. Does not address the verification problem at source.",
+          "satisfactionLevel": "MEDIUM"
+        }
+      ],
+      "desiredOutcomes": [
+        "Both parties can independently reproduce the verified savings calculation from shared, tamper-evident source data",
+        "Minimize time and cost to reach agreed performance settlement",
+        "Eliminate or dramatically reduce the need for third-party M&V verification in standard cases"
+      ],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Reconstructed from HeatProof (idea-433) dossier — the idea explicitly targets M&V dispute in energy performance contracts. Dossier references that EPCs with verified performance are an EU policy objective under the Energy Efficiency Directive. Real user interviews with building owners and ESCOs needed.",
+          "sourceId": null
+        }
+      ],
+      "counterEvidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Large sophisticated building owners (major commercial real estate portfolios, municipalities with dedicated energy teams) may already have internal capacity to perform M&V, reducing the severity of this problem for that segment. The problem may be most acute for SME building owners or smaller ESCOs."
+        },
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Where IPMVP Option A (stipulated measurement) is contractually agreed from the start, the scope of what must be verified is pre-limited, reducing dispute potential. If most contracts already use simplified stipulated approaches, the full dispute workflow may be rarer than assumed."
+        }
+      ],
+      "status": "HYPOTHESIS",
+      "symptomOrRoot": "ROOT",
+      "importanceSignals": [
+        "EU Energy Efficiency Directive mandates M&V for public-sector EPCs above threshold",
+        "Independent M&V consultancy market exists (IPMVP body with thousands of practitioners globally)",
+        "Multiple EU reports cite M&V cost as a barrier to EPC adoption by SMEs"
+      ],
+      "asOf": "2026-08-25",
+      "researchGaps": [
+        "What share of EPCs result in M&V disputes vs. smooth settlement?",
+        "What is the typical cost and duration of dispute resolution?",
+        "Are large sophisticated buyers already well-served by existing M&V software?",
+        "What does current adoption of IPMVP-certified M&V software look like?"
+      ],
+      "censusLinks": [
+        {
+          "measurementQuestionId": "cmq-a01-mv-dispute-rate",
+          "estimateIds": ["est-a02-eligible-count", "est-a03-affected-count", "est-a04-revenue-tam"],
+          "populationIds": ["pop-a02-epc-eligible", "pop-a03-epc-exposed", "pop-a04-epc-affected"],
+          "unitId": "unit-epc-engagement",
+          "note": "Dispute rate (cmq-a01) is the critical unknown. Active EPC denominator: 2,000-10,000 EU-27 (est-a02). Revenue TAM blocked on dispute rate + Mercury price validation."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "problemId": "problem-flexibility-settlement-identifier-mismatch",
+      "title": "Industrial sites cannot independently verify their grid flexibility performance because SCADA data and grid operator settlement data use incompatible identifiers and timestamps",
+      "description": "Industrial sites participating in grid flexibility markets (demand response, balancing mechanism) deliver MW load reductions on instruction from aggregators. Payment is performance-based. However, the site's SCADA system logs power consumption using site-internal meter IDs and local timestamps, while the grid operator measures delivered response using half-hourly settlement periods and Meter Point Reference Numbers (MPRNs/MPANs). The aggregator must manually map between these two incompatible identifier schemes every settlement cycle. Industrial sites receive only a summary statement from the aggregator and cannot access raw grid operator data, leaving them unable to independently verify their payment. Disputes require weeks to resolve.",
+      "actorIds": ["actor-industrial-flexibility-operator", "actor-flexibility-aggregator"],
+      "jobIds": ["job-reconcile-flexibility-performance", "job-settle-flexibility-payment"],
+      "workflowId": "wf-grid-flexibility-settlement",
+      "workflowStepIds": ["step-flex-03", "step-flex-05", "step-flex-07"],
+      "contexts": [
+        "Demand response / flexibility markets in European electricity systems (UK BM, German FCR/aFRR, French NEBEF, etc.)",
+        "Post-event settlement window (D+1 to D+30)",
+        "Sites with high-resolution SCADA (1-minute data) vs. 30-minute grid settlement"
+      ],
+      "triggers": [
+        "Grid operator calls flexibility event",
+        "Aggregator issues settlement statement to site",
+        "Site energy manager reviews payment statement and finds discrepancy"
+      ],
+      "frictions": [
+        { "type": "INTEGRATION", "description": "Site SCADA meter IDs ≠ grid operator Meter Point Reference Numbers. Manual ID mapping required every settlement." },
+        { "type": "FORMAT_TRANSFORMATION", "description": "SCADA logs (1-min, local timestamps) must be reformatted to match grid operator 30-min UTC settlement periods." },
+        { "type": "ACCESS", "description": "Industrial site cannot directly access grid operator settlement data — only the aggregator can, leaving the site unable to independently verify its own measured performance." },
+        { "type": "TRUST", "description": "Site must trust aggregator's reconciliation with no independent verification mechanism." }
+      ],
+      "consequences": [
+        "Sites receive incorrect (haircut) payments without knowing if it reflects under-performance or identifier/timing mismatch",
+        "Dispute resolution takes weeks; sites lack leverage against aggregators who control market access",
+        "Aggregators invest significant internal engineering time recreating identifier-mapping tools for each market",
+        "Systematic under-payment due to undetected identifier errors depresses industrial participation in flexibility markets"
+      ],
+      "currentWorkarounds": [
+        "Aggregators build proprietary internal reconciliation tools (Excel macros or custom software) to map IDs and normalize timestamps",
+        "Industrial sites manually export SCADA data and compare against summary statements in Excel — cannot fully verify",
+        "Sites accept occasional haircuts rather than invest time in dispute resolution"
+      ],
+      "currentAlternatives": [
+        {
+          "description": "Aggregator builds proprietary internal ID-mapping tool",
+          "alternativeType": "INTERNAL_BUILD",
+          "limitations": "Every aggregator recreates the same capability independently. Not standardized. Errors persist.",
+          "satisfactionLevel": "LOW"
+        },
+        {
+          "description": "Manual site-level SCADA export and comparison",
+          "alternativeType": "MANUAL_LABOR",
+          "limitations": "Site still cannot access grid operator raw data. Partial verification only.",
+          "satisfactionLevel": "LOW"
+        }
+      ],
+      "desiredOutcomes": [
+        "Industrial site can independently verify, immediately after a flexibility event, that its SCADA-measured response matches the grid operator's recorded delivered volume",
+        "Minimize manual reconciliation effort per settlement cycle",
+        "Eliminate payment disputes caused by identifier or timestamp mismatch, as opposed to genuine under-performance"
+      ],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Reconstructed from FlexCovenant (idea-434) dossier. The identifier-mismatch problem is structurally inherent in the architecture of European flexibility markets, where SCADA systems predated smart meter standardization. Direct interviews with flexibility aggregators and industrial energy managers needed.",
+          "sourceId": null
+        }
+      ],
+      "counterEvidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Some markets (UK half-hourly settlement reform, EU Smart Meter rollout) are gradually standardizing meter data formats, which could reduce the identifier mismatch problem over time if widely adopted."
+        },
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Large sophisticated aggregators operating at scale may already have mature automated reconciliation tools, leaving only smaller aggregators or newer market entrants as the addressable pain point."
+        }
+      ],
+      "status": "HYPOTHESIS",
+      "symptomOrRoot": "ROOT",
+      "importanceSignals": [
+        "European flexibility market volumes growing rapidly (EU Clean Energy Package mandates DSO flexibility markets)",
+        "SCADA-to-settlement identifier mapping is a known technical challenge described in ENTSO-E and Ofgem documentation",
+        "Growing number of flexibility aggregators entering EU markets (estimated 200+ in EU27)"
+      ],
+      "asOf": "2026-08-25",
+      "researchGaps": [
+        "What share of flexibility payment disputes are caused by identifier/timestamp mismatch vs. genuine under-performance?",
+        "Do industrial sites actively dispute payments or accept haircuts passively?",
+        "Are any market operators already providing standardized SCADA-to-settlement reconciliation tooling?"
+      ],
+      "censusLinks": [
+        {
+          "measurementQuestionId": "cmq-c01-entso-bsp-count",
+          "estimateIds": ["est-c02-eligible-sites"],
+          "populationIds": ["pop-c02-flex-eligible-sites", "pop-c03-flex-affected"],
+          "unitId": "unit-flexibility-site",
+          "note": "Enrolled site count: 600-10,000 EU-27+UK (est-c02). ENTSO-E BSP register download (cmq-c01) would narrow to 2×. Affected fraction unknown. Commercial account unit (site vs. aggregator) requires Mercury confirmation."
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "problemId": "problem-b2b-vendor-evidence-asymmetry",
+      "title": "B2B buyers cannot access independent product performance evidence before purchase — all available evidence is vendor-controlled",
+      "description": "When evaluating complex or specialized products and services, B2B buyers have access almost exclusively to vendor-curated evidence: vendor-selected case studies, vendor-briefed reference customers, and vendor-produced certification documents. No neutral repository of independent test results at the configuration level a specific buyer needs exists for most product categories. As a result, buyers must either run expensive proof-of-concept tests themselves, rely on vendor-selected references, or accept residual uncertainty at purchase time. Gaps between claimed and actual performance are commonly discovered post-contract.",
+      "actorIds": ["actor-b2b-procurement-buyer"],
+      "jobIds": ["job-verify-vendor-product-claims"],
+      "workflowId": "wf-b2b-vendor-claim-verification",
+      "workflowStepIds": ["step-vv-02", "step-vv-03", "step-vv-04", "step-vv-05"],
+      "contexts": [
+        "High-stakes B2B procurement (capital equipment, B2B SaaS, regulated materials, certified components)",
+        "Novel or specialized product categories with no established independent benchmarks",
+        "Regulated industries where certification specifics matter for compliance"
+      ],
+      "triggers": [
+        "New vendor being shortlisted for high-value purchase",
+        "Vendor makes a claim that cannot be verified from public sources",
+        "RFP/tender process with technical requirements",
+        "Post-purchase performance gap discovery"
+      ],
+      "frictions": [
+        { "type": "TRUST", "description": "All available evidence is vendor-controlled: vendor-selected references, vendor-produced certifications, vendor-authored case studies." },
+        { "type": "SEARCH", "description": "No neutral source of independent product performance data at the configuration level a specific buyer needs." },
+        { "type": "COST", "description": "Running an independent PoC requires 2–12 weeks of internal resource and potential pilot licensing cost." }
+      ],
+      "consequences": [
+        "Buyers make purchase decisions with higher residual uncertainty than desired",
+        "Post-contract performance gaps discovered too late to avoid remediation cost (replacement, renegotiation, legal)",
+        "Buyers spend weeks on reference calls that are structurally biased toward vendor-favorable outcomes",
+        "Smaller buyers (without resources for full PoC) are more exposed than large enterprise buyers"
+      ],
+      "currentWorkarounds": [
+        "Vendor-selected reference calls (biased toward satisfied customers)",
+        "Internal proof-of-concept testing (expensive and slow, 2–12 weeks)",
+        "Public review sites (G2, Capterra, Gartner Peer Insights) — useful for some SaaS, absent for industrial/regulated products",
+        "Peer-network inquiries through professional associations or LinkedIn"
+      ],
+      "currentAlternatives": [
+        {
+          "description": "Vendor reference calls",
+          "alternativeType": "MANUAL_LABOR",
+          "limitations": "Vendor curates reference list. Only satisfied customers included. Does not surface neutral or negative experiences.",
+          "satisfactionLevel": "LOW"
+        },
+        {
+          "description": "Internal proof-of-concept",
+          "alternativeType": "MANUAL_LABOR",
+          "limitations": "2–12 weeks and significant internal resource. Not feasible for all product categories. May not replicate production conditions.",
+          "satisfactionLevel": "MEDIUM"
+        },
+        {
+          "description": "Review platforms (G2, Capterra)",
+          "alternativeType": "OFFICIAL_SOFTWARE",
+          "limitations": "Covers mainly SaaS; absent for industrial, regulated, or specialized products. Reviews may be incentivized.",
+          "satisfactionLevel": "MEDIUM"
+        }
+      ],
+      "desiredOutcomes": [
+        "Access independent evidence of product performance in configurations similar to buyer's own environment, before purchase commitment",
+        "Reduce time and cost of vendor evaluation for high-stakes purchases",
+        "Reduce post-contract surprise rate from gaps between claimed and actual performance"
+      ],
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Reconstructed from FactBounty (idea-061) dossier. The structural information asymmetry between vendor-controlled evidence and buyer need for independent evidence is the core thesis. Real buyer interviews needed to quantify severity and frequency.",
+          "sourceId": null
+        }
+      ],
+      "counterEvidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "For widely-deployed software products, review platforms (G2, Gartner Peer Insights) already provide substantial independent user evidence. The problem may be most acute for niche, industrial, or regulated products without mainstream review coverage."
+        },
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Large enterprise buyers (Fortune 500) typically have procurement teams that run extensive RFP processes, independent testing labs, and industry analyst relationships that partially address this gap. The problem may be proportionally more severe for mid-market buyers."
+        },
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "In some regulated industries (pharmaceutical, aerospace), third-party certification bodies already provide structured independent product qualification. This existing infrastructure could mean the problem is lower-severity in those verticals."
+        }
+      ],
+      "status": "HYPOTHESIS",
+      "symptomOrRoot": "ROOT",
+      "importanceSignals": [
+        "Entire categories of B2B review platforms (G2, Gartner Peer Insights, TrustRadius) exist because this problem is recognized",
+        "Independent analyst firms (Forrester, Gartner) charge significant fees to produce comparative product assessments — showing demand for neutral evidence",
+        "Enterprise procurement processes routinely include mandatory PoC stages, signaling that vendor-provided evidence alone is insufficient"
+      ],
+      "asOf": "2026-08-25",
+      "researchGaps": [
+        "What share of B2B purchase decisions include an independent PoC step vs. relying on references/certifications alone?",
+        "Which product categories have the widest gap between available independent evidence and buyer needs?",
+        "How often do post-contract performance gaps result in formal disputes vs. silent acceptance?",
+        "Would buyers pay for access to independent evidence from comparable buyers? (Demand-side willingness.)"
+      ],
+      "censusLinks": [
+        {
+          "measurementQuestionId": "cmq-b01-events-per-enterprise",
+          "estimateIds": ["est-b03-events-eligible"],
+          "populationIds": ["pop-b02-b2b-buyer-eligible", "pop-b03-b2b-events-eligible", "pop-b04-b2b-events-affected"],
+          "unitId": "unit-procurement-decision-event",
+          "note": "Eligible event denominator: 100K-500K procurement decisions/year EU-27 (est-b03, exploratory range). Affected fraction unknown. Events/enterprise/year assumption (cmq-b01) dominates uncertainty. FactBounty revenue unit is bounty-transaction, not enterprise."
+        },
+        {
+          "measurementQuestionId": "cmq-b02-evidence-gap-prevalence",
+          "estimateIds": [],
+          "populationIds": ["pop-b04-b2b-events-affected"],
+          "unitId": "unit-procurement-decision-event",
+          "note": "Prevalence of evidence asymmetry among eligible events: NOT_YET_MEASURED. Combine with cmq-b01 WITNESS protocol."
+        }
+      ]
+    }
+  ]
+}

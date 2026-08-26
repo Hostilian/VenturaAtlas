@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/terrain-problem-relation.schema.json",
+  "title": "TerrainProblemRelation",
+  "description": "An explicit typed edge between a TERRAIN problem and a canonical venture idea. Captures which part of the workflow the idea addresses, what remains, and the strength of the connection.",
+  "type": "object",
+  "required": ["relationId", "schemaVersion", "problemId", "ideaId", "relationType", "reasoning"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "relationId": {
+      "type": "string",
+      "pattern": "^pri-[a-z0-9-]+$",
+      "description": "Stable unique identifier."
+    },
+    "problemId": {
+      "type": "string",
+      "pattern": "^problem-[a-z0-9-]+$"
+    },
+    "ideaId": {
+      "type": "string",
+      "description": "References a canonical idea record in data/ideas.json."
+    },
+    "relationType": {
+      "type": "string",
+      "enum": ["ADDRESSES", "PARTIALLY_ADDRESSES", "DEPENDS_ON", "CREATES", "REDUCES", "SHIFTS", "UNKNOWN"],
+      "description": "ADDRESSES = idea directly targets this problem. PARTIALLY_ADDRESSES = covers some frictions/steps. SHIFTS = idea may move friction to another actor/step. CREATES = idea may introduce a new problem."
+    },
+    "workflowCoverage": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which specific workflow step IDs the idea would affect. Prevents claiming the idea solves the whole problem when it only touches steps 4-6. §524."
+    },
+    "residualProblem": {
+      "type": "string",
+      "description": "What remains unsolved after this idea is applied. §525. Important for honest evaluation."
+    },
+    "newProblems": {
+      "type": "string",
+      "description": "Potential new frictions the idea could create. e.g. 'AI automation → new human review requirement'. §526."
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "Why we believe this relation holds. Must not just re-state the idea description. Must reference specific problem frictions or workflow steps. §224."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"],
+      "description": "Confidence in this relation, given current evidence level of the underlying problem."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

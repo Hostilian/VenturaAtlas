@@ -1,0 +1,550 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25",
+  "note": "Current-state-only workflow maps. Describe HOW WORK IS DONE NOW — not how our product could do it. All evidence labelled AI_HYPOTHESIS (derived from idea dossiers; real user evidence needed to escalate).",
+  "workflows": [
+    {
+      "schemaVersion": "1.0.0",
+      "workflowId": "wf-energy-retrofit-mv-settlement",
+      "name": "Energy Retrofit Performance Measurement & Verification (M&V) Settlement",
+      "actorIds": ["actor-energy-retrofit-building-owner", "actor-energy-retrofit-contractor", "actor-mv-verifier"],
+      "trigger": "Contractor submits performance claim at a contractual milestone date, typically 12 months after retrofit installation.",
+      "goal": "Both parties agree on actual energy savings achieved and contractor receives agreed performance-based payment.",
+      "steps": [
+        {
+          "stepId": "step-mv-01",
+          "order": 1,
+          "actor": "actor-energy-retrofit-contractor",
+          "action": "Export metered energy consumption data from building energy management system (BEMS) or smart meters for the measurement period.",
+          "input": "BEMS or smart meter data",
+          "output": "Energy consumption CSV or report",
+          "system": "BEMS / smart meter portal",
+          "artifact": "Metered consumption dataset"
+        },
+        {
+          "stepId": "step-mv-02",
+          "order": 2,
+          "actor": "actor-energy-retrofit-contractor",
+          "action": "Apply weather normalization (heating degree days) to adjust measured consumption for climate differences between baseline and measurement period.",
+          "input": "Metered data, weather data (external weather service), baseline model",
+          "output": "Weather-normalized energy consumption figure",
+          "system": "Excel or custom script",
+          "artifact": "Normalized savings calculation spreadsheet",
+          "frictionNotes": "Contractor and building owner may use different weather data sources or degree-day calculation methods, producing different normalization results.",
+          "isShadowSystem": true
+        },
+        {
+          "stepId": "step-mv-03",
+          "order": 3,
+          "actor": "actor-energy-retrofit-contractor",
+          "action": "Compare normalized consumption against the agreed pre-retrofit baseline to calculate claimed energy savings.",
+          "input": "Normalized measurement period data, baseline data",
+          "output": "Claimed savings figure and performance report",
+          "system": "Excel",
+          "artifact": "Performance report draft",
+          "isShadowSystem": true
+        },
+        {
+          "stepId": "step-mv-04",
+          "order": 4,
+          "actor": "actor-energy-retrofit-contractor",
+          "action": "Submit performance report and payment claim to building owner.",
+          "input": "Performance report",
+          "output": "Submitted payment claim",
+          "system": "Email or contract management portal",
+          "artifact": "Payment claim document",
+          "isHandoff": true
+        },
+        {
+          "stepId": "step-mv-05",
+          "order": 5,
+          "actor": "actor-energy-retrofit-building-owner",
+          "action": "Review submitted performance report. Attempt to verify claimed savings against own meter data and baseline understanding.",
+          "input": "Contractor performance report, own meter data",
+          "output": "Owner's own verification calculation or questions",
+          "system": "Excel",
+          "artifact": "Owner verification spreadsheet",
+          "frictionNotes": "Building owner often cannot reproduce contractor's calculation because baseline methodology, weather data source, and normalization formula are not standardized or shared in machine-readable form.",
+          "isShadowSystem": true
+        },
+        {
+          "stepId": "step-mv-06",
+          "order": 6,
+          "actor": "actor-energy-retrofit-building-owner",
+          "action": "Request clarification or dispute the savings claim.",
+          "input": "Discrepancy found between own calculation and contractor claim",
+          "output": "Written dispute or clarification request",
+          "system": "Email",
+          "isHandoff": true,
+          "isDecision": true,
+          "frictionNotes": "Dispute is common when occupancy, process, or weather changed significantly during measurement period. Resolving requires iterative back-and-forth."
+        },
+        {
+          "stepId": "step-mv-07",
+          "order": 7,
+          "actor": "actor-mv-verifier",
+          "action": "If dispute cannot be resolved bilaterally, independent M&V verifier is engaged. Verifier collects data from both parties, applies agreed IPMVP option, and issues binding report.",
+          "input": "Data from contractor and building owner, site visit if required",
+          "output": "Independent M&V report",
+          "system": "Specialist M&V software or Excel",
+          "artifact": "IPMVP-compliant M&V report",
+          "duration": "4–12 weeks",
+          "frictionNotes": "Engagements cost EUR 5,000–50,000+. Adds weeks to months of delay. Often the verifier must reconstruct a baseline that was not properly documented at contract start."
+        },
+        {
+          "stepId": "step-mv-08",
+          "order": 8,
+          "actor": "actor-energy-retrofit-building-owner",
+          "action": "Accept M&V report finding and authorize payment, or continue to dispute through contract arbitration.",
+          "input": "Independent M&V report",
+          "output": "Payment authorization or escalation to arbitration",
+          "isDecision": true,
+          "isHandoff": true
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "Pre-retrofit baseline model",
+          "format": "Excel or PDF",
+          "createdAtStep": "step-mv-01",
+          "usedAtSteps": ["step-mv-03", "step-mv-05"],
+          "manualTransformations": "Baseline may have been created years earlier using a different format; often not available in machine-readable form at settlement time."
+        },
+        {
+          "name": "Contractor performance report",
+          "format": "PDF or Word",
+          "createdAtStep": "step-mv-03",
+          "usedAtSteps": ["step-mv-05", "step-mv-07"]
+        },
+        {
+          "name": "Independent M&V report",
+          "format": "PDF",
+          "createdAtStep": "step-mv-07",
+          "usedAtSteps": ["step-mv-08"]
+        }
+      ],
+      "systems": [
+        { "name": "BEMS / smart meter portal", "role": "SYSTEM_OF_RECORD", "officialOrShadow": "OFFICIAL" },
+        { "name": "Excel (contractor savings model)", "role": "CALCULATION", "officialOrShadow": "SHADOW" },
+        { "name": "Excel (owner verification)", "role": "CALCULATION", "officialOrShadow": "SHADOW" },
+        { "name": "Email", "role": "COMMUNICATION", "officialOrShadow": "OFFICIAL" },
+        { "name": "Specialist M&V software", "role": "CALCULATION", "officialOrShadow": "OFFICIAL" }
+      ],
+      "handoffs": [
+        {
+          "fromStepId": "step-mv-04",
+          "toStepId": "step-mv-05",
+          "fromActor": "actor-energy-retrofit-contractor",
+          "toActor": "actor-energy-retrofit-building-owner",
+          "channel": "Email",
+          "isCrossOrganization": true,
+          "frictionNotes": "Handoff crosses organizational boundary. Data is in PDF/Word, not machine-readable. Building owner must re-enter data to verify."
+        },
+        {
+          "fromStepId": "step-mv-06",
+          "toStepId": "step-mv-07",
+          "fromActor": "actor-energy-retrofit-building-owner",
+          "toActor": "actor-mv-verifier",
+          "channel": "Contract engagement",
+          "isCrossOrganization": true,
+          "delay": "2–6 weeks to engage and mobilize verifier"
+        }
+      ],
+      "frictions": [
+        {
+          "type": "FORMAT_TRANSFORMATION",
+          "description": "Baseline data typically exists in a format (Excel, PDF) that requires manual re-entry by the building owner to verify contractor calculations.",
+          "atStepId": "step-mv-05",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "UNCERTAINTY",
+          "description": "No standard tamper-evident mechanism for the pre-retrofit baseline. Both parties may believe their version is correct.",
+          "atStepId": "step-mv-02",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "WAITING",
+          "description": "Engaging an independent M&V verifier takes 4–12 weeks and EUR 5,000–50,000+, creating a major delay and cost overhang.",
+          "atStepId": "step-mv-07",
+          "severity": "HIGH",
+          "frequency": "UNKNOWN"
+        },
+        {
+          "type": "COORDINATION",
+          "description": "Weather normalization uses different data sources (weather stations, degree-day providers) and methods, producing results that diverge across systems.",
+          "atStepId": "step-mv-02",
+          "severity": "MEDIUM",
+          "frequency": "PER_TRANSACTION"
+        }
+      ],
+      "workarounds": [
+        {
+          "description": "Building owners hire an independent M&V verifier (IPMVP-certified engineer) to adjudicate disputes.",
+          "atStepId": "step-mv-07",
+          "method": "Third-party consultancy engagement",
+          "cost": "EUR 5,000–50,000 per engagement plus 4–12 weeks delay",
+          "limitations": "Adds significant time and cost. Does not prevent the dispute from arising in the first place. Many SME building owners cannot afford this."
+        },
+        {
+          "description": "Some parties agree to a simplified deemed savings approach (kWh per installed unit), avoiding M&V altogether but sacrificing accuracy.",
+          "atStepId": "step-mv-03",
+          "method": "Deemed savings tables from industry bodies",
+          "limitations": "Does not reflect actual building performance. Inaccurate for complex retrofits or buildings with variable occupancy."
+        }
+      ],
+      "endState": "Building owner and contractor agree on verified savings figure; payment released or dispute escalated to arbitration.",
+      "asOf": "2026-08-25",
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Workflow reconstructed from HeatProof (idea-433) dossier content in this repository. Real user interviews and M&V industry documentation needed to validate step-level details.",
+          "sourceId": null
+        }
+      ],
+      "contextNotes": "Most acute for Energy Performance Contracts (EPCs) with performance-based payment structures. Less relevant for simple grant-funded retrofits with no performance obligation. EU Energy Efficiency Directive requires M&V for public-sector EPCs over certain thresholds, creating regulatory demand."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "workflowId": "wf-grid-flexibility-settlement",
+      "name": "Industrial Grid Flexibility Event Response & Settlement Reconciliation",
+      "actorIds": ["actor-industrial-flexibility-operator", "actor-flexibility-aggregator"],
+      "trigger": "Grid operator calls a flexibility event (e.g. Balancing Mechanism instruction, demand response call, capacity market delivery obligation).",
+      "goal": "Industrial site receives accurate performance-based payment for flexible load reduction delivered during the event.",
+      "steps": [
+        {
+          "stepId": "step-flex-01",
+          "order": 1,
+          "actor": "actor-flexibility-aggregator",
+          "action": "Receive flexibility event instruction from grid operator. Dispatch instruction to enrolled industrial sites.",
+          "input": "Grid operator event signal (time, volume, duration)",
+          "output": "Dispatch instruction sent to sites",
+          "system": "Aggregator control platform / SCADA link"
+        },
+        {
+          "stepId": "step-flex-02",
+          "order": 2,
+          "actor": "actor-industrial-flexibility-operator",
+          "action": "Receive dispatch instruction. Execute load curtailment or shift on site (e.g. pause furnace, delay compressor, adjust HVAC).",
+          "input": "Dispatch instruction",
+          "output": "Physical load reduction on site",
+          "system": "Site SCADA / DCS (Distributed Control System)"
+        },
+        {
+          "stepId": "step-flex-03",
+          "order": 3,
+          "actor": "actor-industrial-flexibility-operator",
+          "action": "Site SCADA automatically logs power demand at 1-minute or 30-minute intervals during and after event.",
+          "input": "Live site metering",
+          "output": "SCADA event log with timestamps and MW readings",
+          "system": "Site SCADA",
+          "artifact": "SCADA event log",
+          "frictionNotes": "SCADA timestamps may be in local time with DST ambiguity. Meter resolution (1-min vs 30-min) may differ from grid operator's settlement resolution."
+        },
+        {
+          "stepId": "step-flex-04",
+          "order": 4,
+          "actor": "actor-flexibility-aggregator",
+          "action": "Receive settlement data from grid operator showing measured delivered response volume per participant.",
+          "input": "Grid operator settlement statement",
+          "output": "Settlement file from grid operator",
+          "system": "Grid operator portal (e.g. National Grid ESO, RTE, TenneT)",
+          "artifact": "Grid operator settlement data",
+          "isHandoff": true
+        },
+        {
+          "stepId": "step-flex-05",
+          "order": 5,
+          "actor": "actor-flexibility-aggregator",
+          "action": "Attempt to reconcile grid operator settlement data against site-reported SCADA data to verify delivered MW response per site.",
+          "input": "Grid operator settlement data, site SCADA export",
+          "output": "Reconciled or disputed site performance figures",
+          "system": "Excel or aggregator platform",
+          "artifact": "Reconciliation spreadsheet",
+          "frictionNotes": "Key friction point: site SCADA uses site-specific meter IDs; grid operator uses its own meter point reference numbers (MPRNs/MPANs). Timestamps differ. Must manually map between identifiers. 30-minute settlement period may not align with SCADA minute-by-minute log.",
+          "isShadowSystem": true
+        },
+        {
+          "stepId": "step-flex-06",
+          "order": 6,
+          "actor": "actor-flexibility-aggregator",
+          "action": "Calculate payment for each site based on reconciled delivered volume × price. Apply performance haircuts for sites that under-delivered.",
+          "input": "Reconciled performance data, price from grid operator",
+          "output": "Site payment calculations with haircuts applied",
+          "system": "Aggregator billing platform or Excel"
+        },
+        {
+          "stepId": "step-flex-07",
+          "order": 7,
+          "actor": "actor-industrial-flexibility-operator",
+          "action": "Receive settlement statement from aggregator. Verify that aggregator's reported MW response matches own SCADA log.",
+          "input": "Aggregator settlement statement",
+          "output": "Own verification or dispute",
+          "system": "Excel / manual review of SCADA export",
+          "frictionNotes": "Site operator often cannot independently reproduce aggregator's calculation because the grid operator's settlement data is not directly shared with the industrial site — only with the aggregator.",
+          "isShadowSystem": true,
+          "isDecision": true
+        },
+        {
+          "stepId": "step-flex-08",
+          "order": 8,
+          "actor": "actor-industrial-flexibility-operator",
+          "action": "If discrepancy found, raise dispute with aggregator. Aggregator must then re-verify with grid operator data.",
+          "input": "Site SCADA log, aggregator settlement statement",
+          "output": "Dispute resolved or escalated",
+          "system": "Email / contract dispute process",
+          "isHandoff": true,
+          "isDecision": true,
+          "frictionNotes": "Dispute resolution may take weeks. Industrial sites often lack leverage to dispute aggregators who control their access to the market."
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "SCADA event log",
+          "format": "CSV or proprietary SCADA format",
+          "createdAtStep": "step-flex-03",
+          "usedAtSteps": ["step-flex-05", "step-flex-07"],
+          "manualTransformations": "Must be exported and reformatted. Timestamps require timezone normalization. Meter IDs must be mapped to grid operator reference numbers."
+        },
+        {
+          "name": "Grid operator settlement data",
+          "format": "CSV, XML or portal download",
+          "createdAtStep": "step-flex-04",
+          "usedAtSteps": ["step-flex-05", "step-flex-06"]
+        },
+        {
+          "name": "Reconciliation spreadsheet",
+          "format": "Excel",
+          "createdAtStep": "step-flex-05",
+          "usedAtSteps": ["step-flex-06", "step-flex-07"]
+        }
+      ],
+      "systems": [
+        { "name": "Site SCADA / DCS", "role": "SYSTEM_OF_RECORD", "officialOrShadow": "OFFICIAL" },
+        { "name": "Grid operator settlement portal", "role": "SYSTEM_OF_RECORD", "officialOrShadow": "OFFICIAL" },
+        { "name": "Aggregator control platform", "role": "WORKFLOW", "officialOrShadow": "OFFICIAL" },
+        { "name": "Excel (reconciliation)", "role": "CALCULATION", "officialOrShadow": "SHADOW" }
+      ],
+      "handoffs": [
+        {
+          "fromStepId": "step-flex-04",
+          "toStepId": "step-flex-05",
+          "fromActor": "actor-flexibility-aggregator",
+          "toActor": "actor-flexibility-aggregator",
+          "channel": "Grid operator portal download",
+          "isCrossOrganization": true,
+          "frictionNotes": "Data arrives in grid operator format, not site SCADA format. Identifier mapping required."
+        },
+        {
+          "fromStepId": "step-flex-06",
+          "toStepId": "step-flex-07",
+          "fromActor": "actor-flexibility-aggregator",
+          "toActor": "actor-industrial-flexibility-operator",
+          "channel": "Email or aggregator portal",
+          "isCrossOrganization": true,
+          "frictionNotes": "Industrial site receives summary statement only, not raw grid operator data, limiting its ability to independently verify."
+        }
+      ],
+      "frictions": [
+        {
+          "type": "INTEGRATION",
+          "description": "Site SCADA meter IDs do not match grid operator Meter Point Reference Numbers (MPRNs). Manual mapping required every settlement cycle.",
+          "atStepId": "step-flex-05",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "FORMAT_TRANSFORMATION",
+          "description": "SCADA logs and grid operator settlement data use different timestamp granularities and formats, requiring manual alignment.",
+          "atStepId": "step-flex-05",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "ACCESS",
+          "description": "Industrial sites do not have direct access to grid operator settlement data — only aggregator does. Site cannot independently verify its own performance as measured by the grid operator.",
+          "atStepId": "step-flex-07",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "TRUST",
+          "description": "Industrial site must trust aggregator's reconciliation. No independent verification mechanism exists for the site unless it disputes.",
+          "atStepId": "step-flex-07",
+          "severity": "MEDIUM",
+          "frequency": "PER_TRANSACTION"
+        }
+      ],
+      "workarounds": [
+        {
+          "description": "Aggregators build proprietary reconciliation tools internally that map site IDs to grid operator references and normalize timestamps.",
+          "atStepId": "step-flex-05",
+          "method": "Custom internal tool or Excel macro",
+          "limitations": "Each aggregator recreates the same tool independently. Not standardized across markets. Errors in ID mapping cause payment disputes."
+        },
+        {
+          "description": "Industrial sites export their SCADA data manually and compare it to their payment statement in a spreadsheet to look for anomalies.",
+          "atStepId": "step-flex-07",
+          "method": "Manual Excel comparison",
+          "cost": "1–4 hours per settlement period",
+          "limitations": "Site still cannot access raw grid operator data to confirm its measurement, only its own SCADA reading."
+        }
+      ],
+      "endState": "Industrial site receives payment matching its delivered MW response, or disputes are resolved and corrected payment is issued.",
+      "asOf": "2026-08-25",
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Workflow reconstructed from FlexCovenant (idea-434) dossier. Real interviews with flexibility aggregators and industrial energy managers needed to validate identifier-mismatch details and dispute frequency.",
+          "sourceId": null
+        }
+      ],
+      "contextNotes": "Most relevant in electricity markets with well-developed demand response or capacity market programs: UK (BM, FFR, DC), Germany (FCR/aFRR), France (NEBEF), Netherlands, Belgium. Growing as EU grid flexibility regulations expand under Clean Energy Package."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "workflowId": "wf-b2b-vendor-claim-verification",
+      "name": "B2B Vendor Product Claim Verification During Procurement",
+      "actorIds": ["actor-b2b-procurement-buyer"],
+      "trigger": "A B2B buyer needs to evaluate a vendor's product or service for purchase. Vendor has made performance, compatibility, or certification claims.",
+      "goal": "Buyer has sufficient independent evidence to make a confident, defensible purchase decision.",
+      "steps": [
+        {
+          "stepId": "step-vv-01",
+          "order": 1,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Identify evaluation criteria and gather vendor-provided materials (datasheets, white papers, case studies, certifications).",
+          "input": "Vendor marketing materials, product documentation",
+          "output": "Evaluation brief",
+          "system": "Email, vendor portal, SharePoint",
+          "artifact": "Vendor-provided evidence package"
+        },
+        {
+          "stepId": "step-vv-02",
+          "order": 2,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Assess whether vendor-provided evidence is independent or self-reported. Request third-party test results, certifications, or reference customers.",
+          "input": "Vendor-provided evidence package",
+          "output": "List of evidence gaps and requests",
+          "system": "Email",
+          "frictionNotes": "All evidence provided by vendor is vendor-selected. Certification documents may be real but may not match buyer's specific configuration (different voltage, jurisdiction, use case)."
+        },
+        {
+          "stepId": "step-vv-03",
+          "order": 3,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Contact vendor-provided reference customers. Conduct reference calls.",
+          "input": "Reference list from vendor",
+          "output": "Reference call notes",
+          "system": "Phone / video call",
+          "duration": "1–3 weeks to arrange; 30–60 min per reference",
+          "frictionNotes": "Vendor curates reference list — only satisfied customers included. References may be briefed. Buyer cannot contact non-reference customers. Reference experience may not match buyer's use case.",
+          "isShadowSystem": false
+        },
+        {
+          "stepId": "step-vv-04",
+          "order": 4,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Attempt own proof-of-concept or pilot test in buyer's specific environment (if feasible).",
+          "input": "Product trial or demo environment",
+          "output": "Pilot test results",
+          "system": "Test environment, internal tools",
+          "duration": "2–12 weeks",
+          "frictionNotes": "Expensive (internal time, setup cost). Not always feasible for complex or regulated products. May require NDA, separate contract, IT approval. Pilot may not replicate production conditions.",
+          "isDecision": true
+        },
+        {
+          "stepId": "step-vv-05",
+          "order": 5,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Make purchase decision with available evidence, accepting residual uncertainty, or reject vendor.",
+          "input": "All collected evidence",
+          "output": "Purchase decision",
+          "isDecision": true,
+          "frictionNotes": "Buyer typically accepts vendor claims partially on faith, especially for novel or specialized products with no independent test data available."
+        },
+        {
+          "stepId": "step-vv-06",
+          "order": 6,
+          "actor": "actor-b2b-procurement-buyer",
+          "action": "Post-purchase: discover that actual performance does not match claimed performance in specific configuration.",
+          "input": "Production deployment",
+          "output": "Performance gap documented",
+          "frictionNotes": "Post-contract discovery of gaps is expensive to remediate (replacement, renegotiation, legal). Occurs because pre-purchase evidence was insufficient for buyer's specific conditions."
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "Vendor evidence package",
+          "format": "PDF, Web pages, certificates",
+          "createdAtStep": "step-vv-01",
+          "usedAtSteps": ["step-vv-02", "step-vv-05"],
+          "manualTransformations": "Must be manually reviewed and assessed for applicability to buyer's specific configuration."
+        },
+        {
+          "name": "Reference call notes",
+          "format": "Notes (email, Word, Notion)",
+          "createdAtStep": "step-vv-03",
+          "usedAtSteps": ["step-vv-05"]
+        }
+      ],
+      "systems": [
+        { "name": "Email", "role": "COMMUNICATION", "officialOrShadow": "OFFICIAL" },
+        { "name": "Vendor portal / dataroom", "role": "STORAGE", "officialOrShadow": "OFFICIAL" },
+        { "name": "Test environment", "role": "CALCULATION", "officialOrShadow": "OFFICIAL" },
+        { "name": "SharePoint / internal notes", "role": "STORAGE", "officialOrShadow": "OFFICIAL" }
+      ],
+      "handoffs": [],
+      "frictions": [
+        {
+          "type": "TRUST",
+          "description": "All available pre-purchase evidence is vendor-controlled. Buyer cannot access evidence from non-reference customers.",
+          "atStepId": "step-vv-02",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "SEARCH",
+          "description": "No neutral source of independent product performance data at the configuration level a specific buyer needs.",
+          "atStepId": "step-vv-02",
+          "severity": "HIGH",
+          "frequency": "PER_TRANSACTION"
+        },
+        {
+          "type": "COST",
+          "description": "Running an independent pilot/PoC in buyer's environment is expensive and slow; often 2–12 weeks and significant internal resource.",
+          "atStepId": "step-vv-04",
+          "severity": "MEDIUM",
+          "frequency": "PER_TRANSACTION"
+        }
+      ],
+      "workarounds": [
+        {
+          "description": "Buyers rely on vendor-curated reference calls with pre-selected satisfied customers.",
+          "atStepId": "step-vv-03",
+          "method": "Reference call program",
+          "limitations": "Vendor controls who is on the reference list. Does not surface neutral or negative experiences."
+        },
+        {
+          "description": "Buyers run their own proof-of-concept tests in their own environment.",
+          "atStepId": "step-vv-04",
+          "method": "Internal PoC project",
+          "cost": "2–12 weeks staff time, setup cost, potential pilot license fee",
+          "limitations": "Not feasible for all product categories. Expensive. May still not resolve all configuration-specific questions."
+        }
+      ],
+      "endState": "Purchase decision made (proceed or reject) with documented evidence basis.",
+      "asOf": "2026-08-25",
+      "evidence": [
+        {
+          "epistemic": "AI_HYPOTHESIS",
+          "summary": "Workflow reconstructed from FactBounty (idea-061) dossier. Real buyer interviews needed to validate specific friction points and reference call dynamics.",
+          "sourceId": null
+        }
+      ],
+      "contextNotes": "Most acute for complex, novel, or regulated products where independent benchmarks do not exist. Less relevant for commodity products with standardized specs. Particularly significant in B2B SaaS, industrial equipment, materials/components with certification requirements."
+    }
+  ]
+}

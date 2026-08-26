@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25",
+  "note": "External job-performer roles in customer workflows. NOT internal org roles (see CONSTELLATION). These are the people whose work TERRAIN maps before any solution exists.",
+  "actors": [
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-energy-retrofit-building-owner",
+      "role": "Building Owner / Energy Manager",
+      "organizationType": "Commercial or public-sector building operator",
+      "responsibility": "Procure, finance, and accept energy retrofits; verify that contracted performance outcomes are delivered before releasing final payment.",
+      "context": "Post-retrofit measurement-and-verification (M&V) period, typically 1–3 years after installation.",
+      "authority": "Approves or withholds final performance-based payment to contractor.",
+      "relatedActorIds": ["actor-energy-retrofit-contractor", "actor-mv-verifier"],
+      "note": "Organization types include building management companies, municipalities, housing associations, hospitals, universities."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-energy-retrofit-contractor",
+      "role": "Energy Retrofit Contractor / ESCO",
+      "organizationType": "Energy Service Company or specialist retrofit contractor",
+      "responsibility": "Design, install, and guarantee energy performance of retrofit measures; provide measurement data to demonstrate performance.",
+      "context": "Post-installation phase when invoicing building owner for performance-based milestone payments.",
+      "authority": "Issues performance reports and payment claims to building owner.",
+      "relatedActorIds": ["actor-energy-retrofit-building-owner", "actor-mv-verifier"],
+      "note": "May be Energy Service Companies (ESCOs) operating under Energy Performance Contracts (EPCs), or general contractors operating under simpler payment-for-outcome terms."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-mv-verifier",
+      "role": "Independent M&V Verifier / Energy Auditor",
+      "organizationType": "Third-party engineering consultancy or certified auditor",
+      "responsibility": "Independently verify energy savings claimed by contractor using agreed measurement methodology; produce M&V report.",
+      "context": "Engaged when contractor and building owner cannot agree on baseline or savings calculation.",
+      "authority": "Issues binding or advisory verification report.",
+      "relatedActorIds": ["actor-energy-retrofit-building-owner", "actor-energy-retrofit-contractor"],
+      "note": "Often engaged under IPMVP (International Performance Measurement and Verification Protocol). Cost: typically EUR 5,000–50,000 per engagement."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-industrial-flexibility-operator",
+      "role": "Energy Manager / Flexibility Coordinator at Industrial Site",
+      "organizationType": "Energy-intensive industrial manufacturer (steel, cement, chemicals, paper, etc.)",
+      "responsibility": "Enrol site in grid flexibility programs; respond to flexibility events by curtailing or shifting load; document and claim performance-based payments from aggregator or grid operator.",
+      "context": "During and immediately after a called flexibility event. Also during monthly/quarterly settlement reconciliation.",
+      "authority": "Controls site load-shedding equipment. Submits performance data to aggregator.",
+      "relatedActorIds": ["actor-flexibility-aggregator", "actor-grid-operator"],
+      "note": "This role exists at most large industrial facilities participating in Demand Response, Balancing Mechanism, or capacity market programs."
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-flexibility-aggregator",
+      "role": "Flexibility Aggregator / Virtual Power Plant Operator",
+      "organizationType": "Specialized energy aggregation company or utility subsidiary",
+      "responsibility": "Aggregate flexibility from multiple industrial and commercial sites; submit combined bids to grid operator; distribute settlement payments to participants; reconcile individual site performance.",
+      "context": "Post-event settlement period, typically D+1 to D+30.",
+      "authority": "Issues settlement payments. Applies performance haircuts for under-delivery.",
+      "relatedActorIds": ["actor-industrial-flexibility-operator", "actor-grid-operator"]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "actorId": "actor-b2b-procurement-buyer",
+      "role": "Procurement Manager / Technical Buyer",
+      "organizationType": "B2B buyer organization (any sector with high-stakes vendor selection)",
+      "responsibility": "Evaluate vendor claims, collect evidence of product performance and certifications, make or recommend purchase decisions, manage vendor risk.",
+      "context": "During vendor evaluation and qualification phase. Also during contract compliance monitoring post-purchase.",
+      "authority": "Approves or rejects vendor shortlisting; signs or recommends purchase orders.",
+      "relatedActorIds": [],
+      "note": "Most relevant for complex capital equipment, software, certified materials, or regulated products where vendor claims carry financial or compliance risk."
+    }
+  ]
+}

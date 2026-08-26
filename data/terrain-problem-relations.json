@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-25",
+  "note": "Typed edges between TERRAIN problems and canonical venture ideas. workflowCoverage shows WHICH workflow steps the idea addresses — not the whole problem. residualProblem makes visible what remains unsolved.",
+  "relations": [
+    {
+      "schemaVersion": "1.0.0",
+      "relationId": "pri-heatproof-baseline-dispute",
+      "problemId": "problem-retrofit-baseline-dispute",
+      "ideaId": "idea-433",
+      "relationType": "ADDRESSES",
+      "workflowCoverage": ["step-mv-02", "step-mv-03", "step-mv-05"],
+      "residualProblem": "HeatProof addresses the verification and dispute step by providing shared tamper-evident baseline and weather normalization infrastructure. However, it does not address the upstream problem that baseline methodology must still be agreed at contract start. If parties use different IPMVP options at contract negotiation, disagreement on scope will persist even with shared data infrastructure.",
+      "newProblems": "Adoption of a shared platform requires both contractor and building owner to agree to use it at contract start — creating a chicken-and-egg adoption problem. Platform hosting and access could become a new point of failure or cost.",
+      "reasoning": "HeatProof's described capability — providing shared, independently verifiable energy baseline and measurement data for performance contracts — directly targets the frictions at step-mv-02 (diverging normalization methods) and step-mv-05 (building owner's inability to verify contractor calculation). The idea does not address the workflow step where parties agree baseline methodology at contract start (a separate upstream problem).",
+      "confidence": "MEDIUM",
+      "createdAt": "2026-08-25"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "relationId": "pri-flexcovenant-identifier-mismatch",
+      "problemId": "problem-flexibility-settlement-identifier-mismatch",
+      "ideaId": "idea-434",
+      "relationType": "ADDRESSES",
+      "workflowCoverage": ["step-flex-03", "step-flex-05", "step-flex-07"],
+      "residualProblem": "FlexCovenant addresses the reconciliation and payment verification layer. It does not address the underlying architectural issue that industrial sites lack direct access to grid operator settlement data (step-flex-07) — which is a regulatory/access problem requiring grid operator or regulator participation. Aggregators would need to integrate with or expose FlexCovenant data for sites to independently verify.",
+      "newProblems": "Standardizing SCADA-to-settlement data mapping requires aggregators to cooperate on sharing data format conventions — a coordination problem. Privacy and commercial sensitivity of site-level flexibility data could restrict what data can be shared.",
+      "reasoning": "FlexCovenant targets the identifier-mapping and timestamp-normalization friction at step-flex-05. Its model of creating a shared ledger or reconciliation layer between SCADA data and grid operator settlement data directly addresses why disputes arise. However, the problem at step-flex-07 (site inability to access grid operator raw data) requires either grid operator API access or aggregator data-sharing, which is beyond what FlexCovenant alone can solve.",
+      "confidence": "MEDIUM",
+      "createdAt": "2026-08-25"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "relationId": "pri-factbounty-vendor-evidence",
+      "problemId": "problem-b2b-vendor-evidence-asymmetry",
+      "ideaId": "idea-061",
+      "relationType": "PARTIALLY_ADDRESSES",
+      "workflowCoverage": ["step-vv-02", "step-vv-03"],
+      "residualProblem": "FactBounty targets the supply side of the evidence asymmetry — creating a marketplace for buyer-funded product proof. However, it does not address the step-vv-04 (in-buyer-environment PoC) friction where buyers need evidence specific to their own technical configuration. Marketplace-sourced evidence may still come from different use cases or configurations than the buyer's own context. Additionally, bootstrapping a two-sided marketplace from zero requires achieving critical mass of both buyers and product testers — a significant cold-start problem.",
+      "newProblems": "Creating a market for buyer-funded product testing introduces new governance challenges: Who defines test methodology? Who controls interpretation? Conflicted evidence (tests that neither confirm nor deny a claim) may be hard to monetize but must be published honestly.",
+      "reasoning": "FactBounty's model — where buyers collectively fund independent product testing — directly addresses the friction at step-vv-02 (no neutral evidence) and step-vv-03 (vendor-curated reference calls). It partially addresses step-vv-05 (purchase decision with uncertainty) by improving pre-purchase evidence availability. It does not replace step-vv-04 (buyer-environment PoC) for configurations that are sufficiently unique.",
+      "confidence": "LOW",
+      "createdAt": "2026-08-25"
+    }
+  ]
+}

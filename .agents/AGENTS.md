@@ -36,23 +36,28 @@ This repository uses a deterministic, parallel subagent orchestration architectu
 
 To prevent conflicting edits between concurrent agents, each agent owns specific file boundaries:
 
-| Specialist Agent | Owned Directory / File Paths |
-| :--- | :--- |
-| `repository-forensics-agent` | `docs/REPO_AUDIT_*.md`, read-only across repository |
-| `data-integrity-agent` | `data/ideas.json`, `data/ideas.schema.json`, `data/categories.json`, `data/sources.json`, `scripts/build-repository-meta.js` |
-| `research-intelligence-agent` | `research/`, `ideas/`, `data/idea-staging-queue.json` |
-| `evidence-provenance-agent` | `schemas/provenance.schema.json`, `data/sources.json`, `research/source-log.md` |
-| `opportunity-economics-agent` | `financial-models/`, `docs/calculator.html`, `assets/js/features/calculator.js` |
-| `ranking-and-fit-agent` | `rankings/`, `data/rankings.json`, `scripts/va-ranker.py`, `docs/matcher.html`, `assets/js/features/matcher.js` |
-| `product-ux-architect` | `index.html`, `docs/`, `assets/css/` |
-| `frontend-platform-agent` | `assets/js/core/`, `assets/js/ui/`, `assets/js/site.js`, `sw.js`, `manifest.webmanifest` |
-| `search-discovery-agent` | `data/search-index.json`, `scripts/build-search-index.js`, `assets/js/features/command-palette.js` |
-| `autonomous-orchestration-agent` | `data/agent-task-graph.json`, `scripts/va_runtime/orchestration/`, `scripts/autonomous-idea-generator.py` |
-| `provider-router-agent` | `config/providers.json`, `scripts/va_orchestrator.py`, `scripts/va_runtime/provider_router.py` |
-| `security-privacy-agent` | `THREAT_MODEL.md`, `scripts/check-public-artifact.js`, `scripts/check_privacy.py` |
-| `test-quality-agent` | `tests/`, `TEST_PLAN.md`, `playwright.config.ts` |
-| `red-team-critic-agent` | `scripts/va_runtime/adversarial_pass.py`, read-only across code |
-| `integration-release-agent` | Root integration, `package.json`, `_site/`, `walkthrough.md`, `PROJECT_STATUS.md`, `README.md` |
+| Specialist Agent | Owned Directory / File Paths | Description / System |
+| :--- | :--- | :--- |
+| `repository-forensics-agent` | `docs/REPO_AUDIT_*.md`, read-only across repository | Forensics & drift detection |
+| `data-integrity-agent` | `data/ideas.json`, `data/ideas.schema.json`, `data/categories.json`, `data/sources.json`, `scripts/build-repository-meta.js` | Canonical datasets & schemas |
+| `research-intelligence-agent` | `launch-plans/`, `research/`, `ideas/`, `data/idea-staging-queue.json` | Research, idea discovery, GTM launch plans |
+| `evidence-provenance-agent` | `schemas/provenance.schema.json`, `data/sources.json`, `research/source-log.md` | Source tiers & citation provenance |
+| `opportunity-economics-agent` | `financial-models/`, `docs/calculator.html`, `assets/js/features/calculator.js` | Financial models & unit economics |
+| `ranking-and-fit-agent` | `rankings/`, `data/rankings.json`, `scripts/va-ranker.py`, `docs/matcher.html`, `assets/js/features/matcher.js` | Multi-lens rankings & founder fit |
+| `product-ux-architect` | `technical-blueprints/`, `index.html`, `docs/`, `assets/css/` | Technical blueprints, UX & UI architecture |
+| `frontend-platform-agent` | `assets/js/core/`, `assets/js/ui/`, `assets/js/site.js`, `sw.js`, `manifest.webmanifest` | Frontend static engine & PWA caching |
+| `search-discovery-agent` | `data/search-index.json`, `scripts/build-search-index.js`, `assets/js/features/command-palette.js` | Client search index & palette |
+| `autonomous-orchestration-agent` | `data/agent-task-graph.json`, `scripts/va_runtime/orchestration/`, `scripts/autonomous-idea-generator.py` | Multi-agent task graphs & execution |
+| `provider-router-agent` | `config/providers.json`, `scripts/va_orchestrator.py`, `scripts/va_runtime/provider_router.py` | Provider scheduling & circuit breakers |
+| `security-privacy-agent` | `THREAT_MODEL.md`, `scripts/check-public-artifact.js`, `scripts/check_privacy.py` | Security scans & privacy boundary enforcement |
+| `test-quality-agent` | `tests/`, `TEST_PLAN.md`, `playwright.config.ts` | Test suites & quality gates |
+| `red-team-critic-agent` | `validation-plans/`, `scripts/va_runtime/adversarial_pass.py`, read-only across code | Validation plans & adversarial review |
+| `integration-release-agent` | Root integration, `package.json`, `_site/`, `walkthrough.md`, `PROJECT_STATUS.md`, `README.md` | Gatekeeper, releases, merge coordination |
+| `venture-ops-agent` | `data/relay-*.json`, `schemas/relay-*.schema.json`, `assets/js/core/relay-store.js`, `assets/js/features/relay-engine.js`, `assets/js/features/ops-lab.js`, `docs/ops-lab.html` | **RELAY:** Operations, fulfillment, capacity, quality & suppliers |
+| `portfolio-strategy-agent` | `data/portfolios.json`, `assets/js/features/portfolio-engine.js`, `docs/portfolio-lab.html`, `rankings/best-little-capital.md` | **ORBIT:** Portfolio exploration, Pareto frontiers, Brier scoring |
+| `organization-governance-agent` | `data/constellation-*.json`, `schemas/constellation-*.schema.json`, `assets/js/core/constellation-store.js`, `assets/js/features/constellation-engine.js`, `assets/js/features/constellation-lab.js`, `docs/org-lab.html` | **CONSTELLATION:** Org architecture, decision rights, hiring cases |
+| `capital-strategy-agent` | `data/capital-*.json`, `data/funding-sources.json`, `data/grant-opportunities.json`, `schemas/capital-*.schema.json`, `schemas/cap-table.schema.json`, `schemas/investor-pipeline.schema.json`, `schemas/data-room.schema.json`, `assets/js/core/capital-store.js`, `assets/js/features/capital-engine.js`, `assets/js/features/capital-lab.js`, `docs/capital-lab.html` | **CAPITAL:** Cap tables, dilution, investor pipelines, capital clocks |
+| `commercial-discovery-agent` | `schemas/mercury-*.schema.json`, `schemas/commercial-outcome-receipt.schema.json`, `assets/js/core/mercury-store.js`, `assets/js/features/mercury.js`, `docs/mercury.html`, `research/mercury/` | **MERCURY:** Customer discovery, pricing validation, commercial receipts |
 
 ### FactBounty Subproduct Roles (`apps/factbounty/`)
 - `factbounty-architect` (`apps/factbounty/shared/contracts/`)

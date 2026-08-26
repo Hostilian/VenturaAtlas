@@ -1,0 +1,140 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-26",
+  "note": "CENSUS measurement questions. These are the specific statistical unknowns that must be resolved to move affected-population and revenue estimates from NOT_YET_MEASURED to a defensible range. Ordered by information value (decision impact).",
+  "questions": [
+    {
+      "questionId": "cmq-a01-mv-dispute-rate",
+      "metric": "What fraction of active Energy Performance Contracts in EU-27 result in M&V settlement disputes requiring third-party resolution or multi-round negotiation, per annual settlement cycle?",
+      "targetPopulationId": "pop-a03-epc-exposed",
+      "unitId": "unit-mv-settlement-event",
+      "neededFor": ["est-a03-affected-count", "est-a04-revenue-tam"],
+      "ivqRef": null,
+      "problemId": "problem-retrofit-baseline-dispute",
+      "ideaId": "idea-433",
+      "availableSources": [
+        "EUROACE member survey (requires outreach)",
+        "IPMVP body (EVF) dispute rate data (unknown availability)",
+        "National EED Article 5 implementation reports (may contain EPC dispute statistics)",
+        "Qualitative interviews with ESCO energy managers (WITNESS)"
+      ],
+      "method": "WITNESS qualitative interviews (≥15 ESCO project managers) + industry association survey",
+      "precisionNeeded": "ORDER_OF_MAGNITUDE",
+      "decisionBoundary": "If dispute rate > 5%, the affected population is commercially viable (100+ events/year at lower EPC count). If < 1%, the addressable market may be too thin for a standalone product. Order-of-magnitude precision is sufficient.",
+      "witnessHandoff": {
+        "targetPopulationDescription": "Active EPC project managers and energy managers at ESCO firms operating in EU-27",
+        "sampleDesign": "Purposive sampling: 15-25 ESCO project managers from at least 3 EU countries, minimum 3 different building types. Not probability sample — cannot produce population CI but sufficient to establish order-of-magnitude and qualitative mechanism.",
+        "precisionTarget": "Order of magnitude (1%, 5%, 15%, 30%+ categories)",
+        "strataNeeded": ["Public sector EPC", "Commercial EPC", "Industrial EPC", "Country (DE, FR, ES as minimum)"]
+      },
+      "status": "OPEN",
+      "resolvedByEstimateId": null,
+      "priorityScore": 9.5,
+      "asOf": "2026-08-26",
+      "notes": "HIGHEST PRIORITY UNKNOWN for HeatProof. The existence of a EUR 5K-50K M&V verifier market implies disputes occur and are costly — but rate is unknown. A 2-day LinkedIn outreach to EUROACE members could produce qualitative answers. Decision: do before any further product development."
+    },
+    {
+      "questionId": "cmq-c01-entso-bsp-count",
+      "metric": "How many distinct Balancing Service Providers (BSPs) are registered in the ENTSO-E transparency platform for EU-27 TSO flexibility markets, and what is the average number of physical sites per BSP?",
+      "targetPopulationId": "pop-c02-flex-eligible-sites",
+      "unitId": "unit-flexibility-site",
+      "neededFor": ["est-c02-eligible-sites"],
+      "ivqRef": null,
+      "problemId": "problem-flexibility-settlement-identifier-mismatch",
+      "ideaId": "idea-434",
+      "availableSources": [
+        "ENTSO-E Transparency Platform BSP registration data (PUBLIC_FREE, available now)",
+        "National TSO BSP registries (Ofgem, BNetzA, RTE, ELIA — PUBLIC)"
+      ],
+      "method": "Download ENTSO-E Transparency Platform data, extract BSP table, count distinct BSPs, research average sites/BSP from a sample",
+      "precisionNeeded": "WITHIN_50PCT",
+      "decisionBoundary": "If enrolled sites < 500: too thin for standalone product without custom sales. If 2,000+: sufficient density for scalable product. WITHIN_50PCT precision distinguishes these scenarios.",
+      "witnessHandoff": null,
+      "status": "OPEN",
+      "resolvedByEstimateId": null,
+      "priorityScore": 9.0,
+      "asOf": "2026-08-26",
+      "notes": "HIGH INFORMATION VALUE, ZERO COST. Data is freely available from ENTSO-E. Download and process before any further commercial assumption. Estimated 2-hour task."
+    },
+    {
+      "questionId": "cmq-b01-events-per-enterprise",
+      "metric": "How many qualifying high-stakes B2B procurement decisions (capital equipment or complex B2B software, >EUR 50K) does a typical EU manufacturing enterprise with 50+ employees make per year?",
+      "targetPopulationId": "pop-b02-b2b-buyer-eligible",
+      "unitId": "unit-procurement-decision-event",
+      "neededFor": ["est-b03-events-eligible"],
+      "ivqRef": null,
+      "problemId": "problem-b2b-vendor-evidence-asymmetry",
+      "ideaId": "idea-061",
+      "availableSources": [
+        "ECB/EBA survey on B2B procurement patterns (may exist)",
+        "Purchasing management association (CIPS, BME) surveys on procurement frequency",
+        "WITNESS qualitative interviews with procurement managers"
+      ],
+      "method": "WITNESS qualitative: 20+ procurement managers across manufacturing and regulated sectors. Survey asking annual qualifying decision count by value tier.",
+      "precisionNeeded": "FACTOR_OF_TWO",
+      "decisionBoundary": "Current assumption: 2-10 events/enterprise/year. If true value is <1: eligible event population is too small. If >15: much larger than assumed. Factor-of-two precision narrows the 100K-500K range to something actionable.",
+      "witnessHandoff": {
+        "targetPopulationDescription": "Procurement managers at EU manufacturing enterprises 50+ employees",
+        "sampleDesign": "Purposive: 20+ procurement managers across at least 4 manufacturing NACE subsectors (C20, C22, C24, C28). Not probability sample.",
+        "precisionTarget": "Determine whether central tendency is <2, 2-5, 5-10, or >10 events/enterprise/year",
+        "strataNeeded": ["Manufacturing subsector (chemical, metal, machinery, electronics)", "Enterprise size (50-249, 250+)", "Country"]
+      },
+      "status": "OPEN",
+      "resolvedByEstimateId": null,
+      "priorityScore": 8.0,
+      "asOf": "2026-08-26",
+      "notes": "The events/enterprise/year assumption is the binding sensitivity for DOGFOOD B market size. Without this, the 100K-500K range has a 5× width that prevents any commercial precision. WITNESS survey is the right method."
+    },
+    {
+      "questionId": "cmq-b02-evidence-gap-prevalence",
+      "metric": "For qualifying B2B procurement decisions in EU manufacturing, in what fraction of cases is adequate independent performance evidence unavailable, causing material procurement friction?",
+      "targetPopulationId": "pop-b03-b2b-events-eligible",
+      "unitId": "unit-procurement-decision-event",
+      "neededFor": ["est-b04-affected-events (not yet created)"],
+      "ivqRef": null,
+      "problemId": "problem-b2b-vendor-evidence-asymmetry",
+      "ideaId": "idea-061",
+      "availableSources": [
+        "WITNESS qualitative interviews (cannot produce CI, but establishes mechanism and rough order of magnitude)",
+        "G2/Gartner category coverage data (inverse: categories with review platforms ≠ evidence gap)"
+      ],
+      "method": "WITNESS qualitative interviews (same sample as cmq-b01). Ask directly: 'In what share of your qualifying purchases was the evidence available to you before purchase decision inadequate?'",
+      "precisionNeeded": "ORDER_OF_MAGNITUDE",
+      "decisionBoundary": "If <10% of events: niche problem for very specialist products. If >30%: widespread structural problem. Order-of-magnitude sufficient for initial investment decision.",
+      "witnessHandoff": {
+        "targetPopulationDescription": "Same as cmq-b01 procurement manager sample",
+        "sampleDesign": "Piggyback on cmq-b01 interview guide. Add questions on evidence gap experience.",
+        "precisionTarget": "Order of magnitude: <5%, 5-15%, 15-40%, >40%",
+        "strataNeeded": ["Product category (capital equipment vs software vs regulated material)"]
+      },
+      "status": "OPEN",
+      "resolvedByEstimateId": null,
+      "priorityScore": 7.5,
+      "asOf": "2026-08-26",
+      "notes": "Combine with cmq-b01 WITNESS protocol for efficiency. Counter-evidence in TERRAIN: large enterprises (Fortune 500) have procurement teams and analyst subscriptions that partially address this. Problem may be concentrated in mid-market."
+    },
+    {
+      "questionId": "cmq-a02-heatproof-price",
+      "metric": "What is the maximum willingness-to-pay per M&V settlement event for an ESCO or building owner using HeatProof?",
+      "targetPopulationId": "pop-a04-epc-affected",
+      "unitId": "unit-mv-settlement-event",
+      "neededFor": ["est-a04-revenue-tam"],
+      "ivqRef": null,
+      "problemId": "problem-retrofit-baseline-dispute",
+      "ideaId": "idea-433",
+      "availableSources": [
+        "Current M&V verifier market rate (EUR 5K-50K/engagement) as ceiling benchmark",
+        "MERCURY prepayment experiments (primary)"
+      ],
+      "method": "MERCURY: prepayment experiment — present HeatProof offering to 5+ ESCO project managers with specific pricing options. Observe actual payment behaviour. Price-discovery is Mercury mission, not CENSUS.",
+      "precisionNeeded": "WITHIN_20PCT",
+      "decisionBoundary": "Financial model scenario EUR 89/month midpoint needs Mercury validation. If WTP < EUR 20/month: scenario is too optimistic. If WTP > EUR 200/month: significant upside. Mercury must determine.",
+      "witnessHandoff": null,
+      "status": "OPEN",
+      "resolvedByEstimateId": null,
+      "priorityScore": 7.0,
+      "asOf": "2026-08-26",
+      "notes": "MERCURY HANDOFF. CENSUS acknowledges this question but cannot answer it. Price determination requires buying behaviour, not population counting. The EUR 5K-50K verifier market rate provides a useful ceiling benchmark."
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/terrain-problem.schema.json",
+  "title": "TerrainProblem",
+  "description": "A real-world problem that persists in a current workflow. Must be solution-neutral — should make sense even if our proposed venture did not exist. All evidence must carry an epistemic label. Never claim WELL_SUPPORTED without supporting evidence items.",
+  "type": "object",
+  "required": ["problemId", "schemaVersion", "title", "description", "actorIds", "status", "asOf"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "problemId": {
+      "type": "string",
+      "pattern": "^problem-[a-z0-9-]+$",
+      "description": "Stable unique identifier."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short, solution-neutral title. Bad: 'Need AI compliance assistant'. Good: 'Compliance teams manually chase missing audit evidence before deadlines'."
+    },
+    "description": {
+      "type": "string",
+      "description": "Concrete description of what actually happens. Describe observed work, not product need. Should pass solution-neutral test: 5 different technologies could plausibly address this."
+    },
+    "actorIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+      "minItems": 1
+    },
+    "jobIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^job-[a-z0-9-]+$" }
+    },
+    "workflowId": {
+      "type": ["string", "null"],
+      "pattern": "^wf-[a-z0-9-]+$"
+    },
+    "workflowStepIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which specific workflow steps contain this problem."
+    },
+    "contexts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Conditions under which this problem occurs or intensifies. e.g. 'month-end', 'high transaction volume', 'cross-border'."
+    },
+    "triggers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What initiates or reveals this problem."
+    },
+    "frictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["TIME", "WAITING", "MANUAL_EFFORT", "ERROR", "REWORK", "UNCERTAINTY", "COORDINATION", "SEARCH", "DATA_ENTRY", "FORMAT_TRANSFORMATION", "APPROVAL", "ACCESS", "TRUST", "RISK", "COST", "INTERRUPTION", "CONTEXT_SWITCH", "DUPLICATION", "INTEGRATION", "EXCEPTION", "TRAINING", "MEMORY"]
+          },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "consequences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What happens if the problem is not resolved. Prefer causal chain: 'missing evidence → reviewer waits → approval delayed → shipment blocked → customer payment delayed'."
+    },
+    "currentWorkarounds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What people actually do today. e.g. 'Manual M&V consultant', 'Excel reconciliation', 'phone calls to chase documents'."
+    },
+    "currentAlternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description"],
+        "properties": {
+          "description": { "type": "string" },
+          "alternativeType": {
+            "type": "string",
+            "enum": ["MANUAL_LABOR", "INTERNAL_BUILD", "CONSULTANT", "OFFICIAL_SOFTWARE", "DO_NOTHING", "NONCONSUMPTION", "OTHER"]
+          },
+          "limitations": { "type": "string" },
+          "satisfactionLevel": {
+            "type": "string",
+            "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"],
+            "description": "How well does current alternative meet the need? HIGH = problem may be weak."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "desiredOutcomes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Solution-neutral outcome statements. Format: direction + metric + object + context. e.g. 'Minimize the time to verify all retrofit performance evidence is complete before payment settlement.'"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["epistemic", "summary"],
+        "properties": {
+          "epistemic": {
+            "type": "string",
+            "enum": ["OBSERVED", "DIRECTLY_REPORTED", "DOCUMENTED", "SOURCE_SUPPORTED_INFERENCE", "ANALYST_INFERENCE", "AI_HYPOTHESIS", "USER_HYPOTHESIS", "UNKNOWN"],
+            "description": "OBSERVED = directly witnessed. AI_HYPOTHESIS = inferred by model from existing repo data. Never promote without real evidence."
+          },
+          "summary": { "type": "string" },
+          "sourceId": {
+            "type": "string",
+            "description": "References a record in data/sources.json. Required for SOURCE_SUPPORTED_INFERENCE and above."
+          },
+          "quote": { "type": "string", "description": "Only real quotes — never fabricated." }
+        },
+        "additionalProperties": false
+      },
+      "description": "Evidence supporting this problem. All items must have epistemic label. Counterevidence must be stored separately to prevent suppression."
+    },
+    "counterEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["epistemic", "summary"],
+        "properties": {
+          "epistemic": {
+            "type": "string",
+            "enum": ["OBSERVED", "DIRECTLY_REPORTED", "DOCUMENTED", "SOURCE_SUPPORTED_INFERENCE", "ANALYST_INFERENCE", "AI_HYPOTHESIS", "USER_HYPOTHESIS", "UNKNOWN"]
+          },
+          "summary": { "type": "string" },
+          "sourceId": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "description": "Evidence AGAINST this problem being real or important. Must not be discarded. §32."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["HYPOTHESIS", "WEAK_EVIDENCE", "OBSERVED", "REPEATED", "WELL_SUPPORTED", "CONTESTED", "REJECTED", "STALE"],
+      "description": "HYPOTHESIS = AI/analyst inference only. Must escalate only when real evidence exists."
+    },
+    "symptomOrRoot": {
+      "type": "string",
+      "enum": ["SYMPTOM", "ROOT", "INTERMEDIATE", "UNKNOWN"],
+      "description": "Is this a surface symptom or root cause? §40."
+    },
+    "parentProblemId": {
+      "type": ["string", "null"],
+      "pattern": "^problem-[a-z0-9-]+$",
+      "description": "If this is a sub-problem of a broader problem."
+    },
+    "importanceSignals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Observable signals of importance: 'staff assigned', 'deadline', 'penalties', 'repeated escalation', 'overtime'. §62."
+    },
+    "asOf": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this problem record was authored. Problems decay. §280."
+    },
+    "researchGaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Key claims that need direct user evidence before escalating status. §474."
+    }
+  }
+}

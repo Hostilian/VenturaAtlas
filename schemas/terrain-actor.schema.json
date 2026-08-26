@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ventureatlas.local/schemas/terrain-actor.schema.json",
+  "title": "TerrainActor",
+  "description": "An external job-performer role in a customer workflow. This is NOT an internal org role (see CONSTELLATION). It describes who performs work in the real world before our solution exists.",
+  "type": "object",
+  "required": ["actorId", "schemaVersion", "role", "organizationType", "responsibility"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "actorId": {
+      "type": "string",
+      "pattern": "^actor-[a-z0-9-]+$",
+      "description": "Stable unique identifier."
+    },
+    "role": {
+      "type": "string",
+      "description": "Precise role title as used in the domain. Prefer specificity: 'Accounts Payable Clerk at a 3PL' over 'business user'."
+    },
+    "organizationType": {
+      "type": "string",
+      "description": "Type of organization this actor works within. e.g. 'energy retrofitter', 'industrial grid-flexibility participant', 'B2B buyer'."
+    },
+    "responsibility": {
+      "type": "string",
+      "description": "What this actor is responsible for in their context."
+    },
+    "context": {
+      "type": "string",
+      "description": "Relevant circumstance or environment. e.g. 'Month-end reporting', 'Post-retrofit payment settlement'."
+    },
+    "authority": {
+      "type": "string",
+      "description": "Decision authority this actor holds relevant to the workflow."
+    },
+    "relatedActorIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^actor-[a-z0-9-]+$" },
+      "description": "Other actors in adjacent or connected roles."
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional clarification note."
+    }
+  }
+}
