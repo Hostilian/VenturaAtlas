@@ -139,12 +139,17 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
     privateMercury.triggers[0].triggerId,
     privateMercury.offers[0].offerId,
   ];
-  const privateChessboard = JSON.parse(fs.readFileSync(path.join(ROOT, 'research', 'chessboard', 'idea-061-market-structure.json'), 'utf8'));
-  const privateChessboardTerms = [
-    privateChessboard.workspaceId,
-    privateChessboard.responses[0].responseId,
-    privateChessboard.positions[0].positionId,
-  ];
+  const privateChessboardPath = path.join(ROOT, '.agent-state', 'chessboard', 'idea-061-market-structure.json');
+  const privateChessboardTerms = fs.existsSync(privateChessboardPath)
+    ? (() => {
+      const privateChessboard = JSON.parse(fs.readFileSync(privateChessboardPath, 'utf8'));
+      return [
+        privateChessboard.workspaceId,
+        privateChessboard.responses[0].responseId,
+        privateChessboard.positions[0].positionId,
+      ];
+    })()
+    : [];
   const pending = [distPath];
   while (pending.length) {
     const current = pending.pop();
@@ -160,7 +165,7 @@ test('Public Artifact Contract — rebuild and enforce private-path projection',
           assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes private Mercury value ${term}`);
         }
         for (const term of privateChessboardTerms) {
-          assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes private CHESSBOARD value ${term}`);
+          assert.ok(!content.includes(term), `public text ${path.relative(distPath, absolute)} exposes a private CHESSBOARD value`);
         }
       }
     }

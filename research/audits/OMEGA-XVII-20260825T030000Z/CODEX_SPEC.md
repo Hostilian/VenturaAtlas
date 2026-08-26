@@ -1,19 +1,28 @@
-# OMEGA-XVII Track A Specification: Integrity, Governance & Truth Reconciliation
+﻿# OMEGA-XVII Track A Specification: Integrity, Governance & Verified Ground Truth
 
-**Audit Run ID:** `OMEGA-XVII-20260825T030000Z`  
-**Author:** Codex / gpt-5.6 (Track A)  
-**Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Track A Prompt  
-**Cooperating Track:** Track B (Claude / Antigravity)  
+**Audit Run ID:** `OMEGA-XVII-20260825T030000Z`
+**Supersedes:** Prior thin stub (2026-08-25); this version uses live-verified data from 2026-08-26T18:20Z
+**Author:** Codex / Antigravity (Track A)
+**Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Track A Prompt
+**Cooperating Track:** Track B (Claude / Antigravity) — proposes, does not write state files
 
 ---
 
 ## 1. Mission Context & Mandate
 
-During OMEGA-XVII, Track B delivered a massive content artifact expansion (+1,020 files across 324 canonical ideas), increasing coverage for financial models, validation plans, technical blueprints, and launch plans to 324 files each. However, Track A's required paper trail and authoritative reconciliation into `.agent-system/state.json` and `.agent-system/backlog.json` was never finalized because designated ownership was ambiguous.
+OMEGA-XVII was assigned to Track A to close the paper trail and governance debt accumulated from OMEGA-XVI. Track B delivered +1,020 content artifact files during OMEGA-XVII. Track A is the designated sole authoritative writer of `.agent-system/state.json` and `.agent-system/backlog.json`.
 
-This mission formally closes OMEGA-XVII's debt:
-1. Reconcile OMEGA-XVI paper trail.
-2. Re-verify dossier counts: `ideas/` file count (433) vs. `data/ideas.json` canonical ideas (324) vs. `data/repository-meta.json` (432 dossiers, 324 canonical ideas).
-3. Confirm complete elimination of placeholder security contact (`security@ventureatlas.os`).
-4. Re-run and reconcile quality/test suite metrics.
-5. Reconcile `.agent-system/state.json` and `.agent-system/backlog.json` with honest `filePresenceCount` metrics, reserving completion/validation claims for empirically verified items.
+The prior thin CODEX stubs in this directory were written without running the actual test suite or performing a full-cohort content audit. This document corrects that by superseding them with live-verified findings.
+
+## 2. Stage 1 Verification Scope
+
+1. Close the OMEGA-XVI paper trail.
+2. Re-verify dossier counts: `ideas/*.md` vs `data/ideas.json` vs `data/repository-meta.json`.
+3. Confirm `security@ventureatlas.os` is eliminated from all live files.
+4. Re-run the real test/quality suite; reconcile against MERCURY_REPORT verified numbers.
+5. Full-cohort content quality audit across all 1,298 artifact files (not just idea-061-070).
+6. Reconcile `state.json`/`backlog.json` with `filePresenceCount` and `contentQualityAudit` fields.
+
+## 3. Evidence Standards
+
+All numbers are sourced from live PowerShell filesystem queries run on the actual worktree at the timestamp above. No number is copied from memory, prior prompts, or Track B proposals without independent verification. Where a prior audit claim is narrower or inaccurate, this document says so explicitly, names the discrepancy, and corrects it. This document does not assert commercial validation, production deployment, or always-on operation.

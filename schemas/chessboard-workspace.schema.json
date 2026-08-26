@@ -35,7 +35,7 @@
   ],
   "properties": {
     "$schema": { "type": "string" },
-    "schemaVersion": { "const": "1.0.0" },
+    "schemaVersion": { "const": "1.1.0" },
     "workspaceMode": {
       "enum": ["PRIVATE_STRATEGY", "PUBLIC_SANITIZED", "UNVERIFIED_DRAFT"]
     },
@@ -328,6 +328,41 @@
         "incentives": { "$ref": "#/$defs/nonEmptyStringArray" },
         "observedMoveRefs": { "$ref": "#/$defs/stringArray" },
         "epistemicState": { "$ref": "#/$defs/epistemicState" },
+        "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
+        "targetBuyer": { "type": "string", "minLength": 1 },
+        "coreJob": { "type": "string", "minLength": 1 },
+        "pricing": { "type": "string", "minLength": 1 },
+        "distribution": { "$ref": "#/$defs/stringArray" },
+        "trajectory": { "type": "string", "minLength": 1 },
+        "strategicIntent": { "type": "string", "minLength": 1 },
+        "openSourceProfile": { "$ref": "#/$defs/openSourceProfile" }
+      },
+      "additionalProperties": false
+    },
+    "openSourceProfile": {
+      "type": "object",
+      "required": [
+        "license",
+        "repositoryUrl",
+        "latestRelease",
+        "latestReleaseAt",
+        "activity",
+        "contributors",
+        "releaseCadence",
+        "commercialBacking",
+        "deploymentBurden",
+        "sourceRefs"
+      ],
+      "properties": {
+        "license": { "$ref": "#/$defs/nonEmptyString" },
+        "repositoryUrl": { "type": "string", "format": "uri" },
+        "latestRelease": { "$ref": "#/$defs/nonEmptyString" },
+        "latestReleaseAt": { "$ref": "#/$defs/nullableDateTime" },
+        "activity": { "$ref": "#/$defs/nonEmptyString" },
+        "contributors": { "$ref": "#/$defs/nonEmptyString" },
+        "releaseCadence": { "$ref": "#/$defs/nonEmptyString" },
+        "commercialBacking": { "$ref": "#/$defs/nonEmptyString" },
+        "deploymentBurden": { "$ref": "#/$defs/nonEmptyString" },
         "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
       },
       "additionalProperties": false
@@ -405,6 +440,7 @@
         "resource",
         "criticality",
         "switchingCost",
+        "providerPower",
         "alternativeActorRefs",
         "alternativeDescriptions",
         "contractualConstraints",
@@ -425,6 +461,9 @@
         "resource": { "$ref": "#/$defs/nonEmptyString" },
         "criticality": { "$ref": "#/$defs/qualitativeLevel" },
         "switchingCost": { "$ref": "#/$defs/qualitativeLevel" },
+        "providerPower": { "$ref": "#/$defs/qualitativeLevel" },
+        "switchingProcess": { "$ref": "#/$defs/switchingProcess" },
+        "multiHoming": { "$ref": "#/$defs/multiHoming" },
         "alternativeActorRefs": { "$ref": "#/$defs/stringArray" },
         "alternativeDescriptions": { "$ref": "#/$defs/stringArray" },
         "contractualConstraints": { "$ref": "#/$defs/stringArray" },
@@ -437,6 +476,47 @@
         "epistemicState": { "$ref": "#/$defs/epistemicState" },
         "sourceRefs": { "$ref": "#/$defs/sourceRefs" },
         "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" }
+      },
+      "additionalProperties": false
+    },
+    "switchingProcess": {
+      "type": "object",
+      "required": [
+        "dataMigration",
+        "integrationRebuild",
+        "userTraining",
+        "workflowChange",
+        "contractCost",
+        "networkLoss",
+        "historicalContextLoss",
+        "organizationalPolitics",
+        "riskTrust",
+        "searchCost"
+      ],
+      "properties": {
+        "dataMigration": { "$ref": "#/$defs/nonEmptyString" },
+        "integrationRebuild": { "$ref": "#/$defs/nonEmptyString" },
+        "userTraining": { "$ref": "#/$defs/nonEmptyString" },
+        "workflowChange": { "$ref": "#/$defs/nonEmptyString" },
+        "contractCost": { "$ref": "#/$defs/nonEmptyString" },
+        "networkLoss": { "$ref": "#/$defs/nonEmptyString" },
+        "historicalContextLoss": { "$ref": "#/$defs/nonEmptyString" },
+        "organizationalPolitics": { "$ref": "#/$defs/nonEmptyString" },
+        "riskTrust": { "$ref": "#/$defs/nonEmptyString" },
+        "searchCost": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "additionalProperties": false
+    },
+    "multiHoming": {
+      "type": "object",
+      "required": ["allowed", "sides", "friction", "cost", "portability", "networkStateLoss"],
+      "properties": {
+        "allowed": { "enum": ["YES", "NO", "CONDITIONAL", "NOT_APPLICABLE", "UNKNOWN"] },
+        "sides": { "$ref": "#/$defs/stringArray" },
+        "friction": { "$ref": "#/$defs/qualitativeLevel" },
+        "cost": { "$ref": "#/$defs/nonEmptyString" },
+        "portability": { "$ref": "#/$defs/nonEmptyString" },
+        "networkStateLoss": { "$ref": "#/$defs/nonEmptyString" }
       },
       "additionalProperties": false
     },
@@ -677,11 +757,15 @@
         "negativeEffect",
         "scalingBehavior",
         "possibleMitigations",
+        "attackerActorRefs",
+        "conditions",
+        "decayRisks",
         "evidenceRefs",
         "counterEvidenceRefs",
         "relatedClaimRefs",
         "epistemicState",
-        "falsifier"
+        "falsifier",
+        "status"
       ],
       "properties": {
         "antiMoatId": { "type": "string", "pattern": "^anti-moat-[a-z0-9-]+$" },
@@ -691,11 +775,15 @@
         "negativeEffect": { "$ref": "#/$defs/nonEmptyString" },
         "scalingBehavior": { "$ref": "#/$defs/nonEmptyString" },
         "possibleMitigations": { "$ref": "#/$defs/stringArray" },
+        "attackerActorRefs": { "$ref": "#/$defs/stringArray" },
+        "conditions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "decayRisks": { "$ref": "#/$defs/nonEmptyStringArray" },
         "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
         "counterEvidenceRefs": { "$ref": "#/$defs/sourceRefs" },
         "relatedClaimRefs": { "$ref": "#/$defs/nonEmptyStringArray" },
         "epistemicState": { "$ref": "#/$defs/epistemicState" },
-        "falsifier": { "$ref": "#/$defs/nonEmptyString" }
+        "falsifier": { "$ref": "#/$defs/nonEmptyString" },
+        "status": { "enum": ["HYPOTHESIS", "CONDITIONAL", "OBSERVED_TEMPORARY", "REJECTED", "UNKNOWN"] }
       },
       "additionalProperties": false
     },
@@ -711,6 +799,7 @@
         "availabilityTrend",
         "timeHorizon",
         "ventureImpact",
+        "remainingDifferentiation",
         "dependencyRefs",
         "eventRefs",
         "evidenceRefs",
@@ -746,6 +835,7 @@
         "availabilityTrend": { "enum": ["CONTRACTING", "STABLE", "EXPANDING", "UNKNOWN"] },
         "timeHorizon": { "$ref": "#/$defs/timeHorizon" },
         "ventureImpact": { "$ref": "#/$defs/nonEmptyString" },
+        "remainingDifferentiation": { "$ref": "#/$defs/nonEmptyString" },
         "dependencyRefs": { "$ref": "#/$defs/stringArray" },
         "eventRefs": { "$ref": "#/$defs/stringArray" },
         "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },
@@ -811,6 +901,7 @@
       "type": "object",
       "required": [
         "scenarioId",
+        "stressType",
         "name",
         "threatActorRef",
         "eventRefs",
@@ -822,12 +913,30 @@
         "impact",
         "countermoves",
         "survivalCondition",
+        "survivalStatus",
         "falsifier",
         "epistemicState",
         "sourceRefs"
       ],
       "properties": {
         "scenarioId": { "type": "string", "pattern": "^scenario-[a-z0-9-]+$" },
+        "stressType": {
+          "enum": [
+            "INCUMBENT_BUNDLE",
+            "API_PRICE_3X",
+            "API_ACCESS_REMOVAL",
+            "MODEL_IMPROVEMENT_90_PERCENT",
+            "OPEN_SOURCE_EQUIVALENT",
+            "CUSTOMER_BUILD_TWO_DAYS",
+            "INTEROPERABILITY_OPENING",
+            "PLATFORM_LOCK_IN",
+            "PLATFORM_OPENING",
+            "SUPPLIER_ENTRY",
+            "CUSTOMER_CONSOLIDATION",
+            "COMPETITOR_ACQUISITION",
+            "ACQUISITION_TARGET_DEPENDENCE"
+          ]
+        },
         "name": { "$ref": "#/$defs/nonEmptyString" },
         "threatActorRef": { "type": "string" },
         "eventRefs": { "$ref": "#/$defs/stringArray" },
@@ -839,6 +948,7 @@
         "impact": { "$ref": "#/$defs/nonEmptyString" },
         "countermoves": { "$ref": "#/$defs/stringArray" },
         "survivalCondition": { "$ref": "#/$defs/nonEmptyString" },
+        "survivalStatus": { "enum": ["SURVIVES", "DAMAGED", "THESIS_BREAKS", "UNKNOWN"] },
         "falsifier": { "$ref": "#/$defs/nonEmptyString" },
         "epistemicState": { "enum": ["MODEL_HYPOTHESIS", "SCENARIO", "USER_ASSUMPTION", "UNKNOWN"] },
         "sourceRefs": { "$ref": "#/$defs/sourceRefs" }
@@ -856,6 +966,10 @@
         "dependencyRefs",
         "controlPointRefs",
         "controlledAssets",
+        "requiredAssets",
+        "switching",
+        "distribution",
+        "commoditizationRiskRefs",
         "vulnerabilities",
         "responseRefs",
         "evidenceRefs",
@@ -890,6 +1004,10 @@
         "dependencyRefs": { "$ref": "#/$defs/stringArray" },
         "controlPointRefs": { "$ref": "#/$defs/stringArray" },
         "controlledAssets": { "$ref": "#/$defs/stringArray" },
+        "requiredAssets": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "switching": { "$ref": "#/$defs/nonEmptyString" },
+        "distribution": { "$ref": "#/$defs/nonEmptyString" },
+        "commoditizationRiskRefs": { "$ref": "#/$defs/stringArray" },
         "vulnerabilities": { "$ref": "#/$defs/nonEmptyStringArray" },
         "responseRefs": { "$ref": "#/$defs/stringArray" },
         "evidenceRefs": { "$ref": "#/$defs/sourceRefs" },

@@ -1,29 +1,38 @@
-# OMEGA-XVIII Track A Specification: Governance Reconciliation & Verified Ground Truth
+﻿# OMEGA-XVIII Track A Specification: Governance Reconciliation & Verified Ground Truth
 
-**Audit Run ID:** `OMEGA-XVIII-20260826T011500Z`  
-**Author:** Codex / gpt-5.6 (Track A)  
-**Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Track A Prompt  
-**Designated Role:** Sole Authoritative Writer of `.agent-system/state.json`, `.agent-system/backlog.json`, and `.agents/AGENTS.md`  
-
----
-
-## 1. Executive Mission & Stage 2 Mandate
-
-Following the closeout of OMEGA-XVII debt, Stage 2 establishes complete governance and ground truth reconciliation for everything that shipped across recent releases without formal file ownership or multi-agent orchestration mappings:
-
-1. **RELAY:** Venture operations, fulfillment tracking, quality & CAPA, capacity modeling, cost-to-serve, suppliers, Ops Lab UI.
-2. **ORBIT:** Portfolio theory, bet sequencing, resource envelopes, Pareto frontiers, Brier score forecasting calibration.
-3. **CONSTELLATION:** Org architecture, capability models, decision rights, delegation boundaries, shadow roles, hiring cases, Org Lab UI.
-4. **CAPITAL:** Cap table dilution modeling, investor pipelines, data room readiness, regulatory/procurement capital clocks, Capital Lab UI.
-5. **MERCURY:** Customer discovery, pricing hypothesis validation, commercial reality evidence ladder, cryptographic receipts.
-6. **CONTENT ARTIFACTS:** 324 financial models, 326 validation plans, 324 technical blueprints, 324 launch plans.
+**Audit Run ID:** `OMEGA-XVIII-20260826T011500Z`
+**Supersedes:** Prior thin stub written without live verification
+**Author:** Codex / Antigravity (Track A)
+**Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Track A Prompt
+**Designated Role:** Sole Authoritative Writer of `.agent-system/state.json`, `.agent-system/backlog.json`
+**Track B (Antigravity):** Proposes governance deltas; Track A applies and reconciles them
 
 ---
 
-## 2. Governance Authority & Reconciliation Principles
+## 1. Stage 2 Mission
 
-Track A applies the following principles:
-- **Zero Ambiguity in File Ownership:** Every file path and lab in the repository must be assigned to an explicit, non-overlapping specialist agent in `.agents/AGENTS.md`.
-- **Honest Metric Semantics:** Metrics in `.agent-system/state.json` must distinguish `filePresenceCount` from empirical customer/commercial validation.
-- **Strict Adherence to MASTER_GOAL.md:** No fabricated demand, no mock transactions counted as revenue, no synthetic interviews counted as market proof.
-- **Truthful Runtime State:** Daemons and external background tasks must be truthfully reported as `STALE_NOT_RUNNING` when not actively running on an unblocked cloud host.
+Following the closeout of OMEGA-XVII debt (Stage 1), Stage 2 establishes complete governance coverage for everything that shipped across recent commits without formal file ownership or multi-agent orchestration mappings:
+
+- **RELAY:** Venture operations, fulfillment tracking, quality & CAPA, capacity modeling, cost-to-serve, suppliers, Ops Lab UI
+- **ORBIT:** Portfolio theory, bet sequencing, Pareto frontiers, Brier score forecasting calibration
+- **CONSTELLATION:** Org architecture, capability models, decision rights, delegation, hiring cases, Org Lab UI
+- **CAPITAL:** Cap table dilution modeling, investor pipelines, data room readiness, regulatory capital clocks, Capital Lab UI
+- **MERCURY:** Customer discovery, pricing hypothesis validation, commercial reality evidence ladder, cryptographic receipts
+- **CONTENT ARTIFACTS:** All 4 artifact directory types — with ownership gaps for validation-plans, technical-blueprints, and launch-plans
+
+## 2. Governance Principles (Track A Authority)
+
+- **Non-overlapping file ownership:** Every file path must be assigned to exactly one specialist agent.
+- **Honest metric semantics:** `filePresenceCount` tracks file-presence only; `contentQualityAudit` tracks structural diversity and label integrity.
+- **No fabrication:** No commercial, runtime, or deployment claims beyond what is empirically confirmed.
+- **Truthful runtime state:** Daemon status updated to observed reality, not copied forward.
+
+## 3. What Track A Reconciles from Track B Proposals
+
+Track B's OMEGA-XVIII log proposed:
+- `validationPlans: 324` — **REJECTED**: live count is 326, not 324
+- `totalArtifactFiles: 1296` — **REJECTED**: live count is 1,298
+- All five system agent ownership rows — **ACCEPTED**: verified consistent with AGENTS.md
+- Artifact directory ownership rows — **VERIFIED ALREADY APPLIED** in a prior run
+
+Track A reconciles by writing the corrected numbers, not the proposed ones.

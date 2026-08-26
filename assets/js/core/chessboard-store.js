@@ -7,8 +7,8 @@
  * successful persistence write.
  */
 
-const CHESSBOARD_SCHEMA_VERSION = '1.0.0';
-const CHESSBOARD_STORAGE_KEY = 'va_chessboard_workspace_v1';
+const CHESSBOARD_SCHEMA_VERSION = '1.1.0';
+const CHESSBOARD_STORAGE_KEY = 'va_chessboard_workspace_v2';
 const CHESSBOARD_PRIVACY_SCOPE = 'LOCAL_BROWSER_ONLY';
 const CHESSBOARD_COLLECTIONS = [
   'marketDefinitions',
@@ -59,6 +59,7 @@ const COLLECTION_SPECS = {
   actors: {
     id: 'actorId', pattern: /^actor-[a-z0-9-]+$/,
     required: ['actorId', 'name', 'type', 'marketRefs', 'assets', 'dependencyRefs', 'controlPointRefs', 'incentives', 'observedMoveRefs', 'epistemicState', 'sourceRefs'],
+    optional: ['targetBuyer', 'coreJob', 'pricing', 'distribution', 'trajectory', 'strategicIntent', 'openSourceProfile'],
     arrays: ['marketRefs', 'assets', 'dependencyRefs', 'controlPointRefs', 'incentives', 'observedMoveRefs', 'sourceRefs']
   },
   valueChainLayers: {
@@ -73,7 +74,8 @@ const COLLECTION_SPECS = {
   },
   dependencies: {
     id: 'dependencyId', pattern: /^dependency-[a-z0-9-]+$/,
-    required: ['dependencyId', 'dependentActorRefs', 'providerActorRef', 'resource', 'criticality', 'switchingCost', 'alternativeActorRefs', 'alternativeDescriptions', 'contractualConstraints', 'technicalConstraints', 'providerEntryRisk', 'priceExposure', 'accessExposure', 'controlPointRef', 'shockgraphDependencyRef', 'epistemicState', 'sourceRefs', 'counterEvidenceRefs'],
+    required: ['dependencyId', 'dependentActorRefs', 'providerActorRef', 'resource', 'criticality', 'switchingCost', 'providerPower', 'alternativeActorRefs', 'alternativeDescriptions', 'contractualConstraints', 'technicalConstraints', 'providerEntryRisk', 'priceExposure', 'accessExposure', 'controlPointRef', 'shockgraphDependencyRef', 'epistemicState', 'sourceRefs', 'counterEvidenceRefs'],
+    optional: ['switchingProcess', 'multiHoming'],
     arrays: ['dependentActorRefs', 'alternativeActorRefs', 'alternativeDescriptions', 'contractualConstraints', 'technicalConstraints', 'sourceRefs', 'counterEvidenceRefs']
   },
   ecosystemEdges: {
@@ -98,12 +100,12 @@ const COLLECTION_SPECS = {
   },
   antiMoats: {
     id: 'antiMoatId', pattern: /^anti-moat-[a-z0-9-]+$/,
-    required: ['antiMoatId', 'mechanism', 'actorRef', 'growthTrigger', 'negativeEffect', 'scalingBehavior', 'possibleMitigations', 'evidenceRefs', 'counterEvidenceRefs', 'relatedClaimRefs', 'epistemicState', 'falsifier'],
-    arrays: ['possibleMitigations', 'evidenceRefs', 'counterEvidenceRefs', 'relatedClaimRefs']
+    required: ['antiMoatId', 'mechanism', 'actorRef', 'growthTrigger', 'negativeEffect', 'scalingBehavior', 'possibleMitigations', 'attackerActorRefs', 'conditions', 'decayRisks', 'evidenceRefs', 'counterEvidenceRefs', 'relatedClaimRefs', 'epistemicState', 'falsifier', 'status'],
+    arrays: ['possibleMitigations', 'attackerActorRefs', 'conditions', 'decayRisks', 'evidenceRefs', 'counterEvidenceRefs', 'relatedClaimRefs']
   },
   commoditizationRisks: {
     id: 'riskId', pattern: /^commoditization-[a-z0-9-]+$/,
-    required: ['riskId', 'capability', 'currentDifferentiation', 'drivers', 'replacementSources', 'costTrend', 'availabilityTrend', 'timeHorizon', 'ventureImpact', 'dependencyRefs', 'eventRefs', 'evidenceRefs', 'counterEvidenceRefs', 'epistemicState', 'falsifier'],
+    required: ['riskId', 'capability', 'currentDifferentiation', 'drivers', 'replacementSources', 'costTrend', 'availabilityTrend', 'timeHorizon', 'ventureImpact', 'remainingDifferentiation', 'dependencyRefs', 'eventRefs', 'evidenceRefs', 'counterEvidenceRefs', 'epistemicState', 'falsifier'],
     arrays: ['drivers', 'replacementSources', 'dependencyRefs', 'eventRefs', 'evidenceRefs', 'counterEvidenceRefs']
   },
   events: {
@@ -114,13 +116,13 @@ const COLLECTION_SPECS = {
   },
   stressScenarios: {
     id: 'scenarioId', pattern: /^scenario-[a-z0-9-]+$/,
-    required: ['scenarioId', 'name', 'threatActorRef', 'eventRefs', 'trigger', 'assumptions', 'affectedDependencyRefs', 'affectedMoatRefs', 'affectedPositionRefs', 'impact', 'countermoves', 'survivalCondition', 'falsifier', 'epistemicState', 'sourceRefs'],
+    required: ['scenarioId', 'stressType', 'name', 'threatActorRef', 'eventRefs', 'trigger', 'assumptions', 'affectedDependencyRefs', 'affectedMoatRefs', 'affectedPositionRefs', 'impact', 'countermoves', 'survivalCondition', 'survivalStatus', 'falsifier', 'epistemicState', 'sourceRefs'],
     arrays: ['eventRefs', 'assumptions', 'affectedDependencyRefs', 'affectedMoatRefs', 'affectedPositionRefs', 'countermoves', 'sourceRefs']
   },
   positions: {
     id: 'positionId', pattern: /^position-[a-z0-9-]+$/,
-    required: ['positionId', 'positionType', 'targetLayerRef', 'actorRef', 'customerValue', 'dependencyRefs', 'controlPointRefs', 'controlledAssets', 'vulnerabilities', 'responseRefs', 'evidenceRefs', 'counterEvidenceRefs', 'epistemicState', 'status', 'falsifier'],
-    arrays: ['dependencyRefs', 'controlPointRefs', 'controlledAssets', 'vulnerabilities', 'responseRefs', 'evidenceRefs', 'counterEvidenceRefs']
+    required: ['positionId', 'positionType', 'targetLayerRef', 'actorRef', 'customerValue', 'dependencyRefs', 'controlPointRefs', 'controlledAssets', 'requiredAssets', 'switching', 'distribution', 'commoditizationRiskRefs', 'vulnerabilities', 'responseRefs', 'evidenceRefs', 'counterEvidenceRefs', 'epistemicState', 'status', 'falsifier'],
+    arrays: ['dependencyRefs', 'controlPointRefs', 'controlledAssets', 'requiredAssets', 'commoditizationRiskRefs', 'vulnerabilities', 'responseRefs', 'evidenceRefs', 'counterEvidenceRefs']
   },
   researchGaps: {
     id: 'gapId', pattern: /^gap-[a-z0-9-]+$/,
@@ -159,11 +161,11 @@ const NON_EMPTY_ARRAYS = {
   responses: ['targetActorRefs', 'constraints'],
   strategicClaims: ['beneficiaries', 'disadvantaged', 'conditions'],
   moatMechanisms: ['attackerActorRefs', 'conditions', 'decayRisks', 'relatedClaimRefs'],
-  antiMoats: ['relatedClaimRefs'],
+  antiMoats: ['conditions', 'decayRisks', 'relatedClaimRefs'],
   commoditizationRisks: ['drivers', 'replacementSources'],
   events: ['actorRefs'],
   stressScenarios: ['assumptions'],
-  positions: ['vulnerabilities'],
+  positions: ['requiredAssets', 'vulnerabilities'],
   researchGaps: ['requiredEvidence']
 };
 
@@ -178,6 +180,7 @@ const COLLECTION_ENUM_FIELDS = {
   dependencies: {
     criticality: ENUMS.qualitative,
     switchingCost: ENUMS.qualitative,
+    providerPower: ENUMS.qualitative,
     providerEntryRisk: ENUMS.qualitative,
     priceExposure: ENUMS.qualitative,
     accessExposure: ENUMS.qualitative
@@ -196,13 +199,20 @@ const COLLECTION_ENUM_FIELDS = {
     halfLife: ['VERY_SHORT', 'SHORT', 'MEDIUM', 'LONG', 'UNKNOWN'],
     status: ['HYPOTHESIS', 'CONDITIONAL', 'OBSERVED_TEMPORARY', 'REJECTED', 'UNKNOWN']
   },
+  antiMoats: {
+    status: ['HYPOTHESIS', 'CONDITIONAL', 'OBSERVED_TEMPORARY', 'REJECTED', 'UNKNOWN']
+  },
   commoditizationRisks: {
     costTrend: ['RISING', 'STABLE', 'FALLING', 'UNKNOWN'],
     availabilityTrend: ['CONTRACTING', 'STABLE', 'EXPANDING', 'UNKNOWN'],
     timeHorizon: ENUMS.timeHorizon
   },
   events: { eventType: ['PRODUCT_LAUNCH', 'FEATURE_LAUNCH', 'PRICE_CHANGE', 'BUNDLE', 'ACQUISITION', 'PARTNERSHIP', 'API_CHANGE', 'STANDARD_CHANGE', 'OPEN_SOURCE_RELEASE', 'REGULATORY_CHANGE', 'INTEROPERABILITY_CHANGE', 'NEW_ENTRANT', 'PROVIDER_ENTRY', 'EXIT', 'FUNDING_EVENT', 'DISTRIBUTION_CHANGE'] },
-  stressScenarios: { epistemicState: ['MODEL_HYPOTHESIS', 'SCENARIO', 'USER_ASSUMPTION', 'UNKNOWN'] },
+  stressScenarios: {
+    epistemicState: ['MODEL_HYPOTHESIS', 'SCENARIO', 'USER_ASSUMPTION', 'UNKNOWN'],
+    stressType: ['INCUMBENT_BUNDLE', 'API_PRICE_3X', 'API_ACCESS_REMOVAL', 'MODEL_IMPROVEMENT_90_PERCENT', 'OPEN_SOURCE_EQUIVALENT', 'CUSTOMER_BUILD_TWO_DAYS', 'INTEROPERABILITY_OPENING', 'PLATFORM_LOCK_IN', 'PLATFORM_OPENING', 'SUPPLIER_ENTRY', 'CUSTOMER_CONSOLIDATION', 'COMPETITOR_ACQUISITION', 'ACQUISITION_TARGET_DEPENDENCE'],
+    survivalStatus: ['SURVIVES', 'DAMAGED', 'THESIS_BREAKS', 'UNKNOWN']
+  },
   positions: {
     positionType: ['VERTICAL_SPECIALIST', 'NEUTRAL_CROSS_PLATFORM_LAYER', 'SYSTEM_OF_RECORD', 'SYSTEM_OF_VERIFICATION', 'ORCHESTRATION_LAYER', 'DATA_NETWORK', 'MARKETPLACE', 'COMPLEMENT', 'INFRASTRUCTURE', 'MANAGED_SERVICE', 'WORKFLOW_OWNER', 'STANDARD_PROTOCOL_LAYER', 'OTHER', 'UNKNOWN'],
     status: ['CANDIDATE', 'ROBUST_CONDITIONAL', 'FRAGILE', 'REJECTED', 'UNKNOWN']
@@ -389,6 +399,47 @@ function validateRecordShape(collection, record, index, errors) {
     const drivers = ['OPEN_SOURCE', 'FOUNDATION_MODEL_PROGRESS', 'STANDARDIZATION', 'API_AVAILABILITY', 'CLOUD_SERVICES', 'REGULATION_INTEROPERABILITY', 'HARDWARE_COST_DECLINE', 'NEW_ENTRANTS', 'BUNDLING', 'UNKNOWN'];
     for (const driver of record.drivers) pushEnumError(driver, drivers, `${label}.drivers`, errors);
   }
+  if (collection === 'actors') {
+    if (hasOwn(record, 'distribution')) pushArrayError(record.distribution, `${label}.distribution`, errors);
+    if (hasOwn(record, 'openSourceProfile')) {
+      const profile = record.openSourceProfile;
+      const profileKeys = ['license', 'repositoryUrl', 'latestRelease', 'latestReleaseAt', 'activity', 'contributors', 'releaseCadence', 'commercialBacking', 'deploymentBurden', 'sourceRefs'];
+      rejectUnexpected(profile, profileKeys, `${label}.openSourceProfile`, errors);
+      if (isObject(profile)) {
+        for (const key of profileKeys) if (!hasOwn(profile, key)) errors.push(`${label}.openSourceProfile.${key} is required`);
+        for (const key of profileKeys.filter(key => !['latestReleaseAt', 'sourceRefs'].includes(key))) {
+          if (typeof profile[key] !== 'string' || !profile[key].trim()) errors.push(`${label}.openSourceProfile.${key} must be a non-empty string`);
+        }
+        pushDateError(profile.latestReleaseAt, `${label}.openSourceProfile.latestReleaseAt`, errors, true);
+        pushArrayError(profile.sourceRefs, `${label}.openSourceProfile.sourceRefs`, errors);
+        if (typeof profile.repositoryUrl === 'string' && !/^https?:\/\//i.test(profile.repositoryUrl)) errors.push(`${label}.openSourceProfile.repositoryUrl must be an HTTP(S) URL`);
+      }
+    }
+  }
+  if (collection === 'dependencies') {
+    if (hasOwn(record, 'switchingProcess')) {
+      const fields = ['dataMigration', 'integrationRebuild', 'userTraining', 'workflowChange', 'contractCost', 'networkLoss', 'historicalContextLoss', 'organizationalPolitics', 'riskTrust', 'searchCost'];
+      rejectUnexpected(record.switchingProcess, fields, `${label}.switchingProcess`, errors);
+      if (isObject(record.switchingProcess)) {
+        for (const field of fields) {
+          if (typeof record.switchingProcess[field] !== 'string' || !record.switchingProcess[field].trim()) errors.push(`${label}.switchingProcess.${field} must be a non-empty string`);
+        }
+      }
+    }
+    if (hasOwn(record, 'multiHoming')) {
+      const fields = ['allowed', 'sides', 'friction', 'cost', 'portability', 'networkStateLoss'];
+      rejectUnexpected(record.multiHoming, fields, `${label}.multiHoming`, errors);
+      if (isObject(record.multiHoming)) {
+        for (const field of fields) if (!hasOwn(record.multiHoming, field)) errors.push(`${label}.multiHoming.${field} is required`);
+        pushEnumError(record.multiHoming.allowed, ['YES', 'NO', 'CONDITIONAL', 'NOT_APPLICABLE', 'UNKNOWN'], `${label}.multiHoming.allowed`, errors);
+        pushEnumError(record.multiHoming.friction, ENUMS.qualitative, `${label}.multiHoming.friction`, errors);
+        pushArrayError(record.multiHoming.sides, `${label}.multiHoming.sides`, errors);
+        for (const field of ['cost', 'portability', 'networkStateLoss']) {
+          if (typeof record.multiHoming[field] !== 'string' || !record.multiHoming[field].trim()) errors.push(`${label}.multiHoming.${field} must be a non-empty string`);
+        }
+      }
+    }
+  }
   if (collection === 'valueChainLayers' && (!Number.isInteger(record.sequence) || record.sequence < 0)) errors.push(`${label}.sequence must be a non-negative integer`);
   if (collection === 'strategicClaims') pushDateError(record.asOf, `${label}.asOf`, errors);
   if (collection === 'events') {
@@ -444,6 +495,7 @@ function validateReferences(workspace, idSets, errors) {
     refs('controlPoints', 'controlPointId', item.controlPointRefs, `${item.actorId}.controlPointRefs`);
     refs('events', 'eventId', item.observedMoveRefs, `${item.actorId}.observedMoveRefs`);
     sourceRefs(item, item.actorId);
+    if (item.openSourceProfile) refs('sourceRecords', 'sourceId', item.openSourceProfile.sourceRefs, `${item.actorId}.openSourceProfile.sourceRefs`);
   }
   for (const item of workspace.valueChainLayers) {
     refs('actors', 'actorId', item.actorRefs, `${item.layerId}.actorRefs`);
@@ -490,6 +542,7 @@ function validateReferences(workspace, idSets, errors) {
   }
   for (const item of workspace.antiMoats) {
     ref('actors', 'actorId', item.actorRef, `${item.antiMoatId}.actorRef`);
+    refs('actors', 'actorId', item.attackerActorRefs, `${item.antiMoatId}.attackerActorRefs`);
     refs('strategicClaims', 'claimId', item.relatedClaimRefs, `${item.antiMoatId}.relatedClaimRefs`);
     sourceRefs(item, item.antiMoatId);
   }
@@ -519,6 +572,7 @@ function validateReferences(workspace, idSets, errors) {
     refs('dependencies', 'dependencyId', item.dependencyRefs, `${item.positionId}.dependencyRefs`);
     refs('controlPoints', 'controlPointId', item.controlPointRefs, `${item.positionId}.controlPointRefs`);
     refs('responses', 'responseId', item.responseRefs, `${item.positionId}.responseRefs`);
+    refs('commoditizationRisks', 'riskId', item.commoditizationRiskRefs, `${item.positionId}.commoditizationRiskRefs`);
     sourceRefs(item, item.positionId);
   }
   for (const item of workspace.researchGaps) refs('strategicClaims', 'claimId', item.relatedClaimRefs, `${item.gapId}.relatedClaimRefs`);

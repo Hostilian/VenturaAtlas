@@ -88,7 +88,7 @@
       relatedClaimRefs: 'strategicClaims'
     },
     antiMoats: {
-      actorRef: 'actors', evidenceRefs: 'sourceRecords', counterEvidenceRefs: 'sourceRecords',
+      actorRef: 'actors', attackerActorRefs: 'actors', evidenceRefs: 'sourceRecords', counterEvidenceRefs: 'sourceRecords',
       relatedClaimRefs: 'strategicClaims'
     },
     commoditizationRisks: {
@@ -108,6 +108,7 @@
     positions: {
       targetLayerRef: 'valueChainLayers', actorRef: 'actors', dependencyRefs: 'dependencies',
       controlPointRefs: 'controlPoints', responseRefs: 'responses',
+      commoditizationRiskRefs: 'commoditizationRisks',
       evidenceRefs: 'sourceRecords', counterEvidenceRefs: 'sourceRecords'
     },
     researchGaps: { relatedClaimRefs: 'strategicClaims' },
@@ -506,8 +507,10 @@
     ));
     const friction = normalizeToken(firstDefined(multiHoming.friction, multiHoming.cost, UNKNOWN));
     const lowMultiHomingFriction = ['none', 'negligible', 'low'].includes(friction);
+    const multiHomingAllowed = multiHoming.allowed === true ||
+      ['YES', 'CONDITIONAL'].includes(String(multiHoming.allowed || '').toUpperCase());
     const cheapMultiHoming = lowMultiHomingFriction &&
-      (multiHoming.allowed === true || providerCount >= 2);
+      (multiHomingAllowed || providerCount >= 2);
     if (cheapMultiHoming) {
       return {
         status: 'LOW_FRICTION', lockInClaimSupported: false,
@@ -516,7 +519,17 @@
       };
     }
 
-    const process = asArray(input.switchProcess);
+    const process = asArray(input.switchProcess).length
+      ? asArray(input.switchProcess)
+      : (isObject(input.switchingProcess)
+        ? Object.entries(input.switchingProcess).map(([kind, description]) => ({
+          kind,
+          description,
+          required: !/^none|not applicable|unknown$/i.test(String(description || '')),
+          historyLoss: kind === 'historicalContextLoss' && !/^none|not applicable|unknown$/i.test(String(description || '')),
+          integrationRebuild: kind === 'integrationRebuild' && !/^none|not applicable|unknown$/i.test(String(description || ''))
+        }))
+        : []);
     const materialSteps = process.filter(step => isObject(step) &&
       (step.required === true || step.historyLoss === true || step.integrationRebuild === true || step.downtime === true));
     const historyLoss = input.historyLossOnSwitch === true || input.workflowHistoryLoss === true ||
@@ -792,7 +805,10 @@
     const supportedKinds = new Set([
       'OPEN_SOURCE_RELEASE', 'OPEN_SOURCE_SHOCK',
       'INTEROPERABILITY_CHANGE', 'INTEROPERABILITY_SHOCK', 'INTEROPERABILITY_INCREASE',
-      'PROVIDER_ENTRY', 'UPSTREAM_PROVIDER_ENTRY'
+      'PROVIDER_ENTRY', 'UPSTREAM_PROVIDER_ENTRY',
+      'PRODUCT_LAUNCH', 'FEATURE_LAUNCH', 'PRICE_CHANGE', 'BUNDLE', 'ACQUISITION',
+      'PARTNERSHIP', 'API_CHANGE', 'STANDARD_CHANGE', 'REGULATORY_CHANGE',
+      'NEW_ENTRANT', 'EXIT', 'FUNDING_EVENT', 'DISTRIBUTION_CHANGE'
     ]);
     if (!supportedKinds.has(kind)) {
       return unknownResult('UNSUPPORTED_EVENT_KIND', { workspace: clone(workspace), effects: [] });
@@ -880,7 +896,37 @@
         appendUnique(response, 'triggerEventRefs', event.eventId);
         effects.push({ kind: 'RESPONSE_TRIGGERED', targetRef: response.responseId });
       }
+    } else if (kind === 'PRICE_CHANGE') {
+      for (const dependency of dependencies) {
+        if (!affectedDependencies.includes(dependency.dependencyId)) continue;
+        dependency.priceExposure = 'VERY_HIGH';
+        effects.push({ kind: 'PRICE_EXPOSURE_REQUIRES_RETEST', targetRef: dependency.dependencyId });
+      }
+    } else if (kind === 'API_CHANGE') {
+      for (const dependency of dependencies) {
+        if (!affectedDependencies.includes(dependency.dependencyId)) continue;
+        dependency.accessExposure = 'VERY_HIGH';
+        effects.push({ kind: 'ACCESS_EXPOSURE_REQUIRES_RETEST', targetRef: dependency.dependencyId });
+      }
+    } else if (['BUNDLE', 'FEATURE_LAUNCH', 'PRODUCT_LAUNCH', 'DISTRIBUTION_CHANGE'].includes(kind)) {
+      for (const response of responses) {
+        if (!asArray(event.actorRefs).includes(response.actorRef)) continue;
+        if (kind === 'BUNDLE' && !['BUNDLE', 'MAKE_FEATURE_FREE'].includes(response.possibleAction)) continue;
+        appendUnique(response, 'triggerEventRefs', event.eventId);
+        effects.push({ kind: 'RESPONSE_TRIGGERED', targetRef: response.responseId });
+      }
+    } else if (['STANDARD_CHANGE', 'REGULATORY_CHANGE'].includes(kind)) {
+      for (const dependency of dependencies) {
+        if (!affectedDependencies.includes(dependency.dependencyId)) continue;
+        effects.push({ kind: 'INTEROPERABILITY_DIRECTION_REQUIRES_REVIEW', targetRef: dependency.dependencyId });
+      }
+    } else if (kind === 'NEW_ENTRANT') {
+      for (const actorRef of asArray(event.actorRefs)) {
+        effects.push({ kind: 'COMPETITIVE_ACTOR_ENTERED', targetRef: actorRef });
+      }
     }
+
+    if (!effects.length) effects.push({ kind: 'STRUCTURAL_EVENT_RECORDED', targetRef: event.eventId });
 
     return { status: 'APPLIED', workspace: next, effects };
   }
@@ -1037,6 +1083,33 @@
     return collection(workspace, 'actors').find(actor => typeSet.has(actor.type));
   }
 
+  const QUALITATIVE_ORDER = Object.freeze({ VERY_HIGH: 5, HIGH: 4, MEDIUM: 3, LOW: 2, VERY_LOW: 1, UNKNOWN: 0 });
+  const TIME_ORDER = Object.freeze({ IMMEDIATE: 0, WEEKS: 1, MONTHS: 2, YEARS: 3, LONG_TERM: 4, UNKNOWN: 5 });
+
+  function highestQualitative(items, field) {
+    return asArray(items).reduce((winner, item) => {
+      if (!winner) return item;
+      return (QUALITATIVE_ORDER[String(item?.[field] || UNKNOWN)] || 0) >
+        (QUALITATIVE_ORDER[String(winner?.[field] || UNKNOWN)] || 0) ? item : winner;
+    }, null);
+  }
+
+  function responseActor(workspace, responses) {
+    const actorIndex = new Map(collection(workspace, 'actors').map(actor => [actor.actorId, actor]));
+    const grouped = new Map();
+    for (const response of responses) {
+      const actor = actorIndex.get(response.actorRef);
+      if (!actor || !['ADJACENT_INCUMBENT', 'PLATFORM', 'DIRECT_COMPETITOR'].includes(actor.type)) continue;
+      const current = grouped.get(actor.actorId) || { actor, count: 0 };
+      current.count += 1;
+      grouped.set(actor.actorId, current);
+    }
+    return [...grouped.values()].sort((left, right) =>
+      right.count - left.count || right.actor.assets.length - left.actor.assets.length ||
+      left.actor.actorId.localeCompare(right.actor.actorId)
+    )[0]?.actor;
+  }
+
   function buildStrategicBrief(workspace) {
     const markets = collection(workspace, 'marketDefinitions');
     const layers = collection(workspace, 'valueChainLayers');
@@ -1048,14 +1121,52 @@
     const antiMoats = collection(workspace, 'antiMoats');
     const positions = collection(workspace, 'positions');
     const gaps = buildResearchQueue(workspace);
-    const direct = actorByType(workspace, 'DIRECT_COMPETITOR');
-    const substitute = actorByType(workspace, 'SUBSTITUTE', 'STATUS_QUO');
-    const freeSubstitute = collection(workspace, 'actors').find(actor => actor.type === 'OPEN_SOURCE_PROJECT' || actor.free === true);
-    const incumbent = actorByType(workspace, 'ADJACENT_INCUMBENT', 'PLATFORM');
-    const mainResponse = primary(responses);
-    const switchAssessment = primary(dependencies)
-      ? testSwitchingCost(primary(dependencies).switching || primary(dependencies))
+    const actors = collection(workspace, 'actors');
+    const actorIndex = new Map(actors.map(actor => [actor.actorId, actor]));
+    const venture = actors.find(actor => actor.type === 'VENTURE');
+    const includedAlternativeRefs = new Set(markets.flatMap(market => asArray(market.includedAlternativeActorRefs)));
+    const includedActors = actors.filter(actor => includedAlternativeRefs.has(actor.actorId));
+    const direct = includedActors.find(actor => actor.type === 'DIRECT_COMPETITOR') || actorByType(workspace, 'DIRECT_COMPETITOR');
+    const substitute = includedActors.find(actor => ['SUBSTITUTE', 'STATUS_QUO', 'INTERNAL_BUILD_TEAM'].includes(actor.type)) ||
+      actorByType(workspace, 'SUBSTITUTE', 'STATUS_QUO', 'INTERNAL_BUILD_TEAM');
+    const freeSubstitute = includedActors.find(actor => actor.type === 'STATUS_QUO' || /free|zero|included/i.test(actor.pricing || '')) ||
+      includedActors.find(actor => actor.type === 'OPEN_SOURCE_PROJECT') || UNKNOWN;
+    const incumbent = responseActor(workspace, responses) || actorByType(workspace, 'ADJACENT_INCUMBENT', 'PLATFORM');
+    const incumbentResponses = incumbent ? responses.filter(response => response.actorRef === incumbent.actorId) : [];
+    const mainResponse = incumbentResponses.slice().sort((left, right) =>
+      (TIME_ORDER[left.timeToExecute] ?? TIME_ORDER.UNKNOWN) - (TIME_ORDER[right.timeToExecute] ?? TIME_ORDER.UNKNOWN) ||
+      (QUALITATIVE_ORDER[right.ability] ?? 0) - (QUALITATIVE_ORDER[left.ability] ?? 0) ||
+      left.responseId.localeCompare(right.responseId)
+    )[0] || primary(responses);
+    const criticalDependency = highestQualitative(dependencies, 'criticality');
+    const switchAssessment = criticalDependency
+      ? testSwitchingCost(criticalDependency)
       : unknownResult('DEPENDENCY_NOT_IDENTIFIED');
+    const ventureLayer = layers.find(layer => venture && asArray(layer.actorRefs).includes(venture.actorId));
+    const candidatePosition = positions.find(position => position.status === 'ROBUST_CONDITIONAL') ||
+      positions.find(position => position.status === 'CANDIDATE') || primary(positions);
+    const positionLayer = candidatePosition
+      ? layers.find(layer => layer.layerId === candidatePosition.targetLayerRef)
+      : null;
+    const mainControlPoint = criticalDependency?.controlPointRef
+      ? points.find(point => point.controlPointId === criticalDependency.controlPointRef)
+      : primary(points);
+    const bundleResponse = incumbentResponses.find(response => ['BUNDLE', 'MAKE_FEATURE_FREE'].includes(response.possibleAction)) ||
+      responses.find(response => ['BUNDLE', 'MAKE_FEATURE_FREE'].includes(response.possibleAction));
+    const bundleExposure = bundleResponse ? {
+      status: 'SCENARIO',
+      exposed: true,
+      actorRef: bundleResponse.actorRef,
+      responseId: bundleResponse.responseId,
+      action: bundleResponse.possibleAction,
+      mechanism: bundleResponse.abilityMechanism,
+      impact: bundleResponse.likelyImpact,
+      conditions: clone(bundleResponse.constraints),
+      sourceRefs: unique(bundleResponse.sourceRefs || []),
+      counterEvidenceRefs: unique(bundleResponse.counterEvidenceRefs || [])
+    } : UNKNOWN;
+    const killThreat = collection(workspace, 'stressScenarios').find(scenario => scenario.survivalStatus === 'THESIS_BREAKS') ||
+      collection(workspace, 'stressScenarios').find(scenario => /kill|destroy|invalidate/i.test(`${scenario.name} ${scenario.impact}`));
 
     return {
       venture: {
@@ -1065,25 +1176,25 @@
       },
       marketDefinitions: markets.length ? clone(markets) : UNKNOWN,
       customerJob: firstDefined(primary(markets)?.customerJob, primary(markets)?.jobs?.[0], UNKNOWN),
-      valueChainPosition: primary(layers) ? clone(primary(layers)) : UNKNOWN,
-      mainControlPoint: primary(points) ? clone(primary(points)) : UNKNOWN,
+      valueChainPosition: positionLayer || ventureLayer ? clone(positionLayer || ventureLayer) : UNKNOWN,
+      mainControlPoint: mainControlPoint ? clone(mainControlPoint) : UNKNOWN,
+      mainControlPointOwner: mainControlPoint ? clone(actorIndex.get(mainControlPoint.controllerActorRef) || UNKNOWN) : UNKNOWN,
       mainDirectCompetitor: direct ? clone(direct) : UNKNOWN,
       mainSubstitute: substitute ? clone(substitute) : UNKNOWN,
-      freeSubstitute: freeSubstitute ? clone(freeSubstitute) : UNKNOWN,
+      freeSubstitute: freeSubstitute === UNKNOWN ? UNKNOWN : clone(freeSubstitute),
       adjacentIncumbent: incumbent ? clone(incumbent) : UNKNOWN,
-      criticalDependency: primary(dependencies) ? clone(primary(dependencies)) : UNKNOWN,
+      criticalDependency: criticalDependency ? clone(criticalDependency) : UNKNOWN,
       incumbentCheapestResponse: mainResponse ? analyzeIncumbentResponse(mainResponse) : UNKNOWN,
-      bundleExposure: mainResponse?.bundleExposure
-        ? assessBundleExposure(mainResponse.bundleExposure)
-        : UNKNOWN,
-      multiHoming: firstDefined(primary(dependencies)?.switching?.multiHoming, UNKNOWN),
+      incumbentResponseRepertoire: incumbentResponses.map(response => analyzeIncumbentResponse(response)),
+      bundleExposure,
+      multiHoming: criticalDependency?.multiHoming ? clone(criticalDependency.multiHoming) : UNKNOWN,
       switchingCost: switchAssessment,
       commoditizingCapability: primary(risks) ? clone(primary(risks)) : UNKNOWN,
       candidateMoat: primary(moats) ? clone(primary(moats)) : UNKNOWN,
       moatStatus: firstDefined(primary(moats)?.status, UNKNOWN),
-      antiMoat: primary(antiMoats) ? evaluateAntiMoat(primary(antiMoats)) : UNKNOWN,
-      structuralKillThreat: firstDefined(primary(workspace?.stressScenarios)?.killCondition, primary(workspace?.stressScenarios)?.description, UNKNOWN),
-      strategicPosition: primary(positions) ? clone(primary(positions)) : UNKNOWN,
+      antiMoat: primary(antiMoats) ? clone(primary(antiMoats)) : UNKNOWN,
+      structuralKillThreat: killThreat ? clone(killThreat) : UNKNOWN,
+      strategicPosition: candidatePosition ? clone(candidatePosition) : UNKNOWN,
       biggestUnknown: gaps[0] || UNKNOWN,
       nextResearchQuestion: firstDefined(gaps[0]?.question, gaps[0]?.description, UNKNOWN),
       contradictions: detectContradictions(workspace)
@@ -1093,10 +1204,11 @@
   const RELEVANCE_ORDER = Object.freeze({ CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3, UNKNOWN: 4 });
 
   function buildResearchQueue(workspace) {
-    const explicit = collection(workspace, 'researchGaps').map(gap => ({
+    const explicit = collection(workspace, 'researchGaps').map((gap, index) => ({
       ...clone(gap),
       decisionRelevance: String(gap.decisionRelevance || UNKNOWN).toUpperCase(),
-      origin: 'EXPLICIT_GAP'
+      origin: 'EXPLICIT_GAP',
+      order: index
     }));
     const generated = [];
 
@@ -1109,7 +1221,8 @@
           ? `What evidence would resolve claim ${claim.claimId}?`
           : `What observation would falsify claim ${claim.claimId}?`,
         relatedClaimRefs: [claim.claimId],
-        origin: claim.epistemicState === UNKNOWN ? 'UNKNOWN_CLAIM' : 'MISSING_FALSIFIER'
+        origin: claim.epistemicState === UNKNOWN ? 'UNKNOWN_CLAIM' : 'MISSING_FALSIFIER',
+        order: explicit.length + generated.length
       });
     }
 
@@ -1117,8 +1230,8 @@
       const relevance = (RELEVANCE_ORDER[left.decisionRelevance] ?? RELEVANCE_ORDER.UNKNOWN) -
         (RELEVANCE_ORDER[right.decisionRelevance] ?? RELEVANCE_ORDER.UNKNOWN);
       if (relevance) return relevance;
-      return String(left.gapId).localeCompare(String(right.gapId));
-    });
+      return left.order - right.order;
+    }).map(({ order: _order, ...gap }) => gap);
   }
 
   function publicSource(source) {
@@ -1163,7 +1276,7 @@
       : {};
 
     return {
-      schemaVersion: '1.0.0',
+      schemaVersion: '1.1.0',
       workspaceMode: 'PUBLIC_SANITIZED',
       privacyScope: 'PUBLIC_SANITIZED',
       canonicalIdeaId: firstDefined(workspace?.canonicalIdeaId, UNKNOWN),

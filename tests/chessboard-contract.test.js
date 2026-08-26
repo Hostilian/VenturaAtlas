@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 
 const { buildUnlocked } = require('../scripts/build-public-artifact');
 const {
@@ -15,8 +16,9 @@ const {
 } = require('../assets/js/core/chessboard-store');
 
 const ROOT = path.resolve(__dirname, '..');
-const WORKSPACE_PATH = path.join(ROOT, 'research', 'chessboard', 'idea-061-market-structure.json');
-const REPORT_PATH = path.join(ROOT, 'research', 'chessboard', 'CHESSBOARD_REPORT.md');
+const WORKSPACE_PATH = path.join(ROOT, '.agent-state', 'chessboard', 'idea-061-market-structure.json');
+const REPORT_PATH = path.join(ROOT, '.agent-state', 'chessboard', 'CHESSBOARD_REPORT.md');
+const HAS_PRIVATE_DOGFOOD = fs.existsSync(WORKSPACE_PATH) && fs.existsSync(REPORT_PATH);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -61,7 +63,7 @@ function assertSentinelsAbsent(root, sentinels) {
   }
 }
 
-test('strict CHESSBOARD contract validates the dogfood workspace and preserves the OMEGA publication gate', () => {
+test('strict CHESSBOARD contract validates the private dogfood workspace and preserves the OMEGA publication gate', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
   const workspace = readJson(WORKSPACE_PATH);
   const result = validateChessboardArtifact(workspace, { artifactPath: WORKSPACE_PATH });
 
@@ -76,7 +78,7 @@ test('strict CHESSBOARD contract validates the dogfood workspace and preserves t
   assert.deepEqual(validateChessboardWorkspace(workspace), []);
 });
 
-test('strict contract rejects undeclared probabilities, stale revisions, and invented active-venture authority', () => {
+test('strict contract rejects undeclared probabilities, stale revisions, and invented active-venture authority', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
   const workspace = readJson(WORKSPACE_PATH);
 
   const scored = clone(workspace);
@@ -99,7 +101,7 @@ test('strict contract rejects undeclared probabilities, stale revisions, and inv
   assert.ok(promotedResult.errors.some(error => error.includes('activeVentureId does not match authoritative state')));
 });
 
-test('repository authority and the A-Z report do not present idea-061 as an active venture', () => {
+test('repository authority and the private A-Z report do not present idea-061 as an active venture', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
   const workspace = readJson(WORKSPACE_PATH);
   const context = computeExpectedContext();
   const report = fs.readFileSync(REPORT_PATH, 'utf8');
@@ -118,8 +120,7 @@ test('repository authority and the A-Z report do not present idea-061 as an acti
   assert.match(report, /A human must select a venture before any system says one is active\./);
 });
 
-test('public artifact publishes the empty lab shell but denies the private workspace and its sentinels', () => {
-  const workspace = readJson(WORKSPACE_PATH);
+test('public artifact publishes the empty lab shell and denies the private workspace path', () => {
   const isolatedRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'va-chessboard-public-'));
   const distPath = path.join(isolatedRoot, '_site');
   const receiptPath = path.join(isolatedRoot, 'public-artifact-build.json');
@@ -127,15 +128,30 @@ test('public artifact publishes the empty lab shell but denies the private works
     buildUnlocked({ distPath, receiptPath });
     assert.ok(fs.existsSync(path.join(distPath, 'docs', 'chessboard.html')), 'public artifact must include the data-empty Market Structure Lab shell');
     assert.ok(!fs.existsSync(path.join(distPath, 'research', 'chessboard')), 'private CHESSBOARD research must remain denied');
-    assertSentinelsAbsent(distPath, [
-      workspace.workspaceId,
-      workspace.responses[0].responseId,
-      workspace.strategicClaims[0].claimId,
-      'src-repo-mercury-061'
-    ]);
+    if (HAS_PRIVATE_DOGFOOD) {
+      const workspace = readJson(WORKSPACE_PATH);
+      assertSentinelsAbsent(distPath, [
+        workspace.workspaceId,
+        workspace.responses[0].responseId,
+        workspace.strategicClaims[0].claimId
+      ]);
+    }
   } finally {
     fs.rmSync(isolatedRoot, { recursive: true, force: true });
   }
+});
+
+test('private CHESSBOARD strategy is ignored locally and absent from the Git index', () => {
+  const tracked = execFileSync('git', ['ls-files', '--', 'research/chessboard', '.agent-state/chessboard'], {
+    cwd: ROOT,
+    encoding: 'utf8'
+  }).trim();
+  assert.equal(tracked, '', 'private CHESSBOARD strategy must never be tracked in Git');
+  assert.doesNotThrow(() => execFileSync(
+    'git',
+    ['check-ignore', '--quiet', '.agent-state/chessboard/idea-061-market-structure.json'],
+    { cwd: ROOT, stdio: 'ignore' }
+  ));
 });
 
 test('Market Structure Lab page, navigation, and offline shell declare all required assets', () => {
@@ -163,7 +179,7 @@ test('Market Structure Lab page, navigation, and offline shell declare all requi
   }
 });
 
-test('browser store supports empty, import, defensive-clone, reset, and rollback flows', () => {
+test('browser store supports empty, import, defensive-clone, reset, and rollback flows', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
   const storage = new MemoryStorage();
   const store = new ChessboardStore({
     storage,

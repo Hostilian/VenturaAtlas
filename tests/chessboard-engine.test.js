@@ -65,7 +65,7 @@ function strategicEvent(eventId, eventType, actorRefs, overrides = {}) {
 
 function baseWorkspace() {
   return {
-    schemaVersion: '1.0.0',
+    schemaVersion: '1.1.0',
     workspaceMode: 'PRIVATE_STRATEGY',
     privacyScope: 'PRIVATE_REPOSITORY_ONLY',
     workspaceId: 'chessboard-test',
@@ -173,6 +173,27 @@ function baseWorkspace() {
         resource: 'Single model API',
         criticality: 'VERY_HIGH',
         switchingCost: 'HIGH',
+        providerPower: 'HIGH',
+        switchingProcess: {
+          dataMigration: 'Export and re-map audit records.',
+          integrationRebuild: 'Replace provider-specific API integration.',
+          userTraining: 'Low retraining burden.',
+          workflowChange: 'Revalidate audit workflow behavior.',
+          contractCost: 'No recorded termination fee.',
+          networkLoss: 'Not applicable.',
+          historicalContextLoss: 'Audit history remains portable only if export is complete.',
+          organizationalPolitics: 'Security and procurement must reapprove a provider.',
+          riskTrust: 'New provider output must regain audit trust.',
+          searchCost: 'Alternative-provider evaluation is required.'
+        },
+        multiHoming: {
+          allowed: 'CONDITIONAL',
+          sides: ['venture'],
+          friction: 'MEDIUM',
+          cost: 'Parallel provider integration adds engineering and evaluation cost.',
+          portability: 'Audit records are portable; provider-specific prompts are not fully portable.',
+          networkStateLoss: 'No network state is lost.'
+        },
         alternativeActorRefs: [],
         alternativeDescriptions: [],
         contractualConstraints: ['No continuity commitment beyond published terms'],
@@ -277,11 +298,15 @@ function baseWorkspace() {
         negativeEffect: 'Support workload grows faster than customer count.',
         scalingBehavior: 'Support requests grow superlinearly with customer count.',
         possibleMitigations: ['Standardized adapters'],
+        attackerActorRefs: ['actor-provider'],
+        conditions: ['Customer-specific integration diversity continues to rise.'],
+        decayRisks: ['Standardized adapters reduce exception handling.'],
         evidenceRefs: [],
         counterEvidenceRefs: [],
         relatedClaimRefs: ['STR-NEUTRALITY'],
         epistemicState: 'MODEL_HYPOTHESIS',
-        falsifier: 'Support hours per customer fall as customer count grows.'
+        falsifier: 'Support hours per customer fall as customer count grows.',
+        status: 'HYPOTHESIS'
       }
     ],
     commoditizationRisks: [
@@ -295,6 +320,7 @@ function baseWorkspace() {
         availabilityTrend: 'STABLE',
         timeHorizon: 'MONTHS',
         ventureImpact: 'Standalone willingness to pay could fall.',
+        remainingDifferentiation: 'Trusted cross-platform workflow history and independent verification.',
         dependencyRefs: ['dependency-model-api'],
         eventRefs: [],
         evidenceRefs: ['source-current'],
@@ -307,6 +333,7 @@ function baseWorkspace() {
     stressScenarios: [
       {
         scenarioId: 'scenario-bundle',
+        stressType: 'INCUMBENT_BUNDLE',
         name: 'Suite bundles basic audit',
         threatActorRef: 'actor-incumbent',
         eventRefs: [],
@@ -318,6 +345,7 @@ function baseWorkspace() {
         impact: 'Basic feature differentiation loses standalone value.',
         countermoves: ['Own neutral cross-platform verification state'],
         survivalCondition: 'Buyers value independent cross-platform verification.',
+        survivalStatus: 'DAMAGED',
         falsifier: 'Bundling does not change buyer willingness to pay.',
         epistemicState: 'SCENARIO',
         sourceRefs: ['source-current']
@@ -333,6 +361,10 @@ function baseWorkspace() {
         dependencyRefs: ['dependency-model-api'],
         controlPointRefs: ['control-model-api'],
         controlledAssets: ['Cross-platform audit history'],
+        requiredAssets: ['Cross-platform audit history', 'Independent buyer trust'],
+        switching: 'Conditional on portable audit history and provider-neutral integrations.',
+        distribution: 'Direct to governance buyers and through cross-platform integrations.',
+        commoditizationRiskRefs: ['commoditization-basic-audit'],
         vulnerabilities: ['Single model API dependency'],
         responseRefs: ['response-incumbent-bundle'],
         evidenceRefs: ['source-current'],
