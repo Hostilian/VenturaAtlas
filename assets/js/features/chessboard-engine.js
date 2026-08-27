@@ -990,9 +990,10 @@
   }
 
   function detectContradictions(claimsOrWorkspace) {
+    const workspace = Array.isArray(claimsOrWorkspace) ? null : claimsOrWorkspace;
     const claims = Array.isArray(claimsOrWorkspace)
       ? claimsOrWorkspace
-      : collection(claimsOrWorkspace, 'strategicClaims');
+      : collection(workspace, 'strategicClaims');
     const byId = new Map(claims.map(claim => [claim.claimId, claim]));
     const seen = new Set();
     const contradictions = [];
@@ -1023,6 +1024,20 @@
       });
     }
 
+    function addStructural(slug, kind, claimRefs, recordRefs, mechanism) {
+      const contradictionId = `contradiction:structural:${slug}`;
+      if (seen.has(contradictionId)) return;
+      seen.add(contradictionId);
+      contradictions.push({
+        contradictionId,
+        claimRefs: unique(claimRefs || []).filter(ref => byId.has(ref)),
+        recordRefs: unique(recordRefs || []),
+        kind,
+        mechanism,
+        status: 'OPEN'
+      });
+    }
+
     for (const claim of claims) {
       for (const ref of unique(claim.conflictsWithClaimRefs || claim.conflicts || [])) add(claim, byId.get(ref), 'EXPLICIT_CONFLICT');
       if (claim.contradictionStatus === 'OPEN') addDeclared(claim, 'DECLARED_OPEN_CONTRADICTION');
@@ -1040,6 +1055,71 @@
         const sameSubject = hasText(leftSubject) && normalizeToken(leftSubject) === normalizeToken(rightSubject);
         const opposed = new Set([String(left.polarity || '').toUpperCase(), String(right.polarity || '').toUpperCase()]);
         if (sameSubject && opposed.has('AFFIRMS') && opposed.has('DENIES')) add(left, right, 'OPPOSING_POLARITY');
+      }
+    }
+
+    if (workspace) {
+      const dependencies = collection(workspace, 'dependencies');
+      const dependencyIndex = new Map(dependencies.map(item => [item.dependencyId, item]));
+      const positions = collection(workspace, 'positions');
+      const moats = collection(workspace, 'moatMechanisms');
+
+      for (const position of positions.filter(item => /NEUTRAL/i.test(item.positionType || ''))) {
+        const gatekeeperDependencies = unique(position.dependencyRefs || [])
+          .map(ref => dependencyIndex.get(ref))
+          .filter(item => item && item.providerPower === 'VERY_HIGH' && ['HIGH', 'VERY_HIGH'].includes(item.criticality));
+        if (gatekeeperDependencies.length) {
+          addStructural(
+            `neutrality-gatekeeper-dependence:${position.positionId}`,
+            'PLATFORM_NEUTRALITY_GATEKEEPER_DEPENDENCE',
+            ['STR-CANDIDATE-LEDGER', 'STR-CONTROL-PURCHASER-GRAPH'],
+            [position.positionId, ...gatekeeperDependencies.map(item => item.dependencyId)],
+            'The proposed neutral position still depends on high-criticality resources controlled by very-high-power gatekeepers.'
+          );
+        }
+      }
+
+      for (const moat of moats.filter(item => ['PROPRIETARY_DATA', 'DATA_FEEDBACK'].includes(item.mechanism))) {
+        const unresolvedDependencies = unique(moat.dependencyRefs || [])
+          .map(ref => dependencyIndex.get(ref))
+          .filter(item => item?.epistemicState === UNKNOWN);
+        if (unresolvedDependencies.length) {
+          addStructural(
+            `data-moat-unresolved-accumulation:${moat.moatId}`,
+            'DATA_MOAT_UNRESOLVED_ACCUMULATION_RIGHTS',
+            moat.relatedClaimRefs,
+            [moat.moatId, ...unresolvedDependencies.map(item => item.dependencyId)],
+            'The candidate data moat requires accumulation, but a required dependency is explicitly UNKNOWN.'
+          );
+        }
+      }
+
+      for (const moat of moats.filter(item => item.mechanism === 'NETWORK_EFFECT')) {
+        const lowFrictionMultiHoming = unique(moat.dependencyRefs || [])
+          .map(ref => dependencyIndex.get(ref))
+          .filter(item => item?.multiHoming?.allowed === 'YES' && item.multiHoming.friction === 'LOW');
+        if (lowFrictionMultiHoming.length) {
+          addStructural(
+            `network-effect-low-friction-multihoming:${moat.moatId}`,
+            'NETWORK_EFFECT_LOW_FRICTION_MULTI_HOMING',
+            moat.relatedClaimRefs,
+            [moat.moatId, ...lowFrictionMultiHoming.map(item => item.dependencyId)],
+            'The candidate network effect coexists with explicitly allowed, low-friction multi-homing.'
+          );
+        }
+      }
+
+      const audit = workspace.legacyScoreAudit;
+      const scoredLegacyNotes = /\b(defensibility|competitiveAdvantage|dataAdvantagePotential)\b[^.]*\b\d+(?:\.\d+)?\b/i.test(audit?.notes || '');
+      const observedMoat = moats.some(item => item.status === 'OBSERVED_TEMPORARY');
+      if (audit?.mechanismCoverage === 'PARTIAL' && scoredLegacyNotes && !observedMoat) {
+        addStructural(
+          'legacy-defensibility-mechanism-gap',
+          'DEFENSIBILITY_SCORE_MECHANISM_GAP',
+          ['STR-DATA-MOAT-UNPROVEN', 'STR-DIRECT-COMPETITOR-GAP'],
+          moats.map(item => item.moatId),
+          'Legacy strategic scores remain preserved while no moat mechanism is recorded as observed.'
+        );
       }
     }
 

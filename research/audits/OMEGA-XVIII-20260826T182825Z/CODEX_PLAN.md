@@ -1,8 +1,7 @@
 # OMEGA-XVIII Track A Execution Plan
 
-**Audit Run ID:** `OMEGA-XVIII-20260826T011500Z`
+**Audit Run ID:** `OMEGA-XVIII-20260826T182825Z`
 **Timestamp:** `2026-08-26T20:13:19+02:00`
-**Supersedes:** Prior thin stub
 **Author:** Codex / Antigravity (Track A)
 **Authority:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Prompt
 
@@ -12,7 +11,7 @@
 
 ### Step 1: Subsystem & Fixture Audit across All 5 New Systems
 - **RELAY:** Audited schemas, `relay-archetypes.json` (7 archetypes), and `relay-fixtures.json` (3 fixtures, `SYNTHETIC_DEMO`). Verified `venture-ops-agent` ownership.
-- **ORBIT:** Audited `data/portfolios.json` (3 portfolios, 8 hypothetical bets). Verified `data/forecasts.json` has 0 resolved forecasts, `data/ranking-runs.json` has 0 runs, and `data/pairwise-votes.json` has 0 votes. Confirmed Brier scoring engine is uncalibrated against live market events.
+- **ORBIT:** Audited `data/portfolios.json` (3 portfolios, 8 hypothetical bets). Verified `data/forecasts.json` contains 0 resolved forecasts, `data/ranking-runs.json` contains 0 runs, and `data/pairwise-votes.json` contains 0 votes. Confirmed Brier scoring engine is uncalibrated against live market events.
 - **CONSTELLATION:** Audited `data/constellation-capabilities.json` (8 canonical capabilities) vs `data/constellation-fixtures.json` (10 diagnostic fixtures). Clarified documentation discrepancy ("8 capabilities, 10 fixtures"). Verified `organization-governance-agent` ownership.
 - **CAPITAL:** Audited `data/capital-clock-ledger.json` (5 clocks, upcoming deadlines in 14 and 22 days, all `capitalAtRisk=null`). Audited `data/capital-dogfood.json` (3 ventures; confirmed FactBounty idea-061 stage is aspirational while MERCURY C0 verdict governs). Verified `capital-strategy-agent` ownership.
 - **MERCURY:** Audited `research/mercury/` and `schemas/mercury-*.schema.json`. Confirmed FactBounty remains at C0 (0 organizations, 0 conversations, 0 revenue). Verified `commercial-discovery-agent` ownership.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "3.0.0",
-  "lastUpdated": "2026-08-21T00:00:00Z",
+  "lastUpdated": "2026-08-26T20:13:19+02:00",
   "tasks": [
     {
       "id": "TASK-000A",
@@ -554,6 +554,18 @@
       "dependencies": ["OMG-001"],
       "verificationMethod": "Pre-registered falsification experiments with kill thresholds and Why-Not-X evaluation",
       "filesAffected": ["data/validation-experiments.json", "data/information-value-queue.json", "scripts/market-killer.py"]
+    },
+    {
+      "id": "OMG-XIX-001",
+      "title": "Systematic Damaged Label Repair across Artifact Corpus (FM, VP, TB)",
+      "domain": "Content Quality & Epistemics",
+      "priorityScore": 96.0,
+      "urgency": "P1",
+      "status": "READY",
+      "assignedAgent": "ventureatlas-data-safety",
+      "dependencies": ["OMG-001"],
+      "verificationMethod": "Surgical regex repair and automated scan confirming zero damaged patterns across 98 financial models, 9 validation plans, and 10 technical blueprints (117 files total)",
+      "filesAffected": ["financial-models/", "validation-plans/", "technical-blueprints/"]
     }
   ]
 }

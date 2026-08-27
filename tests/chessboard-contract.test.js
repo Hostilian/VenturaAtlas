@@ -72,6 +72,10 @@ test('strict CHESSBOARD contract validates the private dogfood workspace and pre
   assert.equal(result.expectedSelectionState, 'NO_AUTHORITATIVE_ACTIVE_VENTURE');
   assert.equal(result.counts.strategicClaims, workspace.strategicClaims.length);
   assert.equal(result.counts.sourceRecords, workspace.sourceRecords.length);
+  assert.ok(
+    workspace.strategicClaims.some(claim => claim.counterEvidenceRefs.length && claim.contradictionStatus === 'NONE'),
+    'counterevidence must remain independent from logical contradiction status'
+  );
   assert.equal(result.warnings.length, 1);
   assert.match(result.warnings[0], /^OMEGA_PUBLICATION_GATE:/);
   assert.match(result.warnings[0], /admission before publication/);

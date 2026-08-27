@@ -3,8 +3,44 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const Ajv2020 = require('ajv/dist/2020');
+const addFormats = require('ajv-formats');
 
 const ChessboardEngine = require('../assets/js/features/chessboard-engine.js');
+const { validateChessboardWorkspace } = require('../assets/js/core/chessboard-store.js');
+
+const ROOT = path.resolve(__dirname, '..');
+const PRIVATE_DOGFOOD_PATH = path.join(
+  ROOT,
+  '.agent-state',
+  'chessboard',
+  'idea-061-market-structure.json'
+);
+const HAS_PRIVATE_DOGFOOD = fs.existsSync(PRIVATE_DOGFOOD_PATH);
+const CHESSBOARD_SCHEMA = JSON.parse(fs.readFileSync(
+  path.join(ROOT, 'schemas', 'chessboard-workspace.schema.json'),
+  'utf8'
+));
+const schemaValidator = new Ajv2020({ allErrors: true, strict: false });
+addFormats(schemaValidator);
+const validateSchema = schemaValidator.compile(CHESSBOARD_SCHEMA);
+
+const REQUIRED_STRESS_TYPES = Object.freeze([
+  'INCUMBENT_BUNDLE',
+  'API_PRICE_3X',
+  'API_ACCESS_REMOVAL',
+  'MODEL_IMPROVEMENT_90_PERCENT',
+  'OPEN_SOURCE_EQUIVALENT',
+  'CUSTOMER_BUILD_TWO_DAYS',
+  'INTEROPERABILITY_OPENING',
+  'PLATFORM_LOCK_IN',
+  'PLATFORM_OPENING',
+  'SUPPLIER_ENTRY',
+  'CUSTOMER_CONSOLIDATION',
+  'COMPETITOR_ACQUISITION',
+  'ACQUISITION_TARGET_DEPENDENCE'
+]);
+const SURVIVAL_STATUSES = Object.freeze(['SURVIVES', 'DAMAGED', 'THESIS_BREAKS', 'UNKNOWN']);
 
 function sourceRecord(sourceId, overrides = {}) {
   return {
@@ -443,9 +479,12 @@ function deepFreeze(value) {
 }
 
 test('canonical workspace passes deterministic semantic validation', () => {
+  const workspace = baseWorkspace();
   const first = ChessboardEngine.validateWorkspace(baseWorkspace());
   const second = ChessboardEngine.validateChessboardDocument(baseWorkspace());
 
+  assert.equal(validateSchema(workspace), true, JSON.stringify(validateSchema.errors));
+  assert.deepEqual(validateChessboardWorkspace(workspace), []);
   assert.equal(first.valid, true, JSON.stringify(first.errors));
   assert.deepEqual(second, first);
   assert.equal(first.counts.ecosystemEdges, 1);
@@ -453,6 +492,45 @@ test('canonical workspace passes deterministic semantic validation', () => {
   assert.equal(first.counts.commoditizationRisks, 1);
   assert.equal(first.counts.events, 0);
   assert.equal(first.counts.sourceRecords, 3);
+});
+
+test('schema 1.1.0 and browser-store contracts reject missing or undeclared structural fields', () => {
+  const cases = [
+    ['wrong schema version', workspace => { workspace.schemaVersion = '1.0.0'; }],
+    ['missing provider power', workspace => { delete workspace.dependencies[0].providerPower; }],
+    ['incomplete switching process', workspace => { delete workspace.dependencies[0].switchingProcess.searchCost; }],
+    ['invalid multi-homing state', workspace => { workspace.dependencies[0].multiHoming.allowed = true; }],
+    ['missing anti-moat status', workspace => { delete workspace.antiMoats[0].status; }],
+    ['missing remaining differentiation', workspace => { delete workspace.commoditizationRisks[0].remainingDifferentiation; }],
+    ['missing stress type', workspace => { delete workspace.stressScenarios[0].stressType; }],
+    ['invalid survival status', workspace => { workspace.stressScenarios[0].survivalStatus = 'WEAKENED'; }],
+    ['missing position assets', workspace => { delete workspace.positions[0].requiredAssets; }],
+    ['undeclared nested field', workspace => { workspace.dependencies[0].switchingProcess.magicScore = 0.9; }]
+  ];
+
+  for (const [label, mutate] of cases) {
+    const candidate = deepClone(baseWorkspace());
+    mutate(candidate);
+    assert.equal(validateSchema(candidate), false, `${label} passed JSON Schema unexpectedly`);
+    assert.notDeepEqual(
+      validateChessboardWorkspace(candidate),
+      [],
+      `${label} passed the browser-store contract unexpectedly`
+    );
+  }
+});
+
+test('schema declares the complete required stress suite and closed survival vocabulary', () => {
+  const stressProperties = CHESSBOARD_SCHEMA.$defs.stressScenario.properties;
+  const declaredStressTypes = stressProperties.stressType.enum;
+
+  assert.deepEqual(
+    REQUIRED_STRESS_TYPES.filter(stressType => !declaredStressTypes.includes(stressType)),
+    []
+  );
+  assert.deepEqual(stressProperties.survivalStatus.enum, SURVIVAL_STATUSES);
+  assert.equal(new Set(declaredStressTypes).size, declaredStressTypes.length);
+  assert.equal(new Set(stressProperties.survivalStatus.enum).size, SURVIVAL_STATUSES.length);
 });
 
 test('acceptance 01 — direct competitor trace reaches actor, source, overlap, and structural differences', () => {
@@ -802,13 +880,59 @@ test('declared and source-level contradictions are detected deterministically', 
 
 test('strategic brief and research queue remain qualitative, ordered, and deterministic', () => {
   const workspace = baseWorkspace();
+  workspace.actors.push(actor('actor-status-quo', 'Manual review', 'STATUS_QUO', {
+    pricing: 'Free with existing staff time',
+    assets: ['existing buyer workflow'],
+    incentives: ['Avoid a new vendor']
+  }));
+  workspace.marketDefinitions[0].includedAlternativeActorRefs.push('actor-status-quo');
+  workspace.responses.push({
+    ...deepClone(workspace.responses[0]),
+    responseId: 'response-incumbent-self-preference',
+    trigger: 'The venture depends on the incumbent-controlled workflow surface.',
+    possibleAction: 'SELF_PREFERENCE',
+    timeToExecute: 'WEEKS',
+    likelyImpact: 'The incumbent can privilege its own workflow before a full bundle ships.'
+  });
+  workspace.stressScenarios.push({
+    ...deepClone(workspace.stressScenarios[0]),
+    scenarioId: 'scenario-structural-kill',
+    stressType: 'STRUCTURAL_KILL_COMPOSITE',
+    name: 'Structural kill combination',
+    impact: 'Bundling plus access restriction destroys the neutral-layer thesis.',
+    survivalStatus: 'THESIS_BREAKS'
+  });
   const firstBrief = ChessboardEngine.buildStrategicBrief(workspace);
   const secondBrief = ChessboardEngine.buildStrategicBrief(workspace);
   const queue = ChessboardEngine.buildResearchQueue(workspace);
 
   assert.deepEqual(firstBrief, secondBrief);
   assert.equal(firstBrief.venture.canonicalIdeaId, 'idea-001');
+  assert.equal(firstBrief.customerJob, 'Verify AI-generated workflow artifacts');
+  assert.equal(firstBrief.valueChainPosition.layerId, 'layer-application');
+  assert.equal(firstBrief.mainControlPoint.controlPointId, 'control-model-api');
+  assert.equal(firstBrief.mainControlPointOwner.actorId, 'actor-provider');
   assert.equal(firstBrief.mainDirectCompetitor.actorId, 'actor-competitor');
+  assert.equal(firstBrief.mainSubstitute.actorId, 'actor-status-quo');
+  assert.equal(firstBrief.freeSubstitute.actorId, 'actor-status-quo');
+  assert.equal(firstBrief.adjacentIncumbent.actorId, 'actor-incumbent');
+  assert.equal(firstBrief.criticalDependency.dependencyId, 'dependency-model-api');
+  assert.equal(firstBrief.incumbentCheapestResponse.response, 'SELF_PREFERENCE');
+  assert.deepEqual(
+    firstBrief.incumbentResponseRepertoire.map(item => item.response).sort(),
+    ['BUNDLE', 'SELF_PREFERENCE']
+  );
+  assert.equal(firstBrief.bundleExposure.responseId, 'response-incumbent-bundle');
+  assert.equal(firstBrief.multiHoming.allowed, 'CONDITIONAL');
+  assert.equal(firstBrief.switchingCost.status, 'CONDITIONAL');
+  assert.equal(firstBrief.commoditizingCapability.riskId, 'commoditization-basic-audit');
+  assert.equal(firstBrief.candidateMoat.moatId, 'moat-workflow-history');
+  assert.equal(firstBrief.moatStatus, 'CONDITIONAL');
+  assert.equal(firstBrief.antiMoat.antiMoatId, 'anti-moat-support');
+  assert.equal(firstBrief.structuralKillThreat.scenarioId, 'scenario-structural-kill');
+  assert.equal(firstBrief.strategicPosition.positionId, 'position-neutral');
+  assert.equal(firstBrief.biggestUnknown.gapId, 'gap-neutrality-demand');
+  assert.equal(firstBrief.nextResearchQuestion, 'Will buyers pay for independent cross-platform verification?');
   assert.equal(queue[0].gapId, 'gap-neutrality-demand');
   assert.equal(queue[0].decisionRelevance, 'CRITICAL');
   assert.equal(JSON.stringify(firstBrief).includes('NaN'), false);
@@ -826,6 +950,72 @@ test('all evaluators accept deeply frozen inputs and strategic events remain det
 
   assert.deepEqual(first, second);
   assert.equal(JSON.stringify(workspace), before);
+});
+
+test('private dogfood covers every required stress future with an explicit survival result', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
+  const workspace = JSON.parse(fs.readFileSync(PRIVATE_DOGFOOD_PATH, 'utf8'));
+  const declaredTypes = new Set(workspace.stressScenarios.map(scenario => scenario.stressType));
+  const requiredScenarios = workspace.stressScenarios.filter(scenario =>
+    REQUIRED_STRESS_TYPES.includes(scenario.stressType)
+  );
+
+  assert.deepEqual(
+    REQUIRED_STRESS_TYPES.filter(stressType => !declaredTypes.has(stressType)),
+    []
+  );
+  assert.equal(requiredScenarios.length, REQUIRED_STRESS_TYPES.length);
+  for (const scenario of requiredScenarios) {
+    assert.ok(
+      SURVIVAL_STATUSES.includes(scenario.survivalStatus),
+      `${scenario.scenarioId} has an invalid survival status`
+    );
+    assert.ok(scenario.survivalCondition.trim(), `${scenario.scenarioId} lacks a survival condition`);
+    assert.ok(scenario.falsifier.trim(), `${scenario.scenarioId} lacks a falsifier`);
+  }
+  assert.equal(validateSchema(workspace), true, JSON.stringify(validateSchema.errors));
+  assert.deepEqual(validateChessboardWorkspace(workspace), []);
+});
+
+test('every recorded private dogfood event is executable by the deterministic event engine', { skip: !HAS_PRIVATE_DOGFOOD }, () => {
+  const workspace = JSON.parse(fs.readFileSync(PRIVATE_DOGFOOD_PATH, 'utf8'));
+  const before = JSON.stringify(workspace);
+
+  assert.ok(workspace.events.length > 0, 'private dogfood must record at least one strategic event');
+  for (const event of workspace.events) {
+    const eventBefore = JSON.stringify(event);
+    const result = ChessboardEngine.applyStrategicEvent(workspace, event);
+    assert.equal(result.status, 'APPLIED', `${event.eventId} (${event.eventType}) was not applied`);
+    assert.ok(result.effects.length > 0, `${event.eventId} produced no structural effect`);
+    assert.equal(JSON.stringify(event), eventBefore, `${event.eventId} was mutated`);
+    assert.equal(validateSchema(result.workspace), true, JSON.stringify(validateSchema.errors));
+    assert.deepEqual(validateChessboardWorkspace(result.workspace), []);
+  }
+  assert.equal(JSON.stringify(workspace), before, 'event application mutated the source workspace');
+});
+
+test('Market Structure Lab exposes the brief, threat selector, evidence, survival, and comparison contracts', () => {
+  const source = fs.readFileSync(
+    path.join(ROOT, 'assets', 'js', 'features', 'chessboard-lab.js'),
+    'utf8'
+  );
+
+  for (const marker of [
+    '${renderStrategicBrief(ws)}',
+    '${renderStructuralMatrices(ws)}',
+    '${renderContradictions(ws)}',
+    'id="threatActorView"',
+    'Attack and countermove tree',
+    'Counterevidence / falsifier',
+    'Strategic survival table',
+    'Position comparison',
+    'Observed / article checked:',
+    '<strong>Affected:</strong>',
+    '<strong>Sources:</strong>'
+  ]) {
+    assert.ok(source.includes(marker), `Market Structure Lab omits ${marker}`);
+  }
+  assert.match(source, /getElementById\('threatActorView'\)\?\.addEventListener\('change'/);
+  assert.match(source, /selectedThreatActorRef\s*=\s*event\.currentTarget\.value/);
 });
 
 test('UMD build exposes the same pure API in a browser-like global without platform access', () => {

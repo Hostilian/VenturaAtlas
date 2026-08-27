@@ -7,7 +7,7 @@
   <meta name="description" content="A private, browser-local lab for traceable market structure, ecosystem, competitive-response, moat, anti-moat, and commoditization analysis.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
-  <link rel="stylesheet" href="../assets/css/chessboard.css?v=1.0.0">
+  <link rel="stylesheet" href="../assets/css/chessboard.css?v=1.1.0">
 </head>
 <body data-page="chessboard" data-root="..">
   <a href="#main" class="skip">Skip to content</a>
@@ -40,8 +40,23 @@
     </noscript>
 
     <div class="notice chessboard-boundary">
-      <strong>Local-private boundary.</strong> Chessboard reads only a file you explicitly import and stores the validated workspace in this browser. It does not fetch private JSON, publish strategy, contact competitors, or generate countermoves. Exports are unencrypted private JSON.
+      <strong>Local-private boundary · workspace contract 1.1.0.</strong> Chessboard starts empty, reads only a JSON file you explicitly import, and stores the validated workspace in this browser. It does not fetch private strategy, publish an imported workspace, contact market actors, or run background work. Exports are unencrypted private JSON and must be handled as private strategy data.
     </div>
+
+    <section class="panel chessboard-section" aria-labelledby="chessboard-authority-title">
+      <h2 id="chessboard-authority-title">Authority and interpretation boundary</h2>
+      <p>Chessboard cannot select an active venture or change canonical scores, rankings, or lifecycle state. When repository authority records <strong>no authoritative active venture</strong>, every imported analysis target, strategic brief, position, and stress result remains provisional dogfood—even when its workspace validates successfully.</p>
+      <details>
+        <summary><strong>What a validated 1.1.0 workspace can show</strong></summary>
+        <ul>
+          <li>Strategic briefs, alternative market boundaries, value-chain layers, ecosystem actors, typed relationships, and structural position comparisons.</li>
+          <li>Provider power, switching processes, multi-homing constraints, substitutes, complementors, regulators, standards bodies, and control points.</li>
+          <li>Actor-focused response paths with evidence, counterevidence, falsifiers, attack/countermove trees, typed strategic stresses, and explicit survival outcomes.</li>
+          <li>Moats, anti-moats, commoditization risks, dated events with affected references, contradictions, research gaps, handoffs, and source trace cards.</li>
+        </ul>
+        <p class="small">The interface renders validated records and deterministic comparisons; it does not turn hypotheses into facts or authorize external action. See the <a href="../schemas/chessboard-workspace.schema.json">public workspace schema</a> for the complete contract.</p>
+      </details>
+    </section>
 
     <div id="chessboardApp" aria-busy="true">
       <p role="status">Opening the empty local Market Structure Lab…</p>
@@ -49,10 +64,10 @@
   </main>
 
   <script src="../assets/js/config.js?v=2.7.1"></script>
-  <script src="../assets/js/core/chessboard-store.js?v=1.0.0"></script>
-  <script src="../assets/js/features/chessboard-engine.js?v=1.0.0"></script>
+  <script src="../assets/js/core/chessboard-store.js?v=1.1.0"></script>
+  <script src="../assets/js/features/chessboard-engine.js?v=1.1.0"></script>
   <script src="../assets/js/site.js?v=2.7.1"></script>
-  <script src="../assets/js/features/chessboard-lab.js?v=1.0.0"></script>
+  <script src="../assets/js/features/chessboard-lab.js?v=1.1.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const app = document.getElementById('chessboardApp');

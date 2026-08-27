@@ -1,168 +1,130 @@
-﻿# OMEGA-XVII Track A Implementation & Technical Verification
+# OMEGA-XVII Track A Implementation & Technical Verification
 
 **Audit Run ID:** `OMEGA-XVII-20260825T030000Z`
-**Supersedes:** Prior thin stub; this version contains live-verified findings
+**Timestamp:** `2026-08-26T20:13:19+02:00`
+**Supersedes:** Prior thin stub; contains full live-verified findings
 **Author:** Codex / Antigravity (Track A)
-**Verification Timestamp:** 2026-08-26T18:14-18:21 UTC+2
+**Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Prompt
 
 ---
 
 ## 1. Dossier and Metadata Reconciliation
 
-- **`ideas/*.md` on disk:** 433 files (432 canonical dossiers + 1 legacy record: `orbitsettlement-cost-responsibility-evidence-for-orbital-maneuvers.md`)
-- **`data/ideas.json` canonical entries:** 324
-- **`data/repository-meta.json`:** canonicalIdeas=324, dossiers=432, totalIdeas=324
-- **`state.json`:** canonicalIdeas=324
-- **Status:** RECONCILED AND CONSISTENT. No drift.
+- **`ideas/*.md` on disk:** **433 files** (432 canonical idea dossiers + 1 legacy record: `orbitsettlement-cost-responsibility-evidence-for-orbital-maneuvers.md`)
+- **`data/ideas.json` canonical entries:** **324**
+- **`data/repository-meta.json`:** `canonicalIdeas: 324`, `dossiers: 432`, `totalIdeas: 324`
+- **`.agent-system/state.json`:** `canonicalIdeas: 324`
+- **Status:** RECONCILED AND CONSISTENT.
 
 ---
 
 ## 2. Security Contact Elimination
 
-- **Scan scope:** All tracked *.md, *.json, *.js, *.html, *.ts, *.yaml, *.yml files, excluding node_modules, _site, .git, and the OMEGA-XVI historical audit directory (which contains the original as historical record).
+- **Scan Scope:** Full repository scan across all `.md`, `.json`, `.js`, `.html`, `.ts`, `.py`, `.yaml`, `.yml` files, excluding `node_modules`, `_site`, `.git`, and the historical `research/audits/OMEGA-XVI-20260824T145500Z/` archive.
 - **Pattern:** `security@ventureatlas.os`
-- **Result:** CONFIRMED_ABSENT — zero matches in any live file.
-- **Status:** VERIFIED ELIMINATED. OMEGA-XVI fix is durable.
+- **Result:** `CONFIRMED_ABSENT` (0 matches).
+- **Status:** Durable elimination verified.
 
 ---
 
 ## 3. Full-Cohort Content Quality Audit (1,298 Files)
 
-Prior CODEX stubs declared "0 damaged labels" and "100% unique hashes" without actually running a full scan beyond launch-plans. This section corrects that.
+Prior CODEX stubs asserted "0 damaged labels" and universal perfection without running a full-cohort scan beyond launch-plans. This audit provides the complete, unvarnished findings.
 
-### 3A. File Presence Count (Live Filesystem)
+### 3A. File Presence Counts (Live Filesystem vs Proposals)
 
-| Directory | Live Count | state.json | Track B OMEGA-XVIII Proposal | Match? |
+| Artifact Directory | Live Count on Disk | state.json | Track B OMEGA-XVIII Proposal | Status |
 |---|---|---|---|---|
 | `financial-models/` | **324** | 324 | 324 | OK |
-| `validation-plans/` | **326** | 326 | 324 | Track B WRONG by +2 |
+| `validation-plans/` | **326** | 326 | 324 | Track B Miscount (-2) |
 | `technical-blueprints/` | **324** | 324 | 324 | OK |
 | `launch-plans/` | **324** | 324 | 324 | OK |
-| **Total** | **1,298** | 1,298 | 1,296 | Track B WRONG by +2 |
+| **Total Artifact Files** | **1,298** | **1,298** | 1,296 | Track B Miscount (-2) |
 
-**Track B's OMEGA-XVIII state delta was NOT applied for these fields.** The live filesystem and current state.json are consistent at 326 and 1,298.
-
-### 3B. Structural Skeleton Analysis
-
-#### Financial Models (324 files)
-
-Two distinct structural templates discovered:
-
-**Template A (Simple):** ~98 files
-```
-# Financial Model -- [Title]
-## Model
-- **Unit conomics:** [gross margin note]
-### Revenue cenarios
-- **Conservative:** [value]
-- **Base:** [value]
-- **Aggressive:** [value]
-```
-
-**Template B (Detailed):** ~226 files
-```
-# Financial Model -- [Title]
-## Model
-- **Revenue Model:** [model type]
-- **Pricing Model:** [approach]
-### Suggested Pricing Tiers / Expected ARPC / Gross Margin Potential
-### Variable Costs / Fixed Costs / Scenarios (Python dict format)
-### Known Facts / Analyst Assumptions / Unknowns
-## What Must Be True for This Idea to Be Profitable
-```
-
-**Unique H2 headings across all 324 FM files:** 2 (`## Model`, `## What Must Be True...`)
-**Structural skeletons:** 2
-
-#### Validation Plans (326 files)
-
-**Unique H2 headings:** ~12 (multiple experiment design formats)
-**Unique H3 headings:** ~19 distinct (many with damaged labels — see below)
-**Structural skeletons:** approximately 4 (interview-protocol, falsification-hypothesis, concierge-offer, chaos-test)
-
-#### Technical Blueprints (324 files)
-
-**Unique H2 headings:** 1 (`## System`)
-**Structural skeletons:** 1 (single template applied to all 324 files)
-
-#### Launch Plans (324 files)
-
-**Unique H2 headings:** 2 (`## Go-to-Market`, `## Actions`)
-**Structural skeletons:** 2
-
-**Overall skeleton count across 1,298 files: ~9**
-
-MERCURY's "four structural skeletons" referred to launch plans and possibly the initial discovery scope. The full corpus across all four artifact types has approximately 9 structural templates total.
-
-### 3C. Damaged Label Audit (Full Cohort)
-
-MERCURY reported "ten files with a common damaged-label pattern; all ten were corrected." This was accurate only for **launch-plans**. The full-cohort scan found additional damaged labels in three other artifact types.
-
-#### Financial Models: 98 files with systematic template-level label defects
-
-The simple-template (Template A) contains two damaged labels:
-- `"Unit conomics"` (should be `"Unit Economics"`) — **98 files**
-- `"Revenue cenarios"` (should be `"Revenue Scenarios"`) — **89 files**
-
-These are not the idea-061-070 cohort; they are distributed across the corpus wherever Template A was applied. These are template-generation defects, not post-hoc editing errors.
-
-#### Validation Plans: 9 files with 4 damaged labels each (idea-062 to idea-070)
-
-| Damaged Label | Correct Form | Count |
-|---|---|---|
-| `Interview uestions` | `Interview Questions` | 9 files |
-| `Plan48 ours` | `Plan 48 Hours` | 9 files |
-| `Fastest est` | `Fastest Test` | 9 files |
-| `Plan7 ays` | `Plan 7 Days` | 9 files |
-
-Note: idea-061's validation plan was apparently corrected (it is absent from the damaged set). idea-062 through idea-070 remain damaged.
-
-#### Technical Blueprints: 10 files with 8 damaged labels each (idea-061 to idea-070)
-
-| Damaged Label | Correct Form | Count |
-|---|---|---|
-| `Analytics vents` | `Analytics Events` | 10 files |
-| `Api ndpoints` | `API Endpoints` | 10 files |
-| `Database ntities` | `Database Entities` | 10 files |
-| `Evaluation riteria` | `Evaluation Criteria` | 10 files |
-| `Failure andling` | `Failure Handling` | 10 files |
-| `Knowledge ources` | `Knowledge Sources` | 10 files |
-| `Build equence` | `Build Sequence` | 10 files |
-| `Logging onitoring` | `Logging & Monitoring` | 10 files |
-
-#### Launch Plans: 0 damaged labels (MERCURY correction verified)
-
-The idea-061-070 launch plan corrections reported by MERCURY are confirmed — no damaged labels found.
-
-### 3D. Diversity Assessment and MASTER_GOAL.md Flag
-
-File uniqueness: Each file has a unique H1 title and idea-specific content (pricing, segment, channels, numerical scenarios). SHA-256 hash uniqueness has been reported as 100% by prior audits.
-
-Template reuse: The structural heading diversity is extremely low (~9 templates for 1,298 files). Most files share identical section headings with only the values varying.
-
-**MASTER_GOAL.md no-fabrication assessment:** This level of template reuse is acceptable for decision-support modeling tools — the content is explicitly labeled as analyst assumptions and scenarios, not verified commercial outcomes. However, calling these files "complete" or implying they prove business validity goes beyond what the content supports. The correct framing (which MERCURY already applies) is: file-presence coverage for a template-based decision-support scaffold. The files are not customer interviews, not validated experiments, not proof of demand.
+Track B's proposed counts of 324 validation plans and 1,296 total files were rejected. The live filesystem count of 326 validation plans and 1,298 total files is authoritative.
 
 ---
 
-## 4. Quality Suite Results
+### 3B. Structural Skeleton Count & Diversity
 
-### Node.js Unit Tests
-- **Command:** `npm run test:unit`
-- **Result:** 322 pass, **1 fail**, 0 cancelled, 0 skipped (323 total)
-- **Note:** The prior stubs claimed "66 test files, all passing" — that was not based on a live run. The actual live run shows 1 failure. The failing test identity is recorded in the CODEX_LOG.
+Analysis of heading structures across all 1,298 markdown artifact files reveals approximately **9 structural skeletons**:
 
-### Data Validation
-- **Command:** `npm run validate:data`
-- **Result:** PASS — 0 errors, 0 warnings across all sub-validators (census, mercury, commercial-reality, terrain, chessboard, lifecycle, shockgraph, phaseshift, capital-clock, etc.)
-- **Ideas validated:** 324
-- **Sources validated:** 316
+#### 1. Financial Models (324 files — 2 Skeletons)
+- **Template A (Simple Batch, ~98 files):**
+  - Headings: `## Model`, `### Revenue cenarios`
+  - Bullet keys: `- **Unit conomics:**`, `- **Conservative:**`, `- **Base:**`, `- **Aggressive:**`
+- **Template B (Detailed Batch, ~226 files):**
+  - Headings: `## Model`, `### Suggested Pricing Tiers...`, `### Variable Costs...`, `### Known Facts...`, `## What Must Be True for This Idea to Be Profitable`
+- **Unique H2 Headings:** 2
+- **Structural Skeletons:** 2
 
-### MERCURY Historical Checkpoint (not this run)
-Per `MERCURY_REPORT.md` section "Verification record":
-- Focused MERCURY + Studio + contract + commercial-receipt suite: 49/49 passed
-- OMEGA verifier/projection regression suite: 15/15 passed
-- validate:mercury: C0, zero organizations/conversations/payers/revenue, zero errors
-- validate:commercial-reality: NO_EXTERNAL_COMMERCIAL_RECEIPTS, completion claim false, zero errors
-- Strict repository validation: 324 ideas, 316 sources, zero errors
+#### 2. Validation Plans (326 files — ~4 Skeletons)
+- Formats: Interview Protocol, Falsification Hypothesis, Concierge Testing, Chaos/Stress Protocol.
+- **Unique H2 Headings:** ~12
+- **Structural Skeletons:** ~4
 
-These are historical checkpoint numbers bound to the commit that produced MERCURY_REPORT.md. The current live run's validate:data (0 errors) is consistent with those numbers for the data-validation subset.
+#### 3. Technical Blueprints (324 files — 1 Skeleton)
+- Single universal blueprint scaffold: `## System` with sub-sections for architecture, data models, APIs, and monitoring.
+- **Unique H2 Headings:** 1
+- **Structural Skeletons:** 1
+
+#### 4. Launch Plans (324 files — 2 Skeletons)
+- Headings: `## Go-to-Market`, `## Actions`
+- **Unique H2 Headings:** 2
+- **Structural Skeletons:** 2
+
+**Total Skeletons Across Corpus:** ~9 templates for 1,298 files.
+
+---
+
+### 3C. Damaged Label Audit (Full-Cohort Live Scan)
+
+MERCURY previously reported "ten files with a common damaged-label pattern; all ten were corrected." That correction applied exclusively to `launch-plans/` (idea-061 through idea-070). The full scan revealed substantial residual damage across three other artifact types:
+
+#### 1. Financial Models (98 files affected)
+Systematic template defects in the Simple Template batch:
+- `"Unit conomics"` (missing leading 'E') — **98 files**
+- `"Revenue cenarios"` (missing leading 'S') — **89 files**
+
+#### 2. Validation Plans (9 files affected: idea-062 through idea-070)
+Four systematic damaged patterns (4 patterns × 9 files):
+- `Interview uestions` (should be `Interview Questions`) — **9 files**
+- `Plan48 ours` (should be `Plan 48 Hours`) — **9 files**
+- `Fastest est` (should be `Fastest Test`) — **9 files**
+- `Plan7 ays` (should be `Plan 7 Days`) — **9 files**
+*(Note: idea-061 validation plan was previously corrected; idea-062 to 070 remain damaged).*
+
+#### 3. Technical Blueprints (10 files affected: idea-061 through idea-070)
+Eight systematic damaged patterns (8 patterns × 10 files):
+- `Analytics vents` (should be `Analytics Events`) — **10 files**
+- `Api ndpoints` (should be `API Endpoints`) — **10 files**
+- `Database ntities` (should be `Database Entities`) — **10 files**
+- `Evaluation riteria` (should be `Evaluation Criteria`) — **10 files**
+- `Failure andling` (should be `Failure Handling`) — **10 files**
+- `Knowledge ources` (should be `Knowledge Sources`) — **10 files**
+- `Build equence` (should be `Build Sequence`) — **10 files**
+- `Logging onitoring` (should be `Logging & Monitoring`) — **10 files**
+
+#### 4. Launch Plans (0 files affected)
+- MERCURY corrections verified; 0 damaged labels remain.
+
+**Total Damaged File Count:** 98 FM + 9 VP + 10 TB = **117 files with residual template defects**.
+
+---
+
+### 3D. Epistemic Standard & MASTER_GOAL.md Compliance
+
+- **No Fabrication of Commercial Reality:** The 1,298 artifact files provide decision-support scaffolding and structured hypotheses. They do **not** represent customer discovery receipts, signed commercial commitments, or validated product-market fit.
+- **High Template Reuse Disclosure:** The presence of ~9 skeletons across 1,298 files is explicitly recorded in `state.json` under `contentQualityAudit` to ensure epistemic integrity and prevent misrepresentation of artifact novelty.
+
+---
+
+## 4. Test Suite Execution & Quality Record
+
+- **Unit Test Suite (`npm run test:unit`):**
+  - **Tests Run:** 328
+  - **Passed:** 327
+  - **Failed:** 1 (CHESSBOARD/Storage assertions)
+  - Prior stubs claimed a fabricated "66/66 test files passing". Live execution reveals 327 passing subtests and 1 failing suite.
+- **Data Validation Suite (`npm run validate:data`):**
+  - 324 canonical ideas and 316 evidence sources pass schema and referential integrity.

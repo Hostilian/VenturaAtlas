@@ -3,6 +3,7 @@
 function initChessboardLab() {
   const root = document.getElementById('chessboardApp');
   const api = window.VAChessboard;
+  const engine = window.ChessboardEngine;
   if (!root || !api) return;
 
   const store = new api.ChessboardStore();
@@ -10,6 +11,7 @@ function initChessboardLab() {
   let noticeIsError = Boolean(notice);
   let selectedClaimId = null;
   let viewMarketId = '';
+  let selectedThreatActorRef = '';
 
   const esc = value => String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -65,6 +67,53 @@ function initChessboardLab() {
       <div class="chessboard-summary-card__value">${esc(value)}</div>
       <div class="chessboard-summary-card__note">${esc(note)}</div>
     </article>`;
+  }
+
+  function briefValue(value) {
+    if (value === null || value === undefined || value === '' || value === 'UNKNOWN') return stateBadge('UNKNOWN');
+    if (Array.isArray(value)) return inlineList(value, item => item?.name || item?.question || item?.scenarioId || item);
+    if (typeof value !== 'object') return esc(value);
+    const headline = value.name || value.question || value.resource || value.controlledResource || value.capability ||
+      value.positionType || value.mechanism || value.action || value.status || 'RECORDED';
+    const detail = value.impact || value.claim || value.customerValue || value.abilityMechanism || value.reason || '';
+    return `<strong>${words(headline)}</strong>${detail ? `<br><span class="small">${esc(detail)}</span>` : ''}`;
+  }
+
+  function renderStrategicBrief(ws) {
+    const brief = engine?.buildStrategicBrief?.(ws);
+    if (!brief) return '<section class="panel chessboard-section"><h2>Market Structure Brief</h2><p class="empty">UNKNOWN — deterministic brief engine is unavailable.</p></section>';
+    const fields = [
+      ['Venture', brief.venture?.name],
+      ['Market definitions', brief.marketDefinitions],
+      ['Customer job', brief.customerJob],
+      ['Value-chain position', brief.valueChainPosition],
+      ['Main control point', brief.mainControlPoint],
+      ['Who controls it', brief.mainControlPointOwner],
+      ['Main direct competitor', brief.mainDirectCompetitor],
+      ['Main substitute', brief.mainSubstitute],
+      ['Free substitute', brief.freeSubstitute],
+      ['Adjacent incumbent', brief.adjacentIncumbent],
+      ['Critical upstream dependency', brief.criticalDependency],
+      ["Incumbent's cheapest response", brief.incumbentCheapestResponse],
+      ['Bundle exposure', brief.bundleExposure],
+      ['Multi-homing', brief.multiHoming],
+      ['Switching cost', brief.switchingCost],
+      ['Commoditizing capability', brief.commoditizingCapability],
+      ['Candidate moat', brief.candidateMoat],
+      ['Moat status', brief.moatStatus],
+      ['Anti-moat', brief.antiMoat],
+      ['Structural kill threat', brief.structuralKillThreat],
+      ['Strategic position', brief.strategicPosition],
+      ['Biggest unknown', brief.biggestUnknown],
+      ['Next research question', brief.nextResearchQuestion]
+    ];
+    const selectionBlocked = ws.selectionAuthority?.state !== 'AUTHORITATIVE_ACTIVE_VENTURE';
+    return `<section class="panel chessboard-section" aria-labelledby="strategic-brief-title">
+      <header><div class="chessboard-title-row"><div><div class="eyebrow">Deterministic synthesis</div><h2 id="strategic-brief-title">Market Structure Brief</h2></div>${stateBadge(ws.selectionAuthority?.state || 'UNKNOWN')}</div>
+        <p>Every field is derived from the imported structured workspace. Missing evidence remains UNKNOWN.</p></header>
+      ${selectionBlocked ? '<div class="notice" role="status"><strong>Completion blocker:</strong> this is provisional dogfood, not an authoritatively selected active venture.</div>' : ''}
+      <dl class="chessboard-dl chessboard-brief-grid">${fields.map(([label, value]) => `<dt>${esc(label)}</dt><dd>${briefValue(value)}</dd>`).join('')}</dl>
+    </section>`;
   }
 
   function sourceCard(ws, sourceId) {
@@ -193,6 +242,12 @@ function initChessboardLab() {
           <dl class="chessboard-dl">
             <dt>Assets</dt><dd>${inlineList(item.assets, undefined, 'NONE RECORDED')}</dd>
             <dt>Incentives</dt><dd>${listItems(item.incentives)}</dd>
+            <dt>Target buyer</dt><dd>${esc(textOrUnknown(item.targetBuyer))}</dd>
+            <dt>Core job</dt><dd>${esc(textOrUnknown(item.coreJob))}</dd>
+            <dt>Pricing</dt><dd>${esc(textOrUnknown(item.pricing))}</dd>
+            <dt>Distribution</dt><dd>${inlineList(item.distribution, undefined, 'UNKNOWN')}</dd>
+            <dt>Trajectory</dt><dd>${esc(textOrUnknown(item.trajectory))}</dd>
+            <dt>Strategic intent</dt><dd>${esc(textOrUnknown(item.strategicIntent))}</dd>
             <dt>Dependencies</dt><dd>${esc(item.dependencyRefs.length)} linked</dd>
             <dt>Controls</dt><dd>${esc(item.controlPointRefs.length)} linked</dd>
           </dl>
@@ -211,16 +266,40 @@ function initChessboardLab() {
 
   function renderSubstitutes(ws) {
     const types = new Set(['DIRECT_COMPETITOR', 'INDIRECT_COMPETITOR', 'SUBSTITUTE', 'STATUS_QUO', 'OPEN_SOURCE_PROJECT', 'INTERNAL_BUILD_TEAM', 'ADJACENT_INCUMBENT']);
-    const alternatives = ws.actors.filter(actor => types.has(actor.type));
+    const marketAlternativeRefs = new Set(ws.marketDefinitions.flatMap(market => array(market.includedAlternativeActorRefs)));
+    const alternatives = ws.actors.filter(actor => types.has(actor.type) || marketAlternativeRefs.has(actor.actorId));
     return `<section class="panel chessboard-section" aria-labelledby="substitutes-title">
       <header><div class="eyebrow">Competes for the job or budget</div><h2 id="substitutes-title">Competitors, substitutes, free paths, and internal build</h2><p>Direct products are shown beside status quo, open-source, adjacent, and customer-built alternatives.</p></header>
       <div class="chessboard-card-grid">
         ${alternatives.map(item => `<article class="chessboard-card">
           <div class="chessboard-title-row"><h3>${esc(item.name)}</h3>${stateBadge(item.epistemicState)}</div>
           <p><span class="chip">${words(item.type)}</span></p>
-          <dl class="chessboard-dl"><dt>Assets</dt><dd>${inlineList(item.assets, undefined, 'NONE RECORDED')}</dd><dt>Incentives</dt><dd>${listItems(item.incentives)}</dd><dt>Markets</dt><dd>${inlineList(item.marketRefs, ref => ws.marketDefinitions.find(market => market.marketId === ref)?.name || ref)}</dd></dl>
+          <dl class="chessboard-dl"><dt>Target buyer</dt><dd>${esc(textOrUnknown(item.targetBuyer))}</dd><dt>Core job</dt><dd>${esc(textOrUnknown(item.coreJob))}</dd><dt>Pricing</dt><dd>${esc(textOrUnknown(item.pricing))}</dd><dt>Distribution</dt><dd>${inlineList(item.distribution, undefined, 'UNKNOWN')}</dd><dt>Assets</dt><dd>${inlineList(item.assets, undefined, 'NONE RECORDED')}</dd><dt>Incentives</dt><dd>${listItems(item.incentives)}</dd><dt>Markets</dt><dd>${inlineList(item.marketRefs, ref => ws.marketDefinitions.find(market => market.marketId === ref)?.name || ref)}</dd>${item.openSourceProfile ? `<dt>Open-source profile</dt><dd>License: ${esc(item.openSourceProfile.license)}<br>Latest release: ${esc(item.openSourceProfile.latestRelease)} (${esc(formatDate(item.openSourceProfile.latestReleaseAt))})<br>Activity: ${esc(item.openSourceProfile.activity)}<br>Contributors: ${esc(item.openSourceProfile.contributors)}<br>Cadence: ${esc(item.openSourceProfile.releaseCadence)}<br>Backing: ${esc(item.openSourceProfile.commercialBacking)}<br>Deployment burden: ${esc(item.openSourceProfile.deploymentBurden)}<br>Sources: ${inlineList(item.openSourceProfile.sourceRefs)}</dd>` : ''}</dl>
         </article>`).join('') || '<p class="empty">No substitute actors are recorded. This is missing analysis, not evidence of low competition.</p>'}
       </div>
+    </section>`;
+  }
+
+  function renderStructuralMatrices(ws) {
+    const incumbentTypes = new Set(['ADJACENT_INCUMBENT', 'PLATFORM', 'DIRECT_COMPETITOR']);
+    const incumbents = ws.actors.filter(actor => incumbentTypes.has(actor.type));
+    const competitors = ws.actors.filter(actor => ['DIRECT_COMPETITOR', 'INDIRECT_COMPETITOR', 'ADJACENT_INCUMBENT'].includes(actor.type));
+    const responseRows = actor => ws.responses.filter(response => response.actorRef === actor.actorId);
+    const matchingAssets = (actor, pattern) => actor.assets.filter(asset => pattern.test(asset));
+    return `<section class="panel chessboard-section" aria-labelledby="structural-matrices-title">
+      <header><div class="eyebrow">No combined score</div><h2 id="structural-matrices-title">Incumbent and competitor difference matrices</h2><p>Assets, conflicts, timing, pricing, and distribution stay separate so an installed base is not mistaken for an inevitable win.</p></header>
+      <h3 class="chessboard-subheading">Incumbent response capacity</h3>
+      <div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Actor</th><th>Customers</th><th>Distribution</th><th>Technology / data</th><th>Capital / brand</th><th>Integrations / bundling</th><th>Conflicts</th><th>Response speed</th></tr></thead><tbody>
+        ${incumbents.map(actor => {
+          const responses = responseRows(actor);
+          const bundle = responses.filter(response => ['BUNDLE', 'MAKE_FEATURE_FREE'].includes(response.possibleAction));
+          return `<tr><th scope="row">${esc(actor.name)}<br>${stateBadge(actor.epistemicState)}</th><td>${esc(textOrUnknown(actor.targetBuyer))}</td><td>${inlineList(actor.distribution, undefined, 'UNKNOWN')}</td><td>${inlineList(matchingAssets(actor, /data|catalog|model|technology|workflow|capture|q&a|search/i), undefined, 'UNKNOWN')}</td><td>Capital: UNKNOWN<br><span class="small">Brand/distribution evidence: ${inlineList(matchingAssets(actor, /brand|users|customer|retail|shopping/i), undefined, 'UNKNOWN')}</span></td><td>${inlineList(matchingAssets(actor, /integration|billing|distribution|product page|suite|identity/i), undefined, 'UNKNOWN')}<br><span class="small">Bundle paths: ${bundle.length || 'NONE RECORDED'}</span></td><td>${listItems(responses.flatMap(response => response.constraints), value => esc(value), 'UNKNOWN')}</td><td>${inlineList(responses.map(response => response.timeToExecute), undefined, 'UNKNOWN')}</td></tr>`;
+        }).join('') || '<tr><td colspan="8">No incumbent records.</td></tr>'}
+      </tbody></table></div>
+      <h3 class="chessboard-subheading">Structural competitor differences</h3>
+      <div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Actor</th><th>Target buyer</th><th>Core job</th><th>Pricing</th><th>Distribution</th><th>Controlled assets</th><th>Dependencies</th><th>Trajectory</th></tr></thead><tbody>
+        ${competitors.map(actor => `<tr><th scope="row">${esc(actor.name)}<br><span class="small">${words(actor.type)}</span></th><td>${esc(textOrUnknown(actor.targetBuyer))}</td><td>${esc(textOrUnknown(actor.coreJob))}</td><td>${esc(textOrUnknown(actor.pricing))}</td><td>${inlineList(actor.distribution, undefined, 'UNKNOWN')}</td><td>${inlineList(actor.assets, undefined, 'UNKNOWN')}</td><td>${inlineList(actor.dependencyRefs, undefined, 'NONE RECORDED')}</td><td>${esc(textOrUnknown(actor.trajectory))}</td></tr>`).join('') || '<tr><td colspan="8">No competitor records.</td></tr>'}
+      </tbody></table></div>
     </section>`;
   }
 
@@ -250,32 +329,42 @@ function initChessboardLab() {
             ${ws.dependencies.map((item, index) => `<article class="chessboard-chain-step" data-step="${index + 1}">
               <div class="chessboard-title-row"><strong>${esc(actorName(ws, item.providerActorRef))} → ${esc(item.resource)}</strong>${stateBadge(item.epistemicState)}</div>
               <p>Dependent: ${esc(item.dependentActorRefs.map(ref => actorName(ws, ref)).join(', '))}</p>
-              <p class="small">Control point: ${esc(controlName(ws, item.controlPointRef))}</p>
+              <p class="small">Control point: ${esc(controlName(ws, item.controlPointRef))} · provider power ${words(item.providerPower)}</p>
             </article>`).join('') || '<p class="empty">No dependencies are recorded.</p>'}
           </div>
         </div>
       </div>
-      ${ws.dependencies.length ? `<div class="table-wrap chessboard-table-wrap"><table class="chessboard-table"><thead><tr><th>Resource / provider</th><th>Criticality</th><th>Alternatives</th><th>Switching / constraints</th><th>Provider response exposure</th></tr></thead><tbody>
-        ${ws.dependencies.map(item => `<tr><th scope="row">${esc(item.resource)}<br><span class="small">${esc(actorName(ws, item.providerActorRef))}</span></th><td>${words(item.criticality)}<br>${stateBadge(item.epistemicState)}</td><td>${inlineList(item.alternativeActorRefs, ref => actorName(ws, ref), 'NO ACTOR ALTERNATIVE')}<br><span class="small">${inlineList(item.alternativeDescriptions, undefined, 'No descriptive alternative')}</span></td><td>Switch cost: ${words(item.switchingCost)}<br><span class="small">Contractual: ${inlineList(item.contractualConstraints, undefined, 'NONE RECORDED')}<br>Technical: ${inlineList(item.technicalConstraints, undefined, 'NONE RECORDED')}</span></td><td>Entry ${words(item.providerEntryRisk)} · price ${words(item.priceExposure)} · access ${words(item.accessExposure)}</td></tr>`).join('')}
+      ${ws.dependencies.length ? `<div class="table-wrap chessboard-table-wrap"><table class="chessboard-table"><thead><tr><th>Resource / provider</th><th>Criticality</th><th>Alternatives</th><th>Switching / multi-homing</th><th>Provider power</th><th>Provider response exposure</th></tr></thead><tbody>
+        ${ws.dependencies.map(item => `<tr><th scope="row">${esc(item.resource)}<br><span class="small">${esc(actorName(ws, item.providerActorRef))}</span></th><td>${words(item.criticality)}<br>${stateBadge(item.epistemicState)}</td><td>${inlineList(item.alternativeActorRefs, ref => actorName(ws, ref), 'NO ACTOR ALTERNATIVE')}<br><span class="small">${inlineList(item.alternativeDescriptions, undefined, 'No descriptive alternative')}</span></td><td>Switch cost: ${words(item.switchingCost)}<br><span class="small">Multi-home: ${words(item.multiHoming?.allowed || 'UNKNOWN')} · friction ${words(item.multiHoming?.friction || 'UNKNOWN')}<br>${esc(textOrUnknown(item.multiHoming?.cost))}<br>Contractual: ${inlineList(item.contractualConstraints, undefined, 'NONE RECORDED')}<br>Technical: ${inlineList(item.technicalConstraints, undefined, 'NONE RECORDED')}</span>${item.switchingProcess ? `<details><summary>Switching process</summary>${listItems(Object.entries(item.switchingProcess), ([kind, value]) => `<strong>${words(kind)}:</strong> ${esc(value)}`)}</details>` : ''}</td><td>${words(item.providerPower)}</td><td>Entry ${words(item.providerEntryRisk)} · price ${words(item.priceExposure)} · access ${words(item.accessExposure)}</td></tr>`).join('')}
       </tbody></table></div>` : ''}
     </section>`;
   }
 
   function renderResponses(ws) {
+    const actorRefs = [...new Set([...ws.responses.map(item => item.actorRef), ...ws.stressScenarios.map(item => item.threatActorRef)])];
+    if (!actorRefs.includes(selectedThreatActorRef)) selectedThreatActorRef = actorRefs[0] || '';
+    const responses = ws.responses.filter(item => !selectedThreatActorRef || item.actorRef === selectedThreatActorRef);
+    const scenarios = ws.stressScenarios.filter(item => !selectedThreatActorRef || item.threatActorRef === selectedThreatActorRef);
+    const options = actorRefs.map(ref => `<option value="${esc(ref)}" ${ref === selectedThreatActorRef ? 'selected' : ''}>${esc(actorName(ws, ref))}</option>`).join('');
     return `<section class="panel chessboard-section" aria-labelledby="responses-title">
-      <header><div class="eyebrow">If traction appears, what happens next?</div><h2 id="responses-title">Threat-actor war game</h2><p>Responses keep ability, incentive, constraints, impact, and venture responses separate. A possible move is a scenario, not an observed announcement.</p></header>
-      ${ws.responses.length ? `<div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Actor / trigger</th><th>Possible response</th><th>Ability</th><th>Incentive</th><th>Constraints</th><th>Impact / time</th><th>Venture responses</th></tr></thead><tbody>
-        ${ws.responses.map(item => `<tr>
+      <header><div class="eyebrow">If traction appears, what happens next?</div><h2 id="responses-title">Threat-actor war game</h2><p>Responses keep ability, incentive, constraints, impact, and venture responses separate. A possible move is a scenario, not an observed announcement.</p>
+        <div class="chessboard-selection"><label>Choose threat actor<select id="threatActorView">${options}</select></label><span class="chessboard-provisional">Scenario filter · not a probability</span></div></header>
+      ${responses.length ? `<div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Actor / trigger</th><th>Possible response</th><th>Ability</th><th>Incentive / motive</th><th>Constraints</th><th>Impact / time</th><th>Countermoves</th><th>Evidence</th><th>Counterevidence / falsifier</th></tr></thead><tbody>
+        ${responses.map(item => `<tr>
           <th scope="row">${esc(actorName(ws, item.actorRef))}<br><span class="small">${esc(item.trigger)}</span><br>${stateBadge(item.epistemicState)}</th>
           <td><strong>${words(item.possibleAction)}</strong><br><span class="small">Targets: ${esc(item.targetActorRefs.map(ref => actorName(ws, ref)).join(', '))}</span></td>
           <td>${words(item.ability)}<br><span class="small">${esc(item.abilityMechanism)}</span></td>
           <td>${words(item.incentive)}<br><span class="small">${esc(item.incentiveMechanism)}</span></td>
           <td>${listItems(item.constraints)}</td>
           <td>${esc(item.likelyImpact)}<br><span class="small">${words(item.timeToExecute)}</span></td>
-          <td>${listItems(item.countermoves, value => esc(value), 'NONE RECORDED')}<p class="small">Falsifier: ${esc(item.falsifier)}</p></td>
+          <td>${listItems(item.countermoves, value => esc(value), 'NONE RECORDED')}</td>
+          <td>${inlineList(item.sourceRefs, undefined, 'UNKNOWN')}</td>
+          <td>Counter: ${inlineList(item.counterEvidenceRefs, undefined, 'UNKNOWN')}<p class="small">Falsifier: ${esc(item.falsifier)}</p></td>
         </tr>`).join('')}
       </tbody></table></div>` : '<p class="empty">No response scenarios are recorded. Incumbent reaction remains UNKNOWN.</p>'}
-      ${ws.stressScenarios.length ? `<h3 class="chessboard-subheading">Stress scenarios</h3><div class="chessboard-card-grid">${ws.stressScenarios.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${esc(item.name)}</h3>${stateBadge(item.epistemicState)}</div><dl class="chessboard-dl"><dt>Threat actor</dt><dd>${esc(actorName(ws, item.threatActorRef))}</dd><dt>Trigger</dt><dd>${esc(item.trigger)}</dd><dt>Assumptions</dt><dd>${listItems(item.assumptions)}</dd><dt>Impact</dt><dd>${esc(item.impact)}</dd><dt>Responses</dt><dd>${listItems(item.countermoves, value => esc(value), 'NONE RECORDED')}</dd><dt>Survival condition</dt><dd>${esc(item.survivalCondition)}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('')}</div>` : ''}
+      ${responses.length ? `<h3 class="chessboard-subheading">Attack and countermove tree</h3><div class="chessboard-chain">${responses.map(item => `<article class="chessboard-chain-step"><strong>Destroy standalone economics → ${words(item.possibleAction)}</strong><p>${esc(item.likelyImpact)}</p><div class="small">Countermove branches</div>${listItems(item.countermoves, value => esc(value), 'UNKNOWN')}</article>`).join('')}</div>` : ''}
+      ${scenarios.length ? `<h3 class="chessboard-subheading">Selected-actor stress scenarios</h3><div class="chessboard-card-grid">${scenarios.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><div><span class="eyebrow">${words(item.stressType)}</span><h3>${esc(item.name)}</h3></div>${stateBadge(item.survivalStatus)}</div><dl class="chessboard-dl"><dt>Threat actor</dt><dd>${esc(actorName(ws, item.threatActorRef))}</dd><dt>Trigger</dt><dd>${esc(item.trigger)}</dd><dt>Assumptions</dt><dd>${listItems(item.assumptions)}</dd><dt>Impact</dt><dd>${esc(item.impact)}</dd><dt>Responses</dt><dd>${listItems(item.countermoves, value => esc(value), 'NONE RECORDED')}</dd><dt>Survival condition</dt><dd>${esc(item.survivalCondition)}</dd><dt>Evidence state</dt><dd>${stateBadge(item.epistemicState)} · ${inlineList(item.sourceRefs, undefined, 'UNKNOWN')}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('')}</div>` : ''}
+      ${ws.stressScenarios.length ? `<h3 class="chessboard-subheading">Strategic survival table · all required futures</h3><div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Stress type</th><th>Scenario</th><th>Threat actor</th><th>Survival</th><th>Mechanism / impact</th><th>Survival condition</th></tr></thead><tbody>${ws.stressScenarios.map(item => `<tr><th scope="row">${words(item.stressType)}</th><td>${esc(item.name)}</td><td>${esc(actorName(ws, item.threatActorRef))}</td><td>${stateBadge(item.survivalStatus)}</td><td>${esc(item.impact)}</td><td>${esc(item.survivalCondition)}</td></tr>`).join('')}</tbody></table></div>` : ''}
     </section>`;
   }
 
@@ -295,12 +384,15 @@ function initChessboardLab() {
             <dt>Replication</dt><dd>${words(item.timeToReplicate)}</dd>
             <dt>Conditions</dt><dd>${listItems(item.conditions)}</dd>
             <dt>Decay</dt><dd>${listItems(item.decayRisks)}</dd>
-            <dt>Evidence</dt><dd>${esc(item.evidenceRefs.length)} supporting · ${esc(item.counterEvidenceRefs.length)} counter</dd>
+            <dt>Evidence</dt><dd>${inlineList(item.evidenceRefs, undefined, 'UNKNOWN')}</dd>
+            <dt>Counterevidence</dt><dd>${inlineList(item.counterEvidenceRefs, undefined, 'UNKNOWN')}</dd>
+            <dt>Related claims</dt><dd>${inlineList(item.relatedClaimRefs)}</dd>
             <dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd>
           </dl>
         </article>`).join('') || '<p class="empty">No candidate moat mechanism is recorded. This does not mean “no moat”; the status is UNKNOWN.</p>'}
       </div>
-      ${ws.positions.length ? `<h3 class="chessboard-subheading">Candidate strategic positions</h3><div class="chessboard-card-grid">${ws.positions.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${words(item.positionType)}</h3>${stateBadge(item.epistemicState)}</div><p><span class="chip">${words(item.status)}</span></p><dl class="chessboard-dl"><dt>Layer</dt><dd>${esc(layerName(ws, item.targetLayerRef))}</dd><dt>Customer value</dt><dd>${esc(item.customerValue)}</dd><dt>Controlled assets</dt><dd>${inlineList(item.controlledAssets, undefined, 'NONE RECORDED')}</dd><dt>Vulnerabilities</dt><dd>${listItems(item.vulnerabilities)}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('')}</div>` : ''}
+      ${ws.positions.length ? `<h3 class="chessboard-subheading">Candidate strategic positions</h3><div class="chessboard-card-grid">${ws.positions.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${words(item.positionType)}</h3>${stateBadge(item.epistemicState)}</div><p><span class="chip">${words(item.status)}</span></p><dl class="chessboard-dl"><dt>Layer</dt><dd>${esc(layerName(ws, item.targetLayerRef))}</dd><dt>Customer value</dt><dd>${esc(item.customerValue)}</dd><dt>Control points</dt><dd>${inlineList(item.controlPointRefs, ref => controlName(ws, ref), 'NONE RECORDED')}</dd><dt>Dependencies</dt><dd>${inlineList(item.dependencyRefs)}</dd><dt>Controlled assets</dt><dd>${inlineList(item.controlledAssets, undefined, 'NONE RECORDED')}</dd><dt>Required assets</dt><dd>${listItems(item.requiredAssets)}</dd><dt>Switching</dt><dd>${esc(item.switching)}</dd><dt>Distribution</dt><dd>${esc(item.distribution)}</dd><dt>Commoditization</dt><dd>${inlineList(item.commoditizationRiskRefs)}</dd><dt>Competitive responses</dt><dd>${inlineList(item.responseRefs)}</dd><dt>Evidence</dt><dd>${inlineList(item.evidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Counterevidence</dt><dd>${inlineList(item.counterEvidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Vulnerabilities</dt><dd>${listItems(item.vulnerabilities)}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('')}</div>
+      <h3 class="chessboard-subheading">Position comparison</h3><div class="table-wrap"><table class="chessboard-table"><thead><tr><th>Position</th><th>Control</th><th>Dependency</th><th>Competitive response</th><th>Commoditization</th><th>Switching</th><th>Distribution</th><th>Required assets</th></tr></thead><tbody>${ws.positions.map(item => `<tr><th scope="row">${words(item.positionType)}<br>${stateBadge(item.status)}</th><td>${inlineList(item.controlPointRefs, ref => controlName(ws, ref), 'NONE')}</td><td>${inlineList(item.dependencyRefs, undefined, 'NONE')}</td><td>${inlineList(item.responseRefs, undefined, 'NONE')}</td><td>${inlineList(item.commoditizationRiskRefs, undefined, 'NONE')}</td><td>${esc(item.switching)}</td><td>${esc(item.distribution)}</td><td>${inlineList(item.requiredAssets, undefined, 'UNKNOWN')}</td></tr>`).join('')}</tbody></table></div>` : ''}
     </section>`;
   }
 
@@ -309,10 +401,10 @@ function initChessboardLab() {
       <header><div class="eyebrow">What compounds against the venture?</div><h2 id="erosion-title">Anti-moats and commoditization</h2><p>Risks name their growth trigger or external driver, time horizon, remaining impact, and falsifier—never a radar score.</p></header>
       <div class="chessboard-split">
         <div><h3>Anti-moats</h3><div class="chessboard-card-grid">
-          ${ws.antiMoats.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${esc(item.mechanism)}</h3>${stateBadge(item.epistemicState)}</div><dl class="chessboard-dl"><dt>Actor</dt><dd>${esc(actorName(ws, item.actorRef))}</dd><dt>Growth trigger</dt><dd>${esc(item.growthTrigger)}</dd><dt>Negative effect</dt><dd>${esc(item.negativeEffect)}</dd><dt>Scaling behavior</dt><dd>${esc(item.scalingBehavior)}</dd><dt>Mitigations</dt><dd>${listItems(item.possibleMitigations, value => esc(value), 'NONE RECORDED')}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('') || '<p class="empty">No anti-moat mechanism is recorded.</p>'}
+          ${ws.antiMoats.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><div><span class="eyebrow">${words(item.status)}</span><h3>${esc(item.mechanism)}</h3></div>${stateBadge(item.epistemicState)}</div><dl class="chessboard-dl"><dt>Affected actor</dt><dd>${esc(actorName(ws, item.actorRef))}</dd><dt>Attackers / beneficiaries</dt><dd>${inlineList(item.attackerActorRefs, ref => actorName(ws, ref), 'UNKNOWN')}</dd><dt>Growth trigger</dt><dd>${esc(item.growthTrigger)}</dd><dt>Negative effect</dt><dd>${esc(item.negativeEffect)}</dd><dt>Scaling behavior</dt><dd>${esc(item.scalingBehavior)}</dd><dt>Conditions</dt><dd>${listItems(item.conditions)}</dd><dt>Relief / decay risks</dt><dd>${listItems(item.decayRisks)}</dd><dt>Mitigations</dt><dd>${listItems(item.possibleMitigations, value => esc(value), 'NONE RECORDED')}</dd><dt>Evidence</dt><dd>${inlineList(item.evidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Counterevidence</dt><dd>${inlineList(item.counterEvidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Related claims</dt><dd>${inlineList(item.relatedClaimRefs)}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('') || '<p class="empty">No anti-moat mechanism is recorded.</p>'}
         </div></div>
         <div><h3>Specific commoditization risks</h3><div class="chessboard-card-grid">
-          ${ws.commoditizationRisks.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${esc(item.capability)}</h3>${stateBadge(item.epistemicState)}</div><dl class="chessboard-dl"><dt>Current differentiation</dt><dd>${esc(item.currentDifferentiation)}</dd><dt>Drivers</dt><dd>${inlineList(item.drivers)}</dd><dt>Replacement sources</dt><dd>${listItems(item.replacementSources)}</dd><dt>Cost trend</dt><dd>${words(item.costTrend)}</dd><dt>Availability</dt><dd>${words(item.availabilityTrend)}</dd><dt>Horizon</dt><dd>${words(item.timeHorizon)}</dd><dt>Venture impact</dt><dd>${esc(item.ventureImpact)}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('') || '<p class="empty">No commoditization risk is recorded.</p>'}
+          ${ws.commoditizationRisks.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${esc(item.capability)}</h3>${stateBadge(item.epistemicState)}</div><dl class="chessboard-dl"><dt>Current differentiation</dt><dd>${esc(item.currentDifferentiation)}</dd><dt>Drivers</dt><dd>${inlineList(item.drivers)}</dd><dt>Replacement sources</dt><dd>${listItems(item.replacementSources)}</dd><dt>Cost trend</dt><dd>${words(item.costTrend)}</dd><dt>Availability</dt><dd>${words(item.availabilityTrend)}</dd><dt>Horizon</dt><dd>${words(item.timeHorizon)}</dd><dt>Venture impact</dt><dd>${esc(item.ventureImpact)}</dd><dt>Remaining differentiation</dt><dd>${esc(item.remainingDifferentiation)}</dd><dt>Evidence</dt><dd>${inlineList(item.evidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Counterevidence</dt><dd>${inlineList(item.counterEvidenceRefs, undefined, 'UNKNOWN')}</dd><dt>Falsifier</dt><dd>${esc(item.falsifier)}</dd></dl></article>`).join('') || '<p class="empty">No commoditization risk is recorded.</p>'}
         </div></div>
       </div>
     </section>`;
@@ -324,10 +416,13 @@ function initChessboardLab() {
       <header><div class="eyebrow">Structural change, not news volume</div><h2 id="timeline-title">Market event timeline</h2><p>Observed event descriptions remain separate from their strategic implications.</p></header>
       <div class="chessboard-timeline">
         ${events.map(item => `<article class="chessboard-event">
-          <time datetime="${esc(item.eventDate)}">${esc(formatDate(item.eventDate))}</time>
+          <time datetime="${esc(item.eventDate)}">Event ${esc(formatDate(item.eventDate))}</time>
           <h3>${words(item.eventType)} · ${esc(item.actorRefs.map(ref => actorName(ws, ref)).join(', '))}</h3>
+          <p class="small"><strong>Observed / article checked:</strong> ${esc(formatDate(item.observedAt))}</p>
           <p><strong>Observed event:</strong> ${esc(item.description)}</p>
           <p><strong>Strategic implication:</strong> ${esc(item.strategicImplication)} ${stateBadge(item.implicationState)}</p>
+          <p class="small"><strong>Affected:</strong> layers ${inlineList(item.affectedLayerRefs, ref => layerName(ws, ref), 'NONE')} · controls ${inlineList(item.affectedControlPointRefs, ref => controlName(ws, ref), 'NONE')} · dependencies ${inlineList(item.affectedDependencyRefs, undefined, 'NONE')}</p>
+          <p class="small"><strong>Sources:</strong> ${inlineList(item.sourceRefs, undefined, 'UNKNOWN')}</p>
         </article>`).join('') || '<p class="empty">No material market event is recorded.</p>'}
       </div>
     </section>`;
@@ -371,6 +466,14 @@ function initChessboardLab() {
           <ol class="chessboard-list">${gaps.map(item => `<li class="chessboard-unknown"><div class="chessboard-title-row"><strong>${esc(item.question)}</strong><span class="chip">${words(item.decisionRelevance)} · ${words(item.status)}</span></div><p><strong>What changes:</strong> ${esc(item.whatChanges)}</p><p><strong>Required evidence:</strong> ${inlineList(item.requiredEvidence)}</p><p><strong>Next action:</strong> ${esc(item.nextAction)}</p></li>`).join('') || '<li>No explicit research gap is recorded.</li>'}</ol>
         </div>
       </div>
+    </section>`;
+  }
+
+  function renderContradictions(ws) {
+    const contradictions = engine?.detectContradictions?.(ws) || [];
+    return `<section class="panel chessboard-section" aria-labelledby="contradictions-title">
+      <header><div class="eyebrow">Claim versus mechanism</div><h2 id="contradictions-title">Strategic contradictions</h2><p>Counterevidence is not automatically a contradiction. This view lists only declared or deterministically detected conflicts that require resolution.</p></header>
+      <div class="chessboard-card-grid">${contradictions.map(item => `<article class="chessboard-card"><div class="chessboard-title-row"><h3>${words(item.kind)}</h3>${stateBadge(item.status)}</div>${item.mechanism ? `<p>${esc(item.mechanism)}</p>` : ''}<p><strong>Claims:</strong> ${inlineList(item.claimRefs, undefined, 'NONE RECORDED')}</p>${item.recordRefs?.length ? `<p><strong>Records:</strong> ${inlineList(item.recordRefs)}</p>` : ''}<p><code>${esc(item.contradictionId)}</code></p></article>`).join('') || '<p class="empty">No explicit contradiction is currently detected. This does not prove the thesis is coherent.</p>'}</div>
     </section>`;
   }
 
@@ -447,16 +550,19 @@ function initChessboardLab() {
         ${summaryCard('Strategic claims', summary.claims, `${summary.claimsWithCounterEvidence} include counterevidence`)}
         ${summaryCard('Open research gaps', summary.openResearchGaps, 'Explicit unknowns remain open')}
       </section>
+      ${renderStrategicBrief(ws)}
       ${renderMarketDefinitions(ws)}
       ${renderValueChain(ws)}
       ${renderActorsAndEdges(ws)}
       ${renderSubstitutes(ws)}
+      ${renderStructuralMatrices(ws)}
       ${renderDependencies(ws)}
       ${renderResponses(ws)}
       ${renderMoats(ws)}
       ${renderAntiMoatsAndCommoditization(ws)}
       ${renderTimeline(ws)}
       ${renderResearchQueue(ws)}
+      ${renderContradictions(ws)}
       ${renderClaimTrace(ws)}
       ${renderSourceRegister(ws)}
       <section class="panel chessboard-section">
@@ -499,6 +605,7 @@ function initChessboardLab() {
         store.importJson(await file.text());
         selectedClaimId = null;
         viewMarketId = '';
+        selectedThreatActorRef = '';
         finishAction('Private Chessboard workspace imported and validated. The analysis target remains provisional unless its recorded authority says otherwise.');
       } catch (error) {
         finishAction(`Import rejected; the prior workspace was preserved: ${error.message}`, true);
@@ -526,6 +633,7 @@ function initChessboardLab() {
         store.rollback();
         selectedClaimId = null;
         viewMarketId = '';
+        selectedThreatActorRef = '';
         finishAction('Previous in-session Chessboard workspace restored.');
       } catch (error) {
         finishAction(`Rollback failed: ${error.message}`, true);
@@ -538,6 +646,7 @@ function initChessboardLab() {
         store.reset();
         selectedClaimId = null;
         viewMarketId = '';
+        selectedThreatActorRef = '';
         finishAction('Local Chessboard workspace reset. The removed workspace can be restored once during this session.');
       } catch (error) {
         finishAction(`Reset failed: ${error.message}`, true);
@@ -548,6 +657,12 @@ function initChessboardLab() {
       viewMarketId = event.currentTarget.value;
       render();
       document.getElementById('ecosystem-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('threatActorView')?.addEventListener('change', event => {
+      selectedThreatActorRef = event.currentTarget.value;
+      render();
+      document.getElementById('responses-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     document.querySelectorAll('[data-claim-id]').forEach(button => button.addEventListener('click', () => {

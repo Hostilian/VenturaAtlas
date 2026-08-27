@@ -471,14 +471,11 @@ function validateClaimQuality(document, sourceById, errors) {
       errors.push(`${claim.claimId} ${claim.epistemicState} cannot claim HIGH confidence`);
     }
     if (Date.parse(claim.asOf) > snapshotAt) errors.push(`${claim.claimId} asOf is after snapshot.asOf`);
-    if (claim.counterEvidenceRefs.length && claim.contradictionStatus === 'NONE') {
-      errors.push(`${claim.claimId} has counterevidence but contradictionStatus NONE`);
-    }
     if (!claim.counterEvidenceRefs.length && claim.contradictionStatus !== 'NONE') {
       errors.push(`${claim.claimId} contradictionStatus ${claim.contradictionStatus} lacks counterEvidenceRefs`);
     }
     if (claim.contradictionStatus === 'OPEN' && claim.confidence === 'HIGH') {
-      errors.push(`${claim.claimId} has open counterevidence and cannot claim HIGH confidence`);
+      errors.push(`${claim.claimId} has an open contradiction and cannot claim HIGH confidence`);
     }
     if (claim.contradictionStatus === 'RESOLVED' && !claim.resolution) {
       errors.push(`${claim.claimId} resolved contradiction requires resolution`);

@@ -1,8 +1,7 @@
 # OMEGA-XVIII Track A Specification: Governance Reconciliation & Verified Ground Truth
 
-**Audit Run ID:** `OMEGA-XVIII-20260826T011500Z`
+**Audit Run ID:** `OMEGA-XVIII-20260826T182825Z`
 **Timestamp:** `2026-08-26T20:13:19+02:00`
-**Supersedes:** Prior thin stub
 **Author:** Codex / Antigravity (Track A)
 **Authority Hierarchy:** `AGENTS.md` -> `.agent-system/MASTER_GOAL.md` -> `.codex/rules/destructive.rules` -> Track A Prompt
 **Designated Role:** Sole Authoritative Writer of `.agent-system/state.json`, `.agent-system/backlog.json`, `AGENTS.md`, and `agent-registry.json`
@@ -12,7 +11,7 @@
 
 ## 1. Stage 2 Mission & Objectives
 
-Following the closeout of OMEGA-XVI debt and full-cohort artifact auditing in OMEGA-XVII, Stage 2 establishes complete, unambiguous governance and structural verification across all newly shipped subsystems:
+Stage 2 establishes complete, unambiguous governance and structural verification across all newly shipped subsystems:
 
 1. **RELAY:** Venture operations, fulfillment modeling, quality & CAPA, capacity modeling, cost-to-serve, suppliers, and Ops Lab.
 2. **ORBIT:** Portfolio theory, bet sequencing, Pareto frontiers, and Brier score forecasting calibration.
@@ -25,7 +24,7 @@ Following the closeout of OMEGA-XVI debt and full-cohort artifact auditing in OM
 
 ## 2. Governance Principles & Authority Boundaries
 
-- **Non-Overlapping File Ownership:** Every file path and directory in the repository must map to exactly one specialist agent.
+- **Non-Overlapping File Ownership:** Every file path and directory in the repository maps to exactly one specialist agent.
 - **Fail-Closed Verification:** Track B proposals are checked against live disk. Inaccuracies (such as undercounting validation plans) are rejected.
 - **Honest Maturity Labeling:** Systems are labeled according to their empirical implementation state (`SCAFFOLDING_AND_FIXTURES_ONLY`, `PLANNING_MODELS_AND_SEEDS_ONLY`, `CAPABILITY_ONTOLOGY_AND_FIXTURES_ONLY`, `MODELS_AND_REGULATORY_CLOCKS_ONLY`, `COMMERCIAL_C0_UNVALIDATED`).
 - **No Inferred Validation:** Unit test passes prove code execution, not business validation. Synthetic fixtures remain synthetic fixtures.
