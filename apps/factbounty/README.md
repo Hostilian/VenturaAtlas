@@ -4,13 +4,15 @@ FactBounty (`apps/factbounty/`) is the #1 ranked business opportunity (**idea-06
 
 ---
 
-## Current Status: Local Prototype & Verification Suite (100% Complete)
+## Current Status: Local Prototype & Verification Suite (production blocked)
 
-FactBounty is fully implemented and tested using zero-dependency local simulators:
+FactBounty is a locally implemented and tested prototype using zero-dependency simulators. Passing local tests prove the state-machine and adapter contracts only; they do not prove live customers, revenue, payment settlement, payout, identity, privacy, or production readiness:
 - **API Server**: Express REST API (`apps/factbounty/api/server.ts`)
 - **Database**: SQLite3 / local state persistence (`apps/factbounty/db/`)
 - **Payments Engine**: Provider abstraction with test-mode simulator (`apps/factbounty/payments/` & `apps/factbounty/simulators/`)
 - **Evidence Capture**: Browser-native capture interface and cryptographic challenge generator (`apps/factbounty/capture/`)
+
+Production startup is intentionally fail-closed. The current Stripe adapter is test-shaped, object-storage verification is fixture-shaped, and persistence is a local JSON store. Do not configure a public production deployment from this README. The exact closure gates, pilot scope, kill rules, and 30/60/90-day plan are documented in [`research/audits/OMEGA-XIX-20260827T135453Z/PRODUCT_READINESS.md`](../../research/audits/OMEGA-XIX-20260827T135453Z/PRODUCT_READINESS.md).
 
 Run the full FactBounty test suite:
 ```bash
