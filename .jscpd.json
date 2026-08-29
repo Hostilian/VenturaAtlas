@@ -1,0 +1,20 @@
+{
+  "threshold": 10,
+  "minTokens": 50,
+  "minLines": 5,
+  "maxLines": 500,
+  "reporters": ["consoleFull", "json"],
+  "output": ".agent-state/quality-receipts/jscpd",
+  "ignore": [
+    "_site/**",
+    "node_modules/**",
+    "dist/**",
+    "tmp/**",
+    "coverage/**",
+    ".agent-state/**",
+    "**/*.json",
+    "**/*.md",
+    "**/*.min.js"
+  ],
+  "format": ["javascript", "typescript", "python", "css", "html"]
+}

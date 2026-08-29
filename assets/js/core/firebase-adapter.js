@@ -65,11 +65,11 @@
       this.statusListeners.forEach(cb => {
         try { cb(payload); } catch (e) { console.warn(e); }
       });
-      if (typeof window !== 'undefined' && window.dispatchEvent) {
         try {
           window.dispatchEvent(new CustomEvent('va:firebase:status', { detail: payload }));
-        } catch (e) {}
-      }
+        } catch (_eventErr) {
+          // Window event dispatch skipped in non-DOM test or restricted environments
+        }
     }
 
     async init() {
@@ -185,7 +185,13 @@
 
     _setupListeners(roomRef, store) {
       // Clear any prior listeners
-      this.unsubscribers.forEach(unsub => { try { unsub(); } catch (e) {} });
+      this.unsubscribers.forEach(unsub => {
+        try {
+          unsub();
+        } catch (_unsubErr) {
+          // Unsubscribe error ignored during listener reset
+        }
+      });
       this.unsubscribers = [];
 
       // 1. Shortlist listener
@@ -386,7 +392,13 @@
     }
 
     disconnect() {
-      this.unsubscribers.forEach(unsub => { try { unsub(); } catch (e) {} });
+      this.unsubscribers.forEach(unsub => {
+        try {
+          unsub();
+        } catch (_unsubErr) {
+          // Unsubscribe error ignored during disconnect
+        }
+      });
       this.unsubscribers = [];
       this.activeRoomId = null;
       this._setStatus(SYNC_STATUS.LOCAL_ONLY, 'Local-First Studio (Disconnected)');

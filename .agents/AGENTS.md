@@ -6,7 +6,7 @@
 > Do not create a competing task or provider-health registry here. Codex-native
 > configuration remains isolated under `.codex/`.
 
-> **Runtime Authority & Task Priorities**: Live execution priorities, current tasks, and operational state are maintained in [`.agent-system/BACKLOG.md`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/.agent-system/BACKLOG.md) and [`.agent-system/state.json`](file:///c:/Users/Hostilian/Downloads/venture-atlas-os-v2/venture-atlas-os-v2/.agent-system/state.json). The files in this directory define the rich specialist subagent capabilities, skill bindings, and file ownership rules.
+> **Runtime Authority & Task Priorities**: Live execution priorities, current tasks, and operational state are maintained in [`.agent-system/BACKLOG.md`](../.agent-system/BACKLOG.md) and [`.agent-system/state.json`](../.agent-system/state.json). The files in this directory define the rich specialist subagent capabilities, skill bindings, and file ownership rules.
 
 ## 1. System Architecture & VenturaAtlas Domain Roster
 

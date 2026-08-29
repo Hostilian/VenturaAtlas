@@ -87,7 +87,11 @@
     if (value === null) return { value: null, errors: [] };
     let api = globalThis.VAMercury;
     if (!api && typeof require === 'function') {
-      try { api = require('./mercury-store'); } catch (_) {}
+      try {
+        api = require('./mercury-store');
+      } catch (_requireErr) {
+        // Module optional in browser bundle
+      }
     }
     if (typeof api?.validateMercuryWorkspace !== 'function') return null;
     const normalized = api.migrateMercuryWorkspace
@@ -1060,7 +1064,9 @@
       if (typeof window !== 'undefined' && window.dispatchEvent) {
         try {
           window.dispatchEvent(new CustomEvent('va:studio:' + event, { detail: data }));
-        } catch (e) {}
+        } catch (_eventErr) {
+          // Event dispatch skipped in headless or mock test environment
+        }
       }
     }
   }

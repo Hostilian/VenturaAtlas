@@ -40,7 +40,9 @@ function main() {
       ) {
         existingTimestamp = prev.generatedAt || existingTimestamp;
       }
-    } catch (_) {}
+    } catch (_metaErr) {
+      // Previous meta unreadable; generate fresh timestamp
+    }
   }
 
   const metaData = {
@@ -108,7 +110,9 @@ function main() {
       ) {
         manifestTimestamp = previousManifest.generatedAt || manifestTimestamp;
       }
-    } catch (_) {}
+    } catch (_manifestErr) {
+      // Previous manifest unreadable; generate fresh timestamp
+    }
   }
   const manifest = {
     dataRevision: truth.canonicalDataRevision,

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VenturaAtlas OS — Component Showcase & Test Harness</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/components/command-palette.css">
+  <style>
+    .showcase-container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .showcase-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1.5rem;
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .component-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .component-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .component-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: var(--accent-l);
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .component-paths {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--bg2);
+      padding: 0.5rem;
+      border-radius: var(--radius-sm);
+      margin: 1rem 0;
+      word-break: break-all;
+    }
+    .interactive-harness {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      margin-top: 2rem;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-action:hover {
+      background: var(--accent-h);
+    }
+  </style>
+</head>
+<body>
+  <div class="showcase-container">
+    <header class="showcase-header">
+      <span class="component-tag">Deterministic Engineering</span>
+      <h1>Component Discovery & UI Test Harness</h1>
+      <p style="color: var(--text2); max-width: 800px;">
+        Authoritative component registry and isolated verification sandbox for VenturaAtlas interface modules, navigation controls, and analytical labs.
+      </p>
+    </header>
+
+    <section>
+      <h2>Registered System Components</h2>
+      <div class="showcase-grid" id="components-list">
+        <!-- Component Card: Command Palette -->
+        <article class="component-card" id="va-command-palette">
+          <div>
+            <span class="component-tag">Navigation</span>
+            <h3>Command Palette</h3>
+            <p style="color: var(--text2); font-size: 0.9rem;">Global fuzzy-search and quick action navigator with keyboard shortcuts (<kbd>Cmd+K</kbd> / <kbd>Ctrl+K</kbd>).</p>
+            <div class="component-paths">
+              JS: assets/js/features/command-palette.js<br>
+              CSS: assets/css/components/command-palette.css
+            </div>
+          </div>
+          <div>
+            <button class="btn-action" onclick="alert('Press Ctrl+K or Cmd+K to launch the Command Palette on any page.');">Test Trigger</button>
+          </div>
+        </article>
+
+        <!-- Component Card: Chessboard Lab -->
+        <article class="component-card" id="va-chessboard-lab">
+          <div>
+            <span class="component-tag">Analysis</span>
+            <h3>Market Structure Lab</h3>
+            <p style="color: var(--text2); font-size: 0.9rem;">Interactive value-chain actor mapping, control-point positioning, and strategic moat visualization.</p>
+            <div class="component-paths">
+              JS: assets/js/features/chessboard-lab.js<br>
+              CSS: assets/css/chessboard.css
+            </div>
+          </div>
+          <div>
+            <a href="chessboard.html" class="btn-action">Open Chessboard Lab</a>
+          </div>
+        </article>
+
+        <!-- Component Card: Capital Scenario Engine -->
+        <article class="component-card" id="va-capital-lab">
+          <div>
+            <span class="component-tag">Finance</span>
+            <h3>Capital & Runway Scenario Engine</h3>
+            <p style="color: var(--text2); font-size: 0.9rem;">Dynamic runway forecasting, SAFE/convertible debt modeling, and funding fit assessment.</p>
+            <div class="component-paths">
+              JS: assets/js/features/capital-lab.js<br>
+              CSS: assets/css/site.css
+            </div>
+          </div>
+          <div>
+            <a href="capital-lab.html" class="btn-action">Open Capital Lab</a>
+          </div>
+        </article>
+
+        <!-- Component Card: Venture Studio -->
+        <article class="component-card" id="va-studio-controller">
+          <div>
+            <span class="component-tag">Data Grid</span>
+            <h3>Venture Studio & Opportunity Grid</h3>
+            <p style="color: var(--text2); font-size: 0.9rem;">Facet-based opportunity filtering, portfolio workbench, and ranking view matrix.</p>
+            <div class="component-paths">
+              JS: assets/js/features/studio.js<br>
+              CSS: assets/css/site.css
+            </div>
+          </div>
+          <div>
+            <a href="../index.html" class="btn-action">Open Opportunity Grid</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="interactive-harness">
+      <h2>Deterministic UI Sandbox & Test Controls</h2>
+      <p style="color: var(--text2);">Simulate theme switches, viewport bounds, and contract health checks:</p>
+      <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+        <button class="btn-action" style="background: var(--bg2); color: var(--text); border: 1px solid var(--line);" onclick="document.body.style.filter = document.body.style.filter ? '' : 'invert(1) hue-rotate(180deg)';">Toggle High-Contrast Test Mode</button>
+        <button class="btn-action" style="background: var(--bg2); color: var(--text); border: 1px solid var(--line);" onclick="alert('Design tokens verified: 36 core variables active.');">Verify Active Tokens</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

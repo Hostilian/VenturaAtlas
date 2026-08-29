@@ -1,0 +1,26 @@
+{
+  "threshold": 10,
+  "minLines": 6,
+  "minTokens": 50,
+  "reporters": ["console", "json"],
+  "output": "tmp/jscpd",
+  "ignore": [
+    "**/archive/**",
+    "**/tmp/**",
+    "**/prompts/**",
+    "**/ideas/**",
+    "**/financial-models/**",
+    "**/launch-plans/**",
+    "**/validation-plans/**",
+    "**/technical-blueprints/**",
+    "**/docs/**",
+    "**/categories/**",
+    "**/rankings/**",
+    "**/data/**",
+    "**/_site/**",
+    "**/node_modules/**",
+    "**/.snapshots/**",
+    "**/.agent-state/**"
+  ],
+  "format": ["javascript", "typescript", "css", "python"]
+}

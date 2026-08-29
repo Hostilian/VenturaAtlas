@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/fallow/schema.json",
+  "ignore": [
+    "_site/**",
+    ".agent-state/**",
+    "dist/**",
+    "tmp/**",
+    "coverage/**"
+  ],
+  "dupes": {
+    "threshold": 10
+  }
+}

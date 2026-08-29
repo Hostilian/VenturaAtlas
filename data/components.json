@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-29T19:17:52.041Z",
+  "totalComponents": 5,
+  "components": [
+    {
+      "id": "va-command-palette",
+      "name": "Command Palette",
+      "description": "Global fuzzy-search and quick action navigator with keyboard shortcuts (Cmd+K / Ctrl+K).",
+      "category": "navigation",
+      "scriptPath": "assets/js/features/command-palette.js",
+      "stylePath": "assets/css/components/command-palette.css",
+      "demoPage": "docs/components.html#va-command-palette",
+      "dependencies": [],
+      "verified": true
+    },
+    {
+      "id": "va-chessboard-lab",
+      "name": "Market Structure & Chessboard Lab",
+      "description": "Interactive value-chain actor mapping, control-point positioning, and strategic moat visualization.",
+      "category": "analysis",
+      "scriptPath": "assets/js/features/chessboard-lab.js",
+      "stylePath": "assets/css/chessboard.css",
+      "demoPage": "docs/chessboard.html",
+      "dependencies": [
+        "assets/js/core/chessboard-store.js"
+      ],
+      "verified": true
+    },
+    {
+      "id": "va-capital-lab",
+      "name": "Capital & Runway Scenario Engine",
+      "description": "Dynamic runway forecasting, SAFE/convertible debt modeling, and funding fit assessment.",
+      "category": "finance",
+      "scriptPath": "assets/js/features/capital-lab.js",
+      "stylePath": "assets/css/site.css",
+      "demoPage": "docs/capital-lab.html",
+      "dependencies": [
+        "assets/js/features/capital-engine.js"
+      ],
+      "verified": true
+    },
+    {
+      "id": "va-studio-controller",
+      "name": "Venture Studio & Opportunity Grid",
+      "description": "Facet-based opportunity filtering, portfolio workbench, and ranking view matrix.",
+      "category": "data-grid",
+      "scriptPath": "assets/js/features/studio.js",
+      "stylePath": "assets/css/site.css",
+      "demoPage": "index.html",
+      "dependencies": [
+        "assets/js/core/studio-store.js"
+      ],
+      "verified": true
+    },
+    {
+      "id": "va-factbounty-capture",
+      "name": "FactBounty Mobile Capture UI",
+      "description": "ProofOps verifiable claim and physical media capture application scaffold.",
+      "category": "application",
+      "scriptPath": "apps/factbounty/api/app.ts",
+      "stylePath": "assets/css/site.css",
+      "demoPage": "docs/components.html#va-factbounty-capture",
+      "dependencies": [],
+      "verified": true
+    }
+  ]
+}

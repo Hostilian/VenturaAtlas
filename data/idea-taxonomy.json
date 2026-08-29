@@ -7,7 +7,7 @@
     "similarity": "Weighted lexical overlap plus family, pattern, buyer-segment, and explicit-relationship signals.",
     "caution": "Similarity is a browsing aid. It does not prove duplication, market validity, or ranking eligibility."
   },
-  "sourceDigest": "5352d74b78383e69e4d275c6fe2ab455077c8a85f32b22692fb3cf8f068f2a45",
+  "sourceDigest": "fd63a09ab0a020dfe292ca823127b8c0cb8c2ea5acf9e57c3662af2c84feb0d4",
   "ideaCount": 324,
   "familyCount": 14,
   "patternCount": 12,

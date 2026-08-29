@@ -201,7 +201,9 @@ function main() {
       ) {
         checkedAt = previous.checkedAt || checkedAt;
       }
-    } catch (_) {}
+    } catch (_summaryErr) {
+      // Previous summary unreadable; generate fresh timestamp
+    }
   }
 
   const valSummary = {

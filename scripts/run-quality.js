@@ -9,8 +9,58 @@ const { buildReceipt: buildArtifactManifest } = require('./hash-public-artifact'
 const ROOT = path.resolve(__dirname, '..');
 const RECEIPT_DIRECTORY = path.join(ROOT, '.agent-state', 'quality-receipts');
 const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const npxCommand = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 const pythonCommand = process.env.PYTHON || 'python';
 
+// Tier 1: Fast (<2s preflight on every edit / hook)
+const FAST_STEPS = [
+  ['fast-js-syntax', process.execPath, ['scripts/check-js-syntax.js']],
+  ['fast-python-syntax', pythonCommand, ['scripts/check_python_syntax.py']],
+  ['fast-css-preflight', process.execPath, ['scripts/check-css-fast.js']],
+  ['fast-format-check', process.execPath, ['scripts/check-format.js']],
+  ['fast-typecheck', npmCommand, ['run', 'typecheck']],
+  ['fast-ai-antipatterns', process.execPath, ['scripts/validate-ai-antipatterns.js']],
+  ['fast-design-tokens', process.execPath, ['scripts/validate-design-tokens.js']],
+  ['fast-todos', process.execPath, ['scripts/validate-todos.js']],
+  ['fast-task-graph', npmCommand, ['run', 'check-task-graph']],
+];
+
+// Tier 2: Agent (<15s complete static invariants and data boundaries)
+const AGENT_STEPS = [
+  ...FAST_STEPS,
+  ['source-validation', npmCommand, ['run', 'validate:source']],
+  ['completion-audit', npmCommand, ['run', 'validate:completion']],
+  ['repository-meta-check', process.execPath, ['scripts/build-repository-meta.js', '--check']],
+  ['projection-check', npmCommand, ['run', 'check:projections']],
+  ['repository-consistency', npmCommand, ['run', 'check-consistency']],
+  ['autonomy-contract', npmCommand, ['run', 'check:autonomy']],
+  ['repository-drift', npmCommand, ['run', 'check:drift']],
+  ['constitution-integrity', pythonCommand, ['scripts/verify_constitution.py']],
+  ['privacy-scan', pythonCommand, ['scripts/check_privacy.py']],
+  ['component-registry-check', process.execPath, ['scripts/discover-components.js', '--check']],
+  ['headless-smoke', process.execPath, ['scripts/lightpanda-smoke.js']],
+];
+
+// Tier 3: Deep (<60s full unit tests, lints, complexity & dead code audits, headless browser)
+const DEEP_STEPS = [
+  ...AGENT_STEPS,
+  ['node-unit-tests', npmCommand, ['run', 'test:unit']],
+  ['python-tests', npmCommand, ['run', 'test:python']],
+  ['stylelint-check', npxCommand, ['stylelint', 'assets/css/**/*.css']],
+  ['knip-dead-code-audit', process.execPath, ['scripts/check-knip.js']],
+  ['jscpd-duplication-gate', process.execPath, ['scripts/check-jscpd.js']],
+  ['fallow-health-audit', process.execPath, ['scripts/check-fallow.js']],
+  ['project-wallace-css-metrics', process.execPath, ['scripts/check-css-metrics.js']],
+  ['agent-browser-verification', process.execPath, ['scripts/agent-browser.js']],
+];
+
+// Tier 4: Release (production bundle build, verified integrity, zero-dirty state)
+const RELEASE_STEPS = [
+  ...DEEP_STEPS,
+  ['artifact-build-and-validation', npmCommand, ['run', 'build:verified']],
+];
+
+// Legacy compatibility aliases
 const SOURCE_STEPS = [
   ['source-lint', npmCommand, ['run', 'lint']],
   ['factbounty-typecheck', npmCommand, ['run', 'typecheck']],
@@ -18,9 +68,6 @@ const SOURCE_STEPS = [
   ['python-tests', npmCommand, ['run', 'test:python']],
   ['source-validation', npmCommand, ['run', 'validate:source']],
   ['completion-audit', npmCommand, ['run', 'validate:completion']],
-  // Verification must not repair repository state before checking it. Use the
-  // generator's non-mutating mode here; reconciliation belongs to an explicit
-  // generate/reconcile command outside the quality gate.
   ['repository-meta-check', process.execPath, ['scripts/build-repository-meta.js', '--check']],
   ['projection-check', npmCommand, ['run', 'check:projections']],
   ['repository-consistency', npmCommand, ['run', 'check-consistency']],
@@ -35,7 +82,33 @@ const ARTIFACT_STEPS = [
   ['artifact-build-and-validation', npmCommand, ['run', 'build:verified']],
 ];
 
-const PROFILES = { source: SOURCE_STEPS, artifact: ARTIFACT_STEPS };
+// 14-Step Deterministic Completion Gate (§7)
+const GATE_STEPS = [
+  ['check-js', npmCommand, ['run', 'check-js']],
+  ['check-python', npmCommand, ['run', 'check-python']],
+  ['typecheck', npmCommand, ['run', 'typecheck']],
+  ['check-eslint', npmCommand, ['run', 'check:eslint']],
+  ['check-stylelint', npmCommand, ['run', 'check:stylelint']],
+  ['format-check', npmCommand, ['run', 'format:check']],
+  ['check-duplicates', npmCommand, ['run', 'check:duplicates']],
+  ['check-unused', npmCommand, ['run', 'check:unused']],
+  ['validate-source', npmCommand, ['run', 'validate:source']],
+  ['check-inventory', npmCommand, ['run', 'check:inventory']],
+  ['check-browser', npmCommand, ['run', 'check:browser']],
+  ['test-unit', npmCommand, ['run', 'test:unit']],
+  ['check-bugs', npmCommand, ['run', 'check:bugs']],
+  ['check-task-graph', npmCommand, ['run', 'check-task-graph']],
+];
+
+const PROFILES = {
+  fast: FAST_STEPS,
+  agent: AGENT_STEPS,
+  deep: DEEP_STEPS,
+  release: RELEASE_STEPS,
+  gate: GATE_STEPS,
+  source: SOURCE_STEPS,
+  artifact: ARTIFACT_STEPS,
+};
 
 function sha256(buffer) {
   return crypto.createHash('sha256').update(buffer).digest('hex');
@@ -183,7 +256,7 @@ function runQuality(options = {}) {
   }
 
   let artifactManifest = null;
-  if (profile === 'artifact' && exitCode === 0) {
+  if ((profile === 'artifact' || profile === 'release') && exitCode === 0) {
     const stabilityStarted = process.hrtime.bigint();
     try {
       const firstManifest = buildArtifactManifest(artifactPath);
@@ -204,7 +277,7 @@ function runQuality(options = {}) {
       atomicWriteJson(artifactManifestPath, artifactManifest);
       durations['artifact-tree-stability'] = Number((Number(process.hrtime.bigint() - stabilityStarted) / 1e9).toFixed(3));
       validators.push({ id: 'artifact-tree-stability', status: 'passed', exitCode: 0, durationSeconds: durations['artifact-tree-stability'] });
-    } catch (error) {
+    } catch (_stabilityErr) {
       durations['artifact-tree-stability'] = Number((Number(process.hrtime.bigint() - stabilityStarted) / 1e9).toFixed(3));
       validators.push({ id: 'artifact-tree-stability', status: 'failed', exitCode: 1, durationSeconds: durations['artifact-tree-stability'] });
       failedPhase = 'artifact-tree-stability';
@@ -250,9 +323,7 @@ function runQuality(options = {}) {
   const warnings = [];
   if (affectedPaths.length > 0) {
     warnings.push('Git-visible net worktree state changed during the quality run; inspect affectedPaths.');
-    // This compares the Git-visible net state before and after the run. It does
-    // not claim filesystem-call purity or observe ignored receipt/log paths.
-    if (profile === 'source' && exitCode === 0) {
+    if ((profile === 'source' || profile === 'fast' || profile === 'agent' || profile === 'gate') && exitCode === 0) {
       failedPhase = 'git-visible-worktree-stability';
       failedCommand = 'source quality verification must preserve Git-visible net worktree state';
       exitCode = 1;
@@ -294,12 +365,20 @@ function runQuality(options = {}) {
 
 if (require.main === module) {
   const profile = process.argv[2] || 'source';
-  try {
-    const result = runQuality({ profile });
-    process.exitCode = result.exitCode;
-  } catch (error) {
-    console.error(`[QUALITY] ${error.message}`);
-    process.exitCode = 1;
+  if (profile === 'fix') {
+    console.log('[QUALITY:FIX] Running explicit, opt-in code formatting and inventory refresh...');
+    spawnSync(npmCommand, ['run', 'format'], { cwd: ROOT, stdio: 'inherit', shell: shouldUseShell(npmCommand) });
+    spawnSync(process.execPath, ['scripts/build-component-inventory.js'], { cwd: ROOT, stdio: 'inherit' });
+    console.log('[QUALITY:FIX] Opt-in formatting and inventory updates complete.');
+    process.exitCode = 0;
+  } else {
+    try {
+      const result = runQuality({ profile });
+      process.exitCode = result.exitCode;
+    } catch (error) {
+      console.error(`[QUALITY] ${error.message}`);
+      process.exitCode = 1;
+    }
   }
 }
 

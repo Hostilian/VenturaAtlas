@@ -1,0 +1,688 @@
+{
+  "schemaVersion": "1.0.0",
+  "syncedAt": "2026-08-29T19:37:29.738Z",
+  "taskCount": 46,
+  "tasks": [
+    {
+      "id": "TASK-000A",
+      "title": "Verify Every Workflow's Recent CI Runs",
+      "status": "COMPLETE",
+      "blockedBy": [],
+      "filePath": [
+        ".github/workflows/"
+      ],
+      "priorityScore": 100,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-000B",
+      "title": "Reconcile Agent Configuration Layers",
+      "status": "COMPLETE",
+      "blockedBy": [],
+      "filePath": [
+        "AGENTS.md",
+        ".agents/AGENTS.md",
+        ".agent-system/MASTER_GOAL.md"
+      ],
+      "priorityScore": 99.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-000C",
+      "title": "Real Provider Probes & Stale Health",
+      "status": "COMPLETE",
+      "blockedBy": [],
+      "filePath": [
+        "scripts/va_runtime/provider_router.py",
+        "scripts/va_orchestrator.py"
+      ],
+      "priorityScore": 99,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "TASK-000D",
+      "title": "Document Complete Python Setup",
+      "status": "COMPLETE",
+      "blockedBy": [],
+      "filePath": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "services/ventureatlas-worker/requirements.txt"
+      ],
+      "priorityScore": 98,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-001",
+      "title": "Atomic State Persistence & Corruption Prevention",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "scripts/va_runtime/provider_router.py"
+      ],
+      "priorityScore": 98.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "TASK-002",
+      "title": "Windows Auto-Resume & Daemon Automation",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-001"
+      ],
+      "filePath": [
+        "scripts/automation/startup.ps1",
+        "scripts/automation/install-startup-task.ps1"
+      ],
+      "priorityScore": 95,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-003",
+      "title": "Cloud Continuity Workflows (GitHub Actions)",
+      "status": "COMPLETE",
+      "blockedBy": [],
+      "filePath": [
+        ".github/workflows/continuous-audit.yml",
+        ".github/workflows/research-cycle.yml"
+      ],
+      "priorityScore": 92.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-004",
+      "title": "Rankings UI Scoring Breakdown & Transparency",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "assets/js/features/rankings.js",
+        "docs/rankings.html"
+      ],
+      "priorityScore": 91,
+      "urgency": "P2",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-005",
+      "title": "Side-by-Side Idea Comparison Metric Deltas",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "assets/js/features/compare.js",
+        "docs/compare.html"
+      ],
+      "priorityScore": 88.5,
+      "urgency": "P2",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-006",
+      "title": "Evidence Graph & Source Freshness Audit",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-001"
+      ],
+      "filePath": [
+        "data/sources.json",
+        "scripts/validate-data.js"
+      ],
+      "priorityScore": 86,
+      "urgency": "P2",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "TASK-007",
+      "title": "Continuous Research & Candidate Staging Cycle",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "TASK-003",
+        "TASK-006"
+      ],
+      "filePath": [
+        "scripts/va-massive-orchestrator.py",
+        "data/idea-staging-queue.json"
+      ],
+      "priorityScore": 84,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "TASK-008",
+      "title": "Mobile Responsiveness & Accessibility Verification",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "docs/",
+        "assets/",
+        "tests/"
+      ],
+      "priorityScore": 82.5,
+      "urgency": "P2",
+      "assignedAgent": "ventureatlas-test-adversary"
+    },
+    {
+      "id": "TASK-009",
+      "title": "Fix Voting-Mode Selector (Scorecard and Pairwise in Collaboration Room)",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "assets/js/features/collaboration.js",
+        "docs/room.html"
+      ],
+      "priorityScore": 97,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-010",
+      "title": "Structured Per-Idea Notes and Evaluation Capture",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-009"
+      ],
+      "filePath": [
+        "assets/js/features/collaboration.js",
+        "collaboration/EVALUATION_TEMPLATE.json"
+      ],
+      "priorityScore": 96.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-011",
+      "title": "No-Code Decision Packet Comparison Page (docs/room-compare.html)",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-010"
+      ],
+      "filePath": [
+        "docs/room-compare.html",
+        "assets/js/features/room-compare.js",
+        "docs/room.html"
+      ],
+      "priorityScore": 96,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-012",
+      "title": "Remove Hardcoded Shortlist and Implement Interactive Empty State",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-009"
+      ],
+      "filePath": [
+        "assets/js/features/collaboration.js"
+      ],
+      "priorityScore": 95.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-013",
+      "title": "Dogfood and Commit End-to-End Decision Example (DEC-0001)",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-009",
+        "TASK-010",
+        "TASK-011"
+      ],
+      "filePath": [
+        "decisions/DEC-0001.json",
+        "decisions/DEC-0001.md",
+        "decisions/README.md"
+      ],
+      "priorityScore": 95,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "TASK-014",
+      "title": "First-Visit Clarity & Friend Onboarding Pass on Homepage and Navigation",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "index.html",
+        "assets/css/site.css"
+      ],
+      "priorityScore": 94.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-public-site"
+    },
+    {
+      "id": "TASK-015",
+      "title": "Mobile, Dark Mode, and Accessibility Verification with Real Artifacts",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-009",
+        "TASK-010",
+        "TASK-011",
+        "TASK-014"
+      ],
+      "filePath": [
+        "tests/ui-truth.test.js",
+        "assets/css/site.css"
+      ],
+      "priorityScore": 94,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-test-adversary"
+    },
+    {
+      "id": "AUT-001",
+      "title": "Three-Model Review Panel Across Two Provider Infrastructures",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "TASK-001"
+      ],
+      "filePath": [
+        "scripts/va_orchestrator.py",
+        "scripts/va-research-crosscheck.py"
+      ],
+      "priorityScore": 100,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "AUT-002",
+      "title": "Parallel Structural Preflight Before Every Writer Cycle",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "scripts/va-pipeline-preflight.py"
+      ],
+      "priorityScore": 99.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-test-adversary"
+    },
+    {
+      "id": "AUT-003",
+      "title": "Durable Private State Across Cloud Workflow Runs",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "TASK-003"
+      ],
+      "filePath": [
+        ".github/workflows/research-cycle.yml"
+      ],
+      "priorityScore": 99,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-004",
+      "title": "Execution-Scope-Aware Provider Routing",
+      "status": "LANDED",
+      "blockedBy": [
+        "TASK-000C"
+      ],
+      "filePath": [
+        "config/providers.json",
+        "scripts/va_runtime/provider_router.py"
+      ],
+      "priorityScore": 98.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "AUT-005",
+      "title": "Autonomy Authority Drift Contract",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        ".agent-system/",
+        "scripts/check-autonomy-contract.py"
+      ],
+      "priorityScore": 98,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-006",
+      "title": "Prove GitHub Cloud Workflow on Two Consecutive Off-Machine Runs",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "AUT-001",
+        "AUT-002",
+        "AUT-003",
+        "AUT-004",
+        "AUT-005"
+      ],
+      "filePath": [
+        ".github/workflows/research-cycle.yml"
+      ],
+      "priorityScore": 97.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-007",
+      "title": "Deploy and Verify GCP Cloud Run Job",
+      "status": "BLOCKED_NO_BILLED_GCP_PROJECT",
+      "blockedBy": [
+        "AUT-005"
+      ],
+      "filePath": [
+        "cloud-control-plane/",
+        "services/ventureatlas-worker/"
+      ],
+      "priorityScore": 97,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-008",
+      "title": "Move Hermes From Laptop-Local Ollama to an Always-On Private Runtime",
+      "status": "BLOCKED_NO_ALWAYS_ON_PRIVATE_RUNTIME",
+      "blockedBy": [
+        "AUT-007"
+      ],
+      "filePath": [
+        "config/providers.json",
+        "cloud-control-plane/terraform/"
+      ],
+      "priorityScore": 96.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "AUT-009",
+      "title": "Persistent Provider Spend and Call Ledger",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-004"
+      ],
+      "filePath": [
+        "scripts/va_runtime/budget.py",
+        ".agent-state/"
+      ],
+      "priorityScore": 95,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "AUT-010",
+      "title": "Primary-Source Acquisition Lane With Real Web Access",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-009"
+      ],
+      "filePath": [
+        "data/public-sources.json",
+        "data/research-runs.json",
+        "scripts/"
+      ],
+      "priorityScore": 94.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-011",
+      "title": "Deterministic Panel Disagreement and Consensus Extractor",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-001"
+      ],
+      "filePath": [
+        "scripts/va-research-crosscheck.py",
+        "tests/"
+      ],
+      "priorityScore": 94,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-012",
+      "title": "Recurring Task Leases, Idempotency Keys, and Retry Dead Letters",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-005",
+        "AUT-009"
+      ],
+      "filePath": [
+        "scripts/va_runtime/orchestration/",
+        "cloud-control-plane/"
+      ],
+      "priorityScore": 93.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-013",
+      "title": "Backlog Priority Aging and Starvation Prevention",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-012"
+      ],
+      "filePath": [
+        ".agent-system/backlog.json",
+        "scripts/"
+      ],
+      "priorityScore": 93,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-014",
+      "title": "Failure Alerting for Stale Heartbeats and Repeated Degradation",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "AUT-006",
+        "AUT-007"
+      ],
+      "filePath": [
+        ".github/workflows/",
+        "cloud-control-plane/"
+      ],
+      "priorityScore": 92.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-015",
+      "title": "Cross-Run Research Deduplication by Semantic and Source Digest",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-003",
+        "AUT-010"
+      ],
+      "filePath": [
+        "scripts/va_runtime/semantic_utility.py",
+        "data/research-runs.json"
+      ],
+      "priorityScore": 92,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-016",
+      "title": "Time-Sensitive Legal Claim Revalidation Queue",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-010",
+        "AUT-015"
+      ],
+      "filePath": [
+        "data/trigger-ledger.json",
+        "data/sources.json",
+        "scripts/"
+      ],
+      "priorityScore": 91.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-017",
+      "title": "Run External Buyer and Payment Falsification Experiments",
+      "status": "REQUIRES_HUMAN_OR_EXTERNAL_AUTHORITY",
+      "blockedBy": [
+        "AUT-006",
+        "AUT-011"
+      ],
+      "filePath": [
+        "data/validation-runs.json",
+        "data/lifecycle-receipts.json"
+      ],
+      "priorityScore": 91,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "AUT-018",
+      "title": "Weekly Full Artifact, Security, Accessibility, and Recovery Drill",
+      "status": "COMPLETE",
+      "blockedBy": [
+        "AUT-006"
+      ],
+      "filePath": [
+        ".github/workflows/continuous-audit.yml",
+        "tests/"
+      ],
+      "priorityScore": 90.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-test-adversary"
+    },
+    {
+      "id": "AUT-019",
+      "title": "Normalized Idea Families, Venture Patterns, and Similarity-Aware Browsing",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-005"
+      ],
+      "filePath": [
+        "data/idea-taxonomy.json",
+        "scripts/build-idea-taxonomy.js",
+        "assets/js/",
+        "tests/idea-taxonomy.test.js"
+      ],
+      "priorityScore": 90,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "AUT-020",
+      "title": "Semantic Review of Ambiguous Taxonomy Assignments and Potential Duplicate Pairs",
+      "status": "LANDED",
+      "blockedBy": [
+        "AUT-019",
+        "AUT-011"
+      ],
+      "filePath": [
+        "data/idea-taxonomy.json",
+        "data/ideas.json",
+        "data/relationships.json"
+      ],
+      "priorityScore": 89.5,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "OMG-001",
+      "title": "OMEGA XX Audit Revision Lock & Contradiction Matrix",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "docs/audit/OMEGA_XX_AUDIT_LOCK.md",
+        "PROJECT_STATUS.md"
+      ],
+      "priorityScore": 99,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "OMG-002",
+      "title": "Fail-Closed Proof-Predicate Reconciler & 4 Clocks Engine",
+      "status": "LANDED",
+      "blockedBy": [
+        "OMG-001"
+      ],
+      "filePath": [
+        "scripts/lib/proof-predicates.js",
+        "scripts/truth-reconciler.js",
+        "data/system-health.json"
+      ],
+      "priorityScore": 98.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "OMG-003",
+      "title": "Cloud Staging Isolation & Sanitized Artifact Privacy Protocol",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        ".github/workflows/research-cycle.yml",
+        "tests/artifact-privacy-allowlist.test.js"
+      ],
+      "priorityScore": 98,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "OMG-004",
+      "title": "Optimistic Concurrency Control (CAS) & State Hash Chaining",
+      "status": "LANDED",
+      "blockedBy": [],
+      "filePath": [
+        "scripts/lib/durable-state.js",
+        "scripts/lib/durable_state.py"
+      ],
+      "priorityScore": 97.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-provider-runtime"
+    },
+    {
+      "id": "OMG-005",
+      "title": "Fail-Closed Ranking Engine & Score Origin Ledger",
+      "status": "LANDED",
+      "blockedBy": [
+        "OMG-002"
+      ],
+      "filePath": [
+        "scripts/calculate-rankings.js",
+        "data/rank-eligibility-receipts.json"
+      ],
+      "priorityScore": 97,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-data-safety"
+    },
+    {
+      "id": "OMG-006",
+      "title": "Validation Conveyor (WIP=3), Market Killer & Refutation Framework",
+      "status": "LANDED",
+      "blockedBy": [
+        "OMG-001"
+      ],
+      "filePath": [
+        "data/validation-experiments.json",
+        "data/information-value-queue.json",
+        "scripts/market-killer.py"
+      ],
+      "priorityScore": 96.5,
+      "urgency": "P0",
+      "assignedAgent": "ventureatlas-integration"
+    },
+    {
+      "id": "OMG-XIX-001",
+      "title": "Systematic Damaged Label Repair across Artifact Corpus (FM, VP, TB)",
+      "status": "READY",
+      "blockedBy": [
+        "OMG-001"
+      ],
+      "filePath": [
+        "financial-models/",
+        "validation-plans/",
+        "technical-blueprints/"
+      ],
+      "priorityScore": 96,
+      "urgency": "P1",
+      "assignedAgent": "ventureatlas-data-safety"
+    }
+  ]
+}

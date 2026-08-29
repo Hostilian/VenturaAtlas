@@ -3,6 +3,12 @@
   "description": "Venture Atlas OS — Antigravity 2.0 Event Hooks",
   "hooks": [
     {
+      "name": "deterministic-quality-gate",
+      "event": "pre_commit",
+      "description": "Execute the 14-step deterministic quality sequence before committing code",
+      "command": "npm run quality:gate"
+    },
+    {
       "name": "privacy-check",
       "event": "pre_commit",
       "description": "Verify no secrets or unredacted keys are introduced",

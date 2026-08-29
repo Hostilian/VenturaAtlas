@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-server-config.json",
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {
+        "DOCKER_DEFAULT_PLATFORM": "linux/amd64"
+      }
+    }
+  }
+}

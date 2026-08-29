@@ -1,11 +1,14 @@
+#!/usr/bin/env node
 /**
  * Venture Atlas OS — Task Graph & Agent Catalog Validator
  * ========================================================
- * Validates data/agent-task-graph.json integrity:
+ * Validates data/agent-task-graph.json and .agent-system/backlog.json integrity:
  * 1. Unique task IDs
  * 2. Valid dependency references (no dangling task IDs)
- * 3. Valid preferred_agent roles against .agents/AGENTS.md
- * 4. File existence checks for declared owned_paths
+ * 3. Cycle detection and topological sort validation
+ * 4. Valid preferred_agent roles against .agents/AGENTS.md
+ * 5. File existence checks for declared owned_paths
+ * 6. Emits audit receipt
  */
 
 const fs = require('fs');
@@ -13,7 +16,9 @@ const path = require('path');
 
 const ROOT = path.dirname(__dirname);
 const GRAPH_PATH = path.join(ROOT, 'data', 'agent-task-graph.json');
+const BACKLOG_PATH = path.join(ROOT, '.agent-system', 'backlog.json');
 const AGENTS_PATH = path.join(ROOT, '.agents', 'AGENTS.md');
+const RECEIPT_PATH = path.join(ROOT, '.agent-state', 'quality-receipts', 'task-graph-audit.json');
 
 function validateTaskGraph() {
   console.log('=== Validating Agent Task Graph Integrity ===');
@@ -25,7 +30,7 @@ function validateTaskGraph() {
 
   const graphData = JSON.parse(fs.readFileSync(GRAPH_PATH, 'utf-8'));
   const tasks = graphData.tasks || [];
-  console.log(`Total tasks in graph: ${tasks.length}`);
+  console.log(`Total tasks in capability graph: ${tasks.length}`);
 
   const taskIds = new Set();
   const errors = [];
@@ -86,12 +91,13 @@ function validateTaskGraph() {
     warnings.push('Task graph has no dependency or block edges; ordering/reachability is not represented');
   }
 
+  // Capability graph cycle detection
   const taskById = new Map(tasks.map(task => [task.id, task]));
   const visiting = new Set();
   const visited = new Set();
   function visit(taskId, trail = []) {
     if (visiting.has(taskId)) {
-      errors.push(`Dependency cycle detected: ${[...trail, taskId].join(' -> ')}`);
+      errors.push(`Capability graph dependency cycle detected: ${[...trail, taskId].join(' -> ')}`);
       return;
     }
     if (visited.has(taskId) || !taskById.has(taskId)) return;
@@ -102,10 +108,63 @@ function validateTaskGraph() {
   }
   for (const taskId of taskIds) visit(taskId);
 
+  // Authoritative backlog cycle detection
+  if (fs.existsSync(BACKLOG_PATH)) {
+    try {
+      const backlog = JSON.parse(fs.readFileSync(BACKLOG_PATH, 'utf-8'));
+      const bTasks = backlog.tasks || [];
+      const bTaskById = new Map(bTasks.map(t => [t.id, t]));
+      const bVisiting = new Set();
+      const bVisited = new Set();
+
+      function visitBacklog(taskId, trail = []) {
+        if (bVisiting.has(taskId)) {
+          errors.push(`Authoritative backlog dependency cycle detected: ${[...trail, taskId].join(' -> ')}`);
+          return;
+        }
+        if (bVisited.has(taskId) || !bTaskById.has(taskId)) return;
+        bVisiting.add(taskId);
+        for (const dep of bTaskById.get(taskId).dependencies || []) {
+          visitBacklog(dep, [...trail, taskId]);
+        }
+        bVisiting.delete(taskId);
+        bVisited.add(taskId);
+      }
+
+      for (const t of bTasks) {
+        visitBacklog(t.id);
+      }
+    } catch (err) {
+      errors.push(`Failed to parse authoritative backlog: ${err.message}`);
+    }
+  }
+
+  const receipt = {
+    schemaVersion: '1.0.0',
+    timestamp: new Date().toISOString(),
+    status: errors.length === 0 ? 'PASSED' : 'FAILED',
+    metrics: {
+      totalCapabilityTasks: tasks.length,
+      dependencyEdges,
+      blockEdges,
+      errorsCount: errors.length,
+      warningsCount: warnings.length,
+    },
+    errors,
+    warnings,
+  };
+
+  const receiptsDir = path.dirname(RECEIPT_PATH);
+  if (!fs.existsSync(receiptsDir)) {
+    fs.mkdirSync(receiptsDir, { recursive: true });
+  }
+  fs.writeFileSync(RECEIPT_PATH, JSON.stringify(receipt, null, 2), 'utf-8');
+
   console.log(`Errors: ${errors.length}, Warnings: ${warnings.length}`);
   if (errors.length > 0) {
     errors.forEach(e => console.error(`[ERROR] ${e}`));
-    process.exit(1);
+    if (require.main === module) process.exit(1);
+    return false;
   }
   if (warnings.length > 0) {
     warnings.forEach(w => console.warn(`[WARN] ${w}`));
@@ -114,6 +173,11 @@ function validateTaskGraph() {
   console.log(warnings.length > 0
     ? '[OK] Agent Task Graph structural validation passed with disclosed warnings.'
     : '[OK] Agent Task Graph structural validation passed cleanly.');
+  return true;
 }
 
-validateTaskGraph();
+if (require.main === module) {
+  validateTaskGraph();
+}
+
+module.exports = { validateTaskGraph };

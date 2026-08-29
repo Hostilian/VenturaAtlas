@@ -33,7 +33,9 @@ function render() {
       try {
         const ev = JSON.parse(line);
         console.log(`  [${ev.timestamp.slice(11, 19)}] [${ev.agentId}] [${ev.type.toUpperCase()}] ${ev.message}`);
-      } catch (e) {}
+      } catch (_parseErr) {
+        // Skip malformed telemetry log line
+      }
     });
   }
 

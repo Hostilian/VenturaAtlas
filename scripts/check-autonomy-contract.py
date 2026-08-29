@@ -63,7 +63,7 @@ def main() -> int:
             errors.append(f"backlog leaves {task_id} active at {status} but runtime state does not track it as active")
 
     markdown = open(os.path.join(ROOT, ".agent-system", "BACKLOG.md"), "r", encoding="utf-8").read()
-    markdown_ids = set(re.findall(r"^\|\s+([A-Z]+-[0-9A-Z]+)\s+\|", markdown, re.M))
+    markdown_ids = set(re.findall(r"^\|\s+([A-Z0-9-]+)\s+\|", markdown, re.M)) - {"ID"}
     if markdown_ids != known:
         errors.append(
             "BACKLOG.md is not a lossless projection of backlog.json: "

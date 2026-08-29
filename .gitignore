@@ -17,3 +17,5 @@ apps/factbounty/data/*.db
 apps/factbounty/data/*.db-*
 .DS_Store
 Thumbs.db
+tmp/
+

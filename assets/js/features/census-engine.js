@@ -127,7 +127,7 @@ CensusEngine.prototype.lintEstimate = function(estimate) {
   var store = this._store;
   var rules = LINTER_RULES;
   for (var key in rules) {
-    if (rules.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(rules, key)) {
       var finding = rules[key](estimate, store);
       if (finding) findings.push(finding);
     }

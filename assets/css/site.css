@@ -39,9 +39,11 @@
   --status-explore:    hsl(270, 50%, 50%);
   --status-archived:   hsl(0, 0%, 50%);
 
-  /* Warning */
+  /* Warning & Danger */
   --warn:      hsl(35, 90%, 40%);
   --warn-bg:   hsl(35, 90%, 95%);
+  --danger:    hsl(355, 72%, 48%);
+  --danger-bg: hsl(355, 60%, 93%);
 
   /* Layout */
   --radius:    14px;

@@ -45,16 +45,16 @@
     "OMG-003",
     "OMG-004",
     "OMG-005",
-    "OMG-006",
-    "OMG-XVII-001",
-    "OMG-XVIII-001",
-    "OMG-XIX-001",
-    "OMG-XIX-002"
+    "OMG-006"
   ],
   "historicalCompletedTasks": [
     "TASK-RESET-XVIII",
     "TASK-OMEGA-XIX",
-    "TASK-GAP-FILL-BATCH"
+    "TASK-GAP-FILL-BATCH",
+    "OMG-XVII-001",
+    "OMG-XVIII-001",
+    "OMG-XIX-001",
+    "OMG-XIX-002"
   ],
   "failedTasks": [],
   "metrics": {

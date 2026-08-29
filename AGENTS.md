@@ -38,6 +38,14 @@ This repository explicitly reconciles multi-agent configuration across dedicated
 3. **Codex CLI Configuration (`.codex/`)**:
    - Dedicated configuration for OpenAI Codex CLI (`.codex/agents/*.toml`, `.codex/hooks.json`, `.codex/rules/destructive.rules`).
 
+## Deterministic quality contract
+
+- Upon completion of any feature, bugfix, or refactor, always run the deterministic completion sequence: `npm run quality:gate`.
+- Run deterministic linters and test suites instead of guessing: `check-js`, `check-python`, `typecheck`, `check:eslint`, `check:stylelint`, `check:duplicates`, `check:unused`, `validate:source`, `check:inventory`, `check:browser`, `test:unit`, `check:bugs`, `check-task-graph`.
+- When unsure of a library API (Playwright, ESLint, Knip, JSCPD, Node), query Context7 MCP before writing code; do not guess signatures.
+- All `TODO` and `FIXME` comments must reference an authoritative task ID in format: `// TODO(TASK-ID): explanation`.
+- Automated fixes are opt-in and human-reviewed (`npm run quality:fix`); never auto-delete unverified files.
+
 ## OMEGA missions
 
 For an OMEGA mission, read the active run's `research/audits/<RUN_ID>/CODEX_SPEC.md`, `CODEX_PLAN.md`, `CODEX_IMPLEMENT.md`, and `CODEX_LOG.md`. Keep the log and change ledger resumable, concise, and evidence-based.

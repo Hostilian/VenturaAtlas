@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-configuration.json",
+  "version": "1.0.0",
+  "description": "Venture Atlas OS — Deterministic Antigravity MCP Server Configuration",
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "description": "Deterministic library documentation lookup for Playwright, ESLint, Knip, JSCPD, and Node APIs",
+      "env": {}
+    },
+    "chrome-devtools-mcp": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"],
+      "description": "Direct Chrome DevTools connection for headless/visual inspection on local servers",
+      "env": {}
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server@latest"],
+      "description": "Opt-in Sentry telemetry trace analyzer (requires SENTRY_AUTH_TOKEN in .env)",
+      "env": {
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}"
+      }
+    },
+    "jscpd": {
+      "command": "node",
+      "args": ["scripts/check-duplicates.js"],
+      "description": "Deterministic copy/paste clone detection reporter",
+      "env": {}
+    },
+    "lightpanda": {
+      "command": "npx",
+      "args": ["-y", "lightpanda@latest"],
+      "description": "High-speed headless browser engine adapter",
+      "env": {}
+    }
+  }
+}

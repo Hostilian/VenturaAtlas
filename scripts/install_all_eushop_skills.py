@@ -12,7 +12,7 @@ import json
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AGENTS_DIR = os.path.join(ROOT, ".agents")
 SKILLS_DIR = os.path.join(AGENTS_DIR, "skills")
-GLOBAL_SKILLS_DIR = r"C:\Users\Hostilian\.gemini\config\skills"
+GLOBAL_SKILLS_DIR = os.path.expanduser(os.path.join("~", ".gemini", "config", "skills"))
 
 EUSHOP_SKILLS = [
     "eushop-auth0-session-jwt-security",

@@ -49,5 +49,6 @@ Generated from `.agent-system/backlog.json`; edit the JSON authority and rerende
 | OMG-004 | Optimistic Concurrency Control (CAS) & State Hash Chaining | 97.5 | Cloud Runtime | LANDED | one-shot | ventureatlas-provider-runtime |
 | OMG-005 | Fail-Closed Ranking Engine & Score Origin Ledger | 97.0 | Ranking & Epistemics | LANDED | one-shot | ventureatlas-data-safety |
 | OMG-006 | Validation Conveyor (WIP=3), Market Killer & Refutation Framework | 96.5 | Validation & Falsification | LANDED | one-shot | ventureatlas-integration |
+| OMG-XIX-001 | Systematic Damaged Label Repair across Artifact Corpus (FM, VP, TB) | 96.0 | Content Quality & Epistemics | READY | one-shot | ventureatlas-data-safety |
 
-Total authoritative tasks: **45**
+Total authoritative tasks: **46**

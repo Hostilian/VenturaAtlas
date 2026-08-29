@@ -1,0 +1,1227 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-29T19:37:17.066Z",
+  "componentCount": 25,
+  "utilityCount": 273,
+  "components": [
+    {
+      "id": "lab-header",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "lab-title-area",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "lab-tag",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "lab-title",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "lab-subtitle",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "lab-actions",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "venture-picker-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/capital-lab.html"
+    },
+    {
+      "id": "dash-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/live-progress.html"
+    },
+    {
+      "id": "label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/matcher.html"
+    },
+    {
+      "id": "lab-header",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-title-area",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-tag",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-title",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-subtitle",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-actions",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "venture-picker-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/ops-lab.html"
+    },
+    {
+      "id": "lab-header",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "lab-title-area",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "lab-tag",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "lab-title",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "lab-subtitle",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "lab-actions",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "venture-picker-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/org-lab.html"
+    },
+    {
+      "id": "pl-field-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/portfolio-lab.html"
+    },
+    {
+      "id": "timeline-section-label",
+      "kind": "html-lab-container",
+      "sourceFile": "docs/timeline.html"
+    }
+  ],
+  "knownUtilities": [
+    {
+      "name": "assertSameCurrency",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateCapitalNeed",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "calculateDilution",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateConvertibles",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateFundingFit",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateGrantEligibility",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateDebtService",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateRevenueBasedFinancing",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "evaluateInvestorReadiness",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "compareTermSheets",
+      "sourceFile": "assets/js/features/capital-engine.js"
+    },
+    {
+      "name": "esc",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "loadSeedData",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "setupEventListeners",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderNeedTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderSourcesTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderGrantsTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderDilutionTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderReadinessTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "renderPipelineTab",
+      "sourceFile": "assets/js/features/capital-lab.js"
+    },
+    {
+      "name": "CensusEngine",
+      "sourceFile": "assets/js/features/census-engine.js"
+    },
+    {
+      "name": "universalModule",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "chessboardFactory",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "isObject",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "asArray",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "clone",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "unique",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "collection",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "firstDefined",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "normalizeToken",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "hasText",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "unknownResult",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "sourceRefsFor",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "forbiddenScalarPaths",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "validateWorkspace",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "error",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "traceClaim",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "testNetworkEffect",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "testDataAdvantage",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "testSwitchingCost",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "testSystemOfRecord",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "analyzeIncumbentResponse",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "assessBundleExposure",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "analyzeDirectCompetitor",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "traceDependencyControlChain",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "intersects",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "appendUnique",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "lowerQualitativeLevel",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "raiseQualitativeLevel",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "applyStrategicEvent",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "timestamp",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "sourceAuthority",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "resolveSourceConflict",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "detectContradictions",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "add",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "addDeclared",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "addStructural",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "evaluateAntiMoat",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "primary",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "actorByType",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "highestQualitative",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "responseActor",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "buildStrategicBrief",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "buildResearchQueue",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "publicSource",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "pick",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "sanitizeForPublic",
+      "sourceFile": "assets/js/features/chessboard-engine.js"
+    },
+    {
+      "name": "initChessboardLab",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "actorName",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "layerName",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "controlName",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "stateBadge",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "listItems",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "inlineList",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "summaryCard",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "briefValue",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderStrategicBrief",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "sourceCard",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "sourceCards",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "toolbar",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderEmpty",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderMarketDefinitions",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderValueChain",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderActorsAndEdges",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderSubstitutes",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderStructuralMatrices",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderDependencies",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderResponses",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderMoats",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderAntiMoatsAndCommoditization",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderTimeline",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "unknownLabel",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderResearchQueue",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderContradictions",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderClaimTrace",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderSourceRegister",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "renderLoaded",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "report",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "finishAction",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "bindHandlers",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "initPageChrome",
+      "sourceFile": "assets/js/features/chessboard-lab.js"
+    },
+    {
+      "name": "initCollaborationRoom",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "saveState",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderRoomUI",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderVotingArea",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderReactionMode",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderScorecardMode",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderPairwiseMode",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "renderIdeaEvaluationPanel",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "bindRoomEvents",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "escHTML",
+      "sourceFile": "assets/js/features/collaboration.js"
+    },
+    {
+      "name": "initCommandPalette",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "createDOM",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "loadSearchIndex",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "bindEvents",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "toggleModal",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "openModal",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "closeModal",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "renderResults",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "createItemEl",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "updateSelection",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "escapeHTML",
+      "sourceFile": "assets/js/features/command-palette.js"
+    },
+    {
+      "name": "initCompare",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "getIdeaScore",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "updateUrlAndRender",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "renderMatrix",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "numericScore",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "scoreDelta",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "bindEvents",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "escHTML",
+      "sourceFile": "assets/js/features/compare.js"
+    },
+    {
+      "name": "evaluateRoleClarity",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "detectBottlenecks",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "evaluateCapabilityCoverage",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "evaluateFounderLoad",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "generateDelegationPacket",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "analyzeKnowledgeRisk",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "evaluateHiringNeed",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "analyzeMeetingContinuity",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "evaluateOperatingCadence",
+      "sourceFile": "assets/js/features/constellation-engine.js"
+    },
+    {
+      "name": "esc",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "loadSeedData",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "setupEventListeners",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderRolesTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderDecisionsTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderCapabilitiesTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderDelegationTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderKnowledgeTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "renderCadenceTab",
+      "sourceFile": "assets/js/features/constellation-lab.js"
+    },
+    {
+      "name": "initMatcher",
+      "sourceFile": "assets/js/features/matcher.js"
+    },
+    {
+      "name": "budgetMatches",
+      "sourceFile": "assets/js/features/matcher.js"
+    },
+    {
+      "name": "computeMatchScore",
+      "sourceFile": "assets/js/features/matcher.js"
+    },
+    {
+      "name": "shortlistMatches",
+      "sourceFile": "assets/js/features/matcher.js"
+    },
+    {
+      "name": "initMercuryLab",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "nextHumanAction",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "optionRows",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "summaryCard",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "report",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "execute",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "bindHandlers",
+      "sourceFile": "assets/js/features/mercury.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderFlowTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderQualityTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderCapacityTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderCostTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderSuppliersTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "renderImprovementTab",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "attachDynamicEventListeners",
+      "sourceFile": "assets/js/features/ops-lab.js"
+    },
+    {
+      "name": "buildResourceSummary",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "estimateAttentionLoad",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "detectRiskConcentration",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "detectSynergies",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "rankByInformationValue",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "generateSequence",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "computeParetoFrontier",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "derivePortfolioMetrics",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "computeOpportunityCost",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "computeCapabilityGaps",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "assessFragility",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "computeBrierScore",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "summarizeCalibration",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "detectForecasterDisagreement",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "findDominatedBets",
+      "sourceFile": "assets/js/features/portfolio-engine.js"
+    },
+    {
+      "name": "loadData",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "savePortfolios",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "saveForecasts",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "setActivePortfolio",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "getActivePortfolio",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "esc",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "initTabs",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderPortfolioSelector",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderBuildTab",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderEnvelopePanel",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "saveEnvelope",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderBetsPanel",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderIdeaSearch",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "addIdeaToBet",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderAnalyzeTab",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderResourceCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderFragilityCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderRiskHeatmap",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderSynergiesCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderSequenceCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderParetoCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderOpportunityCostCard",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderForecastsTab",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderForecastForm",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "handleCreateForecast",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderForecastList",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderCalibrationPanel",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "wireForecastActions",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "handleForecastUpdate",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "handleForecastResolve",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "renderSnapshotTab",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "handleCreatePortfolio",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "showToast",
+      "sourceFile": "assets/js/features/portfolio-lab.js"
+    },
+    {
+      "name": "initRankings",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "getQueryRanking",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "renderActiveView",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "bindEvents",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "isFavorite",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "toggleFavorite",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "getScoreClass",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "escHTML",
+      "sourceFile": "assets/js/features/rankings.js"
+    },
+    {
+      "name": "evaluateFlowMetrics",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "evaluateCapacityAndBottlenecks",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "calculateCostToServe",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "evaluateQualityHealth",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "evaluateSupplierRisk",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "detectOperationalDebt",
+      "sourceFile": "assets/js/features/relay-engine.js"
+    },
+    {
+      "name": "initRoomCompare",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "renderSynthesisResults",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "bindEvents",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "handleFiles",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "loadDemoPackets",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "esc",
+      "sourceFile": "assets/js/features/room-compare.js"
+    },
+    {
+      "name": "initDecisionStudio",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderTabContent",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderKanbanTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderScorecardTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderPairwiseTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderVariantsTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderDecisionTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderExperimentsTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "renderNotesTab",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "bindEvents",
+      "sourceFile": "assets/js/features/studio.js"
+    },
+    {
+      "name": "loadConfig",
+      "sourceFile": "apps/factbounty/config.ts"
+    },
+    {
+      "name": "createApp",
+      "sourceFile": "apps/factbounty/api/app.ts"
+    },
+    {
+      "name": "getPaymentProvider",
+      "sourceFile": "apps/factbounty/api/app.ts"
+    },
+    {
+      "name": "createAuthMiddleware",
+      "sourceFile": "apps/factbounty/api/auth.ts"
+    },
+    {
+      "name": "generateDemoToken",
+      "sourceFile": "apps/factbounty/api/auth.ts"
+    },
+    {
+      "name": "requireRole",
+      "sourceFile": "apps/factbounty/api/roles.ts"
+    },
+    {
+      "name": "showTab",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "handlePostBounty",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "loadBuyerBounties",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "loadResponderRequests",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "acceptRequest",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "startCamera",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "handleSubmitEvidence",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "loadModeratorQueue",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "reviewSubmission",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "renderFactProgress",
+      "sourceFile": "apps/factbounty/frontend/app.js"
+    },
+    {
+      "name": "testApi",
+      "sourceFile": "apps/factbounty/tests/api.test.ts"
+    },
+    {
+      "name": "runMobileE2ETest",
+      "sourceFile": "apps/factbounty/tests/e2e-playwright.test.ts"
+    },
+    {
+      "name": "runTests",
+      "sourceFile": "apps/factbounty/tests/factbounty.test.js"
+    },
+    {
+      "name": "runTests",
+      "sourceFile": "apps/factbounty/tests/factbounty.test.ts"
+    },
+    {
+      "name": "createIsolatedTestEngine",
+      "sourceFile": "apps/factbounty/tests/test-store.ts"
+    },
+    {
+      "name": "transitionBountyState",
+      "sourceFile": "apps/factbounty/shared/contracts/state-machines.ts"
+    },
+    {
+      "name": "transitionEvidenceState",
+      "sourceFile": "apps/factbounty/shared/contracts/state-machines.ts"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://unpkg.com/knip@5/overview/configuration-schema.json",
+  "entry": [
+    "scripts/*.js",
+    "services/*.js",
+    "assets/js/**/*.js",
+    "apps/factbounty/index.ts",
+    "tests/**/*.js"
+  ],
+  "project": [
+    "scripts/*.js",
+    "services/*.js",
+    "assets/js/**/*.js",
+    "apps/factbounty/**/*.ts",
+    "tests/**/*.js"
+  ],
+  "ignore": [
+    "_site/**",
+    ".agent-state/**",
+    "dist/**",
+    "tmp/**"
+  ],
+  "ignoreDependencies": [
+    "@eslint/js",
+    "typescript-eslint",
+    "stylelint-config-standard",
+    "@sentry/cli"
+  ]
+}

@@ -1,0 +1,16 @@
+# VenturaAtlas Deterministic Quality Rules for Codex CLI
+# Enforce the completion sequence upon feature completion
+
+rule "require-deterministic-quality-gate" {
+  description = "Run npm run quality:gate after any code modification"
+  command = "npm run quality:gate"
+}
+
+rule "no-unlinked-todos" {
+  description = "Ensure all TODO comments cite an authoritative task ID"
+  pattern = "TODO(TASK-ID)"
+}
+
+rule "no-hardcoded-secrets" {
+  description = "Keep secrets out of source code, logs, and public artifacts"
+}
