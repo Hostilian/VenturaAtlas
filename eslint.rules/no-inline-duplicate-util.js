@@ -8,16 +8,18 @@ import path from 'node:path';
 let inventory = null;
 function getKnownUtilities() {
   if (inventory) return inventory;
+  const baseUtils = ['debounce', 'throttle', 'clamp', 'slugify', 'escapeHtml', 'formatCurrency'];
   const inventoryPath = path.resolve(process.cwd(), 'data/component-inventory.json');
   if (fs.existsSync(inventoryPath)) {
     try {
       const data = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
-      inventory = new Set((data.knownUtilities || []).map((u) => u.name));
+      const fromFile = (data.knownUtilities || []).map((u) => u.name);
+      inventory = new Set([...baseUtils, ...fromFile]);
     } catch {
-      inventory = new Set();
+      inventory = new Set(baseUtils);
     }
   } else {
-    inventory = new Set(['debounce', 'throttle', 'clamp', 'slugify', 'escapeHtml', 'formatCurrency']);
+    inventory = new Set(baseUtils);
   }
   return inventory;
 }

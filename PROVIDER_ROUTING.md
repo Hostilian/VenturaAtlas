@@ -13,3 +13,8 @@
 ## Circuit Breaker Strategy
 - 3 consecutive failures trigger a 180s cooldown window.
 - UTC ISO 8601 timestamps ensure cross-platform datetime safety.
+
+## Programmatic Tool Batching & Single-Pass Synthesis
+
+Per [ADR-0006](decisions/ADR-0006-tanstack-ai-code-mode-evaluation.md), VenturaAtlas adopts the core insight of TanStack Code Mode (single-program multi-tool composition vs sequential LLM roundtrips) natively in Python. The orchestrator dispatches batched fan-outs across provider tiers and aggregates consensus in a single pass without chatty multi-turn overhead.
+

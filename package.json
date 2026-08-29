@@ -10,7 +10,7 @@
     "clean": "node scripts/clean-generated.js",
     "format": "node scripts/check-format.js --write",
     "format:check": "node scripts/check-format.js",
-    "lint": "npm run check-js && npm run check-python && npm run format:check",
+    "lint": "npm run check:eslint && npm run check:stylelint && npm run check-python && npm run format:check",
     "typecheck": "tsc -p apps/factbounty/tsconfig.json",
     "validate": "npm run validate:source",
     "validate:source": "npm run validate:data && npm run validate:links",

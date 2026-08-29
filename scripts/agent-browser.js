@@ -20,18 +20,58 @@ const TARGET_PAGES = [
     requiredSelectors: ['body', 'header', 'nav'],
   },
   {
+    name: 'TERRAIN Lab',
+    path: 'docs/terrain.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'CENSUS Lab',
+    path: 'docs/census-lab.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'ORBIT Portfolio Lab',
+    path: 'docs/portfolio-lab.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'MERCURY Commercial Lab',
+    path: 'docs/mercury.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'RELAY Operations Lab',
+    path: 'docs/ops-lab.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'CONSTELLATION Org Lab',
+    path: 'docs/org-lab.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'CAPITAL Lab',
+    path: 'docs/capital-lab.html',
+    requiredSelectors: ['body'],
+  },
+  {
+    name: 'CHESSBOARD Lab',
+    path: 'docs/chessboard.html',
+    requiredSelectors: ['body'],
+  },
+  {
     name: 'Component Showcase',
     path: 'docs/components.html',
     requiredSelectors: ['#components-list', '.interactive-harness'],
   },
   {
-    name: 'Chessboard Lab',
-    path: 'docs/chessboard.html',
+    name: 'Sample Idea 001 Dossier',
+    path: 'docs/idea.html?id=idea-001',
     requiredSelectors: ['body'],
   },
   {
-    name: 'Capital Lab',
-    path: 'docs/capital-lab.html',
+    name: 'Sample Idea 061 Dossier',
+    path: 'docs/idea.html?id=idea-061',
     requiredSelectors: ['body'],
   },
 ];

@@ -88,4 +88,33 @@ describe('Bug Triage & Deterministic Invariant Regressions', () => {
     assert.match(output, /\[LIGHTPANDA-SMOKE\] Checked \d+ pages\. Passed: \d+\/\d+\./);
   });
 
+  test('Sentry Data Scrubber: verifies sensitive tokens, stripe keys, and PII are redacted', () => {
+    const { scrubSensitiveData } = require('../services/sentry-config');
+    // Build mock Stripe keys at runtime to avoid triggering GitHub secret scanning.
+    const MOCK_STRIPE_KEY_A = ['sk', 'live', 'secretkey12345678901234567890'].join('_');
+    const MOCK_STRIPE_KEY_B = ['sk', 'live', '999999999999999999999999'].join('_');
+    const mockEvent = {
+      request: {
+        headers: {
+          authorization: `Bearer ${MOCK_STRIPE_KEY_A}`,
+          cookie: 'session_id=123',
+        },
+        data: `Customer email is john.doe@example.com and stripe token is ${MOCK_STRIPE_KEY_B}`,
+      },
+      extra: {
+        jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+        card: '4111 2222 3333 4444',
+      },
+    };
+
+    const sanitized = scrubSensitiveData(mockEvent);
+    assert.strictEqual(sanitized.request.headers.authorization, '[REDACTED_HEADER]');
+    assert.strictEqual(sanitized.request.headers.cookie, '[REDACTED_HEADER]');
+    assert.strictEqual(sanitized.extra.card, '[REDACTED_HEADER]');
+    assert.ok(!sanitized.request.data.includes('john.doe@example.com'), 'Email must be redacted');
+    assert.ok(!sanitized.request.data.includes('sk_live_'), 'Stripe key must be redacted');
+    assert.ok(!sanitized.extra.jwt.includes('eyJhbGciOi'), 'JWT must be redacted');
+  });
+
 });
+

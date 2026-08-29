@@ -33,3 +33,11 @@ Before any software, client, extension, package, firmware, or connected product 
 - one timed tabletop exercise using a synthetic actively exploited vulnerability and a separate severe-incident scenario.
 
 The current public static site, public source repository, and local FactBounty prototype have not been classified as in-scope CRA products. That preliminary repository screen is not a legal opinion and must be repeated if distribution or monetisation changes.
+
+## 6. Telemetry & Error Monitoring Data Sanitization
+
+When error monitoring (Sentry / Spotlight) is activated:
+- All telemetry payloads pass through a mandatory `beforeSend` data scrubber (`services/sentry-config.js`).
+- Stripe secret/restricted keys, JWT bearer tokens, credit card numbers, passwords, authorization headers, and customer email addresses are redacted before leaving the execution environment.
+- Local dev debugging uses Spotlight sidecar (`npx @spotlightjs/spotlight`) requiring zero external network credentials.
+

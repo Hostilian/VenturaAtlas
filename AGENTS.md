@@ -42,7 +42,7 @@ This repository explicitly reconciles multi-agent configuration across dedicated
 
 - Upon completion of any feature, bugfix, or refactor, always run the deterministic completion sequence: `npm run quality:gate`.
 - Run deterministic linters and test suites instead of guessing: `check-js`, `check-python`, `typecheck`, `check:eslint`, `check:stylelint`, `check:duplicates`, `check:unused`, `validate:source`, `check:inventory`, `check:browser`, `test:unit`, `check:bugs`, `check-task-graph`.
-- When unsure of a library API (Playwright, ESLint, Knip, JSCPD, Node), query Context7 MCP before writing code; do not guess signatures.
+- When unsure of a library API or version-sensitive signature (Stripe 17.7.0, @aws-sdk/client-s3 3.1108.0, Playwright 1.62.1, Zod 3.24.2, TypeScript 5.7.3, ESLint, Knip, JSCPD, Node), query Context7 MCP before writing code; do not guess signatures.
 - All `TODO` and `FIXME` comments must reference an authoritative task ID in format: `// TODO(TASK-ID): explanation`.
 - Automated fixes are opt-in and human-reviewed (`npm run quality:fix`); never auto-delete unverified files.
 

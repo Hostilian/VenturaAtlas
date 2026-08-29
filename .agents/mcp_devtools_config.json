@@ -1,12 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/mcp-server-config.json",
   "mcpServers": {
+    "fallow": {
+      "command": "npx",
+      "args": ["fallow", "mcp"]
+    },
+    "spotlight": {
+      "command": "npx",
+      "args": ["@spotlightjs/spotlight", "mcp"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp"]
+    },
     "chrome-devtools": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
       "env": {
         "DOCKER_DEFAULT_PLATFORM": "linux/amd64"
       }
+    },
+    "agent-browser": {
+      "command": "npx",
+      "args": ["-y", "agent-browser"]
+    },
+    "beads": {
+      "command": "bd",
+      "args": ["mcp"]
     }
   }
 }

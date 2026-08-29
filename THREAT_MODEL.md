@@ -13,3 +13,8 @@
 3. **ToS Compliance & Quota Protection:**
    - Round-robin key rotation operates within provider-allowed concurrency and rate limits.
    - Key rotation is NEVER used to evade provider bans, billing restrictions, or abuse detection.
+
+4. **Telemetry Egress & PII Scrubbing:**
+   - Error monitoring events (Sentry/Spotlight) pass through fail-closed sanitization.
+   - Stripe credentials, JWT tokens, user email addresses, and auth headers are stripped prior to egress.
+

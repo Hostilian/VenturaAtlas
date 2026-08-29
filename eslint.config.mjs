@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 import noInlineDuplicateUtil from "./eslint.rules/no-inline-duplicate-util.js";
 import requireTaskIdOnTodo from "./eslint.rules/require-task-id-on-todo.js";
 import noHardcodedSecrets from "./eslint.rules/no-hardcoded-secrets.js";
@@ -59,6 +60,32 @@ export default [
       "no-undef": "error",
     },
   },
+  // TypeScript files (FactBounty API & Playwright e2e tests)
+  {
+    files: ["apps/**/*.ts", "tests/**/*.ts", "**/*.ts"],
+    plugins: {
+      custom: customPlugin,
+      "@typescript-eslint": tseslint.plugin,
+    },
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+      globals: {
+        ...globals.node,
+        ...globals.nodeBuiltin,
+        ...globals.browser,
+        ...globals.es2021,
+      },
+    },
+    rules: {
+      ...commonRules,
+      "no-undef": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    },
+  },
   // Browser frontend files (assets/js)
   {
     files: ["assets/js/**/*.js"],
@@ -78,7 +105,7 @@ export default [
   },
   // ESLint test rules exemption for fake secret test vectors
   {
-    files: ["tests/eslint-rules/**/*.js"],
+    files: ["tests/**/*.js", "tests/**/*.ts"],
     rules: {
       "custom/no-hardcoded-secrets": "off",
     },
@@ -105,3 +132,4 @@ export default [
     ],
   },
 ];
+
