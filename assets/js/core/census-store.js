@@ -1,4 +1,4 @@
-﻿/**
+/**
  * census-store.js
  * CENSUS data store — loads and indexes all CENSUS JSON data files.
  * Provides query API for populations, estimates, units, sources, lineage, and measurement questions.

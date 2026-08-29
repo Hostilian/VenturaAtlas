@@ -6979,13 +6979,15 @@
     "sourceClass": "COMPANY_OR_INDUSTRY",
     "evidenceEligible": true,
     "provenanceEligible": true
-  }
-  ,{
+  },
+  {
     "id": "s314",
     "title": "Cyber Resilience Act - Reporting obligations",
     "publisher": "European Commission",
     "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
-    "supports": ["CRA reporting uses one official Single Reporting Platform; the platform is targeted for operation on 11 September 2026 and testing is underway"],
+    "supports": [
+      "CRA reporting uses one official Single Reporting Platform; the platform is targeted for operation on 11 September 2026 and testing is underway"
+    ],
     "type": "official_or_primary_evidence",
     "date": "2026-07-31",
     "accessDate": "2026-08-17",
@@ -7003,7 +7005,9 @@
     "title": "EU's new Waste Shipment Regulation and DIWASS digital platform go live",
     "publisher": "European Commission - Directorate-General for Environment",
     "url": "https://environment.ec.europa.eu/news/new-waste-shipment-regulation-and-diwass-platform-go-live-2026-05-21_en",
-    "supports": ["DIWASS launched on 21 May 2026 and digitises prior informed consent workflows; generic digital submission is therefore an absorbed layer"],
+    "supports": [
+      "DIWASS launched on 21 May 2026 and digitises prior informed consent workflows; generic digital submission is therefore an absorbed layer"
+    ],
     "type": "official_or_primary_evidence",
     "date": "2026-05-21",
     "accessDate": "2026-08-17",
@@ -7021,7 +7025,9 @@
     "title": "The Digital Product Passport Registry is now live",
     "publisher": "European Commission - Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
     "url": "https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en",
-    "supports": ["The Digital Product Passport Registry and testing environment launched on 20 July 2026; generic registry access is an absorbed baseline"],
+    "supports": [
+      "The Digital Product Passport Registry and testing environment launched on 20 July 2026; generic registry access is an absorbed baseline"
+    ],
     "type": "official_or_primary_evidence",
     "date": "2026-07-20",
     "accessDate": "2026-08-17",
@@ -7033,5 +7039,624 @@
     "sourceClass": "PRIMARY_OR_OFFICIAL",
     "evidenceEligible": true,
     "provenanceEligible": true
+  },
+  {
+    "title": "Google: Search AI updates for visual shopping",
+    "publisher": "Google",
+    "url": "https://blog.google/products-and-platforms/products/search/search-ai-updates-september-2025/",
+    "supports": [
+      "Google Search AI visual shopping and merchant discovery updates"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2025-09-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s317"
+  },
+  {
+    "title": "Amazon: Meet Alexa for Shopping",
+    "publisher": "Amazon",
+    "url": "https://www.aboutamazon.com/news/retail/alexa-for-shopping-ai-assistant",
+    "supports": [
+      "Alexa conversational AI shopping and discovery assistant"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2025-10-15",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s318"
+  },
+  {
+    "title": "OpenAI Help: Shopping with ChatGPT Search",
+    "publisher": "OpenAI",
+    "url": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search",
+    "supports": [
+      "ChatGPT Search visual shopping and product recommendation mechanism"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2025-11-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s319"
+  },
+  {
+    "title": "PowerReviews Questions and Answers product page",
+    "publisher": "PowerReviews",
+    "url": "https://www.powerreviews.com/products/ratings-reviews/questions-answers/",
+    "supports": [
+      "Retail Q&A integration and purchaser routing capability"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-01-15",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s320"
+  },
+  {
+    "title": "Yotpo Questions and Answers widget and moderation documentation",
+    "publisher": "Yotpo",
+    "url": "https://support.yotpo.com/docs/moderating-qa",
+    "supports": [
+      "Customer Q&A moderation, verification, and display workflows"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-02-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s321"
+  },
+  {
+    "title": "Bazaarvoice Questions and Answers product page",
+    "publisher": "Bazaarvoice",
+    "url": "https://www.bazaarvoice.com/products/questions-and-answers/",
+    "supports": [
+      "Enterprise retailer Q&A community and verified shopper routing"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-02-15",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s322"
+  },
+  {
+    "title": "Field Agent app: paid product and store photo tasks",
+    "publisher": "Field Agent",
+    "url": "https://app.fieldagent.net/",
+    "supports": [
+      "On-demand field verification and retail task marketplace"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-03-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s323"
+  },
+  {
+    "title": "Premise contributor task marketplace",
+    "publisher": "Premise Data",
+    "url": "https://contributors.premise.com/",
+    "supports": [
+      "Crowdsourced physical evidence collection and micro-task payouts"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-03-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s324"
+  },
+  {
+    "title": "Roamler retail on-demand shopper and auditor network",
+    "publisher": "Roamler",
+    "url": "https://www.roamler.com/retail/",
+    "supports": [
+      "European on-demand mobile workforce for in-store verification"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-03-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s325"
+  },
+  {
+    "title": "Stripe Czech Republic pricing",
+    "publisher": "Stripe",
+    "url": "https://stripe.com/en-cz/pricing",
+    "supports": [
+      "Payment transaction fees and merchant payout structure in CZK/EUR"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-04-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s326"
+  },
+  {
+    "title": "Stripe Connect marketplace documentation",
+    "publisher": "Stripe",
+    "url": "https://docs.stripe.com/connect/marketplace?locale=en-GB",
+    "supports": [
+      "Marketplace split-payments, seller onboarding, and dispute handling"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-04-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s327"
+  },
+  {
+    "title": "Question2Answer open-source Q&A repository",
+    "publisher": "Question2Answer Community",
+    "url": "https://github.com/q2a/question2answer",
+    "supports": [
+      "Open-source Q&A forum architecture, data schemas, and moderation hooks"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2023-07-25",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_repo",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s328"
+  },
+  {
+    "title": "Question2Answer official license page",
+    "publisher": "Question2Answer",
+    "url": "https://www.question2answer.org/license.php",
+    "supports": [
+      "GPL v2+ licensing terms and commercial reuse boundaries"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2023-07-25",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s329"
+  },
+  {
+    "title": "Question2Answer GitHub releases",
+    "publisher": "Question2Answer",
+    "url": "https://github.com/q2a/question2answer/releases",
+    "supports": [
+      "Release cadences, maintenance activity, and version tracking (v1.8.8)"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2023-07-25",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_repo",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s330"
+  },
+  {
+    "title": "ProofLens Google Play listing",
+    "publisher": "Google Play / Quadible",
+    "url": "https://play.google.com/store/apps/details?id=com.quadible.prooflens",
+    "supports": [
+      "Direct competitor app providing authenticated photo proof capture"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_marketplace",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s331"
+  },
+  {
+    "title": "ProofLens Apple App Store listing and in-app purchases",
+    "publisher": "Apple App Store / Quadible",
+    "url": "https://apps.apple.com/at/app/prooflens/id6758732413",
+    "supports": [
+      "iOS in-app purchase credits and verification monetization packs"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_marketplace",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s332"
+  },
+  {
+    "title": "Item Verified live-video verification product",
+    "publisher": "Item Verified",
+    "url": "https://itemverified.com/",
+    "supports": [
+      "Live video call verification for peer-to-peer and luxury goods"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-15",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s333"
+  },
+  {
+    "title": "ProofPack free guided live-video evidence product",
+    "publisher": "ProofPack",
+    "url": "https://www.proof-pack.com/en",
+    "supports": [
+      "Browser-based video condition reports and proof generation"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-20",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s334"
+  },
+  {
+    "title": "Proof.show free live-camera verified photos",
+    "publisher": "Proof.show",
+    "url": "https://proof.show/",
+    "supports": [
+      "Cryptographically stamped browser-based live photo capture"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-05-25",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s335"
+  },
+  {
+    "title": "WeGoLook Looker Payments",
+    "publisher": "WeGoLook / Crawford & Company",
+    "url": "https://lookersupport.wegolook.com/hc/en-us/articles/34214011677335-Looker-Payments",
+    "supports": [
+      "Gig-inspector payout structures and enterprise dispatching rates"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-06-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s336"
+  },
+  {
+    "title": "Google Merchant Center product dimensions specification",
+    "publisher": "Google",
+    "url": "https://support.google.com/merchants/answer/11018531?hl=en",
+    "supports": [
+      "Standardized attributes for product dimensions, sizing, and packaging"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-06-15",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s337"
+  },
+  {
+    "title": "GS1: information available in Verified by GS1",
+    "publisher": "GS1",
+    "url": "https://support.gs1.org/support/solutions/articles/43000734119-what-information-is-available-in-verified-by-gs1-",
+    "supports": [
+      "Global GTIN / barcode registry product identity verification attributes"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-06-20",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_standards_body",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s338"
+  },
+  {
+    "title": "C2PA Content Credentials specification 2.4",
+    "publisher": "Coalition for Content Provenance and Authenticity",
+    "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/ContentCredentials.html",
+    "supports": [
+      "Cryptographic provenance assertions and digital image authenticity standards"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-01",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_standards_body",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s339"
+  },
+  {
+    "title": "European Commission Digital Markets Act interoperability portal",
+    "publisher": "European Commission",
+    "url": "https://digital-markets-act.ec.europa.eu/developer-portal/interoperability_en",
+    "supports": [
+      "EU DMA gatekeeper interoperability rules and developer compliance obligations"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-10",
+    "accessDate": "2026-08-25",
+    "confidenceLabel": "high",
+    "sourceType": "official_regulator",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-061"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s340"
+  },
+  {
+    "title": "LangSmith Evaluation Concepts & Trajectory Inspection",
+    "publisher": "LangChain",
+    "url": "https://docs.langchain.com/langsmith/evaluation-concepts",
+    "supports": [
+      "Multi-turn agent trajectory evaluation, tool invocation assertions, and failure debugging"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-15",
+    "accessDate": "2026-08-27",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-001",
+      "idea-060"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s341"
+  },
+  {
+    "title": "DeepEval LLM & Agent Evaluation Framework",
+    "publisher": "Confident AI",
+    "url": "https://deepeval.com/docs/introduction",
+    "supports": [
+      "Open-source unit testing for LLM apps, conversational guardrails, and tool adherence"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-20",
+    "accessDate": "2026-08-27",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-001",
+      "idea-051",
+      "idea-060"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s342"
+  },
+  {
+    "title": "Deque axe Accessibility Ruleset & Automation Boundaries",
+    "publisher": "Deque Systems",
+    "url": "https://docs.deque.com/devtools-for-web/4/en/rulesets/",
+    "supports": [
+      "Automated WCAG testing coverage boundaries and manual verification requirements"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2026-07-25",
+    "accessDate": "2026-08-27",
+    "confidenceLabel": "high",
+    "sourceType": "official_corporate",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-426"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s343"
+  },
+  {
+    "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.1",
+    "publisher": "World Wide Web Consortium (W3C)",
+    "url": "https://www.w3.org/TR/WCAG21/",
+    "supports": [
+      "Normative web accessibility success criteria and conformance requirements"
+    ],
+    "type": "official_or_primary_evidence",
+    "date": "2023-09-21",
+    "accessDate": "2026-08-27",
+    "confidenceLabel": "high",
+    "sourceType": "official_standards_body",
+    "researchRound": "omega-xix-chessboard-2026-08-27",
+    "ideaIds": [
+      "idea-426"
+    ],
+    "visibility": "PUBLIC",
+    "sourceClass": "PRIMARY_OR_OFFICIAL",
+    "evidenceEligible": true,
+    "provenanceEligible": true,
+    "id": "s344"
   }
 ]

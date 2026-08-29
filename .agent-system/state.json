@@ -1,7 +1,7 @@
 {
-  "iteration": 148,
-  "lastCheckpoint": "2026-08-26T20:13:19+02:00",
-  "status": "OMEGA_XVIII_GOVERNANCE_AND_AUDIT_RECONCILED",
+  "iteration": 149,
+  "lastCheckpoint": "2026-08-27T21:32:31.750681+00:00",
+  "status": "OMEGA_XIX_SCORING_INTEGRITY_AUTONOMY_RECONCILED",
   "activeTasks": [],
   "completedTasks": [
     "TASK-000A",
@@ -47,7 +47,9 @@
     "OMG-005",
     "OMG-006",
     "OMG-XVII-001",
-    "OMG-XVIII-001"
+    "OMG-XVIII-001",
+    "OMG-XIX-001",
+    "OMG-XIX-002"
   ],
   "historicalCompletedTasks": [
     "TASK-RESET-XVIII",
@@ -60,7 +62,7 @@
     "stagedIdeas": 0,
     "totalIdeas": 324,
     "categories": 144,
-    "sources": 316,
+    "sources": 344,
     "prompts": 4625,
     "unitTestsPassed": 327,
     "unitTestsFailed": 1,
@@ -127,12 +129,16 @@
       "ORBIT": "PLANNING_MODELS_AND_SEEDS_ONLY",
       "CONSTELLATION": "CAPABILITY_ONTOLOGY_AND_FIXTURES_ONLY",
       "CAPITAL": "MODELS_AND_REGULATORY_CLOCKS_ONLY",
-      "MERCURY": "COMMERCIAL_C0_UNVALIDATED"
+      "MERCURY": "COMMERCIAL_C0_UNVALIDATED",
+      "CENSUS": "STATISTICAL_UNITS_AND_DENOMINATOR_MODELS_ONLY",
+      "TERRAIN": "PROBLEM_WORKFLOW_INDEX_SEEDED_HYPOTHESES_ONLY",
+      "CHESSBOARD": "MARKET_STRUCTURE_VALUE_CHAIN_ONTOLOGY_VERIFIED",
+      "PROOFOPS": "EMPIRICAL_PROOF_EXPERIMENTS_BACKLOG_ONLY"
     },
     "factBountyEvidenceLevel": "C0",
     "verifiedPayingCustomers": 0,
     "verifiedRevenueEUR": 0,
-    "daemonHeartbeatLastSeen": "2026-08-16T20:15:09Z",
-    "daemonStatus": "STALE_NOT_RUNNING"
+    "daemonHeartbeatLastSeen": "2026-08-27T21:32:31.775846+00:00",
+    "daemonStatus": "ACTIVE_WINDOWS_SCHEDULED_TASK"
   }
 }

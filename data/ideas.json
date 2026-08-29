@@ -76373,22 +76373,22 @@
           "basis": "Business model analysis"
         },
         "competitiveAdvantage": {
-          "value": 8,
-          "justification": "No direct competitor in buyer-funded product-fact-exchange niche; score reflects LOW competition (8 = low intensity)",
-          "confidence": "medium",
-          "basis": "Competitor research; note platform risk from incumbents"
+          "value": 5.5,
+          "justification": "Direct workflow competitors identified (ProofLens app on iOS/Android; Item Verified; ProofPack; Proof.show) alongside retail Q&A networks (PowerReviews, Bazaarvoice, Yotpo) and task networks (Field Agent, Premise, Roamler). Niche does not have zero competition [s317–s340].",
+          "confidence": "high",
+          "basis": "CHESSBOARD market structure audit (s317–s340); direct competitor teardowns and API documentation"
         },
         "defensibility": {
-          "value": 6.5,
-          "justification": "Fact graph and responder network create medium moat; incumbents could copy the feature quickly",
-          "confidence": "medium",
-          "basis": "Competitive analysis"
+          "value": 5.5,
+          "justification": "Retailers control exact-SKU purchaser graph and product-detail-page placement; buyers and responders multi-home with near-zero switching friction; moat requires verified fact graph density [s317–s340].",
+          "confidence": "high",
+          "basis": "CHESSBOARD control-point analysis; dependency audit on retailer order graphs and Stripe rails"
         },
         "dataAdvantagePotential": {
-          "value": 8.5,
-          "justification": "Verified, model-level, evidence-backed facts are highly defensible data assets that compound over time",
-          "confidence": "high",
-          "basis": "Data moat analysis"
+          "value": 7.5,
+          "justification": "Verified evidence facts are valuable data assets, but data compounding is constrained by evidence-reuse rights and SKU normalization until cross-retailer scale is achieved [s338–s340].",
+          "confidence": "medium",
+          "basis": "CHESSBOARD value-chain analysis (layers 6–8) and C2PA provenance standards"
         },
         "scalability": {
           "value": 7,
@@ -76486,7 +76486,40 @@
       "nearestFundedStartup": "Sourceful (product evidence), InfoSonics/NielsenIQ (retail data)",
       "nearestPlatformFeature": "Amazon Vine, Google Shopping verified reviews",
       "strongestOSSSubstitute": null,
-      "killExperiment": "Post 3 real buyer-funded bounties for product claims. If <2 bounties are funded by real buyers within 30 days -> KILL the buyer-funded model; pivot to subscription."
+      "killExperiment": "Post 3 real buyer-funded bounties for product claims. If <2 bounties are funded by real buyers within 30 days -> KILL the buyer-funded model; pivot to subscription.",
+      "scoreChangelog": [
+        {
+          "timestamp": "2026-08-27T21:32:01.297474+00:00",
+          "audit": "OMEGA-XIX-CHESSBOARD-INTEGRITY",
+          "author": "Antigravity OMEGA-XIX Codex",
+          "changes": [
+            {
+              "dimension": "competitiveAdvantage",
+              "oldValue": 8,
+              "newValue": 5.5,
+              "oldConfidence": "medium",
+              "newConfidence": "high",
+              "reason": "CHESSBOARD uncovered 4 direct workflow competitors (ProofLens, Item Verified, ProofPack, Proof.show) and 3 retail Q&A networks."
+            },
+            {
+              "dimension": "defensibility",
+              "oldValue": 6.5,
+              "newValue": 5.5,
+              "oldConfidence": "medium",
+              "newConfidence": "high",
+              "reason": "Retailer control of purchaser graphs and low-friction multi-homing limit structural defensibility."
+            },
+            {
+              "dimension": "dataAdvantagePotential",
+              "oldValue": 8.5,
+              "newValue": 7.5,
+              "oldConfidence": "high",
+              "newConfidence": "medium",
+              "reason": "Evidence reuse rights and SKU normalization require platform scale before data moat compounds."
+            }
+          ]
+        }
+      ]
     },
     {
       "schemaVersion": "2.0.0",

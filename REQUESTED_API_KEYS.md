@@ -1,78 +1,51 @@
-# 🔑 REQUESTED API KEYS — ACTION REQUIRED
+# 🔑 REQUESTED API KEYS & RUNTIME STATUS
 
-> **Created:** 2026-08-24
-> **Requested by:** Antigravity AI agent (background AI is BLOCKED without these)
-> **Priority:** HIGH — without these keys, premium AI providers are offline
+> **Updated:** 2026-08-27 (OMEGA-XIX Integrity & Autonomy Reconciled)
+> **Requested by:** Antigravity AI agent / OMEGA-XIX Codex
+> **Priority:** MEDIUM — Local/offline autonomy is active (Hermes 3 + Cohere + Own-Orch); premium reasoning providers require funded keys.
 
 ---
 
-## Keys Needed to Unblock Full Background AI Operation
+## Current Provider Health Snapshot (2026-08-27 Live Probe)
+
+| Provider | Type | Cost | Status | Circuit | Notes |
+|----------|------|------|--------|---------|-------|
+| `hermes-ollama` | Local Ollama (`hermes3:latest`) | **FREE** | ✅ AVAILABLE | 🟢 CLOSED | Local offline runner on port 11434 |
+| `own-orch` | Rule-based Deterministic | **FREE** | ✅ AVAILABLE | 🟢 CLOSED | Zero-dependency internal fallback engine |
+| `cohere-api` | Cohere API | Configured / Free Tier | ✅ AVAILABLE | 🟢 CLOSED | Active response verified |
+| `nvidia-nim-adversarial` | OpenAI GPT-OSS 20B (NVIDIA NIM) | Configured | ✅ AVAILABLE | 🟢 CLOSED | Adversarial review lane active |
+| `nvidia-nim` | NVIDIA NIM Primary (`llama-3.1-8b`) | Free Tier | ❌ UNAVAILABLE | 🔴 OPEN | HTTP 410 Gone (upstream endpoint update required) |
+| `fcc-claude` | Anthropic Haiku | **PAID** (~$3–5/M tokens) | ❌ UNAVAILABLE | 🔴 OPEN | No valid `ANTHROPIC_API_KEY` configured |
+| `anthropic-full` | Anthropic Sonnet / Opus | **PAID** (~$15/M tokens) | ❌ UNAVAILABLE | 🔴 OPEN | No valid `ANTHROPIC_API_KEY` configured |
+| `omniRoute` | OpenRouter Marketplace | **PAID** ($5 min top-up) | ❌ UNAVAILABLE | 🔴 OPEN | No valid `OPENROUTER_API_KEY` configured |
+| `active-api` | PekPik Gemini Proxy | Third-Party | ❌ UNAVAILABLE | 🔴 OPEN | HTTP 403 Forbidden (proxy key disabled) |
+| `deepseek-api` | DeepSeek API | Third-Party | ❌ UNAVAILABLE | 🔴 OPEN | HTTP 401 Unauthorized (key disabled) |
+
+---
+
+## Keys Needed for Premium Reasoning & Panel Synthesis
 
 ### 1. ANTHROPIC_API_KEY
-- **Unlocks:** `fcc-claude` + `anthropic-full` — premium reasoning, adversarial review
-- **Current status:** `OPEN` circuit — "No ANTHROPIC_API_KEY configured"
-- **Impact:** Without this, the 3-model adversarial panel cannot use Claude; research quality drops
+- **Unlocks:** `fcc-claude` + `anthropic-full` — multi-turn adversarial panel, top-tier critique
+- **Current status:** `OPEN` circuit — "No ANTHROPIC_API_KEY configured" (401 Unauthorized)
+- **Impact:** 3-model adversarial panel gracefully falls back to available models; deep red-team critique requires manual key addition
 - **Where to get it:** https://console.anthropic.com/settings/keys
 - **Where to add it:** `.env` file in the repo root → `ANTHROPIC_API_KEY=sk-ant-...`
-- **Cost:** Pay-per-use; ~$3–15/million tokens depending on model
+- **Cost:** Paid per use (real money, ~$3–15/million tokens depending on model)
 
 ### 2. OPENROUTER_API_KEY
-- **Unlocks:** `omniRoute` multi-provider router — fallback routing across 50+ models
-- **Current status:** `OPEN` circuit — "No OPENROUTER_API_KEY configured"
-- **Impact:** Without this, provider failover routing is broken; single-provider dependency
+- **Unlocks:** `omniRoute` multi-provider marketplace — automated routing across 50+ frontier models
+- **Current status:** `OPEN` circuit — "No OPENROUTER_API_KEY configured" (401 Unauthorized)
+- **Impact:** Provider router deprioritizes OmniRoute and routes across Cohere + Hermes + Own-Orch
 - **Where to get it:** https://openrouter.ai/keys
 - **Where to add it:** `.env` file → `OPENROUTER_API_KEY=sk-or-...`
-- **Cost:** Pay-per-use; often cheaper than direct APIs; $5 minimum top-up
-
-### 3. Ollama / Hermes Local Runtime
-- **Unlocks:** `hermes-ollama` — free local AI for simple operations, 24/7 no-cost
-- **Current status:** `OPEN` circuit — "Connection refused on localhost:11434"
-- **Impact:** Without this, there's no free tier — all AI work costs money
-- **How to fix (Option A — Local):** Install Ollama → `winget install Ollama.Ollama` → `ollama pull hermes3`
-- **How to fix (Option B — Always-on):** Deploy Ollama on a VPS (Hetzner CX22, ~€4/mo) so it runs 24/7 even when laptop is off
-- **Configuration:** No key needed — just needs to be running on port 11434
+- **Cost:** Paid per use ($5 minimum top-up)
 
 ---
 
-## What Unlocks After Adding These
+## Local Autonomy & Background Recurrence Verification
 
-| Key Added | What Starts Working |
-|-----------|-------------------|
-| ANTHROPIC_API_KEY | Premium research cross-check, adversarial red-team review |
-| OPENROUTER_API_KEY | Multi-provider routing, fallback if primary provider fails |
-| Ollama running | Free-tier local model for simple tasks; 24/7 daemon operation |
-
----
-
-## Current Provider Health Snapshot (2026-08-24)
-
-| Provider | Status | Circuit |
-|----------|--------|---------|
-| nvidia-nim | ✅ available | CLOSED |
-| cohere-api | ✅ available | CLOSED |
-| own-orch | ✅ available | CLOSED |
-| hermes-ollama | ❌ unavailable | OPEN — Ollama not running |
-| fcc-claude | ❌ unconfigured | OPEN — no ANTHROPIC_API_KEY |
-| anthropic-full | ❌ unconfigured | OPEN — no ANTHROPIC_API_KEY |
-| omniRoute | ❌ unconfigured | OPEN — no OPENROUTER_API_KEY |
-
----
-
-## Instructions for Human
-
-1. Go to https://console.anthropic.com/settings/keys and create a new key
-2. Go to https://openrouter.ai/keys and create a new key
-3. Open `.env` file in the repo root
-4. Add the lines (replace with your actual secret values):
-   ```
-   ANTHROPIC_API_KEY=<your-anthropic-key>
-   OPENROUTER_API_KEY=<your-openrouter-key>
-   ```
-5. **DO NOT commit `.env` to Git** — it is in `.gitignore` and must stay private
-6. After adding keys, run: `python scripts/va_orchestrator.py --test`
-7. Confirm all circuits show `CLOSED` in the output
-
----
-
-*This file was placed here by the agent because you asked it to remind you about keys.*
-*You can delete this file once the keys are added.*
+- **Windows Desktop Supervisor:** Scheduled Task `VentureAtlasAutonomy` is **REGISTERED and RUNNING**. It continuously triggers `scripts/Start-VentureAtlas-Supervisor.ps1` with single-process locking.
+- **Local Provider:** Ollama is running locally on port 11434 with `hermes3:latest` and circuit is `CLOSED`.
+- **Offline / Degraded Loop:** When external API keys are unavailable, the runtime operates cleanly on `hermes-ollama` + `cohere-api` + `own-orch` without crashing or throwing unhandled exceptions.
+- **Scheduled GitHub Actions:** `.github/workflows/autonomy-monitor.yml` and `.github/workflows/research-cycle.yml` are configured with private caching and bounded timeouts.

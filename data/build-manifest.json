@@ -1,11 +1,11 @@
 {
-  "dataRevision": "363c672aae9f4ff3",
-  "buildRevision": "2.7.1-363c672aae9f4ff3",
-  "generatedAt": "2026-08-25T01:17:21.346Z",
+  "dataRevision": "9e572191e4478073",
+  "buildRevision": "2.7.1-9e572191e4478073",
+  "generatedAt": "2026-08-27T21:34:58.606Z",
   "files": {
     "ideas.json": {
-      "sha256": "934fffd425b1fce627709b738dbfc5bb94966016c284e6e15d53d841387b9eb0",
-      "bytes": 4785307
+      "sha256": "7f45b9fe1cb291c09c2bebaf1f6e53f7c74346b2389074d70153661352921945",
+      "bytes": 4787144
     },
     "categories.json": {
       "sha256": "6cc3d94ac2e57b5d5a6a1a8ce6477fb8bf86e19e300655d9eccd779f00b20246",
@@ -16,8 +16,8 @@
       "bytes": 1338629
     },
     "sources.json": {
-      "sha256": "a412889d960c6b2527e2fefe973134bdd8d28a5d4ab38efa003066ac2cc1e5e4",
-      "bytes": 263239
+      "sha256": "7892c5a9bfdc96870120e681aafc9df4911f1e590b737e745d7433771cb9e3e1",
+      "bytes": 282753
     },
     "rankings.json": {
       "sha256": "a95433dfc132bb1e70f62c39a0ab523ceeb82b6c9424c307e8f32d9d41b4fa6b",

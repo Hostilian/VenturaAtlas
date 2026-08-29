@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastUpdated": "2026-08-27T21:32:01.591522+00:00",
+  "description": "Triage queue of (idea, dimension) pairs with value >= 7.5 and confidence == 'low', or legacy high-uncertainty scores requiring primary evidence audits.",
+  "flaggedCount": 5,
+  "items": [
+    {
+      "ideaId": "idea-061",
+      "ideaName": "FactBounty — Buyer-Funded Product Proof Exchange",
+      "dimension": "marketDemand",
+      "currentValue": 7.5,
+      "currentConfidence": "low",
+      "basis": "Analyst interpretation of multiple trend signals",
+      "justification": "Structural demand from agentic commerce + fake review distrust; precise market size unknown",
+      "status": "FLAGGED_FOR_EVIDENCE_AUDIT",
+      "triageAction": "Requires primary evidence or field interview verification before score mutation."
+    },
+    {
+      "ideaId": "idea-063",
+      "ideaName": "Compatibility Bounties — Device-Accessory Proof Exchange",
+      "dimension": "willingnessToPay",
+      "currentValue": 7.5,
+      "currentConfidence": "low",
+      "basis": "Inference from StockX/Vinted pricing",
+      "justification": "Higher bounty tolerance for high-value electronics compatibility",
+      "status": "FLAGGED_FOR_EVIDENCE_AUDIT",
+      "triageAction": "Requires primary evidence or field interview verification before score mutation."
+    },
+    {
+      "ideaId": "idea-404",
+      "ideaName": "Transformer Procurement Marketplace — AI Transformer Sourcing & Lead-Time Marketplace [KILLED]",
+      "dimension": "overallOpportunity",
+      "currentValue": 67,
+      "currentConfidence": "low",
+      "basis": "",
+      "justification": "",
+      "status": "FLAGGED_FOR_EVIDENCE_AUDIT",
+      "triageAction": "Requires primary evidence or field interview verification before score mutation."
+    },
+    {
+      "ideaId": "idea-405",
+      "ideaName": "FuelEU Pooling Marketplace — Maritime FuelEU Compliance Pool Exchange [KILLED]",
+      "dimension": "overallOpportunity",
+      "currentValue": 64.5,
+      "currentConfidence": "low",
+      "basis": "",
+      "justification": "",
+      "status": "FLAGGED_FOR_EVIDENCE_AUDIT",
+      "triageAction": "Requires primary evidence or field interview verification before score mutation."
+    },
+    {
+      "ideaId": "idea-406",
+      "ideaName": "Generic Methane Certification/MRV — Commodity Gas Methane MRV & Registry Platform [KILLED]",
+      "dimension": "overallOpportunity",
+      "currentValue": 62.5,
+      "currentConfidence": "low",
+      "basis": "",
+      "justification": "",
+      "status": "FLAGGED_FOR_EVIDENCE_AUDIT",
+      "triageAction": "Requires primary evidence or field interview verification before score mutation."
+    }
+  ]
+}

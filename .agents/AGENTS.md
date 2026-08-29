@@ -60,6 +60,8 @@ To prevent conflicting edits between concurrent agents, each agent owns specific
 | `commercial-discovery-agent` | `schemas/mercury-*.schema.json`, `schemas/commercial-outcome-receipt.schema.json`, `assets/js/core/mercury-store.js`, `assets/js/features/mercury.js`, `docs/mercury.html`, `research/mercury/` | **MERCURY:** Customer discovery, pricing validation, commercial receipts |
 | `market-measurement-agent` | `data/census-*.json`, `schemas/census-*.schema.json`, `assets/js/core/census-store.js`, `assets/js/features/census-engine.js`, `docs/census-lab.html`, `scripts/validate-census.js` | **CENSUS:** Denominator modeling, statistical units, population funnels, anti-TAM linter |
 | `terrain-modeling-agent` | `data/terrain-*.json`, `schemas/terrain-*.schema.json`, `assets/js/terrain.js`, `docs/terrain.html`, `scripts/validate-terrain.js`, `scripts/build-terrain-index.js` | **TERRAIN:** Customer jobs, workflows, frictions, problem-to-idea mappings |
+| `market-structure-agent` | `schemas/chessboard-*.schema.json`, `assets/js/core/chessboard-store.js`, `assets/js/features/chessboard-engine.js`, `assets/js/features/chessboard-lab.js`, `docs/chessboard.html`, `scripts/validate-chessboard.js`, `.agent-state/chessboard/` | **CHESSBOARD:** Market structure, value-chain layers, control points, competitive response, stress testing |
+| `proofops-agent` | `data/proofops-*.json`, `schemas/proofops-*.schema.json`, `scripts/validate-proofops.py` | **PROOFOPS:** Bounded empirical proof experiments, verification runs, falsification tracking |
 
 ### FactBounty Subproduct Roles (`apps/factbounty/`)
 - `factbounty-architect` (`apps/factbounty/shared/contracts/`)
