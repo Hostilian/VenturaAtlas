@@ -18,6 +18,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   let activeTab = 'tab-flow';
   let fixtures = [];
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedIdeaId = urlParams.get('idea') || urlParams.get('id');
+  
+  if (requestedIdeaId) {
+    document.querySelectorAll('header nav a').forEach(a => {
+      try {
+        const url = new URL(a.href, window.location.href);
+        url.searchParams.set('idea', requestedIdeaId);
+        a.href = url.toString();
+      } catch (e) {}
+    });
+  }
+
   // Fetch fixtures from data/relay-fixtures.json
   try {
     const res = await fetch('../data/relay-fixtures.json');
@@ -54,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       render();
     });
   });
+
 
   function render() {
     const ws = store.getWorkspace();
@@ -567,6 +581,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         render();
       });
     }
+
+    document.querySelectorAll('.qc-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const fId = e.target.getAttribute('data-id');
+        const defectDesc = window.prompt(`Log a defect for fulfillment ${fId}:`);
+        if (defectDesc) {
+          store.addDefect({
+            defectId: 'def-' + Date.now(),
+            fulfillmentId: fId,
+            description: defectDesc,
+            timestamp: new Date().toISOString(),
+            status: 'OPEN'
+          });
+          render();
+        }
+      });
+    });
   }
 
   // Initial render

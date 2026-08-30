@@ -1066,6 +1066,20 @@ function initIdea() {
   </div>
 </section>
 
+<!-- Reality Labs Navigation -->
+<section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
+  <h2 style="font-size:1.2rem;margin-top:0">Reality Labs</h2>
+  <p class="muted" style="margin-bottom:1rem">Launch this venture into the operating laboratories to simulate, build, and test.</p>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+    <a class="button secondary sm" href="${VA.base}/docs/terrain.html?idea=${encodeURIComponent(x.id)}">🌍 TERRAIN</a>
+    <a class="button secondary sm" href="${VA.base}/docs/census-lab.html?idea=${encodeURIComponent(x.id)}">🎯 CENSUS</a>
+    <a class="button secondary sm" href="${VA.base}/docs/mercury.html?idea=${encodeURIComponent(x.id)}">🚀 MERCURY</a>
+    <a class="button secondary sm" href="${VA.base}/docs/ops-lab.html?idea=${encodeURIComponent(x.id)}">⚙️ RELAY</a>
+    <a class="button secondary sm" href="${VA.base}/docs/constellation-lab.html?idea=${encodeURIComponent(x.id)}">🏢 CONSTELLATION</a>
+    <a class="button secondary sm" href="${VA.base}/docs/capital-lab.html?idea=${encodeURIComponent(x.id)}">💰 CAPITAL</a>
+  </div>
+</section>
+
 ${taxonomy ? `<!-- Normalized Positioning -->
 <section class="section" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem">
   <h2 style="font-size:1.2rem;margin-top:0">Positioning &amp; Similarity</h2>

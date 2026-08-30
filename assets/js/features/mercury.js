@@ -9,6 +9,17 @@ function initMercuryLab() {
   const ideas = window.VA?.ideas || [];
   const requestedIdeaId = new URLSearchParams(window.location.search).get('idea')
     || new URLSearchParams(window.location.search).get('id');
+    
+  if (requestedIdeaId) {
+    document.querySelectorAll('header nav a').forEach(a => {
+      try {
+        const url = new URL(a.href, window.location.href);
+        url.searchParams.set('idea', requestedIdeaId);
+        a.href = url.toString();
+      } catch (e) {}
+    });
+  }
+
   const esc = value => String(value ?? '')
     .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;').replaceAll("'", '&#39;');

@@ -14,8 +14,11 @@
   'use strict';
 
   let terrainData = null;
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedIdea = urlParams.get('idea') || urlParams.get('id') || '';
+
   let activeFilters = {
-    search: '',
+    search: requestedIdea,
     actor: 'all',
     friction: 'all',
     status: 'all'
@@ -191,8 +194,18 @@
     if (!list || !terrainData) return;
 
     const filtered = terrainData.problems.filter(p => {
-      if (activeFilters.search && !p.searchText.includes(activeFilters.search)) {
-        return false;
+      if (activeFilters.search) {
+        const term = activeFilters.search;
+        let match = false;
+        if (p.searchText && p.searchText.includes(term)) match = true;
+        if (!match && p.title && p.title.toLowerCase().includes(term)) match = true;
+        if (!match && p.description && p.description.toLowerCase().includes(term)) match = true;
+        if (!match && p.actors && p.actors.some(a => (a.role && a.role.toLowerCase().includes(term)) || (a.actorId && a.actorId.toLowerCase().includes(term)))) match = true;
+        if (!match && p.jobs && p.jobs.some(j => j.statement && j.statement.toLowerCase().includes(term))) match = true;
+        if (!match && p.workflowSummary && p.workflowSummary.name && p.workflowSummary.name.toLowerCase().includes(term)) match = true;
+        if (!match && p.workflowSummary && p.workflowSummary.steps && p.workflowSummary.steps.some(s => s.action && s.action.toLowerCase().includes(term))) match = true;
+
+        if (!match) return false;
       }
       if (activeFilters.actor !== 'all') {
         const hasActor = p.actors.some(a => a.actorId === activeFilters.actor);

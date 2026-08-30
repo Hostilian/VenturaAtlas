@@ -37,6 +37,19 @@
 
   function init() {
     workspace = VAConstellationStore.loadWorkspace();
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedIdeaId = urlParams.get('idea') || urlParams.get('id');
+    if (requestedIdeaId) {
+      document.querySelectorAll('header nav a').forEach(a => {
+        try {
+          const url = new URL(a.href, window.location.href);
+          url.searchParams.set('idea', requestedIdeaId);
+          a.href = url.toString();
+        } catch (e) {}
+      });
+    }
+
     setupEventListeners();
     render();
   }
