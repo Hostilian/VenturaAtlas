@@ -1,81 +1,472 @@
-<!doctype html>
-<html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Problem Atlas (Terrain) — Venture Atlas OS</title>
-  <meta name="description" content="Explore real-world problem workflows, customer actors, jobs-to-be-done, friction archetypes, and evidence-aware venture opportunity zones.">
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
-  <link rel="manifest" href="../manifest.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenturaAtlas - TERRAIN (Problem Atlas)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#0B0F17',
+                        card: '#111827',
+                        border: '#1F2937',
+                        accent: '#3B82F6',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                        warning: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: theme('colors.canvas'); color: white; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .glass-panel { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); border: 1px solid theme('colors.border'); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.canvas'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.border'); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.accent'); }
+    </style>
 </head>
-<body data-page="terrain" data-root="..">
-  <a href="#main" class="skip">Skip to content</a>
+<body class="min-h-screen flex flex-col antialiased selection:bg-accent selection:text-white">
 
-  <!-- ── Header ── -->
-  <header class="site-header" role="banner">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
-      <div class="navlinks" id="navlinks">
-        <a href="../#directory">Ideas</a>
-        <a href="./terrain.html" aria-current="page">🗺️ Problem Atlas</a>
-        <a href="./rankings.html">Rankings</a>
-        <a href="./compare.html">Compare</a>
-        <a href="./matcher.html">Matcher</a>
-        <a href="./calculator.html">Calculator</a>
-        <a href="./tags.html">Tags</a>
-        <a href="./dossiers.html">Dossiers</a>
-        <a href="./prompts.html">Prompts</a>
-        <a href="./sources.html">Sources</a>
-        <a href="./timeline.html">Timeline</a>
-        <a href="./room.html">Decision Studio</a>
-        <a href="./portfolio-lab.html">🔬 Portfolio Lab</a>
-        <a href="./research.html">Research</a>
-        <a href="./about.html">About</a>
-      </div>
-      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
-    </nav>
-  </header>
-
-  <!-- ── Main Content ── -->
-  <main id="main" style="max-width:1240px;margin:0 auto;padding:1.5rem">
-    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:1rem">
-      <a href="../index.html">Ideas</a><span class="sep">›</span>
-      <span>Problem Atlas (Terrain)</span>
-    </nav>
-
-    <!-- ── Page Title & Mission Statement ── -->
-    <header style="margin-bottom:1.5rem">
-      <div class="eyebrow" style="margin-bottom:0.25rem">Upstream Problem World Model</div>
-      <h1 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;margin-bottom:0.5rem">
-        Problem Atlas
-      </h1>
-      <p class="lede" style="color:var(--text2);font-size:1.05rem;line-height:1.6;max-width:900px">
-        Problem first. Solution second. Explore the observable real-world landscape: customer workflow performers, solution-neutral jobs-to-be-done, operational frictions, current workarounds, and how candidate venture ideas map to real work.
-      </p>
+    <!-- Global App Header -->
+    <header class="glass-panel sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-accent transition-colors">VENTURA<span class="text-accent">ATLAS</span></a>
+            <span class="text-gray-500">/</span>
+            <nav class="flex space-x-2 text-sm">
+                <a href="terrain.html" class="px-3 py-1 bg-accent/20 text-accent rounded-md border border-accent/30 font-medium">TERRAIN</a>
+                <a href="census-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CENSUS</a>
+                <a href="portfolio-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">ORBIT</a>
+                <a href="mercury.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">MERCURY</a>
+                <a href="ops-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">RELAY</a>
+                <a href="org-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CONSTELLATION</a>
+                <a href="capital-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CAPITAL</a>
+            </nav>
+        </div>
+        <div class="flex space-x-3 text-sm">
+            <button id="btn-export" class="px-4 py-2 bg-card border border-border rounded hover:border-accent transition-colors">Export JSON</button>
+            <label class="px-4 py-2 bg-card border border-border rounded hover:border-accent transition-colors cursor-pointer">
+                Import JSON
+                <input type="file" id="btn-import" class="hidden" accept=".json">
+            </label>
+        </div>
     </header>
 
-    <noscript>
-      <div class="panel" style="padding:1.5rem;border-left:4px solid var(--score-md);margin-bottom:1rem">
-        <h2>JavaScript is recommended</h2>
-        <p>The Problem Atlas uses client-side indexing for real-time search, multi-facet filtering, and workflow inspection. All underlying data files are openly available in the <a href="../data/terrain-index.json">data/ directory</a>.</p>
-      </div>
-    </noscript>
-
-    <!-- ── Terrain App Mount ── -->
-    <div id="terrainApp" aria-busy="true">
-      <p role="status" class="muted">Loading Problem Atlas &amp; workflow indices…</p>
+    <!-- Telemetry Banner -->
+    <div class="bg-card border-b border-border px-6 py-2 text-xs font-mono text-gray-400 flex justify-between">
+        <div class="flex space-x-6">
+            <span>STATUS: <span id="telemetry-status" class="text-success">NOMINAL</span></span>
+            <span>HASH: <span id="telemetry-hash" class="text-accent">0x00000000</span></span>
+        </div>
+        <div>
+            <span>LAST SAVED: <span id="telemetry-time">--</span></span>
+        </div>
     </div>
-  </main>
 
-  <footer class="footer" role="contentinfo" style="margin-top:4rem;border-top:1px solid var(--line);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:0.85rem">
-    <p>Venture Atlas OS — Problem-First Research Architecture · <a href="./about.html">About</a> · <a href="./methodology.html">Methodology</a> · <a href="../data/terrain-index.json">terrain-index.json</a></p>
-  </footer>
+    <!-- Main Content Layout -->
+    <main class="flex-1 p-6 grid grid-cols-12 gap-6 h-[calc(100vh-120px)] overflow-hidden">
+        
+        <!-- Left Panel: Data Entry & JTBD -->
+        <div class="col-span-4 flex flex-col gap-6 overflow-y-auto pr-2 pb-6">
+            <section class="glass-panel p-5 rounded-lg flex flex-col gap-4">
+                <h2 class="text-lg font-semibold border-b border-border pb-2">Jobs-to-be-Done (JTBD)</h2>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Functional Job</label>
+                        <input type="text" id="jtbd-functional" class="w-full bg-canvas border border-border rounded px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="e.g., Reconcile monthly supplier invoices">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Customer-Defined Outcome</label>
+                        <input type="text" id="jtbd-outcome" class="w-full bg-canvas border border-border rounded px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="[Direction] + [Metric] + [Context]">
+                    </div>
+                </div>
+            </section>
 
-  <script src="../assets/js/site.js?v=2.7.1"></script>
-  <script src="../assets/js/terrain.js?v=2.7.1"></script>
+            <section class="glass-panel p-5 rounded-lg flex-1 flex flex-col gap-4">
+                <div class="flex justify-between items-center border-b border-border pb-2">
+                    <h2 class="text-lg font-semibold">Workflow Steps</h2>
+                    <button id="btn-add-step" class="text-xs bg-accent text-white px-2 py-1 rounded hover:bg-blue-600 transition-colors">+ Add Step</button>
+                </div>
+                <div id="workflow-list" class="space-y-4 overflow-y-auto pr-1">
+                    <!-- Workflow Steps rendered here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Panel: Visualizations & Analytics -->
+        <div class="col-span-8 flex flex-col gap-6 overflow-hidden">
+            
+            <!-- Top Right: Interactive Canvas -->
+            <section class="glass-panel rounded-lg flex flex-col h-1/2">
+                <div class="p-4 border-b border-border flex justify-between items-center">
+                    <h2 class="text-lg font-semibold">Workflow Timeline Canvas</h2>
+                    <span class="text-xs text-gray-400">Nodes map to chronological steps</span>
+                </div>
+                <div class="flex-1 relative p-4 overflow-x-auto overflow-y-hidden" id="canvas-container">
+                    <svg id="workflow-svg" class="w-full h-full min-w-[800px]"></svg>
+                </div>
+            </section>
+
+            <!-- Bottom Right: Matrix & Ledger -->
+            <div class="grid grid-cols-2 gap-6 h-1/2">
+                <!-- Friction Matrix -->
+                <section class="glass-panel p-4 rounded-lg flex flex-col">
+                    <h2 class="text-lg font-semibold border-b border-border pb-2 mb-4">Friction Heatmap</h2>
+                    <div class="flex-1 relative bg-canvas/50 border border-border rounded p-2" id="matrix-container">
+                        <!-- Custom grid overlay -->
+                        <div class="absolute inset-0 grid grid-cols-5 grid-rows-5 opacity-10 pointer-events-none">
+                            <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
+                            <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
+                            <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
+                            <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
+                            <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 text-[10px] text-gray-500 transform translate-y-full mt-1">Low Severity</div>
+                        <div class="absolute bottom-0 right-0 text-[10px] text-gray-500 transform translate-y-full mt-1">High Severity</div>
+                        <div class="absolute top-0 left-0 text-[10px] text-gray-500 transform -translate-x-full -rotate-90 origin-bottom-right mb-1">High Freq</div>
+                        <canvas id="friction-canvas" class="w-full h-full"></canvas>
+                    </div>
+                </section>
+
+                <!-- Tax Ledger -->
+                <section class="glass-panel p-4 rounded-lg flex flex-col">
+                    <h2 class="text-lg font-semibold border-b border-border pb-2 mb-4">Workaround Tax Ledger</h2>
+                    <div class="flex-1 overflow-y-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="text-xs text-gray-400 border-b border-border">
+                                <tr>
+                                    <th class="pb-2">Step</th>
+                                    <th class="pb-2">Severity ($S_i$)</th>
+                                    <th class="pb-2 text-right">Tax/Yr</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ledger-body" class="divide-y divide-border">
+                                <!-- Rendered rows -->
+                            </tbody>
+                            <tfoot class="border-t-2 border-border font-bold">
+                                <tr>
+                                    <td class="pt-2 text-gray-400">TOTAL</td>
+                                    <td class="pt-2"></td>
+                                    <td class="pt-2 text-right text-danger" id="total-tax">$0.00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ES6 Module Logic -->
+    <script type="module">
+        // --- 1. State Management ---
+        const STORAGE_KEY = 'va_terrain_state_v1';
+        
+        const defaultState = {
+            jtbd: {
+                functional: '',
+                outcome: ''
+            },
+            steps: [
+                {
+                    id: crypto.randomUUID(),
+                    sequence: 1,
+                    name: 'Initial Data Ingestion',
+                    role: 'Analyst',
+                    durationMinutes: 45,
+                    frequencyPerMonth: 20,
+                    cognitiveBurden: 3, // 1-5
+                    financialLossPerHour: 50,
+                    toolsUsed: 'Excel, Email'
+                }
+            ]
+        };
+
+        let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState;
+
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            updateTelemetry();
+            render();
+        }
+
+        // --- 2. Math & Core Engines ---
+        function calculateSeverity(step) {
+            // S_i = Frequency * Burden * (1 + (Duration/60)) * FinancialLoss
+            const durationMultiplier = 1 + (Number(step.durationMinutes) / 60);
+            return Number(step.frequencyPerMonth) * Number(step.cognitiveBurden) * durationMultiplier * Number(step.financialLossPerHour);
+        }
+
+        function calculateWorkaroundTax(step) {
+            // Annualized capital and labor hours burned
+            // Assuming frequency is per month: (Duration/60) * Frequency * 12 * FinancialLoss
+            const hoursPerMonth = (Number(step.durationMinutes) / 60) * Number(step.frequencyPerMonth);
+            return hoursPerMonth * 12 * Number(step.financialLossPerHour);
+        }
+
+        function hashState(s) {
+            let hash = 0, str = JSON.stringify(s);
+            for (let i = 0; i < str.length; i++) {
+                let char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32bit int
+            }
+            return Math.abs(hash).toString(16).padStart(8, '0');
+        }
+
+        // --- 3. Telemetry ---
+        function updateTelemetry() {
+            document.getElementById('telemetry-time').textContent = new Date().toLocaleTimeString();
+            document.getElementById('telemetry-hash').textContent = '0x' + hashState(state);
+            document.getElementById('telemetry-status').textContent = state.steps.length > 0 ? 'NOMINAL' : 'AWAITING INPUT';
+        }
+
+        // --- 4. UI Rendering ---
+        const workflowListEl = document.getElementById('workflow-list');
+        const jtbdFunctionalEl = document.getElementById('jtbd-functional');
+        const jtbdOutcomeEl = document.getElementById('jtbd-outcome');
+        const ledgerBodyEl = document.getElementById('ledger-body');
+        const totalTaxEl = document.getElementById('total-tax');
+
+        // Bind JTBD Inputs
+        jtbdFunctionalEl.value = state.jtbd.functional;
+        jtbdOutcomeEl.value = state.jtbd.outcome;
+        
+        jtbdFunctionalEl.addEventListener('input', (e) => { state.jtbd.functional = e.target.value; saveState(); });
+        jtbdOutcomeEl.addEventListener('input', (e) => { state.jtbd.outcome = e.target.value; saveState(); });
+
+        document.getElementById('btn-add-step').addEventListener('click', () => {
+            state.steps.push({
+                id: crypto.randomUUID(),
+                sequence: state.steps.length + 1,
+                name: 'New Step',
+                role: 'User',
+                durationMinutes: 30,
+                frequencyPerMonth: 10,
+                cognitiveBurden: 2,
+                financialLossPerHour: 25,
+                toolsUsed: ''
+            });
+            saveState();
+        });
+
+        function renderWorkflowList() {
+            workflowListEl.innerHTML = '';
+            state.steps.sort((a,b) => a.sequence - b.sequence).forEach((step, index) => {
+                const stepEl = document.createElement('div');
+                stepEl.className = 'bg-card border border-border p-3 rounded text-sm space-y-2 relative group';
+                stepEl.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <input type="text" class="bg-transparent font-semibold focus:outline-none focus:border-b focus:border-accent w-2/3" value="${step.name}" data-id="${step.id}" data-field="name">
+                        <button class="text-danger opacity-0 group-hover:opacity-100 transition-opacity" onclick="window.deleteStep('${step.id}')">✕</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div><span class="text-gray-400">Role:</span> <input type="text" class="bg-canvas border border-border rounded px-1 w-full" value="${step.role}" data-id="${step.id}" data-field="role"></div>
+                        <div><span class="text-gray-400">Tools:</span> <input type="text" class="bg-canvas border border-border rounded px-1 w-full" value="${step.toolsUsed}" data-id="${step.id}" data-field="toolsUsed"></div>
+                        <div><span class="text-gray-400">Dur(m):</span> <input type="number" class="bg-canvas border border-border rounded px-1 w-full" value="${step.durationMinutes}" data-id="${step.id}" data-field="durationMinutes"></div>
+                        <div><span class="text-gray-400">Freq/mo:</span> <input type="number" class="bg-canvas border border-border rounded px-1 w-full" value="${step.frequencyPerMonth}" data-id="${step.id}" data-field="frequencyPerMonth"></div>
+                        <div><span class="text-gray-400">Burden(1-5):</span> <input type="number" min="1" max="5" class="bg-canvas border border-border rounded px-1 w-full" value="${step.cognitiveBurden}" data-id="${step.id}" data-field="cognitiveBurden"></div>
+                        <div><span class="text-gray-400">Cost/hr($):</span> <input type="number" class="bg-canvas border border-border rounded px-1 w-full" value="${step.financialLossPerHour}" data-id="${step.id}" data-field="financialLossPerHour"></div>
+                    </div>
+                `;
+                workflowListEl.appendChild(stepEl);
+
+                // Add listeners to inputs
+                stepEl.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        const field = e.target.getAttribute('data-field');
+                        const st = state.steps.find(s => s.id === id);
+                        if (st) {
+                            st[field] = e.target.type === 'number' ? Number(e.target.value) : e.target.value;
+                            saveState();
+                        }
+                    });
+                });
+            });
+        }
+
+        window.deleteStep = function(id) {
+            state.steps = state.steps.filter(s => s.id !== id);
+            // Re-sequence
+            state.steps.forEach((s, i) => s.sequence = i + 1);
+            saveState();
+        };
+
+        function renderCanvas() {
+            const svg = document.getElementById('workflow-svg');
+            svg.innerHTML = ''; // Clear
+            if(state.steps.length === 0) return;
+
+            const width = svg.clientWidth || 800;
+            const height = svg.clientHeight || 300;
+            const nodeWidth = 120;
+            const nodeHeight = 60;
+            const spacing = (width - 40) / Math.max(state.steps.length, 1);
+            
+            let html = '';
+            
+            // Draw lines first
+            for(let i=0; i < state.steps.length - 1; i++) {
+                const x1 = 20 + (i * spacing) + (nodeWidth/2);
+                const y1 = height / 2;
+                const x2 = 20 + ((i+1) * spacing) + (nodeWidth/2);
+                const y2 = height / 2;
+                html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#1F2937" stroke-width="2" />`;
+                html += `<polygon points="${x2-10},${y2-5} ${x2},${y2} ${x2-10},${y2+5}" fill="#3B82F6" />`;
+            }
+
+            // Draw nodes
+            state.steps.forEach((step, i) => {
+                const x = 20 + (i * spacing);
+                const y = (height / 2) - (nodeHeight / 2);
+                const severity = calculateSeverity(step);
+                
+                // Color intensity based on severity
+                const maxSeverity = Math.max(...state.steps.map(s => calculateSeverity(s)), 1);
+                const intensity = severity / maxSeverity;
+                const strokeColor = intensity > 0.7 ? '#EF4444' : (intensity > 0.4 ? '#F59E0B' : '#3B82F6');
+
+                html += `
+                    <g transform="translate(${x}, ${y})">
+                        <rect width="${nodeWidth}" height="${nodeHeight}" rx="6" fill="#111827" stroke="${strokeColor}" stroke-width="2" class="cursor-pointer hover:stroke-white transition-all"/>
+                        <text x="10" y="20" fill="white" font-size="12" font-weight="bold" font-family="sans-serif">${step.name.substring(0,14)}${step.name.length>14?'...':''}</text>
+                        <text x="10" y="38" fill="#9CA3AF" font-size="10" font-family="sans-serif">Role: ${step.role}</text>
+                        <text x="10" y="52" fill="${strokeColor}" font-size="10" font-weight="bold" font-family="sans-serif">S: ${severity.toFixed(0)}</text>
+                    </g>
+                `;
+            });
+
+            svg.innerHTML = html;
+        }
+
+        function renderFrictionMatrix() {
+            const canvas = document.getElementById('friction-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Handle DPI scaling
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if(state.steps.length === 0) return;
+
+            const maxSeverity = Math.max(...state.steps.map(s => calculateSeverity(s)), 100);
+            const maxFreq = Math.max(...state.steps.map(s => s.frequencyPerMonth), 10);
+
+            state.steps.forEach(step => {
+                const severity = calculateSeverity(step);
+                const freq = step.frequencyPerMonth;
+                
+                // Map to canvas (padding of 20px)
+                const pad = 20;
+                const x = pad + (severity / maxSeverity) * (canvas.width - 2 * pad);
+                // Y is inverted (higher freq = higher up)
+                const y = canvas.height - pad - (freq / maxFreq) * (canvas.height - 2 * pad);
+
+                // Draw circle
+                ctx.beginPath();
+                ctx.arc(x, y, 8, 0, 2 * Math.PI);
+                ctx.fillStyle = '#EF4444'; // Danger color
+                ctx.globalAlpha = 0.8;
+                ctx.fill();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#111827';
+                ctx.stroke();
+
+                // Draw label
+                ctx.globalAlpha = 1.0;
+                ctx.fillStyle = 'white';
+                ctx.font = '10px sans-serif';
+                ctx.fillText(step.name.substring(0,10), x + 12, y + 4);
+            });
+        }
+
+        function renderLedger() {
+            ledgerBodyEl.innerHTML = '';
+            let total = 0;
+            
+            // Sort by tax descending
+            const sortedSteps = [...state.steps].sort((a,b) => calculateWorkaroundTax(b) - calculateWorkaroundTax(a));
+
+            sortedSteps.forEach(step => {
+                const tax = calculateWorkaroundTax(step);
+                const sev = calculateSeverity(step);
+                total += tax;
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="py-2 truncate max-w-[150px]">${step.name}</td>
+                    <td class="py-2">${sev.toFixed(0)}</td>
+                    <td class="py-2 text-right">$${tax.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+                `;
+                ledgerBodyEl.appendChild(tr);
+            });
+
+            totalTaxEl.textContent = `$${total.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+        }
+
+        function render() {
+            renderWorkflowList();
+            // Need slight delay for DOM to settle sizes for canvas/svg
+            setTimeout(() => {
+                renderCanvas();
+                renderFrictionMatrix();
+            }, 10);
+            renderLedger();
+        }
+
+        // --- 5. Export / Import ---
+        document.getElementById('btn-export').addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "ventura_terrain_export.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+
+        document.getElementById('btn-import').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const imported = JSON.parse(event.target.result);
+                    if(imported && imported.steps) {
+                        state = imported;
+                        saveState();
+                    } else {
+                        alert("Invalid file format.");
+                    }
+                } catch(err) {
+                    alert("Error parsing JSON.");
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Handle resize for canvases
+        window.addEventListener('resize', () => {
+            renderCanvas();
+            renderFrictionMatrix();
+        });
+
+        // Initial render
+        updateTelemetry();
+        render();
+
+    </script>
 </body>
 </html>

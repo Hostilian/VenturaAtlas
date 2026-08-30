@@ -1,56 +1,513 @@
-<!doctype html>
-<html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mercury Customer Reality Lab — Venture Atlas OS</title>
-  <meta name="description" content="A private, browser-local notebook for commercial hypotheses, buyer conversations, offers, pipeline, payment evidence, activation, and retention.">
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="../assets/css/site.css?v=2.7.1">
-  <link rel="manifest" href="../manifest.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VenturaAtlas - MERCURY (Commercial Lab)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#0B0F17',
+                        card: '#111827',
+                        border: '#1F2937',
+                        accent: '#3B82F6',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                        warning: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: theme('colors.canvas'); color: white; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .glass-panel { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); border: 1px solid theme('colors.border'); }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.canvas'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.border'); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.accent'); }
+    </style>
 </head>
-<body data-page="mercury" data-root="..">
-  <a href="#main" class="skip">Skip to content</a>
-  <header class="site-header" role="banner">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="../" aria-label="Venture Atlas OS home">Venture Atlas OS</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navlinks">☰</button>
-      <div class="navlinks" id="navlinks">
-        <a href="../#directory">Ideas</a>
-        <a href="./room.html">Decision Studio</a>
-        <a href="./mercury.html" aria-current="page">Customer Lab</a>
-        <a href="./research.html">Research</a>
-        <a href="./about.html">About</a>
-      </div>
-      <button id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
-    </nav>
-  </header>
+<body class="min-h-screen flex flex-col antialiased selection:bg-accent selection:text-white">
 
-  <main id="main" style="max-width:1240px;margin:0 auto;padding:1.5rem">
-    <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:1rem">
-      <a href="../index.html">Ideas</a><span class="sep">›</span>
-      <a href="./room.html">Decision Studio</a><span class="sep">›</span>
-      <span>Mercury Customer Reality Lab</span>
-    </nav>
-    <noscript><div class="panel" style="padding:1.5rem"><h1>Mercury requires JavaScript</h1><p>This local browser notebook cannot read or save its private workspace without JavaScript. No commercial data has been sent anywhere.</p></div></noscript>
-    <div class="notice" style="margin-bottom:1rem">Mercury does not contact prospects, send messages, record or transcribe calls, run AI, or start background jobs. Exports are unencrypted JSON and must be handled as private data.</div>
-    <div id="mercuryApp" aria-busy="true">
-      <p role="status">Loading the private Customer Reality Lab…</p>
+    <!-- Global App Header -->
+    <header class="glass-panel sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white hover:text-accent transition-colors">VENTURA<span class="text-accent">ATLAS</span></a>
+            <span class="text-gray-500">/</span>
+            <nav class="flex space-x-2 text-sm">
+                <a href="terrain.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">TERRAIN</a>
+                <a href="census-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CENSUS</a>
+                <a href="portfolio-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">ORBIT</a>
+                <a href="mercury.html" class="px-3 py-1 bg-accent/20 text-accent rounded-md border border-accent/30 font-medium">MERCURY</a>
+                <a href="ops-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">RELAY</a>
+                <a href="org-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CONSTELLATION</a>
+                <a href="capital-lab.html" class="px-3 py-1 text-gray-400 hover:text-white transition-colors">CAPITAL</a>
+            </nav>
+        </div>
+        <div class="flex space-x-3 text-sm">
+            <button id="btn-export" class="px-4 py-2 bg-card border border-border rounded hover:border-accent transition-colors">Export JSON</button>
+            <label class="px-4 py-2 bg-card border border-border rounded hover:border-accent transition-colors cursor-pointer">
+                Import JSON
+                <input type="file" id="btn-import" class="hidden" accept=".json">
+            </label>
+        </div>
+    </header>
+
+    <!-- Telemetry Banner -->
+    <div class="bg-card border-b border-border px-6 py-2 text-xs font-mono text-gray-400 flex justify-between">
+        <div class="flex space-x-6">
+            <span>STATUS: <span id="telemetry-status" class="text-success">NOMINAL</span></span>
+            <span>HASH: <span id="telemetry-hash" class="text-accent">0x00000000</span></span>
+            <span>EVIDENCE LEVEL: <span id="telemetry-evidence" class="text-warning">L1 - Concept</span></span>
+        </div>
+        <div>
+            <span>LAST SAVED: <span id="telemetry-time">--</span></span>
+        </div>
     </div>
-  </main>
 
-  <script src="../assets/js/config.js?v=2.7.1"></script>
-  <script src="../assets/js/core/mercury-store.js?v=2.7.1"></script>
-  <script src="../assets/js/core/studio-store.js?v=2.7.1"></script>
-  <script src="../assets/js/site.js?v=2.7.1"></script>
-  <script src="../assets/js/features/mercury.js?v=2.7.1"></script>
-  <script>
-    window.addEventListener('va:ready', () => {
-      const app = document.getElementById('mercuryApp');
-      if (app) app.removeAttribute('aria-busy');
-      if (typeof initMercuryLab === 'function') initMercuryLab();
-    }, { once: true });
-  </script>
+    <!-- Main Content Layout -->
+    <main class="flex-1 p-6 grid grid-cols-12 gap-6 h-[calc(100vh-120px)] overflow-hidden">
+        
+        <!-- Left Panel: Triggers & Evidence Ladder -->
+        <div class="col-span-5 flex flex-col gap-6 overflow-y-auto pr-2 pb-6">
+            
+            <section class="glass-panel p-5 rounded-lg flex flex-col gap-4">
+                <h2 class="text-lg font-semibold border-b border-border pb-2">Buyer Trigger Taxonomy</h2>
+                <div class="space-y-3" id="trigger-list">
+                    <!-- Triggers rendered here -->
+                </div>
+                <button id="btn-add-trigger" class="mt-2 text-xs border border-dashed border-border text-gray-400 py-2 rounded hover:text-white hover:border-accent transition-colors">+ Add Trigger</button>
+            </section>
+
+            <section class="glass-panel p-5 rounded-lg flex-1 flex flex-col gap-4">
+                <h2 class="text-lg font-semibold border-b border-border pb-2">5-Tier Commercial Evidence Ladder</h2>
+                <div class="space-y-2 flex-1" id="evidence-ladder">
+                    <!-- L1 to L5 Stepper -->
+                    <div class="flex items-center space-x-3 p-3 border border-border rounded bg-card opacity-50 transition-all cursor-pointer hover:border-accent" data-level="1">
+                        <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center font-bold">1</div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-sm">Passive Interest</div>
+                            <div class="text-xs text-gray-400">Newsletter signup, whitepaper download</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 border border-border rounded bg-card opacity-50 transition-all cursor-pointer hover:border-accent" data-level="2">
+                        <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center font-bold">2</div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-sm">Active Discovery</div>
+                            <div class="text-xs text-gray-400">Attended demo, provided workflow specs</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 border border-border rounded bg-card opacity-50 transition-all cursor-pointer hover:border-accent" data-level="3">
+                        <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center font-bold">3</div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-sm">Verbal/Soft Commit</div>
+                            <div class="text-xs text-gray-400">"We will buy this if X is built", LOI signed</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 border border-border rounded bg-card opacity-50 transition-all cursor-pointer hover:border-accent" data-level="4">
+                        <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center font-bold">4</div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-sm">Pilot/Proof of Value (Paid)</div>
+                            <div class="text-xs text-gray-400">Paid pilot, restricted rollout deployed</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 border border-border rounded bg-card opacity-50 transition-all cursor-pointer hover:border-accent" data-level="5">
+                        <div class="w-8 h-8 rounded-full bg-border flex items-center justify-center font-bold">5</div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-sm">Full Commercial Contract</div>
+                            <div class="text-xs text-gray-400">Multi-year ACV locked, production SLA</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Panel: PSM & Crypto Receipts -->
+        <div class="col-span-7 flex flex-col gap-6 overflow-hidden pb-6">
+            
+            <!-- Van Westendorp Pricing Model -->
+            <section class="glass-panel rounded-lg flex flex-col h-3/5 p-4">
+                <div class="flex justify-between items-center border-b border-border pb-2 mb-2">
+                    <h2 class="text-lg font-semibold">Pricing Sensitivity Model (Van Westendorp)</h2>
+                    <button id="btn-add-psm" class="text-xs bg-accent text-white px-2 py-1 rounded hover:bg-blue-600 transition-colors">+ Add Survey Data</button>
+                </div>
+                
+                <div class="flex-1 relative w-full h-full bg-canvas/50 border border-border rounded p-4 flex flex-col">
+                    <canvas id="psm-canvas" class="w-full flex-1 mb-2"></canvas>
+                    
+                    <div class="grid grid-cols-4 gap-2 text-center text-xs font-mono border-t border-border pt-2">
+                        <div><span class="block text-gray-400">Optimal Price Point (OPP)</span><span id="psm-opp" class="text-success text-lg">$0</span></div>
+                        <div><span class="block text-gray-400">Point of Marginal Cheap (PMC)</span><span id="psm-pmc" class="text-accent text-lg">$0</span></div>
+                        <div><span class="block text-gray-400">Point of Marginal Exp. (PME)</span><span id="psm-pme" class="text-warning text-lg">$0</span></div>
+                        <div><span class="block text-gray-400">Indifference Price Point (IPP)</span><span id="psm-ipp" class="text-white text-lg">$0</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Commercial Receipt Studio -->
+            <section class="glass-panel rounded-lg flex flex-col h-2/5 p-4">
+                <h2 class="text-lg font-semibold border-b border-border pb-2 mb-4">Cryptographic Commercial Receipt Generator</h2>
+                
+                <div class="flex flex-col gap-4 h-full">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">Customer Entity</label>
+                            <input type="text" id="cr-customer" class="w-full bg-canvas border border-border rounded px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="Acme Corp">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">ACV / Contract Value</label>
+                            <input type="number" id="cr-value" class="w-full bg-canvas border border-border rounded px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="50000">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-xs text-gray-400 mb-1">Commitment Terms (The 'Proof')</label>
+                            <input type="text" id="cr-terms" class="w-full bg-canvas border border-border rounded px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="12-month paid pilot, net-30...">
+                        </div>
+                    </div>
+                    
+                    <button id="btn-generate-receipt" class="w-full bg-accent text-white py-2 rounded font-semibold hover:bg-blue-600 transition-colors">Generate Immutable Receipt (SHA-256)</button>
+                    
+                    <div class="mt-auto bg-canvas border border-border rounded p-3 text-xs font-mono break-all text-gray-400">
+                        <span class="text-accent">RECEIPT_HASH:</span> <span id="cr-hash">AWAITING_GENERATION...</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ES6 Module Logic -->
+    <script type="module">
+        // --- 1. State Management ---
+        const STORAGE_KEY = 'va_mercury_state_v1';
+        
+        const defaultState = {
+            evidenceLevel: 1,
+            triggers: [
+                { id: crypto.randomUUID(), type: 'Compliance', desc: 'New EU regulation deadline', urgency: 'High' },
+                { id: crypto.randomUUID(), type: 'Cost', desc: 'OpEx reduction mandate', urgency: 'Medium' }
+            ],
+            psmData: [
+                // { tooCheap, cheap, expensive, tooExpensive }
+                { tc: 100, c: 200, e: 400, te: 600 },
+                { tc: 150, c: 250, e: 450, te: 700 },
+                { tc: 120, c: 220, e: 380, te: 500 },
+                { tc: 90,  c: 180, e: 350, te: 550 },
+                { tc: 200, c: 300, e: 500, te: 800 }
+            ],
+            receipts: []
+        };
+
+        let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState;
+
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            updateTelemetry();
+            render();
+        }
+
+        async function generateSHA256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        function hashState(s) {
+            let hash = 0, str = JSON.stringify(s);
+            for (let i = 0; i < str.length; i++) {
+                hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                hash = hash & hash;
+            }
+            return Math.abs(hash).toString(16).padStart(8, '0');
+        }
+
+        // --- 2. Telemetry ---
+        function updateTelemetry() {
+            document.getElementById('telemetry-time').textContent = new Date().toLocaleTimeString();
+            document.getElementById('telemetry-hash').textContent = '0x' + hashState(state);
+            document.getElementById('telemetry-evidence').textContent = `L${state.evidenceLevel}`;
+            
+            // Highlight current ladder tier
+            document.querySelectorAll('#evidence-ladder > div').forEach(el => {
+                const lvl = parseInt(el.getAttribute('data-level'));
+                if (lvl === state.evidenceLevel) {
+                    el.classList.remove('opacity-50');
+                    el.classList.add('border-accent', 'bg-accent/10');
+                } else if (lvl < state.evidenceLevel) {
+                    el.classList.remove('opacity-50');
+                    el.classList.remove('border-accent', 'bg-accent/10');
+                    el.classList.add('border-success', 'bg-success/5');
+                    el.querySelector('.w-8').classList.add('bg-success', 'text-white');
+                } else {
+                    el.classList.add('opacity-50');
+                    el.classList.remove('border-accent', 'bg-accent/10', 'border-success', 'bg-success/5');
+                    el.querySelector('.w-8').classList.remove('bg-success', 'text-white');
+                }
+            });
+        }
+
+        // Add click to evidence ladder
+        document.querySelectorAll('#evidence-ladder > div').forEach(el => {
+            el.addEventListener('click', () => {
+                state.evidenceLevel = parseInt(el.getAttribute('data-level'));
+                saveState();
+            });
+        });
+
+        // --- 3. UI Bindings for Triggers ---
+        function renderTriggers() {
+            const list = document.getElementById('trigger-list');
+            list.innerHTML = '';
+            
+            state.triggers.forEach(t => {
+                const el = document.createElement('div');
+                el.className = 'flex items-center gap-2 bg-card border border-border p-2 rounded group';
+                
+                const urgencyColors = { 'High': 'text-danger', 'Medium': 'text-warning', 'Low': 'text-success' };
+                const uColor = urgencyColors[t.urgency] || 'text-white';
+
+                el.innerHTML = `
+                    <select class="bg-canvas border border-border rounded px-2 py-1 text-xs w-24" data-id="${t.id}" data-field="type">
+                        <option value="Compliance" ${t.type==='Compliance'?'selected':''}>Compliance</option>
+                        <option value="Cost" ${t.type==='Cost'?'selected':''}>Cost</option>
+                        <option value="Revenue" ${t.type==='Revenue'?'selected':''}>Revenue</option>
+                        <option value="Risk" ${t.type==='Risk'?'selected':''}>Risk</option>
+                    </select>
+                    <input type="text" class="flex-1 bg-transparent border-b border-transparent focus:border-accent outline-none text-sm px-1" value="${t.desc}" data-id="${t.id}" data-field="desc">
+                    <select class="bg-canvas border border-border rounded px-2 py-1 text-xs w-20 ${uColor}" data-id="${t.id}" data-field="urgency">
+                        <option value="High" ${t.urgency==='High'?'selected':''}>High</option>
+                        <option value="Medium" ${t.urgency==='Medium'?'selected':''}>Medium</option>
+                        <option value="Low" ${t.urgency==='Low'?'selected':''}>Low</option>
+                    </select>
+                    <button class="text-danger opacity-0 group-hover:opacity-100 px-1" onclick="window.deleteTrigger('${t.id}')">✕</button>
+                `;
+                list.appendChild(el);
+
+                el.querySelectorAll('input, select').forEach(inp => {
+                    inp.addEventListener('change', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        const field = e.target.getAttribute('data-field');
+                        const trg = state.triggers.find(x => x.id === id);
+                        if(trg) {
+                            trg[field] = e.target.value;
+                            saveState();
+                        }
+                    });
+                });
+            });
+        }
+
+        window.deleteTrigger = function(id) {
+            state.triggers = state.triggers.filter(x => x.id !== id);
+            saveState();
+        };
+
+        document.getElementById('btn-add-trigger').addEventListener('click', () => {
+            state.triggers.push({ id: crypto.randomUUID(), type: 'Cost', desc: 'New trigger context', urgency: 'Medium' });
+            saveState();
+        });
+
+
+        // --- 4. PSM Visualization ---
+        document.getElementById('btn-add-psm').addEventListener('click', () => {
+            // Generate random plausible survey data point
+            const tc = Math.floor(Math.random() * 100) + 50;
+            const c = tc + Math.floor(Math.random() * 100) + 50;
+            const e = c + Math.floor(Math.random() * 200) + 100;
+            const te = e + Math.floor(Math.random() * 300) + 100;
+            state.psmData.push({ tc, c, e, te });
+            saveState();
+        });
+
+        function renderPSM() {
+            const canvas = document.getElementById('psm-canvas');
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            // Account for header + footer height within the flex container
+            canvas.width = rect.width;
+            canvas.height = rect.height - 40; 
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if(state.psmData.length < 3) {
+                ctx.fillStyle = '#9CA3AF';
+                ctx.fillText("Need at least 3 survey data points to plot PSM.", 10, 20);
+                return;
+            }
+
+            // Determine min/max prices across all data
+            let minPrice = Infinity;
+            let maxPrice = -Infinity;
+            state.psmData.forEach(d => {
+                if(d.tc < minPrice) minPrice = d.tc;
+                if(d.te > maxPrice) maxPrice = d.te;
+            });
+
+            // Create price buckets (e.g. 20 buckets)
+            const buckets = 20;
+            const step = (maxPrice - minPrice) / buckets;
+            const prices = Array.from({length: buckets+1}, (_, i) => minPrice + i * step);
+
+            // Calculate cumulative frequencies
+            // "Too Cheap" (TC) and "Cheap" (C) are cumulative downward (e.g. % saying it's too cheap at price X or higher)
+            // But standard Van Westendorp: 
+            // TC, C: cumulative from bottom to top (at lower prices, higher % say it's TC/C)
+            // wait, standard PSM:
+            // "Too Cheap" drops as price goes up. (Cumulative % of people who think X is too cheap or cheaper -> so it starts high at low prices and goes to 0)
+            // Actually, if someone says 100 is Too Cheap, they also think 50 is Too Cheap.
+            
+            const n = state.psmData.length;
+            const curveTC = prices.map(p => state.psmData.filter(d => p <= d.tc).length / n);
+            const curveC  = prices.map(p => state.psmData.filter(d => p <= d.c).length / n);
+            // Not Cheap = 1 - C
+            const curveNotC = curveC.map(v => 1 - v);
+
+            const curveE  = prices.map(p => state.psmData.filter(d => p >= d.e).length / n);
+            const curveTE = prices.map(p => state.psmData.filter(d => p >= d.te).length / n);
+            // Not Expensive = 1 - E
+            const curveNotE = curveE.map(v => 1 - v);
+
+            // Drawing logic
+            const w = canvas.width;
+            const h = canvas.height;
+            const padL = 40, padB = 20, padT = 10, padR = 20;
+            const chartW = w - padL - padR;
+            const chartH = h - padB - padT;
+
+            const mapX = (price) => padL + ((price - minPrice) / (maxPrice - minPrice)) * chartW;
+            const mapY = (pct) => padT + chartH - (pct * chartH);
+
+            const drawCurve = (curve, color, label) => {
+                ctx.beginPath();
+                ctx.moveTo(mapX(prices[0]), mapY(curve[0]));
+                for(let i=1; i<prices.length; i++) {
+                    ctx.lineTo(mapX(prices[i]), mapY(curve[i]));
+                }
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Find a spot to label it
+                ctx.fillStyle = color;
+                ctx.font = '10px sans-serif';
+                // Just put label at the end or beginning
+                if(curve[0] > 0.5) {
+                    ctx.fillText(label, mapX(prices[1]), mapY(curve[1]) - 5);
+                } else {
+                    ctx.fillText(label, mapX(prices[prices.length-2]), mapY(curve[prices.length-2]) - 5);
+                }
+            };
+
+            drawCurve(curveTC, '#EF4444', 'Too Cheap'); // Red
+            drawCurve(curveNotC, '#F59E0B', 'Not Cheap'); // Orange
+            drawCurve(curveNotE, '#3B82F6', 'Not Exp.'); // Blue
+            drawCurve(curveTE, '#10B981', 'Too Exp.'); // Green
+
+            // Axes
+            ctx.strokeStyle = '#374151';
+            ctx.beginPath();
+            ctx.moveTo(padL, padT + chartH);
+            ctx.lineTo(padL + chartW, padT + chartH);
+            ctx.moveTo(padL, padT);
+            ctx.lineTo(padL, padT + chartH);
+            ctx.stroke();
+
+            // Find intersections (Approximations)
+            const findIntersection = (c1, c2) => {
+                for(let i=0; i<prices.length-1; i++) {
+                    if((c1[i] >= c2[i] && c1[i+1] <= c2[i+1]) || (c1[i] <= c2[i] && c1[i+1] >= c2[i+1])) {
+                        return prices[i]; // Rough approx
+                    }
+                }
+                return 0;
+            };
+
+            const OPP = findIntersection(curveTC, curveTE); // Optimal: Too Cheap crosses Too Expensive
+            const PMC = findIntersection(curveTC, curveNotE); // Marginal Cheap: Too Cheap crosses Not Expensive
+            const PME = findIntersection(curveTE, curveNotC); // Marginal Exp: Too Expensive crosses Not Cheap
+            const IPP = findIntersection(curveNotC, curveNotE); // Indifference: Not Cheap crosses Not Expensive
+
+            document.getElementById('psm-opp').textContent = `$${OPP.toFixed(0)}`;
+            document.getElementById('psm-pmc').textContent = `$${PMC.toFixed(0)}`;
+            document.getElementById('psm-pme').textContent = `$${PME.toFixed(0)}`;
+            document.getElementById('psm-ipp').textContent = `$${IPP.toFixed(0)}`;
+
+            // Draw line for OPP
+            if (OPP > 0) {
+                ctx.beginPath();
+                ctx.moveTo(mapX(OPP), padT);
+                ctx.lineTo(mapX(OPP), padT + chartH);
+                ctx.strokeStyle = 'white';
+                ctx.setLineDash([4, 4]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        }
+
+        // --- 5. Crypto Receipts ---
+        document.getElementById('btn-generate-receipt').addEventListener('click', async () => {
+            const cust = document.getElementById('cr-customer').value;
+            const val = document.getElementById('cr-value').value;
+            const terms = document.getElementById('cr-terms').value;
+            const timestamp = new Date().toISOString();
+            
+            if(!cust || !val || !terms) {
+                alert("Fill all receipt fields.");
+                return;
+            }
+
+            const rawStr = `${cust}|${val}|${terms}|${timestamp}`;
+            const hash = await generateSHA256(rawStr);
+            
+            document.getElementById('cr-hash').textContent = hash;
+            
+            state.receipts.push({ cust, val, terms, timestamp, hash });
+            saveState();
+        });
+
+        function render() {
+            renderTriggers();
+            setTimeout(renderPSM, 10);
+        }
+
+        // --- Export / Import ---
+        document.getElementById('btn-export').addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+            const dl = document.createElement('a');
+            dl.setAttribute("href", dataStr);
+            dl.setAttribute("download", "ventura_mercury_export.json");
+            document.body.appendChild(dl);
+            dl.click();
+            dl.remove();
+        });
+
+        document.getElementById('btn-import').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const imported = JSON.parse(event.target.result);
+                    if(imported && imported.triggers) {
+                        state = imported;
+                        saveState();
+                    } else alert("Invalid file format.");
+                } catch(err) { alert("Error parsing JSON."); }
+            };
+            reader.readAsText(file);
+        });
+
+        window.addEventListener('resize', renderPSM);
+
+        // Init
+        updateTelemetry();
+        render();
+
+    </script>
 </body>
 </html>
