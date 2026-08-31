@@ -10,10 +10,10 @@
 - **Pricing Model:** Buyer pays a small bounty to fund one objective question. Platform takes 20–35% of each bounty. Unlock fee (€0.20–€1) charged to future buyers reusing the same verified fact. API subscription for shopping agents and retailers who access the fact graph at scale. Merchant-funded bounties for unanswered catalogue gaps.
 
 ### Suggested Pricing Tiers
-- {'name': 'Buyer Bounty', 'priceRange': {'currency': 'EUR', 'minimum': 5, 'midpoint': 15, 'maximum': 49}, 'scope': 'one objective, verifiable product question'}
-- {'name': 'Fact Unlock', 'priceRange': {'currency': 'EUR', 'minimum': 0.20, 'midpoint': 0.50, 'maximum': 1.00}, 'scope': 'access to existing verified answer by a later buyer'}
-- {'name': 'API Subscription', 'priceRange': {'currency': 'USD', 'minimum': 99, 'midpoint': 499, 'maximum': 2500}, 'scope': 'shopping agent or retailer integration — monthly, per 1000 fact lookups'}
-- {'name': 'Merchant Bounty', 'priceRange': {'currency': 'EUR', 'minimum': 10, 'midpoint': 50, 'maximum': 500}, 'scope': 'merchant funds answers for top unanswered questions on their listings'}
+- {"name": "Buyer Bounty", "priceRange": {"currency": "EUR", "minimum": 5, "midpoint": 15, "maximum": 49}, "scope": "one objective, verifiable product question"}
+- {"name": "Fact Unlock", "priceRange": {"currency": "EUR", "minimum": 0.20, "midpoint": 0.50, "maximum": 1.00}, "scope": "access to existing verified answer by a later buyer"}
+- {"name": "API Subscription", "priceRange": {"currency": "USD", "minimum": 99, "midpoint": 499, "maximum": 2500}, "scope": "shopping agent or retailer integration — monthly, per 1000 fact lookups"}
+- {"name": "Merchant Bounty", "priceRange": {"currency": "EUR", "minimum": 10, "midpoint": 50, "maximum": 500}, "scope": "merchant funds answers for top unanswered questions on their listings"}
 
 ### Expected ARPC (Platform Gross)
 
@@ -99,9 +99,9 @@
 - fact graph licensing to retailers and platforms
 
 ### Scenarios
-- {'name': 'conservative', 'customers': 120, 'averageMonthlyRevenuePerCustomer': 4.50, 'monthlyRevenue': 540, 'annualRevenue': 6480, 'grossMarginPercent': 62, 'monthlyOperatingCosts': 800, 'approxMonthlyOperatingProfit': -465, 'assumptions': ['small bounty volume', 'high human verifier cost', 'zero API revenue', 'CAC near zero via organic SEO']}
-- {'name': 'base', 'customers': 1500, 'averageMonthlyRevenuePerCustomer': 8.20, 'monthlyRevenue': 12300, 'annualRevenue': 147600, 'grossMarginPercent': 75, 'monthlyOperatingCosts': 8500, 'approxMonthlyOperatingProfit': 712, 'assumptions': ['unlock fee flywheel active', 'AI reduces per-bounty cost', '3 API subscriptions at $499/mo', 'merchant bounty program launched']}
-- {'name': 'aggressive', 'customers': 12000, 'averageMonthlyRevenuePerCustomer': 11.50, 'monthlyRevenue': 138000, 'annualRevenue': 1656000, 'grossMarginPercent': 86, 'monthlyOperatingCosts': 65000, 'approxMonthlyOperatingProfit': 53680, 'assumptions': ['fact graph has 500k+ verified answers', '25+ API subscribers', 'merchant bounty program at scale', 'shopping agent integrations driving unlock volume']}
+- {"name": "conservative", "customers": 120, "averageMonthlyRevenuePerCustomer": 4.50, "monthlyRevenue": 540, "annualRevenue": 6480, "grossMarginPercent": 62, "monthlyOperatingCosts": 800, "approxMonthlyOperatingProfit": -465, "assumptions": ["small bounty volume", "high human verifier cost", "zero API revenue", "CAC near zero via organic SEO"]}
+- {"name": "base", "customers": 1500, "averageMonthlyRevenuePerCustomer": 8.20, "monthlyRevenue": 12300, "annualRevenue": 147600, "grossMarginPercent": 75, "monthlyOperatingCosts": 8500, "approxMonthlyOperatingProfit": 712, "assumptions": ["unlock fee flywheel active", "AI reduces per-bounty cost", "3 API subscriptions at $499/mo", "merchant bounty program launched"]}
+- {"name": "aggressive", "customers": 12000, "averageMonthlyRevenuePerCustomer": 11.50, "monthlyRevenue": 138000, "annualRevenue": 1656000, "grossMarginPercent": 86, "monthlyOperatingCosts": 65000, "approxMonthlyOperatingProfit": 53680, "assumptions": ["fact graph has 500k+ verified answers", "25+ API subscribers", "merchant bounty program at scale", "shopping agent integrations driving unlock volume"]}
 
 ### Known Facts
 - 24 source references indexed in canonical record (highest source count in top-20)

@@ -10,9 +10,9 @@
 - **Pricing Model:** B2B SaaS subscriptions for utilities and RTOs who need transmission queue de-duplication intelligence. Per-project verification fees for developers who want confidential readiness scoring. Fast-track credentials for projects that pass DemandProof's readiness check — unlocking priority queue processing.
 
 ### Suggested Pricing Tiers
-- {'name': 'Utility / RTO Planning Subscription', 'priceRange': {'currency': 'USD', 'minimum': 5000, 'midpoint': 25000, 'maximum': 120000}, 'scope': 'annual — queue de-duplication intelligence, phantom project detection, transmission planning support'}
-- {'name': 'Developer Confidential Verification', 'priceRange': {'currency': 'USD', 'minimum': 500, 'midpoint': 2500, 'maximum': 15000}, 'scope': 'per project — privacy-preserving readiness score + AlternativeSiteGroup detection'}
-- {'name': 'Fast-Track Credential', 'priceRange': {'currency': 'USD', 'minimum': 1000, 'midpoint': 5000, 'maximum': 25000}, 'scope': 'per project — certified readiness proof unlocking queue priority'}
+- {"name": "Utility / RTO Planning Subscription", "priceRange": {"currency": "USD", "minimum": 5000, "midpoint": 25000, "maximum": 120000}, "scope": "annual — queue de-duplication intelligence, phantom project detection, transmission planning support"}
+- {"name": "Developer Confidential Verification", "priceRange": {"currency": "USD", "minimum": 500, "midpoint": 2500, "maximum": 15000}, "scope": "per project — privacy-preserving readiness score + AlternativeSiteGroup detection"}
+- {"name": "Fast-Track Credential", "priceRange": {"currency": "USD", "minimum": 1000, "midpoint": 5000, "maximum": 25000}, "scope": "per project — certified readiness proof unlocking queue priority"}
 
 ### Expected ARPC
 
@@ -91,9 +91,9 @@
 - data partnership co-investment with anchor utilities reduces data costs
 
 ### Scenarios
-- {'name': 'conservative', 'customers': 2, 'averageMonthlyRevenuePerCustomer': 2100, 'monthlyRevenue': 4200, 'annualRevenue': 50400, 'grossMarginPercent': 55, 'monthlyOperatingCosts': 18000, 'approxMonthlyOperatingProfit': -15690, 'assumptions': ['2 utility pilot subscribers', 'high engineering burn', 'no developer verification revenue yet', 'pre-product-market-fit']}
-- {'name': 'base', 'customers': 8, 'averageMonthlyRevenuePerCustomer': 2300, 'monthlyRevenue': 18400, 'annualRevenue': 220800, 'grossMarginPercent': 74, 'monthlyOperatingCosts': 12000, 'approxMonthlyOperatingProfit': 1616, 'assumptions': ['6 utility subscriptions + developer verification volume', 'engineering team of 3', 'first RTO pilot active']}
-- {'name': 'aggressive', 'customers': 35, 'averageMonthlyRevenuePerCustomer': 3800, 'monthlyRevenue': 133000, 'annualRevenue': 1596000, 'grossMarginPercent': 84, 'monthlyOperatingCosts': 85000, 'approxMonthlyOperatingProfit': 26920, 'assumptions': ['12 utilities + 2 RTOs + 5 hyperscaler data center developers', 'developer verification at volume', 'fast-track credential program live']}
+- {"name": "conservative", "customers": 2, "averageMonthlyRevenuePerCustomer": 2100, "monthlyRevenue": 4200, "annualRevenue": 50400, "grossMarginPercent": 55, "monthlyOperatingCosts": 18000, "approxMonthlyOperatingProfit": -15690, "assumptions": ["2 utility pilot subscribers", "high engineering burn", "no developer verification revenue yet", "pre-product-market-fit"]}
+- {"name": "base", "customers": 8, "averageMonthlyRevenuePerCustomer": 2300, "monthlyRevenue": 18400, "annualRevenue": 220800, "grossMarginPercent": 74, "monthlyOperatingCosts": 12000, "approxMonthlyOperatingProfit": 1616, "assumptions": ["6 utility subscriptions + developer verification volume", "engineering team of 3", "first RTO pilot active"]}
+- {"name": "aggressive", "customers": 35, "averageMonthlyRevenuePerCustomer": 3800, "monthlyRevenue": 133000, "annualRevenue": 1596000, "grossMarginPercent": 84, "monthlyOperatingCosts": 85000, "approxMonthlyOperatingProfit": 26920, "assumptions": ["12 utilities + 2 RTOs + 5 hyperscaler data center developers", "developer verification at volume", "fast-track credential program live"]}
 
 ### Known Facts
 - FERC Order 2023 has forced transmission queue reform — creating an urgent market for de-duplication tools

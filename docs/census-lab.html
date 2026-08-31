@@ -98,18 +98,26 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 mb-1">3. Exposed via GTM (%)</label>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">3. Reach (%)</label>
                         <div class="flex items-center space-x-3">
-                            <input type="range" id="funnel-exposed-pct" min="0" max="100" value="20" class="flex-1 accent-accent">
-                            <span id="val-exposed" class="text-sm font-mono w-12 text-right">20%</span>
+                            <input type="range" id="funnel-reach-pct" min="0" max="100" value="20" class="flex-1 accent-accent">
+                            <span id="val-reach" class="text-sm font-mono w-12 text-right">20%</span>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 mb-1">4. Affected / Converting (%)</label>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">4. Penetration (%)</label>
                         <div class="flex items-center space-x-3">
-                            <input type="range" id="funnel-affected-pct" min="0" max="100" value="5" class="flex-1 accent-accent">
-                            <span id="val-affected" class="text-sm font-mono w-12 text-right">5%</span>
+                            <input type="range" id="funnel-penetration-pct" min="0" max="100" value="5" class="flex-1 accent-accent">
+                            <span id="val-penetration" class="text-sm font-mono w-12 text-right">5%</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 mb-1">5. Capture (%)</label>
+                        <div class="flex items-center space-x-3">
+                            <input type="range" id="funnel-capture-pct" min="0" max="100" value="5" class="flex-1 accent-accent">
+                            <span id="val-capture" class="text-sm font-mono w-12 text-right">5%</span>
                         </div>
                     </div>
                 </div>
@@ -119,36 +127,17 @@
                 <h2 class="text-lg font-semibold border-b border-border pb-2">Monte Carlo Parameters</h2>
                 
                 <div class="space-y-4">
-                    <!-- ACV -->
+                    <!-- Unit Economics -->
                     <div class="border border-border p-3 rounded">
-                        <label class="block text-xs font-bold text-gray-300 mb-2">ACV (Triangular Dist)</label>
-                        <div class="grid grid-cols-3 gap-2">
-                            <div>
-                                <label class="text-[10px] text-gray-500">Min</label>
-                                <input type="number" id="mc-acv-min" value="5000" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
-                            </div>
-                            <div>
-                                <label class="text-[10px] text-gray-500">Mode</label>
-                                <input type="number" id="mc-acv-mode" value="12000" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
-                            </div>
-                            <div>
-                                <label class="text-[10px] text-gray-500">Max</label>
-                                <input type="number" id="mc-acv-max" value="50000" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Capture Rate -->
-                    <div class="border border-border p-3 rounded">
-                        <label class="block text-xs font-bold text-gray-300 mb-2">Capture Rate (Beta Dist)</label>
+                        <label class="block text-xs font-bold text-gray-300 mb-2">Unit Economics</label>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label class="text-[10px] text-gray-500">Alpha (Successes)</label>
-                                <input type="number" id="mc-beta-a" value="2" step="0.1" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
+                                <label class="text-[10px] text-gray-500">ACV</label>
+                                <input type="number" id="unit-acv" value="12000" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
                             </div>
                             <div>
-                                <label class="text-[10px] text-gray-500">Beta (Failures)</label>
-                                <input type="number" id="mc-beta-b" value="20" step="0.1" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
+                                <label class="text-[10px] text-gray-500">LTV</label>
+                                <input type="number" id="unit-ltv" value="50000" class="w-full bg-canvas border border-border rounded px-2 py-1 text-xs">
                             </div>
                         </div>
                     </div>
@@ -164,13 +153,26 @@
             <!-- Funnel Visualizer -->
             <section class="glass-panel rounded-lg flex flex-col h-2/5 p-4 relative">
                 <h2 class="text-lg font-semibold border-b border-border pb-2 mb-2">Funnel Pipeline Visualizer</h2>
-                <div class="flex-1 relative w-full h-full">
-                    <svg id="funnel-svg" class="w-full h-full"></svg>
-                </div>
-                
-                <!-- Sanity Audit Red Flags -->
-                <div id="sanity-audit" class="absolute top-4 right-4 max-w-xs space-y-2">
-                    <!-- Red flags injected here -->
+                <div class="grid grid-cols-4 gap-4 flex-1 mt-4">
+                    <div class="flex flex-col items-center justify-center p-4 bg-canvas border border-border rounded">
+                        <span class="text-sm text-gray-400">Universe</span>
+                        <span id="out-universe" class="text-2xl font-bold text-white">0</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 bg-canvas border border-border rounded">
+                        <span class="text-sm text-gray-400">TAM (Eligible)</span>
+                        <span id="out-tam" class="text-2xl font-bold text-accent">0</span>
+                        <span id="out-tam-val" class="text-xs text-gray-500 mt-1">$0</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 bg-canvas border border-border rounded">
+                        <span class="text-sm text-gray-400">SAM (Reachable)</span>
+                        <span id="out-sam" class="text-2xl font-bold text-warning">0</span>
+                        <span id="out-sam-val" class="text-xs text-gray-500 mt-1">$0</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 bg-canvas border border-border rounded">
+                        <span class="text-sm text-gray-400">SOM (Obtainable)</span>
+                        <span id="out-som" class="text-2xl font-bold text-success">0</span>
+                        <span id="out-som-val" class="text-xs text-gray-500 mt-1">$0</span>
+                    </div>
                 </div>
             </section>
 
@@ -192,378 +194,7 @@
         </div>
     </main>
 
-    <script type="module">
-        // --- 1. State Management ---
-        const STORAGE_KEY = 'va_census_state_v1';
-        const defaultState = {
-            unitDef: 'Enterprise Seats',
-            funnel: {
-                universe: 1000000,
-                eligibilityPct: 40,
-                exposedPct: 20,
-                affectedPct: 5
-            },
-            mc: {
-                acvMin: 5000,
-                acvMode: 12000,
-                acvMax: 50000,
-                betaA: 2,
-                betaB: 20
-            }
-        };
-
-        let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState;
-        let simulationResults = []; // Will hold ARR results
-
-        function saveState() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-            updateTelemetry();
-            updateFunnelValues();
-            runSimulation(); // Auto run on state change
-            render();
-        }
-
-        function hashState(s) {
-            let hash = 0, str = JSON.stringify(s);
-            for (let i = 0; i < str.length; i++) {
-                hash = ((hash << 5) - hash) + str.charCodeAt(i);
-                hash = hash & hash;
-            }
-            return Math.abs(hash).toString(16).padStart(8, '0');
-        }
-
-        function updateTelemetry() {
-            document.getElementById('telemetry-time').textContent = new Date().toLocaleTimeString();
-            document.getElementById('telemetry-hash').textContent = '0x' + hashState(state);
-            document.getElementById('telemetry-status').textContent = 'NOMINAL';
-        }
-
-        // --- 2. Math & Simulation Engines ---
-        
-        // Random Uniform [0,1]
-        const rng = () => Math.random();
-
-        // Box-Muller transform for Normal(0,1)
-        function randNormal() {
-            let u = 0, v = 0;
-            while(u === 0) u = Math.random();
-            while(v === 0) v = Math.random();
-            return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-        }
-
-        // Generate Gamma distributed variable (Marsaglia and Tsang)
-        function randGamma(alpha) {
-            if (alpha < 1) {
-                return randGamma(alpha + 1) * Math.pow(Math.random(), 1.0 / alpha);
-            }
-            let d = alpha - 1.0 / 3.0;
-            let c = 1.0 / Math.sqrt(9.0 * d);
-            while (true) {
-                let x = randNormal();
-                let v = 1.0 + c * x;
-                while (v <= 0) {
-                    x = randNormal();
-                    v = 1.0 + c * x;
-                }
-                v = v * v * v;
-                let u = Math.random();
-                let x2 = x * x;
-                if (u < 1.0 - 0.0331 * x2 * x2) return d * v;
-                if (Math.log(u) < 0.5 * x2 + d * (1.0 - v + Math.log(v))) return d * v;
-            }
-        }
-
-        // Generate Beta distributed variable
-        function randBeta(alpha, beta) {
-            let gamma1 = randGamma(alpha);
-            let gamma2 = randGamma(beta);
-            return gamma1 / (gamma1 + gamma2);
-        }
-
-        // Triangular distribution
-        function randTriangular(min, mode, max) {
-            let u = Math.random();
-            let f = (mode - min) / (max - min);
-            if (u <= f) {
-                return min + Math.sqrt(u * (max - min) * (mode - min));
-            } else {
-                return max - Math.sqrt((1 - u) * (max - min) * (max - mode));
-            }
-        }
-
-        function runSimulation() {
-            const TRIALS = 5000;
-            simulationResults = [];
-            
-            // Calculate final 'Affected' count
-            const eligible = state.funnel.universe * (state.funnel.eligibilityPct / 100);
-            const exposed = eligible * (state.funnel.exposedPct / 100);
-            const affected = exposed * (state.funnel.affectedPct / 100);
-
-            for(let i = 0; i < TRIALS; i++) {
-                // Unit count Lognormal variation around affected (stddev roughly 20% of mean)
-                // Lognormal parameters: mu, sigma. If mean=M, var=V.
-                const mean = affected;
-                const cv = 0.2; // 20% coefficient of variation
-                const sigma2 = Math.log(1 + cv*cv);
-                const mu = Math.log(mean) - (sigma2 / 2);
-                const unitCount = Math.exp(mu + Math.sqrt(sigma2) * randNormal());
-
-                const acv = randTriangular(state.mc.acvMin, state.mc.acvMode, state.mc.acvMax);
-                const captureRate = randBeta(state.mc.betaA, state.mc.betaB);
-
-                const ARR = unitCount * acv * captureRate;
-                simulationResults.push(ARR);
-            }
-            
-            simulationResults.sort((a,b) => a - b);
-        }
-
-        // --- 3. UI Bindings ---
-        const inputs = {
-            unitDef: document.getElementById('unit-def'),
-            fUniv: document.getElementById('funnel-universe'),
-            fElig: document.getElementById('funnel-eligibility-pct'),
-            fExpo: document.getElementById('funnel-exposed-pct'),
-            fAffec: document.getElementById('funnel-affected-pct'),
-            mcAcvMin: document.getElementById('mc-acv-min'),
-            mcAcvMode: document.getElementById('mc-acv-mode'),
-            mcAcvMax: document.getElementById('mc-acv-max'),
-            mcBetaA: document.getElementById('mc-beta-a'),
-            mcBetaB: document.getElementById('mc-beta-b'),
-        };
-
-        // Init inputs
-        inputs.unitDef.value = state.unitDef;
-        inputs.fUniv.value = state.funnel.universe;
-        inputs.fElig.value = state.funnel.eligibilityPct;
-        inputs.fExpo.value = state.funnel.exposedPct;
-        inputs.fAffec.value = state.funnel.affectedPct;
-        inputs.mcAcvMin.value = state.mc.acvMin;
-        inputs.mcAcvMode.value = state.mc.acvMode;
-        inputs.mcAcvMax.value = state.mc.acvMax;
-        inputs.mcBetaA.value = state.mc.betaA;
-        inputs.mcBetaB.value = state.mc.betaB;
-
-        function updateFunnelValues() {
-            document.getElementById('val-eligibility').textContent = state.funnel.eligibilityPct + '%';
-            document.getElementById('val-exposed').textContent = state.funnel.exposedPct + '%';
-            document.getElementById('val-affected').textContent = state.funnel.affectedPct + '%';
-        }
-
-        // Bind events
-        inputs.unitDef.addEventListener('change', e => { state.unitDef = e.target.value; saveState(); });
-        inputs.fUniv.addEventListener('change', e => { state.funnel.universe = Number(e.target.value); saveState(); });
-        inputs.fElig.addEventListener('input', e => { state.funnel.eligibilityPct = Number(e.target.value); updateFunnelValues(); renderFunnel(); });
-        inputs.fElig.addEventListener('change', e => { state.funnel.eligibilityPct = Number(e.target.value); saveState(); });
-        inputs.fExpo.addEventListener('input', e => { state.funnel.exposedPct = Number(e.target.value); updateFunnelValues(); renderFunnel(); });
-        inputs.fExpo.addEventListener('change', e => { state.funnel.exposedPct = Number(e.target.value); saveState(); });
-        inputs.fAffec.addEventListener('input', e => { state.funnel.affectedPct = Number(e.target.value); updateFunnelValues(); renderFunnel(); });
-        inputs.fAffec.addEventListener('change', e => { state.funnel.affectedPct = Number(e.target.value); saveState(); });
-        
-        inputs.mcAcvMin.addEventListener('change', e => { state.mc.acvMin = Number(e.target.value); saveState(); });
-        inputs.mcAcvMode.addEventListener('change', e => { state.mc.acvMode = Number(e.target.value); saveState(); });
-        inputs.mcAcvMax.addEventListener('change', e => { state.mc.acvMax = Number(e.target.value); saveState(); });
-        inputs.mcBetaA.addEventListener('change', e => { state.mc.betaA = Number(e.target.value); saveState(); });
-        inputs.mcBetaB.addEventListener('change', e => { state.mc.betaB = Number(e.target.value); saveState(); });
-
-        document.getElementById('btn-run-sim').addEventListener('click', () => {
-            saveState(); // triggers sim
-        });
-
-        // --- 4. Render Visuals ---
-
-        function formatNum(num) {
-            if(num >= 1000000) return (num/1000000).toFixed(1) + 'M';
-            if(num >= 1000) return (num/1000).toFixed(1) + 'K';
-            return Math.floor(num).toLocaleString();
-        }
-
-        function formatMoney(num) {
-            if(num >= 1000000000) return '$' + (num/1000000000).toFixed(2) + 'B';
-            if(num >= 1000000) return '$' + (num/1000000).toFixed(2) + 'M';
-            if(num >= 1000) return '$' + (num/1000).toFixed(0) + 'K';
-            return '$' + Math.floor(num).toLocaleString();
-        }
-
-        function renderFunnel() {
-            const svg = document.getElementById('funnel-svg');
-            const w = svg.clientWidth || 800;
-            const h = svg.clientHeight || 200;
-            
-            const univ = state.funnel.universe;
-            const elig = univ * (state.funnel.eligibilityPct / 100);
-            const expo = elig * (state.funnel.exposedPct / 100);
-            const affec = expo * (state.funnel.affectedPct / 100);
-
-            const stages = [
-                { name: 'Universe', val: univ, color: '#1F2937' },
-                { name: 'Eligible', val: elig, color: '#374151' },
-                { name: 'Exposed', val: expo, color: '#3B82F6' },
-                { name: 'Affected', val: affec, color: '#10B981' }
-            ];
-
-            const maxW = w - 100;
-            const rectH = h / stages.length - 10;
-            
-            let html = '';
-            stages.forEach((s, i) => {
-                // Width proportional to square root to prevent tiny bars
-                const ratio = Math.sqrt(s.val / univ);
-                const barW = Math.max(ratio * maxW, 2);
-                const x = (w - barW) / 2;
-                const y = i * (rectH + 10);
-                
-                // Draw bar
-                html += `<rect x="${x}" y="${y}" width="${barW}" height="${rectH}" fill="${s.color}" rx="4" />`;
-                // Draw label
-                html += `<text x="${x + barW + 10}" y="${y + rectH/2 + 4}" fill="white" font-size="12" font-weight="bold">${s.name}</text>`;
-                // Draw value
-                html += `<text x="${x - 10}" y="${y + rectH/2 + 4}" fill="#9CA3AF" font-size="12" text-anchor="end">${formatNum(s.val)}</text>`;
-            });
-
-            svg.innerHTML = html;
-
-            // Check Sanity Audit (TAM Theater Red Flags)
-            const auditEl = document.getElementById('sanity-audit');
-            let flags = [];
-            const captureMean = state.mc.betaA / (state.mc.betaA + state.mc.betaB);
-            
-            if (state.funnel.eligibilityPct > 80) flags.push('⚠️ Unrealistic Eligibility > 80%');
-            if (captureMean > 0.05) flags.push(`⚠️ Capture Rate assumption high (${(captureMean*100).toFixed(1)}%)`);
-            if (state.funnel.universe > 10000000) flags.push('⚠️ Universe bounds extremely broad');
-
-            auditEl.innerHTML = flags.map(f => `<div class="bg-danger/20 border border-danger text-danger text-xs px-2 py-1 rounded shadow-lg backdrop-blur-sm">${f}</div>`).join('');
-        }
-
-        function renderMonteCarlo() {
-            if(simulationResults.length === 0) return;
-
-            const canvas = document.getElementById('mc-canvas');
-            const ctx = canvas.getContext('2d');
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width;
-            canvas.height = rect.height;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const p10 = simulationResults[Math.floor(simulationResults.length * 0.1)];
-            const p50 = simulationResults[Math.floor(simulationResults.length * 0.5)];
-            const p90 = simulationResults[Math.floor(simulationResults.length * 0.9)];
-
-            document.getElementById('mc-p10').textContent = formatMoney(p10);
-            document.getElementById('mc-p50').textContent = formatMoney(p50);
-            document.getElementById('mc-p90').textContent = formatMoney(p90);
-
-            // Histogram buckets
-            const BUCKETS = 50;
-            const min = simulationResults[0];
-            const max = simulationResults[simulationResults.length - 1];
-            const range = max - min;
-            const bucketSize = range / BUCKETS;
-            
-            const counts = new Array(BUCKETS).fill(0);
-            simulationResults.forEach(val => {
-                let idx = Math.floor((val - min) / bucketSize);
-                if(idx >= BUCKETS) idx = BUCKETS - 1;
-                counts[idx]++;
-            });
-
-            const maxCount = Math.max(...counts);
-            const w = canvas.width;
-            const h = canvas.height;
-            const padB = 20, padL = 40;
-            const barW = (w - padL) / BUCKETS;
-
-            // Draw bars
-            counts.forEach((c, i) => {
-                const barH = (c / maxCount) * (h - padB - 20);
-                const x = padL + i * barW;
-                const y = h - padB - barH;
-                
-                // Color based on percentile region
-                const bucketVal = min + i * bucketSize;
-                if(bucketVal < p10) ctx.fillStyle = '#EF4444'; // danger
-                else if (bucketVal > p90) ctx.fillStyle = '#10B981'; // success
-                else ctx.fillStyle = '#3B82F6'; // accent
-
-                ctx.fillRect(x, y, barW - 1, barH);
-            });
-
-            // Draw percentile lines
-            const drawLine = (val, color, label) => {
-                const x = padL + ((val - min) / range) * (w - padL);
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, h - padB);
-                ctx.strokeStyle = color;
-                ctx.setLineDash([5, 5]);
-                ctx.stroke();
-                ctx.setLineDash([]);
-                
-                ctx.fillStyle = color;
-                ctx.font = '10px monospace';
-                ctx.fillText(label, x + 2, 10);
-            };
-
-            drawLine(p10, '#EF4444', 'P10');
-            drawLine(p50, '#F59E0B', 'P50');
-            drawLine(p90, '#10B981', 'P90');
-
-            // Draw axes
-            ctx.strokeStyle = '#374151';
-            ctx.beginPath();
-            ctx.moveTo(padL, h - padB);
-            ctx.lineTo(w, h - padB);
-            ctx.stroke();
-
-            ctx.fillStyle = '#9CA3AF';
-            ctx.fillText(formatMoney(min), padL, h - 5);
-            ctx.fillText(formatMoney(max), w - 40, h - 5);
-        }
-
-        function render() {
-            setTimeout(() => {
-                renderFunnel();
-                renderMonteCarlo();
-            }, 10);
-        }
-
-        // --- Export / Import ---
-        document.getElementById('btn-export').addEventListener('click', () => {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
-            const dl = document.createElement('a');
-            dl.setAttribute("href", dataStr);
-            dl.setAttribute("download", "ventura_census_export.json");
-            document.body.appendChild(dl);
-            dl.click();
-            dl.remove();
-        });
-
-        document.getElementById('btn-import').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                try {
-                    const imported = JSON.parse(event.target.result);
-                    if(imported && imported.funnel) {
-                        state = imported;
-                        saveState();
-                    } else alert("Invalid file format.");
-                } catch(err) { alert("Error parsing JSON."); }
-            };
-            reader.readAsText(file);
-        });
-
-        window.addEventListener('resize', render);
-
-        // Init
-        updateFunnelValues();
-        updateTelemetry();
-        runSimulation();
-        render();
-
-    </script>
+    <!-- Load external JS -->
+    <script src="../assets/js/features/census-lab.js" type="module"></script>
 </body>
 </html>

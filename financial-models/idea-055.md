@@ -7,9 +7,9 @@
 - **Pricing Model:** Start with a fixed paid outcome; introduce subscription, usage, licensing, transaction, or enterprise pricing only after repeat demand.
 
 ### Suggested Pricing Tiers
-- {'name': 'Pilot', 'priceRange': {'currency': 'USD', 'minimum': 49, 'midpoint': 199, 'maximum': 499}, 'scope': 'one narrow outcome'}
-- {'name': 'Team', 'priceRange': {'currency': 'USD', 'minimum': 99, 'midpoint': 399, 'maximum': 1499}, 'scope': 'repeat use and collaboration'}
-- {'name': 'Enterprise', 'priceRange': {'currency': 'USD', 'minimum': 1000, 'midpoint': 5000, 'maximum': 25000}, 'scope': 'security, policy, support, or self-hosting'}
+- {"name": "Pilot", "priceRange": {"currency": "USD", "minimum": 49, "midpoint": 199, "maximum": 499}, "scope": "one narrow outcome"}
+- {"name": "Team", "priceRange": {"currency": "USD", "minimum": 99, "midpoint": 399, "maximum": 1499}, "scope": "repeat use and collaboration"}
+- {"name": "Enterprise", "priceRange": {"currency": "USD", "minimum": 1000, "midpoint": 5000, "maximum": 25000}, "scope": "security, policy, support, or self-hosting"}
 
 ### Expected Arpc
 
@@ -132,9 +132,9 @@
 - automation after error taxonomy stabilizes
 
 ### Scenarios
-- {'name': 'conservative', 'customers': 8, 'averageMonthlyRevenuePerCustomer': 69.3, 'monthlyRevenue': 554.4, 'annualRevenue': 6652.8, 'grossMarginPercent': 55.0, 'monthlyOperatingCosts': 500, 'approxMonthlyOperatingProfit': -195.08, 'assumptions': ['customer count is hypothetical', 'price must be tested with prepayment', 'support and review must stay within modeled variable cost']}
-- {'name': 'base', 'customers': 35, 'averageMonthlyRevenuePerCustomer': 99.0, 'monthlyRevenue': 3465, 'annualRevenue': 41580, 'grossMarginPercent': 72.0, 'monthlyOperatingCosts': 2200, 'approxMonthlyOperatingProfit': 294.8, 'assumptions': ['customer count is hypothetical', 'price must be tested with prepayment', 'support and review must stay within modeled variable cost']}
-- {'name': 'aggressive', 'customers': 120, 'averageMonthlyRevenuePerCustomer': 133.65, 'monthlyRevenue': 16038.0, 'annualRevenue': 192456.0, 'grossMarginPercent': 82.0, 'monthlyOperatingCosts': 9000, 'approxMonthlyOperatingProfit': 4151.16, 'assumptions': ['customer count is hypothetical', 'price must be tested with prepayment', 'support and review must stay within modeled variable cost']}
+- {"name": "conservative", "customers": 8, "averageMonthlyRevenuePerCustomer": 69.3, "monthlyRevenue": 554.4, "annualRevenue": 6652.8, "grossMarginPercent": 55.0, "monthlyOperatingCosts": 500, "approxMonthlyOperatingProfit": -195.08, "assumptions": ["customer count is hypothetical", "price must be tested with prepayment", "support and review must stay within modeled variable cost"]}
+- {"name": "base", "customers": 35, "averageMonthlyRevenuePerCustomer": 99.0, "monthlyRevenue": 3465, "annualRevenue": 41580, "grossMarginPercent": 72.0, "monthlyOperatingCosts": 2200, "approxMonthlyOperatingProfit": 294.8, "assumptions": ["customer count is hypothetical", "price must be tested with prepayment", "support and review must stay within modeled variable cost"]}
+- {"name": "aggressive", "customers": 120, "averageMonthlyRevenuePerCustomer": 133.65, "monthlyRevenue": 16038.0, "annualRevenue": 192456.0, "grossMarginPercent": 82.0, "monthlyOperatingCosts": 9000, "approxMonthlyOperatingProfit": 4151.16, "assumptions": ["customer count is hypothetical", "price must be tested with prepayment", "support and review must stay within modeled variable cost"]}
 
 ### Known Facts
 - The idea or variant appears in the supplied corpus.

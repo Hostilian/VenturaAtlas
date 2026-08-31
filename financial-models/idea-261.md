@@ -9,10 +9,10 @@
 - **Pricing Model:** Per-SKU or per-shipment compliance subscription for importers and logistics carriers. Per-check fee for on-demand compliance verification against EU market entry rules (CE marking, GPSR, CRA, REACH, EUDR). API licensing for logistics software and ERP integrations.
 
 ### Suggested Pricing Tiers
-- {'name': 'Importer Starter', 'priceRange': {'currency': 'EUR', 'minimum': 99, 'midpoint': 299, 'maximum': 799}, 'scope': 'monthly — up to 500 SKUs monitored, basic EU compliance ruleset'}
-- {'name': 'Carrier / 3PL', 'priceRange': {'currency': 'EUR', 'minimum': 499, 'midpoint': 1499, 'maximum': 5000}, 'scope': 'monthly — shipment-level compliance check, CBAM + ICS2 + EUDR coverage'}
-- {'name': 'Enterprise / ERP API', 'priceRange': {'currency': 'USD', 'minimum': 2000, 'midpoint': 8000, 'maximum': 30000}, 'scope': 'monthly — API integration into SAP/Oracle, bulk SKU compliance graph, custom ruleset'}
-- {'name': 'Per-Check', 'priceRange': {'currency': 'EUR', 'minimum': 0.50, 'midpoint': 2.50, 'maximum': 10}, 'scope': 'per shipment or SKU compliance verification on demand'}
+- {"name": "Importer Starter", "priceRange": {"currency": "EUR", "minimum": 99, "midpoint": 299, "maximum": 799}, "scope": "monthly — up to 500 SKUs monitored, basic EU compliance ruleset"}
+- {"name": "Carrier / 3PL", "priceRange": {"currency": "EUR", "minimum": 499, "midpoint": 1499, "maximum": 5000}, "scope": "monthly — shipment-level compliance check, CBAM + ICS2 + EUDR coverage"}
+- {"name": "Enterprise / ERP API", "priceRange": {"currency": "USD", "minimum": 2000, "midpoint": 8000, "maximum": 30000}, "scope": "monthly — API integration into SAP/Oracle, bulk SKU compliance graph, custom ruleset"}
+- {"name": "Per-Check", "priceRange": {"currency": "EUR", "minimum": 0.50, "midpoint": 2.50, "maximum": 10}, "scope": "per shipment or SKU compliance verification on demand"}
 
 ### Expected ARPC
 
@@ -90,9 +90,9 @@
 - partner program with customs brokers reduces direct sales CAC
 
 ### Scenarios
-- {'name': 'conservative', 'customers': 25, 'averageMonthlyRevenuePerCustomer': 350, 'monthlyRevenue': 8750, 'annualRevenue': 105000, 'grossMarginPercent': 62, 'monthlyOperatingCosts': 12000, 'approxMonthlyOperatingProfit': -6575, 'assumptions': ['25 importer subscribers, no carrier or API tier yet', 'heavy regulatory update cost', 'pre-partnership with customs brokers']}
-- {'name': 'base', 'customers': 120, 'averageMonthlyRevenuePerCustomer': 620, 'monthlyRevenue': 74400, 'annualRevenue': 892800, 'grossMarginPercent': 74, 'monthlyOperatingCosts': 42000, 'approxMonthlyOperatingProfit': 13056, 'assumptions': ['90 importers + 25 carriers + 5 API subscribers', 'two regulatory update cycles automated', 'customs broker partner channel active']}
-- {'name': 'aggressive', 'customers': 500, 'averageMonthlyRevenuePerCustomer': 980, 'monthlyRevenue': 490000, 'annualRevenue': 5880000, 'grossMarginPercent': 84, 'monthlyOperatingCosts': 200000, 'approxMonthlyOperatingProfit': 211600, 'assumptions': ['large importer base + carrier API integrations + 3 ERP partnerships', 'full EU regulatory coverage including CBAM, EUDR, CRA, GPSR, ICS2', 'custom ruleset revenue from enterprise accounts']}
+- {"name": "conservative", "customers": 25, "averageMonthlyRevenuePerCustomer": 350, "monthlyRevenue": 8750, "annualRevenue": 105000, "grossMarginPercent": 62, "monthlyOperatingCosts": 12000, "approxMonthlyOperatingProfit": -6575, "assumptions": ["25 importer subscribers, no carrier or API tier yet", "heavy regulatory update cost", "pre-partnership with customs brokers"]}
+- {"name": "base", "customers": 120, "averageMonthlyRevenuePerCustomer": 620, "monthlyRevenue": 74400, "annualRevenue": 892800, "grossMarginPercent": 74, "monthlyOperatingCosts": 42000, "approxMonthlyOperatingProfit": 13056, "assumptions": ["90 importers + 25 carriers + 5 API subscribers", "two regulatory update cycles automated", "customs broker partner channel active"]}
+- {"name": "aggressive", "customers": 500, "averageMonthlyRevenuePerCustomer": 980, "monthlyRevenue": 490000, "annualRevenue": 5880000, "grossMarginPercent": 84, "monthlyOperatingCosts": 200000, "approxMonthlyOperatingProfit": 211600, "assumptions": ["large importer base + carrier API integrations + 3 ERP partnerships", "full EU regulatory coverage including CBAM, EUDR, CRA, GPSR, ICS2", "custom ruleset revenue from enterprise accounts"]}
 
 ### Known Facts
 - EU GPSR (General Product Safety Regulation) effective December 2024 — immediate compliance demand
