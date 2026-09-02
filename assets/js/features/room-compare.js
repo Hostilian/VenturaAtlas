@@ -48,12 +48,14 @@ function initRoomCompare() {
               Loaded Voters (${loadedPackets.length})
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-              ${loadedPackets.map((pkt, idx) => `
                 <span class="chip status" style="font-size:0.82rem;padding:0.35rem 0.65rem">
                   👤 <strong>${esc(pkt.evaluator || pkt.nickname || pkt.roomName || 'Voter ' + (idx + 1))}</strong>
-                  <span style="font-size:0.75rem;color:var(--muted);margin-left:0.3rem">(${Object.keys(pkt.votes || pkt.scorecards || {}).length} ideas rated)</span>
+                  <span style="font-size:0.75rem;color:var(--muted);margin-left:0.3rem">(${new Set([
+                    ...Object.keys(pkt.votes || {}),
+                    ...Object.keys(pkt.scorecards || {}),
+                    ...Object.keys(pkt.evaluations || {})
+                  ]).size} ideas rated)</span>
                 </span>
-              `).join('')}
             </div>
           </div>
         ` : ''}
