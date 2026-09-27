@@ -16,7 +16,9 @@ function initMercuryLab() {
         const url = new URL(a.href, window.location.href);
         url.searchParams.set('idea', requestedIdeaId);
         a.href = url.toString();
-      } catch (e) {}
+      } catch (error) {
+        console.warn('[Mercury] Skipped malformed navigation link.', error);
+      }
     });
   }
 

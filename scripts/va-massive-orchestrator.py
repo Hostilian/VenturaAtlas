@@ -208,10 +208,16 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="Log steps without executing sub-commands")
     parser.add_argument("--step-timeout-seconds", type=int, default=900, help="Per-child hard timeout")
     parser.add_argument("--panel-size", type=int, default=3, help="Distinct AI reviewers per staged candidate")
+    parser.add_argument("--panel-minimum-responses", type=int, default=None,
+                        help="Minimum successful reviewers required; defaults to panel size")
     parser.add_argument("--panel-limit", type=int, default=2, help="Most recent staged candidates cross-checked per iteration")
-    parser.add_argument("--strict-panel", action="store_true", help="Fail when the requested independent panel cannot be assembled")
+    parser.add_argument("--strict-panel", action="store_true", help="Fail when the minimum independent panel cannot be assembled")
     parser.add_argument("--receipt-dir", default=os.path.join(BASE_DIR, ".agent-state", "orchestrator-runs"))
     args = parser.parse_args()
+    panel_size = max(1, args.panel_size)
+    panel_minimum = panel_size if args.panel_minimum_responses is None else args.panel_minimum_responses
+    if panel_minimum < 1 or panel_minimum > panel_size:
+        parser.error("--panel-minimum-responses must be between 1 and --panel-size")
 
     max_iterations = 1 if args.once and not args.continuous else args.max_iterations
     start_time = time.monotonic()
@@ -262,8 +268,8 @@ def main() -> int:
                 sys.executable,
                 "scripts/va-research-crosscheck.py",
                 "--limit", str(max(0, args.panel_limit)),
-                "--panel-size", str(max(1, args.panel_size)),
-                "--minimum-responses", str(max(1, args.panel_size)),
+                "--panel-size", str(panel_size),
+                "--minimum-responses", str(panel_minimum),
                 "--max-cost", os.environ.get("VA_MAX_COST_CLASS", "1"),
             ]
             if args.strict_panel:

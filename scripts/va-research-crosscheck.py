@@ -148,7 +148,7 @@ def main() -> int:
     parser.add_argument("--panel-size", type=int, default=3, help="Distinct providers requested per candidate")
     parser.add_argument("--minimum-responses", type=int, default=3, help="Minimum successful distinct responses")
     parser.add_argument("--max-cost", type=int, default=1, help="Maximum provider cost class")
-    parser.add_argument("--strict", action="store_true", help="Fail when a full panel cannot be assembled")
+    parser.add_argument("--strict", action="store_true", help="Fail when the minimum panel cannot be assembled")
     parser.add_argument("--receipt-dir", default=DEFAULT_RECEIPT_DIR)
     args = parser.parse_args()
 
@@ -220,7 +220,7 @@ def main() -> int:
         if len(infrastructure_groups) < 2:
             receipt["failures"].append({
                 "candidateId": candidate_id,
-                "error": "PANEL_INFRASTRUCTURE_SHORTFALL: three reviews require at least two independent provider infrastructures",
+                "error": "PANEL_INFRASTRUCTURE_SHORTFALL: the review panel requires at least two independent provider infrastructures",
             })
             continue
         receipt["reviews"].append({
@@ -231,6 +231,10 @@ def main() -> int:
             "distinctInfrastructureGroups": infrastructure_groups,
             "responses": safe_responses,
             "panelSummary": extract_panel_summary(safe_responses),
+            "panelStatus": "FULL" if len(safe_responses) >= args.panel_size else "DEGRADED_MINIMUM_MET",
+            "requestedReviewerLanes": args.panel_size,
+            "receivedReviewerLanes": len(safe_responses),
+            "missingReviewerLanes": max(0, args.panel_size - len(safe_responses)),
         })
         known_digests[candidate_digest] = {
             "candidateId": candidate_id,
@@ -240,8 +244,10 @@ def main() -> int:
 
     if selected:
         accounted = len(receipt["reviews"]) + len(receipt["deduplicated"])
+        has_degraded_panel = any(item.get("panelStatus") == "DEGRADED_MINIMUM_MET" for item in receipt["reviews"])
         receipt["status"] = (
             "SUCCEEDED_NO_OP" if not receipt["reviews"] and accounted == len(selected)
+            else "SUCCEEDED_DEGRADED" if accounted == len(selected) and has_degraded_panel
             else "SUCCEEDED" if accounted == len(selected)
             else "DEGRADED"
         )

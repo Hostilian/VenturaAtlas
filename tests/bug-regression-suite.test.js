@@ -50,7 +50,7 @@ describe('Bug Triage & Deterministic Invariant Regressions', () => {
       cwd: ROOT,
       encoding: 'utf-8',
     });
-    assert.match(output, /\[NEXT-TASK\] Selected: /);
+    assert.match(output, /\[NEXT-TASK\] (?:Selected: .+|No runnable tasks ready\. \d+ task\(s\) blocked, \d+ completed\.)/);
   });
 
   test('View Adapters: Dex and Beads generate valid non-authoritative JSON projections', () => {

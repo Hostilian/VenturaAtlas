@@ -163,8 +163,9 @@ def main() -> int:
     required_workflow_markers = [
         "va-massive-orchestrator.py",
         "--strict-panel",
-        "actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830",
-        "actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830",
+        "--panel-minimum-responses 2",
+        "actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+        "actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
         "VA_EXECUTION_SCOPE: cloud",
     ]
     for marker in required_workflow_markers:

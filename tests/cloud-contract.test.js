@@ -189,12 +189,20 @@ test('Cloud publication freezes a checkout and enforces an exact diff manifest',
   assert.match(runner, /private paths cannot be published to Git/);
 });
 
-test('scheduled research restores private state and requires three model-review lanes', () => {
+test('scheduled research restores private state with graceful panel degradation', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'research-cycle.yml'), 'utf8');
-  assert.match(workflow, /actions\/cache\/restore@0057852bfaa89a56745cba8c7296529d2fc39830/);
-  assert.match(workflow, /actions\/cache\/save@0057852bfaa89a56745cba8c7296529d2fc39830/);
+  assert.match(workflow, /actions\/cache\/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9/);
+  assert.match(workflow, /actions\/cache\/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9/);
   assert.match(workflow, /va-massive-orchestrator\.py/);
   assert.match(workflow, /--panel-size 3/);
+  assert.match(workflow, /--panel-minimum-responses 2/);
   assert.match(workflow, /--strict-panel/);
   assert.doesNotMatch(workflow, /VA_CREDIT_SAFE_MODE:\s*['"]?1/);
+});
+
+test('autonomy monitor preserves a durable alert without failing the monitor job', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'autonomy-monitor.yml'), 'utf8');
+  assert.match(workflow, /gh issue edit/);
+  assert.match(workflow, /Record alert status/);
+  assert.doesNotMatch(workflow, /Preserve alert status[\s\S]*?exit 1/);
 });

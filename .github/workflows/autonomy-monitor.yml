@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   monitor:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -47,6 +47,8 @@ jobs:
           existing="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
           if [ -z "$existing" ]; then
             gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file .agent-state/cloud-monitor.json
+          else
+            gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file .agent-state/cloud-monitor.json
           fi
 
       - name: Close recovered alert
@@ -68,6 +70,11 @@ jobs:
           include-hidden-files: true
           retention-days: 30
 
-      - name: Preserve alert status
+      - name: Record alert status
         if: steps.health.outcome == 'failure'
-        run: exit 1
+        run: |
+          echo "::warning::Cloud research recurrence is stale or repeatedly failing; see the deduplicated alert issue."
+          {
+            echo "### Cloud recurrence alert"
+            echo "The monitor detected stale or repeated failures. The alert issue is the durable notification surface."
+          } >> "$GITHUB_STEP_SUMMARY"

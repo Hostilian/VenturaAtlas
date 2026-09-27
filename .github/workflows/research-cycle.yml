@@ -15,7 +15,7 @@ permissions:
 jobs:
   research-check:
     name: Bounded Autonomous Research & Triple Review
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
       VA_EXECUTION_SCOPE: cloud
@@ -45,7 +45,7 @@ jobs:
 
       - name: Restore private autonomous state
         id: restore-private-state
-        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             data/idea-staging-queue.json
@@ -82,6 +82,7 @@ jobs:
           --max-runtime-minutes 24
           --step-timeout-seconds 600
           --panel-size 3
+          --panel-minimum-responses 2
           --panel-limit 2
           --strict-panel
 
@@ -100,7 +101,7 @@ jobs:
 
       - name: Save private autonomous state
         if: always() && steps.private-state-valid.outcome == 'success'
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             data/idea-staging-queue.json

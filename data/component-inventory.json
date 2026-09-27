@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-29T19:37:17.066Z",
-  "componentCount": 25,
-  "utilityCount": 273,
+  "generatedAt": "2026-09-27T17:58:02.357Z",
+  "componentCount": 24,
+  "utilityCount": 279,
   "components": [
     {
       "id": "lab-header",
@@ -120,11 +120,6 @@
       "sourceFile": "docs/org-lab.html"
     },
     {
-      "id": "pl-field-label",
-      "kind": "html-lab-container",
-      "sourceFile": "docs/portfolio-lab.html"
-    },
-    {
       "id": "timeline-section-label",
       "kind": "html-lab-container",
       "sourceFile": "docs/timeline.html"
@@ -214,6 +209,30 @@
     {
       "name": "CensusEngine",
       "sourceFile": "assets/js/features/census-engine.js"
+    },
+    {
+      "name": "formatNum",
+      "sourceFile": "assets/js/features/census-lab.js"
+    },
+    {
+      "name": "formatMoney",
+      "sourceFile": "assets/js/features/census-lab.js"
+    },
+    {
+      "name": "saveState",
+      "sourceFile": "assets/js/features/census-lab.js"
+    },
+    {
+      "name": "updateStateFromInputs",
+      "sourceFile": "assets/js/features/census-lab.js"
+    },
+    {
+      "name": "syncInputsToState",
+      "sourceFile": "assets/js/features/census-lab.js"
+    },
+    {
+      "name": "render",
+      "sourceFile": "assets/js/features/census-lab.js"
     },
     {
       "name": "universalModule",

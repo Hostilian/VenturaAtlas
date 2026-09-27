@@ -11,7 +11,7 @@ permissions:
 jobs:
   validate-rankings:
     name: Validate Canonical Ranking Consistency
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Checkout repository
