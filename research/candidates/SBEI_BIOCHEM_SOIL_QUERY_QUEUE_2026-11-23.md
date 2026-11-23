@@ -3,6 +3,19 @@
 
 This queue preserves the user's satellite-to-biochemistry, laboratory-to-unsampled-soil, plant-condition, biodiversity and environmental-economic forecasting ideas for future independent checks. The full scientific audit and preservation of the thesis's approved RQs are in [Hostilian/tesis](https://github.com/Hostilian/tesis/blob/main/research/RESEARCH_QUERY_BACKLOG_2026-11-23.md) and [biochemistry market screen](https://github.com/Hostilian/tesis/blob/main/research/BIOCHEM_EO_MARKET_AND_VALIDATION_2026-11-23.md).
 
+## SOIL-5 joint venture investigation — active, **unpromoted**
+
+The user selected the original rank **#1 EU Soil Evidence Pack**, **#2 Surface Sealing/Removal Change Audit**, **#3 Soil Sampling Priority Map**, **#4 Bare Soil/Erosion Exposure Alert**, and rank **#13 pH/N/P/K laboratory-substitution falsification** as five linked experiments on one reusable public geospatial evidence stack. The chemistry track explicitly must **not** claim laboratory equivalence or `90% reliable` without held-out chemical tolerance measurements.
+
+- [Canonical research programme (separate thesis RQs unchanged)](https://github.com/Hostilian/tesis/blob/main/research/SOIL_FIVE_TRACK_PROGRAM_2026-11-23.md)
+- [Reusable 14-task prompt and review pack](https://github.com/Hostilian/tesis/blob/main/research/SOIL_FIVE_EXECUTION_PROMPTS_2026-11-23.md)
+- [Reproducible original 13-candidate PyMCDM scores](https://github.com/Hostilian/tesis/blob/main/research/venture_rankings/rank_results_20261123.json)
+- [Source-backed market and falsification review](https://github.com/Hostilian/tesis/blob/main/research/RANKED_SOIL_VENTURE_REVIEW_2026-11-23.md)
+
+**Other eight ranked ideas are preserved, not discarded**: water pigments/bloom QA, habitat/phenology, standalone laboratory provenance, almond pigment calibration, surface-moisture triage, salinity risk, unsampled-region SOC modelling, biochemical economic forecasting. Follow their original separate evidence conditions.
+
+**Commercial stage = hypothetical / no external receipts.** No customer commitments, buyer budgets, contracts, government bids, paid pilots, legal data permissions or 90%-chemical holdout tests are claimed. Do not promote new canonical idea IDs or edit revenue rankings unless an actual customer/budget/payment evidence gate passes. No outreach, grant submissions or external emails.
+
 ## Unpromoted hypotheses
 1. **Alentejo Orchard BioSignal:** buyer: almond grower/agronomy consultant; test whether Sentinel-2 red-edge proxies and independent leaf analyses can reduce unnecessary field inspection. Exact validation query: *What measurable agronomic decision would a paying customer change after viewing a calibrated, independently validated chlorophyll/nitrogen confidence interval?* No claim satellite directly measures nitrogen.
 2. **Soil Carbon Extrapolation QA:** buyer: soil consultant/MRV operator; test whether lab-trained satellite + climate/topography estimates improve an existing paid workflow for previously unsampled regions. Exact query: *Does a leave-region-out, uncertainty-aware SOC prediction meaningfully outperform public map baselines, and for whom is error costly?* LUCAS 2018 registered licence restricts access and redistribution.
