@@ -14,6 +14,8 @@ The user selected the original rank **#1 EU Soil Evidence Pack**, **#2 Surface S
 
 **Other eight ranked ideas are preserved, not discarded**: water pigments/bloom QA, habitat/phenology, standalone laboratory provenance, almond pigment calibration, surface-moisture triage, salinity risk, unsampled-region SOC modelling, biochemical economic forecasting. Follow their original separate evidence conditions.
 
+**Observable evidence update (23 Nov):** A reproducible two-date public Sentinel-2 preview compared 12 July 2024 and 27 June 2025 over a generic Alentejo window. See [real-source JSON](https://github.com/Hostilian/tesis/blob/main/docs/data/observed_alentejo_soil5_pair_20261123.json), [reusable code](https://github.com/Hostilian/tesis/blob/main/research/prototypes/soil_surface_pair_public_preview.py), and [phone-readable SOIL-5 page](https://hostilian.github.io/tesis/soil5.html). Computation checked 9,216 QA-overlap interpolated grid cells and calculated median ΔNDVI ≈ +0.025 and ΔBSI ≈ −0.025. **Not independent soil sealing/erosion events, lab data, or evidence of customer demand.**
+
 **Commercial stage = hypothetical / no external receipts.** No customer commitments, buyer budgets, contracts, government bids, paid pilots, legal data permissions or 90%-chemical holdout tests are claimed. Do not promote new canonical idea IDs or edit revenue rankings unless an actual customer/budget/payment evidence gate passes. No outreach, grant submissions or external emails.
 
 ## Unpromoted hypotheses
